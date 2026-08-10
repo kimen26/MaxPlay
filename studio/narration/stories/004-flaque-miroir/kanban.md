@@ -1,4 +1,4 @@
-# Kanban — STORY-004 La flaque-miroir
+﻿# Kanban — STORY-004 La flaque-miroir
 
 > **Source de vérité de l'étape en cours.** Lu en premier par tout agent qui reprend l'histoire.
 > Mis à jour par le **owner de l'étape en cours** dès qu'il termine son livrable.
@@ -28,11 +28,11 @@
 | 2B | Brainstorm équipe (matière brute 3 LLMs) | Kimi + DeepSeek + Grok + Conseiller | ✅ | 2026-07-10 | matière brute briefs (Kimi + DeepSeek + Grok) |
 | 3 | Briefs | Directeur | ✅ | 2026-07-11 | [`3-briefs/`](3-briefs/) — brief-personnages + brief-histoire + micro-briefs |
 | 4 | 14 Versions writers | 14 Writers | ✅ **14/14** | 2026-07-11 | [`4-versions-writers/`](4-versions-writers/) — vague 1 complète (6 Claude agents + kimi-reco-guide agent + 7 CLI). Écarts résiduels acceptés : grok-def 375 · grok-reco 354 · deepseek-def 312 · haiku/sonnet-def 384-388 · kimi-reco-guide 393 · deepseek-reco 634 (long) — chips « trop court/long » de la lecture annotée trancheront. kimi-k26-thinking récupéré en retry séquentiel (429 concurrence orga 3). Prochaine étape 5 : lecture annotée Papa Yann (après 002 v6) + panel v2. |
-| 5 | Panel 20 lecteurs | 20 Témoins | ⚪ | — | [`5-lecteurs-temoins/`](5-lecteurs-temoins/) |
+| 5 | Panel 12 calls (DEC-PANEL-V2) | Panel v2 | ✅ **12/12** | 2026-07-11 | [`5-synthese-lecteurs.md`](5-synthese-lecteurs.md) — synthèse produite · ⚠️ deepseek-reco jugée CORROMPUE = hors concours · lecture annotée Papa Yann ⏳ |
 | 6 | Sélection | Directeur | ⚪ | — | [`6-selection.md`](6-selection.md) |
 | 7 | Rewrite | Writer du top 1 | ⚪ | — | [`7-rewrite/`](7-rewrite/) |
 | 8 | GateKeeper | GateKeeper | ⚪ | — | [`8-gatekeeper-verdict.md`](8-gatekeeper-verdict.md) |
-| 9 | Re-relecture rewrite | Panel 20 | ⚪ | — | [`9-relecture-rewrite/`](9-relecture-rewrite/) |
+| 9 | Re-relecture rewrite | Panel 12 (même panel qu'étape 5) | ⚪ | — | [`9-relecture-rewrite/`](9-relecture-rewrite/) |
 | 10 | Canon finalisé | Directeur + PMO | ⚪ | — | [`10-texte.md`](10-texte.md) |
 
 > Étape 2 supprimée 2026-05-12 (fusion avec étape 1 — l'Architecte est en standby).

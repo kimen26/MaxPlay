@@ -1,4 +1,4 @@
-# Kanban — STORY-007 l-ombre-qui-bouge-pas-pareil
+﻿# Kanban — STORY-007 l-ombre-qui-bouge-pas-pareil
 
 > **Source de vérité de l'étape en cours.** Lu en premier par tout agent qui reprend l'histoire.
 > Mis à jour par le **owner de l'étape en cours** dès qu'il termine son livrable.
@@ -28,11 +28,11 @@
 | 2 | Brainstorm (boss + équipe) | Papa Yann + Conseiller / Kimi+DeepSeek+Grok | ✅ | 2026-07-11 | 2A GO autonome · [`2-brainstorm-equipe.md`](2-brainstorm-equipe.md) (matière brute) |
 | 3 | Briefs | Directeur | ✅ | 2026-07-11 | [`3-briefs/`](3-briefs/) — brief-personnages · brief-histoire · micro-briefs |
 | 4 | 14 Versions writers | 14 Writers | ✅ (13/14) | 2026-07-11 | [`4-versions-writers/`](4-versions-writers/) — `kimi-reco-guide` MANQUE (quota Kimi) |
-| 5 | Panel 20 lecteurs | 20 Témoins | 🟢 panel ✅ 12/12 · lecture annotée ⏳ | 2026-07-11 | [`5-synthese-lecteurs.md`](5-synthese-lecteurs.md) — synthèse produite (corpus 13) |
+| 5 | Panel 12 calls (DEC-PANEL-V2) | Panel v2 | 🟢 panel ✅ 12/12 · lecture annotée ⏳ | 2026-07-11 | [`5-synthese-lecteurs.md`](5-synthese-lecteurs.md) — synthèse produite (corpus 13) |
 | 6 | Sélection | Directeur | ⚪ | — | [`6-selection.md`](6-selection.md) |
 | 7 | Rewrite | Writer du top 1 | ⚪ | — | [`7-rewrite/`](7-rewrite/) |
 | 8 | GateKeeper | GateKeeper | ⚪ | — | [`8-gatekeeper-verdict.md`](8-gatekeeper-verdict.md) |
-| 9 | Re-relecture rewrite | Panel 20 | ⚪ | — | [`9-relecture-rewrite/`](9-relecture-rewrite/) |
+| 9 | Re-relecture rewrite | Panel 12 (même panel qu'étape 5) | ⚪ | — | [`9-relecture-rewrite/`](9-relecture-rewrite/) |
 | 10 | Canon finalisé | Directeur + PMO | ⚪ | — | [`10-texte.md`](10-texte.md) |
 
 > Étape 2 = Brainstorm (boss Phase A + équipe Phase B), recréée 2026-05-15 (DEC-PROCESS-002).

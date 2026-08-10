@@ -1,4 +1,4 @@
-﻿# figees-injector.kimi.ps1 — Hook PreToolUse (Edit|Write) — VERSION KIMI CODE
+# figees-injector.kimi.ps1 — Hook PreToolUse (Edit|Write) — VERSION KIMI CODE
 # Adaptation de .claude/hooks/figees-injector.ps1 :
 #   - payload Kimi : tool_input.path (Edit/Write Kimi) ou tool_input.file_path (compat Claude)
 #   - sortie : texte brut sur stdout (exit 0 = contexte ajouté, non bloquant)
@@ -52,6 +52,43 @@ elseif ($norm -match 'site/index\.html$' -or
 [RULE path-scoped] .claude/rules/mini-jeux.md s'applique a ce fichier.
 Si tu ne l'as pas encore lu ce tour, lis-le AVANT d'editer
 (decisions figees, UX 3.5-4 ans, bus SVG, contrat STANDARD-MJ).
+==================================================================
+"@
+    exit 0
+}
+# --- NARRATION : equivalent Kimi des 5 rules path-scoped ---
+# (Claude Code les injecte nativement via le frontmatter paths: ; Kimi non,
+#  d'ou ce rappel deterministe. Parite ajoutee 2026-07-28, phase 3 cartographie.)
+elseif ($norm -match 'studio/narration/') {
+    $rules = @()
+    if ($norm -match 'studio/narration/stories/')     { $rules += '.claude/rules/stories-process.md'; $rules += '.claude/rules/narration-craft.md' }
+    if ($norm -match 'studio/narration/personnages/') { $rules += '.claude/rules/personnages.md';     $rules += '.claude/rules/narration-craft.md' }
+    if ($norm -match 'studio/narration/cross-culture/(castings-nationaux|prenoms)/') { $rules += '.claude/rules/personnages.md' }
+    if ($norm -match 'studio/narration/(univers|saisons)/' -or $norm -match 'studio/narration/cross-culture/') { $rules += '.claude/rules/univers.md' }
+    if ($norm -match 'studio/narration/equipe/')      { $rules += '.claude/rules/narration-craft.md' }
+    if ($norm -match 'studio/narration/scripts/' -or
+        $norm -match 'studio/narration/personnages/voix-meta/' -or
+        $norm -match 'studio/narration/stories/[^/]+/assets/audio/' -or
+        $norm -match '-segments[^/]*\.json$')         { $rules += '.claude/rules/audio.md' }
+    $rules = @($rules | Select-Object -Unique)
+    if ($rules.Count -eq 0) { exit 0 }
+    $liste = ($rules | ForEach-Object { " - $_" }) -join "`n"
+    Write-Output @"
+==================================================================
+[RULES path-scoped NARRATION] Ces regles s'appliquent a ce fichier.
+Si tu ne les as pas encore lues ce tour, lis-les AVANT d'editer :
+$liste
+(sources de verite : studio/narration/INDEX.md + pmo/INVARIANTS.md)
+==================================================================
+"@
+    exit 0
+}
+# Pattern segments JSON (rule audio) meme hors studio/narration/
+elseif ($norm -match '-segments[^/]*\.json$') {
+    Write-Output @"
+==================================================================
+[RULE path-scoped] .claude/rules/audio.md s'applique a ce fichier
+(segments ElevenLabs) -- lis-le si pas encore fait ce tour.
 ==================================================================
 "@
     exit 0

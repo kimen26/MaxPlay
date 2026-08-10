@@ -33,3 +33,18 @@ _Créé 2026-07-17 sur demande Papa Yann (session refonte menu v2 / organisation
 - **Audit de pole** -> `studio/<pole>/pmo/audits/AAAA-MM-JJ-<sujet>.md` (trace dans `pmo/audit-trail.md`).
 - Jamais d audit a la racine d un `docs/`, jamais de prefixe `AUDIT-` en vrac : la DATE d abord, le sujet ensuite.
 - Retention : audit non cite par une decision et > 7 jours = supprime (recuperable git).
+
+## Convention archive (gravée 2026-07-28, phase 3 cartographie narration)
+
+Une archive se RECONNAÎT, s'INDEXE et ne se RÉÉCRIT jamais :
+
+- **Nommage** : dossier `_archive/` (ou `archive/` au niveau pôle) ; fichier archivé seul = suffixe daté `-PERIME-AAAA-MM-JJ` ou `-OBSOLETE-AAAA-MM-JJ`.
+- **Bandeau standard** en tête de tout fichier d'archive : `> ⚠️ ARCHIVE — <période/raison>. Source : <chemin d'origine>. Ne plus alimenter, ne plus citer comme référence courante.`
+- **INDEX.md obligatoire** dans tout dossier d'archive : table datée (fichier | période | raison de l'archivage). Modèle : `studio/narration/pmo/archive/INDEX.md`.
+- **Verbatim** : une archive n'est jamais réécrite ni « mise à jour » ; si une vieille décision redevient d'actualité, on la CITE avec lien dans la décision nouvelle — on ne la dé-archive pas.
+- **Jamais supprimée** sauf sans aucune valeur historique ET validation Papa Yann (récupérable git de toute façon).
+- **Rotation** : les logs PMO (sprint-log, decisions) tournent par semestre → `pmo/archive/<fichier>-AAAA-H1.md` ; la règle vivante du pôle narration est dans `studio/narration/pmo/archive/INDEX.md`, à reproduire par pôle.
+
+## Règle compteurs (gravée 2026-07-28)
+
+Un chiffre VOLATIL (nb de prénoms, d'entrées catalogue, de stories, de versions writers…) n'apparaît en dur dans un INDEX que s'il est vérifié par `studio/narration/scripts/check-compteurs.js` (exit 1 sur dérive). Sinon on l'exprime en RELATIF (« voir X/INDEX.md »). Jamais recopié en dur sans filet — la désync est garantie.

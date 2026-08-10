@@ -1,4 +1,4 @@
-# Organigramme — Équipe Éditoriale MaxPlay
+﻿# Organigramme — Équipe Éditoriale MaxPlay
 
 > **Référence : QUI fait quoi (agents + chaîne de commandement + mémoires).**
 > Le **déroulé étape par étape** (inputs/outputs/PASS) vit dans [`PROCESS.md`](PROCESS.md) — source unique du workflow.
@@ -145,6 +145,6 @@ PMO        ──→ Tous agents (crée dossiers, met à jour index) · ──�
 |-----------|-----|-------|
 | **Atelier Univers** | Auteur + Conseiller | Régulier (hors histoire) |
 | **Brainstorm Pitch+Plan** | Auteur + Conseiller | Quand l'auteur a une idée brute |
-| **Sélection** | Auteur + Directeur | Après les 20 lecteurs témoins |
+| **Sélection** | Auteur + Directeur | Après les 12 calls lecteurs témoins |
 | **Review Finale** | Auteur seul | Après GateKeeper PASS + re-relecture PASS |
 | **Rétro** | Conseiller seul | Après canonisation |

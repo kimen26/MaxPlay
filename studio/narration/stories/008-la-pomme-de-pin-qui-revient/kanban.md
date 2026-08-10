@@ -1,4 +1,4 @@
-# Kanban — STORY-008 la-pomme-de-pin-qui-revient
+﻿# Kanban — STORY-008 la-pomme-de-pin-qui-revient
 
 > **Source de vérité de l'étape en cours.** Lu en premier par tout agent qui reprend l'histoire.
 > Mis à jour par le **owner de l'étape en cours** dès qu'il termine son livrable.
@@ -28,11 +28,11 @@
 | 2 | Brainstorm (boss + équipe) | Papa Yann + équipe | ✅ | 2026-07-11 | [`2-brainstorm-equipe.md`](2-brainstorm-equipe.md) |
 | 3 | Briefs | Directeur | ✅ | 2026-07-11 | [`3-briefs/`](3-briefs/) |
 | 4 | 14 Versions writers | 14 Writers | ⚪ | — | [`4-versions-writers/`](4-versions-writers/) |
-| 5 | Panel 20 lecteurs | 20 Témoins | ⚪ | — | [`5-lecteurs-temoins/`](5-lecteurs-temoins/) |
+| 5 | Panel 12 calls (DEC-PANEL-V2) | Panel v2 | ✅ **12/12** | 2026-07-11 | [`5-synthese-lecteurs.md`](5-synthese-lecteurs.md) — synthèse produite (corpus amputé versions kimi, quota 2026-07-11) · lecture annotée Papa Yann ⏳ |
 | 6 | Sélection | Directeur | ⚪ | — | [`6-selection.md`](6-selection.md) |
 | 7 | Rewrite | Writer du top 1 | ⚪ | — | [`7-rewrite/`](7-rewrite/) |
 | 8 | GateKeeper | GateKeeper | ⚪ | — | [`8-gatekeeper-verdict.md`](8-gatekeeper-verdict.md) |
-| 9 | Re-relecture rewrite | Panel 20 | ⚪ | — | [`9-relecture-rewrite/`](9-relecture-rewrite/) |
+| 9 | Re-relecture rewrite | Panel 12 (même panel qu'étape 5) | ⚪ | — | [`9-relecture-rewrite/`](9-relecture-rewrite/) |
 | 10 | Canon finalisé | Directeur + PMO | ⚪ | — | [`10-texte.md`](10-texte.md) |
 
 > Étape 2 supprimée 2026-05-12 (fusion avec étape 1 — l'Architecte est en standby).

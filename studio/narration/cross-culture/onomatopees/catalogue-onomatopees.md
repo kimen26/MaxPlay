@@ -1,4 +1,4 @@
----
+﻿---
 titre: Catalogue onomatopées MaxPlay — cross-culture
 date_creation: 2026-05-08
 maintenu_par: Conseiller (`narration-conseiller`)
@@ -20,7 +20,7 @@ licence: usage interne MaxPlay (références sources en bas)
 
 L'onomatopée doit être **jouable à voix haute sans préparation** : si un parent doit s'entraîner pour la dire, c'est trop lourd.
 
-**Pivots universels (🟢) à privilégier pour les histoires sans localisation** : 17 entrées listées en *Recommandations* en bas. Ces 17 passent en l'état dans les 8 cultures cibles.
+**Pivots universels (🟢) à privilégier pour les histoires sans localisation** : 20 entrées listées en *Recommandations* en bas. Ces 20 passent en l'état dans les 8 cultures cibles.
 
 ---
 
@@ -111,9 +111,9 @@ L'onomatopée doit être **jouable à voix haute sans préparation** : si un par
 
 ## Recommandations d'usage MaxPlay
 
-### 17 pivots 🟢 utilisables sans relocalisation
+### 20 pivots 🟢 utilisables sans relocalisation
 
-Pour les histoires qui voyageront dans les 8 cultures sans adaptation : entrées **1, 3, 5, 8, 10, 14, 15, 16, 17, 19, 21, 22, 23, 27, 30, 32, 34, 35, 36**.
+Pour les histoires qui voyageront dans les 8 cultures sans adaptation : entrées **1, 3, 5, 8, 10, 14, 15, 16, 17, 19, 21, 22, 23, 27, 28, 30, 32, 34, 35, 36**.
 
 ### Tableau de localisation systématique
 

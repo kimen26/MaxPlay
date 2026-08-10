@@ -6,17 +6,17 @@
 
 | | |
 |---|---|
-| Appels prévus | **220** |
+| Appels prévus | **223** |
 | — fichiers à créer | 114 |
-| — fichiers à remplacer | 106 |
-| Coût estimé | **5 075 caractères** |
-| Textes déjà vérifiés | 0 / 220 |
+| — fichiers à remplacer | 109 |
+| Coût estimé | **5 186 caractères** |
+| Textes déjà vérifiés | 0 / 223 |
 
 ## Par langue
 
 | Langue | Appels | Caractères |
 |---|---|---|
-| fr | 130 | 3 398 |
+| fr | 133 | 3 509 |
 | 🇧🇷 brésilien | 15 | 291 |
 | 🇬🇧 anglais | 15 | 312 |
 | 🇯🇵 japonais | 15 | 228 |
@@ -28,15 +28,15 @@
 
 | Rôle | Appels |
 |---|---|
-| narrateur_h | 104 |
-| narrateur_f | 64 |
-| wex | 52 |
+| narrateur_h | 105 |
+| narrateur_f | 65 |
+| wex | 53 |
 
 _Les voice_id sont résolus depuis `voice-map.json` au moment du plan et ne sont écrits que dans `plan-generation.json`, jamais dans le catalogue._
 
 ## ⚠️ À trancher avant de lancer
 
-- **106 fichiers seraient REMPLACÉS par un texte non vérifié.** Ces textes sont
+- **109 fichiers seraient REMPLACÉS par un texte non vérifié.** Ces textes sont
   reconstruits depuis un slug ou un texte de repli : ils sont plausibles, pas prouvés. Les
   remplacer changerait ce que l'enfant entend, peut-être en mieux, peut-être pas. Décider
   explicitement, ou écouter les fichiers actuels avant.
@@ -108,7 +108,7 @@ _Les voice_id sont résolus depuis `voice-map.json` au moment du plan et ne sont
 | `humeur.doux.fr.pas-tout-a-fait.narrateur_h` | narrateur_h | [gently] Pas tout à fait ! | remplacer |
 | `humeur.doux.fr.pas-tout-a-fait.wex` | wex | [gently] Pas tout à fait ! | remplacer |
 
-_… et 160 autres — détail complet dans `plan-generation.json`._
+_… et 163 autres — détail complet dans `plan-generation.json`._
 
 ## Hors de ce plan
 

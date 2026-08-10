@@ -8,7 +8,7 @@
 import path from 'node:path';
 import { STUDIO, lireJson } from './socle.mjs';
 import { HUMEUR, HUMEUR_INVITEE } from '../catalogue/fr/humeur.mjs';
-import { REPLIQUES, LIEUX } from '../catalogue/fr/repliques.mjs';
+import { REPLIQUES, LIEUX, LIGNES_NOMMEES } from '../catalogue/fr/repliques.mjs';
 import { ATOMES, GABARITS } from '../catalogue/fr/atomes.mjs';
 import { BRUITAGES } from '../catalogue/_bruitages.mjs';
 import { ROLES, REGLAGES, TRAITEMENT, LANGUES_INVITEES } from '../catalogue/voix.mjs';
@@ -122,6 +122,7 @@ export function chargerCatalogue() {
   }
 
   entrees.push(...REPLIQUES.map((r) => ({ ...r, langue: 'fr' })));
+  entrees.push(...LIGNES_NOMMEES.map((r) => ({ ...r, langue: 'fr' })));
   entrees.push(...LIEUX.map((r) => ({ ...r, langue: 'fr' })));
   entrees.push(...ATOMES.map((a) => ({
     ...a, langue: 'fr', fichier: `sounds/atomes/${a.cle.split('.').slice(1).join('-')}.mp3`,

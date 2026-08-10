@@ -41,3 +41,4 @@ infra/bot/*.log
 # Le tableau de bord lisible _ETAT-CONTENU.md, lui, EST versionne. Le Lot 1 ajoutera une
 # base d empreintes compacte qui sera versionnee elle aussi.
 studio/referentiel/registre.json
+studio/referentiel/plan-generation.json

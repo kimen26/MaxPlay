@@ -1,7 +1,8 @@
-# Équipe éditoriale — INDEX
+﻿# Équipe éditoriale — INDEX
 
 > **Point d'entrée du dossier `equipe/`.** Charger ce fichier en premier pour savoir quoi lire selon la tâche.
 > Dernière mise à jour : 2026-06-14 (PROCESS 11 étapes 0-10, étape 2 = Brainstorm, Architecte supprimé, templates obsolètes archivés)
+> + 2026-07-27 (phase 1 cartographie, reconstruit 2026-08-10) : conventions figées — **14 versions writers** (v2 2026-05-12 : 6 Claude + 4 Kimi + 2 DeepSeek + 2 Grok), **panel 12 calls** (DEC-PANEL-V2), `10-texte.md` = seul fichier canon (gabarits vides ailleurs = coquilles).
 
 ---
 

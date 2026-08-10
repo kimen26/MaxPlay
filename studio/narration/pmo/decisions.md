@@ -1,6 +1,30 @@
-# Décisions de fond — PMO Narration
+﻿# Décisions de fond — PMO Narration
 
 > **Règle :** Une décision ici est DÉFINITIVE jusqu'à nouvelle décision explicite datée.
+
+---
+
+## 2026-07-27 — DEC-UNIVERS-NOM : l'univers narration s'appelle WEX WORLD
+
+**Décision (Papa Yann, tranchage D2 de l'audit cartographie)** : le nom de l'univers narratif = **WEX WORLD**. Confirmé, sans variante.
+
+**Contexte** : la marque produit reste MaxPlay (backlog 2026-07-19) ; WEX WORLD = le tenant narration (Wex observateur quantique) qui descendra dans `site/` quand prêt.
+
+**Propagation** : UNIVERS-001 clos, INDEX + CLAUDE.md du pôle.
+
+> ⚠️ Reconstruite le 2026-08-10 après incident restauration (cf. sprint-log 2026-08-10) — contenu identique à l'original.
+
+---
+
+## 2026-07-27 — DEC-SENSIBILITES-T6-T8 : Pierrot = Plantes, Juju = Animaux
+
+**Décision (Papa Yann, tranchage D1 de l'audit cartographie)** : les **fiches personnages actuelles font foi** — **Pierrot (T6) = Plantes**, **Juju (T8) = Animaux**. L'entrée 2026-04-28 « Sensibilités » (qui attribuait l'inverse) est SUPERSEDED sur ces deux lignes uniquement ; le reste de son tableau tient.
+
+**Raison** : les fiches vivantes (`alive.md`) ont été écrites et relues avec cette attribution — c'est elle la réalité éditoriale.
+
+**Propagation** : templates + gabarits alignés, bandeau SUPERSEDED sur l'entrée 2026-04-28 (ci-dessous).
+
+> ⚠️ Reconstruite le 2026-08-10 après incident restauration — contenu identique à l'original.
 
 ---
 
@@ -3041,6 +3065,8 @@ La checklist GateKeeper passe de **15 critères techniques** à **15 + 11 = 26 c
 ---
 
 ## 2026-04-28 — Sensibilités (liste + attribution)
+
+> ⚠️ **SUPERSEDED partiellement (2026-07-27, DEC-SENSIBILITES-T6-T8)** : les lignes **Pierrot** et **Juju** du tableau ci-dessous sont inversées — la bonne attribution est **Pierrot = Plantes, Juju = Animaux** (camp fiches vivantes, tranchage D1). Tout le reste tient.
 
 **Décision :** 9 sensibilités fixes par perso (Option A — comme l'ennéatype, cross-country stable).
 

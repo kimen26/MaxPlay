@@ -1,6 +1,8 @@
+﻿> ⚠️ **COQUILLE — GABARIT VIDE, PAS UNE VRAIE SÉLECTION.** Seule `001-le-pont-casse` a sa chaîne remplie ; ce fichier est une copie du gabarit. La vraie sélection se produit à l'étape 6 du PROCESS. — repéré phase 2 cartographie 2026-07-28, rejoué 2026-08-10.
+
 # Sélection — STORY-NNN <slug>
 
-> Document produit par le **Directeur** après lecture des 8 versions writers + 4 retours lecteurs témoins.
+> Document produit par le **Directeur** après lecture des 14 versions writers + 12 calls lecteurs témoins.
 > Anciennement `decision.md` (renommé pour clarté : on sélectionne une version, on prépare le rewrite).
 
 ---

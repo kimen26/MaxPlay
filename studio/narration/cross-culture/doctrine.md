@@ -51,10 +51,10 @@ L'univers MaxPlay n'est pas un monde mono-culturel traduit. C'est un univers **s
 | Code pays | Famille | Statut | Source prénoms |
 |-----------|---------|--------|----------------|
 | `fr` | Christ | ✅ V1 figé (2026-04-24) | Casting V1 — `personnages/INDEX.md` |
-| `jp` | Ghibli | ⚪ à créer | `catalogue-prenoms/par-culture/japonais.md` (14 prénoms) |
+| `jp` | Ghibli | ⚪ à créer | `catalogue-prenoms/par-culture/japonais.md` (31 prénoms) |
 | `he` | AT / hébreu | ⚪ à créer | `catalogue-prenoms/par-culture/hebreu.md` (6 prénoms) |
 | `sw` | Swahili / Afrique de l'Est | ⚪ à créer | `catalogue-prenoms/par-culture/afrique-subsaharienne.md` (18 prénoms) |
-| `br` | Tupi-Orisha (origines Max) | ⚪ prioritaire à créer | `catalogue-prenoms/par-culture/bresilien-tupi-orisha.md` (14 prénoms) |
+| `br` | Tupi-Orisha (origines Max) | ⚪ prioritaire à créer | `catalogue-prenoms/par-culture/bresilien-tupi-orisha.md` (24 prénoms) |
 | `…` | (jusqu'à 30 castings potentiels) | — | `catalogue-prenoms/INDEX.md` |
 
 L'objectif long terme reste **~20 cultures vivantes** comme castings principaux V2. La surcouverture du catalogue (30 cultures qualifiées) sert à **pouvoir choisir**.

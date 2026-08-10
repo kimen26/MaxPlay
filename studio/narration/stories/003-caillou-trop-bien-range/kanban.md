@@ -1,4 +1,4 @@
-# Kanban — STORY-003 caillou-trop-bien-range
+﻿# Kanban — STORY-003 caillou-trop-bien-range
 
 > **Source de vérité de l'étape en cours.** Lu en premier par tout agent qui reprend l'histoire.
 > Mis à jour par le **owner de l'étape en cours** dès qu'il termine son livrable.
@@ -28,11 +28,11 @@
 | 2B | Brainstorm équipe | Kimi+DeepSeek+Grok+Conseiller | ✅ | 2026-07-10 | [`2-brainstorm-equipe.md`](2-brainstorm-equipe.md) (matière brute 3 LLMs) |
 | 3 | Briefs | Directeur | ✅ | 2026-07-11 | [`3-briefs/`](3-briefs/) — personnages + histoire + micro-briefs |
 | 4 | 14 Versions writers | 14 Writers | ✅ **14/14** | 2026-07-11 | [`4-versions-writers/`](4-versions-writers/) — vague 1 complète (6 Claude agents + kimi-reco-guide agent + 7 CLI `call-llm.mjs`). Écarts gabarit résiduels après retries : deepseek-def 379 · kimi-k26-instant 363 · kimi-reco 389 (légers, acceptés). ⚠️ deepseek-reco temp 1.5 : 2 générations dégénérées (charabia/1054 mots) avant une v3 propre (414) — instabilité à surveiller. kimi-payant : plafond concurrence orga = 3 (429 si 6 appels //, retry séquentiel OK). Prochaine étape 5 : lecture annotée Papa Yann (après ingestion 002 v6, lecture.html mono-corpus) + panel v2. |
-| 5 | Panel 20 lecteurs | 20 Témoins | 🟢 | 2026-07-11 | Panel v2 ✅ **12/12** (`5-lecteurs-temoins/` + [`5-synthese-lecteurs.md`](5-synthese-lecteurs.md)). Lecture annotée Papa Yann ⏳ (file d'attente après STORY-002). ⚠️ `deepseek-reco` jugée CORROMPUE = hors concours (version propre régénérée non jugée). |
+| 5 | Panel 12 calls (DEC-PANEL-V2) | Panel v2 | 🟢 | 2026-07-11 | Panel v2 ✅ **12/12** (`5-lecteurs-temoins/` + [`5-synthese-lecteurs.md`](5-synthese-lecteurs.md)). Lecture annotée Papa Yann ⏳ (file d'attente après STORY-002). ⚠️ `deepseek-reco` jugée CORROMPUE = hors concours (version propre régénérée non jugée). |
 | 6 | Sélection | Directeur | ⚪ | — | [`6-selection.md`](6-selection.md) |
 | 7 | Rewrite | Writer du top 1 | ⚪ | — | [`7-rewrite/`](7-rewrite/) |
 | 8 | GateKeeper | GateKeeper | ⚪ | — | [`8-gatekeeper-verdict.md`](8-gatekeeper-verdict.md) |
-| 9 | Re-relecture rewrite | Panel 20 | ⚪ | — | [`9-relecture-rewrite/`](9-relecture-rewrite/) |
+| 9 | Re-relecture rewrite | Panel 12 (même panel qu'étape 5) | ⚪ | — | [`9-relecture-rewrite/`](9-relecture-rewrite/) |
 | 10 | Canon finalisé | Directeur + PMO | ⚪ | — | [`10-texte.md`](10-texte.md) |
 
 > Étape 2 supprimée 2026-05-12 (fusion avec étape 1 — l'Architecte est en standby).

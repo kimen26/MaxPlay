@@ -1,4 +1,4 @@
-# PROCESS éditorial MaxPlay
+﻿# PROCESS éditorial MaxPlay
 
 > **Référence opérationnelle.** Source de vérité du workflow, des owners, des inputs/outputs, des critères PASS et des points de reprise.
 > **Pour la cartographie des fichiers et règles de domaine, voir [`cartographie-domaines.md`](cartographie-domaines.md).**
@@ -33,11 +33,11 @@
 2.  Brainstorm              (2A boss ✅ + 2B équipe Kimi/DeepSeek/Grok)     → kanban + matière briefs
 3.  Briefs                  (Directeur)                                    → 3-briefs/
 4.  Versions writers        (14 versions — calibration multi-modèles)      → 4-versions-writers/
-5.  Lecteurs témoins        (Panel : 20 lecteurs)                          → 5-lecteurs-temoins/
+5.  Lecteurs témoins        (Panel : 12 calls — DEC-PANEL-V2)                          → 5-lecteurs-temoins/
 6.  Sélection               (Directeur)                ✅ valide auteur     → 6-selection.md
 7.  Rewrite                 (Writer du top 1, 1 cycle max)                 → 7-rewrite/
 8.  GateKeeper              (Haiku)                                        → 8-gatekeeper-verdict.md
-9.  Re-relecture rewrite    (Panel : 20 lecteurs)                          → 9-relecture-rewrite/
+9.  Re-relecture rewrite    (Panel : 12 calls — DEC-PANEL-V2)                          → 9-relecture-rewrite/
 10. Canon                   (Directeur + PMO)          ✅ valide auteur     → 10-texte.md
 ```
 
@@ -234,7 +234,7 @@
 |---|---|
 | **Owner** | Directeur (orchestrateur) — Lecteurs : agents Sonnet (`narration-lecteur` + `narration-lecteur-dyade`) + MCP `ask_kimi` (kimi code) + Haiku/`ask_deepseek`, prompts profils depuis `equipe/profils-lecteurs.md` |
 | **Inputs** | Les versions writers + `equipe/profils-lecteurs.md` |
-| **Panel cible — 20 lecteurs** | **10 profils × 2 tranches d'âge.** Tranche A 3-5 ans = priorité (cible Max). Tranche B 6-7 ans = info complémentaire (anticipation + détection histoires qui décrochent à 6-7 ans). |
+| **Panel cible — 12 calls (DEC-PANEL-V2, 2026-07-03)** | **4 groupes × 3 modèles** (Sonnet + Kimi + Haiku/DeepSeek), chaque appel rend les 2 tranches d'âge. Tranche A 3-5 ans = priorité (cible Max), tranche B 6-7 ans = anticipation. *(Historique : panel 20 tous-Sonnet, 10 profils × 2 tranches, jusqu'au 2026-07-03.)* |
 | **Détail panel** | <table><tr><th>#</th><th>Profil</th><th>Tranche A 3-5 ans</th><th>Tranche B 6-7 ans</th></tr><tr><td>1-2</td><td>Garçon normal</td><td>G-A1</td><td>G-B1</td></tr><tr><td>3-4</td><td>Garçon intro/observateur</td><td>G-A2</td><td>G-B2</td></tr><tr><td>5-6</td><td>Garçon extra</td><td>G-A3</td><td>G-B3</td></tr><tr><td>7-8</td><td>Fille normale</td><td>F-A1</td><td>F-B1</td></tr><tr><td>9-10</td><td>Fille intro/observatrice</td><td>F-A2</td><td>F-B2</td></tr><tr><td>11-12</td><td>Fille extra</td><td>F-A3</td><td>F-B3</td></tr><tr><td>13-14</td><td>Dyade papa-Garçon</td><td>DPG-A</td><td>DPG-B</td></tr><tr><td>15-16</td><td>Dyade papa-Fille</td><td>DPF-A</td><td>DPF-B</td></tr><tr><td>17-18</td><td>Dyade maman-Garçon</td><td>DMG-A</td><td>DMG-B</td></tr><tr><td>19-20</td><td>Dyade maman-Fille</td><td>DMF-A</td><td>DMF-B</td></tr></table> |
 | **Outputs** | <ul><li>`lecteurs-temoins/<profil>-<tranche>.md` × 20</li><li>`synthese-lecteurs.md` à la racine du dossier histoire (consolidation Directeur : classement + patterns + citations clés). Sert d'input à l'étape 6 ET alimente `equipe/lecons-vivantes.md` post-canonisation.</li><li>`kanban.md` étape 5 ✅</li></ul> |
 | **Format fiche** | Texte libre obligatoire (pas de grille, pas de note sur 10). « J'ai aimé… / J'ai pas compris… / Je retiens… » + classement personnel des 10 versions. Pas de jargon technique (pas de "Kishōtenketsu", "ennéatype"). |
@@ -376,7 +376,7 @@ Procédure standard pour tout agent reprenant une histoire :
    - Étape 2 : `plan-histoire.md`
    - Étape 3 : `briefs/`
    - Étape 4 : compter `4-versions-writers/` (combien sur 14 — casting v2 dès 2026-05-12, STORY-001 historique = 8)
-   - Étape 5 : compter `5-lecteurs-temoins/` (combien sur 20 — panel 20 OBLIGATOIRE dès STORY-002, STORY-001 historique = 6) + `synthese-lecteurs.md`
+   - Étape 5 : compter `5-lecteurs-temoins/` (combien sur 12 — panel 12 calls DEC-PANEL-V2 dès STORY-002, STORY-001 historique = 6) + `synthese-lecteurs.md`
    - Étape 6 : `selection.md`
    - Étape 7 : `rewrite/<llm>-rewrite-v1.md`
    - Étape 8 : `gatekeeper-verdict.md`

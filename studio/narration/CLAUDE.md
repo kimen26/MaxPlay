@@ -23,7 +23,7 @@
 
 | Source de vérité | Fichier |
 |------------------|---------|
-| Chiffres clés (14 versions writers / 20 lecteurs / casting / voice_ids / règles d'or) | [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md) |
+| Chiffres clés (14 versions writers / 12 calls lecteurs / casting / voice_ids / règles d'or) | [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md) |
 | Décisions définitives + questions ouvertes | [`pmo/decisions.md`](pmo/decisions.md) |
 | Tickets actifs (max 3 en cours) | [`pmo/backlog.md`](pmo/backlog.md) |
 | Journal sessions | [`pmo/sprint-log.md`](pmo/sprint-log.md) |

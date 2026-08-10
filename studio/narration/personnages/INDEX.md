@@ -1,4 +1,4 @@
-# Personnages — Index (Pilier 1)
+﻿# Personnages — Index (Pilier 1)
 
 > **Qui sont nos persos + théorie sur l'humain.** Wex + 9 compagnons-ennéatypes. Identité invariante (ennéatype, voix-signature, gestes, sensibilité, relations). Les **variantes culturelles** (prénoms, prononciation, décor local) vivent dans [`../cross-culture/`](../cross-culture/INDEX.md).
 
@@ -114,7 +114,7 @@ personnages/
 | Comment 2 persos interagissent | [`type-NN/personnage.md`](type-01/personnage.md) §Relations ou [`theorie/enneagramme/interactions-9x9.md`](theorie/enneagramme/interactions-9x9.md) |
 | Comprendre un ennéatype en profondeur | [`theorie/enneagramme/`](theorie/enneagramme/README.md) (Chabreuil, guide auteur) |
 | Comprendre Max le lecteur (4-5 ans) | [`theorie/pedagogie-enfance/`](theorie/pedagogie-enfance/README.md) |
-| Le prénom d'un perso dans une autre culture | [`../cross-culture/castings-nationaux/`](../cross-culture/castings-nationaux/INDEX.md) (FR figé, autres à construire) |
+| Le prénom d'un perso dans une autre culture | [`../cross-culture/castings-nationaux/`](../cross-culture/castings-nationaux/INDEX.md) (FR figé, autres à construire) ; catalogue brut : [`../cross-culture/prenoms/INDEX.md`](../cross-culture/prenoms/INDEX.md) — 274 prénoms / 31 fiches au 2026-07-27, vérifié par `../scripts/check-compteurs.js` |
 | Des prénoms candidats par culture | [`../cross-culture/prenoms/INDEX.md`](../cross-culture/prenoms/INDEX.md) (218 prénoms / 30 cultures) |
 
 ---

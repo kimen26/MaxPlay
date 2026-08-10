@@ -1,4 +1,4 @@
----
+﻿---
 numero: NNN
 slug: slug-de-l-histoire
 titre: Titre de l'histoire
@@ -38,13 +38,13 @@ arc:
   fiche: null              # ex: saisons/saison-1/arc-1-objet-decor/fiche.md
 
 variantes:
-  base: christ
-  disponibles: [christ]
+  base: fr              # canon = version FR ; jamais de patch FR (les patchs ne sont QUE des ecarts vs FR)
+  disponibles: [fr]         # patchs nommes <code-casting>.patch.yml (cf. variantes-culturelles/README.md)
 
 production:
   writers_planifies: 14    # 6 Claude (Opus/Sonnet/Haiku × déf/reco) + 4 Kimi (déf/reco/thinking/guidé) + 2 DeepSeek (déf/reco) + 2 Grok (déf/reco) — refonte v2 2026-05-12
   writers_produits: 0
-  lecteurs_planifies: 20   # 10 profils × 2 tranches d'âge — panel 20 obligatoire pour TOUTES stories actives depuis STORY-002 (décision 2026-05-13). Exception : STORY-001 conserve panel 6
+  lecteurs_planifies: 12   # DEC-PANEL-V2 : 4 groupes × 3 modèles (fini le panel 20). Exception : STORY-001 conserve panel 6
   lecteurs_produits: 0
   rewrite_cycles: 0        # 1 max
   re_relecture_lecteurs: 0

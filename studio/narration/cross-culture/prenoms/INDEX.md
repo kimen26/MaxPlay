@@ -75,8 +75,9 @@ Chaque **fichier de culture** liste les prénoms qualifiés en markdown narratif
 
 | Fichier | Aire | Prénoms qualifiés | Statut |
 |---|---|---:|---|
+| [par-culture/france.md](par-culture/france.md) | France | 29 | dense — **culture de base (casting V1)** |
 | [par-culture/afrique-subsaharienne.md](par-culture/afrique-subsaharienne.md) | Zoulou, wolof, amharique, peul, lingala, swahili (Jabari/Amani), lingala (Bibene) | 18 | dense |
-| [par-culture/japonais.md](par-culture/japonais.md) | Japon | 14 | dense |
+| [par-culture/japonais.md](par-culture/japonais.md) | Japon | 31 | dense |
 | [par-culture/amerique-sud-autochtone.md](par-culture/amerique-sud-autochtone.md) | Quechua, aymara, mapuche | 14 | dense |
 | [par-culture/amazigh-berbere.md](par-culture/amazigh-berbere.md) | Kabyle, chleuh, touareg, rif, chaoui | 13 | dense |
 | [par-culture/sanskrit-inde.md](par-culture/sanskrit-inde.md) | Inde, Népal, Sri Lanka | 10 | dense |
@@ -84,7 +85,7 @@ Chaque **fichier de culture** liste les prénoms qualifiés en markdown narratif
 | [par-culture/arameen-syriaque.md](par-culture/arameen-syriaque.md) | Levant ancien (Syrie, Mésopotamie) | 9 | en cours |
 | [par-culture/chinois.md](par-culture/chinois.md) | Chine (caractères, vertus confucéo-taoïstes) | 8 | en cours |
 | [par-culture/celte-gaulois.md](par-culture/celte-gaulois.md) | Celtique, irlandais, gaulois | 8 | en cours |
-| [par-culture/bresilien-tupi-orisha.md](par-culture/bresilien-tupi-orisha.md) | Brésil indigène (tupi-guarani) + orishas afro-brésiliens | 14 | dense — **prioritaire Max** |
+| [par-culture/bresilien-tupi-orisha.md](par-culture/bresilien-tupi-orisha.md) | Brésil indigène (tupi-guarani) + orishas afro-brésiliens | 24 | dense — **prioritaire Max** |
 | [par-culture/viking-nordique.md](par-culture/viking-nordique.md) | Scandinavie ancienne | 10 | en cours |
 | [par-culture/anges-archanges.md](par-culture/anges-archanges.md) | Catégorie spirituelle transverse (judéo-chrétienne / islamique) | 3 | en cours |
 | [par-culture/maya-azteque.md](par-culture/maya-azteque.md) | Mésoamérique | 7 | en cours |
@@ -106,7 +107,9 @@ Chaque **fichier de culture** liste les prénoms qualifiés en markdown narratif
 | [par-culture/turc.md](par-culture/turc.md) | Turquie | 1 | placeholder — recherche dédiée à lancer |
 | [par-culture/tupi-guarani.md](par-culture/tupi-guarani.md) | (déprécié — voir `bresilien-tupi-orisha.md`) | 0 | redirigé |
 
-**Total qualifiés à ce jour : 218 prénoms** sur **30 cultures** (29 actives + 1 dépréciée).
+**Total qualifiés à ce jour : 274 prénoms** sur **31 fiches** (30 actives + 1 dépréciée).
+
+> ⚠️ **Réserve D7 (2026-07-27, Papa Yann)** : aucun prénom hors France n'est validé auprès de locuteurs natifs — tout le catalogue hors `france.md` reste à faire valider avant usage en casting national.
 
 **Sources** :
 - `session-fondatrice-2026` (volets 1-3 de la recherche IA externe d'avril 2026, désormais archivée dans `narration/archive/inputs-historiques/recherche-prenoms-culturel-session-fondatrice.md`)

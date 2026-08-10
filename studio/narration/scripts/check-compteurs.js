@@ -65,7 +65,7 @@ function checkPrenoms() {
   // Fiches présentes mais absentes de la table
   const listes = new Set(lignes.map(m => m[1]));
   for (const f of fiches) {
-    if (!listes.has(f)) ko(`prénoms ${fichier}`, `fichier existe (${reels[f]} prénoms) mais absent de la table INDEX`);
+    if (!listes.has(f)) ko(`prénoms ${f}`, `fichier existe (${reels[f]} prénoms) mais absent de la table INDEX`);
   }
 
   // Total déclaré

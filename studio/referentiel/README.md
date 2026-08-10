@@ -18,6 +18,7 @@ et signale quand un canal ne dit plus la même chose que la source.
 ```bash
 node studio/referentiel/valider.mjs         # le catalogue respecte-t-il son schéma ?
 node studio/referentiel/plan-generation.mjs # QUOI générer — n'appelle RIEN
+node studio/referentiel/couverture.mjs      # ce qui n'est PAS encore enrôlé
 node studio/referentiel/build.mjs           # registre + tableau de bord de l'existant
 node studio/referentiel/test-detection.mjs  # non-régression du détecteur de dérive
 ```
@@ -140,6 +141,7 @@ textes réels du dépôt, dont le cas témoin qui a motivé le chantier.
 | `test-detection.mjs` | Non-régression du détecteur de dérive |
 | `valider.mjs` | Contrôles de forme du catalogue (types, voix, tags, viabilité des gabarits) |
 | `plan-generation.mjs` | Plan des appels ElevenLabs — **n'en fait aucun** |
+| `couverture.mjs` | Ce qui n'est pas encore enrôlé au catalogue, par famille |
 | `catalogue/_SCHEMA.md` | Le contrat de format |
 | `catalogue/voix.mjs` | Rôles autorisés, réglages par usage, langues invitées |
 | `catalogue/_bruitages.mjs` | Sons sans texte — hors langue |

@@ -62,6 +62,27 @@ export const REPLIQUES = [
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
+// Lignes nommées jouées dans les trois voix (SoundPool.voiceLine).
+// Ce ne sont pas des pools : le texte est fixe, seule la voix varie.
+// ─────────────────────────────────────────────────────────────────────────────
+export const LIGNES_NOMMEES = ['narrateur_f', 'narrateur_h', 'wex'].map((voix) => ({
+  cle: `jeu.ligne.etoile-gagnee.${voix}`,
+  type: 'replique',
+  i18n: 'traduction',
+  slug: 'etoile-gagnee',
+  texte: 'Tu as gagné une étoile !',
+  tags: ['triumphant'],
+  origine_texte: 'banque', // texte gravé dans site/sounds/_BANQUE-SONS.md
+  texte_verifie: false,
+  production: { voix, usage: 'reaction' },
+  fichier: `sounds/voix/${voix === 'narrateur_f' ? 'f' : voix === 'narrateur_h' ? 'h' : 'wex'}/etoile-gagnee.mp3`,
+  consommee_par: ['mj-golden.js (vol d’étoile + 3e étoile)'],
+  note: "⚠️ Joué AUSSI à la 3e étoile (mj-golden.js:479) où le code attend « Tu maîtrises "
+    + "ce jeu ! » — texte qui n'existe qu'en repli TTS et ne sort donc jamais. Soit on crée "
+    + "une ligne `tu-maitrises`, soit on aligne le code sur ce message unique. Décision PY.",
+}));
+
+// ─────────────────────────────────────────────────────────────────────────────
 // Noms de lieux des deux hubs. Même zone, deux habillages (bus / fusée).
 // Joués par speakLieu() à l'entrée d'une zone. Voix narratrice.
 // ─────────────────────────────────────────────────────────────────────────────

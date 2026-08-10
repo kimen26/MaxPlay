@@ -18,7 +18,7 @@
 | 🟠 Audio en retard sur son script | **6** |
 | 🟡 Canaux manquants au contrat | 0 |
 | 🟡 Consignes lues sans voix réelle | 23 |
-| ⚪ Audio dont le texte source est introuvable | 109 |
+| ⚪ Voix dont le texte verbatim n'est pas tracé | 109 |
 
 ## 🔴 Dérives de fait
 
@@ -52,12 +52,15 @@ Le Lot 0 les recense là où ils sont ; le Lot 3 leur en donnera un.
 | Famille | Clés |
 |---|---|
 | entrepot-vise | 632 |
-| audio-sans-source | 109 |
+| voix-produite | 109 |
 
 **23 consignes** sont lues à l'enfant par le moteur du navigateur, sans voix réelle enregistrée.
-**109 fichiers de voix** existent sans qu'aucun texte source ne soit tracé : l'audio est là, le texte qui l'a produit est perdu.
+**109 fichiers de voix** sont documentés dans [`site/sounds/_BANQUE-SONS.md`](../../site/sounds/_BANQUE-SONS.md)
+(rôle, voix, méthode de génération), mais le **texte verbatim** envoyé à ElevenLabs — avec ses tags v3 —
+n'est stocké nulle part. On ne peut donc ni les régénérer à l'identique, ni les traduire, ni vérifier
+ce que l'enfant entend sans les écouter un par un.
 
-Répartition des voix sans texte source :
+Répartition :
 
 | Dossier | Fichiers |
 |---|---|

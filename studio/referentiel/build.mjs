@@ -50,7 +50,7 @@ function construireRapport(entrees) {
   const derives = entrees.filter((e) => e.etat === 'derive');
   const enRetard = entrees.filter((e) => e.etat === 'audio-en-retard');
   const manquants = entrees.filter((e) => e.etat === 'manquant');
-  const sansSource = entrees.filter((e) => e.etat === 'source-absente');
+  const sansSource = entrees.filter((e) => e.etat === 'texte-verbatim-non-trace');
   const sansVoix = entrees.filter((e) => e.etat === 'sans-voix-reelle');
   const verifiables = entrees.filter((e) => e.verifiable);
 
@@ -79,7 +79,7 @@ function construireRapport(entrees) {
   L.push(`| 🟠 Audio en retard sur son script | **${enRetard.length}** |`);
   L.push(`| 🟡 Canaux manquants au contrat | ${manquants.length} |`);
   L.push(`| 🟡 Consignes lues sans voix réelle | ${sansVoix.length} |`);
-  L.push(`| ⚪ Audio dont le texte source est introuvable | ${sansSource.length} |`);
+  L.push(`| ⚪ Voix dont le texte verbatim n'est pas tracé | ${sansSource.length} |`);
   L.push('');
 
   // ── dérives ───────────────────────────────────────────────────────────────
@@ -144,10 +144,13 @@ function construireRapport(entrees) {
   for (const [role, n] of grouper(jeu, (e) => e.role)) L.push(`| ${role} | ${n} |`);
   L.push('');
   L.push(`**${sansVoix.length} consignes** sont lues à l'enfant par le moteur du navigateur, sans voix réelle enregistrée.`);
-  L.push(`**${sansSource.length} fichiers de voix** existent sans qu'aucun texte source ne soit tracé : l'audio est là, le texte qui l'a produit est perdu.`);
+  L.push(`**${sansSource.length} fichiers de voix** sont documentés dans [\`site/sounds/_BANQUE-SONS.md\`](../../site/sounds/_BANQUE-SONS.md)`);
+  L.push('(rôle, voix, méthode de génération), mais le **texte verbatim** envoyé à ElevenLabs — avec ses tags v3 —');
+  L.push("n'est stocké nulle part. On ne peut donc ni les régénérer à l'identique, ni les traduire, ni vérifier");
+  L.push("ce que l'enfant entend sans les écouter un par un.");
   L.push('');
   if (sansSource.length) {
-    L.push('Répartition des voix sans texte source :');
+    L.push('Répartition :');
     L.push('');
     L.push('| Dossier | Fichiers |');
     L.push('|---|---|');
@@ -194,5 +197,5 @@ console.log(`  dérives de fait      : ${bilan('derive')}`);
 console.log(`  audio en retard      : ${bilan('audio-en-retard')}`);
 console.log(`  canaux manquants     : ${bilan('manquant')}`);
 console.log(`  consignes sans voix  : ${bilan('sans-voix-reelle')}`);
-console.log(`  audio sans source    : ${bilan('source-absente')}`);
+console.log(`  voix texte non trace : ${bilan('texte-verbatim-non-trace')}`);
 console.log(`écrit : studio/referentiel/registre.json + _ETAT-CONTENU.md`);

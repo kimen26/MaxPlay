@@ -109,6 +109,12 @@
 
 ---
 
+## Notes de session
+
+- 2026-08-10 (IDÉE PY — élargir le casting de voix des encouragements, impact NARRATION) : les réactions d'encouragement du site (`site/sounds/voix/{f,h,wex}/`, 22 mots) n'ont aujourd'hui que **3 voix** — narrateur_f, narrateur_h, wex, toutes résolues via `personnages/voix-meta/voice-map.json`. PY veut **5+ voix** pour que ça sonne naturel et humain, mélange assumé du casting. **Impact narration** : il faut décider QUELLES voix ajouter — des persos du casting V1 (Melki, Mimi, Raph…) ou des voix neuves hors-casting ? Si ce sont des persos, cela crée leur **première existence sonore** hors histoire, ce qui n'est pas neutre (un perso qui dit « bravo » dans un mini-jeu sans jamais être apparu dans un récit). Rappel : VOIX-002 (voice_id des 2 narrateurs) et VOIX-003 (voice_id des 10 persos) sont encore **à faire** — donc l'élargissement dépend d'eux. **Second volet PY** : doubler chaque encouragement dans une autre langue (brésilien, anglais, japonais, chinois, italien, espagnol), **même intention, jamais mot à mot**, drapeau affiché — ce qui rejoint la doctrine cross-culture (on ne traduit pas une émotion, on la ré-exprime). Détail + typologie : [`memory/ARCHI-REFERENTIEL-CONTENU.md`](../../../memory/ARCHI-REFERENTIEL-CONTENU.md) · capture jeu : `studio/minijeux/pmo/backlog.md` même date.
+
+---
+
 ## Comment créer un ticket
 
 1. Identifier la source : axe stock, dump INBOX.md, décision à prendre

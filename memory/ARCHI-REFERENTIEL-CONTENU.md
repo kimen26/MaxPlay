@@ -174,6 +174,107 @@ Le point critique est la ligne **« dépend de »**. Elle est déclarée **par b
 C'est ce qui fait qu'un changement de `proies` marque le bloc « régime » et **pas** le bloc
 « taille ». Sans cette finesse, tout devient rouge et le dispositif meurt d'indifférence.
 
+### 5.3 bis — Typologie : il n'y a PAS de schéma unique (révision 2026-08-10)
+
+Le modèle naïf « 1 identifiant = 1 texte + 1 texte TTS + 1 MP3 TTS + 1 texte EL taggué + 1 MP3 EL »
+ne tient pas à l'épreuve du contenu réel, et Papa Yann l'a dit avant qu'on s'y casse les dents :
+certains sons n'ont **ni texte ni équivalent ElevenLabs**, d'autres sont **aléatoires**, d'autres
+sont des **briques réutilisées partout**, d'autres encore se **composent**.
+
+La réponse n'est pas d'élargir le schéma jusqu'à ce qu'il absorbe tout — on obtiendrait une fiche
+avec vingt champs vides sur trente. C'est de reconnaître **cinq types**, chacun avec sa propre
+forme de contrat. Le champ `type` devient la première chose qu'on lit sur une clé, parce qu'il
+détermine tout le reste.
+
+| Type | Exemples | Texte source | Canal EL | Traduction | Aléatoire |
+|---|---|---|---|---|---|
+| **1. Bruitage** | klaxon, fanfare, porte de bus, cri de bébé dino | un **prompt EN** de génération, pas une phrase | non (moteur SFX) | **aucune** — invariant | non |
+| **2. Réserve d'humeur** | bravo, super, oups, presque | pas de texte canonique : une **intention** + N variantes | oui, par variante | **ré-invention** par culture | **oui**, c'est le principe |
+| **3. Réplique fixe** | « Quel bus arrive en premier ? », noms de lieux | oui, canonique et stable | oui | traduction | non |
+| **4. Atome composable** | chiffres, sons de lettres, noms de dinos, époques, familles | oui, court | oui | traduction **+ gabarits** | non |
+| **5. Bloc narré** | blocs de fiche dino, récits d'époque | oui, long | oui, **réécrit** | **réécriture**, pas traduction | non |
+
+Trois conséquences qui ne sautent pas aux yeux :
+
+- Le type **2** n'a **pas de texte de référence unique** : demander « quel est le texte de
+  `encouragement.positif` ? » n'a pas de sens, c'est un ensemble. Ce qu'on grave, c'est l'**intention**
+  (« féliciter chaleureusement ») et l'inventaire des variantes. C'est aussi pour ça qu'il ne se
+  traduit pas : on ne traduit pas « waouh », on cherche ce qu'un adulte dirait spontanément à un
+  enfant de 4 ans dans cette langue-là.
+- Le type **1** n'a rien à traduire mais a quand même une source à tracer : le **prompt anglais**
+  qui l'a produit. Sans lui, un bruitage n'est pas plus reproductible qu'une voix.
+- Le type **4** est le seul qui porte, en plus de son texte, un **gabarit d'assemblage** — et c'est
+  là que tout se joue (§ 5.3 ter).
+
+### 5.3 ter — La composition : pré-génération, jamais de concaténation
+
+L'exemple donné par Papa Yann : « X millions d'années, c'est le Crétacé » = trois morceaux, et
+pourtant tout doit sonner ElevenLabs, d'un seul tenant.
+
+La tentation est de coller trois MP3 bout à bout à l'exécution. **Le projet l'a déjà interdit**
+(décision Papa Yann 2026-07-28, `site/js/say-nombres.js`) : on pré-génère des **gabarits complets**
+(`il-en-manque-<n>`, `<n>-oeufs` pour 1-10) parce que l'assemblage mot à mot s'entend — pauses
+mécaniques, intonations qui ne s'enchaînent pas, accent tonique au mauvais endroit.
+
+**L'internationalisation durcit cette règle au lieu de l'assouplir**, et c'est le point important :
+
+- **L'ordre des mots change.** Un gabarit `[nombre] + [unité] + [période]` valide en français ne
+  l'est pas ailleurs : plusieurs langues placent le classificateur ou le verbe autrement. Une
+  concaténation correcte en FR produit une phrase agrammaticale en JA ou en TR.
+- **Les accords changent avec la valeur du slot.** En russe, `1 год / 2 года / 5 лет` : le mot
+  qui suit le nombre dépend du nombre. Aucune concaténation à slot fixe ne survit à ça.
+- Donc **le gabarit appartient à la langue**, pas au contenu. Chaque langue déclare ses propres
+  gabarits, son propre ordre, ses propres formes.
+
+**Contrainte à assumer** : un gabarit n'est viable que si le domaine de son slot est **fini et
+petit**. Les nombres 1 à 10, les onze familles, les huit époques : oui. Un nombre quelconque, un
+nom de dino parmi soixante-dix combiné à cinq phrases : l'explosion combinatoire rend la
+pré-génération absurde. Pour ces cas-là, deux issues honnêtes — soit une **tournure neutre** qui
+évite l'accord (« le Crétacé — soixante-six millions d'années » en deux blocs séparés plutôt
+qu'une phrase liée), soit le **repli TTS** assumé.
+
+### 5.3 quater — Ce qu'il faut stocker pour TOUT audio produit
+
+C'est le manque le plus coûteux découvert au Lot 0, et il traverse les cinq types. Pour chaque
+fichier audio produit, il faut garder :
+
+- le **texte verbatim** effectivement envoyé, **tags v3 compris** ;
+- la **voix** (par rôle, jamais par identifiant en dur) et le **modèle** ;
+- les **réglages** (stability…) et le **traitement** appliqué (loudnorm, padding 250 ms) ;
+- pour un bruitage : le **prompt anglais** à la place du texte.
+
+Sans ça, on ne peut **ni régénérer à l'identique, ni traduire, ni vérifier** ce que l'enfant
+entend — il faut écouter les fichiers un par un. C'est exactement la situation des 109 fichiers
+de `site/sounds/voix/` : ils sont bien documentés dans `site/sounds/_BANQUE-SONS.md` (rôle, voix,
+méthode), mais le texte exact n'est nulle part, et les textes de repli dispersés aux points
+d'appel **divergent déjà entre eux** — un même slug y est appelé avec deux phrases différentes.
+
+### 5.3 quinquies — La langue est une DIMENSION, pas une colonne
+
+Cible : **une vingtaine de langues**. Toute formulation du genre « on ajoutera une colonne pour
+l'anglais » est à écarter — elle suppose que le schéma grandit avec chaque langue, ce qui devient
+ingérable à vingt et casse dès la première langue qui ne se comporte pas comme le français.
+
+Le modèle : **ajouter une langue = ajouter des fichiers.** Jamais toucher au schéma, jamais
+toucher aux autres langues, jamais modifier une clé existante. Une langue absente n'est pas une
+erreur, c'est une **couverture partielle** qui se lit dans le tableau de bord.
+
+Et « traduire » ne veut pas dire la même chose selon le type :
+
+| Type | Ce que « faire la langue L » signifie réellement |
+|---|---|
+| Bruitage | **rien** — un seul fichier sert toutes les langues |
+| Réserve d'humeur | **ré-inventer** le pool : ce qu'on dit spontanément à un enfant dans cette culture |
+| Réplique fixe | traduire, puis enregistrer |
+| Atome composable | traduire l'atome **et** écrire les gabarits propres à la langue |
+| Bloc narré | **réécrire** éditorialement, avec la même vérité mais pas la même prose |
+
+Enfin, une couche transverse existe déjà et doit être généralisée : les **lexiques de
+prononciation** par langue (`studio/dino/content/i18n/lexiques-prononciation/<lang>.md`). Ce sont
+des **transformations**, pas des textes : « Archaeoptéryx » → « Ar-ké-op-té-rix ». Aujourd'hui ils
+sont déclarés « pour ElevenLabs » et n'alimentent que lui — le TTS du navigateur reçoit le nom brut
+et l'écorche. Cette couche doit servir **tous les canaux qui parlent**, dans toutes les langues.
+
 ### 5.4 Catalogue ou entrepôt : la réponse dépend du domaine
 
 Le registre doit-il **détenir** les textes, ou **pointer** vers eux ? Les deux, selon le cas —
@@ -298,6 +399,35 @@ plomberie de surcharge existe déjà (`site/js/dinos-i18n.js`, dossier cible vid
 
 ---
 
+## 7 bis. Idée notée — encouragements multi-voix et multi-langues
+
+Demande Papa Yann du 2026-08-10, à chiffrer avant tout engagement.
+
+**Constat de départ** : les réactions de fin de partie n'ont que **3 voix** (narratrice, narrateur,
+Wex) × 22 mots. À l'usage ça tourne vite en rond et ça s'entend.
+
+**Deux évolutions demandées :**
+
+1. **Cinq voix ou plus**, mélange assumé du casting, pour que ça sonne humain plutôt que robotique.
+2. **Doublon multilingue** : le français, puis **immédiatement** la même intention dans une autre
+   langue — brésilien, anglais, japonais, chinois, italien, espagnol — avec le **drapeau du pays
+   affiché dans un coin au même moment. Jamais du mot à mot : la même volonté d'encourager.**
+
+**Pourquoi ça tombe juste** : c'est le type « réserve d'humeur », donc chaque langue **ré-invente**
+son pool au lieu de traduire — la contrainte technique et l'intention pédagogique coïncident. Et
+l'exposition passive à plusieurs langues sur un moment de joie (la victoire) colle au profil.
+
+**Ordre de grandeur à arbitrer AVANT de lancer quoi que ce soit** : 22 mots × 5 voix × 7 langues
+≈ **770 fichiers**, contre 69 aujourd'hui. Questions ouvertes : toutes les langues sur tous les
+mots, ou un pool réduit pour les langues invitées ? Les 6 mots « doux » (consolation) méritent-ils
+le doublon, ou seulement les 16 positifs ? Cinq voix dans chaque langue, ou deux suffisent hors
+français ? Le drapeau est un élément d'interface à synchroniser sur la piste audio.
+
+**Dépendance** : `VOIX-002` (identifiants des 2 narrateurs) et `VOIX-003` (identifiants des 10
+personnages) sont encore à faire côté narration — élargir le casting de voix en dépend.
+
+---
+
 ## 8. Décisions à trancher (Papa Yann)
 
 | # | Question | Recommandation |
@@ -307,7 +437,9 @@ plomberie de surcharge existe déjà (`site/js/dinos-i18n.js`, dossier cible vid
 | **Q3** | Tableau de bord : rapport généré local, ou page déployée consultable au téléphone ? | **Rapport d'abord** (lot 0), page déployée au lot 2 si le besoin se confirme — précédent `duel.html` / `lecture.html`. |
 | **Q4** | Acquittement : commande en session, ou clic dans un tableau de bord ? | **Commande en session.** L'acquitteur est presque toujours l'agent qui vient de régénérer. Le clic imposerait un chemin d'écriture pour un gain faible. |
 | **Q5** | Maille de l'empreinte : le bloc (nom / taille / régime / funfact) ? | **Oui, le bloc** — c'est déjà la maille des MP3 et des segments. Plus fin serait ingérable, plus gros ferait tout clignoter. |
-| **Q6** | Périmètre du lot 0 : DINO seul, ou DINO + JEU d'emblée ? | **DINO seul.** Pilote sur le domaine où la dérive est prouvée et le volume connu ; on étend une fois l'outil crédible. |
+| **Q6** | Périmètre du lot 0 : DINO seul, ou DINO + JEU d'emblée ? | ~~DINO seul~~ → **tranché : DINO + JEU**, décision Papa Yann 2026-08-10. |
+| **Q7** | Périmètre et coût du doublon multilingue des encouragements (§ 7 bis) | À arbitrer : ~770 fichiers au maximum théorique. Réduire d'abord le périmètre (mots positifs seuls ? deux voix hors français ?) avant de chiffrer les crédits. |
+| **Q8** | Les gabarits de composition dont le slot est **non borné** (§ 5.3 ter) | Deux issues honnêtes : tournure neutre qui évite l'accord, ou repli TTS assumé. À trancher cas par cas, pas globalement. |
 
 ---
 

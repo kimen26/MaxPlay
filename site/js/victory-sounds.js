@@ -76,6 +76,58 @@ const VOICE_LINES = {
             'hmm-non', 'tu-y-es-presque'],
 };
 
+// ── Doublon multilingue (idée Papa Yann 2026-08-10) ─────────────────────────
+// Après un encouragement français, la même voix félicite parfois dans une autre
+// langue, drapeau affiché. Ce ne sont PAS des traductions : chaque langue a ses
+// propres mots, ceux qu'un adulte de cette culture dit vraiment à un enfant.
+// Catalogue : studio/referentiel/catalogue/fr/humeur.mjs § HUMEUR_INVITEE.
+const LANGUES_INVITEES = [
+  { code: 'pt-BR', drapeau: '🇧🇷', mots: ['muito-bem', 'isso-ai', 'boa', 'arrasou', 'que-legal'] },
+  { code: 'en', drapeau: '🇬🇧', mots: ['well-done', 'awesome', 'you-did-it', 'brilliant', 'way-to-go'] },
+  { code: 'ja', drapeau: '🇯🇵', mots: ['sugoi', 'yatta-ne', 'jouzu', 'erai', 'dekita-ne'] },
+  { code: 'zh', drapeau: '🇨🇳', mots: ['tai-bang-le', 'zhen-bang', 'zuo-de-hao', 'hao-lihai', 'ni-zhen-xing'] },
+  { code: 'it', drapeau: '🇮🇹', mots: ['bravissimo', 'che-forte', 'benissimo', 'grande', 'ce-lhai-fatta'] },
+  { code: 'es', drapeau: '🇪🇸', mots: ['muy-bien', 'genial', 'lo-lograste', 'eso-es', 'que-crack'] },
+];
+
+// Une fois sur deux : assez pour que ça surprenne, pas assez pour lasser.
+const CHANCE_DOUBLON = 0.5;
+
+function _afficherDrapeau(drapeau) {
+  try {
+    const el = document.createElement('div');
+    el.textContent = drapeau;
+    el.setAttribute('aria-hidden', 'true');
+    el.style.cssText = 'position:fixed;right:14px;bottom:14px;font-size:44px;z-index:9999;'
+      + 'pointer-events:none;opacity:0;transition:opacity .25s ease;'
+      + 'filter:drop-shadow(0 2px 6px rgba(0,0,0,.45))';
+    document.body.appendChild(el);
+    requestAnimationFrame(() => { el.style.opacity = '1'; });
+    setTimeout(() => {
+      el.style.opacity = '0';
+      setTimeout(() => el.remove(), 300);
+    }, 1900);
+  } catch (e) {}
+}
+
+function _doublonInvite(dir, volume) {
+  if (Math.random() > CHANCE_DOUBLON) return;
+  const langue = _pickRandom(LANGUES_INVITEES, 'langue-invitee');
+  const mot = _pickRandom(langue.mots, 'mot-' + langue.code);
+  // `dir` vaut « sounds/voix/h » → on garde la même voix, dans le dossier de langue.
+  const voix = dir.split('/').pop();
+  const src = `sounds/voix/${langue.code}/${voix}/${mot}.mp3`;
+  // Décalé pour laisser finir le français, jamais superposé.
+  setTimeout(() => {
+    try {
+      const a = new Audio(src);
+      a.volume = volume;
+      // Le drapeau ne s'affiche QUE si le son part vraiment : pas de drapeau muet.
+      a.play().then(() => _afficherDrapeau(langue.drapeau)).catch(() => {});
+    } catch (e) {}
+  }, 1150);
+}
+
 // ── Moteur de pioche (anti-répétition immédiate par pool) ────────────────────
 const _lastPick = {};
 function _pickRandom(arr, key) {
@@ -104,12 +156,19 @@ const SoundPool = {
     return _playFile(_pickRandom(pool, theme), volume);
   },
   /** Réaction vocale au hasard : voix (f/h/wex) × phrase du ton demandé.
-   *  ton = 'positif' | 'doux' */
+   *  ton = 'positif' | 'doux'
+   *
+   *  Sur un « positif », la MÊME voix enchaîne parfois avec un encouragement
+   *  dans une autre langue et le drapeau s'affiche — le même ami qui parle une
+   *  deuxième langue, pas un inconnu. Jamais sur un « doux » : on n'allonge pas
+   *  un moment de frustration (décision Papa Yann 2026-08-10). */
   voice(ton = 'positif', volume = 0.9) {
     const lines = VOICE_LINES[ton] || VOICE_LINES.positif;
     const dir = _pickRandom(VOICE_DIRS, 'voice-dir');
     const line = _pickRandom(lines, 'voice-' + ton);
-    return _playFile(`${dir}/${line}.mp3`, volume);
+    const audio = _playFile(`${dir}/${line}.mp3`, volume);
+    if (ton === 'positif') _doublonInvite(dir, volume);
+    return audio;
   },
   /** Phrase d'instruction préenregistrée (sounds/voix/phrases/<slug>.mp3),
    *  fallback TTS navigateur si absent. Slugs : trouve-le-meme-dino,

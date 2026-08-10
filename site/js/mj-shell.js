@@ -156,6 +156,36 @@
         }
       } catch (e) {}
     };
+
+    // Slug d'une consigne = son texte slugifié. Ce n'est pas une invention : c'est
+    // déjà la convention de la banque (« Il vivait quand ? » → il-vivait-quand.mp3).
+    // La formaliser permet de brancher la vraie voix SANS toucher aux 60 jeux :
+    // si le MP3 existe on le joue, sinon on retombe sur le TTS comme avant.
+    // Une consigne dont le texte change perd son MP3 et repasse en TTS — dégradation
+    // douce, et le référentiel la signale comme manquante.
+    var slugConsigne = function (txt) {
+      return String(txt || '')
+        .toLowerCase()
+        // Ligatures AVANT le dépouillement des accents : sinon « œufs » donne
+        // « ufs » et le fichier ne se retrouve jamais.
+        .replace(/œ/g, 'oe').replace(/æ/g, 'ae')
+        .normalize('NFD').replace(/[̀-ͯ]/g, '')
+        .replace(/[’']/g, ' ')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+    };
+
+    // Dit la consigne en VRAIE VOIX si elle a été enregistrée, en TTS sinon.
+    // Les consignes dynamiques (« Trouve le » + nom tiré au hasard) ne matchent
+    // évidemment aucun fichier : elles restent en TTS, c'est le comportement juste.
+    var direConsigne = function (txt) {
+      if (!txt) return;
+      var slug = slugConsigne(txt);
+      if (slug && window.SoundPool && SoundPool.phrase) {
+        try { SoundPool.phrase(slug, txt); return; } catch (e) {}
+      }
+      say(txt);
+    };
     var consigneTxt = '';
     var setConsigne = function () {};
     if (cfg.consigne !== false) {
@@ -174,13 +204,13 @@
       // tap = réécouter : audio custom du jeu (cfg.onRepeat) ou TTS de la consigne
       box.addEventListener('click', function () {
         if (cfg.onRepeat) cfg.onRepeat();
-        else say(consigneTxt);
+        else direConsigne(consigneTxt);
       });
       setConsigne = function (txt, sayIt) {
         consigneTxt = txt;
         var el = document.getElementById('instruction');
         if (el) el.textContent = txt;
-        if (sayIt !== false) say(txt); // l'audio se lance TOUT SEUL (design v3)
+        if (sayIt !== false) direConsigne(txt); // l'audio se lance TOUT SEUL (design v3)
       };
     }
 

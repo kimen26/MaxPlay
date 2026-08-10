@@ -15,6 +15,9 @@ import { TRIO } from '../voix.mjs';
 export const HUMEUR = [
   {
     cle: 'humeur.positif',
+    // PAS de `genere` ici : les MP3 français existaient AVANT le catalogue, leurs
+    // textes restent des reconstructions à partir des slugs. Ils ne deviendront
+    // prouvés que le jour où on les régénérera depuis ce fichier.
     type: 'humeur',
     i18n: 'reinvention',
     intention: "Féliciter chaleureusement un enfant de 4 ans qui vient de réussir",
@@ -82,6 +85,7 @@ export const HUMEUR_INVITEE = [
   {
     langue: 'pt-BR',
     cle: 'humeur.positif',
+    genere: true, // produit depuis ce catalogue le 2026-08-10 — texte prouvé
     variantes: [
       { slug: 'muito-bem', texte: 'Muito bem!', tags: ['excited'] },
       { slug: 'isso-ai', texte: 'Isso aí!', tags: ['triumphant'] },
@@ -93,6 +97,7 @@ export const HUMEUR_INVITEE = [
   {
     langue: 'en',
     cle: 'humeur.positif',
+    genere: true, // produit depuis ce catalogue le 2026-08-10 — texte prouvé
     variantes: [
       { slug: 'well-done', texte: 'Well done!', tags: ['proud'] },
       { slug: 'awesome', texte: 'Awesome!', tags: ['amazed'] },
@@ -104,6 +109,7 @@ export const HUMEUR_INVITEE = [
   {
     langue: 'ja',
     cle: 'humeur.positif',
+    genere: true, // produit depuis ce catalogue le 2026-08-10 — texte prouvé
     variantes: [
       { slug: 'sugoi', texte: 'すごい！', translitteration: 'sugoi', tags: ['amazed'] },
       { slug: 'yatta-ne', texte: 'やったね！', translitteration: 'yatta ne', tags: ['triumphant'] },
@@ -115,6 +121,7 @@ export const HUMEUR_INVITEE = [
   {
     langue: 'zh',
     cle: 'humeur.positif',
+    genere: true, // produit depuis ce catalogue le 2026-08-10 — texte prouvé
     variantes: [
       { slug: 'tai-bang-le', texte: '太棒了！', translitteration: 'tài bàng le', tags: ['amazed'] },
       { slug: 'zhen-bang', texte: '真棒！', translitteration: 'zhēn bàng', tags: ['excited'] },
@@ -126,6 +133,7 @@ export const HUMEUR_INVITEE = [
   {
     langue: 'it',
     cle: 'humeur.positif',
+    genere: true, // produit depuis ce catalogue le 2026-08-10 — texte prouvé
     variantes: [
       { slug: 'bravissimo', texte: 'Bravissimo!', tags: ['proud'] },
       { slug: 'che-forte', texte: 'Che forte!', tags: ['amazed'] },
@@ -137,6 +145,7 @@ export const HUMEUR_INVITEE = [
   {
     langue: 'es',
     cle: 'humeur.positif',
+    genere: true, // produit depuis ce catalogue le 2026-08-10 — texte prouvé
     variantes: [
       { slug: 'muy-bien', texte: '¡Muy bien!', tags: ['excited'] },
       { slug: 'genial', texte: '¡Genial!', tags: ['delighted'] },

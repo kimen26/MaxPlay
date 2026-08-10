@@ -5,10 +5,10 @@
 
 | | |
 |---|---|
-| MP3 sur le disque | **875** |
-| — enrôlés au catalogue | **119** |
+| MP3 sur le disque | **981** |
+| — enrôlés au catalogue | **225** |
 | — pas encore enrôlés | **756** |
-| Entrées du catalogue sans fichier (à générer) | 114 |
+| Entrées du catalogue sans fichier (à générer) | 24 |
 
 **Enrôlé** = son texte verbatim, sa voix, son modèle et ses réglages sont au catalogue,
 donc il est régénérable à l’identique, traduisible et vérifiable.
@@ -31,7 +31,8 @@ donc il est régénérable à l’identique, traduisible et vérifiable.
 | Pièces d’échecs (mj-37) | JEU | 6 | 0 | **6** | — introuvable |
 | Périodes | DINO | 5 | 0 | **5** | — introuvable |
 | Réactions (f/h/wex) | JEU | 69 | 69 | ✅ | — introuvable |
-| Consignes de jeu | JEU | 28 | 28 | ✅ | — introuvable |
+| Encouragements langues invitées | JEU | 90 | 90 | ✅ | `studio/referentiel/catalogue/fr/humeur.mjs § HUMEUR_INVITEE` |
+| Consignes de jeu | JEU | 44 | 44 | ✅ | — introuvable |
 | Noms de lieux | JEU | 12 | 12 | ✅ | — introuvable |
 | Identité sonore du hub | JEU | 10 | 10 | ✅ | `prompt EN` |
 

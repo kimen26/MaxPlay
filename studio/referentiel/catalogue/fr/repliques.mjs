@@ -62,6 +62,50 @@ export const REPLIQUES = [
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
+// Consignes générées le 2026-08-10 DEPUIS ce catalogue — donc `texte_verifie: true`.
+// Ce sont les premières entrées prouvées : le MP3 sort exactement de ce texte.
+//
+// Leur slug est la SLUGIFICATION du texte, ce qui les rend jouables sans qu'aucun
+// jeu ne déclare rien : `slugConsigne()` dans site/js/mj-shell.js recalcule le même
+// slug au moment de dire la consigne. Changer un de ces textes fait perdre son MP3
+// au jeu (repli TTS) — le référentiel le signalera comme manquant.
+//
+// ⚠️ Toute modification ici oblige à régénérer le MP3, sinon l'écran et l'oreille
+// divergent. C'est exactement la dette que ce référentiel existe pour attraper.
+// ─────────────────────────────────────────────────────────────────────────────
+const genere = (texte, consommee_par) => ({
+  ...consigne(
+    texte.toLowerCase()
+      .replace(/œ/g, 'oe').replace(/æ/g, 'ae')
+      .normalize('NFD').replace(/[̀-ͯ]/g, '')
+      .replace(/[’']/g, ' ')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, ''),
+    texte, 'genere', consommee_par, ['warmly'],
+  ),
+  texte_verifie: true,
+});
+
+export const CONSIGNES_GENEREES = [
+  genere('Quel mot manque dans la phrase ?', ['mj-06']),
+  genere('Combien de dinos ? Compte-les !', ['mj-26']),
+  genere('Quel dino se cache dans le noir ?', ['mj-28']),
+  genere('Trouve l’ombre et son dino !', ['mj-33']),
+  genere('Trouve 2 tuiles avec le même dino !', ['mj-41']),
+  genere('Combien d’œufs ?', ['mj-46']),
+  genere('Combien en tout ?', ['mj-47']),
+  genere('Combien d’œufs en tout ?', ['mj-49']),
+  genere('Deux boîtes pleines… combien en tout ?', ['mj-49']),
+  genere('La boîte est pleine. Il faut encore combien d’œufs ?', ['mj-49']),
+  genere('Touche la lettre qui fait ce son !', ['mj-50']),
+  genere('Construis le mot !', ['mj-52']),
+  genere('Complète la grille : les 4 symboles partout !', ['mj-54']),
+  genere('Un dino par ligne, colonne et enclos… jamais collés !', ['mj-56']),
+  genere('Continue à faire éclore les œufs !', ['mj-57']),
+  genere('Tape pour sauter par-dessus les cactus !', ['mj-58']),
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
 // Lignes nommées jouées dans les trois voix (SoundPool.voiceLine).
 // Ce ne sont pas des pools : le texte est fixe, seule la voix varie.
 // ─────────────────────────────────────────────────────────────────────────────

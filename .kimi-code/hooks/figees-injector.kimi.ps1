@@ -43,6 +43,30 @@ elseif ($norm -match 'site/dev-dinos\.html$' -or
     $figPath = Join-Path $root 'studio\dino\figees\encyclopedie.md'
     $ruleReminder = '.claude/rules/dino.md'
 }
+# --- SONS : equivalent Kimi de la rule .claude/rules/sons.md ---
+# (ajoute 2026-08-10 : _BANQUE-SONS.md existait depuis un mois sans que rien ne le rende
+#  inratable, un audit du contenu sonore est passe a cote et a conclu a tort que 109 fichiers
+#  de voix n'avaient aucune source. Place AVANT le filet generique site/js/ : sinon les scripts
+#  de son y sont captes en premier et ce rappel ne sort jamais.)
+elseif ($norm -match 'site/sounds/' -or
+        $norm -match 'site/audio/' -or
+        $norm -match 'site/js/(victory-sounds|say-nombres|sounds|dinos-audio-manifest)\.js$' -or
+        $norm -match 'studio/referentiel/') {
+    $aussiMj = if ($norm -match 'site/js/') { "`nS'applique AUSSI : .claude/rules/mini-jeux.md (fichier sous site/js/)." } else { '' }
+    Write-Output @"
+==================================================================
+[RULE path-scoped SONS] .claude/rules/sons.md s'applique a ce fichier.
+LIS D'ABORD site/sounds/_BANQUE-SONS.md : SOURCE DE VERITE du systeme
+sonore (carte des dossiers, API SoundPool/SayNombres/MJKit, process de
+generation en 8 etapes, ce qui est deja branche ou non).
+Ne jamais conclure "ce son n'a pas de source" sans l'avoir ouvert.
+Rappels durs : padding 250 ms obligatoire · voix resolue par role via
+voice-map.json · repli TTS systematique MAIS le texte de repli n'est PAS
+le texte du MP3 joue · jamais d'assemblage mot a mot (gabarits pre-generes).$aussiMj
+==================================================================
+"@
+    exit 0
+}
 elseif ($norm -match 'site/index\.html$' -or
         $norm -match 'site/js/' -or
         $norm -match 'studio/minijeux/docs/jeux/') {

@@ -9,9 +9,15 @@
 // Trois familles recensées :
 //   · catalogue      — titres et descriptions (site/js/catalog.js)
 //   · textes de jeu  — consignes et panneaux de règles (inline dans mj-XX.html)
-//   · voix produites — MP3 de site/sounds/voix/ dont le TEXTE SOURCE n'existe
-//                      nulle part. C'est l'inverse du manque habituel : l'audio
-//                      existe, le texte qui l'a produit est perdu.
+//   · voix produites — MP3 de site/sounds/voix/. Ils SONT documentés dans
+//                      site/sounds/_BANQUE-SONS.md (rôle, voix, méthode). Ce qui
+//                      manque est plus étroit : le TEXTE VERBATIM envoyé à
+//                      ElevenLabs, avec ses tags v3, n'est stocké nulle part.
+//
+// ⚠️ Correction 2026-08-10 : ce scanner annonçait « aucune source » pour ces 109
+// fichiers parce qu'il ignorait _BANQUE-SONS.md. Faux constat, rectifié. Tant que
+// la banque n'est pas lue comme source de contrat, ne rien affirmer de plus fort
+// que « texte verbatim non tracé ».
 // ─────────────────────────────────────────────────────────────────────────────
 import fs from 'node:fs';
 import path from 'node:path';
@@ -121,16 +127,16 @@ export function scannerJeu() {
       entrees.push({
         cle: `jeu.voix.${dossier}.${nom}`,
         domaine: 'jeu',
-        role: 'audio-sans-source',
-        source: null,
+        role: 'voix-produite',
+        source: 'site/sounds/_BANQUE-SONS.md',
         depend_de: [],
         empreinte_source: null,
         contrat: { ecran: 'na', tts: 'na', el: 'requis', mp3: 'requis', lunii: 'na', langues: ['fr'] },
         lignee: { mp3: { fichier: relatif(chemin), produit: dateFichier(chemin) } },
         verifiable: false,
-        etat: 'source-absente',
+        etat: 'texte-verbatim-non-trace',
         ecarts: [],
-        manquants: ['texte-source'],
+        manquants: ['texte-verbatim'],
         audio_en_retard: false,
       });
     }

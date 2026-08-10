@@ -1,4 +1,4 @@
-# figees-injector.kimi.ps1 — Hook PreToolUse (Edit|Write) — VERSION KIMI CODE
+﻿# figees-injector.kimi.ps1 — Hook PreToolUse (Edit|Write) — VERSION KIMI CODE
 # Adaptation de .claude/hooks/figees-injector.ps1 :
 #   - payload Kimi : tool_input.path (Edit/Write Kimi) ou tool_input.file_path (compat Claude)
 #   - sortie : texte brut sur stdout (exit 0 = contexte ajouté, non bloquant)

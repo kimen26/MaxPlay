@@ -262,14 +262,15 @@ function _compHaut(m) {
   return `plus bas que tes genoux !`;
 }
 
-// POIDS (t). Repères (validés Papa Yann 2026-08-03, animaux/objets connus d'un enfant) : petit oiseau ·
-// gros chat 4 kg · enfant 4 ans 16 kg · enfant 8 ans 25 kg · gros chien 30 kg · enfant 10 ans 35 kg ·
-// loup 50 kg · kangourou 70 kg · Papa 80 kg · cochon 110 kg · âne 160 kg · lion 200 kg · tigre 250 kg ·
-// zèbre 300 kg · poney 380 kg · cheval 500 kg · vache 650 kg · petite voiture ~1 t · grosse voiture ~1,6 t ·
-// rhinocéros 2 t · hippopotame 3 t · petit camion 3,5 t · éléphant 5 t · camion 7 t.
-// Historique : paliers resserrés 2026-07-25 (trou 0,13→1,2 t = +400 %) · repères intermédiaires 2026-08-03
-// (cochon/âne/lion/tigre/zèbre/cheval + enfant 8 ans/kangourou + grosse voiture/petit camion/camion)
-// · hippo recalé 2,5→3 t (décision PY) : 2,5 t = « 5 chevaux », multiplicateurs au meilleur éléphant/hippo/rhino.
+// POIDS (t). Repères (validés Papa Yann 2026-08-03, animaux connus d'un enfant) : petit oiseau ·
+// gros chat 4 kg · enfant 4 ans 16 kg · chien 25 kg · enfant 10 ans 35 kg · loup 50 kg · kangourou 70 kg ·
+// Papa 80 kg · cochon 110 kg · âne 160 kg (×2 = 320 kg) · lion 200 kg (×2 = 400 kg) · tigre 250 kg ·
+// cheval 500 kg (×5 = 2,5 t) · vache 650 kg · petite voiture ~1 t (SEUL véhicule, trou 0,9-1,3 t) ·
+// rhinocéros 2 t (×2/×3/×4) · hippopotame 3 t (×N) · éléphant 5 t (×N).
+// 3 exceptions-additions validées PY (« c'est rigolo, ça reste l'exception ») : 1,65 t = voiture + vache ·
+// 3,5 t = hippopotame + cheval · 7 t = éléphant + rhinocéros.
+// Historique : paliers resserrés 2026-07-25 · refonte 2026-08-03 (animaux connus, hippo 3 t, zéro camion,
+// zèbre/poney/enfant 8 ans retirés par PY → 2 ânes / 2 lions / chien 25 kg).
 // Règle : jamais > 10 % d'écart (vérif : content/scripts/export/_verif-comppoids.cjs).
 function _compPoids(t) {
   if (t >= 7.5) {
@@ -286,21 +287,20 @@ function _compPoids(t) {
     const best = (ele && ele.err <= 0.10 && ele.err <= cands[0].err + 0.03) ? ele : cands[0];
     return `aussi lourd ${_que(_qty(best.n, best.sing, best.plur))} !`;
   }
-  if (t >= 6.3)  return `aussi lourd qu'un camion !`;
+  if (t >= 6.3)  return `aussi lourd qu'un éléphant et un rhinocéros ensemble !`;
   if (t >= 5.5)  return `aussi lourd que 3 rhinocéros !`;
   if (t >= 4.4)  return `aussi lourd qu'un éléphant !`;
   if (t >= 3.7)  return `aussi lourd que 2 rhinocéros !`;
-  if (t >= 3.35) return `aussi lourd qu'un petit camion !`;
+  if (t >= 3.35) return `aussi lourd qu'un hippopotame et un cheval ensemble !`;
   if (t >= 2.8)  return `aussi lourd qu'un hippopotame !`;
   if (t >= 2.3)  return `aussi lourd que 5 chevaux !`;
   if (t >= 1.8)  return `aussi lourd qu'un rhinocéros !`;
-  if (t >= 1.45) return `aussi lourd qu'une grosse voiture !`;
+  if (t >= 1.45) return `aussi lourd qu'une petite voiture et une vache ensemble !`;
   if (t >= 0.85) return `aussi lourd qu'une petite voiture !`;
   if (t >= 0.55) return `aussi lourd qu'une vache !`;
   if (t >= 0.45) return `aussi lourd qu'un cheval !`;
-  if (t >= 0.42) return `aussi lourd que 2 lions !`;
-  if (t >= 0.33) return `aussi lourd qu'un poney !`;
-  if (t >= 0.285) return `aussi lourd qu'un zèbre !`;
+  if (t >= 0.36) return `aussi lourd que 2 lions !`;
+  if (t >= 0.29) return `aussi lourd que 2 ânes !`;
   if (t >= 0.225) return `aussi lourd qu'un tigre !`;
   if (t >= 0.18) return `aussi lourd qu'un lion !`;
   if (t >= 0.14) return `aussi lourd qu'un âne !`;
@@ -309,8 +309,7 @@ function _compPoids(t) {
   if (t >= 0.068) return `aussi lourd qu'un kangourou !`;
   if (t >= 0.045) return `aussi lourd qu'un loup !`;
   if (t >= 0.035) return `aussi lourd qu'un grand enfant de 10 ans !`;
-  if (t >= 0.027) return `aussi lourd qu'un gros chien !`;
-  if (t >= 0.023) return `aussi lourd qu'un enfant de 8 ans !`;
+  if (t >= 0.023) return `aussi lourd qu'un chien !`;
   if (t >= 0.011) return `aussi lourd qu'un enfant de 4 ans !`;
   if (t >= 0.0035) return `aussi lourd qu'un gros chat !`;
   return `léger comme un petit oiseau !`;

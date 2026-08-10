@@ -11,18 +11,19 @@ const { DINOS, _compPoids } = m.exports;
 
 // Repères (t) — mot-clé de la phrase générée → poids implicite
 const REPERES = [
+  // Exceptions-additions (avant les motifs simples qui y sont contenus)
+  [/petite voiture et une vache/, 1.65], [/hippopotame et un cheval/, 3.5], [/éléphant et un rhinocéros/, 7],
   [/(\d+) éléphants/, 5, true], [/un éléphant/, 5],
   [/(\d+) hippopotames/, 3, true], [/un hippopotame/, 3],
   [/(\d+) rhinocéros/, 2, true], [/un rhinocéros/, 2],
   [/(\d+) chevaux/, 0.5, true], [/un cheval/, 0.5],
-  [/petit camion/, 3.5], [/un camion/, 7],
+  [/(\d+) ânes/, 0.16, true], [/un âne/, 0.16],
   [/(\d+) lions/, 0.2, true], [/un lion/, 0.2],
-  [/une petite voiture/, 1], [/grosse voiture/, 1.6],
-  [/une vache/, 0.65], [/un poney/, 0.38], [/un zèbre/, 0.3],
-  [/un tigre/, 0.25], [/un âne/, 0.16], [/un cochon/, 0.11],
+  [/une petite voiture/, 1], [/une vache/, 0.65],
+  [/un tigre/, 0.25], [/un cochon/, 0.11],
   [/que Papa/, 0.08], [/un kangourou/, 0.07], [/un loup/, 0.05],
-  [/enfant de 10 ans/, 0.035], [/un gros chien/, 0.03],
-  [/enfant de 8 ans/, 0.025], [/un enfant de 4 ans/, 0.016], [/un gros chat/, 0.004],
+  [/enfant de 10 ans/, 0.035], [/un chien/, 0.025],
+  [/un enfant de 4 ans/, 0.016], [/un gros chat/, 0.004],
 ];
 
 let ok = 0, ko = 0, skip = 0;

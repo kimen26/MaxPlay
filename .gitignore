@@ -36,3 +36,8 @@ site/img/dinos/_new-traces/
 .kimi-code/hooks/stop-payload.jsonl
 
 infra/bot/*.log
+
+# Referentiel de contenu — dump machine regenerable (853 Ko, reecrit entierement a chaque run).
+# Le tableau de bord lisible _ETAT-CONTENU.md, lui, EST versionne. Le Lot 1 ajoutera une
+# base d empreintes compacte qui sera versionnee elle aussi.
+studio/referentiel/registre.json

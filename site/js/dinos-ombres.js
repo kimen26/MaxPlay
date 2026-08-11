@@ -110,6 +110,38 @@
     return currentAudio;
   }
 
+  // Chaîne « amorce TTS → nom MP3 » (factorisée depuis mj-24/mj-19, 2026-08-11).
+  // Le TTS dit l'amorce (« Trouve le… » — JAMAIS le nom, il massacrerait la
+  // prononciation), puis le MP3 réel dit le nom ; repli playNom direct si pas
+  // de TTS. Filet : si onEnd ne revient jamais (pile vocale incomplète), le
+  // MP3 part quand même après opts.filet ms (défaut 2600). Chaque appel
+  // invalide le précédent (token) — fini le bug du sayTarget() fantôme.
+  // opts : { amorce, amorceOpts (opts TTS.speak), filet (ms) }
+  let annonceToken = 0;
+  function stopAnnonce() {
+    annonceToken++; // invalide un éventuel filet encore en attente
+    stopNom();
+    if (window.TTS) TTS.cancel();
+  }
+  function annoncer(id, fallbackName, opts) {
+    opts = opts || {};
+    const token = ++annonceToken;
+    if (window.TTS && TTS.supported && TTS.supported()) {
+      stopNom();
+      TTS.cancel();
+      let played = false;
+      const go = function () {
+        if (played || token !== annonceToken) return;
+        played = true;
+        playNom(id, fallbackName);
+      };
+      TTS.speak(opts.amorce || '', Object.assign({ pitch: 1.05 }, opts.amorceOpts, { onEnd: go }));
+      setTimeout(go, opts.filet || 2600);
+    } else {
+      playNom(id, fallbackName);
+    }
+  }
+
   window.DinoOmbres = {
     shuffle: shuffle,
     basenameOf: basenameOf,
@@ -121,5 +153,7 @@
     playNom: playNom,
     playFunfact: playFunfact,
     stopNom: stopNom,
+    annoncer: annoncer,
+    stopAnnonce: stopAnnonce,
   };
 })(window);

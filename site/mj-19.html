@@ -169,25 +169,11 @@
 
     // Annonce dino : TTS dit l'amorce (« Trouve le… ») puis le MP3 réel dit le
     // nom (même règle de voix que mj-24 ; repli TTS phrase complète si le MP3
-    // manque). Filet : si le TTS ne rappelle jamais onEnd, le MP3 part à 2,2 s.
-    let sayToken = 0;
+    // manque). Chaîne factorisée DinoOmbres.annoncer (anti-course + filet).
     function sayDino(d){
-      const phrase = 'Trouve le ' + d.name + ' !';
-      const token = ++sayToken;
-      try {
-        if (window.TTS && TTS.supported && TTS.supported()){
-          let played = false;
-          const go = function(){
-            if (played || token !== sayToken) return;
-            played = true;
-            DinoOmbres.playNom(d.id, phrase);
-          };
-          TTS.speak('Trouve le…', { pitch: 1.05, onEnd: go });
-          setTimeout(go, 2200);
-        } else if (window.DinoOmbres) {
-          DinoOmbres.playNom(d.id, phrase);
-        }
-      } catch(e) {}
+      DinoOmbres.annoncer(d.id, 'Trouve le ' + d.name + ' !', {
+        amorce: 'Trouve le…', filet: 2200,
+      });
     }
 
     function startRound() {

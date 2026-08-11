@@ -624,20 +624,16 @@
       document.getElementById('learnAllLabel').textContent = `Tout écouter (${a} à ${b})`;
     }
 
+    // Version Promise de TTS.speak (brique partagée, voix par langue intégrée
+    // via TTS.pickVoice) — remplace l'ancien speechSynthesis maison (2026-08-11).
+    // Filet 2,5 s si onEnd ne revient jamais.
     function speakAsync(text, lang) {
       return new Promise(resolve => {
-        if (!window.speechSynthesis) { resolve(); return; }
-        window.speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance(text);
-        u.lang = lang; u.rate = 0.85;
-        const voices = window.speechSynthesis.getVoices();
-        const prefix = lang.split('-')[0];
-        const v = voices.find(x => x.lang === lang) || voices.find(x => x.lang.startsWith(prefix));
-        if (v) u.voice = v;
-        u.onend = resolve;
-        u.onerror = resolve;
-        window.speechSynthesis.speak(u);
-        setTimeout(resolve, 2500);
+        if (!window.TTS || !TTS.supported()) { resolve(); return; }
+        let done = false;
+        const fin = () => { if (!done) { done = true; resolve(); } };
+        TTS.speak(text, { lang: lang, rate: 0.85, onEnd: fin });
+        setTimeout(fin, 2500);
       });
     }
 

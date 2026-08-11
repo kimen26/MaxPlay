@@ -90,15 +90,6 @@
     ];
     let curFr = '', curI18n = null;
 
-    function hasVoiceFor(bcp47){
-      if (!window.TTS || !TTS.supported()) return false;
-      const prefix = bcp47.split('-')[0].toLowerCase();
-      try {
-        return (window.speechSynthesis.getVoices() || [])
-          .some(v => (v.lang || '').toLowerCase().startsWith(prefix));
-      } catch (e) { return false; }
-    }
-
     function genus(){
       const full = ((typeof DINOS !== 'undefined' && DINOS.find(d => d.id === target.id)) || {}).full;
       return (full || target.name).split(' ')[0];
@@ -110,7 +101,7 @@
       curFr = DinoOmbres.pick(FR_PHRASES);
       curI18n = null;
       if (level >= 2 && Math.random() < 0.25){
-        const hit = shuffle(I18N_PHRASES.slice()).find(p => hasVoiceFor(p.bcp47));
+        const hit = shuffle(I18N_PHRASES.slice()).find(p => window.TTS && TTS.hasVoiceFor(p.bcp47));
         if (hit) curI18n = hit;
       }
     }
@@ -120,38 +111,21 @@
                      : curFr.replace('{n}', target.name);
     }
 
-    // Voie FR : TTS dit l'amorce (sans le nom), puis le MP3 réel dit le nom.
+    // Voie FR : TTS dit l'amorce (sans le nom), puis le MP3 réel dit le nom —
+    // chaîne factorisée DinoOmbres.annoncer (anti-course + filet intégrés).
     // C'est aussi la voie du bouton réécouter — ordre PY : « cet icône ferait
     // toujours la langue originale pour l'utilisateur (FR) ».
-    // Filet de sécurité : si le TTS ne rappelle jamais onEnd (navigateur sans
-    // pile vocale complète), le MP3 part quand même après 2,6 s.
-    let sayToken = 0;
     function sayFr(){
-      const fr = curFr.replace('{n}', target.name);
-      const token = ++sayToken;
-      if (window.TTS && TTS.supported()){
-        DinoOmbres.stopNom();
-        TTS.cancel();
-        let played = false;
-        const go = function(){
-          if (played || token !== sayToken) return;
-          played = true;
-          DinoOmbres.playNom(target.id, fr);
-        };
-        TTS.speak(curFr.replace('{n}', '…'), { pitch: 1.05, onEnd: go });
-        setTimeout(go, 2600);
-      } else {
-        DinoOmbres.playNom(target.id, fr);
-      }
+      DinoOmbres.annoncer(target.id, curFr.replace('{n}', target.name), {
+        amorce: curFr.replace('{n}', '…'),
+      });
     }
 
     // Affiche + dit la consigne courante. JAMAIS deux voix en meme temps.
     function sayPhrase(){
-      sayToken++; // invalide un éventuel filet de secours FR encore en attente
       shell.setConsigne(consigneTexte(), false); // l'audio custom suit
       if (curI18n){
-        DinoOmbres.stopNom();
-        TTS.cancel();
+        DinoOmbres.stopAnnonce(); // invalide un éventuel filet FR en attente
         TTS.speak(curI18n.t.replace('{n}', genus()), { lang: curI18n.bcp47, pitch: 1.05, priority: true });
       } else {
         sayFr();

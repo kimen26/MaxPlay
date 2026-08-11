@@ -62,4 +62,30 @@ export async function run({ page, ok }) {
   ok('image dino a un filter url(#...) (pas hue-rotate)', /url\(["']?#tint/.test(imgFilter), imgFilter);
   const svgFilterCount = await page.locator('svg filter[id^="tint"]').count();
   ok('defs SVG de teinte présentes dans le DOM', svgFilterCount >= 4, `count=${svgFilterCount}`);
+
+  // 🔒 Bandeau niveau (figée) — restauré 2026-08-10
+  const levelTxt = ((await page.locator('#levelbar').textContent()) || '').trim();
+  ok('bandeau niveau affiché (Niveau 1 / 3 au départ)', levelTxt === 'Niveau 1 / 3', `levelbar="${levelTxt}"`);
+
+  // Niveau H (ordre PY 2026-08-10, #6308) : attribut dino régime/époque/famille —
+  // 4 cartes partagent l'attribut, 1 intrus diffère, noms affichés.
+  const puzzleH = await page.evaluate(() => {
+    const p = generatePuzzleH();
+    if (!p || p.kind !== 'dino-attr') return { ok: false, kind: p && p.kind };
+    const intrus = p.buses[p.intrusIdx];
+    const autres = p.buses.filter((b, i) => i !== p.intrusIdx);
+    return {
+      ok: p.buses.length === 5 && autres.every(b => b.name) && !!intrus.name
+        && /^(4 )/.test(p.hint),
+      hint: p.hint,
+      names: p.buses.map(b => b.name),
+    };
+  });
+  ok('generatePuzzleH() → 5 cartes dino-attr (noms + hint « 4 … »)', puzzleH.ok === true, JSON.stringify(puzzleH));
+
+  // Rendu réel du niveau H : ombres + noms visibles
+  await page.evaluate(() => { renderPuzzle(generatePuzzleH()); });
+  const hImgs = await page.locator('.bus-btn img').count();
+  const hLabels = await page.locator('.bus-btn .bus-label').count();
+  ok('niveau H rendu : 5 ombres + 5 noms affichés', hImgs === 5 && hLabels === 5, `imgs=${hImgs} labels=${hLabels}`);
 }

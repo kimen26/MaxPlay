@@ -24,13 +24,16 @@
     .arrow-row .lbl-small { font-size:1.3rem; }
     .arrow-row .lbl-big { font-size:1.8rem; }
 
-    /* Ombres à trier (rangée du haut) */
+    /* Ombres à trier (rangée du haut)
+       2026-08-10 (retour PY #6385) : JAMAIS de retour à la ligne — les cartes
+       rétrécissent (flex-shrink + aspect-ratio) pour tenir toujours en UNE ligne. */
     .tray {
-      display:flex; gap:10px; justify-content:center; align-items:flex-end;
-      flex-wrap:wrap; padding:8px 4px; min-height:110px; position:relative;
+      display:flex; gap:8px; justify-content:center; align-items:flex-end;
+      flex-wrap:nowrap; padding:8px 4px; min-height:110px; position:relative;
     }
     .shadow-tile {
-      width:88px; height:100px; background:#fff; border-radius:16px;
+      width:88px; flex:0 1 88px; min-width:0; aspect-ratio:88/100; height:auto; box-sizing:border-box;
+      background:#fff; border-radius:16px;
       border:4px solid rgba(255,255,255,0.25); display:flex; align-items:center; justify-content:center;
       cursor:grab; touch-action:none; transition:border-color .15s, transform .1s, box-shadow .15s;
       position:relative; z-index:2; padding:6px;
@@ -40,12 +43,14 @@
     .shadow-tile.dragging { cursor:grabbing; z-index:50; box-shadow:0 8px 22px #0007; transform:scale(1.06); }
     .shadow-tile.placed { opacity:.28; pointer-events:none; }
 
-    /* Emplacements (rangée du bas) */
-    .slots-row { display:flex; gap:10px; justify-content:center; align-items:center; padding:10px 4px 4px; flex-wrap:wrap; }
+    /* Emplacements (rangée du bas) — même règle : une seule ligne, taille adaptative */
+    .slots-row { display:flex; gap:8px; justify-content:center; align-items:center; padding:10px 4px 4px; flex-wrap:nowrap; }
     .slot {
-      width:96px; height:108px; border-radius:16px; border:4px dashed rgba(255,255,255,0.35);
+      width:96px; flex:0 1 96px; min-width:0; aspect-ratio:96/108; height:auto; box-sizing:border-box;
+      border-radius:16px; border:4px dashed rgba(255,255,255,0.35);
       display:flex; align-items:center; justify-content:center; position:relative;
       background:rgba(255,255,255,0.04); transition:border-color .15s, background .15s;
+      touch-action:none;
     }
     .slot .idx { position:absolute; top:4px; left:8px; font-size:.8rem; font-weight:900; color:#ffe06699; z-index:1; }
     .slot.hover-ok { border-color:#00c47a; background:rgba(0,196,122,0.18); border-style:solid; }
@@ -308,26 +313,50 @@
         slot.className = 'slot';
         slot.dataset.index = i;
         slot.innerHTML = '<span class="idx">' + (i+1) + '</span>';
+        slot.addEventListener('pointerdown', (e) => onSlotPointerDown(e, i));
         slot.addEventListener('click', () => onTapSlot(i));
         slots.appendChild(slot);
       });
     }
 
-    // ── Mode tap : tap ombre puis tap case ──
+    // ── Mode tap : tap ombre (dit juste son NOM + sélectionne) puis tap case ──
+    // 2026-08-10 (retour PY #6385) : plus JAMAIS de placement verrouillé —
+    // tap case pleine = reprendre la carte · tap case pleine avec une carte
+    // sélectionnée = échange · idem en drag (drop sur case pleine = échange).
     function onTapTile(id){
       if (isPlaced(id)) return;
+      if (consumeGhostClick()) return;
       document.querySelectorAll('.shadow-tile').forEach(t => t.classList.remove('selected'));
       if (selected === id){ selected = null; return; }
       selected = id;
       const tile = document.querySelector('.shadow-tile[data-id="'+id+'"]');
       if (tile) tile.classList.add('selected');
+      // tap = juste le NOM (retour PY 2026-07-27 #6316 : pas la fiche complète)
+      const d = curSet.find(x => x.id === id);
+      if (d) playDinoNomExclusive(d.id, d.name);
     }
 
     function onTapSlot(i){
-      if (placements[i] != null) return; // case déjà occupée
+      if (consumeGhostClick()) return;
+      if (placements[i] != null){
+        if (selected != null){
+          // échange : la carte choisie prend la case, l'occupant retourne en haut
+          const id = selected;
+          selected = null;
+          document.querySelectorAll('.shadow-tile').forEach(t => t.classList.remove('selected'));
+          removeFromSlot(i);
+          placeInSlot(id, i);
+        } else {
+          // reprendre : la carte retourne en haut, replaçable à volonté
+          removeFromSlot(i);
+        }
+        return;
+      }
       if (selected == null) return;
-      placeInSlot(selected, i);
+      const id2 = selected;
       selected = null;
+      document.querySelectorAll('.shadow-tile').forEach(t => t.classList.remove('selected'));
+      placeInSlot(id2, i);
     }
 
     function isPlaced(id){ return Object.values(placements).includes(id); }
@@ -365,18 +394,68 @@
     }
 
     // ── Mode drag (pointer events, souris+tactile+stylet) ──
+    // On peut REPRENDRE une carte déjà posée (drag depuis la case) et ÉCHANGER
+    // deux cases (drop sur une case pleine → l'occupant prend la case d'origine,
+    // ou retourne en haut si la carte venait du haut). Retour PY #6385.
+    // Clic fantôme : un vrai drag déclenche un click résiduel juste après le
+    // pointerup → on avale exactement UN click (le fantôme), puis c'est fini.
+    // (Pas de fenêtre de temps : elle bloquait les vrais taps rapides.)
+    let ghostClick = false;
+    function consumeGhostClick(){
+      if (!ghostClick) return false;
+      ghostClick = false;
+      return true;
+    }
+    // Quel que soit l'endroit où tombe le clic fantôme (tuile, case, ou leur
+    // ancêtre commun après un drag entre deux cases — parfois AUCUN click ne
+    // part du tout), on désarme au plus tard au PROCHAIN pointerdown : un vrai
+    // tap commence toujours par un pointerdown, le fantôme jamais.
+    document.addEventListener('click', () => {
+      if (ghostClick) setTimeout(() => { ghostClick = false; }, 0);
+    }, true);
+    document.addEventListener('pointerdown', () => { ghostClick = false; }, true);
+
     function onDragStart(e){
       const tile = e.currentTarget;
       if (tile.classList.contains('placed')) return;
       e.preventDefault();
+      selected = null;
+      document.querySelectorAll('.shadow-tile').forEach(t => t.classList.remove('selected'));
       tile.setPointerCapture(e.pointerId);
       const rect = tile.getBoundingClientRect();
-      dragState = { tile, offsetX: e.clientX - rect.left, offsetY: e.clientY - rect.top, moved:false };
+      dragState = { tile, origin: { type:'tray' }, offsetX: e.clientX - rect.left, offsetY: e.clientY - rect.top, moved:false };
       tile.classList.add('dragging');
       tile.style.position = 'fixed';
       tile.style.left = rect.left + 'px';
       tile.style.top = rect.top + 'px';
+      tile.style.width = rect.width + 'px';
+      tile.style.height = rect.height + 'px';
       tile.style.margin = '0';
+    }
+
+    // Drag depuis une case pleine : on « reprend » la carte — elle quitte la case
+    // et se colle sous le doigt. (Si une carte est sélectionnée, on NE drague pas :
+    // on laisse le clic faire l'échange.)
+    function onSlotPointerDown(e, i){
+      const id = placements[i];
+      if (id == null) return;
+      if (selected != null) return;
+      e.preventDefault();
+      e.stopPropagation();
+      removeFromSlot(i);
+      const tile = document.querySelector('.shadow-tile[data-id="'+id+'"]');
+      const slotEl = document.querySelector('.slot[data-index="'+i+'"]');
+      if (!tile || !slotEl) return;
+      tile.setPointerCapture(e.pointerId);
+      const sr = slotEl.getBoundingClientRect();
+      dragState = { tile, origin: { type:'slot', index:i }, offsetX: sr.width/2, offsetY: sr.height/2, moved:false };
+      tile.classList.add('dragging');
+      tile.style.position = 'fixed';
+      tile.style.margin = '0';
+      tile.style.width = sr.width + 'px';
+      tile.style.height = sr.height + 'px';
+      tile.style.left = (e.clientX - sr.width/2) + 'px';
+      tile.style.top = (e.clientY - sr.height/2) + 'px';
     }
     document.addEventListener('pointermove', (e) => {
       if (!dragState) return;
@@ -388,7 +467,7 @@
     });
     document.addEventListener('pointerup', (e) => {
       if (!dragState) return;
-      const { tile, moved } = dragState;
+      const { tile, moved, origin } = dragState;
       tile.classList.remove('dragging');
       document.querySelectorAll('.slot').forEach(s => s.classList.remove('hover-ok'));
       if (!moved){
@@ -397,11 +476,20 @@
         dragState = null;
         return;
       }
+      ghostClick = true; // le clic fantôme qui suit un vrai drag sera avalé (une fois)
       const slotEl = findNearestSlot(tile);
       dragState = null;
-      if (slotEl && placements[slotEl.dataset.index] == null){
+      if (slotEl){
+        const j = parseInt(slotEl.dataset.index, 10);
         resetTilePosition(tile);
-        placeInSlot(tile.dataset.id, parseInt(slotEl.dataset.index, 10));
+        if (placements[j] != null){
+          // case pleine → échange : l'occupant prend la case d'origine
+          // (ou retourne en haut si la carte venait du haut)
+          const displaced = placements[j];
+          removeFromSlot(j);
+          if (origin && origin.type === 'slot') placeInSlot(displaced, origin.index);
+        }
+        placeInSlot(tile.dataset.id, j);
       } else {
         resetTilePosition(tile);
       }
@@ -411,13 +499,14 @@
     });
 
     function resetTilePosition(tile){
-      tile.style.position = ''; tile.style.left = ''; tile.style.top = ''; tile.style.margin = '';
+      tile.style.position = ''; tile.style.left = ''; tile.style.top = '';
+      tile.style.width = ''; tile.style.height = ''; tile.style.margin = '';
     }
 
     function highlightSlot(tile){
       document.querySelectorAll('.slot').forEach(s => s.classList.remove('hover-ok'));
       const slotEl = findNearestSlot(tile);
-      if (slotEl && placements[slotEl.dataset.index] == null) slotEl.classList.add('hover-ok');
+      if (slotEl) slotEl.classList.add('hover-ok'); // pleines comprises : l'échange est permis
     }
 
     function findNearestSlot(tile){

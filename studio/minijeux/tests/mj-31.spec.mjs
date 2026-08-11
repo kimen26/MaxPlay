@@ -38,8 +38,10 @@ export async function run({ page, ok }) {
 
   await page.waitForSelector('.band', { timeout: 5000 });
   const nBands = await page.locator('.band').count();
-  ok('Niveau 1 (L0) = 4 bandes (pas de bande "avant les dinosaures")', nBands === 4, `bands=${nBands}`);
-  ok('Pas de bande permien en niveau 1', (await page.locator('.band[data-periode="permien"]').count()) === 0);
+  // 2026-08-10 (#6381) : la bande « Avant les dinosaures » (permien) est là DÈS le niveau 1
+  ok('Niveau 1 (L0) = 5 bandes (dont "avant les dinosaures")', nBands === 5, `bands=${nBands}`);
+  ok('Bande permien ("avant les dinos") présente dès le niveau 1',
+    (await page.locator('.band[data-periode="permien"]').count()) === 1);
   ok('1 seule bonne bande désignée', (await page.locator('.band[data-correct="1"]').count()) === 1);
   ok('ombre du dino affichée', await page.evaluate(() => {
     const img = document.querySelector('#dinoCard img');
@@ -47,13 +49,16 @@ export async function run({ page, ok }) {
   }));
   ok('nom du dino écrit', (await page.textContent('#dinoName')).trim().length > 0);
 
+  // ZÉRO ascenseur (règle transverse PY 2026-08-10) : tout tient dans la hauteur d'écran
+  ok('pas d\'ascenseur : tout tient dans l\'écran au démarrage', await page.evaluate(() =>
+    document.documentElement.scrollHeight <= window.innerHeight + 1),
+    await page.evaluate(() => `scroll=${document.documentElement.scrollHeight} inner=${window.innerHeight}`));
+
   // Chemin gagnant : taper la bonne bande N fois de suite (N = questions niveau 1 = 4, standard golden)
   const totalQ = await page.locator('.pip').count();
   let sawWaitBeforeAnnounceEnd = false;
   for (let q = 1; q <= totalQ; q++) {
     await waitQCount(page, q); // attend que la question q soit vraiment démarrée (nextQuestion a tourné)
-    const meteorUp = await page.locator('.meteor-screen').count();
-    if (meteorUp > 0) break; // finale démarrée plus tôt que prévu (ne devrait pas arriver avant la fin)
     const btn = page.locator('.band[data-correct="1"]');
     await btn.waitFor({ state: 'visible', timeout: 4000 });
     await btn.click();
@@ -76,18 +81,17 @@ export async function run({ page, ok }) {
   const nSlots = await page.locator('.band-slot').count();
   ok('la frise se peuple de vignettes posées', nSlots >= totalQ, `slots=${nSlots}`);
 
-  // Traverse la finale météorite : 4 tableaux plein écran, un tap chacun
-  // (1er waitForSelector plus large : la dernière annonce d'époque doit d'abord finir sa chaîne
-  //  MP3 + TTS + respiration avant que startMeteorFinale() ne démarre — même logique que waitQCount.)
-  for (let i = 0; i < 4; i++) {
-    await page.waitForSelector('.meteor-screen', { timeout: i === 0 ? 14000 : 4000 });
-    const n = await page.locator('.meteor-screen').count();
-    ok(`tableau météorite ${i + 1}/4 affiché`, n === 1);
-    await page.click('.meteor-screen');
-    await page.waitForTimeout(300);
-  }
+  // ZÉRO ascenseur même avec la frise peuplée (retour PY #6381 : « il faut scroller
+  // pour voir le dernier élément en bas, terrible »)
+  ok('pas d\'ascenseur avec la frise peuplée', await page.evaluate(() =>
+    document.documentElement.scrollHeight <= window.innerHeight + 1),
+    await page.evaluate(() => `scroll=${document.documentElement.scrollHeight} inner=${window.innerHeight}`));
 
-  // Écran de fin standard golden atteint (étoile sans-faute)
-  await page.waitForSelector('.end-wrap', { timeout: 4000 });
-  ok('écran de fin affiché après la finale météorite', (await page.locator('.end-wrap').count()) === 1);
+  // 2026-08-10 (#6381, défigeage PY) : PLUS de finale météorite — sortie standard directe.
+  // (1er waitForSelector large : la dernière annonce d'époque finit sa chaîne MP3 + TTS
+  //  + respiration avant showEnd — même logique que waitQCount.)
+  ok('plus de finale météorite (aucun tableau plein écran)', (await page.locator('.meteor-screen').count()) === 0);
+  await page.waitForSelector('.end-wrap', { timeout: 14000 });
+  ok('écran de fin standard atteint directement après la dernière question',
+    (await page.locator('.end-wrap').count()) === 1);
 }

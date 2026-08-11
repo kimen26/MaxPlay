@@ -32,6 +32,13 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   text-align:center; flex-shrink:0; padding:0 12px; min-height:18px;
 }
 
+/* 🔒 Bandeau niveau (figée) */
+#levelbar {
+  flex-shrink:0; text-align:center; padding:3px;
+  font-weight:900; font-size:0.72rem;
+  letter-spacing:1.5px; text-transform:uppercase; opacity:0.55;
+}
+
 /* ── Grille des bus ── */
 #buses-wrap {
   flex-shrink:0;
@@ -119,6 +126,8 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
     <span class="htitle">🔍 L’intrus</span>
   </div>
   <div class="pips" id="pips"></div>
+  <!-- 🔒 Bandeau niveau (figée mj-15) — restauré 2026-08-10 (perdu à la migration shell) -->
+  <div id="levelbar"></div>
 
   <!-- Zone principale -->
   <div id="main">
@@ -164,11 +173,14 @@ MJ.ready(function () {
 
 // ═══════════════════════════════════════════════════════════════════════════
 //  MJ-15 — L'intrus
-//  5 rounds, 5 bus affichés, 1 intrus à trouver
+//  5 rounds, 5 cartes affichées, 1 intrus à trouver
 //  Niveau A : couleur différente
 //  Niveau C : famille de ligne (Valouette / Noctilien / Métro / Standard)
 //  Niveau D : roues colorées (4 bus roues normales, 1 bus roues vives)
 //  Niveau E : double critère — couleur ET numéro (pair/impair) faux ensemble
+//  Niveau F : groupe d'émojis proches + 1 hors thème
+//  Niveau G : ombres de dinos (teinte ou forme)
+//  Niveau H : attribut dino (régime / époque / famille), noms affichés — N2 (#6308)
 //  (Ancien niveau B "pair vs impair" retiré : trop long à lire pour Max)
 // ═══════════════════════════════════════════════════════════════════════════
 
@@ -259,7 +271,7 @@ function generatePuzzleF() {
 //                  (2) 3 même dino + 1 dino différent, tous en silhouette neutre.
 const SRC_DINOS = (typeof DINOS !== 'undefined') ? DINOS : [];
 const OMBRES_MJ15 = SRC_DINOS.filter(d => d.png && d.name && !d.png.includes('/'))
-  .map(d => ({ id: d.id, name: d.name,
+  .map(d => ({ id: d.id, name: d.name, regime: d.regime, epoque: d.epoque, famille: d.famille,
                src: 'img/dinos/ombres/' + d.png.replace(/\.(jpg|png)$/i, '') + '_ombre.png' }));
 
 // Silhouettes = noir plein sur transparent : hue-rotate() n'a AUCUN effet sur du noir pur,
@@ -317,6 +329,55 @@ function generatePuzzleG() {
   };
 }
 
+// ── Attributs dino (niveau H — ordre Papa Yann 2026-08-10, annotation #6308) ──
+// « des dino, régime alimentaire, famille ou époque pour les plus dur » :
+// 4 cartes partagent un attribut (régime / époque / famille), 1 intrus diffère.
+// L'attribut est invisible sur la silhouette → le NOM est affiché sous chaque
+// ombre : c'est une tâche de connaissance, volontairement réservée au niveau max.
+const DINO_ATTR_AXES = [
+  { norm: d => (d.regime || '').replace(/^[^ ]+ /, '').split(' ')[0],
+    hint: v => ({ 'Carnivore': '4 mangent de la viande…',
+                  'Herbivore': '4 mangent des plantes…',
+                  'Piscivore': '4 mangent du poisson…' }[v] || '4 mangent la même chose…') },
+  { norm: d => (d.epoque || '').split(' ')[0],
+    hint: v => '4 sont du ' + v + '…' },
+  { norm: d => d.famille || '',
+    hint: () => '4 sont de la même famille de dinos…' },
+];
+
+function generatePuzzleH() {
+  if (OMBRES_MJ15.length < 5) return generatePuzzleG();
+  const axes = shuffle(DINO_ATTR_AXES.slice());
+  for (const axis of axes) {
+    const byVal = {};
+    OMBRES_MJ15.forEach(d => {
+      const v = axis.norm(d);
+      if (!v) return;
+      (byVal[v] = byVal[v] || []).push(d);
+    });
+    const majors = shuffle(Object.keys(byVal).filter(v => byVal[v].length >= 4));
+    for (const maj of majors) {
+      const oddPool = OMBRES_MJ15.filter(d => axis.norm(d) && axis.norm(d) !== maj);
+      if (!oddPool.length) continue;
+      const four = shuffle(byVal[maj]).slice(0, 4);
+      const odd = shuffle(oddPool)[0];
+      const tint = shuffle(SHADOW_TINTS)[0]; // même teinte partout : seul l'attribut compte
+      const cards = [...four, odd].map(d => ({ src: d.src, filter: tint, name: d.name }));
+      const positions = shuffle([0,1,2,3,4]);
+      const placed = new Array(5);
+      positions.forEach((pos, i) => { placed[pos] = cards[i]; });
+      return {
+        kind: 'dino-attr',
+        buses: placed,
+        intrusIdx: positions[4],
+        hint: axis.hint(maj),
+        level: 'H',
+      };
+    }
+  }
+  return generatePuzzleG(); // repli si la data ne permet pas l'attribut
+}
+
 // ── État du jeu ────────────────────────────────────────────────────────────
 let score    = 0;
 let round    = 0;
@@ -329,11 +390,12 @@ let attemptsThisRound = 1;
 
 // Paliers (doc _PALIERS) : critère de l'intrus. Niveau = Stars.get, plafonné 0..2.
 // Remap 3★ (2026-07-14) : N0=ex-P1-2(couleur+roues, évident) · N1=ex-P3(+famille) · N2=ex-P4-5(double critère subtil)
+// + 2026-08-10 (#6308) : niveau H (attribut dino : régime/époque/famille) au N2 — « pour les plus dur ».
 const level = Math.max(0, Math.min(2, (window.Stars ? Stars.get('mj-15') : 0)));
 const CRIT = [
   ['A','D','F'],      // N0 couleur (évident) + roues colorées + émojis
   ['A','D','C','G'],  // N1 + famille de ligne + ombres dino
-  ['C','E','G'],      // N2 famille + double critère (subtil) + ombres dino
+  ['C','E','G','H'],  // N2 famille + double critère (subtil) + ombres dino + attribut dino
 ][level];
 
 // Niveau A — couleur différente
@@ -521,6 +583,7 @@ function generatePuzzle(_roundNum) {
   if (t === 'E') return generatePuzzleE();
   if (t === 'F') return generatePuzzleF();
   if (t === 'G') return generatePuzzleG();
+  if (t === 'H') return generatePuzzleH();
   return generatePuzzleC();
 }
 
@@ -569,6 +632,12 @@ function renderPuzzle(puzzle) {
 
     if (puzzle.kind === 'emoji') {
       btn.innerHTML = `<span style="font-size:${Math.round(busW * 0.5)}px;line-height:1;">${item.emoji}</span>`;
+    } else if (puzzle.kind === 'dino-attr') {
+      // Niveau H : l'attribut (régime/époque/famille) est invisible sur la
+      // silhouette → nom affiché sous l'ombre (tâche de connaissance).
+      const size = Math.round(busW * 0.58);
+      btn.innerHTML = `<img src="${item.src}" alt="" style="width:${size}px;height:${size}px;object-fit:contain;filter:url(#${item.filter});" draggable="false">`
+                    + `<span class="bus-label">${item.name}</span>`;
     } else if (puzzle.kind === 'dino') {
       const size = Math.round(busW * 0.8);
       btn.innerHTML = `<img src="${item.src}" alt="" style="width:${size}px;height:${size}px;object-fit:contain;filter:url(#${item.filter});" draggable="false">`;
@@ -662,12 +731,15 @@ function startGame() {
   score    = 0;
   round    = 1;
   answered = false;
+  // 🔒 Bandeau niveau (figée) — palier courant (3★)
+  document.getElementById('levelbar').textContent = 'Niveau ' + (level + 1) + ' / 3';
   renderPuzzle(generatePuzzle(round));
 }
 
 // Exposées : harnais de test (page.evaluate direct)
 window.generatePuzzleF = generatePuzzleF;
 window.generatePuzzleG = generatePuzzleG;
+window.generatePuzzleH = generatePuzzleH;
 window.OMBRES_MJ15 = OMBRES_MJ15;
 window.SHADOW_TINTS = SHADOW_TINTS;
 window.renderPuzzle = renderPuzzle;

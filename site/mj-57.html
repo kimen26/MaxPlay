@@ -128,9 +128,12 @@
     function rand(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
 
     // Palette d'œufs : couleurs distinctes issues du pool LIGNES (règle bus/couleurs MaxPlay)
+    // ⚠ LIGNES est un const top-level de data.js, PAS une propriété window — window.LIGNES
+    // vaut undefined (piège documenté L-112 / mj-48) : toujours l'identifiant nu via typeof.
     function eggColors(n) {
-      const pool = (window.LIGNES ? Object.values(window.LIGNES) : []).filter(l => l && l.color);
-      const picked = (window.selectDistinctColors ? selectDistinctColors(pool, n) : pool.slice(0, n));
+      const src = (typeof LIGNES !== 'undefined') ? LIGNES : (window.LIGNES || []);
+      const pool = src.filter(l => l && l.color);
+      const picked = (typeof selectDistinctColors === 'function' ? selectDistinctColors(pool, n) : pool.slice(0, n));
       return picked.map(l => l.color);
     }
 

@@ -1,5 +1,7 @@
 # MaxPlay — Catégories & paliers de difficulté (spec rollout)
 
+> ⚠️ **SNAPSHOT 2026-06-01** : les catégories ci-dessous (Compter / Lire / Observer & vite…) sont remplacées par le menu v2 — source vivante [`site/js/catalog.js`](../../../site/js/catalog.js). Purge 2026-08-10 : mj-01, mj-04, mj-05, mj-08, mj-11, mj-12, mj-13b, mj-16, mj-17 (+ d'autres, voir `pmo/backlog.md`) **n'existent plus** — leurs paliers ci-dessous sont conservés comme matière de design (« on garde l'idée »).
+>
 > Spec validée avec Papa Yann (2026-06-01). Sert de référence pour :
 > 1. la **réorganisation du menu par catégories** (coque),
 > 2. le **rollout du contrat de difficulté** sur chaque mini-jeu.

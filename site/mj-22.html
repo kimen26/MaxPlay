@@ -8,8 +8,12 @@
   <link rel="stylesheet" href="css/mp-theme.css">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; touch-action:manipulation; }
+    html { height:100%; overflow:hidden; } /* zéro ascenseur (règle transverse 2026-08-10) */
     body { font-family:system-ui,sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
     #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
+    /* pips en bas d'écran : padding bas pour la bille courante scalée 1.25×
+       (sinon 3px rognés au ras du viewport — règle zéro ascenseur 2026-08-10) */
+    #pips { flex-shrink:0; padding-bottom:9px; }
 
     .consigne-zone { display:flex; align-items:center; justify-content:center; gap:10px; padding:8px 12px; flex-shrink:0; background:rgba(0,0,0,0.2); min-height:56px; }
     #drapeau-cible { font-size:4.5rem; line-height:1; }

@@ -9,6 +9,20 @@
 
 ---
 
+## 2026-08-10 — PURGE MENU : 36 jeux réels, 23 fichiers supprimés
+
+**Trigger** : Papa Yann — « j'aimerais que ce soit clair combien de mini-jeux on a réellement, les autres on les vire des listings & co, on garde l'idée mais rien de codé pour rien ».
+
+**Fait** :
+- Inventaire vérité : **36 jeux au menu enfant + encyclo dinos (wip) + 2 bacs à sable parentaux** (max-adventure, mj-pose-tiles gardés sous la main, décision PY). Compteurs précédents tous faux (catalog 45/30, INVARIANTS 42, state 43).
+- **23 fichiers jeux supprimés de `site/`** : 18 retirés (mj-04/05/08/11/12/16/17/23/25/26/27/29/33/36/41/43/44/45) + mj-58 (décision PY du jour, idée runner conservée au backlog) + 4 orphelins (mj-01, mj-13b, mj-gold-a, mj-gold-b).
+- Nettoyage chaîne complète : catalog.js (20 entrées sorties), mur.js, textes-jeux.js (18 règles), 20 specs + test-unlock.mjs, whitelist audit-gabarit (reste mj-32/pose-tiles), 11 figées archivées, INVARIANTS/state réécrits, bannières snapshot CLASSIFICATION/_PALIERS, EP-112 dormant (COMPETENCE_PILOTS vide), tracker.js GAME_META conservé (labels historiques).
+- Décisions PY capturées : orphelins → suppression complète · mj-58 → suppression complète · parentaux → gardés · **mj-57 → on garde et on répare** (il est cassé : couleurs/win instant/niveau figé).
+
+**État au reboot** : purge livrée, vérif audit-gabarit en cours. RESTE (phase suivante, GO PY attendu) : corrections 8 annotations 2026-08-10 (mj-32/30/31/28/24/57 + règle transverse zéro ascenseur) + reliquat vague 2026-07-27 (mj-52/53/51/19/14/15). MP3 orphelins des jeux morts = chantier session sons, pas touché.
+
+---
+
 ## 2026-07-29 — Session nocturne « reprend et termine » (autonome, GO PY)
 
 **Fait** :
@@ -1538,3 +1552,7 @@ Spec PY « exécute ça » (source copain LLM) → gravée docs/specs/2026-07-31
 ## 2026-07-31 (suite) — Retours playtest PY pack DinoJeux appliqués
 
 mj-54 Sudoku VALIDÉ PY, rien touché. Fixes : mj-58 Rex regardait à gauche → miroir horizontal (il court à droite) · mj-55 niveau « ligne seule » SUPPRIMÉ (PY n'en voyait pas l'intérêt) → 4×4 dès le N0 (9 indices) · mj-56 (le plus retouché) : cases interdites désormais BIEN visibles (assombrissement + croix ✕, l'ancien rouge léger ne se voyait pas), zones IRRÉGULIÈRES à tous les niveaux (fini les quadrants « nuls et durs »), niveau débutant = 1er dino PRÉ-PLACÉ fixe qui montre l'exemple · mj-59 rampe ACCÉLÉRÉE (passerelle = 1 puzzle, la difficulté monte dans la partie : N0 finit en 4×4, N1 en 5×5, N2 en 6×6). Figées amendées datées ×4, specs harnais mises à jour (mj-55 4×4, mj-56 dino guide + interactions au N1), 4 harnais re-joués VERTS, screenshot grille mj-56 relu (guide + ✕ lisibles).
+
+## 2026-08-10 (suite) — Annotations PY vague du jour traitées (phases 2+3)
+
+7 annotations « nouveau » soldées + reliquat 07-27 vérifié. Réparations : mj-57 (LIGNES undefined), mj-28 lampe (ombres noires invisibles → invert), mj-30 (cartes 1 ligne + reprise/échange libres), mj-31 (zéro scroll, permien, phrase 85M ans et finale météorite supprimées), mj-32 (brèche RÉELLE dans le lineart Cryolophosaure → masque dilaté R=7 + snap de graine + palette sans ascenseur). Features : mj-24 (8 consignes FR parlées TTS+MP3 nom, bonus langue étrangère au 3★, réécoute toujours FR), mj-19 (manches dino mélangées aux bus), mj-14 (mode Dinos ombres×couleurs + paliers 3★ + bandeau niveau), mj-15 (niveau H attribut dino régime/époque/famille + bandeau niveau). Règle transverse zéro ascenseur auditée sur les 36 jeux à 480×900 : 36/36 OK (mj-22 pip rogné corrigé). Harnais + audits gabarit verts sur tous les jeux touchés, vérifs visuelles mj-19/14/32 relues. Handoff session sons : 38 MP3 noms dinos à régénérer en FR (dérive affichage FR vs audio latin) + 4 MP3 special-extinction mj-31 orphelins + brèche lineart Cryolophosaure à patcher côté pôle dino.

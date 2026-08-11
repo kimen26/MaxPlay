@@ -18,6 +18,54 @@ export async function run({ page, ok }) {
   const nThumbs = await page.locator('#grid .thumb-card').count();
   ok('grille de coloriages affichée', nThumbs > 10, `thumbs=${nThumbs}`);
 
+  // ─── ANTI-FUITE (annotation #6389, 2026-08-10) ───
+  // Le Cryolophosaure a une VRAIE brèche blanche pure dans le trait du dos
+  // (chemin de fuite à 5,4 px du mur) : sans masque dilaté, colorier le fond
+  // remplissait aussi le torse. Le masque dilaté R=7 doit le contenir.
+  const cryoIndex = await page.evaluate(() => {
+    const cards = [...document.querySelectorAll('#grid .thumb-card')];
+    return cards.findIndex(c => (c.querySelector('.tname') || {}).textContent === 'Cryolophosaure');
+  });
+  ok('coloriage Cryolophosaure présent (cas de brèche connu)', cryoIndex >= 0, `cryoIndex=${cryoIndex}`);
+  await page.click(`#grid .thumb-card >> nth=${cryoIndex}`);
+  await page.waitForFunction(() => {
+    const c = document.getElementById('paintCanvas');
+    return c && c.width > 0 && c.height > 0;
+  }, { timeout: 5000 });
+  await page.waitForTimeout(200);
+
+  // Zéro ascenseur sur l'écran atelier (règle transverse : pas de scroll hors vraies listes)
+  const atelierSansScroll = await page.evaluate(() => {
+    const el = document.getElementById('screenAtelier');
+    return el.scrollHeight <= el.clientHeight + 1
+      && document.documentElement.scrollHeight <= window.innerHeight + 1;
+  });
+  ok('écran atelier SANS ascenseur (règle transverse zéro scroll)', atelierSansScroll);
+
+  // Fond en rouge (coin haut-gauche) : le torse doit rester blanc
+  await page.click('.palette .swatch >> nth=0');
+  const boxCryo = await page.locator('#paintCanvas').boundingBox();
+  await page.mouse.click(boxCryo.x + boxCryo.width * 0.04, boxCryo.y + boxCryo.height * 0.04);
+  await page.waitForTimeout(250);
+  const fuite = await page.evaluate(() => {
+    const c = document.getElementById('paintCanvas');
+    const ctx = c.getContext('2d');
+    const d = ctx.getImageData(0, 0, c.width, c.height).data;
+    let red = 0;
+    for (let p = 0; p < d.length; p += 4) {
+      if (d[p] > 180 && d[p+1] < 110 && d[p+2] < 110) red++;
+    }
+    const tx = Math.round(c.width * 0.45), ty = Math.round(c.height * 0.55);
+    const torse = ctx.getImageData(tx, ty, 1, 1).data;
+    return { redFrac: red / (c.width * c.height), torse: [torse[0], torse[1], torse[2]] };
+  });
+  ok('anti-fuite : torse du Cryolophosaure RESTE blanc après remplissage du fond',
+     fuite.torse[0] > 235 && fuite.torse[1] > 235 && fuite.torse[2] > 235, `torse rgb=${fuite.torse}`);
+  ok('anti-fuite : fraction rouge < 80% (fond seul, pas le dino)', fuite.redFrac < 0.80, `redFrac=${fuite.redFrac.toFixed(3)}`);
+
+  await page.click('#backChoiceBtn');
+  await page.waitForTimeout(300);
+
   // Choisir le 1er coloriage → ouvre l'atelier
   await page.click('#grid .thumb-card >> nth=0');
   await page.waitForSelector('#screenAtelier:not(.hidden)', { timeout: 4000 });

@@ -8,23 +8,25 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/mp-theme.css">
   <style>
-    .instruction-text { text-align:center; font-size:1.25rem; font-weight:900; color:#ffe066; margin:6px 12px 2px; }
-
-    /* ─── Dino flottant (ombre à identifier) ─── */
-    .dino-float-wrap { display:flex; flex-direction:column; align-items:center; gap:2px; margin:6px 0 8px; }
+    /* ─── Dino flottant (ombre à identifier) — ligne compacte horizontale :
+           tout l'écran doit tenir dans --mp-vh, ZÉRO ascenseur (règle PY 2026-08-10) ─── */
+    .qbox { padding:8px 12px; margin:0 12px 6px; flex-shrink:0; }
+    .dino-float-wrap { display:flex; align-items:center; justify-content:center; gap:12px; }
     .dino-float-card {
-      background:#fff; border-radius:20px; padding:10px; box-shadow:0 6px 18px #0006;
-      width:104px; height:104px; display:flex; align-items:center; justify-content:center;
-      border:5px solid #ffd633;
+      background:#fff; border-radius:16px; padding:6px; box-shadow:0 4px 12px #0006;
+      width:68px; height:68px; display:flex; align-items:center; justify-content:center;
+      border:4px solid #ffd633; flex-shrink:0;
     }
     .dino-float-card img { width:100%; height:100%; object-fit:contain; }
-    .dino-name { font-size:1.05rem; font-weight:900; color:#fff; }
+    .dino-name { font-size:1.15rem; font-weight:900; color:#fff; }
 
-    /* ─── Frise = bandes d'époque empilées ─── */
-    .frise { flex:1; display:flex; flex-direction:column; gap:8px; padding:8px 10px 10px; min-height:0; }
+    /* ─── Frise = bandes d'époque empilées : flex:1 → les 5 bandes remplissent
+           exactement la hauteur restante de #app (plafonnée à --mp-vh par mp-theme),
+           jamais de scroll quelle que soit la hauteur d'écran ─── */
+    .frise { flex:1; display:flex; flex-direction:column; gap:6px; padding:2px 10px 8px; min-height:0; }
     .band {
-      flex:1; min-height:80px; border-radius:16px; border:4px solid transparent;
-      display:flex; align-items:center; gap:12px; padding:8px 14px;
+      flex:1; min-height:52px; border-radius:14px; border:4px solid transparent;
+      display:flex; align-items:center; gap:10px; padding:4px 12px;
       cursor:pointer; transition:transform .12s, border-color .15s; position:relative;
       box-shadow:0 4px 10px #0004;
     }
@@ -34,9 +36,9 @@
     .band-info { flex-shrink:0; min-width:74px; }
     .band-label { font-size:1rem; font-weight:900; color:#fff; line-height:1.1; }
     .band-date { font-size:.72rem; font-weight:700; color:#ffffffcc; }
-    .band-slots { flex:1; display:flex; gap:6px; flex-wrap:wrap; align-items:center; min-height:44px; }
+    .band-slots { flex:1; display:flex; gap:4px; flex-wrap:wrap; align-items:center; min-height:34px; overflow:hidden; }
     .band-slot {
-      width:44px; height:44px; border-radius:10px; background:#ffffff22;
+      width:34px; height:34px; border-radius:8px; background:#ffffff22;
       display:flex; align-items:center; justify-content:center; overflow:hidden;
       flex-shrink:0;
     }
@@ -47,17 +49,6 @@
     .band-cretace    { background:linear-gradient(135deg,#7a4500,#e67e22); }
     .band-cenozoique { background:linear-gradient(135deg,#0a3d6b,#2980b9); }
     .band-permien    { background:linear-gradient(135deg,#4a2a5a,#8e44ad); }
-
-    /* ─── Finale météorite : tableaux plein écran ─── */
-    .meteor-screen {
-      position:fixed; inset:0; z-index:2000; display:flex; flex-direction:column;
-      align-items:center; justify-content:center; text-align:center; padding:30px;
-      cursor:pointer;
-    }
-    .meteor-emoji { font-size:4.5rem; margin-bottom:18px; animation:meteorPop .5s ease-out; }
-    .meteor-text { font-size:1.3rem; font-weight:900; color:#fff; max-width:640px; line-height:1.4; }
-    .meteor-tap { position:absolute; bottom:26px; font-size:.85rem; color:#ffffff99; font-weight:700; }
-    @keyframes meteorPop { from{ transform:scale(.5); opacity:0; } to{ transform:scale(1); opacity:1; } }
   </style>
 </head>
 <body>
@@ -119,11 +110,12 @@
       { id:'cretace',     emoji:'🟠', label:'Crétacé',              date:'il y a 66 à 100 millions d’années', cls:'band-cretace' },
       { id:'cenozoique',  emoji:'🔵', label:'Après la météorite',   date:'après 66 millions d’années', cls:'band-cenozoique' },
     ];
-    // Niveau 2 seul débloque la bande "avant les dinosaures" (Dimétrodon, permien)
-    const BANDS = level >= 2 ? BANDS_BASE : BANDS_BASE.filter(b => b.id !== 'permien');
+    // Toutes les bandes dès le niveau 1, dont « Avant les dinosaures » (permien)
+    // — demande PY 2026-08-10 : « il manque le "avant les dinos" ».
+    const BANDS = BANDS_BASE;
     const BAND_IDS = BANDS.map(b => b.id);
 
-    // Catalogue jouable : jamais periode 'present', jamais permien hors niveau 2
+    // Catalogue jouable : jamais periode 'present', toujours une periode affichee sur la frise
     const POOL = DINOS.filter(d => d.periode !== 'present' && BAND_IDS.includes(d.periode));
 
     // Iconiques faciles pour L0 (cibles évidentes Crétacé / Cénozoïque / Jurassique)
@@ -233,7 +225,7 @@
     }
 
     function nextQuestion(){
-      if (qCount >= MAX_Q) return startMeteorFinale();
+      if (qCount >= MAX_Q) return showEnd(); // sortie standard — défigeage PY 2026-08-10 (#6381) : la finale météorite n'a « pas sa place ici »
       qcm = QcmRetry.create();
       qCount++;
       // data-qcount : marqueur non-visuel pour le harnais de test (synchronisation fiable sur le
@@ -314,17 +306,15 @@
 
     // Époque en VOIX RÉELLE (audio/dinos/periodes/<periode>.mp3 — assets existants, branchés 2026-07-07).
     // Figée 🔒 respectée : la période est toujours REDITE ; TTS = fallback si MP3 KO.
-    // Vraie date TOUJOURS dite (TTS court après le MP3). + pépite T-Rex/Stégosaure si concerné.
+    // Vraie date TOUJOURS dite (TTS court après le MP3).
+    // 2026-08-10 (#6381, défigeage PY) : la phrase bonus T-Rex/Stégosaure « 85 millions
+    // d'années les séparent » est SUPPRIMÉE — PY la vivait comme une phrase parasite.
     const PERIODE_MP3 = { trias:'trias', jurassique:'jurassique', cretace:'cretace', cenozoique:'cenozoique', permien:'pangee' };
-    // onComplete n'arrive qu'une fois TOUT dit (MP3 periode -> TTS date -> TTS pepite T-Rex/Stego eventuelle).
+    // onComplete n'arrive qu'une fois TOUT dit (MP3 periode -> TTS date).
     // C'est la fin reelle qui pilote la suite du jeu, jamais un timer fixe (figee mj-31 : periode TOUJOURS redite en entier).
     function speakEpoquePhrase(d, onComplete){
-      const nemesis = { tyrannosaurus:'stegosaurus', stegosaurus:'tyrannosaurus' };
       const datePart = (d.epoque.split('·')[1] || '').trim();
-      let suiteTxt = datePart ? datePart + '.' : '';
-      if (nemesis[d.id]) {
-        suiteTxt += ' Tu sais quoi ? Le T-Rex n’a JAMAIS rencontré le Stégosaure : 85 millions d’années les séparent !';
-      }
+      const suiteTxt = datePart ? datePart + '.' : '';
       const file = PERIODE_MP3[d.periode];
       if (file) {
         playEl(window.AUDIO_DINOS + 'periodes/' + file + '.mp3', d.name + '. ' + d.epoque + '.',
@@ -336,55 +326,10 @@
       }
     }
 
-    // ─── Finale météorite : 4 tableaux en VOIX RÉELLE (spécial Extinction canon, Narrateur H + Wex) ───
-    // Audio = audio/dinos/special-extinction-a..d.mp3 (blocs ~20-28 s). Légende courte à l'écran,
-    // l'histoire complète est ÉCOUTÉE. Avance à la fin de l'audio, tap = passer.
-    const METEOR_SLIDES = [
-      { emoji:'🦕☄️', mp3:'a', text:'Il y a 66 millions d’années… une météorite géante !',
-        fallback:'Il y a 66 millions d’années, une météorite géante, grosse comme une montagne, tombe du ciel. BOUM !' },
-      { emoji:'🌋🌑', mp3:'b', text:'Les volcans, le nuage noir… le soleil est caché.',
-        fallback:'Des volcans gigantesques crachent de la fumée. Le ciel devient tout noir, le soleil est caché.' },
-      { emoji:'🥀',   mp3:'c', text:'Plus de plantes… les géants s’en vont.',
-        fallback:'Sans soleil, les plantes ne poussent plus. Les grands dinosaures n’ont plus rien à manger, et tout doucement, ils s’en vont.' },
-      { emoji:'🐭🐦', mp3:'d', text:'Les petits survivent — et les oiseaux sont de vrais dinosaures !',
-        fallback:'Mais les petits animaux survivent ! Et les oiseaux aussi : les oiseaux sont de vrais dinosaures. La vie continue !' },
-    ];
-    let meteorIdx = 0;
-
-    function startMeteorFinale(){
-      meteorIdx = 0;
-      showMeteorSlide();
-    }
-
-    function showMeteorSlide(){
-      const s = METEOR_SLIDES[meteorIdx];
-      const div = document.createElement('div');
-      div.className = 'meteor-screen';
-      div.style.background = meteorIdx === 1 ? 'radial-gradient(circle,#7a2000,#1a0800)'
-        : meteorIdx === 2 ? 'linear-gradient(160deg,#1a1a1a,#050505)'
-        : 'linear-gradient(160deg,#1f3d2b,#13261c)';
-      div.innerHTML =
-        '<div class="meteor-emoji">' + s.emoji + '</div>' +
-        '<div class="meteor-text">' + s.text + '</div>' +
-        '<div class="meteor-tap">👉 touche l’écran pour passer</div>';
-      document.body.appendChild(div);
-
-      let advanced = false;
-      // garde-fou si l'audio ne se termine jamais (35 s > bloc le plus long 28 s)
-      const autoTimer = setTimeout(advance, 35000);
-      function advance(){
-        if (advanced) return;
-        advanced = true;
-        clearTimeout(autoTimer);
-        stopEl();
-        div.remove();
-        meteorIdx++;
-        if (meteorIdx < METEOR_SLIDES.length) showMeteorSlide();
-        else showEnd();
-      }
-      playEl(window.AUDIO_DINOS + 'special-extinction-' + s.mp3 + '.mp3', s.fallback, () => setTimeout(advance, 600));
-      div.onclick = advance;
-    }
+    // ─── Finale météorite SUPPRIMÉE (défigeage PY 2026-08-10 #6381 : « enchaînement
+    // d'infos avec des émojis… c'est sympa mais ça n'a pas sa place ici, sortie de jeu
+    // normale »). Les 4 MP3 canon special-extinction-a..d restent sur disque pour un
+    // autre usage (encyclo/voyage). Sortie = G.showEnd standard. ───
 
     function showEnd(){
       G.showEnd({ replayUrl: 'mj-31.html' });

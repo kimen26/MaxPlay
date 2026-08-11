@@ -18,6 +18,12 @@ body { font-family:'Fredoka One',sans-serif; color:var(--ink); display:flex; fle
   flex-shrink:0; display:flex; gap:6px; padding:8px 12px;
   background:rgba(0,0,0,0.2); border-bottom:1px solid rgba(255,255,255,0.06);
 }
+/* 🔒 Bandeau niveau (figée mj-14) — rappel discret du palier courant */
+#levelbar {
+  flex-shrink:0; text-align:center; padding:3px;
+  font-family:'Nunito',sans-serif; font-weight:900; font-size:0.72rem;
+  letter-spacing:1.5px; text-transform:uppercase; opacity:0.55;
+}
 .mode-btn {
   flex:1; border:2px solid rgba(255,255,255,0.2); border-radius:12px;
   background:rgba(255,255,255,0.06); color:var(--ink);
@@ -129,7 +135,12 @@ body { font-family:'Fredoka One',sans-serif; color:var(--ink); display:flex; fle
       <span class="mode-icon">🚌</span>
       <span>Bus</span>
     </button>
+    <button class="mode-btn" id="btn-mode-dino" onclick="switchMode('dino')">
+      <span class="mode-icon">🦕</span>
+      <span>Dinos</span>
+    </button>
   </div>
+  <div id="levelbar"></div>
 
   <!-- Zone de jeu -->
   <div id="main">
@@ -144,6 +155,11 @@ body { font-family:'Fredoka One',sans-serif; color:var(--ink); display:flex; fle
 <!-- libs SPÉCIFIQUES au jeu -->
 <script src="js/bus-svg.js"></script>
 <script src="js/data.js"></script>
+<script src="js/lang.js"></script>
+<script src="js/dinos-data.js"></script>
+<script src="js/dinos-i18n.js"></script>
+<script src="js/dinos-audio-manifest.js"></script>
+<script src="js/dinos-ombres.js"></script>
 <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud, célébrations) -->
 <script src="js/mj-shell.js"></script>
 <script>
@@ -195,9 +211,13 @@ let levelSchedule = []; // tirage aléatoire en début de partie
 // C : LIGNE + COLONNE (ligne = axe1, colonne = axe2)
 // D : CARRÉ LATIN — chaque ligne ET chaque colonne contient les 3 motifs une
 //     seule fois (pattern Raven classique, pas de diagonale ambiguë).
-// 🔒 Paliers (5) : types de pattern autorisés. Niveau = Stars.get('mj-14')+1.
-const STAR_LV = Math.max(0, Math.min(4, (window.Stars ? Stars.get(GAME_ID) : 0)));
-const ALLOWED = [['A'], ['A','B'], ['A','B','C'], ['A','B','C','D'], ['C','D']][STAR_LV];
+// 🔒 Paliers (3★, alignement 2026-08-10 sur catalog maxStars:3 — la figée
+// historique à 5 paliers datait d'avant la migration globale du 2026-07-14) :
+// N0 = A seulement (pattern ligne, 1 attribut — point d'entrée, INCHANGÉ)
+// N1 = A, B, C (ex-paliers 2-3)
+// N2 = C, D (les plus durs, ex-palier 5 — le carré latin redevient accessible)
+const STAR_LV = Math.max(0, Math.min(2, (window.Stars ? Stars.get(GAME_ID) : 0)));
+const ALLOWED = [['A'], ['A','B','C'], ['C','D']][STAR_LV];
 function buildLevelSchedule(n) {
   const pool = [];
   for (let i = 0; i < n; i++) pool.push(ALLOWED[i % ALLOWED.length]);
@@ -508,6 +528,79 @@ function generateBusPuzzle(roundNum) {
 }
 
 // ─────────────────────────────────────────────────────────────
+//  DINOS (ordre Papa Yann 2026-08-10, annotation #6309)
+//  « On va pas direct avec les dino aussi couleur forme… je ferai surtout
+//   les ombres plus couleur… avatar et style (vert olive, rouge cœur…) »
+//  Mode = ombres chinoises canon sur pastille couleur. 2 attributs :
+//  le DINO (par ligne) et la COULEUR de pastille (par colonne).
+// ─────────────────────────────────────────────────────────────
+const OMBRES = (window.DinoOmbres && typeof DINOS !== 'undefined') ? DinoOmbres.pool() : [];
+// Couleurs de pastille (gameplay sémantique, palette douce validée par l'annotation)
+const DINO_COLORS = [
+  { key:'olive', label:'olive', bg:'#8ba656' },
+  { key:'coeur', label:'cœur',  bg:'#d94f63' },
+  { key:'bleu',  label:'bleu',  bg:'#5b8fff' },
+];
+
+function dinoKey(item) { return item.id + '|' + item.colorKey; }
+
+function dinoBadge(item, size) {
+  const inner = Math.floor(size * 0.72);
+  return '<span style="display:inline-flex;align-items:center;justify-content:center;'
+    + 'background:' + item.bg + ';border-radius:50%;width:' + size + 'px;height:' + size + 'px;">'
+    + '<img src="' + item.src + '" alt="" style="width:' + inner + 'px;height:' + inner + 'px;object-fit:contain;pointer-events:none;">'
+    + '</span>';
+}
+
+function generateDinoPuzzle(roundNum) {
+  const level = getLevel(roundNum);
+  const dinos = DinoOmbres.shuffle(OMBRES).slice(0, 3);
+  const cols  = DinoOmbres.shuffle(DINO_COLORS.slice()).slice(0, 3);
+
+  const grid = [];
+  for (let r = 0; r < 3; r++) {
+    const row = [];
+    for (let c = 0; c < 3; c++) {
+      let dino, col;
+      if (level === 'A') {
+        dino = dinos[r]; col = cols[r];      // dino+couleur par ligne (double indice)
+      } else if (level === 'B') {
+        dino = dinos[0]; col = cols[c];      // couleur par colonne
+      } else if (level === 'C') {
+        dino = dinos[r]; col = cols[c];      // ligne = dino, colonne = couleur
+      } else { // D — CARRÉ LATIN sur les 3 dinos, couleur fixe
+        dino = dinos[(r + c) % 3]; col = cols[0];
+      }
+      row.push({ id: dino.id, name: dino.name, src: dino.src,
+                 colorKey: col.key, colorLabel: col.label, bg: col.bg });
+    }
+    grid.push(row);
+  }
+
+  const correct = grid[2][2];
+  answerKey = dinoKey(correct);
+
+  // Distracteurs : combos dino×couleur du round différents de la réponse
+  const pool = [];
+  dinos.forEach(d => cols.forEach(col => {
+    const cand = { id: d.id, name: d.name, src: d.src,
+                   colorKey: col.key, colorLabel: col.label, bg: col.bg };
+    if (dinoKey(cand) !== answerKey) pool.push(cand);
+  }));
+  const distractors = DinoOmbres.shuffle(pool).slice(0, 2);
+  const choices = DinoOmbres.shuffle([correct, ...distractors]);
+
+  const hints = {
+    A: 'Chaque ligne a le même dino et la même couleur !',
+    B: 'Chaque colonne a la même couleur !',
+    C: 'Ligne = dino, colonne = couleur. Trouve les deux !',
+    D: 'Chaque ligne et chaque colonne ont les 3 dinos une seule fois. Lequel manque ?',
+  };
+
+  return { grid, choices, hint: hints[level], level, type: 'dino' };
+}
+
+// ─────────────────────────────────────────────────────────────
 //  RENDU
 // ─────────────────────────────────────────────────────────────
 function renderPuzzle(puzzle) {
@@ -522,7 +615,9 @@ function renderPuzzle(puzzle) {
   hintEl.style.fontSize = '';
 
   shell.setConsigne(
-    type === 'bus' ? 'Quel bus manque dans la grille ?' : 'Qu\'est-ce qui manque ?',
+    type === 'bus' ? 'Quel bus manque dans la grille ?'
+      : type === 'dino' ? 'Quel dino manque dans la grille ?'
+      : 'Qu\'est-ce qui manque ?',
     round === 1 ? undefined : true
   );
 
@@ -534,6 +629,7 @@ function renderPuzzle(puzzle) {
   );
   const cellSize = Math.floor((available - 12) / 3);
   const busFit   = Math.floor(cellSize * 0.84);
+  const dinoFit  = Math.floor(cellSize * 0.80);
   const shapeFit = Math.floor(cellSize * 0.60);
 
   const gridEl = document.getElementById('grid');
@@ -558,6 +654,8 @@ function renderPuzzle(puzzle) {
         const item = grid[r][c];
         cell.innerHTML = type === 'bus'
           ? busRender(item, busFit)
+          : type === 'dino'
+          ? dinoBadge(item, dinoFit)
           : shapeSVG(item.shape, item.fill, item.color, shapeFit);
       }
       gridEl.appendChild(cell);
@@ -569,6 +667,8 @@ function renderPuzzle(puzzle) {
   choicesEl.innerHTML = '';
   const cFit = type === 'bus'
     ? Math.min(80, Math.floor(available / 3) - 12)
+    : type === 'dino'
+    ? Math.max(56, Math.floor(cellSize * 0.62))
     : Math.floor(cellSize * 0.52);
 
   choices.forEach(item => {
@@ -580,6 +680,10 @@ function renderPuzzle(puzzle) {
       key     = busKey(item);
       content = busRender(item, cFit);
       label   = `Ligne ${item.num}`;
+    } else if (type === 'dino') {
+      key     = dinoKey(item);
+      content = dinoBadge(item, cFit);
+      label   = `${item.name} ${item.colorLabel}`;
     } else {
       key     = shapeKey(item.shape, item.fill);
       content = shapeSVG(item.shape, item.fill, item.color, Math.max(48, cFit));
@@ -596,6 +700,7 @@ function renderPuzzle(puzzle) {
   });
 
   if (type === 'bus') SoundPool.phrase('quel-bus-manque', 'Quel bus manque dans la grille ?');
+  else if (type === 'dino') SoundPool.phrase('quel-dino-manque', 'Quel dino manque dans la grille ?');
   else SoundPool.phrase('qu-est-ce-qui-manque', "Qu'est-ce qui manque dans la grille ?");
 }
 
@@ -628,6 +733,8 @@ function onChoice(key, btn, puzzle) {
       mystery.style.animation = 'none';
       mystery.innerHTML = puzzle.type === 'bus'
         ? busRender(item, Math.floor(cs * 0.84))
+        : puzzle.type === 'dino'
+        ? dinoBadge(item, Math.floor(cs * 0.80))
         : shapeSVG(item.shape, item.fill, item.color, Math.floor(cs * 0.60));
       mystery.classList.add('flash-ok');
     }
@@ -699,7 +806,9 @@ function playSuccessBeep() {
 function nextRound() {
   round++;
   if (round > ROUNDS_PER_GAME) { showEnd(); return; }
-  const puzzle = currentMode === 'bus' ? generateBusPuzzle(round) : generateShapesPuzzle(round);
+  const puzzle = currentMode === 'bus' ? generateBusPuzzle(round)
+    : currentMode === 'dino' ? generateDinoPuzzle(round)
+    : generateShapesPuzzle(round);
   renderPuzzle(puzzle);
 }
 
@@ -711,9 +820,11 @@ function showEnd() {
 //  MODE SWITCH
 // ─────────────────────────────────────────────────────────────
 function switchMode(mode) {
+  if (mode === 'dino' && !OMBRES.length) mode = 'shapes'; // repli si data dino absente
   currentMode = mode;
   document.getElementById('btn-mode-shapes').classList.toggle('active', mode === 'shapes');
   document.getElementById('btn-mode-bus').classList.toggle('active', mode === 'bus');
+  document.getElementById('btn-mode-dino').classList.toggle('active', mode === 'dino');
   startGame();
 }
 window.switchMode = switchMode;
@@ -725,9 +836,14 @@ function startGame() {
   round = 0;
   answered = false;
   levelSchedule = buildLevelSchedule(ROUNDS_PER_GAME);
+  // 🔒 Bandeau niveau (figée) — rappel du palier courant (3★)
+  document.getElementById('levelbar').textContent = 'Niveau ' + (STAR_LV + 1) + ' / 3';
   G.buildPips();
   nextRound();
 }
+
+// Sans data dino, le mode Dinos n'a pas de sens → bouton masqué
+if (!OMBRES.length) document.getElementById('btn-mode-dino').style.display = 'none';
 
 startGame();
 });

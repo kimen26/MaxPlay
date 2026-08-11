@@ -16,11 +16,11 @@ type: project
 
 ## État déploiement (mis à jour à chaque ajout/retrait MJ)
 
-**43 jeux status:live** (42 live + 1 wip=dinos) : mj-04–06, mj-08–09, mj-11–13a/c, mj-15–21, mj-23–45, max-adventure, mj-pose-tiles, dinos-encyclopedie. **Mise à jour 2026-07-13 (session 6h30)** : +3 MJ (mj-43 : Remplis les caisses, mj-44 : Boîte à sons, mj-45 : Le bus qui se remplit) — les 3 codés, harnais vert (29+26+26 checks), reviewer PASS, validation ressenti Papa Yann en cours.
+**36 jeux au menu enfant + 1 wip (encyclo dinos) + 2 bacs à sable parentaux** (max-adventure, mj-pose-tiles). Liste = source unique `site/js/catalog.js` (ne pas la recopier ici).
 
-**Retirés du menu** : mj-01, mj-02, mj-03, mj-07, mj-10, mj-13b, mj-14 (conservés fichiers)
+**PURGE 2026-08-10 (décision PY « on garde l'idée, rien de codé pour rien »)** : 23 jeux supprimés de `site/` — les 18 retirés du tri C0 2026-07-28 et des retraits PY 2026-07-21 (mj-04/05/08/11/12/16/17/23/25/26/27/29/33/36/41/43/44/45), mj-58 (décision PY du jour), et 4 orphelins hors catalogue (mj-01, mj-13b, mj-gold-a, mj-gold-b). Trace raisons+dates : `pmo/backlog.md` · figées archivées : `docs/jeux/_archive/figees-jeux-purges-2026-08-10/`. Retraits historiques mj-02/03/07/10 : fichiers déjà absents.
 
-**Production** : `https://kimen26.github.io/MaxPlay/` — CI via `.github/workflows/deploy.yml` (72460ab2 : 10 MJ dinos validés, GitHub Pages SUCCESS)
+**Production** : `https://kimen26.github.io/MaxPlay/` — CI via `.github/workflows/deploy.yml`
 
 **Artefact GitHub Pages** : 545 Mo total (limite 1 Go). Compositions : audio/ 191M + paleoart/ 122M. ⚠️ Ticket « régime minceur artefact » à anticiper (webp conversion, audio bitrate reduction).
 

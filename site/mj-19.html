@@ -32,6 +32,12 @@
       padding:16px; box-sizing:content-box;
     }
     .bus-mover:active { filter:drop-shadow(0 8px 16px rgba(0,0,0,0.8)); }
+    /* Manche dino (ordre PY 2026-08-10, #6311) : ombre chinoise canon sur
+       pastille blanche — sinon silhouette noire invisible sur l'arène sombre. */
+    .bus-mover.dino-mover {
+      background:#fff; border-radius:50%; padding:10px;
+      display:flex; align-items:center; justify-content:center;
+    }
     .bus-mover.captured {
       animation:captureBoom 0.6s ease forwards;
       pointer-events:none;
@@ -81,6 +87,11 @@
 
   <script src="js/data.js"></script>
   <script src="js/bus-svg.js"></script>
+  <script src="js/lang.js"></script>
+  <script src="js/dinos-data.js"></script>
+  <script src="js/dinos-i18n.js"></script>
+  <script src="js/dinos-audio-manifest.js"></script>
+  <script src="js/dinos-ombres.js"></script>
   <script src="js/mj-shell.js"></script>
   <script>
   MJ.ready(function () {
@@ -90,16 +101,16 @@
       consigne: false, // consigne portée par #quest (spécifique, mise à jour à chaque manche)
       regle: {
         picto: '🎯🚌',
-        texte: 'Écoute le numéro et tape le bon bus parmi tous ceux qui bougent !',
+        texte: 'Écoute la consigne et tape la bonne cible parmi toutes celles qui bougent !',
         etapes: [
-          { t: 'J’écoute le numéro demandé 👂',
-            d: 'Une voix dit « Trouve le bus 162 ! » et le numéro est écrit en haut, en jaune.' },
-          { t: 'Je regarde tous les bus qui bougent 👀',
-            d: 'Plein de bus se baladent dans l’écran, chacun avec son numéro.' },
-          { t: 'Je tape le bon bus 👆',
+          { t: 'J’écoute la cible 👂',
+            d: 'Une voix dit « Trouve le bus 162 ! » ou le nom d’un dino — et c’est écrit en haut, en jaune.' },
+          { t: 'Je regarde tout ce qui bouge 👀',
+            d: 'Des bus… et parfois des dinos se baladent dans l’écran !' },
+          { t: 'Je tape la bonne cible 👆',
             d: 'Si je me trompe, ce n’est pas grave : je réessaie, il n’y a pas de pénalité.' },
-          { t: 'Plus j’ai d’étoiles, plus il y a de bus et ils vont plus vite 💪',
-            d: 'Au début, peu de bus lents. Puis de plus en plus nombreux et rapides !' }
+          { t: 'Plus j’ai d’étoiles, plus ça bouge 💪',
+            d: 'Au début, peu de cibles lentes. Puis de plus en plus nombreuses et rapides !' }
         ]
       }
     });
@@ -128,14 +139,56 @@
     let round = 0;
     let score = 0;
     let attempts = 1;    // essais sur la manche courante (pour la bille golden)
-    let movers = [];     // { el, num, line, x, y, vx, vy, w, h }
-    let targetNum = null;
+    let movers = [];     // { el, key, x, y, vx, vy, w, h }
+    let targetKey = null;
     let rafId = null;
     let lastT = 0;
     let locked = false;
 
     function rand(a,b) { return a + Math.random()*(b-a); }
     function pick(arr) { return arr[Math.floor(Math.random()*arr.length)]; }
+
+    // ── Cibles variées (ordre Papa Yann 2026-08-10, annotation #6311) ──────
+    // « Pkoi que des bus, mettre des dino aussi » : la partie mélange manches
+    // BUS (numéro annoncé, contrat 🔒 inchangé) et manches DINO (nom annoncé,
+    // ombre chinoise canon sur pastille blanche). Distracteurs dino de
+    // familles DIFFERENTES en priorité (éviter les leurres trop ressemblants).
+    // La 1re manche est TOUJOURS un bus (entrée douce + stabilité du harnais).
+    const OMBRES = (window.DinoOmbres && typeof DINOS !== 'undefined') ? DinoOmbres.pool() : [];
+    const DINO_ROUNDS_N = [2, 3, 3][level];         // manches dino par partie
+    const DINO_COUNT = [[6,8],[10,14],[14,18]][level]; // movers par manche dino
+    const dinoRounds = new Set((function(){
+      if (!OMBRES.length) return [];
+      const idx = [1,2,3,4,5,6]; // jamais la manche 0
+      for (let i = idx.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [idx[i], idx[j]] = [idx[j], idx[i]];
+      }
+      return idx.slice(0, DINO_ROUNDS_N);
+    })());
+
+    // Annonce dino : TTS dit l'amorce (« Trouve le… ») puis le MP3 réel dit le
+    // nom (même règle de voix que mj-24 ; repli TTS phrase complète si le MP3
+    // manque). Filet : si le TTS ne rappelle jamais onEnd, le MP3 part à 2,2 s.
+    let sayToken = 0;
+    function sayDino(d){
+      const phrase = 'Trouve le ' + d.name + ' !';
+      const token = ++sayToken;
+      try {
+        if (window.TTS && TTS.supported && TTS.supported()){
+          let played = false;
+          const go = function(){
+            if (played || token !== sayToken) return;
+            played = true;
+            DinoOmbres.playNom(d.id, phrase);
+          };
+          TTS.speak('Trouve le…', { pitch: 1.05, onEnd: go });
+          setTimeout(go, 2200);
+        } else if (window.DinoOmbres) {
+          DinoOmbres.playNom(d.id, phrase);
+        }
+      } catch(e) {}
+    }
 
     function startRound() {
       locked = false;
@@ -144,44 +197,63 @@
       arena.innerHTML = '';
       movers = [];
 
-      // Pool : nombre aléatoire de bus, doublons autorisés (LIGNES ~26 mais on veut 50-80 bus)
-      const busCount = Math.floor(rand(CFG.count[0], CFG.count[1] + 1));
-      const pool = [];
-      while (pool.length < busCount) {
-        const shuffled = LIGNES.slice().sort(() => Math.random() - 0.5);
-        for (const l of shuffled) {
-          if (pool.length >= busCount) break;
-          pool.push(l);
+      let defs; // { key, html, dino } par mover
+      if (dinoRounds.has(round)) {
+        // ── Manche DINO : cible unique + distracteurs de familles différentes
+        const count = Math.floor(rand(DINO_COUNT[0], DINO_COUNT[1] + 1));
+        const target = DinoOmbres.pick(OMBRES);
+        const others = DinoOmbres.pickCousins(OMBRES, target, count, { minCousins: 0 });
+        targetKey = 'd:' + target.id;
+        document.getElementById('quest').innerHTML = `Trouve le <b>${target.name}</b> !`;
+        sayDino(target);
+        defs = DinoOmbres.shuffle([target, ...others]).map(d => ({
+          key: 'd:' + d.id, dino: true,
+          html: '<img src="' + d.src + '" alt="" style="width:64px;height:64px;object-fit:contain;pointer-events:none;">'
+        }));
+      } else {
+        // ── Manche BUS : pool à doublons autorisés (LIGNES ~26 mais on veut 50-80 bus)
+        const busCount = Math.floor(rand(CFG.count[0], CFG.count[1] + 1));
+        const pool = [];
+        while (pool.length < busCount) {
+          const shuffled = LIGNES.slice().sort(() => Math.random() - 0.5);
+          for (const l of shuffled) {
+            if (pool.length >= busCount) break;
+            pool.push(l);
+          }
         }
+        // Cible parmi les bus présents (doublons = tous gagnants, comme avant)
+        const target = pick(pool);
+        targetKey = 'b:' + target.num;
+        document.getElementById('quest').innerHTML = `Trouve le bus <b>${target.num}</b> !`;
+        // TTS partagé (cancel-then-speak, respell lexique FR) — garde try/catch WebKit/iOS
+        try {
+          if (window.TTS && TTS.speak) TTS.speak(`Trouve le bus ${target.num}`, { rate: 0.95 });
+        } catch(e) {}
+        defs = pool.map(line => ({
+          key: 'b:' + line.num, dino: false,
+          html: busSVG(line.color, line.textColor, line.num, BUS_WIDTH)
+        }));
       }
-      // Cible parmi les bus présents
-      const target = pick(pool);
-      targetNum = target.num;
-      document.getElementById('quest').innerHTML = `Trouve le bus <b>${targetNum}</b> !`;
-      // Garde WebKit/iOS : SpeechSynthesisUtterance peut être absent (crash sinon)
-      try {
-        if (window.speechSynthesis && 'SpeechSynthesisUtterance' in window) {
-          speechSynthesis.cancel();
-          const u = new SpeechSynthesisUtterance(`Trouve le bus ${targetNum}`);
-          u.lang='fr-FR'; u.rate=0.95;
-          speechSynthesis.speak(u);
-        }
-      } catch(e) {}
+      spawnMovers(defs);
+    }
 
+    function spawnMovers(defs) {
+      const arena = document.getElementById('arena');
       const aRect = arena.getBoundingClientRect();
       const W = aRect.width, H = aRect.height;
 
-      pool.forEach((line, i) => {
+      defs.forEach(def => {
         const el = document.createElement('div');
-        el.className = 'bus-mover';
-        el.style.width = BUS_WIDTH + 'px';
-        el.innerHTML = busSVG(line.color, line.textColor, line.num, BUS_WIDTH);
+        el.className = 'bus-mover' + (def.dino ? ' dino-mover' : '');
+        el.style.width = (def.dino ? 84 : BUS_WIDTH) + 'px';
+        el.innerHTML = def.html;
+        if (def.key === targetKey) el.dataset.correct = '1'; // repère harnais
         arena.appendChild(el);
         const bw = el.offsetWidth  || (BUS_WIDTH + 32);
         const bh = el.offsetHeight || 78;
         const x = rand(10, Math.max(10, W - bw - 10));
         const y = rand(10, Math.max(10, H - bh - 10));
-        // 60% de bus quasi-horizontaux (gauche↔droite), 40% libres
+        // 60% de movers quasi-horizontaux (gauche↔droite), 40% libres
         const sp = rand(CFG.speed[0], CFG.speed[1]);
         let vx, vy;
         if (Math.random() < 0.6) {
@@ -192,11 +264,7 @@
           vx = Math.cos(ang)*sp;
           vy = Math.sin(ang)*sp;
         }
-        const mv = {
-          el, num: line.num, line,
-          x, y, vx, vy,
-          w: bw, h: bh
-        };
+        const mv = { el, key: def.key, x, y, vx, vy, w: bw, h: bh };
         el.style.transform = `translate(${x}px,${y}px)`;
         el.addEventListener('click', () => onTap(mv));
         movers.push(mv);
@@ -255,7 +323,7 @@
 
     function onTap(mv) {
       if (locked) return;
-      if (mv.num === targetNum) {
+      if (mv.key === targetKey) {
         locked = true;
         // Fige la position via CSS vars pour que l'animation la conserve
         mv.el.style.setProperty('--cx', mv.x + 'px');

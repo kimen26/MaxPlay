@@ -8,14 +8,14 @@
 //  Usage :
 //    node audit-gabarit.mjs               → audite les jeux AU MENU (présents dans js/catalog.js)
 //    node audit-gabarit.mjs --all         → audite TOUS les site/mj-*.html (menu + retirés)
-//    node audit-gabarit.mjs mj-43 mj-45   → audite seulement ces jeux
+//    node audit-gabarit.mjs mj-46 mj-48   → audite seulement ces jeux
 //    node audit-gabarit.mjs --json        → sortie JSON (pour CI / agents)
 //    node audit-gabarit.mjs --strict      → les checks C1 (EP-038 2026-07-28) sortent en BLOQUANT
 //                                            au lieu de dette (voir plan de bascule ci-dessous)
 //
-//  Portée par défaut = catalog.js (source de vérité menu). Les jeux retirés du menu
-//  (mj-01/13b/14, conservés en fichier mais absents du catalog) ne sont PAS audités
-//  par défaut : leur dette gabarit legacy est assumée, ils ne bloquent pas la CI.
+//  Portée par défaut = catalog.js (source de vérité menu). Depuis la purge
+//  2026-08-10 (décision PY), un jeu retiré est SUPPRIMÉ de site/ — seuls les
+//  2 bacs à sable parentaux (retire:true + parental:true) restent hors audit.
 //  Ajouté 2026-07-15 (scan militaire : rendre l'audit branchable bloquant en CI).
 //
 //  Sort code 1 si au moins un jeu a une violation BLOQUANTE (voir plus bas),
@@ -78,25 +78,22 @@ const C1 = strict ? 'block' : 'warn';
 const GREEN = '\x1b[32m', RED = '\x1b[31m', YEL = '\x1b[33m', DIM = '\x1b[2m', RST = '\x1b[0m';
 
 // ── liste des fichiers à auditer ────────────────────────────────────────────
-// Fichiers de démo/référence du package Design System — pas de vrais jeux, exclus de l'audit batterie.
-const NOT_A_GAME = new Set(['mj-gold-a', 'mj-gold-b']);
-
 // LEGACY écran de fin maison (état au tour de conformité 2026-08-01, sonde
-// runtime 56 jeux) : les SEULS jeux encore autorisés en avertissement sur le
-// check « fin via G.showEnd ». Liste NOMINATIVE qui ne peut que RÉTRÉCIR :
+// runtime ; purge 2026-08-10 : les 11 jeux legacy retirés du menu ont été
+// supprimés de site/) : les SEULS jeux encore autorisés en avertissement sur
+// le check « fin via G.showEnd ». Liste NOMINATIVE qui ne peut que RÉTRÉCIR :
 // on en SORT un jeu quand il est migré (il devient alors bloquant à jamais),
 // on n'en AJOUTE JAMAIS (un nouveau jeu naît conforme, directive PY
-// mutualisation gravée en mémoire). 3 cas sandbox/continus (mj-17, mj-32,
+// mutualisation gravée en mémoire). 2 cas sandbox/continus (mj-32,
 // mj-pose-tiles) : piste sans objet, fin standard à statuer PY.
 const LEGACY_FIN_MAISON = new Set([
-  'mj-05', 'mj-08', 'mj-11', 'mj-12', 'mj-16', 'mj-17', 'mj-23',
-  'mj-32', 'mj-36', 'mj-43', 'mj-44', 'mj-45', 'mj-pose-tiles',
+  'mj-32', 'mj-pose-tiles',
 ]);
 
 // Source de vérité du menu : tout id mj-* présent dans js/catalog.js, SAUF
-// retire:true (2026-07-28, C0 tri qualité) — un jeu retiré/fusionné/déplacé
-// vers l'écran parental reste dans le fichier (trace, cf. entête catalog.js)
-// mais ne doit plus compter comme "au menu" pour l'audit gabarit non plus.
+// retire:true (2026-07-28, C0 tri qualité) — depuis la purge 2026-08-10 il ne
+// reste que les 2 jeux parentaux (max-adventure, mj-pose-tiles) dans ce cas :
+// hors menu enfant, donc hors audit gabarit aussi.
 // Une entrée = 1 ligne (convention constante) → on cherche retire:true sur la
 // MÊME ligne que l'id, pas juste n'importe où dans le fichier.
 function catalogIds() {
@@ -141,8 +138,7 @@ function mjFiles() {
   if (wanted.length) return wanted.map(w => resolve(SITE, `${w.replace(/\.html$/, '')}.html`));
   const menu = auditAll ? null : catalogIds();
   const all = readdirSync(SITE)
-    .filter(f => /^mj-.*\.html$/.test(f))
-    .filter(f => !NOT_A_GAME.has(basename(f, '.html')));
+    .filter(f => /^mj-.*\.html$/.test(f));
   if (!menu) return all.map(f => resolve(SITE, f));
   const kept = [], skip = [];
   for (const f of all) (menu.has(basename(f, '.html')) ? kept : skip).push(f);

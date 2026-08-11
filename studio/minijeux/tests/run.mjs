@@ -45,8 +45,18 @@ const browser = await chromium.launch({ args: ['--allow-file-access-from-files',
 const page = await browser.newPage({ viewport: { width: 480, height: 900 } });
 
 // Smoke : toute erreur JS / console.error = échec immédiat (aurait tué la saga "Object.entries")
+// EXCEPTION calibrée 2026-08-10 : les consignes MP3 sounds/voix/phrases/<slug>.mp3
+// sont OPTIONNELLES par design (mj-shell.direConsigne retombe sur le TTS navigateur
+// si le fichier est absent — comportement voulu, cf. backlog 2026-08-10). Le 404
+// navigateur d'une consigne pas encore générée n'est donc PAS un crash : on l'ignore,
+// tout le reste (JS, images, css) continue de bloquer.
 page.on('pageerror', e => errors.push(`pageerror: ${e.message}`));
-page.on('console', m => { if (m.type() === 'error') errors.push(`console.error: ${m.text()}`); });
+page.on('console', m => {
+  if (m.type() !== 'error') return;
+  const loc = m.location();
+  if (/Failed to load resource/.test(m.text()) && loc && /sounds\/voix\/phrases\//.test(loc.url || '')) return;
+  errors.push(`console.error: ${m.text()}`);
+});
 
 let verdict = 0;
 const checks = [];

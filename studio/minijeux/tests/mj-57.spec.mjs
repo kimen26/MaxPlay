@@ -19,6 +19,17 @@ export async function run({ page, ok }) {
   ok('N0 : au moins un groupe ≥2 dispo', s0.groupsRemaining >= 1, `groups=${s0.groupsRemaining}`);
   ok('N0 : totalGrids = 3', s0.totalGrids === 3);
 
+  // Régression 2026-08-10 (annotation PY « y'a pas de couleur, tout s'allume,
+  // clic n'importe où = gagné ») : window.LIGNES vaut undefined (const top-level
+  // de data.js, PAS sur window) → palette vide → toute la grille = UN seul groupe.
+  // Verrou : la grille rendue doit avoir au moins 3 fonds d'œufs distincts.
+  const distinctN0 = await page.evaluate(() => {
+    const set = new Set();
+    document.querySelectorAll('.grid .cell:not(.empty) .mjk-oeuf').forEach(e => set.add(e.style.background));
+    return set.size;
+  });
+  ok('N0 : ≥3 couleurs d\'œufs distinctes rendues (palette LIGNES bien branchée)', distinctN0 >= 3, `distinct=${distinctN0}`);
+
   // ── Pré-illumination au survol AVANT le tap (anti-hasard) ──
   const grp = await page.evaluate(() => window.__mjTest.findGroup());
   ok('un groupe ≥2 identifiable', Array.isArray(grp) && grp.length >= 2);

@@ -60,16 +60,108 @@
     let score = 0, streak = 0, qCount = 0, qcm = null, target = null;
 
     const shuffle = DinoOmbres.shuffle;
-    // JAMAIS deux voix en meme temps : DinoOmbres.playNom coupe le son en cours
-    // (MP3 nom reel, fallback TTS si manifest absent pour ce dino).
-    function sayTarget(){
-      DinoOmbres.playNom(target.id, 'Trouve le ' + target.name + ' !');
+
+    // ── Consignes variées (ordre Papa Yann 2026-08-10, annotation #6376) ────
+    // Un petit mot en plus du nom : 8 formulations FR, affichees ET dites.
+    // Audio FR = TTS dit l'amorce (« Où est le… ») PUIS le MP3 reel dit le nom
+    // (regle 🔒 preservee : le NOM est toujours dit par la vraie voix ElevenLabs,
+    // le TTS ne prononce le nom qu'en repli 404). Bonus niveau max (3★) : ~1 fois
+    // sur 4, la consigne est dite dans une autre grande langue via le TTS
+    // navigateur (nom = genre scientifique, prononcable par une voix non-FR).
+    // Repli FR si la voix de la langue n'existe pas sur l'appareil.
+    const FR_PHRASES = [
+      'Trouve le {n} !',
+      'Où est le {n} ?',
+      'Et maintenant… le {n} !',
+      'Tu me retrouves le {n} ?',
+      'Cherche le {n} !',
+      'Montre-moi le {n} !',
+      'À toi de jouer : le {n} !',
+      'Vite, trouve le {n} !'
+    ];
+    const I18N_PHRASES = [
+      { bcp47: 'en-US', t: 'Find the {n}!' },
+      { bcp47: 'es-ES', t: '¡Encuentra el {n}!' },
+      { bcp47: 'pt-BR', t: 'Encontre o {n}!' },
+      { bcp47: 'de-DE', t: 'Finde den {n}!' },
+      { bcp47: 'it-IT', t: 'Trova il {n}!' },
+      { bcp47: 'ja-JP', t: '{n} を探して！' },
+      { bcp47: 'zh-CN', t: '找到{n}！' }
+    ];
+    let curFr = '', curI18n = null;
+
+    function hasVoiceFor(bcp47){
+      if (!window.TTS || !TTS.supported()) return false;
+      const prefix = bcp47.split('-')[0].toLowerCase();
+      try {
+        return (window.speechSynthesis.getVoices() || [])
+          .some(v => (v.lang || '').toLowerCase().startsWith(prefix));
+      } catch (e) { return false; }
+    }
+
+    function genus(){
+      const full = ((typeof DINOS !== 'undefined' && DINOS.find(d => d.id === target.id)) || {}).full;
+      return (full || target.name).split(' ')[0];
+    }
+
+    // Choisit la consigne de la question : TOUJOURS une formulation FR (repli +
+    // bouton réécouter), et parfois une voie étrangère par-dessus au 3★.
+    function pickConsigne(){
+      curFr = DinoOmbres.pick(FR_PHRASES);
+      curI18n = null;
+      if (level >= 2 && Math.random() < 0.25){
+        const hit = shuffle(I18N_PHRASES.slice()).find(p => hasVoiceFor(p.bcp47));
+        if (hit) curI18n = hit;
+      }
+    }
+
+    function consigneTexte(){
+      return curI18n ? curI18n.t.replace('{n}', genus())
+                     : curFr.replace('{n}', target.name);
+    }
+
+    // Voie FR : TTS dit l'amorce (sans le nom), puis le MP3 réel dit le nom.
+    // C'est aussi la voie du bouton réécouter — ordre PY : « cet icône ferait
+    // toujours la langue originale pour l'utilisateur (FR) ».
+    // Filet de sécurité : si le TTS ne rappelle jamais onEnd (navigateur sans
+    // pile vocale complète), le MP3 part quand même après 2,6 s.
+    let sayToken = 0;
+    function sayFr(){
+      const fr = curFr.replace('{n}', target.name);
+      const token = ++sayToken;
+      if (window.TTS && TTS.supported()){
+        DinoOmbres.stopNom();
+        TTS.cancel();
+        let played = false;
+        const go = function(){
+          if (played || token !== sayToken) return;
+          played = true;
+          DinoOmbres.playNom(target.id, fr);
+        };
+        TTS.speak(curFr.replace('{n}', '…'), { pitch: 1.05, onEnd: go });
+        setTimeout(go, 2600);
+      } else {
+        DinoOmbres.playNom(target.id, fr);
+      }
+    }
+
+    // Affiche + dit la consigne courante. JAMAIS deux voix en meme temps.
+    function sayPhrase(){
+      sayToken++; // invalide un éventuel filet de secours FR encore en attente
+      shell.setConsigne(consigneTexte(), false); // l'audio custom suit
+      if (curI18n){
+        DinoOmbres.stopNom();
+        TTS.cancel();
+        TTS.speak(curI18n.t.replace('{n}', genus()), { lang: curI18n.bcp47, pitch: 1.05, priority: true });
+      } else {
+        sayFr();
+      }
     }
 
     const shell = MJ.init({
       id: 'mj-24', emoji: '🦕', titre: 'Trouve le dino',
       consigne: true,
-      onRepeat: function () { sayTarget(); },
+      onRepeat: function () { sayFr(); }, // réécouter = TOUJOURS la langue originale (FR)
       regle: {
         picto: '🦕🔎',
         texte: 'Écoute le nom, trouve le bon dino !',
@@ -105,8 +197,8 @@
         ...others.map(o => ({ o, correct:false }))
       ]);
 
-      shell.setConsigne('Trouve le ' + target.name + ' !', false); // l'audio custom suit
-      sayTarget();
+      pickConsigne();
+      sayPhrase();
 
       const box = document.getElementById('choices');
       box.style.gridTemplateColumns = 'repeat(' + Math.min(opts.length,3) + ', 1fr)';

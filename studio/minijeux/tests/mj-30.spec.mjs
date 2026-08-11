@@ -44,6 +44,93 @@ export async function run({ page, ok }) {
   // Bouton "C'est bon !" désactivé tant que tout n'est pas placé
   ok('Bouton validation désactivé au départ', await page.isDisabled('#validateBtn'));
 
+  // ── Régressions retour PY 2026-08-10 (#6385) ─────────────────────────────
+  // (a) UNE SEULE LIGNE même sur écran très étroit : les cartes rétrécissent,
+  //     jamais de wrap ni de superposition (avant : « l'affichage explose » >3 cartes).
+  await page.setViewportSize({ width: 270, height: 900 });
+  await page.waitForTimeout(300);
+  const geom = await page.evaluate(() => ({
+    tops: [...document.querySelectorAll('.shadow-tile')].map(t => Math.round(t.getBoundingClientRect().top)),
+    topsS: [...document.querySelectorAll('.slot')].map(t => Math.round(t.getBoundingClientRect().top)),
+    right: Math.max(...[...document.querySelectorAll('.shadow-tile')].map(t => t.getBoundingClientRect().right)),
+    vw: window.innerWidth,
+  }));
+  ok('écran 270px : les ombres restent sur UNE ligne (pas de wrap)', new Set(geom.tops).size === 1, JSON.stringify(geom.tops));
+  ok('écran 270px : les cases restent sur UNE ligne', new Set(geom.topsS).size === 1, JSON.stringify(geom.topsS));
+  ok('écran 270px : rien ne déborde de l\'écran', geom.right <= geom.vw + 1, `right=${geom.right} vw=${geom.vw}`);
+  await page.setViewportSize({ width: 480, height: 900 });
+  await page.waitForTimeout(300);
+
+  // (b) Plus JAMAIS de placement verrouillé : reprise + échange autant qu'on veut.
+  const ids0 = await page.$$eval('.shadow-tile', els => els.map(e => e.dataset.id));
+  await page.click(`.shadow-tile[data-id="${ids0[0]}"]`);
+  await page.click('.slot[data-index="0"]');
+  await page.click(`.shadow-tile[data-id="${ids0[1]}"]`);
+  await page.click('.slot[data-index="1"]');
+  await page.waitForTimeout(120);
+  ok('2 cartes posées → 2 cases remplies', (await page.locator('.slot.filled').count()) === 2);
+
+  // reprise : tap sur la case pleine → la carte retourne en haut
+  await page.click('.slot[data-index="0"]');
+  await page.waitForTimeout(120);
+  ok('tap case pleine = on REPREND la carte (case vidée)', (await page.locator('.slot.filled').count()) === 1);
+  ok('bouton validation re-désactivé après reprise', await page.isDisabled('#validateBtn'));
+  // on la repose ailleurs (tap carte → tap autre case)
+  await page.click(`.shadow-tile[data-id="${ids0[0]}"]`);
+  await page.click('.slot[data-index="2"]');
+  await page.waitForTimeout(120);
+  ok('reprise replacée ailleurs (case 2)', await page.evaluate(() =>
+    document.querySelector('.slot[data-index="2"]').classList.contains('filled')));
+
+  // échange par DRAG : case 2 → case 1 (pleine) → les deux cartes s'échangent
+  const avant = await page.evaluate(() => ({
+    s1: (document.querySelector('.slot[data-index="1"] img') || {}).src || '',
+    s2: (document.querySelector('.slot[data-index="2"] img') || {}).src || '',
+  }));
+  const c2 = await page.locator('.slot[data-index="2"]').boundingBox();
+  const c1 = await page.locator('.slot[data-index="1"]').boundingBox();
+  await page.mouse.move(c2.x + c2.width / 2, c2.y + c2.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(c1.x + c1.width / 2, c1.y + c1.height / 2, { steps: 12 });
+  await page.mouse.up();
+  await page.waitForTimeout(150);
+  const apres = await page.evaluate(() => ({
+    s1: (document.querySelector('.slot[data-index="1"] img') || {}).src || '',
+    s2: (document.querySelector('.slot[data-index="2"] img') || {}).src || '',
+  }));
+  ok('drag case pleine → case pleine = ÉCHANGE des deux cartes',
+    apres.s1 === avant.s2 && apres.s2 === avant.s1, JSON.stringify({ avant, apres }));
+
+  // échange par TAP : carte sélectionnée + tap case pleine → remplacement,
+  // l'occupant retourne en haut (re-jouable)
+  const libre = await page.evaluate(() => {
+    const t = [...document.querySelectorAll('.shadow-tile')].find(t => !t.classList.contains('placed'));
+    return t ? t.dataset.id : null;
+  });
+  await page.click(`.shadow-tile[data-id="${libre}"]`);
+  const occAvant = await page.evaluate(() => (document.querySelector('.slot[data-index="1"] img') || {}).src || '');
+  await page.click('.slot[data-index="1"]');
+  await page.waitForTimeout(120);
+  const etatTap = await page.evaluate(() => ({
+    s1: (document.querySelector('.slot[data-index="1"] img') || {}).src || '',
+    nbFilled: document.querySelectorAll('.slot.filled').length,
+    nbLibres: [...document.querySelectorAll('.shadow-tile')].filter(t => !t.classList.contains('placed')).length,
+  }));
+  ok('tap case pleine avec carte en main = ÉCHANGE (nouvelle carte en place)',
+    etatTap.s1 !== occAvant && etatTap.s1 !== '', JSON.stringify(etatTap));
+  ok('l\'occupant échangé est retourné en haut (re-jouable)', etatTap.nbFilled === 2 && etatTap.nbLibres === 1, JSON.stringify(etatTap));
+
+  // on vide tout pour dérouler le chemin gagnant standard
+  for (let i = 0; i < 3; i++) {
+    const filled = await page.evaluate(idx =>
+      document.querySelector(`.slot[data-index="${idx}"]`).classList.contains('filled'), i);
+    if (filled) {
+      await page.click(`.slot[data-index="${i}"]`);
+      await page.waitForTimeout(80);
+    }
+  }
+  ok('reset : plus rien de posé', (await page.locator('.slot.filled').count()) === 0);
+
   // Chemin gagnant scripté sur les 4 manches (mode tap : tuile puis case, dans l'ordre petit → grand)
   for (let q = 0; q < 4; q++) {
     await page.waitForSelector('.shadow-tile', { timeout: 4000 });

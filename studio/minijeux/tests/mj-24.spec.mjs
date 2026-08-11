@@ -20,6 +20,31 @@ export async function run({ page, ok }) {
   ok('1 seule bonne réponse', (await page.locator('.dino-tile[data-correct="1"]').count()) === 1);
   ok('toutes les silhouettes ont une image', (await page.locator('.dino-tile img.sil').count()) === n);
 
+  // ── Consignes variées (ordre Papa Yann 2026-08-10, annotation #6376) ──
+  // La consigne affichée doit être l'une des 8 formulations du pool × le nom
+  // de la cible (pas toujours « Trouve le X ! »), et varier d'une question à
+  // l'autre. (Bonus i18n 3★ non testé ici : le harnais tourne au niveau 1.)
+  const TEMPLATES = [
+    'Trouve le {n} !', 'Où est le {n} ?', 'Et maintenant… le {n} !',
+    'Tu me retrouves le {n} ?', 'Cherche le {n} !', 'Montre-moi le {n} !',
+    'À toi de jouer : le {n} !', 'Vite, trouve le {n} !'
+  ];
+  async function consigneInfo() {
+    return await page.evaluate(() => {
+      const txt = (document.getElementById('consigne') || {}).textContent || '';
+      const okTile = document.querySelector('.dino-tile[data-correct="1"]');
+      const id = okTile ? okTile.dataset.dinoId : '';
+      const d = DINOS.find(x => x.id === id);
+      return { txt, name: d ? d.name : '' };
+    });
+  }
+  const consignesVues = [];
+  const c1 = await consigneInfo();
+  consignesVues.push(c1.txt);
+  ok('consigne = formulation du pool × nom de la cible',
+     TEMPLATES.some(t => t.replace('{n}', c1.name) === c1.txt),
+     `consigne="${c1.txt}" cible="${c1.name}"`);
+
   // ── Anti-régression "double validation" (retour Papa Yann : la 3e réponse
   // se refait 2 fois) : après une bonne réponse, TOUTES les tuiles doivent
   // être verrouillées immédiatement (pas seulement la tuile tapée), sinon
@@ -53,9 +78,14 @@ export async function run({ page, ok }) {
     const done = await page.evaluate(() => !document.querySelector('.pip.todo, .pip.cur'));
     if (done) break;
     await page.waitForSelector('.dino-tile[data-correct="1"]', { timeout: 4000 }).catch(() => {});
+    consignesVues.push((await consigneInfo()).txt);
     await page.click('.dino-tile[data-correct="1"]').catch(() => {});
     await page.waitForTimeout(1500);
   }
   const doneAll = await page.evaluate(() => !document.querySelector('.pip.todo, .pip.cur'));
   ok('Toutes les questions restantes complétées (pips remplis)', doneAll);
+
+  const distinct = new Set(consignesVues.filter(Boolean)).size;
+  ok('consignes variées d\'une question à l\'autre (≥2 formulations vues)',
+     distinct >= 2, `vues=${JSON.stringify(consignesVues)}`);
 }

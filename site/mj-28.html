@@ -20,8 +20,10 @@
       object-fit: contain; pointer-events: none; user-select: none;
     }
     .dig-shadow {
-      /* silhouette noire visible seulement dans le halo de lumière (rayon réduit + contraste renforcé 2026-07-22) */
-      filter: brightness(1.15) contrast(1.15);
+      /* les PNG ombres sont des silhouettes NOIRES pures : invisibles sur fond #060606 même
+         éclairées (brightness ne fait rien sur du noir pur). invert(1) les rend claires dans
+         le halo — effet "lampe torche" voulu (fix 2026-08-10, annotation PY : lampe injouable) */
+      filter: invert(1) brightness(1.05);
       -webkit-mask-image: radial-gradient(circle 150px at var(--mx,50%) var(--my,50%), #fff 0%, #fff 30%, rgba(255,255,255,0.25) 58%, transparent 88%);
       mask-image: radial-gradient(circle 150px at var(--mx,50%) var(--my,50%), #fff 0%, #fff 30%, rgba(255,255,255,0.25) 58%, transparent 88%);
     }

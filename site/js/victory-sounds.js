@@ -139,6 +139,28 @@ function _pickRandom(arr, key) {
   return pick;
 }
 
+// ── Référentiel de contenu (Lot 3 allégé, 2026-08-10) ────────────────────────
+// js/textes-jeux.js (généré depuis studio/referentiel/) porte, par slug, le
+// texte canonique. Un repli inline absent OU divergent est ignoré : la table
+// gagne (le MP3 dit ce qu'elle dit, pas ce que le point d'appel imaginait —
+// incident « Tu maîtrises ce jeu ! » du 2026-08-10). Divergence → log console,
+// pour traquer les appels obsolètes sans casser les 56 pages.
+function _normTxt(t) {
+  return String(t || '')
+    .replace(/[’‘]/g, "'").replace(/\s+/g, ' ').trim().toLowerCase();
+}
+function _repliCanonique(slug, fallbackText) {
+  const t = (typeof window !== 'undefined' && window.TEXTES_JEUX)
+    ? window.TEXTES_JEUX[slug] : null;
+  if (!t || !t.tts) return fallbackText;
+  if (fallbackText && _normTxt(fallbackText) !== _normTxt(t.tts)
+      && typeof console !== 'undefined' && console.warn) {
+    console.warn('[textes-jeux] repli divergent pour « ' + slug + ' » — table : « '
+      + t.tts + ' », point d\'appel : « ' + fallbackText + ' » (la table gagne)');
+  }
+  return t.tts;
+}
+
 function _playFile(src, volume) {
   const a = new Audio(src);
   a.volume = volume;
@@ -178,6 +200,7 @@ const SoundPool = {
   /** Ligne vocale nommée, tirée au hasard parmi les 3 voix du casting
    *  (sounds/voix/{f,h,wex}/<slug>.mp3), fallback TTS. Slugs : etoile-gagnee. */
   voiceLine(slug, fallbackText, volume = 0.95) {
+    fallbackText = _repliCanonique(slug, fallbackText);
     try {
       const dir = _pickRandom(VOICE_DIRS, 'voice-dir');
       const a = new Audio(`${dir}/${slug}.mp3`);
@@ -192,6 +215,7 @@ const SoundPool = {
     }
   },
   phrase(slug, fallbackText, volume = 0.95) {
+    fallbackText = _repliCanonique(slug, fallbackText);
     try {
       const a = new Audio(`sounds/voix/phrases/${slug}.mp3`);
       a.volume = volume;
@@ -204,7 +228,17 @@ const SoundPool = {
       return null;
     }
   },
+  /** Repli canonique d'un slug selon la table textes-jeux (la table gagne,
+   *  log console si divergence). Exposé pour les chemins TTS directs
+   *  (mj-shell say, regle-info speak) qui ne passent pas par phrase(). */
+  repliCanonique: _repliCanonique,
 };
+
+// Un `const` top-level ne se publie PAS sur window (environnement lexical
+// global ≠ propriété) — or mj-shell, mj-golden, regle-info et plusieurs pages
+// gardent leurs appels par `window.SoundPool && …`. Sans cette ligne ces
+// gardes sont mortes et ni les MP3 ni la table textes-jeux ne sont consultés.
+if (typeof window !== 'undefined') window.SoundPool = SoundPool;
 
 // ── API historique (inchangée — utilisée par tous les mj-XX) ─────────────────
 let _currentVictoryAudio = null;

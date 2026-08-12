@@ -2,10 +2,10 @@
 // Charger AVANT tout script audio/data. FR par défaut : comportement identique à avant.
 // Résolution : ?lang= (URL, force + persiste) → localStorage → 'fr'.
 (function () {
-  var SUPPORTED = ['fr', 'en', 'pt-br', 'es', 'it', 'ar', 'ru', 'zh', 'ja'];
+  var SUPPORTED = ['fr', 'en', 'pt-br', 'es-es', 'es-mx', 'it', 'ar', 'ru', 'zh', 'ja', 'de', 'hi'];
   var BCP47 = {
-    fr: 'fr-FR', en: 'en-US', 'pt-br': 'pt-BR', es: 'es-ES', it: 'it-IT',
-    ar: 'ar-SA', ru: 'ru-RU', zh: 'zh-CN', ja: 'ja-JP'
+    fr: 'fr-FR', en: 'en-US', 'pt-br': 'pt-BR', 'es-es': 'es-ES', 'es-mx': 'es-MX', it: 'it-IT',
+    ar: 'ar-SA', ru: 'ru-RU', zh: 'zh-CN', ja: 'ja-JP', de: 'de-DE', hi: 'hi-IN'
   };
   var qs = null;
   try { qs = new URLSearchParams(location.search).get('lang'); } catch (e) {}

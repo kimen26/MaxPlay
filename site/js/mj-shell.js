@@ -40,7 +40,11 @@
 
   var SCRIPTS = [
     'js/sounds.js',
+    'js/lexique-fr.js',
     'js/tts.js',
+    // Table des textes canoniques (référentiel) : avant victory-sounds, dont
+    // les replis TTS la consultent (la table gagne sur tout repli divergent).
+    'js/textes-jeux.js',
     'js/victory-sounds.js',
     'js/feedback.js',
     'js/catalog.js',
@@ -147,13 +151,8 @@
     var say = function (txt) {
       if (!txt) return;
       try {
-        if (window.TTS && TTS.speak) { TTS.speak(txt, { priority: true }); return; }
-        if ('speechSynthesis' in window) {
-          speechSynthesis.cancel();
-          var u = new SpeechSynthesisUtterance(txt);
-          u.lang = 'fr-FR'; u.rate = 0.9;
-          speechSynthesis.speak(u);
-        }
+        // TTS.speak = cancel-then-speak, rate 0.9 par défaut (+ respell lexique FR)
+        if (window.TTS && TTS.speak) TTS.speak(txt, { priority: true });
       } catch (e) {}
     };
 
@@ -178,13 +177,17 @@
     // Dit la consigne en VRAIE VOIX si elle a été enregistrée, en TTS sinon.
     // Les consignes dynamiques (« Trouve le » + nom tiré au hasard) ne matchent
     // évidemment aucun fichier : elles restent en TTS, c'est le comportement juste.
+    // Repli TTS : le texte canonique de la table textes-jeux gagne sur le texte
+    // inline quand les deux divergent (référentiel, Lot 3 — log console).
     var direConsigne = function (txt) {
       if (!txt) return;
       var slug = slugConsigne(txt);
+      var repli = (slug && window.SoundPool && SoundPool.repliCanonique)
+        ? SoundPool.repliCanonique(slug, txt) : txt;
       if (slug && window.SoundPool && SoundPool.phrase) {
-        try { SoundPool.phrase(slug, txt); return; } catch (e) {}
+        try { SoundPool.phrase(slug, repli); return; } catch (e) {}
       }
-      say(txt);
+      say(repli);
     };
     var consigneTxt = '';
     var setConsigne = function () {};

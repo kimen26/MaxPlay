@@ -33,12 +33,8 @@
 
   function speak(texte) {
     try {
-      if (!('speechSynthesis' in window)) return;
-      window.speechSynthesis.cancel();
-      var u = new SpeechSynthesisUtterance(texte);
-      u.lang = 'fr-FR';
-      u.rate = 0.9;
-      window.speechSynthesis.speak(u);
+      // Délégué au TTS partagé (cancel-then-speak, rate 0.9, respell lexique FR).
+      if (window.TTS && TTS.speak) TTS.speak(texte);
     } catch (e) {
       // fallback silencieux (EP-033 : jamais bloquer le jeu pour du son)
     }
@@ -145,7 +141,7 @@
     function fermer() {
       voile.classList.remove('on', 'show');
       pan.classList.remove('on');
-      try { window.speechSynthesis && speechSynthesis.cancel(); } catch (e) {}
+      try { if (window.TTS && TTS.cancel) TTS.cancel(); } catch (e) {}
       stopMic();
     }
 
@@ -162,8 +158,15 @@
         .concat(etapes.map(function (e) { return e.t + (e.d ? '. ' + e.d : ''); }))
         .concat(['Réponds juste du premier coup à toutes les questions pour gagner l\'étoile de champion !'])
         .join('. ').replace(EMOJI_RE, '');
-      if (opts.slug && window.SoundPool && SoundPool.phrase) SoundPool.phrase(opts.slug, full);
-      else speak(full);
+      // Slug par défaut = regle-<id du jeu>. Évite de modifier les 55 jeux : le
+      // MP3 est retrouvé tout seul s'il existe, sinon on retombe sur le TTS.
+      // Repli TTS : le texte canonique de la table textes-jeux gagne sur le
+      // texte reconstruit ici quand ils divergent (référentiel, Lot 3).
+      var slug = opts.slug || ('regle-' + gameId());
+      var repli = (window.SoundPool && SoundPool.repliCanonique)
+        ? SoundPool.repliCanonique(slug, full) : full;
+      if (window.SoundPool && SoundPool.phrase) SoundPool.phrase(slug, repli);
+      else speak(repli);
     });
 
     // ── avis parent : envoi via Comments (localStorage + sync cloud) ──

@@ -38,7 +38,12 @@ site/img/dinos/_new-traces/
 infra/bot/*.log
 
 # Referentiel de contenu — dump machine regenerable (853 Ko, reecrit entierement a chaque run).
-# Le tableau de bord lisible _ETAT-CONTENU.md, lui, EST versionne. Le Lot 1 ajoutera une
-# base d empreintes compacte qui sera versionnee elle aussi.
+# Le tableau de bord lisible _ETAT-CONTENU.md, lui, EST versionne. Depuis le Lot 1, la base
+# d empreintes empreintes.json est versionnee elle aussi (compacte, c est elle qui porte la
+# memoire de « ce qui etait a jour la derniere fois ») — ne PAS l ignorer.
 studio/referentiel/registre.json
 studio/referentiel/plan-generation.json
+studio/referentiel/textes-jeux.json
+
+# backups locaux de settings (peuvent contenir des secrets)
+.claude/*.bak

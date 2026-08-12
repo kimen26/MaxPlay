@@ -49,6 +49,20 @@ const CONSIGNES = [
   'Un dino par ligne, colonne et enclos… jamais collés !',
   'Continue à faire éclore les œufs !',
   'Tape pour sauter par-dessus les cactus !',
+
+  // ── 2e vague (2026-08-10, retour Papa Yann « ça répète en TTS ») ──────────
+  // Ces consignes-là sont passées à travers le premier inventaire : leur appel
+  // est `setConsigne(currentInstruction())`, `setConsigne(consigneManque)`,
+  // `setConsigne(label)`… — le texte est CALCULÉ, pas écrit en clair dans
+  // l'appel. Mon extracteur ne lisait que les chaînes littérales.
+  // Ne sont reprises ici que celles dont le texte est FIXE une fois calculé ;
+  // celles qui contiennent une valeur variable restent en TTS, à raison.
+  'Range-les du plus petit au plus grand !',        // mj-30
+  'Range-les du plus léger au plus lourd !',        // mj-30
+  'Il en faut combien pour faire 10 ?',             // mj-49
+  'Il en manque combien pour remplir la boîte ?',   // mj-49
+  'Tous les œufs ont éclos !',                      // mj-57
+  'Fais un territoire pour chaque pierre !',        // mj-59
 ];
 
 // ── garde-fou projet : mots interdits dans un texte narré ───────────────────

@@ -598,19 +598,16 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 <script src="js/dinos-racines.js"></script>
 <script src="js/dinos-i18n.js"></script>
 <script src="js/dinos-world-map.js"></script>
+<script src="js/lexique-fr.js"></script>
+<script src="js/tts.js"></script>
+<script src="js/dinos-audio-manifest.js"></script>
 <script>
 
-/* ── TTS ── */
-const synth = window.speechSynthesis;
-
+/* ── TTS ── (tts.js partagé : respell du lexique FR appliqué à l'utterance) */
 function speakText(txt) {
-  if (!synth) return;
-  synth.cancel();
-  const u = new SpeechSynthesisUtterance(txt);
-  u.lang = 'fr-FR'; u.rate = 0.88; u.pitch = 1.1;
-  synth.speak(u);
+  if (window.TTS) TTS.speak(txt, { rate: 0.88, pitch: 1.1 });
 }
-function stopSpeak() { if (synth) synth.cancel(); }
+function stopSpeak() { if (window.TTS) TTS.cancel(); }
 
 /* ── Voix réelle des MENUS (MP3 ElevenLabs) ──
    Narrateur H : accueil / régime / familles · Narratrice F : voyage.
@@ -651,6 +648,14 @@ const MENU_REGIME_VOICE = {
 };
 function playFamVoice(famId, fallbackTxt) { _playMenuSrc(MENU_FAM_VOICE[famId], fallbackTxt); }
 function playRegimeVoice(catId, fallbackTxt) { _playMenuSrc(MENU_REGIME_VOICE[catId], fallbackTxt); }
+
+/* ── Voix réelle des PÉRIODES (« Le Jurassique ! ») — audio/dinos/<lang>/periodes/<id>.mp3.
+   Branchement 2026-08-10 : le Set DINO_PERIODE_AUDIO du manifest évite tout 404
+   (permien & cie sans MP3 → fallback dame direct, sans tenter de charger). ── */
+function playPeriodeVoice(perId, fallbackTxt) {
+  const hasMp3 = window.DINO_PERIODE_AUDIO && window.DINO_PERIODE_AUDIO.has(perId);
+  _playMenuSrc(hasMp3 ? window.AUDIO_DINOS + 'periodes/' + perId + '.mp3' : null, fallbackTxt);
+}
 
 /* ── Dico : dialogue 2 voix (narrateur explique la racine + Wex donne les exemples de dinos) ──
    clé racine (r.cle) → audio/dinos/dico-<slug>.mp3. Racines sans MP3 = fallback dame jusqu'à génération. */
@@ -1230,7 +1235,8 @@ function showGridEpoque(perId) {
     });
     el.appendChild(card);
   });
-  setTimeout(() => speakText(per.label + ' ! ' + per.desc + '. Tape sur un dino pour tout savoir !'), 200);
+  // En entrant : « Le Jurassique ! » en vraie voix si le MP3 existe, sinon la dame dit tout.
+  setTimeout(() => playPeriodeVoice(per.id, per.label + ' ! ' + per.desc + '. Tape sur un dino pour tout savoir !'), 200);
 }
 
 /* ── Retour depuis grille ── */

@@ -16,6 +16,9 @@ const Tracker = (() => {
   const STORAGE_KEY = 'maxplay_progress';
 
   // Métadonnées des jeux (pour l'affichage dans suivi.html)
+  // ⚠ Table HISTORIQUE : elle sert à étiqueter les parties passées enregistrées
+  // en localStorage/cloud — y figurent donc aussi des jeux supprimés (purge
+  // 2026-08-10). Ne PAS la vider : un id sans libellé s'afficherait brut.
   const GAME_META = {
     'mj-01': { name: 'Quelle couleur ?',      emoji: '🎨', skill: 'Couleurs des lignes' },
     'mj-02': { name: 'Quel numéro ?',         emoji: '🔢', skill: 'Numéros des lignes' },
@@ -108,25 +111,11 @@ const Tracker = (() => {
 
   function _announceTitle(id) {
     const meta = GAME_META[id];
-    if (!meta || !('speechSynthesis' in window)) return;
+    if (!meta || !window.TTS || !TTS.speak) return;
     try {
-      const speakNow = () => {
-        speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance(meta.name);
-        u.lang = 'fr-FR';
-        u.rate = 0.95;
-        u.pitch = 1.05;
-        const voices = speechSynthesis.getVoices();
-        const fr = voices.find(v => v.lang.startsWith('fr'));
-        if (fr) u.voice = fr;
-        speechSynthesis.speak(u);
-      };
-      if (speechSynthesis.getVoices().length === 0) {
-        speechSynthesis.addEventListener('voiceschanged', speakNow, { once: true });
-        setTimeout(speakNow, 300);
-      } else {
-        setTimeout(speakNow, 250);
-      }
+      // Délégué au TTS partagé (choix de voix + respell lexique FR gérés là-bas)
+      const speakNow = () => TTS.speak(meta.name, { rate: 0.95, pitch: 1.05 });
+      setTimeout(speakNow, 250);
     } catch (e) {}
   }
 

@@ -1,0 +1,562 @@
+[
+  {
+    "id": "aenocyon",
+    "texte_envoye": "[excited] E-no-ci-on",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:37:20.285Z"
+  },
+  {
+    "id": "albertosaurus",
+    "texte_envoye": "[excited] Al-ber-to-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:37:22.753Z"
+  },
+  {
+    "id": "allosaurus",
+    "texte_envoye": "[excited] A-lo-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:37:25.229Z"
+  },
+  {
+    "id": "amargasaurus",
+    "texte_envoye": "[excited] A-mar-ga-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:37:27.693Z"
+  },
+  {
+    "id": "ankylosaurus",
+    "texte_envoye": "[excited] An-qui-lo-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:37:30.375Z"
+  },
+  {
+    "id": "apatosaurus",
+    "texte_envoye": "[excited] A-pa-to-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:37:33.203Z"
+  },
+  {
+    "id": "archaeopteryx",
+    "texte_envoye": "[excited] Ar-que-óp-te-rix",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:37:35.964Z"
+  },
+  {
+    "id": "archelon",
+    "texte_envoye": "[excited] Ar-que-lon",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:37:38.291Z"
+  },
+  {
+    "id": "baryonyx",
+    "texte_envoye": "[excited] Ba-ri-ó-nix",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:37:40.681Z"
+  },
+  {
+    "id": "brachiosaurus",
+    "texte_envoye": "[excited] Bra-quio-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:37:43.218Z"
+  },
+  {
+    "id": "camarasaurus",
+    "texte_envoye": "[excited] Ca-ma-ra-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:37:46.135Z"
+  },
+  {
+    "id": "carcharodontosaurus",
+    "texte_envoye": "[excited] Car-ca-ro-don-to-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:37:48.913Z"
+  },
+  {
+    "id": "carnotaurus",
+    "texte_envoye": "[excited] Car-no-TAU-ro",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:37:51.378Z"
+  },
+  {
+    "id": "centrosaurus",
+    "texte_envoye": "[excited] Cen-tro-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:37:53.835Z"
+  },
+  {
+    "id": "ceratosaurus",
+    "texte_envoye": "[excited] Ce-ra-to-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:37:56.495Z"
+  },
+  {
+    "id": "coelodonta",
+    "texte_envoye": "[excited] Ce-lo-don-ta",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:37:58.749Z"
+  },
+  {
+    "id": "corythosaurus",
+    "texte_envoye": "[excited] Co-ri-to-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:01.536Z"
+  },
+  {
+    "id": "cryolophosaurus",
+    "texte_envoye": "[excited] Crio-lo-fo-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:04.096Z"
+  },
+  {
+    "id": "deinonychus",
+    "texte_envoye": "[excited] Dei-no-ni-cus",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:06.754Z"
+  },
+  {
+    "id": "dilophosaurus",
+    "texte_envoye": "[excited] Di-lo-fo-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:09.135Z"
+  },
+  {
+    "id": "dimetrodon",
+    "texte_envoye": "[excited] Di-me-tro-don",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:11.439Z"
+  },
+  {
+    "id": "diplodocus",
+    "texte_envoye": "[excited] Di-plo-do-cus",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:13.845Z"
+  },
+  {
+    "id": "edaphosaurus",
+    "texte_envoye": "[excited] E-da-fo-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:16.390Z"
+  },
+  {
+    "id": "edmontonia",
+    "texte_envoye": "[excited] Ed-mon-to-nia",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:18.821Z"
+  },
+  {
+    "id": "edmontosaurus",
+    "texte_envoye": "[excited] Ed-mon-to-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:21.665Z"
+  },
+  {
+    "id": "elasmosaurus",
+    "texte_envoye": "[excited] E-las-mo-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:24.435Z"
+  },
+  {
+    "id": "euoplocephalus",
+    "texte_envoye": "[excited] Eu-o-plo-CÉ-fa-lo",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:27.005Z"
+  },
+  {
+    "id": "gallimimus",
+    "texte_envoye": "[excited] Ga-li-MI-mus",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:29.556Z"
+  },
+  {
+    "id": "giganotosaurus",
+    "texte_envoye": "[excited] Gui-ga-no-to-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:32.275Z"
+  },
+  {
+    "id": "glyptodon",
+    "texte_envoye": "[excited] Glip-to-don",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:34.663Z"
+  },
+  {
+    "id": "gorgonops",
+    "texte_envoye": "[excited] Gor-GO-nops",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:37.174Z"
+  },
+  {
+    "id": "hatzegopteryx",
+    "texte_envoye": "[excited] A-tse-gop-TE-rix",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:39.647Z"
+  },
+  {
+    "id": "ichthyosaurus",
+    "texte_envoye": "[excited] Ic-tio-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:42.101Z"
+  },
+  {
+    "id": "iguanodon",
+    "texte_envoye": "[excited] I-gua-no-don",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:44.350Z"
+  },
+  {
+    "id": "kentrosaurus",
+    "texte_envoye": "[excited] Ken-tro-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:46.701Z"
+  },
+  {
+    "id": "liopleurodon",
+    "texte_envoye": "[excited] Lio-pleu-ro-don",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:49.313Z"
+  },
+  {
+    "id": "lystrosaurus",
+    "texte_envoye": "[excited] Lis-tro-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:51.684Z"
+  },
+  {
+    "id": "maiasaura",
+    "texte_envoye": "[excited] Ma-ia-SAU-ra",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:54.135Z"
+  },
+  {
+    "id": "mammuthus",
+    "texte_envoye": "[excited] Ma-MUT",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:56.531Z"
+  },
+  {
+    "id": "megatherium",
+    "texte_envoye": "[excited] Me-ga-TE-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:38:59.188Z"
+  },
+  {
+    "id": "microraptor",
+    "texte_envoye": "[excited] Mi-cro-rap-tor",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:01.564Z"
+  },
+  {
+    "id": "minmi",
+    "texte_envoye": "[excited] Min-mi",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:03.834Z"
+  },
+  {
+    "id": "mosasaurus",
+    "texte_envoye": "[excited] Mo-sa-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:06.100Z"
+  },
+  {
+    "id": "moschops",
+    "texte_envoye": "[excited] Mos-KOPS",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:08.234Z"
+  },
+  {
+    "id": "ophthalmosaurus",
+    "texte_envoye": "[excited] Of-tal-mo-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:10.701Z"
+  },
+  {
+    "id": "oviraptor",
+    "texte_envoye": "[excited] O-vi-rap-tor",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:13.168Z"
+  },
+  {
+    "id": "pachycephalosaurus",
+    "texte_envoye": "[excited] Pa-qui-ce-fa-lo-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:15.883Z"
+  },
+  {
+    "id": "paraceratherium",
+    "texte_envoye": "[excited] Pa-ra-ce-ra-TE-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:18.662Z"
+  },
+  {
+    "id": "parasaurolophus",
+    "texte_envoye": "[excited] Pa-ra-sau-RÓ-lo-fo",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:21.325Z"
+  },
+  {
+    "id": "patagotitan",
+    "texte_envoye": "[excited] Pa-ta-go-ti-TÁN",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:23.806Z"
+  },
+  {
+    "id": "pentaceratops",
+    "texte_envoye": "[excited] Pen-ta-CE-ra-tops",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:26.320Z"
+  },
+  {
+    "id": "plateosaurus",
+    "texte_envoye": "[excited] Pla-te-o-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:28.889Z"
+  },
+  {
+    "id": "protoceratops",
+    "texte_envoye": "[excited] Pro-to-CE-ra-tops",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:31.267Z"
+  },
+  {
+    "id": "pteranodon",
+    "texte_envoye": "[excited] Pte-ra-no-don",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:33.639Z"
+  },
+  {
+    "id": "quetzalcoatlus",
+    "texte_envoye": "[excited] Ket-sal-co-A-tlus",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:36.126Z"
+  },
+  {
+    "id": "saurolophus",
+    "texte_envoye": "[excited] Sau-RÓ-lo-fo",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:38.631Z"
+  },
+  {
+    "id": "scutellosaurus",
+    "texte_envoye": "[excited] Es-cu-te-lo-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:40.836Z"
+  },
+  {
+    "id": "shonisaurus",
+    "texte_envoye": "[excited] Cho-ni-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:43.172Z"
+  },
+  {
+    "id": "smilodon",
+    "texte_envoye": "[excited] Es-mi-lo-don",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:45.467Z"
+  },
+  {
+    "id": "spinosaurus",
+    "texte_envoye": "[excited] Es-pi-no-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:48.119Z"
+  },
+  {
+    "id": "stegosaurus",
+    "texte_envoye": "[excited] Es-te-go-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:50.299Z"
+  },
+  {
+    "id": "tarbosaurus",
+    "texte_envoye": "[excited] Tar-bo-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:52.843Z"
+  },
+  {
+    "id": "therizinosaurus",
+    "texte_envoye": "[excited] Te-ri-si-no-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:55.636Z"
+  },
+  {
+    "id": "titanis",
+    "texte_envoye": "[excited] Ti-TA-nis",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:39:58.041Z"
+  },
+  {
+    "id": "torosaurus",
+    "texte_envoye": "[excited] To-ro-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:40:00.608Z"
+  },
+  {
+    "id": "triceratops",
+    "texte_envoye": "[excited] Tri-CE-ra-tops",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:40:03.044Z"
+  },
+  {
+    "id": "troodon",
+    "texte_envoye": "[excited] Tro-o-don",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:40:05.397Z"
+  },
+  {
+    "id": "tyrannosaurus",
+    "texte_envoye": "[excited] Ti-ra-no-SAU-rio",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:40:08.044Z"
+  },
+  {
+    "id": "utahraptor",
+    "texte_envoye": "[excited] U-ta-rap-tor",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:40:10.646Z"
+  },
+  {
+    "id": "velociraptor",
+    "texte_envoye": "[excited] Ve-lo-ci-rap-tor",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele": "eleven_v3",
+    "language_code": "es",
+    "date": "2026-08-11T04:40:13.128Z"
+  }
+]

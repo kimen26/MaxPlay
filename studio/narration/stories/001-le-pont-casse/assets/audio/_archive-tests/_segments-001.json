@@ -1,0 +1,184 @@
+{
+  "project_name": "MaxPlay - 001 Le Pont Cassé",
+  "voice_map": {
+    "narrateur_h": "cbRcktt2xvoeFpdvW2wg",
+    "wex": "G54e8CyYslC2Y4ZupTlg",
+    "raph": "Te5RKnm9ebwdEvZ1S5pS",
+    "pierrot": "ukIKjXqbiGGkqIz0SW5c"
+  },
+  "model_id": "eleven_v3",
+  "quality_preset": "high",
+  "output_path": "c:/ProjetsPerso/Claude_Projects/MaxPlay/narration/stories/001-le-pont-casse/assets/audio/001-le-pont-casse-FINAL.mp3",
+  "segments": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "role": "narrateur",
+      "text": "[softly] Le printemps avait mis de la mousse tendre sur les pierres du sentier. [playful] Wex courait devant. Ses baskets claquaient contre les cailloux. Clac. Clac. Clac. [chuckles] Derrière, Raph comptait les pissenlits en sautillant. [softly] Pierrot fermait la marche. Il regardait où il posait ses chaussures."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "role": "narrateur",
+      "text": "[slowly] Le pont apparaissait après le gros chêne. C'était un pont en bois avec une barrière des deux côtés. En dessous, le ruisseau chantait tout seul sur les galets."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "role": "narrateur",
+      "text": "[hesitant] Wex posa le pied sur la première planche. Il s'arrêta net. Il pointa le doigt."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "role": "wex",
+      "text": "[gasps] Regardez ! [softly] Il y a un trou."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "role": "narrateur",
+      "text": "[serious] La deuxième planche après le milieu du pont était cassée. Un morceau de bois manquait, comme si on avait enlevé une pièce de puzzle. [slowly] On voyait l'eau couler en dessous, rapide et claire."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "role": "narrateur",
+      "text": "[excited] [quickly] Raph arriva en courant. Elle se pencha par-dessus la barrière."
+    },
+    {
+      "voice_id": "Te5RKnm9ebwdEvZ1S5pS",
+      "role": "raph",
+      "text": "[excited] Une fenêtre ! On dirait une fenêtre sur le ruisseau ! [curious] Est-ce qu'on voit des poissons ? [happily] Moi je veux voir des poissons ! [playful] Et si on appelait par le trou ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "role": "narrateur",
+      "text": "Elle mit ses mains en porte-voix."
+    },
+    {
+      "voice_id": "Te5RKnm9ebwdEvZ1S5pS",
+      "role": "raph",
+      "text": "[playful] Houlou !"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "role": "narrateur",
+      "text": "[softly] Pierrot posa sa main autour du poignet de Raph. Il ne serrait pas fort. Il serrait comme un bracelet."
+    },
+    {
+      "voice_id": "ukIKjXqbiGGkqIz0SW5c",
+      "role": "pierrot",
+      "text": "[softly] Pas trop penchée. [serious] Si tu glisses, le bois est mouillé."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "role": "narrateur",
+      "text": "[slowly] Il s'agenouilla à son tour. Il toucha le bord de la planche cassée. Un morceau de bois pointait vers le haut comme une petite dent."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "role": "narrateur",
+      "text": "Wex se mit à plat ventre. Il approcha son œil de l'ouverture."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "role": "wex",
+      "text": "[curious] L'eau est toute froide. [softly] Je vois des cailloux blancs. [happily] Il y en a un qui brille !"
+    },
+    {
+      "voice_id": "Te5RKnm9ebwdEvZ1S5pS",
+      "role": "raph",
+      "text": "[excited] Moi je veux briller !"
+    },
+    {
+      "voice_id": "ukIKjXqbiGGkqIz0SW5c",
+      "role": "pierrot",
+      "text": "[serious] Faut pas marcher dessus. [softly] Même pas une fois. [hesitant] Faut dire aux autres."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "role": "narrateur",
+      "text": "Wex se releva. Il prit une grande inspiration."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "role": "wex",
+      "text": "[playful] On met un panneau !"
+    },
+    {
+      "voice_id": "Te5RKnm9ebwdEvZ1S5pS",
+      "role": "raph",
+      "text": "[curious] Avec du papier ?"
+    },
+    {
+      "voice_id": "ukIKjXqbiGGkqIz0SW5c",
+      "role": "pierrot",
+      "text": "[serious] La pluie l'abîmerait."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "role": "narrateur",
+      "text": "[playful] Raph tourna sur elle-même en cherchant."
+    },
+    {
+      "voice_id": "Te5RKnm9ebwdEvZ1S5pS",
+      "role": "raph",
+      "text": "[excited] Un bâton ! Un gros bâton planté comme un drapeau ! [happily] Pour que tout le monde voie avant d'arriver !"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "role": "narrateur",
+      "text": "[playful] Elle courut jusqu'au bord du ruisseau. Wex la suivit. Ils choisirent ensemble une branche de saule cassée par le vent, longue comme le bras de Pierrot. Raph arracha une fleur jaune, une grosse fleur de pissenlit toute ronde."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "role": "narrateur",
+      "text": "[softly] Pierrot tenait la branche bien droite. Wex enfonça la branche entre deux planches, juste avant le trou. La branche se tenait debout toute seule. Raph glissa la tige de la fleur dans l'écorce de la branche. La fleur jaune pendait comme un petit soleil."
+    },
+    {
+      "voice_id": "ukIKjXqbiGGkqIz0SW5c",
+      "role": "pierrot",
+      "text": "[happily] Même les tout petits verront."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "role": "wex",
+      "text": "[playful] Ceux qui courent vite aussi."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "role": "narrateur",
+      "text": "[slowly] Les trois enfants firent un pas en arrière. Le pont avait maintenant un drapeau jaune au-dessus de la planche cassée. Le vent souffla. La fleur dansait de gauche à droite."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "role": "narrateur",
+      "text": "[playful] Wex passa le premier. Il marcha sur la planche de gauche, en évitant le trou. Ses pas faisaient un bruit sec et joyeux. Raph passa sur la droite en faisant des bruits de cheval. [softly] Pierrot passa derrière. Il posa une main sur la barrière. De l'autre côté, ils s'arrêtèrent. Le ruisseau continuait son bruit sous le pont. Le drapeau jaune ondulait doucement dans l'air du printemps."
+    },
+    {
+      "voice_id": "Te5RKnm9ebwdEvZ1S5pS",
+      "role": "raph",
+      "text": "[curious] Il est là pour longtemps ?"
+    },
+    {
+      "voice_id": "ukIKjXqbiGGkqIz0SW5c",
+      "role": "pierrot",
+      "text": "[softly] Tant qu'il fait beau."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "role": "wex",
+      "text": "[happily] On peut en remettre une autre demain. [softly] Si le vent l'emporte."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "role": "narrateur",
+      "text": "[sighs] [softly] Ils reprirent le sentier. Derrière eux, le pont restait en bois, avec sa barrière, sa mousse, et sa fleur jaune qui disait attention."
+    }
+  ],
+  "_meta": {
+    "total_segments": 32,
+    "voices_used": 4,
+    "audio_tags_v3": ["softly", "playful", "chuckles", "slowly", "hesitant", "gasps", "serious", "excited", "quickly", "curious", "happily", "sighs"],
+    "duree_estimee": "~5 min",
+    "mots": 540,
+    "creation_date": "2026-05-12",
+    "process_step": "10 (canonisation audio)",
+    "story_canon": "narration/stories/001-le-pont-casse/variantes-culturelles/fr/texte.md"
+  }
+}

@@ -10,6 +10,15 @@ import { STUDIO, lireJson } from './socle.mjs';
 import { HUMEUR, HUMEUR_INVITEE } from '../catalogue/fr/humeur.mjs';
 import { REPLIQUES, LIEUX, LIGNES_NOMMEES, CONSIGNES_GENEREES } from '../catalogue/fr/repliques.mjs';
 import { ATOMES, GABARITS } from '../catalogue/fr/atomes.mjs';
+import { NOMBRES } from '../catalogue/fr/nombres.mjs';
+import { NOMS_DINO } from '../catalogue/fr/noms-dino.mjs';
+import { DICO } from '../catalogue/fr/dico.mjs';
+import {
+  ACCROCHES, RECITS, SPECIAUX, PERIODES, MENU_TOP, MENU_EP,
+} from '../catalogue/fr/dino-menu.mjs';
+import { PHONEMES_SONS } from '../catalogue/fr/phonemes.mjs';
+import { PIECES_ECHECS } from '../catalogue/fr/pieces-echecs.mjs';
+import { REGLES } from '../catalogue/fr/regles.mjs';
 import { BRUITAGES } from '../catalogue/_bruitages.mjs';
 import { ROLES, REGLAGES, TRAITEMENT, LANGUES_INVITEES } from '../catalogue/voix.mjs';
 
@@ -125,8 +134,18 @@ export function chargerCatalogue() {
 
   entrees.push(...REPLIQUES.map((r) => ({ ...r, langue: 'fr' })));
   entrees.push(...CONSIGNES_GENEREES.map((r) => ({ ...r, langue: 'fr' })));
+  entrees.push(...REGLES.map((r) => ({ ...r, langue: 'fr' })));
   entrees.push(...LIGNES_NOMMEES.map((r) => ({ ...r, langue: 'fr' })));
   entrees.push(...LIEUX.map((r) => ({ ...r, langue: 'fr' })));
+  // Familles à `fichier` explicite (contrairement aux ATOMES, dont le fichier
+  // est dérivé de la clé) : on les pousse telles quelles.
+  entrees.push(...NOMBRES.map((e) => ({ ...e, langue: 'fr' })));
+  entrees.push(...PHONEMES_SONS.map((e) => ({ ...e, langue: 'fr' })));
+  entrees.push(...PIECES_ECHECS.map((e) => ({ ...e, langue: 'fr' })));
+  entrees.push(...NOMS_DINO.map((e) => ({ ...e, langue: 'fr' })));
+  entrees.push(...DICO.map((e) => ({ ...e, langue: 'fr' })));
+  entrees.push(...[...ACCROCHES, ...RECITS, ...SPECIAUX, ...PERIODES, ...MENU_TOP, ...MENU_EP]
+    .map((e) => ({ ...e, langue: 'fr' })));
   entrees.push(...ATOMES.map((a) => ({
     ...a, langue: 'fr', fichier: `sounds/atomes/${a.cle.split('.').slice(1).join('-')}.mp3`,
   })));

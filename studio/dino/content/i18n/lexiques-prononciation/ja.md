@@ -37,7 +37,7 @@ Le japonais n'a pas de sons isolés (sauf ん/ン = *n*) : chaque consonne traî
 
 ---
 
-## 2. Table des 60 dinosaures
+## 2. Table des 70 dinosaures
 
 Colonne **カタカナ (à lire par le TTS)** = forme native. **Romaji** = contrôle Hepburn. Formes établies (Wikipedia JP / musées) sauf mention en §4.
 
@@ -59,11 +59,13 @@ Colonne **カタカナ (à lire par le TTS)** = forme native. **Romaji** = contr
 | centrosaurus | Centrosaurus | セントロサウルス | Sentorosaurusu | c→セ (s) |
 | ceratosaurus | Ceratosaurus | ケラトサウルス | Keratosaurusu | c→ケ (k) devant e ! (§4) |
 | coelodonta | Coelodonta | コエロドンタ | Koerodonta | oe→コエ ; laineux rhinocéros |
+| corythosaurus | Corythosaurus | コリトサウルス | Koritosaurusu | th→ト — ajouté 2026-08-10, à relire natif |
 | cryolophosaurus | Cryolophosaurus | クリオロフォサウルス | Kuriorofosaurusu | y→i ; ph→フォ (f) |
 | deinonychus | Deinonychus | デイノニクス | Deinonikusu | ei→デイ ; ch→ク ; y→i |
 | dilophosaurus | Dilophosaurus | ディロフォサウルス | Dirofosaurusu | ph→フォ (f) |
 | dimetrodon | Dimetrodon | ディメトロドン | Dimetorodon | -don→ドン ; pas un dino (synapside) |
 | diplodocus | Diplodocus | ディプロドクス | Dipurodokusu | -docus→ドクス (pas -サウルス) |
+| edaphosaurus | Edaphosaurus | エダフォサウルス | Edafosaurusu | ph→フォ ; synapside permien (pas un dino) — ajouté 2026-08-10, à relire natif |
 | edmontonia | Edmontonia | エドモントニア | Edomontonia | — |
 | edmontosaurus | Edmontosaurus | エドモントサウルス | Edomontosaurusu | — |
 | elasmosaurus | Elasmosaurus | エラスモサウルス | Erasumosaurusu | — |
@@ -71,14 +73,20 @@ Colonne **カタカナ (à lire par le TTS)** = forme native. **Romaji** = contr
 | gallimimus | Gallimimus | ガリミムス | Garimimusu | -mimus→ミムス |
 | giganotosaurus | Giganotosaurus | ギガノトサウルス | Giganotosaurusu | gi→ギ (dur) |
 | glyptodon | Glyptodon | グリプトドン | Guriputodon | y→i ; -don→ドン |
+| gorgonops | Gorgonops | ゴルゴノプス | Gorugonopusu | -ops→プス ; gorgonopsien permien (pas un dino) — ajouté 2026-08-10, à relire natif |
+| hatzegopteryx | Hatzegopteryx | ハツェゴプテリクス | Hatsegoputerikusu | tz→ツェ ; x→クス ; ptérosaure géant (§4) — ajouté 2026-08-10, à relire natif |
 | ichthyosaurus | Ichthyosaurus | イクチオサウルス | Ikuchiosaurusu | chth→クチ ; y→i (§4) |
 | iguanodon | Iguanodon | イグアノドン | Iguanodon | gua→グア ; -don→ドン |
 | kentrosaurus | Kentrosaurus | ケントロサウルス | Kentorosaurusu | — |
 | liopleurodon | Liopleurodon | リオプレウロドン | Riopureurodon | -don→ドン |
+| lystrosaurus | Lystrosaurus | リストロサウルス | Risutorosaurusu | y→i ; synapside permien (pas un dino) — ajouté 2026-08-10, à relire natif |
+| maiasaura | Maiasaura | マイアサウラ | Maiasaura | -saura féminin → -サウラ (pas -サウルス !) — ajouté 2026-08-10, à relire natif |
 | mammuthus | Mammuthus | マンモス | Manmosu | forme établie « マンモス » = mammouth ! (§4) |
 | megatherium | Megatherium | メガテリウム | Megateriumu | th→テ ; -ium→リウム |
 | microraptor | Microraptor | ミクロラプトル | Mikuroraputoru | -raptor→ラプトル |
+| minmi | Minmi | ミンミ | Minmi | nom de lieu australien ; forme établie ミンミ — ajouté 2026-08-10, à relire natif |
 | mosasaurus | Mosasaurus | モササウルス | Mosasaurusu | -us avalé en latin, mais japonais garde -サウルス |
+| moschops | Moschops | モスコプス | Mosukopusu | ch→コ (k) ; thérapside permien (pas un dino) — ajouté 2026-08-10, à relire natif |
 | ophthalmosaurus | Ophthalmosaurus | オフタルモサウルス | Ofutarumosaurusu | ph→フ (f) ; th→タ (t) |
 | oviraptor | Oviraptor | オヴィラプトル | Ov'iraputoru | v→ヴィ (ou ビ) ; -raptor→ラプトル (§4) |
 | pachycephalosaurus | Pachycephalosaurus | パキケファロサウルス | Pakikefarosaurusu | ch→キ (k) ; y→i ; ph→ケファ (f) |
@@ -90,6 +98,8 @@ Colonne **カタカナ (à lire par le TTS)** = forme native. **Romaji** = contr
 | protoceratops | Protoceratops | プロトケラトプス | Purotokeratopusu | c→ケ (k) ; -tops→トプス |
 | pteranodon | Pteranodon | プテラノドン | Puteranodon | Pt→プt ; -don→ドン |
 | quetzalcoatlus | Quetzalcoatlus | ケツァルコアトルス | Ketsarukoatorusu | aztèque ; qu→ケ ; forme établie musées (§4) |
+| saurolophus | Saurolophus | サウロロフス | Saurorofusu | ph→フ ; -us→フス ; ⚠ ≠ パラサウロロフス à l'oral (pas de préfixe パラ) — ajouté 2026-08-10, à relire natif |
+| scutellosaurus | Scutellosaurus | スケテロサウルス | Suketerosaurusu | scu→スケテ ; forme établie — ajouté 2026-08-10, à relire natif |
 | shonisaurus | Shonisaurus | ショニサウルス | Shonisaurusu | sh→ショ |
 | smilodon | Smilodon | スミロドン | Sumirodon | -don→ドン ; tigre à dents de sabre |
 | spinosaurus | Spinosaurus | スピノサウルス | Supinosaurusu | — |

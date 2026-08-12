@@ -1,0 +1,1379 @@
+{
+  "v": 1,
+  "lignes": {
+    "dino.aenocyon.funfact": {
+      "el": "02c35a1db93a",
+      "mp3": "9996ff44fab7"
+    },
+    "dino.aenocyon.nom": {
+      "el": "7f448c18437a",
+      "mp3": "96e4406284f3"
+    },
+    "dino.aenocyon.recap": {
+      "mp3": "3d3f9f4237f0"
+    },
+    "dino.aenocyon.regime": {
+      "el": "d96bc2d8ad0d",
+      "mp3": "8f8ccd6ba05c"
+    },
+    "dino.aenocyon.taille": {
+      "el": "6d720843dee0",
+      "mp3": "4938fc1732e2"
+    },
+    "dino.albertosaurus.funfact": {
+      "el": "570f7b6e6357",
+      "mp3": "dc06ac3b7ae7"
+    },
+    "dino.albertosaurus.nom": {
+      "el": "3bd3736ecbd5",
+      "mp3": "8e3cd5399de9"
+    },
+    "dino.albertosaurus.recap": {
+      "mp3": "79c917643606"
+    },
+    "dino.albertosaurus.regime": {
+      "el": "3b1bcf97f9de",
+      "mp3": "fecade3e64f6"
+    },
+    "dino.albertosaurus.taille": {
+      "el": "80a165224fbd",
+      "mp3": "c4b7e61a37b4"
+    },
+    "dino.allosaurus.funfact": {
+      "el": "ef2c87e443f0",
+      "mp3": "a1414ad7cb1f"
+    },
+    "dino.allosaurus.nom": {
+      "el": "34c77ab93c76",
+      "mp3": "79fbf095251b"
+    },
+    "dino.allosaurus.recap": {
+      "mp3": "2ca204579d03"
+    },
+    "dino.allosaurus.regime": {
+      "el": "4ebb1444713d",
+      "mp3": "028ac31b3a79"
+    },
+    "dino.allosaurus.taille": {
+      "el": "21de522c7333",
+      "mp3": "29333afddb6b"
+    },
+    "dino.amargasaurus.funfact": {
+      "el": "7db2901308e7",
+      "mp3": "164a289a7719"
+    },
+    "dino.amargasaurus.nom": {
+      "el": "0a4d03b2eda5",
+      "mp3": "0205d7d26bde"
+    },
+    "dino.amargasaurus.recap": {
+      "mp3": "5e08166504b5"
+    },
+    "dino.amargasaurus.regime": {
+      "el": "1e66591823f6",
+      "mp3": "e1d89a511993"
+    },
+    "dino.amargasaurus.taille": {
+      "el": "ede420da348d",
+      "mp3": "96dc7b91a29d"
+    },
+    "dino.ankylosaurus.funfact": {
+      "el": "e3d368a17497",
+      "mp3": "24613236e11a"
+    },
+    "dino.ankylosaurus.nom": {
+      "el": "e10d33bb5e71",
+      "mp3": "97a702b5e2f1"
+    },
+    "dino.ankylosaurus.recap": {
+      "mp3": "8f14fa1251e9"
+    },
+    "dino.ankylosaurus.regime": {
+      "el": "2b679bda741a",
+      "mp3": "f940680b89e5"
+    },
+    "dino.ankylosaurus.taille": {
+      "el": "b8a72af99b73",
+      "mp3": "f18e90f04f5f"
+    },
+    "dino.apatosaurus.funfact": {
+      "el": "6f9c0d84629a",
+      "mp3": "c9a4ed9a0a40"
+    },
+    "dino.apatosaurus.nom": {
+      "el": "82f1737f570b",
+      "mp3": "4a5f04c6b08d"
+    },
+    "dino.apatosaurus.recap": {
+      "mp3": "ef1751b3951f"
+    },
+    "dino.apatosaurus.regime": {
+      "el": "c71dacbc200b",
+      "mp3": "32066f36640a"
+    },
+    "dino.apatosaurus.taille": {
+      "el": "583a0a6e8098",
+      "mp3": "c6453478f63b"
+    },
+    "dino.archaeopteryx.funfact": {
+      "el": "d8295729e187",
+      "mp3": "a3e9b258e1af"
+    },
+    "dino.archaeopteryx.nom": {
+      "el": "9f372d201db3",
+      "mp3": "e1d43671f7a7"
+    },
+    "dino.archaeopteryx.recap": {
+      "mp3": "e1d33c2cda7f"
+    },
+    "dino.archaeopteryx.regime": {
+      "el": "287886aab5ee",
+      "mp3": "d99c32446aa7"
+    },
+    "dino.archaeopteryx.taille": {
+      "el": "59d357f820b5",
+      "mp3": "a4907b2d341c"
+    },
+    "dino.archelon.funfact": {
+      "el": "2739270fe02b",
+      "mp3": "209fb09e7a05"
+    },
+    "dino.archelon.nom": {
+      "el": "10fdf8b9dc24",
+      "mp3": "39600bf47418"
+    },
+    "dino.archelon.recap": {
+      "mp3": "d120b384e748"
+    },
+    "dino.archelon.regime": {
+      "el": "660b6722e641",
+      "mp3": "6285a345f119"
+    },
+    "dino.archelon.taille": {
+      "el": "955a15c132ae",
+      "mp3": "971d30f76be8"
+    },
+    "dino.baryonyx.funfact": {
+      "el": "abf72c98d790",
+      "mp3": "34287eae4e39"
+    },
+    "dino.baryonyx.nom": {
+      "el": "f67565958c41",
+      "mp3": "4febc0240446"
+    },
+    "dino.baryonyx.recap": {
+      "mp3": "0521c1542543"
+    },
+    "dino.baryonyx.regime": {
+      "el": "2cbdbf560459",
+      "mp3": "f2ef7c738578"
+    },
+    "dino.baryonyx.taille": {
+      "el": "030cd69b5c6a",
+      "mp3": "e9cb49dcb685"
+    },
+    "dino.brachiosaurus.funfact": {
+      "el": "7896c89fce42",
+      "mp3": "2a9241334975"
+    },
+    "dino.brachiosaurus.nom": {
+      "el": "0ffbc76809b6",
+      "mp3": "bc0807681a4b"
+    },
+    "dino.brachiosaurus.recap": {
+      "mp3": "49c8e11e9bd3"
+    },
+    "dino.brachiosaurus.regime": {
+      "el": "bf771e45978c",
+      "mp3": "a2770d8c8ed3"
+    },
+    "dino.brachiosaurus.taille": {
+      "el": "f833efddc2f4",
+      "mp3": "42fa9c9003ec"
+    },
+    "dino.camarasaurus.funfact": {
+      "el": "cdb5e17f2a52",
+      "mp3": "c36ff4853ae3"
+    },
+    "dino.camarasaurus.nom": {
+      "el": "4fc8e6df7bec",
+      "mp3": "7d12a36c4c2c"
+    },
+    "dino.camarasaurus.recap": {
+      "mp3": "2b49759d3911"
+    },
+    "dino.camarasaurus.regime": {
+      "el": "9a8c24bcb6c5",
+      "mp3": "f3745b9c92c3"
+    },
+    "dino.camarasaurus.taille": {
+      "el": "0662ffe8989a",
+      "mp3": "fff4facf1808"
+    },
+    "dino.carcharodontosaurus.funfact": {
+      "el": "299267518c13",
+      "mp3": "02ce945e4373"
+    },
+    "dino.carcharodontosaurus.nom": {
+      "el": "52218029e8ad",
+      "mp3": "83573214611f"
+    },
+    "dino.carcharodontosaurus.recap": {
+      "mp3": "87b0ac54641e"
+    },
+    "dino.carcharodontosaurus.regime": {
+      "el": "5b1249e781ca",
+      "mp3": "702cf830d3a0"
+    },
+    "dino.carcharodontosaurus.taille": {
+      "el": "3ee67e5ab0c2",
+      "mp3": "b2d4de33062e"
+    },
+    "dino.carnotaurus.funfact": {
+      "el": "5875417f21e5",
+      "mp3": "52e29fa222a3"
+    },
+    "dino.carnotaurus.nom": {
+      "el": "5e950bcc177e",
+      "mp3": "b847fb2cbe0b"
+    },
+    "dino.carnotaurus.recap": {
+      "mp3": "1d86ca02092b"
+    },
+    "dino.carnotaurus.regime": {
+      "el": "aca2118b02f8",
+      "mp3": "c2c9e301c41f"
+    },
+    "dino.carnotaurus.taille": {
+      "el": "39a359087f6c",
+      "mp3": "f37c20638c90"
+    },
+    "dino.centrosaurus.funfact": {
+      "el": "48d30bfea5ab",
+      "mp3": "1f9bc900382e"
+    },
+    "dino.centrosaurus.nom": {
+      "el": "e10af16f321f",
+      "mp3": "b8b553569a8b"
+    },
+    "dino.centrosaurus.recap": {
+      "mp3": "cbb40d7c5956"
+    },
+    "dino.centrosaurus.regime": {
+      "el": "bc4fb5a1cf80",
+      "mp3": "e7862780b717"
+    },
+    "dino.centrosaurus.taille": {
+      "el": "f5a8999abe04",
+      "mp3": "2ca8e5bd964c"
+    },
+    "dino.ceratosaurus.funfact": {
+      "el": "bada4e18df30",
+      "mp3": "21cbe590b0f6"
+    },
+    "dino.ceratosaurus.nom": {
+      "el": "2ddc22a0897b",
+      "mp3": "f7f7fc9d2ca6"
+    },
+    "dino.ceratosaurus.recap": {
+      "mp3": "9bf2038355ca"
+    },
+    "dino.ceratosaurus.regime": {
+      "el": "62882da09bd2",
+      "mp3": "8b338b291653"
+    },
+    "dino.ceratosaurus.taille": {
+      "el": "351be95b0fc3",
+      "mp3": "6458bc94fa2e"
+    },
+    "dino.coelodonta.funfact": {
+      "el": "b996dcdc9841",
+      "mp3": "abd02d684897"
+    },
+    "dino.coelodonta.nom": {
+      "el": "4b9c82af5b1b",
+      "mp3": "30471c6d1e6e"
+    },
+    "dino.coelodonta.recap": {
+      "mp3": "39552527a15f"
+    },
+    "dino.coelodonta.regime": {
+      "el": "24ece5ec71d6",
+      "mp3": "5b2c9e31ac69"
+    },
+    "dino.coelodonta.taille": {
+      "el": "e23213f27b6b",
+      "mp3": "dc0f8846cf2a"
+    },
+    "dino.corythosaurus.funfact": {
+      "el": "9de36cca22c9",
+      "mp3": "bbe0a40799a6"
+    },
+    "dino.corythosaurus.nom": {
+      "el": "35782f73bc46",
+      "mp3": "56e3b224bfe5"
+    },
+    "dino.corythosaurus.recap": {
+      "mp3": "a5747e5465d0"
+    },
+    "dino.corythosaurus.regime": {
+      "el": "3533984f4478",
+      "mp3": "688b05f71c95"
+    },
+    "dino.corythosaurus.taille": {
+      "el": "f8a3b60bfc95",
+      "mp3": "50a5553c05cb"
+    },
+    "dino.cryolophosaurus.funfact": {
+      "el": "6f566d3d8d00",
+      "mp3": "08f108905b49"
+    },
+    "dino.cryolophosaurus.nom": {
+      "el": "656aecd14e92",
+      "mp3": "e71146f59816"
+    },
+    "dino.cryolophosaurus.recap": {
+      "mp3": "8d341c05ef1d"
+    },
+    "dino.cryolophosaurus.regime": {
+      "el": "a3484edeba4d",
+      "mp3": "94b646513375"
+    },
+    "dino.cryolophosaurus.taille": {
+      "el": "3c55293cc308",
+      "mp3": "fc22703516cb"
+    },
+    "dino.deinonychus.funfact": {
+      "el": "b6c17e0268a5",
+      "mp3": "de49ac22e3b0"
+    },
+    "dino.deinonychus.nom": {
+      "el": "338e449ab237",
+      "mp3": "96d9f78840ec"
+    },
+    "dino.deinonychus.recap": {
+      "mp3": "955c582eb3fc"
+    },
+    "dino.deinonychus.regime": {
+      "el": "4e0d72bff9cc",
+      "mp3": "d1cd6e680f44"
+    },
+    "dino.deinonychus.taille": {
+      "el": "c43696f4edff",
+      "mp3": "66cd4ac24e9c"
+    },
+    "dino.dilophosaurus.funfact": {
+      "el": "fff6138821b5",
+      "mp3": "e3530ce2a366"
+    },
+    "dino.dilophosaurus.nom": {
+      "el": "1c827500d9e7",
+      "mp3": "ea10c50f3a47"
+    },
+    "dino.dilophosaurus.recap": {
+      "mp3": "16929f53a0b5"
+    },
+    "dino.dilophosaurus.regime": {
+      "el": "5bb74864e19d",
+      "mp3": "dec2e68521b8"
+    },
+    "dino.dilophosaurus.taille": {
+      "el": "25241cfa6ca5",
+      "mp3": "7f8d3ac8d059"
+    },
+    "dino.dimetrodon.funfact": {
+      "el": "6fb280912dc9",
+      "mp3": "fb9f34a535d4"
+    },
+    "dino.dimetrodon.nom": {
+      "el": "8efbc324952a",
+      "mp3": "44e7b20dc5d7"
+    },
+    "dino.dimetrodon.recap": {
+      "mp3": "2dc8c8694a8c"
+    },
+    "dino.dimetrodon.regime": {
+      "el": "f96393e7f4dc",
+      "mp3": "b0e284b933b3"
+    },
+    "dino.dimetrodon.taille": {
+      "el": "9f3ff4ed097c",
+      "mp3": "62566f299dec"
+    },
+    "dino.diplodocus.funfact": {
+      "el": "caa53f8f93d1",
+      "mp3": "9aff8a302413"
+    },
+    "dino.diplodocus.nom": {
+      "el": "bc3ed2a0f164",
+      "mp3": "f5cee8ca0426"
+    },
+    "dino.diplodocus.recap": {
+      "mp3": "8657ba2c402b"
+    },
+    "dino.diplodocus.regime": {
+      "el": "992c45457428",
+      "mp3": "b19dea99e99b"
+    },
+    "dino.diplodocus.taille": {
+      "el": "4dfc41f2dc79",
+      "mp3": "4ad29e83cb0b"
+    },
+    "dino.edaphosaurus.funfact": {
+      "el": "ffa2e2f9fb62",
+      "mp3": "1cbd7edb68f0"
+    },
+    "dino.edaphosaurus.nom": {
+      "el": "b703368aa575",
+      "mp3": "3b5f5abbfd6e"
+    },
+    "dino.edaphosaurus.recap": {
+      "mp3": "97aede2f091d"
+    },
+    "dino.edaphosaurus.regime": {
+      "el": "79fa2ec5286d",
+      "mp3": "48c3a30c5827"
+    },
+    "dino.edaphosaurus.taille": {
+      "el": "e36a05eebb75",
+      "mp3": "ee3880a491b2"
+    },
+    "dino.edmontonia.funfact": {
+      "el": "d91f1b30068b",
+      "mp3": "21f56be4c794"
+    },
+    "dino.edmontonia.nom": {
+      "el": "1536d493ed34",
+      "mp3": "fe5009aec311"
+    },
+    "dino.edmontonia.recap": {
+      "mp3": "40839ab2802f"
+    },
+    "dino.edmontonia.regime": {
+      "el": "20f0ff611deb",
+      "mp3": "e418ef5db3b8"
+    },
+    "dino.edmontonia.taille": {
+      "el": "6fc7efa30969",
+      "mp3": "27c5e6417626"
+    },
+    "dino.edmontosaurus.funfact": {
+      "el": "03afbe77847f",
+      "mp3": "86dc104b29fa"
+    },
+    "dino.edmontosaurus.nom": {
+      "el": "572bb7bfc618",
+      "mp3": "d3281b85ce2d"
+    },
+    "dino.edmontosaurus.recap": {
+      "mp3": "d64633d6574b"
+    },
+    "dino.edmontosaurus.regime": {
+      "el": "01aadb681cca",
+      "mp3": "31220fc99f5f"
+    },
+    "dino.edmontosaurus.taille": {
+      "el": "c054494b2e40",
+      "mp3": "382ec13c7553"
+    },
+    "dino.elasmosaurus.funfact": {
+      "el": "1a8c6cc3323c",
+      "mp3": "68aa6d2b67d9"
+    },
+    "dino.elasmosaurus.nom": {
+      "el": "1d19323a4940",
+      "mp3": "6a9ba65fd3c2"
+    },
+    "dino.elasmosaurus.recap": {
+      "mp3": "6a7100f755fe"
+    },
+    "dino.elasmosaurus.regime": {
+      "el": "9cdc635f1ce5",
+      "mp3": "3bf1269668cf"
+    },
+    "dino.elasmosaurus.taille": {
+      "el": "c9a5ad3208ca",
+      "mp3": "f6c6a52b20ff"
+    },
+    "dino.euoplocephalus.funfact": {
+      "el": "6a0d35e2212d",
+      "mp3": "1d16271a2040"
+    },
+    "dino.euoplocephalus.nom": {
+      "el": "6e11c40b94d1",
+      "mp3": "d99e78567c0a"
+    },
+    "dino.euoplocephalus.recap": {
+      "mp3": "a944b4ba8b2b"
+    },
+    "dino.euoplocephalus.regime": {
+      "el": "fdbdcf6fb490",
+      "mp3": "6eab513e2a0c"
+    },
+    "dino.euoplocephalus.taille": {
+      "el": "9a81773e0f33",
+      "mp3": "a655f3235a0f"
+    },
+    "dino.gallimimus.funfact": {
+      "el": "8269ebba9fbc",
+      "mp3": "a76702eaf947"
+    },
+    "dino.gallimimus.nom": {
+      "el": "66804a4f1210",
+      "mp3": "b52715dba22b"
+    },
+    "dino.gallimimus.recap": {
+      "mp3": "e5cdd1057522"
+    },
+    "dino.gallimimus.regime": {
+      "el": "b09d98efe250",
+      "mp3": "7458b4f78d35"
+    },
+    "dino.gallimimus.taille": {
+      "el": "20ff8c116143",
+      "mp3": "3256580f3166"
+    },
+    "dino.giganotosaurus.funfact": {
+      "el": "c4826d43514c",
+      "mp3": "3eb0cbb629e2"
+    },
+    "dino.giganotosaurus.nom": {
+      "el": "52a79efc36f6",
+      "mp3": "12877a7962c8"
+    },
+    "dino.giganotosaurus.recap": {
+      "mp3": "341165471ec8"
+    },
+    "dino.giganotosaurus.regime": {
+      "el": "e5362cbabad9",
+      "mp3": "1b5e56d3a261"
+    },
+    "dino.giganotosaurus.taille": {
+      "el": "15f80be214a5",
+      "mp3": "6a7b96cad434"
+    },
+    "dino.glyptodon.funfact": {
+      "el": "a8c4bb66ffe1",
+      "mp3": "37f4aa79129b"
+    },
+    "dino.glyptodon.nom": {
+      "el": "5853c6334d57",
+      "mp3": "56f7acfcd422"
+    },
+    "dino.glyptodon.recap": {
+      "mp3": "5c658f67d367"
+    },
+    "dino.glyptodon.regime": {
+      "el": "bc3162964e74",
+      "mp3": "7585649be6c5"
+    },
+    "dino.glyptodon.taille": {
+      "el": "56c636b231d9",
+      "mp3": "a7cfc5f0895d"
+    },
+    "dino.gorgonops.funfact": {
+      "el": "c61f9c5e3386",
+      "mp3": "05d101d7dfb2"
+    },
+    "dino.gorgonops.nom": {
+      "el": "8c9daf4b164a",
+      "mp3": "44a5c83c3437"
+    },
+    "dino.gorgonops.recap": {
+      "mp3": "cbab0db60e5a"
+    },
+    "dino.gorgonops.regime": {
+      "el": "ffe87975248c",
+      "mp3": "226cd0008c46"
+    },
+    "dino.gorgonops.taille": {
+      "el": "f09a26262ad6",
+      "mp3": "00063718029e"
+    },
+    "dino.hatzegopteryx.funfact": {
+      "el": "dbb630d288c0",
+      "mp3": "6515e2bf237b"
+    },
+    "dino.hatzegopteryx.nom": {
+      "el": "f461c04eb584",
+      "mp3": "4fcc46ebb7ad"
+    },
+    "dino.hatzegopteryx.recap": {
+      "mp3": "57a2ba6055da"
+    },
+    "dino.hatzegopteryx.regime": {
+      "el": "a1cd6121a8c3",
+      "mp3": "2baf17e92afb"
+    },
+    "dino.hatzegopteryx.taille": {
+      "el": "64f753639b4f",
+      "mp3": "236e96c3abd1"
+    },
+    "dino.ichthyosaurus.funfact": {
+      "el": "7ba4d05d1e5a",
+      "mp3": "40f6a43e50f6"
+    },
+    "dino.ichthyosaurus.nom": {
+      "el": "b43577edd12b",
+      "mp3": "bc4550333ff6"
+    },
+    "dino.ichthyosaurus.recap": {
+      "mp3": "e741eada45b7"
+    },
+    "dino.ichthyosaurus.regime": {
+      "el": "daa173732699",
+      "mp3": "9ec5a6e46e36"
+    },
+    "dino.ichthyosaurus.taille": {
+      "el": "a0278e315b9c",
+      "mp3": "5bdfe828e444"
+    },
+    "dino.iguanodon.funfact": {
+      "el": "ff418a95e848",
+      "mp3": "355e0915be50"
+    },
+    "dino.iguanodon.nom": {
+      "el": "947999ed5505",
+      "mp3": "fa50531032cb"
+    },
+    "dino.iguanodon.recap": {
+      "mp3": "652056fae501"
+    },
+    "dino.iguanodon.regime": {
+      "el": "898e824ff31b",
+      "mp3": "867b200bf6fd"
+    },
+    "dino.iguanodon.taille": {
+      "el": "c6795c065651",
+      "mp3": "e0dd8e0c153e"
+    },
+    "dino.kentrosaurus.funfact": {
+      "el": "d94e5a90dfe7",
+      "mp3": "80884ab7e34e"
+    },
+    "dino.kentrosaurus.nom": {
+      "el": "594b46526348",
+      "mp3": "e61baad83924"
+    },
+    "dino.kentrosaurus.recap": {
+      "mp3": "c674079d8ded"
+    },
+    "dino.kentrosaurus.regime": {
+      "el": "e78c06d48af6",
+      "mp3": "c436be38a71a"
+    },
+    "dino.kentrosaurus.taille": {
+      "el": "0560777d8bf1",
+      "mp3": "6df71714e2ab"
+    },
+    "dino.liopleurodon.funfact": {
+      "el": "aa2dbd1f58fa",
+      "mp3": "2a730fb1f267"
+    },
+    "dino.liopleurodon.nom": {
+      "el": "97b823faaa77",
+      "mp3": "f43896828d94"
+    },
+    "dino.liopleurodon.recap": {
+      "mp3": "3c7b0c3a8870"
+    },
+    "dino.liopleurodon.regime": {
+      "el": "6ebdd83ed151",
+      "mp3": "ff150e26e00f"
+    },
+    "dino.liopleurodon.taille": {
+      "el": "388d16b0de87",
+      "mp3": "c2f4cc159fe5"
+    },
+    "dino.lystrosaurus.funfact": {
+      "el": "cd6151d70559",
+      "mp3": "b11fc8a49ead"
+    },
+    "dino.lystrosaurus.nom": {
+      "el": "425209123f96",
+      "mp3": "a837a4edd6b4"
+    },
+    "dino.lystrosaurus.recap": {
+      "mp3": "b1d02b2d809c"
+    },
+    "dino.lystrosaurus.regime": {
+      "el": "7ce9eb78ef8d",
+      "mp3": "341702856c9a"
+    },
+    "dino.lystrosaurus.taille": {
+      "el": "d7b4f7171fc1",
+      "mp3": "500e59c07bb0"
+    },
+    "dino.maiasaura.funfact": {
+      "el": "698bc2288676",
+      "mp3": "b5b1c4b795e8"
+    },
+    "dino.maiasaura.nom": {
+      "el": "5fcced064b8f",
+      "mp3": "f1cd8632da0c"
+    },
+    "dino.maiasaura.recap": {
+      "mp3": "6eb776361804"
+    },
+    "dino.maiasaura.regime": {
+      "el": "6b0c87c7701b",
+      "mp3": "5a300a636d4d"
+    },
+    "dino.maiasaura.taille": {
+      "el": "6f78e26b7893",
+      "mp3": "d8a89252195f"
+    },
+    "dino.mammuthus.funfact": {
+      "el": "f47f36aec783",
+      "mp3": "36baabde6c9f"
+    },
+    "dino.mammuthus.nom": {
+      "el": "14a84aaddc36",
+      "mp3": "1b837c5ae491"
+    },
+    "dino.mammuthus.recap": {
+      "mp3": "a7776fad3004"
+    },
+    "dino.mammuthus.regime": {
+      "el": "552cbe3f4592",
+      "mp3": "18f89d809d75"
+    },
+    "dino.mammuthus.taille": {
+      "el": "141fcdabb641",
+      "mp3": "df48a2a78cb7"
+    },
+    "dino.megatherium.funfact": {
+      "el": "f38a53a06a3b",
+      "mp3": "185172b152b5"
+    },
+    "dino.megatherium.nom": {
+      "el": "70faa7a7684f",
+      "mp3": "3ffa54dc7ee2"
+    },
+    "dino.megatherium.recap": {
+      "mp3": "c8f72f7edd9e"
+    },
+    "dino.megatherium.regime": {
+      "el": "d5d20506c164",
+      "mp3": "55be105944eb"
+    },
+    "dino.megatherium.taille": {
+      "el": "9b5bf80afc84",
+      "mp3": "9e24d5f5356e"
+    },
+    "dino.microraptor.funfact": {
+      "el": "796ff5d0dc42",
+      "mp3": "092bbf878579"
+    },
+    "dino.microraptor.nom": {
+      "el": "d3032bb35c7e",
+      "mp3": "ead9736d3040"
+    },
+    "dino.microraptor.recap": {
+      "mp3": "b5443b560744"
+    },
+    "dino.microraptor.regime": {
+      "el": "456ad4f913c3",
+      "mp3": "23afbf93c5a1"
+    },
+    "dino.microraptor.taille": {
+      "el": "d8ad1d7a6995",
+      "mp3": "44cb3d241423"
+    },
+    "dino.minmi.funfact": {
+      "el": "05c153f05af9",
+      "mp3": "1ff533179fa3"
+    },
+    "dino.minmi.nom": {
+      "el": "39cbc50a127a",
+      "mp3": "44b89a797bf0"
+    },
+    "dino.minmi.recap": {
+      "mp3": "ee99cf2ae626"
+    },
+    "dino.minmi.regime": {
+      "el": "2fad029f42c9",
+      "mp3": "a4beb90e73ef"
+    },
+    "dino.minmi.taille": {
+      "el": "cae19a6b73d4",
+      "mp3": "f0159a522114"
+    },
+    "dino.mosasaurus.funfact": {
+      "el": "ca5fa3a2467b",
+      "mp3": "fee10ef4d77d"
+    },
+    "dino.mosasaurus.nom": {
+      "el": "7a7e2699c88f",
+      "mp3": "154ed2ecc285"
+    },
+    "dino.mosasaurus.recap": {
+      "mp3": "fa62cec517d6"
+    },
+    "dino.mosasaurus.regime": {
+      "el": "38d54f6bdd13",
+      "mp3": "dfe8a632de00"
+    },
+    "dino.mosasaurus.taille": {
+      "el": "20a43f0a4bee",
+      "mp3": "e84e0961b9d3"
+    },
+    "dino.moschops.funfact": {
+      "el": "da8bff950f76",
+      "mp3": "372e64b0224a"
+    },
+    "dino.moschops.nom": {
+      "el": "35e6e3dde3ff",
+      "mp3": "ff6de6d6d66f"
+    },
+    "dino.moschops.recap": {
+      "mp3": "8810fa5b3ebd"
+    },
+    "dino.moschops.regime": {
+      "el": "d40c57a4aaa1",
+      "mp3": "a1693e484dc6"
+    },
+    "dino.moschops.taille": {
+      "el": "9526ebe67545",
+      "mp3": "2797bffc19dd"
+    },
+    "dino.ophthalmosaurus.funfact": {
+      "el": "712c49d2a99e",
+      "mp3": "71a91615cbdb"
+    },
+    "dino.ophthalmosaurus.nom": {
+      "el": "0af2ca0de92f",
+      "mp3": "3f35f33f5a7a"
+    },
+    "dino.ophthalmosaurus.recap": {
+      "mp3": "524c05f2d447"
+    },
+    "dino.ophthalmosaurus.regime": {
+      "el": "d1854369cb30",
+      "mp3": "93bb0b084237"
+    },
+    "dino.ophthalmosaurus.taille": {
+      "el": "752d94f900d4",
+      "mp3": "bc120da0a709"
+    },
+    "dino.oviraptor.funfact": {
+      "el": "39bf759e4d25",
+      "mp3": "2f1e6c75a3bc"
+    },
+    "dino.oviraptor.nom": {
+      "el": "6e4fc0b91ba4",
+      "mp3": "a95f6a52d7b8"
+    },
+    "dino.oviraptor.recap": {
+      "mp3": "47e1b8629274"
+    },
+    "dino.oviraptor.regime": {
+      "el": "3679d88f440f",
+      "mp3": "56cea3a0855c"
+    },
+    "dino.oviraptor.taille": {
+      "el": "f330a6390734",
+      "mp3": "90294bfda132"
+    },
+    "dino.pachycephalosaurus.funfact": {
+      "el": "cbc9b6f35100",
+      "mp3": "d560465f88e2"
+    },
+    "dino.pachycephalosaurus.nom": {
+      "el": "5d78b189c8ff",
+      "mp3": "2d82215ef17c"
+    },
+    "dino.pachycephalosaurus.recap": {
+      "mp3": "204e28fdd76d"
+    },
+    "dino.pachycephalosaurus.regime": {
+      "el": "5d00de5bcfd7",
+      "mp3": "beb67d3b3410"
+    },
+    "dino.pachycephalosaurus.taille": {
+      "el": "801007fc152f",
+      "mp3": "dc8113d432df"
+    },
+    "dino.paraceratherium.funfact": {
+      "el": "d6a756a5e2f9",
+      "mp3": "954d1ed115bc"
+    },
+    "dino.paraceratherium.nom": {
+      "el": "e07b60fb098e",
+      "mp3": "5852945ed819"
+    },
+    "dino.paraceratherium.recap": {
+      "mp3": "739b489a8916"
+    },
+    "dino.paraceratherium.regime": {
+      "el": "917918411d73",
+      "mp3": "cde6d8f56b99"
+    },
+    "dino.paraceratherium.taille": {
+      "el": "77454c6c112c",
+      "mp3": "8bebd0942e49"
+    },
+    "dino.parasaurolophus.funfact": {
+      "el": "37f1f740ce38",
+      "mp3": "004383d21f91"
+    },
+    "dino.parasaurolophus.nom": {
+      "el": "8f38c6a250bf",
+      "mp3": "d749b18dbca2"
+    },
+    "dino.parasaurolophus.recap": {
+      "mp3": "80f18be47043"
+    },
+    "dino.parasaurolophus.regime": {
+      "el": "c0ead50290bb",
+      "mp3": "0e80f8ec1330"
+    },
+    "dino.parasaurolophus.taille": {
+      "el": "0f6a5ac75b7f",
+      "mp3": "e5d771597022"
+    },
+    "dino.patagotitan.funfact": {
+      "el": "6a90a4c40af1",
+      "mp3": "7d729441bd00"
+    },
+    "dino.patagotitan.nom": {
+      "el": "f391f2df8cef",
+      "mp3": "7acbebc86148"
+    },
+    "dino.patagotitan.recap": {
+      "mp3": "21016da983cc"
+    },
+    "dino.patagotitan.regime": {
+      "el": "df82b61fe06c",
+      "mp3": "e270768834f8"
+    },
+    "dino.patagotitan.taille": {
+      "el": "cf7fa5241955",
+      "mp3": "1fa9c72ef877"
+    },
+    "dino.pentaceratops.funfact": {
+      "el": "e93bad02e074",
+      "mp3": "fba7dac64dab"
+    },
+    "dino.pentaceratops.nom": {
+      "el": "58f2427283a6",
+      "mp3": "f8afe25488c4"
+    },
+    "dino.pentaceratops.recap": {
+      "mp3": "5fca83160d2c"
+    },
+    "dino.pentaceratops.regime": {
+      "el": "37ada8912fdd",
+      "mp3": "b274e376fc2c"
+    },
+    "dino.pentaceratops.taille": {
+      "el": "be796a91bec1",
+      "mp3": "7449730bd40a"
+    },
+    "dino.plateosaurus.funfact": {
+      "el": "170956926aed",
+      "mp3": "2f875c1a61c6"
+    },
+    "dino.plateosaurus.nom": {
+      "el": "44071c4b4973",
+      "mp3": "b7221f640551"
+    },
+    "dino.plateosaurus.recap": {
+      "mp3": "aa790157ce5d"
+    },
+    "dino.plateosaurus.regime": {
+      "el": "efd481cbba0c",
+      "mp3": "2eebb6f06d6a"
+    },
+    "dino.plateosaurus.taille": {
+      "el": "6d9c35019c28",
+      "mp3": "21d95ad08623"
+    },
+    "dino.protoceratops.funfact": {
+      "el": "fdcec431c0ca",
+      "mp3": "69e3e0fd3da1"
+    },
+    "dino.protoceratops.nom": {
+      "el": "acda9b47f722",
+      "mp3": "abffb8227331"
+    },
+    "dino.protoceratops.recap": {
+      "mp3": "8f5117553672"
+    },
+    "dino.protoceratops.regime": {
+      "el": "721570a340aa",
+      "mp3": "12645490f46f"
+    },
+    "dino.protoceratops.taille": {
+      "el": "65bc89d56e37",
+      "mp3": "82ddf9eb7427"
+    },
+    "dino.pteranodon.funfact": {
+      "el": "293fab6a171b",
+      "mp3": "70afa074675e"
+    },
+    "dino.pteranodon.nom": {
+      "el": "a778206e5de8",
+      "mp3": "bee8dcccc8ae"
+    },
+    "dino.pteranodon.recap": {
+      "mp3": "db84fc2b9125"
+    },
+    "dino.pteranodon.regime": {
+      "el": "1642ae715e0e",
+      "mp3": "546a5b9f2dd9"
+    },
+    "dino.pteranodon.taille": {
+      "el": "58640f81b1b8",
+      "mp3": "a6326e47a9ad"
+    },
+    "dino.quetzalcoatlus.funfact": {
+      "el": "9514e3607db6",
+      "mp3": "dfa18bce663d"
+    },
+    "dino.quetzalcoatlus.nom": {
+      "el": "28b614ff751d",
+      "mp3": "255d3ed37b88"
+    },
+    "dino.quetzalcoatlus.recap": {
+      "mp3": "a8eb9d586906"
+    },
+    "dino.quetzalcoatlus.regime": {
+      "el": "621d2c54a717",
+      "mp3": "76949013f57c"
+    },
+    "dino.quetzalcoatlus.taille": {
+      "el": "9cb1d5e1ac4b",
+      "mp3": "f712293e066f"
+    },
+    "dino.saurolophus.funfact": {
+      "el": "8df1f4f1c7b0",
+      "mp3": "999dcc89aeb2"
+    },
+    "dino.saurolophus.nom": {
+      "el": "79b3bf449e2d",
+      "mp3": "84aaf2c99dd9"
+    },
+    "dino.saurolophus.recap": {
+      "mp3": "fe27cda8115f"
+    },
+    "dino.saurolophus.regime": {
+      "el": "d20808069ade",
+      "mp3": "ac0f2a87e125"
+    },
+    "dino.saurolophus.taille": {
+      "el": "ed7b8f55bb9d",
+      "mp3": "d10d899049d0"
+    },
+    "dino.scutellosaurus.funfact": {
+      "el": "82eb0313483a",
+      "mp3": "6790b815a6c4"
+    },
+    "dino.scutellosaurus.nom": {
+      "el": "5f13f061d5fc",
+      "mp3": "763b4895290a"
+    },
+    "dino.scutellosaurus.recap": {
+      "mp3": "07f0efcde958"
+    },
+    "dino.scutellosaurus.regime": {
+      "el": "40b2320cb4cb",
+      "mp3": "2848a78028a5"
+    },
+    "dino.scutellosaurus.taille": {
+      "el": "a2135b61d8fa",
+      "mp3": "171055587092"
+    },
+    "dino.shonisaurus.funfact": {
+      "el": "040e72826da1",
+      "mp3": "17f455ebfb7a"
+    },
+    "dino.shonisaurus.nom": {
+      "el": "c249dabf361a",
+      "mp3": "8425c96db32e"
+    },
+    "dino.shonisaurus.recap": {
+      "mp3": "3b6d20e75049"
+    },
+    "dino.shonisaurus.regime": {
+      "el": "831518386728",
+      "mp3": "fe0521b0e809"
+    },
+    "dino.shonisaurus.taille": {
+      "el": "6b942f2eae92",
+      "mp3": "7d254bb5b7d1"
+    },
+    "dino.smilodon.funfact": {
+      "el": "7616d045fbf6",
+      "mp3": "16cf2ffa3e8c"
+    },
+    "dino.smilodon.nom": {
+      "el": "65f194cf706a",
+      "mp3": "dbc70f55ddff"
+    },
+    "dino.smilodon.recap": {
+      "mp3": "afd83cbbb207"
+    },
+    "dino.smilodon.regime": {
+      "el": "50cd5c6a49d3",
+      "mp3": "6c24072c0cad"
+    },
+    "dino.smilodon.taille": {
+      "el": "94bc80db4e89",
+      "mp3": "0767fd426036"
+    },
+    "dino.spinosaurus.funfact": {
+      "el": "1c37f060929f",
+      "mp3": "6c7917e9f070"
+    },
+    "dino.spinosaurus.nom": {
+      "el": "7121ff7f5c13",
+      "mp3": "2f20d10b985e"
+    },
+    "dino.spinosaurus.recap": {
+      "mp3": "b1408caab8b8"
+    },
+    "dino.spinosaurus.regime": {
+      "el": "acefeb9e03b0",
+      "mp3": "40198785713f"
+    },
+    "dino.spinosaurus.taille": {
+      "el": "a1934e6a6bec",
+      "mp3": "fee618b6fcd7"
+    },
+    "dino.stegosaurus.funfact": {
+      "el": "19d147831347",
+      "mp3": "9efc5e4a4d38"
+    },
+    "dino.stegosaurus.nom": {
+      "el": "c8e1d9e3126e",
+      "mp3": "a73bd21d56cf"
+    },
+    "dino.stegosaurus.recap": {
+      "mp3": "7af6c84a6c1b"
+    },
+    "dino.stegosaurus.regime": {
+      "el": "72861b9a98a4",
+      "mp3": "728b93016905"
+    },
+    "dino.stegosaurus.taille": {
+      "el": "45fd7deffbcb",
+      "mp3": "46b298cadb2d"
+    },
+    "dino.tarbosaurus.funfact": {
+      "el": "1e93c8ca534b",
+      "mp3": "d3c75a9877ee"
+    },
+    "dino.tarbosaurus.nom": {
+      "el": "28e4eb3a43e3",
+      "mp3": "7887b80da2f8"
+    },
+    "dino.tarbosaurus.recap": {
+      "mp3": "30e52ad45d3f"
+    },
+    "dino.tarbosaurus.regime": {
+      "el": "862f2a5ae8d5",
+      "mp3": "bdb9cfb21be8"
+    },
+    "dino.tarbosaurus.taille": {
+      "el": "3f86d91f4df0",
+      "mp3": "af23d2cc80fd"
+    },
+    "dino.therizinosaurus.funfact": {
+      "el": "cb156a762b6b",
+      "mp3": "835155fe28e4"
+    },
+    "dino.therizinosaurus.nom": {
+      "el": "ea423e0bf0ba",
+      "mp3": "dea6cbc3a76b"
+    },
+    "dino.therizinosaurus.recap": {
+      "mp3": "872a45c814ba"
+    },
+    "dino.therizinosaurus.regime": {
+      "el": "c8523d5b59f3",
+      "mp3": "e633f7130fcd"
+    },
+    "dino.therizinosaurus.taille": {
+      "el": "7bef272eef49",
+      "mp3": "5c8f9d53ce8c"
+    },
+    "dino.titanis.funfact": {
+      "el": "731894af1fb0",
+      "mp3": "1e9e659f531a"
+    },
+    "dino.titanis.nom": {
+      "el": "cf583183e2b4",
+      "mp3": "df4687fb7653"
+    },
+    "dino.titanis.recap": {
+      "mp3": "af5e7b2cb165"
+    },
+    "dino.titanis.regime": {
+      "el": "3653f7d45973",
+      "mp3": "557a108ce4a5"
+    },
+    "dino.titanis.taille": {
+      "el": "ca1e7fe9bdd4",
+      "mp3": "fcf35ac99713"
+    },
+    "dino.torosaurus.funfact": {
+      "el": "1376da5abc33",
+      "mp3": "2a2cd6090c38"
+    },
+    "dino.torosaurus.nom": {
+      "el": "a239561962af",
+      "mp3": "13188a76541c"
+    },
+    "dino.torosaurus.recap": {
+      "mp3": "bea7c7a072c0"
+    },
+    "dino.torosaurus.regime": {
+      "el": "549d5679f596",
+      "mp3": "744f7e10d631"
+    },
+    "dino.torosaurus.taille": {
+      "el": "1211084c1223",
+      "mp3": "6fa603b11cfd"
+    },
+    "dino.triceratops.funfact": {
+      "el": "ece8934fc833",
+      "mp3": "794607286beb"
+    },
+    "dino.triceratops.nom": {
+      "el": "bb8ba3e74648",
+      "mp3": "98feddc62492"
+    },
+    "dino.triceratops.recap": {
+      "mp3": "5b4e78df42ea"
+    },
+    "dino.triceratops.regime": {
+      "el": "ae70583f8272",
+      "mp3": "350f88bbd8df"
+    },
+    "dino.triceratops.taille": {
+      "el": "23c5bf7275b3",
+      "mp3": "4c4ed4220ed6"
+    },
+    "dino.troodon.funfact": {
+      "el": "022bab3d9d9d",
+      "mp3": "73065949cf5b"
+    },
+    "dino.troodon.nom": {
+      "el": "87bb21ce2836",
+      "mp3": "502195412ee3"
+    },
+    "dino.troodon.recap": {
+      "mp3": "5121487cfd84"
+    },
+    "dino.troodon.regime": {
+      "el": "78616222622b",
+      "mp3": "de0aa780dc45"
+    },
+    "dino.troodon.taille": {
+      "el": "a15646f7db3d",
+      "mp3": "b8ce6ee63865"
+    },
+    "dino.tyrannosaurus.funfact": {
+      "el": "f1a9c4c1e675",
+      "mp3": "fbb38ee16821"
+    },
+    "dino.tyrannosaurus.nom": {
+      "el": "36f1085ee83e",
+      "mp3": "460013c20119"
+    },
+    "dino.tyrannosaurus.recap": {
+      "mp3": "1b2e101c06e4"
+    },
+    "dino.tyrannosaurus.regime": {
+      "el": "c9f5dd97c006",
+      "mp3": "e2d32513083f"
+    },
+    "dino.tyrannosaurus.taille": {
+      "el": "c0122870f4d8",
+      "mp3": "59a1e5846d0a"
+    },
+    "dino.utahraptor.funfact": {
+      "el": "2d05e6da5b8e",
+      "mp3": "acb4aa519efc"
+    },
+    "dino.utahraptor.nom": {
+      "el": "90a4932b4691",
+      "mp3": "9c35c2e64ccc"
+    },
+    "dino.utahraptor.recap": {
+      "mp3": "17ab4deb199c"
+    },
+    "dino.utahraptor.regime": {
+      "el": "ebc88ff33e97",
+      "mp3": "7db983caea00"
+    },
+    "dino.utahraptor.taille": {
+      "el": "f31b9a64d6dd",
+      "mp3": "f45a1e4327e1"
+    },
+    "dino.velociraptor.funfact": {
+      "el": "42bab791e8d4",
+      "mp3": "d577f50eb4f1"
+    },
+    "dino.velociraptor.nom": {
+      "el": "9e9e102721ac",
+      "mp3": "67135025d13f"
+    },
+    "dino.velociraptor.recap": {
+      "mp3": "0d71220b670e"
+    },
+    "dino.velociraptor.regime": {
+      "el": "30635af95131",
+      "mp3": "2d10f5889de5"
+    },
+    "dino.velociraptor.taille": {
+      "el": "23be0ba5cee8",
+      "mp3": "3e05e8de9c8f"
+    }
+  },
+  "acquittements": [
+    {
+      "date": "2026-08-10T21:50:10.794Z",
+      "cle": "dino.corythosaurus.nom",
+      "canal": "mp3",
+      "decision": "propage",
+      "raison": null
+    },
+    {
+      "date": "2026-08-10T21:50:11.110Z",
+      "cle": "dino.corythosaurus.regime",
+      "canal": "mp3",
+      "decision": "propage",
+      "raison": null
+    },
+    {
+      "date": "2026-08-10T21:50:11.403Z",
+      "cle": "dino.corythosaurus.funfact",
+      "canal": "mp3",
+      "decision": "propage",
+      "raison": null
+    },
+    {
+      "date": "2026-08-10T21:50:11.700Z",
+      "cle": "dino.hatzegopteryx.nom",
+      "canal": "mp3",
+      "decision": "propage",
+      "raison": null
+    },
+    {
+      "date": "2026-08-10T21:50:12.028Z",
+      "cle": "dino.hatzegopteryx.regime",
+      "canal": "mp3",
+      "decision": "propage",
+      "raison": null
+    },
+    {
+      "date": "2026-08-10T21:50:12.317Z",
+      "cle": "dino.hatzegopteryx.funfact",
+      "canal": "mp3",
+      "decision": "propage",
+      "raison": null
+    }
+  ]
+}

@@ -35,7 +35,7 @@ El español ya tiene una tradición fija de castellanizar los nombres de dinosau
 
 ---
 
-## 2. Tabla de los 60 dinos
+## 2. Tabla de los 70 dinos
 
 > Columna **«Escribir para el TTS»** = forma exacta a poner en el texto hablado. Sílabas separadas por guiones cuando conviene guiar la voz. La forma española establecida se usa siempre que existe.
 
@@ -57,11 +57,13 @@ El español ya tiene una tradición fija de castellanizar los nombres de dinosau
 | centrosaurus | *Centrosaurus* | **Cen-tro-SAU-rio** | c ante e = /θ/ (España), norma nativa |
 | ceratosaurus | *Ceratosaurus* | **Ce-ra-to-SAU-rio** | c ante e = /θ/ |
 | coelodonta | *Coelodonta* | **Ce-lo-don-ta** | oe→e |
+| corythosaurus | *Corythosaurus* | **Co-ri-to-SAU-rio** | th→t, y→i (Coritosaurio) — añadido 2026-08-10, a validar por un nativo |
 | cryolophosaurus | *Cryolophosaurus* | **Crio-lo-fo-SAU-rio** | y→i, ph→f |
 | deinonychus | *Deinonychus* | **Dei-no-ni-cus** | ch→c, y→i, -us clara |
 | dilophosaurus | *Dilophosaurus* | **Di-lo-fo-SAU-rio** | ph→f |
 | dimetrodon | *Dimetrodon* | **Di-me-tro-don** | forma directa |
 | diplodocus | *Diplodocus* | **Di-plo-do-cus** | -us clara (no se avala en ES) |
+| edaphosaurus | *Edaphosaurus* | **E-da-fo-SAU-rio** | ph→f (Edafosaurio) ; sínápsido pérmico, no es dino — añadido 2026-08-10, a validar por un nativo |
 | edmontonia | *Edmontonia* | **Ed-mon-to-nia** | forma directa |
 | edmontosaurus | *Edmontosaurus* | **Ed-mon-to-SAU-rio** | forma directa |
 | elasmosaurus | *Elasmosaurus* | **E-las-mo-SAU-rio** | forma directa |
@@ -69,14 +71,20 @@ El español ya tiene una tradición fija de castellanizar los nombres de dinosau
 | gallimimus | *Gallimimus* | **Ga-li-MI-mus** | ll→l, -us clara |
 | giganotosaurus | *Giganotosaurus* | **Gui-ga-no-to-SAU-rio** | gi→gui para sonar /g/ (no jota) |
 | glyptodon | *Glyptodon* | **Glip-to-don** | y→i |
+| gorgonops | *Gorgonops* | **Gor-GO-nops** | g fuerte ; gorgonópsido pérmico, no es dino — añadido 2026-08-10, a validar por un nativo |
+| hatzegopteryx | *Hatzegopteryx* | **A-tse-gop-TE-rix** | h muda, tz→ts, y→i, x→ks ; pterosaurio gigante — añadido 2026-08-10, a validar por un nativo |
 | ichthyosaurus | *Ichthyosaurus* | **Ic-tio-SAU-rio** | ch→c, th→t, y→i (Ictiosaurio) |
 | iguanodon | *Iguanodon* | **I-gua-no-don** | gua natural en ES |
 | kentrosaurus | *Kentrosaurus* | **Ken-tro-SAU-rio** | k se mantiene |
 | liopleurodon | *Liopleurodon* | **Lio-pleu-ro-don** | forma directa |
+| lystrosaurus | *Lystrosaurus* | **Lis-tro-SAU-rio** | y→i (Listrosaurio) ; sinápsido pérmico, no es dino — añadido 2026-08-10, a validar por un nativo |
+| maiasaura | *Maiasaura* | **Ma-ia-SAU-ra** | -saura femenina, forma directa (Maiasaura) — añadido 2026-08-10, a validar por un nativo |
 | mammuthus | *Mammuthus* | **Ma-MUT** | forma establecida: **Mamut** (más natural que «mamutus») — ver nota |
 | megatherium | *Megatherium* | **Me-ga-TE-rio** | th→t, forma ES = Megaterio |
 | microraptor | *Microraptor* | **Mi-cro-rap-tor** | forma directa |
+| minmi | *Minmi* | **Min-mi** | nombre de lugar australiano (Minmi Crossing), sin raíz grecolatina — añadido 2026-08-10, a validar por un nativo |
 | mosasaurus | *Mosasaurus* | **Mo-sa-SAU-rio** | forma directa |
+| moschops | *Moschops* | **Mos-KOPS** | ch→k (khi griego de *moschos*) ; terápsido pérmico, no es dino — añadido 2026-08-10, a validar por un nativo |
 | ophthalmosaurus | *Ophthalmosaurus* | **Of-tal-mo-SAU-rio** | ph→f, th→t |
 | oviraptor | *Oviraptor* | **O-vi-rap-tor** | forma directa |
 | pachycephalosaurus | *Pachycephalosaurus* | **Pa-qui-ce-fa-lo-SAU-rio** | ch→qu, y→i, ph→f |
@@ -88,6 +96,8 @@ El español ya tiene una tradición fija de castellanizar los nombres de dinosau
 | protoceratops | *Protoceratops* | **Pro-to-CE-ra-tops** | c ante e = /θ/ |
 | pteranodon | *Pteranodon* | **Pte-ra-no-don** | Pt inicial se pronuncia en ES |
 | quetzalcoatlus | *Quetzalcoatlus* | **Ket-sal-co-A-tlus** | náhuatl ; qu→k, tz→ts |
+| saurolophus | *Saurolophus* | **Sau-RÓ-lo-fo** | ph→f, -us→-fo (Saurolofo) ; ⚠️ trampa oral: SIN prefijo «para-» (≠ Parasaurolophus) — añadido 2026-08-10, a validar por un nativo |
+| scutellosaurus | *Scutellosaurus* | **Es-cu-te-lo-SAU-rio** | sc inicial líquida → «es», ll→l (Escutelosaurio) — añadido 2026-08-10, a validar por un nativo |
 | shonisaurus | *Shonisaurus* | **Cho-ni-SAU-rio** | sh→ch (el español no tiene /ʃ/) |
 | smilodon | *Smilodon* | **Es-mi-lo-don** | s inicial líquida → «es» en ES |
 | spinosaurus | *Spinosaurus* | **Es-pi-no-SAU-rio** | s inicial líquida → «es» (Espinosaurio) |

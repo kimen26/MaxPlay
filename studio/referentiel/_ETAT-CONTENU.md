@@ -2,7 +2,7 @@
 
 > **FICHIER GÉNÉRÉ — ne jamais éditer à la main.**
 > Régénérer : `node studio/referentiel/build.mjs`
-> Plan d'ensemble : [`memory/ARCHI-REFERENTIEL-CONTENU.md`](../../memory/ARCHI-REFERENTIEL-CONTENU.md) · généré le 2026-08-11
+> Plan d'ensemble : [`memory/ARCHI-REFERENTIEL-CONTENU.md`](../../memory/ARCHI-REFERENTIEL-CONTENU.md) · généré le 2026-08-12
 
 ---
 
@@ -21,16 +21,16 @@ _Aucune dette ouverte._
 
 | Indicateur | Nombre |
 |---|---|
-| Clés recensées | **956** |
+| Clés recensées | **955** |
 | — domaine DINO | 350 |
-| — domaine JEU | 606 |
+| — domaine JEU | 605 |
 | Lignes suivies par le moteur de dette (clé × canal) | 630 |
 | 🔴 Dettes ouvertes | **0** |
 | Clés vérifiables automatiquement | 70 |
 | 🔴 Dérives de fait confirmées | **0** |
-| 🟠 Audio en retard sur son script | **6** |
+| 🟠 Audio en retard sur son script | **0** |
 | 🟡 Canaux manquants au contrat | 0 |
-| 🟡 Consignes lues sans voix réelle | 17 |
+| 🟡 Consignes lues sans voix réelle | 16 |
 | ⚪ Voix dont le texte verbatim n'est pas tracé | 180 |
 
 ## 🔴 Dérives de fait
@@ -46,12 +46,7 @@ Le MP3 a été produit avant la dernière modification réelle de son script.
 Comparaison sur les **dates de commit**, pas les dates de fichiers (un déplacement de dossier
 réécrit les secondes sans changer le contenu — s'y fier produirait des centaines de faux retards).
 
-- **dino.corythosaurus.nom** — script 2026-07-27 · audio 2026-08-10
-- **dino.corythosaurus.regime** — script 2026-07-27 · audio 2026-08-10
-- **dino.corythosaurus.funfact** — script 2026-07-27 · audio 2026-08-10
-- **dino.hatzegopteryx.nom** — script 2026-07-27 · audio 2026-08-10
-- **dino.hatzegopteryx.regime** — script 2026-07-27 · audio 2026-08-10
-- **dino.hatzegopteryx.funfact** — script 2026-07-27 · audio 2026-08-10
+_Aucun audio en retard._
 
 ## 🟡 Canaux manquants au contrat
 
@@ -64,10 +59,10 @@ Le Lot 0 les recense là où ils sont ; le Lot 3 leur en donnera un.
 
 | Famille | Clés |
 |---|---|
-| entrepot-vise | 426 |
+| entrepot-vise | 425 |
 | voix-produite | 180 |
 
-**17 consignes** sont lues à l'enfant par le moteur du navigateur, sans voix réelle enregistrée.
+**16 consignes** sont lues à l'enfant par le moteur du navigateur, sans voix réelle enregistrée.
 **180 fichiers de voix** sont documentés dans [`site/sounds/_BANQUE-SONS.md`](../../site/sounds/_BANQUE-SONS.md)
 (rôle, voix, méthode de génération), mais le **texte verbatim** envoyé à ElevenLabs — avec ses tags v3 —
 n'est stocké nulle part. On ne peut donc ni les régénérer à l'identique, ni les traduire, ni vérifier

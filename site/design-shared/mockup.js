@@ -39,31 +39,22 @@ window.MK = (function () {
     m.classList.remove('show'); void m.offsetWidth; m.classList.add('show');
   }
 
-  /* TTS démo (fr-FR, lent). Prod = MP3 ElevenLabs — voir NOTES §5.2 */
-  var FR_VOICE = null;
-  function pickVoice() {
-    if (!('speechSynthesis' in window)) return;
-    var vs = speechSynthesis.getVoices();
-    FR_VOICE = null;
-    for (var i = 0; i < vs.length; i++) {
-      if (/^fr/i.test(vs[i].lang)) { FR_VOICE = vs[i]; break; }
-    }
-  }
-  if ('speechSynthesis' in window) {
-    pickVoice();
-    speechSynthesis.onvoiceschanged = pickVoice;
-  }
+  /* TTS démo (fr-FR, lent). Prod = MP3 ElevenLabs — voir NOTES §5.2.
+     Délégué au TTS partagé js/tts.js (chargé à la demande s'il est absent). */
+  var ttsLoading = false;
   function speak(text, opts) {
     try {
-      if (!('speechSynthesis' in window)) return;
       opts = opts || {};
-      speechSynthesis.cancel();
-      var u = new SpeechSynthesisUtterance(text);
-      u.lang = 'fr-FR';
-      if (FR_VOICE) u.voice = FR_VOICE;
-      u.rate = opts.rate || 0.85;
-      u.pitch = opts.pitch || 1.1;
-      speechSynthesis.speak(u);
+      if (window.TTS && TTS.speak) {
+        TTS.speak(text, { rate: opts.rate || 0.85, pitch: opts.pitch || 1.1 });
+        return;
+      }
+      if (ttsLoading) return;
+      ttsLoading = true;
+      var s = document.createElement('script');
+      s.src = '../js/tts.js';
+      s.onload = function () { speak(text, opts); };
+      document.head.appendChild(s);
     } catch (e) {}
   }
 

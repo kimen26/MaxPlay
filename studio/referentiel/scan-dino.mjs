@@ -140,6 +140,8 @@ export function scannerDino() {
         ecarts,
         manquants,
         audio_en_retard: audioEnRetard,
+        modifie_el: dEl,
+        modifie_mp3: dMp3,
       });
     }
   }

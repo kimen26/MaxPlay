@@ -7,7 +7,8 @@
  *           chaque jeu (le rendu SVG des pips — dino-ombres pour MJ-43,
  *           silhouettes passagers pour MJ-45 — reste dans chaque fichier,
  *           injecté ici par callback).
- * Jeux client : site/mj-43.html, site/mj-45.html.
+ * Jeux client : site/mj-47.html, site/mj-49.html, site/mj-54.html, site/mj-55.html
+ *     (mj-43/mj-45 supprimés à la purge 2026-08-10).
  * Invariants  :
  *   - pipLayout() ne retourne QUE des positions canoniques de dé (1 centre,
  *     2 diagonale, 6 double-colonne, etc.) — jamais d'éparpillement aléatoire

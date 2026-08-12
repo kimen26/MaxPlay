@@ -61,7 +61,10 @@
   // JAMAIS de descente : le niveau ouvert est persisté (golden_openlvl_<id>,
   // monotone) — sans lui, une baisse de forme refermerait la porte. Une seule
   // ouverture par lot de 3 parties (openedAt date la frontière).
-  const COMPETENCE_PILOTS = ['mj-04'];
+  // ⚠ Pilote mj-04 SUPPRIMÉ à la purge 2026-08-10 : la liste est vide, la
+  // montée par compétence est DORMANTE en attendant un nouveau pilote (EP-112,
+  // propagation jamais faite — voir pmo/backlog.md).
+  const COMPETENCE_PILOTS = [];
   const _justOpened = {};
 
   function _firstTryRate(id, sinceTs) {
@@ -476,7 +479,7 @@
             }).then(() => {
               const slot = document.getElementById('slot' + this.stars);
               if (slot) slot.classList.add('filled', 'pop');
-              try { if (global.SoundPool && SoundPool.voiceLine) SoundPool.voiceLine('etoile-gagnee', 'Tu maîtrises ce jeu !'); } catch (e) {}
+              try { if (global.SoundPool && SoundPool.voiceLine) SoundPool.voiceLine('etoile-gagnee', 'Tu as gagné une étoile !'); } catch (e) {}
               if (typeof opts.celebrate === 'function') { try { opts.celebrate(); } catch (e) {} }
             }).catch(() => {});
           } else {

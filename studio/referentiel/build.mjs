@@ -5,9 +5,13 @@
 //   node studio/referentiel/build.mjs
 //
 // Lecture seule sur le contenu : ce script ne modifie AUCUN texte, AUCUN audio,
-// AUCUNE page. Il écrit uniquement ses deux sorties :
+// AUCUNE page. Il écrit uniquement ses trois sorties :
 //   · registre.json      — le registre (clés, contrats, lignée, empreintes)
 //   · _ETAT-CONTENU.md   — le tableau de bord lisible
+//   · empreintes.json    — base d'empreintes VERSIONNÉE (Lot 1) : il n'y touche
+//                          que structurellement (lignes nouvelles/disparues) ;
+//                          la référence d'une ligne n'est re-calée que par
+//                          acquitter.mjs — une dette ne se résout jamais seule.
 //
 // Les deux sont GÉNÉRÉS : jamais tenus à la main. « Où en est le contenu ? » → on
 // régénère. Même doctrine que pmo/_ETAT-DINOS.md.
@@ -19,6 +23,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { scannerDino } from './scan-dino.mjs';
 import { scannerJeu } from './scan-jeu.mjs';
+import { chargerBase, sauvegarderBase, synchroniser, dernierAcquittement } from './lib/dette.mjs';
 
 const ICI = path.dirname(fileURLToPath(import.meta.url));
 const SORTIE_REGISTRE = path.join(ICI, 'registre.json');
@@ -43,7 +48,7 @@ function listeTronquee(lignes) {
   return `${gardees.join('\n')}\n\n_… et ${lignes.length - PLAFOND_LISTE} autres — détail complet dans \`registre.json\`._`;
 }
 
-function construireRapport(entrees) {
+function construireRapport(entrees, dettes, base) {
   const dino = entrees.filter((e) => e.domaine === 'dino');
   const jeu = entrees.filter((e) => e.domaine === 'jeu');
 
@@ -66,6 +71,30 @@ function construireRapport(entrees) {
   L.push('---');
   L.push('');
 
+  // ── dettes ouvertes (Lot 1) — la todo consultable du projet ──────────────
+  const ouvertes = dettes.filter((d) => d.etat === 'en-dette');
+  L.push(`## 🔴 Dettes ouvertes — ${ouvertes.length}`);
+  L.push('');
+  L.push('Une dette ne se résout **jamais toute seule** : un humain tranche entre');
+  L.push('`node studio/referentiel/acquitter.mjs <clé> <canal> --propage` (canal régénéré)');
+  L.push('et `… --sans-impact "raison"` (le changement de source ne remet pas le canal en cause).');
+  L.push('Base de référence : [`empreintes.json`](empreintes.json) (versionnée).');
+  L.push('');
+  if (!ouvertes.length) {
+    L.push('_Aucune dette ouverte._');
+  } else {
+    L.push(listeTronquee(ouvertes.map((d) => {
+      const acq = dernierAcquittement(base, d.cle, d.canal);
+      const depuis = acq
+        ? ` — la source a rebougé depuis l'acquittement « ${acq.decision} » du ${acq.date.slice(0, 10)}`
+        : '';
+      return `- **${d.cle}** · canal \`${d.canal}\` — ${d.detail}${depuis}`;
+    })));
+  }
+  L.push('');
+  L.push('---');
+  L.push('');
+
   // ── synthèse ──────────────────────────────────────────────────────────────
   L.push('## Synthèse');
   L.push('');
@@ -74,6 +103,8 @@ function construireRapport(entrees) {
   L.push(`| Clés recensées | **${entrees.length}** |`);
   L.push(`| — domaine DINO | ${dino.length} |`);
   L.push(`| — domaine JEU | ${jeu.length} |`);
+  L.push(`| Lignes suivies par le moteur de dette (clé × canal) | ${dettes.length} |`);
+  L.push(`| 🔴 Dettes ouvertes | **${ouvertes.length}** |`);
   L.push(`| Clés vérifiables automatiquement | ${verifiables.length} |`);
   L.push(`| 🔴 Dérives de fait confirmées | **${derives.length}** |`);
   L.push(`| 🟠 Audio en retard sur son script | **${enRetard.length}** |`);
@@ -167,9 +198,10 @@ function construireRapport(entrees) {
   L.push('');
   L.push('Les blocs **réécrits à la main** (nom, régime, funfact, récap) n\'ont pas de générateur :');
   L.push('on ne peut pas vérifier rétroactivement qu\'ils disent encore la vérité de `dinos-data.js`.');
-  L.push('Leur **empreinte de référence est posée maintenant** dans `registre.json` — à partir de là, toute');
-  L.push('modification future de leurs champs sources sera détectée (Lot 1). C\'est la façon normale');
-  L.push('d\'enrôler un corpus existant : on ne rattrape pas le passé, on arrête l\'hémorragie.');
+  L.push('Leur **empreinte de référence est posée** dans [`empreintes.json`](empreintes.json) — toute');
+  L.push('modification de leurs champs sources lève désormais une dette, visible en tête de ce rapport.');
+  L.push('C\'est la façon normale d\'enrôler un corpus existant : on ne rattrape pas le passé,');
+  L.push('on arrête l\'hémorragie.');
   L.push('');
   L.push('_Généré par `studio/referentiel/build.mjs` — lecture seule, ne modifie aucun contenu._');
 
@@ -179,23 +211,31 @@ function construireRapport(entrees) {
 // ── exécution ───────────────────────────────────────────────────────────────
 const entrees = [...scannerDino(), ...scannerJeu()];
 
+// Lot 1 — moteur de dette : la base d'empreintes versionnée est synchronisée
+// structurellement (lignes nouvelles/disparues) ; l'état de chaque ligne est
+// calculé en comparant la signature courante à la référence gravée.
+const base = chargerBase();
+const dettes = synchroniser(base, entrees);
+sauvegarderBase(base);
+
 const registre = {
   genere_le: new Date().toISOString(),
   outil: 'studio/referentiel/build.mjs',
   plan: 'memory/ARCHI-REFERENTIEL-CONTENU.md',
-  lot: 0,
+  lot: 1,
   total: entrees.length,
   entrees,
 };
 
 fs.writeFileSync(SORTIE_REGISTRE, `${JSON.stringify(registre, null, 2)}\n`, 'utf8');
-fs.writeFileSync(SORTIE_RAPPORT, `${construireRapport(entrees)}\n`, 'utf8');
+fs.writeFileSync(SORTIE_RAPPORT, `${construireRapport(entrees, dettes, base)}\n`, 'utf8');
 
 const bilan = (etat) => compter(entrees, (e) => e.etat === etat);
 console.log(`registre : ${entrees.length} clés`);
+console.log(`  dettes ouvertes      : ${compter(dettes, (d) => d.etat === 'en-dette')} (sur ${dettes.length} lignes suivies)`);
 console.log(`  dérives de fait      : ${bilan('derive')}`);
 console.log(`  audio en retard      : ${bilan('audio-en-retard')}`);
 console.log(`  canaux manquants     : ${bilan('manquant')}`);
 console.log(`  consignes sans voix  : ${bilan('sans-voix-reelle')}`);
 console.log(`  voix texte non trace : ${bilan('texte-verbatim-non-trace')}`);
-console.log(`écrit : studio/referentiel/registre.json + _ETAT-CONTENU.md`);
+console.log(`écrit : studio/referentiel/registre.json + _ETAT-CONTENU.md + empreintes.json`);

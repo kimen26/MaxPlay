@@ -59,7 +59,11 @@ for (const e of entrees) {
 }
 
 // ── 4. les tags doivent être entre crochets au moment de partir, pas avant ──
+// Sauf les blocs : leur « texte » est un script multi-voix catalogué par
+// référence — les tags y sont inline par nature (une réplique = un ton), et
+// ils ne passent jamais par le plan de génération (pas de `production`).
 for (const e of entrees) {
+  if (e.type === 'bloc') continue;
   if (e.texte && /\[[^\]]+\]/.test(e.texte)) {
     erreurs.push(`${e.cle} : tags v3 déjà dans le texte — les déclarer dans « tags », pas dans « texte »`);
   }

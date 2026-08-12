@@ -2,6 +2,12 @@
 
 > Source de vérité du système sonore du site. Créé 2026-07-06 (session refonte audio).
 > **Avant de générer un son : lire ce fichier.** Avant de coder un son dans un jeu : lire § API.
+>
+> **Où lire quoi** : ce fichier = inventaire des fichiers + API + process. Les **contrats,
+> lignée et dérive** (quel texte alimente quel MP3, quoi régénérer) vivent dans
+> [`studio/referentiel/`](../../studio/referentiel/README.md) — tableau de bord :
+> `studio/referentiel/_ETAT-CONTENU.md` (généré). Les règles dures auto-chargées :
+> [`.claude/rules/sons.md`](../../.claude/rules/sons.md).
 
 ---
 
@@ -14,13 +20,13 @@
 | `site/sounds/voix/f/` (22) | réactions Narratrice — 16 positives + 6 douces (super, bravo, oups, presque…) | narrateur_f | `text_to_speech` |
 | `site/sounds/voix/h/` (22) | réactions Narrateur — idem | narrateur_h | `text_to_speech` |
 | `site/sounds/voix/wex/` (22) | réactions Wex — idem | wex | `text_to_speech` |
-| `site/sounds/voix/lieux/` (12) | noms des lieux des 2 hubs : `bus-<zone>.mp3` + `fusee-<zone>.mp3` (dodo, garage, lettres, monde, dinos, roulotte) | narrateur_f | `text_to_speech` |
+| `site/sounds/voix/lieux/` (12) | noms des lieux des anciens hubs : `bus-<zone>.mp3` + `fusee-<zone>.mp3` (dodo, garage, lettres, monde, dinos, roulotte). ⚠️ **ORPHELINS depuis la suppression d'index2/index3** (hub unique = `index.html` « La Vallée ») — conservés, aucun consommateur | narrateur_f | `text_to_speech` |
 | `site/sounds/voix/phrases/` (28) | instructions fixes des jeux : trouve-le-meme-dino, combien-de-dinos, compte-encore, regardons-ensemble, il-vivait-quand, cest-parti, a-toi-de-jouer, cherche-bien, encore-une-fois, ouvre-bien-les-yeux + banque consignes 2026-07-13 (quel-bus-arrive-en-premier, qu-est-ce-qui-vient-ensuite, lequel-ne-va-pas, quel-bus-manque, qu-est-ce-qui-manque, compte-les-un-par-un, remplis-chaque-caisse, range-dans-la-bonne-boite, ecoute-le-premier-son, fais-monter-les-passagers, range-les-des, regroupe-les-points, gros-niveau-regroupe, mode-libre-encore-une-caisse, premier-son-l-ou-r, le-son-quon-entend, il-en-faut-beaucoup, terminus-fais-les-descendre) | narrateur_h | `text_to_speech` |
 | `site/sounds/nombres/` (75) | **Banque C6 V1 (2026-07-29)** : `n-<n>.mp3` nombres 0-30 + 40/50/100/1000 (neutre chaleureux `[warmly]`) · `n-<n>-fete.mp3` 1-10 (`[cheerful]`, réussite/gros gain) · gabarits COMPLETS `il-en-manque-<n>` / `il-en-faut-<n>` / `<n>-oeufs` (1-10) — JAMAIS d'assemblage mot-à-mot (décision PY 2026-07-28, remplace l'assumé « restent en TTS » de 2026-07-13). API UNIQUE : `js/say-nombres.js` (`SayNombres.say/manque/faut/oeufs`, repli TTS), branché mj-46 + mj-49 | narrateur_h | script API (gen-banque.mjs) |
 | `site/sounds/phonemes/` (21) | LE SON de chaque lettre (jamais le nom) : voyelles + consonne+e muet (`son-se`, `son-fe`… c/k/q partagent `son-ke`). Consommé UNIQUEMENT via `MJKit.sayPhoneme` (MP3-first, repli TTS) — fix « E accent grave f » mj-50 (2026-07-29) | narrateur_h | script API |
 | `site/sounds/pieces/` (6) | voicelines intro pièces échecs mj-37 : fou/tour/cavalier/dame/roi/pion `-intro.mp3` | narrateur_h | `text_to_speech` |
 | `site/sounds/voix/{f,h,wex}/etoile-gagnee.mp3` (3) | félicitation d'étoile parlée (« Tu as gagné une étoile ! »), jouée par `SoundPool.voiceLine` à l'atterrissage de l'étoile Golden | 3 voix | `text_to_speech` |
-| `site/audio/dinos/periodes/` (5) | trias, jurassique, cretace, cenozoique, pangee | narrateur_h | `text_to_speech` |
+| `site/audio/dinos/fr/periodes/` (5) | trias, jurassique, cretace, cenozoique, pangee (« Le Jurassique ! » ton excité). Branchés : mj-31 (`PERIODE_MP3`, 2026-07-07) + grille époque dev-dinos (`playPeriodeVoice`, 2026-08-10). Set `DINO_PERIODE_AUDIO` du manifest = anti-404 | narrateur_h | `text_to_speech` |
 | `site/audio/dinos/fr/noms/` (70) | vocal du NOM SEUL de chaque dino, `<id>.mp3`, 1,5-2 s (ton `[excited]`, usage jeux — complété 70/70 le 2026-07-29). ⚠ Les `<id>-nom.mp3` à plat de `fr/` = segments de FICHE 20-35 s, interdits sur un tap en jeu | narrateur_h | `text_to_speech` |
 | `site/audio/dinos/<id>-nom.mp3` (60) | copies à plat consommées par les MJ via le manifest (voir § API dinos) | narrateur_h | copie de noms/ + segments fiche antérieurs |
 
@@ -49,8 +55,10 @@ window.DINO_NOM_AUDIO                    // Set des 60 ids ayant un -nom.mp3
 ```
 Le manifest est **généré** : après tout ajout de `<id>-nom.mp3`, régénérer le Set (voir en-tête du fichier).
 
-### Hubs (index2/index3) — nom du lieu parlé
-Fonction locale `speakLieu(zone, txt)` : joue `sounds/voix/lieux/{bus|fusee}-<zone>.mp3`, fallback `speak()` TTS.
+### Hubs — nom du lieu parlé
+~~Fonction locale `speakLieu(zone, txt)`~~ **CADUC** : les hubs index2/index3 ont été supprimés
+(hub unique = `index.html` « La Vallée », scène `js/mur-scene.js`). Les 12 MP3 `voix/lieux/`
+sont orphelins — à rebrancher si un futur hub parle, ou à déclasser.
 
 **Règle d'or** : tout appel voix garde un **fallback TTS navigateur** (si le MP3 manque/ne charge pas, le jeu parle quand même).
 
@@ -80,7 +88,7 @@ Fonction locale `speakLieu(zone, txt)` : joue `sounds/voix/lieux/{bus|fusee}-<zo
 - **Tous les mj-XX** : fin de partie = `playEndSound` → fanfare pool + voix aléatoire (3 voix × 22). Erreur = pool.
 - **Dinos** : mj-24, mj-31 (nom réel + fallback), mj-28 (bouton 🔊), mj-33 (memory : flip + paire).
 - **Instructions** : mj-25 (trouve-le-meme + cherche-bien→voice), mj-26 (combien + compte-encore), mj-30 (regardons-ensemble). mj-24/31 : essaie-encore→voice.
-- **Hubs** : index2 (6 lieux), index3 (6 planètes) parlent en narratrice.
+- ~~**Hubs** : index2 (6 lieux), index3 (6 planètes) parlent en narratrice~~ **CADUC** — hubs supprimés, MP3 lieux orphelins (§ 2).
 - **Session 2026-07-13 (vraie voix partout)** :
   - Consignes MP3 : mj-13a (premier bus), mj-13c (indice comptage), mj-14 (2 variantes grille), mj-15 (intrus), mj-16 (suite), mj-43/44/45 (banner parlé au changement de palier UNIQUEMENT — anti-répétition, slug par palier).
   - `RegleInfo.init({slug})` : le 🔊 de la modal ❓ joue le MP3 si slug fourni (sinon TTS, comme avant).
@@ -117,7 +125,7 @@ Générés via `text_to_sound_effects` (1,5-2 s), **paddés 250 ms** (règle L-0
 ## 5. Ce qui reste (TODO — MAJ 2026-07-13 session « vraie voix partout »)
 
 - **4 phrases orphelines restantes** : cest-parti, a-toi-de-jouer, encore-une-fois, ouvre-bien-les-yeux — points d'usage = décision produit Papa Yann (cherche-bien branchée mj-22).
-- **Périodes (5) pas encore branchées** dans le voyage/la frise (mj-31 dit le nom du dino, pas encore « Le Jurassique ! ») — assets prêts dans `audio/dinos/periodes/`.
+- ~~**Périodes (5) pas encore branchées**~~ → **FAIT** : mj-31 les joue depuis 2026-07-07 (`PERIODE_MP3`, permien → `pangee.mp3` assumé) ; grille époque de dev-dinos branchée 2026-08-10 (`playPeriodeVoice`, anti-404 via le Set `DINO_PERIODE_AUDIO` du manifest). Le voyage (dev-dinos) garde ses récits longs `recit-*.mp3` — pas de double annonce « Le Trias ! » devant.
 - **Hétérogénéité de ton** : les 9 mégafaune `-nom.mp3` sont en `[excited]` (ton jeu), les 51 autres en ton fiche. Homogénéiser si gênant.
 - ~~Phrases à nombre variable : restent en TTS~~ → **CADUC 2026-07-29** : banque `sounds/nombres/` (gabarits complets par nombre, décision PY 2026-07-28). Le principe « pas de Frankenstein MP3+TTS mi-phrase » reste en vigueur : un gabarit = UN MP3 entier.
 - **mj-30 taille** : `-taille.mp3` = dialogue 1 dino, le jeu compare N dinos en dynamique — refonte écran révélation nécessaire, pas un branchement.

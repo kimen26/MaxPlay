@@ -2,7 +2,7 @@ import { Bot, Context, InlineKeyboard } from "grammy";
 import { hostname } from "os";
 import { randomUUID } from "crypto";
 import { spawn } from "child_process";
-import { appendFileSync } from "fs";
+import { appendFileSync, existsSync } from "fs";
 import { join } from "path";
 
 const INSTANCE_ID = randomUUID().slice(0, 8);
@@ -32,8 +32,22 @@ const ALLOWED_CHAT_ID = process.env.ALLOWED_CHAT_ID
 const PROJECT_PATH =
   process.env.PROJECT_PATH ?? "C:/ProjetsPerso/Claude_Projects/MaxPlay";
 
+// Backend IA : "claude" (Claude Code CLI) ou "kimi" (Kimi Code CLI).
+// Défaut via BOT_BACKEND dans .env, switchable à chaud via /backend sur Telegram.
+type Backend = "claude" | "kimi";
+const BACKEND_LABEL: Record<Backend, string> = { claude: "Claude", kimi: "Kimi" };
+let currentBackend: Backend = process.env.BOT_BACKEND === "claude" ? "claude" : "kimi";
+
 const CLAUDE_CLI = process.env.CLAUDE_CLI ?? "claude";
-const CLAUDE_TIMEOUT_MS = parseInt(process.env.CLAUDE_TIMEOUT_MS ?? "600000");
+const KIMI_CLI = process.env.KIMI_CLI ?? "kimi";
+// Kimi : modèle optionnel (défaut = default_model de ~/.kimi-code/config.toml)
+const KIMI_MODEL = process.env.KIMI_MODEL ?? null;
+const CLAUDE_TIMEOUT_MS = parseInt(
+  process.env.AGENT_TIMEOUT_MS ?? process.env.CLAUDE_TIMEOUT_MS ?? "600000"
+);
+// Garde-fou : le prompt kimi est passé en argument de ligne de commande
+// (limite Windows ~32767 chars), contrairement à claude qui le lit sur stdin.
+const KIMI_MAX_PROMPT_CHARS = 24000;
 
 const MAX_HISTORY = 10;
 
@@ -91,7 +105,7 @@ function buildPromptWithHistory(chatId: number, userMessage: string): string {
   const history = getHistory(chatId);
   if (history.length === 0) return userMessage;
   const lines = history.map((m) =>
-    m.role === "user" ? `[Utilisateur] : ${m.content}` : `[Claude] : ${m.content}`
+    m.role === "user" ? `[Utilisateur] : ${m.content}` : `[Assistant] : ${m.content}`
   );
   return (
     `Voici l'historique de notre conversation (contexte) :\n\n` +
@@ -199,7 +213,27 @@ bot.command("start", async (ctx) => {
 bot.command("status", async (ctx) => {
   if (!isAllowed(ctx)) return;
   const count = getHistory(ctx.chat.id).length / 2;
-  await ctx.reply(`✅ Bot actif · Claude Code prêt · Projet : MaxPlay\n📝 ${count} échange(s) en mémoire`);
+  await ctx.reply(
+    `✅ Bot actif · Backend : ${BACKEND_LABEL[currentBackend]} · Projet : MaxPlay\n📝 ${count} échange(s) en mémoire`
+  );
+});
+
+bot.command("backend", async (ctx) => {
+  if (!isAllowed(ctx)) return;
+  const arg = ctx.match.trim().toLowerCase();
+  if (arg === "kimi" || arg === "claude") {
+    currentBackend = arg;
+    log(`🔀 Backend switché → ${currentBackend} (par chat ${ctx.chat.id})`);
+    await ctx.reply(
+      `🔀 Backend : ${BACKEND_LABEL[currentBackend]}\n` +
+        `(valable jusqu'au redémarrage du bot — défaut persistant : BOT_BACKEND dans .env)`
+    );
+  } else {
+    await ctx.reply(
+      `🧠 Backend actuel : ${BACKEND_LABEL[currentBackend]}\n\n` +
+        `Pour changer :\n/backend kimi\n/backend claude`
+    );
+  }
 });
 
 bot.command("whoami", async (ctx) => {
@@ -248,7 +282,7 @@ bot.on("message:text", async (ctx) => {
   // Premier morceau : on crée le buffer et on affiche le message "réfléchit"
   const agent = detectAgent(text);
   const thinking = await ctx.reply(
-    `${AGENT_EMOJI[agent]} Claude réfléchit… _(agent : ${agent})_`,
+    `${AGENT_EMOJI[agent]} ${BACKEND_LABEL[currentBackend]} réfléchit… _(agent : ${agent})_`,
     { parse_mode: "Markdown" }
   );
 
@@ -265,12 +299,14 @@ async function processUserMessage(
   thinkingMsgId?: number
 ) {
   const agent = detectAgent(userMessage);
+  const backend = currentBackend; // figé pour ce message (switch possible à tout moment)
+  const label = BACKEND_LABEL[backend];
 
   let thinkingId = thinkingMsgId;
   if (!thinkingId) {
     const msg = await bot.api.sendMessage(
       chatId,
-      `${AGENT_EMOJI[agent]} Claude réfléchit… _(agent : ${agent})_`,
+      `${AGENT_EMOJI[agent]} ${label} réfléchit… _(agent : ${agent})_`,
       { parse_mode: "Markdown" }
     );
     thinkingId = msg.message_id;
@@ -285,7 +321,7 @@ async function processUserMessage(
       .editMessageText(
         chatId,
         thinkingId!,
-        `${AGENT_EMOJI[agent]} Claude travaille toujours… ${sec}s _(agent : ${agent})_`,
+        `${AGENT_EMOJI[agent]} ${label} travaille toujours… ${sec}s _(agent : ${agent})_`,
         { parse_mode: "Markdown" }
       )
       .catch(() => {});
@@ -293,7 +329,7 @@ async function processUserMessage(
 
   try {
     const promptWithHistory = buildPromptWithHistory(chatId, userMessage);
-    const response = await runClaude(promptWithHistory, agent);
+    const response = await runAgent(promptWithHistory, agent, backend);
     clearInterval(heartbeat);
 
     addToHistory(chatId, "user", userMessage);
@@ -434,26 +470,29 @@ const AGENT_POLE_HINT: Record<Agent, string> = {
   "quick": "Question rapide, pas de pôle particulier",
 };
 
-async function runClaude(prompt: string, agent: Agent = "quick"): Promise<string> {
-  const callId = randomUUID().slice(0, 6);
-  const t0 = Date.now();
+// ─── Backends CLI (claude / kimi) ─────────────────────────────────────────────
 
-  // Map agent → modèle CLI Claude Code (utilise l'auth OAuth de l'utilisateur, pas de clé API)
-  const modelMap: Record<Agent, string> = {
-    "narration": "opus",
-    "game-dev": "sonnet",
-    "dino": "sonnet",
-    "max-adventure": "sonnet",
-    "quick": "haiku",
-  };
+function runAgent(prompt: string, agent: Agent, backend: Backend): Promise<string> {
+  return backend === "kimi" ? runKimi(prompt, agent) : runClaude(prompt, agent);
+}
 
-  const model = modelMap[agent];
-  const routedPrompt = `[Message reçu via le bot Telegram MaxPlay — aiguillage : ${AGENT_POLE_HINT[agent]}]\n\n${prompt}`;
-  log(`🚀 runClaude[${callId}] agent=${agent} model=${model} promptLen=${routedPrompt.length} (via CLI)`);
+interface CliOutput {
+  code: number | null;
+  stdout: string;
+  stderr: string;
+  timedOut: boolean;
+}
 
-  return new Promise<string>((resolve, reject) => {
-    const args = ["-p", "--model", model, "--permission-mode", "bypassPermissions"];
-    const child = spawn(CLAUDE_CLI, args, {
+// Spawn partagé : timeout + kill forcé Windows + collecte stdout/stderr.
+// `input` (optionnel) est écrit sur stdin ; sinon stdin est fermé tout de suite.
+function spawnCli(
+  cmd: string,
+  args: string[],
+  callId: string,
+  input?: string
+): Promise<CliOutput> {
+  return new Promise<CliOutput>((resolve, reject) => {
+    const child = spawn(cmd, args, {
       cwd: PROJECT_PATH,
       shell: false,
       stdio: ["pipe", "pipe", "pipe"],
@@ -481,37 +520,127 @@ async function runClaude(prompt: string, agent: Agent = "quick"): Promise<string
 
     child.on("error", (err) => {
       clearTimeout(timer);
-      const dt = Date.now() - t0;
-      log(`❌ runClaude[${callId}] spawn error=${err.message} duration=${dt}ms`);
-      reject(new Error(`Erreur Claude (spawn): ${err.message}`));
+      log(`❌ spawnCli[${callId}] cmd=${cmd} spawn error=${err.message}`);
+      reject(new Error(`spawn ${cmd}: ${err.message}`));
     });
 
     child.on("close", (code) => {
       clearTimeout(timer);
-      const dt = Date.now() - t0;
-
-      if (timedOut) {
-        log(`❌ runClaude[${callId}] timeout=${CLAUDE_TIMEOUT_MS}ms stderr="${stderr.trim().slice(0, 300)}"`);
-        reject(new Error(`Erreur Claude: timeout après ${Math.round(CLAUDE_TIMEOUT_MS / 60000)} min`));
-        return;
-      }
-
-      if (code !== 0) {
-        const errMsg = stderr.trim() || `exit code ${code}`;
-        log(`❌ runClaude[${callId}] exit=${code} duration=${dt}ms stderr="${errMsg.slice(0, 300)}"`);
-        reject(new Error(`Erreur Claude: ${errMsg.slice(0, 500)}`));
-        return;
-      }
-
-      const responseText = stdout.trim();
-      log(`✅ runClaude[${callId}] exit=0 duration=${dt}ms responseLen=${responseText.length}`);
-      if (stderr.trim()) log(`⚠️ runClaude[${callId}] stderr non vide: "${stderr.trim().slice(0, 200)}"`);
-      resolve(responseText || "(pas de réponse)");
+      resolve({ code, stdout, stderr, timedOut });
     });
 
-    child.stdin.write(routedPrompt);
+    if (input !== undefined) child.stdin.write(input);
     child.stdin.end();
   });
+}
+
+async function runClaude(prompt: string, agent: Agent = "quick"): Promise<string> {
+  const callId = randomUUID().slice(0, 6);
+  const t0 = Date.now();
+
+  // Map agent → modèle CLI Claude Code (utilise l'auth OAuth de l'utilisateur, pas de clé API)
+  const modelMap: Record<Agent, string> = {
+    "narration": "opus",
+    "game-dev": "sonnet",
+    "dino": "sonnet",
+    "max-adventure": "sonnet",
+    "quick": "haiku",
+  };
+
+  const model = modelMap[agent];
+  const routedPrompt = `[Message reçu via le bot Telegram MaxPlay — aiguillage : ${AGENT_POLE_HINT[agent]}]\n\n${prompt}`;
+  log(`🚀 runClaude[${callId}] agent=${agent} model=${model} promptLen=${routedPrompt.length} (via CLI)`);
+
+  const args = ["-p", "--model", model, "--permission-mode", "bypassPermissions"];
+  const { code, stdout, stderr, timedOut } = await spawnCli(CLAUDE_CLI, args, callId, routedPrompt);
+  const dt = Date.now() - t0;
+
+  if (timedOut) {
+    log(`❌ runClaude[${callId}] timeout=${CLAUDE_TIMEOUT_MS}ms stderr="${stderr.trim().slice(0, 300)}"`);
+    throw new Error(`Erreur Claude: timeout après ${Math.round(CLAUDE_TIMEOUT_MS / 60000)} min`);
+  }
+
+  if (code !== 0) {
+    const errMsg = stderr.trim() || `exit code ${code}`;
+    log(`❌ runClaude[${callId}] exit=${code} duration=${dt}ms stderr="${errMsg.slice(0, 300)}"`);
+    throw new Error(`Erreur Claude: ${errMsg.slice(0, 500)}`);
+  }
+
+  const responseText = stdout.trim();
+  log(`✅ runClaude[${callId}] exit=0 duration=${dt}ms responseLen=${responseText.length}`);
+  if (stderr.trim()) log(`⚠️ runClaude[${callId}] stderr non vide: "${stderr.trim().slice(0, 200)}"`);
+  return responseText || "(pas de réponse)";
+}
+
+// Le shim npm `kimi.cmd` passe par cmd.exe qui TRONQUE les arguments contenant
+// des sauts de ligne (nos prompts ont toujours un header multi-lignes).
+// Contournement : appeler node directement sur le bundle du CLI installé en
+// npm global. Si install différente (script officiel = vrai exe), KIMI_CLI
+// dans .env permet de pointer dessus.
+function resolveKimiCommand(): { cmd: string; prefixArgs: string[] } {
+  const appdata = process.env.APPDATA;
+  if (appdata) {
+    const main = join(appdata, "npm/node_modules/@moonshot-ai/kimi-code/dist/main.mjs");
+    if (existsSync(main)) return { cmd: "node", prefixArgs: [main] };
+  }
+  return { cmd: KIMI_CLI, prefixArgs: [] };
+}
+
+async function runKimi(prompt: string, agent: Agent = "quick"): Promise<string> {
+  const callId = randomUUID().slice(0, 6);
+  const t0 = Date.now();
+
+  let routedPrompt = `[Message reçu via le bot Telegram MaxPlay — aiguillage : ${AGENT_POLE_HINT[agent]}]\n\n${prompt}`;
+  if (routedPrompt.length > KIMI_MAX_PROMPT_CHARS) {
+    log(`⚠️ runKimi[${callId}] prompt tronqué ${routedPrompt.length} → ${KIMI_MAX_PROMPT_CHARS} chars (limite argv Windows)`);
+    routedPrompt = routedPrompt.slice(0, KIMI_MAX_PROMPT_CHARS) + "\n\n[…message tronqué par le bot…]";
+  }
+  log(`🚀 runKimi[${callId}] agent=${agent} model=${KIMI_MODEL ?? "default(config)"} promptLen=${routedPrompt.length} (via CLI)`);
+
+  // -p = non interactif : la permission "auto" est appliquée d'office
+  // (--yolo/--auto sont refusés en combinaison avec -p, cf. docs kimi).
+  // stream-json : une ligne JSON par message ; seules les lignes role=assistant
+  // contiennent le texte final (thinking et progress vont sur stderr).
+  const { cmd, prefixArgs } = resolveKimiCommand();
+  const args = [...prefixArgs, "-p", routedPrompt, "--output-format", "stream-json"];
+  if (KIMI_MODEL) args.push("--model", KIMI_MODEL);
+
+  const { code, stdout, stderr, timedOut } = await spawnCli(cmd, args, callId);
+  const dt = Date.now() - t0;
+
+  if (timedOut) {
+    log(`❌ runKimi[${callId}] timeout=${CLAUDE_TIMEOUT_MS}ms stderr="${stderr.trim().slice(0, 300)}"`);
+    throw new Error(`Erreur Kimi: timeout après ${Math.round(CLAUDE_TIMEOUT_MS / 60000)} min`);
+  }
+
+  if (code !== 0) {
+    const errMsg = stderr.trim() || `exit code ${code}`;
+    log(`❌ runKimi[${callId}] exit=${code} duration=${dt}ms stderr="${errMsg.slice(0, 300)}"`);
+    throw new Error(`Erreur Kimi: ${errMsg.slice(0, 500)}`);
+  }
+
+  const texts: string[] = [];
+  for (const line of stdout.split("\n")) {
+    const t = line.trim();
+    if (!t.startsWith("{")) continue;
+    try {
+      const msg = JSON.parse(t) as { role?: string; content?: unknown };
+      if (msg.role === "assistant" && typeof msg.content === "string") texts.push(msg.content);
+    } catch {
+      // ligne non-JSON (banner, warning) — ignorée
+    }
+  }
+
+  // Repli si le format change : strip du préfixe transcript "• " du mode texte
+  const fallback = stdout
+    .split("\n")
+    .map((l) => (l.startsWith("• ") ? l.slice(2) : l))
+    .join("\n")
+    .trim();
+  const responseText = (texts.join("\n").trim() || fallback);
+  log(`✅ runKimi[${callId}] exit=0 duration=${dt}ms responseLen=${responseText.length}`);
+  if (stderr.trim()) log(`⚠️ runKimi[${callId}] stderr non vide: "${stderr.trim().slice(0, 200)}"`);
+  return responseText || "(pas de réponse)";
 }
 
 function splitMessage(text: string, maxLen = 4000): string[] {
@@ -530,7 +659,7 @@ process.on("unhandledRejection", (reason) =>
   log("❌ unhandledRejection:", reason instanceof Error ? reason : String(reason))
 );
 
-log(`🤖 MaxPlay Bot démarré… INSTANCE_ID=${INSTANCE_ID} pid=${process.pid} host=${hostname()} CLAUDE_TIMEOUT_MS=${CLAUDE_TIMEOUT_MS} PROJECT_PATH=${PROJECT_PATH}`);
+log(`🤖 MaxPlay Bot démarré… INSTANCE_ID=${INSTANCE_ID} pid=${process.pid} host=${hostname()} BACKEND=${currentBackend} CLAUDE_TIMEOUT_MS=${CLAUDE_TIMEOUT_MS} PROJECT_PATH=${PROJECT_PATH}`);
 
 // ─── Polling résilient ────────────────────────────────────────────────────────
 // bot.start() ne se résout que lorsque le polling s'arrête. Une erreur dedans (ex:

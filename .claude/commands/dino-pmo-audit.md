@@ -14,6 +14,7 @@ Depuis la fusion 2026-07-19, un seul passage couvre FOND ET FORME — procédure
 6. Lean (doublons, décisions non écrites)
 
 **Rappels au lancement** :
+- Dette de contenu : lancer `node studio/referentiel/build.mjs` et lire la section « Dettes ouvertes » de `studio/referentiel/_ETAT-CONTENU.md` — toute dette DINO ouverte y figure, à acquitter (`acquitter.mjs --propage` / `--sans-impact`).
 - Particularité DINO : code déployé dans `site/` (dev-dinos.html, dinos-data.js, audio/dinos, img/dinos) mais gouvernance dans `studio/dino/` — auditer les DEUX.
 - Anti-faux-positif : `ls`/Glob avant tout « manquant ».
 - Livrable : entrée datée dans `studio/dino/pmo/audit-trail.md`.

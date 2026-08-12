@@ -39,7 +39,7 @@ Come l'italiano rende le radici greche/latine:
 
 ---
 
-## 2. Tabella dei 60 dinosauri
+## 2. Tabella dei 70 dinosauri
 
 Colonne: `id` · nome scientifico · **FORMA DA SCRIVERE PER IL TTS** (forma italiana + scansione con tonica in MAIUSCOLO) · trappola eventuale.
 
@@ -63,11 +63,13 @@ Colonne: `id` · nome scientifico · **FORMA DA SCRIVERE PER IL TTS** (forma ita
 | centrosaurus | *Centrosaurus* | **Centrosauro** — Cen-tro-SAU-ro | `ce`=«tchen» (NON «ken») |
 | ceratosaurus | *Ceratosaurus* | **Ceratosauro** — Ce-ra-to-SAU-ro | `ce`=«tche» (NON «ke») |
 | coelodonta | *Coelodonta* | **Celodonte** — Ce-lo-DON-te | oe→e; `ce`=«tche»; forma it. «Celodonte» |
+| corythosaurus | *Corythosaurus* | **Coritosauro** — Co-ri-to-SAU-ro | th→t, y→i — aggiunto 2026-08-10, da validare con un madrelingua |
 | cryolophosaurus | *Cryolophosaurus* | **Criolofosauro** — Cri-o-lo-fo-SAU-ro | y→i, ph→f |
 | deinonychus | *Deinonychus* | **Deinonico** — Dei-NO-ni-co | ei=dittongo «dèi»; ch=k, y→i, -us→-o (forma it.) |
 | dilophosaurus | *Dilophosaurus* | **Dilofosauro** — Di-lo-fo-SAU-ro | ph→f |
 | dimetrodon | *Dimetrodon* | **Dimetrodonte** — Di-me-tro-DON-te | forma it. «Dimetrodonte» (-don→-donte) |
 | diplodocus | *Diplodocus* | **Diplodoco** — Di-PLO-do-co | -us→-o; c=k (`co`); accento su -PLO- |
+| edaphosaurus | *Edaphosaurus* | **Edafosauro** — E-da-fo-SAU-ro | ph→f ; sinapside permiano (non un dino) — aggiunto 2026-08-10, da validare con un madrelingua |
 | edmontonia | *Edmontonia* | **Edmontonia** — Ed-mon-TO-ni-a | — (si legge tale e quale) |
 | edmontosaurus | *Edmontosaurus* | **Edmontosauro** — Ed-mon-to-SAU-ro | — |
 | elasmosaurus | *Elasmosaurus* | **Elasmosauro** — E-la-smo-SAU-ro | — |
@@ -75,14 +77,20 @@ Colonne: `id` · nome scientifico · **FORMA DA SCRIVERE PER IL TTS** (forma ita
 | gallimimus | *Gallimimus* | **Gallimimo** — Gal-li-MI-mo | ll doppia; -us→-o |
 | giganotosaurus | *Giganotosaurus* | **Giganotosauro** — Gi-ga-no-to-SAU-ro | `gi`=«dji» (NON «ghi»); poi g dura in «-ga-» |
 | glyptodon | *Glyptodon* | **Gliptodonte** — Glip-to-DON-te | y→i; forma it. «Gliptodonte» |
+| gorgonops | *Gorgonops* | **Gorgonops** — Gor-GO-nops | g dura ; gorgonopside permiano (non un dino) — aggiunto 2026-08-10, da validare con un madrelingua |
+| hatzegopteryx | *Hatzegopteryx* | **Atsegopterige** — A-tse-gop-TE-ri-ge | h muta, tz→ts, y→i, x→« ge » (modello Archeopterige) ; pterosauro gigante — aggiunto 2026-08-10, da validare con un madrelingua |
 | ichthyosaurus | *Ichthyosaurus* | **Ittiosauro** — It-ti-o-SAU-ro | chth→tt (forma it. stabilita «Ittiosauro»); y muta |
 | iguanodon | *Iguanodon* | **Iguanodonte** — I-gua-no-DON-te | gua=«gwa»; forma it. «Iguanodonte» |
 | kentrosaurus | *Kentrosaurus* | **Kentrosauro** — Ken-tro-SAU-ro | k=k duro (NON «tchen»); mantenere la K |
 | liopleurodon | *Liopleurodon* | **Liopleurodonte** — Li-o-pleu-ro-DON-te | eu=dittongo «pleu»; forma it. «-donte» |
+| lystrosaurus | *Lystrosaurus* | **Listrosauro** — Li-stro-SAU-ro | y→i ; sinapside permiano (non un dino) — aggiunto 2026-08-10, da validare con un madrelingua |
+| maiasaura | *Maiasaura* | **Maiasaura** — Ma-ia-SAU-ra | -saura femminile ; forma diretta — aggiunto 2026-08-10, da validare con un madrelingua |
 | mammuthus | *Mammuthus* | **Mammut** — MAM-mut | th→t; forma it. corrente «Mammut» (mm doppia) |
 | megatherium | *Megatherium* | **Megaterio** — Me-ga-TE-ri-o | th→t; forma it. «Megaterio» |
 | microraptor | *Microraptor* | **Microraptor** — Mi-cro-RAP-tor | c=k (`cro`); «raptor» resta |
+| minmi | *Minmi* | **Minmi** — MIN-mi | nome di luogo australiano (Minmi Crossing), nessuna radice greca — aggiunto 2026-08-10, da validare con un madrelingua |
 | mosasaurus | *Mosasaurus* | **Mosasauro** — Mo-sa-SAU-ro | s semplici; -us→-o |
+| moschops | *Moschops* | **Moschops** — MOS-kops | ch=k devant o → `cho`=ko ; terapside permiano (non un dino) — aggiunto 2026-08-10, da validare con un madrelingua |
 | ophthalmosaurus | *Ophthalmosaurus* | **Oftalmosauro** — Of-tal-mo-SAU-ro | ph→f, th→t → «Oftalmo-» |
 | oviraptor | *Oviraptor* | **Oviraptor** — O-vi-RAP-tor | «raptor» resta |
 | pachycephalosaurus | *Pachycephalosaurus* | **Pachicefalosauro** — Pa-chi-ce-fa-lo-SAU-ro | ch=k→`chi`=ki; y→i; ph→f; `ce`=«tche» |
@@ -94,6 +102,8 @@ Colonne: `id` · nome scientifico · **FORMA DA SCRIVERE PER IL TTS** (forma ita
 | protoceratops | *Protoceratops* | **Protoceratopo** — Pro-to-ce-RA-to-po | `ce`=«tche»; -ops→-opo |
 | pteranodon | *Pteranodon* | **Pteranodonte** — Pte-ra-no-DON-te | Pt- iniziale pronunciato; forma it. «Pteranodonte» |
 | quetzalcoatlus | *Quetzalcoatlus* | **Quetzalcoatlo** — Quet-zal-co-A-tlo | azteco; qu=«kw», tz=«ts»; -us→-o |
+| saurolophus | *Saurolophus* | **Saurolofo** — Sau-RO-lo-fo | ph→f, -us→-o ; ⚠️ trappola orale: SENZA prefisso «para-» (≠ Parasaurolofo) — aggiunto 2026-08-10, da validare con un madrelingua |
+| scutellosaurus | *Scutellosaurus* | **Scutellosauro** — Scu-tel-lo-SAU-ro | sc davanti a u = «sc» dura (/sku/), ll doppia tenuta — aggiunto 2026-08-10, da validare con un madrelingua |
 | shonisaurus | *Shonisaurus* | **Shonisauro** — Sho-ni-SAU-ro | sh=«sh» (in it. scritto «sc»+i darebbe «shi»; qui tenere «Sho-» = /ʃo/) |
 | smilodon | *Smilodon* | **Smilodonte** — Smi-lo-DON-te | forma it. «Smilodonte» |
 | spinosaurus | *Spinosaurus* | **Spinosauro** — Spi-no-SAU-ro | — |

@@ -15,6 +15,11 @@ paths:
 > Créé 2026-08-10 : la carte de la banque existait depuis le 2026-07-06 mais **rien ne la rendait
 > inratable** — un audit du contenu sonore est passé complètement à côté et a conclu à tort que
 > 109 fichiers de voix n'avaient aucune source documentée.
+>
+> **Où lire quoi** : ce fichier = règles dures · [`site/sounds/_BANQUE-SONS.md`](../../site/sounds/_BANQUE-SONS.md)
+> = inventaire + API + process · [`studio/referentiel/`](../../studio/referentiel/README.md) =
+> contrats, lignée, dérive, plan EL (architecture) · `_ETAT-CONTENU.md` / `_COUVERTURE.md` /
+> `_PLAN-GENERATION.md` = tableaux de bord **générés** (ne pas éditer).
 
 ## ⛔ AVANT DE GÉNÉRER, BRANCHER OU AUDITER UN SON — LIRE D'ABORD
 

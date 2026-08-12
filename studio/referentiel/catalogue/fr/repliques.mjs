@@ -121,9 +121,9 @@ export const LIGNES_NOMMEES = ['narrateur_f', 'narrateur_h', 'wex'].map((voix) =
   production: { voix, usage: 'reaction' },
   fichier: `sounds/voix/${voix === 'narrateur_f' ? 'f' : voix === 'narrateur_h' ? 'h' : 'wex'}/etoile-gagnee.mp3`,
   consommee_par: ['mj-golden.js (vol d’étoile + 3e étoile)'],
-  note: "⚠️ Joué AUSSI à la 3e étoile (mj-golden.js:479) où le code attend « Tu maîtrises "
-    + "ce jeu ! » — texte qui n'existe qu'en repli TTS et ne sort donc jamais. Soit on crée "
-    + "une ligne `tu-maitrises`, soit on aligne le code sur ce message unique. Décision PY.",
+  note: "Joué aussi à la 3e étoile (mj-golden.js) — décision actée 2026-08-10 : ligne unique "
+    + "« Tu as gagné une étoile ! », le repli TTS du code a été aligné sur ce message (plus de "
+    + "ligne `tu-maitrises` séparée).",
 }));
 
 // ─────────────────────────────────────────────────────────────────────────────

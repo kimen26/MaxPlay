@@ -19,13 +19,17 @@ et signale quand un canal ne dit plus la même chose que la source.
 node studio/referentiel/valider.mjs         # le catalogue respecte-t-il son schéma ?
 node studio/referentiel/plan-generation.mjs # QUOI générer — n'appelle RIEN
 node studio/referentiel/couverture.mjs      # ce qui n'est PAS encore enrôlé
-node studio/referentiel/build.mjs           # registre + tableau de bord de l'existant
+node studio/referentiel/build.mjs           # registre + tableau de bord + état des dettes
 node studio/referentiel/test-detection.mjs  # non-régression du détecteur de dérive
+node studio/referentiel/_gen-textes-site.mjs # régénère site/js/textes-jeux.js (table des textes canoniques du site)
+node studio/referentiel/acquitter.mjs dino.corythosaurus.regime mp3 --sans-impact "raison"
 ```
 
-**Aucun de ces scripts ne modifie du contenu ni ne contacte d'API.** Ils lisent, vérifient
-et écrivent leurs propres sorties. Les appels ElevenLabs sont faits séparément, après
-relecture du plan — c'est tout l'intérêt de le produire d'abord.
+**Les 5 premiers scripts ci-dessus ne modifient aucun contenu et ne contactent aucune API.**
+`acquitter.mjs` n'écrit, lui, que dans `empreintes.json` (la base de référence versionnée) —
+jamais dans le contenu. Les appels ElevenLabs sont faits par des scripts
+séparés (§ « Scripts de génération » plus bas), après relecture du plan — c'est tout l'intérêt
+de le produire d'abord.
 
 ## Deux moitiés
 
@@ -73,16 +77,19 @@ page. Il n'écrit que ses deux sorties.
 
 | Fichier | Rôle | Versionné |
 |---|---|---|
-| [`_ETAT-CONTENU.md`](_ETAT-CONTENU.md) | **Tableau de bord lisible** — dérives d'abord, puis retards, manques, angles morts | oui |
+| [`_ETAT-CONTENU.md`](_ETAT-CONTENU.md) | **Tableau de bord lisible** — dettes ouvertes en tête, puis dérives, retards, manques, angles morts | oui |
+| [`empreintes.json`](empreintes.json) | **Base d'empreintes de référence** (Lot 1) — signature gravée par ligne clé × canal + journal des acquittements | oui |
 | `registre.json` | Le registre complet, lisible par machine (clés, contrats, lignée, empreintes) | non |
 
-Les deux sont **générés**. Jamais tenus à la main : « où en est le contenu ? » → on régénère.
+Les deux premiers ne sont pas tenus à la main : le tableau de bord est **généré** (« où en est
+le contenu ? » → on régénère), la base d'empreintes n'est réécrite que par `build.mjs`
+(structure : lignes nouvelles/disparues) et `acquitter.mjs` (références, décisions).
 Même doctrine que `studio/dino/pmo/_ETAT-DINOS.md`.
 
 `registre.json` est ignoré par git : 853 Ko réécrits intégralement à chaque passage
 alourdiraient l'historique sans rien apporter, puisqu'il se reconstruit en deux secondes.
-Le Lot 1 introduira à côté une base d'**empreintes** compacte — celle-là sera versionnée,
-car c'est elle qui porte la mémoire de « ce qui était à jour la dernière fois ».
+`empreintes.json`, lui, EST versionné : compact (~32 Ko), clés triées, diff-able — c'est
+lui qui porte la mémoire de « ce qui était à jour la dernière fois ».
 
 ## Le modèle
 
@@ -121,6 +128,17 @@ pas vérifier rétroactivement qu'ils disent encore vrai. Leur empreinte de réf
 posée maintenant, pour que toute modification **future** soit détectée. On ne rattrape pas
 le passé, on arrête l'hémorragie.
 
+**3. Dette et acquittement** (Lot 1) — `build.mjs` compare, pour chaque ligne clé × canal
+suivie, la signature courante de détection à la référence gravée dans `empreintes.json`.
+Différence → la ligne est **en dette**, listée en tête de `_ETAT-CONTENU.md`. Une dette ne
+se résout jamais toute seule : `acquitter.mjs` la clôt, soit `--propage` (canal régénéré,
+la nouvelle signature devient la référence), soit `--sans-impact "raison"` (le changement
+ne remet pas le canal en cause ; la référence est re-calée sur la valeur courante, avec la
+raison et la date — le « défuzzifier » de gettext). La ligne reste close tant que la source
+n'a pas rebougé depuis l'acquittement. Sans cette seconde issue, le tableau resterait rouge
+à vie. La signature ne contient que les dépendances **déclarées** du bloc : un changement
+hors de ces champs ne lève rien (alerter juste, sinon le tableau meurt d'indifférence).
+
 ## Pourquoi un test de détection
 
 Un détecteur se dégrade dans les deux sens, et les deux sont graves : trop strict, il crie
@@ -132,23 +150,56 @@ textes réels du dépôt, dont le cas témoin qui a motivé le chantier.
 
 | Fichier | Rôle |
 |---|---|
-| `build.mjs` | Orchestrateur — lance les scans, écrit le registre et le rapport |
+| `build.mjs` | Orchestrateur — lance les scans, écrit le registre, le rapport et l'état des dettes |
+| `acquitter.mjs` | Clôt une dette (`--propage` / `--sans-impact "raison"`) — n'écrit que dans `empreintes.json` |
+| `empreintes.json` | Base d'empreintes de référence, **versionnée** — mémoire du « à jour », journal des acquittements |
 | `scan-dino.mjs` | Domaine DINO — clés, contrats, lignée, dérives |
 | `scan-jeu.mjs` | Domaine JEU — catalogue, consignes, règles, voix produites |
 | `lib/socle.mjs` | Chargement de `dinos-data.js` hors navigateur, empreintes, dates de commit |
+| `lib/dette.mjs` | Moteur de dette — signatures par ligne clé × canal, sync de la base, états |
 | `lib/reperes.mjs` | Identification du repère d'une comparaison de taille |
+| `lib/regles.mjs` | Reconstruction déterministe du texte parlé d'un panneau de règles (partagée `_gen-regles.mjs` ↔ `catalogue/fr/regles.mjs`) |
 | `lib/catalogue.mjs` | Chargement du catalogue, résolution des voix, rendu des gabarits |
 | `test-detection.mjs` | Non-régression du détecteur de dérive |
 | `valider.mjs` | Contrôles de forme du catalogue (types, voix, tags, viabilité des gabarits) |
 | `plan-generation.mjs` | Plan des appels ElevenLabs — **n'en fait aucun** |
-| `couverture.mjs` | Ce qui n'est pas encore enrôlé au catalogue, par famille |
+| `couverture.mjs` | Ce qui n'est pas encore enrôlé (catalogue, ou registre pour les blocs dino), par famille + orphelins assumés |
 | `catalogue/_SCHEMA.md` | Le contrat de format |
 | `catalogue/voix.mjs` | Rôles autorisés, réglages par usage, langues invitées |
-| `catalogue/_bruitages.mjs` | Sons sans texte — hors langue |
-| `catalogue/fr/*.mjs` | Le contenu français : humeur, répliques, atomes et gabarits |
+| `catalogue/_bruitages.mjs` | Sons sans texte (ui + fx, cris de bébés compris) — hors langue |
+| `catalogue/fr/*.mjs` | Le contenu français : humeur, répliques (consignes, règles, lieux, pièces), atomes et gabarits, nombres, phonèmes, familles dino (noms, dico, menus, récits, spéciaux) |
+
+## Scripts de génération (⚠️ appellent ElevenLabs)
+
+Ces scripts **modifient du contenu et contactent l'API ElevenLabs** — ils sont préfixés `_`
+et exigent `--pour-de-vrai` pour agir (sans le flag, dry-run) :
+
+| Fichier | Rôle |
+|---|---|
+| `_extraire-textes-jeux.mjs` | Extrait les textes parlés/affichés des pages `site/mj-*.html` → `textes-jeux.json` (pas d'appel API, mais écrit une sortie) |
+| `_gen-textes-site.mjs` | Génère `site/js/textes-jeux.js` — table slug → { ecran, tts, mp3 } consommée par les libs du site (pas d'appel API, déterministe ; sans drapeau) |
+| `_gen-consignes.mjs` | Génère les MP3 des consignes → `site/sounds/voix/phrases/` |
+| `_gen-regles.mjs` | Génère les MP3 `regle-<id>.mp3` des panneaux de règles |
+| `_gen-humeur-invitee.mjs` | Génère les doublons multilingues d'encouragements (6 langues invitées) |
+
+Ils appliquent tous le padding 250 ms + loudnorm, et résolvent les voix par rôle via
+`voice-map.json`. Avant de les lancer : relire `_PLAN-GENERATION.md`, vérifier le budget
+(`check_subscription`).
+
+## Où lire quoi (désambiguïsation des fichiers de suivi)
+
+| Fichier | Rôle | Tenu par |
+|---|---|---|
+| `site/sounds/_BANQUE-SONS.md` | Inventaire opérationnel des fichiers audio + API + process de génération | la main |
+| `.claude/rules/sons.md` | Pointeur auto-chargé vers la banque + règles dures (padding, voice-map, repli TTS) | la main |
+| `studio/referentiel/` (ici) | Contrats, lignée, détection de dérive, plan EL — **l'architecture** | catalogue à la main, sorties générées |
+| `_ETAT-CONTENU.md` · `_COUVERTURE.md` · `_PLAN-GENERATION.md` | Tableaux de bord | **générés — jamais édités** |
+| [`_FILE-EL.md`](_FILE-EL.md) | **File d'attente EL priorisée** (lots A→D, commandes, solde crédits) — quoi régénérer quand on veut | la main, depuis `_PLAN-GENERATION.md` |
 
 ## État
 
-**Lot 0 livré** — instrumentation seule, aucun refactor, aucun contenu déplacé.
-Les lots suivants (moteur d'acquittement, fermeture de la boucle dino, domaine jeu,
+**Lot 1 livré** — moteur de dette : base d'empreintes versionnée (`empreintes.json`),
+section « Dettes ouvertes » en tête du tableau de bord, acquittement `acquitter.mjs`,
+contrôle branché dans `/dino-pmo-audit` et `/game-pmo-audit`.
+Les lots suivants (fermeture de la boucle dino, domaine jeu,
 ouverture des langues) sont décrits dans le plan et **non engagés**.

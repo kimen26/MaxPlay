@@ -1,7 +1,7 @@
 # 🌍 Lexiques de prononciation dino — multilingue (9 langues)
 
 > Source de vérité de la **prononciation des noms de dinos par langue**, pour la génération audio ElevenLabs (voix native par langue).
-> Créé 2026-07-08 (workflow 8 agents linguistes + 2 QA). Couverture : **60 espèces × 8 langues**, toutes à 60/60.
+> Créé 2026-07-08 (workflow 8 agents linguistes + 2 QA). Couverture : **70 espèces × 9 langues**, toutes à 70/70 — complétion 2026-08-10 (10 espèces ajoutées aux 8 lexiques non-FR, marquées « à relire natif » ; FR déjà complet).
 > 🔒 Règle : le texte parlé n'est JAMAIS affiché → on peut déformer la graphie autant qu'il faut pour que ça SONNE juste.
 
 ---
@@ -31,7 +31,7 @@
 
 ## Verdict QA (2026-07-08)
 
-- **Couverture** : 60/60 dans les 9 langues, aucun doublon, format gabarit respecté.
+- **Couverture** : 70/70 dans les 9 langues (audit 2026-08-10 vs canon 70 espèces de `dinos-data.js`), aucun doublon, format gabarit respecté.
 - **Non-latin FIABLE** : ZH **aucun hanzi inventé** (noms de paléontologie chinois réels, distinction dino/翼龙/鱼龙/mammifères correcte) · JA katakana établi (マンモス vernaculaire bien géré) · RU -завр + pièges anticipés (Карнотавр, Мамонт) · AR /p/→ب et /v/→ف respectés dans toute la table.
 - **Latin** : respellings crédibles ; réglages mineurs à faire (voir décisions ci-dessous).
 
@@ -42,6 +42,8 @@
 > Ces points sont déjà notés en section « incertitudes » de chaque fichier. Regroupés ici pour un passage unique. La méthode = **preview groupé par langue** (1 MP3 des noms respellés → écoute native → correction) avant les 60 clips.
 
 **Transverses (toutes langues)** — taxons rares, forme peu établie partout : `aenocyon` · `titanis` · `patagotitan` · `quetzalcoatlus` (nahuatl) · `coelodonta` · `paraceratherium` · `megatherium`. → valider avec un locuteur natif.
+
+**Ajouts 2026-08-10 (complétion 60→70, toutes langues non-FR)** — `minmi` · `scutellosaurus` · `corythosaurus` · `maiasaura` · `saurolophus` · `hatzegopteryx` · `edaphosaurus` · `gorgonops` · `lystrosaurus` · `moschops` : graphies posées selon les règles de chaque lexique mais **jamais relues par un natif** → marquées « à relire natif » dans chaque table. À inclure au preview groupé de chaque langue avant toute prod audio.
 
 **🇸🇦 Arabe** : (1) rendu du **/g/ dur** = choix de PAYS selon l'accent de la voix (ج égyptien vs غ) — concerne Giganotosaurus, Gallimimus, Stegosaurus, Iguanodon, Glyptodon, Amargasaurus, Patagotitan, Megatherium. (2) `th` → ت (/t/, défaut) vs ث (/θ/). (3) suffixe -saurus rendu ـصور — confirmer que la voix ne coupe pas le S.
 
@@ -61,4 +63,4 @@
 2. Par langue : **preview groupé** → validation native → régé des 60 clips `audio/dinos/<lang>/<id>-nom.mp3`.
 3. Priorité langues : FR (base) → EN + PT-BR (actées) → ES · IT · RU · JA → AR · ZH (validation native la plus critique).
 
-_Produit par workflow `lexiques-prononciation-dino-multilingue` (8 linguistes + 2 QA, 60 espèces). Gouvernance : dino-pmo unifié FOND+FORME (fusion 2026-07-19). Plan i18n global : [`../../../../../memory/audio/PLAN-AUDIO-I18N.md`](../../../../memory/audio/PLAN-AUDIO-I18N.md)._
+_Produit par workflow `lexiques-prononciation-dino-multilingue` (8 linguistes + 2 QA, 60 espèces initiales). Complété 2026-08-10 : 60→70 espèces (canon `dinos-data.js`), 10 entrées ajoutées par langue non-FR, marquées « à relire natif ». Gouvernance : dino-pmo unifié FOND+FORME (fusion 2026-07-19). Plan i18n global : [`../../../../../memory/audio/PLAN-AUDIO-I18N.md`](../../../../memory/audio/PLAN-AUDIO-I18N.md)._

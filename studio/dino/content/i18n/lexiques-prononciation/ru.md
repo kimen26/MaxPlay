@@ -1,146 +1,161 @@
-# Lexique de prononciation — noms de dinos (RUSSE / Русский) pour ElevenLabs (eleven_v3)
+# Лексикон произношения — noms de dinos en RUSSE (русский) pour ElevenLabs (eleven_v3)
 
-> **Langue : russe (Русский).** **Méthode : écriture NATIVE cyrillique** (forme lue par la voix TTS), avec colonne de translittération latine pour contrôle humain.
-> **Sert à l'audio TTS voix native (Native Russian).** Le texte parlé n'est **jamais affiché** à l'écran — la forme cyrillique n'existe que pour être *prononcée juste* par la voix russe.
-> Voix TTS cible : **Native Russian**. Ne jamais donner à la voix russe la graphie latine (`Tyrannosaurus`) : elle la lirait à l'anglaise ou l'épellerait. **Toujours lui donner la forme cyrillique établie.**
-
----
-
-## 1. Règles de conversion (racines grec/latin → russe)
-
-Le russe a une **tradition paléontologique riche** : la quasi-totalité des noms de dinosaures ont une forme cyrillique **établie et normalisée**. La règle d'or : **utiliser la forme russe consacrée**, pas une translittération maison.
-
-| Graphie savante (latin) | Rendu russe | Cyrillique | Exemple |
-|-------------------------|-------------|------------|---------|
-| `-saurus` | **-завр** (-zavr), le *-us* latin **tombe** | `-завр` | Tyranno**saurus** → Тиранно**завр** |
-| `ch` (grec, son « k ») | **х** (kh) ou **к** (k) selon usage établi | `х` / `к` | Bra**ch**io → Бра**х**ио ; Car**ch**aro → Кар**х**аро |
-| `ph` (son « f ») | **ф** (f) | `ф` | Di**ph**yo → Ди**ло**фо ; Pachyce**ph**alo → Пахицефало |
-| `th` (son « t ») | **т** (t) | `т` | Or**th**o → Ор**т**о ; Icht**h**yo → Ихти**о** |
-| `y` (grec) | **и** (i) | `и` | Pach**y** → Пах**и** ; Bar**y**onyx → Бар**и**оникс |
-| `x` | **кс** (ks) | `кс` | Baryony**x** → Барионик**с** ; Ptérodacty**l** |
-| `ae` / `oe` | **е** (ie/é) ou **э** | `е` | Ar**chae**opteryx → Ар**хе**оптерикс |
-| `c` devant a/o/u | **к** (k) | `к` | **C**arno → **К**арно |
-| `c` devant e/i/y | **ц** (ts) — usage russe | `ц` | Tri**ce**ratops → Три**це**ратопс ; Pachy**ce**phalo → Пахи**це**фало |
-| `g` (dur) | **г** (g) | `г` | **G**iganoto → **Г**иганото |
-| `h` (aspiré, latin) | souvent **х** ou muet | `х` | *variable, suivre l'usage établi* |
-| `qu` | **кв** (kv) | `кв` | **Qu**etzal → **Кв**етцаль |
-| `ei`/`ai` (diphtongue) | **ей / ай / ай** | `ей`/`ай` | D**ei**nonychus → Д**ей**нонихус |
-
-**Accent tonique (russe = important) :** la voix russe place naturellement l'accent selon la norme du mot. Pour les longs noms en **-завр**, l'accent tombe presque toujours sur le **-о- avant -завр** (ex. ТираннозА́вр → l'accent est sur « за́ »). Je ne marque pas les accents dans la colonne (la voix native les gère), mais les incertitudes d'accent sont signalées en §5.
+> **Langue cible : russe (русский).** Voix TTS : **Native Russian**.
+> **Méthode : écriture native cyrillique + nom établi.** Le russe translittère systématiquement les noms scientifiques selon des conventions stables : **`-saurus` → `-завр`** (Tyrannosaurus → **тираннозавр**), `-ceratops` → **-цератопс**, etc. Quelques créatures ont un nom vernaculaire établi (Mammuthus → **мамонт**).
+> **Ce lexique sert à générer l'AUDIO TTS avec une voix native russe. Le texte parlé (cyrillique) n'est JAMAIS affiché à l'écran** — c'est uniquement l'entrée que lit la voix.
+> **PAS de tirets de syllabation** (décision projet : une voix native russe lit le mot d'un trait, l'accent tonique est géré par le moteur).
+> Forgé sur le gabarit FR [`fr.md`](fr.md) et EN [`en.md`](en.md).
+> **Draft LLM validé par croisement (DeepSeek V4-Pro ↔ Grok 4.3, 2026-08-11), relecture native humaine à prévoir.**
 
 ---
 
-## 2. Table des 60 dinos
+## 1. Règles de conversion (racines grec/latin → cyrillique)
 
-Colonne **« À ÉCRIRE POUR LE TTS »** = forme **cyrillique** à donner à la voix russe. Colonne romanisation = translittération latine (contrôle humain, jamais donnée à la voix).
+Le russe possède une tradition fixe de translittération des noms paléontologiques. Règle maîtresse : **`-saurus` → `-завр`** (le `-us` final tombe). Le reste suit des correspondances phonétiques stables :
 
-| id | nom scientifique | À ÉCRIRE POUR LE TTS (cyrillique) | romanisation | piège |
-|----|------------------|-----------------------------------|--------------|-------|
-| aenocyon | Aenocyon (dire wolf) | **Эноцион** | Enotsion | `ae`→э, `c`+i→ц ; forme peu fixée ⚠️ |
-| albertosaurus | Albertosaurus | **Альбертозавр** | Albertozavr | -завр |
-| allosaurus | Allosaurus | **Аллозавр** | Allozavr | -завр |
-| amargasaurus | Amargasaurus | **Амаргазавр** | Amargazavr | -завр |
-| ankylosaurus | Ankylosaurus | **Анкилозавр** | Ankilozavr | `y`→и, -завр |
-| apatosaurus | Apatosaurus | **Апатозавр** | Apatozavr | -завр |
-| archaeopteryx | Archaeopteryx | **Археоптерикс** | Arkheopteriks | `chae`→хе, `x`→кс |
-| archelon | Archelon | **Архелон** | Arkhelon | `ch`→х |
-| baryonyx | Baryonyx | **Барионикс** | Barioniks | `y`→и, `x`→кс |
-| brachiosaurus | Brachiosaurus | **Брахиозавр** | Brakhiozavr | `ch`→х, -завр |
-| camarasaurus | Camarasaurus | **Камаразавр** | Kamarazavr | `c`→к, -завр |
-| carcharodontosaurus | Carcharodontosaurus | **Кархародонтозавр** | Kharkharodontozavr → Karkharodontozavr | `ch`→х ×2, -завр |
-| carnotaurus | Carnotaurus | **Карнотавр** | Karnotavr | `-taurus`→-тавр (taureau, pas -завр) ⚠️ |
-| centrosaurus | Centrosaurus | **Центрозавр** | Tsentrozavr | `ce`→це, -завр |
-| ceratosaurus | Ceratosaurus | **Цератозавр** | Tseratozavr | `ce`→це, -завр |
-| coelodonta | Coelodonta (rhino laineux) | **Целодонта** | Tselodonta | `coe`→це |
-| cryolophosaurus | Cryolophosaurus | **Криолофозавр** | Kriolofozavr | `y`→и, `ph`→ф, -завр |
-| deinonychus | Deinonychus | **Дейнонихус** | Deynonikhus | `ei`→ей, `ch`→х, `y`→и |
-| dilophosaurus | Dilophosaurus | **Дилофозавр** | Dilofozavr | `ph`→ф, -завр |
-| dimetrodon | Dimetrodon | **Диметродон** | Dimetrodon | (pas un dino, pélycosaure) |
-| diplodocus | Diplodocus | **Диплодок** | Diplodok | `-us` tombe → -док ⚠️ |
-| edmontonia | Edmontonia | **Эдмонтония** | Edmontoniya | `E-`→Э |
-| edmontosaurus | Edmontosaurus | **Эдмонтозавр** | Edmontozavr | `E-`→Э, -завр |
-| elasmosaurus | Elasmosaurus | **Эласмозавр** | Elasmozavr | `E-`→Э, -завр |
-| euoplocephalus | Euoplocephalus | **Эуоплоцефал** | Euoplotsefal | `eu`→эу, `ce`→це, `ph`→ф, `-us` tombe ⚠️ |
-| gallimimus | Gallimimus | **Галлимим** | Gallimim | `-us` tombe → -мим ⚠️ |
-| giganotosaurus | Giganotosaurus | **Гиганотозавр** | Giganotozavr | `g`→г (dur), -завр |
-| glyptodon | Glyptodon | **Глиптодон** | Gliptodon | `y`→и |
-| ichthyosaurus | Ichthyosaurus | **Ихтиозавр** | Ikhtiozavr | `ch`→х, `th`→т, `y`→и, -завр |
-| iguanodon | Iguanodon | **Игуанодон** | Iguanodon | `gua`→гуа |
-| kentrosaurus | Kentrosaurus | **Кентрозавр** | Kentrozavr | -завр |
-| liopleurodon | Liopleurodon | **Лиоплевродон** | Lioplevrodon | `eu`→ев (usage russe) |
-| mammuthus | Mammuthus | **Мамонт** | Mamont | ⚠️ mot russe usuel = « мамонт », PAS translit latine |
-| megatherium | Megatherium | **Мегатерий** | Megateriy | `th`→т, `-ium`→-ий |
-| microraptor | Microraptor | **Микрораптор** | Mikroraptor | (se lit bien) |
-| mosasaurus | Mosasaurus | **Мозазавр** | Mozazavr | -завр |
-| ophthalmosaurus | Ophthalmosaurus | **Офтальмозавр** | Oftalmozavr | `ph`→ф, `th`→т, -завр |
-| oviraptor | Oviraptor | **Овираптор** | Oviraptor | (se lit bien) |
-| pachycephalosaurus | Pachycephalosaurus | **Пахицефалозавр** | Pakhitsefalozavr | `ch`→х, `y`→и, `ce`→це, `ph`→ф, -завр |
-| paraceratherium | Paraceratherium | **Парацератерий** | Paratserateriy | `ce`→це, `th`→т, `-ium`→-ий |
-| parasaurolophus | Parasaurolophus | **Паразауролоф** | Parazaurolof | `ph`→ф, `-us` tombe → -лоф ⚠️ |
-| patagotitan | Patagotitan | **Патаготитан** | Patagotitan | (se lit bien) |
-| pentaceratops | Pentaceratops | **Пентацератопс** | Pentatseratops | `ce`→це |
-| plateosaurus | Plateosaurus | **Платеозавр** | Plateozavr | -завр |
-| protoceratops | Protoceratops | **Протоцератопс** | Prototseratops | `ce`→це |
-| pteranodon | Pteranodon | **Птеранодон** | Pteranodon | `Pt-` initial (russe le dit bien) |
-| quetzalcoatlus | Quetzalcoatlus | **Кетцалькоатль** | Ketskoatl → Ketzalkoatl | ⚠️ nahuatl ; forme russe usuelle = « Кетцалькоатль » (comme le dieu), le `-us` tombe |
-| shonisaurus | Shonisaurus | **Шонизавр** | Shonizavr | `sh`→ш, -завр |
-| smilodon | Smilodon | **Смилодон** | Smilodon | (se lit bien) |
-| spinosaurus | Spinosaurus | **Спинозавр** | Spinozavr | -завр |
-| stegosaurus | Stegosaurus | **Стегозавр** | Stegozavr | `g`→г (dur), -завр |
-| tarbosaurus | Tarbosaurus | **Тарбозавр** | Tarbozavr | -завр (genre décrit en URSS, forme sûre) |
-| therizinosaurus | Therizinosaurus | **Теризинозавр** | Terizinozavr | `th`→т, -завр |
-| titanis | Titanis (oiseau-terreur) | **Титанис** | Titanis | `-is` gardé ⚠️ (peu fixé) |
-| torosaurus | Torosaurus | **Торозавр** | Torozavr | -завр |
-| triceratops | Triceratops | **Трицератопс** | Tritseratops | `ce`→це |
-| troodon | Troodon | **Троодон** | Troodon | double `o` (deux syllabes) |
-| tyrannosaurus | Tyrannosaurus | **Тираннозавр** | Tirannozavr | `y`→и, -завр |
-| utahraptor | Utahraptor | **Ютараптор** | Yutaraptor | ⚠️ `Utah`→Юта (Юта établi), `h` muet |
-| velociraptor | Velociraptor | **Велоцираптор** | Velotsiraptor | `ci`→ци |
+| Graphie savante | Rendu russe | Exemple |
+|-----------------|-------------|---------|
+| `-saurus` (final) | **-завр** (le -us tombe) | тиранно-**завр**, алло-**завр** |
+| `-saura` (féminin) | **-завра** | майа-**завра** |
+| `-taurus` | **-тавр** | карно-**тавр** |
+| `ch` (grec, = /k/) | **х** | бра**х**иозавр, кар**х**ародонтозавр, ар**х**еоптерикс |
+| `ph` | **ф** | дило**ф**озавр, о**ф**тальмозавр |
+| `th` | **т** | **т**еризинозавр, мега**т**ерий |
+| `y` (grec) | **и** | бар**и**оникс, анк**и**лозавр |
+| `c` devant e/i | **ц** (/ts/) | **ц**ентрозавр, три**ц**ератопс, вело**ц**ираптор |
+| `c` devant a/o/u | **к** | **к**амаразавр |
+| `x` final | **-кс** | бариони-**кс**, археоптери-**кс** |
+| `ae` | **э / е** | **э**ноцион, арх**е**о- |
+| `oe` | **е** | ц**е**лодонта |
+| `eu-` / `-eu-` | **эу** (initial) / **ев** (devant consonne) | **эу**оплоцефал, лиопл**ев**родон |
+| `-us` final (hors -saurus) | tombe (muet) | диплодо**к**, дейнони**х**, галлими**м** |
+| `-ops` final | **-опс** | трицерат-**опс**, горгон-**опс** |
+| `-don` / `-odon` | **-дон** | игуано-**дон**, глипто-**дон** |
+| `Pt-` initial | **птер-** (le п SE PRONONCE, contrairement à l'anglais) | **п**теранодон |
+| `qu` / `tz` | **к** / **ц** | **к**е**ц**алькоатль |
+| `sh` | **ш** | **ш**онизавр |
+| `g` | **г** toujours dur (jamais /дж/ comme en anglais) | **г**и**г**анотозавр, **г**ор**г**онопс |
+| `h` | **х** (ou amuï) | **х**ацегоптерикс |
+| `oo` | **оо** (deux voyelles) | тр**оо**дон |
+
+**Notes de prononciation russe :**
+- Le **g est toujours dur** : гиганотозавр se dit « gui-ga-no- », jamais « dji- ». Pas de piège anglais ici.
+- **ПТ- initial se prononce entièrement** (п + т), à la différence de l'anglais qui amuït le p de *Pteranodon*.
+- L'**accent tonique russe est libre** et non marqué à l'écrit — la voix native le place correctement ; inutile de le forcer (décision projet : pas de tirets ni de majuscules d'accent).
+- Quelques noms vernaculaires priment sur la translittération : Mammuthus → **мамонт** (mammouth), jamais « маммутус » dans la littérature jeunesse.
 
 ---
 
-## 3. Romanisation — rappel des correspondances utilisées
+## 2. Table des 70 dinos — forme cyrillique (lue par le TTS)
 
-(Colonne « romanisation » de la table = translittération standard type ISO 9 / BGN allégé. **Jamais donnée à la voix.**)
+> **Donner au moteur TTS la colonne « Écrire pour le TTS ».** ⚠ = à faire valider par un natif (voir §4).
 
-| Cyrillique | Latin | | Cyrillique | Latin |
-|-----------|-------|---|-----------|-------|
-| завр | zavr | | х | kh |
-| ц | ts | | ш | sh |
-| ф | f | | ч | ch |
-| и | i | | э | e |
-| ю | yu | | я | ya |
+| id | Nom scientifique | Écrire pour le TTS | note |
+|----|------------------|--------------------|------|
+| aenocyon | Aenocyon | **эноцион** | ⚠ — à relire natif : loup géant (dire wolf), nom rare sans usage jeunesse stable |
+| albertosaurus | Albertosaurus | **альбертозавр** | direct |
+| allosaurus | Allosaurus | **аллозавр** | direct |
+| amargasaurus | Amargasaurus | **амаргазавр** | nom espagnol (La Amarga) translittéré |
+| ankylosaurus | Ankylosaurus | **анкилозавр** | y → и |
+| apatosaurus | Apatosaurus | **апатозавр** | direct |
+| archaeopteryx | Archaeopteryx | **археоптерикс** | oiseau primitif ; ch → х, x → кс ; ultra-établi |
+| archelon | Archelon | **архелон** | tortue marine géante ; ch → х |
+| baryonyx | Baryonyx | **барионикс** | y → и, x → кс |
+| brachiosaurus | Brachiosaurus | **брахиозавр** | ch → х |
+| camarasaurus | Camarasaurus | **камаразавр** | piège graphique : PAS « камеразавр » (coquille fréquente) |
+| carcharodontosaurus | Carcharodontosaurus | **кархародонтозавр** | ch → х (2 fois) |
+| carnotaurus | Carnotaurus | **карнотавр** | -taurus → -тавр |
+| centrosaurus | Centrosaurus | **центрозавр** | c devant e → ц |
+| ceratosaurus | Ceratosaurus | **цератозавр** | c devant e → ц |
+| coelodonta | Coelodonta | **целодонта** | oe → е ; rhinocéros laineux (mammifère) ; nom du genre, le nom vernaculaire est шерстистый носорог |
+| corythosaurus | Corythosaurus | **коритозавр** | th → т, y → и |
+| cryolophosaurus | Cryolophosaurus | **криолофозавр** | ph → ф |
+| deinonychus | Deinonychus | **дейноних** | ei → ей, -chus → -их |
+| dilophosaurus | Dilophosaurus | **дилофозавр** | ph → ф |
+| dimetrodon | Dimetrodon | **диметродон** | synapside permien, pas un dino |
+| diplodocus | Diplodocus | **диплодок** | -us tombe ; forme russe établie courte |
+| edaphosaurus | Edaphosaurus | **эдафозавр** | ph → ф ; synapside permien, pas un dino |
+| edmontonia | Edmontonia | **эдмонтония** | lieu canadien translittéré |
+| edmontosaurus | Edmontosaurus | **эдмонтозавр** | direct |
+| elasmosaurus | Elasmosaurus | **эласмозавр** | plésiosaure (reptile marin) |
+| euoplocephalus | Euoplocephalus | **эуоплоцефал** | eu → эу, ph → ф, -us tombe |
+| gallimimus | Gallimimus | **галлимим** | -us tombe |
+| giganotosaurus | Giganotosaurus | **гиганотозавр** | г dur (PAS « джи- ») |
+| glyptodon | Glyptodon | **глиптодон** | y → и ; mammifère cuirassé |
+| gorgonops | Gorgonops | **горгонопс** | г dur ; gorgonopsien permien, pas un dino |
+| hatzegopteryx | Hatzegopteryx | **хацегоптерикс** | h → х, tz → ц, y → и, x → кс ; ptérosaure géant (Hațeg, Roumanie) |
+| ichthyosaurus | Ichthyosaurus | **ихтиозавр** | ch → х, th → т ; reptile marin ; ultra-établi |
+| iguanodon | Iguanodon | **игуанодон** | direct |
+| kentrosaurus | Kentrosaurus | **кентрозавр** | direct |
+| liopleurodon | Liopleurodon | **лиоплевродон** | -eu- → -ев- ; pliosaure (reptile marin) |
+| lystrosaurus | Lystrosaurus | **листрозавр** | y → и ; synapside survivant du Permien, pas un dino |
+| maiasaura | Maiasaura | **майазавра** | ⚠ — à relire natif : -saura féminin → -завра ; variante concurrente « майязавра » |
+| mammuthus | Mammuthus | **мамонт** | nom vernaculaire établi (mammouth) — jamais « маммутус » en littérature jeunesse |
+| megatherium | Megatherium | **мегатерий** | th → т, -ium → -ий ; paresseux géant (mammifère) |
+| microraptor | Microraptor | **микрораптор** | direct |
+| minmi | Minmi | **минми** | nom de lieu australien (Minmi Crossing), translittération directe |
+| mosasaurus | Mosasaurus | **мозазавр** | s intervocalique → з ; reptile marin ; ultra-établi |
+| moschops | Moschops | **мосхопс** | ch → х ; thérapside permien, pas un dino |
+| ophthalmosaurus | Ophthalmosaurus | **офтальмозавр** | ph → ф, th → т ; ichtyosaure à grands yeux |
+| oviraptor | Oviraptor | **овираптор** | direct |
+| pachycephalosaurus | Pachycephalosaurus | **пахицефалозавр** | ch → х, y → и, ph → ф |
+| paraceratherium | Paraceratherium | **парацератерий** | c devant e → ц, th → т, -ium → -ий ; rhinocéros géant (mammifère) |
+| parasaurolophus | Parasaurolophus | **паразауролоф** | s → з, ph → ф, -us tombe |
+| patagotitan | Patagotitan | **патаготитан** | genre récent (2017), translittération directe |
+| pentaceratops | Pentaceratops | **пентацератопс** | c devant e → ц |
+| plateosaurus | Plateosaurus | **платеозавр** | direct |
+| protoceratops | Protoceratops | **протоцератопс** | c devant e → ц |
+| pteranodon | Pteranodon | **птеранодон** | пт- initial SE PRONONCE (contrairement à l'anglais) ; ptérosaure |
+| quetzalcoatlus | Quetzalcoatlus | **кетцалькоатль** | ⚠ — à relire natif : racine nahuatl ; variante concurrente « кецалькоатль » |
+| saurolophus | Saurolophus | **зауролоф** | ph → ф ; ⚠ piège oral : SANS préfixe « пара- » (≠ паразауролоф) |
+| scutellosaurus | Scutellosaurus | **скутеллозавр** | scu → ску, ll → лл |
+| shonisaurus | Shonisaurus | **шонизавр** | ⚠ — à relire natif : ichtyosaure peu médiatisé (monts Shoshone) |
+| smilodon | Smilodon | **смилодон** | tigre à dents de sabre (mammifère) ; nom vernaculaire : саблезубый тигр |
+| spinosaurus | Spinosaurus | **спинозавр** | direct |
+| stegosaurus | Stegosaurus | **стегозавр** | direct |
+| tarbosaurus | Tarbosaurus | **тарбозавр** | direct |
+| therizinosaurus | Therizinosaurus | **теризинозавр** | th → т, z → з |
+| titanis | Titanis | **титанис** | ⚠ — à relire natif : oiseau-terreur (terror bird), genre rare sans usage jeunesse établi |
+| torosaurus | Torosaurus | **торозавр** | direct |
+| triceratops | Triceratops | **трицератопс** | c devant e → ц ; **Tritri de Max** ; ultra-établi |
+| troodon | Troodon | **троодон** | oo → оо (deux voyelles) |
+| tyrannosaurus | Tyrannosaurus | **тираннозавр** | le classique ; nn → нн |
+| utahraptor | Utahraptor | **ютараптор** | Utah → юта, h amuï |
+| velociraptor | Velociraptor | **велоцираптор** | c devant i → ц ; ultra-établi |
 
 ---
 
-## 4. Noms qui se lisent BIEN une fois en cyrillique (0 piège au-delà de la conversion)
+## 3. Récapitulatif par catégorie (pour la voix native)
 
-Une fois passés en cyrillique établi, ces noms sont sans surprise pour une voix russe — l'accent naturel tombe bien :
+**-завр « vrais dinosaures » (le -завр porte l'accent) :** альбертозавр, аллозавр, амаргазавр, анкилозавр, апатозавр, брахиозавр, камаразавр, кархародонтозавр, центрозавр, цератозавр, коритозавр, криолофозавр, дилофозавр, эдмонтозавр, гиганотозавр, кентрозавр, пахицефалозавр, платеозавр, скутеллозавр, спинозавр, стегозавр, тарбозавр, теризинозавр, торозавр, тираннозавр, майазавра, карнотавр, трицератопс, пентацератопс, протоцератопс, паразауролоф, зауролоф, игуанодон, диплодок, дейноних, галлимим, эуоплоцефал, минми, микрораптор, овираптор, ютараптор, велоцираптор, троодон, патаготитан, эдмонтония.
 
-Аллозавр · Спинозавр · Гиганотозавр · Тарбозавр · Альбертозавр · Цератозавр · Апатозавр · Камаразавр · Амаргазавр · Платеозавр · Анкилозавр · Стегозавр · Кентрозавр · Трицератопс · Торозавр · Протоцератопс · Пентацератопс · Эдмонтозавр · Велоцираптор · Микрораптор · Овираптор · Патаготитан · Диметродон · Эласмозавр · Лиоплевродон · Смилодон · Птеранодон · Мозазавр · Спинозавр.
+**Ptérosaures (reptiles volants, PAS des dinos) :** птеранодон, кетцалькоатль, хацегоптерикс.
 
-> En cas de doute → **le preview groupé tranche** (voir gabarit FR §4 : générer 1 MP3 court qui énonce tous les noms d'affilée, une écoute native valide/corrige).
+**Reptiles marins (PAS des dinos) :** ихтиозавр, офтальмозавр, шонизавр, мозазавр, эласмозавр, лиоплевродон, архелон (tortue).
 
----
+**Synapsides permiens (PAS des dinos) :** диметродон, эдафозавр, листрозавр, горгонопс, мосхопс.
 
-## 5. ⚠️ Incertitudes (à faire valider par un russophone natif / paléo russe)
+**Mammifères & oiseaux cénozoïques (noms établis ou translittérés) :** мамонт (Mammuthus), смилодон (Smilodon), целодонта (rhinocéros laineux), парацератерий, мегатерий, глиптодон, эноцион (dire wolf), титанис (terror bird), археоптерикс (oiseau primitif).
 
-Je n'ai **rien inventé** : chaque forme ci-dessous est la translittération russe la plus standard que je connaisse, mais je signale honnêtement les cas où la forme établie n'est pas certaine ou peut varier.
-
-1. **`aenocyon` → Эноцион** — genre récent (dire wolf, ex-*Canis dirus*), rarement translittéré en russe. Alternative possible **Энокион** selon lecture de `cy`. À vérifier ; en pratique la source russe dit souvent juste « ужасный волк » (loup terrible) comme nom vernaculaire.
-2. **`carcharodontosaurus` → Кархародонтозавр** — le double `ch`→х est standard, mais on croise aussi **Кархародонтозавр** (répartition des voyelles). Vérifier la voyelle après le 2ᵉ « х ».
-3. **`carnotaurus` → Карнотавр** — attention : `-taurus` = *taureau*, rendu **-тавр** (comme минотавр = minotaure), **PAS -завр**. Forme établie « Карнотавр » — confiance haute mais je la signale car c'est un piège de conversion (ne pas « corriger » en Карнотозавр).
-4. **`euoplocephalus` → Эуоплоцефал** — nom long, plusieurs conversions coexistent (`eu` en début → Эу- ou Эв-). La forme sans `-us` (Эуоплоцефал) est la plus courante ; **Эуоплокефал** existe aussi (`ce`→ке au lieu de це). À trancher par un natif.
-5. **`quetzalcoatlus` → Кетцалькоатль** — d'origine nahuatl. Le russe emprunte la forme du dieu aztèque **Кетцалькоатль** (avec ь final, sans -us). Certaines sources paléo écrivent **Кетцалькоатлюс** (garde le -us). Choisir : forme « dieu » (recommandée, plus naturelle à dire) vs forme savante. À valider.
-6. **`utahraptor` → Ютараптор** — `Utah` = l'État, translittéré **Юта** en russe (établi). Donc Ютараптор. Mais certains paléo écrivent **Утараптор** (translit lettre à lettre). Юта- est plus juste phonétiquement ; à confirmer.
-7. **`titanis` → Титанис** — oiseau-terreur (*Titanis walleri*), peu présent en russe. `-is` gardé (Титанис). Peu de sources ; forme probable mais non garantie.
-8. **`coelodonta` → Целодонта** — rhinocéros laineux. `coe`→це est régulier ; forme **Целодонта** attestée. Confiance moyenne-haute.
-9. **`mammuthus` → Мамонт** — j'ai délibérément **traduit** par le mot russe usuel **мамонт** (mammouth) plutôt que de translittérer le latin *Mammuthus*, car pour un enfant russe c'est LE mot connu et la voix le dira parfaitement. Si le produit veut le **nom de genre latin** à l'oral, écrire **Маммутус** — mais je recommande fortement « Мамонт ». À trancher côté produit.
-10. **`liopleurodon` → Лиоплевродон** — `eu`→ев suit l'usage russe (Европа = Europe), mais on voit aussi **Лиоплеуродон** (translit directe). Ев- est plus naturel pour une voix russe. À confirmer.
-11. **Accent tonique** — pour tous les longs `-завр`, l'accent russe standard tombe sur la syllabe **-за́вр** ou juste avant ; la voix native le gère seule, mais si un nom sonne « plat » au preview, vérifier l'accent (cas à surveiller : Кентрозавр, Целодонта, Патаготитан).
-
-> **Règle appliquée :** aucune forme inventée. Là où l'usage russe est unique et sûr (la majorité des `-завр`), confiance haute. Là où plusieurs graphies coexistent ou la source russe est rare (points 1, 2, 4, 5, 6, 7, 9, 10 ci-dessus), **validation native requise avant prod audio.**
+> **Comme en chinois, il n'y a PAS de « liste se lisant bien telle quelle en latin »** : le russe ne lit jamais le nom scientifique latin. Toutes les formes ci-dessus sont des **mots cyrilliques natifs**, lisibles sans ambiguïté par une voix russe. Le seul risque de prononciation vient des longs composés translittérés (кархародонтозавр, пахицефалозавр, кетцалькоатль, хацегоптерикс) — ils restent lisibles car l'orthographe russe est quasi phonémique.
 
 ---
 
-_Créé 2026-07-08. Lexique prononciation RUSSE (cyrillique natif) pour TTS voix Native Russian — encyclopédie dino MaxPlay. À valider au preview groupé + relecture russophone pour les 11 incertitudes._
+## 4. ⚠️ Incertitudes — à faire valider par un natif russophone
+
+Aucune forme n'a été inventée : les deux LLM croisés (DeepSeek V4-Pro et Grok 4.3) convergent sur les 70 entrées. Les points ci-dessous restent à confirmer par un humain natif avant prod audio de masse :
+
+1. **aenocyon (эноцион)** — canidé préhistorique (dire wolf) quasi absent de la littérature jeunesse russe. **эноцион** est la translittération standard (ae → э) mais il n'existe pas d'usage populaire stabilisé. Valider.
+2. **maiasaura (майазавра)** — la forme **майазавра** est la plus répandue, mais la variante **майязавра** (translittération plus littérale de « Maia ») circule aussi. Trancher à l'écoute.
+3. **quetzalcoatlus (кетцалькоатль)** — **кетцалькоатль** est la forme dominante (Wikipédia ru, littérature dino), mais **кецалькоатль** existe. Confirmer la forme retenue.
+4. **shonisaurus (шонизавр)** — ichtyosaure peu médiatisé en russophonie ; translittération régulière mais usage à vérifier.
+5. **titanis (титанис)** — genre d'« oiseau-terreur » rare ; le groupe a un nom russe (фороракосы) mais le genre précis n'a pas d'usage jeunesse établi. Valider **титанис**.
+6. **mammuthus (мамонт)** — décision éditoriale : on a retenu le **nom vernaculaire** мамонт (comme « Mamut » en espagnol), pas la translittération savante маммутус. Si le projet veut le nom scientifique, basculer.
+7. **camarasaurus (камаразавр)** — la bonne forme est **камаразавр** ; la coquille « камеразавр » est fréquente en ligne. Point de vigilance de saisie, pas de doute de fond.
+8. **coelodonta (целодонта)** — le nom du genre est attesté, mais l'enfant russe connaît surtout **шерстистый носорог** (rhinocéros laineux). Garder целодонта (cohérence « nom du genre ») ou basculer au vernaculaire comme мамонт : à trancher avec la même règle que le point 6.
+
+> **Garde-fou process (comme en FR/EN §4) :** générer **1 seul MP3 court** (voix Native Russian) énonçant les 70 formes d'affilée → écoute unique → corriger toute forme mal accentuée ou variante à changer → mettre à jour cette table → puis prod de masse. Coût : 1 clip vs 70 ratés.
+
+---
+
+_Créé 2026-08-11. Méthode : écriture native cyrillique + noms de paléontologie russes établis (-завр = -saure). Draft LLM validé par croisement (DeepSeek V4-Pro ↔ Grok 4.3), relecture native humaine à prévoir. Sert d'entrée cyrillique au TTS voix Native Russian. Le texte parlé n'est jamais affiché. Toute incertitude (§4) à valider par un natif avant prod audio de masse._

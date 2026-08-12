@@ -38,7 +38,7 @@ Le portugais brésilien a déjà des formes vernaculaires pour la plupart des di
 
 ---
 
-## 2. Table des 60 dinos
+## 2. Table des 70 dinos
 
 > Colonne « À ÉCRIRE POUR LE TTS » = forme à donner à la voix native brésilienne. Tonique en PETITES CAPITALES.
 > Écriture latine (pas de romanisation nécessaire — le PT-BR s'écrit en alphabet latin).
@@ -61,11 +61,13 @@ Le portugais brésilien a déjà des formes vernaculaires pour la plupart des di
 | centrosaurus | Centrosaurus | **Sen-tro-SSAU-ro** | c(e)→s, ss |
 | ceratosaurus | Ceratosaurus | **Se-ra-to-SSAU-ro** | c(e)→s, ss |
 | coelodonta | Coelodonta | **Se-lo-DON-ta** | oe→é, c(e)→s ; on nasalisé |
+| corythosaurus | Corythosaurus | **Co-ri-to-SSAU-ro** | th→t, y→i, ss — ajouté 2026-08-10, à relire natif |
 | cryolophosaurus | Cryolophosaurus | **Cri-o-lo-fo-SSAU-ro** | y→i, ph→f, ss |
 | deinonychus | Deinonychus | **Dei-no-NI-cus** | ch→c, y→i, -us gardé « -cus » |
 | dilophosaurus | Dilophosaurus | **Di-lo-fo-SSAU-ro** | ph→f, ss ; « di »→ « dji » naturel |
 | dimetrodon | Dimetrodon | **Di-me-tro-DON** | on nasalisé ; « di »→ « dji » naturel |
 | diplodocus | Diplodocus | **Di-PLÓ-do-cus** | -us gardé « -cus » ; tonique PLÓ (usage BR) |
+| edaphosaurus | Edaphosaurus | **E-da-fo-SSAU-ro** | ph→f, ss ; synapside permien (pas un dino) — ajouté 2026-08-10, à relire natif |
 | edmontonia | Edmontonia | **Ed-mon-TÔ-ni-a** | on nasalisé |
 | edmontosaurus | Edmontosaurus | **Ed-mon-to-SSAU-ro** | ss ; on nasalisé |
 | elasmosaurus | Elasmosaurus | **E-laz-mo-SSAU-ro** | s(intervoc.)→z dans « las », puis ss |
@@ -73,14 +75,20 @@ Le portugais brésilien a déjà des formes vernaculaires pour la plupart des di
 | gallimimus | Gallimimus | **Ga-li-MI-mus** | ll→l, -us gardé « -mus » |
 | giganotosaurus | Giganotosaurus | **Ji-ga-no-to-SSAU-ro** | g(i)→« ji », ss |
 | glyptodon | Glyptodon | **Glip-to-DON** | y→i, on nasalisé |
+| gorgonops | Gorgonops | **Gor-go-NOPS** | g dur ; gorgonopsidé permien (pas un dino) — ajouté 2026-08-10, à relire natif |
+| hatzegopteryx | Hatzegopteryx | **A-tse-gop-TÉ-riks** | h initial muet en BR, tz→ts, y→i, x→cs ; ptérosaure géant — ajouté 2026-08-10, à relire natif |
 | ichthyosaurus | Ichthyosaurus | **Ic-ti-o-SSAU-ro** | ch→c, th→t, y→i, ss |
 | iguanodon | Iguanodon | **I-goua-no-DON** | gua→« goua », on nasalisé |
 | kentrosaurus | Kentrosaurus | **Ken-tro-SSAU-ro** | k gardé, ss |
 | liopleurodon | Liopleurodon | **Li-o-pleu-ro-DON** | on nasalisé |
+| lystrosaurus | Lystrosaurus | **Lis-tro-SSAU-ro** | y→i, ss ; synapside permien, survivant (pas un dino) — ajouté 2026-08-10, à relire natif |
+| maiasaura | Maiasaura | **Maia-SSAU-ra** | -saura féminin → « -ssaura » ; « ai » naturel — ajouté 2026-08-10, à relire natif |
 | mammuthus | Mammuthus | **Ma-MU-tus** | th→t, -us gardé « -tus » |
 | megatherium | Megatherium | **Me-ga-TÉ-ri-um** | th→t ; -um final |
 | microraptor | Microraptor | **Mi-cro-RAP-tor** | r final guttural léger |
+| minmi | Minmi | **MIN-mi** | nom de lieu australien (Minmi Crossing), pas de racine grecque — ajouté 2026-08-10, à relire natif |
 | mosasaurus | Mosasaurus | **Mo-za-SSAU-ro** | 1er s intervoc.→z (Mo-za), puis ss |
+| moschops | Moschops | **Mos-KOPS** | ch→k (khi grec de *moschos*) ; thérapside permien (pas un dino) — ajouté 2026-08-10, à relire natif |
 | ophthalmosaurus | Ophthalmosaurus | **Of-tal-mo-SSAU-ro** | ph→f, th→t, ss |
 | oviraptor | Oviraptor | **O-vi-RAP-tor** | r final guttural léger |
 | pachycephalosaurus | Pachycephalosaurus | **Pa-qui-se-fa-lo-SSAU-ro** | ch→qu, y→i, ph→f, ce→se, ss |
@@ -92,6 +100,8 @@ Le portugais brésilien a déjà des formes vernaculaires pour la plupart des di
 | protoceratops | Protoceratops | **Pro-to-se-RÁ-tops** | ce→se, tonique RÁ ; -tops gardé |
 | pteranodon | Pteranodon | **Pte-ra-no-DON** | Pt- initial articulé, on nasalisé |
 | quetzalcoatlus | Quetzalcoatlus | **Quét-zal-co-A-tlus** | aztèque ; -us gardé « -tlus », voir incertitudes |
+| saurolophus | Saurolophus | **Sau-RÓ-lo-fus** | ph→f, -us gardé « -fus » ; ⚠️ piège oral : PAS de préfixe « para- » (≠ Parasaurolophus) — ajouté 2026-08-10, à relire natif |
+| scutellosaurus | Scutellosaurus | **Es-cu-te-lo-SSAU-ro** | Sc- initial→« es- » (BR ajoute e), ll→l, ss — ajouté 2026-08-10, à relire natif |
 | shonisaurus | Shonisaurus | **Cho-ni-SSAU-ro** | sh→ch (« ch » français), ss |
 | smilodon | Smilodon | **Zmi-lo-DON** | S- initial + m → tend vers « z » en BR ; on nasalisé |
 | spinosaurus | Spinosaurus | **Es-pi-no-SSAU-ro** | S+consonne initial→« es- » (BR ajoute e), ss |

@@ -32,7 +32,7 @@ Le chinois **ne transcrit pas les sons** grec/latin : il **traduit le sens** de 
 
 ---
 
-## 2. Table des 60 dinos — hanzi (lu par le TTS) + pinyin + sens
+## 2. Table des 70 dinos — hanzi (lu par le TTS) + pinyin + sens
 
 > **Donner au moteur TTS la colonne « hanzi ».** Pinyin = contrôle humain. ⚠ = à faire valider par un natif (voir §4).
 
@@ -54,11 +54,13 @@ Le chinois **ne transcrit pas les sons** grec/latin : il **traduit le sens** de 
 | centrosaurus | *Centrosaurus* | 尖角龙 | jiānjiǎolóng | « dragon à corne pointue » | ne pas confondre avec 戟龙 (Styracosaure) |
 | ceratosaurus | *Ceratosaurus* | 角鼻龙 | jiǎobílóng | « dragon à corne nasale » | 鼻 bí = nez |
 | coelodonta | *Coelodonta* (rhino laineux) | 披毛犀 | pīmáoxī | « rhinocéros à toison » | ⚠ non-dino, mammifère ; 犀 xī = rhinocéros |
+| corythosaurus | *Corythosaurus* | 冠龙 | guānlóng | « dragon à couronne/casque » | ⚠ ajouté 2026-08-10, à valider natif |
 | cryolophosaurus | *Cryolophosaurus* | 冰脊龙 | bīngjǐlóng | « dragon à crête de glace » | 冰 bīng = glace, 脊 jǐ = crête |
 | deinonychus | *Deinonychus* | 恐爪龙 | kǒngzhǎolóng | « dragon à griffes terribles » | 恐 kǒng = terrible/effrayant |
 | dilophosaurus | *Dilophosaurus* | 双脊龙 | shuāngjǐlóng | « dragon à deux crêtes » | 双 shuāng = deux/paire ; aussi 双嵴龙 |
 | dimetrodon | *Dimetrodon* | 异齿龙 | yìchǐlóng | « (reptile) à dents différentes » | ⚠ non-dino (synapside) ; homonyme possible — souvent 异齿龙, aussi 基龙-famille. À valider |
 | diplodocus | *Diplodocus* | 梁龙 | liánglóng | « dragon-poutre » | 梁 liáng = poutre/pont |
+| edaphosaurus | *Edaphosaurus* | 基龙 | jīlóng | « dragon socle/base » | ⚠ non-dino (synapside permien) — ajouté 2026-08-10, à valider natif |
 | edmontonia | *Edmontonia* | 埃德蒙顿甲龙 | āidéméngdùnjiǎlóng | « dragon cuirassé d'Edmonton » | phonétique (lieu) + 甲龙 ; ⚠ parfois juste 埃德蒙顿龙 |
 | edmontosaurus | *Edmontosaurus* | 埃德蒙顿龙 | āidéméngdùnlóng | « dragon d'Edmonton » | phonétique (lieu canadien) |
 | elasmosaurus | *Elasmosaurus* | 薄板龙 | báobǎnlóng | « dragon à fines plaques » | ⚠ reptile marin (plésiosaure), pas dino ; usage 龙 ok ici |
@@ -66,14 +68,20 @@ Le chinois **ne transcrit pas les sons** grec/latin : il **traduit le sens** de 
 | gallimimus | *Gallimimus* | 似鸡龙 | sìjīlóng | « dragon semblable au coq » | 似 sì = ressembler à, 鸡 jī = poule/coq |
 | giganotosaurus | *Giganotosaurus* | 南方巨兽龙 | nánfāngjùshòulóng | « dragon-bête géant du Sud » | 巨兽 jùshòu = bête géante ; long mais standard |
 | glyptodon | *Glyptodon* | 雕齿兽 | diāochǐshòu | « bête à dents sculptées » | ⚠ non-dino, mammifère ; 兽 shòu = bête (pas 龙) |
+| gorgonops | *Gorgonops* | 丽齿兽 | lìchǐshòu | « bête aux belles dents » | ⚠ non-dino (gorgonopsidé permien) ; 兽 shòu = bête — ajouté 2026-08-10, à valider natif |
+| hatzegopteryx | *Hatzegopteryx* | 哈采格翼龙 | hācǎigéyìlóng | translit. Hațeg + « ptérosaure » | ⚠ ptérosaure géant ; phonétique (lieu roumain) — ajouté 2026-08-10, à valider natif |
 | ichthyosaurus | *Ichthyosaurus* | 鱼龙 | yúlóng | « dragon-poisson » | ⚠ reptile marin ; 鱼 yú = poisson. 鱼龙 = genre ET groupe |
 | iguanodon | *Iguanodon* | 禽龙 | qínlóng | « dragon-oiseau/gibier » | 禽 qín = oiseau/volaille (choix historique du traducteur) |
 | kentrosaurus | *Kentrosaurus* | 钉状龙 | dīngzhuànglóng | « dragon en forme de clou/pointe » | 钉 dīng = clou ; aussi 肯氏龙 (phonétique) |
 | liopleurodon | *Liopleurodon* | 滑齿龙 | huáchǐlóng | « dragon à dents lisses » | ⚠ reptile marin (pliosaure) ; 滑 huá = lisse |
+| lystrosaurus | *Lystrosaurus* | 水龙兽 | shuǐlóngshòu | « bête dragon-d'eau » | ⚠ non-dino (synapside, survivant du Permien) ; 兽 shòu = bête — ajouté 2026-08-10, à valider natif |
+| maiasaura | *Maiasaura* | 慈母龙 | címǔlóng | « dragon bonne-mère » | 慈 cí = maternel/tendre ; nom établi — ajouté 2026-08-10, à valider natif |
 | mammuthus | *Mammuthus* (mammouth) | 猛犸象 | měngmǎxiàng | « éléphant mammouth » | ⚠ non-dino, mammifère ; 象 xiàng = éléphant. Ultra-établi |
 | megatherium | *Megatherium* (paresseux géant) | 大地懒 | dàdìlǎn | « paresseux terrestre géant » | ⚠ non-dino, mammifère ; 懒 lǎn = paresseux |
 | microraptor | *Microraptor* | 小盗龙 | xiǎodàolóng | « petit dragon voleur » | 小 xiǎo = petit, 盗 dào = voler |
+| minmi | *Minmi* | 敏迷龙 | mǐnmílóng | translit. Minmi (lieu australien) + 龙 | phonétique (nom propre de lieu) — ajouté 2026-08-10, à valider natif |
 | mosasaurus | *Mosasaurus* | 沧龙 | cānglóng | « dragon des mers/de la Meuse » | ⚠ reptile marin ; 沧 cāng = mer vaste. 沧龙 = genre ET groupe |
+| moschops | *Moschops* | 麝喙兽 | shèhuìshòu | « bête au museau musqué » | ⚠ non-dino (thérapside permien) ; 兽 shòu = bête — ajouté 2026-08-10, à valider natif |
 | ophthalmosaurus | *Ophthalmosaurus* | 大眼鱼龙 | dàyǎnyúlóng | « ichthyosaure à grands yeux » | ⚠ marin ; 眼 yǎn = œil. Rend « ophthalmo » par le sens (œil) |
 | oviraptor | *Oviraptor* | 窃蛋龙 | qièdànlóng | « dragon voleur d'œufs » | 窃 qiè = voler, 蛋 dàn = œuf |
 | pachycephalosaurus | *Pachycephalosaurus* | 肿头龙 | zhǒngtóulóng | « dragon à tête enflée/épaisse » | 肿 zhǒng = enflé, 头 tóu = tête |
@@ -85,6 +93,8 @@ Le chinois **ne transcrit pas les sons** grec/latin : il **traduit le sens** de 
 | protoceratops | *Protoceratops* | 原角龙 | yuánjiǎolóng | « dragon à cornes primitif/originel » | 原 yuán = originel/primitif |
 | pteranodon | *Pteranodon* | 无齿翼龙 | wúchǐyìlóng | « ptérosaure sans dents » | ⚠ ptérosaure (reptile volant) ; 翼 yì = aile, 无齿 wúchǐ = sans dents |
 | quetzalcoatlus | *Quetzalcoatlus* | 风神翼龙 | fēngshényìlóng | « ptérosaure dieu-du-vent » | ⚠ ptérosaure ; 风神 fēngshén = dieu du vent (rend Quetzalcoatl, dieu aztèque) |
+| saurolophus | *Saurolophus* | 栉龙 | zhìlóng | « dragon à crête (peigne) » | ⚠ ≠ 副栉龙 (Parasaurolophus) à l'oral : sans préfixe 副 — ajouté 2026-08-10, à valider natif |
+| scutellosaurus | *Scutellosaurus* | 小盾龙 | xiǎodùnlóng | « dragon au petit bouclier » | 盾 dùn = bouclier ; nom établi — ajouté 2026-08-10, à valider natif |
 | shonisaurus | *Shonisaurus* | 秀尼鱼龙 | xiùníyúlóng | « ichthyosaure de Shoshone (秀尼) » | ⚠ marin ; 秀尼 = translit. Shoshone + 鱼龙 |
 | smilodon | *Smilodon* (tigre à dents de sabre) | 剑齿虎 | jiànchǐhǔ | « tigre à dents-épées » | ⚠ non-dino, mammifère ; 虎 hǔ = tigre, 剑齿 = dents-sabre |
 | spinosaurus | *Spinosaurus* | 棘龙 | jílóng | « dragon-épine » | 棘 jí = épine/ronce (l'épine dorsale = « voile ») |

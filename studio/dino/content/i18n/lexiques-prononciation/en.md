@@ -33,7 +33,7 @@ English inherits the traditional "anglicized Latin/Greek" pronunciation of scien
 
 ---
 
-## 2. The 60 species — English respelling table
+## 2. The 70 species — English respelling table
 
 Stress = CAPS. Hyphens split syllables for the TTS.
 
@@ -55,11 +55,13 @@ Stress = CAPS. Hyphens split syllables for the TTS.
 | centrosaurus | Centrosaurus | **SEN-troh-SOR-us** | c→"s" before e |
 | ceratosaurus | Ceratosaurus | **seh-RAT-oh-SOR-us** | c→"s" before e |
 | coelodonta | Coelodonta | **see-loh-DON-tah** | oe→"ee" (woolly rhino) |
+| corythosaurus | Corythosaurus | **kor-ih-thoh-SOR-us** | th kept, y→"ih" — added 2026-08-10, native check pending |
 | cryolophosaurus | Cryolophosaurus | **kry-oh-LOH-foh-SOR-us** (kree-) | ph→f, y→"ih/ee" |
 | deinonychus | Deinonychus | **dye-NON-ih-kus** | ei→"eye", ch→k, y→"ih" |
 | dilophosaurus | Dilophosaurus | **dye-LOH-foh-SOR-us** (dih-) | ph→f |
 | dimetrodon | Dimetrodon | **dye-MET-roh-don** (dih-) | not a dinosaur but keep std |
 | diplodocus | Diplodocus | **dih-PLOD-oh-kus** (or DIP-loh-DOH-kus) | two accepted stresses — see ⚠️ |
+| edaphosaurus | Edaphosaurus | **ed-ah-foh-SOR-us** | ph→f; Permian synapsid, not a dinosaur — added 2026-08-10, native check pending |
 | edmontonia | Edmontonia | **ed-mon-TOH-nee-ah** | straightforward |
 | edmontosaurus | Edmontosaurus | **ed-MON-toh-SOR-us** | straightforward |
 | elasmosaurus | Elasmosaurus | **ee-LAZ-moh-SOR-us** | s→"z" between vowels |
@@ -67,14 +69,20 @@ Stress = CAPS. Hyphens split syllables for the TTS.
 | gallimimus | Gallimimus | **GAL-ih-MY-mus** (GAL-ih-MEE-mus) | -mimus = "MY-mus" |
 | giganotosaurus | Giganotosaurus | **jig-ah-NOH-toh-SOR-us** (GIG-) | soft g "j"; NOT "giganTO" |
 | glyptodon | Glyptodon | **GLIP-toh-don** | y→"ih" |
+| gorgonops | Gorgonops | **gor-GON-ops** | g hard; Permian gorgonopsian, not a dinosaur — added 2026-08-10, native check pending |
+| hatzegopteryx | Hatzegopteryx | **HAT-seh-gop-TER-iks** | Romanian Hațeg ≈ "ha-TSEG"; giant pterosaur, y→"ih", x→iks — added 2026-08-10, native check pending |
 | ichthyosaurus | Ichthyosaurus | **IK-thee-oh-SOR-us** | ch→k, th kept, y→"ee" |
 | iguanodon | Iguanodon | **ig-WAH-noh-don** (ih-GWAH-) | gua→"gwah" |
 | kentrosaurus | Kentrosaurus | **KEN-troh-SOR-us** | straightforward |
 | liopleurodon | Liopleurodon | **LYE-oh-PLOOR-oh-don** (lee-oh-) | eu→"oor" |
+| lystrosaurus | Lystrosaurus | **LIS-troh-SOR-us** (lis-TROH-) | y→"ih"; Permian survivor, not a dinosaur — added 2026-08-10, native check pending |
+| maiasaura | Maiasaura | **MY-ah-SOR-ah** | feminine -saura ("good mother lizard") — added 2026-08-10, native check pending |
 | mammuthus | Mammuthus | **MAM-uh-thus** | th kept (mammoth genus) |
 | megatherium | Megatherium | **meg-ah-THEER-ee-um** | th kept; giant ground sloth |
 | microraptor | Microraptor | **MY-kroh-RAP-tor** | micro→"MY-kroh" |
+| minmi | Minmi | **MIN-mee** | Australian place name (Minmi Crossing), not Greek/Latin — added 2026-08-10, native check pending |
 | mosasaurus | Mosasaurus | **MOH-sah-SOR-us** | -us not dropped |
+| moschops | Moschops | **MOS-kops** | ch→k (Greek *moschos*); Permian therapsid, not a dinosaur — added 2026-08-10, native check pending |
 | ophthalmosaurus | Ophthalmosaurus | **off-THAL-moh-SOR-us** | ph→f, th kept |
 | oviraptor | Oviraptor | **OH-vih-RAP-tor** | straightforward |
 | pachycephalosaurus | Pachycephalosaurus | **PAK-ee-SEF-ah-loh-SOR-us** | ch→k, ph→f, ce→"se", y→"ee" |
@@ -86,6 +94,8 @@ Stress = CAPS. Hyphens split syllables for the TTS.
 | protoceratops | Protoceratops | **proh-toh-SEH-rah-tops** | ce→"se" |
 | pteranodon | Pteranodon | **teh-RAN-oh-don** | Pt→silent p |
 | quetzalcoatlus | Quetzalcoatlus | **ket-sal-koh-AT-lus** | Nahuatl root; qu→"k", tz→"ts" |
+| saurolophus | Saurolophus | **sor-OL-oh-fus** | ph→f; ⚠️ oral trap: NO "para-" prefix (≠ Parasaurolophus) — added 2026-08-10, native check pending |
+| scutellosaurus | Scutellosaurus | **skoo-TEL-oh-SOR-us** | scu→"skoo", ll→l — added 2026-08-10, native check pending |
 | shonisaurus | Shonisaurus | **SHOH-nih-SOR-us** | sh kept |
 | smilodon | Smilodon | **SMY-loh-don** | i→"eye" (sabre-tooth cat) |
 | spinosaurus | Spinosaurus | **SPY-noh-SOR-us** (SPEE-noh-) | i→"eye"/"ee" |

@@ -307,18 +307,18 @@
     },
     "dino.corythosaurus.funfact": {
       "el": "9de36cca22c9",
-      "mp3": "bbe0a40799a6"
+      "mp3": "97fbf57c1b0c"
     },
     "dino.corythosaurus.nom": {
       "el": "35782f73bc46",
-      "mp3": "56e3b224bfe5"
+      "mp3": "728e39982707"
     },
     "dino.corythosaurus.recap": {
       "mp3": "a5747e5465d0"
     },
     "dino.corythosaurus.regime": {
       "el": "3533984f4478",
-      "mp3": "688b05f71c95"
+      "mp3": "6b6501435e9e"
     },
     "dino.corythosaurus.taille": {
       "el": "f8a3b60bfc95",
@@ -592,18 +592,18 @@
     },
     "dino.hatzegopteryx.funfact": {
       "el": "dbb630d288c0",
-      "mp3": "6515e2bf237b"
+      "mp3": "b09b051dae9a"
     },
     "dino.hatzegopteryx.nom": {
       "el": "f461c04eb584",
-      "mp3": "4fcc46ebb7ad"
+      "mp3": "f55ac8c06cd4"
     },
     "dino.hatzegopteryx.recap": {
       "mp3": "57a2ba6055da"
     },
     "dino.hatzegopteryx.regime": {
       "el": "a1cd6121a8c3",
-      "mp3": "2baf17e92afb"
+      "mp3": "4c419831d9d8"
     },
     "dino.hatzegopteryx.taille": {
       "el": "64f753639b4f",
@@ -1374,6 +1374,48 @@
       "canal": "mp3",
       "decision": "propage",
       "raison": null
+    },
+    {
+      "date": "2026-08-12T21:48:56.382Z",
+      "cle": "dino.corythosaurus.nom",
+      "canal": "mp3",
+      "decision": "sans-impact",
+      "raison": "flag retard grave avant commit des MP3 du 12/08 — artefact mecanique, MP3 a jour"
+    },
+    {
+      "date": "2026-08-12T21:48:56.382Z",
+      "cle": "dino.corythosaurus.regime",
+      "canal": "mp3",
+      "decision": "sans-impact",
+      "raison": "flag retard grave avant commit des MP3 du 12/08 — artefact mecanique, MP3 a jour"
+    },
+    {
+      "date": "2026-08-12T21:48:56.382Z",
+      "cle": "dino.corythosaurus.funfact",
+      "canal": "mp3",
+      "decision": "sans-impact",
+      "raison": "flag retard grave avant commit des MP3 du 12/08 — artefact mecanique, MP3 a jour"
+    },
+    {
+      "date": "2026-08-12T21:48:56.901Z",
+      "cle": "dino.hatzegopteryx.nom",
+      "canal": "mp3",
+      "decision": "sans-impact",
+      "raison": "flag retard grave avant commit des MP3 du 12/08 — artefact mecanique, MP3 a jour"
+    },
+    {
+      "date": "2026-08-12T21:48:56.901Z",
+      "cle": "dino.hatzegopteryx.regime",
+      "canal": "mp3",
+      "decision": "sans-impact",
+      "raison": "flag retard grave avant commit des MP3 du 12/08 — artefact mecanique, MP3 a jour"
+    },
+    {
+      "date": "2026-08-12T21:48:56.901Z",
+      "cle": "dino.hatzegopteryx.funfact",
+      "canal": "mp3",
+      "decision": "sans-impact",
+      "raison": "flag retard grave avant commit des MP3 du 12/08 — artefact mecanique, MP3 a jour"
     }
   ]
 }

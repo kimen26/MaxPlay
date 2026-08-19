@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] C'était un carnivore. Il chassait les gros mangeurs de plantes de son pays — l'Edmontosaure, et le Saurolophe avec sa crête. Et peut-être qu'il ne chassait pas tout seul : on a retrouvé 26 Albertosaures ensemble, au même endroit."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] 26 ? Alors, ils étaient copains ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] C'est exactement la question que se posent les savants. Peut-être une vraie meute, comme les loups d'aujourd'hui. Ils cherchent encore la réponse."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

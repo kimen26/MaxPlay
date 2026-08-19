@@ -8,7 +8,7 @@
 // Navigation (logique validée Papa Yann 2026-06-16) :
 //   Cover = Menu FAMILLES (squareOne, molette : 9 familles ; chaque cran DIT le nom savant)
 //     --OK--> Menu DINOS de la famille (molette : les dinos ; chaque cran DIT juste le nom du dino)
-//       --OK--> Fiche complète du dino (5 blocs collés : nom+taille+régime+funfact+récap)
+//       --OK--> Fiche complète du dino (4 blocs collés : nom+taille+régime+funfact — récap exclu du flux linéaire, EP-D-30)
 //         --fin (autoplay)--> retour au menu DINOS de sa famille
 //
 // 70 dinos, 11 familles (2026-08-02 : +19 — 62 + mammifères/oiseaux une fois leurs menus produits).

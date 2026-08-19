@@ -2135,9 +2135,11 @@ function dinoHasAudio(id) { return !!(DINO_AUDIO[id] && DINO_AUDIO[id].recap); }
 // Badge sur le bouton violet pour Papa Yann : un V1 = candidat à relancer. Absent du map = V1.
 // V3 = corpus dialogue corrigé (relecture multi-agents + fact-check paléo), régénéré 2026-06-15.
 // Les 51 dinos de l'encyclopédie sont en V3 (texte court interactif Narrateur+Wex, échelles canon, Tritri).
+// V4 = réécriture EP-D-29 via agent dino-fiche-writer (charte PY : étymologie au centre, Wex sincère
+// varié, vignette attaque/défense max 1, tags v3 posés au script) — pilote : albertosaurus (2026-08-19).
 const DINO_AUDIO_VERSION = {
   triceratops: 'V3', tyrannosaurus: 'V3', spinosaurus: 'V3', giganotosaurus: 'V3', carcharodontosaurus: 'V3',
-  allosaurus: 'V3', tarbosaurus: 'V3', baryonyx: 'V3', albertosaurus: 'V3', ceratosaurus: 'V3',
+  allosaurus: 'V3', tarbosaurus: 'V3', baryonyx: 'V3', albertosaurus: 'V4', ceratosaurus: 'V3',
   dilophosaurus: 'V3', carnotaurus: 'V3', cryolophosaurus: 'V3', brachiosaurus: 'V3', diplodocus: 'V3',
   apatosaurus: 'V3', camarasaurus: 'V3', amargasaurus: 'V3', plateosaurus: 'V3', patagotitan: 'V3',
   torosaurus: 'V3', protoceratops: 'V3', pentaceratops: 'V3', centrosaurus: 'V3', pteranodon: 'V3',

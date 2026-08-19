@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Al-ber-to-saure. « Alberto », ça vient de l'Alberta, une GRANDE région du Canada où on a trouvé ses os. Et « saure », tu sais ce que ça veut dire ?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] Lézard. Alors... le lézard de l'Alberta."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactement. Il vivait là-bas, il y a 70 millions d'années. Un cousin du T-Rex."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et il avait des ennemis ? Des chasseurs encore plus forts que lui ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Non. Dans son pays, c'était lui le plus grand chasseur. Aucun autre carnivore n'était assez costaud pour l'embêter."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

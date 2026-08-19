@@ -7,49 +7,7 @@
 
 ## 1. ALBERTOSAURE — Albertosaurus sarcophagus
 
-### BLOC A — Présentation
-
-**NARRATEUR H** [excited] : Al-ber-to-saure. « Alberto », c'est l'Alberta, une grande région du Canada où on a trouvé ses os. Et « saure », c'est « lézard » en grec.
-
-**WEX** [curious] : Lézard de l'Alberta.
-
-**NARRATEUR H** [happily] : Exactement. Il vivait au Canada, il y a 70 millions d'années. Un cousin du T-Rex, plus au nord.
-
-**WEX** [curious] : Et là-bas, il avait des copains dangereux.
-
-**NARRATEUR H** [playful] : Oui ! Le Gorgosaure, son cousin canadien, et les gros herbivores comme l'Edmontosaure et le Parasaurolophus. Beaucoup de monde dans le nord.
-
----
-
-### BLOC B — Taille
-
-**NARRATEUR H** [excited] : Il mesurait 9 virgule 5 mètres de long — aussi long qu'un camion. Debout, il faisait 3 mètres de haut — aussi haut qu'un panier de basket. Et il pesait 2 mille kilos — aussi lourd qu'un rhinocéros.
-
-**WEX** [curious][gasps] : Plus petit que le T-Rex, mais il courait vite.
-
-**NARRATEUR H** [confident] : Oui. Plus léger et plus rapide. Un vrai sprinter du Crétacé.
-
----
-
-### BLOC C — Comment il vivait
-
-**NARRATEUR H** [serious] : C'était un carnivore. Il chassait les hadrosaures et les cératopsiens. Et il vivait peut-être en meute : on a trouvé 26 squelettes ensemble.
-
-**WEX** [curious] : 26 ensemble. C'était une famille de chasseurs.
-
-**NARRATEUR H** [playful] : Peut-être. Comme une meute de loups. Le loup des T-Rex.
-
----
-
-### BLOC D — Le truc fou
-
-**NARRATEUR H** [excited] : 26 Albertosaures au même endroit. Les savants pensent qu'ils chassaient en groupe, pas tout seuls.
-
-**WEX** [gasps] : Comme des loups.
-
-**NARRATEUR H** [softly] : Exactement. Pas le plus gros, mais peut-être le plus malin.
-
----
+> ⚠️ Fiche DÉPLACÉE → [`albertosaurus.md`](albertosaurus.md) — réécrite au charter 2026-08-17 (pilote EP-D-29, validée Papa Yann) : proies/dangers corrigé, « 26 » dé-doublonné, cohabitations fact-checkées (Gorgosaure/Parasaurolophus retirés — pas contemporains). Canon = standalone (pattern saurolophus.md).
 
 ## 2. CÉRATOSAURE — Ceratosaurus nasicornis
 

@@ -75,6 +75,8 @@ bun run index.ts
 
 Le bot se relance automatiquement à chaque démarrage de Claude Code via le hook `SessionStart` dans `.claude/settings.json`.
 
+⚠️ **Sous Kimi Code, ce hook ne tire pas** — si le PC a redémarré et qu'aucune session Claude Code ne s'est ouverte, le bot reste mort (cas réel : down du 2026-08-12 au 2026-08-23). Relancer à la main avec la commande ci-dessous (ou la même que le hook, dans `settings.json`).
+
 Logs : `bot.run.log` (append) dans ce dossier.
 
 ## Redémarrer manuellement

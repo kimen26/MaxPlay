@@ -3,8 +3,8 @@
     "source": "studio/dino/content/sources/etymo/_ETYMO-RACINES-50.md",
     "genere_par": "scripts/export/_etymo2racines.cjs",
     "note": "STRUCTURE seulement — la source de vérité reste le .md (fact-checké). Curation pédagogique du dico = dino-conseiller.",
-    "nb_racines": 100,
-    "nb_dinos": 74
+    "nb_racines": 101,
+    "nb_dinos": 75
   },
   "racines": [
     {
@@ -13,7 +13,7 @@
       "translitteration": "sauros",
       "sens": "lézard",
       "type": "racine",
-      "n": 37,
+      "n": 38,
       "variantes": [
         "-saura",
         "-saure",
@@ -53,6 +53,7 @@
         "plateosaurus",
         "psittacosaurus",
         "saurolophus",
+        "scelidosaurus",
         "scutellosaurus",
         "shonisaurus",
         "spinosaurus",
@@ -1338,6 +1339,21 @@
       ]
     },
     {
+      "cle": "scélido- / skelis",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "côte de bœuf",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "scélido-",
+        "skelis"
+      ],
+      "dinos": [
+        "scelidosaurus"
+      ]
+    },
+    {
       "cle": "scutello- / scutellum",
       "langue": "latin",
       "translitteration": null,
@@ -2078,6 +2094,26 @@
           "cle": "scutello- / scutellum",
           "langue": "latin",
           "sens": "petit bouclier"
+        },
+        {
+          "racine": "-saurus / -saure",
+          "cle": "-saure",
+          "langue": "grec",
+          "sens": "lézard"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "scelidosaurus": {
+      "nom": "Scélidosaure",
+      "full": "Scelidosaurus harrisonii",
+      "sens": "lézard à grosses pattes",
+      "racines": [
+        {
+          "racine": "scélido- / skelis",
+          "cle": "scélido- / skelis",
+          "langue": "grec",
+          "sens": "côte de bœuf"
         },
         {
           "racine": "-saurus / -saure",

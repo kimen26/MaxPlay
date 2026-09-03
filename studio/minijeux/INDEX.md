@@ -101,7 +101,7 @@ Détails complets : [`EQUIPE.md`](EQUIPE.md).
 4. graver leçons dans LESSONS.md + PIPELINE-MEMORY.md (main agent ou game-pmo unifié)
 5. game-pmo unifié vérifie fond + structure (fusion 2026-07-19)
 
-**Skill associé** : [`~/.claude/skills/maxplay-tiles/SKILL.md`](C:/Users/kimen/.claude/skills/maxplay-tiles/SKILL.md) + [`LESSONS.md`](C:/Users/kimen/.claude/skills/maxplay-tiles/LESSONS.md) (30+ leçons gravées).
+**Skill associé** : [`.claude/skills/maxplay-tiles/SKILL.md`](../../.claude/skills/maxplay-tiles/SKILL.md) + [`LESSONS.md`](../../.claude/skills/maxplay-tiles/LESSONS.md) (30+ leçons gravées).
 
 ---
 

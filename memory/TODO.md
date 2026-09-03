@@ -23,3 +23,8 @@ Issu de `memory/audits/2026-09-03-archi-claude-infra.md`. Vagues 1 → 2 → 3, 
 ## Audio i18n — proposition non tranchée
 
 `memory/audio/PLAN-AUDIO-I18N.md` (2026-07-08) reste un plan **proposé**, pas figé : décisions 🚨 en attente d'arbitrage Papa Yann (convention `<lang>/`, casting `Native <lang>`, gouvernance registre, Supabase Storage hors FR). Ne pas le considérer comme réalisé — l'i18n dino a depuis avancé (voir commits `feat(dino-i18n)`, `feat(audio-i18n)` de 2026-08/09) mais le plan lui-même n'a pas été revalidé point par point.
+
+## Reportés depuis l'auto-memory (2026-09-03, HO-G04)
+- [ ] Max Adventure : retirer le fallback sprite top-down du bus (`USE_SVG_BUS` dans `SandboxScene.ts` + spritesheet + anims) une fois le SVG profil validé définitivement par Papa Yann.
+- [ ] Skill `name-sonority-check` (8 axes, verdict /16 GO/AJUSTER/REJETER) + clarifier avec Papa Yann agent dédié vs skill seule.
+- [ ] `site/PIPELINE-MEMORY-MJ.md` : journal PMO historique déployé en prod → à archiver dans `studio/minijeux/memory/archive/` (HO-G10).

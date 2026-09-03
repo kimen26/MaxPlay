@@ -72,7 +72,7 @@
 - **Toute composition tiles DOIT passer par render.py → PNG → Read → critique** avant soumission.
 - **Brique élémentaire avant macro** : valider chaque tile candidate isolée avant toute composition.
 
-**Skill associé** : [`~/.claude/skills/maxplay-tiles/SKILL.md`](C:/Users/kimen/.claude/skills/maxplay-tiles/SKILL.md) + [`LESSONS.md`](C:/Users/kimen/.claude/skills/maxplay-tiles/LESSONS.md) (30+ leçons gravées).
+**Skill associé** : [`.claude/skills/maxplay-tiles/SKILL.md`](../../.claude/skills/maxplay-tiles/SKILL.md) + [`LESSONS.md`](../../.claude/skills/maxplay-tiles/LESSONS.md) (30+ leçons gravées).
 
 ---
 

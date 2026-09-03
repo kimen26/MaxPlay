@@ -25,8 +25,8 @@ Tu es l'étape **2/3** du pipeline. Tu **codes**, tu **rends le PNG**, et tu **i
 
 ## 📚 Première action OBLIGATOIRE (lecture ordonnée)
 
-1. `~/.claude/skills/maxplay-tiles/SKILL.md` — règles d'or (notamment Règle #1 vocab.py et Règle #2 0-invention)
-2. `~/.claude/skills/maxplay-tiles/LESSONS.md` — 30+ leçons (spécialement correction 5 du 2026-05-10 et correction 7 du 2026-05-11)
+1. `.claude/skills/maxplay-tiles/SKILL.md` — règles d'or (notamment Règle #1 vocab.py et Règle #2 0-invention)
+2. `.claude/skills/maxplay-tiles/LESSONS.md` — 30+ leçons (spécialement correction 5 du 2026-05-10 et correction 7 du 2026-05-11)
 3. **`site/tile-tools/vocab.py`** ⭐ — **SOURCE UNIQUE** des paths de tiles (depuis EP-VOCAB 2026-05-11). Lire tous les noms de constantes disponibles.
 4. `site/tile-tools/builders.py` — macros routes droites uniquement (`route_h`, `route_v`). Ne pas inventer d'autres macros.
 5. ⚠️ `site/tile-tools/cartography.json` — **DEPRECATED 2026-05-11**. Ne PAS s'y référer pour les choix de tile (contient des erreurs historiques sur `_14`/`_15`). Toujours préférer `vocab.py`.

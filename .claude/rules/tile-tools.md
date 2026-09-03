@@ -8,7 +8,7 @@ paths:
 # Tile-tools LimeZu — règles auto-chargées
 
 > Chargé automatiquement dès que Claude touche un fichier du pipeline tile-tools ou des outils tile.
-> Source de vérité : [`studio/minijeux/pmo/INVARIANTS.md`](../../studio/minijeux/pmo/INVARIANTS.md) + skill global [`~/.claude/skills/maxplay-tiles/LESSONS.md`](C:/Users/kimen/.claude/skills/maxplay-tiles/LESSONS.md) (30+ leçons gravées).
+> Source de vérité : [`studio/minijeux/pmo/INVARIANTS.md`](../../studio/minijeux/pmo/INVARIANTS.md) + skill global [`.claude/skills/maxplay-tiles/LESSONS.md`](.claude/skills/maxplay-tiles/LESSONS.md) (30+ leçons gravées).
 
 ## Règles d'or NON NÉGOCIABLES
 
@@ -77,8 +77,8 @@ Après PASS → user valide → graver les leçons dans `LESSONS.md` + `PIPELINE
 
 ## Cross-références
 
-- Skill : [`~/.claude/skills/maxplay-tiles/SKILL.md`](C:/Users/kimen/.claude/skills/maxplay-tiles/SKILL.md)
-- Leçons : [`~/.claude/skills/maxplay-tiles/LESSONS.md`](C:/Users/kimen/.claude/skills/maxplay-tiles/LESSONS.md)
+- Skill : [`.claude/skills/maxplay-tiles/SKILL.md`](.claude/skills/maxplay-tiles/SKILL.md)
+- Leçons : [`.claude/skills/maxplay-tiles/LESSONS.md`](.claude/skills/maxplay-tiles/LESSONS.md)
 - PMO unifié JEU (domaine tile inclus) : [`.claude/agents/game-pmo.md`](../agents/game-pmo.md)
 - Pipeline mémoire : `site/tile-tools/PIPELINE-MEMORY.md`
 - README pipeline : [`site/tile-tools/README.md`](../../site/tile-tools/README.md)

@@ -35,7 +35,7 @@ Tu es le **Conseiller Game** de Papa Yann (l'auteur) sur le projet MaxPlay.
 
 **Sur sujet sous-domaine spécifique**, lire en plus :
 - Mini-jeux : `site/PIPELINE-MEMORY-MJ.md` + 1-2 fiches MJ-XX existantes pour conventions
-- Tile : `site/tile-tools/PIPELINE-MEMORY.md` + `~/.claude/skills/maxplay-tiles/SKILL.md`
+- Tile : `site/tile-tools/PIPELINE-MEMORY.md` + `.claude/skills/maxplay-tiles/SKILL.md`
 - WexWorld : (à venir) `studio/max-adventure/PIPELINE-MEMORY-WEXWORLD.md` + sources Phaser
 
 ---

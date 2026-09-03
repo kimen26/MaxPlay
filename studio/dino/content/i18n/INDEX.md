@@ -31,7 +31,7 @@
 | zh | ✅ | ⬜ | ⬜ | ⬜ | ⬜ |
 | ja | ✅ | ⬜ | ⬜ | ⬜ | ⬜ |
 
-> Counts précis = `pmo/INVARIANTS.md` (règle zéro chiffre en dur : cette matrice donne le STATUT, pas les totaux).
+> Counts précis = `memory/INVARIANTS.md` (règle zéro chiffre en dur : cette matrice donne le STATUT, pas les totaux).
 > Lexiques : 70/70 espèces dans les 9 langues (canon = `site/js/dinos-data.js`, audit 2026-08-10) — les 8 lexiques non-FR portent la mention « à relire natif » sur les entrées ajoutées 2026-08-10 ; validation native requise avant toute prod audio non-FR.
 
 ## Ajouter une langue (playbook court)

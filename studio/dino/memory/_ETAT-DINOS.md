@@ -6,22 +6,24 @@
 
 ## Synthèse
 
-- **70 dinos** · **70 complets (8/8)** · **0 incomplets**
+- **71 dinos** · **70 complets (8/8)** · **1 incomplets**
 
 | Axe | Couverture |
 |-----|-----------|
-| hero | 70/70 |
-| paleoart | 70/70 |
-| coloriage | 70/70 |
-| audio | 70/70 |
-| silhouette | 70/70 |
-| fiche | 70/70 |
-| etymo | 70/70 |
-| mesures | 70/70 |
+| hero | 70/71 |
+| paleoart | 70/71 |
+| coloriage | 70/71 |
+| audio | 71/71 |
+| silhouette | 70/71 |
+| fiche | 71/71 |
+| etymo | 71/71 |
+| mesures | 71/71 |
 
 ## Incomplets d'abord
 
-_Aucun — les 70 dinos sont complets sur les 8 axes. 🎉_
+| Dino | id | Score | Manque |
+|------|----|-------|--------|
+| Scélidosaure | `scelidosaurus` | 4/8 | hero, paléoart(headshot/manger/paris/ecosysteme/funfact), coloriage, silhouette |
 
 ## Complets (70)
 

@@ -17,23 +17,23 @@ Tu es le **PMO unifié du pôle DINO MaxPlay** (encyclopédie + voyage dans le t
 
 ## Première action OBLIGATOIRE (lecture ordonnée)
 
-1. `studio/dino/pmo/INVARIANTS.md` — chiffres clés (échelle, casting voix)
+1. `studio/dino/memory/INVARIANTS.md` — chiffres clés (échelle, casting voix)
 2. `studio/dino/figees/encyclopedie.md` — décisions VERROUILLÉES (Tritri, audio, UI)
 3. `studio/dino/INDEX.md` — catalogue du pôle
-4. `studio/dino/pmo/sprint-log.md` — dernière session (en haut)
-5. `studio/dino/pmo/decisions.md` — décisions + questions ouvertes
-6. `studio/dino/pmo/backlog.md` — tickets EP-Dxx + leçons L-Dxx
-7. `studio/dino/pmo/audit-trail.md` — findings ouverts
+4. `studio/dino/memory/MEMORY.md` — dernière session (en haut)
+5. `studio/dino/memory/DECISIONS.md` — décisions + questions ouvertes
+6. `studio/dino/memory/TODO.md` — tickets EP-Dxx + leçons L-Dxx
+7. `studio/dino/memory/archive/audit-trail-2026.md` — findings ouverts
 
 ## FOND — ta cartographie d'écriture
 
 | Fichier | Tu y notes |
 |---------|-----------|
-| `pmo/sprint-log.md` | Session `## YYYY-MM-DD - sujet` (Fait / Décidé / État au reboot), récent en haut |
-| `pmo/decisions.md` | Décision datée (raison + impact) + Questions ouvertes |
-| `pmo/backlog.md` | Tickets EP-Dxx + Leçons L-Dxx + Changelog |
-| `pmo/INVARIANTS.md` | MAJ si un chiffre clé change |
-| `pmo/audit-trail.md` | Entrée datée par audit |
+| `memory/MEMORY.md` | Session `## YYYY-MM-DD - sujet` (Fait / Décidé / État au reboot), récent en haut |
+| `memory/DECISIONS.md` | Décision datée (raison + impact) + Questions ouvertes |
+| `memory/TODO.md` | Tickets EP-Dxx + Leçons L-Dxx + Changelog |
+| `memory/INVARIANTS.md` | MAJ si un chiffre clé change |
+| `memory/archive/audit-trail-2026.md` | Entrée datée par audit |
 | `figees/encyclopedie.md` | Tu **proposes** la gravure (validée Papa Yann) — jamais défiger seul |
 | `INDEX.md` | Liens à jour si nouveau fichier majeur |
 

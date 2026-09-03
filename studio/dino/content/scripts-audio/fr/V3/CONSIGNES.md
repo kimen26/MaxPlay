@@ -106,4 +106,4 @@ Ecrire le résultat dans `{famille}-{lot}.md` (même dossier — relocalisé dep
 | `_RELECTURE-dyade-*.md` (4) | Relectures dyades parent-enfant simulees |
 | `_RELECTURE-lecteur-*.md` (2) | Relectures lecteurs temoins enfants |
 
-> Norme : ces artefacts qualite restent CO-LOCALISES avec le chantier (pas dans pmo/audits/ — ils appartiennent au contenu, pas a la gouvernance). Section ajoutee 2026-07-19 (audit GED : fichiers presents mais decrits nulle part).
+> Norme : ces artefacts qualite restent CO-LOCALISES avec le chantier (pas dans memory/audits/ — ils appartiennent au contenu, pas a la gouvernance). Section ajoutee 2026-07-19 (audit GED : fichiers presents mais decrits nulle part).

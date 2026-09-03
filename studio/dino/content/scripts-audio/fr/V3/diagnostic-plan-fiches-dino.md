@@ -85,7 +85,7 @@ Créer un kit de 6-8 types de réactions Wex, à varier :
 - Grep interdits systématique.
 - Preview phonétique groupe.
 - Génération ElevenLabs + loudnorm.
-- Mise à jour `pmo/INVARIANTS.md` (count audio) et `pmo/backlog.md` (leçon).
+- Mise à jour `memory/INVARIANTS.md` (count audio) et `memory/TODO.md` (leçon).
 
 ## Questions ouvertes
 1. Est-ce que 20-30s est la bonne cible ? (Max a dit "trop long", mais on ne veut pas perdre le contenu.)

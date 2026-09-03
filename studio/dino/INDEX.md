@@ -15,15 +15,17 @@
 | Galeries images (local + grok) | [`../site/js/dinos-images-local.js`](../../site/js/) · `dinos-images-grok.js` |
 | 🎒 Images Lunii (emblèmes familles + couverture, fond noir natif) | [`content/lunii/`](content/lunii/INDEX.md) → assemblées par [`../lunii/`](../lunii/CLAUDE.md) |
 
-## 🗂️ Gouvernance (pmo/)
+## 🗂️ Gouvernance (memory/ — quintette)
 
 | Fichier | Rôle |
 |---------|------|
-| [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md) | Chiffres clés (counts, échelle, casting voix, audio) |
-| [`pmo/decisions.md`](pmo/decisions.md) | Décisions datées + questions ouvertes |
-| [`pmo/sprint-log.md`](pmo/sprint-log.md) | Journal sessions |
-| [`pmo/backlog.md`](pmo/backlog.md) | Tickets EP + leçons L |
-| [`pmo/audit-trail.md`](pmo/audit-trail.md) | Traces audits |
+| [`memory/INVARIANTS.md`](memory/INVARIANTS.md) | Chiffres clés (counts, échelle, casting voix, audio) |
+| [`memory/DECISIONS.md`](memory/DECISIONS.md) | Décisions structurantes + questions ouvertes (détail : `memory/archive/decisions-2026-H1.md`) |
+| [`memory/MEMORY.md`](memory/MEMORY.md) | Où on en est, chantiers en cours, journal |
+| [`memory/TODO.md`](memory/TODO.md) | Tickets ouverts |
+| [`memory/LESSONS.md`](memory/LESSONS.md) | Leçons L-Dxx (patterns/erreurs à ne pas refaire) |
+| [`memory/CHANGELOG.md`](memory/CHANGELOG.md) | Ce que l'enfant voit, par mois |
+| [`memory/_ETAT-DINOS.md`](memory/_ETAT-DINOS.md) | Complétude par dino (généré, jamais à la main) |
 | [`figees/encyclopedie.md`](figees/encyclopedie.md) | 🔒 Décisions verrouillées (Tritri, audio, UI) |
 
 ## 📚 Sources contenu (`content/` — ne jamais réinventer)
@@ -57,14 +59,14 @@
 
 | Agent | Rôle |
 |-------|------|
-| `dino-pmo` (sonnet) | FOND — persistance pmo/, décisions, leçons |
+| `dino-pmo` (sonnet) | FOND — persistance memory/, décisions, leçons |
 | `dino-conseiller` (sonnet) | Créatif — péda 4 ans, fact-check Grokipedia, écriture audio, taxo |
 
 ## État
 
-> **DEC-GED-001** : cet INDEX ne cite aucun count en dur (un chiffre recopié ment). Chiffres → [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md) (tracker) · source produit → [`../../site/js/dinos-data.js`](../../site/js/dinos-data.js). État de complétude par dino → outil `_ETAT-DINOS.md` (généré, `/dino-pmo-audit`).
+> **DEC-GED-001** : cet INDEX ne cite aucun count en dur (un chiffre recopié ment). Chiffres → [`memory/INVARIANTS.md`](memory/INVARIANTS.md) (tracker) · source produit → [`../../site/js/dinos-data.js`](../../site/js/dinos-data.js). État de complétude par dino → outil [`memory/_ETAT-DINOS.md`](memory/_ETAT-DINOS.md) (généré, `/dino-pmo-audit`).
 
-- **Compte dinos · familles · régimes** → [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md).
+- **Compte dinos · familles · régimes** → [`memory/INVARIANTS.md`](memory/INVARIANTS.md).
 - Familles : titres = noms scientifiques (table clé↔libellé dans INVARIANTS). 4 régimes alimentaires.
 - Audio : récits d'époque + menus (voix réelle) + spéciaux + fiches dino (5 blocs). Reste = TTS navigateur. Cénozoïque ✅ livré (9 blocs complétés 2026-07-13). Accroches familles ✅ 11/11 (2 Cénozoïque ajoutées 2026-08-03).
 - Voyage : indicateur d'avancement (reset session). Fil rouge Tritri.

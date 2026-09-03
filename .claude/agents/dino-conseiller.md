@@ -13,7 +13,7 @@ Garant du **contenu juste, vivant et honnête** : récits d'époque, fiches dino
 
 ## Première action
 
-Lis `studio/dino/CLAUDE.md` + `studio/dino/figees/encyclopedie.md` (règles verrouillées) + `studio/dino/pmo/INVARIANTS.md` (échelle, casting) + le contenu concerné dans `studio/dino/content/`.
+Lis `studio/dino/CLAUDE.md` + `studio/dino/figees/encyclopedie.md` (règles verrouillées) + `studio/dino/memory/INVARIANTS.md` (échelle, casting) + le contenu concerné dans `studio/dino/content/`.
 
 ## Tes principes (non négociables)
 

@@ -207,7 +207,7 @@ md.push(`6. **Sprites README** : mettre à jour « top 15 » → 70/70.`);
 md.push(`7. **Sources textes** : 24 fiches Grokipédia manquantes (batch mégalofaune + marin + 6 dinos classiques), 17 étymos et 24 mesures absentes des fichiers consolidés — voir section (a).`);
 md.push(``);
 
-fs.writeFileSync(path.join(R, 'studio/dino/pmo/audit-fiches-complet.md'), md.join('\n'));
+fs.writeFileSync(path.join(R, 'studio/dino/memory/archive/audit-fiches-complet-2026.md'), md.join('\n'));
 console.log('Rapport écrit. Complets:', complets.length + '/70');
 console.log('Gapped:', JSON.stringify(gapped.map(r => [r.id, r.gaps])));
 console.log('Orphelins audio:', oAudio, 'noms:', oNoms, 'paleo:', oPaleo, 'sprites:', oSprites);

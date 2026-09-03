@@ -20,7 +20,7 @@
 | HO-G05 | Inventaire nettoyage (lecture seule) | 1 | `docs/handoffs/rapports/HO-G05-inventaire.md` | fait |
 | HO-G06 | Skills craft → global + flags effets de bord | 1 | `.claude/skills/{narration-craft,game-design-enfant,lunii-sync,dino-paleoart,dino-images-lunii}/**`, `~/.claude/skills/{narration-craft,game-design-enfant}/**`, `.claude/rules/narration-craft.md` | fait |
 | HO-MJ-01 | Pôle JEU : mémoire convergente | 2 | `studio/minijeux/**` sauf `tests/`, `docs/handoffs/` | fait |
-| HO-DINO-008 | Pôle DINO : mémoire convergente | 2 | `studio/dino/{pmo,figees,CLAUDE.md,INDEX.md,AGENTS.md}` | en cours (lance 00:08, derniere ecriture concurrente 22:54) |
+| HO-DINO-008 | Pôle DINO : mémoire convergente | 2 | `studio/dino/{memory,figees,CLAUDE.md,INDEX.md,AGENTS.md}` | exécuté, en attente validation orchestrateur (pmo/ supprimé, memory/ quintette créé) |
 | HO-NAR-01 | Pôle NARRATION : mémoire convergente | 2 | `studio/narration/**` sauf `stories/`, `scripts/`, `docs/handoffs/` | fait |
 | HO-G08 | Skills globaux `tts-pipeline` + `audio-verif` | 2 | `~/.claude/skills/tts-pipeline/**`, `~/.claude/skills/audio-verif/**` | fait |
 | HO-G09 | Skills globaux `i18n-contenu` + `browser-pilot` | 2 | `~/.claude/skills/i18n-contenu/**`, `~/.claude/skills/browser-pilot/**` | fait |

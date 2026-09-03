@@ -76,7 +76,7 @@ Résolus via `narration/personnages/voix-meta/voice-map.json`. Modèle **eleven_
 
 ## 🏛️ Doctrine transverse MaxPlay
 
-> **Principes fondateurs (tous les pôles)** : [`../../memory/DOCTRINE.md`](../../memory/DOCTRINE.md) — D-001 pédagogie = produit, D-002 zéro pénalité, D-003 récompense promise interdite. À consulter avant arbitrer tout design d'apprentissage DINO.
+> **Principes fondateurs (tous les pôles)** : [`../../../memory/DECISIONS.md`](../../../memory/DECISIONS.md) § Doctrine — D-001 pédagogie = produit, D-002 zéro pénalité, D-003 récompense promise interdite. À consulter avant arbitrer tout design d'apprentissage DINO.
 
 ## 🏛️ Doctrine GED (DEC-GED-001, figée 2026-07-03)
 

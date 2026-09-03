@@ -13,7 +13,7 @@
 
 ## Mapping menu → image
 
-Le menu « Les familles » de l'encyclopédie (source noms : [`site/js/dinos-data.js`](../../../../site/js/dinos-data.js)) + une **couverture de section**. Le compte de familles fait foi dans [`pmo/INVARIANTS.md`](../../pmo/INVARIANTS.md) — toutes ont leur emblème depuis 2026-07-31.
+Le menu « Les familles » de l'encyclopédie (source noms : [`site/js/dinos-data.js`](../../../../site/js/dinos-data.js)) + une **couverture de section**. Le compte de familles fait foi dans [`memory/INVARIANTS.md`](../../memory/INVARIANTS.md) — toutes ont leur emblème depuis 2026-07-31.
 
 | Nœud menu | Image (320×240) | Famille (nom scientifique) | id data | Emblème |
 |-----------|-----------------|----------------------------|---------|---------|
@@ -43,7 +43,7 @@ Le menu « Les familles » de l'encyclopédie (source noms : [`site/js/dinos-dat
 > Ici = juste le **catalogue des images** (mapping ci-dessus) + leurs sources.
 
 - Produire/ajouter une image : skill [`dino-images-lunii`](../../../../../Users/kimen/.claude/skills/dino-images-lunii/SKILL.md). Specs par dino : [`../sources/fiches/_FICHES-DINOS-GROKIPEDIA.md`](../sources/fiches/_FICHES-DINOS-GROKIPEDIA.md).
-- ⚠️ **EP-D17 en cours** : les `familles/*.png` **00 à 09** sont l'ancien rendu (inversion post). À **régénérer en fond noir NATIF** (voir [`../../pmo/backlog.md`](../../pmo/backlog.md)).
+- ⚠️ **EP-D17 en cours** : les `familles/*.png` **00 à 09** sont l'ancien rendu (inversion post). À **régénérer en fond noir NATIF** (voir [`../../memory/TODO.md`](../../memory/TODO.md)).
   **10-mammiferes et 11-oiseaux font exception** : produits le 2026-07-31 directement en fond noir natif (composition pensée sombre dès le prompt), ils sont déjà conformes — les prendre comme référence de style pour régénérer les 9 autres.
 
 ---

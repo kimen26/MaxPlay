@@ -17,5 +17,5 @@ Depuis la fusion 2026-07-19, un seul passage couvre FOND ET FORME — procédure
 - Dette de contenu : lancer `node studio/referentiel/build.mjs` et lire la section « Dettes ouvertes » de `studio/referentiel/_ETAT-CONTENU.md` — toute dette DINO ouverte y figure, à acquitter (`acquitter.mjs --propage` / `--sans-impact`).
 - Particularité DINO : code déployé dans `site/` (dev-dinos.html, dinos-data.js, audio/dinos, img/dinos) mais gouvernance dans `studio/dino/` — auditer les DEUX.
 - Anti-faux-positif : `ls`/Glob avant tout « manquant ».
-- Livrable : entrée datée dans `studio/dino/pmo/audit-trail.md`.
+- Livrable : entrée datée dans `studio/dino/memory/archive/audit-trail-2026.md`.
 - Le rapport se termine par `Fichiers modifiés :` — vérifier par `git diff` avant de croire (REX dino-pmo menteur 2026-07).

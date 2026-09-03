@@ -2,7 +2,7 @@
 
 > **But** : schéma complet du cycle de vie « entrée data → déploiement Max ». Réponse à « quand un dino arrive, comment voir ce qui reste ? »
 > 
-> **Outil de suivi** : [`_ETAT-DINOS.md`](../../../pmo/_ETAT-DINOS.md) généré (lit dinos-data.js, sonde disque 8 axes, identifie incomplets). Branchement PMO-audit.
+> **Outil de suivi** : [`_ETAT-DINOS.md`](../../memory/_ETAT-DINOS.md) généré (lit dinos-data.js, sonde disque 8 axes, identifie incomplets). Branchement PMO-audit.
 
 ---
 
@@ -193,10 +193,10 @@ Chaque dino **fini** doit avoir :
 
 ## Documents de référence
 
-- [`INVARIANTS.md`](../../pmo/INVARIANTS.md) — source vérité chiffres clés + checklist 8 axes
-- [`_ETAT-DINOS.md`](../../pmo/_ETAT-DINOS.md) — audit généré (incomplets d'abord)
+- [`INVARIANTS.md`](../../memory/INVARIANTS.md) — source vérité chiffres clés + checklist 8 axes
+- [`_ETAT-DINOS.md`](../../memory/_ETAT-DINOS.md) — audit généré (incomplets d'abord)
 - [`figees/encyclopedie.md`](../../figees/encyclopedie.md) — règles verrouillées (Tritri, audio, UI, prédation)
-- [`decisions.md`](../../pmo/decisions.md) — arbitrages Papa Yann (Q-DINO-xx)
+- [`DECISIONS.md`](../../memory/DECISIONS.md) — arbitrages Papa Yann (Q-DINO-xx)
 - [`_ETYMO-COMPLET-60.md`](../sources/etymo/_ETYMO-COMPLET-60.md) — racines greco-lat (source étymo)
 - [`RECITS-EPOQUES.md`](../sources/recits/RECITS-EPOQUES.md) — 8 récits voyage (canon nommé, versionning par archive)
 

@@ -1,6 +1,7 @@
 ---
 name: dino-paleoart
 description: Générer les séries d'images paléoart réalistes des dinos MaxPlay (échelle enfant 1m, alimentation, écosystème, Paris bus RATP, funfact) en pilotant le PROJET "Dinosaure" de ChatGPT (ou le projet Grok en plan B) via Brave+Playwright. Direction artistique = prompt système paléoart (identité visuelle couleur, échelle prioritaire chiffrée, prédation safe). Auto-trigger sur image dino paléoart, série dino, génère les dinos, batch images dinosaures, scènes dino, reprendre les dinos, dino à l'échelle enfant, dino Paris bus.
+disable-model-invocation: true
 ---
 
 # Skill — Séries d'images paléoart dinos MaxPlay

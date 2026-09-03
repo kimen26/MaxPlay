@@ -466,3 +466,6 @@ lecture.html/lecture-data.js n exposaient que STORY-002 (3 versions). Livre (f66
 **Règle** : cette section = POINT D'ENTRÉE session. Jamais ignorer. Papa Yann lit ici en premier = plan d'action transparent.
 
 ---
+
+## 2026-09-03 — Refonte infra Claude (audit transverse)
+- Audit `memory/audits/2026-09-03-archi-claude-infra.md` ; handoff de pôle « mémoire convergente » ouvert dans `studio/narration/docs/handoffs/` (pmo/ → memory/ quintette, vague 2). Aucun contenu produit modifié.

@@ -1,6 +1,7 @@
 ---
 name: dino-images-lunii
 description: Générer des images dino MaxPlay en pilotant le ChatGPT logué dans Brave (Playwright CDP), pour 2 usages — logo Lunii (320x240 16 gris) et fiches de l'application (couleur, via le GPTs Dinosaure XXL). Auto-trigger sur image lunii, image dino, emblème famille dino, fiche dino image, générer image GPT, GPTs Dinosaure, pictogramme dino, image 16 gris, illustration encyclopédie dino, BMP RLE4.
+disable-model-invocation: true
 ---
 
 # Skill — Génération d'images dino via ChatGPT (Brave piloté)

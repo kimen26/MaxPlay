@@ -10,7 +10,7 @@
 | dino · dinosaure · encyclopédie · voyage (époque) · récit dino · famille dino · Tritri · dev-dinos | **DINO** | [`studio/dino/CLAUDE.md`](studio/dino/CLAUDE.md) → [`studio/dino/INDEX.md`](studio/dino/INDEX.md) |
 | narration · histoire · personnage · univers · ennéagramme · cross-culture · saison · arc · Wex/Melki/Mimi/Dadou/Madie/Lulu/Pierrot/Raph/Juju/Nono | **NARRATION** | [`studio/narration/CLAUDE.md`](studio/narration/CLAUDE.md) → [`studio/narration/INDEX.md`](studio/narration/INDEX.md) |
 | lunii · boîte à histoires · pack · STUdio · transfert appareil · conteuse | **LUNII** | [`studio/lunii/CLAUDE.md`](studio/lunii/CLAUDE.md) (canal de distribution, léger) |
-| référentiel de contenu · dette de contenu · dérive texte/audio · quel texte est lu où · contrat TTS/EL/Lunii · tableau de bord contenu | **TRANSVERSE** | [`studio/referentiel/README.md`](studio/referentiel/README.md) → plan [`memory/ARCHI-REFERENTIEL-CONTENU.md`](memory/ARCHI-REFERENTIEL-CONTENU.md) |
+| référentiel de contenu · dette de contenu · dérive texte/audio · quel texte est lu où · contrat TTS/EL/Lunii · tableau de bord contenu | **TRANSVERSE** | [`studio/referentiel/README.md`](studio/referentiel/README.md) → plan [`studio/referentiel/docs/ARCHI-REFERENTIEL-CONTENU.md`](studio/referentiel/docs/ARCHI-REFERENTIEL-CONTENU.md) |
 | idée brute · dump · brainstorm sans contexte clair | **?** | Demander : "C'est pour le jeu, les dinos ou les histoires ?" |
 
 > ⚠️ **DINO est transverse** : son code est déployé depuis `site/` (dev-dinos.html, dinos-data.js, audio/dinos, img/dinos) mais sa gouvernance vit dans `studio/dino/`. La rule [`.claude/rules/dino.md`](.claude/rules/dino.md) charge les règles dino où que vive le fichier.
@@ -65,7 +65,7 @@ Origines brésiliennes. Détails : [`memory/MAX_PROFILE.md`](memory/MAX_PROFILE.
 - **JAMAIS de `AskUserQuestion`** (formulaire dynamique), ni en JEU ni en NARRATION — poser les questions **en texte dans la réponse**, façon chatbot (« Tu préfères A ou B ? »). Le picker natif ne se relaie pas sur le bot Telegram.
 - Toujours lire l'INDEX du pôle avant de répondre sur un sujet de fond
 - Ne jamais répondre de mémoire sur un chiffre/casting/voice_id — invoquer le PMO en mode RECHERCHE
-- Après correction utilisateur → leçon dans `studio/minijeux/pmo/backlog.md` (JEU) ou `studio/narration/pmo/decisions.md` (NARRATION)
+- Après correction utilisateur → leçon dans `memory/LESSONS.md` (transverse) ou `studio/<pôle>/memory/LESSONS.md` (pôle, une fois converti)
 
 ---
 
@@ -81,13 +81,14 @@ Plan → TodoWrite → Dev (subagents) → Verify → Commit → Docs
 
 | Fichier | Rôle |
 |---------|------|
-| [`memory/MEMORY.md`](memory/MEMORY.md) | Mémoire projet dense (archi, décisions historiques) |
+| [`memory/MEMORY.md`](memory/MEMORY.md) | Où on en est (état, chantiers en cours) |
+| [`memory/TODO.md`](memory/TODO.md) | Quoi ensuite (lanes ouvertes) |
+| [`memory/DECISIONS.md`](memory/DECISIONS.md) | Pourquoi c'est comme ça (doctrine + arbitrages D-NNN) — chaque PMO/INDEX de pôle y pointe |
+| [`memory/LESSONS.md`](memory/LESSONS.md) | Quelle erreur ne pas refaire (L-NNN, transverse) |
+| [`memory/CHANGELOG.md`](memory/CHANGELOG.md) | Ce qui est sorti, par mois, point de vue utilisateur |
 | [`memory/MAX_PROFILE.md`](memory/MAX_PROFILE.md) | Profil complet Max |
 | [`memory/VISION.md`](memory/VISION.md) | Vision produit jeu |
-| [`memory/workflow.md`](memory/workflow.md) | Workflow session |
-| [`memory/DOCTRINE.md`](memory/DOCTRINE.md) | Doctrine GED transverse (canon sans numéro, zéro chiffre en dur, frontières) — chaque PMO/INDEX de pôle y pointe |
-| [`memory/skills-map.md`](memory/skills-map.md) | Agents, skills, commandes |
-| [`memory/audits/2026-07-06-infra-business.md`](memory/audits/2026-07-06-infra-business.md) | Audit infra & business 2026 (légal enfants, archi phasée, monétisation) |
+| [`memory/audits/`](memory/audits/) | Audits transverses datés (GED, infra, business) |
 | [`infra/supabase/README.md`](infra/supabase/README.md) | Supabase Phase 1 (auth parent, sync progression, voix cloud) |
 | [`infra/bot/index.ts`](infra/bot/index.ts) | Bot Telegram — routing agents, permissions |
 | [`infra/mcp/server.ts`](infra/mcp/server.ts) | MCP llm-copains (Grok, Kimi, ElevenLabs) |

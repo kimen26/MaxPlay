@@ -1,6 +1,7 @@
 ---
 name: lunii-sync
 description: Synchroniser une boîte Lunii branchée avec la bibliothèque maître MaxPlay (packs-manifest.json). Auto-trigger sur synchronise la lunii, sync boîte, mets à jour la lunii, transfère les histoires sur la boîte, la verte/bleue est branchée, mets les packs à jour. Conçu pour être exécuté par n'importe quel modèle, même faible — c'est juste un script à lancer.
+disable-model-invocation: true
 ---
 
 # Skill — Synchronisation Lunii (boîte ↔ bibliothèque maître)

@@ -1,4 +1,4 @@
-﻿---
+---
 paths:
   - "studio/narration/personnages/**"
   - "studio/narration/cross-culture/castings-nationaux/**"

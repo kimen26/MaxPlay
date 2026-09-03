@@ -95,6 +95,42 @@
       "explic": "Les oiseaux ! Sais-tu un secret ? Les oiseaux sont les petits-cousins des dinosaures — c'est la seule famille de dinosaures qui existe encore aujourd'hui ! Mais après la météorite, certains oiseaux sont devenus GÉANTS, trop lourds pour voler. Ils couraient sur deux grandes pattes pour chasser, avec un bec énorme. La star : le Titanis, l'oiseau-terreur !"
     }
   },
+  "periodes": {
+    "permien": {
+      "label": "Permien",
+      "desc": "Avant les dinosaures"
+    },
+    "trias": {
+      "label": "Trias",
+      "desc": "Les premiers dinosaures"
+    },
+    "jurassique": {
+      "label": "Jurassique",
+      "desc": "Les géants sauropodes"
+    },
+    "cretace": {
+      "label": "Crétacé",
+      "desc": "Le règne du T-Rex"
+    },
+    "cenozoique": {
+      "label": "Cénozoïque",
+      "desc": "Après les dinos : les mammifères"
+    }
+  },
+  "categories": {
+    "carnivores": {
+      "label": "Carnivores"
+    },
+    "herbivores": {
+      "label": "Herbivores"
+    },
+    "piscivores": {
+      "label": "Piscivores"
+    },
+    "omnivores": {
+      "label": "Omnivores"
+    }
+  },
   "dinos": {
     "tyrannosaurus": {
       "name": "T-Rex",

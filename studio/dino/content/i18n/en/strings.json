@@ -1371,5 +1371,41 @@
    "desc": "Titanis was a terror bird, a giant bird that couldn't fly. It ran on two big legs to hunt, with a huge pointed beak. It's the only terror bird that ever made it to North America, long after the dinosaurs.",
    "continent": "North America"
   }
+ },
+ "periodes": {
+  "permien": {
+   "label": "Permian",
+   "desc": "Before the dinosaurs"
+  },
+  "trias": {
+   "label": "Triassic",
+   "desc": "The first dinosaurs"
+  },
+  "jurassique": {
+   "label": "Jurassic",
+   "desc": "The giant sauropods"
+  },
+  "cretace": {
+   "label": "Cretaceous",
+   "desc": "The reign of the T-Rex"
+  },
+  "cenozoique": {
+   "label": "Cenozoic",
+   "desc": "After the dinos: the mammals"
+  }
+ },
+ "categories": {
+  "carnivores": {
+   "label": "Carnivores"
+  },
+  "herbivores": {
+   "label": "Herbivores"
+  },
+  "piscivores": {
+   "label": "Piscivores"
+  },
+  "omnivores": {
+   "label": "Omnivores"
+  }
  }
 }

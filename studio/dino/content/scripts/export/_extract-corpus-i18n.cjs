@@ -25,8 +25,25 @@ global.DINO_FAMILLES.forEach(f => {
   familles[f.id] = o;
 });
 
+// Periodes et regimes : petites collections, mais visibles partout (fiche, menus).
+const CHAMPS_PERIODE = ['label', 'desc'];
+const CHAMPS_CATEGORIE = ['label'];
+const periodes = {};
+(global.DINO_PERIODES || []).forEach(p => {
+  const o = {};
+  CHAMPS_PERIODE.forEach(k => { if (typeof p[k] === 'string' && p[k].trim()) o[k] = p[k]; });
+  periodes[p.id] = o;
+});
+const categories = {};
+(global.DINO_CATEGORIES || []).forEach(c => {
+  const o = {};
+  CHAMPS_CATEGORIE.forEach(k => { if (typeof c[k] === 'string' && c[k].trim()) o[k] = c[k]; });
+  categories[c.id] = o;
+});
+
 const out = { _meta: { source: 'site/js/dinos-data.js', genere: new Date().toISOString().slice(0, 10),
-  nb_dinos: Object.keys(dinos).length, nb_familles: Object.keys(familles).length }, familles, dinos };
+  nb_dinos: Object.keys(dinos).length, nb_familles: Object.keys(familles).length },
+  familles, periodes, categories, dinos };
 
 const dir = path.join(ROOT, 'studio/dino/content/i18n/_corpus');
 fs.mkdirSync(dir, { recursive: true });

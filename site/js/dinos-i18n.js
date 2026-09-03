@@ -14,9 +14,15 @@
   window.applyDinoStrings = function () {
     var S = window.DINO_STRINGS;
     if (!S) return; // fichier absent : on reste en FR
-    function merge(list, over) {
-      if (!list || !over) return;
-      list.forEach(function (item) {
+    // DINOS et DINO_FAMILLES sont des TABLEAUX (cle = item.id) ;
+    // DINO_RACINES est un OBJET indexe par cle. On accepte les deux formes.
+    function merge(cible, over) {
+      if (!cible || !over) return;
+      var items = Array.isArray(cible)
+        ? cible
+        : Object.keys(cible).map(function (k) { return cible[k]; });
+      items.forEach(function (item) {
+        if (!item || typeof item !== 'object') return;
         var o = over[item.id || item.cle];
         if (!o) return;
         Object.keys(o).forEach(function (k) { item[k] = o[k]; });

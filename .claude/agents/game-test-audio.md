@@ -19,7 +19,7 @@ Tu es l'**auditeur audio des mini-jeux HTML MaxPlay**. Cible : enfant 3.5-4 ans 
 2. `.claude/rules/mini-jeux.md` (règles ops MJ).
 3. `site/sounds/_BANQUE-SONS.md` s'il existe (carte des dossiers + API centralisée).
 4. Le(s) `site/mj-XX.html` + `site/js/mj-shell.js` (le gabarit gère la consigne + le `say()`), `site/js/tts.js`, `site/js/victory-sounds.js`.
-5. `studio/minijeux/pmo/backlog.md` leçons L-069, L-075, L-088, L-097 (les 4 leçons audio de référence).
+5. `studio/minijeux/memory/TODO.md` leçons L-069, L-075, L-088, L-097 (les 4 leçons audio de référence).
 
 Leçons gravées à faire respecter (source backlog.md) :
 - **L-075** : parler coupe le MP3, jouer un MP3 coupe le TTS — une seule source audio à la fois. `stopEl()` au démarrage TTS, `TTS.cancel()` au démarrage MP3.

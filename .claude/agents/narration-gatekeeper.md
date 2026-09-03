@@ -27,7 +27,7 @@ Lis :
 
 ## Ta checklist (technique + patte Papa Yann)
 
-**Mise à jour 2026-05-03** — checklist passe de 26 à 24 critères : critère "distribution sensorielle" retiré (au choix du writer), critère "épilogue italique" retiré du brief writer (mais reste vérifié ici en relecture). Voir `equipe/patte-papa-yann.md` (référence canonique) et `pmo/decisions.md` 2026-05-03.
+**Mise à jour 2026-05-03** — checklist passe de 26 à 24 critères : critère "distribution sensorielle" retiré (au choix du writer), critère "épilogue italique" retiré du brief writer (mais reste vérifié ici en relecture). Voir `equipe/patte-papa-yann.md` (référence canonique) et `memory/DECISIONS.md` 2026-05-03.
 
 **Technique (14) :**
 ```

@@ -13,8 +13,9 @@
 #     "playbook .claude/agents/<pole>-pmo.md lu et applique par le main agent" — seule la trace
 #     pmo/ (voie a) satisfait mecaniquement le check.
 #
-# Satisfaire le check, par pole : un fichier studio/<pole>/pmo/** (ou figees) edite ce tour
+# Satisfaire le check, par pole : un fichier de gouvernance du pole edite ce tour
 # (Edit/Write, ou ecriture via commande Bash — python, sed, cat >>).
+# JEU/NARRATION : studio/<pole>/memory/** ; DINO (transition, pmo/ pas encore migre) : studio/dino/{pmo,memory,figees}/**
 
 $ErrorActionPreference = 'SilentlyContinue'
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
@@ -56,13 +57,13 @@ if (-not $wirePath) { exit 0 }   # session introuvable -> fail-open (philosophie
 $poles = @(
     @{ name = 'NARRATION'; agent = 'narration-pmo';
        touch = @('studio[\\/]narration[\\/]', '\.claude[\\/]agents[\\/]narration-');
-       trace = @('studio[\\/]narration[\\/]pmo[\\/]') },
+       trace = @('studio[\\/]narration[\\/]memory[\\/]') },
     @{ name = 'DINO'; agent = 'dino-pmo';
        touch = @('studio[\\/]dino[\\/]', 'dev-dinos', 'dinos-data', 'audio[\\/]dinos', 'img[\\/]dinos', '\.claude[\\/]agents[\\/]dino-');
-       trace = @('studio[\\/]dino[\\/]pmo[\\/]', 'studio[\\/]dino[\\/]figees[\\/]') },
+       trace = @('studio[\\/]dino[\\/]pmo[\\/]', 'studio[\\/]dino[\\/]memory[\\/]', 'studio[\\/]dino[\\/]figees[\\/]') },
     @{ name = 'JEU'; agent = 'game-pmo';
        touch = @('studio[\\/]minijeux[\\/]', 'site[\\/]mj-', 'site[\\/]tile-tools[\\/]', '\.claude[\\/]agents[\\/]game-');
-       trace = @('studio[\\/]minijeux[\\/]pmo[\\/]', 'studio[\\/]minijeux[\\/]docs[\\/]jeux[\\/]figees[\\/]') }
+       trace = @('studio[\\/]minijeux[\\/]memory[\\/]', 'studio[\\/]minijeux[\\/]docs[\\/]jeux[\\/]figees[\\/]') }
 )
 foreach ($p in $poles) { $p.touched = $false; $p.traced = $false }
 
@@ -117,14 +118,14 @@ if ($missing.Count -eq 0) { exit 0 }
 
 $names = ($missing | ForEach-Object { $_.name }) -join ' + '
 $details = ($missing | ForEach-Object {
-    $dir = if ($_.name -eq 'JEU') { 'minijeux' } elseif ($_.name -eq 'DINO') { 'dino' } else { 'narration' }
-    "  - $($_.name) : graver TOI-MEME une entree dans studio/$dir/pmo/ (sprint-log a minima ; decisions/backlog selon le cas — playbook .claude/agents/$($_.agent).md a lire et appliquer, pas de subagent custom sous Kimi)."
+    if ($_.name -eq 'DINO') { "  - DINO : graver TOI-MEME une entree dans studio/dino/pmo/ (sprint-log a minima ; decisions/backlog selon le cas — playbook .claude/agents/$($_.agent).md a lire et appliquer, pas de subagent custom sous Kimi)." }
+    else { $dir = if ($_.name -eq 'JEU') { 'minijeux' } else { 'narration' }; "  - $($_.name) : graver TOI-MEME dans studio/$dir/memory/ : TODO.md / DECISIONS.md / LESSONS.md / MEMORY.md § Journal (a minima — playbook .claude/agents/$($_.agent).md a lire et appliquer, pas de subagent custom sous Kimi)." }
 }) -join "`n"
 
 $msg = @"
 [hook pmo-check] Fichiers $names modifies ce tour SANS trace de gouvernance.
 
-Regle 2026-07-19 (capture immediate) : toute session qui touche un pole laisse une trace dans son pmo/ AVANT de rendre la main.
+Regle 2026-07-19 (capture immediate) : toute session qui touche un pole laisse une trace dans sa gouvernance AVANT de rendre la main (memory/ pour JEU/NARRATION, pmo/ pour DINO en transition).
 $details
 
 Idees/decisions de Papa Yann evoquees ce tour et non gravees = a capturer maintenant (1 ligne backlog suffit).

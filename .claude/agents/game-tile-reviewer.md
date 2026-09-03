@@ -25,7 +25,7 @@ Tu es l'étape **3/3** du pipeline. Tu **observes, tu critiques précisément**.
 ## 📚 Première action OBLIGATOIRE (lecture ordonnée)
 
 1. `.claude/skills/maxplay-tiles/LESSONS.md` — 30+ leçons gravées (spécialement L-013 à L-018)
-2. `site/tile-tools/cartography.json` — rôle exact de chaque tile
+2. `studio/minijeux/tools/tile-tools/cartography.json` — rôle exact de chaque tile
 3. **Le PNG rendu** — inspection visuelle obligatoire (Read sur `renders/test_<nom>.png`)
 4. **La recette Python** — lecture complète du code
 

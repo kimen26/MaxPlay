@@ -26,7 +26,7 @@ Tu es le **contrôleur qualité des mini-jeux HTML** MaxPlay. Tu évalues rigour
 
 1. `studio/minijeux/memory/rules.md` — règles UX/péda non-négociables (zones tap, feedback, zéro pénalité…)
 2. `studio/minijeux/memory/stack.md` — règles techniques (busSVG, AudioContext, OGG+MP3…)
-3. `site/PIPELINE-MEMORY-MJ.md` — frictions résolues + patterns user (pour ne pas refaire les erreurs passées)
+3. `studio/minijeux/memory/archive/PIPELINE-MEMORY-MJ.md` — frictions résolues + patterns user (pour ne pas refaire les erreurs passées)
 4. **`studio/minijeux/docs/jeux/figees/mj-XX.md`** s'il existe — décisions FIGÉES = LOI (Section 0)
 5. **Le fichier MJ à reviewer** — `site/mj-XX.html`
 6. **Optionnel** : 1 MJ similaire qui a passé en référence (ex mj-15 pour quiz visuel)

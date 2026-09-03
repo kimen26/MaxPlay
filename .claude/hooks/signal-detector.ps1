@@ -50,11 +50,11 @@ if ($dinoMatch -or $pathDino) {
 }
 
 if (($gameMatch -or $pathGame) -and -not ($dinoMatch -or $pathDino)) {
-    $reminders += "[SIGNAL JEU] -> CAPTURE IMMEDIATE : toute idee/decision de ce tour = 1 ligne dans studio/minijeux/pmo/backlog.md DANS LE TOUR. Figeage Papa Yann ('c'est fige') -> docs/jeux/figees/mj-XX.md AVANT tout. Brainstorm/design -> consulter game-conseiller. Cloture : trace dans studio/minijeux/pmo/ (toi-meme) ou game-pmo."
+    $reminders += "[SIGNAL JEU] -> CAPTURE IMMEDIATE : toute idee/decision de ce tour = 1 ligne dans studio/minijeux/memory/TODO.md DANS LE TOUR. Figeage Papa Yann ('c'est fige') -> docs/jeux/figees/mj-XX.md AVANT tout. Brainstorm/design -> consulter game-conseiller. Cloture : trace dans studio/minijeux/memory/ (toi-meme) ou game-pmo."
 }
 
 if ($narrationMatch -or $pathNarration) {
-    $reminders += "[SIGNAL NARRATION] -> CAPTURE IMMEDIATE : toute idee/decision de ce tour = 1 ligne dans studio/narration/pmo/backlog.md DANS LE TOUR. Chiffre/casting/voice_id -> narration-pmo mode RECHERCHE (jamais de memoire). Brainstorm -> consulter narration-conseiller. Cloture : trace dans studio/narration/pmo/ (toi-meme) ou narration-pmo."
+    $reminders += "[SIGNAL NARRATION] -> CAPTURE IMMEDIATE : toute idee/decision de ce tour = 1 ligne dans studio/narration/memory/TODO.md DANS LE TOUR. Chiffre/casting/voice_id -> narration-pmo mode RECHERCHE (jamais de memoire). Brainstorm -> consulter narration-conseiller. Cloture : trace dans studio/narration/memory/ (toi-meme) ou narration-pmo."
 }
 
 if ($structMatch -and -not ($gameMatch -or $narrationMatch -or $dinoMatch -or $pathGame -or $pathNarration -or $pathDino)) {

@@ -17,5 +17,5 @@ Depuis la fusion 2026-07-19, un seul passage couvre FOND (décisions, chiffres, 
 - Dette de contenu : lancer `node studio/referentiel/build.mjs` et lire la section « Dettes ouvertes » de `studio/referentiel/_ETAT-CONTENU.md`.
 - Anti-faux-positif : vérifier l'existence réelle (`ls`/Glob) avant tout « manquant/orphelin ».
 - Ignorer les fichiers `*dino*` de `site/` (pôle DINO voisin).
-- Livrable : entrée datée dans `studio/minijeux/pmo/audit-trail.md` + findings critiques/moyens/cosmétiques.
+- Livrable : entrée datée dans `studio/minijeux/memory/audit-trail.md` + findings critiques/moyens/cosmétiques.
 - Le rapport se termine par `Fichiers modifiés :` (liste exacte) — vérifier par `git diff` avant de croire.

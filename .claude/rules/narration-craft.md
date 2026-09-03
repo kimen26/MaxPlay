@@ -16,7 +16,7 @@ paths:
 - **Ennéagramme** : source de vérité = [`studio/narration/personnages/theorie/enneagramme/`](../../studio/narration/personnages/theorie/enneagramme/), pas le skill craft (qui ne fait qu'illustrer l'application).
 - **Patte narrative** : [`studio/narration/equipe/patte-narrative-maxplay.md`](../../studio/narration/equipe/patte-narrative-maxplay.md).
 - **Pédagogie 4-5 ans (OBLIGATOIRE)** : [`studio/narration/personnages/theorie/pedagogie-enfance/`](../../studio/narration/personnages/theorie/pedagogie-enfance/).
-- **Casting + voice_ids** : [`studio/narration/pmo/INVARIANTS.md`](../../studio/narration/pmo/INVARIANTS.md).
+- **Casting + voice_ids** : [`studio/narration/memory/INVARIANTS.md`](../../studio/narration/memory/INVARIANTS.md).
 
 ## Wiring process MaxPlay (rappel, détail générique dans le skill)
 Brief → `01`+`05` · Brainstorm → `17`+`01` · Briefs writers → `05` · Écriture → `03`+`04` (cliffhangers OFF) · Rewrite → `06`+`02` · Audio → `16`.

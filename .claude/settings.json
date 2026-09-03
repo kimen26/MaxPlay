@@ -106,6 +106,15 @@
             "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude\\hooks\\figees-injector.ps1\""
           }
         ]
+      },
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude\\hooks\\garde-git-add.ps1\""
+          }
+        ]
       }
     ],
     "PostToolUse": [

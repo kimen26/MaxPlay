@@ -3,7 +3,7 @@
 > **Tout chiffre clé ou règle structurelle vit ICI.** Le reste du pôle pointe vers ce fichier.
 > Si tu trouves un chiffre divergent ailleurs → ce fichier gagne, l'autre est obsolète.
 >
-> Équivalent côté Narration : [`../../studio/narration/pmo/INVARIANTS.md`](../../narration/pmo/INVARIANTS.md).
+> Équivalent côté Narration : [`../../studio/narration/memory/INVARIANTS.md`](../../narration/memory/INVARIANTS.md).
 > Créé 2026-05-13 lors de l'harmonisation Game ↔ Narration (Phase A1).
 
 ---
@@ -13,19 +13,19 @@
 | Niveau | Fichier | Rôle | Coût contexte |
 |--------|---------|------|---------------|
 | **Racine** | [`../../CLAUDE.md`](../../../CLAUDE.md) | Synopsis pôles (JEU, NARRATION, COMMUN), commandes trans | Toujours chargé |
-| **Pôle JEU** | [`CLAUDE.md`](../CLAUDE.md) (nested) | PMO+Archiviste auto, INVARIANTS, ÉQUIPE agents, workflow | Auto si fichier `game/**` touché |
-| **Contexte tile** | `~/.claude/rules/tile-tools.md` | Mnémonique 2/8/14/15, Sidewalk_1 mapping, vocab.py, brique avant macro | Auto si `site/tile-tools/**` touché |
-| **Contexte MJ** | `~/.claude/rules/mini-jeux.md` | UX zéro-pénalité, feedback <200ms, zones tap 80px, busSVG, couleurs IDFM | Auto si `site/mj-*.html` touché |
+| **Pôle JEU** | [`CLAUDE.md`](../CLAUDE.md) (nested) | Mémoire quintette, INVARIANTS, ÉQUIPE agents, workflow | Auto si fichier `studio/minijeux/**` touché |
+| **Contexte tile** | `.claude/rules/tile-tools.md` | Mnémonique 2/8/14/15, Sidewalk_1 mapping, vocab.py, brique avant macro | Auto si `site/tile-tools/**` touché |
+| **Contexte MJ** | `.claude/rules/mini-jeux.md` | UX zéro-pénalité, feedback <200ms, zones tap 80px, busSVG, couleurs IDFM | Auto si `site/mj-*.html` touché |
 
 **Principe** : source de vérité dans INVARIANTS.md (ce fichier) → rules répètent pour chargement contexte auto → skills LESSONS.md capitalisent leçons vécues. Pas de duplication : INVARIANTS au sommet.
 
-**Détails** : voir `pmo/decisions.md` § "Refonte archi CLAUDE.md 3 niveaux".
+**Détails** : voir `memory/DECISIONS.md` + `memory/archive/decisions-2026-H1.md` § "Refonte archi CLAUDE.md 3 niveaux".
 
 ---
 
 ## Doctrine transverse MaxPlay
 
-**Lire [`../../memory/DOCTRINE.md`](../../memory/DOCTRINE.md) — 3 principes figés (D-001 pédagogie = produit, D-002 zéro pénalité, D-003 pas de récompense promise).**
+**Lire [`../../../memory/DECISIONS.md`](../../../memory/DECISIONS.md) § Doctrine — 3 principes figés (D-001 pédagogie = produit, D-002 zéro pénalité, D-003 pas de récompense promise).**
 
 ---
 
@@ -33,11 +33,11 @@
 
 | Métrique | Valeur | Source |
 |----------|--------|--------|
-| Résolution | 1024×768 landscape | `memory/rules.md` |
-| Zone tap minimum | 80×80 px | `memory/rules.md` |
-| Feedback maximum | < 200 ms | `memory/rules.md` |
-| Durée session cible | 3-8 min | `memory/rules.md` |
-| Pénalité | **Zéro** (jamais) | `memory/rules.md` |
+| Résolution | 1024×768 landscape | `docs/STANDARD-MJ.md` |
+| Zone tap minimum | 80×80 px | `docs/STANDARD-MJ.md` |
+| Feedback maximum | < 200 ms | `docs/STANDARD-MJ.md` |
+| Durée session cible | 3-8 min | `docs/STANDARD-MJ.md` |
+| Pénalité | **Zéro** (jamais) | `docs/STANDARD-MJ.md` |
 
 ---
 
@@ -63,15 +63,15 @@
 | Métrique | Valeur | Source |
 |----------|--------|--------|
 | MJ déployés au menu | **36 jeux au menu enfant + 1 wip (encyclo dinos) + 2 bacs à sable parentaux** (max-adventure, mj-pose-tiles — hors menu enfant, accessibles depuis compte.html). Liste = source unique [`site/js/catalog.js`](../../../site/js/catalog.js), ne jamais recopier la liste ici. Vérif : `node tests/audit-gabarit.mjs` | `site/js/catalog.js` |
-| MJ retirés du menu | **PURGE 2026-08-10 (décision PY)** : un jeu retiré est **supprimé de `site/`** (« on garde l'idée, rien de codé pour rien »). 23 jeux supprimés ce jour (18 retirés C0 + mj-58 + 4 orphelins mj-01/13b/gold-a/gold-b). Trace raisons+dates : `pmo/backlog.md` · figées archivées : `docs/jeux/_archive/figees-jeux-purges-2026-08-10/` | `pmo/backlog.md` |
-| Encyclopédie dinos | **Count ≠ ce pôle** → source unique [`studio/dino/pmo/INVARIANTS.md`](../../dino/pmo/INVARIANTS.md) (le dino a son PMO propre). Ne pas recopier un count ici. | `site/js/dinos-data.js` |
+| MJ retirés du menu | **PURGE 2026-08-10 (décision PY)** : un jeu retiré est **supprimé de `site/`** (« on garde l'idée, rien de codé pour rien »). 23 jeux supprimés ce jour (18 retirés C0 + mj-58 + 4 orphelins mj-01/13b/gold-a/gold-b). Trace raisons+dates : `memory/archive/backlog-fermes-2026.md` · figées archivées : `docs/jeux/_archive/figees-jeux-purges-2026-08-10/` | `memory/archive/backlog-fermes-2026.md` |
+| Encyclopédie dinos | **Count ≠ ce pôle** → source unique [`studio/dino/memory/INVARIANTS.md`](../../dino/memory/INVARIANTS.md) (le dino a sa mémoire propre). Ne pas recopier un count ici. | `site/js/dinos-data.js` |
 | Recettes tile validées | **20** (`test_*.py` dans `recipes/` — routes h/v × 3 générations, virages × 4, carrefour × 2, rond-point, quartier, parking, voie bus, passages piétons × 2, refs papa × 3) | `site/tile-tools/recipes/test_*.py` |
 | Scripts utilitaires tile (all) | **30+** (20 recettes validées + utilitaires build/render/debug dans `scripts/`) | `site/tile-tools/recipes/` + `scripts/` |
 | Référence canonique virages | `test_ref_papa_4virages.py` (14×14 compo Papa Yann tile-picker) | `site/tile-tools/recipes/` |
 | Couleurs RATP IDFM | 26 lignes actives + 362 référencées | `docs/ratp-colors.json` |
 | Tiles LimeZu inventoriées | 9811 (3040 unitaires + 6473 sprites + 298 planches) | `site/tile-tools/build_tile_picker_data.py` |
 | **maxStars catalog (changé 2026-07-14)** | **3** (changement règle figée : 5→3 niveaux global, 17 jeux impactés dont 10 remappés 5-paliers→3-niveaux). Décision Papa Yann « tout le monde en 3 étoiles ». | `site/js/catalog.js` + figées/mj-XX.md datées 2026-07-14 |
-| **Libs JavaScript réutilisables** | **3 déployées + 1 suspendue** (2026-07-14) : `js/mj-dice.js` (PIP_LAYOUT) · `js/dinos-ombres.js` (pool ombres dino) · `js/mj-compte.js` (1-moteur-N-peaux) testées pilotes. `js/panneau-led.js` suspendu EP-101 fusion. Étape -1 workflow nouvelle (check libs amont). | `docs/MECANIQUES.md` + `site/js/` |
+| **Libs JavaScript réutilisables** | **3 déployées + 1 suspendue** (2026-07-14) : `js/mj-dice.js` (PIP_LAYOUT) · `js/dinos-ombres.js` (pool ombres dino) · `js/mj-compte.js` (1-moteur-N-peaux) testées pilotes. `js/panneau-led.js` suspendu (fusion en question ouverte, voir `memory/TODO.md`). Étape -1 workflow nouvelle (check libs amont). | `docs/MECANIQUES.md` + `site/js/` |
 
 **Production URL** : `https://kimen26.github.io/MaxPlay/` (CI via `.github/workflows/deploy.yml`).
 
@@ -82,8 +82,8 @@
 | Règle | Source |
 |-------|--------|
 | **Gabarit mini-jeux unique** : `mj-shell.js` charge thème + golden + règles + tracking + cloud + celebrations (depuis 2026-07-14 FIGÉ) | `.claude/rules/mini-jeux.md` § LE GABARIT |
-| Bus toujours `busSVG()` / `busSVGHiddenNum()` depuis `site/js/bus-svg.js` — **JAMAIS** emoji 🚌 ni div CSS coloré | `memory/rules.md` |
-| Quiz multi-couleurs : `selectDistinctColors(pool, n, minDist=80)` | `memory/rules.md` |
+| Bus toujours `busSVG()` / `busSVGHiddenNum()` depuis `site/js/bus-svg.js` — **JAMAIS** emoji 🚌 ni div CSS coloré | `docs/STANDARD-MJ.md` |
+| Quiz multi-couleurs : `selectDistinctColors(pool, n, minDist=80)` | `docs/STANDARD-MJ.md` |
 | Sons fins de partie : `victory-sounds.js` (4 mélodies par couleur métal/or/argent/bronze) | `site/js/victory-sounds.js` |
 | AudioContext singleton : `sounds.js` | `site/js/sounds.js` |
 | Suivi progression : `tracker.js` (localStorage `mj_xx_*`) | `site/js/tracker.js` |
@@ -110,7 +110,7 @@
 | Build Phaser | `npm run build` dans `studio/max-adventure/` → `dist/` |
 | Déploiement | GitHub Pages via `.github/workflows/deploy.yml` (assemble dans `_site/` gitignored) |
 
-Détails complets : [`../memory/stack.md`](../memory/stack.md).
+Détails complets : [`../docs/STACK.md`](../docs/STACK.md).
 
 ---
 
@@ -130,16 +130,17 @@ Détails : [`../EQUIPE.md`](../EQUIPE.md) (équivalent studio/narration/equipe/O
 
 ---
 
-## Règles d'or structurelles
+## Règles d'or structurelles (quintette mémoire, depuis 2026-09-03 HO-MJ-01)
 
-1. **`memory/state.md`** = état déploiement statique (jeux actifs, retirés, bugs critiques) — modifié rarement
-2. **`pmo/sprint-log.md`** = journal sessions chronologiques (plus récent en haut)
-3. **`pmo/decisions.md`** = décisions figées + questions ouvertes (datées + raison + impact)
-4. **`pmo/backlog.md`** = tickets actifs (EP-xxx + Leçons L-xxx)
-5. **`pmo/audit-trail.md`** = traces audits PMO + analyses cause racine
-6. **`pmo/INVARIANTS.md`** (ce fichier) = source de vérité chiffres clés et règles non-négociables
+1. **`memory/MEMORY.md`** = état courant + journal de session (3 dernières résumées) — modifié à chaque clôture
+2. **`memory/DECISIONS.md`** = décisions structurantes toujours en vigueur + designs validés (détail historique → `memory/archive/`)
+3. **`memory/TODO.md`** = tickets ouverts (EP-xxx) condensés en 1 ligne
+4. **`memory/LESSONS.md`** = leçons L-xxx (process, REX, patterns)
+5. **`memory/CHANGELOG.md`** = capacités livrées, point de vue utilisateur
+6. **`memory/INVARIANTS.md`** (ce fichier) = source de vérité chiffres clés et règles non-négociables
+7. **`memory/archive/`** = sprint-log, decisions et backlog historiques, verbatim
 
-**Règle dure** : `state.md` ne contient PLUS de log de session (migré dans `sprint-log.md` 2026-05-13).
+**Règle dure** : `MEMORY.md` ne contient qu'un état condensé (≤ 80 lignes) — le détail historique vit dans `memory/archive/`.
 
 ---
 

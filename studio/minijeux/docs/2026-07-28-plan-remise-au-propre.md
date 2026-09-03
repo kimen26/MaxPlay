@@ -2,7 +2,7 @@
 
 > GO PY : « relis tout ce qu'on s'est dit, valide les bonnes pratiques et la bonne logique, note tout,
 > fais un plan, si t'as des doutes conseiller, pour tout bien suivre PMO ».
-> Retours bruts : `studio/minijeux/pmo/retours/2026-07-27-passe-complete-py.json` (21) + base Supabase (ids 6303-6323).
+> Retours bruts : `studio/minijeux/memory/audits/retours/2026-07-27-passe-complete-py.json` (21) + base Supabase (ids 6303-6323).
 
 ## 0. Le constat chiffré (2 audits factuels, 2026-07-28)
 

@@ -9,7 +9,7 @@
 |-------|---------|--------|
 | Spec | **v0.6** — `studio/minijeux/docs/specs/2026-07-19-menu-mur-copains.md` (24 jeux, build par moteur, vagues) | `ca1d9b9f` |
 | **Étape 1 ✅** | **Le Mur** : nouveau `site/index.html` + `site/js/mur.js` + `site/css/mur.css`. Ancien menu archivé `site/index-v2-archive.html` et réutilisé derrière le gate parents | `eb47e099` |
-| Triage jeux | 41 commentaires PY intégrés — `studio/minijeux/pmo/audits/2026-07-19-triage-poc-design.md` §6-7 | `d85cd578` |
+| Triage jeux | 41 commentaires PY intégrés — `studio/minijeux/memory/audits/2026-07-19-triage-poc-design.md` §6-7 | `d85cd578` |
 
 ## 2. Décisions gravées (ne pas re-discuter)
 

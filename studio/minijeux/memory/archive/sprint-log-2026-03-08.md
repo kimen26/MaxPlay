@@ -1,3 +1,5 @@
+> Archive verbatim — déplacé depuis pmo/sprint-log.md le 2026-09-03 (HO-MJ-01). Ne pas réécrire.
+
 # Sprint Log — PMO Game
 
 > Journal de bord des sessions.

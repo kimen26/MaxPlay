@@ -17,19 +17,21 @@ studio/minijeux/          ← GOUVERNANCE + specs (PAS le code déployé)
 │   ├── jeux/             ← INDEX, CLASSIFICATION, figees/, specs mj, ASSETS, AUDIO_ASSETS, _archive/
 │   ├── specs/            ← ARCHI-COMPTES-PROFILS · NORME-i-REGLES · REGISTRE-VOIX-A-GENERER
 │   ├── research/         ← benchmark-kids-games · sources-jeux-addictifs-adultes · SYNTHESE
-│   ├── MECANIQUES.md · STANDARD-MJ.md · ratp-colors.json
-├── memory/               ← sources de vérité statiques
-│   ├── state.md          ← état déploiement (jeux actifs, bugs critiques)
-│   ├── rules.md          ← règles UX/péda + designs validés
-│   ├── stack.md          ← Phaser, archi déploiement, règles SVG
-│   └── VISION-LONG-TERME.md ← Phase 2 WexWorld, pont narration↔jeu
-├── pmo/                  ← INVARIANTS · decisions · sprint-log · backlog · audit-trail
-│   └── audits/           ← audits datés du pôle (norme 2026-07-19 : AAAA-MM-JJ-sujet.md)
-├── tasks/BACKLOG.md      ← stub redirection vers pmo/backlog.md
+│   ├── MECANIQUES.md · STANDARD-MJ.md (source unique règles MJ) · STACK.md · VISION-LONG-TERME.md · ratp-colors.json
+├── memory/               ← quintette mémoire (convention 2026-09-03, HO-MJ-01)
+│   ├── INVARIANTS.md     ← chiffres clés (source de vérité)
+│   ├── DECISIONS.md      ← décisions structurantes en vigueur + designs validés
+│   ├── TODO.md           ← tickets ouverts (EP-xxx)
+│   ├── LESSONS.md        ← leçons L-xxx
+│   ├── MEMORY.md         ← état courant + journal des sessions
+│   ├── CHANGELOG.md      ← capacités livrées (point de vue utilisateur)
+│   ├── audits/           ← audits datés du pôle (norme 2026-07-19 : AAAA-MM-JJ-sujet.md) + retours/
+│   └── archive/          ← sprint-log, décisions et backlog historiques (verbatim)
+├── tasks/BACKLOG.md      ← stub redirection vers memory/TODO.md
 └── tests/                ← harnais Playwright mini-jeux (EP-038)
 
 CODE DÉPLOYÉ (hors pôle, GitHub Pages) :
-  site/                   ← mini-jeux HTML (count → pmo/INVARIANTS.md) + index.html + js/catalog.js (menu) + tools/ + tile-tools/ + mj-pose-tiles.html
+  site/                   ← mini-jeux HTML (count → memory/INVARIANTS.md) + index.html + js/catalog.js (menu) + tools/ + tile-tools/ + mj-pose-tiles.html
   studio/max-adventure/   ← Phaser TS+Vite (build CI → /max-adventure/) · gouverné par ce pôle (CLAUDE.md local pointe ici)
 ```
 
@@ -55,7 +57,7 @@ Détails complets : [`EQUIPE.md`](EQUIPE.md).
 
 - **Profil enfant** : [`../../memory/MAX_PROFILE.md`](../../memory/MAX_PROFILE.md)
 - **Vision produit transverse** : [`../../memory/VISION.md`](../../memory/VISION.md)
-- **Vision long terme pôle JEU** : [`memory/VISION-LONG-TERME.md`](memory/VISION-LONG-TERME.md)
+- **Vision long terme pôle JEU** : [`docs/VISION-LONG-TERME.md`](docs/VISION-LONG-TERME.md)
 - **Couleurs IDFM** : [`docs/ratp-colors.json`](docs/ratp-colors.json)
 
 ---
@@ -87,11 +89,11 @@ Détails complets : [`EQUIPE.md`](EQUIPE.md).
 | [`site/tools/tile-library-v3.html`](../../site/tools/tile-library-v3.html) | Patterns prêts à l'emploi + cartographie navigable |
 | [`site/tools/tile-picker.html`](../../site/tools/tile-picker.html) | Bibliothèque catégorisée (9811 tiles, 100% couverture) + matrice drag&drop + export Python. Supporte `?recipe=X.py` |
 | [`site/tools/brick-explorer.html`](../../site/tools/brick-explorer.html) | (2026-05-12) Page interactive validation tile par tile (mini-render 3×3, vote courbe/point/autre/rejeté) |
-| [`site/design-lecture/`](../../site/design-lecture/) | **Chantier UI lecture** (mockups syllabique/phonique, Kimi) — voir `NOTES-DESIGN-LECTURE.md` interne · retours PY triés : [`pmo/audits/2026-07-19-triage-poc-design.md`](pmo/audits/2026-07-19-triage-poc-design.md) |
+| [`site/design-lecture/`](../../site/design-lecture/) | **Chantier UI lecture** (mockups syllabique/phonique, Kimi) — voir `NOTES-DESIGN-LECTURE.md` interne · retours PY triés : [`memory/audits/2026-07-19-triage-poc-design.md`](memory/audits/2026-07-19-triage-poc-design.md) |
 | [`site/design-compte/`](../../site/design-compte/) | **Chantier UI compte** (mockups série 4 comptage) — voir `NOTES-DESIGN-COMPTE.md` interne · retours PY triés : même doc triage |
 | [`site/design-shared/`](../../site/design-shared/) | Assets partagés des chantiers design (mockup.css/js + fonts) — utilisé par design-lecture ET design-compte |
 | [`site/atelier-couleurs.html`](../../site/atelier-couleurs.html) | Atelier prototype recoloration avatars (algo repris dans `avatar-picker.js`) |
-| ~~index2/index3~~ | **ABANDONNÉS** (décision Papa Yann 2026-07-19) — `index.html` = LE menu unique. Audit menu + direction **« Mur + copains » VALIDÉE** (v2, from scratch) : [`pmo/audits/2026-07-19-menu-parcours.md`](pmo/audits/2026-07-19-menu-parcours.md) → spec **« Le Mur des Copains » v0** : [`docs/specs/2026-07-19-menu-mur-copains.md`](docs/specs/2026-07-19-menu-mur-copains.md) |
+| ~~index2/index3~~ | **ABANDONNÉS** (décision Papa Yann 2026-07-19) — `index.html` = LE menu unique. Audit menu + direction **« Mur + copains » VALIDÉE** (v2, from scratch) : [`memory/audits/2026-07-19-menu-parcours.md`](memory/audits/2026-07-19-menu-parcours.md) → spec **« Le Mur des Copains » v0** : [`docs/specs/2026-07-19-menu-mur-copains.md`](docs/specs/2026-07-19-menu-mur-copains.md) |
 | [`site/tile-tools/README.md`](../../site/tile-tools/README.md) | Pipeline complet (render, recipes, scripts, vocab.py, styles.py) |
 
 **Workflow Propose → Édite → Apprend** :

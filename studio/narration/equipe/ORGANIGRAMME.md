@@ -45,7 +45,7 @@ WRITERS (parallèles, stateless — casting + chiffre dans INVARIANTS.md § Cast
   → Tous reçoivent system = `_writer-system.md` (figé par arc) + user = briefs personnages/histoire.
 
 LECTEURS TÉMOINS — Panel 20 (10 profils × 2 tranches d'âge 3-5 / 6-7)
-  ├── narration-lecteur (enfants seuls) + narration-lecteur-dyade (parent-enfant)
+  ├── narration-lecteur — mode ENFANT (seul) + mode DYADE (parent-enfant), fusionné 2026-09-03
   ├── Profils + codes + slugs writers : `profils-lecteurs.md`
   └── Exception : STORY-001 conserve son panel 6 historique (ne pas refaire)
 
@@ -61,10 +61,10 @@ LOCALISATION [narration-localisation · Sonnet] (post-canon)
   └── Porte un canon FR vers un casting national (jp/br/he/sw…) via lookup.yml + cross-culture/
 
 AGENTS SUPPORT (consultés au besoin)
-  ├── narration-science [Haiku]       — validation factuelle (bio, physique, écologie)
-  ├── narration-sensibilite [Sonnet]  — topics conspirationnistes / polarisants
   └── narration-audio-writer [Sonnet] — réécriture orale anti-molesse (délégué par narration-audio)
 ```
+
+> ⚠️ **narration-science et narration-sensibilite ARCHIVÉS** (2026-09-03, HO-G12 — 0 usage tracé dans les mémoires du pôle). Récupérables verbatim dans `_archive/agents-2026-09-03/`. Si un besoin de fact-check scientifique ou de détection de sensibilité éditoriale se représente, ré-instancier depuis l'archive plutôt que réinventer.
 
 > ⚠️ **Architecte SUPPRIMÉ** (deprecated 2026-05-12 — l'étape 2 d'origine a été fusionnée puis remplacée par le Brainstorm). Ne pas l'invoquer. Sa matière statique vit chez le Conseiller. `equipe/_archive/memoire-architecte.md` archivé.
 
@@ -106,13 +106,13 @@ PMO        ──→ Tous agents (crée dossiers, met à jour index) · ──�
 | `narration/personnages/INDEX.md` | Casting | PMO (si évolution) |
 | `narration/personnages/lookup.yml` | Prénoms/genres | PMO (source de vérité) |
 
-### Mémoires propres (1 agent = 1 mémoire)
+### Mémoires propres (1 agent = 1 mémoire officielle `memory: project`, depuis 2026-09-03)
 
 | Fichier | Agent | Contenu | Fréquence |
 |---------|-------|---------|-----------|
-| `equipe/memoire-conseiller.md` | Conseiller | Arcs, saisons, feedback lecteurs, patterns | Après chaque session |
-| `equipe/memoire-dir.md` | Directeur | Décisions de sélection, ce qui a fonctionné | Après chaque histoire |
-| `equipe/memoire-gatekeeper.md` | GateKeeper | Erreurs récurrentes, patterns à surveiller | Après chaque validation |
+| `.claude/agent-memory/narration-conseiller/MEMORY.md` (+ `TOPIC-historique.md`) | Conseiller | Arcs, saisons, feedback lecteurs, patterns | Après chaque session |
+| `.claude/agent-memory/narration/MEMORY.md` | Directeur | Décisions de sélection, ce qui a fonctionné | Après chaque histoire |
+| `.claude/agent-memory/narration-gatekeeper/MEMORY.md` | GateKeeper | Erreurs récurrentes, patterns à surveiller | Après chaque validation |
 
 ### Mémoire projet (PMO)
 

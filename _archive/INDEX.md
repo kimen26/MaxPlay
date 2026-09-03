@@ -93,6 +93,19 @@ Skills `storytelling-master`, `craft-fundamentals`, `youth-writing`, `enneagramm
 
 Ex-`site/img/dinos/_new-xxl/` (13 PNG + `_PROGRESS.tsv`), vidé lors du nettoyage GED post-audit fiches 2026-08-02. 11 variantes XXL de slots paleoart déjà pourvus (rechange HD) + 2 inédits `Giganotosaurus_meute_*` sans slot fiche. Détail : [`2026-08-02-dino-new-xxl-staging/INDEX.md`](2026-08-02-dino-new-xxl-staging/INDEX.md).
 
+### `agents-2026-09-03/` — Agents et mémoires fusionnés/archivés (HO-G12)
+
+Nettoyage `.claude/agents/` : mémoires officielles `memory: project`, fusion des pipelines multi-modes, archivage des agents à 0 usage confirmé (`grep -rl "<nom>" studio/*/memory/archive studio/*/memory/*.md studio/dino/pmo/`).
+
+| Fichier | Raison archivage |
+|---------|------------------|
+| `narration-science.md` + `memoire-science.md` | 0 usage tracé dans les mémoires narration (archive comprise). Rôle non refondu — récupérable verbatim si un besoin de fact-check scientifique dédié se représente. |
+| `narration-sensibilite.md` + `memoire-sensibilite.md` | 0 usage tracé dans les mémoires narration. Idem — récupérable verbatim. |
+| `game-tile-simplifier.md`, `game-tile-designer.md`, `game-tile-reviewer.md` | Pipeline confirmé **vivant** (usages 1-3 dans `studio/minijeux/memory/`, cité dans `.claude/rules/tile-tools.md` et le skill `maxplay-tiles`) — **pas archivé pour disparition**, fusionné en `.claude/agents/game-tile.md` (3 modes ANALYSE/RECETTE/REVUE). Fichiers gardés ici verbatim pour comparaison/traçabilité de la fusion. |
+| `narration-lecteur-original.md`, `narration-lecteur-dyade.md` | Pipeline confirmé vivant (usages 2+2 dans `studio/narration/memory/archive/`) — fusionné en `.claude/agents/narration-lecteur.md` (mode ENFANT + mode DYADE). Fichiers gardés verbatim pour traçabilité de la fusion. |
+
+> **Non archivé malgré le doute initial du brief HO-G12** : `dino-fiche-writer` a un usage réel confirmé (créé et utilisé 2026-08-17, pilote EP-D-29, cité dans `studio/dino/pmo/backlog.md`) — gardé actif, frontmatter enrichi (`skills: ecriture-audio-enfants, audio-direction-elevenlabs`).
+
 ## Règle d'or
 
 Ne **rien** y ajouter sans une note dans ce fichier expliquant **quand**, **pourquoi**, et **comment retrouver** la matière. Un cadavre non documenté = un cadavre perdu.

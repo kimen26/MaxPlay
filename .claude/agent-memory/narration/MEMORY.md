@@ -1,7 +1,8 @@
-﻿# Mémoire — Directeur Éditorial
+# Mémoire — Directeur Éditorial
 
 > Mis à jour par `narration` après chaque décision importante.
 > Format : `- YYYY-MM-DD | <décision> | <raison>`
+> Déplacé verbatim depuis `studio/narration/equipe/memoire-dir.md` le 2026-09-03 (HO-G12).
 
 ## Décisions de fond
 
@@ -22,12 +23,6 @@
 - 2026-05-03 | **Passé simple, tirets cadratins : pas de règle pour ou contre** | Affaire de style writer. S'ils servent le texte, on les utilise. Sortis du brief writer. GateKeeper attrape les usages ambigus si nécessaire.
 - 2026-05-03 | **Wex peut agir, parler, résoudre** | Verbatim Papa Yann : "héros observateur, joyeux, moteur, légèrement tête en l'air, sans ennéatype. Souvent déclencheur." Pas de "silencieux / peu parlant / ne résout pas / témoin présent". Wex n'est pas handicapé. Correction d'une formulation héritée du package v2 003-v2.
 - 2026-05-03 | **PMO relit les briefs writers avant étape 4 (runs)** | PMO fait une passe mécanique (grep négations + test règle F) avant que les briefs partent aux writers. Si négations gratuites → kanban étape 4 bloqué, alerte Directeur. Décharge l'auteur du travail mécanique.
-- 2026-05-03 | **Briefs en mode cadre seulement (arc 1)** | Le brief pose sujet + arc + style + longueur. Garde-fous délégués à patte Papa Yann + GateKeeper étape 8. Pas de chorégraphie gestes/répliques/silences. Le but du test multi-LLM = comparer 8 cerveaux sur le MÊME brief — un brief qui écrit l'histoire à 90% ne compare que 8 calligraphies.
-- 2026-05-03 | **Briefs writers = autoporteurs (writer-package inliné)** | Le `briefs/_writer-package.md` doit être lisible seul. Aucun "cf fichier X" — Kimi/DeepSeek/Grok via MCP n'ont pas Read filesystem. Tout inliné intégralement dans le prompt de chaque writer.
-- 2026-05-03 | **Brief writer = règles digérées et positives, jamais notes brutes** | Pas de copier-coller des notes brutes ni d'exemples de bugs passés. Si une règle n'aide pas un writer naïf sans connaître l'historique → la coupe ou la reformule. Les fantômes (Ferretti, ballon chaud, métaphores ratées) polluent sans aider.
-- 2026-05-03 | **Vocabulaire dur — liste explicite d'interdits + tout le reste passe s'il a un sens** | Mots interdits 4-8 ans : mort, mourir, crever, clochard, pédocriminel, pistolet, pute, enculer (et famille). Tout autre vocabulaire dur ou négatif est bienvenu **quand il sert la scène**. Pas de test "remplace par doux" — on nomme les interdits, le reste passe quand ça sert.
-- 2026-05-03 | **Passé simple, tirets cadratins : pas de règle pour ou contre** | Affaire de style writer. S'ils servent le texte, on les utilise. Sortis du brief writer. GateKeeper attrape usages ambigus si nécessaire.
-- 2026-05-03 | **Relire `pmo/decisions.md` AVANT tout brief / livrable** | Si la question a déjà été tranchée, l'appliquer — ne PAS la reposer. Cas d'origine : sur brief 003-v2, j'ai reposé la question variance writers alors qu'elle était tranchée 2026-04-30.
 
 ## Ton et direction
 

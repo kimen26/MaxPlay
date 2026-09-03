@@ -134,10 +134,10 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 | `equipe/templates/selection.template.md` | Template sélection Directeur (ex-decision) | Directeur | Directeur | Directeur |
 | `equipe/templates/{pitch,brief-*,kanban,synthese}.template.md` | Templates restants (étapes 1, 3, kanban, 9) | owners respectifs | owners | Directeur |
 | `stories/_gabarit/` | Gabarit de dossier histoire (copie de référence) | Archiviste | Archiviste | Archiviste |
-| `equipe/memoire-dir.md` | Mémoire Directeur inter-sessions | Directeur | Directeur | Directeur |
-| `equipe/memoire-conseiller.md` | Mémoire Conseiller (arcs, saisons, feedback) | Conseiller | Conseiller | Directeur |
+| `../.claude/agent-memory/narration/MEMORY.md` | Mémoire Directeur inter-sessions | Directeur | Directeur | Directeur |
+| `../.claude/agent-memory/narration-conseiller/MEMORY.md` | Mémoire Conseiller (arcs, saisons, feedback) | Conseiller | Conseiller | Directeur |
 | `_archive/memoire-architecte.md` | ⚠️ Mémoire Architecte — **agent supprimé 2026-05-12**, fichier archivé pour traçabilité, non maintenu | — | — | — |
-| `equipe/memoire-gatekeeper.md` | Mémoire GateKeeper (erreurs récurrentes) | GateKeeper | GateKeeper | — |
+| `../.claude/agent-memory/narration-gatekeeper/MEMORY.md` | Mémoire GateKeeper (erreurs récurrentes) | GateKeeper | GateKeeper | — |
 | `equipe/profils-lecteurs.md` | Fiches 7 profils + 8 cultures | Directeur | Directeur | Directeur |
 | `equipe/sources-sciences.md` | Références documentaires | Science | Science | Science |
 | `equipe/sources-sensibilite.md` | Catalogue topics sensibles | Sensibilité | Sensibilité | Sensibilité |
@@ -239,7 +239,7 @@ Nouvelle info narrative
 
 | Type d'info | Stade | Fichier cible | Qui maintient |
 |-------------|-------|---------------|---------------|
-| Sens culturel d'un objet/élément (pluie, feu, repas, silence…) | Note de pattern | `equipe/memoire-conseiller.md` (section "Patterns éditoriaux") | Conseiller |
+| Sens culturel d'un objet/élément (pluie, feu, repas, silence…) | Note de pattern | `../.claude/agent-memory/narration-conseiller/MEMORY.md` (section "Patterns éditoriaux") | Conseiller |
 | Geste/comportement enfant par culture pour un même thème | Catalogue de variations | `stories/NNN-slug/variantes-culturelles/` | Archiviste (structure) + Directeur (contenu) |
 | Prénom + diminutif d'un perso dans une culture | Identité | `personnages/type-NN/pays/XX/identite.md` + `personnages/lookup.yml` | Directeur (choix) + Archiviste (lookup) |
 | Casting cross-country complet pour une culture | Catalogue | `cross-culture/prenoms/` | Archiviste |
@@ -255,7 +255,7 @@ Nouvelle info narrative
 | Bombay / mousson | Saison entière | Jeux dédiés à la mousson |
 | Désert | Événement rare, sacré | Sortent exprès, en silence |
 
-→ détail et leçon V2→V3 dans `equipe/memoire-conseiller.md`.
+→ détail et leçon V2→V3 dans `../.claude/agent-memory/narration-conseiller/MEMORY.md`.
 
 **Règle :** une variation culturelle ne descend dans `stories/.../variantes-culturelles/` qu'une fois la version FR canon. Avant ça → matière de pattern dans la mémoire Conseiller.
 

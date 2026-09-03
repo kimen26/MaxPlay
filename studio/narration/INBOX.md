@@ -165,6 +165,8 @@ Dans l'ancien monde, **tout coûtait de l'argent** :
 
 ## 2026-04-27 — L'École : programme + cours d'histoire comique
 
+> ✅ Distillé 2026-09-03 (convergence HO-NAR-01, jamais marqué à l'époque) → `univers/vie-quotidienne/ecole.md` (programme scolaire + cours d'Histoire — déjà présent, fichier porte lui-même la mention "Distillé depuis INBOX 2026-04-27"). Questions en suspens (nom du prof d'Histoire) reportées dans `memory/DECISIONS.md § Questions ouvertes` #7.
+
 ### Programme scolaire dans l'univers post-Éveil
 
 **Matières classiques conservées :**

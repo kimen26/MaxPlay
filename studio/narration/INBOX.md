@@ -102,6 +102,8 @@ L'utilisateur demande des concepts **techniquement ou logiquement défendables**
 
 ## 2026-04-27 — Stratégie de diffusion réelle (2026) + géographie univers
 
+> ✅ Distillé 2026-09-03 (convergence HO-NAR-01, jamais marqué à l'époque) → volet géographie dans `univers/vie-quotidienne/geographie.md` (déjà présent, fichier porte lui-même la mention "Distillé depuis INBOX 2026-04-27"). Volet stratégie de diffusion (YouTube/WhatsApp, modèle économique) jamais repris dans un fichier stable — reporté dans `memory/TODO.md § BUSINESS-001` (à créer) faute de ticket dédié constaté.
+
 ### Stratégie de diffusion — monde réel 2026 (pas l'univers fictif)
 
 Ce bloc concerne le **projet MaxPlay en tant que produit éditorial** à diffuser, pas le monde de Wex.

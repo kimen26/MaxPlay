@@ -138,7 +138,7 @@ Avant de soumettre ta version :
 
 **Date :** YYYY-MM-DD
 **Sources des règles globales :**
-- `pmo/decisions.md` (règles tranchées)
+- `memory/DECISIONS.md` (règles tranchées)
 - `equipe/patte-narrative-maxplay.md` (patte B+D+C)
 - `personnages/theorie/pedagogie-enfance/` (boussole 4-5 ans — invariants cognitifs)
 - `personnages/theorie/enneagramme/chabreuil-synthese-complete.md` (psychologie persos)

@@ -95,8 +95,8 @@
 - ☐ Cohérent avec `saisons/saison-1/<arc-slug>/fiche.md` (qualité humaine + problématique de l'arc)
 - ☐ Cohérent avec `personnages/INDEX.md` (casting V1 figé, surnoms, sensibilités)
 - ☐ Cohérent avec `univers/INDEX.md` (lieu connu, règles tranchées)
-- ☐ Cohérent avec `pmo/INVARIANTS.md` (chiffres clés, casting, voice_ids)
-- ☐ Cohérent avec `pmo/decisions.md` (toutes les règles tranchées)
+- ☐ Cohérent avec `memory/INVARIANTS.md` (chiffres clés, casting, voice_ids)
+- ☐ Cohérent avec `memory/DECISIONS.md` (toutes les règles tranchées)
 - ☐ **Boussole péda 4-5 ans** appliquée (attention conjointe, causalité immédiate, max 3 infos, sensorialité dominante, gestes mimables, recoins Bachelard) — voir `narration-conseiller.md` qui l'a intégrée depuis 2026-05-12
 
 ---

@@ -3,7 +3,7 @@ maintenu_par: Directeur (décisions contenu) + Archiviste (structure physique)
 mis_a_jour: 2026-05-15
 ---
 
-> Source de vérité courante : `PROCESS.md` (11 étapes, 0-10) + `pmo/INVARIANTS.md`
+> Source de vérité courante : `PROCESS.md` (11 étapes, 0-10) + `memory/INVARIANTS.md`
 > Dernières refontes : 2026-05-12 (fusion étape 1+2, Architecte deprecated) · 2026-05-15 (étape 2 recréée Brainstorm boss+équipe, system/user split writers, brief-univers + _writer-package obsolètes)
 
 # Cartographie des domaines — Narration MaxPlay
@@ -45,7 +45,7 @@ mis_a_jour: 2026-05-15
 | `personnages/type-NN/pays/XX/identite.md` | Prénom complet, diminutif, genre par culture | Directeur | Directeur | Auteur (choix prénom culturel) |
 | `personnages/archive/` | Candidats rejetés, brainstorm | Archiviste | Archiviste | Ne pas toucher |
 
-**Règle :** toute modification du casting V1 (France) = décision Auteur + entrée `pmo/decisions.md`.
+**Règle :** toute modification du casting V1 (France) = décision Auteur + entrée `memory/DECISIONS.md`.
 
 ---
 
@@ -151,11 +151,11 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 
 | Fichier | Contenu | Qui crée | Qui met à jour | Qui lit |
 |---------|---------|----------|----------------|---------|
-| `pmo/INDEX.md` | État instantané + règles reprise | PMO | PMO | **Tous — premier fichier à lire après reboot** |
-| `pmo/backlog.md` | Tickets actifs (max 3) + terminés | PMO | PMO | Directeur + Auteur |
-| `pmo/decisions.md` | Décisions définitives + questions ouvertes | PMO | PMO | Tous |
-| `pmo/sprint-log.md` | Journal de sessions | PMO | PMO (fin de chaque phase) | Tous |
-| `pmo/roadmap.md` | Vision 3-6-12 mois | PMO + Auteur | PMO | Directeur + Auteur |
+| `memory/MEMORY.md` | État instantané + règles reprise | PMO | PMO | **Tous — premier fichier à lire après reboot** |
+| `memory/TODO.md` | Tickets actifs (max 3) + terminés | PMO | PMO | Directeur + Auteur |
+| `memory/DECISIONS.md` | Décisions définitives + questions ouvertes | PMO | PMO | Tous |
+| `memory/MEMORY.md` | Journal de sessions | PMO | PMO (fin de chaque phase) | Tous |
+| `memory/TODO.md` | Vision 3-6-12 mois | PMO + Auteur | PMO | Directeur + Auteur |
 
 **Ce que le PMO est garanti de savoir :**
 - Tout ticket ouvert (une phase = un log PMO)
@@ -219,7 +219,7 @@ Nouvelle info narrative
         │     → stories/NNN-slug/texte.md (canon uniquement post-Keeper)
         │
         ├── Concerne une décision prise (process, casting, règle) ?
-        │     → pmo/decisions.md
+        │     → memory/DECISIONS.md
         │
         ├── Concerne un profil lecteur ou une culture ?
         │     → equipe/profils-lecteurs.md
@@ -271,6 +271,6 @@ Nouvelle info narrative
 6. **System prompt writers** = `saisons/saison-1/arc-1-objet-decor/_writer-system.md` (figé par arc) — `brief-univers.md` OBSOLÈTE depuis 2026-05-15
 7. **PMO loggé à chaque phase** — sans log PMO, la phase n'est pas traçable
 8. **Un dossier workshop = une histoire** — pas de mélange entre titres
-9. **Saison 1 = prisme enfant pur** — les parents existent hors-cadre, ne sont **jamais** dans la scène. Pas de dialogue parent ↔ enfant, pas d'intervention parentale dans la résolution. Le foyer peut affleurer (un seuil, une voix au loin), le parent n'entre pas. Le filtre se relâche éventuellement en S2+ (modèle Bluey « bon assez parent »). Décision tranchée 2026-04-29 — voir `../pmo/decisions.md`.
+9. **Saison 1 = prisme enfant pur** — les parents existent hors-cadre, ne sont **jamais** dans la scène. Pas de dialogue parent ↔ enfant, pas d'intervention parentale dans la résolution. Le foyer peut affleurer (un seuil, une voix au loin), le parent n'entre pas. Le filtre se relâche éventuellement en S2+ (modèle Bluey « bon assez parent »). Décision tranchée 2026-04-29 — voir `../memory/DECISIONS.md`.
 10. **Compagnons = ondes / couleurs émotionnelles** — jamais d'animaux, jamais de mascotte. Apparition progressive milieu/fin S1. Voir `../univers/vie-quotidienne/compagnons.md`. Décision tranchée 2026-04-29.
 11. **Sensibilité différenciée, pas savoir caché** — chaque perso (les 9 + Wex) perçoit ce que les autres ne perçoivent pas. Pas de hiérarchie « Wex sait, les autres ignorent ». Décision tranchée 2026-04-29.

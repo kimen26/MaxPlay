@@ -114,7 +114,7 @@ Règle : le writer guidé active **2-3 axes librement, jamais 4+**. Source vivan
 
 **Ticket tracking** : TEST-PANEL-CALIBRATION (à faire 2026-07-03, cible 2026-07-15).
 
-**Source de vérité** : `pmo/decisions.md` DEC-PANEL-V2 (figée 2026-07-03).
+**Source de vérité** : `memory/DECISIONS.md` DEC-PANEL-V2 (figée 2026-07-03).
 
 ---
 
@@ -191,7 +191,7 @@ Détail complet : [`../personnages/voix-meta/_VOICE-IDS-CASTING.md`](../personna
 
 **Owner production audio** : agent `narration-audio` + MCP outil. Consigne : adapter le canon, poser les tags, écrire les segments, appeler le MCP.
 
-**Source de vérité** : `pmo/decisions.md` DEC-AUDIO-PRODUCTION-001 v3 (figée 2026-05-16 14:00, jamais régresser sans décision explicite).
+**Source de vérité** : `memory/DECISIONS.md` DEC-AUDIO-PRODUCTION-001 v3 (figée 2026-05-16 14:00, jamais régresser sans décision explicite).
 
 ---
 

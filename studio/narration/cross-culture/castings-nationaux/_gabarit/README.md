@@ -63,7 +63,7 @@ Le reste — ennéatype, sensibilité, gestes/attitudes/habitudes, voix-signatur
 5. **Préparer les variantes décor** dans `decor-local.md` (équivalents pont, rivière, talus, mare, etc.).
 6. **Mettre à jour [`../../../personnages/lookup.yml`](../../../personnages/lookup.yml)** avec les nouveaux tokens `titi_N_<pays>`.
 7. **Mettre à jour [`../INDEX.md`](../INDEX.md)** (tableau des castings).
-8. **Tracer décision** dans [`../../../pmo/decisions.md`](../../../pmo/decisions.md).
+8. **Tracer décision** dans [`../../../memory/DECISIONS.md`](../../../memory/DECISIONS.md).
 
 ---
 

@@ -73,6 +73,6 @@ Quand on ouvre un arc :
 - [`../INDEX.md`](../INDEX.md) — roadmap globale saisons
 - [`../../equipe/PROCESS.md`](../../equipe/PROCESS.md) — workflow d'écriture
 - [`../../equipe/patte-narrative-maxplay.md`](../../equipe/patte-narrative-maxplay.md)
-- [`../../pmo/decisions.md`](../../pmo/decisions.md) — règles tranchées
+- [`../../memory/DECISIONS.md`](../../memory/DECISIONS.md) — règles tranchées
 - [`../../stories/INDEX.md`](../../stories/INDEX.md) — catalogue des histoires
 - [`../../stories/brainstorm-arc-1.md`](../../stories/brainstorm-arc-1.md) — brainstorm en cours arc 1

@@ -121,5 +121,5 @@ Une histoire **n'est pas obligée** d'appartenir à un arc.
 - `../saisons/saison-1/INDEX.md` — table des arcs de la saison 1 (canon)
 - `../stories/INDEX.md` — table des histoires (canon + en cours)
 - `../stories/axes-histoires-en-stock.md` — pool d'idées futures
-- `../pmo/roadmap.md` — vision de la structure des saisons
+- `../memory/TODO.md` — vision de la structure des saisons
 - `memoire-conseiller.md` — patterns transversaux et arcs en gestation

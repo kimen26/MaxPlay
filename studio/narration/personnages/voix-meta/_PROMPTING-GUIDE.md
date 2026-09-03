@@ -466,7 +466,7 @@ On décrit dans le prompt Voice Design des **tics de prononciation précis** («
 | Descripteurs anglais pour Voice Design | `voix.md` §Prompt v19 | Étage 1 — donne le **caractère général** |
 | Catalogue alias tags par perso | À créer : `voix-meta/_ALIAS-TAGS-CATALOG.md` | Étage 2 — **injecté à chaque MP3** |
 | Pronunciation dictionary `.pls` par voice_id | À créer : `personnages/<perso>/voix.pls` | Étage 2 — **lié au voice_id en permanence** |
-| Backlog EP-026 voice-director | `pmo/backlog.md` | Implémentation étage 2 |
+| Backlog EP-026 voice-director | `memory/TODO.md` | Implémentation étage 2 |
 
 **Règle d'or à retenir** : **on continue d'écrire les tics dans le prompt Voice Design** (descripteurs anglais riches) pour orienter le caractère, **MAIS on ne compte pas dessus** pour les rendre. Les tics seront **vraiment imposés** uniquement par les alias tags / pronunciation dictionary à la génération TTS, qui sera la responsabilité du voice-director EP-026.
 
@@ -1077,7 +1077,7 @@ Voir `cross-culture/castings-nationaux/_gabarit/voix.md` — prêt à dupliquer 
 □ Voice_id créé, stocké dans cross-culture/castings-nationaux/<pays>/voix.md
 □ Description publique FR-locale + EN (≤ 500 chars chacune)
 □ Test 1-2 phrases du texte canon traduit (MCP tts_elevenlabs)
-□ Trace dans pmo/decisions.md (nouveau casting national)
+□ Trace dans memory/DECISIONS.md (nouveau casting national)
 ```
 
 ---
@@ -1088,6 +1088,6 @@ Voir `cross-culture/castings-nationaux/_gabarit/voix.md` — prêt à dupliquer 
 - Voix persos MaxPlay : [`../type-NN/voix.md`](../) + [`../wex/voix.md`](../wex/voix.md)
 - Voix narrateurs : [`narrateur-h.md`](narrateur-h.md) + [`narrateur-f.md`](narrateur-f.md)
 - Cheatsheet writers didascalies FR : [`_CHEATSHEET-WRITERS.md`](_CHEATSHEET-WRITERS.md)
-- Backlog audio : `narration/pmo/backlog.md` (VOIX-001, VOIX-002, VOIX-003)
+- Backlog audio : `narration/memory/TODO.md` (VOIX-001, VOIX-002, VOIX-003)
 - Agent audio : `.claude/agents/narration-audio.md`
 - Doc officielle ElevenLabs : https://elevenlabs.io/docs/eleven-creative/voices/voice-design#prompting-guide

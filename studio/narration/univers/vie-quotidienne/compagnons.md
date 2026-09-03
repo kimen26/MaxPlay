@@ -1,7 +1,7 @@
 # Les Compagnons — ondes & couleurs émotionnelles
 
 > Statut : **forme tranchée 2026-04-29.** Détails à affiner via les briefs Architecte et au fil des arcs narratifs.
-> Décision officielle : `../pmo/decisions.md` — section *Compagnons : forme tranchée*.
+> Décision officielle : `../memory/DECISIONS.md` — section *Compagnons : forme tranchée*.
 
 ---
 
@@ -97,5 +97,5 @@ Le compagnon est **distinct** de la sensibilité personnelle (minéraux, eau, pl
 
 - `vibration.md` — fréquence/amplitude visible, base théorique
 - `sensibilites.md` — distinction sensibilité personnelle vs compagnon-onde
-- `../pmo/decisions.md` — décisions tranchées 2026-04-29
+- `../memory/DECISIONS.md` — décisions tranchées 2026-04-29
 - `../equipe/memoire-conseiller.md` — patterns à suivre

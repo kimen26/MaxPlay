@@ -1,4 +1,9 @@
-# Matière à distiller — registre
+# Archive — Matière à distiller (2026-07-27)
+
+> ⚠️ **Archive verbatim, ne pas réécrire.** Rotation HO-NAR-01 (2026-09-03) : déplacé tel quel depuis `pmo/matiere-a-distiller.md`. Ce registre listait la matière brute repérée durant l'audit cartographique du 2026-07-27, non encore distillée. État à cette date : rien n'a été rayé depuis (vérifié lors de cette convergence) — les gros lots (28-cultures faune/flore/jeux/repas/saisons, cosmos, harmonie des sphères, business plan multinationaux) restent des chantiers ouverts, référencés dans `../TODO.md` (INPUT-004/005, UNIVERS-004/005, BUSINESS-001).
+
+---
+
 
 > **Créé 2026-07-27 (cartographie phase 1).** Consigne Papa Yann : « valide que rien d'intéressant ne soit contenu — ou alors note-le dans un grand doc qu'on descendra après, mais plus de pollution ! ».
 > Ce registre recense la **matière brute intéressante** croisée pendant l'audit, **non encore distillée** vers sa destination. Chaque ligne = un chantier de distillation futur. Quand une ligne est traitée → la rayer avec date + destination effective (ne jamais supprimer).

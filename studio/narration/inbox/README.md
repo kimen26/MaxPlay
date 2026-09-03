@@ -7,7 +7,7 @@ Glisse ici des articles, des `.md`, des textes bruts — format entièrement lib
 
 **48h de vie max.** À chaque session, `narration-pmo` :
 1. Scanne les fichiers non traités
-2. Crée un ticket `INPUT-NNN` dans `pmo/backlog.md`
+2. Crée un ticket `INPUT-NNN` dans `memory/TODO.md`
 3. Appelle `narration-conseiller` pour brainstormer et proposer où distiller
 4. Distille vers les fichiers cibles (`decisions.md`, `cross-culture/`, `univers/`, etc.)
 5. Marque le fichier source comme traité (ou le supprime si entièrement distillé)

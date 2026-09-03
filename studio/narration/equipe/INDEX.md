@@ -16,7 +16,7 @@
 | Comprendre la patte narrative MaxPlay | [`patte-narrative-maxplay.md`](patte-narrative-maxplay.md) |
 | Comprendre ce que Papa Yann reproche / valide en relecture | [`patte-papa-yann.md`](patte-papa-yann.md) |
 | Lancer un brief writer | [`templates/`](templates/) — 8 gabarits prêts |
-| Voir les règles tranchées | [`../pmo/decisions.md`](../pmo/decisions.md) |
+| Voir les règles tranchées | [`../memory/DECISIONS.md`](../memory/DECISIONS.md) |
 | Reprendre une histoire après reboot | `stories/<NNN-slug>/kanban.md` (la source de vérité) |
 
 ---
@@ -167,7 +167,7 @@ Statuts possibles : `pitch` · `plan` · `briefs` · `versions` · `lecteurs` ·
 ### SLA et alertes
 
 - **3 jours max** d'attente auteur sur étapes 1, 6, 10 (pitch, sélection, canon — PROCESS 11 étapes)
-- Au-delà → kanban 🔴 BLOQUÉ + log auto `pmo/sprint-log.md`
+- Au-delà → kanban 🔴 BLOQUÉ + log auto `memory/MEMORY.md`
 - PMO surveille et alerte
 
 ### Versionnage
@@ -193,7 +193,7 @@ Tout fichier créé ou modifié dans `narration/` doit être **indexé**. Quand 
 ## Liens externes
 
 - [`../INDEX.md`](../INDEX.md) — index racine du projet narration
-- [`../pmo/INDEX.md`](../pmo/INDEX.md) — état instantané PMO
+- [`../memory/MEMORY.md`](../memory/MEMORY.md) — état instantané PMO
 - [`../saisons/INDEX.md`](../saisons/INDEX.md) — plan éditorial (saisons → arcs → stories)
 - [`../personnages/INDEX.md`](../personnages/INDEX.md) — casting V1 figé
 - [`../univers/INDEX.md`](../univers/INDEX.md) — règles du monde

@@ -27,6 +27,9 @@ site/img/dinos/coloriage-test/
 # Harnais de test mini-jeux (EP-038) — screenshots/artefacts de run, pas versionnés
 studio/minijeux/tests/.artifacts/
 
+# Working-dir partagé entre specs Playwright (recréé par collection.spec.mjs) — HO-G10 2026-09-03
+studio/minijeux/tests/_scratch/
+
 # Worktrees d'agents en arrière-plan (Agent tool isolation:worktree) — registered+locked, hors versionning
 .claude/worktrees/
 debug.log
@@ -44,6 +47,7 @@ infra/bot/*.log
 studio/referentiel/registre.json
 studio/referentiel/plan-generation.json
 studio/referentiel/textes-jeux.json
+studio/referentiel/generer/textes-jeux.json
 
 # backups locaux de settings (peuvent contenir des secrets)
 .claude/*.bak

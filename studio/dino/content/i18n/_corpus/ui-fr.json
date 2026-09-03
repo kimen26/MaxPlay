@@ -1,0 +1,98 @@
+{
+  "_meta": {
+    "role": "Dictionnaire UI de l'encyclopedie dino — le CHASSIS (menus, onglets, libelles de fiche, phrases TTS construites). Le CONTENU des dinos vit dans corpus-fr.json.",
+    "source": "site/dev-dinos.html + _statsPhrase() de site/js/dinos-data.js",
+    "genere": "2026-09-03",
+    "convention": "Les {accolades} sont des VARIABLES : elles se replacent dans la phrase selon la syntaxe de la langue, mais ne se traduisent jamais et ne se suppriment jamais.",
+    "pluriels": "Les cles _un / _plusieurs sont choisies par le code selon le nombre. Une langue sans distinction met le meme texte dans les deux."
+  },
+
+  "page_titre": "Dinos — MaxPlay",
+  "header_titre_menu": "Les Dinosaures",
+  "lien_compte": "Compte",
+
+  "onglet_familles": "Les familles",
+  "onglet_regime": "Ce qu'il mange",
+  "onglet_voyage": "Le voyage",
+  "onglet_epoques": "Les époques",
+  "onglet_dico": "Le dico",
+
+  "menu_famille_intro": "Chaque famille a un nom rigolo de savant. Touche une carte pour découvrir le sien !",
+  "menu_famille_legende_oeuf": "Dans les jeux, l'œuf de cette couleur vient de cette famille !",
+  "menu_epoque_intro": "Les dinos n'ont pas tous vécu en même temps ! On les range par époque, de la plus ancienne à aujourd'hui.",
+  "menu_dico_intro": "Les noms des dinos sont faits de petits mots de savants ! Touche un mot pour l'écouter.",
+  "menu_dico_indisponible": "Le dico arrive bientôt !",
+
+  "compteur_dinos_un": "{n} dino",
+  "compteur_dinos_plusieurs": "{n} dinos",
+
+  "grid_accroche_suffixe": "Tape sur un dino pour tout savoir !",
+
+  "fiche_aussi_appele": "aussi appelé {alias}",
+  "fiche_bouton_histoire_complete": "Écoute toute l'histoire de {nom}",
+  "fiche_titre_histoire": "Son histoire",
+  "fiche_titre_taille": "Sa taille",
+  "fiche_titre_vie": "Sa vie de dino",
+  "fiche_titre_truc_fou": "Le truc fou",
+  "fiche_stat_ailes": "Ailes",
+  "fiche_stat_long": "Long",
+  "fiche_stat_haut": "Haut",
+  "fiche_stat_poids": "Poids",
+  "fiche_label_copains": "Ses copains :",
+  "fiche_label_ennemis": "Ses ennemis :",
+  "fiche_label_superpouvoir": "Super-pouvoir :",
+  "fiche_galerie_titre": "Plus d'images",
+  "fiche_video_titre_defaut": "Vidéo",
+
+  "unite_kg": "kg",
+  "unite_metres": "mètres",
+  "unite_kilos": "kilos",
+  "unite_mille_kilos": "mille kilos",
+
+  "badge_titre_audio": "Histoire à écouter",
+  "badge_titre_images": "Photos et images",
+
+  "extra_label_gros_plan": "Gros plan",
+  "extra_label_mange_m": "Ce qu'il mange",
+  "extra_label_mange_f": "Ce qu'elle mange",
+  "extra_label_paris": "Dans Paris !",
+  "extra_label_ecosysteme": "Son monde",
+  "extra_label_funfact": "Le savais-tu ?",
+
+  "journey_intro": "Le voyage dans le temps, raconté. Appuie sur ▶ pour écouter chaque époque, de la première vie jusqu'à aujourd'hui. La flèche 👉 montre où continuer.",
+  "journey_bouton_ecoute": "Écoute {episode}",
+  "pangee_bouton_ecoute": "Écoute l'histoire de la Pangée",
+  "pangee_sous_desc": "Avant et pendant les dinos !",
+  "extinction_bouton_ecoute": "Écoute l'histoire de la Grande Extinction",
+  "extinction_sous_desc": "Pourquoi les dinos ont-ils disparu ?",
+
+  "continent_amerique_nord": "Amérique du Nord",
+  "continent_amerique_sud": "Amérique du Sud",
+  "continent_europe": "Europe",
+  "continent_afrique": "Afrique",
+  "continent_asie": "Asie",
+  "continent_antarctique": "Antarctique",
+  "continent_oceanie": "Océanie",
+  "continent_ameriques": "Amériques",
+  "continent_eurasie": "Eurasie",
+  "continent_marin_defaut": "Dans les mers du monde entier",
+
+  "tts_fallback_regime": "Les dinosaures ne mangeaient pas tous la même chose. Les carnivores mangeaient de la viande. Les herbivores mangeaient des plantes.",
+  "tts_fallback_famille": "Les grandes familles de dinosaures !",
+  "tts_fallback_periode": "Le grand voyage dans le temps ! On remonte très loin, de la première vie jusqu'à aujourd'hui.",
+  "tts_fallback_epoque": "Range les dinosaures par époque ! Du Permien, avant les dinosaures, jusqu'à aujourd'hui.",
+  "tts_fallback_dico": "Les noms des dinos sont faits de petits mots de savants ! Touche un mot pour l'écouter.",
+  "tts_fallback_generique": "Les dinosaures !",
+
+  "dico_phrase_tts": "{mot}, en {langue}, ça veut dire : {sens}.",
+  "dico_phrase_tts_sans_langue": "{mot} ça veut dire : {sens}.",
+
+  "fiche_tts_nom_fallback": "Son vrai nom c'est {nom_savant}",
+  "fiche_tts_regime": "{nom} est {regime}. Il mange {proies}. {chasseurs}. {amis}",
+  "fiche_tts_funfact": "Son super-pouvoir ! {superpouvoir} Le savais-tu ? {fait}",
+
+  "stats_longueur": "Il mesurait {n} mètres de long — {comparaison}",
+  "stats_envergure": "Il avait des ailes de {n} mètres d'un bout à l'autre — {comparaison}",
+  "stats_hauteur": "Debout, il faisait {n} mètres de haut — {comparaison}",
+  "stats_poids": "Et il pesait {poids} — {comparaison}"
+}

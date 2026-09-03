@@ -13,6 +13,14 @@ const f = path.join(dir, 'strings.json');
 if (!fs.existsSync(f)) { console.error(`ABSENT: ${f}`); process.exit(1); }
 const trad = JSON.parse(fs.readFileSync(f, 'utf8'));
 
+// Unites imperiales (cible EN) et metriques (source FR).
+const IMPERIAL = /\b(inch|inches|foot|feet|mph|pound|pounds|yard|yards|mile|miles)\b/i;
+const METRIQUE_SRC = /\b(cm|m|km\/h|kg|t|metre|metres|mètre|mètres)\b/i;
+// Metrique residuel dans une cible anglaise : l'enfant US n'a aucun referentiel.
+const METRIQUE_RESIDUEL = /\d+\s*(cm|km\/h|kg)\b/i;
+// "4×4" est un nom de vehicule, pas une mesure : ses chiffres ne portent pas d'echelle.
+const VEHICULE_4X4 = /4\s*[×x]\s*4/i;
+
 const err = [], warn = [];
 function scan(kind, ref, got) {
   Object.keys(ref).forEach(id => {
@@ -21,12 +29,32 @@ function scan(kind, ref, got) {
       const src = ref[id][champ], dst = got[id][champ];
       if (dst === undefined) { err.push(`${kind}/${id}.${champ} : champ manquant`); return; }
       if (typeof dst !== 'string' || !dst.trim()) { err.push(`${kind}/${id}.${champ} : vide`); return; }
-      if (dst === src && src.length > 25) warn.push(`${kind}/${id}.${champ} : identique au FR (non traduit ?)`);
+
+      // Un binome latin (`full`) est identique dans toutes les langues : c'est normal.
+      if (dst === src && src.length > 25 && champ !== 'full')
+        warn.push(`${kind}/${id}.${champ} : identique au FR (non traduit ?)`);
+
       const eSrc = (src.match(/!/g) || []).length, eDst = (dst.match(/!/g) || []).length;
       if (eDst > eSrc) warn.push(`${kind}/${id}.${champ} : ${eDst} "!" contre ${eSrc} en FR (charte: ne pas en ajouter)`);
+
       // Les chiffres portent l'echelle : ils doivent survivre a la traduction.
+      // Deux exceptions legitimes, ou l'ordre de grandeur est conserve :
+      //  - conversion metrique -> imperial en anglais (charte, section "Unites de mesure") ;
+      //  - "4x4", nom de vehicule dont les chiffres ne mesurent rien.
+      const conversion = IMPERIAL.test(dst) && METRIQUE_SRC.test(src);
+      const vehicule = VEHICULE_4X4.test(src);
       const nSrc = (src.match(/\d+/g) || []).join(','), nDst = (dst.match(/\d+/g) || []).join(',');
-      if (nSrc !== nDst) warn.push(`${kind}/${id}.${champ} : chiffres FR [${nSrc}] vs [${nDst}]`);
+      // Un separateur de milliers ("1 000" -> "1,000") n'est pas un changement de valeur.
+      const normalise = s => s.replace(/[\s,.](?=\d{3}\b)/g, '');
+      if (normalise(nSrc) !== normalise(nDst) && !conversion && !vehicule)
+        warn.push(`${kind}/${id}.${champ} : chiffres FR [${nSrc}] vs [${nDst}]`);
+
+      // Une decimale dans une conversion trahit le calcul et casse l'oral (charte).
+      if (conversion && /\d+\.\d/.test(dst))
+        warn.push(`${kind}/${id}.${champ} : conversion non arrondie (${dst.match(/\d+\.\d+/)[0]}) — arrondir`);
+
+      if (lang === 'en' && METRIQUE_RESIDUEL.test(dst))
+        warn.push(`${kind}/${id}.${champ} : metrique non converti en EN (${dst.match(METRIQUE_RESIDUEL)[0]})`);
     });
     Object.keys(got[id]).forEach(champ => {
       if (!ref[id][champ]) err.push(`${kind}/${id}.${champ} : champ INCONNU (hors corpus)`);

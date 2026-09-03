@@ -49,6 +49,30 @@ Un repere francais ne parle pas a un enfant bresilien.
   le repere local doit rester equivalent a 3 voitures. On adapte le referent, jamais l'echelle.
 - L'honnetete scientifique prime sur la jolie formule.
 
+## Unites de mesure : convertir, avec des chiffres ronds
+
+Le FR est metrique. Un enfant de 4 ans dont le pays ne l'est pas n'entend que du bruit :
+« 20 cm » ne lui dit rien, sa main si.
+
+- **en** : convertir en imperial (inches, feet, mph). L'anglais US n'a aucun referentiel
+  metrique a cet age, et la lecture a voix haute prive l'enfant de l'image qui pourrait
+  le rattraper.
+- **es-es, pt-br** : garder le metrique, c'est deja leur systeme.
+
+Deux regles qui vont avec la conversion :
+
+1. **Arrondir.** « 8 inches », jamais « 7.87 inches » : un chiffre a decimale trahit la
+   conversion et casse la fluidite orale.
+2. **Garder le chiffre ET la comparaison.** Le chiffre donne le frisson et la precision,
+   la comparaison porte le sens. « Eight inches long — longer than your hand! »
+3. La comparaison doit rester verifiable par l'enfant lui-meme (sa main, sa tete, sa
+   maison). Un repere trop abstrait pour 4 ans (« a 4-story building ») se remplace par
+   un repere concret (« taller than a giraffe »).
+
+> Ce cas est la SEULE exception autorisee a la regle « les chiffres ne bougent pas » :
+> l'ordre de grandeur est rigoureusement conserve, seule l'unite change. Toute conversion
+> doit etre justifiee dans NOTES.md. Validee par relecture native (Kimi) le 2026-09-03.
+
 ## Etymologie (`nom_etym`)
 
 Le FR explique le sens grec/latin des racines. La structure se conserve : racine, sa langue,

@@ -55,8 +55,8 @@ Item DINO (encyclopédie, voyage, Tritri, dev-dinos) → NE PAS traiter : ticket
 **Tile (LimeZu)** — signal tile/road/recipe/pattern :
 | Fichier | Tu y notes |
 |---|---|
-| `~/.claude/skills/maxplay-tiles/LESSONS.md` | Toute leçon TILE datée (contexte, cause, correction, mnémonique) |
-| `~/.claude/skills/maxplay-tiles/SKILL.md` | Règles d'or, seulement si elles changent |
+| `.claude/skills/maxplay-tiles/LESSONS.md` | Toute leçon TILE datée (contexte, cause, correction, mnémonique) |
+| `.claude/skills/maxplay-tiles/SKILL.md` | Règles d'or, seulement si elles changent |
 | `site/tile-tools/patterns.js` | `validated_by_user: true` + bump version quand user valide |
 | `site/tile-tools/recipes_data.js` | Régénérer après modif recipes (`python scripts/export_recipes_to_js.py`) |
 | `site/tile-tools/PIPELINE-MEMORY.md` | Méta-process de la boucle simplifier→designer→reviewer |

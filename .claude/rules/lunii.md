@@ -13,11 +13,11 @@ paths:
 
 1. **Point d'entrée = [`studio/lunii/CLAUDE.md`](../../studio/lunii/CLAUDE.md)** (process end-to-end : produire image → stocker → assembler pack → distribuer). Le lire en premier pour toute tâche Lunii.
 2. Pièges moteur VÉRIFIÉS : [`studio/lunii/LESSONS-MOTEUR.md`](../../studio/lunii/LESSONS-MOTEUR.md) (autoplay+ok, home, silence de tête, fond noir natif).
-3. Format pack : skill [`lunii-pack-builder`](C:/Users/kimen/.claude/skills/lunii-pack-builder/SKILL.md) (story.json v1, controlSettings, binaire FS).
+3. Format pack : skill [`lunii-pack-builder`](.claude/skills/lunii-pack-builder/SKILL.md) (story.json v1, controlSettings, binaire FS).
 
 ## Images Lunii (côté dino)
 
-- Production : skill [`dino-images-lunii`](C:/Users/kimen/.claude/skills/dino-images-lunii/SKILL.md). Charte 🔒 : [`studio/dino/figees/encyclopedie.md`](../../studio/dino/figees/encyclopedie.md) § IMAGES LUNII.
+- Production : skill [`dino-images-lunii`](.claude/skills/dino-images-lunii/SKILL.md). Charte 🔒 : [`studio/dino/figees/encyclopedie.md`](../../studio/dino/figees/encyclopedie.md) § IMAGES LUNII.
 - 🔒 **320×240, 16 gris, FOND NOIR NATIF** (écran rétro-éclairé : le noir n'est pas allumé → le sujet clair ressort). Pas d'inversion post. Specs par dino : `studio/dino/content/sources/fiches/_FICHES-DINOS-GROKIPEDIA.md`.
 - Catalogue images : [`studio/dino/content/lunii/INDEX.md`](../../studio/dino/content/lunii/INDEX.md).
 

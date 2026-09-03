@@ -113,15 +113,15 @@ Compléter aussi [`i18n/lexiques-prononciation/fr.md`](../../../studio/dino/cont
 
 ## Phase 5 — Images paléoart
 
-**Avant de générer**, dans `~/.claude/skills/dino-images-lunii/scripts/batch-dino-series.mjs` :
+**Avant de générer**, dans `.claude/skills/dino-images-lunii/scripts/batch-dino-series.mjs` :
 1. **Ajouter une signature `MORPHO`** par bête — trait unique en MAJUSCULES, formulé en positif, chiffré. Sans elle le modèle produit une silhouette passe-partout, donc la mauvaise espèce (leçon gravée de longue date).
 2. Vérifier que `NON_DINO` couvre la famille (le mot « dinosaure » dans le prompt pousse le modèle vers une silhouette de dinosaure — faux pour un synapside).
 3. Contrôler à sec : `node ...batch-dino-series.mjs <id> --preview`
 
 Puis :
 ```bash
-powershell -File ~/.claude/skills/dino-images-lunii/scripts/launch-brave.ps1
-node ~/.claude/skills/dino-images-lunii/scripts/batch-dino-series.mjs <id1> <id2> <id3>
+powershell -File .claude/skills/dino-images-lunii/scripts/launch-brave.ps1
+node .claude/skills/dino-images-lunii/scripts/batch-dino-series.mjs <id1> <id2> <id3>
 ```
 
 **Brique d'abord** : 1 bête, lire les PNG, valider — puis batcher le reste par lots de 3.

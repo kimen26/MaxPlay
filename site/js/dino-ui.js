@@ -88,6 +88,9 @@
 
     dico_phrase_tts: '{mot}, en {langue}, ça veut dire : {sens}.',
     dico_phrase_tts_sans_langue: '{mot} ça veut dire : {sens}.',
+    // Les donnees (dinos-racines.js) stockent la langue en FR : on la traduit ici.
+    langue_grec: 'grec',
+    langue_latin: 'latin',
 
     fiche_tts_nom_fallback: "Son vrai nom c'est {nom_savant}",
     fiche_tts_regime: '{nom} est {regime}. Il mange {proies}. {chasseurs}. {amis}',
@@ -124,7 +127,46 @@
     return T(cle, v);
   }
 
-  global.DinoUI = { T: T, Tn: Tn, _fr: FR, _over: over };
+  // ── Mesures ────────────────────────────────────────────────────────────────
+  // Les DONNEES sont en metres et en tonnes (canon FR, jamais touche). Les langues
+  // qui n'utilisent pas le metrique doivent voir la valeur CONVERTIE, sinon on
+  // afficherait "22 feet" pour un dino de 22 metres. Arrondi toujours : un chiffre
+  // a decimale trahit la conversion et casse la lecture a voix haute.
+  function imperial() { return T('unite_metres') === 'feet'; }
+
+  // Longueur : metres -> pieds si la langue est imperiale.
+  function longueur(m) {
+    if (m == null) return null;
+    return imperial() ? Math.round(m * 3.28084) : m;
+  }
+  // Masse : tonnes -> livres si imperiale, kilos sinon.
+  // Arrondi a un chiffre ROND (charte) : "103 617 lbs" trahit la conversion et ne
+  // se lit pas a voix haute. On arrondit a la centaine, ou au millier au-dela de 10 000.
+  function masse(t) {
+    if (t == null) return null;
+    var v = imperial() ? t * 2204.62 : t * 1000;
+    if (v >= 10000) return Math.round(v / 1000) * 1000;
+    if (v >= 1000) return Math.round(v / 100) * 100;
+    return Math.round(v);
+  }
+  // Libelle complet "22 m" / "72 feet", unite prise au dictionnaire.
+  function longueurTxt(m) {
+    if (m == null) return '?';
+    var v = longueur(m);
+    return imperial() ? v + ' ' + T('unite_metres') : v + ' m';
+  }
+  function masseTxt(t) {
+    if (t == null) return '?';
+    var v = masse(t);
+    var loc = global.Lang ? global.Lang.bcp47() : 'fr-FR';
+    return v.toLocaleString(loc) + ' ' + T('unite_kg');
+  }
+
+  global.DinoUI = {
+    T: T, Tn: Tn, _fr: FR, _over: over,
+    imperial: imperial, longueur: longueur, masse: masse,
+    longueurTxt: longueurTxt, masseTxt: masseTxt
+  };
   global.DINO_UI_CLES = Object.keys(FR);   // sert a la porte de verification
   global.T = T;   // raccourcis, la page les appelle des dizaines de fois
   global.Tn = Tn;

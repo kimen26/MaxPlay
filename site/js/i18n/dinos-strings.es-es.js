@@ -481,7 +481,7 @@ window.DINO_STRINGS = {
    "comp_taille": "¡como dos coches uno detrás de otro!",
    "comp_hauteur": "¡tan alto como una canasta de baloncesto!",
    "comp_poids": "¡tan pesado como 4 rinocerontes!",
-   "nom_etym": "«Torosaurus», dos palabras griegas. Toro, aquí, quiere decir agujereado, perforado, por los grandes agujeros de su collar. (¡Y no, NO significa «toro»!) Y saurus (o saurio), el lagarto. Todo junto: ¡el lagarto de el collar agujereada!",
+   "nom_etym": "«Torosaurus», dos palabras griegas. Toro, aquí, quiere decir agujereado, perforado, por los grandes agujeros de su collar. (¡Y no, NO significa «toro»!) Y saurus (o saurio), el lagarto. Todo junto: ¡el lagarto del collar agujereado!",
    "regime": "🌿 Herbívoro",
    "superpower": "Una de las cabezas más grandes de TODOS los animales que han caminado sobre la Tierra: ¡su collar medía casi 3 metros!",
    "chasseurs": "T-Rex, como su primo el Triceratops",
@@ -1107,14 +1107,14 @@ window.DINO_STRINGS = {
    "comp_taille": "¡tan largo como un todoterreno grande!",
    "comp_hauteur": "¡tan grande como papá de pie!",
    "comp_poids": "¡tan pesado como 5 caballos!",
-   "nom_etym": "«Centrosaurus», dos palabras griegas. Kentron quiere decir punta, pincho pequeño. Y saurus (o saurio), el lagarto. Todo junto: el lagarto de puntas, ¡toda su collar estaba bordeada de pinchitos!",
+   "nom_etym": "«Centrosaurus», dos palabras griegas. Kentron quiere decir punta, pincho pequeño. Y saurus (o saurio), el lagarto. Todo junto: el lagarto de puntas, ¡todo su collar estaba bordeado de pinchitos!",
    "regime": "🌿 Herbívoro",
    "superpower": "¡Vivía en manadas GIGANTES, se han encontrado los huesos de MILES de Centrosaurios juntos en el mismo lugar!",
    "chasseurs": "Gorgosaurio, que lo perseguía",
    "proies": "Come plantas",
    "amis": "En manadas inmensas",
    "fait": "¡Se han encontrado los huesos de MILES de Centrosaurios, todos juntos! Caminaban en manadas gigantes. Cuando se apretaban unos contra otros, ningún cazador se atrevía a acercarse.",
-   "desc": "El Centrosaurio tenía un bonito cuerno curvo en la nariz, como una media luna, y un collar bordeada de pinchos. Vivía en Canadá en manadas inmensas: cuando el Gorgosaurio se acercaba, toda la manada se juntaba para protegerse.",
+   "desc": "El Centrosaurio tenía un bonito cuerno curvo en la nariz, como una media luna, y un collar bordeado de pinchos. Vivía en Canadá en manadas inmensas: cuando el Gorgosaurio se acercaba, toda la manada se juntaba para protegerse.",
    "continent": "Norteamérica"
   },
   "ichthyosaurus": {
@@ -1308,9 +1308,9 @@ window.DINO_STRINGS = {
    "sci": "Ceratopsios",
    "label": "los de cuernos y collar",
    "savant": "los ceratopsios",
-   "desc": "Cuernos y una gran collar",
+   "desc": "Cuernos y un gran collar",
    "sci_sens": "En griego, keras significa cuerno, y ops significa cara.",
-   "explic": "¡Ceratopsios! En griego, keras significa cuerno, y ops significa cara: las caras con cuernos. Tenían cuernos en la cabeza y una gran collar de hueso detrás del cráneo, como un escudo alrededor del cuello. Comían plantas. La gran estrella: el Triceratops y su primo el Torosaurio."
+   "explic": "¡Ceratopsios! En griego, keras significa cuerno, y ops significa cara: las caras con cuernos. Tenían cuernos en la cabeza y un gran collar de hueso detrás del cráneo, como un escudo alrededor del cuello. Comían plantas. La gran estrella: el Triceratops y su primo el Torosaurio."
   },
   "bec": {
    "sci": "Ornitópodos",
@@ -1369,5 +1369,41 @@ window.DINO_STRINGS = {
    "explic": "¡Las aves! ¿Sabes un secreto? Las aves son las primas pequeñas de los dinosaurios... ¡es la única familia de dinosaurios que existe todavía hoy! Pero después del meteorito, algunas aves se volvieron GIGANTES, demasiado pesadas para volar. Corrían a dos patas para cazar, con un pico enorme. La estrella: el Titanis, ¡el ave del terror!"
   }
  },
- "racines": {}
+ "racines": {},
+ "periodes": {
+  "permien": {
+   "label": "Pérmico",
+   "desc": "Antes de los dinosaurios"
+  },
+  "trias": {
+   "label": "Triásico",
+   "desc": "Los primeros dinosaurios"
+  },
+  "jurassique": {
+   "label": "Jurásico",
+   "desc": "Los gigantes saurópodos"
+  },
+  "cretace": {
+   "label": "Cretácico",
+   "desc": "El reinado del T-Rex"
+  },
+  "cenozoique": {
+   "label": "Cenozoico",
+   "desc": "Después de los dinosaurios: los mamíferos"
+  }
+ },
+ "categories": {
+  "carnivores": {
+   "label": "Carnívoros"
+  },
+  "herbivores": {
+   "label": "Herbívoros"
+  },
+  "piscivores": {
+   "label": "Piscívoros"
+  },
+  "omnivores": {
+   "label": "Omnívoros"
+  }
+ }
 };

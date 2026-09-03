@@ -1371,5 +1371,41 @@
    "desc": "O Titanis era um pássaro-do-terror, um pássaro gigante que não voava. Ele corria em duas patas grandes pra caçar, com um bico enorme e pontudo. É o único pássaro-do-terror que veio morar na América do Norte, bem depois dos dinossauros.",
    "continent": "América do Norte"
   }
+ },
+ "periodes": {
+  "permien": {
+   "label": "Permiano",
+   "desc": "Antes dos dinossauros"
+  },
+  "trias": {
+   "label": "Triássico",
+   "desc": "Os primeiros dinossauros"
+  },
+  "jurassique": {
+   "label": "Jurássico",
+   "desc": "Os gigantes saurópodes"
+  },
+  "cretace": {
+   "label": "Cretáceo",
+   "desc": "O reinado do T-Rex"
+  },
+  "cenozoique": {
+   "label": "Cenozoico",
+   "desc": "Depois dos dinossauros: os mamíferos"
+  }
+ },
+ "categories": {
+  "carnivores": {
+   "label": "Carnívoros"
+  },
+  "herbivores": {
+   "label": "Herbívoros"
+  },
+  "piscivores": {
+   "label": "Piscívoros"
+  },
+  "omnivores": {
+   "label": "Onívoros"
+  }
  }
 }

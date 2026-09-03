@@ -887,6 +887,13 @@ function buildMenuDico(el) {
   intro.innerHTML = `<p>${T('menu_dico_intro')}</p>`;
   el.appendChild(intro);
 
+  /* Les données (dinos-racines.js) stockent la langue en français ("grec"/"latin").
+     La classe CSS garde cette valeur, seul le LIBELLÉ affiché est traduit. */
+  function langueLabel(l) {
+    const cle = { grec: 'langue_grec', latin: 'langue_latin' }[l];
+    return cle ? T(cle) : l;
+  }
+
   if (typeof DINO_RACINES === 'undefined' || !DINO_RACINES.racines) {
     const p = document.createElement('p'); p.style.padding = '16px'; p.textContent = T('menu_dico_indisponible'); el.appendChild(p); return;
   }
@@ -903,12 +910,12 @@ function buildMenuDico(el) {
       <div class="dico-head">
         <span class="dico-root">${r.cle}</span>
         <span class="dico-sens">= ${r.sens}</span>
-        ${langue ? `<span class="dico-langue ${langue}">${langue}</span>` : ''}
+        ${langue ? `<span class="dico-langue ${langue}">${langueLabel(langue)}</span>` : ''}
       </div>
       <div class="dico-dinos">${thumbs}<span class="dico-count">${esc(Tn('compteur_dinos', r.n))}</span></div>
     `;
     const mot = r.cle.replace(/-/g, '');
-    const phrase = langue ? T('dico_phrase_tts', { mot: mot, langue: langue, sens: r.sens }) : T('dico_phrase_tts_sans_langue', { mot: mot, sens: r.sens });
+    const phrase = langue ? T('dico_phrase_tts', { mot: mot, langue: langueLabel(langue), sens: r.sens }) : T('dico_phrase_tts_sans_langue', { mot: mot, sens: r.sens });
     // Tap = dialogue 2 voix (narrateur + Wex) si le MP3 existe, sinon fallback dame.
     card.addEventListener('click', () => playDicoVoice(r.cle, phrase));
     el.appendChild(card);
@@ -1458,7 +1465,7 @@ function buildFiche(d) {
       <button class="v1-sp" onclick="playBloc('${d.id}','nom','${esc(d.name)} ! ${esc(d.nom_etym||T('fiche_tts_nom_fallback', { nom_savant: d.full }))}',this)">🔊</button>
       <div class="v1-pic"><span class="v1-ic">🦖</span><span class="v1-tt">${T('fiche_titre_histoire')}</span></div>
       <p>${d.nom_etym || d.full}</p>
-      <p class="v1-sub">⏳ ${d.epoque}${perLabel ? ' · '+perLabel : ''}</p>
+      <p class="v1-sub">⏳ ${d.epoque}${perLabel && !String(d.epoque || '').startsWith(perLabel) ? ' · '+perLabel : ''}</p>
       <p class="v1-sub">📍 ${d.region}</p>
       <div style="margin-top:8px">${buildContinentMap(d.continent)}</div>
     </div>
@@ -1468,9 +1475,9 @@ function buildFiche(d) {
       <button class="v1-sp" onclick="playBlocTaille('${d.id}',this)">🔊</button>
       <div class="v1-pic"><span class="v1-ic">📏</span><span class="v1-tt">${T('fiche_titre_taille')}</span></div>
       <div class="v1-stats">
-        <div class="v1-stat"><div class="l">${d.taille_vol ? '🪽 ' + T('fiche_stat_ailes') : '↔️ ' + T('fiche_stat_long')}</div><div class="v">${d.taille_m} m</div><div class="c">${d.comp_taille}</div></div>
-        <div class="v1-stat"><div class="l">↕️ ${T('fiche_stat_haut')}</div><div class="v">${d.hauteur_m || '?'} m</div><div class="c">${d.comp_hauteur || ''}</div></div>
-        <div class="v1-stat"><div class="l">⚖️ ${T('fiche_stat_poids')}</div><div class="v">${d.poids_t >= 1 ? Math.round(d.poids_t*1000).toLocaleString(window.Lang ? Lang.bcp47() : 'fr-FR')+' '+T('unite_kg') : Math.round(d.poids_t*1000)+' '+T('unite_kg')}</div><div class="c">${d.comp_poids}</div></div>
+        <div class="v1-stat"><div class="l">${d.taille_vol ? '🪽 ' + T('fiche_stat_ailes') : '↔️ ' + T('fiche_stat_long')}</div><div class="v">${DinoUI.longueurTxt(d.taille_m)}</div><div class="c">${d.comp_taille}</div></div>
+        <div class="v1-stat"><div class="l">↕️ ${T('fiche_stat_haut')}</div><div class="v">${d.hauteur_m ? DinoUI.longueurTxt(d.hauteur_m) : '?'}</div><div class="c">${d.comp_hauteur || ''}</div></div>
+        <div class="v1-stat"><div class="l">⚖️ ${T('fiche_stat_poids')}</div><div class="v">${DinoUI.masseTxt(d.poids_t)}</div><div class="c">${d.comp_poids}</div></div>
       </div>
       ${d.queue_note ? `<p class="v1-queue">🦴 ${d.queue_note}</p>` : ''}
     </div>
@@ -2225,9 +2232,29 @@ function playDinoStory(id) {
   const btn = document.getElementById('dino-story-btn');
   playBloc(id, 'recap', null, btn);
 }
+/* Phrase TTS des mesures, version i18n.
+   _statsPhrase() vit dans dinos-data.js (canon FR gelé) et écrit ses unités en
+   français en dur. On la remplace ici par une version qui passe par le
+   dictionnaire, avec CONVERSION des valeurs pour les langues impériales — sinon
+   l'anglais annoncerait "22 feet" pour un dino de 22 mètres. */
+function statsPhraseI18n(d) {
+  const n = v => String(DinoUI.longueur(v)).replace('.', ' ');
+  const parts = [];
+  parts.push(T(d.taille_vol ? 'stats_envergure' : 'stats_longueur',
+               { n: n(d.taille_m), comparaison: d.comp_taille || '' }));
+  if (d.hauteur_m) {
+    parts.push(T('stats_hauteur', { n: n(d.hauteur_m), comparaison: d.comp_hauteur || '' }));
+  }
+  const poids = DinoUI.imperial()
+    ? DinoUI.masse(d.poids_t) + ' ' + T('unite_kilos')
+    : (d.poids_t >= 1 ? Math.round(d.poids_t) + ' ' + T('unite_mille_kilos')
+                      : Math.round(d.poids_t * 1000) + ' ' + T('unite_kilos'));
+  parts.push(T('stats_poids', { poids: poids, comparaison: d.comp_poids || '' }));
+  return parts.join(' ');
+}
 function playBlocTaille(id, btnEl) {
   const d = DINOS.find(x => x.id === id);
-  playBloc(id, 'taille', d ? (d.name + ' ! ' + _statsPhrase(d)) : '', btnEl);
+  playBloc(id, 'taille', d ? (d.name + ' ! ' + statsPhraseI18n(d)) : '', btnEl);
 }
 // Récap audio Pangée / Extinction (which = 'pangee' | 'extinction')
 function playSpecial(which, btnEl) {

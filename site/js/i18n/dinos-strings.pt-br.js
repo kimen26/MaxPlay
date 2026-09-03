@@ -1369,5 +1369,41 @@ window.DINO_STRINGS = {
    "explic": "As aves! Sabe de um segredo? Os pássaros são os primos dos dinossauros — é a única família de dinossauros que ainda existe hoje! Mas depois do meteoro, alguns pássaros ficaram GIGANTES, pesados demais pra voar. Eles corriam em duas patas grandes pra caçar, com um bico enorme. A estrela: o Titanis, o pássaro-do-terror!"
   }
  },
- "racines": {}
+ "racines": {},
+ "periodes": {
+  "permien": {
+   "label": "Permiano",
+   "desc": "Antes dos dinossauros"
+  },
+  "trias": {
+   "label": "Triássico",
+   "desc": "Os primeiros dinossauros"
+  },
+  "jurassique": {
+   "label": "Jurássico",
+   "desc": "Os gigantes saurópodes"
+  },
+  "cretace": {
+   "label": "Cretáceo",
+   "desc": "O reinado do T-Rex"
+  },
+  "cenozoique": {
+   "label": "Cenozoico",
+   "desc": "Depois dos dinossauros: os mamíferos"
+  }
+ },
+ "categories": {
+  "carnivores": {
+   "label": "Carnívoros"
+  },
+  "herbivores": {
+   "label": "Herbívoros"
+  },
+  "piscivores": {
+   "label": "Piscívoros"
+  },
+  "omnivores": {
+   "label": "Onívoros"
+  }
+ }
 };

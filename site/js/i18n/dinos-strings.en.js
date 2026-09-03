@@ -1369,5 +1369,41 @@ window.DINO_STRINGS = {
    "explic": "Birds! Want to know a secret? Birds are the little cousins of dinosaurs — they're the only dinosaur family still alive today! But after the meteorite, some birds grew GIANT, too heavy to fly. They ran on two big legs to hunt, with a huge beak. The star: Titanis, the terror bird!"
   }
  },
- "racines": {}
+ "racines": {},
+ "periodes": {
+  "permien": {
+   "label": "Permian",
+   "desc": "Before the dinosaurs"
+  },
+  "trias": {
+   "label": "Triassic",
+   "desc": "The first dinosaurs"
+  },
+  "jurassique": {
+   "label": "Jurassic",
+   "desc": "The giant sauropods"
+  },
+  "cretace": {
+   "label": "Cretaceous",
+   "desc": "The reign of the T-Rex"
+  },
+  "cenozoique": {
+   "label": "Cenozoic",
+   "desc": "After the dinos: the mammals"
+  }
+ },
+ "categories": {
+  "carnivores": {
+   "label": "Carnivores"
+  },
+  "herbivores": {
+   "label": "Herbivores"
+  },
+  "piscivores": {
+   "label": "Piscivores"
+  },
+  "omnivores": {
+   "label": "Omnivores"
+  }
+ }
 };

@@ -34,6 +34,8 @@
     merge(typeof DINOS !== 'undefined' ? DINOS : window.DINOS, S.dinos);
     merge(typeof DINO_FAMILLES !== 'undefined' ? DINO_FAMILLES : window.DINO_FAMILLES, S.familles);
     merge(typeof DINO_RACINES !== 'undefined' ? DINO_RACINES : window.DINO_RACINES, S.racines);
+    merge(typeof DINO_PERIODES !== 'undefined' ? DINO_PERIODES : window.DINO_PERIODES, S.periodes);
+    merge(typeof DINO_CATEGORIES !== 'undefined' ? DINO_CATEGORIES : window.DINO_CATEGORIES, S.categories);
   };
 
   /* eslint-disable no-useless-escape */

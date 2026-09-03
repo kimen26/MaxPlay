@@ -34,4 +34,4 @@
 | `26_hyaenodon.png` · `28_hyaenodon_harder.png` | Hyaenodon | Mammifère (créodonte, 2 variantes) |
 | `27_brontotherium.png` | Brontotherium (Titanothere) | Mammifère (brontothère) |
 
-**16 espèces distinctes** (15 mammifères + terror birds). Lot retenu pour les 1ᵉʳᵉˢ fiches : voir `pmo/sprint-log.md` (chantier 2026-07-03).
+**16 espèces distinctes** (15 mammifères + terror birds). Lot retenu pour les 1ᵉʳᵉˢ fiches : voir `memory/MEMORY.md` (chantier 2026-07-03).

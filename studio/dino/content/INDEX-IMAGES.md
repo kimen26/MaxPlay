@@ -1,7 +1,7 @@
 # 🖼️ INDEX IMAGES DINO — carte maîtresse
 
 > **Le réflexe** : tu cherches une image dino (pour un mini-jeu, une fiche, Lunii, une idée) → ce fichier te dit **ce qui existe, où, comment c'est nommé, et comment en refaire**.
-> Complétude par dino (qui a quoi) : [`../pmo/_ETAT-DINOS.md`](../pmo/_ETAT-DINOS.md) (généré, jamais à la main).
+> Complétude par dino (qui a quoi) : [`../memory/_ETAT-DINOS.md`](../memory/_ETAT-DINOS.md) (généré, jamais à la main).
 > Doctrine : les features ne lisent QUE `site/` (jamais `studio/`). Staging `_new-*` = local, gitignoré, jamais référencé par le code.
 
 ---

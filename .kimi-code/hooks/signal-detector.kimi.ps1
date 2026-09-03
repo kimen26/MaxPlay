@@ -51,7 +51,7 @@ $pathDino = $lowerPrompt -match 'studio/dino/|dev-dinos|dinos-data|audio/dinos'
 $reminders = @()
 
 if ($dinoMatch -or $pathDino) {
-    $reminders += "[SIGNAL DINO] -> CAPTURE IMMEDIATE : toute idee/decision de ce tour = 1 ligne dans studio/dino/pmo/backlog.md DANS LE TOUR (pas a la cloture). Verifier figees/encyclopedie.md avant d'editer. Brainstorm/contenu/peda -> consulter dino-conseiller. Cloture de session : trace dans studio/dino/pmo/ (toi-meme) ou dino-pmo."
+    $reminders += "[SIGNAL DINO] -> CAPTURE IMMEDIATE : toute idee/decision de ce tour = 1 ligne dans studio/dino/memory/TODO.md DANS LE TOUR (pas a la cloture). Verifier figees/encyclopedie.md avant d'editer. Brainstorm/contenu/peda -> consulter dino-conseiller. Cloture de session : trace dans studio/dino/memory/ (toi-meme) ou dino-pmo."
 }
 
 if (($gameMatch -or $pathGame) -and -not ($dinoMatch -or $pathDino)) {

@@ -1,7 +1,7 @@
 # Relecture factuelle — Fiches audio V3
 # Conseiller créatif pôle DINO — Étape 1 relecture externe
 
-> Produit le 2026-06-15. Sources lues : `figees/encyclopedie.md`, `pmo/INVARIANTS.md`, `site/js/dinos-data.js`, `sources/etymo/_ETYMO-RACINES-50.md`, 7 fichiers V3.
+> Produit le 2026-06-15. Sources lues : `figees/encyclopedie.md`, `memory/INVARIANTS.md`, `site/js/dinos-data.js`, `sources/etymo/_ETYMO-RACINES-50.md`, 7 fichiers V3.
 > Rôle : signaler les DOUTES et ANGLES MORTS. Papa Yann tranche. Ne pas répéter les 13 corrections d'échelle Kimi déjà appliquées.
 > Grep interdits effectué manuellement sur tous les scripts. Résultat : aucun interdit (`max`, `doudou`, `peluche`, `nounours`) détecté. `bus` présent uniquement dans comparaisons d'échelle (BLOC B) — conforme.
 

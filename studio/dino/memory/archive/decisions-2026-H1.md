@@ -1,3 +1,5 @@
+> Archive verbatim — déplacé depuis pmo/decisions.md le 2026-09-04 (HO-008). Ne pas réécrire.
+
 # Décisions — Pôle DINO
 
 > Décisions datées (raison + impact). Les décisions **verrouillées** (jamais régresser) vivent dans [`../figees/encyclopedie.md`](../figees/encyclopedie.md).

@@ -20,7 +20,7 @@ Ton standard : un papa et un enfant de 4 ans écoutent la fiche sur une Lunii, e
 ## Chargement obligatoire (dans l'ordre, avant toute écriture)
 
 1. `studio/dino/content/scripts-audio/fr/V3/CONSIGNES.md` + `therizinosaurus-V3-exemple.md` (exemple validé).
-2. `studio/dino/pmo/INVARIANTS.md` — échelle figée, voix, bornes durées.
+2. `studio/dino/memory/INVARIANTS.md` — échelle figée, voix, bornes durées.
 3. `studio/dino/figees/encyclopedie.md` — décisions VERROUILLÉES (Tritri, audio, interdits).
 4. `studio/dino/content/sources/_PROCESS-DIALOGUE-PEDAGOGIQUE.md` + `sources/mesures/_ECHELLE-REFERENTIEL.md` + `sources/mesures/_BLOC-B-CANONIQUE.md`.
 5. **`studio/dino/content/sources/_SCENES-VIGNETTES.md` — registre anti-redite** : toute vignette/image déjà prise y est interdite de réemploi ; tu y ajoutes ta ligne après écriture.

@@ -36,7 +36,7 @@ Les agents vivent dans `.claude/agents/*.md`. Tu les invoques un par un, séquen
 
 **Data pull obligatoire** (lire AVANT de répondre) :
 1. `studio/dino/figees/encyclopedie.md` — règles verrouillées
-2. `studio/dino/pmo/INVARIANTS.md` — échelle, casting
+2. `studio/dino/memory/INVARIANTS.md` — échelle, casting
 3. `site/js/dinos-data.js` — source de vérité chiffres
 4. `studio/dino/content/sources/etymo/_ETYMO-RACINES-50.md` — dictionnaire racines
 5. Les 8 fichiers V3 dans `studio/dino/content/scripts-audio/V3/*.md`
@@ -169,7 +169,7 @@ Note sur la fin : [...]
 ### Références obligatoires :
 - `site/js/dinos-data.js` — source de vérité chiffres
 - `studio/dino/figees/encyclopedie.md` — règles figées
-- `studio/dino/pmo/INVARIANTS.md` — échelle, casting, leçons
+- `studio/dino/memory/INVARIANTS.md` — échelle, casting, leçons
 - `studio/dino/content/sources/etymo/_ETYMO-RACINES-50.md` — dictionnaire racines
 - `studio/dino/content/scripts-audio/_LEXIQUE-PRONONCIATION.md` — prononciation
 - `studio/dino/content/scripts-audio/_TEMPLATE-4blocs-dialogue.md` — template
@@ -209,8 +209,8 @@ Note sur la fin : [...]
 
 Si une décision doit être gravée (règle figée, leçon, changement échelle) :
 - **Appeler** `narration-pmo` ou `dino-pmo` (selon le pôle)
-- **Fichier PMO** : `studio/dino/pmo/backlog.md` — ajouter un ticket
-- **Décision** : `studio/dino/pmo/decisions.md` — dater + raison + impact
+- **Fichier PMO** : `studio/dino/memory/TODO.md` — ajouter un ticket
+- **Décision** : `studio/dino/memory/DECISIONS.md` — dater + raison + impact
 
 ---
 

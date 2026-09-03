@@ -1,3 +1,5 @@
+> Archive verbatim — déplacé depuis pmo/backlog.md le 2026-09-04 (HO-008). Ne pas réécrire. Tickets fermés/résolus/livrés + changelog historique. Les tickets encore ouverts à cette date ont été condensés dans `../TODO.md`, les leçons L-xxx dans `../LESSONS.md` (sections retirées ici pour éviter la duplication, contenu intégral néanmoins consultable dans l'historique git de `pmo/backlog.md`).
+
 # Backlog — Pôle DINO
 
 > Tickets EP-xxx (chantiers) + Leçons L-xxx (patterns gravés). Tenu par `dino-pmo`.
@@ -463,3 +465,10 @@ Refonte UI + audio + création du pôle DINO (voir `sprint-log.md`). Décisions 
   - **Question PY « comment les autres langues sont bonnes et pas le FR ? »** — aucun miracle : **en/es-es/pt-br copient la data** (`4 rhinocéros` → `4 rhinos`) et n'ont jamais été retouchées. Le FR est la seule branche réécrite, donc la seule abîmée. **L'i18n n'est pas contaminée**, ses valeurs de taille/hauteur/poids sont justes.
   - ⚠️ **PIÈGE identifié pour la correction** : sur **9 fiches**, la comparaison fausse est **reprise dans la réplique de Wex** (« Deux rhinocéros, tout ça dans un seul dino ? »). Un remplacement automatique de la seule 1re ligne casserait le dialogue. Ces 9-là demandent une réécriture du bloc entier, pas un `replace`.
   - ✅ **Le dialogue dynamique est BON et doit être préservé** (vérifié PY) : Wex rebondit sur le contenu précis, le narrateur enchaîne avec une info neuve — ce ne sont pas des réactions bateau. La correction doit garder le phrasé allégé (« 2 mètres 80 » au lieu de « 2 virgule 8 », phrases resserrées) et ne remettre que la comparaison juste.
+
+- 2026-09-03 (QUESTION PY — liste familles + challenge taxo + macro-périodes) :
+  - **Idée PY : ajouter le terme macro « Mésozoïque »** (et sa famille de termes) pour Max — les 5 `DINO_PERIODES` sont plates, sans niveau Ère. Proposition conseiller : 3 Ères (Paléozoïque → Permien / Mésozoïque = Trias+Jura+Crétacé = « l'âge des dinosaures » / Cénozoïque) en en-têtes de l'onglet « Les époques ». ⚠️ Touche une ligne FIGÉE (UI 5 onglets / `buildMenuEpoque`) → tranché par PY, alerte rouge si on passe à l'acte.
+  - **Challenge taxo transmis à PY** — 2 points de friction réels : (1) Pachycéphalosaure rangé chez les Cératopsiens (vrai groupe = Marginocéphales, cousins) ; (2) Gallimimus + Oviraptor rangés chez les Dromæosaures (ce sont Ornithomimidé + Oviraptoridé, pas des dromæosauridés). Options : renommer libellé honnêtement vs déplacer vs statu quo assumé. Reste assumé OK : Énaliosaures (panier « reptiles marins » incl. Archelon tortue), Plateosaure prosauropode, Archaeoptéryx chez Dromæosaures (lien oiseaux assumé), Ptérosaures + synapsides libellés honnêtement.
+  - **Drift count détecté** : `dinos-data.js` live = **71** entrées DINOS (zéro doublon id), INVARIANTS dit 70 et sa table familles est plus vieille encore (Thyréophores=8 live vs 7, `arme`=5). À réconcilier par `dino-pmo` au prochain audit (qui est le 71ᵉ ? vraisemblablement ajout post-Saurolophe non tracé).
+
+- 2026-09-03 (audit infra, HO-G08) : `audio-verif` (skill global) mesure ~80 ms de silence de tête sur les MP3 dino (règle 250 ms) et une dérive texte/audio sur `aenocyon-taille` (MP3 « kangourou » vs JSON « Papa »). Ticket : passer `audio-verif` sur les 70 fiches (voir `memory/TODO.md` racine).

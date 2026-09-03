@@ -25,7 +25,7 @@ Lire, dans cet ordre :
 1. [`studio/dino/CLAUDE.md`](../../../studio/dino/CLAUDE.md) — règles du pôle
 2. [`studio/dino/figees/encyclopedie.md`](../../../studio/dino/figees/encyclopedie.md) — décisions verrouillées
 3. [`studio/dino/content/sources/_PLAYBOOK-DINO-NOUVEAU.md`](../../../studio/dino/content/sources/_PLAYBOOK-DINO-NOUVEAU.md) — les 7 phases détaillées
-4. [`studio/dino/pmo/INVARIANTS.md`](../../../studio/dino/pmo/INVARIANTS.md) — chiffres clés (jamais de mémoire)
+4. [`studio/dino/memory/INVARIANTS.md`](../../../studio/dino/memory/INVARIANTS.md) — chiffres clés (jamais de mémoire)
 
 Puis annoncer le plan en une phrase et **TodoWrite** les phases.
 
@@ -145,9 +145,9 @@ Playwright sur `site/dev-dinos.html` : `DINOS.length`, `DINO_EXTRAS`, `DINO_AUDI
 ## Phase 7 — PMO + git
 
 **Dans le tour**, jamais à la fin :
-- `studio/dino/pmo/backlog.md` — 1 ligne par décision, + une leçon `L-D-NN` par bug trouvé (avec sa cause racine, pas juste le symptôme)
-- `studio/dino/pmo/sprint-log.md` — la session
-- `studio/dino/pmo/INVARIANTS.md` — les counts (seul fichier autorisé à porter des chiffres)
+- `studio/dino/memory/TODO.md` — 1 ligne par décision, + une leçon `L-D-NN` par bug trouvé (avec sa cause racine, pas juste le symptôme)
+- `studio/dino/memory/MEMORY.md` — la session
+- `studio/dino/memory/INVARIANTS.md` — les counts (seul fichier autorisé à porter des chiffres)
 - `node studio/dino/content/scripts/export/_gen-etat-dinos.cjs` — jamais tenu à la main
 
 ⚠️ Un fichier touché hors pôle DINO (ex. un agent narration) → tracer **aussi** dans `studio/narration/memory/` (JEU/NARRATION ont migré `pmo/` → `memory/`, DINO reste `pmo/`), sinon le hook Stop bloque.

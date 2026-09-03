@@ -2,7 +2,7 @@
 
 > Dossier d'**autoring** du pôle DINO (sources, données, scripts). Le **code déployé** vit ailleurs : [`site/dev-dinos.html`](../../../site/dev-dinos.html) · [`site/js/dinos-data.js`](../../../site/js/dinos-data.js).
 > Catalogue du **pôle** (vue produit d'ensemble) : [`../INDEX.md`](../INDEX.md). Ce fichier-ci = carte du **dossier content/**.
-> Réorganisé 2026-06-08 : séparation claire sources / data / scripts (voir [`../pmo/decisions.md`](../pmo/decisions.md)).
+> Réorganisé 2026-06-08 : séparation claire sources / data / scripts (voir [`../memory/DECISIONS.md`](../memory/DECISIONS.md)).
 
 ## 🗂️ Les natures (1 dossier = 1 rôle)
 
@@ -29,9 +29,9 @@ site/img/dinos/grok/ ─(_gen-grok.cjs)─▶ site/js/dinos-images-grok.js (gale
 
 ## 📌 État & doctrine
 
-> **DEC-GED-001 (2026-07-03)** : ce fichier NE cite AUCUN count en dur (règle #2 « zéro chiffre en dur » — un chiffre recopié à la main ment). La source de vérité des chiffres = **[`../../site/js/dinos-data.js`](../../../site/js/dinos-data.js)** (produit) ; le tracker des invariants (exception légitime) = **[`../pmo/INVARIANTS.md`](../pmo/INVARIANTS.md)**.
+> **DEC-GED-001 (2026-07-03)** : ce fichier NE cite AUCUN count en dur (règle #2 « zéro chiffre en dur » — un chiffre recopié à la main ment). La source de vérité des chiffres = **[`../../site/js/dinos-data.js`](../../../site/js/dinos-data.js)** (produit) ; le tracker des invariants (exception légitime) = **[`../memory/INVARIANTS.md`](../memory/INVARIANTS.md)**.
 
-- **Compte dinos · familles · régimes** → voir [`../pmo/INVARIANTS.md`](../pmo/INVARIANTS.md) (jamais recopié ici).
+- **Compte dinos · familles · régimes** → voir [`../memory/INVARIANTS.md`](../memory/INVARIANTS.md) (jamais recopié ici).
 - **Récits d'époque** : canon = `sources/recits/RECITS-EPOQUES.md` (ex-V5, anciennes versions dans `recits/_archive/`).
 - **Étymo** : source active `sources/etymo/_ETYMO-RACINES-50.md` (⚠️ périmé, ne couvre pas les Cénozoïque) → bascule vers `_ETYMO-COMPLET-60.md` = ticket EP-D-GED.
 - ⚠️ `sources/mesures/_BLOC-B-CANONIQUE.md` **périmé** vs `dinos-data.js`. À régénérer OU à graver « gelé volontairement » (ticket EP-D-GED).

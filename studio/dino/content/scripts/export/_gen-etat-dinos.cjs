@@ -3,7 +3,7 @@
  * _gen-etat-dinos.cjs — OUTIL DE SUIVI GÉNÉRÉ (EP-D-GED-01, DEC-GED-001 §5)
  *
  * Lecture seule : lit site/js/dinos-data.js + sonde le disque sur les 8 axes de la
- * checklist « dino complet », écrit studio/dino/pmo/_ETAT-DINOS.md (synthèse en tête,
+ * checklist « dino complet », écrit studio/dino/memory/_ETAT-DINOS.md (synthèse en tête,
  * « le plus incomplet d'abord », section orphelins/staging).
  *
  *   node studio/dino/content/scripts/export/_gen-etat-dinos.cjs
@@ -18,7 +18,7 @@ const path = require('node:path');
 const ROOT = path.resolve(__dirname, '..', '..', '..', '..', '..'); // → repo root (site/, studio/)
 const SITE = path.join(ROOT, 'site');
 const DATA = path.join(SITE, 'js', 'dinos-data.js');
-const OUT = path.resolve(__dirname, '..', '..', '..', 'pmo', '_ETAT-DINOS.md');
+const OUT = path.resolve(__dirname, '..', '..', '..', 'memory', '_ETAT-DINOS.md');
 
 const has = (p) => fs.existsSync(p);
 const paleoart = (f) => path.join(SITE, 'img', 'dinos', 'paleoart', f);

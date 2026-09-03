@@ -1,3 +1,5 @@
+> Archive verbatim — déplacé depuis pmo/audit-fiches-complet.md le 2026-09-04 (HO-008). Ne pas réécrire.
+
 # Audit exhaustif des fiches dino — assets croisés
 
 **Date : 2026-08-03** · 70 dinos (DINOS de `site/js/dinos-data.js`) · croisement disque `site/img/dinos/`, `site/audio/dinos/fr/`, sources `studio/dino/content/sources/`.

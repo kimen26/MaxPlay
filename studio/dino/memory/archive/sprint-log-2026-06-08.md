@@ -1,3 +1,5 @@
+> Archive verbatim — déplacé depuis pmo/sprint-log.md le 2026-09-04 (HO-008). Ne pas réécrire.
+
 # Sprint-log — Pôle DINO
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.

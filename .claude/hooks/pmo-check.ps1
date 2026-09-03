@@ -2,7 +2,7 @@
 # Si le tour a modifié des fichiers d'un pôle (JEU / DINO / NARRATION) SANS trace de gouvernance,
 # bloque la fin de tour. Deux façons de satisfaire le check, par pôle :
 #   a) un fichier de gouvernance du pôle a été édité ce tour (capture directe main agent — voie par défaut)
-#      JEU/NARRATION : studio/<pole>/memory/** ; DINO (transition, pmo/ pas encore migré) : studio/dino/{pmo,memory,figees}/**
+#      JEU/NARRATION : studio/<pole>/memory/** ; DINO : studio/dino/{memory,figees}/**
 #   b) l'agent <pole>-pmo a été invoqué ce tour
 # Décision 2026-07-19 : capture immédiate par le main agent = voie par défaut (REX PMO menteurs).
 
@@ -87,7 +87,7 @@ foreach ($p in $poles) {
 if ($missing.Count -gt 0) {
     $names = ($missing | ForEach-Object { $_.name }) -join " + "
     $details = ($missing | ForEach-Object {
-        if ($_.name -eq 'DINO') { "  - DINO : graver TOI-MEME une entree dans studio/dino/pmo/ (sprint-log a minima ; decisions/backlog selon le cas) OU invoquer l'agent $($_.agent)." }
+        if ($_.name -eq 'DINO') { "  - DINO : graver TOI-MEME une entree dans studio/dino/memory/ (TODO.md / DECISIONS.md / LESSONS.md / MEMORY.md § Journal) OU invoquer l'agent $($_.agent)." }
         else { $dir = if ($_.name -eq 'JEU') { 'minijeux' } else { 'narration' }; "  - $($_.name) : graver TOI-MEME dans studio/$dir/memory/ : TODO.md / DECISIONS.md / LESSONS.md / MEMORY.md § Journal (a minima) OU invoquer l'agent $($_.agent)." }
     }) -join "`n"
     $msg = @"

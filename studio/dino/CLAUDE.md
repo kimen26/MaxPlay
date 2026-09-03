@@ -8,9 +8,9 @@
 
 ## Principes pôle DINO (non négociables)
 
-- **🏛️ Doctrine GED (DEC-GED-001)** — la GED du pôle repose sur 3 axes : rangement + **canonicité** (canon sans numéro, historique dans `_archive/` daté) + **complétude** (checklist « dino complet » 8 axes, outil `_ETAT-DINOS`). Règles dures : **zéro chiffre en dur** dans la gouvernance (pointer INVARIANTS, JAMAIS dans le contenu narré qui doit dire les vrais chiffres) · **frontière autoring/produit** (une feature ne lit que `site/js/dinos-data.js`). Détail : [`pmo/decisions.md`](pmo/decisions.md) § DEC-GED-001 + [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md) § Doctrine. Nouveau dino → [`content/sources/_PLAYBOOK-DINO-NOUVEAU.md`](content/sources/_PLAYBOOK-DINO-NOUVEAU.md).
-- **Encyclopédie = VRAI** : on dit les vrais noms (Trias, Théropodes…) et les vraies dates/chiffres. Jamais de nian-nian (« si longtemps qu'on ne peut pas compter » = banni).
-- **Échelle honnête** : aucune comparaison de taille qui ment > 10 %. Référentiel figé dans [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md).
+- **🏛️ Doctrine GED** — canon sans numéro + zéro chiffre en dur (gouvernance seule, jamais le contenu narré) + frontière autoring/produit + checklist « dino complet » 8 axes. Texte plein : [`.claude/rules/dino.md`](../../.claude/rules/dino.md) § Doctrine GED + [`memory/DECISIONS.md`](memory/DECISIONS.md) § DEC-GED-001. Nouveau dino → [`content/sources/_PLAYBOOK-DINO-NOUVEAU.md`](content/sources/_PLAYBOOK-DINO-NOUVEAU.md).
+- **Encyclopédie = VRAI** : on dit les vrais noms (Trias, Théropodes…) et les vraies dates/chiffres. Jamais de nian-nian.
+- **Échelle honnête** : aucune comparaison de taille qui ment > 10 %. Référentiel figé dans [`memory/INVARIANTS.md`](memory/INVARIANTS.md).
 - **Grokipedia = 1ʳᵉ source** de fact-check (avant Wikipedia).
 - **Tritri** = running gag de Wex (son dino préféré, un Tricératops). 🔒 JAMAIS « Max », « doudou », « peluche ». Voir [`figees/encyclopedie.md`](figees/encyclopedie.md).
 - **Zéro bus dans les récits narrés** (le bus reste OK en échelle de taille des fiches, validé).
@@ -18,17 +18,18 @@
 
 ---
 
-## ⚙️ PMO + Archiviste + Conseiller
+## ⚙️ Mémoire (quintette) + PMO + Conseiller
 
-**Capture immédiate (2026-07-19)** : toute idée/décision de Papa Yann dans le tour = 1 ligne dans `pmo/backlog.md` DANS LE TOUR (main agent). `dino-pmo` (unifié FOND+FORME, Sonnet) sert en clôture, audit et mode RECHERCHE. `dino-conseiller` (créatif) : écriture/péda/taxo — le consulter d'office sur tout brainstorm contenu. Hook Stop `pmo-check` : session dino sans trace pmo/ = bloquée.
+**Capture immédiate (2026-07-19)** : toute idée/décision de Papa Yann dans le tour = 1 ligne dans `memory/TODO.md` DANS LE TOUR (main agent). `dino-pmo` (unifié FOND+FORME, Sonnet) sert en clôture, audit et mode RECHERCHE. `dino-conseiller` (créatif) : écriture/péda/taxo — le consulter d'office sur tout brainstorm contenu. Hook Stop `pmo-check` : trace attendue (voir HO-G07 pour son adaptation au quintette).
 
-| Source de vérité | Fichier |
-|------------------|---------|
-| Chiffres clés (count dinos/familles, échelle, casting voix, audio) | [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md) |
-| Décisions figées + questions ouvertes | [`pmo/decisions.md`](pmo/decisions.md) |
-| Journal sessions | [`pmo/sprint-log.md`](pmo/sprint-log.md) |
-| Tickets EP + leçons L | [`pmo/backlog.md`](pmo/backlog.md) |
-| Traces audits | [`pmo/audit-trail.md`](pmo/audit-trail.md) |
+| Question | Fichier |
+|---|---|
+| Chiffres clés (count dinos/familles, échelle, casting voix, audio) | [`memory/INVARIANTS.md`](memory/INVARIANTS.md) |
+| Pourquoi c'est comme ça | [`memory/DECISIONS.md`](memory/DECISIONS.md) |
+| Quoi ensuite | [`memory/TODO.md`](memory/TODO.md) |
+| Quelle erreur ne pas refaire | [`memory/LESSONS.md`](memory/LESSONS.md) |
+| Où on en est | [`memory/MEMORY.md`](memory/MEMORY.md) |
+| Ce qui est sorti | [`memory/CHANGELOG.md`](memory/CHANGELOG.md) |
 | **Décisions VERROUILLÉES** (Tritri, audio, UI) | [`figees/encyclopedie.md`](figees/encyclopedie.md) |
 
 ---
@@ -41,44 +42,29 @@
 | **Données dinos** (source de vérité) | [`../site/js/dinos-data.js`](../../site/js/dinos-data.js) |
 | **Audio** (récits, menus, fiches) | [`../site/audio/dinos/`](../../site/audio/dinos/) |
 | **Images** (fiches déployées) | [`../site/img/dinos/`](../../site/img/dinos/) |
-| **Images paléoart APP couleur** (7 assets/dino : hero · headshot · manger · écosystème · Paris bus · funfact · coloriage) | **PROD** = [`../site/img/dinos/paleoart/`](../../site/img/dinos/paleoart/) (câblé, lu par `dev-dinos.html`). État complétude → [`pmo/_ETAT-DINOS.md`](pmo/_ETAT-DINOS.md) généré. Staging brut Grok = `_new-xxl/` (à valider→ranger, skill `dino-paleoart`). |
-| **Images Lunii** (emblèmes familles + couverture, fond noir natif — source interne, non déployée) | [`content/lunii/`](content/lunii/INDEX.md) · skill `dino-images-lunii` · assemblées par [`../lunii/`](../lunii/CLAUDE.md) |
-| **Sources contenu** (récits, échelle, étymo, factcheck, process) | [`content/sources/`](content/sources/) (recits · fiches · mesures · etymo) |
+| **Images paléoart APP couleur** | PROD = [`../site/img/dinos/paleoart/`](../../site/img/dinos/paleoart/). Complétude → [`memory/_ETAT-DINOS.md`](memory/_ETAT-DINOS.md) généré. |
+| **Images Lunii** (emblèmes + couverture) | [`content/lunii/`](content/lunii/INDEX.md) · skill `dino-images-lunii` |
+| **Sources contenu** (récits, échelle, étymo, factcheck) | [`content/sources/`](content/sources/) |
 | **Données structurées** (racines dico/quiz) | [`content/data/racines.json`](content/data/racines.json) |
-| **Scripts** (audio, grok, export/regen) | [`content/scripts/`](content/scripts/) (audio · images-grok · export) |
-| **Carte du dossier content** | [`content/INDEX.md`](content/INDEX.md) (hub + sous-INDEX) |
+| **Scripts** (audio, grok, export/regen) | [`content/scripts/`](content/scripts/) |
+| **Carte du dossier content** | [`content/INDEX.md`](content/INDEX.md) |
 
----
+## 🦕 Le produit
 
-## 🦕 Le produit (rappel)
+Encyclopédie dino pour Max (4 ans), 4 onglets (Familles · Ce qu'il mange · Le voyage · Le dico). Détail : [`INDEX.md`](INDEX.md) + [`memory/INVARIANTS.md`](memory/INVARIANTS.md).
 
-Encyclopédie dino pour Max (4 ans), 4 onglets :
-1. **Les familles** (défaut) — **nom scientifique en titre** (Théropodes…) + surnom + origine grecque dite en entrant. (Compte familles → INVARIANTS, table clé↔libellé incluse.)
-2. **Ce qu'il mange** — 4 régimes **alimentaires** (carnivores/herbivores/piscivores/omnivores).
-3. **Le voyage** — 8 récits d'époque audio (Narratrice F + Wex), fil rouge Tritri trouvé au Crétacé. Indicateur d'avancement (reset session).
-4. **Le dico** — racines grec/latin récurrentes (100 racines — MAJ 2026-08-03 —, tap = écoute ; ~24 nouvelles sans MP3 EL pour l'instant, fallback TTS). Source `js/dinos-racines.js` (généré depuis `content/sources/etymo/`). [ajouté 2026-06-08]
+## 🔊 Audio (PROCESS MILITAIRE)
 
-Fiches dino : nom_etym (étymo expliquée) + taille (échelle honnête) + régime + funfact + audio si dispo.
-
----
-
-## 🔊 Audio (PROCESS MILITAIRE — voir figée + skill)
-
-- Voix : **narrateur_h** (menus accueil/régime/familles) · **narrateur_f** (voyage + 8 récits). Résolus via [`../narration/personnages/voix-meta/voice-map.json`](../narration/personnages/voix-meta/voice-map.json).
-- Récits multi-voix = MCP `studio_audiobook_from_segments_v2_dialogue` (eleven_v3, stability 0,4). Accroches menu mono = `text_to_speech`. Loudnorm en post.
-- **Accroche de menu = 2-7 s.** Récit d'époque = ~10-25 s.
-- **AVANT toute génération** : `grep -niE "max|doudou|peluche|bus" <texte>` → si match (hors échelle-bus), STOP. (Process figée.)
-- Métier d'écriture orale : skill [`~/.claude/skills/ecriture-audio-enfants/`](C:/Users/kimen/.claude/skills/ecriture-audio-enfants/) + agent [`narration-audio-writer`](../../.claude/agents/narration-audio-writer.md). Kit complet : mémoire `reference_audio_kit_enfant`.
-
----
+- Voix : narrateur_h (menus) · narrateur_f (voyage). Récits multi-voix = MCP `studio_audiobook_from_segments_v2_dialogue`. Accroche menu = 2-7 s. **AVANT toute génération** : `grep -niE "max|doudou|peluche|bus" <texte>` → match (hors échelle-bus) = STOP.
+- Détail process + skill : [`.claude/rules/dino.md`](../../.claude/rules/dino.md) § Audio + skill `ecriture-audio-enfants` (global) + agent [`narration-audio-writer`](../../.claude/agents/narration-audio-writer.md).
 
 ## Workflow
 
 ```
-Plan → TodoWrite → Dev → Verify (screenshot/test) → Commit+Push → PMO grave
+Plan → TodoWrite → Dev → Verify (screenshot/test) → Commit+Push → grave dans memory/
 ```
 Papa Yann teste via GitHub Pages → **toujours commit+push** après modif dino.
-Après correction utilisateur → leçon dans [`pmo/backlog.md`](pmo/backlog.md) + (si règle) figée.
+Après correction utilisateur → leçon dans [`memory/LESSONS.md`](memory/LESSONS.md) + (si règle) figée.
 
 ---
 
@@ -90,4 +76,4 @@ Après correction utilisateur → leçon dans [`pmo/backlog.md`](pmo/backlog.md)
 
 ---
 
-_Créé 2026-06-03 : pôle DINO extrait de game/ (transverse jeu+narration). Code déployé reste dans site/, lié par `.claude/rules/dino.md`. Voir [`pmo/audit-trail.md`](pmo/audit-trail.md)._
+_Créé 2026-06-03. Mémoire migrée `pmo/` → `memory/` (quintette) le 2026-09-04, HO-008._

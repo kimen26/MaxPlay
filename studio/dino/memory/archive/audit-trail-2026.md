@@ -1,3 +1,5 @@
+> Archive verbatim — déplacé depuis pmo/audit-trail.md le 2026-09-04 (HO-008). Ne pas réécrire.
+
 # Audit-trail — Pôle DINO
 
 > Traces des audits FOND (`dino-pmo`) et FORME (`dino-archiviste`). Entrée datée par audit.

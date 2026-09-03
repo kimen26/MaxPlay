@@ -1,3 +1,5 @@
+> Archive verbatim — déplacé depuis pmo/regen-audio-taille-56.md le 2026-09-04 (HO-008). Ne pas réécrire.
+
 # EP-DINO-REGEN-TAILLE-56 — Régénération audio des blocs « taille » (paliers poids 2026-08-03)
 
 > **Pourquoi ce doc** : les paliers `_compPoids` ont été refondus le 2026-08-03 (décisions Papa Yann,

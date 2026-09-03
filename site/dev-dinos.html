@@ -547,21 +547,21 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 <div id="screen-menu" class="screen active">
   <div class="hdr mp-header">
     <button class="mp-back" onclick="location.href='index.html'">←</button>
-    <div class="mp-title"><span style="font-size:22px">🦕</span>Les Dinosaures</div>
+    <div class="mp-title"><span style="font-size:22px">🦕</span><span id="menu-titre">Les Dinosaures</span></div>
     <button class="mp-hbtn" id="menu-speak-btn" onclick="speakMenuIntro()">🔊</button>
   </div>
   <!-- Sélecteur de mode -->
   <div id="mode-selector">
-    <button class="mp-pill active" id="mp-pill-famille"   onclick="setMode('famille')"  >🦖 Les familles</button>
-    <button class="mp-pill"        id="mp-pill-regime"    onclick="setMode('regime')"   >🍽️ Ce qu'il mange</button>
-    <button class="mp-pill"        id="mp-pill-periode"   onclick="setMode('periode')"  >⏳ Le voyage</button>
-    <button class="mp-pill"        id="mp-pill-epoque"    onclick="setMode('epoque')"   >🕰️ Les époques</button>
-    <button class="mp-pill"        id="mp-pill-dico"      onclick="setMode('dico')"     >📖 Le dico</button>
+    <button class="mp-pill active" id="mp-pill-famille"   onclick="setMode('famille')"  >🦖 <span>Les familles</span></button>
+    <button class="mp-pill"        id="mp-pill-regime"    onclick="setMode('regime')"   >🍽️ <span>Ce qu'il mange</span></button>
+    <button class="mp-pill"        id="mp-pill-periode"   onclick="setMode('periode')"  >⏳ <span>Le voyage</span></button>
+    <button class="mp-pill"        id="mp-pill-epoque"    onclick="setMode('epoque')"   >🕰️ <span>Les époques</span></button>
+    <button class="mp-pill"        id="mp-pill-dico"      onclick="setMode('dico')"     >📖 <span>Le dico</span></button>
   </div>
   <div id="menu-scroll"></div>
   <!-- Accès compte (demande Papa Yann 2026-07-08, zone temporaire — discret, hors structure figée) -->
   <div style="text-align:center; padding:6px 0 10px; flex-shrink:0;">
-    <a href="compte.html" style="color:#ffffff55; font-size:0.75rem; text-decoration:none; font-weight:700;">👨‍👩‍👦 Compte</a>
+    <a href="compte.html" style="color:#ffffff55; font-size:0.75rem; text-decoration:none; font-weight:700;">👨‍👩‍👦 <span id="menu-lien-compte">Compte</span></a>
   </div>
 </div>
 
@@ -594,6 +594,18 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 
 <script src="js/mp-theme.js"></script>
 <script src="js/lang.js"></script>
+<script>
+// Charge le fichier de langue du dictionnaire UI dino AVANT dino-ui.js, meme mecanique
+// que dinos-i18n.js (document.write = synchrone, requis avant le 1er rendu).
+// Fichier absent -> 404 silencieux, dino-ui.js reste en FR (over() retombe sur {}).
+(function () {
+  var lang = (window.Lang && window.Lang.current()) || 'fr';
+  if (lang !== 'fr' && /^[a-z]{2}(-[a-z]{2})?$/.test(lang)) {
+    document.write('<script src="js/i18n/dino-ui-strings.' + lang + '.js"><\/script>');
+  }
+})();
+</script>
+<script src="js/dino-ui.js"></script>
   <script src="js/dinos-data.js"></script>
 <script src="js/dinos-racines.js"></script>
 <script src="js/dinos-i18n.js"></script>
@@ -602,6 +614,16 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 <script src="js/tts.js"></script>
 <script src="js/dinos-audio-manifest.js"></script>
 <script>
+
+/* ── i18n UI statique (dictionnaire dino-ui.js) ── */
+document.title = T('page_titre');
+document.getElementById('menu-titre').textContent = T('header_titre_menu');
+document.getElementById('menu-lien-compte').textContent = T('lien_compte');
+document.getElementById('mp-pill-famille').querySelector('span').textContent = T('onglet_familles');
+document.getElementById('mp-pill-regime').querySelector('span').textContent = T('onglet_regime');
+document.getElementById('mp-pill-periode').querySelector('span').textContent = T('onglet_voyage');
+document.getElementById('mp-pill-epoque').querySelector('span').textContent = T('onglet_epoques');
+document.getElementById('mp-pill-dico').querySelector('span').textContent = T('onglet_dico');
 
 /* ── TTS ── (tts.js partagé : respell du lexique FR appliqué à l'utterance) */
 function speakText(txt) {
@@ -682,11 +704,11 @@ function showScreen(id) {
 /* ── Mode selector ── */
 // Fallback TTS si le MP3 menu manque (on garde toujours l'existant).
 const MENU_FALLBACK = {
-  regime:  'Les dinosaures ne mangeaient pas tous la même chose. Les carnivores mangeaient de la viande. Les herbivores mangeaient des plantes.',
-  famille: (typeof DINO_FAMILLES_INTRO !== 'undefined' ? DINO_FAMILLES_INTRO : 'Les grandes familles de dinosaures !'),
-  periode: 'Le grand voyage dans le temps ! On remonte très loin, de la première vie jusqu\'à aujourd\'hui.',
-  epoque:  'Range les dinosaures par époque ! Du Permien, avant les dinosaures, jusqu\'à aujourd\'hui.',
-  dico:    'Les noms des dinos sont faits de petits mots de savants ! Touche un mot pour l\'écouter.',
+  regime:  T('tts_fallback_regime'),
+  famille: (typeof DINO_FAMILLES_INTRO !== 'undefined' ? DINO_FAMILLES_INTRO : T('tts_fallback_famille')),
+  periode: T('tts_fallback_periode'),
+  epoque:  T('tts_fallback_epoque'),
+  dico:    T('tts_fallback_dico'),
 };
 function setMode(mode) {
   currentMode = mode;
@@ -698,7 +720,7 @@ function setMode(mode) {
 
 function speakMenuIntro() {
   // Le 🔊 du header joue l'explication du mode courant.
-  playMenuVoice(currentMode, MENU_FALLBACK[currentMode] || 'Les dinosaures !');
+  playMenuVoice(currentMode, MENU_FALLBACK[currentMode] || T('tts_fallback_generique'));
 }
 
 /* ── MENU principal ── */
@@ -774,7 +796,7 @@ function buildMenuFamille(el) {
   // Intro COURTE et accrocheuse (le détail vit dans chaque carte / au clic)
   const intro = document.createElement('div');
   intro.className = 'fam-intro';
-  intro.innerHTML = `<p>Chaque famille a un nom rigolo de savant. Touche une carte pour découvrir le sien !</p>`;
+  intro.innerHTML = `<p>${T('menu_famille_intro')}</p>`;
   el.appendChild(intro);
 
   DINO_FAMILLES.forEach(fam => {
@@ -797,8 +819,8 @@ function buildMenuFamille(el) {
         <div class="fam-label">${fam.emoji} ${title}</div>
         ${sub ? `<div class="fam-savant">${sub}</div>` : ''}
         <div class="fam-desc">${fam.desc}</div>
-        <div class="fam-oeuf"><span class="fam-oeuf-visu" style="--oeuf-c:${fam.color}"></span>Dans les jeux, l'œuf de cette couleur vient de cette famille !</div>
-        <div class="fam-count">${count} dinos →</div>
+        <div class="fam-oeuf"><span class="fam-oeuf-visu" style="--oeuf-c:${fam.color}"></span>${T('menu_famille_legende_oeuf')}</div>
+        <div class="fam-count">${esc(Tn('compteur_dinos', count))} →</div>
       </div>
     `;
     // Un seul son : on entre dans la grille, c'est elle qui dit le nom + l'origine grecque.
@@ -815,7 +837,7 @@ function buildMenuFamille(el) {
 function buildMenuEpoque(el) {
   const intro = document.createElement('div');
   intro.className = 'fam-intro';
-  intro.innerHTML = `<p>Les dinos n'ont pas tous vécu en même temps ! On les range par époque, de la plus ancienne à aujourd'hui.</p>`;
+  intro.innerHTML = `<p>${T('menu_epoque_intro')}</p>`;
   el.appendChild(intro);
 
   DINO_PERIODES.forEach(per => {
@@ -833,7 +855,7 @@ function buildMenuEpoque(el) {
         <div class="fam-label">${per.emoji} ${per.label}</div>
         <div class="fam-savant">${per.range}</div>
         <div class="fam-desc">${per.desc}</div>
-        <div class="fam-count">${count} dino${count > 1 ? 's' : ''} →</div>
+        <div class="fam-count">${esc(Tn('compteur_dinos', count))} →</div>
       </div>
     `;
     card.addEventListener('click', () => { setTimeout(() => showGridEpoque(per.id), 250); });
@@ -862,11 +884,11 @@ function buildMenuDico(el) {
   }
   const intro = document.createElement('div');
   intro.className = 'fam-intro';
-  intro.innerHTML = `<p>Les noms des dinos sont faits de petits mots de savants ! Touche un mot pour l'écouter.</p>`;
+  intro.innerHTML = `<p>${T('menu_dico_intro')}</p>`;
   el.appendChild(intro);
 
   if (typeof DINO_RACINES === 'undefined' || !DINO_RACINES.racines) {
-    const p = document.createElement('p'); p.style.padding = '16px'; p.textContent = 'Le dico arrive bientôt !'; el.appendChild(p); return;
+    const p = document.createElement('p'); p.style.padding = '16px'; p.textContent = T('menu_dico_indisponible'); el.appendChild(p); return;
   }
   const byId = {}; DINOS.forEach(d => byId[d.id] = d);
   DINO_RACINES.racines.filter(r => r.type === 'racine').forEach(r => {
@@ -883,10 +905,10 @@ function buildMenuDico(el) {
         <span class="dico-sens">= ${r.sens}</span>
         ${langue ? `<span class="dico-langue ${langue}">${langue}</span>` : ''}
       </div>
-      <div class="dico-dinos">${thumbs}<span class="dico-count">${r.n} dino${r.n > 1 ? 's' : ''}</span></div>
+      <div class="dico-dinos">${thumbs}<span class="dico-count">${esc(Tn('compteur_dinos', r.n))}</span></div>
     `;
     const mot = r.cle.replace(/-/g, '');
-    const phrase = `${mot}${langue ? ', en ' + langue + ',' : ''} ça veut dire : ${r.sens}.`;
+    const phrase = langue ? T('dico_phrase_tts', { mot: mot, langue: langue, sens: r.sens }) : T('dico_phrase_tts_sans_langue', { mot: mot, sens: r.sens });
     // Tap = dialogue 2 voix (narrateur + Wex) si le MP3 existe, sinon fallback dame.
     card.addEventListener('click', () => playDicoVoice(r.cle, phrase));
     el.appendChild(card);
@@ -932,7 +954,7 @@ function buildMenuPeriode(el) {
   wrapper.style.cssText = 'flex:1;overflow-y:auto;overflow-x:hidden;padding:8px 0 30px 0;position:relative;';
 
   wrapper.innerHTML =
-    `<div class="journey-intro">🦕 Le voyage dans le temps, raconté. Appuie sur <b>▶</b> pour écouter chaque époque, de la première vie jusqu'à aujourd'hui. La flèche <b>👉</b> montre où continuer.</div>` +
+    `<div class="journey-intro">🦕 ${T('journey_intro').replace('▶', '<b>▶</b>').replace('👉', '<b>👉</b>')}</div>` +
     `<div class="journey-trait" aria-hidden="true"></div>` +
     JOURNEY.map(ep => {
       const dinos = ep.dinos.map(id => DINOS.find(d => d.id === id)).filter(Boolean);
@@ -950,7 +972,7 @@ function buildMenuPeriode(el) {
           </div>
           <div style="padding:10px 12px 12px">
             <button class="v1-big journey-btn" onclick="playRecit('${ep.id}',this)" id="recit-${ep.id}-btn" style="margin:0 0 ${dinosHtml ? '10px' : '0'}">
-              🎙️ Écoute ${ep.label} <span class="dino-story-eq">▶</span>
+              🎙️ ${T('journey_bouton_ecoute', { episode: ep.label })} <span class="dino-story-eq">▶</span>
             </button>
             ${dinosHtml}
           </div>
@@ -1028,12 +1050,12 @@ function buildPangeeBloc() {
         <div class="chrono-info">
           <div class="chrono-label" style="color:#5dade2">${PANGEE.titre}</div>
           <div class="chrono-range">${PANGEE.soustitre}</div>
-          <div class="chrono-desc">Avant et pendant les dinos !</div>
+          <div class="chrono-desc">${T('pangee_sous_desc')}</div>
         </div>
       </div>
       <div style="padding:12px">
         <button class="v1-big" onclick="playSpecial('pangee',this)" id="pangee-story-btn" style="margin:0 0 12px">
-          🎙️ Écoute l'histoire de la Pangée <span class="dino-story-eq">▶</span>
+          🎙️ ${T('pangee_bouton_ecoute')} <span class="dino-story-eq">▶</span>
         </button>
         <div class="pangee-carousel" id="pangee-carousel">
           <div class="pangee-slides">${slides}</div>
@@ -1090,12 +1112,12 @@ function buildExtinctionBloc() {
         <div class="chrono-info">
           <div class="chrono-label" style="color:#ff6b35">${EXTINCTION.titre}</div>
           <div class="chrono-range">${EXTINCTION.soustitre}</div>
-          <div class="chrono-desc">Pourquoi les dinos ont-ils disparu ?</div>
+          <div class="chrono-desc">${T('extinction_sous_desc')}</div>
         </div>
       </div>
       <div style="padding:10px 12px;display:flex;flex-direction:column;gap:10px">
         <button class="v1-big" onclick="playSpecial('extinction',this)" id="extinction-story-btn" style="margin:0">
-          🎙️ Écoute l'histoire de la Grande Extinction <span class="dino-story-eq">▶</span>
+          🎙️ ${T('extinction_bouton_ecoute')} <span class="dino-story-eq">▶</span>
         </button>
         ${hypHtml}
         <div class="ext-funfact">
@@ -1135,7 +1157,7 @@ function showGridRegime(catId) {
   const cat = DINO_CATEGORIES.find(c => c.id === catId);
   document.getElementById('grid-title').textContent = cat.emoji + ' ' + cat.label;
   // Accroche régime = vraie voix ElevenLabs (étymo + fun), fallback dame si MP3 absent.
-  setTimeout(() => playRegimeVoice(catId, cat.label + ' ! Tape sur un dino pour tout savoir !'), 200);
+  setTimeout(() => playRegimeVoice(catId, cat.label + ' ! ' + T('grid_accroche_suffixe')), 200);
 }
 
 /* ── Build grid régime ── */
@@ -1236,7 +1258,7 @@ function showGridEpoque(perId) {
     el.appendChild(card);
   });
   // En entrant : « Le Jurassique ! » en vraie voix si le MP3 existe, sinon la dame dit tout.
-  setTimeout(() => playPeriodeVoice(per.id, per.label + ' ! ' + per.desc + '. Tape sur un dino pour tout savoir !'), 200);
+  setTimeout(() => playPeriodeVoice(per.id, per.label + ' ! ' + per.desc + '. ' + T('grid_accroche_suffixe')), 200);
 }
 
 /* ── Retour depuis grille ── */
@@ -1255,7 +1277,7 @@ function showGrid(catId) {
 /* ── Cat intro TTS (legacy) ── */
 function speakCatIntro() {
   const cat = DINO_CATEGORIES.find(c => c.id === currentCatId);
-  if (cat) speakText(cat.label + ' ! Tape sur un dino pour tout savoir !');
+  if (cat) speakText(cat.label + ' ! ' + T('grid_accroche_suffixe'));
 }
 
 /* ── Build fiche ── */
@@ -1279,10 +1301,10 @@ function hasDinoAudio(dinoId) {
 function buildBadges(dinoId) {
   let b = '';
   if (hasDinoAudio(dinoId)) {
-    b += '<div class="badge badge-audio" title="Histoire à écouter">🎙️</div>';
+    b += `<div class="badge badge-audio" title="${T('badge_titre_audio')}">🎙️</div>`;
   }
   if (hasDinoImages(dinoId)) {
-    b += '<div class="badge badge-image" title="Photos et images">📸</div>';
+    b += `<div class="badge badge-image" title="${T('badge_titre_images')}">📸</div>`;
   }
   return b ? `<div class="card-badges">${b}</div>` : '';
 }
@@ -1324,7 +1346,7 @@ function _wmapBuildCache() {
 function buildContinentMap(continent) {
   const activeContinents = _splitContinents(continent);
   const hasMap = typeof window.WORLD_MAP_SVG_INNER === 'string' && typeof window.WORLD_MAP_CONTINENTS === 'object';
-  const label = continent || 'Dans les mers du monde entier';
+  const label = continent || T('continent_marin_defaut');
   const primaryColor = CONTINENT_COLORS[activeContinents[0]] || '#5dade2';
 
   if (!hasMap) {
@@ -1374,11 +1396,14 @@ function buildFiche(d) {
   const scroll = document.getElementById('fiche-scroll');
 
   // Fusion images locales + Wikimedia
-  const localExtras = (DINO_EXTRAS[d.id] || []).map(e => ({
-    src: `img/dinos/${e.folder}/${e.file}`,
-    label: e.label || d.name,
-    type: e.folder
-  }));
+  const localExtras = (DINO_EXTRAS[d.id] || []).map(e => {
+    const cle = e.label && extraLabelCle(e.label);
+    return {
+      src: `img/dinos/${e.folder}/${e.file}`,
+      label: (cle ? T(cle) : e.label) || d.name,
+      type: e.folder
+    };
+  });
   const wikiExtras = (typeof DINO_WIKIMEDIA !== 'undefined' ? (DINO_WIKIMEDIA[d.id] || []) : []).map(e => ({
     src: e.url,
     label: e.label || d.name,
@@ -1408,7 +1433,7 @@ function buildFiche(d) {
            onerror="this.onerror=null;this.src='${ombreSrc(d.png)}';this.onerror=function(){this.style.display='none'}">
       <div class="v1-hero-nm">
         <b>${d.name}</b>
-        ${d.alias ? `<span class="v1-alias">aussi appelé ${d.alias}</span>` : ''}
+        ${d.alias ? `<span class="v1-alias">${T('fiche_aussi_appele', { alias: d.alias })}</span>` : ''}
         <span class="v1-lat">${d.full}</span>
       </div>
       ${multi ? `
@@ -1425,13 +1450,13 @@ function buildFiche(d) {
 
     <!-- BANNIÈRE AUDIO (violette) — affichée seulement si l'audio complet existe -->
     ${dinoHasAudio(d.id) ? `<button class="v1-big" onclick="playDinoStory('${d.id}')" id="dino-story-btn">
-      🎙️ Écoute toute l'histoire de ${d.name} <span class="dino-story-eq">▶</span><span class="audio-ver">${dinoAudioVersion(d.id)}</span>
+      🎙️ ${T('fiche_bouton_histoire_complete', { nom: d.name })} <span class="dino-story-eq">▶</span><span class="audio-ver">${dinoAudioVersion(d.id)}</span>
     </button>` : ''}
 
     <!-- BLOC 1 — Son histoire -->
     <div class="v1-panel v1-a">
-      <button class="v1-sp" onclick="playBloc('${d.id}','nom','${esc(d.name)} ! ${esc(d.nom_etym||('Son vrai nom c\'est '+d.full))}',this)">🔊</button>
-      <div class="v1-pic"><span class="v1-ic">🦖</span><span class="v1-tt">Son histoire</span></div>
+      <button class="v1-sp" onclick="playBloc('${d.id}','nom','${esc(d.name)} ! ${esc(d.nom_etym||T('fiche_tts_nom_fallback', { nom_savant: d.full }))}',this)">🔊</button>
+      <div class="v1-pic"><span class="v1-ic">🦖</span><span class="v1-tt">${T('fiche_titre_histoire')}</span></div>
       <p>${d.nom_etym || d.full}</p>
       <p class="v1-sub">⏳ ${d.epoque}${perLabel ? ' · '+perLabel : ''}</p>
       <p class="v1-sub">📍 ${d.region}</p>
@@ -1441,38 +1466,38 @@ function buildFiche(d) {
     <!-- BLOC 2 — Sa taille -->
     <div class="v1-panel v1-b">
       <button class="v1-sp" onclick="playBlocTaille('${d.id}',this)">🔊</button>
-      <div class="v1-pic"><span class="v1-ic">📏</span><span class="v1-tt">Sa taille</span></div>
+      <div class="v1-pic"><span class="v1-ic">📏</span><span class="v1-tt">${T('fiche_titre_taille')}</span></div>
       <div class="v1-stats">
-        <div class="v1-stat"><div class="l">${d.taille_vol ? '🪽 Ailes' : '↔️ Long'}</div><div class="v">${d.taille_m} m</div><div class="c">${d.comp_taille}</div></div>
-        <div class="v1-stat"><div class="l">↕️ Haut</div><div class="v">${d.hauteur_m || '?'} m</div><div class="c">${d.comp_hauteur || ''}</div></div>
-        <div class="v1-stat"><div class="l">⚖️ Poids</div><div class="v">${d.poids_t >= 1 ? Math.round(d.poids_t*1000).toLocaleString('fr-FR')+' kg' : Math.round(d.poids_t*1000)+' kg'}</div><div class="c">${d.comp_poids}</div></div>
+        <div class="v1-stat"><div class="l">${d.taille_vol ? '🪽 ' + T('fiche_stat_ailes') : '↔️ ' + T('fiche_stat_long')}</div><div class="v">${d.taille_m} m</div><div class="c">${d.comp_taille}</div></div>
+        <div class="v1-stat"><div class="l">↕️ ${T('fiche_stat_haut')}</div><div class="v">${d.hauteur_m || '?'} m</div><div class="c">${d.comp_hauteur || ''}</div></div>
+        <div class="v1-stat"><div class="l">⚖️ ${T('fiche_stat_poids')}</div><div class="v">${d.poids_t >= 1 ? Math.round(d.poids_t*1000).toLocaleString(window.Lang ? Lang.bcp47() : 'fr-FR')+' '+T('unite_kg') : Math.round(d.poids_t*1000)+' '+T('unite_kg')}</div><div class="c">${d.comp_poids}</div></div>
       </div>
       ${d.queue_note ? `<p class="v1-queue">🦴 ${d.queue_note}</p>` : ''}
     </div>
 
     <!-- BLOC 3 — Sa vie de dino (emoji régime) -->
     <div class="v1-panel v1-c">
-      <button class="v1-sp" onclick="playBloc('${d.id}','regime','${esc(d.name)} est ${esc(regimelabel(d.regime))}. Il mange ${esc(d.proies)}. ${esc(d.chasseurs)}. ${esc(d.amis)}',this)">🔊</button>
-      <div class="v1-pic"><span class="v1-ic">${regEmoji}</span><span class="v1-tt">Sa vie de dino</span></div>
+      <button class="v1-sp" onclick="playBloc('${d.id}','regime','${esc(T('fiche_tts_regime', { nom: esc(d.name), regime: esc(regimelabel(d.regime)), proies: esc(d.proies), chasseurs: esc(d.chasseurs), amis: esc(d.amis) }))}',this)">🔊</button>
+      <div class="v1-pic"><span class="v1-ic">${regEmoji}</span><span class="v1-tt">${T('fiche_titre_vie')}</span></div>
       <p><b>${regimelabel(d.regime)}</b></p>
       <div class="v1-list-box">${d.proies}</div>
-      <p>🫂 Ses copains :</p>
+      <p>🫂 ${T('fiche_label_copains')}</p>
       <div class="v1-list-box">${d.amis}</div>
-      <p>🎯 Ses ennemis :</p>
+      <p>🎯 ${T('fiche_label_ennemis')}</p>
       <div class="v1-list-box">${d.chasseurs}</div>
     </div>
 
     <!-- BLOC 4 — Le truc fou -->
     <div class="v1-panel v1-d">
-      <button class="v1-sp" onclick="playBloc('${d.id}','funfact','Son super-pouvoir ! ${esc(d.superpower)} Le savais-tu ? ${esc(d.fait)}',this)">🔊</button>
-      <div class="v1-pic"><span class="v1-ic">✨</span><span class="v1-tt">Le truc fou</span></div>
-      <p><b>Super-pouvoir :</b> ${d.superpower}</p>
+      <button class="v1-sp" onclick="playBloc('${d.id}','funfact','${esc(T('fiche_tts_funfact', { superpouvoir: esc(d.superpower), fait: esc(d.fait) }))}',this)">🔊</button>
+      <div class="v1-pic"><span class="v1-ic">✨</span><span class="v1-tt">${T('fiche_titre_truc_fou')}</span></div>
+      <p><b>${T('fiche_label_superpouvoir')}</b> ${d.superpower}</p>
       <p>💡 ${d.fait}</p>
     </div>
 
     ${DINO_VIDEOS[d.id] ? `
       <div class="fiche-video-wrap">
-        <div class="fiche-video-title">🎬 ${DINO_VIDEOS[d.id].title || 'Vidéo'}</div>
+        <div class="fiche-video-title">🎬 ${DINO_VIDEOS[d.id].title || T('fiche_video_titre_defaut')}</div>
         <video class="fiche-video" src="${DINO_VIDEOS[d.id].src}" controls playsinline preload="metadata"></video>
       </div>
     ` : ''}
@@ -1495,7 +1520,7 @@ function buildGalleryHTML(extras, name) {
   ).join('');
   const labels = extras.map(e => `<span>${e.label || '?'}</span>`).join(' · ');
   return `
-    <div class="fiche-gallery-title">📸 Plus d'images — <small style="font-weight:400;color:rgba(255,255,255,0.35)">${labels}</small></div>
+    <div class="fiche-gallery-title">📸 ${T('fiche_galerie_titre')} — <small style="font-weight:400;color:rgba(255,255,255,0.35)">${labels}</small></div>
     <div class="fiche-gallery">${thumbs}</div>
   `;
 }
@@ -1549,6 +1574,23 @@ function updateCarouselLabel(idx) {
 function closeCarousel() {
   document.getElementById('carousel').classList.remove('open');
   document.getElementById('carousel-track').removeEventListener('scroll', onCarouselScroll);
+}
+
+/* ── i18n des labels DINO_EXTRAS ──
+   DINO_EXTRAS est un objet littéral évalué au chargement du script : le traduire dans le
+   littéral appellerait T() avant que dino-ui.js/le fichier de langue soient garantis prêts.
+   Solution : le littéral reste en FR (clé de mapping stable), et la traduction se fait au
+   moment de l'AFFICHAGE (buildFiche) via ce mapping label FR → clé i18n. */
+function extraLabelCle(labelFr) {
+  switch (labelFr) {
+    case 'Gros plan': return 'extra_label_gros_plan';
+    case "Ce qu'il mange": return 'extra_label_mange_m';
+    case "Ce qu'elle mange": return 'extra_label_mange_f';
+    case 'Dans Paris !': return 'extra_label_paris';
+    case 'Son monde': return 'extra_label_ecosysteme';
+    case 'Le savais-tu ?': return 'extra_label_funfact';
+    default: return null;
+  }
 }
 
 /* ── Extras par dino (images paléoart générées 2026-06-28) ── */

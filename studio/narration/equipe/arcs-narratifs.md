@@ -122,4 +122,4 @@ Une histoire **n'est pas obligée** d'appartenir à un arc.
 - `../stories/INDEX.md` — table des histoires (canon + en cours)
 - `../stories/axes-histoires-en-stock.md` — pool d'idées futures
 - `../memory/TODO.md` — vision de la structure des saisons
-- `memoire-conseiller.md` — patterns transversaux et arcs en gestation
+- `agent-memory/narration-conseiller/MEMORY.md` — patterns transversaux et arcs en gestation

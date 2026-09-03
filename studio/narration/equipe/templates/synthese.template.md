@@ -55,7 +55,7 @@
 
 ## 3. CE QUI A MARCHÉ (à reproduire)
 
-> *Patterns à noter dans `memoire-conseiller.md` et `memoire-dir.md`.*
+> *Patterns à noter dans `agent-memory/narration-conseiller/MEMORY.md` et `agent-memory/narration/MEMORY.md`.*
 
 - *…*
 
@@ -63,7 +63,7 @@
 
 ## 4. CE QUI N'A PAS MARCHÉ (à éviter)
 
-> *Patterns à noter dans `memoire-gatekeeper.md` et `memoire-dir.md`.*
+> *Patterns à noter dans `agent-memory/narration-gatekeeper/MEMORY.md` et `agent-memory/narration/MEMORY.md`.*
 
 - *…*
 
@@ -79,10 +79,10 @@
 
 ## 6. CASCADE MÉMOIRES (à effectuer)
 
-- ☐ `memoire-conseiller.md` mis à jour (patterns validés, retours lecteurs)
-- ☐ `memoire-dir.md` mis à jour (décisions de sélection, pourquoi cette version a gagné)
+- ☐ `agent-memory/narration-conseiller/MEMORY.md` mis à jour (patterns validés, retours lecteurs)
+- ☐ `agent-memory/narration/MEMORY.md` mis à jour (décisions de sélection, pourquoi cette version a gagné)
 - ☐ `memoire-architecte.md` mis à jour (plan qui a bien/mal fonctionné)
-- ☐ `memoire-gatekeeper.md` mis à jour (erreurs récurrentes, patterns à surveiller)
+- ☐ `agent-memory/narration-gatekeeper/MEMORY.md` mis à jour (erreurs récurrentes, patterns à surveiller)
 - ☐ `memory/DECISIONS.md` mis à jour (si nouvelles règles)
 - ☐ `arcs/<arc-slug>/fiche.md` mis à jour (si l'histoire affine la qualité d'arc)
 - ☐ `stories/INDEX.md` régénéré (script `generate-index.js`)

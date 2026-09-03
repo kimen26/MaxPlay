@@ -194,8 +194,8 @@ Quand Papa Yann dit « on n'a pas besoin de mentionner X », **on n'écrit RIEN 
 ## Liens
 
 - [`patte-narrative-maxplay.md`](patte-narrative-maxplay.md) — patte stylistique générale du projet (B+D+C)
-- [`memoire-gatekeeper.md`](memoire-gatekeeper.md) — patterns à surveiller (alimenté par cette patte)
-- [`memoire-conseiller.md`](memoire-conseiller.md) — mémoire Conseiller (patterns d'arc, retours validés)
-- [`memoire-dir.md`](memoire-dir.md) — mémoire Directeur (sélections, ce qui a fonctionné)
+- `.claude/agent-memory/narration-gatekeeper/MEMORY.md` — patterns à surveiller (alimenté par cette patte)
+- `.claude/agent-memory/narration-conseiller/MEMORY.md` — mémoire Conseiller (patterns d'arc, retours validés)
+- `.claude/agent-memory/narration/MEMORY.md` — mémoire Directeur (sélections, ce qui a fonctionné)
 - [`templates/brief-histoire.template.md`](templates/brief-histoire.template.md) — brief writer, doit citer cette patte
 - Sources : `stories/001-le-pont-casse/lecteurs-temoins/john-relecture-2026-04-30.md` (relecture V1), validée + intégrée en étape 7 rewrite v2 comité (2026-05-08). Anciennes histoires 002, 003 supprimées 2026-05-08 (patterns consolidés dans `lecons-vivantes.md`).

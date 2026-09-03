@@ -22,9 +22,12 @@
         Object.keys(o).forEach(function (k) { item[k] = o[k]; });
       });
     }
-    if (window.DINOS) merge(window.DINOS, S.dinos);
-    if (window.DINO_FAMILLES) merge(window.DINO_FAMILLES, S.familles);
-    if (window.DINO_RACINES) merge(window.DINO_RACINES, S.racines);
+    // Piege connu (cf. collection-dinos.js, nid-ui.js) : dinos-data.js declare
+    // `const DINOS = [...]` en top-level — un const NE se pose PAS sur window.
+    // On resout donc l'identifiant nu d'abord, window ensuite.
+    merge(typeof DINOS !== 'undefined' ? DINOS : window.DINOS, S.dinos);
+    merge(typeof DINO_FAMILLES !== 'undefined' ? DINO_FAMILLES : window.DINO_FAMILLES, S.familles);
+    merge(typeof DINO_RACINES !== 'undefined' ? DINO_RACINES : window.DINO_RACINES, S.racines);
   };
 
   /* eslint-disable no-useless-escape */

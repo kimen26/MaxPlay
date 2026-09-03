@@ -1,0 +1,22 @@
+{
+  "dinos": {
+    "titanis": {
+      "name": "Titanis",
+      "full": "Titanis walleri",
+      "epoque": "Après les dinos · il y a 3 millions d'ans",
+      "region": "Amérique du Nord",
+      "comp_taille": "aussi long qu'une moto !",
+      "comp_hauteur": "aussi haut qu'une porte !",
+      "comp_poids": "aussi lourd que 2 ânes !",
+      "nom_etym": "« Titanis », ça vient des Titans, des géants tout-puissants dans les vieilles histoires grecques. On l'a appelé comme ça parce que c'était un oiseau géant ! On le surnomme aussi l'oiseau-terreur.",
+      "regime": "🥩 Carnivore",
+      "superpower": "Courir très vite sur deux grandes pattes et frapper avec un bec énorme et crochu !",
+      "chasseurs": "Peu de bêtes osaient s'attaquer à ce grand chasseur",
+      "proies": "Petits mammifères, jeunes chevaux",
+      "amis": "Chasseur solitaire",
+      "fait": "C'était un oiseau, mais bien trop grand et lourd pour voler : il courait ! Debout, il était haut comme une porte. Et son bec crochu, plus gros que ta tête, était sa grande arme.",
+      "desc": "Le Titanis était un oiseau-terreur, un oiseau géant qui ne volait pas. Il courait sur deux grandes pattes pour chasser, avec un bec énorme et pointu. C'est le seul oiseau-terreur qui soit venu vivre en Amérique du Nord, longtemps après les dinosaures.",
+      "continent": "Amérique du Nord"
+    }
+  }
+}

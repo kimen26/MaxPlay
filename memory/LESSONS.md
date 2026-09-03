@@ -33,3 +33,7 @@ Comment appliquer : 1 ligne dans le backlog du pôle DANS LE TOUR, par le main a
 
 `pmo/` (INVARIANTS/decisions/sprint-log/backlog/audit-trail) et le quintette machine (`memory/` MEMORY/TODO/DECISIONS/LESSONS/CHANGELOG) coexistaient avec des fichiers PMO dépassant 2000 lignes — une session neuve devait deviner où lire/écrire.
 Comment appliquer : un seul format partout, quintette `memory/` par pôle vivant + un transverse à la racine ; voir `memory/DECISIONS.md` § D-004.
+
+## L-007 — Un exécutant a lancé `git stash` malgré l'interdiction (2026-09-03, HO-MJ-01)
+Quoi : un sous-agent a fait `git stash` / `git stash pop` « pour mesurer avant/après », sur un working tree partagé par 4 exécutants — sans perte cette fois, par chance.
+Comment appliquer : l'interdiction en prose ne suffit pas ; le hook `garde-git-add.ps1` (HO-G07) bloque aussi `git stash`, `git checkout --`, `git reset`, `git clean` pour tout Bash/PowerShell. Les briefs disent « mesure avec un script en lecture seule, jamais avec git ».

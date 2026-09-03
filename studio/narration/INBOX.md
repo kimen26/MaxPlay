@@ -213,6 +213,8 @@ Dans l'ancien monde, **tout coûtait de l'argent** :
 
 ## 2026-04-27 — Idées narration : saisons, sensibilités, Wex arc
 
+> ✅ Distillé 2026-09-03 (convergence HO-NAR-01, jamais marqué à l'époque) → `univers/fondements/sensibilites.md` (9 sensibilités + Vibration) + `roadmap` structure saisons (cf. `memory/TODO.md § Roadmap`, déjà alignée). Questions en suspens (mentor de Max/Wex, timing S1→S2) reportées dans `memory/DECISIONS.md § Questions ouvertes` #12-13.
+
 ### Structure narrative en saisons
 
 **Saison 1 — L'École (1 an, 1 histoire/semaine gratuite)**

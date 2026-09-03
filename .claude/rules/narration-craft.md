@@ -7,17 +7,16 @@ paths:
 
 # Craft narratif — pointeur auto-chargé (anti-pollution)
 
-> Le **savoir d'écriture** (structures, voix, sensoriel, comédie, développement, prose…) vit dans le skill routeur **`narration-craft`** (`.claude/skills/narration-craft/`).
-> Cette rule ne charge QUE des **pointeurs** — le contenu réel se charge à la demande via le sous-fichier pertinent. Ne PAS inliner le craft ici.
-
-## Quel sous-fichier charger (les 15 + 2 gaps)
-`01-storytelling` (structure/Kishōtenketsu) · `02-voix` (qui raconte) · `03-sensoriel` (ancrer dans le corps) · `04-comedie` (humour/timing) · `05-developpement` (calibrage âge 4-6) · `06-prose` · `07-scenario` · `08-micro` · `09-message` · `10-lieu` · `11-manga` · `12-theatre` · `13-musique` · `14-imperfection` · `15-jeu` · `16-oralite` *(gap P1)* · `17-refrains` *(gap P2)*.
-Carte complète : [`.claude/skills/narration-craft/SKILL.md`](../skills/narration-craft/SKILL.md).
+> Le **savoir d'écriture** (structures, voix, sensoriel, comédie, développement, prose…) vit maintenant dans le skill global **`~/.claude/skills/narration-craft/`** (user-level, générique, sans chemin MaxPlay). Invoquer `/narration-craft` ou charger directement le sous-fichier pertinent (`01-storytelling.md` … `18-execution.md`, carte dans son `SKILL.md`).
+> Cette rule ne porte que les **rappels MaxPlay** — le contenu de craft ne s'inline pas ici.
 
 ## Rappels MaxPlay (toujours valables en écrivant)
-- **Casting V1 figé** : Melki/Mimi/Dadou/Madie/Lulu/Pierrot/Raph/Juju/Nono + Wex. JAMAIS l'ancien casting (Léo/Sam/Lila/Élia/Camille/Victor/Iris/Theo/Noa).
-- **🛑 Cliffhanger / open-loop** : OK au milieu pour tenir l'attention, **JAMAIS à la fin** (patte = Kishōtenketsu apaisant, écoute au coucher).
-- **Ennéagramme** : source de vérité = [`studio/narration/personnages/theorie/enneagramme/`](../../studio/narration/personnages/theorie/enneagramme/), pas le craft (qui ne fait qu'illustrer l'application).
+- **Casting V1 figé** : Melki(1)/Mimi(2)/Dadou(3)/Madie(4)/Lulu(5)/Pierrot(6)/Raph(7)/Juju(8)/Nono(9) + Wex. JAMAIS l'ancien casting (Léo/Sam/Lila/Élia/Camille/Victor/Iris/Theo/Noa). Les exemples du skill global sont génériques (« Type N ») — les remapper sur ce casting à l'écriture.
+- **🛑 Cliffhanger / open-loop** : OK au milieu pour tenir l'attention, **JAMAIS à la fin** (patte MaxPlay = Kishōtenketsu apaisant, écoute au coucher).
+- **Ennéagramme** : source de vérité = [`studio/narration/personnages/theorie/enneagramme/`](../../studio/narration/personnages/theorie/enneagramme/), pas le skill craft (qui ne fait qu'illustrer l'application).
+- **Patte narrative** : [`studio/narration/equipe/patte-narrative-maxplay.md`](../../studio/narration/equipe/patte-narrative-maxplay.md).
+- **Pédagogie 4-5 ans (OBLIGATOIRE)** : [`studio/narration/personnages/theorie/pedagogie-enfance/`](../../studio/narration/personnages/theorie/pedagogie-enfance/).
+- **Casting + voice_ids** : [`studio/narration/pmo/INVARIANTS.md`](../../studio/narration/pmo/INVARIANTS.md).
 
-## Wiring process (rappel)
+## Wiring process MaxPlay (rappel, détail générique dans le skill)
 Brief → `01`+`05` · Brainstorm → `17`+`01` · Briefs writers → `05` · Écriture → `03`+`04` (cliffhangers OFF) · Rewrite → `06`+`02` · Audio → `16`.

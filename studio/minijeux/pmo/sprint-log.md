@@ -1560,3 +1560,6 @@ mj-54 Sudoku VALIDÉ PY, rien touché. Fixes : mj-58 Rex regardait à gauche →
 ## 2026-08-11 — Factorisation briques voix (demande PY : corrections réapplicables ?)
 
 Réponse : oui pour 3 patterns, les autres corrections étaient spécifiques. Fait : `TTS.hasVoiceFor()` monté dans js/tts.js (doublons mj-24/mj-20 supprimés) · nouvelle brique `DinoOmbres.annoncer()` + `stopAnnonce()` dans js/dinos-ombres.js (chaîne amorce TTS → MP3 nom, anti-course + filet intégrés) avec mj-24 et mj-19 migrés · mj-20 réparé (speakAsync maison → TTS.speak + onEnd + filet). Probe pip-crop jetable sur les 17 jeux à #pips : 17/17 OK, aucune retouche nécessaire (le fix local mj-22 reste la référence). YAGNI assumé : levelbar et filtre silhouette invert non factorisés (1-2 consommateurs). Harnais mj-19/20/24 verts, audit-gabarit 36 jeux sans bloquant.
+
+## 2026-09-03 — Refonte infra Claude (audit transverse)
+- Audit `memory/audits/2026-09-03-archi-claude-infra.md` ; handoff de pôle « mémoire convergente » ouvert dans `studio/minijeux/docs/handoffs/` (pmo/ → memory/ quintette, vague 2). Aucun contenu produit modifié.

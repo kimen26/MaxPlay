@@ -1,7 +1,7 @@
 # Référentiel unique de contenu
 
 > Outil **transverse** (DINO · JEU · plus tard NARRATION · LUNII). Ne dépend d'aucun pôle,
-> n'appartient à aucun. Plan d'ensemble : [`memory/ARCHI-REFERENTIEL-CONTENU.md`](../../memory/ARCHI-REFERENTIEL-CONTENU.md).
+> n'appartient à aucun. Plan d'ensemble : [`docs/ARCHI-REFERENTIEL-CONTENU.md`](docs/ARCHI-REFERENTIEL-CONTENU.md).
 
 ## À quoi ça sert
 

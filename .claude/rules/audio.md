@@ -1,4 +1,4 @@
-﻿---
+---
 paths:
   - "studio/narration/scripts/**"
   - "studio/narration/personnages/voix-meta/**"

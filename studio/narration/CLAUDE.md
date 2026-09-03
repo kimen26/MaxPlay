@@ -1,4 +1,4 @@
-﻿# PÔLE NARRATION — Règles auto-chargées
+# PÔLE NARRATION — Règles auto-chargées
 
 > Ce fichier est **chargé automatiquement** dès qu'un fichier sous `studio/narration/` est lu/édité ([doc Anthropic](https://code.claude.com/docs/en/memory#how-claude-md-files-load)).
 > Pour la **navigation humaine** (catalogue 4 piliers + équipe + PMO), voir [`INDEX.md`](INDEX.md).

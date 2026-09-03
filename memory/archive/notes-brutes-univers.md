@@ -4,6 +4,9 @@ description: Pensées brutes en vrac sur l'univers MacPlay — à ne pas résume
 type: project
 ---
 
+> ⚠️ ARCHIVE — notes brutes narration 2026-04-16, jamais distillées depuis. Source :
+> `memory/notes-brutes-univers.md`. Ne plus alimenter, ne plus citer comme référence courante.
+
 # Notes brutes — session 2026-04-16
 
 ## Bloc 1 — Comment on entre dans un égregore

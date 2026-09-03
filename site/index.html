@@ -81,7 +81,10 @@
       <h3>Espace parents</h3>
       <div id="gate-step1">
         <p>Maintiens le bouton appuyé 3 secondes :</p>
-        <button id="gate-hold" class="btn-go" style="width:100%;position:relative;overflow:hidden;padding:13px;border:none;border-radius:999px;font-family:inherit;font-weight:900;font-size:1rem;cursor:pointer;">
+        <!-- touch-callout/user-select : sur iOS et Android l'appui long ouvre le
+             menu natif (copier l'image...) et masque la porte. Le JS seul ne
+             l'empeche pas, il faut aussi le couper en CSS. (PY 2026-09-03) -->
+        <button id="gate-hold" class="btn-go" style="width:100%;position:relative;overflow:hidden;padding:13px;border:none;border-radius:999px;font-family:inherit;font-weight:900;font-size:1rem;cursor:pointer;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;touch-action:none;">
           <span id="gate-hold-fill" style="position:absolute;left:0;top:0;bottom:0;width:0%;background:rgba(255,255,255,0.25);transition:none;"></span>
           <span style="position:relative;">Appuie et maintiens…</span>
         </button>
@@ -246,6 +249,14 @@
       hold.addEventListener('pointerdown', startHold);
       hold.addEventListener('pointerup', stopHold);
       hold.addEventListener('pointerleave', stopHold);
+      // Un appui long declenche par defaut le menu natif du navigateur (copier
+      // l'image, selectionner...) : il recouvre la porte parents et fait echouer
+      // l'appui. preventDefault sur pointerdown NE suffit pas — le menu vient
+      // d'un chemin separe. On coupe contextmenu + selection + drag sur le bouton.
+      // (retour PY 2026-09-03)
+      hold.addEventListener('contextmenu', e => e.preventDefault());
+      hold.addEventListener('dragstart', e => e.preventDefault());
+      hold.addEventListener('selectstart', e => e.preventDefault());
 
       function tryEnter() {
         if (answer.value.trim() === '28') { modal.classList.remove('show'); MUR.showParents(); }

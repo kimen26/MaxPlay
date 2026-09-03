@@ -260,6 +260,8 @@ Types pressentis :
 
 ## 2026-04-27 — Wex : sensibilité vibration + Cercle d'Harmonie + vision causale
 
+> ✅ Distillé 2026-09-03 (convergence HO-NAR-01, jamais marqué à l'époque) → `univers/fondements/vibration.md` + `univers/fondements/sensibilites.md` (Wex porteur transversal, Cercle d'Harmonie, vision causale — déjà présents). Questions en suspens (contrôle de la vision causale, doubles-sensibilités) reportées dans `memory/DECISIONS.md § Questions ouvertes` #12.
+
 ### Sensibilité de Wex = Vibration / Harmonie (DÉCISION)
 
 Wex n'est pas "sans sensibilité" — il EST la sensibilité vibration/harmonie.

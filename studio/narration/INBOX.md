@@ -146,6 +146,8 @@ Ce bloc concerne le **projet MaxPlay en tant que produit éditorial** à diffuse
 
 ## 2026-04-27 — Cours d'histoire (suite) : l'argent, tout était payant
 
+> ✅ Distillé 2026-09-03 (convergence HO-NAR-01, jamais marqué à l'époque) → matière narrative pour le prof d'Histoire, cf. `univers/vie-quotidienne/ecole.md` § Les cours d'Histoire (déjà présent). Anecdote "l'argent était payant" non reprise verbatim dans ce fichier — conservée dans l'archive, réutilisable au brief d'une future histoire de cours d'Histoire.
+
 **Nouvelle anecdote historique pour le prof complotiste :**
 
 Dans l'ancien monde, **tout coûtait de l'argent** :

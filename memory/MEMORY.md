@@ -49,3 +49,6 @@ Vision produit : `memory/VISION.md`.
 Quintette `memory/` (MEMORY · TODO · DECISIONS · LESSONS · CHANGELOG) à la racine ET par
 pôle vivant. Règle complète : `~/.claude/rules/memoire-projet.md`. Historique de la
 convergence : `memory/DECISIONS.md` § D-004.
+
+## Journal
+- 2026-09-03/04 — Refonte infra Claude (audit `memory/audits/2026-09-03-archi-claude-infra.md`) : 13 handoffs exécutés par Sonnet (registre `docs/handoffs/README.md`). Fait : quintette racine + JEU + NARRATION (DINO en cours HO-008), rules ≤ 60 l., hooks `memory/` + `garde-git-add`, 26→21 agents avec `memory: project`, site/ sans outillage (−38 Mo tiles doublon), 6 skills globaux (`narration-craft`, `game-design-enfant`, `tts-pipeline`, `audio-verif`, `i18n-contenu`, `browser-pilot`). Reste : pousser les skills sur `claude_conf` (Sync-Skills, confirmation Papa Yann), 12 sons `lieux/` + INDEX minijeux (TODO).

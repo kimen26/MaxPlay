@@ -38,7 +38,7 @@ Scripts récrits le 2026-07-27, audio produit le 2026-07-20 (dette ouverte dans 
 
 Fichiers absents → générés directement.
 
-- [ ] `node studio/referentiel/_gen-regles.mjs --pour-de-vrai`
+- [ ] `node studio/minijeux/scripts/audio/_gen-regles.mjs --pour-de-vrai`
 
 ### A3 · 24 rendus d'époques (16 gabarits + 8 atomes) — 1 095 car.
 
@@ -59,11 +59,11 @@ Rappel : supprimer les cibles avant de lancer (scripts = fichiers absents seulem
 
 - [ ] **B1 · 30 règles existantes (mj-04 → mj-35) — 18 869 car.**
   `rm site/sounds/voix/phrases/regle-mj-{04,05,06,08,09,11,13a,13c,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35}.mp3`
-  puis `node studio/referentiel/_gen-regles.mjs --pour-de-vrai`
+  puis `node studio/minijeux/scripts/audio/_gen-regles.mjs --pour-de-vrai`
 - [ ] **B2 · 16 consignes — 674 car.**
   Supprimer les 16 MP3 listés dans `plan-generation.json` (clés `jeu.consigne.*` vérifiées,
   dossier `site/sounds/voix/phrases/`) puis
-  `node studio/referentiel/_gen-consignes.mjs --pour-de-vrai`
+  `node studio/minijeux/scripts/audio/_gen-consignes.mjs --pour-de-vrai`
 - [ ] **B3 · 15 menus familles/régimes dino — 1 637 car.** (`site/audio/dinos/fr/menu-*.mp3`)
   Pas de script `_gen` référentiel — pipeline dino / MCP `text_to_speech` (narrateur_h).
 
@@ -89,7 +89,7 @@ Les remplacer change ce que l'enfant entend — peut-être en mieux, peut-être 
 | menus dino (accueil, familles, régime, voyage) | 4 | 276 |
 
 - [ ] **C (tout ou partie)** — seule sous-commande prête : les 28 consignes via
-  `_gen-consignes.mjs --pour-de-vrai` après suppression des cibles. Le reste n'a pas de
+  `studio/minijeux/scripts/audio/_gen-consignes.mjs --pour-de-vrai` après suppression des cibles. Le reste n'a pas de
   script dédié (historiquement produit via MCP) : à scripter ou à générer à la main,
   après relecture des textes.
 
@@ -100,11 +100,11 @@ Les remplacer change ce que l'enfant entend — peut-être en mieux, peut-être 
 ⚠️ **Contenu destiné à un enfant : relecture native AVANT génération** (règle gravée dans
 `valider.mjs`). 6 langues × 15 encouragements. Textes vérifiés côté catalogue, mais aucun
 natif ne les a relus, et les voix françaises portent un accent (réserve connue, voir
-en-tête de `_gen-humeur-invitee.mjs`).
+en-tête de `studio/referentiel/generer/_gen-humeur-invitee.mjs`).
 
 - [ ] **D · par langue** (réversible, fichiers hors canon) — supprimer
   `site/sounds/voix/<langue>/` puis, langue par langue :
-  `node studio/referentiel/_gen-humeur-invitee.mjs --langue <pt-BR|en|es|it|zh|ja> --pour-de-vrai`
+  `node studio/referentiel/generer/_gen-humeur-invitee.mjs --langue <pt-BR|en|es|it|zh|ja> --pour-de-vrai`
 
 | Langue | Appels | Car. | Relu par un natif |
 |---|---|---|---|

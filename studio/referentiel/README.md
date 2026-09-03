@@ -21,7 +21,7 @@ node studio/referentiel/plan-generation.mjs # QUOI générer — n'appelle RIEN
 node studio/referentiel/couverture.mjs      # ce qui n'est PAS encore enrôlé
 node studio/referentiel/build.mjs           # registre + tableau de bord + état des dettes
 node studio/referentiel/test-detection.mjs  # non-régression du détecteur de dérive
-node studio/referentiel/_gen-textes-site.mjs # régénère site/js/textes-jeux.js (table des textes canoniques du site)
+node studio/referentiel/generer/_gen-textes-site.mjs # régénère site/js/textes-jeux.js (table des textes canoniques du site)
 node studio/referentiel/acquitter.mjs dino.corythosaurus.regime mp3 --sans-impact "raison"
 ```
 
@@ -158,7 +158,7 @@ textes réels du dépôt, dont le cas témoin qui a motivé le chantier.
 | `lib/socle.mjs` | Chargement de `dinos-data.js` hors navigateur, empreintes, dates de commit |
 | `lib/dette.mjs` | Moteur de dette — signatures par ligne clé × canal, sync de la base, états |
 | `lib/reperes.mjs` | Identification du repère d'une comparaison de taille |
-| `lib/regles.mjs` | Reconstruction déterministe du texte parlé d'un panneau de règles (partagée `_gen-regles.mjs` ↔ `catalogue/fr/regles.mjs`) |
+| `lib/regles.mjs` | Reconstruction déterministe du texte parlé d'un panneau de règles (partagée `studio/minijeux/scripts/audio/_gen-regles.mjs` ↔ `catalogue/fr/regles.mjs`) |
 | `lib/catalogue.mjs` | Chargement du catalogue, résolution des voix, rendu des gabarits |
 | `test-detection.mjs` | Non-régression du détecteur de dérive |
 | `valider.mjs` | Contrôles de forme du catalogue (types, voix, tags, viabilité des gabarits) |
@@ -176,11 +176,11 @@ et exigent `--pour-de-vrai` pour agir (sans le flag, dry-run) :
 
 | Fichier | Rôle |
 |---|---|
-| `_extraire-textes-jeux.mjs` | Extrait les textes parlés/affichés des pages `site/mj-*.html` → `textes-jeux.json` (pas d'appel API, mais écrit une sortie) |
-| `_gen-textes-site.mjs` | Génère `site/js/textes-jeux.js` — table slug → { ecran, tts, mp3 } consommée par les libs du site (pas d'appel API, déterministe ; sans drapeau) |
-| `_gen-consignes.mjs` | Génère les MP3 des consignes → `site/sounds/voix/phrases/` |
-| `_gen-regles.mjs` | Génère les MP3 `regle-<id>.mp3` des panneaux de règles |
-| `_gen-humeur-invitee.mjs` | Génère les doublons multilingues d'encouragements (6 langues invitées) |
+| `generer/_extraire-textes-jeux.mjs` | Extrait les textes parlés/affichés des pages `site/mj-*.html` → `textes-jeux.json` (pas d'appel API, mais écrit une sortie) |
+| `generer/_gen-textes-site.mjs` | Génère `site/js/textes-jeux.js` — table slug → { ecran, tts, mp3 } consommée par les libs du site (pas d'appel API, déterministe ; sans drapeau) |
+| `studio/minijeux/scripts/audio/_gen-consignes.mjs` | Génère les MP3 des consignes → `site/sounds/voix/phrases/` |
+| `studio/minijeux/scripts/audio/_gen-regles.mjs` | Génère les MP3 `regle-<id>.mp3` des panneaux de règles |
+| `generer/_gen-humeur-invitee.mjs` | Génère les doublons multilingues d'encouragements (6 langues invitées) |
 
 Ils appliquent tous le padding 250 ms + loudnorm, et résolvent les voix par rôle via
 `voice-map.json`. Avant de les lancer : relire `_PLAN-GENERATION.md`, vérifier le budget

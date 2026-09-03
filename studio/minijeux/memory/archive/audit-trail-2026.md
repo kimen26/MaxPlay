@@ -1,5 +1,7 @@
 # Audit Trail — Pôle JEU
 
+> Archive verbatim — déplacé depuis pmo/audit-trail.md le 2026-09-03 (HO-MJ-01). Ne pas réécrire.
+
 > Trace des audits PMO + analyses cause racine. À lire pour comprendre **pourquoi** une dette de coordination s'accumule.
 >
 > Équivalent côté Narration : [`../../studio/narration/pmo/audit-trail.md`](../../narration/pmo/audit-trail.md).

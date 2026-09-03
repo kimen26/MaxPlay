@@ -1,5 +1,7 @@
 # STANDARD MINI-JEU MAXPLAY — source de vérité
 
+> **Source unique des règles MJ.** [`.claude/rules/mini-jeux.md`](../../../.claude/rules/mini-jeux.md) (auto-chargée) ne fait que pointer ici.
+
 > Gravé 2026-06-09 après validation Papa Yann sur 2 jeux de référence (`mj-gold-a` / `mj-gold-b`, supprimés lors de la purge 2026-08-10). Le standard vivant est désormais incarné par `site/js/mj-golden.js` + `css/mp-theme.css` (mutualisé 2026-08-01).
 > Tout nouveau mini-jeu copie ce standard. le workflow MJ (`.claude/rules/mini-jeux.md` § Workflow) génère à partir de là.
 > Référence visuelle de propreté : voir les golden + le style `css/style.css` partagé.
@@ -95,6 +97,21 @@ sounds.js · victory-sounds.js · feedback.js · [bus-svg.js si bus] · data.js
 - **Progression** : `Tracker.logAnswer(ok)` + `Tracker.endSession(correct,total)` (alimente les étoiles)
 - **Étoiles** : `Stars.get(id)` `Stars.max(id)` `Stars.isComplete(id)` (lecture seule)
 - **Bus** : `busSVG(color,textColor,num,width)` · `LIGNES` (data.js : `{num,color,textColor,name}`)
+
+## Règles Audio (Production) — Validées 2026-07-05
+
+**Tout SFX/MP3 destiné au site DOIT avoir ~250 ms de silence en tête.**
+
+**Raison** : Sur mobile/tablette (surtout Bluetooth), la sortie audio met 100-300 ms à se réveiller → l'attaque du son est coupée. Symptôme constaté par Papa Yann sur les 64 SFX ElevenLabs (2026-07-05), corrigé par `ffmpeg -af "adelay=250:all=1"` sur tout le lot (commit 79212a26).
+
+**Commande canonique** :
+```bash
+ffmpeg -y -i in.mp3 -af "adelay=250:all=1" -codec:a libmp3lame -b:a 128k out.mp3
+```
+
+**Scope** : s'applique à toute future génération de sons (ElevenLabs text-to-sound-effects ou autres) AVANT commit sur `site/sounds/`.
+
+**Vérification** : lire quelques secondes de silence au démarrage, puis l'attaque nette du son (pas de coupure).
 
 ## Cas particuliers connus
 

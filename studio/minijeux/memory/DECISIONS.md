@@ -1,36 +1,25 @@
+# Décisions — Pôle JEU
+
+> Une décision ici est DÉFINITIVE jusqu'à nouvelle décision explicite datée. En cas de doute, la dernière décision sur un sujet écrase les précédentes.
+
+## Décisions structurantes toujours en vigueur
+
+- **Gabarit unique `mj-shell.js`** (2026-07-14, commit 392d59d0) — tout MJ HTML charge UNIQUEMENT mj-shell.js (+ libs spécifiques), zéro variation manuelle tolérée — voir `archive/decisions-2026-H1.md`
+- **maxStars catalog 5→3** (2026-07-14, commit 68284858) — système étoiles global recalibré à 3 paliers pour tous les jeux — voir `archive/decisions-2026-H1.md`
+- **Système figeage obligatoire** (origine 2026-05-11/2026-05-21, consolidé 2026-05-21 "Processus décisions figées") — `studio/minijeux/docs/jeux/figees/mj-XX.md` = LOI protection régression — voir `archive/decisions-2026-H1.md`
+- **`catalog.js` = source unique de vérité menu** (référencé en continu depuis EP-070/2026-07-07, ex. ligne 293 decisions.md « via champ `status` catalog.js ») — voir `archive/decisions-2026-H1.md`
+- **Vocab lieux Max** (2026-05-08, équivalent D-021 de l'ancien `pmo/backlog.md`) — dodo = Centre bus · garage = Réparation · terminus = Village des bus (réservé) — voir `archive/decisions-2026-H1.md`
+- **Mutualisation UI (composants partagés mp-theme.css)** (2026-07-13/07-18, EP-074) — composants UI communs (.mp-pill, .mp-dots, célébrations, frise) centralisés dans mp-theme.css, zéro variante locale — voir `archive/decisions-2026-H1.md`
+
 ---
-name: Règles jeu non-négociables MaxPlay
-description: Contraintes UX, pédagogie, mécaniques de jeu et design pour Max (3.5-4 ans) — jamais dérogées
-type: project
----
 
-## Règles UX (non-négociables)
+*Aucune entrée datée ≥ 2026-08-01 dans l'ancien `pmo/decisions.md` à la date de cette migration (2026-09-03) — toutes les décisions du fichier source sont antérieures et vivent dans `archive/decisions-2026-H1.md`.*
 
-- **Zones tap** : minimum 80×80 px (idéal 120×120 px) sur toutes les zones interactives
-- **Feedback** : visuel + sonore sous 200 ms après interaction (objectif < 100ms)
-- **Zéro pénalité punitive** : bounce doux sur erreur, jamais de son négatif fort
-- **Sessions** : 3–8 min max — plusieurs micro-épisodes de 3-5 min variés > un long bloc
-- **Texte** : jamais seul — toujours icône + audio (Max lit partiellement)
-- **Menus** : max 2 niveaux de profondeur
-- **Back button** : toujours visible (forme = bus qui rentre au dépôt)
-- **Finir sur un succès** : ne jamais terminer une session en pleine difficulté — encodage mémoire lié à l'état émotionnel positif
+## Designs validés (déplacés verbatim depuis `memory/rules.md`, daté d'origine indéterminé — antérieur à 2026-07)
 
-## Règles Audio (Production) — Validées 2026-07-05
+> ⚠️ Vision produit ancienne (Hub Ville / École des Chiffres / Core Loop Garage) non appliquée dans le menu actuel (accordéon catégories, `catalog.js`). Conservée comme design validé historique, pas comme état courant — voir `memory/state.md` pour l'état réel du menu.
 
-**Tout SFX/MP3 destiné au site DOIT avoir ~250 ms de silence en tête.**
-
-**Raison** : Sur mobile/tablette (surtout Bluetooth), la sortie audio met 100-300 ms à se réveiller → l'attaque du son est coupée. Symptôme constaté par Papa Yann sur les 64 SFX ElevenLabs (2026-07-05), corrigé par `ffmpeg -af "adelay=250:all=1"` sur tout le lot (commit 79212a26).
-
-**Commande canonique** :
-```bash
-ffmpeg -y -i in.mp3 -af "adelay=250:all=1" -codec:a libmp3lame -b:a 128k out.mp3
-```
-
-**Scope** : s'applique à toute future génération de sons (ElevenLabs text-to-sound-effects ou autres) AVANT commit sur `site/sounds/`.
-
-**Vérification** : lire quelques secondes de silence au démarrage, puis l'attaque nette du son (pas de coupure).
-
-## Profil Max (3.5-4 ans)
+### Profil Max (3.5-4 ans)
 
 | Domaine | Niveau | Prochaine étape |
 |---------|--------|-----------------|
@@ -44,7 +33,7 @@ ffmpeg -y -i in.mp3 -af "adelay=250:all=1" -codec:a libmp3lame -b:a 128k out.mp3
 - Passions : bus Villejuif, dépanneuse "Depann2000", dinosaures, drapeaux, Tayo, Totoro, Stitch
 - Réaction forte aux sons inattendus · aime trier · sessions courtes
 
-## Mécaniques de lecture (pour Max)
+### Mécaniques de lecture (pour Max)
 
 Phase alphabétique partielle = lit les premières lettres, infère le reste. **Exploiter sans bloquer :**
 
@@ -59,7 +48,7 @@ Phase alphabétique partielle = lit les premières lettres, infère le reste. **
 **Règle pédagogique :** Jamais de quiz formel. Environnement qui invite, Max choisit. Montessori-aligné.
 **Phonique française :** son d'abord (phonème → graphème), PAS le nom de la lettre (A, B, C).
 
-## Maths contextuelles (niveau milliers)
+### Maths contextuelles (niveau milliers)
 
 Ne jamais présenter les maths comme des maths. Toujours dans le contexte :
 
@@ -70,7 +59,7 @@ Ne jamais présenter les maths comme des maths. Toujours dans le contexte :
 | "Le train a 1000, __, 3000 passagers — quel est le suivant ?" | Suite numérique |
 | "30 passagers montent, 12 descendent — combien reste-t-il ?" | Soustraction contextuelle |
 
-## Core Loop : Le Garage (progression centrale)
+### Core Loop : Le Garage (progression centrale)
 
 - Chaque mini-jeu complété → nouveau véhicule gagné → visible dans le Garage
 - Véhicules non-débloqués = **silhouettes vides** → motivation intrinsèque (compléter la collection)
@@ -80,7 +69,7 @@ Ne jamais présenter les maths comme des maths. Toujours dans le contexte :
 
 Véhicules cibles : lignes métro 1→14, trams T1→T13, bus iconiques (21, 91, 183...), RER A/B/C
 
-## Architecture cible : La Ville de Max
+### Architecture cible : La Ville de Max
 
 ```
 🏙️ Hub Ville (carte scrollable simple)
@@ -93,7 +82,7 @@ Véhicules cibles : lignes métro 1→14, trams T1→T13, bus iconiques (21, 91,
 
 **Règle hub :** 4-6 destinations max. Nouvelles zones = collection débloquée. Pas ouvert total (surcharge) ni purement linéaire (pas d'agentivité).
 
-## Quick Win validé : Trie les Bus
+### Quick Win validé : Trie les Bus
 
 ```
 6 bus SVG arrivent de gauche en file
@@ -105,7 +94,7 @@ Véhicules cibles : lignes métro 1→14, trams T1→T13, bus iconiques (21, 91,
 Variantes : trier par numéro, taille, jour/nuit, ligne RATP
 ```
 
-## Mécanique déduction audio-first
+### Mécanique déduction audio-first
 
 ```
 Afficher 3 bus → jouer audio "C'est un bus rouge" → Max élimine
@@ -114,7 +103,7 @@ Afficher 3 bus → jouer audio "C'est un bus rouge" → Max élimine
 ```
 Fonctionne identiquement pour drapeaux et dinosaures. Même code, contenu différent.
 
-## 10 Règles d'or pédagogiques
+### 10 Règles d'or pédagogiques
 
 1. **Physique d'abord** — les manipulatifs concrets > abstraction digitale ou symbolique
 2. **Son du succès, pas de l'échec** — finir sur une réussite, jamais en pleine frustration
@@ -127,7 +116,7 @@ Fonctionne identiquement pour drapeaux et dinosaures. Même code, contenu diffé
 9. **Sécurité émotionnelle d'abord** — un enfant dysrégulé n'apprend pas
 10. **La progression visible** — Max doit voir sa propre croissance (pas juste qu'on lui dise)
 
-## Gamification : ce qui marche vs ce qui ne marche pas
+### Gamification : ce qui marche vs ce qui ne marche pas
 
 | Mécanique | ✅/❌ | Raison |
 |-----------|------|--------|
@@ -140,7 +129,7 @@ Fonctionne identiquement pour drapeaux et dinosaures. Même code, contenu diffé
 | Classements | ❌ | **Jamais < 6 ans** — provoque pleurs, compétition néfaste |
 | Récompenses promises | ❌ | **Danger** — tue la motivation intrinsèque |
 
-## Design validés
+### Design validés (bus stop)
 
 - **Fiche bus stop** : voir `memory/design_bus_stop.md`
   - Couleur block haut + bas noir 2/3 cases LED + 1/3 texte "min"

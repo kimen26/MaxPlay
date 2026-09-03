@@ -1,3 +1,5 @@
+> Archive verbatim — déplacé depuis pmo/decisions.md le 2026-09-03 (HO-MJ-01). Ne pas réécrire.
+
 # Décisions de fond — PMO Game
 
 > **Règle :** Une décision ici est DÉFINITIVE jusqu'à nouvelle décision explicite datée.

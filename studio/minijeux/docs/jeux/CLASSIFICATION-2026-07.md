@@ -1,6 +1,6 @@
 # CLASSIFICATION 100% DES MINI-JEUX — état des lieux 2026-07-14
 
-> ⚠️ **SNAPSHOT DATÉ 2026-07-14 — ne reflète plus le menu.** La source vivante est [`site/js/catalog.js`](../../../site/js/catalog.js) (purge 2026-08-10 : 23 jeux supprimés de site/ — mj-01, mj-04, mj-05, mj-08, mj-11, mj-12, mj-13b, mj-16, mj-17, mj-23, mj-25, mj-26, mj-27, mj-29, mj-33, mj-36, mj-41, mj-43, mj-44, mj-45, mj-58, mj-gold-a, mj-gold-b — trace : `pmo/backlog.md`). Les analyses ci-dessous des jeux purgés sont conservées comme matière de design (« on garde l'idée »).
+> ⚠️ **SNAPSHOT DATÉ 2026-07-14 — ne reflète plus le menu.** La source vivante est [`site/js/catalog.js`](../../../site/js/catalog.js) (purge 2026-08-10 : 23 jeux supprimés de site/ — mj-01, mj-04, mj-05, mj-08, mj-11, mj-12, mj-13b, mj-16, mj-17, mj-23, mj-25, mj-26, mj-27, mj-29, mj-33, mj-36, mj-41, mj-43, mj-44, mj-45, mj-58, mj-gold-a, mj-gold-b — trace : `memory/archive/backlog-fermes-2026.md`). Les analyses ci-dessous des jeux purgés sont conservées comme matière de design (« on garde l'idée »).
 >
 > Produit par 3 agents de relecture (1 fiche par jeu, gameplay vérifié dans le code) + synthèse main.
 > 41 jeux du catalogue actif (mj-01/13b/14 hidden exclus). Fiches détaillées en annexe.

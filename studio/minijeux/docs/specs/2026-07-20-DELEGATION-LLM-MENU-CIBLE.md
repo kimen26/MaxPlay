@@ -25,7 +25,7 @@
   3. Vignette CSS dans `site/css/mur.css`. ⚠️ **Règle d'or vignettes : jamais de padding/gap en % dans une `.vig`** (le % se résout contre le parent, pas la vignette) — px uniquement ; items internes en % OK.
 - **Validation** : screenshot Chrome headless à chaque jeu (`--virtual-time-budget=3000`, slashes forward, sortie `temp/`), + `node studio/minijeux/tests/audit-gabarit.mjs mj-XX` si dispo. Vérifier le screenshot à l'œil avant de dire « fini ».
 - **Git** : commit par jeu ou petit lot, message `feat(<copain>): …`. Ne jamais committer les fichiers des autres sessions (vérifier `git status` avant).
-- **PMO** : en fin de session, graver une entrée dans `studio/minijeux/pmo/sprint-log.md` (livré + écarts + leçons).
+- **PMO** : en fin de session, graver une entrée dans `studio/minijeux/memory/MEMORY.md` § Journal (livré + écarts + leçons).
 - Attribution des IDs neufs : prochain libre = **mj-50** (46-49 déjà attribués, cf. ci-dessous).
 
 ---
@@ -115,4 +115,4 @@ mj-24 (cache-cache) · mj-28 (lampe magique) · mj-19 (trouve-le) · mj-18 (poti
 
 ## 7. Remontée de décisions
 
-Toute question produit (paliers, fun, « est-ce que ça marche pour un enfant de 4 ans ») → la poser à PY en fin de livraison, en texte dans la réponse (JAMAIS de formulaire dynamique). Après correction de PY → graver la leçon dans `studio/minijeux/pmo/backlog.md`.
+Toute question produit (paliers, fun, « est-ce que ça marche pour un enfant de 4 ans ») → la poser à PY en fin de livraison, en texte dans la réponse (JAMAIS de formulaire dynamique). Après correction de PY → graver la leçon dans `studio/minijeux/memory/LESSONS.md`.

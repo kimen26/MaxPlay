@@ -8,7 +8,7 @@
 
 | Quoi | Statut |
 |------|--------|
-| Count jeux / actifs / retirés | **Ne pas recopier ici** → [`pmo/INVARIANTS.md`](../../pmo/INVARIANTS.md) § État déploiement |
+| Count jeux / actifs / retirés | **Ne pas recopier ici** → [`memory/INVARIANTS.md`](../../memory/INVARIANTS.md) § État déploiement |
 | Menu (source de vérité) | [`site/js/catalog.js`](../../../../site/js/catalog.js) — par catégories, `status:'live'` |
 | Vue d'ensemble à jour | [CLASSIFICATION-2026-07.md](CLASSIFICATION-2026-07.md) |
 | Stack | HTML vanilla · `site/js/` partagé · gabarit `mj-shell.js` · GitHub Pages |
@@ -36,7 +36,7 @@
 | [_archive/GAMES_SPECS.md](_archive/GAMES_SPECS.md) | ⚠️ **ARCHIVÉ / périmé** (déplacé en `_archive/` 2026-07-19). Identité d'un jeu → figées/ + CLASSIFICATION |
 | [game-ideas.md](game-ideas.md) | Backlog créatif brut (non priorisé) |
 | [mj-34-35-36-specs.md](mj-34-35-36-specs.md) | Specs des jeux 34/35/36 |
-| [REVUE-JEUX-2026-07.md](REVUE-JEUX-2026-07.md) | Revue complète menu/jeux par Papa Yann (source de `../../pmo/audits/2026-07-19-menu-parcours.md`) |
+| [REVUE-JEUX-2026-07.md](REVUE-JEUX-2026-07.md) | Revue complète menu/jeux par Papa Yann (source de `../../memory/audits/2026-07-19-menu-parcours.md`) |
 | [../STANDARD-MJ.md](../STANDARD-MJ.md) | **Gabarit visuel de référence** gravé 2026-06-09 — incarné par `site/js/mj-golden.js` + `css/mp-theme.css` (jeux gold-a/b supprimés à la purge 2026-08-10) |
 | [../specs/ARCHI-COMPTES-PROFILS.md](../specs/ARCHI-COMPTES-PROFILS.md) | Spec architecture comptes/profils enfant |
 | [../specs/NORME-i-REGLES.md](../specs/NORME-i-REGLES.md) | Norme des panneaux règle ❓/🧑‍🔬 |

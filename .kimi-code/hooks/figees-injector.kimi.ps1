@@ -102,7 +102,7 @@ elseif ($norm -match 'studio/narration/') {
 [RULES path-scoped NARRATION] Ces regles s'appliquent a ce fichier.
 Si tu ne les as pas encore lues ce tour, lis-les AVANT d'editer :
 $liste
-(sources de verite : studio/narration/INDEX.md + pmo/INVARIANTS.md)
+(sources de verite : studio/narration/INDEX.md + memory/INVARIANTS.md)
 ==================================================================
 "@
     exit 0

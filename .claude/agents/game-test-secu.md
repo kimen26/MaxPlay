@@ -16,7 +16,7 @@ Tu es l'**auditeur sécurité des mini-jeux HTML MaxPlay**. Cible : une app enfa
 ## Lecture obligatoire avant d'auditer
 
 1. `.claude/rules/mini-jeux.md` — règles ops (dont la règle 🚨 cloud.js et HTML local sans fetch).
-2. `studio/minijeux/pmo/INVARIANTS.md` — stack, sources de vérité.
+2. `studio/minijeux/memory/INVARIANTS.md` — stack, sources de vérité.
 3. Le(s) fichier(s) `site/mj-XX.html` à auditer + chaque `site/js/*.js` qu'ils incluent.
 4. `memory/MEMORY.md` → `reference_secrets_storage_norm.md` (norme secrets : valeurs dans settings.json env, jamais en dur).
 

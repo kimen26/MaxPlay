@@ -14,95 +14,38 @@ paths:
 
 > *L'univers vit à travers les enfants qui sont nés dedans. Il ne s'explique pas, il se révèle par touches.*
 
-- **JAMAIS** nommer un système dans le texte canon : "Conscience Créative", "Totems Janus", "Égregores", "Gardiens"
-- **JAMAIS** étiqueter un ennéatype : "Pierrot, Six observateur, ressent..."
-- **JAMAIS** expliquer la cosmologie en passage didactique
-- **Le monde se révèle par** : objets du quotidien, gestes, sons, présences animales, sensibilité
-
-Source : `feedback_narration_implicite.md`.
+**JAMAIS** : nommer un système dans le texte canon ("Conscience Créative", "Totems Janus", "Égregores", "Gardiens") · étiqueter un ennéatype ("Pierrot, Six observateur…") · expliquer la cosmologie en passage didactique. Le monde se révèle par objets du quotidien, gestes, sons, présences animales.
 
 ## Patte narrative B+D+C
 
-**B**eauté + **D**ouceur + **C**ycle :
-- **Kishōtenketsu** (japonais) — pas d'antagoniste, pas de conflit dramatique
-- **Tranche de vie** — moment, objet, sensation au centre
-- **Cycle** — retour, rituel, saison qui revient
+**B**eauté + **D**ouceur + **C**ycle : Kishōtenketsu (pas d'antagoniste/conflit dramatique) · tranche de vie · cycle (retour, rituel, saison). Détail : [`equipe/patte-narrative-maxplay.md`](../../studio/narration/equipe/patte-narrative-maxplay.md).
 
-Détail : [`studio/narration/equipe/patte-narrative-maxplay.md`](../../studio/narration/equipe/patte-narrative-maxplay.md).
+## Cosmologie (matière vivante uniquement, JAMAIS texte canon)
 
-## Cosmologie (matière vivante uniquement)
-
-| Concept | Manifestation visible dans les histoires |
-|---------|------------------------------------------|
-| Conscience Créative | Présences animales, rêves, sensations |
-| Totems Janus | Objets familiers qui "tiennent" un lieu |
-| Égregores | Atmosphère collective (cour de récré, famille) |
-| Gardiens | Adultes calmes qui veillent sans dire |
-| Grand Cycle 22k ans | Saisons, retours, fêtes périodiques |
-| Vibration | Frisson, harmonie, geste juste vs faux |
-| 9 sensibilités | Façons de réagir des enfants (sans les nommer) |
-
-Tout cela vit dans [`univers/fondements/`](../../studio/narration/univers/fondements/) — référence auteur, JAMAIS texte canon.
+Conscience Créative, Totems Janus, Égregores, Gardiens, Grand Cycle 22k ans, Vibration, 9 sensibilités — vivent dans [`univers/fondements/`](../../studio/narration/univers/fondements/), se manifestent dans les histoires sans être nommés (présences, atmosphère, gestes justes).
 
 ## Direction narrative actuelle (2026-05-12)
 
-- **Monde sobre, merveilleux discret** vu à travers l'enfant né dedans
-- **Post-Éveil, Printemps de l'Éveil** — cadre temporel
-- **Nom univers** non tranché — voir [`univers/meta/nom-candidats.md`](../../studio/narration/univers/meta/nom-candidats.md)
-- **Arc 1** (Objet & Décor) en cours — priorité
-- **Arc 2** (Parole) en pause
-- **Direction Nono validée**
+Monde sobre, merveilleux discret vu à travers l'enfant né dedans. Post-Éveil. Nom univers non tranché : [`univers/meta/nom-candidats.md`](../../studio/narration/univers/meta/nom-candidats.md). Arc 1 (Objet & Décor) en cours ; Arc 2 (Parole) en pause.
 
 ## Doctrine cross-culture
 
-Source complète : [`cross-culture/doctrine.md`](../../studio/narration/cross-culture/doctrine.md).
+Détail complet : [`cross-culture/doctrine.md`](../../studio/narration/cross-culture/doctrine.md). Résumé : chaque culture vit sa version localement complète (bulles) · croisement de cultures = douceur, jamais friction · pas de lieu générique sans ancrage local, pas de faune décor, pas d'onomatopée FR plaquée ailleurs.
 
-### Bulles
-Chaque culture vit sa version localement complète. Une histoire FR n'a pas besoin de mentionner les autres cultures.
+Variantes par culture : [`castings-nationaux/`](../../studio/narration/cross-culture/castings-nationaux/INDEX.md) · [`onomatopees/`](../../studio/narration/cross-culture/onomatopees/INDEX.md) (37 validées) · [`faune-flore/`](../../studio/narration/cross-culture/faune-flore/INDEX.md), [`lieux-locaux/`](../../studio/narration/cross-culture/lieux-locaux/INDEX.md), [`coutumes-jeux-aliments/`](../../studio/narration/cross-culture/coutumes-jeux-aliments/INDEX.md) (à peupler).
 
-### Croisements
-Quand 2 cultures se rencontrent dans une histoire → moment de douceur, jamais de friction.
+## Plan éditorial
 
-### Anti-cliché
-- ❌ Lieux génériques ("le marché", "l'école") sans ancrage local concret
-- ❌ Faune décor (un chat n'importe où) — chaque culture a sa faune locale
-- ❌ Onomatopée FR plaquée sur scène non-FR
+Saison 1, 4 arcs — détail : [`saisons/INDEX.md`](../../studio/narration/saisons/INDEX.md).
 
-### Variantes par culture
-- **Prénoms** : [`cross-culture/castings-nationaux/`](../../studio/narration/cross-culture/castings-nationaux/INDEX.md)
-- **Onomatopées** (37 validées) : [`cross-culture/onomatopees/`](../../studio/narration/cross-culture/onomatopees/INDEX.md)
-- **Faune-flore** : [`cross-culture/faune-flore/`](../../studio/narration/cross-culture/faune-flore/INDEX.md) (à peupler)
-- **Lieux locaux** : [`cross-culture/lieux-locaux/`](../../studio/narration/cross-culture/lieux-locaux/INDEX.md) (à peupler)
-- **Coutumes-jeux-aliments** : [`cross-culture/coutumes-jeux-aliments/`](../../studio/narration/cross-culture/coutumes-jeux-aliments/INDEX.md) (à peupler)
-- **Saisons-climat** : [`cross-culture/saisons-climat/`](../../studio/narration/cross-culture/saisons-climat/INDEX.md) (à peupler)
+## Règle INDEX (forme)
 
-## Plan éditorial (saisons)
+Un INDEX ne contient JAMAIS de contenu canon, seulement des pointeurs. Fichier stable > 400 lignes → scinder thématiquement.
 
-```
-Saison 1 — 4 arcs
-├── Arc 1 (Objet & Décor)    ← en cours, 10 épisodes
-├── Arc 2 (Parole)            ← en pause
-├── Arc 3 (Univers spécifique) ← pas avant
-└── Arc 4 (Pouvoirs Wex)      ← fil rouge fin de saison
-```
+## Anti-patterns
 
-Détail : [`saisons/INDEX.md`](../../studio/narration/saisons/INDEX.md).
-
-## Règles INDEX (forme)
-
-> Un INDEX ne contient JAMAIS de contenu canon, seulement des pointeurs.
-> Fichier stable > 400 lignes → scinder thématiquement.
-
-## Anti-patterns sur univers/cross-culture
-
-- ❌ Texte qui explique le monde (passage didactique)
-- ❌ Ennéatype nommé ou étiqueté
-- ❌ Système cosmologique nommé dans le texte canon
-- ❌ Onomatopée d'une culture posée sur scène d'une autre
-- ❌ Lieu générique sans ancrage local
-- ❌ Variantes de Wex par culture (Wex est invariant)
-- ❌ INDEX qui contient du contenu canon
+❌ Texte qui explique le monde · ❌ Ennéatype nommé/étiqueté · ❌ Système cosmologique nommé en canon · ❌ Onomatopée d'une culture sur une autre · ❌ Lieu générique sans ancrage · ❌ Variante de Wex par culture · ❌ INDEX avec contenu canon.
 
 ---
 
-_Refonte 2026-05-13 : règles univers/cross-culture/saisons extraites pour auto-chargement path-scoped._
+_Refonte 2026-05-13, allégée HO-G07 (2026-09-03) : aucun chemin `pmo/` (déjà propre)._

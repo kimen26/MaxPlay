@@ -23,5 +23,5 @@ Tu es l'agent rapide du projet MaxPlay. Tu réponds vite à des questions simple
 ## Fichiers à consulter
 
 - `memory/MEMORY.md` — état global du projet
-- `studio/minijeux/pmo/backlog.md` — tâches et épics
+- `studio/minijeux/memory/TODO.md` — tâches et épics
 - `CLAUDE.md` — carte de la doc

@@ -39,7 +39,7 @@ Décidé par Papa Yann le 2026-04-30 — saturation face aux réponses-menu :
 
 Lis dans cet ordre. C'est ton **data pull** obligatoire. Tu ne poses pas une question sans avoir ces données en tête :
 
-1. `studio/narration/pmo/INDEX.md` — **état instantané** : histoires en cours, prochaine action prioritaire
+1. `studio/narration/memory/MEMORY.md` — **état instantané** : histoires en cours, prochaine action prioritaire
 2. `studio/narration/equipe/memoire-conseiller.md` — ce que vous avez déjà décidé ensemble
 3. `studio/narration/stories/INDEX.md` — quelles histoires existent, qui a eu son moment
 4. `studio/narration/personnages/INDEX.md` + `lookup.yml` — qui existe, qui manque, qui a évolué

@@ -1,7 +1,8 @@
 # Stop hook — pmo-check.ps1 (généralisé 3 pôles, remplace narration-pmo-check.ps1 le 2026-07-19)
 # Si le tour a modifié des fichiers d'un pôle (JEU / DINO / NARRATION) SANS trace de gouvernance,
 # bloque la fin de tour. Deux façons de satisfaire le check, par pôle :
-#   a) un fichier studio/<pole>/pmo/** (ou figees) a été édité ce tour (capture directe main agent — voie par défaut)
+#   a) un fichier de gouvernance du pôle a été édité ce tour (capture directe main agent — voie par défaut)
+#      JEU/NARRATION : studio/<pole>/memory/** ; DINO (transition, pmo/ pas encore migré) : studio/dino/{pmo,memory,figees}/**
 #   b) l'agent <pole>-pmo a été invoqué ce tour
 # Décision 2026-07-19 : capture immédiate par le main agent = voie par défaut (REX PMO menteurs).
 
@@ -22,13 +23,13 @@ if ([string]::IsNullOrEmpty($transcript_path) -or -not (Test-Path -LiteralPath $
 $poles = @(
     @{ name = "NARRATION"; agent = "narration-pmo";
        touch = @("studio[\\/]narration[\\/]", "\.claude[\\/]agents[\\/]narration-");
-       trace = @("studio[\\/]narration[\\/]pmo[\\/]") },
+       trace = @("studio[\\/]narration[\\/]memory[\\/]") },
     @{ name = "DINO"; agent = "dino-pmo";
        touch = @("studio[\\/]dino[\\/]", "dev-dinos", "dinos-data", "audio[\\/]dinos", "img[\\/]dinos", "\.claude[\\/]agents[\\/]dino-");
-       trace = @("studio[\\/]dino[\\/]pmo[\\/]", "studio[\\/]dino[\\/]figees[\\/]") },
+       trace = @("studio[\\/]dino[\\/]pmo[\\/]", "studio[\\/]dino[\\/]memory[\\/]", "studio[\\/]dino[\\/]figees[\\/]") },
     @{ name = "JEU"; agent = "game-pmo";
        touch = @("studio[\\/]minijeux[\\/]", "site[\\/]mj-", "site[\\/]tile-tools[\\/]", "\.claude[\\/]agents[\\/]game-");
-       trace = @("studio[\\/]minijeux[\\/]pmo[\\/]", "studio[\\/]minijeux[\\/]docs[\\/]jeux[\\/]figees[\\/]") }
+       trace = @("studio[\\/]minijeux[\\/]memory[\\/]", "studio[\\/]minijeux[\\/]docs[\\/]jeux[\\/]figees[\\/]") }
 )
 
 foreach ($p in $poles) { $p.touched = $false; $p.traced = $false; $p.invoked = $false }
@@ -85,11 +86,14 @@ foreach ($p in $poles) {
 
 if ($missing.Count -gt 0) {
     $names = ($missing | ForEach-Object { $_.name }) -join " + "
-    $details = ($missing | ForEach-Object { "  - $($_.name) : graver TOI-MEME une entree dans studio/$(if($_.name -eq 'JEU'){'minijeux'}elseif($_.name -eq 'DINO'){'dino'}else{'narration'})/pmo/ (sprint-log a minima ; decisions/backlog selon le cas) OU invoquer l'agent $($_.agent)." }) -join "`n"
+    $details = ($missing | ForEach-Object {
+        if ($_.name -eq 'DINO') { "  - DINO : graver TOI-MEME une entree dans studio/dino/pmo/ (sprint-log a minima ; decisions/backlog selon le cas) OU invoquer l'agent $($_.agent)." }
+        else { $dir = if ($_.name -eq 'JEU') { 'minijeux' } else { 'narration' }; "  - $($_.name) : graver TOI-MEME dans studio/$dir/memory/ : TODO.md / DECISIONS.md / LESSONS.md / MEMORY.md § Journal (a minima) OU invoquer l'agent $($_.agent)." }
+    }) -join "`n"
     $msg = @"
 [hook pmo-check] Fichiers $names modifies ce tour SANS trace de gouvernance.
 
-Regle 2026-07-19 (capture immediate) : toute session qui touche un pole laisse une trace dans son pmo/ AVANT de rendre la main.
+Regle 2026-07-19 (capture immediate) : toute session qui touche un pole laisse une trace dans sa gouvernance AVANT de rendre la main (memory/ pour JEU/NARRATION, pmo/ pour DINO en transition).
 $details
 
 Idees/decisions de Papa Yann evoquees ce tour et non gravees = a capturer maintenant (1 ligne backlog suffit).

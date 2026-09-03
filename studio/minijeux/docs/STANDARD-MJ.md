@@ -81,6 +81,40 @@ sounds.js · victory-sounds.js · feedback.js · [bus-svg.js si bus] · data.js
 
 **`comments.js` est OBLIGATOIRE** (validé Papa Yann 2026-06-11) : injecte la **zone commentaire 💬 dans l'entête** (le parent note en live ce qui marche/bug, dictée vocale incluse). Fait partie du PILIER 1 (entête = flèche ← + 💬 + emoji + titre).
 
+> 🚨 **Règle `cloud.js` NON NÉGOCIABLE** (gravée 2026-07-14, audit Supabase) : toute page qui charge `comments.js` (bulle 💬) OU appelle `Cloud.schedulePush()` DOIT charger `js/cloud.js` **après** `js/tracker.js`. La garde `window.Cloud && …` ne crash pas si cloud.js manque — elle **avale l'échec en silence** : les commentaires restent en localStorage et ne remontent jamais en base. Incident : 32 mini-jeux + index.html + lecture.html avaient la bulle 💬 sans cloud.js → 0 commentaire poussé depuis le début. Vérif : `grep -L cloud.js $(grep -rl comments.js site/*.html)` doit être VIDE.
+
+## Gabarit `js/mj-shell.js` (décision Papa Yann 2026-07-14)
+
+**UNE inclusion charge tout le cadre standard** (thème, golden, panneau 🧑‍🔬, tracking, cloud, célébrations) dans le bon ordre — plus jamais la liste de 14 scripts à la main :
+
+```html
+<body>
+<div id="app"><!-- markup du jeu (le .hdr/#pips/consigne sont créés par le gabarit s'ils manquent) --></div>
+<script src="js/bus-svg.js"></script>   <!-- libs SPÉCIFIQUES au jeu seulement -->
+<script src="js/data.js"></script>
+<script src="js/mj-shell.js"></script>  <!-- LE GABARIT -->
+<script>
+MJ.ready(function () {
+  const shell = MJ.init({
+    id: 'mj-XX', emoji: '🎯', titre: 'Titre du jeu',
+    golden: true,              // piste 4/6/8 + étoiles dans la piste (sinon false)
+    consigne: true,            // barre consigne (texte centré, tap = réécouter, audio AUTO)
+    onRepeat: fn,              // optionnel : audio custom au tap consigne (MP3 voix réelle)
+    regle: { picto, texte, etapes: [{t, d}…] }   // panneau savant fou 🧑‍🔬 (v3)
+  });
+  shell.setConsigne('…');      // met à jour + lit tout seul (false en 2e arg = silencieux)
+  // gameplay : shell.G.notePip(i, attempts, fromEl) · shell.G.showEnd({replayUrl})
+});
+</script>
+</body>
+```
+
+- Le gabarit garantit `cloud.js` après `tracker.js` (règle ci-dessus) → avis 💬 → table Supabase `annotations`.
+- Panneau règle : s'ouvre TOUT SEUL à la 1ʳᵉ partie. Les specs harnais doivent le fermer (`#ri-ok`) avant de dérouler le jeu.
+- ⚠ Le CONTENU du jeu (mécanique, aides 💡, difficulté par étoile) demande une réflexion cohérente PAR JEU — le gabarit ne norme que le cadre.
+
+**Header MILITAIRE** (v2, Design System juillet 2026, remplace le gabarit inline v1) : garder le markup `.hdr` à la lettre, **zéro règle CSS `.hdr` locale** (`mp-theme.css` fait autorité). Ne jamais créer `.game-header`, `.header-text`, `.header-title`, `.header-sub` ou variante inventée. `back-button.js` injecte automatiquement la flèche ← ronde 44px.
+
 ## Célébrations disponibles (PILIER 5)
 
 | Variante | Fonction | Quand |

@@ -150,7 +150,7 @@ Playwright sur `site/dev-dinos.html` : `DINOS.length`, `DINO_EXTRAS`, `DINO_AUDI
 - `studio/dino/pmo/INVARIANTS.md` — les counts (seul fichier autorisé à porter des chiffres)
 - `node studio/dino/content/scripts/export/_gen-etat-dinos.cjs` — jamais tenu à la main
 
-⚠️ Un fichier PMO touché hors pôle DINO (ex. un agent narration) → tracer **aussi** dans `studio/narration/pmo/`, sinon le hook Stop bloque.
+⚠️ Un fichier touché hors pôle DINO (ex. un agent narration) → tracer **aussi** dans `studio/narration/memory/` (JEU/NARRATION ont migré `pmo/` → `memory/`, DINO reste `pmo/`), sinon le hook Stop bloque.
 
 Commit par palier (data+audio, puis images, puis PMO) et **push** — Papa Yann teste via GitHub Pages. Chemins explicites, jamais `git add -A` (sessions concurrentes).
 

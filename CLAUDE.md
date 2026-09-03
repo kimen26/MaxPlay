@@ -13,14 +13,13 @@
 | référentiel de contenu · dette de contenu · dérive texte/audio · quel texte est lu où · contrat TTS/EL/Lunii · tableau de bord contenu | **TRANSVERSE** | [`studio/referentiel/README.md`](studio/referentiel/README.md) → plan [`studio/referentiel/docs/ARCHI-REFERENTIEL-CONTENU.md`](studio/referentiel/docs/ARCHI-REFERENTIEL-CONTENU.md) |
 | idée brute · dump · brainstorm sans contexte clair | **?** | Demander : "C'est pour le jeu, les dinos ou les histoires ?" |
 
-> ⚠️ **DINO est transverse** : son code est déployé depuis `site/` (dev-dinos.html, dinos-data.js, audio/dinos, img/dinos) mais sa gouvernance vit dans `studio/dino/`. La rule [`.claude/rules/dino.md`](.claude/rules/dino.md) charge les règles dino où que vive le fichier.
+> ⚠️ **DINO est transverse** : code déployé depuis `site/` (dev-dinos.html, dinos-data.js, audio/dinos, img/dinos), gouvernance dans `studio/dino/`. La rule [`.claude/rules/dino.md`](.claude/rules/dino.md) charge les règles dino où que vive le fichier.
 
-> 🏛️ **Modèle : 1 plateforme · N domaines autonomes.** MaxPlay = une **app de restitution** (PWA déployée depuis `site/` → GitHub Pages) qui héberge des domaines **indépendants à GED/PMO propres** : mini-jeux (`studio/minijeux/`) · dino (`studio/dino/`, déployé dans site/) · narration (`studio/narration/`, descendra dans site/ quand prête) · tile/Max Adventure (futur). `studio/minijeux/` porte 2 casquettes — **plateforme** (menu, stars, unlock, CI) **+** domaine **mini-jeux** — OK tant qu'ils dominent ; sinon extraire une couche plateforme. Tenant déployé ailleurs = pôle d'autoring + **rule path-scoped** (pattern dino, validé). **INBOX** : 2 boîtes (game, narration), le PMO d'accueil **trie par domaine → bon backlog**. Pas de prolifération.
+> 🏛️ **Modèle : 1 plateforme · N domaines autonomes.** MaxPlay = une app de restitution (PWA `site/` → GitHub Pages) qui héberge des domaines indépendants à GED/PMO propres : mini-jeux, dino (déployé dans site/), narration (descendra dans site/ quand prête), tile/Max Adventure (futur). Tenant déployé ailleurs = pôle d'autoring + rule path-scoped (pattern dino). INBOX 2 boîtes (game, narration), triées par domaine.
 
-**Étape 2 — Annoncer avant d'agir :**
-*"Mode [JEU/NARRATION] — je charge [fichier] puis j'agis."*
+**Étape 2 — Annoncer avant d'agir :** *"Mode [JEU/NARRATION] — je charge [fichier] puis j'agis."*
 
-> **Note loading** : `studio/minijeux/CLAUDE.md` et `studio/narration/CLAUDE.md` sont **chargés automatiquement** par Claude Code dès qu'un fichier de leur sous-arbre est touché. Ce CLAUDE.md racine reste le SEUL re-injecté après `/compact`.
+> `studio/minijeux/CLAUDE.md` et `studio/narration/CLAUDE.md` sont chargés automatiquement dès qu'un fichier de leur sous-arbre est touché. Ce CLAUDE.md racine est le SEUL re-injecté après `/compact`.
 
 ---
 
@@ -49,25 +48,18 @@ MaxPlay/
 │   └── settings.json     ← config hooks + permissions
 ```
 
----
-
 ## Profil Max
 
 3.5-4 ans · chiffres jusqu'aux milliers · lecture phonétique · tablette tactile.
 Passions : bus Villejuif, animaux, drapeaux, loups, Tayo, Totoro/Ghibli, Stitch.
 Origines brésiliennes. Détails : [`memory/MAX_PROFILE.md`](memory/MAX_PROFILE.md).
 
----
-
 ## Principes transverses
 
 - **Simplicity First** · **No Laziness** · **Minimal Impact** · Plan mode pour 3+ étapes
-- **JAMAIS de `AskUserQuestion`** (formulaire dynamique), ni en JEU ni en NARRATION — poser les questions **en texte dans la réponse**, façon chatbot (« Tu préfères A ou B ? »). Le picker natif ne se relaie pas sur le bot Telegram.
-- Toujours lire l'INDEX du pôle avant de répondre sur un sujet de fond
-- Ne jamais répondre de mémoire sur un chiffre/casting/voice_id — invoquer le PMO en mode RECHERCHE
-- Après correction utilisateur → leçon dans `memory/LESSONS.md` (transverse) ou `studio/<pôle>/memory/LESSONS.md` (pôle, une fois converti)
-
----
+- **JAMAIS de `AskUserQuestion`** — questions **en texte dans la réponse** (« Tu préfères A ou B ? »), le picker ne se relaie pas sur le bot Telegram
+- Toujours lire l'INDEX du pôle avant de répondre sur un sujet de fond · jamais de mémoire sur un chiffre/casting/voice_id → PMO en mode RECHERCHE
+- Après correction utilisateur → leçon dans `memory/LESSONS.md` (transverse) ou `studio/<pôle>/memory/LESSONS.md` (pôle)
 
 ## Workflow
 
@@ -75,34 +67,27 @@ Origines brésiliennes. Détails : [`memory/MAX_PROFILE.md`](memory/MAX_PROFILE.
 Plan → TodoWrite → Dev (subagents) → Verify → Commit → Docs
 ```
 
----
-
 ## Fichiers transversaux
 
 | Fichier | Rôle |
 |---------|------|
-| [`memory/MEMORY.md`](memory/MEMORY.md) | Où on en est (état, chantiers en cours) |
-| [`memory/TODO.md`](memory/TODO.md) | Quoi ensuite (lanes ouvertes) |
-| [`memory/DECISIONS.md`](memory/DECISIONS.md) | Pourquoi c'est comme ça (doctrine + arbitrages D-NNN) — chaque PMO/INDEX de pôle y pointe |
-| [`memory/LESSONS.md`](memory/LESSONS.md) | Quelle erreur ne pas refaire (L-NNN, transverse) |
-| [`memory/CHANGELOG.md`](memory/CHANGELOG.md) | Ce qui est sorti, par mois, point de vue utilisateur |
-| [`memory/MAX_PROFILE.md`](memory/MAX_PROFILE.md) | Profil complet Max |
-| [`memory/VISION.md`](memory/VISION.md) | Vision produit jeu |
-| [`memory/audits/`](memory/audits/) | Audits transverses datés (GED, infra, business) |
-| [`infra/supabase/README.md`](infra/supabase/README.md) | Supabase Phase 1 (auth parent, sync progression, voix cloud) |
-| [`infra/bot/index.ts`](infra/bot/index.ts) | Bot Telegram — routing agents, permissions |
-| [`infra/mcp/server.ts`](infra/mcp/server.ts) | MCP llm-copains (Grok, Kimi, ElevenLabs) |
+| [`memory/MEMORY.md`](memory/MEMORY.md) / [`TODO.md`](memory/TODO.md) / [`DECISIONS.md`](memory/DECISIONS.md) / [`LESSONS.md`](memory/LESSONS.md) / [`CHANGELOG.md`](memory/CHANGELOG.md) | Quintette transverse : où on en est / quoi ensuite / pourquoi (D-NNN) / erreur à ne pas refaire (L-NNN) / ce qui est sorti |
+| [`memory/MAX_PROFILE.md`](memory/MAX_PROFILE.md) / [`VISION.md`](memory/VISION.md) / [`audits/`](memory/audits/) | Profil Max / vision produit / audits datés |
+| [`infra/supabase/README.md`](infra/supabase/README.md) / [`infra/bot/index.ts`](infra/bot/index.ts) / [`infra/mcp/server.ts`](infra/mcp/server.ts) | Supabase Phase 1 / bot Telegram / MCP llm-copains |
 | [`_archive/INDEX.md`](_archive/INDEX.md) | Cadavres préservés (avec date + raison) |
 
----
+## Portes de vérification (rappel)
+
+| Domaine | Porte |
+|---------|-------|
+| Mini-jeu avant push | `cd studio/minijeux/tests && node audit-gabarit.mjs mj-XX && npm run mj:test mj-XX` |
+| Liens `.md` | script de vérif de liens cassés (voir handoffs infra) |
+| Compteurs narration | `node studio/narration/scripts/check-compteurs.js` |
+| État dinos | `node studio/dino/content/scripts/export/_gen-etat-dinos.cjs` |
+| Hooks actifs | `.claude/settings.json` § `hooks` (pmo-check, figees-injector, garde-git-add, signal-detector) |
 
 ## Commandes audit (rappel)
 
-- `/game-pmo-audit` — pôle JEU (FOND + FORME, fusion 2026-07-19)
-- `/narration-pmo-audit` — pôle NARRATION (FOND + FORME)
-- `/dino-pmo-audit` — pôle DINO (FOND + FORME)
-- skill `env-compat-check` — audit bi-outil Claude ↔ Kimi (config, skills, hooks, miroirs)
+`/game-pmo-audit` (JEU) · `/narration-pmo-audit` (NARRATION) · `/dino-pmo-audit` (DINO) · skill `env-compat-check` (bi-outil Claude ↔ Kimi).
 
----
-
-_Refonte 2026-05-13 : architecture CLAUDE.md à 3 niveaux (racine léger + pôles + rules path-scoped). Conforme [`docs.anthropic.com`](https://code.claude.com/docs/en/memory). Audit 2026-05-15 : tableau signaux déplacé en commentaire HTML (enforced par hook, pas advisory). Racine < 90 lignes, seul re-injecté après `/compact`._
+_Refonte 2026-05-13 : CLAUDE.md à 3 niveaux (racine + pôles + rules path-scoped), conforme [`docs.anthropic.com`](https://code.claude.com/docs/en/memory). Racine ≤ 100 lignes, seul re-injecté après `/compact`._

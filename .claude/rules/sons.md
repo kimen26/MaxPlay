@@ -44,18 +44,8 @@ Ne jamais répondre « ce son n'existe pas » ou « ce fichier n'a pas de source
 
 ## Typologie du contenu sonore (2026-08-10)
 
-Un son n'a pas toujours de texte, ni d'équivalent ElevenLabs, ni de traduction. **Le type détermine la forme du contrat** — il n'y a pas de schéma unique :
-
-| Type | Exemple | A un texte ? | Se traduit ? |
-|---|---|---|---|
-| **Bruitage** | klaxon, fanfare, cri de bébé dino | non — un prompt EN de génération | non, invariant |
-| **Réserve d'humeur** | bravo, super, oups (pool aléatoire) | pas de texte canonique : une **intention** | non — se **ré-invente** par culture |
-| **Réplique fixe** | « Quel bus arrive en premier ? », noms de lieux | oui, canonique | oui |
-| **Atome composable** | chiffres, sons de lettres, noms de dinos, époques | oui, court | oui, + gabarits par langue |
-| **Bloc narré** | blocs de fiche dino, récits | oui, long | **réécrit**, pas traduit |
-
-Détail, raisonnement et modèle i18n (~20 langues, la langue est une **dimension** et non une colonne) :
-[`memory/ARCHI-REFERENTIEL-CONTENU.md`](../../memory/ARCHI-REFERENTIEL-CONTENU.md).
+Un son n'a pas toujours de texte, ni d'équivalent ElevenLabs, ni de traduction — 5 types (bruitage, réserve d'humeur, réplique fixe, atome composable, bloc narré), chacun sa forme de contrat et de traduction. Détail complet + modèle i18n (~20 langues, la langue est une **dimension** et non une colonne) :
+[`studio/referentiel/docs/ARCHI-REFERENTIEL-CONTENU.md`](../../studio/referentiel/docs/ARCHI-REFERENTIEL-CONTENU.md).
 
 ## Suivi de la dérive
 

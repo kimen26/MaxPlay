@@ -16,5 +16,5 @@ Depuis la fusion 2026-07-19, un seul passage couvre FOND ET FORME — procédure
 **Rappels au lancement** :
 - Anti-faux-positif : `ls`/Glob avant tout « manquant/orphelin » (incident 2026-05-21 : `scripts/` déclaré absent avec 8 fichiers).
 - Post-refonte : scanner aussi `.claude/agents/narration-*.md` + `studio/narration/scripts/*.js` (angles morts).
-- Livrable : entrée datée dans `studio/narration/pmo/audit-trail.md`.
+- Livrable : entrée datée dans `studio/narration/memory/audit-trail.md`.
 - Le rapport se termine par `Fichiers modifiés :` — vérifier par `git diff` avant de croire.

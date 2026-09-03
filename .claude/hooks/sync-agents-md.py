@@ -23,8 +23,8 @@ BANNER = (
 # (source exacte dans CLAUDE.md, version adaptée Kimi dans AGENTS.md)
 SUBS = [
     (
-        "touché. Ce CLAUDE.md racine reste le SEUL re-injecté après `/compact`.",
-        "touché. Sous Kimi Code, l'équivalent est le `AGENTS.md` du pôle — le lire explicitement. Ce fichier racine reste le SEUL re-injecté après compaction.",
+        "touché. Ce CLAUDE.md racine est le SEUL re-injecté après `/compact`.",
+        "touché. Sous Kimi Code, l'équivalent est le `AGENTS.md` du pôle — le lire explicitement. Ce fichier racine est le SEUL re-injecté après compaction.",
     ),
     (
         "Voir .claude/settings.json. -->",
@@ -35,12 +35,12 @@ SUBS = [
         "├── CLAUDE.md             ← source de vérité du routage (Claude Code)\n├── AGENTS.md             ← ce fichier (miroir pour Kimi Code & autres agents)",
     ),
     (
-        "- **JAMAIS de `AskUserQuestion`** (formulaire dynamique),",
-        "- **JAMAIS de formulaire dynamique de questions** (AskUserQuestion),",
+        "- **JAMAIS de `AskUserQuestion`** — questions **en texte dans la réponse**",
+        "- **JAMAIS de formulaire dynamique de questions** (AskUserQuestion) — questions **en texte dans la réponse**",
     ),
     (
-        "re-injecté après `/compact`._",
-        "re-injecté après `/compact`. Miroir AGENTS.md créé 2026-07-18 pour Kimi Code._",
+        "seul re-injecté après `/compact`._",
+        "seul re-injecté après `/compact`. Miroir AGENTS.md créé 2026-07-18 pour Kimi Code._",
     ),
 ]
 

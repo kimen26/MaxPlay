@@ -1138,7 +1138,7 @@ objects = [
 
 ### Alerte : Anti-pattern reviewer détecté (recommandé pour PIPELINE-MEMORY.md)
 
-Entrée à gravera dans `site/tile-tools/PIPELINE-MEMORY.md` § 3 (Frictions résolues) :
+Entrée à gravera dans `studio/minijeux/tools/tile-tools/PIPELINE-MEMORY.md` § 3 (Frictions résolues) :
 
 **F-005 : Reviewer verdict vs orchestrateur vérité**
 - **Symptôme** : reviewer remet PASS/FAIL sur des critères qui peuvent être hallucinés ou basés sur des labels faux

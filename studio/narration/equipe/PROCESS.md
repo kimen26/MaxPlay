@@ -120,7 +120,7 @@
 | Champ | Valeur |
 |---|---|
 | **Owner** | Conseiller (`narration-conseiller`, Opus) |
-| **Inputs** | `INBOX.md` section, `equipe/memoire-conseiller.md`, `equipe/patte-narrative-maxplay.md`, `personnages/INDEX.md` (+ fiches type-NN concernées), `personnages/theorie/pedagogie-enfance/` (boussole 4-5 ans **obligatoire**), `personnages/theorie/enneagramme/chabreuil-synthese-complete.md` §8.3 (comportements 4-7 ans par type), `univers/INDEX.md` (+ fiche du lieu), `saisons/saison-1/<arc-slug>/fiche.md`, `memory/DECISIONS.md`, `memory/INVARIANTS.md`, `stories/INDEX.md` |
+| **Inputs** | `INBOX.md` section, `../.claude/agent-memory/narration-conseiller/MEMORY.md`, `equipe/patte-narrative-maxplay.md`, `personnages/INDEX.md` (+ fiches type-NN concernées), `personnages/theorie/pedagogie-enfance/` (boussole 4-5 ans **obligatoire**), `personnages/theorie/enneagramme/chabreuil-synthese-complete.md` §8.3 (comportements 4-7 ans par type), `univers/INDEX.md` (+ fiche du lieu), `saisons/saison-1/<arc-slug>/fiche.md`, `memory/DECISIONS.md`, `memory/INVARIANTS.md`, `stories/INDEX.md` |
 | **Outputs** | `stories/<NNN-slug>/1-pitch-plan.md` rempli depuis `equipe/templates/pitch-plan.template.md` + `stories/<NNN-slug>/kanban.md` (étape 1 ✅) + `stories/<NNN-slug>/README.md` (carte vivante initiale, ~40 lignes max) |
 | **Ce que `1-pitch-plan.md` CONTIENT** | <ul><li>**Pitch — 4 cases** : objet titre · trio (2-3 persos du casting V1 + Wex) · lieu · moment d'ouverture optionnel</li><li>**Plan léger** : trio (qui agit, qui sent, qui catalyse), promesse du titre (par quoi elle se tient), recentrage Ten (par quel perso ou objet passe la bascule — sans décrire le geste précis), sensibilités révélées (laquelle/lesquelles, comment), garde-fous structurels (Ten silencieux, Ketsu image, etc.), contraintes dures (longueur 400-700 mots, ≥ 2 répliques/perso, ≥ 1 échange 3+ répliques)</li></ul> |
 | **Ce que `1-pitch-plan.md` NE CONTIENT PAS (laissé au writer)** | <ul><li>❌ Le détail phrase par phrase de Ki/Sho/Ten/Ketsu</li><li>❌ Les gestes spécifiques de chaque perso à chaque moment</li><li>❌ Le style, le rythme, les dialogues exacts</li><li>❌ L'ouverture précise (sauf si imposée explicitement par le Directeur via brief)</li><li>❌ La scénarisation du Ten (qui regarde qui, qui pose la main où, etc.)</li></ul> |
@@ -233,7 +233,7 @@
 
 | Champ | Valeur |
 |---|---|
-| **Owner** | Directeur (orchestrateur) — Lecteurs : agents Sonnet (`narration-lecteur` + `narration-lecteur-dyade`) + MCP `ask_kimi` (kimi code) + Haiku/`ask_deepseek`, prompts profils depuis `equipe/profils-lecteurs.md` |
+| **Owner** | Directeur (orchestrateur) — Lecteurs : agents Sonnet (`narration-lecteur` + `narration-lecteur (mode DYADE)`) + MCP `ask_kimi` (kimi code) + Haiku/`ask_deepseek`, prompts profils depuis `equipe/profils-lecteurs.md` |
 | **Inputs** | Les versions writers + `equipe/profils-lecteurs.md` |
 | **Panel cible — 12 calls (DEC-PANEL-V2, 2026-07-03)** | **4 groupes × 3 modèles** (Sonnet + Kimi + Haiku/DeepSeek), chaque appel rend les 2 tranches d'âge. Tranche A 3-5 ans = priorité (cible Max), tranche B 6-7 ans = anticipation. *(Historique : panel 20 tous-Sonnet, 10 profils × 2 tranches, jusqu'au 2026-07-03.)* |
 | **Détail panel** | <table><tr><th>#</th><th>Profil</th><th>Tranche A 3-5 ans</th><th>Tranche B 6-7 ans</th></tr><tr><td>1-2</td><td>Garçon normal</td><td>G-A1</td><td>G-B1</td></tr><tr><td>3-4</td><td>Garçon intro/observateur</td><td>G-A2</td><td>G-B2</td></tr><tr><td>5-6</td><td>Garçon extra</td><td>G-A3</td><td>G-B3</td></tr><tr><td>7-8</td><td>Fille normale</td><td>F-A1</td><td>F-B1</td></tr><tr><td>9-10</td><td>Fille intro/observatrice</td><td>F-A2</td><td>F-B2</td></tr><tr><td>11-12</td><td>Fille extra</td><td>F-A3</td><td>F-B3</td></tr><tr><td>13-14</td><td>Dyade papa-Garçon</td><td>DPG-A</td><td>DPG-B</td></tr><tr><td>15-16</td><td>Dyade papa-Fille</td><td>DPF-A</td><td>DPF-B</td></tr><tr><td>17-18</td><td>Dyade maman-Garçon</td><td>DMG-A</td><td>DMG-B</td></tr><tr><td>19-20</td><td>Dyade maman-Fille</td><td>DMF-A</td><td>DMF-B</td></tr></table> |
@@ -252,7 +252,7 @@
 | Champ | Valeur |
 |---|---|
 | **Owner** | Directeur (`narration`, Opus) |
-| **Inputs** | Les versions + retours lecteurs (panel v2 dès vague 5) + **`gout/memoire-papa-yann.md` (OBLIGATOIRE depuis 2026-07-03 — la sélection s'arbitre contre la patte ET le goût auteur)** + `equipe/memoire-dir.md` + `equipe/patte-narrative-maxplay.md` |
+| **Inputs** | Les versions + retours lecteurs (panel v2 dès vague 5) + **`gout/memoire-papa-yann.md` (OBLIGATOIRE depuis 2026-07-03 — la sélection s'arbitre contre la patte ET le goût auteur)** + `../.claude/agent-memory/narration/MEMORY.md` + `equipe/patte-narrative-maxplay.md` |
 | **🎯 Duel de goût (optionnel, DEC-DUEL-SCOPE 2026-07-03)** | Après la synthèse panel, le Directeur PEUT générer `site/duel-data.js` (fragments anonymisés top 4 + pépites) → Papa Yann joue sur `site/duel.html` → JSON ingéré dans `gout/memoire-papa-yann.md` + `gout/palmares-writers.md`. Le duel est un **calibreur de goût pour les briefs futurs, PAS un validateur de texte final** — un refus en finale est un signal, pas un veto. La validation étape 6 reste la lecture classique de la base par l'auteur. |
 | **Outputs** | <ul><li>`stories/<NNN-slug>/6-selection.md` (rempli depuis `equipe/templates/selection.template.md`)</li><li>`kanban.md` étape 6 ✅ + statut "EN ATTENTE AUTEUR"</li></ul> |
 | **Format `selection.md`** | <ul><li>**Version base choisie** (laquelle des 10 + pourquoi)</li><li>**Éléments à récupérer** d'autres versions (citations précises)</li><li>**Réactions lecteurs** à prendre en compte (citations + interprétation)</li><li>**Brief de rewrite** : ce qui doit changer, ce qui doit rester intact</li><li>**Tiebreak rule** : si 2 versions sont à égalité, le Directeur choisit celle qui colle le plus à la patte (B+D+C) — pas celle qui plaît le plus au lecteur enfant si elle dérive du Kishōtenketsu</li></ul> |
@@ -290,8 +290,8 @@
 | Champ | Valeur |
 |---|---|
 | **Owner** | GateKeeper (`narration-gatekeeper`, Haiku) |
-| **Inputs** | Le rewrite (`rewrite/<llm>-rewrite-v1.md`) + `personnages/lookup.yml` + `memory/DECISIONS.md` + `equipe/memoire-gatekeeper.md` + `equipe/onomatopees-cross-culture.md` |
-| **Outputs** | <ul><li>`stories/<NNN-slug>/8-gatekeeper-verdict.md`</li><li>`kanban.md` étape 8 ✅ ou ❌</li><li>Mise à jour `equipe/memoire-gatekeeper.md` (erreurs récurrentes détectées)</li></ul> |
+| **Inputs** | Le rewrite (`rewrite/<llm>-rewrite-v1.md`) + `personnages/lookup.yml` + `memory/DECISIONS.md` + `../.claude/agent-memory/narration-gatekeeper/MEMORY.md` + `equipe/onomatopees-cross-culture.md` |
+| **Outputs** | <ul><li>`stories/<NNN-slug>/8-gatekeeper-verdict.md`</li><li>`kanban.md` étape 8 ✅ ou ❌</li><li>Mise à jour `../.claude/agent-memory/narration-gatekeeper/MEMORY.md` (erreurs récurrentes détectées)</li></ul> |
 | **Checklist PASS (toutes binaires)** | <ul><li>☐ Prénoms/surnoms vs `lookup.yml`</li><li>☐ Genres/pronoms cohérents</li><li>☐ Longueur 400-700 mots</li><li>☐ Chaque perso ≥ 2 répliques</li><li>☐ ≥ 1 échange de 3+ répliques</li><li>☐ Pas de morale explicite (« il avait appris que… »)</li><li>☐ Pas d'antagoniste</li><li>☐ Univers pas nommé (Éveil, Totems, Janus — implicites)</li><li>☐ Ennéatypes jamais étiquetés</li><li>☐ Surnoms 4/5 du temps</li><li>☐ Ten pas anxiogène</li><li>☐ Pas d'épilogue italique (post-001)</li><li>☐ Parents jamais en scène (saison 1)</li><li>☐ Compagnons = ondes/couleurs si présents</li><li>☐ Sensibilité différenciée (pas hiérarchie savoir)</li></ul> |
 | **Critères PASS** | Tous les items binaires ✅. Si une case ❌ → verdict CORRECTIONS avec liste précise (5 min max). |
 | **Condition de passage** | <ul><li>**PASS** → étape 9</li><li>**CORRECTIONS** → Directeur applique correctifs (modifie le rewrite directement, pas de nouvelle version) → re-soumet GateKeeper → PASS</li><li>**REJET STRUCTUREL** (rare, problème majeur narratif) → retour étape 6 avec note Conseiller</li></ul> |
@@ -306,7 +306,7 @@
 
 | Champ | Valeur |
 |---|---|
-| **Owner** | Directeur (orchestrateur) — Lecteurs exécutent (`narration-lecteur` + `narration-lecteur-dyade`, Sonnet) |
+| **Owner** | Directeur (orchestrateur) — Lecteurs exécutent (`narration-lecteur` + `narration-lecteur (mode DYADE)`, Sonnet) |
 | **Inputs** | Le rewrite seul (`rewrite/<llm>-rewrite-v1.md`). **Sans** la version base d'origine, **sans** les autres versions writers — lecture neutre, lecteur reçoit juste le texte candidat à canonisation. |
 | **Panel — 12 appels hétérogènes (DEC-PANEL-V2, 2026-07-03)** | **Identique au panel v2 étape 5** : 4 groupes × 3 modèles (Sonnet + Kimi + Haiku/DeepSeek), chaque appel rend les 2 tranches d'âge. Kimi via CLI `call-llm.mjs` si le MCP timeout (LP2). *(Historique : panel 20 tous-Sonnet jusqu'au 2026-07-03.)* |
 | **Format** | Fiches courtes (plus courtes qu'à l'étape 5 — pas de classement, pas de comparaison entre versions, juste **lecture du texte candidat seul**) : « J'ai aimé / J'ai pas compris / Je retiens / Je relirais oui-non ». Si le lecteur a déjà lu la base à l'étape 5, **on ne lui rappelle pas** — il lit naïf. |

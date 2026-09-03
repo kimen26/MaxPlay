@@ -1,9 +1,10 @@
-﻿# Mémoire — GateKeeper
+# Mémoire — GateKeeper
 
 > Mis à jour par `narration-gatekeeper` après chaque validation.
 > Format : `- YYYY-MM-DD | <histoire> | <pattern d'erreur>`
+> Déplacé verbatim depuis `studio/narration/equipe/memoire-gatekeeper.md` le 2026-09-03 (HO-G12).
 >
-> **Référence obligatoire :** [`patte-papa-yann.md`](patte-papa-yann.md) — checklist 14 critères ajoutée le 2026-04-30 par les 3 relectures critiques de Papa Yann sur 001/002/003.
+> **Référence obligatoire :** [`patte-papa-yann.md`](../../../studio/narration/equipe/patte-papa-yann.md) — checklist 14 critères ajoutée le 2026-04-30 par les 3 relectures critiques de Papa Yann sur 001/002/003.
 
 ---
 
@@ -26,7 +27,7 @@
 - ☐ Compagnons = ondes/couleurs si présents
 - ☐ Sensibilité différenciée (pas hiérarchie savoir)
 
-### Critères patte Papa Yann (ajoutés 2026-04-30 — voir [`patte-papa-yann.md`](patte-papa-yann.md) checklist complète)
+### Critères patte Papa Yann (ajoutés 2026-04-30 — voir `patte-papa-yann.md` checklist complète)
 
 - ☐ **Zéro narration jugeante** (pas "comme toujours", "trop X", "le plus X", "inutile")
 - ☐ **Zéro prose littéraire** (pas de passé simple "naquit", pas de métaphore double abstraite, comparaisons qui fonctionnent intuitivement)
@@ -140,7 +141,7 @@ Les critères 9 (distribution sensorielle) et 13 (épilogue italique) ont été 
 
 ## Liens
 
-- [`patte-papa-yann.md`](patte-papa-yann.md) — la patte de l'auteur (référence obligatoire)
-- [`patte-narrative-maxplay.md`](patte-narrative-maxplay.md) — patte stylistique projet (B+D+C)
-- [`PROCESS.md`](PROCESS.md) — étape 8 GateKeeper
+- `patte-papa-yann.md` — la patte de l'auteur (référence obligatoire)
+- `patte-narrative-maxplay.md` — patte stylistique projet (B+D+C)
+- `PROCESS.md` — étape 8 GateKeeper
 - Sources des audits : `stories/00X/lecteurs-temoins/john-relecture-2026-04-30.md`

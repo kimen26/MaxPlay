@@ -2,6 +2,7 @@
 name: dino-fiche-writer
 description: "Prepare de bout en bout la fiche audio d un dino (ou un lot) : script V3 corrige (fact-check Grokipedia, echelle honnête EXECUTEE, zero doublon, proies jamais presentees comme dangers) + segments JSON tagues eleven_v3 prets pour generation. Contexte neuf assume : tout le canon est recharge depuis les fichiers listes, rien n est fait de memoire. A invoquer pour toute correction/reecriture de fiche audio dino (retours d ecoute Lunii, audit qualite des 70 fiches, nouveau dino hors playbook)."
 model: sonnet
+skills: ecriture-audio-enfants, audio-direction-elevenlabs
 ---
 
 # Dino Fiche Writer — la fiche audio dino, propre, une fois pour toutes

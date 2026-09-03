@@ -26,9 +26,7 @@
 │
 └─ NIVEAU 4 : SACHANTS SPÉCIALISÉS (manuel, sur demande)
    ├─ Sous-domaine TILE
-   │  ├─ game-tile-simplifier  [Sonnet] — étape 1/3 : image/desc → ANALYSE
-   │  ├─ game-tile-designer    [Sonnet] — étape 2/3 : ANALYSE → recette + PNG + BILAN
-   │  └─ game-tile-reviewer    [Haiku]  — étape 3/3 : verdict PASS/FAIL max 5 iter
+   │  └─ game-tile [Sonnet] — 3 modes fusionnés (2026-09-03) : ANALYSE (image/desc → ANALYSE), RECETTE (ANALYSE → recette + PNG + BILAN), REVUE (verdict PASS/FAIL max 5 iter)
    │
    ├─ Sous-domaine MJ
    │  ├─ game-dev              [Sonnet] — code HTML vanilla + Phaser TS + SVG bus + déploiement
@@ -50,9 +48,7 @@
 | **game-pmo** (unifié) | Sonnet | 1 | Clôture de session, `/game-pmo-audit`, mode RECHERCHE | FOND + FORME + domaines tile/mj — un seul garant depuis 2026-07-19 |
 | **game-conseiller** | Opus | 3 | Manuel — question produit/UX/vision | Quand auteur dit "qu'est-ce que t'en penses ?", "comment on aborde X ?", "challenge cette idée" |
 | **game-dev** | Sonnet | 4 | Manuel — code à écrire | Implémentation MJ, refacto code, fix bug code |
-| **game-tile-simplifier** | Sonnet | 4 | Manuel — début pipeline tile | Photo/description à transformer en ANALYSE structurée |
-| **game-tile-designer** | Sonnet | 4 | Manuel — milieu pipeline tile (chaîné depuis simplifier) | ANALYSE → recette Python + PNG render |
-| **game-tile-reviewer** | Haiku | 4 | Manuel — fin pipeline tile (chaîné depuis designer) | Verdict PASS/FAIL recette + PNG, max 5 iter |
+| **game-tile** (3 modes) | Sonnet | 4 | Manuel — pipeline tile, préciser le mode | ANALYSE (photo/desc → ANALYSE) → RECETTE (ANALYSE → recette Python + PNG) → REVUE (verdict PASS/FAIL, max 5 iter) |
 | **game-mj-reviewer** | Haiku | 4 | Manuel — après code MJ | Verdict PASS/FAIL checklist 5 sections, max 5 iter |
 | **game-test-audio** | Haiku | 4 | Manuel — jeu avec MP3+TTS | Audit exclusivité voix / fallback TTS / padding SFX / démarrage muet |
 | **game-test-secu** | Haiku | 4 | Manuel — saisie/cloud/release | Audit XSS / secrets / inputs non validés, verdict PASS/FAIL |
@@ -70,7 +66,7 @@ Auteur
 Main agent (capture immédiate, dans le tour)
   └──→ 1 ligne backlog par idée/décision + figees/mj-XX.md sur figeage — hook Stop pmo-check l'enforce
 
-game-tile-simplifier → game-tile-designer → game-tile-reviewer   (pipeline 3 étapes tile)
+game-tile mode ANALYSE → game-tile mode RECETTE → game-tile mode REVUE   (pipeline 3 modes tile, fusionné 2026-09-03)
 
 game-dev → game-mj-reviewer   (après livraison code MJ)
 ```
@@ -119,9 +115,9 @@ game-dev → game-mj-reviewer   (après livraison code MJ)
 
 ```
 1. Auteur dump idée (photo/description/croquis)
-2. game-tile-simplifier (Sonnet) étape 1/3 → ANALYSE structurée
-3. game-tile-designer (Sonnet) étape 2/3 → recette test_<nom>.py + PNG via render.py + BILAN
-4. game-tile-reviewer (Haiku) étape 3/3 → verdict PASS/FAIL max 5 iter (cf. LESSONS)
+2. game-tile mode ANALYSE (Sonnet) → ANALYSE structurée
+3. game-tile mode RECETTE (Sonnet) → recette test_<nom>.py + PNG via render.py + BILAN
+4. game-tile mode REVUE (Sonnet) → verdict PASS/FAIL max 5 iter (cf. LESSONS)
 5. graver LESSONS.md + PIPELINE-MEMORY.md (main agent, dans le tour)
 6. game-pmo intègre synthèse dans sprint-log + backlog
 7. game-pmo vérifie : test_<nom>.py + PNG associé, référencé dans patterns.js/recipes_data.js
@@ -162,7 +158,7 @@ game-dev → game-mj-reviewer   (après livraison code MJ)
 - [x] **game-mj-pmo** créé 2026-05-11 (Haiku, sous-spé)
 - [x] **game-mj-reviewer** créé 2026-05-11 (Haiku, validateur)
 - [x] **game-tile-pmo** créé (Haiku, sous-spé)
-- [x] **game-tile-simplifier / designer / reviewer** établis (Sonnet/Sonnet/Haiku)
+- [x] **game-tile-simplifier / designer / reviewer** établis (Sonnet/Sonnet/Haiku), **fusionnés en `game-tile` à 3 modes le 2026-09-03** (HO-G12) — fichiers d'origine dans `_archive/agents-2026-09-03/`
 - [ ] **game-wexworld-pmo** ⏳ Phase 2
 - [ ] **game-wexworld-designer / tester** ⏳ Phase 2
 

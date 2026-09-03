@@ -24,9 +24,9 @@
 | HO-NAR-01 | Pôle NARRATION : mémoire convergente | 2 | `studio/narration/**` sauf `stories/`, `scripts/`, `docs/handoffs/` | fait |
 | HO-G08 | Skills globaux `tts-pipeline` + `audio-verif` | 2 | `~/.claude/skills/tts-pipeline/**`, `~/.claude/skills/audio-verif/**` | fait |
 | HO-G09 | Skills globaux `i18n-contenu` + `browser-pilot` | 2 | `~/.claude/skills/i18n-contenu/**`, `~/.claude/skills/browser-pilot/**` | fait |
-| HO-G07 | Hooks + rules amincies + CLAUDE.md racine (post-vague 2) | 3 | `.claude/hooks/**`, `.claude/rules/**`, `CLAUDE.md`, `.kimi-code/hooks/**` | en cours |
+| HO-G07 | Hooks + rules amincies + CLAUDE.md racine (post-vague 2) | 3 | `.claude/hooks/**`, `.claude/rules/**`, `CLAUDE.md`, `.kimi-code/hooks/**` | fait |
 | HO-G10 | Nettoyage exécution + prod propre (post-G05 validé) | 3 | selon rapport G05 validé : `temp/`, `studio/temp/`, `studio/minijeux/tests/{_scratch,batch-*,test-dinos*}`, `site/{tile-tools,tools,design-*,dev-*.html,index-v2-archive.html,atelier-couleurs.html,map-mockups.html,design-mockups.html}`, `site/img/dinos/{wiki,grok,sprites}`, `.github/workflows/deploy.yml`, `studio/referentiel/**` | fait (reste : 12 sons lieux, INDEX minijeux) |
-| HO-G12 | Agents : `memory: project`, archivage des inutilisés, README généré | 3 | `.claude/agents/**`, `_archive/agents-2026-09-03/**`, `studio/narration/equipe/memoire-*.md`, `studio/minijeux/EQUIPE.md`, `studio/narration/equipe/ORGANIGRAMME.md` | pret |
+| HO-G12 | Agents : `memory: project`, archivage des inutilisés, README généré | 3 | `.claude/agents/**`, `_archive/agents-2026-09-03/**`, `studio/narration/equipe/memoire-*.md`, `studio/minijeux/EQUIPE.md`, `studio/narration/equipe/ORGANIGRAMME.md` | en cours |
 
 Vagues : 1 → 2 → 3, chaque vague commitée par l'orchestrateur avant la suivante.
 

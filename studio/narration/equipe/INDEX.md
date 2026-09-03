@@ -60,14 +60,16 @@
 
 ### Mémoires d'agents
 
-| Fichier | Agent | Contenu | Fréquence MAJ |
+> Depuis 2026-09-03 (HO-G12) : mémoire officielle `memory: project` du harness, chargée automatiquement depuis `.claude/agent-memory/<agent>/MEMORY.md` (200 lignes chargées, surplus dans un topic file à côté). Les anciens fichiers `equipe/memoire-*.md` sont supprimés (contenu déplacé verbatim).
+
+| Agent | Mémoire officielle | Contenu | Fréquence MAJ |
 |---|---|---|---|
-| [`memoire-conseiller.md`](memoire-conseiller.md) | Conseiller (Opus) | Arcs, saisons, feedback lecteurs, patterns validés | Après chaque session |
-| [`_archive/memoire-architecte.md`](_archive/memoire-architecte.md) | ⚠️ Architecte (deprecated 2026-05-12) — fichier conservé pour traçabilité, agent en standby | — |
-| [`memoire-dir.md`](memoire-dir.md) | Directeur (Opus) | Décisions de sélection, ce qui a fonctionné | Après chaque histoire |
-| [`memoire-gatekeeper.md`](memoire-gatekeeper.md) | GateKeeper (Haiku) | Erreurs récurrentes, patterns à surveiller | Après chaque validation |
-| [`memoire-science.md`](memoire-science.md) | Science (Haiku) | Validations scientifiques effectuées, refs vulgarisation enfants | Après chaque validation |
-| [`memoire-sensibilite.md`](memoire-sensibilite.md) | Sensibilité (Sonnet) | Décisions topics sensibles enregistrées, posture éditoriale auteur | Après chaque décision |
+| Conseiller (Opus) | [`.claude/agent-memory/narration-conseiller/MEMORY.md`](../../../.claude/agent-memory/narration-conseiller/MEMORY.md) (+ `TOPIC-historique.md`) | Arcs, saisons, feedback lecteurs, patterns validés | Après chaque session |
+| ⚠️ Architecte (deprecated 2026-05-12) | [`_archive/memoire-architecte.md`](_archive/memoire-architecte.md) | Fichier conservé pour traçabilité, agent en standby | — |
+| Directeur (Opus) | [`.claude/agent-memory/narration/MEMORY.md`](../../../.claude/agent-memory/narration/MEMORY.md) | Décisions de sélection, ce qui a fonctionné | Après chaque histoire |
+| GateKeeper (Haiku) | [`.claude/agent-memory/narration-gatekeeper/MEMORY.md`](../../../.claude/agent-memory/narration-gatekeeper/MEMORY.md) | Erreurs récurrentes, patterns à surveiller | Après chaque validation |
+| ⚠️ Science (Haiku, archivé 2026-09-03, 0 usage tracé) | [`_archive/agents-2026-09-03/memoire-science.md`](../../../_archive/agents-2026-09-03/memoire-science.md) | Validations scientifiques effectuées, refs vulgarisation enfants | — |
+| ⚠️ Sensibilité (Sonnet, archivé 2026-09-03, 0 usage tracé) | [`_archive/agents-2026-09-03/memoire-sensibilite.md`](../../../_archive/agents-2026-09-03/memoire-sensibilite.md) | Décisions topics sensibles enregistrées, posture éditoriale auteur | — |
 
 ### Sources documentaires
 
@@ -126,17 +128,11 @@ Tu veux faire quoi ?
 ├─ Indexer, structurer, vérifier cohérence dossiers
 │   → narration-pmo (unifié 2026-07-19, Sonnet)
 │
-├─ Vérifier un fait scientifique
-│   → narration-science (Haiku)
-│
-├─ Détecter risques conspirationnistes / polarisation
-│   → narration-sensibilite (Sonnet)
-│
 ├─ Adapter une histoire à une autre culture
 │   → narration-localisation
 │
 ├─ Lecture témoin enfant seul ou dyade
-│   → narration-lecteur · narration-lecteur-dyade
+│   → narration-lecteur (mode ENFANT · mode DYADE, fusionné 2026-09-03)
 │
 ├─ Audio TTS ElevenLabs
 │   → narration-audio

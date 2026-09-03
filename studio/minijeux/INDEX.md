@@ -44,9 +44,9 @@ CODE DÉPLOYÉ (hors pôle, GitHub Pages) :
 | `game-pmo` **unifié** | Sonnet | 1 | Clôture · audit · RECHERCHE | FOND + FORME + domaines tile/mj (fusion 2026-07-19, ex archiviste/mj-pmo/tile-pmo) |
 | `game-conseiller` | Opus | 3 | Manuel | Binôme créatif transverse |
 | `game-dev` | Sonnet | 4 | Manuel | Dev HTML vanilla + Phaser |
-| `game-tile-simplifier` | Sonnet | 4 | Manuel | Pipeline tile étape 1/3 |
-| `game-tile-designer` | Sonnet | 4 | Manuel | Pipeline tile étape 2/3 |
-| `game-tile-reviewer` | Haiku | 4 | Manuel | Pipeline tile étape 3/3 |
+| `game-tile` | Sonnet | 4 | Manuel | Pipeline tile étape 1/3 |
+| `game-tile` | Sonnet | 4 | Manuel | Pipeline tile étape 2/3 |
+| `game-tile` | Haiku | 4 | Manuel | Pipeline tile étape 3/3 |
 | `game-mj-reviewer` | Haiku | 4 | Manuel | Validateur MJ (checklist 5 sections) |
 
 Détails complets : [`EQUIPE.md`](EQUIPE.md).
@@ -97,9 +97,9 @@ Détails complets : [`EQUIPE.md`](EQUIPE.md).
 | [`site/tile-tools/README.md`](../../site/tile-tools/README.md) | Pipeline complet (render, recipes, scripts, vocab.py, styles.py) |
 
 **Workflow Propose → Édite → Apprend** :
-1. game-tile-simplifier → ANALYSE
-2. game-tile-designer → recette + PNG
-3. game-tile-reviewer → verdict PASS/FAIL
+1. game-tile → ANALYSE
+2. game-tile → recette + PNG
+3. game-tile → verdict PASS/FAIL
 4. graver leçons dans LESSONS.md + PIPELINE-MEMORY.md (main agent ou game-pmo unifié)
 5. game-pmo unifié vérifie fond + structure (fusion 2026-07-19)
 

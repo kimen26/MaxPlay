@@ -1,6 +1,6 @@
 # HO-G07 — Hooks + rules amincies + CLAUDE.md racine (post-vague 2)
 
-**Statut :** bloque par vague 2 (HO-MJ-01, HO-DINO-008, HO-NAR-01)
+**Statut :** pret (vague 2 faite pour JEU et NARRATION ; DINO en transition, voir annexe)
 **Depend de :** rapports de vague 2 (listes « pointeurs extérieurs à corriger »), collés en annexe de ce brief par l'orchestrateur avant lancement.
 
 ## Objectif
@@ -66,3 +66,8 @@ Conclusion du diag BOM, table bloc retiré → destination, tests du hook, sorti
 - `.claude/rules/sons.md` pointe `memory/ARCHI-REFERENTIEL-CONTENU.md` → `studio/referentiel/docs/ARCHI-REFERENTIEL-CONTENU.md`.
 - `AGENTS.md` racine : régénéré par le hook après édition de CLAUDE.md (vérifier DOCTRINE.md disparu).
 _(suite à compléter par l orchestrateur)_
+- NARRATION (HO-NAR-01) : `.claude/rules/narration-craft.md` pointe `studio/narration/pmo/INVARIANTS.md` → `studio/narration/memory/INVARIANTS.md` ; vérifier `.claude/agents/narration-*.md` pour tout `pmo/` ; `studio/narration/scripts/check-compteurs.js:25` CRAFT_DIR pointe l'ancien chemin projet du skill → `path.join(os.homedir(), '.claude','skills','narration-craft')` (ce script est ajouté à tes fichiers autorisés).
+- G10 (déplacements) : `.claude/rules/tile-tools.md` `paths:` → `studio/minijeux/tools/**` (+ L72-76, L83-84 chemins `site/tools/`, `site/tile-tools/`) ; `.claude/skills/maxplay-tiles/{SKILL.md,LESSONS.md}` refs `site/tile-tools/`, `site/tools/`, `site/map-mockups.html` → `studio/minijeux/tools/{tile-tools,web,pages}/` ; `.claude/agents/game-{conseiller,mj-reviewer,pmo,tile-designer,tile-reviewer,tile-simplifier}.md` refs `site/tile-tools/` et `site/PIPELINE-MEMORY-MJ.md` (→ `studio/minijeux/memory/archive/PIPELINE-MEMORY-MJ.md`). Les agents sont ajoutés à tes fichiers autorisés pour ces lignes de chemin uniquement.
+- JEU (HO-MJ-01) : `.claude/rules/mini-jeux.md` L4 + § Cross-références + § État jeux → `studio/minijeux/memory/INVARIANTS.md`, `memory/MEMORY.md` (ex state.md), `docs/STANDARD-MJ.md` (ex memory/rules.md), `docs/STACK.md` (ex memory/stack.md).
+- Hook `garde-git-add.ps1` : bloquer AUSSI `git stash`, `git checkout --`, `git checkout .`, `git reset`, `git clean` (leçon L-007 racine : un exécutant a fait `git stash` sur le working tree partagé).
+- Hook `pmo-check.ps1` : pendant la transition, le pôle DINO a encore `pmo/` (HO-DINO-008 pas lancé) → motifs trace DINO = `studio/dino/memory/` OU `studio/dino/pmo/` OU `studio/dino/figees/`. JEU et NARRATION = `memory/` seulement.

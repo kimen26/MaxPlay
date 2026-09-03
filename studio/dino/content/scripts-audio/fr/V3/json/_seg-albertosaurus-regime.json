@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] C'était un carnivore. Il chassait les hadrosaures et les cératopsiens. Et il vivait peut-être en meute : on a trouvé 26 squelettes ensemble."
+      "text": "[serious] C'était un carnivore. Il chassait les gros mangeurs de plantes de son pays — l'Edmontosaure, et le Saurolophe avec sa crête. Et peut-être qu'il ne chassait pas tout seul : on a retrouvé 26 Albertosaures ensemble, au même endroit."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] 26 ensemble. C'était une famille de chasseurs."
+      "text": "[gasps] 26 ? Alors, ils étaient copains ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Peut-être. Comme une meute de loups. Le loup des T-Rex."
+      "text": "[playful] C'est exactement la question que se posent les savants. Peut-être une vraie meute, comme les loups d'aujourd'hui. Ils cherchent encore la réponse."
     }
   ],
   "model_id": "eleven_v3",

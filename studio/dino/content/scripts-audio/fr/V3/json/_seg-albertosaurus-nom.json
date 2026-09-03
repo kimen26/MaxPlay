@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Al-ber-to-saure. « Alberto », c'est l'Alberta, une grande région du Canada où on a trouvé ses os. Et « saure », c'est « lézard » en grec."
+      "text": "[excited] Al-ber-to-saure. « Alberto », ça vient de l'Alberta, une GRANDE région du Canada où on a trouvé ses os. Et « saure », tu sais ce que ça veut dire ?"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Lézard de l'Alberta."
+      "text": "[confident] Lézard. Alors... le lézard de l'Alberta."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactement. Il vivait au Canada, il y a 70 millions d'années. Un cousin du T-Rex, plus au nord."
+      "text": "[happily] Exactement. Il vivait là-bas, il y a 70 millions d'années. Un cousin du T-Rex."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Et là-bas, il avait des copains dangereux."
+      "text": "[curious] Et il avait des ennemis ? Des chasseurs encore plus forts que lui ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Oui ! Le Gorgosaure, son cousin canadien, et les gros herbivores comme l'Edmontosaure et le Parasaurolophus. Beaucoup de monde dans le nord."
+      "text": "[confident] Non. Dans son pays, c'était lui le plus grand chasseur. Aucun autre carnivore n'était assez costaud pour l'embêter."
     }
   ],
   "model_id": "eleven_v3",

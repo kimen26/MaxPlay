@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Scé-li-do-saure. En grec, « saure », c'est le lézard. Et « scélido », ça voulait dire « grosses pattes », parce qu'il avait des cuisses très fortes."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Un lézard à grosses pattes."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Oui. Mais écoute ça : le savant qui l'a nommé s'est trompé de mot grec — celui qu'il a écrit veut dire « côte de bœuf ». Sans le vouloir, il l'a appelé le lézard-côte-de-bœuf."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et il vivait où, le lézard-côte-de-bœuf ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] En Angleterre, au bord de la mer, il y a 193 millions d'années. Et un chasseur, le Dracoraptor, rôdait dans le même coin."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

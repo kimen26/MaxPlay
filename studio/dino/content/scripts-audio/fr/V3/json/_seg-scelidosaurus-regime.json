@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Herbivore. Il broutait des plantes basses, des fougères, à quatre pattes. Et dans sa peau, des centaines de petits os étaient plantés, rangés en lignes du cou jusqu'au bout de la queue — comme des boutons."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il vivait avec des copains ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Mystère — personne ne le sait encore. Mais avec son armure, même seul, il n'avait pas peur de grand-chose."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

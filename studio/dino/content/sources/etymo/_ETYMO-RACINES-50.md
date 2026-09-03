@@ -158,6 +158,12 @@
 → **« lézard au petit bouclier »** (plus de 300 petites plaques d'os sur le dos)
 [nom_etym OK — nom MIXTE : *scutellum* est latin, *sauros* est grec. L'épithète *lawleri* honore David Lawler, le découvreur]
 
+## scelidosaurus — Scélidosaure (Scelidosaurus harrisonii)
+- **scélido- / skelis** (grec) = côte de bœuf (⚠️ erreur d'Owen : il visait *skelos*, la patte arrière)
+- **-saurus / -saure** (grec *sauros*) = lézard
+→ **« lézard à grosses pattes »** (sens voulu — le mot écrit veut dire « côte de bœuf »)
+[nom_etym OK — vérifié Wikipedia 2026-08-23 : Owen a confondu *skelis* (côte) avec *skelos* (patte), erreur documentée Steyskal 1970. L'épithète *harrisonii* honore James Harrison, le découvreur]
+
 ## stegosaurus — Stégosaure (Stegosaurus ungulatus)
 - **stégo- / stegos** (grec) = toit
 - **-saurus / -saure** (grec *sauros*) = lézard

@@ -5,7 +5,7 @@
 > Pas un journal projet (ça c'est `studio/minijeux/tasks/BACKLOG.md`).
 > **C'est le journal de comment notre système d'agents MJ évolue.**
 >
-> **Garant** : [`game-mj-pmo`](../../.claude/agents/game-mj-pmo.md) — ajoute une entrée datée à chaque session où le pipeline MJ lui-même change.
+> **Garant** : [`game-pmo`](../.claude/agents/game-pmo.md) — ajoute une entrée datée à chaque session où le pipeline MJ lui-même change. (Agent `game-mj-pmo` supprimé le 2026-07-19, fusionné dans `game-pmo`.)
 >
 > **À lire** au démarrage de toute session où on touche aux agents MJ (création, refonte, debug), pas pour un simple ajout de mini-jeu.
 
@@ -466,9 +466,9 @@ Renforts : bloc « ⛔ AVANT DE MODIFIER » dans `.claude/rules/mini-jeux.md`, l
 
 - **Skill** : [`~/.claude/skills/pmo-design/SKILL.md`](C:/Users/kimen/.claude/skills/pmo-design/SKILL.md) (template normé 12 sections)
 - **Skill** : [`~/.claude/skills/pmo-challenge/SKILL.md`](C:/Users/kimen/.claude/skills/pmo-challenge/SKILL.md) (audit + challenge réciproque)
-- **PMO frère** : [`game-tile-pmo`](../../.claude/agents/game-tile-pmo.md) — même pattern hiérarchique
-- **Conseiller modèle** : [`narration-conseiller`](../../.claude/agents/narration-conseiller.md) — référence inspirante (Opus, binôme créatif)
-- **Reviewer modèle** : [`game-tile-reviewer`](../../.claude/agents/game-tile-reviewer.md) — pattern checklist hardcodée + verdict PASS/FAIL
+- **PMO frère** : [`game-pmo`](../.claude/agents/game-pmo.md) — même pattern hiérarchique (fusionne l'ancien `game-tile-pmo` depuis le 2026-07-19)
+- **Conseiller modèle** : [`narration-conseiller`](../.claude/agents/narration-conseiller.md) — référence inspirante (Opus, binôme créatif)
+- **Reviewer modèle** : [`game-tile-reviewer`](../.claude/agents/game-tile-reviewer.md) — pattern checklist hardcodée + verdict PASS/FAIL
 
 ---
 

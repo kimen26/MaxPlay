@@ -59,7 +59,7 @@ $contenu
 ==================================================================
 NOTE -- $slug.html n'a PAS de fichier de decisions figees.
 Si tu codes ici un comportement deja valide par Papa Yann, tu DOIS
-creer studio/minijeux/docs/jeux/figees/$slug.md via game-mj-pmo pour le figer
+creer studio/minijeux/docs/jeux/figees/$slug.md via game-pmo ou toi-même pour le figer
 (sinon il sera perdu au prochain /compact).
 ==================================================================
 "@

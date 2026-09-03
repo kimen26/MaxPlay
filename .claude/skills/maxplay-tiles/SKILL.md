@@ -31,9 +31,9 @@ TROTTOIR = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png'
 
 **Pourquoi** : `cartography.json` contient des erreurs historiques (deprecated 2026-05-11). Les noms cryptiques `_2`/`_14`/`_8`/`_15` provoquent des confusions à répétition (voir LESSONS correction 5 + correction 7). `vocab.py` est la **seule** source à jour, validée au boot (`python vocab.py`).
 
-**Fichier** : [`game/web/tile-tools/vocab.py`](c:/ProjetsPerso/Claude_Projects/MaxPlay/game/web/tile-tools/vocab.py)
+**Fichier** : [`site/tile-tools/vocab.py`](c:/ProjetsPerso/Claude_Projects/MaxPlay/site/tile-tools/vocab.py)
 
-Pour les routes droites simples uniquement, on peut utiliser les macros : [`game/web/tile-tools/builders.py`](c:/ProjetsPerso/Claude_Projects/MaxPlay/game/web/tile-tools/builders.py) (`route_h()`, `route_v()`).
+Pour les routes droites simples uniquement, on peut utiliser les macros : [`site/tile-tools/builders.py`](c:/ProjetsPerso/Claude_Projects/MaxPlay/site/tile-tools/builders.py) (`route_h()`, `route_v()`).
 
 ⚠️ **Pour les compositions complexes** (carrefour, virage, immeuble, parc, rivière, pont…), **ne pas inventer** — voir Règle #2.
 
@@ -59,7 +59,7 @@ Pour les routes droites simples uniquement, on peut utiliser les macros : [`game
 ## 🎨 OUTIL : tile-picker.html (bibliothèque visuelle catégorisée + matrice 10×10)
 
 Quand le user dit "je veux une composition X" et que je ne suis pas sûr des bonnes tiles à utiliser, **lui demander de composer la matrice via tile-picker.html** :
-- [`game/web/tools/tile-picker.html`](c:/ProjetsPerso/Claude_Projects/MaxPlay/game/web/tools/tile-picker.html) (path 2026-05-10 : déplacé dans `tools/`)
+- [`site/tools/tile-picker.html`](c:/ProjetsPerso/Claude_Projects/MaxPlay/site/tools/tile-picker.html) (path 2026-05-10 : déplacé dans `tools/`)
 - **5 catégories** : 🛣️ Rue · 🌳 Parc · 🌸 Jardin · 🏠 Building · 🌲 Forêt — onglets en haut de la biblio
 - ~3500 tiles indexés depuis `roads/`, `parks/`, `buildings/`, `props/`, `stations/`
 - Filtre par numéro/nom + filtre catégorie cumulatifs
@@ -69,7 +69,7 @@ Quand le user dit "je veux une composition X" et que je ne suis pas sûr des bon
 
 ## 🦺 MINI-JEU KIDS : mj-pose-tiles.html (pour Max)
 
-[`game/web/mj-pose-tiles.html`](c:/ProjetsPerso/Claude_Projects/MaxPlay/game/web/mj-pose-tiles.html) — version simplifiée du tile-picker pensée pour enfant 4 ans :
+[`site/mj-pose-tiles.html`](c:/ProjetsPerso/Claude_Projects/MaxPlay/site/mj-pose-tiles.html) — version simplifiée du tile-picker pensée pour enfant 4 ans :
 - Grille 8×8, tap-friendly (cellules 60×60+)
 - 5 catégories avec icônes emoji
 - Palette réduite (5-6 tiles par cat) pour ne pas saturer
@@ -175,7 +175,7 @@ Si une seule case n'est pas validée → **ne pas soumettre**, itérer.
 
 Pour les compositions complexes (mockups de scènes urbaines, virages, intersections, quartiers), utiliser cette boucle :
 
-1. **PROPOSE** (agent) — créer une recette `recipes/test_X.py`, la rendre en PNG, l'afficher dans [`tools/mockups-routes.html`](c:/ProjetsPerso/Claude_Projects/MaxPlay/game/web/tools/mockups-routes.html) à échelle uniforme.
+1. **PROPOSE** (agent) — créer une recette `recipes/test_X.py`, la rendre en PNG, l'afficher dans [`tools/mockups-routes.html`](c:/ProjetsPerso/Claude_Projects/MaxPlay/site/tools/mockups-routes.html) à échelle uniforme.
 2. **ÉDITE** (user) — clique 🎨 Éditer sur la card → ouvre `tile-picker.html?recipe=test_X.py` qui pré-remplit la matrice → user modifie → clique "📤 Export Python" → copie le résultat → me l'envoie.
 3. **APPREND** (agent) — remplace `recipes/test_X.py` avec l'export user, re-render le PNG, **invoquer tile-pmo** pour graver les leçons :
    - Quelles tiles a changé le user et pourquoi (si ça révèle une mauvaise cartographie de ma part).
@@ -287,11 +287,11 @@ fetch('data.json').then(r => r.json()).then(data => render(data));
 ## 🗺️ CARTOGRAPHIE & PATTERNS — toujours partir de là
 
 **Avant d'écrire le moindre layout** : consulter
-- [`game/web/tools/tile-picker.html`](c:/ProjetsPerso/Claude_Projects/MaxPlay/game/web/tools/tile-picker.html) — 🆕 **BIBLIOTHÈQUE VISUELLE + MATRICE 10×10 DRAG&DROP** : 81 tiles (27 Asphalt_1 + 54 Sidewalk_1) sélectionnables, matrice configurable, export Python. **Quand l'agencement n'est pas évident, demander au user de composer dans tile-picker** — il glisse les tiles, exporte en Python, je transcris dans une recette `test_X.py`. Plus de devinette.
-- [`game/web/tile-tools/themes_overview/`](c:/ProjetsPerso/Claude_Projects/MaxPlay/game/web/tile-tools/themes_overview/) — **PLANCHES D'ASSEMBLAGE LIMEZU** : pour chaque thème (City Terrains, Vehicles, Garden…), une grande PNG avec exemples d'assemblages réalisés par le créateur du tileset. **À regarder EN PREMIER** quand on cherche à composer quelque chose : les exemples y montrent quelles tiles vont ensemble (virages, ronds-points, bus, etc.). Ça évite de perdre 30 minutes à inventer un mauvais assemblage quand le créateur en a déjà fourni un correct.
-- [`game/web/tile-tools/cartography.json`](c:/ProjetsPerso/Claude_Projects/MaxPlay/game/web/tile-tools/cartography.json) — rôle exact de chaque variation Asphalt_1 (1-27) et Sidewalk_1 (1-54)
-- [`game/web/tile-tools/patterns.json`](c:/ProjetsPerso/Claude_Projects/MaxPlay/game/web/tile-tools/patterns.json) — recettes validées par cas d'usage (route verticale stylée, voie bus 2 sens, parking N+S, rond-point complet…)
-- [`game/web/tools/tile-library-v3.html`](c:/ProjetsPerso/Claude_Projects/MaxPlay/game/web/tools/tile-library-v3.html) — vue navigable patterns + cartographie
+- [`site/tools/tile-picker.html`](c:/ProjetsPerso/Claude_Projects/MaxPlay/site/tools/tile-picker.html) — 🆕 **BIBLIOTHÈQUE VISUELLE + MATRICE 10×10 DRAG&DROP** : 81 tiles (27 Asphalt_1 + 54 Sidewalk_1) sélectionnables, matrice configurable, export Python. **Quand l'agencement n'est pas évident, demander au user de composer dans tile-picker** — il glisse les tiles, exporte en Python, je transcris dans une recette `test_X.py`. Plus de devinette.
+- [`site/tile-tools/themes_overview/`](c:/ProjetsPerso/Claude_Projects/MaxPlay/site/tile-tools/themes_overview/) — **PLANCHES D'ASSEMBLAGE LIMEZU** : pour chaque thème (City Terrains, Vehicles, Garden…), une grande PNG avec exemples d'assemblages réalisés par le créateur du tileset. **À regarder EN PREMIER** quand on cherche à composer quelque chose : les exemples y montrent quelles tiles vont ensemble (virages, ronds-points, bus, etc.). Ça évite de perdre 30 minutes à inventer un mauvais assemblage quand le créateur en a déjà fourni un correct.
+- [`site/tile-tools/cartography.json`](c:/ProjetsPerso/Claude_Projects/MaxPlay/site/tile-tools/cartography.json) — rôle exact de chaque variation Asphalt_1 (1-27) et Sidewalk_1 (1-54)
+- [`site/tile-tools/patterns.json`](c:/ProjetsPerso/Claude_Projects/MaxPlay/site/tile-tools/patterns.json) — recettes validées par cas d'usage (route verticale stylée, voie bus 2 sens, parking N+S, rond-point complet…)
+- [`site/tools/tile-library-v3.html`](c:/ProjetsPerso/Claude_Projects/MaxPlay/site/tools/tile-library-v3.html) — vue navigable patterns + cartographie
 
 **Hiérarchie de consultation** :
 1. **tile-picker.html** → si je tâtonne ≥ 2 fois sur un agencement, demander au user de composer
@@ -377,7 +377,7 @@ Pour une route verticale 5 cols `[trottoir | T1 | ligne | T2 | trottoir]` :
 Tant que tu n'as pas un **PNG du rendu sous les yeux**, tu ne sais pas si ton snippet marche. Phaser et HTML5 canvas ne montrent les bugs qu'au runtime.
 
 **Procédure** :
-1. Toute composition de tiles passe par [`game/web/tile-tools/render.py`](c:/ProjetsPerso/Claude_Projects/MaxPlay/game/web/tile-tools/render.py) — un script PIL qui prend un module Python avec `SNIPPET = {cols, rows, ground[][], objects[(c,r,key,...)]}` et produit un PNG.
+1. Toute composition de tiles passe par [`site/tile-tools/scripts/render.py`](c:/ProjetsPerso/Claude_Projects/MaxPlay/site/tile-tools/scripts/render.py) — un script PIL qui prend un module Python avec `SNIPPET = {cols, rows, ground[][], objects[(c,r,key,...)]}` et produit un PNG.
 2. Après chaque render : **lire le PNG** (Read tool) pour vérifier le résultat **avant** de coder le snippet final dans tile-library.html ou Phaser.
 3. Itérer. Pas de "j'ai écrit donc ça marche".
 
@@ -388,7 +388,7 @@ Tant que tu n'as pas un **PNG du rendu sous les yeux**, tu ne sais pas si ton sn
 - `test_voie_bus2.py` → voie de bus avec marquage "BUS" lisible
 - `test_parking.py` → parking 2 places marquées "P"
 
-**Visual catalog** : `python make_catalog_sheets.py` régénère 24 planches-contact PNG par catégorie/famille. Index visuel dans [`game/web/tile-library-v2.html`](c:/ProjetsPerso/Claude_Projects/MaxPlay/game/web/tile-library-v2.html).
+**Visual catalog** : `python make_catalog_sheets.py` régénère 24 planches-contact PNG par catégorie/famille. Index visuel dans [`site/tools/_archive/tile-library-v2.html`](c:/ProjetsPerso/Claude_Projects/MaxPlay/site/tools/_archive/tile-library-v2.html).
 
 ---
 
@@ -594,10 +594,10 @@ for r in range(rows):
 
 | Fichier | Rôle |
 |---------|------|
-| [`game/web/tile-library.html`](c:/ProjetsPerso/Claude_Projects/MaxPlay/game/web/tile-library.html) | Catalogue visuel + 10 snippets |
-| [`game/web/map-mockups.html`](c:/ProjetsPerso/Claude_Projects/MaxPlay/game/web/map-mockups.html) | Maps d'apprentissage (10+ mockups) |
-| [`game/phaser/src/scenes/PreloadScene.ts`](c:/ProjetsPerso/Claude_Projects/MaxPlay/game/phaser/src/scenes/PreloadScene.ts) | Source de vérité des tiles chargés en jeu |
-| [`game/phaser/src/scenes/SandboxScene.ts`](c:/ProjetsPerso/Claude_Projects/MaxPlay/game/phaser/src/scenes/SandboxScene.ts) | Render tile-based de Max Adventure |
+| [`site/tools/_archive/tile-library.html`](c:/ProjetsPerso/Claude_Projects/MaxPlay/site/tools/_archive/tile-library.html) | Catalogue visuel + 10 snippets |
+| [`site/map-mockups.html`](c:/ProjetsPerso/Claude_Projects/MaxPlay/site/map-mockups.html) | Maps d'apprentissage (10+ mockups) |
+| [`studio/max-adventure/src/scenes/PreloadScene.ts`](c:/ProjetsPerso/Claude_Projects/MaxPlay/studio/max-adventure/src/scenes/PreloadScene.ts) | Source de vérité des tiles chargés en jeu |
+| [`studio/max-adventure/src/scenes/SandboxScene.ts`](c:/ProjetsPerso/Claude_Projects/MaxPlay/studio/max-adventure/src/scenes/SandboxScene.ts) | Render tile-based de Max Adventure |
 | `~/.claude/skills/pixel-maps/` | Skill pipeline simplifier→designer→reviewer |
 
 ---

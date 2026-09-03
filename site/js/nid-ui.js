@@ -320,7 +320,10 @@
         (a.count > 1 ? '<span class="ch-acc-n">' + a.count + '</span>' : '') +
       '</button>';
     }).join('');
-    if (!rows) rows = '<div class="ch-sac-vide">🎒</div>'; // vide : gestuel, aucune promesse
+    // Sac vide : on ne remet PAS un 🎒 ici — la tete du sac (.ch-sac-tete) en
+    // affiche deja un en permanence, et les deux se cumulaient a l'ecran
+    // (bug signale par PY 2026-09-03 : « y a toujours 2 sacs a dos »).
+    // C'est la tete qui devient discrete, via .ch-sac.vide.
     return rows;
   }
 
@@ -335,7 +338,10 @@
       ? eggs.map(function (e) { return chambreEggHtml(e, sacGarni > 0); }).join('')
       : '<div class="ch-vide"><div class="ch-vide-oeuf"></div></div>';
     ov.querySelector('.ch-oeufs').innerHTML = eggsHtml;
-    ov.querySelector('.ch-sac-items').innerHTML = chambreSacHtml();
+    var sacHtml = chambreSacHtml();
+    ov.querySelector('.ch-sac-items').innerHTML = sacHtml;
+    // Sac vide : la tete s'estompe au lieu d'ajouter un 2e emoji (cf. chambreSacHtml).
+    ov.querySelector('.ch-sac').classList.toggle('vide', !sacHtml);
   }
 
   function openChambre() {

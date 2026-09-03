@@ -270,4 +270,4 @@ L'étude complète (~28k tokens, 8 sections, 36 références) a été archivée 
 - [`../cross-culture/doctrine.md`](../cross-culture/doctrine.md) — chaque casting peut emprunter sa micro-structure culturelle
 - [`../memory/DECISIONS.md`](../memory/DECISIONS.md) — décisions narratologiques MaxPlay
 - [`brief-univers.md`](brief-univers.md) — brief Architecte / Writers
-- [`memoire-conseiller.md`](memoire-conseiller.md) — patterns identifiés
+- `.claude/agent-memory/narration-conseiller/MEMORY.md` — patterns identifiés

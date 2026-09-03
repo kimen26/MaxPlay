@@ -28,3 +28,7 @@ Issu de `memory/audits/2026-09-03-archi-claude-infra.md`. Vagues 1 → 2 → 3, 
 - [ ] Max Adventure : retirer le fallback sprite top-down du bus (`USE_SVG_BUS` dans `SandboxScene.ts` + spritesheet + anims) une fois le SVG profil validé définitivement par Papa Yann.
 - [ ] Skill `name-sonority-check` (8 axes, verdict /16 GO/AJUSTER/REJETER) + clarifier avec Papa Yann agent dédié vs skill seule.
 - [ ] `site/PIPELINE-MEMORY-MJ.md` : journal PMO historique déployé en prod → à archiver dans `studio/minijeux/memory/archive/` (HO-G10).
+
+## Suites des skills globaux (HO-G09, 2026-09-03)
+- [ ] DINO : créer `i18n.config.json` et brancher `~/.claude/skills/i18n-contenu/scripts/check-i18n.mjs` (en plus de `_check-traduction.cjs`).
+- [ ] DINO : migrer `dino-images-lunii/scripts/{gpt-gen,gpt-gen-dino,grok-gen-dino}.mjs` sur `browser-pilot` (`attachToBrave`) — corrige au passage le bug qualité Grok (bouton Télécharger).

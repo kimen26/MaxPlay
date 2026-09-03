@@ -78,7 +78,7 @@
 
 ## Tabous / garde-fous spécifiques à l'arc
 
-> *En plus des règles globales (`pmo/decisions.md`), ce que cet arc s'interdit ou s'oblige.*
+> *En plus des règles globales (`memory/DECISIONS.md`), ce que cet arc s'interdit ou s'oblige.*
 
 - *…*
 

@@ -1,6 +1,6 @@
 ﻿# Catalogue de prénoms — Univers Wex
 
-> **Statut depuis 2026-04-29** : ce catalogue n'est **pas une matière en réserve** — c'est la **base opérationnelle** pour construire les **castings nationaux** de l'univers (cf. décision *Architecture cross-culture du casting*, [`../../pmo/decisions.md`](../../pmo/decisions.md)).
+> **Statut depuis 2026-04-29** : ce catalogue n'est **pas une matière en réserve** — c'est la **base opérationnelle** pour construire les **castings nationaux** de l'univers (cf. décision *Architecture cross-culture du casting*, [`../../memory/DECISIONS.md`](../../memory/DECISIONS.md)).
 >
 > **Vue d'ensemble** : ce catalogue rassemble les prénoms qualifiés pour les **9 compagnons d'ennéatype** dans chaque casting national. Le casting V1 « Christ » français (Wex + Melki/Mimi/Dadou/Madie/Lulu/Pierrot/Raph/Juju/Nono) est figé — c'est **un casting parmi N**. Les **30 cultures qualifiées** ici = **30 castings potentiels**, à promouvoir progressivement en castings nationaux V2.
 >

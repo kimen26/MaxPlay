@@ -88,7 +88,7 @@ L'enfant ne traite pas une histoire intellectuellement. Il **simule corporelleme
 
 À éviter avant 4 ans : le suspense dramatique pur (le lecteur sait, le perso ignore et le danger arrive).
 
-**Lien :** `../pmo/decisions.md` (section *Sensibilité différenciée*, 2026-04-29) · `../personnages/INDEX.md` (section *Sensibilités différenciées*).
+**Lien :** `../memory/DECISIONS.md` (section *Sensibilité différenciée*, 2026-04-29) · `../personnages/INDEX.md` (section *Sensibilités différenciées*).
 
 ---
 
@@ -268,6 +268,6 @@ L'étude complète (~28k tokens, 8 sections, 36 références) a été archivée 
 ## Liens
 
 - [`../cross-culture/doctrine.md`](../cross-culture/doctrine.md) — chaque casting peut emprunter sa micro-structure culturelle
-- [`../pmo/decisions.md`](../pmo/decisions.md) — décisions narratologiques MaxPlay
+- [`../memory/DECISIONS.md`](../memory/DECISIONS.md) — décisions narratologiques MaxPlay
 - [`brief-univers.md`](brief-univers.md) — brief Architecte / Writers
 - [`memoire-conseiller.md`](memoire-conseiller.md) — patterns identifiés

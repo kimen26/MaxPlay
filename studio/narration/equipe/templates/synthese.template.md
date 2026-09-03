@@ -71,7 +71,7 @@
 
 ## 5. DÉCISIONS NARRATIVES ÉMERGÉES
 
-> *Si une règle nouvelle a été tranchée pendant la fabrication, elle doit aller dans `pmo/decisions.md`.*
+> *Si une règle nouvelle a été tranchée pendant la fabrication, elle doit aller dans `memory/DECISIONS.md`.*
 
 - *…*
 
@@ -83,7 +83,7 @@
 - ☐ `memoire-dir.md` mis à jour (décisions de sélection, pourquoi cette version a gagné)
 - ☐ `memoire-architecte.md` mis à jour (plan qui a bien/mal fonctionné)
 - ☐ `memoire-gatekeeper.md` mis à jour (erreurs récurrentes, patterns à surveiller)
-- ☐ `pmo/decisions.md` mis à jour (si nouvelles règles)
+- ☐ `memory/DECISIONS.md` mis à jour (si nouvelles règles)
 - ☐ `arcs/<arc-slug>/fiche.md` mis à jour (si l'histoire affine la qualité d'arc)
 - ☐ `stories/INDEX.md` régénéré (script `generate-index.js`)
 

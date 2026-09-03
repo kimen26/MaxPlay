@@ -1,4 +1,9 @@
-# Audit Trail — Pôle Narration
+# Archive Audit Trail — Narration (2026-05 à 2026-07)
+
+> ⚠️ **Archive verbatim, ne pas réécrire.** Rotation HO-NAR-01 (2026-09-03) : contenu déplacé tel quel depuis `pmo/audit-trail.md`. Les leçons process réutilisables en sont extraites dans [`../LESSONS.md`](../LESSONS.md) (L-001 à L-012).
+
+---
+
 
 > Trace des audits PMO + analyses cause racine. À lire pour comprendre **pourquoi** on a accumulé de la dette de coordination.
 

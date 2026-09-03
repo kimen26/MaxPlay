@@ -3,7 +3,7 @@
 > **La signature stylistique de MaxPlay.** Ce que toute histoire doit porter dans sa structure, sa voix et son cadre.
 > **Brief writers en 1 phrase :** *« Kishōtenketsu noyau (B) + voix tranche de vie (D) + cadre cyclique de la série (C). Pour l'arc Parole : Ten = conséquence visible jamais commentée. »*
 >
-> Tranchée le 2026-04-30 (chantier 1). Voir `pmo/decisions.md`.
+> Tranchée le 2026-04-30 (chantier 1). Voir `memory/DECISIONS.md`.
 
 ---
 
@@ -142,5 +142,5 @@ OUTILS PONCTUELS :
 - [`templates/brief-histoire.template.md`](templates/brief-histoire.template.md) — brief writer central
 - [`sources-narratologie.md`](sources-narratologie.md) — étude cross-culture des 6 familles narratives
 - [`lecons-vivantes.md`](lecons-vivantes.md) — patterns confirmés (P1-P10, G1-G6)
-- [`../pmo/decisions.md`](../pmo/decisions.md) — décisions tranchées (chantier 1 le 2026-04-30)
+- [`../memory/DECISIONS.md`](../memory/DECISIONS.md) — décisions tranchées (chantier 1 le 2026-04-30)
 - [`../saisons/saison-1/`](../saisons/saison-1/) — plan éditorial par arc (qualité humaine + problématique)

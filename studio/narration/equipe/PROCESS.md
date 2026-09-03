@@ -1,5 +1,6 @@
 ﻿# PROCESS éditorial MaxPlay
 
+> **Source unique du process.** `.claude/rules/stories-process.md` et le `CLAUDE.md` du pôle ne font que pointer ici.
 > **Référence opérationnelle.** Source de vérité du workflow, des owners, des inputs/outputs, des critères PASS et des points de reprise.
 > **Pour la cartographie des fichiers et règles de domaine, voir [`cartographie-domaines.md`](cartographie-domaines.md).**
 > **Pour l'organigramme et les agents, voir [`ORGANIGRAMME.md`](ORGANIGRAMME.md).**
@@ -17,7 +18,7 @@
 4. **Rien n'est effacé** — versions abandonnées → `_archive/`. Histoire abandonnée → `_archive/` racine. Aucun overwrite.
 5. **1 dossier = 1 histoire** — `stories/<NNN-slug>/` contient TOUT (briefs, versions, lecteurs, sélection, rewrite, gatekeeper, re-relecture, canon, variantes, archives). Pas de fragmentation `workshop/`.
 6. **Le `kanban.md` est la source de vérité** — pour reprendre une histoire après reboot, on lit son kanban.
-7. **Agent manquant = STOP + alerte auteur** (règle absolue 2026-05-02) — l'orchestrateur ne se substitue JAMAIS à un agent défini qui n'est pas chargé en session courante. Voir `pmo/decisions.md` (2026-05-02 RÈGLE ABSOLUE).
+7. **Agent manquant = STOP + alerte auteur** (règle absolue 2026-05-02) — l'orchestrateur ne se substitue JAMAIS à un agent défini qui n'est pas chargé en session courante. Voir `memory/DECISIONS.md` (2026-05-02 RÈGLE ABSOLUE).
 8. **Le writer du top 1 garde la main au rewrite** (règle 2026-05-08) — quand une version est élue #1 par les lecteurs, c'est son auteur (Kimi, Claude, etc.) qui retouche son propre texte avec sa propre note d'intention. Pas de greffes injectées par d'autres LLM. Les patterns lecteurs alimentent `lecons-vivantes.md` pour les **futures** histoires.
 9. **Onomatopées normées** (règle 2026-05-08) — 0 ou 1 par histoire, choisie dans [`../cross-culture/onomatopees/catalogue-onomatopees.md`](../cross-culture/onomatopees/catalogue-onomatopees.md). Test à voix haute obligatoire.
 
@@ -25,7 +26,7 @@
 
 ## Vue d'ensemble — 11 étapes (0 à 10)
 
-> **Chiffre canonique : 11 étapes, numérotées 0 à 10.** L'étape 2 (Brainstorm) existe depuis 2026-05-15. Source unique du chiffre : [`../pmo/INVARIANTS.md`](../pmo/INVARIANTS.md).
+> **Chiffre canonique : 11 étapes, numérotées 0 à 10.** L'étape 2 (Brainstorm) existe depuis 2026-05-15. Source unique du chiffre : [`../memory/INVARIANTS.md`](../memory/INVARIANTS.md).
 
 ```
 0.  Idée                    (Auteur)                   → INBOX.md section datée
@@ -43,7 +44,7 @@
 
 > **Historique étape 2** : l'étape 2 d'origine (Plan, Architecte) a été **fusionnée dans l'étape 1** le 2026-05-12. Le créneau « 2 » a ensuite été **réutilisé pour le Brainstorm** (DEC-PROCESS-002, 2026-05-15). L'Architecte reste supprimé.
 
-**SLA :** 3 jours max sur chaque attente auteur (étapes 1/6/10). Au-delà → `kanban.md` passe en 🔴 BLOQUÉ + log auto dans `pmo/sprint-log.md`.
+**SLA :** 3 jours max sur chaque attente auteur (étapes 1/6/10). Au-delà → `kanban.md` passe en 🔴 BLOQUÉ + log auto dans `memory/MEMORY.md`.
 
 **Convention préfixe étape (2026-05-12)** : tout fichier ou dossier dans `stories/<NNN>/` est préfixé par le numéro de l'étape qui le produit (`1-pitch-plan.md`, `3-briefs/`, `4-versions-writers/`, etc.). Cela rend l'ordre du PROCESS visible dans le file explorer sans lire le kanban. Les fichiers transverses (`kanban.md`, `README.md`) n'ont pas de préfixe.
 
@@ -51,7 +52,7 @@
 
 ## PROCESS Audio — 5 étapes (workflow post-étape 10, décision figée 2026-05-16)
 
-> **Méthodologie officielle** : `POST /v1/text-to-dialogue` (ElevenLabs) packetisé < 2000 char. Source : [`../pmo/decisions.md`](../pmo/decisions.md) § DEC-AUDIO-PRODUCTION-001 (figée, jamais régresser). Détail technique complet : [`.claude/rules/audio.md`](../../../.claude/rules/audio.md) (auto-chargé dès que Claude touche script audio).
+> **Méthodologie officielle** : `POST /v1/text-to-dialogue` (ElevenLabs) packetisé < 2000 char. Source : [`../memory/DECISIONS.md`](../memory/DECISIONS.md) § DEC-AUDIO-PRODUCTION-001 (figée, jamais régresser). Détail technique complet : [`.claude/rules/audio.md`](../../../.claude/rules/audio.md) (auto-chargé dès que Claude touche script audio).
 
 ### Vue d'ensemble — 5 étapes linéaires
 
@@ -119,7 +120,7 @@
 | Champ | Valeur |
 |---|---|
 | **Owner** | Conseiller (`narration-conseiller`, Opus) |
-| **Inputs** | `INBOX.md` section, `equipe/memoire-conseiller.md`, `equipe/patte-narrative-maxplay.md`, `personnages/INDEX.md` (+ fiches type-NN concernées), `personnages/theorie/pedagogie-enfance/` (boussole 4-5 ans **obligatoire**), `personnages/theorie/enneagramme/chabreuil-synthese-complete.md` §8.3 (comportements 4-7 ans par type), `univers/INDEX.md` (+ fiche du lieu), `saisons/saison-1/<arc-slug>/fiche.md`, `pmo/decisions.md`, `pmo/INVARIANTS.md`, `stories/INDEX.md` |
+| **Inputs** | `INBOX.md` section, `equipe/memoire-conseiller.md`, `equipe/patte-narrative-maxplay.md`, `personnages/INDEX.md` (+ fiches type-NN concernées), `personnages/theorie/pedagogie-enfance/` (boussole 4-5 ans **obligatoire**), `personnages/theorie/enneagramme/chabreuil-synthese-complete.md` §8.3 (comportements 4-7 ans par type), `univers/INDEX.md` (+ fiche du lieu), `saisons/saison-1/<arc-slug>/fiche.md`, `memory/DECISIONS.md`, `memory/INVARIANTS.md`, `stories/INDEX.md` |
 | **Outputs** | `stories/<NNN-slug>/1-pitch-plan.md` rempli depuis `equipe/templates/pitch-plan.template.md` + `stories/<NNN-slug>/kanban.md` (étape 1 ✅) + `stories/<NNN-slug>/README.md` (carte vivante initiale, ~40 lignes max) |
 | **Ce que `1-pitch-plan.md` CONTIENT** | <ul><li>**Pitch — 4 cases** : objet titre · trio (2-3 persos du casting V1 + Wex) · lieu · moment d'ouverture optionnel</li><li>**Plan léger** : trio (qui agit, qui sent, qui catalyse), promesse du titre (par quoi elle se tient), recentrage Ten (par quel perso ou objet passe la bascule — sans décrire le geste précis), sensibilités révélées (laquelle/lesquelles, comment), garde-fous structurels (Ten silencieux, Ketsu image, etc.), contraintes dures (longueur 400-700 mots, ≥ 2 répliques/perso, ≥ 1 échange 3+ répliques)</li></ul> |
 | **Ce que `1-pitch-plan.md` NE CONTIENT PAS (laissé au writer)** | <ul><li>❌ Le détail phrase par phrase de Ki/Sho/Ten/Ketsu</li><li>❌ Les gestes spécifiques de chaque perso à chaque moment</li><li>❌ Le style, le rythme, les dialogues exacts</li><li>❌ L'ouverture précise (sauf si imposée explicitement par le Directeur via brief)</li><li>❌ La scénarisation du Ten (qui regarde qui, qui pose la main où, etc.)</li></ul> |
@@ -151,7 +152,7 @@
 | Champ | Valeur |
 |---|---|
 | **Owner** | Directeur (`narration`) orchestre : Kimi + DeepSeek + Grok + Conseiller Claude |
-| **Inputs** | Décisions boss (Phase A) + `1-pitch-plan.md` + `pmo/INVARIANTS.md` + fiches persos `type-NN/alive.md` |
+| **Inputs** | Décisions boss (Phase A) + `1-pitch-plan.md` + `memory/INVARIANTS.md` + fiches persos `type-NN/alive.md` |
 | **Objectif** | Générer la matière brute des 2 briefs : portrait vivant des persos dans cette story + trame Ki/Sho/Ten/Ketsu + contraintes |
 | **Mécanique** | MCP `ask_kimi` + `ask_deepseek` + `ask_grok` en parallèle (system = `_writer-system.md`, user = pitch + paramètres boss). Conseiller synthétise. |
 | **Output** | Matière brute → alimente `3-briefs/brief-personnages.md` + `3-briefs/brief-histoire.md` à l'étape 3 |
@@ -162,7 +163,7 @@
 ## Étape 3 — Briefs writers
 
 > 🎨 **Craft (CRAFT-003)** : à l'étape 3, charger le sous-fichier `05-developpement` du skill
-> [`narration-craft`](../../../.claude/skills/narration-craft/SKILL.md) (calibrage 4-6 ans) ;
+> [`narration-craft`](C:/Users/kimen/.claude/skills/narration-craft/SKILL.md) (calibrage 4-6 ans) ;
 > au rewrite étape 7 : `06-prose` + `02-voix`. Wiring complet : rule `.claude/rules/narration-craft.md`.
 
 > **Refonte 2026-05-15** : architecture writer **system/user split**. 
@@ -174,14 +175,14 @@
 | Champ | Valeur |
 |---|---|
 | **Owner** | Directeur (`narration`, Opus) |
-| **Inputs** | `1-pitch-plan.md`, `equipe/_writer-system.md` (source de vérité system — lu et validé une fois par arc), `equipe/templates/brief-personnages.template.md`, `equipe/templates/brief-histoire.template.md`, `personnages/theorie/pedagogie-enfance/` (boussole 4-5 ans à intégrer dans brief), **`gout/memoire-papa-yann.md` + `gout/palmares-writers.md` (OBLIGATOIRE depuis 2026-07-03 — contraintes de goût dans le brief, angle par writer depuis le palmarès)**, `pmo/decisions.md`, `pmo/INVARIANTS.md` |
+| **Inputs** | `1-pitch-plan.md`, `equipe/_writer-system.md` (source de vérité system — lu et validé une fois par arc), `equipe/templates/brief-personnages.template.md`, `equipe/templates/brief-histoire.template.md`, `personnages/theorie/pedagogie-enfance/` (boussole 4-5 ans à intégrer dans brief), **`gout/memoire-papa-yann.md` + `gout/palmares-writers.md` (OBLIGATOIRE depuis 2026-07-03 — contraintes de goût dans le brief, angle par writer depuis le palmarès)**, `memory/DECISIONS.md`, `memory/INVARIANTS.md` |
 | **🎯 Règles goût (DEC-BRIEF-CURSEUR, 2026-07-03)** | <ul><li>**Brief = BOUSSOLE** : quoi + intentions/causalités, JAMAIS de beats de mise en scène (REX vague 3 GPS : 11/14 clones).</li><li>**Intention obligatoire** : « produis UN moment physique mémorable/participatif » (intention, pas beat).</li><li>**Anti-Streisand** : si l'auteur a une version précise en tête, elle devient UNE intention + un critère de sélection étape 6 — jamais une mise en scène dictée.</li><li>**MENU D'ANGLES COMMUN (corrigé Papa Yann 2026-07-03, annule les micro-briefs assignés)** : TOUS les writers reçoivent EXACTEMENT le même input. Le brief propose un **menu d'idées d'angles** (nourri de `gout/palmares-writers.md`) — chaque writer y pioche librement (ou l'ignore) et **DÉCLARE dans sa note d'intention ce qu'il a choisi et pourquoi**. On n'assigne JAMAIS d'angle individuel. La variance vient des modèles/températures + des choix libres déclarés (observables au palmarès).</li><li>**Jamais de verbatim** : le brief ne cite aucune phrase du corpus des histoires précédentes (anti-contamination) — les goûts s'expriment en descripteurs craft.</li></ul> |
 | **Outputs** | <ul><li>`stories/<NNN-slug>/3-briefs/brief-personnages.md` (user brief pour tous writers)</li><li>`stories/<NNN-slug>/3-briefs/brief-histoire.md` (user brief pour tous writers)</li><li>`kanban.md` étape 3 ✅</li><li>**SYSTÈME FIGÉ** : `equipe/_writer-system.md` (partagé par tous stories du même arc)</li><li>✅ **OBSOLÈTE** : `brief-univers.md` (contenu gravé en `_writer-system.md`)</li><li>✅ **OBSOLÈTE** : `_writer-package.md` (remplacé par system/user split)</li></ul> |
 | **Qui reçoit quoi** | <table><tr><th>Writer</th><th>Type</th><th>System prompt</th><th>User briefs</th></tr><tr><td>Claude libre ×6</td><td>agent local</td><td>Lit `equipe/_writer-system.md` via Read tool</td><td>Lit `brief-personnages.md` + `brief-histoire.md` via Read tool</td></tr><tr><td>Kimi libre ×3</td><td>MCP stateless</td><td>`equipe/_writer-system.md` inliné dans prompt</td><td>`brief-personnages.md` + `brief-histoire.md` inlinés dans prompt</td></tr><tr><td>Kimi guidé ×1</td><td>MCP stateless</td><td>`equipe/_writer-system.md` inliné</td><td>`brief-personnages.md` + `brief-histoire.md` + axes 1-6 inlinés</td></tr><tr><td>DeepSeek ×2</td><td>MCP stateless</td><td>`equipe/_writer-system.md` inliné</td><td>`brief-personnages.md` + `brief-histoire.md` inlinés</td></tr><tr><td>Grok ×2</td><td>MCP stateless</td><td>`equipe/_writer-system.md` inliné</td><td>`brief-personnages.md` + `brief-histoire.md` inlinés</td></tr></table> |
 | **Contenu `equipe/_writer-system.md`** | <ul><li>**Section 1 — Patte narrative MaxPlay** : Kishōtenketsu, tranche de vie, micro-Ten, cadre cyclique (figé depuis 2026-04-24)</li><li>**Section 2 — Univers IMPLICITE** : règles d'or (pas de noms systèmes, pas d'ennéatypes étiquetés, univers en touches légères)</li><li>**Section 3 — Casting V1 figé + voix** : Wex (invariant) + Melki/Mimi/Dadou/Madie/Lulu/Pierrot/Raph/Juju/Nono (4F/5M), surnoms 4/5 du temps, prénoms complets réservés formel, voice_ids + tags writer par perso</li><li>**Section 4 — Saison 1 contraintes** : parents jamais en scène, compagnons = ondes/couleurs, sensibilité différenciée, pas d'antagoniste, pas de morale dite</li><li>**Section 5 — Vocabulaire** : interdits durs (mort, crever, clochard, etc.), vocabulaire négatif OK si pertinent</li><li>**Section 6 — Références externes** : pédagogie enfance 4-5 ans, ennéatype de chaque perso + interactions 9×9</li></ul> |
 | **Contenu `brief-personnages.md` (user)** | <ul><li>Trio + Wex de cette story (qui sont-ils, ce qu'ils apportent)</li><li>Ennéatypes dilués (jamais nommés) + sensibilités spécifiques à cette histoire</li><li>Langage naturel / tournures par perso extrait de `personnages/type-NN/alive.md`</li><li>Tags writer ElevenLabs (signature vocale) si production audio prévue</li></ul> |
 | **Contenu `brief-histoire.md` (user)** | <ul><li>**Pitch** (objet titre, lieu, saison/météo, moment)</li><li>**Plan léger** (Ki/Sho/Ten/Ketsu passant par quel perso, promesse du titre)</li><li>**Contraintes** : longueur 400-700 mots, ≥2 répliques/perso, ≥1 échange 3+ répliques</li><li>**Garde-fous** : pas de parents, pas de morale, univers implicite, ennéatype dilué</li><li>**Leviers variance** (si writer Claude/Kimi → 4 versions angularisées) : angle / POV / ouverture / longueur cible spécifiques à cette histoire</li><li>**Boussole péda 4-5 ans** : cheat-sheet intégrée (max 3 info parallèles, causalité immédiate, sensorialité dominante)</li></ul> |
-| **Critères PASS** | <ul><li>2 fichiers user présents et remplis depuis les templates (`brief-personnages.md` + `brief-histoire.md`)</li><li>`equipe/_writer-system.md` est figé et cohérent avec `pmo/INVARIANTS.md` + `pmo/decisions.md`</li><li>Briefs user sont **autoporteurs** : aucune référence `cf fichier X` (writers MCP reçoivent system + user, sans Read filesystem)</li><li>Brief-histoire inclut : pitch, plan Ki/Sho/Ten/Ketsu **niveau plan léger**, contraintes longueur/dialogues, garde-fous, **leviers de variance (4 versions angularisées sur 10)**, **boussole péda 4-5 ans**</li><li>**PMO relit avant lancement étape 4** : passe de relecture mécanique sur cohérence system/user + négations gratuites. Tant qu'il y a des alertes : kanban étape 4 = 🔴 BLOQUÉ</li></ul> |
+| **Critères PASS** | <ul><li>2 fichiers user présents et remplis depuis les templates (`brief-personnages.md` + `brief-histoire.md`)</li><li>`equipe/_writer-system.md` est figé et cohérent avec `memory/INVARIANTS.md` + `memory/DECISIONS.md`</li><li>Briefs user sont **autoporteurs** : aucune référence `cf fichier X` (writers MCP reçoivent system + user, sans Read filesystem)</li><li>Brief-histoire inclut : pitch, plan Ki/Sho/Ten/Ketsu **niveau plan léger**, contraintes longueur/dialogues, garde-fous, **leviers de variance (4 versions angularisées sur 10)**, **boussole péda 4-5 ans**</li><li>**PMO relit avant lancement étape 4** : passe de relecture mécanique sur cohérence system/user + négations gratuites. Tant qu'il y a des alertes : kanban étape 4 = 🔴 BLOQUÉ</li></ul> |
 | **Pas d'autres fichiers dans `briefs/`** | <ul><li>❌ Pas de `README.md` (le kanban + le nom des briefs parlent d'eux-mêmes)</li><li>❌ Pas de `brief-univers.md` (contenu gravé en `equipe/_writer-system.md` depuis 2026-05-15)</li><li>❌ Pas de `_writer-package.md` (remplacé par system/user split depuis 2026-05-15)</li><li>Si trouvés dans une histoire ancienne (002 historique) : **archiver** dans `_archive/` avec note expliquant que le contenu a migré</li></ul> |
 | **Condition de passage** | Auto-validé Directeur + verdict PMO sur cohérence system/user + négations |
 | **Point de reprise** | Si reboot : relire `equipe/_writer-system.md` (figé) + `briefs/` (les 2 fichiers modulaires pour cette story) |
@@ -197,7 +198,7 @@
 > **Refonte 2026-05-12 v2** : passage de 10 → 14 writers pour calibration multi-modèles (Opus/Sonnet/Haiku + Kimi déf/reco/thinking + DeepSeek déf/reco + Grok déf/reco). Période d'évaluation : 3-5 histoires, puis arbitrage réduction (ticket ARCHI-008 dans backlog).
 > **"reco"** = température recommandée créatif officielle par fournisseur (pas "max" — car au-delà = incohérence narrative). Détail [`references/temperatures-llm.md`](references/temperatures-llm.md).
 > **Refonte 2026-05-15** : architecture writer **system/user split** → tous les writers reçoivent system=`equipe/_writer-system.md` (permanent, figé par arc) + user=`brief-personnages.md` + `brief-histoire.md` (modulaires par story).
-> Source de vérité chiffres + détail : [`../pmo/INVARIANTS.md`](../pmo/INVARIANTS.md) § *Casting writers étape 4*.
+> Source de vérité chiffres + détail : [`../memory/INVARIANTS.md`](../memory/INVARIANTS.md) § *Casting writers étape 4*.
 
 | Champ | Valeur |
 |---|---|
@@ -205,7 +206,7 @@
 | **Mécanique d'appel (refonte 2026-05-15)** | <table><tr><th>Bloc</th><th>Comment l'invoquer</th><th>System + User prompts</th></tr><tr><td>Claude ×6 (Opus/Sonnet/Haiku × déf/reco)</td><td>Agent tool → `narration-writer-claude-libre` (1 invocation par couple modèle+température)</td><td>System : Lit `equipe/_writer-system.md` via Read tool<br/>User : Lit `brief-personnages.md` + `brief-histoire.md` via Read tool</td></tr><tr><td>Kimi libre ×3 (déf/reco/thinking)</td><td>Directeur appelle directement MCP `ask_kimi` (pas d'agent dédié)</td><td>System : `equipe/_writer-system.md` inliné dans prompt<br/>User : `brief-personnages.md` + `brief-histoire.md` inlinés dans prompt</td></tr><tr><td>Kimi guidé ×1</td><td>Agent tool → `narration-writer-kimi-guide` (qui call MCP `ask_kimi`)</td><td>System : `equipe/_writer-system.md` inliné<br/>User : `brief-personnages.md` + `brief-histoire.md` + axes 1-6 (+ `brief-writer-guide.md` si fourni) inlinés</td></tr><tr><td>DeepSeek ×2 (déf/reco)</td><td>Directeur appelle directement MCP `ask_deepseek`</td><td>System : `equipe/_writer-system.md` inliné<br/>User : `brief-personnages.md` + `brief-histoire.md` inlinés</td></tr><tr><td>Grok ×2 (déf/reco)</td><td>Directeur appelle directement MCP `ask_grok` (`reasoning_effort: low`)</td><td>System : `equipe/_writer-system.md` inliné<br/>User : `brief-personnages.md` + `brief-histoire.md` inlinés</td></tr></table> |
 | **Inputs** | <ul><li>**System (figé par arc)** : `equipe/_writer-system.md` (patte, univers, casting, règles Saison 1)</li><li>**User (par story)** : `brief-personnages.md` + `brief-histoire.md` (trio, lieu, plan, contraintes, leviers variance)</li><li>Optionnel (writer guidé) : `3-briefs/brief-writer-guide.md` (trame / axes 1-6)</li><li>Référence vocale (si production audio) : [`../personnages/voix-meta/_CHEATSHEET-WRITERS.md`](../personnages/voix-meta/_CHEATSHEET-WRITERS.md)</li></ul> |
 | **Outputs** | <ul><li>13 versions LIBRES : `versions-writers/claude-opus-def.md`, `claude-opus-reco.md`, `claude-sonnet-def.md`, `claude-sonnet-reco.md`, `claude-haiku-def.md`, `claude-haiku-reco.md`, `kimi-reco.md`, `kimi-k26-instant.md`, `kimi-k26-thinking.md`, `deepseek-def.md`, `deepseek-reco.md`, `grok-def.md`, `grok-reco.md`</li><li>1 version GUIDÉE : `versions-writers/kimi-reco-guide.md` (axes 1-6 + trame story si fournie via `brief-writer-guide.md`)</li><li>Notes d'intention en fin de chaque fichier (frontmatter + section finale)</li><li>`kanban.md` étape 4 ✅</li></ul> |
-| **Casting writers (14, calibration 2026-05-12 → réduction post-3-5 histoires)** | Détail complet dans [`../pmo/INVARIANTS.md`](../pmo/INVARIANTS.md) § *Casting writers étape 4*. Tableau résumé : <table><tr><th>#</th><th>Slug</th><th>Modèle</th><th>Param distinctif</th></tr><tr><td>1</td><td>claude-opus-def</td><td>`claude-opus-4-8`</td><td>défaut Anthropic</td></tr><tr><td>2</td><td>claude-opus-reco</td><td>`claude-opus-4-8`</td><td>temp 1.0 (plafond)</td></tr><tr><td>3</td><td>claude-sonnet-def</td><td>`claude-sonnet-5`</td><td>défaut</td></tr><tr><td>4</td><td>claude-sonnet-reco</td><td>`claude-sonnet-5`</td><td>temp 1.0</td></tr><tr><td>5</td><td>claude-haiku-def</td><td>`claude-haiku-4-5`</td><td>défaut</td></tr><tr><td>6</td><td>claude-haiku-reco</td><td>`claude-haiku-4-5`</td><td>temp 1.0</td></tr><tr><td>7</td><td>kimi-reco</td><td>`kimi-for-coding` (gratuit)</td><td>temp 0.6 reco Instant</td></tr><tr><td>8</td><td>kimi-k26-instant</td><td>`kimi-k2.6` (payant)</td><td>thinking: disabled</td></tr><tr><td>9</td><td>kimi-k26-thinking</td><td>`kimi-k2.6` (payant)</td><td>thinking: enabled</td></tr><tr><td>10</td><td>kimi-reco-guide (GUIDÉ)</td><td>`kimi-for-coding` (gratuit)</td><td>temp 0.6 + axes 1-6</td></tr><tr><td>11</td><td>deepseek-def</td><td>`deepseek-v4-pro`</td><td>défaut (1.0 API = 0.3 modèle)</td></tr><tr><td>12</td><td>deepseek-reco</td><td>`deepseek-v4-pro`</td><td>temp 1.5 (creative)</td></tr><tr><td>13</td><td>grok-def</td><td>`grok-4.3`</td><td>défaut xAI</td></tr><tr><td>14</td><td>grok-reco</td><td>`grok-4.3`</td><td>temp 1.2 (au-delà 1.5 incohérent)</td></tr></table> Détails LLM : [`infra/mcp/MODELS.md`](../../../infra/mcp/MODELS.md). Référence températures : [`references/temperatures-llm.md`](references/temperatures-llm.md). |
+| **Casting writers (14, calibration 2026-05-12 → réduction post-3-5 histoires)** | Détail complet dans [`../memory/INVARIANTS.md`](../memory/INVARIANTS.md) § *Casting writers étape 4*. Tableau résumé : <table><tr><th>#</th><th>Slug</th><th>Modèle</th><th>Param distinctif</th></tr><tr><td>1</td><td>claude-opus-def</td><td>`claude-opus-4-8`</td><td>défaut Anthropic</td></tr><tr><td>2</td><td>claude-opus-reco</td><td>`claude-opus-4-8`</td><td>temp 1.0 (plafond)</td></tr><tr><td>3</td><td>claude-sonnet-def</td><td>`claude-sonnet-5`</td><td>défaut</td></tr><tr><td>4</td><td>claude-sonnet-reco</td><td>`claude-sonnet-5`</td><td>temp 1.0</td></tr><tr><td>5</td><td>claude-haiku-def</td><td>`claude-haiku-4-5`</td><td>défaut</td></tr><tr><td>6</td><td>claude-haiku-reco</td><td>`claude-haiku-4-5`</td><td>temp 1.0</td></tr><tr><td>7</td><td>kimi-reco</td><td>`kimi-for-coding` (gratuit)</td><td>temp 0.6 reco Instant</td></tr><tr><td>8</td><td>kimi-k26-instant</td><td>`kimi-k2.6` (payant)</td><td>thinking: disabled</td></tr><tr><td>9</td><td>kimi-k26-thinking</td><td>`kimi-k2.6` (payant)</td><td>thinking: enabled</td></tr><tr><td>10</td><td>kimi-reco-guide (GUIDÉ)</td><td>`kimi-for-coding` (gratuit)</td><td>temp 0.6 + axes 1-6</td></tr><tr><td>11</td><td>deepseek-def</td><td>`deepseek-v4-pro`</td><td>défaut (1.0 API = 0.3 modèle)</td></tr><tr><td>12</td><td>deepseek-reco</td><td>`deepseek-v4-pro`</td><td>temp 1.5 (creative)</td></tr><tr><td>13</td><td>grok-def</td><td>`grok-4.3`</td><td>défaut xAI</td></tr><tr><td>14</td><td>grok-reco</td><td>`grok-4.3`</td><td>temp 1.2 (au-delà 1.5 incohérent)</td></tr></table> Détails LLM : [`infra/mcp/MODELS.md`](../../../infra/mcp/MODELS.md). Référence températures : [`references/temperatures-llm.md`](references/temperatures-llm.md). |
 | **Différence libre vs guidé** | <ul><li>**LIBRE (13 writers)** : reçoit briefs + 5 garde-fous de FORME (ouverture courte, geste avant parole, fin image, longueur, promesse du titre). **Aucune indication de contenu** (pas de "mets une créature", pas d'onomatopée imposée). Variance native préservée.</li><li>**GUIDÉ (1 writer = kimi-guide)** : reçoit briefs + brief libre + **3 couches** : axes 1-6 (gravés INVARIANTS) + retours lecteurs histoires précédentes (via `lecons-vivantes.md`) + **trame spécifique story** si fournie via `3-briefs/brief-writer-guide.md`. Active 2-3 axes librement, jamais 4+.</li></ul> |
 | **Leviers de variance disponibles (libres)** | Température et thinking déjà cadrés par le casting (déf vs max). POV, ouverture, longueur cible restent imposables par Directeur dans `brief-histoire.md` au cas par cas. |
 | **Checklist auto-cohérence (tous writers)** | Chaque writer fait **une passe factuelle de 30 secondes** avant remise (prénoms casting, cohérence lieux/objets, surnoms 4/5). Pas de réécriture créative — corrige uniquement les bugs. Une 2e passe créative dilue la voix one-shot. |
@@ -289,7 +290,7 @@
 | Champ | Valeur |
 |---|---|
 | **Owner** | GateKeeper (`narration-gatekeeper`, Haiku) |
-| **Inputs** | Le rewrite (`rewrite/<llm>-rewrite-v1.md`) + `personnages/lookup.yml` + `pmo/decisions.md` + `equipe/memoire-gatekeeper.md` + `equipe/onomatopees-cross-culture.md` |
+| **Inputs** | Le rewrite (`rewrite/<llm>-rewrite-v1.md`) + `personnages/lookup.yml` + `memory/DECISIONS.md` + `equipe/memoire-gatekeeper.md` + `equipe/onomatopees-cross-culture.md` |
 | **Outputs** | <ul><li>`stories/<NNN-slug>/8-gatekeeper-verdict.md`</li><li>`kanban.md` étape 8 ✅ ou ❌</li><li>Mise à jour `equipe/memoire-gatekeeper.md` (erreurs récurrentes détectées)</li></ul> |
 | **Checklist PASS (toutes binaires)** | <ul><li>☐ Prénoms/surnoms vs `lookup.yml`</li><li>☐ Genres/pronoms cohérents</li><li>☐ Longueur 400-700 mots</li><li>☐ Chaque perso ≥ 2 répliques</li><li>☐ ≥ 1 échange de 3+ répliques</li><li>☐ Pas de morale explicite (« il avait appris que… »)</li><li>☐ Pas d'antagoniste</li><li>☐ Univers pas nommé (Éveil, Totems, Janus — implicites)</li><li>☐ Ennéatypes jamais étiquetés</li><li>☐ Surnoms 4/5 du temps</li><li>☐ Ten pas anxiogène</li><li>☐ Pas d'épilogue italique (post-001)</li><li>☐ Parents jamais en scène (saison 1)</li><li>☐ Compagnons = ondes/couleurs si présents</li><li>☐ Sensibilité différenciée (pas hiérarchie savoir)</li></ul> |
 | **Critères PASS** | Tous les items binaires ✅. Si une case ❌ → verdict CORRECTIONS avec liste précise (5 min max). |
@@ -324,7 +325,7 @@
 |---|---|
 | **Owner** | Directeur (rédige) + PMO (canonise) |
 | **Inputs** | Rewrite GateKeeper-PASS et re-relecture-PASS + `kanban.md` + `equipe/templates/synthese.template.md` + `equipe/lecons-vivantes.md` |
-| **Outputs** | <ul><li>`stories/<NNN-slug>/10-texte.md` ← **CANON** (copie du rewrite validé)</li><li>`stories/<NNN-slug>/10-synthese-finale.md` (compilation des analyses Directeur)</li><li>`stories/<NNN-slug>/README.md` (frontmatter YAML rempli)</li><li>`kanban.md` étape 10 ✅</li><li>Mises à jour mémoires : `memoire-conseiller.md`, `memoire-dir.md`, `memoire-architecte.md`</li><li>**Mise à jour `equipe/lecons-vivantes.md`** : ce qu'on a appris sur cette histoire (patterns confirmés, pièges identifiés, axes nouveaux)</li><li>Régénération `stories/INDEX.md` (script `generate-index.js`)</li><li>Entrée `pmo/sprint-log.md` + ticket clos dans `pmo/backlog.md`</li><li>Entrée `pmo/decisions.md` si décision narrative a émergé</li></ul> |
+| **Outputs** | <ul><li>`stories/<NNN-slug>/10-texte.md` ← **CANON** (copie du rewrite validé)</li><li>`stories/<NNN-slug>/10-synthese-finale.md` (compilation des analyses Directeur)</li><li>`stories/<NNN-slug>/README.md` (frontmatter YAML rempli)</li><li>`kanban.md` étape 10 ✅</li><li>Mises à jour mémoires : `memoire-conseiller.md`, `memoire-dir.md`, `memoire-architecte.md`</li><li>**Mise à jour `equipe/lecons-vivantes.md`** : ce qu'on a appris sur cette histoire (patterns confirmés, pièges identifiés, axes nouveaux)</li><li>Régénération `stories/INDEX.md` (script `generate-index.js`)</li><li>Entrée `memory/MEMORY.md` + ticket clos dans `memory/TODO.md`</li><li>Entrée `memory/DECISIONS.md` si décision narrative a émergé</li></ul> |
 | **Critères PASS** | <ul><li>`texte.md` existe et identique au rewrite re-relu PASS</li><li>`README.md` YAML valide</li><li>`stories/INDEX.md` régénéré</li><li>3 mémoires mises à jour</li><li>**`lecons-vivantes.md` enrichi** (ce qu'on a appris)</li><li>Ticket fermé dans backlog</li></ul> |
 | **Condition de passage** | ✅ **Auteur valide la version finale** |
 | **Point de reprise** | Si reboot : `texte.md` présent ? Si oui mais index pas à jour → relancer scripts. Si non → recopier depuis le rewrite après validation auteur. |
@@ -356,10 +357,10 @@
 
 Le commit `58b491ed` du 2026-05-08 (« canonisation 001 Le Pont Cassé + refonte catalogue (`rm -rf legacy`) ») a supprimé **~80 fichiers** de fabrication (001 actuel + 002 complet + 003-v2 + 004) sans archivage. Restauré via `git checkout 37cda252 --` le 2026-05-12 après détection par Papa Yann (« on a perdu tous les dossiers de writers relecteur du 001 ou je rêve ??? »).
 
-**Cause racine** : l'agent qui a fait la canonisation a interprété la décision 2026-05-08 « nettoyage du commit » comme « suppression » alors que la décision tranchée disait littéralement « **présence en `_archive/` pour traçabilité** » (`pmo/decisions.md` 2026-05-08 Décision C).
+**Cause racine** : l'agent qui a fait la canonisation a interprété la décision 2026-05-08 « nettoyage du commit » comme « suppression » alors que la décision tranchée disait littéralement « **présence en `_archive/` pour traçabilité** » (`memory/DECISIONS.md` 2026-05-08 Décision C).
 
 **Apprentissage pour les futurs canonisations** :
-- L'agent qui canonise doit relire `pmo/decisions.md` 2026-05-08 Décision C **avant** tout `rm`
+- L'agent qui canonise doit relire `memory/DECISIONS.md` 2026-05-08 Décision C **avant** tout `rm`
 - Le PMO doit valider toute suppression de matière de fabrication avant qu'elle parte au commit
 - Si en doute → laisser en place, demander à Papa Yann
 
@@ -382,7 +383,7 @@ Procédure standard pour tout agent reprenant une histoire :
    - Étape 8 : `gatekeeper-verdict.md`
    - Étape 9 : compter `relecture-rewrite/` (combien sur 3-4)
    - Étape 10 : `texte.md`
-4. **Lire `pmo/decisions.md`** — règles tranchées récentes
+4. **Lire `memory/DECISIONS.md`** — règles tranchées récentes
 5. Reprendre à l'étape signalée par le kanban
 
 ---
@@ -414,5 +415,5 @@ Procédure standard pour tout agent reprenant une histoire :
 - [`patte-narrative-maxplay.md`](patte-narrative-maxplay.md) — patte B+D+C
 - [`templates/`](templates/) — 10 gabarits de briefs et docs
 - [`lecons-vivantes.md`](lecons-vivantes.md) — patterns confirmés (P1-P10, G1-G6)
-- [`../pmo/decisions.md`](../pmo/decisions.md) — décisions tranchées
+- [`../memory/DECISIONS.md`](../memory/DECISIONS.md) — décisions tranchées
 - [`../stories/_gabarit/`](../stories/_gabarit/) — gabarit de dossier histoire unifié

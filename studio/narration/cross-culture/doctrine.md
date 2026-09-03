@@ -1,8 +1,8 @@
 ﻿# Architecture cross-culture de l'univers
 
-> **Décision tranchée 2026-04-29.** Voir [`pmo/decisions.md`](../pmo/decisions.md) section *Architecture cross-culture du casting*.
+> **Décision tranchée 2026-04-29.** Voir [`memory/DECISIONS.md`](../memory/DECISIONS.md) section *Architecture cross-culture du casting*.
 >
-> **Direction héritée** : merveilleux discret ([`../univers/fondements/monde.md`](../univers/fondements/monde.md)), univers implicite, ennéatypes dilués (cf. `pmo/decisions.md` 2026-04-24).
+> **Direction héritée** : merveilleux discret ([`../univers/fondements/monde.md`](../univers/fondements/monde.md)), univers implicite, ennéatypes dilués (cf. `memory/DECISIONS.md` 2026-04-24).
 
 ---
 
@@ -109,7 +109,7 @@ Si Wex **voyage** entre cultures (option A historique), il faudrait soit :
 - Lui donner un prénom par culture (alourdit le système de prénoms)
 - Garder « Wex » partout — mais alors qu'est-ce qui le distingue d'un Wex local ?
 
-> **Décision laissée ouverte tant que S2 (croisements) n'a pas commencé.** La réponse émergera probablement de la première histoire de croisement. Voir question ouverte n°14 dans `pmo/decisions.md`.
+> **Décision laissée ouverte tant que S2 (croisements) n'a pas commencé.** La réponse émergera probablement de la première histoire de croisement. Voir question ouverte n°14 dans `memory/DECISIONS.md`.
 
 ---
 
@@ -167,7 +167,7 @@ Aucun de ces projets ne combine **archétypes universels (ennéatypes) + adaptat
 
 ## Liens
 
-- [`../pmo/decisions.md`](../pmo/decisions.md) — Décision 2026-04-29 *Architecture cross-culture du casting*
+- [`../memory/DECISIONS.md`](../memory/DECISIONS.md) — Décision 2026-04-29 *Architecture cross-culture du casting*
 - [`../personnages/INDEX.md`](../personnages/INDEX.md) — Casting V1 français + structure multi-pays
 - [`../personnages/catalogue-prenoms/INDEX.md`](../personnages/catalogue-prenoms/INDEX.md) — 218 prénoms / 30 cultures
 - [`../equipe/memoire-conseiller.md`](../equipe/memoire-conseiller.md) — patterns *même histoire × N cultures*

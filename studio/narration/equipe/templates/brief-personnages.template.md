@@ -85,4 +85,4 @@ Chaque perso a une sensibilité propre. Pas de hiérarchie de savoir (« Wex sai
 ---
 
 **Date :** YYYY-MM-DD
-**Source casting :** `pmo/decisions.md` (2026-04-24 figé) · `personnages/INDEX.md`
+**Source casting :** `memory/DECISIONS.md` (2026-04-24 figé) · `personnages/INDEX.md`

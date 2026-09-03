@@ -123,7 +123,7 @@ personnages/
 
 > **Règle structurelle** : chaque personnage perçoit ce que les autres ne perçoivent pas. C'est de la **sensibilité différenciée** — **pas du savoir caché**. Aucune hiérarchie « Wex sait, les autres ignorent ».
 >
-> Voir [`../pmo/decisions.md`](../pmo/decisions.md) (section *Sensibilité différenciée*) et [`../univers/fondements/sensibilites.md`](../univers/fondements/sensibilites.md).
+> Voir [`../memory/DECISIONS.md`](../memory/DECISIONS.md) (section *Sensibilité différenciée*) et [`../univers/fondements/sensibilites.md`](../univers/fondements/sensibilites.md).
 
 | Perso | Type | Sensibilité | Statut |
 |-------|------|-------------|--------|

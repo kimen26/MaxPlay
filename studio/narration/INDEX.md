@@ -9,12 +9,12 @@
 
 | Quoi | Statut |
 |------|--------|
-| **Doctrine transverse** | ✅ pointeur → [`../../memory/DOCTRINE.md`](../../memory/DOCTRINE.md) (D-001 pédagogie, D-002 zéro pénalité, D-003 récompense bannie) |
+| **Doctrine transverse** | ✅ pointeur → [`../../memory/DECISIONS.md § Doctrine`](../../memory/DECISIONS.md) (D-001 pédagogie, D-002 zéro pénalité, D-003 récompense bannie) |
 | **Casting V1** | ✅ figé 2026-04-24 (4F/5M+Wex) — Wex + Melki/Mimi/Dadou/**Madie**/Lulu/Pierrot/Raph/Juju/Nono |
 | **Univers** | post-Éveil, Printemps de l'Éveil — distillé dans `univers/` |
 | **Direction narrative** | monde sobre, merveilleux discret (vu à travers l'enfant né dedans) · patte B+D+C (Kishōtenketsu + tranche de vie + cycle) |
 | **Histoires** | 001 *Le Pont Cassé* (canon 540 mots, 2026-05-08). Brainstorm arc 1 en cours (002-010). Direction Nono validée. Arc 2 (Parole) en pause. |
-| **Nom univers** | non tranché — voir [`univers/meta/nom-candidats.md`](univers/meta/nom-candidats.md) |
+| **Nom univers** | **WEX WORLD** (DEC-UNIVERS-NOM, 2026-07-27 — `memory/DECISIONS.md`) |
 
 ---
 
@@ -27,7 +27,7 @@ narration/
 ├── cross-culture/   ← Pilier 3 : variantes par culture (prénoms, onomatopées, lieux, faune, coutumes, saisons climat)
 ├── saisons/         ← Pilier 4 : plan éditorial (saison → arc → stories)
 ├── stories/         ← contenu produit
-├── equipe/, pmo/, scripts/, archive/, memory/   ← opérationnel
+├── equipe/, scripts/, archive/, memory/   ← opérationnel (memory/ = quintette PMO depuis HO-NAR-01)
 └── README.md, INBOX.md, INDEX.md
 ```
 
@@ -52,7 +52,7 @@ narration/
 
 | Ressource | Quand |
 |-----------|-------|
-| [`narration-craft`](../../.claude/skills/narration-craft/SKILL.md) — skill **routeur**, 15 masterclasses (structures, voix, sensoriel, comédie, développement, prose…) | Brief (structure+voix) · écriture (sensoriel+comédie) · rewrite (prose+voix). Charge le sous-fichier pertinent à la demande |
+| [`narration-craft`](C:/Users/kimen/.claude/skills/narration-craft/SKILL.md) — skill **routeur**, 15 masterclasses (structures, voix, sensoriel, comédie, développement, prose…) | Brief (structure+voix) · écriture (sensoriel+comédie) · rewrite (prose+voix). Charge le sous-fichier pertinent à la demande |
 | Rule auto-chargée [`.claude/rules/narration-craft.md`](../../.claude/rules/narration-craft.md) | Pointeurs auto dès qu'on touche `stories/`, `equipe/`, `personnages/` (anti-pollution) |
 
 > 🛑 Garde-fou : cliffhanger/open-loop OK au milieu, **jamais à la fin** (patte Kishōtenketsu apaisant). Ennéagramme : vérité = `personnages/theorie/enneagramme/`, le craft ne fait qu'illustrer.
@@ -138,13 +138,6 @@ narration/
 
 ---
 
-## Mémoire & notes opérationnelles
-
-| Fichier | Contenu |
-|---------|---------|
-| [`memory/state.md`](memory/state.md) | État instantané projet (statuts stories, décisions en cours, SLAs) |
-| [`memory/business/`](memory/business/) | Notes métier (monétisation, roadmap long terme) |
-
 ---
 
 ## Équipe éditoriale (process & agents)
@@ -165,7 +158,7 @@ narration/
 | [`personnages/voix-meta/`](personnages/voix-meta/README.md) | **Voix méta** : narrateurs H/F + cheatsheet didascalies + preview-texts + alias-tags catalog + **`_VOICE-IDS-CASTING.md` (source de vérité méthodo v24)** + **`_SESSION-2026-05-11-RETOUR-EXP.md`** + étude vocale 18 prompts + playbook MaxPlay |
 | 🎙️ **Skills audio globaux** (auto-triggered) | `~/.claude/skills/elevenlabs-voice-design/` (CRÉATION voix — **MAJ 2026-05-12 avec AP#15/16/17**) · `~/.claude/skills/audio-direction-elevenlabs/` (**PRODUCTION** multi-voix : text-to-dialogue, tags v3, tricks graphie, dicts, voice settings, **17 anti-patterns**, 12 cultures) |
 | [`equipe/memoire-*.md`](equipe/) | Mémoires décentralisées par agent |
-| [`scripts/check-compteurs.js`](scripts/check-compteurs.js) | **Anti-dérive des chiffres en dur** : recompte les faits sur disque (prénoms, onomatopées, masterclasses craft, stories) et compare aux chiffres déclarés dans les INDEX. Ne réécrit rien, rapporte. `node studio/narration/scripts/check-compteurs.js` — exit 1 si dérive. Filet de la doctrine « zéro chiffre en dur » ([`memory/DOCTRINE.md`](../../memory/DOCTRINE.md)) ; à passer en clôture d'audit PMO. |
+| [`scripts/check-compteurs.js`](scripts/check-compteurs.js) | **Anti-dérive des chiffres en dur** : recompte les faits sur disque (prénoms, onomatopées, masterclasses craft, stories) et compare aux chiffres déclarés dans les INDEX. Ne réécrit rien, rapporte. `node studio/narration/scripts/check-compteurs.js` — exit 1 si dérive. Filet de la doctrine « zéro chiffre en dur » ([`memory/DECISIONS.md § Doctrine`](../../memory/DECISIONS.md) racine) ; à passer en clôture d'audit PMO. |
 
 ---
 
@@ -176,7 +169,7 @@ narration/
 | Ressource | Rôle |
 |-----------|------|
 | **Outil MCP** | [`studio_audiobook_from_segments_v2_dialogue`](../../infra/mcp/server.ts#L606) — **VOIE PAR DÉFAUT** production multi-voix. Modèle `eleven_v3` forcé. Resolver : `voice-map.json`. Fallback CLI : `scripts/generate-story-dialogue.js`. |
-| **Décision figée** | [`pmo/decisions.md`](pmo/decisions.md) § DEC-AUDIO-PRODUCTION-001 — texte-to-dialogue API, packetisation ≤2000 char, ffmpeg loudnorm. **Jamais régresser.** |
+| **Décision figée** | [`memory/DECISIONS.md`](memory/DECISIONS.md) § DEC-AUDIO-PRODUCTION-001 — texte-to-dialogue API, packetisation ≤2000 char, ffmpeg loudnorm. **Jamais régresser.** |
 | **Process détaillé** | [`equipe/PROCESS.md`](equipe/PROCESS.md) § PROCESS Audio (5 étapes : voice-director markup → packetisation → API calls → concat loudnorm → archivage) |
 | **Règles auto-chargées** | [`.claude/rules/audio.md`](../../.claude/rules/audio.md) — **ENFORCED** dès que Claude touche script audio/segments JSON. Voie MCP + eleven_v3 + voice-map.json + 9 règles obligatoires + 10 anti-patterns bannis. |
 | **Voice-meta source** | [`personnages/voix-meta/_VOICE-IDS-CASTING.md`](personnages/voix-meta/_VOICE-IDS-CASTING.md) — méthodo v24 figée. Voice IDs + settings (stability/similarity_boost/style) par perso + narrateurs H/F + pronunciation dicts. |
@@ -193,15 +186,20 @@ narration/
 
 ---
 
-## PMO (gestion de projet)
+## Mémoire (gestion de projet)
+
+> Depuis la convergence HO-NAR-01 (2026-09-03) : `pmo/` n'existe plus, remplacé par le quintette `memory/` (convention `~/.claude/rules/memoire-projet.md`).
 
 | Fichier | Rôle |
 |---------|------|
-| [`pmo/INDEX.md`](pmo/INDEX.md) | État instantané + règles de reprise après reboot |
-| [`pmo/backlog.md`](pmo/backlog.md) | Tickets actifs (max 3 en cours) |
-| [`pmo/decisions.md`](pmo/decisions.md) | Décisions définitives + questions ouvertes |
-| [`pmo/sprint-log.md`](pmo/sprint-log.md) | Journal de sessions |
-| [`pmo/roadmap.md`](pmo/roadmap.md) | Vision moyen terme |
+| [`memory/MEMORY.md`](memory/MEMORY.md) | État instantané + règles de reprise après reboot + journal des sessions récentes |
+| [`memory/TODO.md`](memory/TODO.md) | Tickets actifs (max 3 en cours) + roadmap moyen terme |
+| [`memory/DECISIONS.md`](memory/DECISIONS.md) | Décisions définitives + questions ouvertes |
+| [`memory/LESSONS.md`](memory/LESSONS.md) | Leçons process (pas le craft narratif — ça, c'est `equipe/lecons-vivantes.md`) |
+| [`memory/INVARIANTS.md`](memory/INVARIANTS.md) | Chiffres clés + casting + voice_ids + règles d'or |
+| [`memory/CHANGELOG.md`](memory/CHANGELOG.md) | Ce qui est sorti, point de vue Papa Yann |
+| [`memory/archive/`](memory/archive/INDEX.md) | Logs et INBOX antérieurs, verbatim |
+| [`memory/audits/`](memory/audits/) | Traces d'audits cartographiques passés |
 
 ---
 

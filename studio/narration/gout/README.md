@@ -1,6 +1,6 @@
 ﻿# Duel de goût — gouvernance (créé 2026-07-03)
 
-> ⚠️ **Outil duel retiré du pipeline** (DEC-INSTRUMENT-DUEL-RETRAIT, 2026-07-13 — cf. `../pmo/decisions.md`). Ce README décrit l'outil historique ; les captures de goût existantes vivent dans [`retours/`](retours/). — bandeau phase 1 cartographie, reconstruit 2026-08-10.
+> ⚠️ **Outil duel retiré du pipeline** (DEC-INSTRUMENT-DUEL-RETRAIT, 2026-07-13 — cf. `../memory/DECISIONS.md`). Ce README décrit l'outil historique ; les captures de goût existantes vivent dans [`retours/`](retours/). — bandeau phase 1 cartographie, reconstruit 2026-08-10.
 
 > Outil transverse de capture du goût de l'auteur (Papa Yann). Premier client : pôle NARRATION.
 > Conçu data-driven : dino & co brancheront leur propre `duel-data.js` plus tard.

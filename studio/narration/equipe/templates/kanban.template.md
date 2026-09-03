@@ -41,7 +41,7 @@
 - [ ] **Étape 6 — Sélection** validée : ___ (date)
 - [ ] **Étape 9 — Version finale** validée : ___ (date)
 
-**SLA :** 3 jours par validation. Au-delà → 🔴 BLOQUÉ + log auto `pmo/sprint-log.md`.
+**SLA :** 3 jours par validation. Au-delà → 🔴 BLOQUÉ + log auto `memory/MEMORY.md`.
 
 ---
 
@@ -67,5 +67,5 @@ Procédure :
 1. Lire ce fichier (statut étape en cours)
 2. Lire [`README.md`](README.md) (état global histoire)
 3. Lire le dernier livrable produit (selon étape ci-dessus)
-4. Lire `pmo/decisions.md` (règles tranchées récentes)
+4. Lire `memory/DECISIONS.md` (règles tranchées récentes)
 5. Reprendre selon ce qui manque

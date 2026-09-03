@@ -1,3 +1,9 @@
+# Archive Décisions — Narration (2026-04 à 2026-07)
+
+> ⚠️ **Archive verbatim, ne pas réécrire.** Rotation HO-NAR-01 (2026-09-03) : contenu déplacé tel quel depuis `pmo/decisions.md`. Les décisions structurantes toujours en vigueur sont indexées en tête de `memory/DECISIONS.md`. Deux sections tableau de bord (« Questions ouvertes », « Propositions en cours ») sont restées dans le vivant car ce ne sont pas des logs mais des états courants.
+
+---
+
 ﻿# Décisions de fond — PMO Narration
 
 > **Règle :** Une décision ici est DÉFINITIVE jusqu'à nouvelle décision explicite datée.
@@ -3377,31 +3383,6 @@ Aucun ne combine **archétypes universels (ennéatypes) + adaptation culturelle 
 **Impact apprentissage :** AP#15 (filtre cumulatif), AP#16 (négations interdites), AP#17 (compteur EL CRLF) ajoutés à `audio-direction-elevenlabs/07-anti-patterns.md`.
 
 ---
-
-## Questions ouvertes (à trancher)
-
-| # | Question | Bloquant ? | Fichier |
-|---|----------|-----------|---------|
-| 1 | Nom de l'univers — lequel parmi 5 finalistes ? | Non | `../univers/meta/nom-candidats.md` |
-| 2 | ~~Compagnons — forme exacte ? Quand apparaissent-ils ?~~ **TRANCHÉ 2026-04-29** (ondes/couleurs, milieu/fin S1) | — | `../univers/vie-quotidienne/compagnons.md` |
-| 3 | Éléments magiques rares — garder ou écarter ? | Non | — |
-| 4 | Baron — garder prénom "Trump" ? | Non | `../univers/baron.md` |
-| 5 | Ombre Éternelle — concept actif ou standby ? | Non | — |
-| 6 | Modèle Janus — référence discrète ou assumée ? | Non | `../INBOX.md` (rapports JP Petit) |
-| 7 | Nom du prof d'Histoire | Non | `../univers/vie-quotidienne/ecole.md` |
-| 8 | Nom des axes verts (Coulées ? Glissières ? Axes vivants ?) | Non | `../univers/vie-quotidienne/transport.md` |
-| 9 | Ponaire — mécanique précise + lien voyages culturels | Non | `../univers/vie-quotidienne/transport.md` |
-| 10 | Nombre de villes max par pays | Non | `../univers/vie-quotidienne/geographie.md` |
-| 11 | Liste des Sensibilités — fermer les sous-types (Fréquence/Son/Schumann) | Non | `../univers/fondements/sensibilites.md` |
-| 12 | Quand Wex commence à contrôler sa Vision causale ? (S1/S2/S3) | Non | — |
-| 13 | Mentor de Wex — qui ? Quel âge ? Quelle sensibilité ? | Non | — |
-| 14 | Castings cross-country (Hébreu, Ghibli, Swahili…) — démarrer lequel en premier ? | Oui pour S2 | `../cross-culture/castings-nationaux/INDEX.md` + `../cross-culture/prenoms/INDEX.md` |
-| 15 | Tokens `{titi_N}` dans les textes canon — rétroporter `001-le-pont-casse/texte.md` ou attendre le 2e casting national ? | Oui avant 2e casting | `../stories/001-le-pont-casse/texte.md` + `../personnages/lookup.yml` |
-| 16 | **Sous-spé narration-pmo future** : si volume grossit (>20 stories, 2+ castings nationaux actifs), faut-il scinder en `narration-stories-pmo` (kanban + SLA) vs `narration-meta-pmo` (PROCESS + decisions + roadmap) ? Hypothèse transmise par game-pmo 2026-05-11. Pas urgent — tient pour l'instant. | Non (hypothèse) | `.claude/agents/narration-pmo.md` |
-| 15 | Mémoire narrative des lecteurs — les enfants connaîtront les histoires précédentes et feront des liens. Comment en tenir compte dans l'écriture (callbacks implicites, évolution persos, arcs longs) ? À partir de quelle histoire introduire ce niveau de couche ? | Non | — |
-| 16 | Quartier / communauté — nommé (Clairval, Tissé, Hameau de l'Aube, la Ronde…) ou volontairement anonyme ? Décision 26/04 a écarté les villes réelles, mais n'a pas tranché si on nomme la communauté/quartier. Trade-off : ancrage affectif (B) vs universalité cross-culture (A). | Non | `../univers/vie-quotidienne/geographie.md` |
-| 17 | ~~**V1 minimaliste vs V2 comité pour 003-v2**~~ **TRANCHÉ 2026-05-08** (V2 comité retenue, canonisée 001) | — | — |
-
 ---
 
 ## 2026-05-15 — Refonte architecture système/utilisateur writers étape 4 (ALL 14 writers)

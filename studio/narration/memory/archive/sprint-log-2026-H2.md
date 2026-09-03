@@ -1,4 +1,9 @@
-﻿# Sprint Log — PMO Narration
+# Archive Sprint Log — Narration (2026-04 à 2026-08)
+
+> ⚠️ **Archive verbatim, ne pas réécrire.** Rotation HO-NAR-01 (2026-09-03) : contenu déplacé tel quel depuis `pmo/sprint-log.md`. Les 3 dernières sessions sont résumées dans [`../MEMORY.md § Journal`](../MEMORY.md).
+
+---
+
 
 > Journal de bord des sessions.
 > **En cas de reboot :** lire D'ABORD la section "## Prochaine action" (ci-dessous), puis la dernière entrée (haut du fichier), section "État au reboot".

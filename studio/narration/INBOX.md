@@ -58,6 +58,8 @@
 
 ## 2026-04-27 — Urbanisation, transport, mobilité post-Éveil
 
+> ✅ Distillé 2026-09-03 (convergence HO-NAR-01, jamais marqué à l'époque) → `univers/vie-quotidienne/transport.md` (Jabus, axes verts — déjà présent, fichier porte lui-même la mention "Distillé depuis INBOX 2026-04-27"). Questions en suspens (nom des axes verts, format bus-bouées) reportées dans `memory/DECISIONS.md § Questions ouvertes` #8.
+
 ### Principe général
 
 Beaucoup de choses ont été **recyclées** (béton, immeubles en série, routes larges), mais pas tout.

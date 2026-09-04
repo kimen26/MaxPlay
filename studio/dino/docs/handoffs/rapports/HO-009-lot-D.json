@@ -1,0 +1,258 @@
+{ "lot": "D", "date": "2026-09-05", "dinos": [
+  {
+    "id": "parasaurolophus", "verdict": "CONFORME",
+    "mesures": [
+      { "champ": "taille_m", "actuel": 10, "fourchette": "9.5-10.5", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Wikipedia EN infobox Parasaurolophus walkeri ; Grokipedia inaccessible (403), repli Wikipedia" },
+      { "champ": "hauteur_m", "actuel": 3.5, "fourchette": "3.3-3.6 (bipède, à la hanche)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Wikipedia EN" },
+      { "champ": "poids_t", "actuel": 2.5, "fourchette": "2.3-2.7", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Wikipedia EN" }
+    ],
+    "lieu": { "region_actuel": "Amérique du Nord", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Formation Dinosaur Park / Kirtland, Alberta + Nouveau-Mexique — Wikipedia EN" },
+    "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "aucune estimation biomécanique publiée trouvée", "note": "Ornithopode bipède ; pas de valeur sourcée trouvée — ne pas inventer" },
+    "textes": [],
+    "notes": "cohabitations : T-Rex non contemporain de P. walkeri (Campanien, ~76 Ma) — le vrai grand théropode contemporain est plutôt Daspletosaurus/Gorgosaurus que le T-Rex (Maastrichtien, ~68-66 Ma) ; signalé mais non corrigé faute de vérif Grokipedia directe (source Wikipedia seule, prudence)."
+  },
+  {
+    "id": "corythosaurus", "verdict": "CONFORME",
+    "mesures": [
+      { "champ": "taille_m", "actuel": 9, "fourchette": "8-9.5", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Wikipedia EN infobox Corythosaurus casuarius" },
+      { "champ": "hauteur_m", "actuel": 2, "fourchette": "1.8-2.2 (bipède, hanche)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Wikipedia EN" },
+      { "champ": "poids_t", "actuel": 4, "fourchette": "3-4.5", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Wikipedia EN" }
+    ],
+    "lieu": { "region_actuel": "Amérique du Nord", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Formation Dinosaur Park, Alberta — Wikipedia EN" },
+    "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "aucune estimation publiée trouvée", "note": "pas de donnée sourcée — ne pas inventer" },
+    "textes": [],
+    "notes": "Gorgosaure et Daspletosaure bien contemporains (Formation Dinosaur Park, Campanien) — cohabitation CONFIRMÉE."
+  },
+  {
+    "id": "maiasaura", "verdict": "CONFORME",
+    "mesures": [
+      { "champ": "taille_m", "actuel": 9, "fourchette": "8-9", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Wikipedia EN infobox Maiasaura peeblesorum" },
+      { "champ": "hauteur_m", "actuel": 2.5, "fourchette": "2.2-2.6", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Wikipedia EN" },
+      { "champ": "poids_t", "actuel": 2.5, "fourchette": "2.3-2.8", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Wikipedia EN" }
+    ],
+    "lieu": { "region_actuel": "Montana, États-Unis", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Formation Two Medicine, Montana — Wikipedia EN, site 'Egg Mountain'" },
+    "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "aucune estimation publiée trouvée", "note": "pas de donnée sourcée" },
+    "textes": [
+      { "champ": "fait", "probleme": "chiffre 'sept mètres' entre nids — chiffre courant (travaux Horner) mais non re-confirmé sur source primaire dans cette recherche", "propose": null, "action": "garder", "source": "cité par Wikipedia EN comme distance approx. liée à la longueur du corps ; non contredit, gardé par prudence — vérification secondaire recommandée" }
+    ],
+    "notes": "'Montagne aux Œufs' = 'Egg Mountain', site réel — CONFIRMÉ. Daspletosaurus contemporain confirmé ; Troodon présent dans la même formation, voleur d'œufs plausible et documenté."
+  },
+  {
+    "id": "saurolophus", "verdict": "CONFORME",
+    "mesures": [
+      { "champ": "taille_m", "actuel": 9, "fourchette": "9-12 (S. osborni ~9-10, S. angustirostris mongol plus grand)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Wikipedia EN infobox Saurolophus" },
+      { "champ": "hauteur_m", "actuel": 3, "fourchette": "2.8-3.2", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Wikipedia EN" },
+      { "champ": "poids_t", "actuel": 3.5, "fourchette": "2-3.5", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Wikipedia EN" }
+    ],
+    "lieu": { "region_actuel": "Amérique du Nord (Canada) et Asie (Mongolie)", "region_propose": null, "continent_actuel": "Amérique du Nord / Asie", "continent_propose": null, "source": "Formation Horseshoe Canyon (Alberta) pour S. osborni + Formation Nemegt (Mongolie) pour l'espèce sœur S. angustirostris — Wikipedia EN. Note : deux espèces distinctes du même genre fusionnées dans la fiche, défendable pédagogiquement mais mérite un mot de nuance." },
+    "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "aucune estimation publiée trouvée", "note": "pas de donnée sourcée" },
+    "textes": [],
+    "notes": "Albertosaure (Amérique) et Tarbosaure (Asie) contemporains et plausibles dans leurs formations respectives — CONFORME. 'Plus de cent Saurolophes retrouvés ensemble en Mongolie' cohérent avec la littérature générale sur les bonebeds mongols de S. angustirostris, chiffre exact non re-vérifié."
+  },
+  {
+    "id": "edmontosaurus", "verdict": "CONFORME",
+    "mesures": [
+      { "champ": "taille_m", "actuel": 12, "fourchette": "9-12", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Wikipedia EN infobox Edmontosaurus regalis (12 m pour les plus grands spécimens documentés ; moyenne plutôt 9-9.5m, mais 12 reste défendable comme adulte grand, dans les 10% de la fourchette haute)" },
+      { "champ": "hauteur_m", "actuel": 3.5, "fourchette": "3.2-3.6", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Wikipedia EN" },
+      { "champ": "poids_t", "actuel": 4, "fourchette": "3.5-4.5", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Wikipedia EN" }
+    ],
+    "lieu": { "region_actuel": "Amérique du Nord", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Formation Horseshoe Canyon, Alberta — Wikipedia EN" },
+    "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "aucune estimation publiée trouvée", "note": "pas de donnée sourcée" },
+    "textes": [
+      { "champ": "fait", "probleme": "'jusqu'à 1000 dents' — chiffre courant en vulgarisation pour les hadrosauridés (batteries dentaires de plusieurs centaines à ~1000-1400 dents selon espèce), non re-vérifié dent par dent pour E. regalis précisément", "propose": null, "action": "garder", "source": "cohérent avec la littérature générale sur les hadrosauridés — pas de contradiction trouvée" }
+    ],
+    "notes": "T-Rex prédateur d'Edmontosaurus — bien attesté (Formation Hell Creek/Lance, morsures documentées sur fossiles). CONFORME."
+  },
+  {
+    "id": "iguanodon", "verdict": "CONFORME",
+    "mesures": [
+      { "champ": "taille_m", "actuel": 10, "fourchette": "10-13", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia (curl, slug genre 'Iguanodon')" },
+      { "champ": "hauteur_m", "actuel": 2.7, "fourchette": "plausible, non contredit", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia" },
+      { "champ": "poids_t", "actuel": 3, "fourchette": "3-5", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia" }
+    ],
+    "lieu": { "region_actuel": "Europe, Amérique du Nord", "region_propose": null, "continent_actuel": "Europe", "continent_propose": null, "source": "Bernissart (Belgique) + Wealden (Angleterre) — Grokipedia" },
+    "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "recherche insuffisante", "note": "ornithopode bipède/quadrupède facultatif — vitesse non sourcée" },
+    "textes": [],
+    "notes": "Baryonyx + Neovenator (carnosaure) comme prédateurs — CONFORME."
+  },
+  {
+    "id": "mosasaurus", "verdict": "CORRIGER",
+    "mesures": [
+      { "champ": "taille_m", "actuel": 17, "fourchette": "12-17", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia (curl, slug 'Mosasaurus')" },
+      { "champ": "poids_t", "actuel": 10, "fourchette": "10-15", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia" }
+    ],
+    "lieu": { "region_actuel": "Toutes les mers du monde", "region_propose": null, "continent_actuel": "Europe", "continent_propose": "", "source": "Découverte à Maastricht (Pays-Bas) mais espèce cosmopolite des mers du Crétacé — Grokipedia. Anomalie : marin, le champ continent doit être vide comme les 7 autres marins du lot, pas 'Europe'." },
+    "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "aucune étude biomécanique publiée et fiable identifiée", "note": "ne pas inventer un chiffre précis" },
+    "textes": [],
+    "notes": "70 Ma (82-66 Ma réel) CONFORME. Apex sans prédateur CONFORME. CORRECTION PRINCIPALE : continent 'Europe' est une anomalie pour un animal marin — proposer chaîne vide."
+  },
+  {
+    "id": "elasmosaurus", "verdict": "CONFORME",
+    "mesures": [
+      { "champ": "taille_m", "actuel": 13, "fourchette": "13", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia" },
+      { "champ": "poids_t", "actuel": 2.5, "fourchette": "2-3", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia" }
+    ],
+    "lieu": { "region_actuel": "Amérique du Nord (mer intérieure)", "region_propose": null, "continent_actuel": null, "continent_propose": null, "source": "Kansas, Formation Pierre Shale — Grokipedia. Champ continent déjà vide, cohérent avec règle marin." },
+    "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "aucune étude publiée trouvée avec assez de fiabilité", "note": "plésiosaure à long cou, probablement nageur peu rapide (chasse à l'affût) mais aucun chiffre sourcé" },
+    "textes": [],
+    "notes": "Cou 7,1 m / 72 vertèbres CONFIRMÉ. Anecdote Cope 1868 CONFIRMÉE. Tylosaurus prédateur cohérent avec la même formation/époque, CONFORME."
+  },
+  {
+    "id": "ophthalmosaurus", "verdict": "CORRIGER",
+    "mesures": [
+      { "champ": "taille_m", "actuel": 4, "fourchette": "3.5-4", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia" },
+      { "champ": "poids_t", "actuel": 0.95, "fourchette": "0.94-0.95", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia" }
+    ],
+    "lieu": { "region_actuel": "Europe, Amérique du Nord (mers peu profondes)", "region_propose": null, "continent_actuel": null, "continent_propose": null, "source": "Oxford Clay (Angleterre) — Grokipedia" },
+    "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "aucune étude publiée trouvée avec assez de fiabilité", "note": "morphologie hydrodynamique suggère un bon nageur mais aucun chiffre sourcé" },
+    "textes": [
+      { "champ": "epoque", "probleme": "data dit 160 Ma, source Oxford Clay donne 152-145 Ma — écart net (>5%), à ajuster", "propose": "Jurassique · il y a 150 millions d'ans", "action": "corriger", "source": "Grokipedia, Formation Oxford Clay, 152-145 Ma" }
+    ],
+    "notes": "Yeux 23 cm CONFIRMÉ. Liopleurodon prédateur cohérent une fois l'époque corrigée. Mesures CONFORMES, seule l'époque est à corriger."
+  },
+  {
+    "id": "liopleurodon", "verdict": "CONFORME",
+    "mesures": [
+      { "champ": "taille_m", "actuel": 7, "fourchette": "3.2-9.1, adulte typique ~6-7", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia — débat scientifique connu : estimation médiatique 1999 de 25 m largement rejetée par la communauté, fourchette sérieuse actuelle centrée sur 6-7 m pour un adulte" },
+      { "champ": "poids_t", "actuel": 5, "fourchette": "1-7.8, honnête au milieu-haut ~5", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia" }
+    ],
+    "lieu": { "region_actuel": "Europe (France, Angleterre)", "region_propose": null, "continent_actuel": null, "continent_propose": null, "source": "Le Wast (France) + Oxford Clay (Angleterre) — Grokipedia" },
+    "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "aucune étude publiée trouvée", "note": "pliosaure prédateur apex, probablement rapide en accélération mais pas de chiffre sourcé" },
+    "textes": [],
+    "notes": "Débat scientifique déjà bien traité dans le 'fait' existant (25m médiatique vs 6-7m réel) — texte CONFORME et honnête, à garder tel quel. 165 Ma (163-155 Ma réel) CONFORME."
+  },
+  {
+    "id": "archelon", "verdict": "CORRIGER",
+    "mesures": [
+      { "champ": "taille_m", "actuel": 4.6, "fourchette": "3-4 typique adulte moyen (4.6 = le RECORD)", "propose": 4, "ecart_pct": 15, "action": "corriger", "source": "Grokipedia — 4,6 m est la taille du plus grand spécimen connu (record), pas l'adulte moyen ; règle du brief = milieu de fourchette honnête" }
+    ],
+    "lieu": { "region_actuel": "Amérique du Nord (mer intérieure)", "region_propose": null, "continent_actuel": null, "continent_propose": null, "source": "Pierre Shale, mer intérieure de l'Ouest — Grokipedia" },
+    "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "aucune estimation publiée trouvée", "note": "grande tortue marine, nage probablement lente à modérée, pas de chiffre sourcé" },
+    "textes": [
+      { "champ": "fait", "probleme": "'Brigitta, plus de 100 ans' — NON RETROUVÉ dans les sources consultées (Grokipedia, Wikipedia EN)", "propose": null, "action": "garder à vérifier", "source": "aucune source trouvée confirmant ce nom/cet âge — à sourcer ailleurs ou retirer si aucune source primaire n'est identifiée" }
+    ],
+    "notes": "Poids 2,2 t (>2 t documenté) CONFORME. Tylosaurus + Squalicorax cohérents avec la Pierre Shale. Correction principale : 4,6 m est un record, pas une moyenne — proposer 4 m."
+  },
+  {
+    "id": "shonisaurus", "verdict": "CORRIGER",
+    "mesures": [
+      { "champ": "taille_m", "actuel": 14, "fourchette": "13.5-15", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia — bien S. popularis (14m), pas S. sikanniensis (21m, espèce différente à ne pas confondre)" },
+      { "champ": "poids_t", "actuel": 25, "fourchette": "21.6-29.7", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia" }
+    ],
+    "lieu": { "region_actuel": "Amérique du Nord (Nevada)", "region_propose": null, "continent_actuel": null, "continent_propose": null, "source": "Formation Luning, Nevada (Berlin-Ichthyosaur State Park) — Grokipedia" },
+    "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "aucune estimation publiée trouvée", "note": "gros ichtyosaure, pas de chiffre sourcé" },
+    "textes": [
+      { "champ": "chasseurs", "probleme": "'Cymbospondylus' donné comme prédateur, mais Cymbospondylus est un ichtyosaure plus ANCIEN (Trias moyen, non contemporain de Shonisaurus popularis). Shonisaurus adulte était en réalité l'apex predator de son écosystème, sans prédateur connu.", "propose": "Adulte, aucun prédateur connu : c'était l'un des plus gros animaux de son océan", "action": "corriger", "source": "Grokipedia — Cymbospondylus non contemporain de Shonisaurus popularis" }
+    ],
+    "notes": "37 squelettes ensemble CONFIRMÉ (Berlin-Ichthyosaur State Park, Nevada). 230 Ma (227-220 Ma réel) CONFORME. Correction principale : le champ chasseurs cite un animal non contemporain."
+  },
+  {
+    "id": "ichthyosaurus", "verdict": "CORRIGER",
+    "mesures": [
+      { "champ": "taille_m", "actuel": 2, "fourchette": "2", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia" },
+      { "champ": "poids_t", "actuel": 0.15, "fourchette": "non sourcé, aucune masse publiée trouvée", "propose": null, "ecart_pct": null, "action": "garder", "source": "Grokipedia — aucune estimation de masse publiée identifiée ; valeur gardée comme estimation raisonnable non contredite, à signaler comme non vérifiable" }
+    ],
+    "lieu": { "region_actuel": "Europe (mers peu profondes)", "region_propose": null, "continent_actuel": null, "continent_propose": null, "source": "Lyme Regis, Angleterre — Grokipedia" },
+    "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "aucune estimation publiée trouvée avec assez de fiabilité", "note": "morphologie de nageur rapide type dauphin mais aucun chiffre sourcé" },
+    "textes": [
+      { "champ": "chasseurs", "probleme": "'Liopleurodon' cité comme prédateur — ANACHRONISME probable : Ichthyosaurus communis vit ~201-190 Ma (Lyme Regis) alors que Liopleurodon vit ~163-155 Ma, écart de plusieurs dizaines de Ma, pas de cohabitation réelle", "propose": "grands pliosaures de son époque (ex. Rhomaleosaurus)", "action": "corriger", "source": "Grokipedia — dates respectives des deux genres, incompatibles" }
+    ],
+    "notes": "2 m EXACT. Poids non sourcé mais non contredit — signalé comme incertain plutôt que corrigé sans preuve. Correction principale : anachronisme du prédateur cité."
+  },
+  {
+    "id": "mammuthus", "verdict": "CONFORME",
+    "mesures": [
+      { "champ": "hauteur_m", "actuel": 3.3, "fourchette": "3-3.5 (mâles, au garrot)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia (curl, slug 'Woolly_mammoth')" },
+      { "champ": "poids_t", "actuel": 5, "fourchette": "4-6", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia" },
+      { "champ": "taille_m", "actuel": 5.5, "fourchette": "non vérifiable dans les sources consultées", "propose": null, "ecart_pct": null, "action": "garder", "source": "aucune source trouvée donnant une longueur nez-queue précise pour le mammouth laineux (mesure peu standard pour cette espèce) ; valeur gardée par défaut de preuve contraire" }
+    ],
+    "lieu": { "region_actuel": "Europe, Asie et Amérique du Nord (froid)", "region_propose": null, "continent_actuel": "Eurasie et Amérique du Nord", "continent_propose": null, "source": "Grokipedia" },
+    "vitesse": { "kmh_fourchette": "estimation par analogie éléphant moderne, ~25-40 km/h en pointe", "kmh_retenu": null, "confiance": "basse", "source": "extrapolation par analogie avec l'éléphant actuel — aucune étude biomécanique spécifique au mammouth laineux identifiée", "note": "valeur non retenue (kmh_retenu null) car extrapolée, pas mesurée sur l'espèce elle-même" },
+    "textes": [
+      { "champ": "chasseurs", "probleme": "'lions des cavernes' non retrouvé comme prédateur documenté du mammouth adulte dans la source consultée ; la chasse humaine est bien confirmée", "propose": "Les hommes préhistoriques, ses seuls vrais chasseurs", "action": "corriger", "source": "Grokipedia — pas de confirmation de prédation du lion des cavernes sur mammouth adulte, seulement chasse humaine bien documentée" }
+    ],
+    "notes": "Défenses 4,2-4,3 m CONFIRMÉ (proche des '4 mètres' de la fiche). Disparition île Wrangel il y a 4000 ans CONFIRMÉ. Aire Eurasie + Amérique du Nord CONFORME."
+  },
+  {
+    "id": "smilodon", "verdict": "CORRIGER",
+    "mesures": [
+      { "champ": "poids_t", "actuel": 0.25, "fourchette": "160-280 kg (0.16-0.28 t), milieu honnête ~0.22 t", "propose": 0.22, "ecart_pct": 12, "action": "corriger", "source": "Grokipedia (slug 'Smilodon') — 0,25 t est en haut de fourchette, le milieu honnête est plus proche de 220 kg" },
+      { "champ": "hauteur_m", "actuel": 1, "fourchette": "non trouvée dans les sources consultées", "propose": null, "ecart_pct": null, "action": "garder", "source": "aucune donnée de hauteur au garrot sourcée trouvée pour Smilodon fatalis ; valeur gardée, non contredite" },
+      { "champ": "taille_m", "actuel": 1.75, "fourchette": "non trouvée précisément, plausible", "propose": null, "ecart_pct": null, "action": "garder", "source": "non trouvé précisément mais cohérent avec la taille d'un grand félin robuste" }
+    ],
+    "lieu": { "region_actuel": "Amérique du Nord et du Sud", "region_propose": null, "continent_actuel": "Amériques", "continent_propose": null, "source": "Grokipedia" },
+    "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "aucune étude biomécanique publiée avec un chiffre consensuel identifiée", "note": "prédateur d'embuscade probablement pas un sprinteur, contrairement au lion moderne — hypothèse discutée sans consensus chiffré ; ne pas inventer de km/h" },
+    "textes": [
+      { "champ": "fait", "probleme": "canines '~20cm' — CONFIRMÉ (fourchette 18-28 cm)", "propose": null, "action": "garder", "source": "Grokipedia" }
+    ],
+    "notes": "Correction principale : poids 250 kg est en haut de la fourchette réelle (160-280 kg), 220 kg est le milieu honnête. Proies bisons/chevaux sauvages/jeunes paresseux géants CONFIRMÉ. Loups terribles documentés comme compétiteurs, non ajouté au texte (hors périmètre)."
+  },
+  {
+    "id": "megatherium", "verdict": "CORRIGER",
+    "mesures": [
+      { "champ": "taille_m", "actuel": 6, "fourchette": "6", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia (slug 'Megatherium')" },
+      { "champ": "poids_t", "actuel": 4, "fourchette": "4-7", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia" },
+      { "champ": "hauteur_m", "actuel": 3.5, "fourchette": "hauteur DEBOUT dressé sur pattes arrière (posture bipède temporaire) ≈ 4 m ; hauteur au garrot en position normale à 4 pattes serait bien inférieure", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia — 3,5 m proche du 4 m debout (dans les 10%), mais la NATURE de la mesure doit être clarifiée" }
+    ],
+    "lieu": { "region_actuel": "Amérique du Sud", "region_propose": null, "continent_actuel": "Amérique du Sud", "continent_propose": null, "source": "Argentine, Formation Luján — Grokipedia" },
+    "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "aucune estimation publiée trouvée", "note": "animal massif et lent, pas de chiffre sourcé" },
+    "textes": [
+      { "champ": "fait", "probleme": "'plus haut que deux Papas' quand il se dressait — le chiffre source (4 m) concerne la posture DEBOUT SUR LES PATTES ARRIÈRE ; le texte actuel précise déjà 'quand il se dressait debout contre un arbre', donc cohérent avec la source", "propose": null, "action": "garder", "source": "Grokipedia — la fiche gère déjà bien la nuance dans le texte, seul le champ hauteur_m brut mélange les deux notions" }
+    ],
+    "notes": "CORRIGER = nuance sur le champ hauteur_m (mesure = debout sur pattes arrière, pas garrot classique) à documenter en interne ; le TEXTE gère déjà bien cette nuance. Smilodon comme menace sur les jeunes CONFIRMÉ."
+  },
+  {
+    "id": "paraceratherium", "verdict": "CORRIGER",
+    "mesures": [
+      { "champ": "taille_m", "actuel": 8, "fourchette": "jusqu'à 7.4 (max documenté)", "propose": 7.4, "ecart_pct": 8.1, "action": "corriger", "source": "Grokipedia (slug 'Paraceratherium') — 8 m dépasse le maximum documenté de 7,4 m ; proche du seuil 10% mais 7,4 est la valeur la plus honnête" },
+      { "champ": "hauteur_m", "actuel": 5, "fourchette": "4.6-5.1 (au garrot)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia" },
+      { "champ": "poids_t", "actuel": 17, "fourchette": "jusqu'à 20", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia" }
+    ],
+    "lieu": { "region_actuel": "Asie", "region_propose": "Asie (Pakistan, Chine, Mongolie)", "continent_actuel": "Asie", "continent_propose": null, "source": "Grokipedia — plusieurs pays cités ; le brief demande de citer tous les lieux de découverte majeurs" },
+    "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "aucune estimation publiée trouvée", "note": "très grand mammifère terrestre, probablement lent, pas de chiffre sourcé" },
+    "textes": [
+      { "champ": "fait", "probleme": "'plus haut qu'une girafe' — vrai au garrot (5 m vs girafe ~5-5.5m au sommet de la tête, donc à nuancer légèrement), affirmation globalement défendable", "propose": null, "action": "garder", "source": "Grokipedia — nuance mineure non bloquante" }
+    ],
+    "notes": "Correction principale : longueur 8 m dépasse le maximum documenté (7,4 m). Lieux : Pakistan/Chine/Mongolie tous à citer dans region."
+  },
+  {
+    "id": "glyptodon", "verdict": "CORRIGER",
+    "mesures": [
+      { "champ": "taille_m", "actuel": 3.3, "fourchette": "jusqu'à 3 (max documenté)", "propose": 3.0, "ecart_pct": 10, "action": "corriger", "source": "Grokipedia (slug 'Glyptodon') — 3,3 m dépasse le maximum documenté de 3 m" },
+      { "champ": "hauteur_m", "actuel": 1.5, "fourchette": "1.5", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia" },
+      { "champ": "poids_t", "actuel": 1, "fourchette": "0.8-2", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia" }
+    ],
+    "lieu": { "region_actuel": "Amérique du Sud", "region_propose": null, "continent_actuel": "Amérique du Sud", "continent_propose": null, "source": "Grokipedia" },
+    "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "aucune estimation publiée trouvée", "note": "animal blindé et lent, pas de chiffre sourcé" },
+    "textes": [
+      { "champ": "fait", "probleme": "'certains avaient même une massue au bout de la queue, comme l'Ankylosaure' — la massue caudale est surtout documentée chez le genre proche Doedicurus, pas systématiquement chez Glyptodon ; formulation 'certains avaient' reste défendable et prudente", "propose": null, "action": "garder", "source": "Grokipedia — formulation déjà prudente, acceptable" }
+    ],
+    "notes": "Correction principale : longueur 3,3 m dépasse le maximum documenté (3 m). Smilodon populator + chasse humaine confirmés comme menaces."
+  },
+  {
+    "id": "aenocyon", "verdict": "CONFORME",
+    "mesures": [
+      { "champ": "taille_m", "actuel": 1.7, "fourchette": "1.5-1.7", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia (slug 'Dire_wolf')" },
+      { "champ": "hauteur_m", "actuel": 0.85, "fourchette": "0.80-0.85", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia" },
+      { "champ": "poids_t", "actuel": 0.07, "fourchette": "0.05-0.11", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia" }
+    ],
+    "lieu": { "region_actuel": "Amérique du Nord et du Sud", "region_propose": null, "continent_actuel": "Amériques", "continent_propose": null, "source": "Grokipedia" },
+    "vitesse": { "kmh_fourchette": "comparable au loup gris moderne (~50-65 km/h en pointe), extrapolation morphologique", "kmh_retenu": null, "confiance": "basse", "source": "extrapolation par analogie avec le loup gris actuel — aucune étude biomécanique spécifique au loup terrible identifiée", "note": "corps plus trapu et musculature adaptée à la puissance plutôt qu'à la vitesse pure selon Grokipedia ; valeur non retenue faute d'étude directe" },
+    "textes": [],
+    "notes": "50 000 ans bien dans la fenêtre de vie du genre (125 000-13 000 ans). Smilodon confirmé comme compétiteur/rival de proies."
+  },
+  {
+    "id": "coelodonta", "verdict": "CORRIGER",
+    "mesures": [
+      { "champ": "hauteur_m", "actuel": 1.9, "fourchette": "1.4-1.6 typique (1,9 trop haut)", "propose": 1.5, "ecart_pct": 27, "action": "corriger", "source": "sous-agent Coelodonta (Grokipedia/Wikipedia EN) — 1,9 m est nettement au-dessus de la hauteur au garrot typique documentée" },
+      { "champ": "poids_t", "actuel": 2.5, "fourchette": "1.5-2 typique (1,75 milieu honnête)", "propose": 1.75, "ecart_pct": 30, "action": "corriger", "source": "sous-agent Coelodonta — 2,5 t surestime nettement le poids adulte typique documenté" },
+      { "champ": "taille_m", "actuel": 3.5, "fourchette": "3.5", "propose": null, "ecart_pct": 0, "action": "garder", "source": "sous-agent Coelodonta — CONFORME" }
+    ],
+    "lieu": { "region_actuel": "Europe et Asie (froid)", "region_propose": null, "continent_actuel": "Eurasie", "continent_propose": null, "source": "sous-agent Coelodonta — non précisé davantage, gardé" },
+    "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "non recherché spécifiquement par le sous-agent", "note": "pas de chiffre sourcé" },
+    "textes": [
+      { "champ": "epoque", "probleme": "'il y a 100 000 ans' jugée imprécise par le sous-agent (le genre a existé sur une fenêtre bien plus large, du Pléistocène moyen à la fin du Pléistocène, environ 350 000 à 10 000 ans, avec un pic d'abondance plus tardif)", "propose": "Âge de glace · il y a environ 50 000 ans (le rhinocéros laineux a vécu de 350 000 à 10 000 ans environ)", "action": "corriger", "source": "sous-agent Coelodonta — plage réelle bien plus large que le point unique '100 000 ans'" }
+    ],
+    "notes": "Cohabitation avec le mammouth CONFIRMÉE par le sous-agent. Corne et dessins rupestres NON VÉRIFIÉS par le sous-agent (source insuffisante) — signalé comme non vérifié, pas comme faux."
+  }
+] }

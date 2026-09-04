@@ -62,6 +62,7 @@ priorités éditoriales PY 2026-08-17 : le NOM au cœur, Wex sincère, UN fun fa
 Bloc B : poids ≥ 1 t dit « X tonnes » (« 2 tonnes 5 »), < 1 t dit « X kilos » ; longueur/hauteur « X mètres » /
 « 3 mètres 50 ». Budget ≤ 1900 caractères par fiche, 15-35 s par bloc.
 Lieu(x) : citer TOUS les lieux de `region` (un dino trouvé au Canada ET en Mongolie le dit).
+**Vitesse (nouveau 2026-09-05, demande PY)** : si l'entrée data a `vitesse_kmh`, le script le DIT (bloc B ou C, une phrase) avec le chiffre + la sortie exacte de `_compVitesse(vitesse_kmh)` (exécutée, comme les 3 autres), formulée en estimation : « les savants pensent qu'il pouvait courir à 50 kilomètres à l'heure — aussi vite qu'une voiture en ville » (ou « nager » pour un marin). Pas de `vitesse_kmh` = on n'en parle pas (jamais inventer). La porte vérifie chiffre + comparaison dès que le script parle de km/h.
 
 ## Lots (1 agent chacun)
 

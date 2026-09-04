@@ -1,0 +1,182 @@
+{
+  "lot": "A",
+  "date": "2026-09-05",
+  "dinos": [
+    {
+      "id": "tyrannosaurus",
+      "verdict": "CONFORME",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 13, "fourchette": "12.3 (holotype) - 13 (Scotty, plus grand connu)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Tyrannosaurus §Size and proportions (holotype 12.3 m ; Scotty 13 m, jusqu'à 15 m en modèle statistique max)" },
+        { "champ": "hauteur_m", "actuel": 4, "fourchette": "4 m aux hanches (holotype et Scotty)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Tyrannosaurus §Size and proportions" },
+        { "champ": "poids_t", "actuel": 8, "fourchette": "7-9 t (holotype), Scotty 8.87 t (max ~10-15 t modèles extrêmes)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Tyrannosaurus §Size and proportions" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Nord", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia : Hell Creek/Lance/Scollard/Frenchman Formations, Montana/Dakotas/Wyoming/Saskatchewan/Nouveau-Mexique (T. mcraeensis, 2024) — tout Amérique du Nord, cohérent avec la donnée." },
+      "textes": [],
+      "notes": "cohabitations vérifiées : Triceratops ✓, Edmontosaurus ✓, Torosaurus ✓, Ankylosaurus ✓ (tous Hell Creek/Lance, Maastrichtien). Vitesse : mythe des 80 km/h (Bakker, 1970s) corrigé par la recherche 2020s à ~20 km/h en vitesse de pointe (marche ~5-11 km/h, sprint max théorique 20-40 km/h selon modèles) — non repris dans la data, rien à corriger.",
+      "vitesse": { "kmh_fourchette": "5-11 km/h en marche, pointe théorique 20-40 km/h (consensus récent proche de 20 km/h, le vieux chiffre de 80 km/h est un mythe des années 1970 corrigé)", "kmh_retenu": 20, "confiance": "moyenne", "source": "Grokipedia Tyrannosaurus §Locomotion and posture + §Depictions in media (recherche 2020s)", "note": "Fourchette très débattue selon la méthode (trackways vs modèles dynamiques). Le chiffre de 80 km/h très répandu dans les livres est obsolète." }
+    },
+    {
+      "id": "spinosaurus",
+      "verdict": "CORRIGER",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 15, "fourchette": "12.6-18 m (moins de 14 m dans les modèles terrestres récents Sereno 2022, plus de 15 m dans Ibrahim 2014)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Spinosaurus §Size and Body Proportions" },
+        { "champ": "hauteur_m", "actuel": 4, "fourchette": "hauteur non spécifiée précisément dans les sources ; la voile (pas la hauteur au corps) atteint 1.65-1.8 m", "propose": null, "ecart_pct": null, "action": "garder", "source": "Grokipedia Spinosaurus §Size and Body Proportions — aucune source ne donne de hauteur au corps distincte de la voile" },
+        { "champ": "poids_t", "actuel": 7, "fourchette": "6-7.4 t (modélisation volumétrique 2025)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Spinosaurus §Size and Body Proportions" }
+      ],
+      "lieu": { "region_actuel": "Afrique du Nord", "region_propose": null, "continent_actuel": "Afrique", "continent_propose": null, "source": "Grokipedia : Bahariya (Égypte), Kem Kem (Maroc), Farak (Niger, S. mirabilis 2026) — Afrique du Nord confirmé." },
+      "textes": [
+        { "champ": "fait", "probleme": "« La voile sur son dos pouvait faire 2 mètres de haut » — la source la plus citée donne 1.65 m (holotype), jusqu'à 1.8 m dans les plus grandes épines. 2 m est un léger surestimé (>10% par rapport à 1.65 m).", "propose": "La voile sur son dos pouvait faire près de 2 mètres de haut — comme une porte d'entrée !", "source": "Grokipedia Spinosaurus §Axial Skeleton and Neural Sail : épines neurales 1.65-1.8(-2) m selon les sources ; garder \"près de\" plutôt qu'une valeur ferme" }
+      ],
+      "lieu_note": null,
+      "notes": "cohabitant confirmé : Carcharodontosaurus (Kem Kem, même Cénomanien) — traces de morsures guéries entre les deux espèces documentées. desc dit \"encore plus grand que le T-Rex\" : vrai selon la fourchette la plus citée (jusqu'à 18 m vs 12-13 m T-Rex), mais les modèles récents (Sereno 2022) le ramènent sous 14 m — reste plus long dans la plupart des reconstructions, affirmation gardée. Débat sur la voile 2 m : écart mineur, pas de correction de champ numérique (taille_m/poids_t conformes), correction textuelle légère proposée par prudence.",
+      "vitesse": { "kmh_fourchette": "marche terrestre max ~5 km/h ; nage ~1.2 m/s (~4.3 km/h)", "kmh_retenu": 4, "confiance": "moyenne", "source": "Grokipedia Spinosaurus §Locomotion and Terrestrial Capabilities + §Aquatic Adaptations (études biomécaniques 2019-2025)", "note": "Lent sur terre ET à la nage — pas un poursuivant rapide, plutôt un pêcheur à l'affût (« heron-like »)." }
+    },
+    {
+      "id": "giganotosaurus",
+      "verdict": "CORRIGER",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 13, "fourchette": "12-13.5 m (holotype 12-12.5 m ; spécimen référé jusqu'à 13.2-13.5 m)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Giganotosaurus §Size estimations" },
+        { "champ": "hauteur_m", "actuel": 4, "fourchette": "hauteur à l'épaule ~3.3 m", "propose": 3.3, "ecart_pct": 21, "action": "corriger", "source": "Grokipedia Giganotosaurus §Overall morphology : \"high shoulder height estimated at around 3.3 meters\"" },
+        { "champ": "poids_t", "actuel": 7, "fourchette": "6.6-8.5 t selon la méthode (Paul 2016 : 7t ; Campione & Evans 2020 : 6.6t)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Giganotosaurus §Size estimations" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Sud", "region_propose": null, "continent_actuel": "Amérique du Sud", "continent_propose": null, "source": "Grokipedia : Formation Candeleros, Neuquén, Patagonie argentine — confirmé." },
+      "textes": [
+        { "champ": "proies", "probleme": "« Argentinosaurus (le plus grand dino !) » — Argentinosaurus vient de la Formation Huincul, plus jeune et distincte de la Formation Candeleros où vivait Giganotosaurus. Ils n'ont probablement PAS cohabité. Le vrai grand sauropode contemporain de Giganotosaurus dans la Formation Candeleros est Andesaurus (~15-18 m).", "propose": "Andesaurus, un immense dinosaure au long cou qui vivait dans la même région", "source": "Grokipedia Giganotosaurus §Contemporaneous biota : \"Sauropod dinosaurs dominated... the basal titanosaur Andesaurus delgadoi\" + §Paleobiology : \"Prey preference centered on large sauropods such as Andesaurus, a contemporaneous titanosaur from the Candeleros Formation\"" }
+      ],
+      "notes": "CORRECTION IMPORTANTE : Argentinosaurus n'est PAS un cohabitant réel de Giganotosaurus (formations différentes, décalage de quelques millions d'années) — erreur classique reprise du folklore Jurassic Park/documentaires plutôt que de la littérature scientifique. Le vrai grand herbivore chassé est Andesaurus. La chasse en groupe est une hypothèse (inférée des bonebeds de Mapusaurus, cousin proche), jamais démontrée directement pour Giganotosaurus lui-même — la data dit \"peut-être\", ce qui est honnête, à garder.",
+      "vitesse": { "kmh_fourchette": "~50 km/h en pointe (estimation biomécanique)", "kmh_retenu": 50, "confiance": "moyenne", "source": "Grokipedia Giganotosaurus §Locomotion and posture", "note": "Risque de fracture fémorale à haute vitesse suggère des sprints courts plutôt qu'une course soutenue." }
+    },
+    {
+      "id": "carcharodontosaurus",
+      "verdict": "CONFORME",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 13, "fourchette": "12-13.3/13.5 m (C. saharicus)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Carcharodontosaurus §Size estimates and body proportions" },
+        { "champ": "hauteur_m", "actuel": 3.8, "fourchette": "non chiffrée précisément dans les sources ; cohérente avec un carcharodontosauridé de cette taille (comparaison Giganotosaurus 3.3m épaule / Tyrannosaurus 4m hanche)", "propose": null, "ecart_pct": null, "action": "garder", "source": "Grokipedia Carcharodontosaurus — pas de hauteur publiée, estimation par analogie non contredite" },
+        { "champ": "poids_t", "actuel": 7, "fourchette": "6-8 t (modèles larges 6-15 t selon méthode, mais 6-8 t le plus cité)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Carcharodontosaurus §Size estimates and body proportions" }
+      ],
+      "lieu": { "region_actuel": "Afrique du Nord", "region_propose": null, "continent_actuel": "Afrique", "continent_propose": null, "source": "Grokipedia : Maroc (Tegana Fm), Niger (Echkar Fm), Algérie, Tunisie — Afrique du Nord confirmé." },
+      "textes": [],
+      "notes": "cohabitant confirmé : Spinosaurus (même Cénomanien, Kem Kem/Bahariya). NB : le matériel égyptien historique de Stromer a été reclassé en 2025 dans un nouveau genre Tameryraptor markgrafi — ne concerne pas la validité de Carcharodontosaurus lui-même, aucun impact sur la fiche.",
+      "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Carcharodontosaurus — aucune estimation chiffrée de vitesse publiée trouvée", "note": "Le texte évoque une \"adaptation à la vitesse\" de façon qualitative mais sans chiffre publié ; ne rien inventer." }
+    },
+    {
+      "id": "allosaurus",
+      "verdict": "CORRIGER",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 9.5, "fourchette": "8-12 m (A. fragilis)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Allosaurus §intro" },
+        { "champ": "hauteur_m", "actuel": 3.5, "fourchette": "~4 m aux hanches", "propose": 4, "ecart_pct": 14.3, "action": "corriger", "source": "Grokipedia Allosaurus §intro : \"stood about 4 meters (13 feet) tall at the hips\"" },
+        { "champ": "poids_t", "actuel": 2, "fourchette": "1-2 t", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Allosaurus §intro" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Nord, Europe", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": "Amérique du Nord / Europe", "source": "Grokipedia : Morrison Fm (USA) + Lourinhã Fm (Portugal, première occurrence confirmée hors Amérique du Nord) — la region texte mentionne déjà l'Europe mais le continent reste seulement 'Amérique du Nord', à harmoniser en composite si Papa Yann veut une carte cohérente avec le texte région." },
+      "textes": [],
+      "notes": "cohabitants confirmés : Stegosaurus ✓, Camarasaurus ✓, jeunes sauropodes ✓ (Apatosaurus/Diplodocus également cités comme proies potentielles). Chasse en groupe : bonebed de Cleveland-Lloyd (40+ individus) interprété par les études récentes comme un événement de mortalité liée à la sécheresse, PAS une preuve de chasse en meute — reste débattu/spéculatif, la data ne l'affirme pas non plus (\"Peut-être en groupe parfois\"), cohérent.",
+      "vitesse": { "kmh_fourchette": "10-20 km/h en marche/trot (traces fossiles), pointe ~34 km/h (modèle robotique)", "kmh_retenu": 34, "confiance": "moyenne", "source": "Grokipedia Allosaurus §Locomotion and social behavior", "note": "Vitesse de pointe issue de modèles de robotique évolutionnaire (2020s), plus fiable que les anciennes estimations empiriques." }
+    },
+    {
+      "id": "tarbosaurus",
+      "verdict": "CONFORME",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 12, "fourchette": "10-12 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Tarbosaurus §Postcranial Skeleton" },
+        { "champ": "hauteur_m", "actuel": 4.5, "fourchette": "4.2-5.0 m aux hanches", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Tarbosaurus §Postcranial Skeleton" },
+        { "champ": "poids_t", "actuel": 5, "fourchette": "4-5 t", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Tarbosaurus §Postcranial Skeleton" }
+      ],
+      "lieu": { "region_actuel": "Asie (Mongolie)", "region_propose": null, "continent_actuel": "Asie", "continent_propose": null, "source": "Grokipedia : Formation Nemegt, désert de Gobi, Mongolie — confirmé." },
+      "textes": [],
+      "notes": "cohabitant confirmé : Saurolophus angustirostris (hadrosaure, Formation Nemegt) — traces de morsures documentées sur un humérus. Chasse en meute (\"gangs\") : hypothèse de 2011 critiquée et jugée spéculative par les études suivantes, comportement solitaire plus probablement soutenu — la data dit \"Solitaire\", cohérent avec le consensus actuel.",
+      "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Tarbosaurus — aucune estimation chiffrée publiée trouvée ; le texte évoque seulement une capacité d'accélération explosive sur courte distance, sans km/h", "note": "Corpulence proche de Tyrannosaurus (cousin direct) : par analogie on pourrait citer la fourchette T-Rex, mais aucune étude dédiée à Tarbosaurus ne chiffre une vitesse — laissé null pour ne pas inventer." }
+    },
+    {
+      "id": "albertosaurus",
+      "verdict": "CORRIGER",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 9.5, "fourchette": "8-10 m (rares spécimens > 10 m)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Albertosaurus §Size, Build, and Skeleton" },
+        { "champ": "hauteur_m", "actuel": 3, "fourchette": "non chiffrée explicitement ; à titre de comparaison le fémur atteint ~1.1 m (contre 1.3 m chez T-Rex dont la hauteur aux hanches est 4 m) — une hauteur de 3-3.5 m serait cohérente par extrapolation proportionnelle mais aucune source ne le dit noir sur blanc", "propose": null, "ecart_pct": null, "action": "garder", "source": "Grokipedia Albertosaurus — hauteur aux hanches non chiffrée directement dans le texte disponible" },
+        { "champ": "poids_t", "actuel": 2, "fourchette": "1.3-2.5 t (rares spécimens jusqu'à 3 t)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Albertosaurus §Size, Build, and Skeleton" }
+      ],
+      "lieu": { "region_actuel": "Canada", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia : Formation Horseshoe Canyon, Alberta, Canada — confirmé." },
+      "textes": [
+        { "champ": "fait", "probleme": "« On a trouvé 26 Albertosaures ensemble » — chiffre exact confirmé (gisement Dry Island, 12 à 26 individus selon les comptages). Correct, à garder tel quel.", "propose": null, "source": "Grokipedia Albertosaurus §Major Fossil Assemblages : \"at least 26 individuals\"" }
+      ],
+      "notes": "cohabitants confirmés : hadrosaures (Hypacrosaurus) ✓, cératopsiens (Anchiceratops, Arrhinoceratops) ✓ — la data reste générique (\"Hadrosaures, cératopsiens\") ce qui est vrai mais pourrait être plus précis, non obligatoire. Chasse en meute : preuve limitée aux JEUNES/subadultes du bonebed de Dry Island (12-28 ans) — AUCUN adulte dans l'assemblage, ce qui suggère que les adultes matures étaient plutôt SOLITAIRES et que seuls les jeunes étaient grégaires. La data dit \"Chassait peut-être en meute\" au global sans cette nuance — léger flou, pas d'erreur factuelle grave, non corrigé car déjà prudent (\"peut-être\").",
+      "vitesse": { "kmh_fourchette": "jusqu'à 30 km/h", "kmh_retenu": 30, "confiance": "moyenne", "source": "Grokipedia Albertosaurus §intro : \"powerful hind legs enabled bipedal locomotion at speeds up to 30 km/h\"", "note": null }
+    },
+    {
+      "id": "ceratosaurus",
+      "verdict": "CORRIGER",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 6, "fourchette": "6-7 m (holotype 5.3-5.7 m ; grand spécimen MWC1 ~7 m)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Ceratosaurus §intro + §North American specimens" },
+        { "champ": "hauteur_m", "actuel": 2, "fourchette": "non chiffrée explicitement", "propose": null, "ecart_pct": null, "action": "garder", "source": "Grokipedia Ceratosaurus — pas de hauteur aux hanches publiée trouvée" },
+        { "champ": "poids_t", "actuel": 0.7, "fourchette": "~0.98 t en moyenne genre (holotype 418-670 kg ; grand spécimen MWC1 930-1550 kg, moyenne ~1240 kg)", "propose": 0.9, "ecart_pct": 28.6, "action": "corriger", "source": "Grokipedia Ceratosaurus §intro : \"weighing around 980 kg as an adult\" ; fourchette réelle 0.4-1.5 t selon spécimen, valeur milieu honnête proposée ~0.9t" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Nord, Afrique", "region_propose": "Amérique du Nord (+ possibles restes fragmentaires au Portugal, Europe)", "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Ceratosaurus §intro : \"North America... with possible remains also known from Portugal in Europe\" — AUCUNE mention d'Afrique trouvée dans les sources consultées. La 'region' actuelle dit \"Amérique du Nord, Afrique\" ce qui semble erroné (confusion possible avec Ceratosaurus dentisulcatus ou un autre taxon) ; à vérifier par l'orchestrateur avant application, source Wikipedia EN à checker en complément." },
+      "textes": [],
+      "notes": "Poids à corriger (28.6% d'écart, > seuil 10%) : 700kg sous-estime la moyenne adulte (980kg). Lieu 'Afrique' à vérifier plus avant — Grokipedia ne mentionne QUE Amérique du Nord + fragments possibles au Portugal, aucune Afrique. Cohabitant confirmé : Allosaure comme prédateur plus grand capable de l'affronter — cohérent avec la data (\"chasseurs: Allosaure pouvait l'affronter\"). Alimentation poisson confirmée (piscivorie partielle avérée).",
+      "vitesse": { "kmh_fourchette": "20-30 km/h", "kmh_retenu": 25, "confiance": "moyenne", "source": "Grokipedia Ceratosaurus §Locomotion and posture", "note": "Comparable aux grands oiseaux coureurs actuels selon l'étude citée." }
+    },
+    {
+      "id": "dilophosaurus",
+      "verdict": "CONFORME",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 7, "fourchette": "6-7 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Dilophosaurus §History of Discovery + §Physical Description" },
+        { "champ": "hauteur_m", "actuel": 2.4, "fourchette": "non chiffrée explicitement", "propose": null, "ecart_pct": null, "action": "garder", "source": "Grokipedia Dilophosaurus — pas de hauteur aux hanches publiée trouvée, valeur data plausible par comparaison de gabarit" },
+        { "champ": "poids_t", "actuel": 0.35, "fourchette": "300-400/430 kg", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Dilophosaurus §Axial and Appendicular Skeleton + §Locomotion and Predatory Capabilities" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Nord", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia : Formation Kayenta, Arizona — confirmé." },
+      "textes": [],
+      "notes": "Point important non lié à un champ précis : la redescription 2020 (Marsh & Rowe) a DÉMENTI le mythe de la mâchoire fragile/faible (artefact de restauration au plâtre) — le vrai Dilophosaure avait une mâchoire plus robuste qu'on ne le pensait. La data ne reprend pas ce mythe, rien à corriger. Cohabitant confirmé : Scutellosaurus (également présent dans l'encyclopédie) et le sauropodomorphe Sarahsaurus. Aucune trace de collerette venimeuse (Jurassic Park) dans la data — conforme à la charte figée.",
+      "vitesse": { "kmh_fourchette": "5-10 km/h estimé par traces fossiles (peu fiable) ; pointe ~25 km/h par modèle biomécanique", "kmh_retenu": 25, "confiance": "moyenne", "source": "Grokipedia Dilophosaurus §Locomotion and Predatory Capabilities + §Attributed Footprints", "note": "Deux méthodes donnent des résultats très différents (traces vs modèle musculo-squelettique) ; le modèle biomécanique (25 km/h) est retenu comme plus robuste." }
+    },
+    {
+      "id": "carnotaurus",
+      "verdict": "CONFORME",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 8, "fourchette": "~8 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Carnotaurus §intro" },
+        { "champ": "hauteur_m", "actuel": 2.5, "fourchette": "~2.5 m aux hanches", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Carnotaurus §intro" },
+        { "champ": "poids_t", "actuel": 1.6, "fourchette": "~1.5 t", "propose": null, "ecart_pct": 6.7, "action": "garder", "source": "Grokipedia Carnotaurus §intro" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Sud", "region_propose": null, "continent_actuel": "Amérique du Sud", "continent_propose": null, "source": "Grokipedia : Formation La Colonia, Chubut, Patagonie argentine — confirmé." },
+      "textes": [],
+      "notes": "Vitesse 56 km/h confirmée (fourchette source 48-56 km/h, la data prend la borne haute mais reste dans la fourchette publiée). Cornes : usage combat/display confirmé (pas de crushing). Peau : étude 2021 a révisé l'idée d'ostéodermes en rangées vers une mosaïque d'écailles irrégulières — détail scientifique fin, non repris dans la data, pas d'impact sur les champs audités.",
+      "vitesse": { "kmh_fourchette": "48-56 km/h en pointe, courtes distances (50-100m)", "kmh_retenu": 52, "confiance": "haute", "source": "Grokipedia Carnotaurus §Locomotion and posture (Mazzetta et al. + études biomécaniques ultérieures)", "note": "Une des estimations de vitesse les mieux étayées du lot (modèle basé sur fémur + muscles caudaux ossifiés)." }
+    },
+    {
+      "id": "cryolophosaurus",
+      "verdict": "CONFORME",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 6.5, "fourchette": "6-7 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Cryolophosaurus §intro + §Size and General Morphology" },
+        { "champ": "hauteur_m", "actuel": 2.5, "fourchette": "non chiffrée explicitement", "propose": null, "ecart_pct": null, "action": "garder", "source": "Grokipedia Cryolophosaurus — pas de hauteur aux hanches publiée, valeur plausible par gabarit" },
+        { "champ": "poids_t", "actuel": 0.4, "fourchette": "350-465 kg", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Cryolophosaurus §Size and General Morphology" }
+      ],
+      "lieu": { "region_actuel": "Antarctique !", "region_propose": null, "continent_actuel": "Antarctique", "continent_propose": null, "source": "Grokipedia : Formation Hanson, Mont Kirkpatrick, montagnes Transantarctiques — confirmé." },
+      "textes": [],
+      "notes": "Époque : 190 Ma cohérent (fourchette réelle Hanson Fm 194.6-182 Ma, Sinémurien-Pliensbachien). Cohabitant confirmé : Glacialisaurus hammeri (sauropodomorphe basal, 6-7m), la data dit \"Herbivores de l'Antarctique\" — vague mais correct, pourrait nommer Glacialisaurus mais non obligatoire (aucun nom générique erroné). Crête transverse confirmée exacte (\"crête rigolote en travers de la tête, comme une vague\" — description fidèle à la morphologie réelle, transversale et non longitudinale comme chez Dilophosaure).",
+      "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Cryolophosaurus — aucune estimation chiffrée publiée trouvée, seulement des qualificatifs \"agile\"/\"cursorial\"", "note": "Pas de chiffre publié fiable ; laissé null plutôt que d'extrapoler." }
+    },
+    {
+      "id": "baryonyx",
+      "verdict": "CONFORME",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 9, "fourchette": "9-10 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Baryonyx §intro" },
+        { "champ": "hauteur_m", "actuel": 2.5, "fourchette": "non chiffrée explicitement", "propose": null, "ecart_pct": null, "action": "garder", "source": "Grokipedia Baryonyx — pas de hauteur aux hanches publiée, valeur plausible par gabarit" },
+        { "champ": "poids_t", "actuel": 1.7, "fourchette": "1.7-2 t (parfois élargie à 1.2-2 t)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Baryonyx §intro + §Locomotion and aquatic adaptations" }
+      ],
+      "lieu": { "region_actuel": "Europe (Angleterre)", "region_propose": "Europe (Angleterre, restes fragmentaires aussi Portugal et Espagne)", "continent_actuel": "Europe", "continent_propose": null, "source": "Grokipedia : Weald Clay, Surrey, Angleterre (holotype) + matériel fragmentaire Portugal (Papo Seco) et Espagne (La Cantalera, La Huérguina) — région actuelle correcte mais incomplète, ajout mineur possible pour Papa Yann (facultatif, la donnée n'est pas fausse telle quelle)." },
+      "textes": [],
+      "notes": "Griffe 31cm confirmée exacte. Proie Iguanodon confirmée par contenu stomacal réel (pas une supposition) — fait scientifiquement fort, bien choisi dans la data. Découverte par un plombier amateur (William Walker) confirmée. Griffe utilisée pour pêcher/harponner : hypothèse plausible reprise par la littérature, cohérent.",
+      "vitesse": { "kmh_fourchette": "20-25 km/h en terrestre (estimation générique par gabarit, pas de vitesse de nage chiffrée publiée)", "kmh_retenu": 22, "confiance": "basse", "source": "Grokipedia Baryonyx §Locomotion and aquatic adaptations", "note": "Estimation dérivée de théropodes de taille comparable, pas d'étude biomécanique dédiée à Baryonyx." }
+    },
+    {
+      "id": "therizinosaurus",
+      "verdict": "CONFORME",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 10, "fourchette": "9-10 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Therizinosaurus §intro + §Size and General Morphology" },
+        { "champ": "hauteur_m", "actuel": 5, "fourchette": "jusqu'à 5 m aux hanches", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Therizinosaurus §Size and General Morphology" },
+        { "champ": "poids_t", "actuel": 5, "fourchette": "5-6 t", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Therizinosaurus §Size and General Morphology" }
+      ],
+      "lieu": { "region_actuel": "Asie (Mongolie)", "region_propose": null, "continent_actuel": "Asie", "continent_propose": null, "source": "Grokipedia : Formation Nemegt, désert de Gobi, Mongolie — confirmé, même formation que Tarbosaurus." },
+      "textes": [],
+      "notes": "Griffes 50cm confirmées exactes (les plus longues griffes connues de tout tétrapode). Cohabitant/chasseur confirmé : Tarbosaurus (même Formation Nemegt), cohérent avec \"chasseurs: Tarbosaure\". Régime herbivore confirmé (dents en feuille, bec corné, gros ventre pour fermentation) malgré l'aspect terrifiant des griffes — la data le dit bien.",
+      "vitesse": { "kmh_fourchette": "5-10 km/h (marche lente, adaptations pour la stabilité pas la vitesse)", "kmh_retenu": 7, "confiance": "moyenne", "source": "Grokipedia Therizinosaurus §Locomotion and Posture (modèles Nothronychus, genre apparenté)", "note": "Estimé par comparaison biomécanique avec Nothronychus (thérizinosauridé mieux documenté), pas de squelette de membre postérieur complet propre à Therizinosaurus." }
+    }
+  ]
+}

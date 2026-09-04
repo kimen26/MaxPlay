@@ -2173,7 +2173,7 @@ const DINOS = [
     chasseurs: 'Sa taille énorme le protégeait ; peut-être le Smilodon sur les petits',
     proies: 'Rien : il mangeait des feuilles et des branches',
     amis: 'Plutôt tranquille et solitaire',
-    fait: 'C\'était un paresseux, mais géant ! Quand il se dressait debout sur ses pattes arrière, contre un arbre, sa tête montait à 4 mètres — plus haut que deux Papas. Ses griffes avant étaient longues comme ton avant-bras pour attraper les branches.',
+    fait: 'C\'était un paresseux, mais géant ! Quand il se dressait debout sur ses pattes arrière, contre un arbre, il était plus haut que deux Papas. Ses griffes avant étaient longues comme ton avant-bras pour attraper les branches.',
     desc: 'Le Mégathérium était un paresseux terrestre géant, grand comme un éléphant. Au lieu de grimper aux arbres comme les petits paresseux d\'aujourd\'hui, il se dressait debout par terre pour manger les feuilles du haut. Il vivait tranquillement en Amérique du Sud.',
     png: 'Megatherium.jpg',
     color: '#a1887f',

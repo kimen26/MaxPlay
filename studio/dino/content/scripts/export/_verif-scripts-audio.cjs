@@ -76,7 +76,19 @@ function checkFile(file) {
       if (/\[[^\]]+\]\s*$/.test(full)) errs.push(`bloc ${L} ${who} : tag en toute fin de réplique (rien après)`);
       if (/\[[^\]]+\]\s*[,.;:!?]/.test(full)) errs.push(`bloc ${L} ${who} : tag suivi d'une ponctuation`);
       if (who === 'WEX' && /!/.test(lm[3])) errs.push(`bloc ${L} WEX : « ! » interdit chez Wex`);
-      if (who === 'NARRATEUR H' && tags.length === 0) warns.push(`bloc ${L} : réplique Narrateur sans tag`);
+      // Densité minimale (Papa Yann 2026-09-05 : « pas 2-3, PLEIN, au milieu des phrases ») — le tag de tête ne suffit pas.
+      const texteSeul = lm[3].replace(/\[[^\]]+\]/g, '').trim();
+      const tagsMilieu = (lm[3].match(/\[[^\]]+\]/g) || []).length; // tags posés APRÈS le début (dans le texte)
+      if (who === 'NARRATEUR H') {
+        if (tags.length === 0) errs.push(`bloc ${L} : réplique Narrateur sans tag`);
+        else if (texteSeul.length > 70 && tags.length < 2) errs.push(`bloc ${L} Narrateur : ${texteSeul.length} car. et 1 seul tag (min 2, dont 1 au milieu)`);
+        else if (texteSeul.length > 140 && tags.length < 3) errs.push(`bloc ${L} Narrateur : ${texteSeul.length} car. et ${tags.length} tags (min 3)`);
+        else if (texteSeul.length > 70 && tagsMilieu === 0) errs.push(`bloc ${L} Narrateur : aucun tag au milieu de la réplique (tous collés en tête)`);
+      } else {
+        if (tags.length === 0) errs.push(`bloc ${L} WEX : réplique sans tag`);
+        if (!/[.?…!»]$/.test(texteSeul)) errs.push(`bloc ${L} WEX : réplique sans ponctuation finale (« ${texteSeul.slice(-30)} ») — une question finit par « ? »`);
+        if (/^(et |il |elle |c'est |ça |pourquoi|comment|combien|quoi|qui |où |quand|est-ce)/i.test(texteSeul) && texteSeul.includes(' ') && !/[?]/.test(texteSeul) && /\b(comment|pourquoi|combien|quoi|qui|où|quand|est-ce)\b/i.test(texteSeul)) errs.push(`bloc ${L} WEX : question sans « ? » (« ${texteSeul.slice(0, 40)} »)`);
+      }
       const caps = lm[3].match(/\b[A-ZÀ-Ý]{2,3}\b/g);
       if (caps) warns.push(`bloc ${L} ${who} : CAPS sur mot court ${caps.join(',')} (L-D07)`);
       if (/sau-rus/i.test(lm[3])) warns.push(`bloc ${L} : « sau-rus » syllabé latin (S avalé) → syllaber « -saure »`);

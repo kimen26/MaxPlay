@@ -106,6 +106,22 @@ Nettoyage `.claude/agents/` : mémoires officielles `memory: project`, fusion de
 
 > **Non archivé malgré le doute initial du brief HO-G12** : `dino-fiche-writer` a un usage réel confirmé (créé et utilisé 2026-08-17, pilote EP-D-29, cité dans `studio/dino/pmo/backlog.md`) — gardé actif, frontmatter enrichi (`skills: ecriture-audio-enfants, audio-direction-elevenlabs`).
 
+### `2026-09-05-max-adventure-tiles/` — Max Adventure (Phaser), pipeline tiles LimeZu, WexWorld côté JEU
+
+Décision Papa Yann du 2026-09-05 : « ça ne marche pas du tout, on arrête ». Les trois sous-domaines JEU hors mini-jeux HTML sortent de MaxPlay, déplacés par `git mv` (historique conservé) :
+
+| Ici | Venait de | Quoi |
+|---|---|---|
+| `studio-max-adventure/` | `studio/max-adventure/` | source Phaser TS + Vite + assets tiles extraits (`node_modules/` et `dist/` non versionnés, supprimés) |
+| `site-max-adventure.html`, `site-mj-pose-tiles.html` | `site/` | splash du jeu Phaser et bac à sable « Pose tes tiles » (chargeait ses tuiles via CDN jsdelivr depuis `studio/max-adventure/`) |
+| `tests-mj-pose-tiles.spec.mjs` | `studio/minijeux/tests/` | spec Playwright dédiée |
+| `tools-tile-tools/`, `tools-web/`, `tools-pages-map-mockups.html` | `studio/minijeux/tools/` | pipeline Python LimeZu (render.py, recettes, PIPELINE-MEMORY.md) + pages web tile-only |
+| `skill-maxplay-tiles/`, `skill-phaser-tech/` | `.claude/skills/` | skills tiles + Phaser |
+| `agent-game-tile.md`, `rule-tile-tools.md` | `.claude/agents/`, `.claude/rules/` | agent 3 modes et rule path-scopée |
+| `docs-VISION-LONG-TERME.md` | `studio/minijeux/docs/` | vision « Phase 2 WexWorld » côté JEU (abandonnée ; WexWorld reste le monde des Histoires) |
+
+Restent en place volontairement : le pack LimeZu d'origine (`temp-assets-2026-04`, déjà archivé), la table Supabase `tile_refs` (migrations 009-012, données live, à supprimer dans une migration dédiée si un jour utile), les traces historiques (`docs/handoffs/`, `memory/audits/`, `studio/minijeux/memory/archive/`). Vocabulaire : `memory/GLOSSAIRE.md` § Abandonné.
+
 ## Règle d'or
 
 Ne **rien** y ajouter sans une note dans ce fichier expliquant **quand**, **pourquoi**, et **comment retrouver** la matière. Un cadavre non documenté = un cadavre perdu.

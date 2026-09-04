@@ -15,9 +15,9 @@ Vision produit : `memory/VISION.md`.
 
 - **Mini-jeux** : catalogue au menu enfant + bacs à sable parentaux (max-adventure,
   mj-pose-tiles). Nombre et liste = `site/js/catalog.js`, jamais recopiés en dur ailleurs.
-  Détail d'état : `studio/minijeux/pmo/INVARIANTS.md` § État déploiement.
+  Détail d'état : `studio/minijeux/memory/INVARIANTS.md` § État déploiement.
 - **Dino** : encyclopédie multi-langue en construction (FR complet, EN/ES/PT-BR en cours
-  sur l'UI et les fiches). Compte de dinos et couverture : `studio/dino/pmo/_ETAT-DINOS.md`.
+  sur l'UI et les fiches). Compte de dinos et couverture : `studio/dino/memory/_ETAT-DINOS.md`.
 - **Infra** : Supabase (auth parent, sync progression, voix cloud) — `infra/supabase/README.md`.
   Bot Telegram (backend Claude ou Kimi Code) — `infra/bot/index.ts`. MCP `llm-copains`
   (Grok, Kimi, ElevenLabs) — `infra/mcp/server.ts`.
@@ -41,7 +41,7 @@ Vision produit : `memory/VISION.md`.
 | Agents disponibles | `.claude/agents/README.md` |
 | Quel skill utiliser | `/skills` |
 | Workflow session | Plan → Dev (subagents) → Verify → Commit → graver (mémoire + backlog) |
-| État vrai d'un pôle (jeu/dino/narration) | `studio/<pôle>/memory/MEMORY.md` (une fois converti) ou `pmo/` en attendant |
+| État vrai d'un pôle (jeu/dino/narration) | `studio/<pôle>/memory/MEMORY.md` |
 | Audits transverses (GED, infra) | `memory/audits/AAAA-MM-JJ-<sujet>.md` |
 
 ## Convention mémoire
@@ -51,4 +51,5 @@ pôle vivant. Règle complète : `~/.claude/rules/memoire-projet.md`. Historique
 convergence : `memory/DECISIONS.md` § D-004.
 
 ## Journal
-- 2026-09-03/04 — Refonte infra Claude (audit `memory/audits/2026-09-03-archi-claude-infra.md`) : 13 handoffs exécutés par Sonnet (registre `docs/handoffs/README.md`). Fait : quintette racine + JEU + NARRATION (DINO en cours HO-008), rules ≤ 60 l., hooks `memory/` + `garde-git-add`, 26→21 agents avec `memory: project`, site/ sans outillage (−38 Mo tiles doublon), 6 skills globaux (`narration-craft`, `game-design-enfant`, `tts-pipeline`, `audio-verif`, `i18n-contenu`, `browser-pilot`). Reste : pousser les skills sur `claude_conf` (Sync-Skills, confirmation Papa Yann), 12 sons `lieux/` + INDEX minijeux (TODO).
+- 2026-09-03/04 — Refonte infra Claude (audit `memory/audits/2026-09-03-archi-claude-infra.md`) : 13 handoffs exécutés par Sonnet (registre `docs/handoffs/README.md`). Fait : quintette racine + JEU + NARRATION + DINO (HO-008), rules ≤ 60 l., hooks `memory/` + `garde-git-add`, 26→21 agents avec `memory: project`, site/ sans outillage (−38 Mo tiles doublon), 6 skills globaux (`narration-craft`, `game-design-enfant`, `tts-pipeline`, `audio-verif`, `i18n-contenu`, `browser-pilot`). Reste : pousser les skills sur `claude_conf` (Sync-Skills, confirmation Papa Yann), INDEX minijeux (TODO).
+- 2026-09-04 — 12 sons `voix/lieux/` tués à la source (catalogue `LIEUX`), silence 80 ms des fiches dino gravé comme voulu, glossaire vocabulaire ouvert (`memory/GLOSSAIRE.md`).

@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// repliques.mjs — phrases fixes réutilisées (consignes de jeu, noms de lieux)
+// repliques.mjs — phrases fixes réutilisées (consignes de jeu)
 //
 // Type `replique` : un texte canonique, stable, rejoué à l'identique à plusieurs
 // endroits. Se traduit (contrairement à la réserve d'humeur, qui se ré-invente).
@@ -126,32 +126,3 @@ export const LIGNES_NOMMEES = ['narrateur_f', 'narrateur_h', 'wex'].map((voix) =
     + "ligne `tu-maitrises` séparée).",
 }));
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Noms de lieux des deux hubs. Même zone, deux habillages (bus / fusée).
-// Joués par speakLieu() à l'entrée d'une zone. Voix narratrice.
-// ─────────────────────────────────────────────────────────────────────────────
-const ZONES = [
-  { id: 'dodo', bus: 'Le centre des bus', fusee: 'La base de repos' },
-  { id: 'garage', bus: 'Le garage', fusee: "L'atelier" },
-  { id: 'lettres', bus: 'Les lettres', fusee: 'La planète des lettres' },
-  { id: 'monde', bus: 'Le monde', fusee: 'La planète bleue' },
-  { id: 'dinos', bus: 'Les dinos', fusee: 'La planète des dinos' },
-  { id: 'roulotte', bus: 'La roulotte', fusee: 'La navette' },
-];
-
-export const LIEUX = ZONES.flatMap((z) =>
-  ['bus', 'fusee'].map((hub) => ({
-    cle: `jeu.lieu.${hub}.${z.id}`,
-    type: 'replique',
-    i18n: 'traduction',
-    slug: `${hub}-${z.id}`,
-    texte: z[hub],
-    tags: ['warmly'],
-    origine_texte: 'slug',
-    texte_verifie: false,
-    production: { voix: 'narrateur_f', usage: 'replique' },
-    fichier: `sounds/voix/lieux/${hub}-${z.id}.mp3`,
-    consommee_par: [hub === 'bus' ? 'index2 (hub bus)' : 'index3 (hub fusée)'],
-    note: "Vocabulaire de Max : centre des bus = dodo · garage = réparation. Ne pas confondre.",
-  })),
-);

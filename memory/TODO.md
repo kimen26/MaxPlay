@@ -35,9 +35,8 @@ Issu de `memory/audits/2026-09-03-archi-claude-infra.md`. Vagues 1 → 2 → 3, 
 
 ## Suites des skills globaux (HO-G08, 2026-09-03)
 - [ ] Migrer les 17 scripts ElevenLabs vers `~/.claude/skills/tts-pipeline` (table : `~/.claude/skills/tts-pipeline/references/migration-maxplay.md`) ; trancher le loudnorm unique (I=-16/TP=-1.5/LRA=11 retenu par le skill).
-- [ ] DINO : `audio-verif` révèle silence de tête ~80 ms sur les MP3 dino en prod (règle `sons.md` = 250 ms) et une dérive texte/audio sur `aenocyon-taille` (MP3 dit « kangourou », JSON dit « Papa ») → passer `audio-verif` sur les 70 fiches.
+- [ ] DINO : dérive texte/audio sur `aenocyon-taille` (MP3 dit « kangourou », JSON dit « Papa ») → passer `audio-verif --min-silence-ms 50` sur les 70 fiches (silence ~80 ms = voulu, décision 2026-09-04).
 - [ ] `audio-verif` : STT `scribe_v1` marche mais la doc ne cite plus que `scribe_v2` → basculer `--stt-model` quand déprécié.
-- [ ] JEU : 12 `site/sounds/voix/lieux/{bus,fusee}-*.mp3` encore cités par `textes-jeux.js` (dead-code applicatif selon G05) → retirer de `textes-jeux.js` puis supprimer les MP3 (HO-G10 les a laissés).
 - [ ] JEU : `studio/minijeux/INDEX.md` L65-132 pointe encore `site/tile-tools`, `site/tools`, `site/design-*` → `studio/minijeux/tools/**`, `docs/design-explorations/` (à faire après HO-MJ-01).
 - [ ] Commentaires obsolètes `mj-46.html:40`, `mj-50.html:90`, `avatar-picker.js:5,16` (design-compte/lecture, atelier-couleurs déplacés).
 - [ ] Pousser les 6 skills globaux nouveaux/migrés sur `kimen26/claude_conf` via skill `Sync-Skills-github-ProPerso` (action externe → confirmation Papa Yann).

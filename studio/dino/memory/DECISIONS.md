@@ -13,6 +13,7 @@
 - **DEC-TEMPS-PROFOND-001 / DEC-AUDIO-COMPLET-001** (2026-07-05) — deux caps produit figés (temps profond honnête dans l'UI + cap audio 100 % voix réelle) — voir `archive/decisions-2026-H1.md`.
 - **Cénozoïque = fiches individuelles onglet Familles, PAS 9ᵉ épisode Voyage** (2026-07-03), catégories Mammifère + Oiseau distinctes (taxo honnête) — voir `archive/decisions-2026-H1.md`.
 - **7 cératopsiens orphelins REJETÉS** (2026-07-03 : anchiceratops, chasmosaurus, diabloceratops, einiosaurus, kosmoceratops, pachyrhinosaurus, utahceratops) — voir `archive/decisions-2026-H1.md`.
+- **Silence de tête des fiches narrées = ~80 ms, voulu** (2026-09-04, Papa Yann) — la règle « padding 250 ms » de `.claude/rules/sons.md` vise les MP3 courts (répliques, SFX) dont l'attaque se coupe sur mobile ; les fiches et récits dino gardent leur silence court. `audio-verif` sur du dino : `--min-silence-ms 50`, ne pas « corriger » les 70 fiches.
 - **NORME CLÉ D'ASSETS** (2026-07-27, gravée dans `.claude/rules/dino.md`) — la clé de liaison de tout asset = le nom latin capitalisé (`id` du dino), jamais le nom d'affichage FR.
 
 ## Questions ouvertes (non tranchées)

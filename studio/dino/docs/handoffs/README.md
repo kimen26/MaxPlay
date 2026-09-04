@@ -22,7 +22,23 @@ portes aient été rejouées par lui.
 | HO-004 | Traduction ES-ES natif | `studio/dino/content/i18n/es-es/**` | bloque par HO-002 |
 | HO-005 | Traduction PT-BR natif | `studio/dino/content/i18n/pt-br/**` | bloque par HO-002 |
 | HO-006 | Relecture native croisee (3 langues) | rapports dans `studio/dino/docs/handoffs/rapports/` | bloque par HO-003/4/5 |
-| HO-007 | Generation des bundles produit | `site/js/i18n/dinos-strings.*.js` | bloque par HO-006 |
+| HO-007 | Generation des bundles produit | `site/js/i18n/dinos-strings.*.js` | fait |
+| HO-008 | Memoire convergente (pmo/ → memory/) | `studio/dino/memory/**` | fait |
+
+## Vague 2026-09-05 — Fiches dino completes (data → scripts audio FR tagues → i18n → audio EL) + musiques + SFX
+
+| ID | Titre | Fichiers possedes | Statut |
+|----|-------|-------------------|--------|
+| HO-009 | Audit data 71 dinos (mesures, lieux, Texte fiche), 4 lots | `docs/handoffs/rapports/HO-009-lot-*.{md,json}` | en cours |
+| HO-010 | Application corrections data (orchestrateur) | `site/js/dinos-data.js`, strings.json touches, bundles | bloque par HO-009 |
+| HO-011 | Reecriture 71 Scripts audio FR, tags v3 riches, 6 lots | `scripts-audio/fr/V3/<id>.md` | bloque par HO-010 |
+| HO-012 | Relecture croisee FR (porte + dino-conseiller) | `rapports/HO-012-*.md` | bloque par HO-011 |
+| HO-013 | i18n Scripts audio en / es-es / pt-br + lexiques relus | `scripts-audio/<lang>/**`, `lexiques-prononciation/<lang>.md` | bloque par HO-012 |
+| HO-014 | Generation EL 13 theropodes × 4 langues | `site/audio/dinos/<lang>/<id>-*.mp3`, manifest | bloque par HO-012/013 |
+| HO-015 | Musiques de fond (Eleven Music) | `site/sounds/music/**` | en cours |
+| HO-016 | Banque SFX dinos | `site/sounds/fx/dino/**` | en cours |
+
+Porte commune des scripts audio : `node studio/dino/content/scripts/export/_verif-scripts-audio.cjs <lang> [ids]`.
 
 ## Regles non negociables
 

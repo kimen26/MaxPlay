@@ -3,8 +3,7 @@
 > Document **normatif** : ces mots sont ceux qu'on emploie dans les docs, les agents, les commits,
 > les noms de fichiers et l'interface. Un autre mot pour la même chose = une dérive à corriger.
 > Ouvert le 2026-09-04 à la demande de Papa Yann (« le même vocabulaire sémantique PARTOUT »).
-> Statut : **brouillon à valider** — les termes ✅ sont ceux dictés par Papa Yann, les ❓ sont
-> des propositions à trancher.
+> Statut : termes ✅ = dictés ou validés par Papa Yann (2026-09-04/05) ; ❓ = encore à trancher.
 
 ## Le produit
 
@@ -12,14 +11,14 @@
 |---|---|---|
 | **MaxPlay** ✅ | L'application complète : Mini-jeux + Encyclopédie + Histoires (à venir). PWA déployée depuis `site/`. | « le site », « la plateforme » |
 | **Mini-jeux** ✅ | Les petits jeux, à gauche et à droite du menu. Pôle `studio/minijeux/`, pages `site/mj-XX.html`. | « MJ » hors identifiant technique `mj-XX` |
-| **Encyclopédie** ✅ (alias **Fiches dinos**, **Dino de Max**) | Les fiches dino, les familles, ce qu'il manque, le Voyage (époques). Pôle `studio/dino/`, page `site/dev-dinos.html` (à renommer). | « dev-dinos », « module dino » |
+| **Encyclopédie** ✅ (alias **Dino de Max**) | Tout le domaine dino : les Fiches dinos, les Familles, ce qu'il manque, le Voyage, le Dico. « Dino de Max » = l'ensemble, pas seulement les fiches. Pôle `studio/dino/`, page `site/dev-dinos.html` (à renommer `dinos.html`). | « dev-dinos », « module dino » |
 | **Histoires** ✅ (alias **Narration**) | Ce qui se raconte : WexWorld + histoires dino (techniques : regroupement de familles, époques ; narratives : dinos qui se battent ou coopèrent). Rien de sorti. Pôle `studio/narration/`. | « contes », « stories » (hors nom de dossier existant) |
 
 ## L'univers
 
 | Terme | Définition | Ne pas dire |
 |---|---|---|
-| **WexWorld** ✅ | Le monde : écosystème, 10 personnages, 2 narrateurs. Héros sans l'être : Wex. | « Wex World » (deux mots), « l'univers narratif » |
+| **WexWorld** ✅ | Le monde des Histoires : écosystème, le Casting (10 personnages), 2 narrateurs. Héros sans l'être : Wex. **Un seul sens** : le concept « WexWorld » côté JEU (jeu Phaser Phase 2) est abandonné le 2026-09-05, archivé. | « Wex World » (deux mots), « l'univers », « univers narratif » |
 | **Wex** ✅ | Garçon de 4 ans. Interagit et commente parfois dans l'application. | « le petit », « l'enfant » (ambigu avec l'enfant qui joue) |
 | **Narrateur H** / **Narrateur F** ✅ | Les deux voix ElevenLabs qui racontent, font les menus, les fiches et les histoires. Identifiants techniques `narrateur_h` / `narrateur_f`. | « narratrice » seul, « voix off », « voix cloud » |
 | **Tritri** | Le Tricératops préféré de Wex, running gag. | « Max », « doudou », « peluche » (figé) |
@@ -32,6 +31,43 @@
 | **Texte fiche** ✅ | Le texte affiché sur la fiche. | champs `desc`, `explic`, … de `dinos-data.js` | « description », « contenu » |
 | **Script audio** ✅ | Le texte qui sera transformé en voix par ElevenLabs (avec ses tags). | `studio/dino/content/scripts-audio/<langue>/` (❓ aujourd'hui « V3 », « segments JSON ») | « script V3 », « segments », « dialogue » |
 | **Audio** ✅ | Le MP3 produit par ElevenLabs à partir du Script audio. | `site/audio/dinos/<langue>/` | « son », « voix », « MP3 » seul |
+
+## L'Encyclopédie (Dino de Max)
+
+| Terme | Définition | Ne pas dire |
+|---|---|---|
+| **Famille** ✅ | Une famille de dinos (sauropodes, cératopsiens, théropodes…). Onglet par défaut. | « catégorie », « groupe » |
+| **Voyage** ✅ | Le parcours à travers les époques des dinos (8 récits d'époque). Onglet. | « chrono », « frise » (sauf la frise de mj-31), « épisode » |
+| **Récit d'époque** ✅ | Une des 8 histoires du Voyage, racontée par le Narrateur F. Appartient à l'Encyclopédie, pas aux Histoires. | « épisode », « conte » |
+| **Dico** ✅ (alias **Racines**) | L'extraction des racines latines ou grecques des noms de dinos. Onglet. | « étymo » hors nom de fichier, « lexique » (réservé à la prononciation) |
+| **Lunii** ✅ | La boîte à histoires : un appareil où on dépose des Histoires, des Fiches dinos, le Voyage. Canal de distribution, pôle `studio/lunii/`. | « la conteuse », « STUdio » (c'est l'outil de transfert) |
+
+## Les images d'une Fiche dino ✅ (définitions vérifiées dans `site/img/dinos/README.md` + `studio/dino/content/INDEX-IMAGES.md`)
+
+| Terme | C'est quoi | Fichier | Où on le voit |
+|---|---|---|---|
+| **Paléoart** | Les images réalistes « en pleine nature » : 5 scènes par dino (taille, manger, Paris, écosystème, funfact). Générées ChatGPT/Grok, JPEG. | `site/img/dinos/paleoart/<Id>_<scène>.jpg` | Le corps de la Fiche dino |
+| **Hero** | Le portrait réaliste du dino, image principale de la fiche (un paléoart cadré tête/buste, fond de nature, PAS détouré). | `site/img/dinos/paleoart/<Id>.jpg` (+ `_headshot`) | Tête de fiche, menu, dico, chrono, repli si la silhouette manque |
+| **Sprite** | Le dino **détouré proprement** sur fond transparent, en 2 versions : entier et tête. Réserve pour les Mini-jeux. | `site/img/dinos/sprites/<Id>_sprite.png`, `<Id>_tete.png` | Mini-jeux (collection, quiz) |
+| **Silhouette** ✅ (alias **Ombre**) | L'ombre chinoise noire du dino, fond transparent. | `site/img/dinos/ombres/<Id>_ombre.png` (+ banque `content/assets/silhouettes/`, 3 zones, gelée) | Vignettes rondes des grilles (inversées en blanc), jeux de devinette |
+| **Coloriage** | Le dessin au trait à colorier. Prévu, pas encore produit. | `site/img/dinos/paleoart/<Id>_coloriage.webp` | Fiche (futur) |
+| **Trace** | L'empreinte de pas du dino (15 dinos). Réserve Mini-jeux. | `site/img/dinos/traces/<Id>_trace.png` | Mini-jeux (futur) |
+| **Avatar** | Le dino **chibi low-poly facetté**, avec une humeur (joyeux, grognon, farceur). Ce n'est PAS une image de la fiche : c'est l'image de profil que l'enfant choisit dans « Qui joue ? ». 10 dinos, plusieurs variantes. | `site/img/avatars/<id>_<humeur>_<n>.png` | Écran « Qui joue ? », en-tête des Mini-jeux |
+
+Donc : low-poly = **Avatar** (profil de l'enfant) · détouré = **Sprite** (jeux) · ombre chinoise = **Silhouette** · pleine nature = **Paléoart**, dont le portrait = **Hero**.
+
+## Les Histoires
+
+| Terme | Définition | Ne pas dire |
+|---|---|---|
+| **Casting** ✅ | Les 10 personnages des Histoires (WexWorld). Figé dans `rules/personnages.md`. | « les persos », « casting V1 » (numéro) |
+| **Saison** ✅ | Un ensemble d'Histoires publié d'un bloc. | « batch », « lot » |
+| **Arc** ✅ | Le fil qui relie plusieurs Histoires d'une Saison. | « intrigue », « série » |
+
+## Abandonné (2026-09-05, Papa Yann : « ça ne marche pas du tout, on arrête »)
+
+- **Max Adventure** (le jeu Phaser) et **Tiles / LimeZu** (les briques pour construire un RPG) : sortis de MaxPlay, archivés dans `_archive/`. Ne plus les citer comme sous-domaine JEU.
+- **WexWorld côté JEU** (Phaser Phase 2) : concept abandonné. WexWorld = le monde des Histoires, rien d'autre.
 
 ## Dérives repérées (relevé 2026-09-04 sur 71 docs de gouvernance)
 
@@ -49,8 +85,8 @@
 | Audio | « MP3 », « audio », « son », `tts`. | Prose : **Audio**. Clé technique `mp3`. « Son » réservé aux bruitages. |
 | Fiche dino | « fiche » désigne aussi la fiche source Grokipedia et la « fiche audio ». | **Fiche dino** = la carte. Source de fact-check = « source Grokipedia ». « Fiche audio » disparaît : c'est le Script audio + l'Audio d'une fiche. |
 
-## Termes fréquents à définir ❓ (tu tranches)
+## Termes encore à définir ❓
 
-Métier : **Voyage** (onglet époques, 8 récits) · **Famille** (taxo + onglet) · **Dico / racines** (4ᵉ onglet) · **Époque** · **Accroche** (menu 2-7 s) · **Récit d'époque** · **Tile / Max Adventure** (3ᵉ sous-domaine JEU, absent de ta liste : c'est un Mini-jeu ? un 4ᵉ produit ?) · **Lunii / pack** (canal de distribution) · **Collection** (bandeau dinos) · **Paléoart / hero / silhouette / coloriage** (les images d'une fiche) · **Avatar** · **Saison / arc** (Histoires) · **Casting** (les 10 personnages).
+Métier : **Accroche** (menu, 2-7 s) · **Collection** (bandeau dinos gagnés) · **Époque** (une période géologique du Voyage) · **Ce qu'il mange** (onglet régimes) · **Ce qu'il manque** (❓ = la checklist « dino complet » ?). Proposition : je définis, tu corriges.
 
 Outillage (peu visible de toi, à garder tel quel sauf avis) : pôle · PMO · figée · INVARIANTS · gabarit · lane · handoff · référentiel · catalogue · réplique · dérive · empreinte · quintette · GED.

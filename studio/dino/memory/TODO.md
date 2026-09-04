@@ -2,6 +2,20 @@
 
 > Tickets ouverts uniquement, condensés en 1 ligne chacun (détail complet préservé verbatim dans `archive/backlog-fermes-2026.md` pour les tickets qui ont une partie close, et dans l'historique git pour le reste). Extrait le 2026-09-04 (HO-008) depuis l'ancien `pmo/backlog.md` (supprimé). Statuts : `[ ]` à faire · `[~]` en cours · `[!]` bloqué · `[?]` question ouverte.
 
+## Lane — Vague 2026-09-05 « Fiches dino complètes » (demande Papa Yann, orchestrée par handoffs HO-009..016)
+
+> Registre : `docs/handoffs/README.md`. Demande PY 2026-09-05 (verbatim condensé) : valider TOUTES les fiches (hauteur, longueur, poids) · revérifier le ou LES lieux de vie · réécrire les infos/Texte fiche (« on est pas mal, y'avait juste des pb sur les tailles, mais challenge ») · réécrire les Scripts audio · tags v3 « pas 2-3, plein, au milieu des phrases, autour des mots-clés, rires, inquiétude… de la vie intelligemment. SI TU AS UN DOUTE NE VA PAS PLUS LOIN » · i18n des fiches si FR + tags OK · ElevenLabs sur tous les théropodes dans toutes les langues validées · 5 musiques de fond bouclables + génériques + victoires · banque de sons dinos.
+
+- **HO-009** [~] — Audit data 71 dinos, 4 lots Sonnet en parallèle (rapports JSON + md).
+- **HO-010** [ ] — Application des corrections data + régénération bundles + `_verif-comppoids` (orchestrateur).
+- **HO-011** [ ] — 71 Scripts audio FR réécrits, 1 fichier par dino (`fr/V3/<id>.md`), anciens lots archivés dans `fr/V3/_archive-2026-09-05-lots/`. Doctrine tags = liste autorisée de 31 tags (porte `_verif-scripts-audio.cjs`), 1-2 en tête + 1 isolé avant le mot pivot, densité Narrateur 2-5 / Wex 1-3.
+- **HO-012** [ ] — Relecture croisée FR. Ferme de fait **AUDIT-ECHELLE-FR-32** (les 71 blocs B sont réécrits sur les fonctions exécutées) et **EP-D-AUDIO-DRIFT-COMPPOIDS**.
+- **HO-013** [ ] — i18n scripts audio en/es-es/pt-br + relecture native des 3 lexiques (satisfait DEC-I18N-INVARIANT-001 avant HO-014).
+- **HO-014** [ ] — Génération EL 13 théropodes × 4 langues (pilote T-Rex + audio-verif avant batch). Nouveau script STS multi-voix à écrire (`_gen-audio-i18n-sts.mjs`).
+- **HO-015** [~] — 5 musiques de fond + 3 génériques + 4 victoires → `site/sounds/music/` (branchement = ticket futur).
+- **HO-016** [~] — ~47 SFX dinos → `site/sounds/fx/dino/` (branchement = ticket futur).
+- [ ] Après la vague : régénérer les 58 autres fiches FR (audio) + décider l'i18n audio des 58 restants ; brancher musiques/SFX dans Encyclopédie et Mini-jeux.
+
 ## Lane — Alerte data
 
 - **GLOSSAIRE** [~] — Vocabulaire unique PARTOUT (`memory/GLOSSAIRE.md`, 2026-09-04) : Fiche dino = Texte fiche + Script audio + Audio ; « script V3 / dialogue / segments / fiche audio » à remplacer ; `dev-dinos.html` → `dinos.html` remonte en priorité.

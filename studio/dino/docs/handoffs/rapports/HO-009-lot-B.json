@@ -1,0 +1,234 @@
+{
+  "lot": "B",
+  "date": "2026-09-05",
+  "dinos": [
+    {
+      "id": "velociraptor",
+      "verdict": "CONFORME",
+      "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Velociraptor (curl) : aucune fourchette km/h publiée trouvée sur la page", "note": "Rien de chiffré trouvé pour Velociraptor lui-même ; par analogie de taille/masse avec d'autres petits dromaeosaures (Deinonychus 20-40 km/h) une vitesse comparable est plausible mais non publiée pour ce genre précis — laissé null plutôt qu'extrapolé." },
+      "mesures": [
+        { "champ": "taille_m", "actuel": 2, "fourchette": "1.5-2.07", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Velociraptor (curl) §Description : adults 1.5-2.07 m total length" },
+        { "champ": "hauteur_m", "actuel": 0.5, "fourchette": "~0.5", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Velociraptor : hip height ~0.5 m" },
+        { "champ": "poids_t", "actuel": 0.015, "fourchette": "14.1-19.7 kg", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Velociraptor : holotype AMNH 6515, 14.1-19.7 kg" }
+      ],
+      "lieu": { "region_actuel": "Asie (Mongolie)", "region_propose": null, "continent_actuel": "Asie", "continent_propose": null, "source": "Grokipedia Velociraptor : Djadokhta Formation + Bayan Mandahu Formation, Mongolie ET Mongolie-Intérieure (Chine) — region pourrait ajouter Chine mais reste correct tel quel" },
+      "textes": [],
+      "notes": "epoque 75-71 Ma vs data 75 Ma OK. Region ne cite que la Mongolie, alors qu'un fossile important (V. osmolskae) vient de Mongolie-Intérieure, Chine — écart mineur, pas de correction forcée."
+    },
+    {
+      "id": "deinonychus",
+      "verdict": "CONFORME",
+      "vitesse": { "kmh_fourchette": "20-40", "kmh_retenu": 30, "confiance": "moyenne", "source": "Grokipedia Deinonychus (curl) : « limb proportions indicating a top speed of 20-40 km/h based on analogies to trackways and biomechanical models »", "note": "Course au sol, estimation biomécanique par analogie (pas de trace directe de vitesse maximale). Milieu de fourchette retenu." },
+      "mesures": [
+        { "champ": "taille_m", "actuel": 3.4, "fourchette": "3.3-3.4", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Deinonychus (curl) : 3.4 m snout-to-tail" },
+        { "champ": "hauteur_m", "actuel": 0.9, "fourchette": "~1", "propose": null, "ecart_pct": 11.1, "action": "garder", "source": "Grokipedia Deinonychus : « stood roughly 1 meter tall at the hips » — écart 11% mais valeur ronde/approximative côté source, on garde 0.9 (dans la fourchette usuelle 0.87-1)" },
+        { "champ": "poids_t", "actuel": 0.08, "fourchette": "73-100 kg", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Deinonychus : body mass 73-100 kg" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Nord", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Deinonychus : Cloverly Formation, Montana" },
+      "textes": [],
+      "notes": "epoque 115-108 Ma vs data 115 Ma OK. Découvert par John Ostrom en 1964, Cloverly Formation Montana."
+    },
+    {
+      "id": "utahraptor",
+      "verdict": "CORRIGER",
+      "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Utahraptor (curl) : aucune fourchette km/h publiée trouvée sur la page", "note": "Corps massif (350-500 kg) probablement moins rapide que les petits raptors ; aucune étude biomécanique chiffrée trouvée pour ce genre — laissé null plutôt qu'estimé au jugé." },
+      "mesures": [
+        { "champ": "taille_m", "actuel": 6, "fourchette": "5.5-7", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Utahraptor (curl) : 5.5-7 m adulte" },
+        { "champ": "hauteur_m", "actuel": 2, "fourchette": "1.7-2", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Utahraptor : hip heights 1.7-2 m" },
+        { "champ": "poids_t", "actuel": 0.5, "fourchette": "350-500 kg", "propose": 0.425, "ecart_pct": 15.0, "action": "corriger", "source": "Grokipedia Utahraptor : « weighing between 350 and 500 kilograms » — data prend le maximum de la fourchette, pas le milieu honnête (brief : jamais le record)" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Nord", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Utahraptor : Cedar Mountain Formation, Utah" },
+      "textes": [
+        { "champ": "epoque", "probleme": "Data dit 126 Ma. Grokipedia (article récent) date la formation à 135-139 Ma, et précise elle-même que c'est 5-10 Ma plus vieux que l'ancienne estimation de 126-130 Ma largement reprise ailleurs (Wikipedia EN notamment).", "propose": null, "source": "Grokipedia Utahraptor : « approximately 135-139 million years ago » vs « prior estimates of 126-130 million years ago »", "action_recommandee": "signaler seulement, écart ~8.7% < 10% donc pas de correction forcée — mais à surveiller si Grokipedia devient la référence unique" }
+      ],
+      "notes": "Griffe 23 cm (Grokipedia) vs data 24 cm — CONFORME (écart 4%). Poids : data prend 500 kg (le maximum de la fourchette 350-500), alors que le brief demande le milieu honnête ; 425 kg est le vrai milieu. Correction proposée = 0.425 t."
+    },
+    {
+      "id": "microraptor",
+      "verdict": "CONFORME",
+      "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Microraptor (curl) : aucune fourchette km/h publiée trouvée sur la page pour le vol plané", "note": "Microraptor planait (glissait entre les arbres) plutôt qu'il ne volait à proprement parler et ne courait pas vite ; aucune étude chiffrant une vitesse de vol plané n'a été trouvée — laissé null." },
+      "mesures": [
+        { "champ": "taille_m", "actuel": 0.77, "fourchette": "~0.8 (48 cm corps hors plumes de queue selon une autre estimation)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Microraptor (curl) : adults ~0.8 m en longueur" },
+        { "champ": "hauteur_m", "actuel": 0.3, "fourchette": "non chiffrée précisément (petit théropode arboricole)", "propose": null, "ecart_pct": null, "action": "garder", "source": "non vérifiable précisément — plausible pour un animal de cette taille" },
+        { "champ": "poids_t", "actuel": 0.001, "fourchette": "0.6-1 kg", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Microraptor : ~1 kg (fourchette 0.6-1 kg selon contexte)" }
+      ],
+      "lieu": { "region_actuel": "Chine", "region_propose": null, "continent_actuel": "Asie", "continent_propose": null, "source": "Grokipedia Microraptor : Jiufotang Formation, Liaoning, Chine, Jehol Biota" },
+      "textes": [],
+      "notes": "epoque 120 Ma vs data 120 Ma OK. 4 ailes confirmées (planeur arboricole)."
+    },
+    {
+      "id": "troodon",
+      "verdict": "CONFORME",
+      "vitesse": { "kmh_fourchette": "40-60", "kmh_retenu": 50, "confiance": "moyenne", "source": "Grokipedia Troodon (curl) : « the femur suggest estimated top speeds of 40-60 km/h, enabling effective pursuit of small, agile prey »", "note": "Estimation biomécanique via longueur du fémur. Milieu de fourchette retenu." },
+      "mesures": [
+        { "champ": "taille_m", "actuel": 2.2, "fourchette": "2-2.4", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Troodon (curl) : 2-2.4 m" },
+        { "champ": "hauteur_m", "actuel": 0.9, "fourchette": "non chiffrée précisément sur cette source", "propose": null, "ecart_pct": null, "action": "garder", "source": "Grokipedia Troodon ne donne pas de hip height explicite — valeur plausible non contredite" },
+        { "champ": "poids_t", "actuel": 0.05, "fourchette": "~50 kg", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Troodon : body mass ~50 kg" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Nord", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Troodon : Judith River, Two Medicine, Prince Creek Formations — Montana, Alberta, Alaska" },
+      "textes": [],
+      "notes": "epoque 76-66 Ma vs data 75 Ma OK. Plus grand ratio cerveau/corps chez les dinosaures non-aviens CONFIRMÉ — le fait de la fiche est vrai. Region pourrait préciser Canada/Alaska en plus des USA mais reste correct."
+    },
+    {
+      "id": "gallimimus",
+      "verdict": "CORRIGER",
+      "vitesse": { "kmh_fourchette": "40-56", "kmh_retenu": 50, "confiance": "haute", "source": "Grokipedia Gallimimus (curl) : « capable of speeds up to 40-50 km/h based on hindlimb proportions » ; Schulborn 1982 « 42-56 km/h » ; convergence de plusieurs études biomécaniques sur cette fourchette", "note": "Déjà signalé en texte (superpower/fait) : le chiffre 70 km/h de la data est un mythe de vulgarisation jamais confirmé par une étude. Toutes les sources scientifiques citées par Grokipedia convergent vers 40-56 km/h." },
+      "mesures": [
+        { "champ": "taille_m", "actuel": 6, "fourchette": "~6", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Gallimimus (curl) : ~6 m snout-to-tail" },
+        { "champ": "hauteur_m", "actuel": 2, "fourchette": "1.9", "propose": null, "ecart_pct": 5.0, "action": "garder", "source": "Grokipedia Gallimimus : hip height 1.9 m" },
+        { "champ": "poids_t", "actuel": 0.44, "fourchette": "~440 kg", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Gallimimus : body mass ~440 kg (reconstructions volumétriques)" }
+      ],
+      "lieu": { "region_actuel": "Asie (Mongolie)", "region_propose": null, "continent_actuel": "Asie", "continent_propose": null, "source": "Grokipedia Gallimimus : Nemegt Formation, désert de Gobi, Mongolie" },
+      "textes": [
+        { "champ": "superpower", "probleme": "« jusqu'à 70 km/h » est un chiffre gonflé. Les estimations scientifiques sérieuses (limb proportions, biomécanique) donnent 40-60 km/h maximum ; le 70 km/h est un vieux chiffre de vulgarisation jamais confirmé par Grokipedia.", "propose": "Le dino le plus RAPIDE — jusqu'à 50 km/h ! Presque aussi vite qu'un cheval au galop !", "source": "Grokipedia Gallimimus : « capable of speeds up to 40-50 km/h based on hindlimb proportions » ; Schulborn 1982 « 42-56 km/h » ; approche courante 50-60 km/h" },
+        { "champ": "fait", "probleme": "Répète le chiffre 70 km/h, à corriger en cohérence avec superpower.", "propose": "Il courait à 50 km/h — presque aussi vite qu'un cheval au galop ! Beaucoup de prédateurs ne pouvaient pas l'attraper.", "source": "idem superpower" }
+      ],
+      "notes": "epoque 70 Ma vs data 70 Ma OK. La vitesse est le point le plus important du lot pour ce dino : le mythe des 70 km/h vient de la vulgarisation, pas de la science. Grokipedia cite 40-50 (voire 42-56) km/h selon les études biomécaniques les plus citées."
+    },
+    {
+      "id": "oviraptor",
+      "verdict": "CONFORME",
+      "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Oviraptor (curl) : aucune fourchette km/h publiée trouvée sur la page", "note": "Aucune étude biomécanique de vitesse trouvée pour ce genre — laissé null." },
+      "mesures": [
+        { "champ": "taille_m", "actuel": 2, "fourchette": "1.6-2", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Oviraptor (curl) : 1.6-2 m" },
+        { "champ": "hauteur_m", "actuel": 0.9, "fourchette": "non chiffrée précisément", "propose": null, "ecart_pct": null, "action": "garder", "source": "non vérifiable précisément — plausible" },
+        { "champ": "poids_t", "actuel": 0.035, "fourchette": "33-40 kg", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Oviraptor : body mass 33-40 kg" }
+      ],
+      "lieu": { "region_actuel": "Asie (Mongolie)", "region_propose": null, "continent_actuel": "Asie", "continent_propose": null, "source": "Grokipedia Oviraptor : Djadochta Formation, désert de Gobi, Mongolie" },
+      "textes": [],
+      "notes": "epoque 75-71 Ma vs data 75 Ma OK. Histoire du 'voleur d'œufs' réhabilité en 'bon parent couveur' CONFIRMÉE par les fossiles de couvaison — le texte de la fiche est exact."
+    },
+    {
+      "id": "archaeopteryx",
+      "verdict": "CONFORME",
+      "vitesse": { "kmh_fourchette": "9 (course au sol) ; vol non chiffré", "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Archaeopteryx (curl) : « Early estimates suggested a maximum running speed of around 2.5 m/s (approximately 9 km/h), comparable to that of small modern ground birds like quails »", "note": "Chiffre trouvé = vitesse de COURSE au sol (9 km/h), pas de vol — le champ demandé (course/vol/nage) est ambigu ici puisqu'Archaeopteryx volait peu et mal (vol propulsé limité, en débat). Aucune vitesse de vol chiffrée trouvée. kmh_retenu laissé null pour ne pas mélanger course et vol sous un seul chiffre." },
+      "mesures": [
+        { "champ": "taille_m", "actuel": 0.5, "fourchette": "corps 16-20 cm hors queue ; taille totale usuelle ~50 cm (taille d'une pie)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Archaeopteryx (curl) : head+body 16-20 cm hors plumes ; comparaison magpie (pie, ~45-50cm) citée sur la page" },
+        { "champ": "hauteur_m", "actuel": 0.3, "fourchette": "non chiffrée précisément (petit animal arboricole/terrestre)", "propose": null, "ecart_pct": null, "action": "garder", "source": "non vérifiable précisément — plausible" },
+        { "champ": "poids_t", "actuel": 0.001, "fourchette": "0.2-1 kg", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Archaeopteryx : estimated body masses 0.2-1 kg (une reconstruction cite ~0.5 kg)" }
+      ],
+      "lieu": { "region_actuel": "Europe (Allemagne)", "region_propose": null, "continent_actuel": "Europe", "continent_propose": null, "source": "Grokipedia Archaeopteryx : carrières de Solnhofen, Bavière, Allemagne" },
+      "textes": [],
+      "notes": "epoque 150 Ma vs data 150 Ma OK. Statut de 'premier oiseau'/chaînon dino-oiseau, plumes+dents+griffes confirmé par la source."
+    },
+    {
+      "id": "pteranodon",
+      "verdict": "CONFORME",
+      "vitesse": { "kmh_fourchette": "25-40 (vol plané) ; 2-5 (marche au sol)", "kmh_retenu": 32, "confiance": "moyenne", "source": "Grokipedia Pteranodon (curl) : « gliding speeds between 25 and 40 km/h once aloft » ; « slow quadrupedal progression at speeds of approximately 2-5 km/h » au sol", "note": "kmh_retenu = milieu de la fourchette de vol plané (25-40), qui est le régime de déplacement principal de l'animal." },
+      "mesures": [
+        { "champ": "taille_m (envergure, taille_vol=true)", "actuel": 6, "fourchette": "mâles jusqu'à 6-7 m, femelles ~3.8 m en moyenne", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Pteranodon (curl) : « wingspan of at least 20 feet (approximately 6 meters) » pour les grands mâles" },
+        { "champ": "hauteur_m", "actuel": 1.8, "fourchette": "non chiffrée précisément en hauteur au sol", "propose": null, "ecart_pct": null, "action": "garder", "source": "non vérifiable précisément — plausible pour la hauteur au sol d'un ptérosaure de cette envergure" },
+        { "champ": "poids_t", "actuel": 0.025, "fourchette": "non chiffrée précisément sur cette page (généralement 20-36 kg selon les études)", "propose": null, "ecart_pct": null, "action": "garder", "source": "cohérent avec les fourchettes usuelles de la littérature (~25 kg)" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Nord (Kansas)", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Pteranodon : Niobrara Formation, Smoky Hill Chalk, Kansas" },
+      "textes": [],
+      "notes": "epoque 86-80 Ma vs data 85 Ma OK. Mosasaurus confirmé comme prédateur du Ptéranodon dans le même écosystème marin — chasseurs CONFORME. taille_m ici est bien l'envergure (taille_vol=true), convention respectée."
+    },
+    {
+      "id": "quetzalcoatlus",
+      "verdict": "CONFORME",
+      "vitesse": { "kmh_fourchette": "80-100 (vol de croisière) ; 8-10 (marche au sol)", "kmh_retenu": 90, "confiance": "moyenne", "source": "Grokipedia Quetzalcoatlus (curl) : « Flight parameters suggest a cruising speed of around 80-100 km/h (22-28 m/s) » ; « walking speeds of 8-10 km/h for large azhdarchids »", "note": "kmh_retenu = milieu de la fourchette de vol de croisière, régime principal de déplacement sur de longues distances." },
+      "mesures": [
+        { "champ": "taille_m (envergure, taille_vol=true)", "actuel": 11, "fourchette": "10-11 m pour Q. northropi", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Quetzalcoatlus (curl) : « wingspan estimated at 10-11 meters » pour Q. northropi" },
+        { "champ": "hauteur_m", "actuel": 5, "fourchette": "~5 m debout", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Quetzalcoatlus : « Q. northropi stood up to 5 meters (16 feet) tall »" },
+        { "champ": "poids_t", "actuel": 0.2, "fourchette": "200-250 kg", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Quetzalcoatlus : « likely weighed 200-250 kilograms »" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Nord", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Quetzalcoatlus : Javelina Formation, Big Bend National Park, Texas" },
+      "textes": [],
+      "notes": "epoque 68-66 Ma vs data 68 Ma OK. Comparaison girafe pour la hauteur explicitement confirmée par la source ('giraffe-like height'). Chassait au sol de petites proies, confirmé (prédateur terrestre, pas seulement pêcheur)."
+    },
+    {
+      "id": "hatzegopteryx",
+      "verdict": "CONFORME",
+      "vitesse": { "kmh_fourchette": "10-15 (marche au sol)", "kmh_retenu": 12, "confiance": "moyenne", "source": "Grokipedia Hatzegopteryx (curl) : « walking speeds for such large azhdarchids range from 10 to 15 km/h, based on limb proportions and biomechanical models derived from related taxa »", "note": "Estimation par analogie avec des azhdarchidés apparentés (pas de trace directe pour ce genre précis). Pas de vitesse de vol chiffrée trouvée bien que Hatzegopteryx volait aussi." },
+      "mesures": [
+        { "champ": "taille_m (envergure, taille_vol=true)", "actuel": 10, "fourchette": "10-12 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Hatzegopteryx (curl) : « estimated wingspan of 10 to 12 meters »" },
+        { "champ": "hauteur_m", "actuel": 3, "fourchette": "non chiffrée précisément (mais cou/silhouette trapue confirmée)", "propose": null, "ecart_pct": null, "action": "garder", "source": "non vérifiable précisément — cohérent avec la description 'short, stocky' vs Quetzalcoatlus (5m, cou plus long)" },
+        { "champ": "poids_t", "actuel": 0.22, "fourchette": "200-250 kg (également « over 200 kg »)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Hatzegopteryx : « mass 200-250 kg »" }
+      ],
+      "lieu": { "region_actuel": "Europe (Roumanie)", "region_propose": null, "continent_actuel": "Europe", "continent_propose": null, "source": "Grokipedia Hatzegopteryx : Formation Densuș-Ciula, bassin de Hațeg, Transylvanie, Roumanie" },
+      "textes": [],
+      "notes": "epoque 66 Ma vs data 66 Ma OK. Crâne géant (~3 m) confirmé — cohérent avec le fait de la fiche ('tête aussi longue que Papa allongé', 1.8m... en fait la source dit le crâne fait jusqu'à 3m, donc le fait est même EN-DESSOUS de la réalité, reste valide). Prédateur terrestre dominant de l'île de Hațeg CONFIRMÉ, proies = dinosaures nains (titanosaure nain + hadrosauroïde Telmatosaurus) CONFIRMÉES — proies CONFORME."
+    },
+    {
+      "id": "dimetrodon",
+      "verdict": "CONFORME",
+      "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Dimetrodon (curl) : aucune fourchette km/h publiée trouvée sur la page", "note": "Synapside massif à démarche écartée (sprawling gait) ; aucune étude biomécanique chiffrant une vitesse trouvée — laissé null." },
+      "mesures": [
+        { "champ": "taille_m", "actuel": 3.5, "fourchette": "genre 1.7-4.6 m ; D. grandis (grande espèce) proche du haut de fourchette", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Dimetrodon (curl) : « largest, such as D. grandis » ; genre 1.8-4.6 m" },
+        { "champ": "hauteur_m", "actuel": 1.8, "fourchette": "non chiffrée précisément (voile dorsale jusqu'à 1-1.4 m de haut)", "propose": null, "ecart_pct": null, "action": "garder", "source": "non vérifiable précisément — la voile mesure 1-1.4 m, la hauteur totale au sommet de la voile pour un grand individu peut atteindre ~1.8 m, plausible" },
+        { "champ": "poids_t", "actuel": 0.25, "fourchette": "28-550 kg selon espèce/étude ; D. grandis dans le haut de fourchette", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Dimetrodon : masses 28-250 kg (voire jusqu'à 550 kg selon reconstructions volumétriques) pour les grandes espèces" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Nord", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Dimetrodon : red beds du Texas et de l'Oklahoma" },
+      "textes": [],
+      "notes": "epoque 295-272 Ma (Permien précoce) vs data 280 Ma OK, dans la fourchette. NON-dinosaure confirmé (synapside, plus proche des mammifères), vivait ~40 Ma avant les premiers dinosaures — le fait de la fiche est exact."
+    },
+    {
+      "id": "edaphosaurus",
+      "verdict": "CONFORME",
+      "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Edaphosaurus (curl) : aucune fourchette km/h publiée trouvée sur la page", "note": "Herbivore massif et lent par construction (corps trapu, voile dorsale) mais aucun chiffre publié trouvé — laissé null plutôt que déduit du physique." },
+      "mesures": [
+        { "champ": "taille_m", "actuel": 3, "fourchette": "2-3.5 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Edaphosaurus (curl) : adults 2-3.5 m" },
+        { "champ": "hauteur_m", "actuel": 1.3, "fourchette": "non chiffrée précisément", "propose": null, "ecart_pct": null, "action": "garder", "source": "non vérifiable précisément — plausible (voile dorsale comparable au Dimétrodon)" },
+        { "champ": "poids_t", "actuel": 0.12, "fourchette": "50-200 kg", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Edaphosaurus : body masses 50-200 kg" }
+      ],
+      "lieu": { "region_actuel": "Texas, États-Unis", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Edaphosaurus : red beds du Texas ET de l'Oklahoma (Nocona Formation)" },
+      "textes": [],
+      "notes": "epoque 303-272 Ma vs data 280 Ma OK. Dimétrodon confirmé comme prédateur sympatrique (même lieu/époque) — chasseurs CONFORME. Régime herbivore confirmé (dents en pavés pour broyer les plantes)."
+    },
+    {
+      "id": "gorgonops",
+      "verdict": "CONFORME",
+      "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Gorgonops (curl) : aucune fourchette km/h publiée trouvée sur la page", "note": "Posture semi-érigée notée (pattes plus droites qu'un lézard, cf. fait de la fiche) mais aucune vitesse chiffrée trouvée — laissé null." },
+      "mesures": [
+        { "champ": "taille_m", "actuel": 1.8, "fourchette": "1.5-2 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Gorgonops (curl) : body length 1.5-2 m" },
+        { "champ": "hauteur_m", "actuel": 0.8, "fourchette": "non chiffrée précisément", "propose": null, "ecart_pct": null, "action": "garder", "source": "non vérifiable précisément — plausible pour un quadrupède de cette longueur" },
+        { "champ": "poids_t", "actuel": 0.1, "fourchette": "~98-100 kg", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Gorgonops : body mass ~98-100 kg" }
+      ],
+      "lieu": { "region_actuel": "Afrique du Sud", "region_propose": null, "continent_actuel": "Afrique", "continent_propose": null, "source": "Grokipedia Gorgonops : bassin du Karoo, Afrique du Sud" },
+      "textes": [],
+      "notes": "epoque 260-252 Ma vs data 260 Ma OK. Canines sabre 'up to 100 mm' (10 cm) CONFIRMÉ, cohérent avec la comparaison 'longues comme ta main' d'un enfant de 4 ans (8-10 cm). Pas de vrai prédateur au-dessus de lui à son époque, confirmé."
+    },
+    {
+      "id": "lystrosaurus",
+      "verdict": "CONFORME",
+      "vitesse": { "kmh_fourchette": "~5 (déplacement au sol)", "kmh_retenu": 5, "confiance": "moyenne", "source": "Grokipedia Lystrosaurus (curl) : « low-energy movement at estimated speeds of approximately 5 km/h »", "note": "Animal trapu fouisseur/brouteur, pas un coureur — le chiffre trouvé décrit un déplacement de basse énergie, cohérent avec son mode de vie." },
+      "mesures": [
+        { "champ": "taille_m", "actuel": 0.7, "fourchette": "genre 1-2.5 m selon espèce ; taille usuelle citée pour les petites espèces ~0.6-1 m", "propose": null, "ecart_pct": null, "action": "garder", "source": "Grokipedia Lystrosaurus (curl) : genre 1-2.5 m — pas de chiffre spécifique trouvé pour L. murrayi (l'espèce de la fiche) sur cette page ; 0.7 m reste dans l'usage courant pour les petites espèces du genre" },
+        { "champ": "hauteur_m", "actuel": 0.35, "fourchette": "non chiffrée précisément", "propose": null, "ecart_pct": null, "action": "garder", "source": "non vérifiable précisément — plausible pour un animal trapu de cette longueur" },
+        { "champ": "poids_t", "actuel": 0.017, "fourchette": "genre 50-200 kg selon espèce ; 17 kg serait bas pour le haut du genre mais plausible pour une petite espèce", "propose": null, "ecart_pct": null, "action": "garder", "source": "Grokipedia Lystrosaurus : genre 50-200 kg — pas de chiffre spécifique L. murrayi trouvé ; NON VÉRIFIABLE avec précision sur cette source pour l'espèce exacte" }
+      ],
+      "lieu": { "region_actuel": "Afrique du Sud, Antarctique, Inde, Chine", "region_propose": "Afrique du Sud, Antarctique, Inde, Chine, Russie, Mongolie", "continent_actuel": "Afrique", "continent_propose": null, "source": "Grokipedia Lystrosaurus : fossiles en Afrique du Sud, Antarctique, Inde, Chine, Russie et Mongolie" },
+      "textes": [],
+      "notes": "NON VÉRIFIÉ précisément : taille/poids spécifiques à L. murrayi (la fiche cite une espèce précise mais Grokipedia ne détaille les mesures que par genre, 1-2.5m/50-200kg). epoque 252-245 Ma vs data 250 Ma OK. Survie à l'extinction Permien-Trias avec '90%+ voire jusqu'à 95% des fossiles' CONFIRMÉE — le fait 'plus de neuf sur dix' est exact. Lieu à enrichir (Russie + Mongolie manquants) — proposition ajout, écart mineur donc pas de CORRIGER strict mais amélioration possible."
+    },
+    {
+      "id": "moschops",
+      "verdict": "CONFORME",
+      "vitesse": { "kmh_fourchette": null, "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Moschops (curl) : aucune fourchette km/h publiée trouvée sur la page", "note": "Corps trapu (400 kg) probablement lent, mais aucune étude chiffrée trouvée — laissé null plutôt que déduit du physique." },
+      "mesures": [
+        { "champ": "taille_m", "actuel": 2.7, "fourchette": "2.5-3 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Moschops (curl) : adults 2.5-3 m (une reconstruction cite précisément 2.7 m)" },
+        { "champ": "hauteur_m", "actuel": 1.1, "fourchette": "non chiffrée précisément", "propose": null, "ecart_pct": null, "action": "garder", "source": "non vérifiable précisément — plausible pour un animal trapu quadrupède de 2.7m" },
+        { "champ": "poids_t", "actuel": 0.41, "fourchette": "~400 kg", "propose": null, "ecart_pct": 2.5, "action": "garder", "source": "Grokipedia Moschops : body mass ~400 kg" }
+      ],
+      "lieu": { "region_actuel": "Afrique du Sud", "region_propose": null, "continent_actuel": "Afrique", "continent_propose": null, "source": "Grokipedia Moschops : bassin du Karoo, Afrique du Sud" },
+      "textes": [
+        { "champ": "fait", "probleme": "Chiffre '5 centimètres' d'épaisseur de crâne non retrouvé texto sur Grokipedia (page confirme un crâne 'robuste/épaissi' adapté au head-butting mais sans le chiffre exact 5cm) — comportement de head-butting bien confirmé.", "propose": null, "source": "Grokipedia Moschops : 'skull roof... robust architecture', 'thickened rims' — pas de mesure en cm trouvée sur cette page" }
+      ],
+      "notes": "epoque 265-260 Ma vs data 265 Ma OK. Comportement de head-butting intraspécifique pour la dominance CONFIRMÉ (comparaison mouflons de montagne cohérente avec la source qui évoque les ongulés modernes). Le chiffre '5 cm' d'épaisseur du crâne n'est pas confirmable sur cette source précise mais n'est pas non plus contredit — NON VÉRIFIÉ avec certitude, pas de correction forcée (pas de source contraire)."
+    },
+    {
+      "id": "titanis",
+      "verdict": "CORRIGER",
+      "vitesse": { "kmh_fourchette": "40-50", "kmh_retenu": 45, "confiance": "haute", "source": "Grokipedia Titanis (curl) : « femur suggests Titanis could achieve top speeds of 40-50 km/h, comparable to estimates for similarly sized phorusrhacids like Patagornis marshi » ; « powerful hind limbs capable of speeds estimated at 40-50 km/h based on tibiotarsal bone strength analyses »", "note": "Deux analyses biomécaniques indépendantes (résistance du fémur, résistance du tibiotarse) convergent sur la même fourchette 40-50 km/h — confiance haute." },
+      "mesures": [
+        { "champ": "taille_m", "actuel": 1.9, "fourchette": "hauteur 1.4-1.9 m (estimation révisée) ; pas de longueur distincte publiée pour un oiseau debout", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Titanis (curl) : hauteur révisée 1.4-1.9 m, utilisée aussi comme taille dans la fiche" },
+        { "champ": "hauteur_m", "actuel": 1.9, "fourchette": "1.4-1.9 m (estimation révisée, remplace l'ancienne estimation de 2.5 m)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Titanis : « later studies based on additional material have revised the height to 1.4-1.9 meters », haut de fourchette pris par la data" },
+        { "champ": "poids_t", "actuel": 0.3, "fourchette": "~150 kg (confirmé par l'estimation originale ET les études révisées)", "propose": 0.15, "ecart_pct": 50.0, "action": "corriger", "source": "Grokipedia Titanis : « body mass approximately 150 kg (330 pounds) » — chiffre stable dans le temps, contrairement à la hauteur qui a été révisée. Data à 300 kg double le vrai poids." }
+      ],
+      "lieu": { "region_actuel": "Amérique du Nord", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Titanis : Floride (rivière Santa Fe) et Texas (rivière Nueces)" },
+      "textes": [],
+      "notes": "epoque 'il y a 3 millions d'ans' vs fourchette 5-1.8 Ma (Texas à Floride) — le point médian choisi est raisonnable, OK. Seul oiseau-terreur (Phorusrhacidae) connu en Amérique du Nord CONFIRMÉ. Erreur la plus importante du lot après Gallimimus : poids doublé (300 kg au lieu de 150 kg)."
+    }
+  ]
+}

@@ -5,6 +5,8 @@
 
 ## Lane — Montée de niveau par compétence (EP-112)
 
+- **ABANDON Max Adventure + tiles + WexWorld JEU** [~] — décision Papa Yann 2026-09-05 (« ça ne marche pas du tout, on arrête ») : archiver `studio/max-adventure/`, `site/max-adventure*`, `mj-pose-tiles`, `tools/tile-tools`, skill `maxplay-tiles`, agent `game-tile`, rule `tile-tools.md` dans `_archive/` (jamais supprimé) ; retirer du catalogue et des docs. Inventaire en cours.
+
 - **EP-112** [~] — Montée de niveau par compétence : PILOTE mj-04 LIVRÉ, propagation aux 13 autres figées attend validation ressenti Max (2026-07-29)
 - **T-C6b** [x] — Banque audio nombres/gabarits V1 LIVRÉE (100 MP3) — à faire écouter à Papa Yann (2026-07-29)
 - **EP-112 (spec)** [?] — SPEC montée de niveau (défigeage `niveau = Stars+1`) — attend 7 décisions Papa Yann D1..D7, spec dans `../docs/2026-07-28-spec-montee-niveau.md` (2026-07-28)

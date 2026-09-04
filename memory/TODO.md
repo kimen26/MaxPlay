@@ -25,7 +25,6 @@ Issu de `memory/audits/2026-09-03-archi-claude-infra.md`. Vagues 1 → 2 → 3, 
 `memory/audio/PLAN-AUDIO-I18N.md` (2026-07-08) reste un plan **proposé**, pas figé : décisions 🚨 en attente d'arbitrage Papa Yann (convention `<lang>/`, casting `Native <lang>`, gouvernance registre, Supabase Storage hors FR). Ne pas le considérer comme réalisé — l'i18n dino a depuis avancé (voir commits `feat(dino-i18n)`, `feat(audio-i18n)` de 2026-08/09) mais le plan lui-même n'a pas été revalidé point par point.
 
 ## Reportés depuis l'auto-memory (2026-09-03, HO-G04)
-- [ ] Max Adventure : retirer le fallback sprite top-down du bus (`USE_SVG_BUS` dans `SandboxScene.ts` + spritesheet + anims) une fois le SVG profil validé définitivement par Papa Yann.
 - [ ] Skill `name-sonority-check` (8 axes, verdict /16 GO/AJUSTER/REJETER) + clarifier avec Papa Yann agent dédié vs skill seule.
 - [ ] `site/PIPELINE-MEMORY-MJ.md` : journal PMO historique déployé en prod → à archiver dans `studio/minijeux/memory/archive/` (HO-G10).
 
@@ -37,7 +36,6 @@ Issu de `memory/audits/2026-09-03-archi-claude-infra.md`. Vagues 1 → 2 → 3, 
 - [ ] Migrer les 17 scripts ElevenLabs vers `~/.claude/skills/tts-pipeline` (table : `~/.claude/skills/tts-pipeline/references/migration-maxplay.md`) ; trancher le loudnorm unique (I=-16/TP=-1.5/LRA=11 retenu par le skill).
 - [ ] DINO : dérive texte/audio sur `aenocyon-taille` (MP3 dit « kangourou », JSON dit « Papa ») → passer `audio-verif --min-silence-ms 50` sur les 70 fiches (silence ~80 ms = voulu, décision 2026-09-04).
 - [ ] `audio-verif` : STT `scribe_v1` marche mais la doc ne cite plus que `scribe_v2` → basculer `--stt-model` quand déprécié.
-- [ ] JEU : `studio/minijeux/INDEX.md` L65-132 pointe encore `site/tile-tools`, `site/tools`, `site/design-*` → `studio/minijeux/tools/**`, `docs/design-explorations/` (à faire après HO-MJ-01).
 - [ ] Commentaires obsolètes `mj-46.html:40`, `mj-50.html:90`, `avatar-picker.js:5,16` (design-compte/lecture, atelier-couleurs déplacés).
 - [~] GLOSSAIRE (`memory/GLOSSAIRE.md`, ouvert 2026-09-04) : valider les termes ❓ avec Papa Yann, puis passer le vocabulaire PARTOUT (CLAUDE.md, rules, agents, INDEX, noms de dossiers `V3`, `dev-dinos.html`) — handoff par pôle une fois tranché.
 - [ ] Pousser les 6 skills globaux nouveaux/migrés sur `kimen26/claude_conf` via skill `Sync-Skills-github-ProPerso` (action externe → confirmation Papa Yann).

@@ -28,7 +28,7 @@ if ([string]::IsNullOrWhiteSpace($prompt)) { exit 0 }
 $lowerPrompt = $prompt.ToLower()
 
 # === Signaux JEU ===
-$gameKeywords = 'mini-jeu|mini jeu|mj-\d|bus-svg|victory-sounds|\btile\b|recipe|limezu|cartography|patterns\.js|rules\.md|stack\.md|phaser|max-adventure|déploiement|asphalt|sidewalk|mj-pose|vocab\.py|tile-tools|tile-picker'
+$gameKeywords = 'mini-jeu|mini jeu|mj-\d|bus-svg|victory-sounds|rules\.md|stack\.md|déploiement'
 
 # === Signaux NARRATION ===
 $narrationKeywords = '\bpersonnage|\bhistoire\b|\bvoix\b|elevenlabs|\bbrief\b|kanban|équipe narrat|\bunivers\b|\bsaison\b|\barc\b|ennéagramme|cross-culture|\bpitch\b|rewrite|gatekeeper|\blecteur\b|\bcasting\b|\binbox\b|\bwex\b|\bmelki\b|\bmimi\b|\bdadou\b|\bpolo\b|\bmadie\b|\blulu\b|pierrot|\braph\b|\bjuju\b|\bnono\b|kishōtenketsu|kishotenketsu'

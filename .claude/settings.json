@@ -133,15 +133,6 @@
         "hooks": [
           {
             "type": "command",
-            "command": "powershell -NoProfile -Command \"$input = $input -join ''; $data = $input | ConvertFrom-Json -ErrorAction SilentlyContinue; $path = if ($data.tool_input.path) { $data.tool_input.path } elseif ($data.tool_input.file_path) { $data.tool_input.file_path } else { '' }; if ($path -match '[\\/]max-adventure[\\/].*\\.ts$') { Set-Location 'c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\studio\\max-adventure'; npx tsc --noEmit 2>&1 | Select-Object -First 20 } else { Write-Output 'TSC skip (non-TS or non-max-adventure file)' }\""
-          }
-        ]
-      },
-      {
-        "matcher": "Edit|Write",
-        "hooks": [
-          {
-            "type": "command",
             "command": "bash -c 'INPUT=$(cat); if echo \"$INPUT\" | grep -q \"narration.*INBOX\"; then cd \"c:/ProjetsPerso/Claude_Projects/MaxPlay\" && git commit -m \"inbox: dump $(date +%Y-%m-%d)\" -- studio/narration/INBOX.md 2>/dev/null || true; fi'",
             "statusMessage": "Sauvegarde INBOX narration...",
             "async": true

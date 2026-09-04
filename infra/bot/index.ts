@@ -407,7 +407,7 @@ function isAllowed(ctx: Context): boolean {
   return ctx.chat?.id === ALLOWED_CHAT_ID;
 }
 
-type Agent = "narration" | "game-dev" | "dino" | "max-adventure" | "quick";
+type Agent = "narration" | "game-dev" | "dino" | "quick";
 
 // Casting V1 figé (2026-04-24, ajusté 2026-05-05) : Wex + Melki/Mimi/Dadou/Madie/Lulu/Pierrot/Raph/Juju/Nono
 const NARRATION_KEYWORDS = [
@@ -432,11 +432,6 @@ const DINO_KEYWORDS = [
   "voyage époque", "famille dino",
 ];
 
-const MAX_ADVENTURE_KEYWORDS = [
-  "max adventure", "max-adventure", "phaser", "tile", "tilemap", "tileset",
-  "limezu", "carte top-down", "pixel-map",
-];
-
 function detectAgent(message: string): Agent {
   const lower = message.toLowerCase();
   const score = (keywords: string[]) =>
@@ -444,7 +439,6 @@ function detectAgent(message: string): Agent {
 
   const scores: [Agent, number][] = [
     ["dino", score(DINO_KEYWORDS)],
-    ["max-adventure", score(MAX_ADVENTURE_KEYWORDS)],
     ["narration", score(NARRATION_KEYWORDS)],
     ["game-dev", score(GAME_KEYWORDS)],
   ];
@@ -457,7 +451,6 @@ const AGENT_EMOJI: Record<Agent, string> = {
   "narration": "📖",
   "game-dev": "🎮",
   "dino": "🦖",
-  "max-adventure": "🗺️",
   "quick": "⚡",
 };
 
@@ -466,7 +459,6 @@ const AGENT_POLE_HINT: Record<Agent, string> = {
   "narration": "Pôle NARRATION (studio/narration/)",
   "game-dev": "Pôle JEU — mini-jeux (studio/minijeux/)",
   "dino": "Pôle DINO (studio/dino/, déployé dans site/)",
-  "max-adventure": "Pôle JEU — Max Adventure tiles (studio/max-adventure/)",
   "quick": "Question rapide, pas de pôle particulier",
 };
 
@@ -543,7 +535,6 @@ async function runClaude(prompt: string, agent: Agent = "quick"): Promise<string
     "narration": "opus",
     "game-dev": "sonnet",
     "dino": "sonnet",
-    "max-adventure": "sonnet",
     "quick": "haiku",
   };
 

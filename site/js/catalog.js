@@ -19,7 +19,7 @@
 //    parental (bool) — jeu retiré du menu ENFANT mais toujours accessible
 //                       depuis l'écran parental (compte.html), pour les
 //                       bacs à sable qui n'ont pas leur place dans le Mur
-//                       gamifié (max-adventure, mj-pose-tiles).
+//                       gamifié.
 //    refonte (bool)  — informatif seulement, ne filtre RIEN. Marque un jeu
 //                       qui RESTE affiché mais dont le contenu/design est
 //                       identifié comme à refondre (suivi PMO, chantier C2-C4
@@ -110,8 +110,6 @@ window.MAXPLAY_CATALOG = [
   // DÉPLACÉS vers l'écran parental 2026-07-28 (C0) : bacs à sable libres, pas
   // d'étoiles/pédagogie évaluable → hors du Mur gamifié enfant, accessibles
   // depuis compte.html (lien discret). GARDÉS sous la main (PY 2026-08-10).
-  { id:'max-adventure', category:'monde', titre:'Max Adventure', emoji:'🎮', desc:'Conduis ton bus dans Villejuif !',      url:'max-adventure.html', type:'phaser', orientation:'landscape', access:'free', maxStars:0, unlock:null, tag:null, status:'live', retire:true, parental:true },
-  { id:'mj-pose-tiles', category:'monde', titre:'Pose-tes-tiles', emoji:'🚧', desc:'Petit ouvrier ! Construis ta ville.',  url:'mj-pose-tiles.html', type:'html',   orientation:'landscape', access:'free', maxStars:0, unlock:null, tag:null, status:'live', retire:true, parental:true },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────

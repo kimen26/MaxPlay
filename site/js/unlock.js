@@ -7,7 +7,7 @@
 //                 SUIVANT quand le précédent a UNLOCK_STARS ★ (parties à 100%).
 //                 Bâcler n'ouvre RIEN — le déblocage se mérite ; l'aide passe par
 //                 des explications/indices DANS le jeu, jamais par un déblocage gratuit.
-//    'free'     : toujours accessible (bacs à sable : Max Adventure, Pose-tiles, sons).
+//    'free'     : toujours accessible (bacs à sable : sons).
 //    'code'     : déverrouillé par un mot-clé. V0 = validation LOCALE ; V-final = serveur
 //                 (activation/anti-partage) — redeem() est ASYNC pour que seul l'intérieur
 //                 change le jour du serveur.

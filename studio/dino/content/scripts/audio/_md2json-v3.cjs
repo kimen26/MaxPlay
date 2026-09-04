@@ -1,6 +1,6 @@
 // Convertit les scripts V3 (scripts-audio/V3/*.md, format dialogue 4 blocs A/B/C/D)
 // -> 1 JSON text-to-dialogue par bloc, pour la production audio des 51 dinos.
-// Usage: node _md2json-v3.cjs
+// Usage: node _md2json-v3.cjs [lang]   (lang par défaut : fr → dossier fr/V3 ; autre langue → dossier scripts-audio/<lang>/, language_code dérivé)
 //
 // Diffère de _md2json.cjs : lit le dossier V3/, dérive l'id depuis le NOM LATIN
 // du titre (## NOM — Latin species) au lieu d'une table codée en dur (couvre les 51).
@@ -9,7 +9,11 @@
 const fs = require('fs');
 const path = require('path');
 
-const V3DIR = path.join(__dirname, '..', '..', 'scripts-audio', 'fr', 'V3');
+const LANG = process.argv[2] || 'fr';
+const LANG_CODE = LANG.split('-')[0]; // es-es → es, pt-br → pt
+const V3DIR = LANG === 'fr'
+  ? path.join(__dirname, '..', '..', 'scripts-audio', 'fr', 'V3')
+  : path.join(__dirname, '..', '..', 'scripts-audio', LANG);
 const OUT = path.join(V3DIR, 'json');
 fs.mkdirSync(OUT, { recursive: true });
 
@@ -71,7 +75,7 @@ for (const f of FILES) {
         inputs,
         model_id: 'eleven_v3',
         output_format: 'mp3_44100_128',
-        language_code: 'fr',
+        language_code: LANG_CODE,
         apply_text_normalization: 'auto',
       };
       fs.writeFileSync(path.join(OUT, `_seg-${id}-${blocName}.json`), JSON.stringify(payload, null, 2), 'utf8');
@@ -82,6 +86,6 @@ for (const f of FILES) {
     if (got.length !== 4) missing.push(`${id}: blocs incomplets (${got.join(',') || 'AUCUN'})`);
   });
 }
-console.log(`Fichiers V3 lus: ${FILES.length} · Dinos traités: ${dinos} · JSON générés: ${made} (attendu ${dinos * 4})`);
+console.log(`[${LANG}] Fichiers lus: ${FILES.length} · Dinos traités: ${dinos} · JSON générés: ${made} (attendu ${dinos * 4})`);
 if (missing.length) { console.log('\nPROBLÈMES:'); missing.forEach(x => console.log(' - ' + x)); }
 else console.log('Tous les blocs OK (4/dino).');

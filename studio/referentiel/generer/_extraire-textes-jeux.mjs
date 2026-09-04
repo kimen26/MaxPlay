@@ -100,7 +100,7 @@ for (const fichier of fs.readdirSync(SITE).filter((f) => /^mj-.*\.html$/.test(f)
 }
 
 fs.writeFileSync(
-  path.join(path.dirname(new URL(import.meta.url).pathname.slice(1)), 'textes-jeux.json'),
+  path.join(path.dirname(new URL(import.meta.url).pathname.slice(1)), '..', 'textes-jeux.json'),
   `${JSON.stringify(resultat, null, 2)}\n`, 'utf8',
 );
 

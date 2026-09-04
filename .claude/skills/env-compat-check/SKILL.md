@@ -17,7 +17,7 @@ Contexte à connaître avant de commencer :
 - PowerShell 5.1 exige l'**UTF-8 avec BOM** pour parser les accents/emoji des .ps1.
 - Décisions de non-portage **volontaires** (ne pas remonter comme erreurs) :
   - SessionStart (lancement bot Telegram) — Claude only, demandé par Papa Yann
-  - PostToolUse tsc (max-adventure) et commit INBOX — Claude only
+  - PostToolUse commit INBOX — Claude only
   - PermissionRequest http (localhost:3001) — pas d'équivalent `type: http` chez Kimi
 - Porté le 2026-07-19 (n'est plus un manque) : Stop `pmo-check.ps1` → `.kimi-code/hooks/pmo-check.kimi.ps1` (check 9). Différences assumées vs Claude : périmètre = le tour (événements après le dernier `turn.prompt` du wire.jsonl, plus strict, aligné « capture immédiate DANS LE TOUR ») ; voie « agent PMO invoqué » absente (pas de subagent custom chez Kimi) → seule la trace `pmo/` satisfait le check. `stop-probe.kimi.ps1` reste sur disque mais n'est plus branché dans config.toml.
 - Équivalent Kimi des rules path-scoped : pas d'injection native par path chez Kimi — le rappel est porté par `figees-injector.kimi.ps1` (PreToolUse) qui injecte un pointeur vers `.claude/rules/mini-jeux.md` / `dino.md` selon le path édité.

@@ -67,7 +67,7 @@ Les **IDs mj-XX ne changent JAMAIS**. Seul le champ `category` de regroupement c
 
 ### 🌍 Le monde & libre
 - **Monde** : mj-11 (Drapeaux), mj-22 (Animaux), mj-20 (Villes), mj-42 (Routes)
-- **Libre** : mj-12 (Max Adventure), mj-pose-tiles (compose tes mondes)
+- **Libre** : mj-12
 - Status : live uniquement
 
 ## 🔒 Comportement accordéon FIGÉ

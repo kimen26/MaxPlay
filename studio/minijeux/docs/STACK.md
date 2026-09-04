@@ -7,25 +7,21 @@ type: project
 ## Stack
 
 - **Jeux HTML** : HTML vanilla + JavaScript ES6 (site/)
-- **Jeu Phaser** : Phaser.js 3 + Vite + TypeScript strict (studio/max-adventure/)
 - **Assets** : SVG/PNG — jamais d'emoji pour les bus ni pour aucun graphisme de jeu (rendu inconsistant multi-OS)
-- **Résolution** : 1024×768 landscape (Phaser), responsive mobile (HTML)
+- **Résolution** : responsive mobile (HTML)
 
 ## Architecture déploiement
 
 ```
 GitHub Pages → kimen26.github.io/MaxPlay/
 ├── /                    ← site/index.html (menu par catégories, source site/js/catalog.js)
-├── /mj-XX.html          ← jeux HTML vanilla (count + retirés → memory/INVARIANTS.md ; menu → catalog.js)
-└── /max-adventure/      ← Phaser build (studio/max-adventure/dist/ copié par CI)
-    max-adventure.html   ← splash → ./max-adventure/
+└── /mj-XX.html          ← jeux HTML vanilla (count + retirés → memory/INVARIANTS.md ; menu → catalog.js)
 ```
 
 - Source HTML : `site/`
-- Source Phaser : `studio/max-adventure/` (build → `studio/max-adventure/dist/`)
 - CI : `.github/workflows/deploy.yml` assemble dans `_site/` (non commité)
 - `studio/minijeux/docs/` = specs/audit/recherche (.md)
-- `dist/` (motif générique, couvre `studio/max-adventure/dist/`) et `_site/` dans `.gitignore`
+- `_site/` dans `.gitignore`
 
 ## Règle critique bus
 
@@ -43,18 +39,8 @@ GitHub Pages → kimen26.github.io/MaxPlay/
 
 ## Audio — Règles techniques
 
-```javascript
-// TOUJOURS charger OGG + MP3 (Phaser pick automatique)
-this.load.audio('klaxon', ['sounds/klaxon.ogg', 'sounds/klaxon.mp3']);
-
-// Débloquer l'AudioContext au premier tap (obligatoire mobile)
-this.input.once('pointerdown', () => this.sound.resumeAll());
-this.sound.play('klaxon', { volume: 0.7 });
-```
-
-- OGG : Chrome/Firefox · MP3 : Safari/iOS → **toujours les deux**
-- SFX : < 100KB, 96kbps · Musique background : 128kbps
-- Phaser audio intégré est suffisant — **pas besoin de Howler.js**
+- Débloquer l'AudioContext au premier tap (obligatoire mobile) ; une seule voix à la fois.
+- SFX : < 100 Ko, 96 kbps · musique de fond : 128 kbps · padding 250 ms en tête des MP3 courts (`.claude/rules/sons.md`).
 
 ## Bibliothèque sons recommandée
 
@@ -91,68 +77,10 @@ this.load.svg('bus', 'assets/bus.svg', { scale: 2 });
 - ⚠️ Résolution fixée au chargement — précharger à 2× la taille affichée
 - ❌ Pas d'animation par frames → passer aux spritesheets
 
-### Aseprite — Spritesheet pour personnages animés
-
-Outil : **Aseprite** (~20€, intégration Phaser native)
-
-```typescript
-this.load.aseprite('dino', 'dino.png', 'dino.json');
-this.anims.createFromAseprite('dino');
-sprite.play('walk');
-```
-- Config Phaser obligatoire : `pixelArt: true` + échelle entière (×3, ×4)
-- Meilleure option pour personnages animés (passagers, dinosaures, personnages Hub)
-
-### Tiled / LDtk — Maps scrollantes
-
-**Quand l'utiliser :**
-- ✅ Bus qui roule sur une route parisienne scrollante
-- ✅ Train avec gares sur un trajet
-- ✅ La Ville Hub (monde explorable)
-- ❌ Jeux de tri, matching, cartes mémoire → positionnement programmatique
-
-```typescript
-// Tiled — export CSV ou Base64 non-compressé obligatoire
-this.load.tilemapTiledJSON('map', 'level1.json');
-const map = this.make.tilemap({ key: 'map' });
-```
-**LDtk** = alternative moderne (meilleur UX, JSON plus propre, plugin Phaser communauté)
-
 ### Drapeaux
 
 **Twemoji (MIT)** — PNG 72px, consistant multi-OS : `github.com/twitter/twemoji`
 **Flag-icons CDN** — 260 drapeaux SVG via classe CSS `fi fi-XX` : `cdn.jsdelivr.net/npm/flag-icons@7.2.3`
-
-## Animation — Feedback "juicy" Phaser
-
-```typescript
-// Bonne réponse : bounce
-this.tweens.add({
-  targets: sprite, scaleX: 1.3, scaleY: 1.3,
-  duration: 150, yoyo: true, ease: 'Bounce.Out'
-});
-
-// Mauvaise réponse : shake doux (PAS de son punitif)
-this.tweens.add({
-  targets: sprite, x: sprite.x + 10,
-  duration: 50, yoyo: true, repeat: 5, ease: 'Linear'
-});
-
-// Idle (le jeu respire)
-this.tweens.add({
-  targets: sprite, y: sprite.y - 10,
-  duration: 800, yoyo: true, repeat: -1, ease: 'Sine.InOut'
-});
-
-// Confettis succès (Phaser 3.60+)
-const particles = this.add.particles(x, y, 'star', {
-  speed: { min: 100, max: 300 }, angle: { min: 0, max: 360 },
-  scale: { start: 0.5, end: 0 }, lifespan: 800, emitting: false
-});
-particles.explode(20);
-```
-
-**Easings à privilégier :** `Bounce.Out`, `Elastic.Out`, `Back.Out` — effet physique et tactile.
 
 ## Assets gratuits — Sources
 
@@ -171,7 +99,6 @@ particles.explode(20);
 | Jeu | État | Notes |
 |-----|------|-------|
 | MJ-01 à MJ-20 | ✅ déployés | voir BACKLOG.md (mj-02/03/07/10 retirés du menu) |
-| max-adventure | 🔄 en cours | Phaser, HubScene + SandboxScene |
 
 ## Vocabulaire ASSETS (validé Papa Yann 2026-07-20 — utiliser CES mots, pas d'autres)
 

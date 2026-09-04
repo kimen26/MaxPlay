@@ -1,0 +1,517 @@
+{
+ "date": "2026-09-05",
+ "base": "6c544fb0",
+ "note": "Champs de dinos-data.js modifies par HO-010 (audit HO-009). Les champs TEXTE (region, epoque, fait, chasseurs, proies, superpower, comp_*) doivent etre recroises dans i18n/<lang>/strings.json (HO-013). vitesse_kmh = nouveau champ.",
+ "champs": [
+  {
+   "id": "tyrannosaurus",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 20
+  },
+  {
+   "id": "spinosaurus",
+   "champ": "fait",
+   "avant": "La voile sur son dos pouvait faire 2 mètres de haut — comme une porte d'entrée !",
+   "apres": "La voile sur son dos pouvait faire près de 2 mètres de haut — comme une porte d'entrée !"
+  },
+  {
+   "id": "giganotosaurus",
+   "champ": "hauteur_m",
+   "avant": 4,
+   "apres": 3.3
+  },
+  {
+   "id": "giganotosaurus",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 50
+  },
+  {
+   "id": "giganotosaurus",
+   "champ": "comp_hauteur",
+   "avant": "aussi haut qu'un bus anglais à deux étages !",
+   "apres": "comme deux Papas l'un sur l'autre !"
+  },
+  {
+   "id": "giganotosaurus",
+   "champ": "proies",
+   "avant": "Argentinosaurus (le plus grand dino !)",
+   "apres": "Andesaurus, un immense dinosaure au long cou qui vivait dans la même région"
+  },
+  {
+   "id": "allosaurus",
+   "champ": "hauteur_m",
+   "avant": 3.5,
+   "apres": 4
+  },
+  {
+   "id": "allosaurus",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 34
+  },
+  {
+   "id": "allosaurus",
+   "champ": "comp_hauteur",
+   "avant": "comme deux Papas l'un sur l'autre !",
+   "apres": "aussi haut qu'un bus anglais à deux étages !"
+  },
+  {
+   "id": "allosaurus",
+   "champ": "continent",
+   "avant": "Amérique du Nord",
+   "apres": "Amérique du Nord / Europe"
+  },
+  {
+   "id": "albertosaurus",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 30
+  },
+  {
+   "id": "ceratosaurus",
+   "champ": "region",
+   "avant": "Amérique du Nord, Afrique",
+   "apres": "Amérique du Nord (et peut-être l'Europe, au Portugal)"
+  },
+  {
+   "id": "ceratosaurus",
+   "champ": "poids_t",
+   "avant": 0.7,
+   "apres": 0.9
+  },
+  {
+   "id": "ceratosaurus",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 25
+  },
+  {
+   "id": "ceratosaurus",
+   "champ": "comp_poids",
+   "avant": "aussi lourd qu'une vache !",
+   "apres": "aussi lourd qu'une petite voiture !"
+  },
+  {
+   "id": "dilophosaurus",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 25
+  },
+  {
+   "id": "carnotaurus",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 52
+  },
+  {
+   "id": "brachiosaurus",
+   "champ": "region",
+   "avant": "Amérique du Nord, Afrique",
+   "apres": "Amérique du Nord (Colorado, Wyoming, Utah)"
+  },
+  {
+   "id": "diplodocus",
+   "champ": "fait",
+   "avant": "Sa queue faisait un BOOM supersonique en claquant ! Plus fort qu'une explosion !",
+   "apres": "Sa queue en fouet claquait si vite qu'elle aurait pu faire un bruit aussi fort qu'un coup de tonnerre, disent les scientifiques !"
+  },
+  {
+   "id": "amargasaurus",
+   "champ": "region",
+   "avant": "Amérique du Sud",
+   "apres": "Amérique du Sud (Argentine)"
+  },
+  {
+   "id": "plateosaurus",
+   "champ": "region",
+   "avant": "Europe",
+   "apres": "Europe (Allemagne, France, Suisse)"
+  },
+  {
+   "id": "ankylosaurus",
+   "champ": "taille_m",
+   "avant": 7,
+   "apres": 7.5
+  },
+  {
+   "id": "ankylosaurus",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 7
+  },
+  {
+   "id": "euoplocephalus",
+   "champ": "region",
+   "avant": "Canada",
+   "apres": "Alberta, Canada"
+  },
+  {
+   "id": "euoplocephalus",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 7
+  },
+  {
+   "id": "edmontonia",
+   "champ": "hauteur_m",
+   "avant": 1.5,
+   "apres": 2
+  },
+  {
+   "id": "edmontonia",
+   "champ": "comp_hauteur",
+   "avant": "aussi haut qu'une voiture — il fallait lever la tête !",
+   "apres": "aussi haut qu'une porte !"
+  },
+  {
+   "id": "scelidosaurus",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 15
+  },
+  {
+   "id": "scelidosaurus",
+   "champ": "chasseurs",
+   "avant": "Le Dracoraptor, un chasseur de la même époque, rôdait dans le même coin",
+   "apres": "De petits chasseurs à deux pattes rôdaient déjà dans la région à cette époque"
+  },
+  {
+   "id": "stegosaurus",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 7
+  },
+  {
+   "id": "kentrosaurus",
+   "champ": "hauteur_m",
+   "avant": 1.5,
+   "apres": 1.8
+  },
+  {
+   "id": "kentrosaurus",
+   "champ": "poids_t",
+   "avant": 1,
+   "apres": 1.1
+  },
+  {
+   "id": "kentrosaurus",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 7
+  },
+  {
+   "id": "kentrosaurus",
+   "champ": "comp_hauteur",
+   "avant": "aussi haut qu'une voiture — il fallait lever la tête !",
+   "apres": "aussi grand que Papa debout !"
+  },
+  {
+   "id": "triceratops",
+   "champ": "fait",
+   "avant": "Ses cornes faisaient 1 mètre de long ! Et on a trouvé des os de T-Rex avec des marques de cornes de Tricératops — ils se battaient vraiment !",
+   "apres": "Ses cornes faisaient plus d'un mètre de long ! Et des os de Tricératops portent encore aujourd'hui les marques de dents du T-Rex — ils se battaient vraiment !"
+  },
+  {
+   "id": "protoceratops",
+   "champ": "taille_m",
+   "avant": 1.9,
+   "apres": 2.2
+  },
+  {
+   "id": "protoceratops",
+   "champ": "hauteur_m",
+   "avant": 0.6,
+   "apres": 0.75
+  },
+  {
+   "id": "protoceratops",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 25
+  },
+  {
+   "id": "protoceratops",
+   "champ": "comp_hauteur",
+   "avant": "il t'arrivait aux fesses !",
+   "apres": "il t'arrivait au nombril !"
+  },
+  {
+   "id": "pentaceratops",
+   "champ": "region",
+   "avant": "États-Unis",
+   "apres": "États-Unis (Nouveau-Mexique)"
+  },
+  {
+   "id": "pentaceratops",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 25
+  },
+  {
+   "id": "pentaceratops",
+   "champ": "fait",
+   "avant": "Sa tête (avec la collerette) mesurait plus de 2 mètres : plus grande qu'un Papa debout ! Une des plus grandes têtes du monde animal.",
+   "apres": "Sa tête (avec la collerette) mesurait plus de 3 mètres : bien plus grande qu'un Papa debout ! Une des plus grandes têtes du monde animal."
+  },
+  {
+   "id": "pachycephalosaurus",
+   "champ": "fait",
+   "avant": "Son crâne mesurait 25 cm d'épaisseur — presque autant que ta tête entière ! Il faisait des joutes comme les béliers !",
+   "apres": "Son crâne mesurait 25 cm d'épaisseur — presque autant que ta tête entière ! Les scientifiques pensent qu'il se battait peut-être en donnant des coups de tête, comme les béliers d'aujourd'hui."
+  },
+  {
+   "id": "deinonychus",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 30
+  },
+  {
+   "id": "utahraptor",
+   "champ": "poids_t",
+   "avant": 0.5,
+   "apres": 0.425
+  },
+  {
+   "id": "utahraptor",
+   "champ": "comp_poids",
+   "avant": "aussi lourd qu'un cheval !",
+   "apres": "aussi lourd que 2 lions !"
+  },
+  {
+   "id": "troodon",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 50
+  },
+  {
+   "id": "gallimimus",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 50
+  },
+  {
+   "id": "gallimimus",
+   "champ": "superpower",
+   "avant": "Le dino le plus RAPIDE — jusqu'à 70 km/h ! Plus vite qu'un cheval au galop !",
+   "apres": "Le dino le plus RAPIDE — jusqu'à 50 km/h, aussi vite qu'une voiture en ville !"
+  },
+  {
+   "id": "gallimimus",
+   "champ": "fait",
+   "avant": "Il courait à 70 km/h — aussi vite qu'une voiture en ville ! Personne ne pouvait l'attraper.",
+   "apres": "Il courait à 50 km/h — aussi vite qu'une voiture en ville ! Beaucoup de prédateurs ne pouvaient pas l'attraper."
+  },
+  {
+   "id": "pteranodon",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 32
+  },
+  {
+   "id": "quetzalcoatlus",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 90
+  },
+  {
+   "id": "hatzegopteryx",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 12
+  },
+  {
+   "id": "mosasaurus",
+   "champ": "continent",
+   "avant": "Europe",
+   "apres": ""
+  },
+  {
+   "id": "baryonyx",
+   "champ": "region",
+   "avant": "Europe (Angleterre)",
+   "apres": "Europe (Angleterre, Espagne, Portugal)"
+  },
+  {
+   "id": "baryonyx",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 22
+  },
+  {
+   "id": "therizinosaurus",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 7
+  },
+  {
+   "id": "lystrosaurus",
+   "champ": "region",
+   "avant": "Afrique du Sud, Antarctique, Inde, Chine",
+   "apres": "Afrique du Sud, Antarctique, Inde, Chine, Russie, Mongolie"
+  },
+  {
+   "id": "lystrosaurus",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 5
+  },
+  {
+   "id": "ophthalmosaurus",
+   "champ": "epoque",
+   "avant": "Jurassique · il y a 160 millions d'ans",
+   "apres": "Jurassique · il y a 150 millions d'ans"
+  },
+  {
+   "id": "archelon",
+   "champ": "taille_m",
+   "avant": 4.6,
+   "apres": 4
+  },
+  {
+   "id": "archelon",
+   "champ": "comp_taille",
+   "avant": "aussi long qu'un grand 4×4 !",
+   "apres": "comme une petite voiture !"
+  },
+  {
+   "id": "archelon",
+   "champ": "fait",
+   "avant": "La plus grande Archélon qu'on ait trouvée s'appelait Brigitta. Elle avait sans doute plus de 100 ans ! Et sa carapace n'était pas dure comme une tortue d'aujourd'hui — c'était de la peau coriace, comme la tortue luth !",
+   "apres": "Sa carapace n'était pas dure comme celle d'une tortue d'aujourd'hui — c'était de la peau coriace, comme du cuir épais ! Avec ses grandes nageoires, elle volait dans l'eau, comme la tortue luth de nos jours."
+  },
+  {
+   "id": "shonisaurus",
+   "champ": "chasseurs",
+   "avant": "Cymbospondylus (un reptile marin plus grand de l'époque)",
+   "apres": "Adulte, aucun prédateur connu : c'était l'un des plus gros animaux de son océan"
+  },
+  {
+   "id": "centrosaurus",
+   "champ": "poids_t",
+   "avant": 2.5,
+   "apres": 1.8
+  },
+  {
+   "id": "centrosaurus",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 25
+  },
+  {
+   "id": "centrosaurus",
+   "champ": "comp_poids",
+   "avant": "aussi lourd que 5 chevaux !",
+   "apres": "aussi lourd qu'un rhinocéros !"
+  },
+  {
+   "id": "ichthyosaurus",
+   "champ": "chasseurs",
+   "avant": "Liopleurodon et les grands pliosaures",
+   "apres": "Les grands pliosaures de son époque, comme le Rhomaleosaurus"
+  },
+  {
+   "id": "mammuthus",
+   "champ": "chasseurs",
+   "avant": "Les hommes préhistoriques, et parfois les lions des cavernes",
+   "apres": "Les hommes préhistoriques, ses seuls vrais chasseurs"
+  },
+  {
+   "id": "smilodon",
+   "champ": "poids_t",
+   "avant": 0.25,
+   "apres": 0.22
+  },
+  {
+   "id": "smilodon",
+   "champ": "comp_poids",
+   "avant": "aussi lourd qu'un tigre !",
+   "apres": "aussi lourd qu'un lion !"
+  },
+  {
+   "id": "megatherium",
+   "champ": "fait",
+   "avant": "C'était un paresseux, mais géant ! Quand il se dressait debout contre un arbre, il était plus haut que deux Papas. Ses griffes avant étaient longues comme ton avant-bras pour attraper les branches.",
+   "apres": "C'était un paresseux, mais géant ! Quand il se dressait debout sur ses pattes arrière, contre un arbre, sa tête montait à 4 mètres — plus haut que deux Papas. Ses griffes avant étaient longues comme ton avant-bras pour attraper les branches."
+  },
+  {
+   "id": "paraceratherium",
+   "champ": "region",
+   "avant": "Asie",
+   "apres": "Asie (Pakistan, Chine, Mongolie)"
+  },
+  {
+   "id": "paraceratherium",
+   "champ": "taille_m",
+   "avant": 8,
+   "apres": 7.4
+  },
+  {
+   "id": "glyptodon",
+   "champ": "taille_m",
+   "avant": 3.3,
+   "apres": 3
+  },
+  {
+   "id": "glyptodon",
+   "champ": "comp_taille",
+   "avant": "comme une petite voiture !",
+   "apres": "comme trois enfants de 4 ans allongés !"
+  },
+  {
+   "id": "glyptodon",
+   "champ": "fait",
+   "avant": "Il ressemblait à une tortue géante, mais c'était un cousin du tatou ! Sa carapace ronde était aussi grande qu'une petite voiture. Certains avaient même une massue au bout de la queue, comme l'Ankylosaure !",
+   "apres": "Il ressemblait à une tortue géante, mais c'était un cousin du tatou ! Sa carapace ronde était aussi grande qu'une petite voiture. Et son cousin le Doedicurus avait même une massue au bout de la queue, comme l'Ankylosaure !"
+  },
+  {
+   "id": "coelodonta",
+   "champ": "epoque",
+   "avant": "Âge de glace · il y a 100 000 ans",
+   "apres": "Âge de glace · il y a 50 000 ans"
+  },
+  {
+   "id": "coelodonta",
+   "champ": "hauteur_m",
+   "avant": 1.9,
+   "apres": 1.5
+  },
+  {
+   "id": "coelodonta",
+   "champ": "poids_t",
+   "avant": 2.5,
+   "apres": 1.75
+  },
+  {
+   "id": "coelodonta",
+   "champ": "comp_hauteur",
+   "avant": "aussi haut qu'une porte !",
+   "apres": "aussi haut qu'une voiture — il fallait lever la tête !"
+  },
+  {
+   "id": "coelodonta",
+   "champ": "comp_poids",
+   "avant": "aussi lourd que 5 chevaux !",
+   "apres": "aussi lourd qu'une petite voiture et une vache ensemble !"
+  },
+  {
+   "id": "titanis",
+   "champ": "poids_t",
+   "avant": 0.3,
+   "apres": 0.15
+  },
+  {
+   "id": "titanis",
+   "champ": "vitesse_kmh",
+   "avant": null,
+   "apres": 45
+  },
+  {
+   "id": "titanis",
+   "champ": "comp_poids",
+   "avant": "aussi lourd que 2 ânes !",
+   "apres": "aussi lourd qu'un âne !"
+  }
+ ]
+}

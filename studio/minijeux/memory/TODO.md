@@ -5,7 +5,7 @@
 
 ## Lane — Montée de niveau par compétence (EP-112)
 
-- **ABANDON Max Adventure + tiles + WexWorld JEU** [~] — décision Papa Yann 2026-09-05 (« ça ne marche pas du tout, on arrête ») : archiver `studio/max-adventure/`, `site/max-adventure*`, `mj-pose-tiles`, `tools/tile-tools`, skill `maxplay-tiles`, agent `game-tile`, rule `tile-tools.md` dans `_archive/` (jamais supprimé) ; retirer du catalogue et des docs. Inventaire en cours.
+- **ABANDON Max Adventure + tiles + WexWorld JEU** [x] — lane « Pipeline tile-tools » (EP-REFS, EP-MACRO-VIRAGE, EP-TILES) fermée avec elle, sans suite ; — décision Papa Yann 2026-09-05 (« ça ne marche pas du tout, on arrête ») : archivé `studio/max-adventure/`, `site/max-adventure*`, `mj-pose-tiles`, `tools/tile-tools`, skill `maxplay-tiles`, agent `game-tile`, rule `tile-tools.md` dans `_archive/` (jamais supprimé) ; retiré du catalogue et des docs (HO-G13, 2026-09-05).
 
 - **EP-112** [~] — Montée de niveau par compétence : PILOTE mj-04 LIVRÉ, propagation aux 13 autres figées attend validation ressenti Max (2026-07-29)
 - **T-C6b** [x] — Banque audio nombres/gabarits V1 LIVRÉE (100 MP3) — à faire écouter à Papa Yann (2026-07-29)
@@ -64,12 +64,6 @@
 - **EP-035** [ ] — Fix encoding emojis tous les mini-jeux HTML (charset UTF-8 + vérification, 21 fichiers)
 - **EP-036** [ ] — Gabarit header compact unifié tous les MJ (rétro-fit 20 fichiers)
 - **EP-037** [ ] — Rétro-fit figeage 20 MJ restants (protection régression)
-
-## Lane — Pipeline tile-tools (EP-REFS, EP-MACRO-VIRAGE, EP-TILES)
-
-- **EP-REFS** [ ] — Banque de références visuelles tile-tools (post-EP-VOCAB) — non démarré, 1ère cible probable = carrefour propre
-- **EP-MACRO-VIRAGE** [ ] — Macro `virage(direction, ...)` dans builders.py (DRY consolidation 4 recettes manuelles, basse priorité)
-- **EP-TILES** [~] — Pipeline tile-tools LimeZu (cartographie + recettes + mockups-routes + tile-picker + tile-pmo) — reste : intégrer quartier propre 16×12 en scène Phaser, étendre 24×18 puis 32×24, passages piétons, tiles alternatives intersections
 
 ## Lane — Renouvellement thématique dino (EP-041, EP-047)
 

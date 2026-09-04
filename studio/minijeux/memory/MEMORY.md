@@ -19,11 +19,10 @@ type: project
 | Règles UX/audio/gabarit MJ ? | `docs/STANDARD-MJ.md` (source unique) |
 | Mécaniques/libs réutilisables ? | `docs/MECANIQUES.md` |
 | Stack technique ? | `docs/STACK.md` |
-| Vision long terme (WexWorld) ? | `docs/VISION-LONG-TERME.md` |
 
 ## État déploiement
 
-**36 jeux au menu enfant + 1 wip (encyclo dinos) + 2 bacs à sable parentaux** (max-adventure, mj-pose-tiles). Liste = source unique `site/js/catalog.js` (ne jamais recopier le chiffre ailleurs).
+**Jeux au menu enfant + 1 wip (encyclo dinos)** — liste = source unique `site/js/catalog.js` (ne jamais recopier de chiffre ailleurs).
 
 **PURGE 2026-08-10** (décision PY « on garde l'idée, rien de codé pour rien ») : 23 jeux supprimés de `site/` (18 retirés tri C0 2026-07-28 + retraits PY 2026-07-21 + mj-58 + 4 orphelins hors catalogue). Trace : `memory/archive/backlog-fermes-2026.md` · figées archivées : `docs/jeux/_archive/figees-jeux-purges-2026-08-10/`.
 
@@ -32,7 +31,7 @@ type: project
 
 ## Bugs critiques en cours
 
-Aucun bug critique actif (vérifié 2026-07-05 après clôture MJ-28..33). Max Adventure tourne en prod.
+Aucun bug critique actif (vérifié 2026-07-05 après clôture MJ-28..33).
 
 Faux bugs vérifiés : EP-022 MJ-04 "boucle infinie" (code conforme) · L-068 11 dinos sans image (résolu commit 941faa30).
 

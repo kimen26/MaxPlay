@@ -62,7 +62,7 @@ $poles = @(
        touch = @('studio[\\/]dino[\\/]', 'dev-dinos', 'dinos-data', 'audio[\\/]dinos', 'img[\\/]dinos', '\.claude[\\/]agents[\\/]dino-');
        trace = @('studio[\\/]dino[\\/]pmo[\\/]', 'studio[\\/]dino[\\/]memory[\\/]', 'studio[\\/]dino[\\/]figees[\\/]') },
     @{ name = 'JEU'; agent = 'game-pmo';
-       touch = @('studio[\\/]minijeux[\\/]', 'site[\\/]mj-', 'site[\\/]tile-tools[\\/]', '\.claude[\\/]agents[\\/]game-');
+       touch = @('studio[\\/]minijeux[\\/]', 'site[\\/]mj-', '\.claude[\\/]agents[\\/]game-');
        trace = @('studio[\\/]minijeux[\\/]memory[\\/]', 'studio[\\/]minijeux[\\/]docs[\\/]jeux[\\/]figees[\\/]') }
 )
 foreach ($p in $poles) { $p.touched = $false; $p.traced = $false }

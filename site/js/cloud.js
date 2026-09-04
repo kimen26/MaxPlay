@@ -35,7 +35,7 @@
   const STATE_KEYS = [
     'maxplay_unlocks', 'maxplay_avatar', 'maxplay_avatar_cfg', 'maxplay_lang',
     'maxplay_ambiance',  // fond d'écran choisi — suit l'avatar entre appareils (fix audit 2026-07-14)
-    'mj20_progress', 'mj20_streak', 'mj37_progress', 'mj32_galerie', 'mj-pose-tiles',
+    'mj20_progress', 'mj20_streak', 'mj37_progress', 'mj32_galerie',
   ];
   // Méta de sync locale : { states: { clé: hash dernière valeur synchro },
   //                         lastSessionPush: ISO } — jamais poussée au cloud.
@@ -318,7 +318,7 @@
       return JSON.stringify(out.slice(-12));
     }
 
-    // Clés scalaires (maxplay_avatar, _cfg, _lang, ambiance, mj-pose-tiles) :
+    // Clés scalaires (maxplay_avatar, _cfg, _lang, ambiance) :
     // pas de structure cumulative → last-writer-wins géré par le baseline appelant.
     return null;
   }

@@ -155,7 +155,7 @@ function main() {
   lines.push("### Historique");
   lines.push("");
   lines.push("- **2026-05-02** : 5 agents (narration-pmo, narration-architecte, narration-audio, narration-gatekeeper, pixel-map-simplifier) absents pendant ~1 semaine. Cause identifiée et corrigée. Règle documentée ici.");
-  lines.push("- **2026-09-03** (HO-G12) : fusion des 3 agents pipeline tile en `game-tile.md` (3 modes) ; fusion `narration-lecteur` + `narration-lecteur-dyade` en `narration-lecteur.md` (2 modes) ; archivage `narration-science` + `narration-sensibilite` (0 usage tracé) ; passage à `memory: project` pour conseillers + PMO + directeur + gatekeeper narration ; `EQUIPE.md` / `ORGANIGRAMME.md` réduits à ce que ce catalogue ne couvre pas.");
+  lines.push("- **2026-09-03** (HO-G12) : fusion des 3 agents pipeline tile en `game-tile.md` (3 modes, **abandonné et archivé le 2026-09-05** avec tout le sous-domaine tile, cf. `_archive/INDEX.md`) ; fusion `narration-lecteur` + `narration-lecteur-dyade` en `narration-lecteur.md` (2 modes) ; archivage `narration-science` + `narration-sensibilite` (0 usage tracé) ; passage à `memory: project` pour conseillers + PMO + directeur + gatekeeper narration ; `EQUIPE.md` / `ORGANIGRAMME.md` réduits à ce que ce catalogue ne couvre pas.");
   lines.push("");
   lines.push("---");
   lines.push("");

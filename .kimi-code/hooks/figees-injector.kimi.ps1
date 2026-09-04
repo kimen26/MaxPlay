@@ -31,7 +31,7 @@ $slug = ''
 $figPath = ''
 $ruleReminder = ''
 if ($norm -match 'site/(mj-[\w-]+)\.html$') {
-    $slug = $Matches[1]   # ex: mj-21  ou  mj-pose-tiles
+    $slug = $Matches[1]   # ex: mj-21
     $figPath = Join-Path $root ("studio\minijeux\docs\jeux\figees\{0}.md" -f $slug)
     $ruleReminder = '.claude/rules/mini-jeux.md'
 }

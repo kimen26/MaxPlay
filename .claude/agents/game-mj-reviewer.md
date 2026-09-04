@@ -106,7 +106,7 @@ C'est un **diff sémantique code ↔ loi figée**, ligne par ligne, citations ob
 | **Pas de score / classement / vies** | Seulement accumulation / progression visible | CRITIQUE |
 | **Récompenses surprises** | OK · récompenses promises = INTERDIT (tue motivation) | HAUTE |
 | **Pas de streak** | < 7 ans = anxiété si cassé | HAUTE |
-| **Style flat cartoon** | Toca Boca / Tayo, arrondi, PAS pixel art (sauf WexWorld qui est l'exception) | MOYENNE |
+| **Style flat cartoon** | Toca Boca / Tayo, arrondi, PAS pixel art | MOYENNE |
 | **Palette 6-8 couleurs max** | Saturées, contraste élevé, contours gras | BASSE |
 
 ### Section 6 — HAUTE — Couverture harnais de test (EP-038, créée 2026-05-16)

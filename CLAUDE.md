@@ -6,7 +6,7 @@
 
 | Mots dans la demande | Pôle | Lire ensuite |
 |----------------------|------|-------------|
-| jeu · MJ · mini-jeu · bus · Phaser · mj-XX · tile · LimeZu · déploiement · `site` | **JEU** | [`studio/minijeux/CLAUDE.md`](studio/minijeux/CLAUDE.md) → [`studio/minijeux/INDEX.md`](studio/minijeux/INDEX.md) |
+| jeu · MJ · mini-jeu · bus · mj-XX · déploiement · `site` | **JEU** | [`studio/minijeux/CLAUDE.md`](studio/minijeux/CLAUDE.md) → [`studio/minijeux/INDEX.md`](studio/minijeux/INDEX.md) |
 | dino · dinosaure · encyclopédie · voyage (époque) · récit dino · famille dino · Tritri · dev-dinos | **DINO** | [`studio/dino/CLAUDE.md`](studio/dino/CLAUDE.md) → [`studio/dino/INDEX.md`](studio/dino/INDEX.md) |
 | narration · histoire · personnage · univers · ennéagramme · cross-culture · saison · arc · Wex/Melki/Mimi/Dadou/Madie/Lulu/Pierrot/Raph/Juju/Nono | **NARRATION** | [`studio/narration/CLAUDE.md`](studio/narration/CLAUDE.md) → [`studio/narration/INDEX.md`](studio/narration/INDEX.md) |
 | lunii · boîte à histoires · pack · STUdio · transfert appareil · conteuse | **LUNII** | [`studio/lunii/CLAUDE.md`](studio/lunii/CLAUDE.md) (canal de distribution, léger) |
@@ -15,7 +15,7 @@
 
 > ⚠️ **DINO est transverse** : code déployé depuis `site/` (dev-dinos.html, dinos-data.js, audio/dinos, img/dinos), gouvernance dans `studio/dino/`. La rule [`.claude/rules/dino.md`](.claude/rules/dino.md) charge les règles dino où que vive le fichier.
 
-> 🏛️ **Modèle : 1 plateforme · N domaines autonomes.** MaxPlay = une app de restitution (PWA `site/` → GitHub Pages) qui héberge des domaines indépendants à GED/PMO propres : mini-jeux, dino (déployé dans site/), narration (descendra dans site/ quand prête), tile/Max Adventure (futur). Tenant déployé ailleurs = pôle d'autoring + rule path-scoped (pattern dino). INBOX 2 boîtes (game, narration), triées par domaine.
+> 🏛️ **Modèle : 1 plateforme · N domaines autonomes.** MaxPlay = une app de restitution (PWA `site/` → GitHub Pages) qui héberge des domaines indépendants à GED/PMO propres : mini-jeux, dino (déployé dans site/), narration (descendra dans site/ quand prête). Tenant déployé ailleurs = pôle d'autoring + rule path-scoped (pattern dino). INBOX 2 boîtes (game, narration), triées par domaine.
 
 **Étape 2 — Annoncer avant d'agir :** *"Mode [JEU/NARRATION] — je charge [fichier] puis j'agis."*
 
@@ -30,14 +30,13 @@
 ```
 MaxPlay/
 ├── CLAUDE.md             ← ce fichier (routage + commun)
-├── site/                 ← LE site déployé (GitHub Pages) — index, mini-jeux, dino, max-adventure
+├── site/                 ← LE site déployé (GitHub Pages) — index, mini-jeux, dino
 ├── studio/               ← pôles d'autoring (non déployés)
 │   ├── minijeux/         ← PÔLE JEU → studio/minijeux/CLAUDE.md (code déployé dans site/)
 │   ├── dino/             ← PÔLE DINO → studio/dino/CLAUDE.md (code déployé dans site/, lié par rules/dino.md)
 │   ├── narration/        ← PÔLE NARRATION → studio/narration/CLAUDE.md
 │   ├── lunii/            ← distribution Lunii (STUdio) → studio/lunii/CLAUDE.md (léger, sans PMO)
-│   ├── referentiel/      ← TRANSVERSE : registre des textes/sons + détection de dérive (lecture seule)
-│   └── max-adventure/    ← source Phaser (build → site/max-adventure/)
+│   └── referentiel/      ← TRANSVERSE : registre des textes/sons + détection de dérive (lecture seule)
 ├── infra/                ← bot Telegram + serveur MCP llm-copains
 ├── memory/               ← transverse : MEMORY, MAX_PROFILE, VISION
 ├── _archive/             ← cadavres préservés (avec INDEX expliquant chaque entrée)

@@ -61,8 +61,7 @@
 ```
 GitHub Pages → kimen26.github.io/MaxPlay/
 ├── /              ← site/index.html (menu, source site/js/catalog.js)
-├── /mj-XX.html    ← HTML vanilla (source: site/)
-└── /max-adventure/ ← Phaser build (CI uniquement, source studio/max-adventure/)
+└── /mj-XX.html    ← HTML vanilla (source: site/)
 ```
 
 CI : `.github/workflows/deploy.yml` assemble dans `_site/` (non commité).

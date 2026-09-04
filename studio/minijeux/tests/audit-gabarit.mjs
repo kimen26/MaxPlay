@@ -84,16 +84,15 @@ const GREEN = '\x1b[32m', RED = '\x1b[31m', YEL = '\x1b[33m', DIM = '\x1b[2m', R
 // le check « fin via G.showEnd ». Liste NOMINATIVE qui ne peut que RÉTRÉCIR :
 // on en SORT un jeu quand il est migré (il devient alors bloquant à jamais),
 // on n'en AJOUTE JAMAIS (un nouveau jeu naît conforme, directive PY
-// mutualisation gravée en mémoire). 2 cas sandbox/continus (mj-32,
-// mj-pose-tiles) : piste sans objet, fin standard à statuer PY.
+// mutualisation gravée en mémoire). 1 cas sandbox/continu (mj-32) : piste
+// sans objet, fin standard à statuer PY.
 const LEGACY_FIN_MAISON = new Set([
-  'mj-32', 'mj-pose-tiles',
+  'mj-32',
 ]);
 
 // Source de vérité du menu : tout id mj-* présent dans js/catalog.js, SAUF
-// retire:true (2026-07-28, C0 tri qualité) — depuis la purge 2026-08-10 il ne
-// reste que les 2 jeux parentaux (max-adventure, mj-pose-tiles) dans ce cas :
-// hors menu enfant, donc hors audit gabarit aussi.
+// retire:true (2026-07-28, C0 tri qualité) — hors menu enfant, donc hors
+// audit gabarit aussi (détail par jeu : voir js/catalog.js).
 // Une entrée = 1 ligne (convention constante) → on cherche retire:true sur la
 // MÊME ligne que l'id, pas juste n'importe où dans le fichier.
 function catalogIds() {

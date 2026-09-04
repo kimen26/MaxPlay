@@ -13,9 +13,8 @@ Vision produit : `memory/VISION.md`.
 
 ## Ce qui est live
 
-- **Mini-jeux** : catalogue au menu enfant + bacs à sable parentaux (max-adventure,
-  mj-pose-tiles). Nombre et liste = `site/js/catalog.js`, jamais recopiés en dur ailleurs.
-  Détail d'état : `studio/minijeux/memory/INVARIANTS.md` § État déploiement.
+- **Mini-jeux** : catalogue au menu enfant. Nombre et liste = `site/js/catalog.js`, jamais
+  recopiés en dur ailleurs. Détail d'état : `studio/minijeux/memory/INVARIANTS.md` § État déploiement.
 - **Dino** : encyclopédie multi-langue en construction (FR complet, EN/ES/PT-BR en cours
   sur l'UI et les fiches). Compte de dinos et couverture : `studio/dino/memory/_ETAT-DINOS.md`.
 - **Infra** : Supabase (auth parent, sync progression, voix cloud) — `infra/supabase/README.md`.
@@ -54,3 +53,4 @@ convergence : `memory/DECISIONS.md` § D-004.
 ## Journal
 - 2026-09-03/04 — Refonte infra Claude (audit `memory/audits/2026-09-03-archi-claude-infra.md`) : 13 handoffs exécutés par Sonnet (registre `docs/handoffs/README.md`). Fait : quintette racine + JEU + NARRATION + DINO (HO-008), rules ≤ 60 l., hooks `memory/` + `garde-git-add`, 26→21 agents avec `memory: project`, site/ sans outillage (−38 Mo tiles doublon), 6 skills globaux (`narration-craft`, `game-design-enfant`, `tts-pipeline`, `audio-verif`, `i18n-contenu`, `browser-pilot`). Reste : pousser les skills sur `claude_conf` (Sync-Skills, confirmation Papa Yann), INDEX minijeux (TODO).
 - 2026-09-04 — 12 sons `voix/lieux/` tués à la source (catalogue `LIEUX`), silence 80 ms des fiches dino gravé comme voulu, glossaire vocabulaire ouvert (`memory/GLOSSAIRE.md`).
+- 2026-09-05 — Abandon Max Adventure + tiles LimeZu + WexWorld côté JEU (D-005) : archivés dans `_archive/2026-09-05-max-adventure-tiles/`, références retirées (HO-G13), CI sans build Phaser. Glossaire normatif (D-006), 7 types d'images dino définis.

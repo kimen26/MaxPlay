@@ -90,7 +90,7 @@ const Tracker = (() => {
     // Détection élargie : tout jeu du catalogue ou tout mj-* (corrige le trou
     // GAME_META qui s'arrêtait à mj-20 → mj-21/22 n'étaient pas suivis).
     const inCatalog = (window.MAXPLAY_CATALOG || []).some(c => c.id === file);
-    return (GAME_META[file] || inCatalog || /^mj-/.test(file) || file === 'max-adventure') ? file : null;
+    return (GAME_META[file] || inCatalog || /^mj-/.test(file)) ? file : null;
   }
 
   // ── État de session en cours ────────────────────────────────────────────

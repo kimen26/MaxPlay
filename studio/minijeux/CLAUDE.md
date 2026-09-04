@@ -18,11 +18,11 @@
 
 ## Mémoire du pôle (quintette, depuis 2026-09-03)
 
-**Capture immédiate** : toute idée/décision de Papa Yann dans le tour = 1 ligne dans `memory/TODO.md` DANS LE TOUR (main agent). `game-pmo` (unifié FOND+FORME+domaines tile/mj, Sonnet) sert en clôture, audit et mode RECHERCHE.
+**Capture immédiate** : toute idée/décision de Papa Yann dans le tour = 1 ligne dans `memory/TODO.md` DANS LE TOUR (main agent). `game-pmo` (unifié FOND+FORME, Sonnet) sert en clôture, audit et mode RECHERCHE.
 
 | Question | Fichier |
 |----------|---------|
-| Un chiffre clé (règles UX, casting tile, count MJ) ? | [`memory/INVARIANTS.md`](memory/INVARIANTS.md) |
+| Un chiffre clé (règles UX, count MJ) ? | [`memory/INVARIANTS.md`](memory/INVARIANTS.md) |
 | Pourquoi c'est comme ça ? | [`memory/DECISIONS.md`](memory/DECISIONS.md) (+ `memory/archive/`) |
 | Quoi faire ensuite ? | [`memory/TODO.md`](memory/TODO.md) |
 | Quelle erreur ne pas refaire ? | [`memory/LESSONS.md`](memory/LESSONS.md) |
@@ -42,13 +42,7 @@
 
 ## Équipe agents
 
-Résumé : `game-pmo` (Sonnet, clôture/audit/RECHERCHE) → `game-conseiller` (Opus, manuel) → sachants (`game-dev`, pipeline tile `simplifier`/`designer`/`reviewer`, `game-mj-reviewer`). Détail : [`.claude/agents/README.md`](../../.claude/agents/README.md) et [`EQUIPE.md`](EQUIPE.md). Hiérarchie main → game-pmo → sous-spé, jamais cross-pôle direct.
-
----
-
-## Règles d'or LimeZu
-
-Détail complet dans [`.claude/rules/tile-tools.md`](../../.claude/rules/tile-tools.md) + skill [`.claude/skills/maxplay-tiles/SKILL.md`](../../.claude/skills/maxplay-tiles/SKILL.md) (mnémonique tiles, mapping Sidewalk, vocab.py, brique avant macro).
+Résumé : `game-pmo` (Sonnet, clôture/audit/RECHERCHE) → `game-conseiller` (Opus, manuel) → sachants (`game-dev`, `game-mj-reviewer`). Détail : [`.claude/agents/README.md`](../../.claude/agents/README.md) et [`EQUIPE.md`](EQUIPE.md). Hiérarchie main → game-pmo → sous-spé, jamais cross-pôle direct.
 
 ---
 
@@ -67,7 +61,6 @@ Détail complet : [`docs/STACK.md`](docs/STACK.md). GitHub Pages → `kimen26.gi
 ## Pointeurs
 
 - Catalogue navigable : [`INDEX.md`](INDEX.md) · Équipe détaillée : [`EQUIPE.md`](EQUIPE.md)
-- Vision long terme (Phase 2 WexWorld) : [`docs/VISION-LONG-TERME.md`](docs/VISION-LONG-TERME.md)
 - Pôle voisin : [`../narration/CLAUDE.md`](../narration/CLAUDE.md)
 
 ---

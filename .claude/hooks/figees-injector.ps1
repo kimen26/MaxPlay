@@ -27,7 +27,7 @@ $root = 'c:\ProjetsPerso\Claude_Projects\MaxPlay'
 $slug = ''
 $figPath = ''
 if ($norm -match 'site/(mj-[\w-]+)\.html$') {
-    $slug = $Matches[1]   # ex: mj-21  ou  mj-pose-tiles
+    $slug = $Matches[1]   # ex: mj-21
     $figPath = Join-Path $root ("studio\minijeux\docs\jeux\figees\{0}.md" -f $slug)
 }
 elseif ($norm -match 'site/dev-dinos\.html$' -or

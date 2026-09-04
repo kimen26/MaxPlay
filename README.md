@@ -24,14 +24,13 @@ MaxPlay/
 │   ├── minijeux/           ← PÔLE JEU (docs, pmo, tests Playwright, inbox)
 │   ├── dino/               ← PÔLE DINO (contenu, sources, scripts, pmo) — code déployé dans site/
 │   ├── narration/          ← PÔLE NARRATION (stories, personnages, univers, pmo, equipe)
-│   ├── lunii/              ← distribution boîte à histoires Lunii (STUdio)
-│   └── max-adventure/      ← source Phaser TS+Vite (build → site/max-adventure/)
+│   └── lunii/              ← distribution boîte à histoires Lunii (STUdio)
 ├── infra/                  ← bot Telegram + serveur MCP llm-copains + Supabase
 ├── memory/                 ← transverse : MEMORY · MAX_PROFILE · VISION · audits/
 └── _archive/               ← cadavres préservés (cf. _archive/INDEX.md)
 ```
 
-**Déploiement** : GitHub Actions build `studio/max-adventure/` + assemble `site/` + `studio/max-adventure/dist/` dans `_site/` + deploy Pages. `node_modules/`, `dist/`, `_site/`, `temp/` sont dans `.gitignore`.
+**Déploiement** : GitHub Actions assemble `site/` dans `_site/` + deploy Pages. `node_modules/`, `dist/`, `_site/`, `temp/` sont dans `.gitignore`.
 
 ---
 
@@ -46,9 +45,6 @@ git push origin master   # CI build (~2 min) → site mis à jour automatiquemen
 ```bash
 # Jeux HTML (vanilla JS) — ouvrir directement dans le navigateur
 open site/index.html
-
-# Max Adventure (Phaser)
-cd studio/max-adventure && npm install && npm run dev
 ```
 
 ---

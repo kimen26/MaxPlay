@@ -5,8 +5,8 @@
 - **Logs** : le bot écrit lui-même dans `bot.run.log` (append, survit aux redémarrages).
   Les fichiers `bot-start.log`/`bot-start.err.log` ne contiennent que les erreurs de
   lancement du hook SessionStart. Ne plus se fier à `bot.log`/`bot.err.log` (obsolètes).
-- **Aiguilleur 5 agents** : narration (opus) · game-dev (sonnet) · dino (sonnet) ·
-  max-adventure (sonnet) · quick (haiku). Le pôle détecté est injecté en tête de prompt
+- **Aiguilleur 4 agents** : narration (opus) · game-dev (sonnet) · dino (sonnet) ·
+  quick (haiku). Le pôle détecté est injecté en tête de prompt
   pour aider le routage CLAUDE.md côté CLI.
 - **Anti-zombie** : timeout → `kill()` puis `SIGKILL` forcé 5s après (sous Windows le
   SIGTERM émulé peut être ignoré → avant, la promesse ne se réglait jamais et le

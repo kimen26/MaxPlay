@@ -24,7 +24,7 @@
 | 🧩 **Logique** | mj-13a · mj-15 · mj-16 · mj-14 |
 | 👀 **Observer & vite** | mj-08 · mj-17 · mj-19 |
 | 🌍 **Le monde & langues** | mj-11 · mj-22 · mj-20 |
-| 🎮 **En libre** (hors paliers) | mj-12 · max-adventure · mj-pose-tiles |
+| 🎮 **En libre** (hors paliers) | mj-12 |
 | 🦕 **Dinos** (code) | encyclopédie |
 
 ---
@@ -82,7 +82,7 @@
 
 ## Hors paliers
 
-- **🎮 En libre** : mj-12 (sons — exploration), max-adventure (bac à sable), mj-pose-tiles (construction) → toujours ouverts, pas d'étoiles.
+- **🎮 En libre** : mj-12 (sons — exploration) → toujours ouvert, pas d'étoiles.
 - **🦕 Dinos** : ouverts par code (`TRITRI`) — déblocage parent/futur payant.
 
 ---

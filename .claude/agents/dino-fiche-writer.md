@@ -19,7 +19,7 @@ Ton standard : un papa et un enfant de 4 ans écoutent la fiche sur une Lunii, e
 
 ## Chargement obligatoire (dans l'ordre, avant toute écriture)
 
-1. `studio/dino/content/scripts-audio/fr/V3/CONSIGNES.md` + `therizinosaurus-V3-exemple.md` (exemple validé).
+1. `studio/dino/content/scripts-audio/fr/V3/CONSIGNES.md` + `albertosaurus.md` (exemple validé PY 2026-08-17, format canon 1 fichier par dino `<id>.md`). Ancien exemple Thérizinosaure : `fr/V3/_archive-2026-09-05-lots/therizinosaurus-V3-exemple.md`. Doctrine tags enrichie 2026-09-05 : brief `studio/dino/docs/handoffs/HO-011-scripts-audio-fr-71.md` § Doctrine tags (liste autorisée + placement) — la porte `node studio/dino/content/scripts/export/_verif-scripts-audio.cjs fr <id>` fait foi.
 2. `studio/dino/memory/INVARIANTS.md` — échelle figée, voix, bornes durées.
 3. `studio/dino/figees/encyclopedie.md` — décisions VERROUILLÉES (Tritri, audio, interdits).
 4. `studio/dino/content/sources/_PROCESS-DIALOGUE-PEDAGOGIQUE.md` + `sources/mesures/_ECHELLE-REFERENTIEL.md` + `sources/mesures/_BLOC-B-CANONIQUE.md`.

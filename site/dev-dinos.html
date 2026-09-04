@@ -2179,7 +2179,12 @@ const DINO_AUDIO = {
   smilodon:         _audioSet('smilodon'),
   titanis:          _audioSet('titanis'),
 };
-function dinoHasAudio(id) { return !!(DINO_AUDIO[id] && DINO_AUDIO[id].recap); }
+// i18n : le pack de la langue active n'a l'audio de fiche que si le manifest (généré depuis le disque) le dit —
+// sans ce garde, le bouton violet apparaîtrait en ?lang=en pour un dino sans MP3 anglais (404 puis repli TTS).
+function dinoHasAudio(id) {
+  if (!(DINO_AUDIO[id] && DINO_AUDIO[id].recap)) return false;
+  return !window.DINO_FUNFACT_AUDIO || window.DINO_FUNFACT_AUDIO.has(id);
+}
 // Version du TEXTE audio — V1 = industrialisé EP-039 (2026-05), V2 = réécriture naturelle/fluide (2026-06+).
 // Badge sur le bouton violet pour Papa Yann : un V1 = candidat à relancer. Absent du map = V1.
 // V3 = corpus dialogue corrigé (relecture multi-agents + fact-check paléo), régénéré 2026-06-15.

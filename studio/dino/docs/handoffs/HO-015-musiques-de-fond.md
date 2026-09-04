@@ -1,6 +1,6 @@
 # HO-015 — Musiques de fond (Eleven Music)
 
-**Statut :** pret
+**Statut :** fait (2026-09-05, 10/10)
 **Depend de :** — (indépendant des fiches ; partage le budget EL → mesurer le coût AVANT de batcher)
 **Exécutant :** 1 sous-agent Sonnet avec les outils MCP `elevenlabs` (compose_music, text_to_sound_effects, check_subscription).
 

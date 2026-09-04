@@ -8,7 +8,7 @@
 import path from 'node:path';
 import { STUDIO, lireJson } from './socle.mjs';
 import { HUMEUR, HUMEUR_INVITEE } from '../catalogue/fr/humeur.mjs';
-import { REPLIQUES, LIEUX, LIGNES_NOMMEES, CONSIGNES_GENEREES } from '../catalogue/fr/repliques.mjs';
+import { REPLIQUES, LIGNES_NOMMEES, CONSIGNES_GENEREES } from '../catalogue/fr/repliques.mjs';
 import { ATOMES, GABARITS } from '../catalogue/fr/atomes.mjs';
 import { NOMBRES } from '../catalogue/fr/nombres.mjs';
 import { NOMS_DINO } from '../catalogue/fr/noms-dino.mjs';
@@ -136,7 +136,6 @@ export function chargerCatalogue() {
   entrees.push(...CONSIGNES_GENEREES.map((r) => ({ ...r, langue: 'fr' })));
   entrees.push(...REGLES.map((r) => ({ ...r, langue: 'fr' })));
   entrees.push(...LIGNES_NOMMEES.map((r) => ({ ...r, langue: 'fr' })));
-  entrees.push(...LIEUX.map((r) => ({ ...r, langue: 'fr' })));
   // Familles à `fichier` explicite (contrairement aux ATOMES, dont le fichier
   // est dérivé de la clé) : on les pousse telles quelles.
   entrees.push(...NOMBRES.map((e) => ({ ...e, langue: 'fr' })));

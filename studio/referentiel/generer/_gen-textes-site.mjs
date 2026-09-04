@@ -23,7 +23,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { SITE } from '../lib/socle.mjs';
 import {
-  REPLIQUES, LIEUX, LIGNES_NOMMEES, CONSIGNES_GENEREES,
+  REPLIQUES, LIGNES_NOMMEES, CONSIGNES_GENEREES,
 } from '../catalogue/fr/repliques.mjs';
 import { REGLES } from '../catalogue/fr/regles.mjs';
 import { PERIODES } from '../catalogue/fr/dino-menu.mjs';
@@ -57,7 +57,7 @@ function poser(slug, entree) {
 
 // Consignes (repliques héritées, puis générées — les prouvées en dernier pour
 // qu'elles l'emportent à slug égal), règles des panneaux 🧑‍🔬, lieux des hubs.
-for (const e of [...REPLIQUES, ...REGLES, ...LIEUX, ...CONSIGNES_GENEREES]) poser(e.slug, e);
+for (const e of [...REPLIQUES, ...REGLES, ...CONSIGNES_GENEREES]) poser(e.slug, e);
 
 // Lignes nommées (SoundPool.voiceLine) : UN slug, 3 voix — les 3 entrées du
 // catalogue fusionnent en une seule ligne, mp3 à trou « {voix} ».

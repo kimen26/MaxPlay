@@ -20,7 +20,6 @@
 | `site/sounds/voix/f/` (22) | réactions Narratrice — 16 positives + 6 douces (super, bravo, oups, presque…) | narrateur_f | `text_to_speech` |
 | `site/sounds/voix/h/` (22) | réactions Narrateur — idem | narrateur_h | `text_to_speech` |
 | `site/sounds/voix/wex/` (22) | réactions Wex — idem | wex | `text_to_speech` |
-| `site/sounds/voix/lieux/` (12) | noms des lieux des anciens hubs : `bus-<zone>.mp3` + `fusee-<zone>.mp3` (dodo, garage, lettres, monde, dinos, roulotte). ⚠️ **ORPHELINS depuis la suppression d'index2/index3** (hub unique = `index.html` « La Vallée ») — conservés, aucun consommateur | narrateur_f | `text_to_speech` |
 | `site/sounds/voix/phrases/` (28) | instructions fixes des jeux : trouve-le-meme-dino, combien-de-dinos, compte-encore, regardons-ensemble, il-vivait-quand, cest-parti, a-toi-de-jouer, cherche-bien, encore-une-fois, ouvre-bien-les-yeux + banque consignes 2026-07-13 (quel-bus-arrive-en-premier, qu-est-ce-qui-vient-ensuite, lequel-ne-va-pas, quel-bus-manque, qu-est-ce-qui-manque, compte-les-un-par-un, remplis-chaque-caisse, range-dans-la-bonne-boite, ecoute-le-premier-son, fais-monter-les-passagers, range-les-des, regroupe-les-points, gros-niveau-regroupe, mode-libre-encore-une-caisse, premier-son-l-ou-r, le-son-quon-entend, il-en-faut-beaucoup, terminus-fais-les-descendre) | narrateur_h | `text_to_speech` |
 | `site/sounds/nombres/` (75) | **Banque C6 V1 (2026-07-29)** : `n-<n>.mp3` nombres 0-30 + 40/50/100/1000 (neutre chaleureux `[warmly]`) · `n-<n>-fete.mp3` 1-10 (`[cheerful]`, réussite/gros gain) · gabarits COMPLETS `il-en-manque-<n>` / `il-en-faut-<n>` / `<n>-oeufs` (1-10) — JAMAIS d'assemblage mot-à-mot (décision PY 2026-07-28, remplace l'assumé « restent en TTS » de 2026-07-13). API UNIQUE : `js/say-nombres.js` (`SayNombres.say/manque/faut/oeufs`, repli TTS), branché mj-46 + mj-49 | narrateur_h | script API (gen-banque.mjs) |
 | `site/sounds/phonemes/` (21) | LE SON de chaque lettre (jamais le nom) : voyelles + consonne+e muet (`son-se`, `son-fe`… c/k/q partagent `son-ke`). Consommé UNIQUEMENT via `MJKit.sayPhoneme` (MP3-first, repli TTS) — fix « E accent grave f » mj-50 (2026-07-29) | narrateur_h | script API |
@@ -56,9 +55,7 @@ window.DINO_NOM_AUDIO                    // Set des 60 ids ayant un -nom.mp3
 Le manifest est **généré** : après tout ajout de `<id>-nom.mp3`, régénérer le Set (voir en-tête du fichier).
 
 ### Hubs — nom du lieu parlé
-~~Fonction locale `speakLieu(zone, txt)`~~ **CADUC** : les hubs index2/index3 ont été supprimés
-(hub unique = `index.html` « La Vallée », scène `js/mur-scene.js`). Les 12 MP3 `voix/lieux/`
-sont orphelins — à rebrancher si un futur hub parle, ou à déclasser.
+Supprimé le 2026-09-04 : les 12 MP3 `voix/lieux/` (hubs bus/fusée index2/index3, retirés) et leur entrée catalogue `LIEUX` n'avaient plus aucun consommateur. Récupérables dans git si un futur hub parle.
 
 **Règle d'or** : tout appel voix garde un **fallback TTS navigateur** (si le MP3 manque/ne charge pas, le jeu parle quand même).
 

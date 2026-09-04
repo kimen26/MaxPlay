@@ -38,6 +38,7 @@ Vision produit : `memory/VISION.md`.
 | Ce qui est sorti | `memory/CHANGELOG.md` |
 | Qui est Max | `memory/MAX_PROFILE.md` |
 | Vision produit | `memory/VISION.md` |
+| Quel mot pour quelle chose (vocabulaire unique) | `memory/GLOSSAIRE.md` |
 | Agents disponibles | `.claude/agents/README.md` |
 | Quel skill utiliser | `/skills` |
 | Workflow session | Plan → Dev (subagents) → Verify → Commit → graver (mémoire + backlog) |

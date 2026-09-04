@@ -39,4 +39,5 @@ Issu de `memory/audits/2026-09-03-archi-claude-infra.md`. Vagues 1 → 2 → 3, 
 - [ ] `audio-verif` : STT `scribe_v1` marche mais la doc ne cite plus que `scribe_v2` → basculer `--stt-model` quand déprécié.
 - [ ] JEU : `studio/minijeux/INDEX.md` L65-132 pointe encore `site/tile-tools`, `site/tools`, `site/design-*` → `studio/minijeux/tools/**`, `docs/design-explorations/` (à faire après HO-MJ-01).
 - [ ] Commentaires obsolètes `mj-46.html:40`, `mj-50.html:90`, `avatar-picker.js:5,16` (design-compte/lecture, atelier-couleurs déplacés).
+- [~] GLOSSAIRE (`memory/GLOSSAIRE.md`, ouvert 2026-09-04) : valider les termes ❓ avec Papa Yann, puis passer le vocabulaire PARTOUT (CLAUDE.md, rules, agents, INDEX, noms de dossiers `V3`, `dev-dinos.html`) — handoff par pôle une fois tranché.
 - [ ] Pousser les 6 skills globaux nouveaux/migrés sur `kimen26/claude_conf` via skill `Sync-Skills-github-ProPerso` (action externe → confirmation Papa Yann).

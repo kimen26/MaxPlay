@@ -34,8 +34,8 @@ const TAGS_OK = new Set([
 // data canon
 const src = fs.readFileSync(path.join(ROOT, 'site/js/dinos-data.js'), 'utf8');
 const m = { exports: {} };
-new Function('module', 'exports', 'require', src + '\n;module.exports = { DINOS, _compLong, _compHaut, _compPoids };')(m, m.exports, require);
-const { DINOS, _compLong, _compHaut, _compPoids } = m.exports;
+new Function('module', 'exports', 'require', src + '\n;module.exports = { DINOS, _compLong, _compHaut, _compPoids, _compVitesse: typeof _compVitesse === "function" ? _compVitesse : null };')(m, m.exports, require);
+const { DINOS, _compLong, _compHaut, _compPoids, _compVitesse } = m.exports;
 const byId = Object.fromEntries(DINOS.map(d => [d.id, d]));
 
 const MOTS_NUM = { un: '1', une: '1', deux: '2', trois: '3', quatre: '4', cinq: '5', six: '6', sept: '7', huit: '8', neuf: '9', dix: '10', douze: '12', quatorze: '14' };
@@ -106,6 +106,12 @@ function checkFile(file) {
       if (k === 'poids' && d.poids_t >= 1) forms.push(String(Math.round(d.poids_t * 1000)), String(Math.round(d.poids_t * 1000)).replace(/(\d)(\d{3})$/, '$1 $2'), `${frNum(d.poids_t)} tonne`);
       if (!forms.some(f => B.includes(f.toLowerCase()))) errs.push(`bloc B : chiffre ${k} (${v}) introuvable`);
     }
+  }
+  if (LANG === 'fr' && d.vitesse_kmh && _compVitesse) {
+    const tout = normComp(Object.values(blocs).join(' ').replace(/[[^]]+]/g, ''));
+    const parle = /km\/h|kilom[eè]tres?[ -]heure|à l'heure/.test(tout);
+    if (parle && !tout.includes(normComp(_compVitesse(d.vitesse_kmh)))) errs.push(`vitesse : le script parle de km/h mais la comparaison exacte « ${_compVitesse(d.vitesse_kmh)} » est absente`);
+    if (parle && !tout.includes(String(d.vitesse_kmh))) errs.push(`vitesse : chiffre data ${d.vitesse_kmh} km/h introuvable`);
   }
   return { id, errs, warns, total };
 }

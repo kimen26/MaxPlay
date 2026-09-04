@@ -7,6 +7,8 @@
 
 ## En cours
 
+- **GLOSSAIRE** [~] — Vocabulaire unique PARTOUT (`memory/GLOSSAIRE.md`, 2026-09-04) : produit = « Histoires », monde = « WexWorld » (remplace « univers »), Wex = garçon de 4 ans, Narrateur H/F ; « WexWorld » côté JEU (Phaser) à renommer.
+
 | Statut | ID | Titre | Priorité | Assigné | Prochaine action |
 |--------|-----|-------|----------|---------|------------------|
 | ⏳ | **INGESTION-LECTURE-V6** | **STORY-002 vague 6 — lecture annotée Papa Yann puis ingestion** | **CRITIQUE** | **Papa Yann → Directeur** | `site/lecture.html` chargé (14 versions vague 6 anonymisées, chips v3). Papa Yann annote sur téléphone → colle le JSON → Directeur ingère (memoire-papa-yann + palmarès) → étape 6 sélection vague 6. Panel v2 12 calls lançable en parallèle. |

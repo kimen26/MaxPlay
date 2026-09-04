@@ -4,6 +4,8 @@
 
 ## Lane — Alerte data
 
+- **GLOSSAIRE** [~] — Vocabulaire unique PARTOUT (`memory/GLOSSAIRE.md`, 2026-09-04) : Fiche dino = Texte fiche + Script audio + Audio ; « script V3 / dialogue / segments / fiche audio » à remplacer ; `dev-dinos.html` → `dinos.html` remonte en priorité.
+
 - **ALERTE-JP** [ ] — `dinos-data.js` L1170-71 cite deux fois « Jurassic Park » pour Deinonychus (violation figée ref-adulte, découverte audit 2026-07-17) : réécrire `desc` sans nommer la franchise + vérifier Dilophosaurus même pattern.
 
 ## Lane — Branchage audio orphelin (découvertes audit 2026-07-17)

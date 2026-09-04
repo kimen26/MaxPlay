@@ -60,3 +60,11 @@ Un chiffre VOLATIL (nb de prénoms, d'entrées catalogue, de stories, de version
 ### D-004 — Convergence mémoire (2026-09-03)
 
 Un quintette par pôle vivant + un transverse ; `pmo/` → `memory/` (mapping INVARIANTS reste · decisions→DECISIONS · backlog→TODO + LESSONS · sprint-log→MEMORY + archive · audit-trail→archive) ; Kimi conservé (miroir AGENTS.md). Pourquoi : deux conventions concurrentes, 4 couches, fichiers PMO > 2 000 lignes (audit du jour).
+
+### D-005 — Abandon de Max Adventure, du pipeline tiles et de « WexWorld côté JEU » (2026-09-05)
+
+Papa Yann : « ça ne marche pas du tout, on arrête ». Le jeu Phaser Max Adventure, les briques LimeZu pour construire un RPG et le concept « WexWorld Phase 2 » du pôle JEU sortent de MaxPlay, archivés dans `_archive/2026-09-05-max-adventure-tiles/` (jamais supprimés). MaxPlay = Mini-jeux + Encyclopédie + Histoires, rien d'autre. WexWorld ne désigne plus que le monde des Histoires (`memory/GLOSSAIRE.md`). Pourquoi : deux sens pour un même nom, un jeu qui ne convainc pas, 38 Mo d'assets et un pipeline Python entretenus pour rien.
+
+### D-006 — Un seul vocabulaire, partout (2026-09-05)
+
+`memory/GLOSSAIRE.md` est normatif : docs, agents, rules, commits, noms de fichiers et interface emploient les mêmes mots (Mini-jeux, Encyclopédie / Dino de Max, Histoires, WexWorld, Wex, Narrateur H/F, Fiche dino = Texte fiche + Script audio + Audio, Paléoart / Hero / Sprite / Silhouette / Coloriage / Trace / Avatar). Un autre mot pour la même chose est une dérive à corriger. Pourquoi : relevé du 2026-09-04 sur 71 docs — jusqu'à 5 noms pour le Script audio, 3 graphies pour les narrateurs, deux WexWorld.

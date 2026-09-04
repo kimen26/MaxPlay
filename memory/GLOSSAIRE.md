@@ -87,6 +87,15 @@ Donc : low-poly = **Avatar** (profil de l'enfant) · détouré = **Sprite** (jeu
 
 ## Termes encore à définir ❓
 
-Métier : **Accroche** (menu, 2-7 s) · **Collection** (bandeau dinos gagnés) · **Époque** (une période géologique du Voyage) · **Ce qu'il mange** (onglet régimes) · **Ce qu'il manque** (❓ = la checklist « dino complet » ?). Proposition : je définis, tu corriges.
+Propositions (je définis, tu corriges) :
+
+| Terme | Proposition |
+|---|---|
+| **Époque** | Une période géologique du Voyage (Trias, Jurassique, Crétacé…). Une Époque a un Récit d'époque, une accroche et une couleur. |
+| **Accroche** | La phrase audio de 2 à 7 s jouée à l'ouverture d'un menu, d'une Famille ou d'une Époque, dite par le Narrateur H. |
+| **Ce qu'il mange** | L'onglet des régimes alimentaires (carnivore, herbivore, piscivore…). |
+| **Ce qu'il manque** | La checklist « dino complet » en 8 axes (Hero, Paléoart, Coloriage, Audio, Silhouette, Fiche relue, Étymo, Mesures), suivie dans `_ETAT-DINOS.md`. ❓ Ou tu voulais dire autre chose ? |
+| **Collection** | Le bandeau des dinos que l'enfant a gagnés dans les Mini-jeux (Sprites), affiché en tête de l'Encyclopédie. |
+
 
 Outillage (peu visible de toi, à garder tel quel sauf avis) : pôle · PMO · figée · INVARIANTS · gabarit · lane · handoff · référentiel · catalogue · réplique · dérive · empreinte · quintette · GED.

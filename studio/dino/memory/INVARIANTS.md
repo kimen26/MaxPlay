@@ -1,7 +1,9 @@
 # INVARIANTS — Pôle DINO
 
 > Source de vérité des **chiffres clés**. MAJ uniquement si un invariant change (par `dino-pmo`).
-> **Dernière vérif : 2026-07-27 (ajout Saurolophe).**
+> **Dernière vérif : 2026-09-05 (audit HO-009 : mesures, lieux, textes des 71 fiches fact-checkés Grokipedia/Wikipedia, 4 lots ; corrections appliquées HO-010 ; nouveau champ optionnel `vitesse_kmh` + `_compVitesse`, 25 dinos avec vitesse sourcée).**
+> Session 2026-09-05 : count DINOS réconcilié **71** (le 71ᵉ = Scelidosaurus, ajouté 2026-08 sans trace INVARIANTS). Détail des corrections : `docs/handoffs/rapports/HO-009-lot-*.md` + `HO-010-champs-modifies.json`.
+> **Dernière vérif précédente : 2026-07-27 (ajout Saurolophe).**
 > Session 2026-07-27 : +1 dino — Saurolophe (*Saurolophus osborni*, famille `bec`, Ornithopodes 5→6). Data + audio (5 MP3 vérifiés ffprobe) + étymo + prononciation faits. Count DINOS 69→**70**. **Paléoart à produire** (4/8 axes checklist complet — même situation que la vague +7 du 2026-07-25 avant leur paléoart).
 > **Dernière vérif précédente : 2026-07-18 (audit visuel phase 2 + MEGA nettoyage).**
 > Session 2026-07-17/18 : audit visuel 100 % (540 images) → phase 1 (vignettes ombre + purge 18 heros tiers) + phase 2 (42 images régénérées, leçons L-D-38..43). **Gallimimus complété → 60/60 dinos complets (8/8 axes)**. Sprites ingame top 15 (`sprites/`), INDEX-IMAGES créé, legacy racine/paws/scale/variants purgé.
@@ -16,14 +18,14 @@
 
 | Quoi | Valeur | Source |
 |------|--------|--------|
-| Dinos (entrées `DINOS`) | **70** | `site/js/dinos-data.js` (✅ 2026-07-19 : +Corythosaurus, Ornithopodes 3→4 · ✅ 2026-07-20 : +Hatzegopteryx, Ptérosaures 2→3 · ✅ **2026-07-25 : +7** — Minmi + Scutellosaure (Thyréophores 5→7), Maiasaura (Ornithopodes 4→5), Édaphosaure + Gorgonops + Lystrosaure + Moschops (**« Avant les dinosaures » 1→5**). Data + audio faits ; paléoart livré ces 7 · ✅ **2026-07-27 : +1 Saurolophe**, Ornithopodes 5→6. Data + audio + étymo faits ; **paléoart à produire**) |
+| Dinos (entrées `DINOS`) | **71** | `site/js/dinos-data.js` (✅ 2026-07-19 : +Corythosaurus, Ornithopodes 3→4 · ✅ 2026-07-20 : +Hatzegopteryx, Ptérosaures 2→3 · ✅ **2026-07-25 : +7** — Minmi + Scutellosaure (Thyréophores 5→7), Maiasaura (Ornithopodes 4→5), Édaphosaure + Gorgonops + Lystrosaure + Moschops (**« Avant les dinosaures » 1→5**). Data + audio faits ; paléoart livré ces 7 · ✅ **2026-07-27 : +1 Saurolophe**, Ornithopodes 5→6. Data + audio + étymo faits ; **paléoart à produire**) |
 | Familles (`DINO_FAMILLES`) | **11** | idem (✅ 2026-07-03 : +2 familles `mammiferes` + `oiseaux` ; famille `arme` passe 4→5 dinos, puis 5→7 le 2026-07-25) |
 | Régimes alimentaires (`DINO_CATEGORIES`) | **4** | idem (inchangé) |
 | Périodes (`DINO_PERIODES`) | **5** | ✅ 2026-07-03 : ajout `cenozoique` (66 Ma → aujourd'hui), rejoins les 4 antérieures (Triassic, Jurassic, Crétacé, Autres) |
 | Récits d'époque (voyage) | **8** | `audio/dinos/recit-*.mp3` |
 | Accroches menu (voix réelle) | **17** | `audio/dinos/menu-*.mp3` (4 onglets + 9 familles `menu-fam-*` + 4 régimes `menu-regime-*` — dont 2 Cénozoïque ajoutés 2026-08-02) |
 | Spéciaux (Pangée, Extinction) | **6** | `audio/dinos/special-*.mp3` (✅ 2026-08-02 : 6 fichiers sur disque — special-extinction-a/b/c/d, special-extinction-recap, special-pangee-recap ; le count historique « 2 » était obsolète) |
-| Dinos avec audio complet (recap+4 blocs) | **70** | `DINO_AUDIO` (✅ 2026-07-13 : 9 Cénozoïque complétés. ✅ 2026-07-25 : les 7 nouveaux — 28 blocs text-to-dialogue + 7 recaps concat ffmpeg loudnorm, eleven_v3, grep-interdits passé. ✅ **2026-07-27 : +Saurolophe** — 4 blocs + recap, durées vérifiées ffprobe (32s/21,6s/21,4s/15,7s/90,6s). Manifeste régénéré via `_gen-audio-manifest.cjs` : 70 ids. Plus aucun dino en attente d'audio.) |
+| Dinos avec audio complet (recap+4 blocs) | **71** | `DINO_AUDIO` (✅ 2026-07-13 : 9 Cénozoïque complétés. ✅ 2026-07-25 : les 7 nouveaux — 28 blocs text-to-dialogue + 7 recaps concat ffmpeg loudnorm, eleven_v3, grep-interdits passé. ✅ **2026-07-27 : +Saurolophe** — 4 blocs + recap, durées vérifiées ffprobe (32s/21,6s/21,4s/15,7s/90,6s). Manifeste régénéré via `_gen-audio-manifest.cjs` : 70 ids. Plus aucun dino en attente d'audio.) |
 | Noms vocaux dino (assets bonus) | **60** | `site/audio/dinos/noms/{id}.mp3` (✅ 2026-07-06 : 60 MP3 narrateur_h [excited] jeu, lancés dans mj-24/28/31/33) |
 | Langues i18n cibles (audio dino) | **9** | ✅ 2026-07-10 : FR (canon) · EN · PT-BR · ES · IT · AR · RU · ZH · JA **FIGÉE**. Archi déployée (pack préfixe langue, overlay strings, manifest anti-404, studio i18n/ centralisé). Tests ✅ 12 specs Playwright (mj-15/24/25/26/27/28/29/30/32/33/41, mj-31 TOUS). Invariant DEC-I18N-INVARIANT-001 : toute langue = lexique AVANT audio, jamais régresser. |
 
@@ -61,6 +63,8 @@ Carnivores (24) · Herbivores (21) · Piscivores (7) · Omnivores (3). **Pas de 
 | Lampadaire | 6 m |
 | Bus RATP (long) | 12 m |
 | Bus accordéon (long) | 18 m |
+
+**Vitesse (2026-09-05)** : `_compVitesse(km/h)` — enfant qui marche 4 · Papa marche vite 7 · enfant court 10 · vélo tranquille 15 · Papa court 20 · vélo 25 · cheval petit galop 30 · chien 35 · cheval galop 45 · voiture en ville 50 · lion 60 · autruche 70 · guépard 100. Champ `vitesse_kmh` seulement quand une estimation sérieuse est publiée (jamais inventé).
 
 Le **bus est autorisé en échelle de taille** (validé Papa Yann) mais **interdit dans les récits narrés**.
 
@@ -101,13 +105,13 @@ Résolus via `narration/personnages/voix-meta/voice-map.json`. Modèle **eleven_
 |---------------|----------------------|--------|
 | `trex` | Théropodes | 13 |
 | `cou_long` | Sauropodes | 7 |
-| `arme` | Thyréophores | 5 |
+| `arme` | Thyréophores | 8 |
 | `cornu` | Cératopsiens | 6 |
-| `bec` | Ornithopodes | 3 |
+| `bec` | Ornithopodes | 6 |
 | `raptor` | Dromæosaures | 8 |
-| `pterosaures` | Ptérosaures | 2 |
+| `pterosaures` | Ptérosaures | 3 |
 | `enaliosaures` | Énaliosaures | 7 |
-| `volant` | Avant les dinosaures (Dimétrodon) | 1 |
+| `volant` | Avant les dinosaures | 5 |
 | `mammiferes` | Mammifères (Cénozoïque) | 7 |
 | `oiseaux` | Oiseaux (Cénozoïque) | 1 |
 

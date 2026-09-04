@@ -1,12 +1,12 @@
 # HO-016 — Banque de bruitages dinos (text_to_sound_effects)
 
-**Statut :** pret
+**Statut :** fait (2026-09-05, 41/41)
 **Depend de :** — (partage le budget EL avec HO-015 : le même exécutant enchaîne HO-015 puis HO-016, coût mesuré)
 **Exécutant :** 1 sous-agent Sonnet avec les outils MCP `elevenlabs`.
 
 ## Objectif
 
-~47 bruitages dinos rangés dans `site/sounds/fx/dino/` (sous-dossier neuf : les `fx/dino-*.mp3` et `fx/cri-bebe-*` existants
+41 bruitages dinos rangés dans `site/sounds/fx/dino/` (sous-dossier neuf : les `fx/dino-*.mp3` et `fx/cri-bebe-*` existants
 restent en place), documentés dans `_BANQUE-SONS.md`. Aucun branchement.
 
 ## Liste (nom de fichier · brief · durée)
@@ -29,7 +29,7 @@ restent en place), documentés dans `_BANQUE-SONS.md`. Aucun branchement.
 
 **Œufs qui éclosent (6)** — `oeuf-eclot-1` … `oeuf-eclot-6` : craquements de coquille, variés (lent, rapide, gros œuf, petit œuf, avec pépiement, avec « pop »), 2-4 s.
 
-Total attendu : 47 fichiers.
+Total attendu : 41 fichiers (8+6+6+4+4+7+6 — le « 47 » initial était une erreur d'addition).
 
 ## Méthode
 

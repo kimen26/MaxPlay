@@ -35,8 +35,8 @@ portes aient été rejouées par lui.
 | HO-012 | Relecture croisee FR (porte + dino-conseiller) | `rapports/HO-012-*.md` | bloque par HO-011 |
 | HO-013 | i18n Scripts audio en / es-es / pt-br + lexiques relus | `scripts-audio/<lang>/**`, `lexiques-prononciation/<lang>.md` | bloque par HO-012 |
 | HO-014 | Generation EL 13 theropodes × 4 langues | `site/audio/dinos/<lang>/<id>-*.mp3`, manifest | bloque par HO-012/013 |
-| HO-015 | Musiques de fond (Eleven Music) | `site/sounds/music/**` | en cours |
-| HO-016 | Banque SFX dinos | `site/sounds/fx/dino/**` | en cours |
+| HO-015 | Musiques de fond (Eleven Music) | `site/sounds/music/**` | fait |
+| HO-016 | Banque SFX dinos | `site/sounds/fx/dino/**` | fait |
 
 Porte commune des scripts audio : `node studio/dino/content/scripts/export/_verif-scripts-audio.cjs <lang> [ids]`.
 

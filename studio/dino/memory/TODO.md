@@ -12,8 +12,9 @@
 - **HO-012** [ ] — Relecture croisée FR. Ferme de fait **AUDIT-ECHELLE-FR-32** (les 71 blocs B sont réécrits sur les fonctions exécutées) et **EP-D-AUDIO-DRIFT-COMPPOIDS**.
 - **HO-013** [ ] — i18n scripts audio en/es-es/pt-br + relecture native des 3 lexiques (satisfait DEC-I18N-INVARIANT-001 avant HO-014).
 - **HO-014** [ ] — Génération EL 13 théropodes × 4 langues (pilote T-Rex + audio-verif avant batch). Nouveau script STS multi-voix à écrire (`_gen-audio-i18n-sts.mjs`).
-- **HO-015** [~] — 5 musiques de fond + 3 génériques + 4 victoires → `site/sounds/music/` (branchement = ticket futur).
-- **HO-016** [~] — ~47 SFX dinos → `site/sounds/fx/dino/` (branchement = ticket futur).
+- **HO-015** [x] — FAIT 2026-09-05 : 10 musiques dans `site/sounds/music/` (jungle 45 s, calme 50 s, suspense 50 s, 3 génériques 4-5 s, 4 victoires 2-5 s), coût 2 160 crédits. À écouter par PY : jungle, calme, victoire-v4. Branchement = ticket futur.
+- **HO-016** [x] — FAIT 2026-09-05 : 41 SFX dans `site/sounds/fx/dino/` (le brief disait 47 par erreur d'addition, la liste détaillée fait 41), coût 1 368 crédits, prompts dans `_BANQUE-SONS.md` § 6-7. À écouter : gros-rugissement-attaque-1, oeuf-eclot-5. Branchement = ticket futur.
+- **VITESSE** [~] — Idée PY 2026-09-05 (« la vitesse des dinosaures ça m'intéresse bien, c'est souvent des chiffres bien différents dans les livres ») : HO-009 collecte pour les 71 une fourchette km/h sourcée + confiance ; ensuite décider avec PY : nouveau champ `vitesse_kmh` dans `dinos-data.js` + affichage fiche + comparaison honnête (enfant qui court ≈ 10 km/h · Papa ≈ 20 · vélo ≈ 25 · voiture en ville 50 · guépard 100) + bloc audio ? À trancher AVANT HO-011 pour que les scripts puissent le dire.
 - [ ] Après la vague : régénérer les 58 autres fiches FR (audio) + décider l'i18n audio des 58 restants ; brancher musiques/SFX dans Encyclopédie et Mini-jeux.
 
 ## Lane — Alerte data

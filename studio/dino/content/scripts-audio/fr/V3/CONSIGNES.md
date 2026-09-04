@@ -58,7 +58,7 @@ BLOC D — Le truc fou
 4. `studio/dino/content/scripts-audio/_TEMPLATE-4blocs-dialogue.md` — template canonique.
 5. `studio/dino/content/scripts-audio/groupe-*.md` — scripts existants à réécrire.
 6. `studio/dino/figees/encyclopedie.md` — règles figées.
-7. `therizinosaurus-V3-exemple.md` (même dossier) — exemple validé.
+7. `albertosaurus.md` (même dossier) — exemple validé PY 2026-08-17. (Ancien exemple : `_archive-2026-09-05-lots/therizinosaurus-V3-exemple.md`.)
 
 ## Livrable
 Pour chaque dino du lot, produire un bloc de texte formaté :
@@ -81,7 +81,7 @@ Pour chaque dino du lot, produire un bloc de texte formaté :
 ...
 ```
 
-Ecrire le résultat dans `{famille}-{lot}.md` (même dossier — relocalisé depuis temp/ le 2026-07-19).
+Ecrire le résultat dans **`<id>.md`, un fichier par dino** (canon depuis 2026-09-05 ; les anciens `{famille}-{lot}.md` sont dans `_archive-2026-09-05-lots/`). Porte : `node studio/dino/content/scripts/export/_verif-scripts-audio.cjs fr <id>`.
 
 ## Vérification avant livraison
 - [ ] Chaque dino couvre toutes les étapes demandées.
@@ -99,7 +99,7 @@ Ecrire le résultat dans `{famille}-{lot}.md` (même dossier — relocalisé dep
 |---|---|
 | `diagnostic-plan-fiches-dino.md` | Diagnostic d origine (2026-06-14) qui a mene au plan V3 |
 | `plan-reecriture-fiches-dino-V3-consolide.md` | Plan consolide du chantier |
-| `therizinosaurus-V3-exemple.md` | Exemple VALIDE (reference obligatoire, cf. consigne 7) |
+| `albertosaurus.md` (ex-`_archive-2026-09-05-lots/therizinosaurus-V3-exemple.md`) | Exemple VALIDE (reference obligatoire, cf. consigne 7) |
 | `_FACTCHECK-paleo-grokipedia.md` | Fact-check paleo (Grokipedia 1ere source) des lots |
 | `_PROMPT-RELECTURE-EXTERNE.md` | Prompt du panel de relecture |
 | `_RELECTURE-dino-conseiller.md` / `_RELECTURE-narration-conseiller.md` | Relectures conseillers (peda 4 ans / narration) |

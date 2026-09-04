@@ -15,6 +15,8 @@
 
 | Dossier | Contenu | Voix | Généré via |
 |---|---|---|---|
+| `site/sounds/music/` (10) | musiques de fond réutilisables (menu, calme, générique×3, suspense, victoire×4) — HO-015, § 6 | — | `compose_music` (+ `text_to_sound_effects` pour victoire-v1) |
+| `site/sounds/fx/dino/` (41) | banque de bruitages dinos (cris, Parasaurolophus, bébés, pas, météo/nature, œufs) — HO-016, § 7 | SFX | `text_to_sound_effects` |
 | `site/sounds/ui/` (10) | identité hub « Ligne de Max » : moteur-bus, klaxon, porte-bus, tap, fanfare-victoire, etoile, deblocage, ambiance-nuit (loop), voyage-temps, veilleuse | SFX | `text_to_sound_effects` |
 | `site/sounds/fx/` | catalogue général : victoires, rigolo (prout…), dinos (rugissements), **cris de bébés par famille `cri-bebe-*` (§ 4 bis)**, animaux, véhicules, instruments, pièces, espace, divers | SFX | `text_to_sound_effects` |
 | `site/sounds/voix/f/` (22) | réactions Narratrice — 16 positives + 6 douces (super, bravo, oups, presque…) | narrateur_f | `text_to_speech` |
@@ -129,6 +131,50 @@ Générés via `text_to_sound_effects` (1,5-2 s), **paddés 250 ms** (règle L-0
 - **mj-29 dico** : mapping `racine.cle` → fichiers `dico-*.mp3` non fiable sans table dédiée (risque mauvais son dans un jeu phonétique).
 - **index.html hub** : ne charge pas victory-sounds.js — pool `deblocage` non branché au hub.
 
+## 6. Musiques de fond (HO-015, 2026-09-05)
+
+10 fichiers `site/sounds/music/*.mp3`, générés `compose_music` (sauf victoire-v1, `text_to_sound_effects` — le
+minimum `compose_music` est 3000 ms). Réutilisables Encyclopédie + Mini-jeux. **Aucun branchement fait** (hors
+périmètre du ticket). Boucles = padding 0, jingles/victoires = padding 250 ms tête.
+
+| Fichier | Usage prévu | Durée (ffprobe) | Prompt exact |
+|---|---|---|---|
+| `menu-jungle-loop.mp3` | ambiance menu/hub, jungle temps des dinos | 45,0 s, boucle | *Gentle prehistoric jungle ambience loop: distant insect chirping, faint exotic bird calls, soft rustling foliage in a light breeze, occasional subtle harp notes plucked sparsely in the background, warm and organic, no percussion, no melody lead, instrumental, no vocals, seamless loop, ends exactly as it begins* |
+| `calme-doux-loop.mp3` | fond calme type « Ghibli » (encyclopédie, écrans doux) | 50,0 s, boucle | *Calm, warm, gentle instrumental in a tender storybook animation style: soft piano and light flute melody with airy string pads, moderate tempo, sweet and heartfelt, cozy and soothing, instrumental, no vocals, seamless loop, ends exactly as it begins* |
+| `suspense-loop.mp3` | tension douce, jamais fort | 50,0 s, boucle | *Growing suspense, gentle and never loud, suitable for a young child: low sustained drone pad, slow soft heartbeat-like pulse, subtle gradual rise in tension, sparse minor tones, mysterious but not scary, instrumental, no vocals, seamless loop, ends exactly as it begins* |
+| `generique-v1.mp3` | générique variante 1, synth/perc énergique | 4,3 s | *Short upbeat cheerful game intro jingle, playful synth and light percussion, bright and catchy, energetic start, instrumental, no vocals* |
+| `generique-v2.mp3` | générique variante 2, guitare/glockenspiel doux | 4,3 s | *Short cheerful game intro jingle, warm acoustic guitar and glockenspiel, friendly and cute, gentle bounce, instrumental, no vocals* |
+| `generique-v3.mp3` | générique variante 3, fanfare cuivres | 5,0 s (généré 6,1 s, coupé à 5 s) | *Short punchy game intro jingle, orchestral brass fanfare hit with light strings, triumphant and fun, quick and memorable, instrumental, no vocals* |
+| `victoire-v1.mp3` | victoire courte, chiptune 8-bit | 2,25 s | *Short upbeat victory jingle, joyful 8-bit chiptune synth arpeggio rising up, classic video game win sound, bright and happy, instrumental, no vocals, no music production ambience, single musical phrase* (repli `text_to_sound_effects`, `compose_music` refuse < 3000 ms) |
+| `victoire-v2.mp3` | victoire, fanfare orchestrale + cymbale | 4,3 s | *Short victory jingle, triumphant orchestral brass fanfare with cymbal crash, heroic and joyful game win sound, instrumental, no vocals* |
+| `victoire-v3.mp3` | victoire, synth/marimba enjoué | 3,3 s | *Short victory jingle, playful synth arpeggio with a bouncy marimba melody, cheerful and cute game win sound, instrumental, no vocals* |
+| `victoire-v4.mp3` | victoire, fanfare orchestrale complète | 5,3 s | *Short victory jingle, full orchestral fanfare build with strings brass and light choir-like synth pad, grand and celebratory game win sound, instrumental, no vocals* |
+
+Coût mesuré : solde EL avant 38 325 caractères, après HO-015 40 485 (delta 2 160). Rien n'a échoué ; seul
+`generique-v3` a dépassé 5 s (6,1 s générés) et a été coupé en post-prod. `music_length_ms` refuse toute
+valeur < 3000 (erreur API `422 greater_than_equal 3000`), d'où le repli `text_to_sound_effects` pour victoire-v1.
+
+## 7. Bruitages dinos (HO-016, 2026-09-05)
+
+41 fichiers `site/sounds/fx/dino/*.mp3` (le brief HO-016 chiffre son total à 47 mais la liste par groupe qu'il
+détaille additionne à 41 — générés strictement les 41 items nommés dans le tableau du brief, aucun ajout
+inventé). Padding 250 ms tête sauf les 4 boucles météo. Aucun branchement fait.
+
+| Groupe | Fichiers · durée (ffprobe) |
+|---|---|
+| Cris gros/petits (8) | `gros-rugissement-attaque-1` 3,25s · `gros-rugissement-attaque-2` 3,25s · `gros-rugissement-defense` 3,25s · `gros-grognement-sourd` 3,25s · `petit-cri-attaque` 2,25s · `petit-cri-defense` 2,25s · `petit-cri-curieux` 2,25s · `petit-sifflement` 2,25s |
+| Parasaurolophus (6) | `para-grave-long` 4,73s · `para-grave-court` 1,73s · `para-aigu-long` 4,73s · `para-aigu-court` 1,73s · `para-alerte` 3,25s · `para-fun` 2,73s |
+| Bébés (6) | `bebe-dino-1` (curieux) 2,25s · `bebe-dino-2` (affamé) 2,25s · `bebe-dino-3` (content) 2,25s · `bebe-dino-4` (endormi) 2,25s · `bebe-dino-5` (surpris) 2,25s · `bebe-dino-6` (appel maman) 2,73s |
+| Pas lourds (4) | `pas-lourd-un` 1,25s · `pas-lourd-marche` 4,73s · `pas-lourd-course` 4,73s · `pas-lourd-lointain` 5,25s |
+| Pas courants/lents (4) | `pas-course-petit` 4,73s · `pas-course-moyen` 4,73s · `pas-marche-lente-petit` 4,73s · `pas-marche-lente-moyen` 4,73s |
+| Météo & nature (7) | `tonnerre-lointain` 4,25s · `tonnerre-proche` 4,25s · `eclair-craquement` 1,73s · `pluie-loop` 5,0s (boucle) · `pluie-forte-loop` 5,0s (boucle) · `cascade-loop` 5,0s (boucle) · `vent-jungle-loop` 5,0s (boucle) |
+| Œufs qui éclosent (6) | `oeuf-eclot-1` (lent) 3,25s · `oeuf-eclot-2` (rapide) 2,73s · `oeuf-eclot-3` (gros œuf) 3,25s · `oeuf-eclot-4` (petit œuf) 2,25s · `oeuf-eclot-5` (avec pépiement) 3,73s · `oeuf-eclot-6` (avec pop) 3,25s |
+
+Tous OK (41/41), aucun prompt refait. Prompts en anglais, structure « what, character/context, single sound,
+no music, no voice » comme demandé. Coût mesuré : solde EL avant HO-016 40 485, après 41 853 (delta 1 368,
+HO-015+016 cumulé 3 528 sur un budget théorique 173 048 — très loin des seuils de stop 35 000/15 000).
+
 ---
 
 _Décisions gravées : game-pmo (pools L-077..079, règle 250ms L-069 dans rules.md), dino-pmo (noms bonus hors count fiche). Mémoire transverse : `reference_sfx_silence_padding`._
+_HO-015/HO-016 (2026-09-05) : musiques de fond `site/sounds/music/` + banque bruitages dinos `site/sounds/fx/dino/`, rien de branché (tickets séparés)._

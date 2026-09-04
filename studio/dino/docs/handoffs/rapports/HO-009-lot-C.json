@@ -1,0 +1,293 @@
+{
+  "lot": "C",
+  "date": "2026-09-05",
+  "dinos": [
+    {
+      "id": "brachiosaurus",
+      "verdict": "CORRIGER",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 22, "fourchette": "~22 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Brachiosaurus §Description : \"measured up to about 22 meters (72 feet) in length\"" },
+        { "champ": "hauteur_m", "actuel": 13, "fourchette": "Riggs 1904 : longueur totale ~25 m, hauteur épaule >4 m ; convention fiche = tête/cou dressé, non contredite frontalement par Grokipedia", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Brachiosaurus §History of discovery" },
+        { "champ": "poids_t", "actuel": 47, "fourchette": "~46.9 t", "propose": null, "ecart_pct": 0.2, "action": "garder", "source": "Grokipedia Brachiosaurus §Description : \"weighed around 46,900 kilograms\"" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Nord, Afrique", "region_propose": "Amérique du Nord (Colorado, Wyoming, Utah)", "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Brachiosaurus §Taxonomy et §Habitat and formation : le matériel africain de Tendaguru (Tanzanie), longtemps rattaché à 'Brachiosaurus brancai', a été reclassé en 2009 dans le genre distinct Giraffatitan (Taylor 2009). Le vrai Brachiosaurus altithorax est UNIQUEMENT nord-américain (Morrison Formation, Colorado/Wyoming/Utah)." },
+      "textes": [
+        { "champ": "region", "probleme": "« Afrique » est en réalité Giraffatitan, un genre distinct depuis 2009, pas Brachiosaurus", "propose": "Amérique du Nord (Colorado, Wyoming, Utah)", "source": "Grokipedia Brachiosaurus §Taxonomy" }
+      ],
+      "notes": "Point taxonomique important : la reclassification Giraffatitan (2009) sépare officiellement le matériel africain. Le continent (déjà 'Amérique du Nord' seul) est déjà correct, seule la region texte doit perdre 'Afrique'. Cohabitants Morrison Formation : Allosaurus, Diplodocus, Apatosaurus, Camarasaurus, Stegosaurus — cohérent avec le reste du lot.",
+      "vitesse": { "kmh_fourchette": "marche lente, pas d'estimation de vitesse de pointe publiée pour un sauropode de cette masse", "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Brachiosaurus §Locomotion : \"unlikely to rear up... deliberate movement supported by pillar-like limbs\"", "note": "aucune fourchette chiffrée trouvée ; sauropode géant, déplacement de type éléphant, pas de course rapide documentée" }
+    },
+    {
+      "id": "diplodocus",
+      "verdict": "CORRIGER",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 26, "fourchette": "25-27 m (spécimens majeurs, dont ~27 m pour le plus grand)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Diplodocus §Description" },
+        { "champ": "hauteur_m", "actuel": 4.5, "fourchette": "~4-4.5 m à l'épaule/hanche selon reconstructions", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Diplodocus §Description" },
+        { "champ": "poids_t", "actuel": 12, "fourchette": "10-16 t selon méthode (estimation moyenne récente ~11-12 t)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Diplodocus §Description ; fourchette large propre aux sauropodes, valeur actuelle dans la moyenne honnête" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Nord", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Diplodocus §Habitat and formation : Morrison Formation, Colorado/Wyoming/Utah/Montana" },
+      "textes": [
+        { "champ": "fait", "probleme": "Le « BOOM supersonique » de la queue-fouet est une hypothèse (Myhrvold & Currie 1997, modèle physique), pas un fait observé — à nuancer légèrement", "propose": "Sa queue en fouet claquait si vite qu'elle aurait pu faire un bruit aussi fort qu'un coup de tonnerre, disent les scientifiques !", "source": "Grokipedia Diplodocus §Tail function : hypothèse de Myhrvold & Currie citée comme modèle, pas fait établi" }
+      ],
+      "notes": "Cohabitants Morrison Formation confirmés : Allosaurus, Ceratosaurus, Apatosaurus, Camarasaurus, Stegosaurus, Brachiosaurus — cohérent. Le fait 'BOOM supersonique' reste un ajout pédagogique acceptable si présenté comme hypothèse plutôt que certitude ; laissé en CORRIGER léger par prudence scientifique.",
+      "vitesse": { "kmh_fourchette": "marche lente, pas de vitesse de pointe chiffrée publiée", "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Diplodocus §Locomotion", "note": "sauropode géant, déplacement lent type éléphant, aucune fourchette de course publiée" }
+    },
+    {
+      "id": "apatosaurus",
+      "verdict": "CONFORME",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 22, "fourchette": "21-23 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Apatosaurus §Description" },
+        { "champ": "hauteur_m", "actuel": 4.5, "fourchette": "~4-4.5 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Apatosaurus §Description" },
+        { "champ": "poids_t", "actuel": 23, "fourchette": "16.4-22.4 t (estimations récentes basées sur volume), plus anciennes jusqu'à 33 t", "propose": null, "ecart_pct": 2.6, "action": "garder", "source": "Grokipedia Apatosaurus §Description : fourchette large propre aux sauropodes, 23 t dans la moyenne raisonnable" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Nord", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Apatosaurus §Habitat and formation : Morrison Formation, Colorado/Wyoming/Utah/Oklahoma" },
+      "textes": [],
+      "notes": "Cohabitants Morrison Formation confirmés : Allosaurus, Diplodocus, Camarasaurus, Stegosaurus, Brachiosaurus. 'Apatosaure = vrai nom, Brontosaure = ancien nom' : nuance scientifique 2015 (Tschopp et al.) a en fait RESSUSCITÉ Brontosaurus comme genre distinct valide — mais pour l'enfant de 4 ans, garder la formulation actuelle (Brontosaure = surnom familier de l'Apatosaure) reste défendable pédagogiquement, signalé pour info à l'orchestrateur.",
+      "vitesse": { "kmh_fourchette": "marche lente, pas d'estimation de vitesse de pointe publiée", "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Apatosaurus §Locomotion", "note": "sauropode géant, pas de fourchette de course chiffrée trouvée" }
+    },
+    {
+      "id": "camarasaurus",
+      "verdict": "CONFORME",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 15, "fourchette": "14-18 m (plus grands spécimens ~18 m, moyenne ~15 m)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Camarasaurus §Description" },
+        { "champ": "hauteur_m", "actuel": 6, "fourchette": "~5-6 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Camarasaurus §Description" },
+        { "champ": "poids_t", "actuel": 18, "fourchette": "13-18 t", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Camarasaurus §Description" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Nord", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Camarasaurus §Habitat and formation : Morrison Formation, très abondant" },
+      "textes": [],
+      "notes": "'Le sauropode le plus commun d'Amérique du Nord' confirmé — Camarasaurus est effectivement le sauropode du Jurassique le mieux représenté en nombre de fossiles en Amérique du Nord. Cohabitants Morrison Formation cohérents.",
+      "vitesse": { "kmh_fourchette": "marche lente, pas d'estimation de vitesse de pointe publiée", "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Camarasaurus §Locomotion", "note": "sauropode, aucune fourchette de course chiffrée trouvée" }
+    },
+    {
+      "id": "amargasaurus",
+      "verdict": "CONFORME",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 10, "fourchette": "9-10 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Amargasaurus §Description" },
+        { "champ": "hauteur_m", "actuel": 2.5, "fourchette": "~2-2.5 m (au niveau des épines du cou, convention fiche)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Amargasaurus §Description" },
+        { "champ": "poids_t", "actuel": 3, "fourchette": "2.6-3.6 t", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Amargasaurus §Description" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Sud", "region_propose": "Amérique du Sud (Argentine)", "continent_actuel": "Amérique du Sud", "continent_propose": null, "source": "Grokipedia Amargasaurus §Habitat and formation : Formation La Amarga, Neuquén, Argentine" },
+      "textes": [],
+      "notes": "Cohabitants Formation La Amarga confirmés (théropodes non précisément nommés dans la fiche, 'grands carnivores d'Amérique du Sud' reste honnête et suffisamment vague). Fonction des épines (défense vs display/thermorégulation) toujours débattue chez les scientifiques — la fiche dit bien 'peut-être', c'est correct.",
+      "vitesse": { "kmh_fourchette": "pas d'estimation chiffrée publiée", "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Amargasaurus", "note": "sauropode de taille moyenne, aucune fourchette de vitesse trouvée" }
+    },
+    {
+      "id": "plateosaurus",
+      "verdict": "CONFORME",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 8, "fourchette": "6-10 m (moyenne ~8 m)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Plateosaurus §Description" },
+        { "champ": "hauteur_m", "actuel": 2.8, "fourchette": "~2.5-3 m debout sur 2 pattes / plus bas à 4 pattes", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Plateosaurus §Description ; convention fiche = position dressée" },
+        { "champ": "poids_t", "actuel": 2, "fourchette": "0.6-4 t selon spécimen (moyenne ~2 t)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Plateosaurus §Description" }
+      ],
+      "lieu": { "region_actuel": "Europe", "region_propose": "Europe (Allemagne, France, Suisse)", "continent_actuel": "Europe", "continent_propose": null, "source": "Grokipedia Plateosaurus §Habitat and formation : bassin germanique (Trias)" },
+      "textes": [],
+      "notes": "'Un des premiers grands dinosaures' confirmé — Plateosaurus est un sauropodomorphe basal emblématique du Trias tardif. Capacité bipède/quadrupède facultative confirmée par les études de posture.",
+      "vitesse": { "kmh_fourchette": "pas d'estimation chiffrée publiée trouvée", "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Plateosaurus", "note": "sauropodomorphe bipède/quadrupède facultatif, aucune fourchette de vitesse trouvée" }
+    },
+    {
+      "id": "patagotitan",
+      "verdict": "CONFORME",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 31, "fourchette": "31-37 m selon estimation (37 m souvent citée comme haute, ~31 m estimation plus prudente)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Patagotitan §Description : valeur actuelle correspond à l'estimation prudente, pas au record" },
+        { "champ": "hauteur_m", "actuel": 12, "fourchette": "~11-12 m tête/cou dressé", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Patagotitan §Description" },
+        { "champ": "poids_t", "actuel": 70, "fourchette": "57-76 t selon méthode (moyenne récente ~70 t, anciennes estimations jusqu'à 100+ t revues à la baisse)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Patagotitan §Description" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Sud (Argentine)", "region_propose": null, "continent_actuel": "Amérique du Sud", "continent_propose": null, "source": "Grokipedia Patagotitan §Habitat and formation : Formation Cerro Barcino, Chubut, Patagonie argentine" },
+      "textes": [],
+      "notes": "'7 squelettes ensemble en Patagonie' confirmé (site de La Flecha, plusieurs individus partiels selon publications). Giganotosaurus et Mapusaurus cohabitants confirmés au Crétacé de Patagonie, cohérents chronologiquement.",
+      "vitesse": { "kmh_fourchette": "marche lente, pas d'estimation de vitesse de pointe publiée pour ce titanosaure géant", "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Patagotitan §Locomotion", "note": "plus grand animal terrestre connu, déplacement de type éléphant géant, aucune fourchette de course publiée" }
+    },
+    {
+      "id": "ankylosaurus",
+      "verdict": "CORRIGER",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 7, "fourchette": "6.5-8 m (moyenne honnête ~7.5 m)", "propose": 7.5, "ecart_pct": 7.1, "action": "corriger", "source": "Grokipedia Ankylosaurus §Description : longueur maximale jusqu'à 8 m" },
+        { "champ": "hauteur_m", "actuel": 1.8, "fourchette": "non chiffrée précisément dans les sources consultées", "propose": null, "ecart_pct": 0, "action": "garder", "source": "non vérifiable précisément — valeur actuelle plausible pour un ankylosauridé de cette taille, gardée par prudence" },
+        { "champ": "poids_t", "actuel": 6, "fourchette": "4.8-8 t", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Ankylosaurus §Description" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Nord", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Ankylosaurus §Habitat and formation : Hell Creek Formation + Alberta/Saskatchewan" },
+      "textes": [],
+      "notes": "T-Rex prédateur confirmé (cohabitants Hell Creek, Maastrichtien). Ventre sans armure et difficulté à retourner l'animal confirmées.",
+      "vitesse": { "kmh_fourchette": "6-8 km/h", "kmh_retenu": 7, "confiance": "moyenne", "source": "Grokipedia Ankylosaurus §Locomotion (estimation biomécanique)", "note": "quadrupède lourd et bas sur pattes, déplacement lent" }
+    },
+    {
+      "id": "euoplocephalus",
+      "verdict": "CONFORME",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 6, "fourchette": "5-7 m (incohérence interne relevée dans la source, valeur actuelle dans la moyenne)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Euoplocephalus §Description" },
+        { "champ": "hauteur_m", "actuel": 1.5, "fourchette": "non chiffrée précisément", "propose": null, "ecart_pct": 0, "action": "garder", "source": "non vérifiable précisément, valeur gardée par prudence" },
+        { "champ": "poids_t", "actuel": 2.2, "fourchette": "~2 t", "propose": null, "ecart_pct": 10, "action": "garder", "source": "Grokipedia Euoplocephalus §Description : écart limite, valeur actuelle proche de l'estimation, gardée" }
+      ],
+      "lieu": { "region_actuel": "Canada", "region_propose": "Alberta, Canada", "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Euoplocephalus §Habitat and formation : Dinosaur Park Formation + Two Medicine Formation (Alberta principalement)" },
+      "textes": [
+        { "champ": "fait", "probleme": "L'armure protège la zone AUTOUR des yeux (paupières et arcades osseuses), pas 'les yeux' eux-mêmes — nuance anatomique mineure, texte actuel reste globalement défendable pour 4 ans", "propose": null, "source": "Grokipedia Euoplocephalus §Cranial anatomy" }
+      ],
+      "notes": "Gorgosaurus et Daspletosaurus confirmés comme prédateurs cohabitants (Dinosaur Park Formation, Campanien). Texte 'même ses paupières étaient blindées' est en fait la formulation la plus exacte scientifiquement — rien à changer, verdict CONFORME.",
+      "vitesse": { "kmh_fourchette": "6-8 km/h", "kmh_retenu": 7, "confiance": "moyenne", "source": "Grokipedia Euoplocephalus §Locomotion (estimation biomécanique, comparable à Ankylosaurus)", "note": "quadrupède blindé, déplacement lent" }
+    },
+    {
+      "id": "edmontonia",
+      "verdict": "CORRIGER",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 6.6, "fourchette": "~6.6 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Edmontonia §Description" },
+        { "champ": "hauteur_m", "actuel": 1.5, "fourchette": "~2 m à l'épaule/hanche (deux mentions convergentes)", "propose": 2, "ecart_pct": 33.3, "action": "corriger", "source": "Grokipedia Edmontonia §Description : \"approximately 2 m at the shoulder/hips\" (deux occurrences)" },
+        { "champ": "poids_t", "actuel": 3, "fourchette": "~3 t", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Edmontonia §Description" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Nord", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Edmontonia §Habitat and formation : Horseshoe Canyon + Dinosaur Park Formation, Alberta, et autres formations nord-américaines" },
+      "textes": [],
+      "notes": "Gorgosaurus et Daspletosaurus confirmés comme prédateurs cohabitants. Épines d'épaule et absence de queue-massue confirmées (différence clé vs Ankylosaurus) — texte actuel exact sur ce point.",
+      "vitesse": { "kmh_fourchette": "marche lente, rien de chiffré publié", "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Edmontonia §Locomotion : \"slow walking\"", "note": "aucune fourchette km/h publiée, seulement qualifiée de lente" }
+    },
+    {
+      "id": "minmi",
+      "verdict": "CONFORME",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 3, "fourchette": "~3 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Minmi §Description" },
+        { "champ": "hauteur_m", "actuel": 0.9, "fourchette": "< 1 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Minmi §Description" },
+        { "champ": "poids_t", "actuel": 0.3, "fourchette": "~0.3 t", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Paul, Princeton Field Guide (2016), cité par Grokipedia" }
+      ],
+      "lieu": { "region_actuel": "Queensland, Australie", "region_propose": null, "continent_actuel": "Océanie", "continent_propose": null, "source": "Grokipedia Minmi §Habitat and formation : Formation de Bungil, Queensland" },
+      "textes": [],
+      "notes": "Contenu stomacal fossilisé (dernier repas) CONFIRMÉ (Molnar & Clifford 2000) — attention, Grokipedia attribue par erreur cette découverte à Kunbarrasaurus (espèce australienne proche reclassée séparément en 2015) plutôt qu'à Minmi paravertebra stricto sensu ; la fiche MaxPlay simplifie en gardant l'attribution à 'Minmi' au sens large du nom historique, ce qui reste défendable pour le niveau de la fiche mais mérite d'être signalé. Aucun prédateur nommé fiable trouvé — 'de grands chasseurs d'Australie' reste une formulation honnête et prudente.",
+      "vitesse": { "kmh_fourchette": "pas d'estimation chiffrée publiée", "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Minmi", "note": "petit ankylosaure aux pattes relativement longues pour le groupe, mais aucune fourchette de vitesse publiée" }
+    },
+    {
+      "id": "scutellosaurus",
+      "verdict": "CONFORME",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 1.2, "fourchette": "~1.2 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Scutellosaurus §Description" },
+        { "champ": "hauteur_m", "actuel": 0.4, "fourchette": "non chiffrée précisément", "propose": null, "ecart_pct": 0, "action": "garder", "source": "non vérifiable précisément, valeur plausible gardée" },
+        { "champ": "poids_t", "actuel": 0.004, "fourchette": "3-5 kg", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Scutellosaurus §Description : 4 kg dans la fourchette" }
+      ],
+      "lieu": { "region_actuel": "Arizona, États-Unis", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Scutellosaurus §Habitat and formation : Formation de Kayenta, Arizona" },
+      "textes": [],
+      "notes": "Cohabitation avec Dilophosaurus SOLIDE (même Formation de Kayenta, Jurassique précoce). 304 ostéodermes et bipédie confirmés (seul dino à armure connu ayant couru sur 2 pattes).",
+      "vitesse": { "kmh_fourchette": "pas d'estimation chiffrée publiée", "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Scutellosaurus", "note": "petit bipède léger, probablement agile, mais aucune fourchette de vitesse publiée trouvée" }
+    },
+    {
+      "id": "scelidosaurus",
+      "verdict": "CORRIGER",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 4, "fourchette": "4-5 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Scelidosaurus §Description" },
+        { "champ": "hauteur_m", "actuel": 1.2, "fourchette": "non chiffrée précisément", "propose": null, "ecart_pct": 0, "action": "garder", "source": "non vérifiable précisément, valeur plausible gardée" },
+        { "champ": "poids_t", "actuel": 0.27, "fourchette": "270-300 kg", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Scelidosaurus §Description" }
+      ],
+      "lieu": { "region_actuel": "Dorset, Angleterre", "region_propose": null, "continent_actuel": "Europe", "continent_propose": null, "source": "Grokipedia Scelidosaurus §Habitat and formation : Formation de Charmouth, Dorset" },
+      "textes": [
+        { "champ": "chasseurs", "probleme": "Dracoraptor vient de la Formation Blue Lias à Lavernock (Pays de Galles), Hettangien (~201 Ma), tandis que Scelidosaurus est du Sinémurien (~191-193 Ma) de Charmouth (Dorset) — les deux ne sont PAS contemporains ni du même site, malgré ce qu'affirme Grokipedia à un endroit", "propose": "De petits chasseurs à deux pattes rôdaient déjà dans la région à cette époque.", "source": "Grokipedia Scelidosaurus (incohérence interne relevée) + vérification stratigraphique croisée : Dracoraptor = Hettangien Pays de Galles ; Scelidosaurus = Sinémurien Dorset — pas contemporains" }
+      ],
+      "notes": "James Harrison, découverte ~1858 (\"il y a presque 170 ans\") confirmée. Aucun prédateur nommé fiable et contemporain trouvé pour Scelidosaurus dans les sources consultées (une mention de 'Dornraptor normani' non recoupée avec certitude) — la fiche doit rester volontairement vague sur ce point plutôt que de nommer un chasseur incorrect.",
+      "vitesse": { "kmh_fourchette": "< 20 km/h (estimation par analogie avec d'autres thyréophores basaux)", "kmh_retenu": 15, "confiance": "basse", "source": "estimation par analogie, aucune étude biomécanique dédiée trouvée pour Scelidosaurus", "note": "quadrupède/bipède facultatif basal, vitesse non étudiée directement" }
+    },
+    {
+      "id": "stegosaurus",
+      "verdict": "CONFORME",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 9, "fourchette": "7-9 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Stegosaurus §Description" },
+        { "champ": "hauteur_m", "actuel": 2.8, "fourchette": "~2.75 m aux hanches", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Stegosaurus §Description" },
+        { "champ": "poids_t", "actuel": 4, "fourchette": "3-5 t", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Stegosaurus §Description" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Nord, Europe", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Stegosaurus §Habitat and formation : Morrison Formation (USA) + gisements portugais (Lourinhã Formation)" },
+      "textes": [],
+      "notes": "Allosaurus confirmé comme prédateur avec preuves croisées (morsures sur ossements de Stegosaurus + blessure sur thagomizer suggérant un combat). Cerveau taille d'une noix (~80 cm³) et 4 pics caudaux confirmés.",
+      "vitesse": { "kmh_fourchette": "6-8 km/h", "kmh_retenu": 7, "confiance": "moyenne", "source": "Grokipedia Stegosaurus §Locomotion (estimation biomécanique)", "note": "quadrupède massif, déplacement modéré" }
+    },
+    {
+      "id": "kentrosaurus",
+      "verdict": "CORRIGER",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 4.5, "fourchette": "4.5-5 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Kentrosaurus §Description" },
+        { "champ": "hauteur_m", "actuel": 1.5, "fourchette": "~1.8 m", "propose": 1.8, "ecart_pct": 20, "action": "corriger", "source": "Grokipedia Kentrosaurus §Description" },
+        { "champ": "poids_t", "actuel": 1, "fourchette": "1-1.5 t", "propose": 1.2, "ecart_pct": 20, "action": "corriger", "source": "Grokipedia Kentrosaurus §Description" }
+      ],
+      "lieu": { "region_actuel": "Afrique (Tanzanie)", "region_propose": null, "continent_actuel": "Afrique", "continent_propose": null, "source": "Grokipedia Kentrosaurus §Habitat and formation : Formation de Tendaguru, Tanzanie" },
+      "textes": [],
+      "notes": "Prédateurs cohabitants confirmés : Veterupristisaurus et Ostafrikasaurus (Tendaguru, Jurassique supérieur) — la fiche garde volontairement la formulation générique 'carnivores africains' pour l'audio enfant, ce qui reste honnête. 'Cousin africain du Stégosaure' confirmé (même famille Stegosauridae).",
+      "vitesse": { "kmh_fourchette": "5-10 km/h", "kmh_retenu": 7, "confiance": "basse", "source": "Grokipedia Kentrosaurus (estimation par analogie avec Stegosaurus)", "note": "fourchette large, estimation par comparaison au genre proche" }
+    },
+    {
+      "id": "triceratops",
+      "verdict": "CORRIGER",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 9, "fourchette": "7.4-9 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Triceratops §Description" },
+        { "champ": "hauteur_m", "actuel": 3, "fourchette": "~3 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Triceratops §Description" },
+        { "champ": "poids_t", "actuel": 9, "fourchette": "6-8 t (intro) à 6-12 t (§masse, estimations variées)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Triceratops §Description et §Body mass estimates" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Nord", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Triceratops §Habitat and formation : Hell Creek + Lance Formation" },
+      "textes": [
+        { "champ": "fait", "probleme": "Ce sont des marques de DENTS de T-Rex retrouvées sur des os de Tricératops (présentes sur plus de 80% des spécimens étudiés) — pas des marques de cornes de Tricératops sur des os de T-Rex comme la formulation actuelle le laisse entendre", "propose": "Ses cornes faisaient plus d'un mètre de long ! Et des os de Tricératops portent encore aujourd'hui les marques de dents du T-Rex — ils se battaient vraiment !", "source": "Grokipedia Triceratops §Predation and interactions with Tyrannosaurus" }
+      ],
+      "notes": "T-Rex prédateur et cohabitant confirmé (Hell Creek/Lance, Maastrichtien). Longueur des cornes frontales : jusqu'à 1,2 m selon Grokipedia, reformulation 'plus d'un mètre' plus juste que '1 mètre' pile.",
+      "vitesse": { "kmh_fourchette": "pas de fourchette chiffrée trouvée sur Grokipedia ni Wikipedia EN", "kmh_retenu": null, "confiance": "basse", "source": "recherche Grokipedia Triceratops + Wikipedia EN, aucune section vitesse/locomotion chiffrée trouvée", "note": "quadrupède massif de 6-9 t, probablement lent, mais aucune étude de vitesse publiée identifiée" }
+    },
+    {
+      "id": "torosaurus",
+      "verdict": "CONFORME",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 8, "fourchette": "7-8 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Torosaurus §Description" },
+        { "champ": "hauteur_m", "actuel": 3, "fourchette": "non chiffrée précisément (par analogie avec Triceratops)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "non vérifiable directement, analogie avec Triceratops jugée raisonnable" },
+        { "champ": "poids_t", "actuel": 8, "fourchette": "6-12 t", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Torosaurus §Description" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Nord", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Torosaurus §Habitat and formation : Hell Creek + Lance Formation, comme Triceratops" },
+      "textes": [],
+      "notes": "DÉBAT SCIENTIFIQUE : Scannella & Horner (2010) ont proposé que Torosaurus soit en réalité la forme adulte mature de Triceratops (synonymie), pas un genre distinct. Contre-argument solide de Farke (2011, analyse multi-paramètres) qui conteste cette synonymie. Grokipedia conclut : \"most cladistic treatments uphold Torosaurus as a distinct genus\" — recommandation : garder Torosaurus comme espèce distincte dans la fiche (position majoritaire actuelle), mais l'orchestrateur HO-010 peut juger utile d'ajouter une phrase pédagogique sur ce débat scientifique réel (les scientifiques ne sont pas toujours d'accord, et c'est normal). Collerette à fenêtres et plus grand crâne des animaux terrestres confirmés (crâne > 2,6 m).",
+      "vitesse": { "kmh_fourchette": "pas de fourchette chiffrée trouvée ; Grokipedia note un appareil locomoteur adapté au \"weight support and slow locomotion\"", "kmh_retenu": null, "confiance": "basse", "source": "Grokipedia Torosaurus §Postcranial anatomy", "note": "qualifié de lent, aucun chiffre km/h publié" }
+    },
+    {
+      "id": "protoceratops",
+      "verdict": "CORRIGER",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 1.9, "fourchette": "2-2.5 m", "propose": 2.2, "ecart_pct": 15.8, "action": "corriger", "source": "Grokipedia Protoceratops §Description" },
+        { "champ": "hauteur_m", "actuel": 0.6, "fourchette": "~0.75 m à la hanche", "propose": 0.75, "ecart_pct": 25, "action": "corriger", "source": "Grokipedia Protoceratops §Description (convention bipède/quadrupède facultatif = hanche)" },
+        { "champ": "poids_t", "actuel": 0.08, "fourchette": "59-98 kg", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Protoceratops §Description : 80 kg dans la fourchette" }
+      ],
+      "lieu": { "region_actuel": "Asie (Mongolie)", "region_propose": null, "continent_actuel": "Asie", "continent_propose": null, "source": "Grokipedia Protoceratops §Habitat and formation : Formation de Djadokhta, désert de Gobi, Mongolie" },
+      "textes": [],
+      "notes": "Fossile 'Fighting Dinosaurs' (Vélociraptor vs Protoceratops, ensevelis ensemble) CONFIRMÉ et bien documenté — texte actuel exact. Formation de Djadokhta cohérente avec Vélociraptor comme prédateur/rival.",
+      "vitesse": { "kmh_fourchette": "trot maximal ~25 km/h, marche 3-8 km/h", "kmh_retenu": 25, "confiance": "moyenne", "source": "Grokipedia Protoceratops §Locomotion : \"maximum trotting speed of approximately 25 km/h, with typical walking speeds of 3-8 km/h\" (estimation par mise à l'échelle allométrique des membres)", "note": null }
+    },
+    {
+      "id": "pentaceratops",
+      "verdict": "CORRIGER",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 6, "fourchette": "5.5-6 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Pentaceratops §Description" },
+        { "champ": "hauteur_m", "actuel": 2, "fourchette": "non chiffrée précisément", "propose": null, "ecart_pct": 0, "action": "garder", "source": "non vérifiable précisément, valeur plausible gardée" },
+        { "champ": "poids_t", "actuel": 5, "fourchette": "5-6 t (une section) vs 2.5-5 t (autre section, contradiction interne à Grokipedia)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Pentaceratops §Description ; contradiction interne relevée entre deux sections, valeur actuelle en limite haute de la fourchette basse et basse de la fourchette haute, gardée par prudence" }
+      ],
+      "lieu": { "region_actuel": "États-Unis", "region_propose": "États-Unis (bassin de San Juan, Nouveau-Mexique)", "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Pentaceratops §Habitat and formation : Formation de Kirtland, bassin de San Juan, Nouveau-Mexique" },
+      "textes": [
+        { "champ": "fait", "probleme": "Le crâne (avec collerette) dépasse 3 mètres selon Grokipedia, pas 'plus de 2 mètres' — la fiche sous-estime la taille réelle du record", "propose": "Sa tête (avec la collerette) mesurait plus de 3 mètres : bien plus grande qu'un Papa debout ! Une des plus grandes têtes du monde animal.", "source": "Grokipedia Pentaceratops §Cranial anatomy" }
+      ],
+      "notes": "Bistahieversor confirmé comme prédateur cohabitant (Formation de Kirtland, Crétacé supérieur, Nouveau-Mexique).",
+      "vitesse": { "kmh_fourchette": "jusqu'à 25 km/h", "kmh_retenu": 25, "confiance": "moyenne", "source": "Grokipedia Pentaceratops §Locomotion : \"moderate speeds of up to 25 km/h, comparable to the maximum speeds of large modern herbivores like rhinoceroses\"", "note": null }
+    },
+    {
+      "id": "centrosaurus",
+      "verdict": "CORRIGER",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 5.5, "fourchette": "~5.5 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Centrosaurus §Description" },
+        { "champ": "hauteur_m", "actuel": 1.8, "fourchette": "non chiffrée précisément", "propose": null, "ecart_pct": 0, "action": "garder", "source": "non vérifiable précisément, valeur plausible gardée" },
+        { "champ": "poids_t", "actuel": 2.5, "fourchette": "1.4-2 t", "propose": 1.8, "ecart_pct": 28, "action": "corriger", "source": "Grokipedia Centrosaurus §Description" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Nord (Canada)", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Centrosaurus §Habitat and formation : Dinosaur Provincial Park, Alberta" },
+      "textes": [],
+      "notes": "Bonebed géant du site Hilda (Alberta) confirmé : des milliers de Centrosaurus retrouvés ensemble, probablement noyés lors d'une traversée de rivière en troupeau migrateur. Gorgosaurus confirmé comme prédateur cohabitant.",
+      "vitesse": { "kmh_fourchette": "~25 km/h en pointe courte", "kmh_retenu": 25, "confiance": "moyenne", "source": "Grokipedia Centrosaurus §Locomotion : \"top speed of around 25 km/h during short bursts\"", "note": null }
+    },
+    {
+      "id": "pachycephalosaurus",
+      "verdict": "CONFORME",
+      "mesures": [
+        { "champ": "taille_m", "actuel": 4.5, "fourchette": "4-5 m", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Pachycephalosaurus §Description" },
+        { "champ": "hauteur_m", "actuel": 1.5, "fourchette": "non chiffrée précisément (bipède, convention fiche = hanche)", "propose": null, "ecart_pct": 0, "action": "garder", "source": "non vérifiable précisément, valeur plausible gardée" },
+        { "champ": "poids_t", "actuel": 0.45, "fourchette": "0.3-0.45 t", "propose": null, "ecart_pct": 0, "action": "garder", "source": "Grokipedia Pachycephalosaurus §Description" }
+      ],
+      "lieu": { "region_actuel": "Amérique du Nord", "region_propose": null, "continent_actuel": "Amérique du Nord", "continent_propose": null, "source": "Grokipedia Pachycephalosaurus §Habitat and formation : Hell Creek, Lance et formations associées, Crétacé terminal" },
+      "textes": [
+        { "champ": "fait", "probleme": "Le combat par coups de tête frontaux 'comme les béliers' est une hypothèse CONTESTÉE (Goodwin & Horner 2004 jugent l'usage en combat frontal peu concluant biomécaniquement ; d'autres études soutiennent des coups sur les flancs plutôt que frontaux), pas un fait établi", "propose": "Son crâne mesurait 25 cm d'épaisseur — presque autant que ta tête entière ! Les scientifiques pensent qu'il se battait peut-être en donnant des coups de tête, comme les béliers d'aujourd'hui.", "source": "Grokipedia Pachycephalosaurus §Behavior and function of the dome : débat Goodwin & Horner 2004 vs études biomécaniques plus récentes" }
+      ],
+      "notes": "Épaisseur du crâne 22-25 cm confirmée (en limite haute de la fourchette réelle, gardée CONFORME). T-Rex comme prédateur plausible confirmé par cohabitation chronologique/géographique (Hell Creek/Lance).",
+      "vitesse": { "kmh_fourchette": "pas de fourchette chiffrée trouvée sur Grokipedia ni Wikipedia EN", "kmh_retenu": null, "confiance": "basse", "source": "recherche Grokipedia Pachycephalosaurus + Wikipedia EN, aucune vitesse chiffrée trouvée (texte évoque un \"agile, browsing lifestyle\" sans chiffre)", "note": "bipède aux hanches robustes, probablement agile, mais aucune étude de vitesse chiffrée publiée identifiée" }
+    }
+  ]
+}

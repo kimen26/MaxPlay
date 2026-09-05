@@ -16,7 +16,13 @@
 - **Silence de tête des fiches narrées = ~80 ms, voulu** (2026-09-04, Papa Yann) — la règle « padding 250 ms » de `.claude/rules/sons.md` vise les MP3 courts (répliques, SFX) dont l'attaque se coupe sur mobile ; les fiches et récits dino gardent leur silence court. `audio-verif` sur du dino : `--min-silence-ms 50`, ne pas « corriger » les 70 fiches.
 - **NORME CLÉ D'ASSETS** (2026-07-27, gravée dans `.claude/rules/dino.md`) — la clé de liaison de tout asset = le nom latin capitalisé (`id` du dino), jamais le nom d'affichage FR.
 
+- **DEC-SCRIPTS-AUDIO-002** (2026-09-05, vague HO-009..014) — **Canon Scripts audio = 1 fichier par dino** `content/scripts-audio/<lang>/<id>.md` (FR : `fr/V3/<id>.md`), JSON régénérés, porte `_verif-scripts-audio.cjs` (échelle exécutée, greps, liste de 31 tags v3 autorisés, densité minimale, ponctuation Wex, locuteurs NARRATEUR H/WEX seuls, ≤ 1900 car.). Doctrine tags = brief HO-011 § Doctrine tags. Anciens lots archivés `fr/V3/_archive-2026-09-05-lots/`.
+- **DEC-VITESSE-001** (2026-09-05, demande Papa Yann « la vitesse m'intéresse ») — champ optionnel `vitesse_kmh` dans `dinos-data.js` (25 dinos, seulement quand une estimation sérieuse est publiée, source dans `rapports/HO-009-lot-*.json`), fonction `_compVitesse` (repères enfant, ±10 %), dite dans le Script audio en estimation (« les savants pensent que »). **Affichage UI de la vitesse en fiche : non tranché** (question ouverte ci-dessous).
+- **DEC-AUDIO-I18N-002** (2026-09-05) — audio des Fiches dino non-FR = pipeline `_gen-audio-i18n-sts.mjs` : par réplique, TTS voix native Voice Library (en Liam · es-es Gabriel Blanco · pt-br Kallil Paiva) → speech-to-speech vers narrateur_h ou wex → concat 300 ms + loudnorm ; ledger `i18n/fiches-audio/<lang>.json`. Le bouton audio de la fiche est gaté par le manifest de la langue (`dinoHasAudio`). Coût constaté ≈ 2× le FR.
+
 ## Questions ouvertes (non tranchées)
+
+- **Vitesse en UI ?** (2026-09-05) — `vitesse_kmh` existe en data et dans l'audio ; faut-il l'afficher sur la fiche (ligne « Vitesse : 20 km/h — aussi vite que Papa qui court ») ? Décision Papa Yann.
 
 - **Macro-périodes / Ères** (2026-09-03, demande PY) — ajouter un niveau « Mésozoïque » au-dessus des 5 `DINO_PERIODES` ? Touche une ligne FIGÉE (UI 5 onglets / `buildMenuEpoque`) → alerte rouge si on passe à l'acte sans validation PY explicite. Détail : `TODO.md`.
 - **Challenge taxo transmis à PY** (2026-09-03) — Pachycéphalosaure rangé Cératopsiens (vrai groupe = Marginocéphales) · Gallimimus/Oviraptor rangés Dromæosaures (Ornithomimidé/Oviraptoridé). Détail : `TODO.md`.

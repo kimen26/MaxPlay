@@ -67,6 +67,31 @@ function scan(kind, ref, got) {
 }
 scan('dinos', corpus.dinos, trad.dinos || {});
 scan('familles', corpus.familles, trad.familles || {});
+if (corpus.racines) scan('racines', corpus.racines, trad.racines || {});
+if (corpus.periodes) scan('periodes', corpus.periodes, trad.periodes || {});
+if (corpus.categories) scan('categories', corpus.categories, trad.categories || {});
+
+// Pangee et Extinction : objets UNIQUES (pas des collections id -> fiche), donc pas
+// passes a scan() (qui attend {id: {champ: valeur}}). On les adapte a la meme forme :
+// une seule "entree" nommee d'apres la zone, ses sous-listes deja indexees par periode/id.
+function scanUnique(kind, ref, got) {
+  if (!ref) return;
+  scan(kind, { [kind]: ref }, { [kind]: got || {} });
+}
+if (corpus.pangee) {
+  const { etapes: refEtapes, ...refRest } = corpus.pangee;
+  const gotPangee = trad.pangee || {};
+  const { etapes: gotEtapes, ...gotRest } = gotPangee;
+  scanUnique('pangee', refRest, gotRest);
+  if (refEtapes) scan('pangee.etapes', refEtapes, gotEtapes || {});
+}
+if (corpus.extinction) {
+  const { hypotheses: refHyp, ...refRest } = corpus.extinction;
+  const gotExtinction = trad.extinction || {};
+  const { hypotheses: gotHyp, ...gotRest } = gotExtinction;
+  scanUnique('extinction', refRest, gotRest);
+  if (refHyp) scan('extinction.hypotheses', refHyp, gotHyp || {});
+}
 
 // Mots francais laisses tels quels : signal fort de traduction incomplete.
 const FR_MARQUEURS = /\b(dinosaure|lezard|griffes|plumes|aussi long que|il vivait|c'est|qui court)\b/i;

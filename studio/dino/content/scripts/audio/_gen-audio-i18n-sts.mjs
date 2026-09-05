@@ -35,7 +35,13 @@ const FORCE = process.argv.includes('--force');
 const LANG = arg('lang', '');
 const IDS = arg('ids', '').split(',').filter(Boolean);
 const BLOCS = arg('blocs', 'nom,taille,regime,funfact').split(',').filter(Boolean);
-if (!LANG || !IDS.length) { console.error('Usage : --lang=<en|es-es|pt-br> --ids=a,b,c [--blocs=..] [--pour-de-vrai] [--force]'); process.exit(2); }
+// Mode HORS FICHES (2026-09-05, HO-018/019) : --hors-fiche[=slug1,slug2] lit les payloads produits par
+// _md2json-hors-fiche.cjs (content/i18n/<lang>/scripts-hors-fiche/json/_seg-<slug>.json) et écrit
+// site/audio/dinos/<lang>/<slug>.mp3 en miroir exact des fichiers FR (menu-*, recit-*, special-*, dico-*, periodes/*).
+// Sans liste = tous les clips. Pas de recap dans ce mode.
+const HORS_FICHE = process.argv.some(x => x === '--hors-fiche' || x.startsWith('--hors-fiche='));
+const SLUGS = arg('hors-fiche', '').split(',').filter(Boolean);
+if (!LANG || (!IDS.length && !HORS_FICHE)) { console.error('Usage : --lang=<en|es-es|pt-br> (--ids=a,b,c [--blocs=..] | --hors-fiche[=slug,..]) [--pour-de-vrai] [--force]'); process.exit(2); }
 
 // Voix sources natives (Voice Library, 0 slot) — arbitrages PY 2026-08-11 (journal audio-direction-elevenlabs).
 const LANGUES = {
@@ -48,10 +54,12 @@ const LANGUES = {
 const cfg = LANGUES[LANG];
 if (!cfg) { console.error(`Langue inconnue : ${LANG} (connues : ${Object.keys(LANGUES).join(', ')})`); process.exit(2); }
 
-const SRC = path.join(RACINE, 'studio', 'dino', 'content', 'scripts-audio', LANG, 'json');
+const SRC = HORS_FICHE
+  ? path.join(RACINE, 'studio', 'dino', 'content', 'i18n', LANG, 'scripts-hors-fiche', 'json')
+  : path.join(RACINE, 'studio', 'dino', 'content', 'scripts-audio', LANG, 'json');
 const OUT = path.join(RACINE, 'site', 'audio', 'dinos', LANG);
 const LEDGER_DIR = path.join(RACINE, 'studio', 'dino', 'content', 'i18n', 'fiches-audio');
-const LEDGER = path.join(LEDGER_DIR, `${LANG}.json`);
+const LEDGER = path.join(LEDGER_DIR, HORS_FICHE ? `${LANG}-hors-fiche.json` : `${LANG}.json`);
 const TMP = path.join(os.tmpdir(), `maxplay-sts-${LANG}`);
 const GAP_MS = 300;
 const PAUSE_MS = 1000;
@@ -135,7 +143,23 @@ fs.mkdirSync(LEDGER_DIR, { recursive: true });
 const ledger = fs.existsSync(LEDGER) ? lireJson(LEDGER) : {};
 const travaux = [];
 let caracteres = 0;
-for (const id of IDS) {
+if (HORS_FICHE) {
+  const fichiers = fs.readdirSync(SRC).filter(f => /^_seg-.*\.json$/.test(f))
+    .map(f => f.replace(/^_seg-/, '').replace(/\.json$/, '').replace(/__/g, '/'))
+    .filter(slug => !SLUGS.length || SLUGS.includes(slug));
+  for (const slug of fichiers) {
+    const payload = lireJson(path.join(SRC, `_seg-${slug.replace(/\//g, '__')}.json`));
+    const texte = payload.inputs.map(i => i.text).join('\n');
+    const emp = empreinte(texte);
+    const dest = path.join(OUT, ...slug.split('/')) + '.mp3';
+    if (!FORCE && ledger[slug] && ledger[slug].empreinte === emp && fs.existsSync(dest)) { console.log(`skip ${slug} (ledger, empreinte identique)`); continue; }
+    payload.inputs.forEach(i => roleOuStop(i.voice_id));
+    fs.mkdirSync(path.dirname(dest), { recursive: true });
+    travaux.push({ id: slug, bloc: '', cle: slug, payload, emp, dest });
+    caracteres += texte.length;
+  }
+}
+for (const id of (HORS_FICHE ? [] : IDS)) {
   for (const bloc of BLOCS) {
     const j = path.join(SRC, `_seg-${id}-${bloc}.json`);
     if (!fs.existsSync(j)) { console.log(`KO   ${id}-${bloc} : JSON absent (${path.relative(RACINE, j)})`); continue; }
@@ -184,7 +208,7 @@ for (const t of travaux) {
 
 // ── recaps (0 coût) ─────────────────────────────────────────────────────────
 let recaps = 0;
-for (const id of IDS) {
+for (const id of (HORS_FICHE ? [] : IDS)) {
   const blocs = ['nom', 'taille', 'regime', 'funfact'].map(b => path.join(OUT, `${id}-${b}.mp3`));
   if (!blocs.every(f => fs.existsSync(f))) { console.log(`RECAP ${id} SKIP (blocs manquants)`); continue; }
   concatLoudnorm(blocs, path.join(OUT, `${id}-recap.mp3`), false);

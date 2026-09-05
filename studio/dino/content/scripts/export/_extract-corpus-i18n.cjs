@@ -1,10 +1,12 @@
-// Extrait le corpus TEXTE a traduire depuis le canon FR (site/js/dinos-data.js).
+// Extrait le corpus TEXTE a traduire depuis le canon FR (site/js/dinos-data.js + dinos-racines.js).
 // Sortie : studio/dino/content/i18n/_corpus/corpus-fr.json (+ un fichier par lot).
 // Les champs NEUTRES (mesures, ids, images, couleurs) ne sortent jamais : ils ne se traduisent pas.
 const fs = require('fs'), path = require('path');
 const ROOT = path.resolve(__dirname, '../../../../..');
 const src = fs.readFileSync(path.join(ROOT, 'site/js/dinos-data.js'), 'utf8');
 eval(src.replace(/^const /gm, 'global.'));
+const racinesSrc = fs.readFileSync(path.join(ROOT, 'site/js/dinos-racines.js'), 'utf8');
+eval(racinesSrc.replace(/^const /gm, 'global._RACINES_'));
 
 // Champs TEXTE des fiches dino (tout le reste est neutre et reste FR).
 const CHAMPS_DINO = ['name', 'full', 'epoque', 'region', 'comp_taille', 'comp_hauteur',
@@ -26,7 +28,7 @@ global.DINO_FAMILLES.forEach(f => {
 });
 
 // Periodes et regimes : petites collections, mais visibles partout (fiche, menus).
-const CHAMPS_PERIODE = ['label', 'desc'];
+const CHAMPS_PERIODE = ['label', 'desc', 'range'];
 const CHAMPS_CATEGORIE = ['label'];
 const periodes = {};
 (global.DINO_PERIODES || []).forEach(p => {
@@ -41,9 +43,39 @@ const categories = {};
   categories[c.id] = o;
 });
 
-const out = { _meta: { source: 'site/js/dinos-data.js', genere: new Date().toISOString().slice(0, 10),
-  nb_dinos: Object.keys(dinos).length, nb_familles: Object.keys(familles).length },
-  familles, periodes, categories, dinos };
+// Racines du dico (sens des racines grecques/latines + noms propres) : site/js/dinos-racines.js.
+const racines = {};
+(global._RACINES_DINO_RACINES.racines || []).forEach(r => {
+  if (typeof r.sens === 'string' && r.sens.trim()) racines[r.cle] = { sens: r.sens };
+});
+
+// Pangee et Extinction : objets uniques (pas des collections par id), sortis a plat +
+// leurs sous-listes indexees par periode/id (memes cles que la fusion dinos-i18n.js).
+const CHAMPS_PANGEE = ['titre', 'soustitre', 'intro', 'credit', 'fun_fact', 'pourquoi'];
+const CHAMPS_PANGEE_ETAPE = ['label', 'ma', 'titre', 'texte'];
+const pangee = {};
+CHAMPS_PANGEE.forEach(k => { if (typeof global.PANGEE[k] === 'string' && global.PANGEE[k].trim()) pangee[k] = global.PANGEE[k]; });
+pangee.etapes = {};
+(global.PANGEE.etapes || []).forEach(e => {
+  const o = {};
+  CHAMPS_PANGEE_ETAPE.forEach(k => { if (typeof e[k] === 'string' && e[k].trim()) o[k] = e[k]; });
+  pangee.etapes[e.periode] = o;
+});
+
+const CHAMPS_EXTINCTION = ['titre', 'soustitre', 'fun_fact'];
+const CHAMPS_EXTINCTION_HYPOTHESE = ['titre', 'texte', 'label_certitude'];
+const extinction = {};
+CHAMPS_EXTINCTION.forEach(k => { if (typeof global.EXTINCTION[k] === 'string' && global.EXTINCTION[k].trim()) extinction[k] = global.EXTINCTION[k]; });
+extinction.hypotheses = {};
+(global.EXTINCTION.hypotheses || []).forEach(h => {
+  const o = {};
+  CHAMPS_EXTINCTION_HYPOTHESE.forEach(k => { if (typeof h[k] === 'string' && h[k].trim()) o[k] = h[k]; });
+  extinction.hypotheses[h.id] = o;
+});
+
+const out = { _meta: { source: 'site/js/dinos-data.js + site/js/dinos-racines.js', genere: new Date().toISOString().slice(0, 10),
+  nb_dinos: Object.keys(dinos).length, nb_familles: Object.keys(familles).length, nb_racines: Object.keys(racines).length },
+  familles, periodes, categories, dinos, racines, pangee, extinction };
 
 const dir = path.join(ROOT, 'studio/dino/content/i18n/_corpus');
 fs.mkdirSync(dir, { recursive: true });
@@ -63,4 +95,4 @@ for (let i = 0; i < ids.length; i += TAILLE_LOT) {
 let chars = 0;
 Object.values(dinos).forEach(d => Object.values(d).forEach(v => chars += v.length));
 Object.values(familles).forEach(f => Object.values(f).forEach(v => chars += v.length));
-console.log(`corpus-fr.json : ${Object.keys(dinos).length} dinos, ${Object.keys(familles).length} familles, ${nbLots} lots, ${chars} caracteres`);
+console.log(`corpus-fr.json : ${Object.keys(dinos).length} dinos, ${Object.keys(familles).length} familles, ${Object.keys(racines).length} racines, ${nbLots} lots, ${chars} caracteres`);

@@ -1,0 +1,18 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious][softly] Sixty-six million years ago, something huge, huge, huge happened. [pauses] The big dinosaurs disappeared. All of them. Why? [curious] Scientists found the answer: a GIANT meteorite, as big as a mountain, came crashing down from the sky. [pauses] Boom! Right into Mexico."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Boom? How big was it?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly][confident] As big as an entire MOUNTAIN! [pauses] But listen: this happened a very, very long time ago, [curious] way before you, way before your great-great-grandparents. [amazed] And you know what? Life has always found a way to carry on."
+    }
+  ]
+}

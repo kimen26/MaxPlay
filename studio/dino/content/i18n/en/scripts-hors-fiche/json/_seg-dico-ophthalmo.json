@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] *ophthalmo-*, in Greek that means eye."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[happily] Ophthalmosaurus. Huge eyes, as big as dinner plates, built to see in the dark of the sea."
+    }
+  ]
+}

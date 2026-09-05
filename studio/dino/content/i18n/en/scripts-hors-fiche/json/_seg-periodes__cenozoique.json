@@ -1,0 +1,10 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] The Cenozoic. [curious] After the dinosaurs: [pauses] the age of the mammals."
+    }
+  ]
+}

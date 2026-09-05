@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] *-saure* or *-saurus*, [pauses] in Greek that means lizard — it's the same word!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Like Brachiosaurus and Tyrannosaurus? Same word, two ways to spell it."
+    }
+  ]
+}

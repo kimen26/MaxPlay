@@ -1,0 +1,70 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Ready to travel back in time, Wex? [pauses] Let's start [excited] at the very beginning..."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Before the dinosaurs?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[chuckles] Oh yes! [happily] Way, way before! [serious] Right at the start, almost four billion years ago. [pauses] The Earth is hot and empty. [serious] No animals. No plants. Nothing at all."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Wow. Incredible."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[curious][pauses] Then, in the water, [softly] a tiny, [happily] a teeny-tiny bacteria appears."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[playful][excited] And then what?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Then? [quickly] Algae, [gasps] little fish, [excited] then worms, coral, jellyfish, tiny shelled creatures."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] And all that only lives in the water?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Yes! [serious] There's still no life on dry land at all. [excited] Then one animal crawls out of the water: a big lizard with four legs."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] What about plants? Do they come out of the water too?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Yes, around the same time! [softly] Simple little mosses, then ferns. They grow on dry land, [happily] and it turns green. [gasps] So the four-legged animals have something to eat, [excited] and they move in!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious][excited] But were there carnivores?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Of course! [pauses] In the water, big fish ate little fish. [excited] And on land, big lizards ate little insects. [serious] There have always been carnivores and herbivores."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] What comes next?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Next, we jump forward in time. [excited] Millions of years go by. [gasps] And then… [chuckles] want to hear what happens next?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited][playful] Yes."
+    }
+  ]
+}

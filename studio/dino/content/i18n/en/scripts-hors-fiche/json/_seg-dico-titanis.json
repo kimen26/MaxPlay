@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] *Titanis*, in Greek that comes from the Titans — [amazed] giants from old Greek myths, just like *-titan*."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Titanis. The terror bird. A giant bird that ran faster than a horse, and never once flew."
+    }
+  ]
+}

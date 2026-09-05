@@ -1,0 +1,18 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] A long, long time ago, [pauses] even before the dinosaurs, [curious] the Earth looked like one giant puzzle! [amazed] All the continents were stuck together in one huge piece — Africa, America, Europe, all of it! [happily] We call that Pangea."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Stuck together? All in one piece?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactly! [amazed] You could walk from Africa all the way to America — no boat needed! [excited] One giant continent, like a HUGE raft floating in the ocean. [pauses] And everywhere, it was very, very hot and very, very dry."
+    }
+  ]
+}

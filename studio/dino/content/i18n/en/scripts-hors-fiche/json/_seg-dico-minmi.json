@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] [pauses] *Minmi*, that's not a Greek word — [amazed] it's Minmi Crossing, a place in Australia where its bones were found."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Minmi. A small armored dino with plates, discovered way down in Australia."
+    }
+  ]
+}

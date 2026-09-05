@@ -1,0 +1,18 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] And you know the craziest part? [pauses] The continents are STILL moving today! [amazed] Right now, this very moment, Africa and Europe are slowly drifting apart. [softly] Canada and France are inching away from each other. [pauses] But it's so, so slow, you'd never notice."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] It's moving right NOW? Under my feet?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Yes! [pauses] This very moment! [softly] But only about as fast as your fingernails grow — so slow you can't feel a thing! [amazed] Wait a hundred years, and the continents will have moved about the length of your hand. Tiny, tiny! [pauses] But over millions of years, that adds up to thousands of miles! [happily] The Earth is alive — it moves, slowly, forever."
+    }
+  ]
+}

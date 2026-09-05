@@ -1,0 +1,18 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Picture the Earth: it's very cold, very dark, very empty. [pauses] The big dinosaurs, the giants, they needed A LOT, A LOT of plants. [softly] But plants stop growing in the dark and the cold. Nothing left to eat for the giants. [pauses] So the big dinosaurs, slowly… fade away."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[softly] Oh… they don't come back after?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly] Yes, [confident] they fade away. [pauses] But listen closely — because what happens next is BEAUTIFUL."
+    }
+  ]
+}

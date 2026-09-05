@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] [pauses] *-us*, that's the Latin ending for scientific names. [calm] It doesn't mean anything special — it's just Latin grammar."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Like Quetzalcoatlus, Diplodocus, Tyrannosaurus. That *-us* at the end is just Latin."
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited][playful] Here we are in the [serious] Ice Age! [happily] Later on, the cold comes back. [serious] Really cold. [gasps] The continents get covered in ice for millions of years."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Does it snow everywhere?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful][happily] A lot! [excited] Ice spreads across Europe and North America. [softly] Animals adapt: thick fur, fat under the skin."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Which animals?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] The woolly mammoth, [quickly] a cousin of the elephant with fur down to its feet! [happily] The saber-tooth cat. Wolves. Cave bears."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Are there humans?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily][excited] Yes! [gasps] About two and a half million years ago, in Africa, the first humans appear. [playful] They walk upright, and they eat everything: plants, fruit, seeds, meat. [softly] They're hunter-gatherers."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Like us?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful][happily] Not quite! [excited] About three hundred thousand years ago, Homo sapiens arrives. [gasps] That's our direct ancestor: humans just like us today."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] What happens next?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited][quickly] Humans get really clever. [happily] They light fires, they talk, they make sharp tools. [softly] They hunt big animals and shelter from the cold."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Are they the kings?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily][excited] The kings of the planet! [gasps] The ultimate hunters. [quickly] They raise animals, grow crops, build villages, towns, roads, bridges, boats."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] More?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited][quickly] Even more! [gasps] They invent electricity, the steam engine, the motor. [happily] The car, the train, the telephone."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Whoa."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited][quickly] And they fly! [happily] In hot-air balloons, in planes, in rockets. [softly] Humans learn to master animals, nature, and the forces of physics."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited][curious] What else?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly] We're almost caught up to today. [happily] Ready to find out [pauses] how we know all this?"
+    }
+  ]
+}

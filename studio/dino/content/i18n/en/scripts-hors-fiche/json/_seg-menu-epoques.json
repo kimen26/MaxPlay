@@ -1,0 +1,10 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Dinosaurs didn't all live at the same time! [curious] We sort them by time period, [pauses] from the oldest all the way to today."
+    }
+  ]
+}

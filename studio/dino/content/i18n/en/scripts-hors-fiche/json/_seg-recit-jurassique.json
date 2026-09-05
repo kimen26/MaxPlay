@@ -1,0 +1,58 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited][playful] Here we are in the [serious] Jurassic! [happily] One hundred fifty million years ago. [chuckles] Its name comes from the Jura Mountains, between France and Switzerland."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Is that close by?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[chuckles] Not far! [excited] Pangea splits in two: north and south. [gasps] An ocean opens right in the middle! It's hot and humid."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Wasn't there already water everywhere?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[chuckles] All around, yes! [happily] But not down the middle. [excited] Huge fern forests grow everywhere."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Do the dinosaurs eat that?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily][chuckles] Oh yes! [quickly] So much food that the plant-eaters get [amazed] ENORMOUS! Diplodocus! Brachiosaurus!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] What about the meat-eaters?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Yes, it's all connected! [softly] The carnivores grow bigger too. [happily] Allosaurus, Ceratosaurus. [gasps] And there were fish-eaters too: in the sky, Pteranodon, a flying reptile! [excited] And in the seas, Plesiosaurus, with a long, long neck!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Whoa."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited][curious] What else?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited][quickly] Millions more years go by. [playful] Then, [pauses] the continents drift even farther apart. [gasps] So much happens. [playful] Want to hear what?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited][playful] Yes."
+    }
+  ]
+}

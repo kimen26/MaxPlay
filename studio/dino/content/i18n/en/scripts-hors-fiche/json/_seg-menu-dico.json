@@ -1,0 +1,10 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[curious] Dino names are made of little science words! [happily] Tap a word [pauses] to hear it."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] *Mosa-*, that's the Meuse, [pauses] a river in Europe. This name comes from Latin."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[happily] Mosasaurus. The lizard of the Meuse, found near that very river in Europe."
+    }
+  ]
+}

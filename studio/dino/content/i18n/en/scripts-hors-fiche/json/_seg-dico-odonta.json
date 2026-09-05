@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] *-odonta* or *odous*, in Greek that means tooth — it's the same word!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Coelodonta. The hollow tooth. A shaggy woolly rhino from after the dinosaurs."
+    }
+  ]
+}

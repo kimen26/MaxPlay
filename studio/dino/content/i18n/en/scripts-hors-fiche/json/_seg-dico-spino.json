@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] [pauses] *spino-*, in Latin that means spine. And *-saurus* in Greek means lizard — [amazed] two languages in one single name!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Spinosaurus. Spine in Latin, lizard in Greek. Its huge back spines gave it the name."
+    }
+  ]
+}

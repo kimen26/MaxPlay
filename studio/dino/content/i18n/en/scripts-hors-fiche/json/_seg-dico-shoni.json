@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] [pauses] *Shoni-*, that's not a Greek word — [amazed] it's the Shoshone Mountains, in Nevada, where its bones were found."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[happily] Shonisaurus. A sea reptile as big as a whale, found up in the mountains."
+    }
+  ]
+}

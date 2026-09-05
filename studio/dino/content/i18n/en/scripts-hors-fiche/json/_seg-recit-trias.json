@@ -1,0 +1,54 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Here we are in the [serious] Triassic! [happily] Two hundred fifty million years ago. [playful] The name comes from \"three\": three groups of animals share the Earth."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Which ones?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[pauses] The dinosaurs, tiny at first. [pauses] The reptiles with [serious] crocodile jaws, they run the show. [playful] And the ancestors of mammals, small as mice."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[hesitant] Really? Dinosaurs are tiny?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[chuckles] Tiny! [happily] Smaller than a dog. [serious] Coelophysis is there, and Plateosaurus, and Eoraptor. [pauses] Eoraptor hunts small lizards and insects."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[pauses] Nobody knows yet that they'll become the kings."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Did the plants change too?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Yes! [pauses] Ferns, conifers, mosses. [serious] But still no grass, not one flower! [playful] Plants spread with spores — tiny specks carried by the wind or by animals."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[amazed] And you know what? [excited] There's only one continent: Pangea! [pauses] One giant crescent of land, with every continent stuck together inside it."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Whoa."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited][curious] What else?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Millions of years pass. [playful] Then, [pauses] the Earth shifts. [pauses] The climate changes. [playful] And [chuckles] the dinosaurs start to grow…"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era herbívoro. Comía plantas en gran manada. [confident] Cuando un T-Rex se acercaba, [quickly] soltaba un grito muy grave en su cresta, para avisar a los demás."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Gritaba dentro de su cresta?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Sí. Su cresta hueca funcionaba como una gran bocina natural. [warmly] Toda la manada lo oía y escapaba junta."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

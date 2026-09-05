@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era carnívoro. Su gran arma era una garra en forma de hoz, [confident] en cada pata trasera, para enganchar a su presa y no soltarla. [slowly] Cazaba dinosaurios pequeños y lagartos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Y quién podía atraparlo a él?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Los carnívoros más grandes de su desierto. [warmly] Pero con sus plumas y su velocidad, no era una presa fácil."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

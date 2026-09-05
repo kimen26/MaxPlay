@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 10 metros de largo — ¡tan largo como un camión! 2 metros 70 de alto — [quickly] ¡tan alto como una portería de fútbol! Y 3 mil kilos — [amazed] ¡tan pesado como un hipopótamo!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] ¿Tan alto como una portería de fútbol?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Sí, a la altura de los hombros. [warmly] Con una cola larga, y un gran pico de pato."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Pa… ra… ce… ra… TE… rio. En griego, «cera» significa cuerno, y el trocito de delante significa «sin». [playful] Cercano a la bestia... sin cuerno."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Un rinoceronte sin cuerno?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Casi — un primo del rinoceronte, pero sí, sin un solo cuerno. [serious] No es un dinosaurio: llegó mucho después, [pauses] hace 30 millones de años."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Dónde vivía?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] En Asia — en Pakistán, en China, y en Mongolia."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

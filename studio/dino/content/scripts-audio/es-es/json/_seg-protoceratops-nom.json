@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Pro… to… CE… ra… tops. [curious] «Proto», en griego, significa el primero. «Cerat», el cuerno. Y «ops», el rostro."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] El primer rostro con cuerno."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Casi: [curious] todavía no tenía un cuerno de verdad, solo un bultito en el hocico. [warmly] El primerísimo antepasado de los dinosaurios con cuernos. Vivía en Mongolia, en Asia, hace 75 millones de años."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Con quién vivía, allí?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] El Velociraptor cazaba en el mismo desierto."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

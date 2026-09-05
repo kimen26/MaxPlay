@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Medía 6 metros de largo — [quickly] ¡tan largo como ancha es una calle: ni siquiera cabía en ella! De pie, tenía 2 metros de alto — ¡tan alto como una puerta! Y pesaba 425 kilos — [proud] tan pesado como 2 leones."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Y su garra, [gasps] también era enorme?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] [amazed] La más grande de todos los raptores: unos 24 centímetros. Casi tan larga como toda tu mano y tu brazo hasta el codo."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

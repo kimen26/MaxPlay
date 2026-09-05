@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 2 metros 20 de largo — ¡tan largo como una moto! 0 con 75 metros de alto — [gently] ¡te llegaba al ombligo! Y 80 kilos — tan pesado como papá. [amazed] Los científicos creen que podía correr a 25 kilómetros por hora — tan rápido como una bici que va bien."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Pequeño, pero pesado como papá?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Compacto y fuerte. Un dinosaurio pequeño pero muy musculoso."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Herbívoro. Comía plantas en gran manada, [calm] pequeños y grandes juntos. [confident] En América lo cazaba el Albertosaurio. En Asia, el Tarbosaurio."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Y su cresta, para qué servía?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] A diferencia del Parasaurolophus, [curious] no sonaba como una trompeta. [hesitant] Se cree que servía solo para ser visto y reconocido por los demás de la manada."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Dei… no… ni… cus. En griego, «deinos» significa terrible — [serious] ¡es la misma raíz que la palabra «dinosaurio»! Y «onix» es la garra. [curious] ¿Qué sale, entonces?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] La garra terrible."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Eso es. [proud] Vivía en Norteamérica, hace 115 millones de años."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Es él, [gasps] el gran raptor que da miedo en las películas?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Sí, en realidad [gently] es más bien él quien inspiró esas imágenes — no el pequeño Velociraptor. Pero él también tenía plumas."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

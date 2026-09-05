@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era herbívora. Vivía en una inmensa colonia: [amazed] cientos de nidos, uno junto a otro."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Cuidaba a sus crías, entonces?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Sí, [proud] y fue incluso la primerísima prueba de que un dinosaurio hacía eso. [gently] Les traía comida mientras eran demasiado pequeñas para salir del nido."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

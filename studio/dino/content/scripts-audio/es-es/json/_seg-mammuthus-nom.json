@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ma… MUT. [curious] Es una palabra muy antigua que significa algo así como «cuerno de la tierra» — los primeros cazadores encontraban sus colmillos congelados en el suelo y [amazed] creían que eran cuernos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Un primo del elefante?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Un elefante todo peludo, sí. [serious] Y ojo: no vivía con los dinosaurios. Llegó mucho después, en la Edad de hielo, [pauses] hace 100 000 años, cuando la Tierra estaba helada."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] ¿Después de los dinosaurios?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Mucho después. En Europa, en Asia y [warmly] en Norteamérica, donde hacía un frío glacial."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

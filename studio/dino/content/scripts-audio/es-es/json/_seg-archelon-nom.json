@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[curious] Ar… que… lon. «Arque» significa jefe, primero — [serious] como en «arqueología». Y «quelón» es la tortuga."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] ¿La tortuga-jefe?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Eso es — la tortuga más grande de todos los tiempos. Vivía hace 75 millones de años, [amazed] en un mar que partía [serious] Norteamérica en dos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Una tortuga, pero no un dinosaurio, entonces?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] No, una verdadera tortuga marina gigante — [warmly] prima de las tortugas de hoy, pero mucho, mucho más grande."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

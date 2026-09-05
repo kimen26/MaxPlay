@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] To… ro… SAU… rio. [curious] En griego, «toro», aquí, significa agujereado, perforado. No toro de verdad, aunque se parezca. Y «saurio» es el lagarto."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[playful] El lagarto agujereado."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Casi: el lagarto del collar agujereado. [warmly] Vivía en Norteamérica, hace 66 millones de años, con el Triceratops."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[softly] Es el primo de Tritri."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Exacto. Un primo grande, con un collar lleno de agujeros."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

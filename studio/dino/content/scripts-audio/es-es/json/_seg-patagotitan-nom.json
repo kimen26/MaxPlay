@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ti… ta… no… SAU… rio. [curious] En griego, «Titán» era el gigante, el más grande de todos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿El lagarto gigante?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[amazed] Eso es. Y no un gigante cualquiera: [proud] el animal más grande que ha caminado jamás sobre la Tierra. [calm] Vivía en Argentina, hace 100 millones de años."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Nadie se atrevía a atacarlo, entonces?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Nunca se ha encontrado ni una sola marca de mordisco en sus huesos de adulto. [serious] Su tamaño, él solo, lo protegía."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

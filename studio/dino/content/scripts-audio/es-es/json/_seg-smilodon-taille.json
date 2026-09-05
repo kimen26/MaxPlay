@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Medía 1 metro 75 de largo — ¡como un papá grande tumbado en el suelo! De pie, tenía 1 metro de alto — [amazed] ¡tan grande como un niño de 4 años! Y pesaba 220 kilos — [proud] ¡tan pesado como un león!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿No muy grande, entonces?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] No, pero fornido y todo músculo. [proud] Un verdadero bloque de fuerza."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

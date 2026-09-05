@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 9 metros de largo — tan largo como un camión. 2 metros de alto — tan alto como una puerta. Y 4 mil kilos — [amazed] tan pesado como 2 rinocerontes."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] ¿Tan alto como una puerta, y encima con casco?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Sí. Un gran herbívoro de pico de pato, [proud] con su cresta bien arriba del cráneo."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

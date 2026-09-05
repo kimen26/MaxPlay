@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Su secreto es que tenía [amazed] cuatro alas: dos en los brazos, [pauses] y otras dos en las piernas."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] ¿Cuatro alas a la vez?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[whispers] Las cuatro juntas, abiertas, hacían como un pequeño planeador. [softly] Saltaba de un árbol, [slowly] abría sus cuatro alas, y se deslizaba en el aire hasta el siguiente."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

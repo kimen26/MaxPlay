@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ed… mon… to… SAU… rio. [curious] Su nombre viene de Edmonton, una ciudad de Canadá donde se encontraron sus huesos. [serious] Y «saurio» es el lagarto en griego."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] El lagarto de Edmonton."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exacto. [warmly] Vivía en Norteamérica, hace 68 millones de años — al mismo tiempo que el Triceratops."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Tenía amigos?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Miles. [amazed] Manadas enormes. Y el T-Rex los vigilaba, con paciencia."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

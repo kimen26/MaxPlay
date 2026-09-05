@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Herbívoro. Comía plantas bajas, helechos, a cuatro patas. [amazed] Su piel estaba llena de pequeños huesos, [curious] alineados desde el cuello hasta la cola — como botones."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Vivía con amigos?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Misterio — todavía nadie lo sabe. [serious] Pero con su armadura, incluso solo, no le tenía miedo a casi nada."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

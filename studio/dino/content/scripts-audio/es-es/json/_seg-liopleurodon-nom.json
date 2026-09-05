@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[curious] Lio… pleu… ro… don. Tres trocitos griegos: «leios», liso. [serious] «Pleura», el costado. «Odon», el diente."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] ¿Dientes... lisos por el lado?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Eso es — sin rayitas encima, como en algunos dientes de tiburón. Vivía hace 165 millones de años, [amazed] en los mares de Europa, [confident] en Francia y en Inglaterra."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Y cómo cazaba, con un hocico de lagarto?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] No con los ojos primero — [serious] con el olfato. Sus fosas nasales apuntaban hacia delante, como un perro que sigue un rastro."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

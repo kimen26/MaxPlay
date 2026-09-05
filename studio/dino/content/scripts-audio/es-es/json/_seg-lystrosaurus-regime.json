@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Cortaba plantas bajas con su pico, y vivía en muchísima cantidad. [confident] Justo después de la catástrofe más grande de la historia de la Tierra, [calm] casi no quedaba ningún cazador para amenazarlo."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Una catástrofe? ¿Cómo así?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[gently] La extinción más terrible que ha conocido la Tierra. [warmly] Casi todos los animales desaparecieron — pero él no."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Escucha esta historia. [serious] El primer fósil de Oviraptor se encontró [pauses] justo al lado de un nido de huevos. Los científicos creyeron que se los había robado."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Entonces era verdad, robaba huevos."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly] No, justo al contrario. [hesitant] Mucho más tarde, se encontró otro Oviraptor, [whispers] sentado sobre su nido, con los brazos abiertos, incubando."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Sus propios huevos."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Sus propios huevos. [proud] Era un buen papá, no un ladrón. Su nombre, en realidad, es completamente injusto."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

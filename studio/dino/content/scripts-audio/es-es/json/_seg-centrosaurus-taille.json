@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 5 metros 50 de largo — ¡tan largo como un todoterreno grande! 1 metro 80 de alto — [quickly] ¡tan grande como papá de pie! Y 1 800 kilos — [amazed] ¡tan pesado como un rinoceronte! Los científicos creen que podía correr a 25 kilómetros por hora — tan rápido como una bici que va bien."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Tan grande como papá."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Sí, con un bonito cuerno curvado en la nariz, como una media luna."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

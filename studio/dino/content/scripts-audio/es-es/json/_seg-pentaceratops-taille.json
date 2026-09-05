@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 6 metros de largo — tan largo como ancha es una calle: ni siquiera cabía en ella. 2 metros de alto — [quickly] ¡tan alto como una puerta! Y 5 mil kilos — [amazed] ¡tan pesado como un elefante! Los científicos creen que podía correr a 25 kilómetros por hora — tan rápido como una bici que va bien."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Tan pesado como un elefante."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Sí. Un forzudo, [proud] con una cabeza todavía más impresionante que su cuerpo."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

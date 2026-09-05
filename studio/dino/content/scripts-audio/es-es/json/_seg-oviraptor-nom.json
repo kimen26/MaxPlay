@@ -1,0 +1,36 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] O… vi… rap… tor. «Ovi», en latín, [serious] es el huevo — como en «ovalado». Y «raptor» es el ladrón. [curious] ¿Qué sale, entonces?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] El ladrón de huevos."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Ese es su nombre. [proud] Vivía en Asia, en el desierto de Mongolia, hace 75 millones de años."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Es primo de los raptores, [gasps] como el Velociraptor?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Un primo, sí, [amazed] pero no tenía dientes — un pico, una bonita cresta de colores, casi como un loro."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] ¿Un ladrón de huevos? [nervous] Qué feo eso."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[gently] Espera a que acabe la historia. [warmly] Ese nombre no se lo merece para nada."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

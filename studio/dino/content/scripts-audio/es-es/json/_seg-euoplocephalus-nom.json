@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Eu… o… plo… CÉ… fa… lo. En griego, «eu» significa bien. [curious] Y «oplo» es un arma, una armadura — como los soldados griegos, los hoplitas."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿La cabeza bien armada?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Eso es, «céfalo» significa la cabeza. [amazed] Todo junto: la cabeza bien protegida. [calm] Vivía en Alberta, en Canadá, hace 75 millones de años."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Se parecía al Anquilosaurio?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Un primo, pero todavía más blindado. [amazed] Hasta sus párpados estaban cubiertos de hueso."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

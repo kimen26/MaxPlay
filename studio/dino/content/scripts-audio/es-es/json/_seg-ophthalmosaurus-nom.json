@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[curious] Of… tal… mo… SAU… rio. «Oftalmo» es el ojo — como en «oftalmólogo», [serious] el médico que revisa tus ojos. Y «saurio», el lagarto."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] ¿El lagarto de ojos?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Eso es. Vivía hace 150 millones de años, [amazed] en mares poco profundos de Europa y Norteamérica."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Por qué unos ojos tan grandes, para un lagarto de mar?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Precisamente — es su truco. Ya llegamos a eso."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

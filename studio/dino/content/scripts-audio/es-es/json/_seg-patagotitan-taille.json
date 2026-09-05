@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 31 metros de largo — [amazed] como un autobús articulado y un autobús normal, uno detrás de otro. De pie, 12 metros de alto — [curious] tan alto como un edificio de 4 plantas. Y 70 mil kilos — [proud] tan pesado como CATORCE elefantes."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Catorce elefantes."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Sí. [whispers] Su corazón, él solo, era grande como un coche pequeño."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

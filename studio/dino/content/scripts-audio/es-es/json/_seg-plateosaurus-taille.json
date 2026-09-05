@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 8 metros de largo — [amazed] como dos coches uno detrás de otro. De pie, 2 con 8 metros de alto — [curious] tan alto como una canasta de baloncesto. Y 2 mil kilos — [proud] tan pesado como un rinoceronte."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Un rinoceronte, para uno de los primerísimos."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Sí — [whispers] ya era un verdadero gigante para su época."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

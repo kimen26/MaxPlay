@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 3 metros de largo — [amazed] como tres niños de 4 años tumbados uno tras otro. De pie, 0 con 9 metros de alto — [curious] tan grande como un niño de 4 años. Y 300 kilos — [proud] tan pesado como 2 burros."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] ¿2 burros, para un dino tan pequeño?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Sí, [pauses] todo ese peso venía de su armadura. [amazed] Pero tenía las patas más largas que sus primos blindados."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

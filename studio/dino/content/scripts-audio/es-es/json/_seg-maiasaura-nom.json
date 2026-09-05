@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ma… ia… SAU… ra. [curious] En griego, «maia» significa la buena madre, la nodriza. Y «saura» es lagarto, en femenino."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] La lagarta buena madre."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exacto. [warmly] Vivía en Estados Unidos, en Montana, hace 76 millones de años."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Por qué la llaman así, «buena madre»?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[gently] Porque se encontraron sus nidos, llenos de huevos y crías. [serious] El Daspletosaurio cazaba a las crías; [nervous] el pequeño Troodon, a veces, venía a robar huevos."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

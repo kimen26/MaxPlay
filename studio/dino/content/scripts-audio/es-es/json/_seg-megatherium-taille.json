@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Medía 6 metros de largo — tan largo como ancha es una calle: ni siquiera cabía en ella. Erguido sobre sus patas traseras, llegaba hasta 3 metros 50 de alto — [amazed] ¡como dos papás uno encima del otro! Y pesaba 4 mil kilos — [proud] ¡tan pesado como 2 rinocerontes!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Se erguía para qué?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Para alcanzar las hojas de lo más alto de los árboles, [warmly] donde nadie más podía comer."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

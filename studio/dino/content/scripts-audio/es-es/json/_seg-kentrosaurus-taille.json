@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 4 con 5 metros de largo — [amazed] tan largo como un todoterreno grande. De pie, 1 con 8 metros de alto — [curious] tan alto como un coche, había que levantar la cabeza. Y 1 con 1 tonelada — [proud] tan pesado como un coche pequeño. [calm] Caminaba tranquilo: 7 kilómetros por hora, [pauses] como papá caminando rápido."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Tan alto como papá."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Sí — [playful] pero mucho más puntiagudo que él."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

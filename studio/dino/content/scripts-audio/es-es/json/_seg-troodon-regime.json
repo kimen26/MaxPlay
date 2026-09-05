@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Comía de todo — [confident] pequeños mamíferos, lagartos, y a veces plantas. [pauses] Sus ojos eran enormes, para ver bien de noche."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Por qué tenía un cerebro tan grande?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Precisamente, [warmly] nadie está del todo seguro. Pero en relación a su tamaño, su cerebro era el más grande de todos los dinosaurios conocidos."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

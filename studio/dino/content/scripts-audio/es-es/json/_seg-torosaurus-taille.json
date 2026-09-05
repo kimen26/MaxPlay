@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 8 metros de largo — como dos coches uno detrás de otro. 3 metros de alto — [quickly] ¡tan alto como una canasta de baloncesto! [amazed] Y 8 mil kilos — tan pesado como 4 rinocerontes."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Cuatro rinocerontes."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Sí. Y su collar, [proud] él solo, medía casi 3 metros de ancho."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

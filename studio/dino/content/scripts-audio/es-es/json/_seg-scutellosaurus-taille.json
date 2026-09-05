@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 1 con 2 metros de largo — [amazed] como un perro grande, un labrador. De pie, 0 con 4 metros de alto — [curious] te llegaba a las rodillas. Y 4 kilos — [proud] tan pesado como un gato grande."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Muy pequeño, entonces."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Diminuto, sí. [amazed] Pero ya corría sobre sus dos patas traseras."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

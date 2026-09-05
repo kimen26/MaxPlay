@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Me… ga… TE… rio. En griego, «mega» significa grande, enorme. [proud] Y «terio» significa la bestia. La gran bestia."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Un dinosaurio gigante?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] No, no un dinosaurio — [serious] llegó mucho después, en la Edad de hielo, [pauses] hace 1 millón de años. Era un perezoso gigante, en Sudamérica."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] ¿Un perezoso?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] El perezoso más grande que ha existido jamás — [amazed] grande como un elefante, no como el que duerme en su árbol."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

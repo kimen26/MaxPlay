@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Carnívoro. [confident] Y llevaba una doble vida: cazaba tanto a pie como en pleno cielo."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿A pie? [gasps] ¿Un animal volador que camina?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Sí, sobre sus cuatro patas. [slowly] Y los científicos creen que en el suelo avanzaba a unos 12 kilómetros por hora — [amazed] tan rápido como un niño corriendo."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Qué comía, en su isla?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Pequeños dinosaurios enanos, [confident] primos en miniatura de los gigantes de cuello largo. En esa isla, casi todo se había hecho pequeño."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

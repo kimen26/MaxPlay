@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] E… no… ci… on. En griego, «cion» significa perro. [serious] Y «dirus», en latín, significa terrible, que da mucho miedo. El perro terrible."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] ¿Un lobo grande?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Lo llamamos el Lobo terrible, sí — [serious] pero no un dinosaurio: vivía mucho después, en la Edad de hielo, [pauses] hace 50 000 años, en Norteamérica y Sudamérica."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Con quién cazaba, allí?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Muchas veces en manada, entre ellos solos. [warmly] Y el Smilodon, un poco más allá, cazaba las mismas presas."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

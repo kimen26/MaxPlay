@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Gor… go… nops. «Gorgona» es un monstruo de las historias griegas muy antiguas — [scared] tan terrorífico que daba miedo solo con mirarlo. [confident] Y «ops», el rostro."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[nervous] ¿El rostro que da miedo?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Sí — los científicos encontraron que su cráneo era realmente impresionante. [confident] Vivía en Sudáfrica, hace 260 millones de años."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Es un dinosaurio?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] No, para nada — vivía mucho antes que ellos. [warmly] Es un primo todavía más cercano a nosotros que el Dimetrodon."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

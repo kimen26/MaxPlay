@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[curious] Di… me… tro… don. «Di», en griego, significa dos. [serious] «Metro», la medida — como en «metro». Y «odon», el diente."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] ¿Los dientes de dos medidas?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Eso es — tenía dos tamaños de dientes distintos en la boca. Vivía hace 280 millones de años, [amazed] en Norteamérica."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Es un dinosaurio, entonces, si vivía tanto tiempo antes?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] No, precisamente — para nada. Vivió 50 millones de años ANTES que los primeros dinosaurios. [warmly] Es un primo muy antiguo [confident] de los animales con pelo, como nosotros."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

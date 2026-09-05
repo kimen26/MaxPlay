@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] At… se… gop… te… rix. Un nombre en tres partes. «Hatzego» viene de Hațeg, una región de Rumanía, [serious] donde se encontraron sus huesos. [curious] «Pterix», en griego, es el ala. Y «tambema» significa monstruo."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] El ala-monstruo de Hațeg."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exacto. [serious] Ojo: no es un dinosaurio — es un reptil volador. Vivía hace 66 millones de años, [amazed] en una isla perdida en el mar."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Una isla, solo?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[calm] Sí, aislada del resto del mundo. [pauses] Y allí, casi nada era como en otros sitios."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

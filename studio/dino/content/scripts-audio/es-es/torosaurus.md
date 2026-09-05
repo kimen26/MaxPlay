@@ -28,6 +28,6 @@
 
 ### BLOC D — Lo más loco
 
-**NARRATEUR H** [excited] : El Torosaurio tenía una de las cabezas más grandes de todos los animales que hayan caminado jamás sobre la Tierra. [whispers] Más grande que la de un elefante.
+**NARRATEUR H** [excited] : El Torosaurio tenía una de las cabezas más grandes [amazed] de todos los animales que hayan caminado jamás sobre la Tierra. [whispers] Más grande que la de un elefante.
 **WEX** [gasps] : Más grande que la cabeza de un elefante.
 **NARRATEUR H** [softly] : Sí. Una cabeza casi tan grande como tú entero.

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Su garra curvada servía para engancharse, [amazed] como un gancho. [slowly] Saltaba sobre su presa, clavaba la garra, y aguantaba con sus brazos de largas plumas, hasta que sus dientes hacían el resto."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Un gancho viviente."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly] Exacto. [proud] Es esa garra la que le dio su nombre a toda la familia de los raptores."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

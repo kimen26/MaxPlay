@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Sus alas abiertas medían 11 metros de un extremo al otro — anchas como un autobús. [quickly] Puestas en fila, tan largas como un autobús entero. De pie, tenía 5 metros de alto — [proud] ¡casi tres papás uno encima del otro! Y pesaba 200 kilos — tan pesado como un león. [amazed] Y en vuelo, los científicos creen que podía llegar a 90 kilómetros por hora — casi tan rápido como un guepardo."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] ¿De pie como una jirafa?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[proud] Exacto. [amazed] Y aun así, ese animal volaba."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

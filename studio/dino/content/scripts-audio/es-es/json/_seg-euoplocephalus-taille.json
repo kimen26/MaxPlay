@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 6 metros de largo — [amazed] tan largo como ancha es una calle: ni siquiera cabía en ella. De pie, metro y medio de alto — [curious] tan alto como un coche, había que levantar la cabeza. Y 2 con 2 toneladas — [proud] tan pesado como un rinoceronte. [calm] Y despacio: unos 7 kilómetros por hora, como papá caminando rápido."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] ¿Sus párpados también tenían ARMADURA?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Sí, [pauses] hasta los ojos estaban protegidos. [proud] El dinosaurio mejor blindado de toda la historia."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

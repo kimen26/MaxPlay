@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era herbívoro. [amazed] Con su largo cuello, alcanzaba las hojas de lo más alto de los árboles, [gently] donde nadie más podía comer. Vivía tranquilo, en pequeños grupos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Qué cazador temía?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Ningún cazador de su época era lo bastante fuerte para atacarlo — [warmly] su tamaño le bastaba."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

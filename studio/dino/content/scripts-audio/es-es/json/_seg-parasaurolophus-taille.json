@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 10 metros de largo — ¡tan largo como un camión! 3 metros 50 de alto — [quickly] ¡como dos papás uno encima del otro! Y 2 500 kilos — [amazed] ¡tan pesado como 5 caballos!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Cinco caballos, en un solo dino."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Sí. Un gigante de pico de pato, con un tubo en la cabeza."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

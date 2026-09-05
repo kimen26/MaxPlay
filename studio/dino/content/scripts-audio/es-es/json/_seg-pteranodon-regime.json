@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Comía peces y calamares. [confident] Planeaba mucho tiempo sin esfuerzo, y luego se lanzaba al mar para pescar."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Y en el agua, algo podía atraparlo?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Un gran reptil marino, el Mosasaurio, [gently] cazaba en las mismas aguas. [serious] Una vez posado en el agua para pescar, el Pteranodon tenía que estar alerta."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

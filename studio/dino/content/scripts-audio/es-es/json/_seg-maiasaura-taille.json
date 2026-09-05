@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 9 metros de largo — ¡tan largo como un camión! 2 metros 50 de alto — [quickly] ¡tan alto como una portería de fútbol! Y 2 500 kilos — [amazed] ¡tan pesado como 5 caballos!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] ¿Tan alta como una portería, y encima con crías?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Sí. Una gran mamá herbívora, [warmly] que mantenía a sus crías muy cerca."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

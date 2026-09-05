@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era carnívoro. Cazaba bisontes, caballos salvajes y [amazed] crías de perezosos gigantes. [hesitant] Quizá en grupo, como los leones — los científicos todavía no lo saben con certeza."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[nervous] ¿Quién se atrevía a atacarlo?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Casi nadie. [confident] Con esos colmillos, lo dejaban tranquilo."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

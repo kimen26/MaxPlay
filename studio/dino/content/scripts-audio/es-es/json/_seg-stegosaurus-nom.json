@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Es… te… go… SAU… rio. [curious] En griego, «estego» significa el tejado."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿El lagarto de tejado?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Sí — el científico que lo encontró creía que sus grandes placas estaban tumbadas planas sobre el lomo, [amazed] como las tejas de un tejado. [calm] Vivía en Norteamérica y en Europa, hace 155 millones de años."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Y estaban tumbadas, sus placas?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] ¡No! [pauses] Más tarde se descubrió que estaban de pie, bien rectas, a lo largo de todo el lomo."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

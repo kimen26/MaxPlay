@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[chuckles] En 1868, un científico armó su esqueleto por primera vez. [amazed] Y se equivocó: pegó la cabeza al final de la COLA, [playful] pensando que era el cuello."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] ¿Puso la cabeza al revés?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly] Al revés, sí. Otro científico le hizo notar el error — [chuckles] la mayor metedura de pata de la historia de los dinosaurios."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

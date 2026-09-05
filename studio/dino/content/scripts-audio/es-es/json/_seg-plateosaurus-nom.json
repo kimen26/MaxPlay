@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Pla… te… o… SAU… rio. [curious] En griego, «plateo» significa ancho, plano."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿El lagarto plano?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Es su nombre, sí — [amazed] aunque él mismo no era nada plano. [calm] Vivía en Europa, en Alemania, Francia y Suiza, hace 210 millones de años."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿210 millones? ¿Eso es antes del T-Rex?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Mucho antes. [proud] El Plateosaurio es uno de los primerísimos grandes dinosaurios herbívoros de toda la historia."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

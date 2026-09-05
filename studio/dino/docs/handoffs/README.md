@@ -54,3 +54,13 @@ Porte commune des scripts audio : `node studio/dino/content/scripts/export/_veri
 - **Invariant DEC-I18N-INVARIANT-001** : lexique AVANT audio. Cette vague est TEXTE
   uniquement. Aucune generation ElevenLabs.
 - Un doute = on bloque et on demande. Jamais « je corrige au passage ».
+
+## Vague 2026-09-06 — Flore du Mésozoïque (EP-D13, décision PY : sous chaque époque de l'onglet « Les époques »)
+
+| ID | Titre | Fichiers possedes | Statut |
+|----|-------|-------------------|--------|
+| HO-020 | Fact-check + fiches plantes (6 axes PY) | `content/sources/flore/**` | en cours |
+| HO-021 | Data `dinos-plantes.js` + UI grille époque + fiche plante | `site/dev-dinos.html`, `site/js/dinos-plantes.js`, `dinos-i18n.js`, `dino-ui.js`, ui.json x3 | en cours |
+| HO-022 | Images hero plantes (enfant 1 m) | `site/img/dinos/plantes/**` | pret |
+| HO-023 | i18n plantes en/es-es/pt-br | `content/i18n/**`, bundles | brouillon |
+

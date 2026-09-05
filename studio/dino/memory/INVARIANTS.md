@@ -22,7 +22,7 @@
 | Familles (`DINO_FAMILLES`) | **11** | idem (✅ 2026-07-03 : +2 familles `mammiferes` + `oiseaux` ; famille `arme` passe 4→5 dinos, puis 5→7 le 2026-07-25) |
 | Régimes alimentaires (`DINO_CATEGORIES`) | **4** | idem (inchangé) |
 | Périodes (`DINO_PERIODES`) | **5** | ✅ 2026-07-03 : ajout `cenozoique` (66 Ma → aujourd'hui), rejoins les 4 antérieures (Triassic, Jurassic, Crétacé, Autres) |
-| Récits d'époque (voyage) | **9** | `audio/dinos/fr/recit-*.mp3` (✅ 2026-09-05 : +`recit-grande-mort` Permien-Trias, décision PY, défigeage gravé) |
+| Récits d'époque (voyage) | **12** | `audio/dinos/fr/recit-*.mp3` (✅ 2026-09-05 : +`grande-mort`, puis Voyage V2 : +naissance-terre, vie-dans-eau, sortie-eau, reptiles-permien ; intro retirée ; Trias/Jurassique/Crétacé/Extinction réécrits. MP3 FR : voir `memory/TODO.md` VOYAGE-V2 pour ceux régénérés vs en attente du reset) |
 | Ères (macro-info, `DINO_ERES`) | **3** | `dinos-data.js` (Paléozoïque · Mésozoïque · Cénozoïque, 2026-09-05) + `audio/dinos/fr/ere-*.mp3` (3, Narratrice) |
 | Accroches menu (voix réelle) | **19** | `audio/dinos/fr/menu-*.mp3` (6 onglets dont `menu-epoques` + `menu-dico` ajoutés 2026-09-05 · 9 familles `menu-fam-*` · 4 régimes `menu-regime-*` — dont 2 Cénozoïque ajoutés 2026-08-02) |
 | Spéciaux (Pangée, Extinction) | **6** | `audio/dinos/special-*.mp3` (✅ 2026-08-02 : 6 fichiers sur disque — special-extinction-a/b/c/d, special-extinction-recap, special-pangee-recap ; le count historique « 2 » était obsolète) |

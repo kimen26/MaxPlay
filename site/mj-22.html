@@ -66,8 +66,11 @@
 <script src="js/mj-shell.js"></script>
 <script>
 MJ.ready(function () {
+  const GAME_ID = 'mj-22';
+  const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t(GAME_ID, cle, fr, params) : fr);
+
   const shell = MJ.init({
-    id: 'mj-22', emoji: '🗺️', titre: 'Trouve le pays !',
+    id: GAME_ID, emoji: '🗺️', titre: 'Trouve le pays !',
     golden: true,
     consigne: false,
     regle: {
@@ -177,6 +180,23 @@ function speak(txt) {
   try { if (window.TTS && TTS.speak) TTS.speak(txt, { rate: 0.9, pitch: 1.2, priority: true }); } catch (e) {}
 }
 
+// Nom du pays affiché/parlé : le FR garde son article genré en dur (la/le/l'/les +
+// nom), inchangé à l'écran. Les autres langues n'ont pas d'article genré : le nom
+// vient du pack (ui.pays.<iso>, sans article) et s'insère dans un template par
+// langue ({pays}) — jamais de concaténation "article + nom" traduite (HO-MJ-05).
+function nomPaysAffiche(iso, data) {
+  return T('pays.' + iso, data.name);
+}
+function phraseTrouve(iso, data) {
+  const nom = nomPaysAffiche(iso, data);
+  // Repli FR par défaut : construction historique article+nom (identique à l'écran).
+  return T('trouveLePays', `Trouve ${data.art}${data.name} !`, { pays: nom });
+}
+function phraseBravo(iso, data) {
+  const nom = nomPaysAffiche(iso, data);
+  return T('bravoCestLePays', `Bravo ! C’est ${data.art}${data.name} !`, { pays: nom });
+}
+
 function selectCountry(iso) {
   if (foundSet.has(iso)) return;
   selected = iso;
@@ -189,8 +209,9 @@ function confirmer() {
   if (selected === target) {
     victoire(target);
   } else {
-    if (typeof SoundPool !== 'undefined') SoundPool.phrase('cherche-bien', 'Non ce n’est pas ça. Cherche bien.');
-    else speak('Non ce n’est pas ça. Cherche bien.');
+    const txtChercheBien = T('nonChercheBien', 'Non ce n’est pas ça. Cherche bien.');
+    if (typeof SoundPool !== 'undefined') SoundPool.phrase('cherche-bien', txtChercheBien);
+    else speak(txtChercheBien);
     selected = null;
     attempts = Math.min(4, attempts + 1);
     document.getElementById('confirmBtn').classList.remove('show');
@@ -204,7 +225,7 @@ function victoire(iso) {
   selected = null;
   document.getElementById('confirmBtn').classList.remove('show');
   renderMap();
-  speak(`Bravo ! C’est ${data.art}${data.name} !`);
+  speak(phraseBravo(iso, data));
   G.notePip(qIdx, attempts);
 
   const ov = document.createElement('div');
@@ -212,8 +233,8 @@ function victoire(iso) {
   ov.innerHTML = `
     <div class="victoire-card">
       <div class="drapeau-victoire">${data.flag}</div>
-      <div class="victoire-nom">${data.name}</div>
-      <button class="victoire-btn" onclick="this.closest('.victoire-overlay').remove();nextCountry()">Suivant →</button>
+      <div class="victoire-nom">${nomPaysAffiche(iso, data)}</div>
+      <button class="victoire-btn" onclick="this.closest('.victoire-overlay').remove();nextCountry()">${T('suivant', 'Suivant →')}</button>
     </div>`;
   document.body.appendChild(ov);
   setTimeout(() => { if (document.body.contains(ov)) { ov.remove(); nextCountry(); } }, 2500);
@@ -229,7 +250,7 @@ function nextCountry() {
 function showConsigne() {
   const iso = queue[qIdx];
   const data = PAYS[iso];
-  const consigne = `Trouve ${data.art}${data.name} !`;
+  const consigne = phraseTrouve(iso, data);
   document.getElementById('drapeau-cible').textContent = data.flag;
   document.getElementById('consigne').textContent = consigne;
   speak(consigne);

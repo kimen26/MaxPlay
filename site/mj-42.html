@@ -158,8 +158,11 @@
   MJ.ready(function(){
     'use strict';
 
+    const GAME_ID = 'mj-42';
+    const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t(GAME_ID, cle, fr, params) : fr);
+
     const shell = MJ.init({
-      id: 'mj-42', emoji: '🦎', titre: 'Shisima !',
+      id: GAME_ID, emoji: '🦎', titre: 'Shisima !',
       golden: true,
       consigne: false,
       regle: {
@@ -531,11 +534,11 @@
       const title = document.getElementById('overlay-title');
       const text = document.getElementById('overlay-text');
       if (maxWon) {
-        title.textContent = '🎉 Bravo ! 🎉';
-        text.textContent = 'Tu as aligné tes 3 pions sur le shisima !';
+        title.textContent = '🎉 ' + T('bravo', 'Bravo !') + ' 🎉';
+        text.textContent = T('alignePionsShisima', 'Tu as aligné tes 3 pions sur le shisima !');
       } else {
-        title.textContent = '🦎 Danse du caméléon !';
-        text.textContent = 'Presque ! Encore une ?';
+        title.textContent = '🦎 ' + T('danseCameleon', 'Danse du caméléon !');
+        text.textContent = T('presqueEncoreUne', 'Presque ! Encore une ?');
       }
       ov.classList.add('show');
     }
@@ -548,7 +551,9 @@
     function updateBanner() {
       const b = document.getElementById('banner');
       if (gameOver) return;
-      b.textContent = (turn === 'max') ? 'À toi de jouer !' : 'Le caméléon réfléchit...';
+      b.textContent = (turn === 'max')
+        ? T('aToiDeJouer', 'À toi de jouer !')
+        : T('cameleonReflechit', 'Le caméléon réfléchit...');
     }
 
     // ── Paliers 3 étoiles ────────────────────────────────────────────────
@@ -566,6 +571,8 @@
 
     // ── Init ─────────────────────────────────────────────────────────────
     function startAll() {
+      const badge = document.getElementById('kenya-badge');
+      if (badge) badge.textContent = T('jeuDuKenya', 'Un jeu du Kenya 🇰🇪');
       paletteIdx = G.level;
       wins = 0;
       buildTierPips();

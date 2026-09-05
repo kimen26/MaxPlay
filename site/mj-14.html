@@ -172,9 +172,10 @@ MJ.ready(function () {
 //  🔒 Décisions figées : studio/minijeux/docs/jeux/figees/mj-14.md
 // ═══════════════════════════════════════════════════════════════
 const GAME_ID = 'mj-14';
+document.title = 'MJ-14 – ' + (window.MJi18n ? MJi18n.titre(GAME_ID, 'Les cases mystères') : 'Les cases mystères');
 
 const shell = MJ.init({
-  id: GAME_ID, emoji: '🔮', titre: 'Les cases mystères',
+  id: GAME_ID, emoji: '🔮', titre: (window.MJi18n ? MJi18n.titre(GAME_ID, 'Les cases mystères') : 'Les cases mystères'),
   golden: true, consigne: true,
   regle: {
     picto: '🔮🧩',

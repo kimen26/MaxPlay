@@ -4,7 +4,7 @@
 > Chiffres data (`dinos-data.js` id `apatosaurus`) : 22 m long · 4,5 m haut · 23 t. Sorties EXACTES exécutées node : `_compLong(22)` = « aussi long qu'un bus accordéon ! » · `_compHaut(4.5)` = « aussi haut qu'un bus anglais à deux étages ! » · `_compPoids(23)` = « aussi lourd que 8 hippopotames ! ».
 > Étymologie (`_ETYMO-RACINES-50.md`) : *apato-* (grec *apate*) = tromperie, illusion + *-saurus/-saure* = lézard → « le lézard trompeur » (ses os ont trompé les savants). Nom lu tel quel (pas de piège de prononciation).
 > Fact-check Grokipedia (agent dino-conseiller, 2026-09-05) : Tschopp et al. 2015 a réhabilité *Brontosaurus* comme genre distinct d'*Apatosaurus*. Présenté simplement : Apatosaure = son propre animal, très proche cousin du Brontosaure.
-> Prédateurs contemporains Formation Morrison : Allosaure (surtout les jeunes).
+> Prédateurs contemporains Formation Morrison : Allosaure (surtout les jeunes, un adulte trop lourd à faire tomber).
 > Grep-interdits OK. Wex FR standard, aucun tic écrit, jamais de `!` final.
 
 ## Apatosaure — Apatosaurus louisae
@@ -14,7 +14,7 @@
 **NARRATEUR H** [excited] : A-pa-to-saure. [curious] En grec, « apate », ça veut dire la tromperie, l'illusion.
 **WEX** [curious] : Le lézard trompeur ?
 **NARRATEUR H** [happily] : Oui — [amazed] ses os ont trompé les savants pendant très longtemps. [calm] Il vivait en Amérique du Nord, il y a 150 millions d'années.
-**WEX** [curious] : Trompé comment ?
+**WEX** [hesitant] : Trompé comment ?
 **NARRATEUR H** [confident] : On a longtemps cru que c'était un autre dinosaure, [serious] le Brontosaure. En fait, c'est son tout proche cousin — pas tout à fait le même animal.
 
 ### BLOC B — Taille
@@ -29,7 +29,7 @@
 **WEX** [curious] : Il pouvait manger pendant combien de temps ?
 **NARRATEUR H** [amazed] : 250 kilos de plantes chaque JOUR. [proud] Autant que toi en une année entière, en un seul jour.
 **WEX** [gasps] : Et il avait des ennemis, avec un cou pareil ?
-**NARRATEUR H** [confident] : L'Allosaure essayait, mais seulement sur les jeunes. [serious] Un adulte de cette taille, il valait mieux l'éviter.
+**NARRATEUR H** [confident] : L'Allosaure essayait bien, sur les jeunes surtout. [serious] Un adulte de 23 mille kilos, ça ne valait pas le coup — bien trop lourd à faire tomber.
 
 ### BLOC D — Le truc fou
 

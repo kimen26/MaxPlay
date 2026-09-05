@@ -20,7 +20,7 @@
 ### BLOC B — Taille
 
 **NARRATEUR H** [excited] : 7 mètres et demi de long — [amazed] comme deux voitures l'une derrière l'autre. Debout, 1 virgule 8 mètres de haut — [curious] aussi grand que Papa debout. Et 6 mille kilos — [proud] aussi lourd que TROIS rhinocéros. [calm] Il ne courait pas vite : à peine 7 kilomètres à l'heure, comme Papa qui marche vite.
-**WEX** [curious] : Pas vite du tout, alors.
+**WEX** [amazed] : Pas vite du tout, alors.
 **NARRATEUR H** [confident] : Non. [serious] Il n'en avait pas besoin — son armure suffisait.
 
 ### BLOC C — Comment il vivait
@@ -32,7 +32,7 @@
 ### BLOC D — Le truc fou
 
 **NARRATEUR H** [excited] : Tout en haut, c'était une vraie forteresse. [serious] Mais son ventre, lui, n'avait pas d'armure.
-**WEX** [curious] : Alors comment il se protégeait ?
+**WEX** [hesitant] : Alors comment il se protégeait ?
 **NARRATEUR H** [playful] : Il restait collé au sol, tout bas sur ses pattes. [confident] Presque impossible à retourner sur le dos.
 
 ---

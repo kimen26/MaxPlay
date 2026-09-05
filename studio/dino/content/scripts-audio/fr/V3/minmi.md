@@ -14,7 +14,7 @@
 **NARRATEUR H** [excited] : Min-mi. [curious] Ce nom-là, il ne vient ni du grec ni du latin — c'est le nom d'un endroit en Australie.
 **WEX** [curious] : Un endroit ?
 **NARRATEUR H** [happily] : Minmi Crossing, [pauses] là où on a trouvé ses os. [calm] Il vivait au Queensland, il y a 120 millions d'années.
-**WEX** [curious] : Il était petit, ce dino ?
+**WEX** [amazed] : Il était petit, ce dino ?
 **NARRATEUR H** [confident] : Tout petit — et pendant longtemps, [pauses] il a même eu le nom de dinosaure le plus court du monde.
 
 ### BLOC B — Taille
@@ -26,7 +26,7 @@
 ### BLOC C — Comment il vivait
 
 **NARRATEUR H** [serious] : Herbivore, plutôt solitaire. [calm] Une armure sur le dos, et même sous le ventre — c'est rare.
-**WEX** [curious] : Et à quoi servaient ses longues pattes ?
+**WEX** [hesitant] : Et à quoi servaient ses longues pattes ?
 **NARRATEUR H** [playful] : À filer ! [pauses] Si un chasseur approchait, il détalait avant même d'avoir à se battre.
 
 ### BLOC D — Le truc fou

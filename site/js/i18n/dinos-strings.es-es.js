@@ -1405,5 +1405,27 @@ window.DINO_STRINGS = {
   "omnivores": {
    "label": "Omnívoros"
   }
+ },
+ "pangee": {},
+ "extinction": {},
+ "eres": {
+  "paleo": {
+   "label": "Paleozoico",
+   "surnom": "la era de antes de los dinosaurios",
+   "bornes": "541 – 252 Ma",
+   "accroche": "Antes de los dinosaurios, la vida lo inventa todo: peces, plantas, primeros pasos fuera del agua."
+  },
+  "meso": {
+   "label": "Mesozoico",
+   "surnom": "la era de los dinosaurios",
+   "bornes": "252 – 66 Ma",
+   "accroche": "La era de los dinosaurios: tres épocas, de los más pequeños a los gigantes."
+  },
+  "ceno": {
+   "label": "Cenozoico",
+   "surnom": "la era de los mamíferos",
+   "bornes": "66 Ma – hoy",
+   "accroche": "Después de los dinosaurios, los mamíferos crecen, hasta llegar a ti."
+  }
  }
 };

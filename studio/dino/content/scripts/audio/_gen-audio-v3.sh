@@ -32,7 +32,7 @@ for d in $1; do
     if [ ! -f "$J" ]; then echo "KO ${d}-${b} JSON-absent"; KO=$((KO+1)); continue; fi
     H=$(curl -s -w "%{http_code}" -X POST "https://api.elevenlabs.io/v1/text-to-dialogue" -H "xi-api-key: $KEY" -H "Content-Type: application/json" -d @"$J" --output "$O" --max-time 120)
     SZ=$(stat -c%s "$O" 2>/dev/null || echo 0)
-    if [ "$H" = "200" ] && [ "$SZ" -gt 5000 ]; then OK=$((OK+1)); echo "OK  ${d}-${b} ($SZ)"; else KO=$((KO+1)); echo "KO  ${d}-${b} HTTP=$H sz=$SZ :: $(head -c 140 "$O" 2>/dev/null)"; rm -f "$O"; fi
+    if [ "$H" = "200" ] && [ "$SZ" -gt 5000 ]; then OK=$((OK+1)); node studio/dino/content/scripts/audio/_pad-tete.mjs "$O" >/dev/null || echo "  (pad tête KO ${d}-${b})"; echo "OK  ${d}-${b} ($SZ)"; else KO=$((KO+1)); echo "KO  ${d}-${b} HTTP=$H sz=$SZ :: $(head -c 140 "$O" 2>/dev/null)"; rm -f "$O"; fi
     sleep 8
   done
 done

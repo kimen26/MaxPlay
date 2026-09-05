@@ -1,0 +1,10 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] [excited] The Paleozoic! [playful] The age before dinosaurs, [curious] when life invents everything."
+    }
+  ]
+}

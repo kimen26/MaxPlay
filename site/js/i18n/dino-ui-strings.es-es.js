@@ -92,5 +92,7 @@ window.DINO_UI_STRINGS = {
  "stats_hauteur": "De pie, medía {n} metros de alto — {comparaison}",
  "stats_poids": "Y pesaba {poids} — {comparaison}",
  "langue_grec": "griego",
- "langue_latin": "latín"
+ "langue_latin": "latín",
+ "journey_ep_grande-mort_label": "La Gran Mortandad",
+ "journey_ep_grande-mort_date": "hace 252 millones de años"
 };

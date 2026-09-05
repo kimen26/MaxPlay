@@ -3,10 +3,15 @@
 > Tickets ouverts uniquement, condensés en 1 ligne chacun (détail complet non recopié ici, mais préservé verbatim dans `archive/backlog-fermes-2026.md` pour les tickets qui ont une partie close, et dans l'historique git pour le reste). Extrait le 2026-09-03 (HO-MJ-01) depuis l'ancien `pmo/backlog.md` (supprimé, contenu distillé dans ce fichier + `LESSONS.md` + `archive/backlog-fermes-2026.md`).
 > Statuts : `[ ]` à faire · `[~]` en cours · `[!]` bloqué · `[?]` question ouverte.
 
+## Lane — EPIC i18n mini-jeux (décision PY 2026-09-05 : « évidemment tous les mini-jeux devront être traduits, les règles, les menus, les actions »)
+
+- **EPIC-I18N-MJ / AUDIT** [x] — FAIT 2026-09-05 : `docs/i18n/AUDIT-I18N-MJ-2026-09-05.md`. Constat : le panneau règle (`regle-info.js`) reçoit du texte FR en dur depuis chaque `mj-XX.html` ; ≈ 27 k caractères écran + les 36 consignes parlées `regle-mj-XX` de `textes-jeux.js` (crédits EL). 6 lots : 0 plomberie (`mj-i18n.js` + `mj-strings.<lang>.js` générés depuis `studio/minijeux/i18n/<lang>/strings.json`, contrat `regle-info.js` par clés — BLOQUANT) · 1 les 5 jeux dino déjà i18n · 2 bus/couleurs (7) · 3 casse-têtes (11) · 4 comptage à pièges pluriel/ordinaux (6) · 5 lecture/phonétique FR = refonte péda par langue (4) · 6 cas particuliers mj-20/22/42. Prochaine étape : briefs handoffs lot 0 puis lots 1-3.
+- **EPIC-I18N-MJ** [~] — 36 mini-jeux, cibles en / es-es / pt-br, même plomberie que dino (`js/lang.js` + packs de chaînes générés depuis `studio/`). Étape 1 : audit (chaînes UI, règles, consignes TTS/MP3, jeux déjà i18n = 8 chargent `js/lang.js`) → rapport + découpage en lots → briefs handoffs. Audio des consignes : voix maison via STS, au quota EL des mois suivants.
+
 ## Lane — Plateforme : espace parents + langue (2026-09-05, demande PY)
 
 - **PARENTS-4-TUILES** [x] — FAIT 2026-09-05 (session DINO) : `site/index.html` + `js/mur.js` + `css/mur.css` — espace parents = 4 tuiles Statistiques / Paramètres / Compte / Retours, jeux cachés déplacés sous Paramètres, sélecteur de langue (fr, en, es-es, pt-br) via `js/lang.js`.
-- **LANG-MINI-JEUX** [ ] — Le sélecteur de langue est global (localStorage `maxplay_lang`) mais seuls 8 mini-jeux sur 36 chargent `js/lang.js` : les 28 autres restent en français quelle que soit la langue choisie. Chiffrer puis brancher (ou afficher un badge « FR seulement » dans le menu enfant).
+- **LANG-MINI-JEUX** [~] (absorbé par EPIC-I18N-MJ) — Le sélecteur de langue est global (localStorage `maxplay_lang`) mais seuls 8 mini-jeux sur 36 chargent `js/lang.js` : les 28 autres restent en français quelle que soit la langue choisie. Chiffrer puis brancher (ou afficher un badge « FR seulement » dans le menu enfant).
 
 ## Lane — Montée de niveau par compétence (EP-112)
 

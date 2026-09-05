@@ -92,5 +92,7 @@ window.DINO_UI_STRINGS = {
  "stats_hauteur": "Standing up, it was {n} feet tall — {comparaison}",
  "stats_poids": "And it weighed {poids} — {comparaison}",
  "langue_grec": "Greek",
- "langue_latin": "Latin"
+ "langue_latin": "Latin",
+ "journey_ep_grande-mort_label": "The Great Dying",
+ "journey_ep_grande-mort_date": "252 million years ago"
 };

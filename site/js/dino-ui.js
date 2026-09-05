@@ -65,6 +65,8 @@
     journey_bouton_ecoute: 'Écoute {episode}',
     journey_ep_intro_label: 'Le grand voyage',
     journey_ep_intro_date: "le début de l'aventure",
+    'journey_ep_grande-mort_label': 'La Grande Mort',
+    'journey_ep_grande-mort_date': "il y a 252 millions d'années",
     journey_ep_trias_label: 'Le Trias',
     journey_ep_trias_date: "il y a 250 millions d'années",
     journey_ep_jurassique_label: 'Le Jurassique',

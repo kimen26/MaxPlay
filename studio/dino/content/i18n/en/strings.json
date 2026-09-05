@@ -1782,5 +1782,25 @@
    }
   },
   "fun_fact": "Birds are REAL dinosaurs! Every time you see a pigeon, you're looking at a dinosaur!"
+ },
+ "eres": {
+  "paleo": {
+   "label": "Paleozoic",
+   "surnom": "the age before dinosaurs",
+   "bornes": "541 – 252 Ma",
+   "accroche": "Before the dinosaurs, life invents everything: fish, plants, first steps on land."
+  },
+  "meso": {
+   "label": "Mesozoic",
+   "surnom": "the age of dinosaurs",
+   "bornes": "252 – 66 Ma",
+   "accroche": "The age of dinosaurs: three periods, from tiny to giant."
+  },
+  "ceno": {
+   "label": "Cenozoic",
+   "surnom": "the age of mammals",
+   "bornes": "66 Ma – today",
+   "accroche": "After the dinosaurs, mammals grow bigger, all the way to you."
+  }
  }
 }

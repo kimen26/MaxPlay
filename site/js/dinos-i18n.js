@@ -39,6 +39,7 @@
     merge(_racinesRoot && _racinesRoot.racines, S.racines);
     merge(typeof DINO_PERIODES !== 'undefined' ? DINO_PERIODES : window.DINO_PERIODES, S.periodes);
     merge(typeof DINO_CATEGORIES !== 'undefined' ? DINO_CATEGORIES : window.DINO_CATEGORIES, S.categories);
+    merge(typeof DINO_ERES !== 'undefined' ? DINO_ERES : window.DINO_ERES, S.eres);
 
     // PANGEE et EXTINCTION sont des objets uniques (pas des collections indexees par id) :
     // fusion PROFONDE champ par champ, `etapes`/`hypotheses` indexes par periode/id.

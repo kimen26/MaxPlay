@@ -36,6 +36,13 @@ const periodes = {};
   CHAMPS_PERIODE.forEach(k => { if (typeof p[k] === 'string' && p[k].trim()) o[k] = p[k]; });
   periodes[p.id] = o;
 });
+const CHAMPS_ERE = ['label', 'surnom', 'bornes', 'accroche'];
+const eres = {};
+(global.DINO_ERES || []).forEach(e => {
+  const o = {};
+  CHAMPS_ERE.forEach(k => { if (typeof e[k] === 'string' && e[k].trim()) o[k] = e[k]; });
+  eres[e.id] = o;
+});
 const categories = {};
 (global.DINO_CATEGORIES || []).forEach(c => {
   const o = {};
@@ -75,7 +82,7 @@ extinction.hypotheses = {};
 
 const out = { _meta: { source: 'site/js/dinos-data.js + site/js/dinos-racines.js', genere: new Date().toISOString().slice(0, 10),
   nb_dinos: Object.keys(dinos).length, nb_familles: Object.keys(familles).length, nb_racines: Object.keys(racines).length },
-  familles, periodes, categories, dinos, racines, pangee, extinction };
+  familles, periodes, categories, eres, dinos, racines, pangee, extinction };
 
 const dir = path.join(ROOT, 'studio/dino/content/i18n/_corpus');
 fs.mkdirSync(dir, { recursive: true });

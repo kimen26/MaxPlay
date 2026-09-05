@@ -1,0 +1,68 @@
+{
+  "inputs": [
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious] [softly] Avant les dinosaures, [pauses] il y a deux cent cinquante-deux millions d'années, [gasps] la Terre a failli mourir."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Une météorite, comme les dinosaures ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[softly] Non, [serious] pas cette fois. [calm] Ce jour-là, [pauses] ce sont des volcans. [gasps] Des volcans immenses, en Sibérie, [shouts] qui crachent du feu pendant des milliers d'années."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Des milliers d'années ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[calm] [softly] Oui. [serious] Une fumée épaisse couvre le ciel. [softly] L'air devient brûlant, [pauses] et empoisonné."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et les animaux ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[sad] [softly] Presque tous meurent. [serious] Dans la mer, presque tous les animaux disparaissent. [pauses] Sur la terre aussi, la plupart. [softly] Les savants l'appellent [serious] « la Grande Mort ». [pauses] C'est la plus grande extinction que la Terre ait connue."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Plus grande que celle des dinosaures ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious] Plus grande. [calm] Bien plus grande."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il y en a eu d'autres, des grandes extinctions ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[calm] Cinq, en tout. [softly] Trois très anciennes, surtout dans les mers, [pauses] celle-ci, la plus grande, [serious] et celle des dinosaures, avec la météorite, bien plus tard. [softly] Mais à chaque fois, quelques animaux survivent, cachés, résistants."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Y'avait Tritri ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[chuckles] [softly] Pas encore ! [playful] Les Tricératops n'existent pas encore. [happily] Il faudra attendre très, très longtemps. [pauses] Mais ces survivants vont donner naissance à quelque chose de nouveau…"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] [curious] Quoi ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] [excited] Les tout premiers dinosaures !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

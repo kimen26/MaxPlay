@@ -14,7 +14,7 @@ if (!lang) { console.error('usage: node _md2json-hors-fiche.cjs <lang> [fichier.
 const LANG_CODE = { 'es-es': 'es', 'pt-br': 'pt' }[lang] || lang;
 
 const voiceMap = JSON.parse(fs.readFileSync(path.join(ROOT, 'studio/narration/personnages/voix-meta/voice-map.json'), 'utf8'));
-const VOIX = { 'NARRATEUR H': voiceMap.voices.narrateur_h, WEX: voiceMap.voices.wex };
+const VOIX = { 'NARRATEUR H': voiceMap.voices.narrateur_h, NARRATRICE: voiceMap.voices.narrateur_f, WEX: voiceMap.voices.wex }; // NARRATRICE = Voyage (récits, ères)
 
 // Liste blanche des tags = celle de la porte des fiches (source unique, lue dans son code).
 const gateSrc = fs.readFileSync(path.join(ROOT, 'studio/dino/content/scripts/export/_verif-scripts-audio.cjs'), 'utf8');

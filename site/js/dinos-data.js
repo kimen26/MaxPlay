@@ -144,6 +144,17 @@ const EXTINCTION = {
 };
 
 
+// Ères géologiques — macro-info au-dessus des DINO_PERIODES (demande Papa Yann 2026-09-05 : « ajouter les ères
+// en macro-info »). Source : content/sources/recits/PROPOSITION-ERES-EXTINCTIONS.md. Audio : audio/dinos/<lang>/ere-<id>.mp3.
+const DINO_ERES = [
+  { id: 'paleo', label: 'Paléozoïque', surnom: "l'âge d'avant les dinosaures", bornes: '541 – 252 Ma',
+    accroche: "Avant les dinosaures, la vie invente tout : poissons, plantes, premiers pas hors de l'eau.", emoji: '🐟', color: '#5d7a8a' },
+  { id: 'meso', label: 'Mésozoïque', surnom: "l'âge des dinosaures", bornes: '252 – 66 Ma',
+    accroche: "L'âge des dinosaures : trois époques, des tout petits aux géants.", emoji: '🦖', color: '#3f8f5a' },
+  { id: 'ceno', label: 'Cénozoïque', surnom: "l'âge des mammifères", bornes: '66 Ma – aujourd\'hui',
+    accroche: "Après les dinosaures, les mammifères grandissent, jusqu'à toi.", emoji: '🦣', color: '#a1887f' },
+];
+
 const DINO_CATEGORIES = [
   { id: 'carnivores',     label: 'Carnivores',       emoji: '🥩', color: '#c0392b', bg: 'linear-gradient(135deg,#7b0000,#c0392b)' },
   { id: 'herbivores',     label: 'Herbivores',       emoji: '🌿', color: '#27ae60', bg: 'linear-gradient(135deg,#0a4a1e,#27ae60)' },
@@ -154,6 +165,7 @@ const DINO_CATEGORIES = [
 const DINO_PERIODES = [
   {
     id: 'permien',
+    ere: 'paleo',
     label: 'Permien',
     emoji: '🌋',
     range: '280 Ma',
@@ -164,6 +176,7 @@ const DINO_PERIODES = [
   },
   {
     id: 'trias',
+    ere: 'meso',
     label: 'Trias',
     emoji: '🌿',
     range: '252 – 201 Ma',
@@ -174,6 +187,7 @@ const DINO_PERIODES = [
   },
   {
     id: 'jurassique',
+    ere: 'meso',
     label: 'Jurassique',
     emoji: '🦕',
     range: '201 – 145 Ma',
@@ -184,6 +198,7 @@ const DINO_PERIODES = [
   },
   {
     id: 'cretace',
+    ere: 'meso',
     label: 'Crétacé',
     emoji: '🦖',
     range: '145 – 66 Ma',
@@ -194,6 +209,7 @@ const DINO_PERIODES = [
   },
   {
     id: 'cenozoique',
+    ere: 'ceno',
     label: 'Cénozoïque',
     emoji: '🦣',
     range: '66 Ma – aujourd\'hui',

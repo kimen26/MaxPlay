@@ -12,7 +12,7 @@ const data = JSON.parse(fs.readFileSync(src, 'utf8'));
 const payload = {
   dinos: data.dinos || {}, familles: data.familles || {}, racines: data.racines || {},
   periodes: data.periodes || {}, categories: data.categories || {},
-  pangee: data.pangee || {}, extinction: data.extinction || {}
+  pangee: data.pangee || {}, extinction: data.extinction || {}, eres: data.eres || {}
 };
 const outDir = path.join(ROOT, 'site/js/i18n');
 fs.mkdirSync(outDir, { recursive: true });

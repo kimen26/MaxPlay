@@ -1,0 +1,66 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious] [softly] Before the dinosaurs, [pauses] two hundred fifty-two million years ago, [gasps] the Earth nearly died."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] A meteorite, like the dinosaurs?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[softly] No, [serious] not this time. [calm] This time, [pauses] it was volcanoes. [gasps] Huge volcanoes, in Siberia, [shouts] spitting fire for thousands of years."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Thousands of years?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[calm] [softly] Yes. [serious] Thick smoke covers the sky. [softly] The air turns burning hot, [pauses] and poisoned."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] What about the animals?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[sad] [softly] Almost all of them die. [serious] In the sea, almost every animal disappears. [pauses] On land too, most of them. [softly] Scientists call it [serious] \"the Great Dying.\" [pauses] It's the biggest extinction the Earth has ever known."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Bigger than the dinosaurs' extinction?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious] Bigger. [calm] Much bigger."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Were there other big extinctions?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[calm] Five, in all. [softly] Three very old ones, mostly in the seas, [pauses] this one, the biggest, [serious] and the dinosaurs' one, with the meteorite, much later. [softly] But every time, a few animals survive, hidden, tough."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Was Tritri there?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[chuckles] [softly] Not yet! [playful] Triceratops don't exist yet. [happily] We'll have to wait a very, very long time. [pauses] But these survivors will give birth to something new…"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] [curious] What?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] [excited] The very first dinosaurs!"
+    }
+  ]
+}

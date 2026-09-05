@@ -539,6 +539,15 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 ::-webkit-scrollbar { width:4px; }
 ::-webkit-scrollbar-track { background:transparent; }
 ::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.2); border-radius:2px; }
+/* Bandeau d'ère (Voyage + Époques, 2026-09-05) */
+.ere-bandeau { display:flex; align-items:center; gap:10px; margin:14px 12px 6px; padding:10px 12px; border-radius:14px;
+  background:color-mix(in srgb, var(--ere) 18%, transparent); border:1px solid color-mix(in srgb, var(--ere) 55%, transparent); }
+.ere-emoji { font-size:1.6rem; line-height:1; }
+.ere-info { flex:1; min-width:0; }
+.ere-label { font-weight:900; font-size:1.05rem; }
+.ere-surnom { font-weight:700; font-size:.85rem; opacity:.8; }
+.ere-bornes { font-size:.8rem; opacity:.85; margin-top:2px; }
+.ere-play { flex:0 0 auto; width:40px; height:40px; border-radius:50%; border:none; background:var(--ere); color:#fff; font-size:1.1rem; cursor:pointer; }
 </style>
 </head>
 <body data-ambiance="nuit">
@@ -842,9 +851,11 @@ function buildMenuEpoque(el) {
   intro.innerHTML = `<p>${T('menu_epoque_intro')}</p>`;
   el.appendChild(intro);
 
+  let ereCourante = null;
   DINO_PERIODES.forEach(per => {
     const count = DINOS.filter(d => d.periode === per.id).length;
     if (!count) return;
+    if (per.ere && per.ere !== ereCourante) { ereCourante = per.ere; el.insertAdjacentHTML('beforeend', ereBandeauHtml(per.ere)); }
     const card = document.createElement('div');
     card.className = 'fam-card';
     card.style.background = hexToRgba(per.color, 0.12);
@@ -943,17 +954,37 @@ function buildMenuRegime(el) {
 }
 
 /* ── MENU période = chronomap inline ── */
-// ─── Le voyage dans le temps (8 épisodes audio · story-first) ───
+// ─── Le voyage dans le temps (9 épisodes audio · story-first · regroupés par ère depuis 2026-09-05) ───
 const JOURNEY = [
-  { id:'intro',          emoji:'🌍', get label(){ return T('journey_ep_intro_label'); },          get date(){ return T('journey_ep_intro_date'); },          color:'#5dade2', dinos:[] },
-  { id:'trias',          emoji:'🌋', get label(){ return T('journey_ep_trias_label'); },          get date(){ return T('journey_ep_trias_date'); },          color:'#ff7043', dinos:['coelophysis','plateosaurus'] },
-  { id:'jurassique',     emoji:'🦕', get label(){ return T('journey_ep_jurassique_label'); },     get date(){ return T('journey_ep_jurassique_date'); },     color:'#66bb6a', dinos:['diplodocus','brachiosaurus','allosaurus'] },
-  { id:'cretace',        emoji:'🦖', get label(){ return T('journey_ep_cretace_label'); },        get date(){ return T('journey_ep_cretace_date'); },        color:'#42a5f5', dinos:['tyrannosaurus','triceratops','velociraptor'] },
-  { id:'extinction',     emoji:'☄️', get label(){ return T('journey_ep_extinction_label'); },     get date(){ return T('journey_ep_extinction_date'); },     color:'#ff6b35', dinos:['triceratops','tyrannosaurus'] },
-  { id:'mammiferes',     emoji:'🐯', get label(){ return T('journey_ep_mammiferes_label'); },     get date(){ return T('journey_ep_mammiferes_date'); },     color:'#a1887f', dinos:[] },
-  { id:'glace-mammouth', emoji:'🦣', get label(){ return T('journey_ep_glace-mammouth_label'); }, get date(){ return T('journey_ep_glace-mammouth_date'); }, color:'#00bcd4', dinos:[] },
-  { id:'paleo',          emoji:'🔬', get label(){ return T('journey_ep_paleo_label'); },          get date(){ return T('journey_ep_paleo_date'); },          color:'#9b59b6', dinos:[] },
+  { id:'intro',          emoji:'🌍', get label(){ return T('journey_ep_intro_label'); },          get date(){ return T('journey_ep_intro_date'); },          color:'#5dade2', dinos:[], ere:'paleo' },
+  { id:'grande-mort',    emoji:'🌋', get label(){ return T('journey_ep_grande-mort_label'); },    get date(){ return T('journey_ep_grande-mort_date'); },    color:'#7a2e2e', dinos:[], ere:'paleo' },
+  { id:'trias',          emoji:'🌋', get label(){ return T('journey_ep_trias_label'); },          get date(){ return T('journey_ep_trias_date'); },          color:'#ff7043', dinos:['coelophysis','plateosaurus'], ere:'meso' },
+  { id:'jurassique',     emoji:'🦕', get label(){ return T('journey_ep_jurassique_label'); },     get date(){ return T('journey_ep_jurassique_date'); },     color:'#66bb6a', dinos:['diplodocus','brachiosaurus','allosaurus'], ere:'meso' },
+  { id:'cretace',        emoji:'🦖', get label(){ return T('journey_ep_cretace_label'); },        get date(){ return T('journey_ep_cretace_date'); },        color:'#42a5f5', dinos:['tyrannosaurus','triceratops','velociraptor'], ere:'meso' },
+  { id:'extinction',     emoji:'☄️', get label(){ return T('journey_ep_extinction_label'); },     get date(){ return T('journey_ep_extinction_date'); },     color:'#ff6b35', dinos:['triceratops','tyrannosaurus'], ere:'meso' },
+  { id:'mammiferes',     emoji:'🐯', get label(){ return T('journey_ep_mammiferes_label'); },     get date(){ return T('journey_ep_mammiferes_date'); },     color:'#a1887f', dinos:[], ere:'ceno' },
+  { id:'glace-mammouth', emoji:'🦣', get label(){ return T('journey_ep_glace-mammouth_label'); }, get date(){ return T('journey_ep_glace-mammouth_date'); }, color:'#00bcd4', dinos:[], ere:'ceno' },
+  { id:'paleo',          emoji:'🔬', get label(){ return T('journey_ep_paleo_label'); },          get date(){ return T('journey_ep_paleo_date'); },          color:'#9b59b6', dinos:[], ere:'ceno' },
 ];
+
+/* ── Bandeau d'ÈRE (macro-info, 2026-09-05) : partagé par le Voyage et l'onglet Époques.
+   Données : DINO_ERES (dinos-data.js, traduit par dinos-i18n.js). Voix : audio/dinos/<lang>/ere-<id>.mp3, repli TTS. ── */
+function ereBandeauHtml(ereId) {
+  const e = (typeof DINO_ERES !== 'undefined' ? DINO_ERES : []).find(x => x.id === ereId);
+  if (!e) return '';
+  return `<div class="ere-bandeau" style="--ere:${e.color}">
+      <span class="ere-emoji">${e.emoji}</span>
+      <div class="ere-info">
+        <div class="ere-label">${e.label} <span class="ere-surnom">· ${e.surnom}</span></div>
+        <div class="ere-bornes">${e.bornes} — ${e.accroche}</div>
+      </div>
+      <button type="button" class="ere-play" onclick="playEreVoice('${e.id}')" aria-label="${e.label}">🔊</button>
+    </div>`;
+}
+function playEreVoice(ereId) {
+  const e = (typeof DINO_ERES !== 'undefined' ? DINO_ERES : []).find(x => x.id === ereId);
+  _playMenuSrc(window.AUDIO_DINOS + 'ere-' + ereId + '.mp3', e ? e.label + ' ! ' + e.surnom + '. ' + e.accroche : '');
+}
 
 function buildMenuPeriode(el) {
   el.classList.add('mode-periode');
@@ -965,11 +996,12 @@ function buildMenuPeriode(el) {
   wrapper.innerHTML =
     `<div class="journey-intro">🦕 ${T('journey_intro').replace('▶', '<b>▶</b>').replace('👉', '<b>👉</b>')}</div>` +
     `<div class="journey-trait" aria-hidden="true"></div>` +
-    JOURNEY.map(ep => {
+    JOURNEY.map((ep, i) => {
+      const bandeau = (i === 0 || JOURNEY[i - 1].ere !== ep.ere) ? ereBandeauHtml(ep.ere) : '';
       const dinos = ep.dinos.map(id => DINOS.find(d => d.id === id)).filter(Boolean);
       const dinosHtml = dinos.length
         ? `<div class="chrono-dinos">${dinos.map(buildChronoDinoThumb).join('')}</div>` : '';
-      return `
+      return bandeau + `
         <div class="chrono-periode journey-ep" data-ep="${ep.id}" style="border-left:5px solid ${ep.color}">
           <div class="chrono-header" style="background:${ep.color}22">
             <div class="chrono-emoji" style="border-color:${ep.color}">${ep.emoji}</div>

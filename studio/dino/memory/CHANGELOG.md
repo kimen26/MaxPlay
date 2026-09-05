@@ -6,7 +6,7 @@
 
 - Les 71 fiches disent des chiffres vérifiés : 28 dinos ont été corrigés (taille, poids, lieux de vie, qui mangeait qui), plus aucune comparaison qui triche de plus de 10 %.
 - Les dinos ont une vitesse (25 d'entre eux, quand les savants en ont une) : « aussi vite que Papa qui court », « aussi vite qu'une voiture en ville ».
-- Les 13 chasseurs à deux pattes (T-Rex, Spinosaure…) racontent leur fiche avec une voix pleine de vie (rires, chuchotements, surprise) en français, anglais, espagnol et portugais brésilien. Les autres suivront après le reset ElevenLabs.
+- Les 13 chasseurs à deux pattes (T-Rex, Spinosaure…) racontent leur fiche avec une voix pleine de vie (rires, chuchotements, surprise) en français, anglais, espagnol et portugais brésilien. En français, 23 autres dinos (Tricératops et ses cousins, becs de canard, raptors, reptiles volants) ont aussi leur nouvelle voix ; les 35 derniers suivront après le reset ElevenLabs.
 - Le Narrateur ne dit plus jamais un chiffre faux : chaque histoire de dino est réécrite d'un bloc, sans redite, avec Wex qui devine le nom à sa façon.
 - 10 musiques (jungle, douce, suspense, génériques, victoires) et 41 bruitages de dinos (rugissements, pas lourds, œufs qui éclosent, pluie, tonnerre…) sont prêts à être branchés dans les jeux.
 - L'encyclopédie parle anglais, espagnol et portugais brésilien : fiches ET menu (onglets, boutons, libellés) traduits nativement, avec les bonnes unités (pieds/livres en anglais).

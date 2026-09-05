@@ -97,6 +97,22 @@
     return applyParams(texte, params);
   }
 
+  // voix(gameId, slug, frFallback) — HO-MJ-06 : texte de repli TTS d'une consigne
+  // PARLÉE (site/js/textes-jeux.js, slugs regle-mj-XX + phrases partagées). Cherche
+  // MJ_STRINGS[gameId].voix[slug] (jeu, ex. regle-mj-14) puis MJ_STRINGS._commun.voix[slug]
+  // (phrase partagée, ex. cest-parti) — même repli FR intégral que t()/regle() si absent
+  // (langue non traduite ou slug hors pack), jamais de trou. gameId peut être omis
+  // (résolu depuis l'URL comme ailleurs dans ce fichier).
+  function voix(id, slug, frFallback) {
+    var S = window.MJ_STRINGS;
+    var gid = id || gameId();
+    var parJeu = S && S[gid] && S[gid].voix && S[gid].voix[slug];
+    if (typeof parJeu === 'string' && parJeu) return parJeu;
+    var commun = S && S._commun && S._commun.voix && S._commun.voix[slug];
+    if (typeof commun === 'string' && commun) return commun;
+    return frFallback;
+  }
+
   // plural(n, one, many) — accord anglais simple (n===1 -> one, sinon -> many).
   // En FR le jeu garde sa logique actuelle (cette fonction ne s'applique qu'à l'EN,
   // les autres langues futures ajouteront leur propre règle le jour venu).
@@ -106,5 +122,5 @@
     return n === 1 ? one : many; // repli neutre tant qu'aucune langue n'a de règle dédiée
   }
 
-  window.MJi18n = { regle: regle, titre: titre, gameId: gameId, t: t, plural: plural };
+  window.MJi18n = { regle: regle, titre: titre, gameId: gameId, t: t, plural: plural, voix: voix };
 })();

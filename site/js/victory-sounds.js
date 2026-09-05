@@ -141,15 +141,36 @@ function _pickRandom(arr, key) {
 
 // ── Référentiel de contenu (Lot 3 allégé, 2026-08-10) ────────────────────────
 // js/textes-jeux.js (généré depuis studio/referentiel/) porte, par slug, le
-// texte canonique. Un repli inline absent OU divergent est ignoré : la table
+// texte canonique FR. Un repli inline absent OU divergent est ignoré : la table
 // gagne (le MP3 dit ce qu'elle dit, pas ce que le point d'appel imaginait —
 // incident « Tu maîtrises ce jeu ! » du 2026-08-10). Divergence → log console,
 // pour traquer les appels obsolètes sans casser les 56 pages.
+//
+// HO-MJ-06 : cette table n'a QU'UNE langue (FR). En langue non-FR, imposer le
+// texte FR de la table ferait entendre du français en ?lang=en. Le canon FR ne
+// s'applique donc qu'en FR (ou langue absente). En langue non-FR, on cherche
+// plutôt le texte du pack i18n (studio/minijeux/i18n/<lang>/strings.json, exposé
+// par MJi18n.voix — jeu puis _commun) : il gagne sur le fallback de l'appelant,
+// même logique « la table gagne » que le canon FR mais sur le pack de la langue
+// active — utile même si l'appelant (ex. regle-info.js) n'est pas encore mis à
+// jour pour construire lui-même un fallback traduit. Pack absent pour ce slug ->
+// le fallback de l'appelant est gardé tel quel (déjà traduit ou pas, on ne perd
+// jamais le son : TTS parlera dans tous les cas).
 function _normTxt(t) {
   return String(t || '')
     .replace(/[’‘]/g, "'").replace(/\s+/g, ' ').trim().toLowerCase();
 }
+function _langActive() {
+  return (typeof window !== 'undefined' && window.Lang && window.Lang.current)
+    ? window.Lang.current() : 'fr';
+}
 function _repliCanonique(slug, fallbackText) {
+  const lang = _langActive();
+  if (lang !== 'fr') {
+    const viaPack = (typeof window !== 'undefined' && window.MJi18n && window.MJi18n.voix)
+      ? window.MJi18n.voix(undefined, slug, null) : null;
+    return viaPack || fallbackText;
+  }
   const t = (typeof window !== 'undefined' && window.TEXTES_JEUX)
     ? window.TEXTES_JEUX[slug] : null;
   if (!t || !t.tts) return fallbackText;
@@ -198,12 +219,21 @@ const SoundPool = {
    *  cest-parti, a-toi-de-jouer, cherche-bien, encore-une-fois,
    *  ouvre-bien-les-yeux. */
   /** Ligne vocale nommée, tirée au hasard parmi les 3 voix du casting
-   *  (sounds/voix/{f,h,wex}/<slug>.mp3), fallback TTS. Slugs : etoile-gagnee. */
+   *  (sounds/voix/{f,h,wex}/<slug>.mp3), fallback TTS. Slugs : etoile-gagnee.
+   *
+   *  HO-MJ-06 : en langue non-FR, le MP3 FR ne doit JAMAIS jouer (l'enfant
+   *  entendrait du français en ?lang=en) — on cherche le MP3 dans le pack de
+   *  la langue active (sounds/voix/<lang>/{f,h,wex}/<slug>.mp3, même convention
+   *  que le doublon multilingue _doublonInvite ci-dessus) ; absent -> TTS direct,
+   *  jamais de repli sur le fichier FR. */
   voiceLine(slug, fallbackText, volume = 0.95) {
     fallbackText = _repliCanonique(slug, fallbackText);
+    const lang = _langActive();
     try {
       const dir = _pickRandom(VOICE_DIRS, 'voice-dir');
-      const a = new Audio(`${dir}/${slug}.mp3`);
+      const src = (lang === 'fr') ? `${dir}/${slug}.mp3`
+        : `sounds/voix/${lang}/${dir.split('/').pop()}/${slug}.mp3`;
+      const a = new Audio(src);
       a.volume = volume;
       a.play().catch(() => {
         if (fallbackText && window.TTS) TTS.speak(fallbackText, { pitch: 1.05, priority: true });
@@ -216,8 +246,11 @@ const SoundPool = {
   },
   phrase(slug, fallbackText, volume = 0.95) {
     fallbackText = _repliCanonique(slug, fallbackText);
+    const lang = _langActive();
     try {
-      const a = new Audio(`sounds/voix/phrases/${slug}.mp3`);
+      const src = (lang === 'fr') ? `sounds/voix/phrases/${slug}.mp3`
+        : `sounds/voix/${lang}/phrases/${slug}.mp3`;
+      const a = new Audio(src);
       a.volume = volume;
       a.play().catch(() => {
         if (fallbackText && window.TTS) TTS.speak(fallbackText, { pitch: 1.05, priority: true });

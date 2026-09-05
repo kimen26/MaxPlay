@@ -113,7 +113,7 @@
   <div id="app">
     <div class="hdr">
       <a href="index.html" class="back">←</a>
-      <span class="htitle">🥚 Les œufs surprises</span>
+      <span class="htitle" id="htitle">🥚 Les œufs surprises</span>
     </div>
     <div class="pips" id="pips"></div>
 
@@ -143,6 +143,9 @@
     // pastille jaune numérotée + fissure (correspondance un-à-un). Retour PY 2026-07-20.
     // Réussite : les œufs éclosent → bébés dinos (img/dinos/sprites/*_tete.png).
     const GAME_ID = 'mj-46';
+    document.title = 'MJ-46 – ' + MJi18n.titre(GAME_ID, 'Les œufs surprises');
+    const htitleEl = document.getElementById('htitle');
+    if (htitleEl) htitleEl.textContent = '🥚 ' + MJi18n.titre(GAME_ID, 'Les œufs surprises');
 
     // Paliers spec S1 + retour PY 2026-07-20 (« plus que 2-3, direct 5-7 mini jusqu'à 20-22 »)
     const LEVELS = [
@@ -152,6 +155,8 @@
     ];
 
     const G = Golden.setup(GAME_ID);   // G.level = Math.min(2, étoiles) · G.totalQ = 4/6/8
+    const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t(GAME_ID, cle, fr, params) : fr);
+    const plural = (n, one, many) => (window.MJi18n && MJi18n.plural) ? MJi18n.plural(n, one, many) : (n === 1 ? one : many);
     const MAX_Q = G.totalQ;
     const level = G.level;
 
@@ -171,7 +176,7 @@
     let qCount = 0, qcm = null, correctAnswer = 0, tagged = 0, phase2 = false;
 
     const shell = MJ.init({
-      id: GAME_ID, emoji: '🥚', titre: 'Les œufs surprises',
+      id: GAME_ID, emoji: '🥚', titre: MJi18n.titre(GAME_ID, 'Les œufs surprises'),
       golden: true, consigne: true,
       regle: {
         picto: '🥚🔢',
@@ -210,7 +215,7 @@
       correctAnswer = MJCompte.nextValue(L);
 
       // Consigne : le QCM est visible dès le début — tapoter les œufs est une AIDE (PY)
-      shell.setConsigne('Combien d’œufs ?', qCount === 1);
+      shell.setConsigne(T('combienDoeufs', 'Combien d’œufs ?'), qCount === 1);
 
       renderEggs(correctAnswer);
 
@@ -356,7 +361,7 @@
         btn.classList.add('ok');
         sndDing();
         // Cardinalité : le total est dit (vraie voix, banque nombres) ET affiché en gros
-        shell.setConsigne(correctAnswer + ' œufs !', false);
+        shell.setConsigne(correctAnswer + ' ' + plural(correctAnswer, T('oeufSing', 'œuf'), T('oeufPlur', 'œufs')) + ' !', false);
         if (window.SayNombres) SayNombres.oeufs(correctAnswer);
         G.notePip(qCount - 1, res.attempts, btn);
         crackParty(() => setTimeout(nextQuestion, 500));
@@ -372,7 +377,7 @@
         // mauvaise réponse, il reste des essais → on recompte ensemble + INDICE, jamais la réponse
         btn.classList.add('ko'); btn.disabled = true;
         sndBuzz();
-        showHint('💡 Recomptons ensemble, un par un !');
+        showHint('💡 ' + T('recomptonsEnsemble', 'Recomptons ensemble, un par un !'));
         recountEggs();
       }
     }

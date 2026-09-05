@@ -64,7 +64,7 @@
 
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">🥚 Sudoku Dino</span>
+    <span class="htitle" id="htitle">🥚 Sudoku Dino</span>
   </div>
 
   <div class="stage">
@@ -89,9 +89,12 @@
     // puis retrait de cases en vérifiant l'UNICITÉ par backtracking.
     // Conflit = 2 cases tremblent orange (indice visuel, jamais bloquant).
     const GAME_ID = 'mj-54';
+    document.title = 'MJ-54 – ' + MJi18n.titre(GAME_ID, 'Sudoku Dino');
+    const htitleEl = document.getElementById('htitle');
+    if (htitleEl) htitleEl.textContent = '🥚 ' + MJi18n.titre(GAME_ID, 'Sudoku Dino');
 
     const shell = MJ.init({
-      id: GAME_ID, emoji: '🥚', titre: 'Sudoku Dino',
+      id: GAME_ID, emoji: '🥚', titre: MJi18n.titre(GAME_ID, 'Sudoku Dino'),
       golden: true, consigne: true,
       regle: {
         picto: '🥚🧩',
@@ -109,6 +112,7 @@
       }
     });
     const G = shell.G;
+    const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t(GAME_ID, cle, fr, params) : fr);
 
     const gridEl = document.getElementById('grid');
     const paletteEl = document.getElementById('palette');
@@ -414,7 +418,7 @@
       conflictSeen = false;
       helpTaps = 0;
       hintEl.textContent = '';
-      shell.setConsigne('Complète la grille : les 4 symboles partout !', qCount === 0 ? undefined : true);
+      shell.setConsigne(T('consigne', 'Complète la grille : les 4 symboles partout !'), qCount === 0 ? undefined : true);
       buildGrid();
     }
 

@@ -1,6 +1,33 @@
 // GENERE par studio/minijeux/tools/_gen-mj-strings-bundle.cjs — ne pas editer a la main.
 // Source : studio/minijeux/i18n/en/strings.json
 window.MJ_STRINGS = {
+ "_commun": {
+  "ariaRegleAvis": "Game rules and feedback",
+  "commentGagner": "How do you win stars? ★★★",
+  "justeDuPremierCoup": "right on the 1st try = green",
+  "justeApresUnEssai": "right after 1 try = orange",
+  "avecAide": "with a little help = soft red",
+  "toutVert": "all green = champion star ⭐!",
+  "tabRegle": "Rules",
+  "tabAvis": "Feedback",
+  "ariaFermer": "Close",
+  "ecouteToutesLesRegles": "Listen to all the rules",
+  "jaiCompris": "Got it! 👍",
+  "coinDesParents": "Parents corner",
+  "mettreEnFavori": "Add to favorites",
+  "placeholderAvis": "A bug? An idea? Too hard, too easy?…",
+  "titreDicter": "speak instead of typing",
+  "envoyer": "Send 📨",
+  "zeroDonneeEnfant": "nothing is asked of your child — zero data about them 👍",
+  "merciAvisEnvoye": "Thanks! Feedback sent ✓",
+  "oupsReessaie": "Oops, try again 🙏",
+  "ecrisAvisDabord": "Write (or speak) your feedback first 🙂",
+  "retirerDesFavoris": "❤️ Remove from favorites",
+  "mettreEnFavoriCoeur": "❤️ Add to favorites",
+  "deja5JeuxEnAvant": "Already 5 games up front — remove one first 🙂",
+  "ajouteAuxFavoris": "Added to favorites ❤️",
+  "dicteeNonDispo": "Speech input not available on this browser"
+ },
  "mj-06": {
   "titre": "Read the Sentence",
   "regle": {
@@ -163,6 +190,48 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "modeFormes": "Shapes",
+   "modeBus": "Buses",
+   "modeDinos": "Dinos",
+   "choisis": "Pick one ↓",
+   "hintShapesA": "Look: every row has the same shape!",
+   "hintShapesB": "Look: every column has the same fill!",
+   "hintShapesC": "Row = shape, column = fill. Find both!",
+   "hintShapesD": "Every row and column has all 3 shapes once. Which one is missing?",
+   "hintBusA": "Every row always has the same bus!",
+   "hintBusB": "Every column always has the same bus!",
+   "hintBusC1": "The color changes by row, the number by column!",
+   "hintBusC2": "The body changes by row, the number by column!",
+   "hintBusC3": "The color changes by row, the wheels by column!",
+   "hintBusD": "Every row and column has all 3 buses once. Which one is missing?",
+   "hintDinoA": "Every row has the same dino and the same color!",
+   "hintDinoB": "Every column has the same color!",
+   "hintDinoC": "Row = dino, column = color. Find both!",
+   "hintDinoD": "Every row and column has all 3 dinos once. Which one is missing?",
+   "consigneBus": "Which bus is missing from the grid?",
+   "consigneDino": "Which dino is missing from the grid?",
+   "consigneFormes": "What is missing?",
+   "ligneBus": "Bus {n}",
+   "formeRond": "Circle",
+   "formeCarre": "Square",
+   "formeLosange": "Diamond",
+   "formeTriangle": "Triangle",
+   "remplissageVide": "Empty",
+   "remplissagePlein": "Solid",
+   "remplissageRaye": "Striped",
+   "couleurOlive": "olive",
+   "couleurCoeur": "red",
+   "couleurBleu": "blue",
+   "consigneBusGrille": "Which bus is missing from the grid?",
+   "consigneDinoGrille": "Which dino is missing from the grid?",
+   "consigneFormesGrille": "What is missing from the grid?",
+   "strongHintA": "Look closely: in every horizontal row, all the patterns match. Find the row of the empty square.",
+   "strongHintB": "Look closely: in every vertical column, all the patterns match. Find the column of the empty square.",
+   "strongHintC": "Look at the row of the empty square and its column. The right answer combines both.",
+   "strongHintD": "Look closely: every row has 3 different patterns, and so does every column. Find the one missing in the last row AND the last column.",
+   "niveauSur3": "Level {n} / 3"
   }
  },
  "mj-15": {
@@ -188,6 +257,45 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "quiNeVaPas": "Which one does not belong?",
+   "familleValouette": "Valouette",
+   "familleNoctilien": "Night bus",
+   "familleMetro": "Subway",
+   "familleRer": "Express train",
+   "familleStandard": "Regular bus",
+   "themeCiel": "the sky and the earth",
+   "themeFruits": "fruits",
+   "themeFerme": "farm animals",
+   "themeVehicules": "things that roll",
+   "themeFleurs": "flowers and trees",
+   "themeJouets": "toys",
+   "themeMer": "the sea",
+   "themeDesserts": "desserts",
+   "oddTortue": "Turtle",
+   "oddBallon": "Ball",
+   "oddLion": "Lion",
+   "oddAvion": "Plane",
+   "oddPizza": "Pizza",
+   "oddCarotte": "Carrot",
+   "oddPapillon": "Butterfly",
+   "oddFusee": "Rocket",
+   "hintF": "4 go with {theme}…",
+   "hintOmbreCouleur": "Look closely at the shadow colors!",
+   "hintOmbreForme": "Look closely at the shadow shape!",
+   "hintRegimeCarnivore": "4 eat meat…",
+   "hintRegimeHerbivore": "4 eat plants…",
+   "hintRegimePiscivore": "4 eat fish…",
+   "hintRegimeAutre": "4 eat the same thing…",
+   "hintEpoque": "4 are from the {v}…",
+   "hintFamille": "4 are from the same dino family…",
+   "hintCouleurs": "Look at the colors!",
+   "hintPairImpair": "Even or odd?",
+   "hintFamilleBus": "4 buses belong to the {fam} family…",
+   "hintRoues": "Look closely at the wheels!",
+   "hintDoubleCritere": "Color AND number… two things to check!",
+   "niveauSur3": "Level {n} / 3"
   }
  },
  "mj-18": {
@@ -248,6 +356,13 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "trouveLeDino": "Find the {n}!",
+   "trouveLeAmorce": "Find the…",
+   "questDino": "Find the <b>{n}</b>!",
+   "questBus": "Find bus <b>{n}</b>!",
+   "trouveLeBusN": "Find bus {n}"
   }
  },
  "mj-20": {
@@ -606,6 +721,15 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "nid": "Nest",
+   "niveau1": "Level 1",
+   "niveau2": "Level 2",
+   "niveau3GrosTas": "Level 3 — big pile!",
+   "trouveLeTrouPile": "Find the hole that fills the nest EXACTLY!",
+   "presqueCompteBien": "Almost! Count carefully, try again.",
+   "pileExcl": "EXACT! ✨"
   }
  },
  "mj-37": {
@@ -631,6 +755,27 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "tierFouTour": "Bishop & Rook",
+   "tierCavalierDame": "Knight & Queen",
+   "tierRoiPionMix": "King, Pawn & Mix",
+   "pieceFou": "The Bishop",
+   "pieceTour": "The Rook",
+   "pieceCavalier": "The Knight",
+   "pieceDame": "The Queen",
+   "pieceRoi": "The King",
+   "piecePion": "The Pawn",
+   "voxFou": "I glide diagonally, zoop!",
+   "voxTour": "I go straight ahead, vroom!",
+   "voxCavalier": "And hop, I jump in an L shape!",
+   "voxDame": "I can go absolutely anywhere!",
+   "voxRoi": "Slowly, one little step at a time.",
+   "voxPion": "I am small but I munch just fine!",
+   "toutCroque": "All munched up!",
+   "gouterRestant": "snack left",
+   "gouterRestants": "snacks left",
+   "bravoToutCroque": "Well done, all munched up!"
   }
  },
  "mj-38": {
@@ -656,6 +801,12 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "recommencer": "Restart",
+   "niveauSurTotal": "Level {n} / {total}",
+   "combo": "Combo!",
+   "essaieEncoreRecommencer": "Try again! Tap Restart 🙂"
   }
  },
  "mj-39": {
@@ -681,6 +832,10 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "ligne": "line",
+   "lignes": "lines"
   }
  },
  "mj-40": {
@@ -706,6 +861,18 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "instruction": "Drag the pieces onto the silhouette. Tap a piece to rotate it.",
+   "figOeufDeDino": "Dino Egg",
+   "figEcailleTriceratops": "Triceratops Scale",
+   "figCouSauropode": "Sauropod Neck",
+   "figOeufMystere": "Mystery Egg",
+   "figEcailleBrillante": "Shiny Scale",
+   "figLongCouCache": "Hidden Long Neck",
+   "figEcailleTournee": "Turned Scale",
+   "figCouTourne": "Turned Neck",
+   "figOeufTourne": "Turned Egg"
   }
  },
  "mj-42": {
@@ -756,6 +923,12 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "combienDoeufs": "How many eggs?",
+   "oeufSing": "egg",
+   "oeufPlur": "eggs",
+   "recomptonsEnsemble": "Let's count together, one by one!"
   }
  },
  "mj-47": {
@@ -781,6 +954,10 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "combienEnTout": "How many in total?",
+   "etCaFait": "{a} and {b} make {total}!"
   }
  },
  "mj-48": {
@@ -806,6 +983,34 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "ordinaux": [
+    "first",
+    "second",
+    "third",
+    "fourth",
+    "fifth"
+   ],
+   "leFPremierPresArret": "← the 1st is closest to the stop",
+   "toucheLeOrdinal": "Tap the {ord} in line!",
+   "leOrdinalMonte": "The {ord} gets on the bus!",
+   "passagerMonte": "passenger gets on",
+   "passagersMontent": "passengers get on",
+   "passagerDescend": "passenger gets off",
+   "passagersDescendent": "passengers get off",
+   "combienPassagersBus": "How many passengers are on the bus?",
+   "combienPassagersMaintenant": "How many passengers now?",
+   "combienIlEnReste": "How many are left on the bus?",
+   "combienDePlacesLibres": "How many empty seats?",
+   "ilManqueCombien": "How many more passengers to fill the bus?",
+   "cinqEtNCaFait": "5 and {reste} make {n}!",
+   "passagerSing": "passenger",
+   "passagerPlur": "passengers",
+   "ilEnResteN": "{n} are left!",
+   "sEtNCaFaitDixPlein": "{s0} and {n} make 10! The bus is full!",
+   "lePremierCEstCelui": "The first one is right next to the stop. Count: one, two, three…",
+   "recomptonsEnsembleExcl": "Let's count together!"
   }
  },
  "mj-49": {
@@ -831,6 +1036,19 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "ilEnFautCombien": "How many do you need to make 10?",
+   "ilEnManqueCombien": "How many are missing to fill the box?",
+   "combienDoeufsEnTout": "How many eggs in total?",
+   "deuxBoitesPleines": "Two full boxes… how many in total?",
+   "ilMeFautN": "I need <b>{n}</b> eggs!",
+   "boiteEstPleine": "The box is full. How many more eggs do you need?",
+   "ilEnManquaitNEtDix": "{n} were missing! And 10, the box is full!",
+   "dixEtNCaFait": "10 and {reste} make {n}!",
+   "dixVingtEtNCaFait": "10, 20… and {reste} make {n}!",
+   "dixVingtCaFait": "10, 20, that makes {n}!",
+   "dixEtNCaFaitTotal": "10 and {n} make {total}!"
   }
  },
  "mj-50": {
@@ -956,6 +1174,9 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "consigne": "Fill the grid: all 4 symbols everywhere!"
   }
  },
  "mj-55": {
@@ -981,6 +1202,11 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "bienJoue": "Well done!",
+   "consigneAvecEquilibre": "Fill the grid: never 3 in a row, and as many dinos as eggs!",
+   "consigneSimple": "Fill the grid: never 3 in a row!"
   }
  },
  "mj-56": {
@@ -1006,6 +1232,9 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "consigne": "One dino per row, column and pen… never side by side!"
   }
  },
  "mj-57": {
@@ -1031,6 +1260,12 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "tousLesOeufsOntEclos": "All the eggs have hatched!",
+   "continueAFaireEclore": "Keep hatching the eggs!",
+   "faisEcloreDores": "Hatch the eggs, especially the golden ones!",
+   "tapoteUnGroupe": "Tap a group of the same color!"
   }
  },
  "mj-59": {
@@ -1056,6 +1291,10 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "traceRectangleN": "Draw a rectangle of {n} around the stone!",
+   "faisUnTerritoire": "Make a territory for each stone!"
   }
  }
 };

@@ -141,13 +141,13 @@
   <!-- HEADER — copier tel quel, changer uniquement l'emoji et le titre -->
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">🌱 Le jeu des graines</span>
+    <span class="htitle" id="htitle">🌱 Le jeu des graines</span>
   </div>
   <div class="pips" id="pips"></div>
 
   <div id="main">
     <div id="count-display">0</div>
-    <div id="instruction">Touche un trou !</div>
+    <div id="instruction"></div>
     <div id="level-label"></div>
 
     <div id="board">
@@ -155,7 +155,7 @@
       <!-- 6 trous générés en JS -->
       <div class="granary-wrap">
         <div id="granary"></div>
-        <div class="pit-label">Nid <span id="granary-count">0</span></div>
+        <div class="pit-label"><span id="lbl-nid"></span> <span id="granary-count">0</span></div>
       </div>
       <div id="pile-fx"></div>
     </div>
@@ -171,8 +171,11 @@
     //  Kalah duel/IA NO-GO à 4 ans (décision game-conseiller) → version SOLO.
     // ═══════════════════════════════════════════════════════════════════════
 
+    document.title = 'MJ-35 — ' + MJi18n.titre('mj-35', 'Le jeu des graines');
+    const htitleEl = document.getElementById('htitle');
+    if (htitleEl) htitleEl.textContent = '🌱 ' + MJi18n.titre('mj-35', 'Le jeu des graines');
     const shell = MJ.init({
-      id: 'mj-35', emoji: '🌱', titre: 'Le jeu des graines',
+      id: 'mj-35', emoji: '🌱', titre: MJi18n.titre('mj-35', 'Le jeu des graines'),
       golden: true,
       consigne: false, // consigne locale gérée par #instruction (pas la barre standard)
       regle: {
@@ -200,10 +203,13 @@
     // (celui qui tombe pile dans le grenier) est toujours dans 1..6.
     // ★★★ "gros semis" : les trous VOISINS portent 8-12 graines (comptage
     // loin = passion Max) même si le trou PILE reste borné à 6 par la géométrie.
+    const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t('mj-35', cle, fr, params) : fr);
+    document.getElementById('lbl-nid').textContent = T('nid', 'Nid');
+
     const LEVELS = [
-      { pileMin: 1, pileMax: 3,  decoyMax: 4,  label: 'Niveau 1' },               // ★
-      { pileMin: 3, pileMax: 6,  decoyMax: 7,  label: 'Niveau 2' },               // ★★
-      { pileMin: 4, pileMax: 6,  decoyMax: 12, label: 'Niveau 3 — gros tas !' },  // ★★★
+      { pileMin: 1, pileMax: 3,  decoyMax: 4,  label: T('niveau1', 'Niveau 1') },               // ★
+      { pileMin: 3, pileMax: 6,  decoyMax: 7,  label: T('niveau2', 'Niveau 2') },               // ★★
+      { pileMin: 4, pileMax: 6,  decoyMax: 12, label: T('niveau3GrosTas', 'Niveau 3 — gros tas !') },  // ★★★
     ];
 
     function getStarLevel() {
@@ -270,7 +276,7 @@
       sowing = false;
       renderBoard();
       updateGranary();
-      document.getElementById('instruction').textContent = 'Trouve le trou qui remplit PILE le nid !';
+      document.getElementById('instruction').textContent = T('trouveLeTrouPile', 'Trouve le trou qui remplit PILE le nid !');
     }
 
     // ── Rendu ─────────────────────────────────────────────────────────────────
@@ -391,7 +397,7 @@
         // le compte (pédagogie) puis on réarrange doucement pour réessayer.
         hadWrongThisPile = true;
         setTimeout(() => {
-          document.getElementById('instruction').textContent = 'Presque ! Compte bien, essaie encore.';
+          document.getElementById('instruction').textContent = T('presqueCompteBien', 'Presque ! Compte bien, essaie encore.');
           setTimeout(newBoard, 700);
         }, 200);
       }
@@ -400,7 +406,7 @@
     function showPileFx() {
       const fx = document.getElementById('pile-fx');
       const span = document.createElement('span');
-      span.textContent = 'PILE ! ✨';
+      span.textContent = T('pileExcl', 'PILE ! ✨');
       fx.appendChild(span);
       sndBravo();
       setTimeout(() => span.remove(), 1100);

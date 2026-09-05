@@ -41,6 +41,13 @@
   }
   var EMOJI_RE = /[\p{Extended_Pictographic}️‍]/gu;
 
+  // Chrome du panneau (HO-MJ-04) : tout texte FIXE généré par regle-info.js (pas le
+  // contenu du jeu, qui reste dans opts/MJi18n.regle) passe par _commun. `t(cle, fr)`
+  // = raccourci local, repli FR si mj-i18n.js absent ou clé non traduite.
+  function t(cle, fr, params) {
+    return (window.MJi18n && MJi18n.t) ? MJi18n.t('_commun', cle, fr, params) : fr;
+  }
+
   function init(opts) {
     opts = opts || {};
     // Surcouche i18n (HO-MJ-02) : mj-i18n.js fusionne la traduction de la langue active
@@ -66,7 +73,7 @@
     btn.className = 'mp-prof';
     btn.id = 'btn-regle';
     btn.type = 'button';
-    btn.setAttribute('aria-label', 'Règle du jeu et avis');
+    btn.setAttribute('aria-label', t('ariaRegleAvis', 'Règle du jeu et avis'));
     btn.innerHTML = '🧑‍🔬<span class="bulle">?</span>';
     hdr.appendChild(btn);
 
@@ -80,11 +87,11 @@
     var extraStar = opts.etoiles ? '<div class="li" style="color:var(--ink-2)">' + opts.etoiles + '</div>' : '';
     var gagnerHtml =
       '<div class="gagner">'
-      + '<b style="font-size:12.5px;color:var(--gold)">Comment gagner les étoiles ? ★★★</b>'
-      + '<div class="li"><i style="background:var(--ok);color:#fff">✓</i>juste du 1ᵉʳ coup = vert</div>'
-      + '<div class="li"><i style="background:var(--retry);color:#3a2000">✓</i>juste après 1 essai = orange</div>'
-      + '<div class="li"><i style="background:var(--helped);color:#fff">💡</i>avec de l\'aide = rouge doux</div>'
-      + '<div class="li" style="color:var(--gold)">tout vert = l\'étoile de champion ⭐ !</div>'
+      + '<b style="font-size:12.5px;color:var(--gold)">' + t('commentGagner', 'Comment gagner les étoiles ? ★★★') + '</b>'
+      + '<div class="li"><i style="background:var(--ok);color:#fff">✓</i>' + t('justeDuPremierCoup', 'juste du 1ᵉʳ coup = vert') + '</div>'
+      + '<div class="li"><i style="background:var(--retry);color:#3a2000">✓</i>' + t('justeApresUnEssai', 'juste après 1 essai = orange') + '</div>'
+      + '<div class="li"><i style="background:var(--helped);color:#fff">💡</i>' + t('avecAide', 'avec de l\'aide = rouge doux') + '</div>'
+      + '<div class="li" style="color:var(--gold)">' + t('toutVert', 'tout vert = l\'étoile de champion ⭐ !') + '</div>'
       + extraStar
       + '</div>';
 
@@ -99,13 +106,13 @@
     pan.innerHTML =
       '<div class="p-tabs">'
       + '<div class="p-badge">🧑‍🔬</div>'
-      + '<span class="p-tab regle on" id="ri-tab-regle-btn">📖 La règle</span>'
-      + '<span class="p-tab avis" id="ri-tab-avis-btn">💬 Avis</span>'
-      + '<button class="p-close" id="ri-close" type="button" aria-label="Fermer">✕</button>'
+      + '<span class="p-tab regle on" id="ri-tab-regle-btn">📖 ' + t('tabRegle', 'La règle') + '</span>'
+      + '<span class="p-tab avis" id="ri-tab-avis-btn">💬 ' + t('tabAvis', 'Avis') + '</span>'
+      + '<button class="p-close" id="ri-close" type="button" aria-label="' + t('ariaFermer', 'Fermer') + '">✕</button>'
       + '</div>'
       // onglet RÈGLE
       + '<div id="ri-tab-regle" style="display:flex;flex-direction:column;flex:1;overflow:hidden">'
-      + '<div class="lire-tout" id="ri-btn-son"><i>🔊</i><b>Écoute toutes les règles</b></div>'
+      + '<div class="lire-tout" id="ri-btn-son"><i>🔊</i><b>' + t('ecouteToutesLesRegles', 'Écoute toutes les règles') + '</b></div>'
       + '<div class="p-corps">'
       + (opts.picto ? '<div style="text-align:center;font-size:1.5rem;letter-spacing:3px;padding:0">' + opts.picto + '</div>' : '')
       + (texte ? '<div class="ri-text" style="text-align:center;font-family:\'Fredoka One\',cursive;font-size:0.92rem;line-height:1.3;padding:0 4px">' + texte + '</div>' : '')
@@ -113,22 +120,22 @@
       + gagnerHtml
       + '</div>'
       + '<div style="padding:8px 12px 12px">'
-      + '<button class="mp-btn-primary" id="ri-ok" style="height:42px;font-size:13.5px" type="button">J\'ai compris ! 👍</button>'
+      + '<button class="mp-btn-primary" id="ri-ok" style="height:42px;font-size:13.5px" type="button">' + t('jaiCompris', 'J\'ai compris ! 👍') + '</button>'
       + '</div></div>'
       // onglet AVIS (violet parent fixe)
       + '<div id="ri-tab-avis" style="display:none;flex-direction:column;flex:1;overflow:hidden">'
       + '<div class="p-corps" style="padding-top:4px">'
       + '<div class="parent-box">'
-      + '<b style="font-size:13px">👨‍👦 Coin des parents</b>'
-      + '<button class="ri-pin" id="ri-pin" type="button" style="width:100%;height:44px;border:0;border-radius:12px;font-family:inherit;font-weight:900;font-size:13px;cursor:pointer;margin-bottom:8px">❤️ Mettre en favori</button>'
-      + '<textarea id="ri-avis-txt" placeholder="Un bug ? Une idée ? Trop dur, trop facile ?…"></textarea>'
+      + '<b style="font-size:13px">👨‍👦 ' + t('coinDesParents', 'Coin des parents') + '</b>'
+      + '<button class="ri-pin" id="ri-pin" type="button" style="width:100%;height:44px;border:0;border-radius:12px;font-family:inherit;font-weight:900;font-size:13px;cursor:pointer;margin-bottom:8px">❤️ ' + t('mettreEnFavori', 'Mettre en favori') + '</button>'
+      + '<textarea id="ri-avis-txt" placeholder="' + t('placeholderAvis', 'Un bug ? Une idée ? Trop dur, trop facile ?…') + '"></textarea>'
       + '<div style="display:flex;gap:8px">'
-      + '<button class="dicter" id="ri-dicter" type="button" title="dicter au lieu d\'écrire">🎙️</button>'
-      + '<button class="envoyer" id="ri-envoyer" type="button">Envoyer 📨</button>'
+      + '<button class="dicter" id="ri-dicter" type="button" title="' + t('titreDicter', 'dicter au lieu d\'écrire') + '">🎙️</button>'
+      + '<button class="envoyer" id="ri-envoyer" type="button">' + t('envoyer', 'Envoyer 📨') + '</button>'
       + '</div>'
       + '<div class="muted" id="ri-avis-msg" style="min-height:16px;font-size:11px"></div>'
       + '</div>'
-      + '<div class="muted" style="text-align:center;font-size:11px;line-height:1.5">rien n\'est demandé à l\'enfant — zéro donnée le concernant 👍</div>'
+      + '<div class="muted" style="text-align:center;font-size:11px;line-height:1.5">' + t('zeroDonneeEnfant', 'rien n\'est demandé à l\'enfant — zéro donnée le concernant 👍') + '</div>'
       + '</div></div>';
     document.body.appendChild(pan);
 
@@ -183,9 +190,9 @@
       if (ok) {
         try { window.Cloud && Cloud.schedulePush && Cloud.schedulePush(); } catch (e) {}
         txt.value = '';
-        msg.textContent = 'Merci ! Avis envoyé ✓';
+        msg.textContent = t('merciAvisEnvoye', 'Merci ! Avis envoyé ✓');
       } else {
-        msg.textContent = txt.value.trim() ? 'Oups, réessaie 🙏' : 'Écris (ou dicte) ton avis d\'abord 🙂';
+        msg.textContent = txt.value.trim() ? t('oupsReessaie', 'Oups, réessaie 🙏') : t('ecrisAvisDabord', 'Écris (ou dicte) ton avis d\'abord 🙂');
       }
       setTimeout(function () { msg.textContent = ''; }, 2600);
     });
@@ -206,7 +213,7 @@
     function pinPaint() {
       if (!pinBtn) return;
       var on = pinRead().indexOf(gameId()) !== -1;
-      pinBtn.textContent = on ? '❤️ Retirer des favoris' : '❤️ Mettre en favori';
+      pinBtn.textContent = on ? t('retirerDesFavoris', '❤️ Retirer des favoris') : t('mettreEnFavoriCoeur', '❤️ Mettre en favori');
       pinBtn.style.background = on ? 'var(--heart, #ff4d6d)' : 'var(--accent-soft, rgba(255,255,255,.1))';
       pinBtn.style.color = on ? 'var(--heart-ink, #fff)' : 'var(--accent, #fff)';
     }
@@ -216,12 +223,12 @@
         var id = gameId(), a = pinRead(), i = a.indexOf(id);
         if (i !== -1) { a.splice(i, 1); pinWrite(a); pinPaint(); return; }
         if (a.length >= PIN_CAP) {
-          msg.textContent = 'Déjà 5 jeux en avant — retires-en un d\'abord 🙂';
+          msg.textContent = t('deja5JeuxEnAvant', 'Déjà 5 jeux en avant — retires-en un d\'abord 🙂');
           setTimeout(function () { msg.textContent = ''; }, 2600);
           return;
         }
         a.push(id); pinWrite(a); pinPaint();
-        msg.textContent = 'Ajouté aux favoris ❤️';
+        msg.textContent = t('ajouteAuxFavoris', 'Ajouté aux favoris ❤️');
         setTimeout(function () { msg.textContent = ''; }, 2200);
       });
     }
@@ -237,7 +244,7 @@
     micBtn.addEventListener('click', function () {
       if (recOn) { stopMic(); return; }
       var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SR) { msg.textContent = 'Dictée non dispo sur ce navigateur'; setTimeout(function () { msg.textContent = ''; }, 2200); return; }
+      if (!SR) { msg.textContent = t('dicteeNonDispo', 'Dictée non dispo sur ce navigateur'); setTimeout(function () { msg.textContent = ''; }, 2200); return; }
       rec = new SR();
       rec.lang = 'fr-FR';
       rec.interimResults = false;

@@ -109,7 +109,7 @@
   <!-- HEADER — copier tel quel, changer uniquement l'emoji et le titre -->
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">✨ Les constellations</span>
+    <span class="htitle" id="htitle">✨ Les constellations</span>
   </div>
 
   <div class="stage">
@@ -132,8 +132,11 @@
   MJ.ready(function(){
     'use strict';
 
+    document.title = 'MJ-47 — ' + MJi18n.titre('mj-47', 'Les constellations');
+    const htitleEl = document.getElementById('htitle');
+    if (htitleEl) htitleEl.textContent = '✨ ' + MJi18n.titre('mj-47', 'Les constellations');
     const shell = MJ.init({
-      id: 'mj-47', emoji: '✨', titre: 'Les constellations',
+      id: 'mj-47', emoji: '✨', titre: MJi18n.titre('mj-47', 'Les constellations'),
       golden: true,
       consigne: true,
       regle: {
@@ -152,6 +155,7 @@
       }
     });
     const G = shell.G;
+    const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t('mj-47', cle, fr, params) : fr);
 
     // ── Paliers (golden : niveau = min(2, Stars.get('mj-47'))) ──────────────
     // Retour PY 2026-07-20 : « 1-2 à 2 étoiles c'est trop simple, il a déjà
@@ -265,7 +269,7 @@
       calcEl.classList.remove('show');
       calcEl.textContent = '';
       choicesEl.classList.remove('hidden');
-      shell.setConsigne('Combien en tout ?', qCount === 1);
+      shell.setConsigne(T('combienEnTout', 'Combien en tout ?'), qCount === 1);
 
       const opts = shuffle([value, ...distractors(value)]);
       choicesEl.innerHTML = '';
@@ -312,7 +316,7 @@
       const cells = dominoEl.querySelectorAll('.cell');
       cells.forEach(c => c.classList.remove('lit'));
       const equation = halves[0] + ' + ' + halves[1] + ' = ' + value;
-      const sentence = halves[0] + ' et ' + halves[1] + ', ça fait ' + value + ' !';
+      const sentence = T('etCaFait', '{a} et {b}, ça fait {total} !', { a: halves[0], b: halves[1], total: value });
       // Chaque case s'allume + SON chiffre apparaît juste dessous, en même temps
       // (correspondance visuelle directe demandée par Papa Yann).
       setTimeout(() => {

@@ -70,7 +70,7 @@
 
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">🦕 Tangram des dinos</span>
+    <span class="htitle" id="htitle">🦕 Tangram des dinos</span>
   </div>
 
   <div id="tier-bar">
@@ -80,7 +80,7 @@
   </div>
   <div class="pips" id="pips"></div>
 
-  <div id="instruction">Glisse les pièces sur la silhouette. Tape une pièce pour la tourner.</div>
+  <div id="instruction"></div>
 
   <div id="main">
     <div id="figure-name"></div>
@@ -96,8 +96,11 @@
 MJ.ready(function () {
   'use strict';
 
+  document.title = 'MJ-40 — ' + MJi18n.titre('mj-40', 'Tangram des dinos');
+  const htitleEl = document.getElementById('htitle');
+  if (htitleEl) htitleEl.textContent = '🦕 ' + MJi18n.titre('mj-40', 'Tangram des dinos');
   const shell = MJ.init({
-    id: 'mj-40', emoji: '🦕', titre: 'Tangram des dinos',
+    id: 'mj-40', emoji: '🦕', titre: MJi18n.titre('mj-40', 'Tangram des dinos'),
     golden: true,
     consigne: false,
     regle: {
@@ -115,6 +118,7 @@ MJ.ready(function () {
       ]
     }
   });
+  const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t('mj-40', cle, fr, params) : fr);
 
   // ============================================================
   // GÉOMÉTRIE — 7 pièces du tangram, coordonnées EXACTES vérifiées
@@ -235,17 +239,17 @@ MJ.ready(function () {
   // difficulté croît via le nombre d'indices visuels retirés).
   const FIGURES = [
     // Palier 1 — guidé (contours pointillés visibles)
-    { tier: 1, name: '🥚 Œuf de dino', guided: true, sol: solEgg, bbox: [0, 0, 8, 8] },
-    { tier: 1, name: '💎 Écaille de Tricératops', guided: true, sol: solScale, bbox: [-1.66, -1.66, 9.66, 9.66] },
-    { tier: 1, name: '🦕 Cou de sauropode', guided: true, sol: solSauropod, bbox: [0, 0, 16, 16] },
+    { tier: 1, name: '🥚 ' + T('figOeufDeDino', 'Œuf de dino'), guided: true, sol: solEgg, bbox: [0, 0, 8, 8] },
+    { tier: 1, name: '💎 ' + T('figEcailleTriceratops', 'Écaille de Tricératops'), guided: true, sol: solScale, bbox: [-1.66, -1.66, 9.66, 9.66] },
+    { tier: 1, name: '🦕 ' + T('figCouSauropode', 'Cou de sauropode'), guided: true, sol: solSauropod, bbox: [0, 0, 16, 16] },
     // Palier 2 — silhouette pleine
-    { tier: 2, name: '🥚 Œuf mystère', guided: false, sol: solEgg, bbox: [0, 0, 8, 8] },
-    { tier: 2, name: '💎 Écaille brillante', guided: false, sol: solScale, bbox: [-1.66, -1.66, 9.66, 9.66] },
-    { tier: 2, name: '🦕 Long cou caché', guided: false, sol: solSauropod, bbox: [0, 0, 16, 16] },
+    { tier: 2, name: '🥚 ' + T('figOeufMystere', 'Œuf mystère'), guided: false, sol: solEgg, bbox: [0, 0, 8, 8] },
+    { tier: 2, name: '💎 ' + T('figEcailleBrillante', 'Écaille brillante'), guided: false, sol: solScale, bbox: [-1.66, -1.66, 9.66, 9.66] },
+    { tier: 2, name: '🦕 ' + T('figLongCouCache', 'Long cou caché'), guided: false, sol: solSauropod, bbox: [0, 0, 16, 16] },
     // Palier 3 — silhouette pleine, orientations plus fines
-    { tier: 3, name: '💎 Écaille tournée', guided: false, sol: solScale2, bbox: [-2.83, 0, 8, 10.83] },
-    { tier: 3, name: '🦕 Cou tourné', guided: false, sol: solSauropod90, bbox: [0, 0, 16, 16] },
-    { tier: 3, name: '🥚 Œuf tourné', guided: false, sol: rotateWholeSolution(solEgg, 90, 4, 4), bbox: [0, 0, 8, 8] },
+    { tier: 3, name: '💎 ' + T('figEcailleTournee', 'Écaille tournée'), guided: false, sol: solScale2, bbox: [-2.83, 0, 8, 10.83] },
+    { tier: 3, name: '🦕 ' + T('figCouTourne', 'Cou tourné'), guided: false, sol: solSauropod90, bbox: [0, 0, 16, 16] },
+    { tier: 3, name: '🥚 ' + T('figOeufTourne', 'Œuf tourné'), guided: false, sol: rotateWholeSolution(solEgg, 90, 4, 4), bbox: [0, 0, 8, 8] },
   ];
 
   const SNAP_DIST = 1.3;   // tolérance position (unités grille) — généreuse pour enfants
@@ -257,6 +261,7 @@ MJ.ready(function () {
   const figureNameEl = document.getElementById('figure-name');
   const instructionEl = document.getElementById('instruction');
   const G = shell.G;
+  instructionEl.textContent = T('instruction', 'Glisse les pièces sur la silhouette. Tape une pièce pour la tourner.');
   // 🔒 3 figures fixes par palier (indépendant du barème questions Golden 4/6/8)
   G.totalQ = 3;
 

@@ -48,7 +48,7 @@
 
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">⚖️ Équilibre</span>
+    <span class="htitle" id="htitle">⚖️ Équilibre</span>
   </div>
 
   <div class="stage">
@@ -73,11 +73,14 @@
         // orange TANT QUE le conflit existe — jamais bloquant. Grille pleine +
     // contraintes OK = puzzle réussi. UNE PARTIE = 4 puzzles (pips golden).
     const GAME_ID = 'mj-55';
+    document.title = 'MJ-55 – ' + MJi18n.titre(GAME_ID, 'Équilibre');
+    const htitleEl = document.getElementById('htitle');
+    if (htitleEl) htitleEl.textContent = '⚖️ ' + MJi18n.titre(GAME_ID, 'Équilibre');
     const EMPTY = 0, DINO = 1, EGG = 2;
     const SYM = { [DINO]: '🦕', [EGG]: '🥚' };
 
     const shell = MJ.init({
-      id: GAME_ID, emoji: '⚖️', titre: 'Équilibre',
+      id: GAME_ID, emoji: '⚖️', titre: MJi18n.titre(GAME_ID, 'Équilibre'),
       golden: true, consigne: true,
       regle: {
         picto: '🦕🥚',
@@ -95,6 +98,7 @@
       }
     });
     const G = shell.G;
+    const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t(GAME_ID, cle, fr, params) : fr);
 
     const gridEl = document.getElementById('grid');
     const statusEl = document.getElementById('status');
@@ -255,7 +259,7 @@
       roundLock = true;
       const finalAttempts = mistakeMade ? 2 : 1;
       const anyCell = gridEl.querySelector('.eq-cell.filled');
-      statusEl.textContent = 'Bien joué !';
+      statusEl.textContent = T('bienJoue', 'Bien joué !');
       try { sndDing(); } catch (e) {}
       G.notePip(qCount - 1, finalAttempts, anyCell);
       setTimeout(nextPuzzle, testMode ? 0 : 1400);
@@ -287,8 +291,8 @@
       grid = given.map(row => row.slice());
 
       shell.setConsigne(lv >= 2
-        ? 'Complète la grille : jamais 3 pareils, autant de dinos que d’œufs !'
-        : 'Complète la grille : jamais 3 pareils !',
+        ? T('consigneAvecEquilibre', 'Complète la grille : jamais 3 pareils, autant de dinos que d’œufs !')
+        : T('consigneSimple', 'Complète la grille : jamais 3 pareils !'),
         qCount === 1 ? undefined : true);
 
       buildGrid();

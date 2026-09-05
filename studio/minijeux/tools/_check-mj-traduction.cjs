@@ -73,7 +73,16 @@ function checkUiTree(id, path, srcNode, dstNode) {
   checkTexte(id, `ui.${path}`, srcNode, dstNode);
 }
 
+// _commun (HO-MJ-04) : chrome transverse du panneau regle (regle-info.js), pas un
+// jeu — meme forme qu'un sous-arbre "ui" (objet plat cle -> texte), verifie a part.
+if (corpus._commun) {
+  const gotCommun = trad._commun;
+  if (!gotCommun) err.push('_commun : entree manquante');
+  else checkUiTree('_commun', '', corpus._commun, gotCommun);
+}
+
 Object.keys(corpus).forEach(id => {
+  if (id === '_commun') return;
   const ref = corpus[id];
   const got = trad[id];
   if (!got) { err.push(`${id} : entree manquante`); return; }

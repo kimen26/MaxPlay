@@ -28,10 +28,10 @@
 
 **NARRATEUR H** [serious] : Unlike other flying reptiles that fished, [confident] this one mostly hunted on the ground — small animals, insects. [slowly] It walked really well on all four legs.
 **WEX** [curious] : And could anything catch it?
-**NARRATEUR H** [confident] : In the air, nobody. [warmly] On the ground, it stayed careful, [pauses] like everyone back then — even if it crossed paths with Tritri, in the same region.
+**NARRATEUR H** [confident] : In the air, nobody. [warmly] On the ground, it stayed careful, [pauses] like everyone back then — even if it crossed paths with Triceratops, in the same region.
 
 ### BLOC D — Le truc fou
 
 **NARRATEUR H** [excited] : It's one of the biggest flying creatures in the whole history of Earth. [pauses] No bird, no bat has ever been that size.
 **WEX** [amazed] : The king of the sky.
-**NARRATEUR H** [softly] : The king of the sky, yes — [proud] while Tritri, down below, kept both feet firmly on the ground.
+**NARRATEUR H** [softly] : The king of the sky, yes — [proud] and nobody up there ever came to challenge his place.

@@ -14,7 +14,7 @@
 **WEX** [confident] : O lagarto. O lagarto do Meuse.
 **NARRATEUR H** [happily] : Exatamente. [serious] Só que ele não vivia num rio — [amazed] ele nadava em TODOS os mares do mundo, [proud] há 70 milhões de anos.
 **WEX** [curious] : Todos os mares? Até o do Tritri?
-**NARRATEUR H** [confident] : Esse mesmo. O Mosassauro e o Tricerátops viveram na mesma época, [serious] bem no fim do tempo dos dinossauros — ele na água, [warmly] o Tritri na terra.
+**NARRATEUR H** [confident] : Esse mesmo. O Mosassauro e o Tricerátops viveram na mesma época, [serious] bem no fim do tempo dos dinossauros — ele na água, [warmly] o Tricerátops na terra.
 
 ### BLOC B — Tamanho
 

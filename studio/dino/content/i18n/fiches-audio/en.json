@@ -1,13 +1,13 @@
 {
   "tyrannosaurus-nom": {
-    "empreinte": "2b793c370672",
+    "empreinte": "dd6d1d8a49ec",
     "repliques": 5,
-    "duree_s": 39.2,
+    "duree_s": 43.4,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-05T00:37:13.155Z"
+    "date": "2026-09-05T17:01:55.619Z"
   },
   "tyrannosaurus-taille": {
     "empreinte": "ac20bcd10cc8",
@@ -20,14 +20,14 @@
     "date": "2026-09-05T00:37:43.775Z"
   },
   "tyrannosaurus-regime": {
-    "empreinte": "16c37b4ee704",
+    "empreinte": "8a7765c2e89c",
     "repliques": 3,
-    "duree_s": 18.1,
+    "duree_s": 19.1,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-05T00:38:05.340Z"
+    "date": "2026-09-05T17:02:16.893Z"
   },
   "tyrannosaurus-funfact": {
     "empreinte": "9be4a28da6c2",

@@ -15,7 +15,7 @@
 **WEX** [confident] : Lizard. The Meuse River lizard.
 **NARRATEUR H** [happily] : Exactly. Except he didn't live in a river — [amazed] he swam in every ocean on Earth, [serious] seventy million years ago.
 **WEX** [curious] : Every ocean? Even Tritri's?
-**NARRATEUR H** [confident] : That very one. Mosasaurus and Triceratops lived at the same time, [serious] right at the end of the age of dinosaurs — him in the water, [warmly] Tritri on land.
+**NARRATEUR H** [confident] : That very one. Mosasaurus and Triceratops lived at the same time, [serious] right at the end of the age of dinosaurs — him in the water, [warmly] Triceratops on land.
 
 ### BLOC B — Taille
 

@@ -12,7 +12,7 @@
 **WEX** [confident] : El lagarto. El lagarto del Mosa.
 **NARRATEUR H** [happily] : Exacto. [serious] Solo que él no vivía en un río — [amazed] nadaba en TODOS los mares del mundo, hace 70 millones de años.
 **WEX** [curious] : ¿Todos los mares? ¿Incluso el de Tritri?
-**NARRATEUR H** [confident] : Ese mismo. [amazed] El Mosasaurio y el Triceratops vivieron en la misma época, [serious] justo al final de la era de los dinosaurios — él en el agua, [warmly] Tritri en tierra.
+**NARRATEUR H** [confident] : Ese mismo. [amazed] El Mosasaurio y el Triceratops vivieron en la misma época, [serious] justo al final de la era de los dinosaurios — él en el agua, [warmly] el Triceratops en tierra.
 
 ### BLOC B — Tamaño
 

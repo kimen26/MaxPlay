@@ -11,6 +11,7 @@ Fichiers concernés : [`site/dev-dinos.html`](../../../site/dev-dinos.html) · [
 
 - 🔒 **Tritri = running gag de Wex.** Tout au long du voyage, Wex demande « y'avait Tritri ? et maintenant ? là y'avait Tritri ? ». On le trouve avec JOIE au **Crétacé** (c'est le Tricératops).
 - 🔒 **Tritri = juste son DINOSAURE PRÉFÉRÉ** (un Tricératops). Rien d'autre.
+- 🔒 **Dans une Fiche dino, Tritri = 1 mention max** (2 pour le Tricératops) — le dino de la fiche est le centre, ses voisins sont nommés par leur espèce (PY 2026-09-05, L-D-75, porte `_verif-scripts-audio.cjs`).
 - ❌ 🔒 **JAMAIS dire « Max »** dans un récit/audio.
 - ❌ 🔒 **JAMAIS dire « doudou »** ni « peluche » ni « nounours ».
 - ❌ 🔒 Ne pas casser le 4e mur (« le doudou d'un petit garçon »). Tritri vit DANS l'histoire, point.

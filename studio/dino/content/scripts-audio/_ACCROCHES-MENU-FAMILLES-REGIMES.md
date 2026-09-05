@@ -41,3 +41,12 @@ Le ton « annonce qui fait peur + rire » voulu par Papa Yann a besoin des **tag
 - Lookup `MENU_FAM_VOICE[famId]` / `MENU_REGIME_VOICE[catId]` → MP3, fallback `speakText` (comme `MENU_VOICE`).
 - Joué **auto** à l'entrée de la grille (remplace les `speakText` de `showGridFamille`/`showGridRegime`).
 - Retirer la **dame** : boutons 🔊 D (bandeau famille) + G (intro menu famille) + tap-nom E + petits taps F (Pangée/Extinction secondaires).
+
+## 🗂️ Onglets (2 accroches ajoutées 2026-09-05) — fichiers `menu-epoques.mp3`, `menu-dico.mp3`
+
+> Les onglets « Les époques » et « Le dico » n'avaient que le repli TTS navigateur (`tts_fallback_epoque` / `tts_fallback_dico` de `site/js/dino-ui.js`). Texte identique au repli, tags eleven_v3 ajoutés, Narrateur H seul, text-to-dialogue. Branchement : `MENU_VOICE.epoque` / `MENU_VOICE.dico` dans `dev-dinos.html`.
+
+| clé | Texte tagué |
+|-----|-------------|
+| `epoque` | [excited] Range les dinosaures par époque ! [curious] Du Permien, avant les dinosaures, [amazed] jusqu'à aujourd'hui. |
+| `dico` | [excited] Les noms des dinos sont faits de petits mots de savants ! [warmly] Touche un mot pour l'écouter. |

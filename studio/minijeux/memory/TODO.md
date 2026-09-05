@@ -3,6 +3,11 @@
 > Tickets ouverts uniquement, condensés en 1 ligne chacun (détail complet non recopié ici, mais préservé verbatim dans `archive/backlog-fermes-2026.md` pour les tickets qui ont une partie close, et dans l'historique git pour le reste). Extrait le 2026-09-03 (HO-MJ-01) depuis l'ancien `pmo/backlog.md` (supprimé, contenu distillé dans ce fichier + `LESSONS.md` + `archive/backlog-fermes-2026.md`).
 > Statuts : `[ ]` à faire · `[~]` en cours · `[!]` bloqué · `[?]` question ouverte.
 
+## Lane — Plateforme : espace parents + langue (2026-09-05, demande PY)
+
+- **PARENTS-4-TUILES** [x] — FAIT 2026-09-05 (session DINO) : `site/index.html` + `js/mur.js` + `css/mur.css` — espace parents = 4 tuiles Statistiques / Paramètres / Compte / Retours, jeux cachés déplacés sous Paramètres, sélecteur de langue (fr, en, es-es, pt-br) via `js/lang.js`.
+- **LANG-MINI-JEUX** [ ] — Le sélecteur de langue est global (localStorage `maxplay_lang`) mais seuls 8 mini-jeux sur 36 chargent `js/lang.js` : les 28 autres restent en français quelle que soit la langue choisie. Chiffrer puis brancher (ou afficher un badge « FR seulement » dans le menu enfant).
+
 ## Lane — Montée de niveau par compétence (EP-112)
 
 - **ABANDON Max Adventure + tiles + WexWorld JEU** [x] — lane « Pipeline tile-tools » (EP-REFS, EP-MACRO-VIRAGE, EP-TILES) fermée avec elle, sans suite ; — décision Papa Yann 2026-09-05 (« ça ne marche pas du tout, on arrête ») : archivé `studio/max-adventure/`, `site/max-adventure*`, `mj-pose-tiles`, `tools/tile-tools`, skill `maxplay-tiles`, agent `game-tile`, rule `tile-tools.md` dans `_archive/` (jamais supprimé) ; retiré du catalogue et des docs (HO-G13, 2026-09-05).

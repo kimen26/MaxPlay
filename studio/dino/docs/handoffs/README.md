@@ -37,6 +37,8 @@ portes aient été rejouées par lui.
 | HO-014 | Generation EL 13 theropodes × 4 langues | `site/audio/dinos/<lang>/<id>-*.mp3`, manifest | fait (13 × 4) |
 | HO-015 | Musiques de fond (Eleven Music) | `site/sounds/music/**` | fait |
 | HO-016 | Banque SFX dinos | `site/sounds/fx/dino/**` | fait |
+| HO-017 | i18n EN des textes restants du site dino (racines, periodes, regimes, voyage, Pangee, Extinction) | content/i18n/en/strings.json, ui.json x3, site/js/dinos-i18n.js, bloc JOURNEY de dev-dinos.html | pret |
+| HO-018 | Scripts audio EN hors fiches (lot A menus/periodes/recits/speciaux, lot B dico) | content/i18n/en/scripts-hors-fiche/*.md | pret |
 
 Porte commune des scripts audio : `node studio/dino/content/scripts/export/_verif-scripts-audio.cjs <lang> [ids]`.
 

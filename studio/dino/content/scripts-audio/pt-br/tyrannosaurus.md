@@ -12,8 +12,8 @@
 **NARRATEUR H** [excited] : Ti… ra… no… ssauro Rex. [curious] Você sabe o que "tyrannos" quer dizer? [pauses] O chefe que manda sozinho, [serious] aquele que ninguém ousa dizer não.
 **WEX** [gasps] : Ninguém? [nervous] Nem a mamãe dele?
 **NARRATEUR H** [chuckles] : A mamãe dele, sim, quando ele era pequeno. [warmly] Mas quando cresceu, o rei era ele. Ele vivia na América do Norte, [amazed] há 66 milhões de anos.
-**WEX** [curious] : E o Tritri, onde ele vivia?
-**NARRATEUR H** [happily] : Bem do lado! [confident] O Tricerátops vivia no mesmo território que o T-Rex, com o Edmontossauro e o Anquilossauro.
+**WEX** [curious] : E ele mandava em quem, esse rei?
+**NARRATEUR H** [happily] : No reino inteiro dele! [confident] Em volta dele viviam o Tricerátops, o Edmontossauro e o Anquilossauro, [pauses] e todos ficavam de olho nele.
 
 ### BLOC B — Tamanho
 
@@ -25,7 +25,7 @@
 
 **NARRATEUR H** [serious] : Era carnívoro. Caçava o Tricerátops, o Edmontossauro e o Anquilossauro. [calm] Meio solitário.
 **WEX** [nervous] : Então o Tritri tinha que tomar muito cuidado?
-**NARRATEUR H** [encouraging] : Tinha, [confident] mas o Tritri tinha os três chifres dele pra se defender. O T-Rex não comia ele sem brigar antes.
+**NARRATEUR H** [encouraging] : Tinha, [confident] mas com os três chifres dele, ele sabia se defender. O T-Rex nunca pegava ele sem brigar antes.
 
 ### BLOC D — O detalhe mais louco
 

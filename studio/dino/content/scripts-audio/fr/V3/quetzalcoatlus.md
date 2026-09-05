@@ -29,13 +29,13 @@
 
 **NARRATEUR H** [serious] : Contrairement à d'autres reptiles volants qui pêchaient, [confident] lui chassait plutôt au sol — de petits animaux, des insectes. [slowly] Il marchait très bien sur ses quatre pattes.
 **WEX** [curious] : Et qui pouvait l'attraper, lui ?
-**NARRATEUR H** [confident] : Dans les airs, personne. [warmly] Au sol, il restait prudent, [pauses] comme tout le monde à cette époque — même s'il croisait peut-être Tritri, dans la même région.
+**NARRATEUR H** [confident] : Dans les airs, personne. [warmly] Au sol, il restait prudent, [pauses] comme tout le monde à cette époque — même s'il croisait peut-être le Tricératops, dans la même région.
 
 ### BLOC D — Le truc fou
 
 **NARRATEUR H** [excited] : C'est un des plus grands êtres volants de toute l'histoire de la Terre. [pauses] Aucun oiseau, aucune chauve-souris n'a jamais fait sa taille.
 **WEX** [amazed] : Le roi du ciel.
-**NARRATEUR H** [softly] : Le roi du ciel, oui — [proud] pendant que Tritri, en bas, gardait bien les pieds sur terre.
+**NARRATEUR H** [softly] : Le roi du ciel, oui — [proud] et personne, là-haut, ne venait lui disputer sa place.
 
 ---
 

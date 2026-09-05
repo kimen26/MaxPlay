@@ -27,10 +27,10 @@
 
 **NARRATEUR H** [serious] : Diferente de outros répteis voadores que pescavam, [confident] ele caçava mais no chão — bichinhos pequenos, insetos. [slowly] Ele andava muito bem nas quatro patas.
 **WEX** [curious] : E quem conseguia pegar ele?
-**NARRATEUR H** [confident] : No ar, ninguém. [warmly] No chão, ele ficava esperto, [pauses] que nem todo mundo naquela época — mesmo que ele cruzasse com o Tritri, na mesma região.
+**NARRATEUR H** [confident] : No ar, ninguém. [warmly] No chão, ele ficava esperto, [pauses] que nem todo mundo naquela época — mesmo que ele cruzasse com o Tricerátops, na mesma região.
 
 ### BLOC D — O detalhe mais louco
 
 **NARRATEUR H** [excited] : Ele é um dos maiores seres voadores de toda a história da Terra. [pauses] Nenhum pássaro, nenhum morcego nunca chegou nesse tamanho.
 **WEX** [amazed] : O rei do céu.
-**NARRATEUR H** [softly] : O rei do céu, sim — [proud] enquanto o Tritri, lá embaixo, ficava bem quietinho com os pés no chão.
+**NARRATEUR H** [softly] : O rei do céu, sim — [proud] e ninguém, lá no alto, vinha disputar o lugar dele.

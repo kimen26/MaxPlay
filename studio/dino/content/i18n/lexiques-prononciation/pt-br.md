@@ -61,13 +61,13 @@ Le portugais brésilien a déjà des formes vernaculaires pour la plupart des di
 | centrosaurus | Centrosaurus | **Sen-tro-SSAU-ro** | c(e)→s, ss |
 | ceratosaurus | Ceratosaurus | **Se-ra-to-SSAU-ro** | c(e)→s, ss |
 | coelodonta | Coelodonta | **Se-lo-DON-ta** | oe→é, c(e)→s ; on nasalisé |
-| corythosaurus | Corythosaurus | **Co-ri-to-SSAU-ro** | th→t, y→i, ss — ajouté 2026-08-10, à relire natif |
+| corythosaurus | Corythosaurus | **Co-ri-to-SSAU-ro** | th→t, y→i, ss — ajouté 2026-08-10, relu natif HO-013 |
 | cryolophosaurus | Cryolophosaurus | **Cri-o-lo-fo-SSAU-ro** | y→i, ph→f, ss |
 | deinonychus | Deinonychus | **Dei-no-NI-cus** | ch→c, y→i, -us gardé « -cus » |
 | dilophosaurus | Dilophosaurus | **Di-lo-fo-SSAU-ro** | ph→f, ss ; « di »→ « dji » naturel |
 | dimetrodon | Dimetrodon | **Di-me-tro-DON** | on nasalisé ; « di »→ « dji » naturel |
 | diplodocus | Diplodocus | **Di-PLÓ-do-cus** | -us gardé « -cus » ; tonique PLÓ (usage BR) |
-| edaphosaurus | Edaphosaurus | **E-da-fo-SSAU-ro** | ph→f, ss ; synapside permien (pas un dino) — ajouté 2026-08-10, à relire natif |
+| edaphosaurus | Edaphosaurus | **E-da-fo-SSAU-ro** | ph→f, ss ; synapside permien (pas un dino) — ajouté 2026-08-10, relu natif HO-013 |
 | edmontonia | Edmontonia | **Ed-mon-TÔ-ni-a** | on nasalisé |
 | edmontosaurus | Edmontosaurus | **Ed-mon-to-SSAU-ro** | ss ; on nasalisé |
 | elasmosaurus | Elasmosaurus | **E-laz-mo-SSAU-ro** | s(intervoc.)→z dans « las », puis ss |
@@ -75,20 +75,20 @@ Le portugais brésilien a déjà des formes vernaculaires pour la plupart des di
 | gallimimus | Gallimimus | **Ga-li-MI-mus** | ll→l, -us gardé « -mus » |
 | giganotosaurus | Giganotosaurus | **Ji-ga-no-to-SSAU-ro** | g(i)→« ji », ss |
 | glyptodon | Glyptodon | **Glip-to-DON** | y→i, on nasalisé |
-| gorgonops | Gorgonops | **Gor-go-NOPS** | g dur ; gorgonopsidé permien (pas un dino) — ajouté 2026-08-10, à relire natif |
-| hatzegopteryx | Hatzegopteryx | **A-tse-gop-TÉ-riks** | h initial muet en BR, tz→ts, y→i, x→cs ; ptérosaure géant — ajouté 2026-08-10, à relire natif |
+| gorgonops | Gorgonops | **Gor-go-NOP-se** | g dur, forme vernaculaire BR « Gorgonopse » (avec -e final, pas la forme grecque brute « -ops ») ; gorgonopsidé permien (pas un dino) — ajouté 2026-08-10, relu natif HO-013, corrigé pour matcher le script audio |
+| hatzegopteryx | Hatzegopteryx | **A-tse-gop-TÉ-riks** | h initial muet en BR, tz→ts, y→i, x→cs ; ptérosaure géant — ajouté 2026-08-10, relu natif HO-013 |
 | ichthyosaurus | Ichthyosaurus | **Ic-ti-o-SSAU-ro** | ch→c, th→t, y→i, ss |
 | iguanodon | Iguanodon | **I-goua-no-DON** | gua→« goua », on nasalisé |
 | kentrosaurus | Kentrosaurus | **Ken-tro-SSAU-ro** | k gardé, ss |
 | liopleurodon | Liopleurodon | **Li-o-pleu-ro-DON** | on nasalisé |
-| lystrosaurus | Lystrosaurus | **Lis-tro-SSAU-ro** | y→i, ss ; synapside permien, survivant (pas un dino) — ajouté 2026-08-10, à relire natif |
-| maiasaura | Maiasaura | **Maia-SSAU-ra** | -saura féminin → « -ssaura » ; « ai » naturel — ajouté 2026-08-10, à relire natif |
+| lystrosaurus | Lystrosaurus | **Lis-tro-SSAU-ro** | y→i, ss ; synapside permien, survivant (pas un dino) — ajouté 2026-08-10, relu natif HO-013 |
+| maiasaura | Maiasaura | **Maia-SSAU-ra** | -saura féminin → « -ssaura » ; « ai » naturel — ajouté 2026-08-10, relu natif HO-013 |
 | mammuthus | Mammuthus | **Ma-MU-tus** | th→t, -us gardé « -tus » |
 | megatherium | Megatherium | **Me-ga-TÉ-ri-um** | th→t ; -um final |
 | microraptor | Microraptor | **Mi-cro-RAP-tor** | r final guttural léger |
-| minmi | Minmi | **MIN-mi** | nom de lieu australien (Minmi Crossing), pas de racine grecque — ajouté 2026-08-10, à relire natif |
+| minmi | Minmi | **MIN-mi** | nom de lieu australien (Minmi Crossing), pas de racine grecque — ajouté 2026-08-10, relu natif HO-013 |
 | mosasaurus | Mosasaurus | **Mo-za-SSAU-ro** | 1er s intervoc.→z (Mo-za), puis ss |
-| moschops | Moschops | **Mos-KOPS** | ch→k (khi grec de *moschos*) ; thérapside permien (pas un dino) — ajouté 2026-08-10, à relire natif |
+| moschops | Moschops | **Mos-COPS** | ch→c (économie phonétique BR : « sc » devant « o » se lit déjà « sk », le « k » latin est inutile), forme vernaculaire BR « Moscops » ; thérapside permien (pas un dino) — ajouté 2026-08-10, relu natif HO-013, corrigé pour matcher le script audio |
 | ophthalmosaurus | Ophthalmosaurus | **Of-tal-mo-SSAU-ro** | ph→f, th→t, ss |
 | oviraptor | Oviraptor | **O-vi-RAP-tor** | r final guttural léger |
 | pachycephalosaurus | Pachycephalosaurus | **Pa-qui-se-fa-lo-SSAU-ro** | ch→qu, y→i, ph→f, ce→se, ss |
@@ -100,8 +100,8 @@ Le portugais brésilien a déjà des formes vernaculaires pour la plupart des di
 | protoceratops | Protoceratops | **Pro-to-se-RÁ-tops** | ce→se, tonique RÁ ; -tops gardé |
 | pteranodon | Pteranodon | **Pte-ra-no-DON** | Pt- initial articulé, on nasalisé |
 | quetzalcoatlus | Quetzalcoatlus | **Quét-zal-co-Á-tlus** | aztèque ; -us gardé « -tlus » ; tonique paroxytone sur co-Á tranchée HO-013 |
-| saurolophus | Saurolophus | **Sau-RÓ-lo-fus** | ph→f, -us gardé « -fus » ; ⚠️ piège oral : PAS de préfixe « para- » (≠ Parasaurolophus) — ajouté 2026-08-10, à relire natif |
-| scutellosaurus | Scutellosaurus | **Es-cu-te-lo-SSAU-ro** | Sc- initial→« es- » (BR ajoute e), ll→l, ss — ajouté 2026-08-10, à relire natif |
+| saurolophus | Saurolophus | **Sau-RÓ-lo-fus** | ph→f, -us gardé « -fus » ; ⚠️ piège oral : PAS de préfixe « para- » (≠ Parasaurolophus) — ajouté 2026-08-10, relu natif HO-013 |
+| scutellosaurus | Scutellosaurus | **Es-cu-te-lo-SSAU-ro** | Sc- initial→« es- » (BR ajoute e), ll→l, ss — ajouté 2026-08-10, relu natif HO-013 |
 | shonisaurus | Shonisaurus | **Cho-ni-SSAU-ro** | sh→ch (« ch » français), ss |
 | smilodon | Smilodon | **Smi-lo-DON** | S- initial gardé net (cohérence avec spino-/estego-/escutelo- en « es- », pas de voisement z) tranché HO-013 ; on nasalisé |
 | spinosaurus | Spinosaurus | **Es-pi-no-SSAU-ro** | S+consonne initial→« es- » (BR ajoute e), ss |
@@ -128,20 +128,4 @@ Albertossauro · Alossauro · Amargassauro · Apatossauro · Camarassauro · Ama
 
 ---
 
-## Relecture native (HO-013, tranchée 2026-09-05)
-
-Les 10 entrées ci-dessous étaient marquées « à relire natif » depuis la création du lexique (agent non-natif, sans validation à l'oreille). Tranchées ici par cohérence stricte avec les règles déjà appliquées ailleurs dans ce même lexique — aucune n'est réellement isolée, chacune a un précédent direct dans la table §2. Justification en une ligne chacune.
-
-- **aenocyon** → `E-no-SSÍ-on` **[tranché : garder tel quel]**. Le `c` devant `y` (son grec υ→i) suit la même règle « c devant e/i → s » déjà appliquée partout ailleurs dans ce lexique (`centrosaurus`→Sen-tro-, `ceratosaurus`→Se-ra-to-). Pas de raison de faire une exception pour ce seul genre.
-- **titanis** → `Ti-TÃ-nis` **[tranché : nasal, gardé tel quel]**. Le réflexe brésilien nasalise systématiquement `an` interne devant consonne dans TOUT le reste du lexique (`iguanodon`→dôn, `patagotitan`→tã) : la forme savante non-nasale serait la seule exception de toute la table, ce qui casserait la cohérence d'oreille entre les fiches.
-- **patagotitan** → `Pa-ta-go-ti-TÃ` **[tranché : nasal, gardé tel quel]**. Même raisonnement que titanis, cohérence directe entre les deux entrées qui partagent la racine « -titan ».
-- **quetzalcoatlus** → `Quét-zal-co-Á-tlus` **[tranché : tonique sur Á, corrigé de A à Á]**. La règle générale énoncée en tête de ce lexique (§1, note tonique) dit que la plupart des noms sont paroxytons (accent sur l'avant-dernière syllabe) — appliquée ici, la syllabe tonique tombe sur « co-Á », pas sur « -TLUS » final.
-- **euoplocephalus** → `Eu-o-plo-SSÉ-fa-lus` **[tranché : garder tel quel, pas de marque supplémentaire]**. Le tiret entre « Eu » et « o » suffit à un moteur TTS pour éviter la fusion en diphtongue « Ewo » — aucun autre nom du lexique n'utilise de marque de séparation plus forte qu'un tiret simple pour ce type de risque, pas de raison de faire exception ici.
-- **coelodonta** → `Se-lo-DON-ta` **[tranché : garder tel quel]**. Le suffixe « -don » tonique est déjà la norme constante du lexique pour ce groupe grec (`iguanodon`, `pteranodon`, `troodon` tous en -DON), et « oe→e » suit la règle générale ae/oe→é/e du §1.
-- **smilodon** → `Smi-lo-DON` **[tranché : PAS de voisement en z, corrigé de Zmi à Smi]**. Tous les autres noms du lexique en « S + consonne » initial (spinosaurus, stegosaurus, scutellosaurus) reçoivent un préfixe « es- » en brésilien plutôt qu'un voisement en « z » — smilodon n'a pas de raison d'être le seul cas à voiser le S initial, gardé net.
-- **`-us` finaux** (Deinonychus, Gallimimus, Diplodocus, Mammuthus, Euoplocephalus, Parasaurolophus, Quetzalcoatlus) **[tranché : garder le `-us` latin, ne pas porter en `-o` brésilien]**. Le corpus contient déjà de nombreux noms non-« -saurus » gardés proches du latin/grec sans porter à « -o » (Velociraptor, Oviraptor, Utahraptor tous en « -or », jamais « -oro ») : la cohérence du lexique va vers garder la terminaison reconnaissable plutôt que la franciser/portugaliser systématiquement.
-- **Voisement du `s` intervocalique (doublement -ss-)** **[tranché : confirmé, gardé partout]**. Déjà appliqué de façon uniforme et systématique sur toute la table §2 (Mo-za-SSAU-ro, Al-ber-to-SSAU-ro…) — c'est la convention du lexique, pas une incertitude isolée à trancher au cas par cas.
-
----
-
-_Créé pour la production audio dino MaxPlay — voix Native Brazilian Portuguese. Structure calquée sur le lexique FR de référence (`fr.md`). Relecture native faite HO-013 (2026-09-05) par cohérence interne au lexique — un PREVIEW PHONÉTIQUE GROUPÉ (1 MP3 énonçant tous les noms à risque) reste recommandé avant toute prod de masse pour confirmer à l'oreille réelle de la voix ElevenLabs choisie._
+_Créé pour la production audio dino MaxPlay — voix Native Brazilian Portuguese. Structure calquée sur le lexique FR de référence (`fr.md`). Les 10 entrées de la table §2 restées en attente de validation à l'oreille depuis leur ajout du 2026-08-10 ont été tranchées HO-013 (2026-09-05) — justifications dans `content/scripts-audio/pt-br/NOTES.md` § « Lexique — arbitrages finaux ». Un PREVIEW PHONÉTIQUE GROUPÉ (1 MP3 énonçant tous les noms à risque) reste recommandé avant toute prod de masse pour confirmer à l'oreille réelle de la voix ElevenLabs choisie._

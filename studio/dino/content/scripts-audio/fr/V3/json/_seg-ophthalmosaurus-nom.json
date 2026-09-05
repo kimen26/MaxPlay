@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Of-tal-mo-saure. Deux morceaux grecs. « Ophthalmo », c'est l'œil — comme l'ophtalmologue, le docteur des yeux. Et « saure », c'est le lézard. Le lézard aux yeux énormes."
+      "text": "[curious] Of-tal-mo-saure. « Ophtalmo », c'est l'œil — comme l'ophtalmologue, [serious] le docteur qui vérifie tes yeux. Et « saure », le lézard."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il avait des gros yeux."
+      "text": "[confident] Le lézard aux yeux ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Énormes. Et ce n'est pas un dinosaure : c'est un ichtyosaure, un reptile marin en forme de dauphin. Il vivait au Jurassique, il y a 160 millions d'années."
+      "text": "[happily] Voilà. Il vivait il y a 150 millions d'années, [amazed] dans les mers peu profondes d'Europe et d'Amérique du Nord."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Où ça ?"
+      "text": "[curious] Pourquoi des si grands yeux, pour un lézard de mer ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Dans les mers peu profondes d'Europe et d'Amérique du Nord."
+      "text": "[serious] Justement — c'est son truc à lui. On va y venir."
     }
   ],
   "model_id": "eleven_v3",

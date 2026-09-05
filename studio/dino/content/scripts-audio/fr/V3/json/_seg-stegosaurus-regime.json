@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore. Il mangeait des fougères et des plantes basses. Peut-être en petit groupe. L'Allosaure était son principal danger."
+      "text": "[serious] Herbivore, peut-être en petit groupe. [calm] Ses grandes plaques colorées servaient sans doute de radiateur, [pauses] pour se réchauffer ou se refroidir."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il ne pouvait pas courir vite ?"
+      "text": "[curious] Et pour se défendre ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[softly] Non. Il marchait lentement. Alors pour se défendre, il utilisait autre chose : sa queue."
+      "text": "[confident] Sa queue avait 4 longues piques au bout. [serious] L'Allosaure devait faire très attention en s'approchant."
     }
   ],
   "model_id": "eleven_v3",

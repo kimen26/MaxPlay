@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Lis-tro-saure. En grec, « lystron », c'est la pelle. Et « saure », le lézard. Le lézard-pelle, à cause de son museau large et tout plat."
+      "text": "[curious] Lis-tro-saure. « Lystron », en grec, c'est la pelle, la bêche. [serious] Et « saure », le lézard."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Un museau en forme de pelle ?"
+      "text": "[confident] Le lézard-pelle ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactement, comme une petite pelle vivante. Il vivait il y a 250 millions d'années, avant les dinosaures — un cousin lointain des animaux à poils, donc un peu de nous."
+      "text": "[happily] Voilà — à cause de son museau, large et tout plat, comme une petite pelle. Il vivait il y a 250 millions d'années — [amazed] avant les dinosaures."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il y avait des dangers, par là ?"
+      "text": "[curious] Il vivait où ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] De moins en moins. De son vivant, une immense catastrophe a frappé la Terre et fait disparaître presque tous les chasseurs."
+      "text": "[amazed] Partout, ou presque : en Afrique du Sud, en Antarctique, en Inde, en Chine, en Russie, en Mongolie. [serious] À cette époque, toutes les terres étaient collées [confident] en un seul morceau."
     }
   ],
   "model_id": "eleven_v3",

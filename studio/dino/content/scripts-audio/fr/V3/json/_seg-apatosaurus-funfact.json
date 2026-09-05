@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Son cou faisait 6 mètres de long. Tout seul, aussi long que trois grandes tables."
+      "text": "[excited] Pendant longtemps, ce dinosaure s'appelait [curious] « Brontosaure » dans tous les livres."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Et il tenait sa tête en l'air ?"
+      "text": "[curious] Et ce n'était pas son vrai nom ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Grâce à des os creux et des muscles ÉNORMES. Comme une grue vivante."
+      "text": "[softly] Les savants se sont trompés d'étiquette. [amazed] Aujourd'hui, on sait : [confident] Apatosaure et Brontosaure sont deux cousins très proches, mais pas le même animal."
     }
   ],
   "model_id": "eleven_v3",

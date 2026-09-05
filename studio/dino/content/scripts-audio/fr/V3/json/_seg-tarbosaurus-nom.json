@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Tar-bo-saure. « Tarbo », en grec, c'est la peur, l'effroi. « Saure », lézard."
+      "text": "[excited] Tar-bo-saure. [curious] « Tarbo », en grec, c'est la peur, l'effroi — celui qui fait trembler tout le monde. Et « saure », le lézard."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Le lézard qui fait peur."
+      "text": "[proud] Le lézard qui fait peur, j'ai tout compris d'un coup."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Parfait. C'était le cousin du T-Rex en Asie, dans le désert de Gobi, il y a 70 millions d'années."
+      "text": "[happily] Parfait. [confident] C'était le cousin du T-Rex, en Asie, [amazed] dans le désert de Gobi, il y a 70 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il ressemblait au T-Rex ?"
+      "text": "[curious] Il ressemblait vraiment au T-Rex ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Beaucoup. Même famille, mais en Mongolie."
+      "text": "[playful] Beaucoup. [confident] Même famille de chasseurs, mais version Mongolie."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore. Il mangeait les feuilles tout en haut des arbres, là où personne d'autre n'atteignait. Il vivait en troupeau familial."
+      "text": "[serious] Herbivore. Il mangeait les feuilles tout en haut des arbres — [pauses] celles que les autres ne pouvaient pas atteindre. [confident] Personne ne lui disputait ce repas-là."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Les chasseurs pouvaient pas le manger ?"
+      "text": "[curious] Et pour digérer des feuilles aussi dures ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Un adulte, presque jamais. Trop grand, trop fort. Seuls les très jeunes étaient en danger."
+      "text": "[confident] Il avalait des pierres. [pauses] Elles restaient dans son ventre et broyaient sa nourriture, comme un moulin."
     }
   ],
   "model_id": "eleven_v3",

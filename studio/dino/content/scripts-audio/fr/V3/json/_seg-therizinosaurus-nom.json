@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Thé-ri-zi-no-saure. En grec ancien, « thérizino » veut dire « faucher » — comme une FAUX, cette grande lame courbée pour couper l'herbe. Et « saure », c'est « lézard »."
+      "text": "[excited] Thé-ri-zi-no-saure. [curious] En grec ancien, « thérizino » veut dire faucher, couper l'herbe — comme une FAUX. [playful] Et « saure », le lézard."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Lézard-faucheur. Comme une faux géante."
+      "text": "[amazed] Le lézard-faucheur, avec une vraie faux ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactement. Il vivait en Mongolie, dans le désert de Gobi, il y a 70 millions d'années."
+      "text": "[happily] Exactement. [confident] Il vivait en Mongolie, dans le désert de Gobi, [amazed] il y a 70 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Et y avait des méchants dinosaures aussi ?"
+      "text": "[curious] Et y avait des méchants dinosaures aussi, par là-bas ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Oui. Le Tarbosaure, le Vélociraptor, le Deinocheirus. Plein de voisins dangereux dans le désert de Gobi."
+      "text": "[playful] Oui ! [confident] Le Tarbosaure, cousin du T-Rex, vivait tout près de lui."
     }
   ],
   "model_id": "eleven_v3",

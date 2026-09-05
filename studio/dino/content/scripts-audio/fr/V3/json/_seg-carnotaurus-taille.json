@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Il mesurait 8 mètres de long — comme deux voitures l'une derrière l'autre. Debout, il faisait 2 virgule 5 mètres de haut — aussi haut qu'un but de foot. Et il pesait 2 mille kilos — aussi lourd qu'un rhinocéros."
+      "text": "[excited] Il mesurait 8 mètres de long — comme deux voitures l'une derrière l'autre ! [quickly] Debout, il faisait 2 virgule 5 mètres de haut — aussi haut qu'un but de foot ! Et il pesait 1600 kilos — [amazed] aussi lourd qu'une petite voiture et une vache ensemble ! [excited] Et il pouvait courir à 52 kilomètres à l'heure — aussi vite qu'une voiture en ville !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il avait des bras tout petits aussi."
+      "text": "[gasps] Aussi vite qu'une voiture ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Oui. Encore plus petits que ceux du T-Rex. Mais il avait des cornes et des pattes très rapides."
+      "text": "[confident] Vraiment. [proud] Le sprinter des grands carnivores de son époque."
     }
   ],
   "model_id": "eleven_v3",

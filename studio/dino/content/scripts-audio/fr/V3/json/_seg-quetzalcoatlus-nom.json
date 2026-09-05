@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Kèt-zal-ko-atluss. Son nom vient du dieu aztèque Quetzalcoatl — le serpent à plumes. Et ce reptile volant était un des plus grands animaux volants de tous les temps."
+      "text": "[excited] Kèt-zal-ko-atluss. Ce nom vient d'un dieu ! [serious] Quetzalcoatl, c'est le grand serpent à plumes des Aztèques, un peuple ancien du Mexique. [curious] Un sacré nom pour un sacré animal, non ?"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious][gasps] Plus grand qu'un avion ?"
+      "text": "[amazed] Le dinosaure du dieu serpent à plumes."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Aussi grand qu'un petit avion. Il vivait en Amérique du Nord, il y a 68 millions d'années. Un monstre des airs."
+      "text": "[serious] Attention, [gently] ce n'est justement pas un dinosaure — c'est un reptile volant, un ptérosaure. [proud] Il vivait en Amérique du Nord, il y a 68 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] C'est un dinosaure ?"
+      "text": "[gasps] C'était l'époque de Tritri, ça ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Non. Un ptérosaure, un cousin volant des reptiles. Pas un dinosaure."
+      "text": "[warmly] Oui, la toute fin du Crétacé — [amazed] le Quetzalcoatlus volait peut-être au-dessus de la tête du Tricératops."
     }
   ],
   "model_id": "eleven_v3",

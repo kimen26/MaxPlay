@@ -2,19 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Tri-sé-ra-tops. En grec, « tri » veut dire trois, « cérat » veut dire corne, et « ops » veut dire face. La face à trois cornes."
+      "text": "[excited] Tri-sé-ra-tops. [curious] En grec, « tri », ça veut dire trois. « Cérat », c'est la corne. Et « ops », c'est la face. [pauses] Alors, à ton avis ?"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Trois cornes sur la tête."
-    },
-    {
-      "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[softly] C'est Tritri."
+      "text": "[confident] La face à trois cornes."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Oui, le vrai Tricératops. Il vivait en Amérique du Nord, il y a 66 millions d'années, avec le Torosaure et l'Edmontosaure. Le T-Rex rôdait dans le coin."
+      "text": "[happily] Exactement. [warmly] Il vivait en Amérique du Nord, il y a 66 millions d'années."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Attends. [softly] C'est Tritri."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Oui. [happily] Le vrai Tricératops. Il vivait avec le Torosaure et l'Edmontosaure — et le T-Rex rôdait dans le coin."
     }
   ],
   "model_id": "eleven_v3",

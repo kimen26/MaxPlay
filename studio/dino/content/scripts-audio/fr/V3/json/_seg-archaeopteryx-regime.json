@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Carnivore. Il mangeait des insectes et de petits lézards. Il vivait seul dans les forêts. Les prédateurs plus grands le chassaient, alors il devait être très rapide."
+      "text": "[serious] C'était un carnivore. [confident] Il chassait de petits insectes et de petits lézards, tout seul."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il volait bien ?"
+      "text": "[curious] Il avait des dents, un oiseau ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Il planait plus qu'il ne volait, comme les écureuils volants. Il courait, sautait, planait — un mélange de tout."
+      "text": "[amazed] Oui. [pauses] C'est ça, le plus étrange : des plumes comme un oiseau, mais des dents et des griffes comme un dinosaure."
     }
   ],
   "model_id": "eleven_v3",

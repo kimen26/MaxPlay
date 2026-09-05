@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Il mesurait 9 virgule 5 mètres de long — aussi long qu'un camion ! Debout, il faisait 3 mètres de haut — aussi haut qu'un panier de basket ! Et il pesait 2 mille kilos — aussi lourd qu'un rhinocéros !"
+      "text": "[excited] Il mesurait 9 virgule 5 mètres de long — aussi long qu'un camion ! [quickly] Debout, il faisait 3 mètres de haut — aussi haut qu'un panier de basket ! Et il pesait 2 mille kilos — aussi lourd qu'un rhinocéros ! [amazed] Et les savants pensent qu'il pouvait courir à 30 kilomètres à l'heure — aussi vite qu'un cheval au petit galop."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Et ses bras ? Tout petits, comme le T-Rex ?"
+      "text": "[curious] Et ses bras ? [playful] Tout petits, comme le T-Rex ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui, tout pareil : minuscules, avec seulement DEUX doigts à chaque patte."
+      "text": "[confident] Oui, tout pareil : minuscules, [amazed] avec seulement DEUX doigts à chaque patte."
     }
   ],
   "model_id": "eleven_v3",

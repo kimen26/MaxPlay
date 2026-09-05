@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Il mesurait 6 mètres de long — aussi long qu'une rue à deux voies est large, il barrait la route. Debout, il faisait 2 mètres de haut — aussi haut qu'une porte. Et il pesait 700 kilos — aussi lourd qu'une vache."
+      "text": "[excited] Il mesurait 6 mètres de long — aussi long qu'une rue à deux voies est large — il barrait la route ! [quickly] Debout, il faisait 2 mètres de haut — aussi haut qu'une porte ! Et il pesait 900 kilos — [amazed] aussi lourd qu'une petite voiture ! [serious] Et il pouvait courir à 25 kilomètres à l'heure — aussi vite qu'un vélo qui roule bien."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Plus petit que les rois géants."
+      "text": "[amazed] Plus petit que les grands rois carnivores ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui, mais rapide et agile. Sa corne le rendait unique."
+      "text": "[confident] Oui, mais rapide et agile. [proud] Sa corne le rendait unique parmi tous les autres."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Di-mé-tro-don. Trois morceaux grecs. « Di », c'est « deux ». « Métron », c'est « mesure ». Et « odon », c'est « dent »."
+      "text": "[curious] Dimétrodon. « Di », en grec, ça veut dire deux. [serious] « Métron », la mesure — comme dans un mètre. Et « odon », la dent."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Deux mesures de dents."
+      "text": "[confident] Les dents à deux mesures ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactement. Des petites dents devant, des grandes derrière. Mais attention : ce n'est PAS un dinosaure. Il vivait 280 millions d'années avant eux, en Amérique du Nord."
+      "text": "[happily] Voilà — il avait deux tailles de dents différentes dans la bouche. Il vivait il y a 280 millions d'années, [amazed] en Amérique du Nord."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Avant les dinosaures ? C'était quoi alors ?"
+      "text": "[curious] C'est un dinosaure, alors, s'il vivait si longtemps avant ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Un lointain cousin des mammifères. Oui, un peu comme toi, mais en version reptile avec une voile sur le dos."
+      "text": "[serious] Non, justement — pas du tout. Il vivait 50 millions d'années AVANT les premiers dinosaures. [warmly] C'est un cousin très ancien [confident] des animaux à poils, comme nous."
     }
   ],
   "model_id": "eleven_v3",

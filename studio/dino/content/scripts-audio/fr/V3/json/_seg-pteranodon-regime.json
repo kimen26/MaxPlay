@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Piscivore : il mangeait des poissons et des calmars. Il vivait en colonies sur les falaises, comme les mouettes. Il plongeait dans l'eau avec son long bec pointu."
+      "text": "[serious] Il mangeait des poissons et des calmars. [confident] Il planait longtemps sans effort, puis plongeait dans la mer pour pêcher."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il avait des copains sur les falaises."
+      "text": "[curious] Et dans l'eau, quelque chose pouvait l'attraper ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Des centaines. Ils se parlaient, dormaient ensemble. Une grande famille volante."
+      "text": "[confident] Un grand reptile marin, le Mosasaure, [gently] chassait dans les mêmes eaux. [serious] Une fois posé sur l'eau pour pêcher, le Ptéranodon devait rester sur ses gardes."
     }
   ],
   "model_id": "eleven_v3",

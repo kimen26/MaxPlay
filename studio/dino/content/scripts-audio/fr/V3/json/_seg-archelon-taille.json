@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 4 mètres 60 de long — comme un grand 4×4. 1 virgule 2 mètre de haut — comme un enfant de 4 ans debout. Et 2 mille 200 kilos — aussi lourd qu'un rhinocéros."
+      "text": "[excited] Il mesurait 4 mètres de long — comme une petite voiture ! [amazed] Debout, il faisait 1 mètre 20 de haut — aussi grand qu'un enfant de 4 ans ! Et il pesait 2 200 kilos — [serious] aussi lourd qu'un rhinocéros !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Une tortue aussi grosse qu'une voiture."
+      "text": "[gasps] Une tortue aussi lourde qu'un rhinocéros ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Plus grande qu'une voiture. Et elle nageait avec ses grandes nageoires comme les tortues luth d'aujourd'hui."
+      "text": "[chuckles] Une tortue aussi lourde qu'un rhinocéros, oui — [confident] mais qui flottait, elle, grâce à ses grandes nageoires."
     }
   ],
   "model_id": "eleven_v3",

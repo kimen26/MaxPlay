@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Il avait 4 ailes. Deux sur les bras ET deux sur les jambes."
+      "text": "[excited] Son secret, c'est qu'il avait [amazed] quatre ailes : deux sur les bras, [pauses] et deux autres sur les jambes."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] 4 ailes ?"
+      "text": "[gasps] Quatre ailes, en même temps ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Oui. Quatre ailes couvertes de plumes. Un petit avion préhistorique qui volait dans la forêt chinoise."
+      "text": "[whispers] Les quatre ensemble, ouvertes, faisaient comme un petit planeur. [softly] Il sautait d'un arbre, [slowly] ouvrait ses quatre ailes, et glissait dans l'air jusqu'au suivant."
     }
   ],
   "model_id": "eleven_v3",

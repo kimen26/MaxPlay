@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Il mesurait 7 mètres de long — comme deux voitures l'une derrière l'autre. Debout, il faisait 2 virgule 4 mètres de haut — aussi haut qu'un but de foot. Et il pesait 350 kilos — aussi lourd qu'un gros cochon."
+      "text": "[excited] Il mesurait 7 mètres de long — comme deux voitures l'une derrière l'autre ! [quickly] Debout, il faisait 2 virgule 4 mètres de haut — aussi haut qu'un but de foot ! Et il pesait 350 kilos — [amazed] aussi lourd que 2 ânes ! [serious] Et il pouvait courir à 25 kilomètres à l'heure — aussi vite qu'un vélo qui roule bien."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Pareil que le Cératosaure."
+      "text": "[curious] Il courait vite pour chasser ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Presque la même taille, mais deux familles différentes. Lui avait des crêtes, pas de corne."
+      "text": "[confident] Assez vite, oui. [quickly] Des longues pattes fines, faites pour la course."
     }
   ],
   "model_id": "eleven_v3",

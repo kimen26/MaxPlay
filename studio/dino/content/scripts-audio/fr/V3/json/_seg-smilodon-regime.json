@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Carnivore. Il chassait les bisons, les chevaux sauvages et les jeunes paresseux géants. Peut-être en groupe, comme les lions."
+      "text": "[serious] C'était un carnivore. Il chassait les bisons, les chevaux sauvages et [amazed] les jeunes paresseux géants. [hesitant] Peut-être en groupe, comme les lions — les savants ne savent pas encore avec certitude."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il attrapait comment ses proies ?"
+      "text": "[nervous] Qui osait l'attaquer ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Caché, puis un bond rapide et un coup de canines bien précis."
+      "text": "[warmly] Presque personne. [confident] Avec des canines pareilles, on le laissait tranquille."
     }
   ],
   "model_id": "eleven_v3",

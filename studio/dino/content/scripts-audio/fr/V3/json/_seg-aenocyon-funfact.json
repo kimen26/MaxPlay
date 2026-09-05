@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] On a retrouvé des milliers de Loups terribles piégés dans un grand bassin de goudron collant, en Amérique."
+      "text": "[amazed] Longtemps, tout le monde a cru que c'était juste un très gros loup gris. [pauses] Mais des savants ont étudié son ADN, il y a peu de temps."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Des milliers."
+      "text": "[gasps] Et alors ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Ils venaient chasser les bêtes déjà collées dedans, et restaient collés à leur tour."
+      "text": "[softly] Ce n'était pas un vrai loup du tout — [amazed] juste un lointain cousin, une famille à lui tout seul."
     }
   ],
   "model_id": "eleven_v3",

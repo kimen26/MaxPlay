@@ -2,7 +2,7 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Carnivore. Il chassait les petits animaux et les jeunes chevaux, à pied, en courant. Plutôt seul."
+      "text": "[serious] C'était un carnivore. Il chassait les petits mammifères et les jeunes chevaux, [amazed] en courant, tout seul. [quickly] Les savants pensent qu'il pouvait courir à 45 kilomètres à l'heure — aussi vite qu'un cheval au galop."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -10,7 +10,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Avec son bec énorme et crochu, plus gros que ta tête."
+      "text": "[confident] Avec son bec énorme et crochu, [amazed] plus gros que ta tête."
     }
   ],
   "model_id": "eleven_v3",

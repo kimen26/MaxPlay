@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Ses pattes plus droites lui donnaient une vraie foulée, comme un chien qui court — alors que tous les autres, à son époque, rampaient encore sur des pattes écartées."
+      "text": "[amazed] Ses pattes n'étaient pas écartées sur les côtés, comme celles d'un lézard. [curious] Elles étaient déjà un peu droites [serious] sous son corps, comme celles d'un chien."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Il courait mieux que les autres."
+      "text": "[gasps] Il marchait presque comme un chien ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Bien mieux. Et c'est un pas de plus vers nous : nos propres pattes, à nous, sont droites sous le corps."
+      "text": "[softly] Presque, oui. Un petit pas de plus [warmly] vers nous, les animaux à poils d'aujourd'hui."
     }
   ],
   "model_id": "eleven_v3",

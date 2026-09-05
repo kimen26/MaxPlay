@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore. Il mangeait l'herbe et les petites plantes de la toundra gelée. Il vivait en troupeau, comme les éléphants aujourd'hui."
+      "text": "[serious] C'était un herbivore. Il mangeait l'herbe et les petites plantes cachées sous la neige. [warmly] Une épaisse fourrure et une grosse couche de graisse le gardaient au chaud, et il vivait en troupeau, [gently] comme les éléphants d'aujourd'hui."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il avait froid ?"
+      "text": "[nervous] Qui pouvait l'attaquer, avec sa fourrure ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Non. Une épaisse fourrure et une couche de graisse le gardaient bien au chaud."
+      "text": "[confident] Seulement les hommes préhistoriques. [warmly] Personne d'autre n'osait s'en prendre à une bête aussi grande."
     }
   ],
   "model_id": "eleven_v3",

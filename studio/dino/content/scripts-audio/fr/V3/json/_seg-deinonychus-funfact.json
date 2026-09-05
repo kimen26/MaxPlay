@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Sa griffe faisait 13 centimètres de long. Longue comme ton doigt entier."
+      "text": "[excited] Sa griffe recourbée servait à s'accrocher, [amazed] comme un grappin. [slowly] Il sautait sur sa proie, plantait sa griffe, et tenait bon avec ses bras aux longues plumes, le temps que ses dents fassent le reste."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Comme mon doigt."
+      "text": "[gasps] Un grappin vivant."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui, et tranchante. Une faucille sur chaque pied arrière. L'arme signature des raptors."
+      "text": "[softly] Exactement. [proud] C'est cette griffe-là qui a donné son nom à toute la famille des raptors."
     }
   ],
   "model_id": "eleven_v3",

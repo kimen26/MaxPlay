@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Deux Moschops pouvaient se foncer dessus tête contre tête, comme les mouflons de la montagne aujourd'hui, pour montrer qui était le plus fort — sans se faire mal."
+      "text": "[amazed] Le dessus de son crâne était épais de 5 centimètres — [serious] presque la largeur de ta main. [playful] Deux Moschops pouvaient se foncer dessus, tête contre tête."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Tête contre tête, sans se faire mal."
+      "text": "[gasps] Ils se cognaient la tête, pour de vrai ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Oui. Un vrai casque naturel. Et son seul vrai danger restait le Gorgonops, déjà rencontré un peu plus tôt."
+      "text": "[softly] Pour de vrai — comme les mouflons de la montagne aujourd'hui, [playful] pour montrer qui était le plus fort."
     }
   ],
   "model_id": "eleven_v3",

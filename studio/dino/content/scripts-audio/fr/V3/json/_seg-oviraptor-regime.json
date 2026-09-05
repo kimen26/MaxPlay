@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Omnivore. Il mangeait des plantes, des petits animaux, peut-être quelques œufs. Il vivait en couple. Papa et maman s'occupaient ensemble du nid."
+      "text": "[serious] Il mangeait de tout — [confident] de petits animaux, des plantes, peut-être des œufs aussi. Il vivait en couple pour élever ses petits."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Comme Papa et Maman."
+      "text": "[curious] Il avait des ennemis ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactement. Une vraie famille. Ils protégeaient les œufs des Vélociraptors et des autres carnivores."
+      "text": "[confident] Des carnivores comme le Vélociraptor. [serious] Il devait rester attentif, surtout près de son nid."
     }
   ],
   "model_id": "eleven_v3",

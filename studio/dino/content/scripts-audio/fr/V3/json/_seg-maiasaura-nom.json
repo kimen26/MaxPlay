@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Ma-ia-saura. En grec, « maïa », c'est la bonne mère. Et « saura », c'est le lézard, au féminin. La bonne mère lézarde."
+      "text": "[excited] Ma-ïa-saura. [curious] En grec, « maïa », ça veut dire la bonne mère, la nourrice. Et « saura », c'est lézard, au féminin."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Une maman lézard."
+      "text": "[confident] La bonne mère lézarde."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactement. Elle vivait au Crétacé, il y a 76 millions d'années, dans le Montana, aux États-Unis, en immense colonie."
+      "text": "[happily] Exactement. [warmly] Elle vivait aux États-Unis, dans le Montana, il y a 76 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Et il y avait des dangers, pour ses bébés ?"
+      "text": "[curious] Pourquoi on l'appelle comme ça, « bonne mère » ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Le Daspletosaure, un cousin du T-Rex, chassait les jeunes. Et le Troodon venait parfois voler des œufs dans les nids mal gardés."
+      "text": "[gently] Parce qu'on a trouvé ses nids, remplis d'œufs et de bébés. [serious] Le Daspletosaure chassait les jeunes ; [nervous] le petit Troodon, lui, venait parfois voler des œufs."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Les premiers humains ont dessiné le Rhinocéros laineux sur les murs des grottes, il y a plus de trente mille ans."
+      "text": "[whispers] Les tout premiers hommes ont dessiné le Rhinocéros laineux [pauses] sur les murs de leurs grottes, il y a des dizaines de milliers d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Dessiné sur un mur."
+      "text": "[gasps] Dessiné sur un mur ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] L'un des tout premiers animaux jamais dessinés par un être humain."
+      "text": "[amazed] Oui — [proud] un des tout premiers animaux jamais peints par un être humain."
     }
   ],
   "model_id": "eleven_v3",

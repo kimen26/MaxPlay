@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 6 mètres de long — aussi long qu'une rue à deux voies est large. 2 mètres de haut — aussi haut qu'une porte. 5 mille kilos — aussi lourd que 2 hippopotames."
+      "text": "[excited] 6 mètres de long — aussi long qu'une rue à deux voies est large — il barrait la route ! 2 mètres de haut — [quickly] aussi haut qu'une porte ! Et 5 mille kilos — [amazed] aussi lourd qu'un éléphant ! Les savants pensent qu'il pouvait courir à 25 kilomètres à l'heure — aussi vite qu'un vélo qui roule bien."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Deux hippopotames."
+      "text": "[gasps] Aussi lourd qu'un éléphant."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui. Un costaud avec une tête encore plus impressionnante que son corps."
+      "text": "[confident] Oui. Un costaud, [proud] avec une tête encore plus impressionnante que son corps."
     }
   ],
   "model_id": "eleven_v3",

@@ -14,8 +14,8 @@
 ### BLOC A — Présentation
 
 **NARRATEUR H** [excited] : Ba-ri-o-nix. [curious] « Bary », en grec, ça veut dire lourd, pesant. [playful] Et « onyx », c'est la griffe. La griffe lourde !
-**WEX** [confident] : Une grosse griffe.
-**NARRATEUR H** [happily] : Une ÉNORME griffe de 31 centimètres sur le pouce. [confident] Il vivait en Europe — en Angleterre, en Espagne et au Portugal, [amazed] il y a 125 millions d'années.
+**WEX** [amazed] : Onyx, comme la pierre noire brillante ? [confident] Alors ça fait : la griffe lourde.
+**NARRATEUR H** [happily] : Tout à fait, même mot. [confident] Une ÉNORME griffe de 31 centimètres sur le pouce. Il vivait en Europe — en Angleterre, en Espagne et au Portugal, [amazed] il y a 125 millions d'années.
 **WEX** [curious] : Il attrapait quoi, avec une griffe pareille ?
 **NARRATEUR H** [playful] : Des poissons. [amazed] Comme un ours pêcheur, mais en dinosaure.
 

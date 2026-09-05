@@ -12,9 +12,9 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Spi-no-saure. [curious] « Spino », en latin, c'est une épine — comme les grandes piques sur son dos. Et « saure », le lézard. Le lézard à épines !
-**WEX** [confident] : Le lézard à épines.
-**NARRATEUR H** [happily] : Exactement. Il vivait en Afrique du Nord, [amazed] il y a 95 millions d'années.
+**NARRATEUR H** [excited] : Spi-no-saure. [curious] « Spino », en latin, c'est une épine — comme les grandes piques sur son dos. Et « saure », le lé…
+**WEX** [hesitant] : Attends, je sais : le lézard à épines.
+**NARRATEUR H** [happily] : Exactement, trouvé avant la fin ! Il vivait en Afrique du Nord, [amazed] il y a 95 millions d'années.
 **WEX** [curious] : Et il mangeait quoi, avec toutes ces épines ?
 **NARRATEUR H** [playful] : Du poisson ! [confident] D'énormes poissons, aussi longs que toi et Papa ensemble.
 

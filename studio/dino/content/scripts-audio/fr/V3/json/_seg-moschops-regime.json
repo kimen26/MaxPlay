@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore. Il mangeait des plantes dures, et se mesurait aux autres Moschops à coups de tête plutôt qu'à coups de dents."
+      "text": "[serious] Il mangeait des plantes dures, avec ses dents solides. [confident] Mais il devait se méfier des grands chasseurs de son époque, comme le Gorgonops."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Ça ne lui faisait pas mal ?"
+      "text": "[nervous] Il pouvait se défendre, au moins ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Non. Le dessus de son crâne était épais de cinq centimètres — presque la largeur de ta main."
+      "text": "[warmly] Il avait une arme surprenante — pas des dents, ni des cornes. [playful] Sa tête."
     }
   ],
   "model_id": "eleven_v3",

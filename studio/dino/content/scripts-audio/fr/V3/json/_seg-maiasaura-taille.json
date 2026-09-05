@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 9 mètres de long — aussi longue qu'un camion. Aussi haute qu'un but de foot. Et 2500 kilos — aussi lourde que deux rhinocéros."
+      "text": "[excited] 9 mètres de long — aussi long qu'un camion ! 2 mètres 50 de haut — [quickly] aussi haut qu'un but de foot ! Et 2 500 kilos — [amazed] aussi lourd que 5 chevaux !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious][gasps] Deux rhinocéros, pour une maman ?"
+      "text": "[gasps] Aussi haut qu'un but de foot, avec des bébés en plus ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui. Une grande herbivore à bec de canard, avec des centaines de nids autour d'elle."
+      "text": "[confident] Oui. Une grande maman herbivore, [warmly] qui gardait ses petits tout près."
     }
   ],
   "model_id": "eleven_v3",

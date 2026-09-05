@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Car-no-taure. « Carno », en latin, c'est la viande, la chair. Et « taurus », c'est le taureau."
+      "text": "[excited] Car-no-taure. [curious] « Carno », en latin, c'est la viande, la chair. Et « taurus », c'est le taureau."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Taureau qui mange de la viande."
+      "text": "[playful] « Carno »… j'ai retenu la viande. [hesitant] Et « taurus », c'est quoi déjà ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactement. Un taureau carnivore avec de vraies cornes au-dessus des yeux. Il vivait en Argentine, il y a 72 millions d'années."
+      "text": "[happily] Le taureau ! Le taureau qui mange de la viande. [confident] Un vrai taureau chasseur avec des cornes au-dessus des yeux. Il vivait en Amérique du Sud, [amazed] il y a 72 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Des cornes comme un taureau, mais il mangeait de la viande."
+      "text": "[curious] Des cornes de taureau, mais il mangeait de la viande ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Oui. En Amérique du Sud, il chassait les hadrosaures et les dinosaures moyens. Le taureau chasseur de l'Argentine."
+      "text": "[playful] Oui. [confident] Il chassait les hadrosaures et les dinosaures moyens de son territoire."
     }
   ],
   "model_id": "eleven_v3",

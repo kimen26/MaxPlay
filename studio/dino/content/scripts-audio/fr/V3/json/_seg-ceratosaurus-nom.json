@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Sé-ra-to-saure. « Cérat », en grec, ça veut dire corne. Et « saure », c'est « lézard »."
+      "text": "[excited] Cé-ra-to-saure. [curious] « Cérato », en grec, ça veut dire corne. [playful] Et « saure », le lézard. Le lézard à corne !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Lézard à corne."
+      "text": "[amazed] Une vraie corne, sur le nez, comme un rhinocéros ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Oui. Une vraie corne sur le nez. Il vivait en Amérique du Nord et en Afrique, il y a 150 millions d'années."
+      "text": "[happily] Exactement ça, le lézard à corne. Il vivait en Amérique du Nord, [confident] et peut-être aussi en Europe, au Portugal, [amazed] il y a 150 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Une corne, comme une licorne."
+      "text": "[curious] Une corne, comme une licorne ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Presque. Le seul grand carnivore avec une corne sur le nez. À côté de lui, l'Allosaure était le plus grand voisin dangereux."
+      "text": "[playful] Presque ! [proud] Le seul grand carnivore de son époque avec une corne sur le nez."
     }
   ],
   "model_id": "eleven_v3",

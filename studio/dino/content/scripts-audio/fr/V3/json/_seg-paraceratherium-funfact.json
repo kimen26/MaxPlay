@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Sa tête montait à cinq mètres de haut — plus haut qu'une girafe."
+      "text": "[slowly] Sa tête, tout en haut de son long cou, [pauses] montait à 5 mètres de haut."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Plus haut qu'une girafe."
+      "text": "[gasps] Plus haut qu'une girafe ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Un rhinocéros sans corne, grand comme un immeuble."
+      "text": "[amazed] Plus haut qu'une girafe, oui. [proud] Un rhinocéros sans corne, mais grand comme un immeuble."
     }
   ],
   "model_id": "eleven_v3",

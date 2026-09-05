@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Di-lo-fo-saure. « Di », c'est « deux » en grec. « Lopho », c'est une crête. Et « saure », c'est « lézard »."
+      "text": "[excited] Di-lo-fo-saure. [curious] « Di », c'est deux en grec. « Lopho », c'est une crête. [playful] Et « saure », c'est le…"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Lézard à deux crêtes."
+      "text": "[hesitant] Attends, laisse-moi deviner : le lézard à deux crêtes."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactement. Deux crêtes colorées sur la tête. Il vivait aux États-Unis, il y a 193 millions d'années."
+      "text": "[happily] Trouvé ! Deux crêtes dressées sur la tête. [confident] Il vivait en Amérique du Nord, [amazed] il y a 193 millions d'années — un des premiers grands chasseurs de l'histoire."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Des crêtes comme une couronne."
+      "text": "[amazed] Des crêtes comme une couronne ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Comme une couronne de fête. Dans le coin, il croisait des proies plus petites, et des prédateurs plus grands le surveillaient."
+      "text": "[playful] Comme une couronne de fête. [amazed] Sûrement très colorée, pour se faire remarquer."
     }
   ],
   "model_id": "eleven_v3",

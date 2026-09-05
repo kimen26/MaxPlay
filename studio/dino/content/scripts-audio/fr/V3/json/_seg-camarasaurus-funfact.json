@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Le Camarasaure avait des FENÊTRES dans le crâne pour alléger sa tête. Et un bec plat comme un oiseau."
+      "text": "[excited] On a retrouvé un bébé Camarasaure presque ENTIER — [amazed] un des squelettes de bébé sauropode les plus complets jamais découverts."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Une tête avec des trous."
+      "text": "[amazed] Tout petit et déjà tout entier."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Une tête légère et une grosse bouche. Parfait pour arracher les branches."
+      "text": "[softly] Grâce à lui, [proud] les savants savent exactement à quoi ressemblait un bébé de cette famille."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,15 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Carnivore féroce. Il chassait les grands herbivores, peut-être même les sauropodes jeunes. Il vivait peut-être en meute."
+      "text": "[serious] C'était un carnivore. Il chassait de grands mangeurs de plantes, [confident] peut-être en équipe de chasseurs plutôt que tout seul."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Une armée de raptors."
+      "text": "[curious] Une équipe, comme au foot ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Exactement. Une meute d'Utahraptors, c'était une équipe de chasseurs efficace. Aucun prédateur de son époque n'osait l'attaquer."
+      "text": "[hesitant] Les savants ne sont pas sûrs, [gently] mais c'est possible : plusieurs raptors ensemble pouvaient renverser une proie bien plus grosse qu'eux."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[scared] Et lui, quelqu'un pouvait l'attraper ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Dans son pays, à son époque, [warmly] personne d'assez costaud pour ça n'a été retrouvé. C'était le grand chasseur."
     }
   ],
   "model_id": "eleven_v3",

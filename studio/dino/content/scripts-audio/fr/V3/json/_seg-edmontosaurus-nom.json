@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Ed-mon-to-saure. Son nom vient d'Edmonton, une ville du Canada où on a trouvé ses os. Et « saure », c'est le lézard en grec. Le lézard d'Edmonton."
+      "text": "[excited] Ed-mon-to-saure. [curious] Son nom vient d'Edmonton, une ville du Canada où on a trouvé ses os. Et « saure », c'est le lézard en grec."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il habitait au Canada."
+      "text": "[confident] Le lézard d'Edmonton."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactement. En Amérique du Nord, il y a 68 millions d'années. C'était un grand dino à bec de canard."
+      "text": "[happily] Exactement. [warmly] Il vivait en Amérique du Nord, il y a 68 millions d'années — en même temps que le Tricératops."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Et il avait des copains ?"
+      "text": "[curious] Il avait des copains ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Des milliers. Des troupeaux ÉNORMES. Et le T-Rex les regardait passer avec intérêt."
+      "text": "[playful] Des milliers. [amazed] Des troupeaux énormes. Et le T-Rex les guettait, patiemment."
     }
   ],
   "model_id": "eleven_v3",

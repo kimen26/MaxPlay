@@ -13,15 +13,15 @@
 ### BLOC A — Présentation
 
 **NARRATEUR H** [excited] : Cri-o-lo-fo-saure. [curious] « Cryo », en grec, c'est la glace, le froid. [playful] « Lopho », c'est une crête. Et « saure », le lézard.
-**WEX** [confident] : Le lézard à crête de glace.
-**NARRATEUR H** [happily] : Oui. Il vivait en Antarctique, [amazed] il y a 190 millions d'années. [confident] Mais à l'époque, l'Antarctique était couvert de forêts, il faisait doux.
-**WEX** [curious] : Pas de glace, alors ?
+**WEX** [confident] : Le lézard tout gelé, transformé en glaçon.
+**NARRATEUR H** [chuckles] : Pas tout à fait — la glace, c'est juste dans son nom. [amazed] Le lézard à crête de glace. Il vivait en Antarctique, il y a 190 millions d'années. [confident] Mais à l'époque, l'Antarctique était couvert de forêts, il faisait doux.
+**WEX** [amazed] : Pas de glace, alors ?
 **NARRATEUR H** [playful] : Pas du tout. [amazed] Des arbres, des plantes, et plein d'herbivores à chasser tout au sud du monde.
 
 ### BLOC B — Taille
 
 **NARRATEUR H** [excited] : Il mesurait 6 virgule 5 mètres de long — aussi long qu'une rue à deux voies est large — il barrait la route ! [quickly] Debout, il faisait 2 virgule 5 mètres de haut — aussi haut qu'un but de foot ! Et il pesait 400 kilos — [amazed] aussi lourd que 2 lions !
-**WEX** [curious] : Un carnivore tout seul, si loin de tout ?
+**WEX** [amazed] : Un carnivore tout seul, si loin de tout ?
 **NARRATEUR H** [confident] : Oui. [proud] Le roi du bout du monde, sans aucun concurrent connu à sa taille.
 
 ### BLOC C — Comment il vivait
@@ -34,4 +34,4 @@
 
 **NARRATEUR H** [excited] : Sa crête était dressée en travers sur sa tête, [amazed] comme une vague gelée [pauses] au-dessus de ses yeux.
 **WEX** [curious] : Une crête en travers ?
-**NARRATEUR H** [playful] : Oui, le seul dinosaure connu avec une crête posée comme ça, [curious] juste entre les yeux. Une drôle de coiffure de pierre.
+**NARRATEUR H** [playful] : Oui, le seul dinosaure connu avec une crête posée comme ça, [amazed] juste entre les yeux. Une drôle de coiffure de pierre.

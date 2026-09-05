@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore. Il broutait des plantes en troupeau. Quand le Gorgosaure approchait, les Centrosaures se serraient les uns contre les autres pour se protéger."
+      "text": "[serious] C'était un herbivore. Il broutait des plantes en troupeau. [confident] Quand le Gorgosaure approchait, [calm] les Centrosaures se serraient les uns contre les autres."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Ils étaient combien dans le troupeau."
+      "text": "[curious] Ils étaient combien, dans le troupeau ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Beaucoup. Des centaines, peut-être des milliers. Quand ils se regroupaient, aucun chasseur n'osait s'approcher."
+      "text": "[playful] Des milliers, peut-être. [amazed] Quand ils se regroupaient tous ensemble, aucun chasseur n'osait s'approcher."
     }
   ],
   "model_id": "eleven_v3",

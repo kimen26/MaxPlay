@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Carnivore. Il mangeait des lézards, des petits mammifères et des poissons. Il chassait dans les arbres, seul ou en petit groupe."
+      "text": "[serious] Il vivait dans les arbres de son pays, [confident] pour échapper aux plus gros carnivores et aux grands reptiles."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Dans les arbres ?"
+      "text": "[curious] Il volait, comme un oiseau ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Oui. Son territoire, c'était la canopée. Il sautait de branche en branche et planait pour attraper ses proies."
+      "text": "[gently] Pas tout à fait. [pauses] Il planait, d'arbre en arbre, un peu comme un écureuil volant."
     }
   ],
   "model_id": "eleven_v3",

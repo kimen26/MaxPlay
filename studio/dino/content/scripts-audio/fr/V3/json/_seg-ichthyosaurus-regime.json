@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Piscivore. Il mangeait des poissons et des calmars. Il nageait en groupe, comme les dauphins. Le Liopleurodon et les grands pliosaures le chassaient."
+      "text": "[serious] Il chassait les poissons et les calmars, en groupe, un peu comme des dauphins aujourd'hui. [confident] Mais dans sa mer, il y avait plus fort que lui."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il donnait des bébés."
+      "text": "[scared] Quoi ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Oui. Des bébés vivants, pas des œufs. Comme les baleines et les dauphins. Il accouchait dans l'eau."
+      "text": "[gently] Les grands pliosaures de son époque, comme le Ro-ma-lé-o-saure. [warmly] Face à eux, l'Ichtyosaure devait rester prudent."
     }
   ],
   "model_id": "eleven_v3",

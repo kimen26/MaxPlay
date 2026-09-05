@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore. Il broutait l'herbe des plaines froides. Il vivait plutôt seul."
+      "text": "[serious] C'était un herbivore. Il broutait l'herbe des plaines froides, [gently] plutôt seul."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Sa corne servait à quoi ?"
+      "text": "[curious] Qui pouvait le chasser ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] De balai. Il poussait la neige avec pour trouver l'herbe cachée dessous."
+      "text": "[confident] Seulement les hommes préhistoriques, avec beaucoup de prudence — [warmly] sa corne le rendait dangereux à approcher."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 2 mètres 70 de long — comme trois enfants de 4 ans allongés. 1 mètre 10 de haut — aussi grand qu'un enfant de 4 ans. Et 410 kilos — aussi lourd qu'un poney."
+      "text": "[excited] Il mesurait 2 mètres 70 de long — comme trois enfants de 4 ans allongés ! [amazed] Debout, il faisait 1 mètre 10 de haut — aussi grand qu'un enfant de 4 ans ! Et il pesait 410 kilos — [serious] aussi lourd que 2 lions !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Aussi lourd qu'un poney."
+      "text": "[gasps] Aussi lourd que 2 lions ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui. Gros et trapu, avec un crâne épais comme un casque."
+      "text": "[chuckles] Deux lions, oui — [confident] un animal gros et trapu, tout en muscle."
     }
   ],
   "model_id": "eleven_v3",

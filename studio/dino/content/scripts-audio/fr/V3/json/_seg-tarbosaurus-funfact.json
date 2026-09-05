@@ -2,7 +2,7 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Son crâne était plus étroit que celui du T-Rex. Il avait 60 dents aiguisées et secouait ses proies comme un crocodile."
+      "text": "[excited] Il avait 60 dents aiguisées, [serious] et il secouait ses proies très fort avant de les avaler."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -10,7 +10,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[softly] Exactement. Sauf que la corde était un dinosaure géant."
+      "text": "[softly] Exactement ça. [amazed] Sauf que la corde, c'était un dinosaure entier."
     }
   ],
   "model_id": "eleven_v3",

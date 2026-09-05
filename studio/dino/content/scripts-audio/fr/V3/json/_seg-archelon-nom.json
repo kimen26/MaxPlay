@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Ar-ké-lon. « Arché », c'est le chef, le premier. Et « chelôn », c'est la tortue. La tortue numéro un."
+      "text": "[curious] Ar-ké-lon. « Arché », ça veut dire chef, premier — [serious] comme dans « archéologie ». Et « chélon », c'est la tortue."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] La plus grande tortue ?"
+      "text": "[confident] La tortue-chef ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] De tous les temps. Et ce n'est pas un dinosaure : c'est un énaliosaure, une tortue de mer géante. Elle vivait au Crétacé, il y a 75 millions d'années, dans la mer intérieure d'Amérique du Nord."
+      "text": "[happily] Voilà — la plus grande tortue de tous les temps. Elle vivait il y a 75 millions d'années, [amazed] dans une mer qui coupait [serious] l'Amérique du Nord en deux."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Elle nageait avec les dinosaures ?"
+      "text": "[curious] Une tortue, mais pas un dinosaure alors ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] En même temps qu'eux, mais dans la mer. Le T-Rex était sur terre."
+      "text": "[confident] Non, une vraie tortue de mer géante — [warmly] la cousine des tortues d'aujourd'hui, en beaucoup, beaucoup plus grand."
     }
   ],
   "model_id": "eleven_v3",

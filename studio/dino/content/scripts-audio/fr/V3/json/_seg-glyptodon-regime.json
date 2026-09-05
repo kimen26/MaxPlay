@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore. Il broutait l'herbe des plaines, bien tranquille. Il vivait plutôt seul."
+      "text": "[serious] C'était un herbivore. Il broutait l'herbe des plaines, [gently] plutôt seul, bien tranquille."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Personne ne pouvait le croquer ?"
+      "text": "[curious] Sa carapace le protégeait de tout ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Presque personne. Sa carapace était dure comme une pierre."
+      "text": "[confident] Presque de tout. Dure comme une pierre, [warmly] difficile à croquer pour n'importe quel chasseur."
     }
   ],
   "model_id": "eleven_v3",

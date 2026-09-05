@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Carnivore. Il chassait les grands herbivores de Mongolie, comme le Thérizinosaurus. Solitaire."
+      "text": "[serious] C'était un carnivore. Il chassait les grands herbivores de Mongolie, [confident] comme le Thérizinosaure. [calm] Plutôt solitaire."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Le Thérizinosaurus se défendait comment ?"
+      "text": "[curious] Et le Thérizinosaure, il se défendait comment ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Avec ses griffes d'UN MÈTRE, dressées comme une barrière de couteaux. Le Tarbosaure préférait aller manger ailleurs."
+      "text": "[playful] Avec ses griffes ÉNORMES d'un mètre, [serious] dressées comme une barrière de couteaux. [confident] Devant ça, le Tarbosaure allait chercher une proie moins piquante."
     }
   ],
   "model_id": "eleven_v3",

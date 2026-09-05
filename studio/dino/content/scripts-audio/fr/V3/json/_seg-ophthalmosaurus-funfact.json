@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Comme les dauphins d'aujourd'hui, l'Ophthalmosaure faisait ses bébés vivants dans l'eau. Jamais d'œufs sur la plage."
+      "text": "[whispers] Ses yeux mesuraient 23 centimètres. [amazed] Presque toute sa tête, [serious] rien que pour voir dans le noir des profondeurs."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Des bébés ichtyosaures ?"
+      "text": "[gasps] 23 centimètres, comme un ballon ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[softly] Oui. Des petits reptiles marins qui naissaient directement dans l'océan, comme les dauphins."
+      "text": "[softly] Presque. Et grâce à ça, [confident] il repérait ses proies là où personne d'autre ne voyait rien."
     }
   ],
   "model_id": "eleven_v3",

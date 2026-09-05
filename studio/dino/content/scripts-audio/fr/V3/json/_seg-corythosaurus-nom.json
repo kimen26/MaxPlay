@@ -2,7 +2,7 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Co-ri-to-saure. En grec ancien, « corytho », c'est le casque, comme celui d'un guerrier. Et « saure », c'est le lézard. Le lézard à casque."
+      "text": "[excited] Co-ri-to-saure. [curious] En grec ancien, « corytho », c'est le casque, comme celui d'un guerrier. Et « saure », c'est le lézard. [pauses] Le lézard à casque."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -10,15 +10,15 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactement. Une grande crête arrondie, creuse à l'intérieur. Il vivait en Amérique du Nord, il y a 76 millions d'années."
+      "text": "[happily] Exactement. Une grande crête arrondie, creuse à l'intérieur. [warmly] Il vivait en Amérique du Nord, il y a 76 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Et il y avait des dangers, par là ?"
+      "text": "[nervous] Et il y avait des dangers, par là ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Oui. Le Gorgosaure et le Daspletosaure, deux cousins du T-Rex, chassaient dans le coin. Alors le Corythosaure ne restait jamais seul."
+      "text": "[serious] Oui. Le Gorgosaure et le Daspletosaure, deux cousins du T-Rex, chassaient dans le coin. [confident] Alors le Corythosaure ne restait jamais seul."
     }
   ],
   "model_id": "eleven_v3",

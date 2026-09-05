@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore. Il broutait en troupeau. Il marchait sur 4 pattes, mais pouvait se lever sur 2 pour courir vite quand il avait peur."
+      "text": "[serious] C'était un herbivore. Il broutait en troupeau, [confident] marchait sur 4 pattes, mais pouvait se lever sur 2 pour courir vite quand il avait peur."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Comme un kangourou."
+      "text": "[playful] Comme un kangourou."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Exactement. Quatre pattes au calme, deux pattes pour la course. Le Baryonyx et les carnosaures le surveillaient."
+      "text": "[happily] Exactement. Quatre pattes au calme, [pauses] deux pattes pour la course. Le Baryonyx le surveillait de loin."
     }
   ],
   "model_id": "eleven_v3",

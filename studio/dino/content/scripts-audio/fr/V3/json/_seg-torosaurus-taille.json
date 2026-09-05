@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 8 mètres de long — comme deux voitures l'une derrière l'autre. 3 mètres de haut — aussi haut qu'un panier de basket. 8 mille kilos — aussi lourd que 3 hippopotames."
+      "text": "[excited] 8 mètres de long — comme deux voitures l'une derrière l'autre ! 3 mètres de haut — [quickly] aussi haut qu'un panier de basket ! [amazed] Et 8 mille kilos — aussi lourd que 4 rhinocéros !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Sa tête devait être énorme."
+      "text": "[gasps] Quatre rhinocéros."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Énorme. Sa collerette faisait presque 3 mètres de large. La plus grande tête de tous les animaux terrestres."
+      "text": "[confident] Oui. Et sa collerette, [proud] à elle seule, faisait presque 3 mètres de large."
     }
   ],
   "model_id": "eleven_v3",

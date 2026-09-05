@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Mé-ga-thé-rium. En grec, méga veut dire géant. Et thérium veut dire la bête. La bête géante."
+      "text": "[excited] Mé-ga-té-rioum. En grec, « méga » veut dire grand, énorme. [proud] Et « térioum » veut dire la bête. La grande bête."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Un paresseux ?"
+      "text": "[curious] Un dinosaure géant ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Un paresseux géant, oui ! Le plus grand qui ait existé. Il vivait tranquillement en Amérique du Sud, près du Glyptodon."
+      "text": "[happily] Non, pas un dinosaure — [serious] il est arrivé bien après, à l'Âge de glace, [pauses] il y a 1 million d'années. C'était un paresseux géant, en Amérique du Sud."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il grimpait aux arbres ?"
+      "text": "[gasps] Un paresseux ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Non, bien trop lourd. Il se dressait debout à côté."
+      "text": "[confident] Le plus grand paresseux qui ait jamais existé — [amazed] grand comme un éléphant, pas comme celui qui dort dans son arbre."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Yu-ta-rap-tor. « Utah », c'est l'État américain où on l'a trouvé. Et « raptor », c'est le voleur. Le voleur de l'Utah."
+      "text": "[excited] U-ta-rap-tor. « Utah », c'est l'État américain où on a trouvé ses os. Et « raptor », en latin, [curious] c'est le voleur. Alors ça donne quoi ?"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il était grand."
+      "text": "[confident] Le voleur de l'Utah."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Très grand. Le PLUS GRAND raptor qui ait jamais existé. Il vivait en Amérique du Nord, il y a 126 millions d'années."
+      "text": "[happily] Voilà. [proud] Il vivait là-bas, en Amérique du Nord, il y a 126 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Plus grand que tous les autres raptors ?"
+      "text": "[gasps] C'est un cousin du Vélociraptor ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Oui. Deux fois plus grand que le Vélociraptor. Un géant parmi les voleurs rapides."
+      "text": "[proud] Oui, mais un cousin bien plus grand. [amazed] C'est le plus grand raptor qu'on connaisse."
     }
   ],
   "model_id": "eleven_v3",

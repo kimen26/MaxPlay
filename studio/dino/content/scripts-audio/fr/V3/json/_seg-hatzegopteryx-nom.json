@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Hat-zé-gop-té-rix. Un nom en trois morceaux. « Hatzego » vient de Hațeg, une région de Roumanie, en Europe, où on a trouvé ses os. « Ptéryx », en grec, c'est l'aile. Et « thambema », toujours en grec, ça veut dire monstre."
+      "text": "[excited] Hat-zé-gop-té-rix. Un nom en trois morceaux. « Hatzego » vient de Hațeg, une région de Roumanie, [serious] où on a trouvé ses os. [curious] « Ptéryx », en grec, c'est l'aile. Et « thambema », ça veut dire monstre."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] L'aile-monstre de Hațeg."
+      "text": "[confident] L'aile-monstre de Hațeg."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactement. Attention : ce n'est pas un dinosaure. C'est un ptérosaure, un reptile volant, comme le Ptéranodon. Il vivait il y a 66 millions d'années, sur une île perdue en pleine mer."
+      "text": "[happily] Exactement. [serious] Attention : pas un dinosaure — un reptile volant. Il vivait il y a 66 millions d'années, [amazed] sur une île perdue en mer."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -18,7 +18,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Oui, coupée du reste du monde. Et là-bas, presque rien n'était comme ailleurs."
+      "text": "[calm] Oui, coupée du reste du monde. [pauses] Et là-bas, presque rien n'était comme ailleurs."
     }
   ],
   "model_id": "eleven_v3",

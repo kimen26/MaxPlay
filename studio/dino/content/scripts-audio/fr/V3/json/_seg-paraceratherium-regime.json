@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore. Il attrapait les feuilles tout en haut des arbres, comme une girafe géante. Tranquille, en petits groupes."
+      "text": "[serious] C'était un herbivore. [amazed] Avec son long cou, il attrapait les feuilles tout en haut des arbres, [gently] là où personne d'autre ne pouvait manger. Il vivait tranquille, en petits groupes."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il avait peur de quelqu'un ?"
+      "text": "[curious] Il craignait quel chasseur ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Non. Bien trop grand pour être attaqué."
+      "text": "[confident] Aucun chasseur de son époque n'était assez costaud pour s'en prendre à lui — [warmly] sa taille suffisait."
     }
   ],
   "model_id": "eleven_v3",

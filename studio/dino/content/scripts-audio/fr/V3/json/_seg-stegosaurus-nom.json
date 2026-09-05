@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Sté-go-saure. En grec, « stégo » veut dire « toit ». Au début, les savants croyaient que ses plaques étaient couchées à plat comme des tuiles."
+      "text": "[excited] Sté-go-saure. [curious] En grec, « stégo », ça veut dire le toit."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il avait un toit sur le dos ?"
+      "text": "[curious] Le lézard à toit ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Pas vraiment. Les plaques étaient dressées en ligne sur son dos. Il vivait en Amérique du Nord, il y a 155 millions d'années."
+      "text": "[happily] Oui — le savant qui l'a trouvé croyait que ses grandes plaques étaient couchées à plat sur le dos, [amazed] comme les tuiles d'un toit. [calm] Il vivait en Amérique du Nord et en Europe, il y a 155 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Et les copains autour ?"
+      "text": "[curious] Et elles étaient couchées, ses plaques ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] L'Allosaure le chassait, mais le Diplodocus et le Camarasaure broutaient pas loin."
+      "text": "[confident] Non ! [pauses] On a découvert plus tard qu'elles étaient dressées bien droites, sur toute la longueur du dos."
     }
   ],
   "model_id": "eleven_v3",

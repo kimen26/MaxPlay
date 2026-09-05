@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 9 mètres de long — aussi long qu'un camion. 2 virgule 5 mètres de haut — aussi haut qu'un but de foot. 1 mille 700 kilos — aussi lourd qu'un rhinocéros."
+      "text": "[excited] Il mesurait 9 mètres de long — aussi long qu'un camion ! [quickly] Debout, il faisait 2 virgule 5 mètres de haut — aussi haut qu'un but de foot ! Et il pesait 1700 kilos — [amazed] aussi lourd qu'une petite voiture et une vache ensemble ! [serious] Et il pouvait nager à 22 kilomètres à l'heure — aussi vite que Papa qui court."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Il avait une gueule longue comme un crocodile."
+      "text": "[gasps] Il avait une gueule longue comme un crocodile ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui. Un museau étroit et plein de dents pointues, parfait pour attraper des poissons glissants."
+      "text": "[confident] Oui. [serious] Un museau étroit plein de dents pointues, parfait pour attraper des poissons glissants."
     }
   ],
   "model_id": "eleven_v3",

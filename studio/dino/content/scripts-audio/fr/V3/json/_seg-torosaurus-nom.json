@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] To-ro-saure. En grec, « toro » veut dire percé, troué. Et « saure » veut dire lézard. Le lézard à la collerette percée."
+      "text": "[excited] To-ro-saure. [curious] En grec, « toro », ici, ça veut dire percé, troué. Pas taureau, même si ça y ressemble. Et « saure », c'est le lézard."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Percée comme un fromage."
+      "text": "[playful] Le lézard troué."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Pas exactement. Sa collerette avait de grands trous. Il vivait en Amérique du Nord, il y a 66 millions d'années, avec le Tricératops. Le T-Rex les chassait tous les deux."
+      "text": "[happily] Presque : le lézard à la collerette percée. [warmly] Il vivait en Amérique du Nord, il y a 66 millions d'années, avec le Tricératops."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] C'est le cousin de Tritri."
+      "text": "[softly] C'est le cousin de Tritri."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Oui, un cousin avec une collerette trouée."
+      "text": "[warmly] Exactement. Un grand cousin, avec une collerette pleine de trous."
     }
   ],
   "model_id": "eleven_v3",

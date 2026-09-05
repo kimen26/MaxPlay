@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Le vrai Vélociraptor avait des PLUMES. Il ressemblait à un gros oiseau qui court, pas du tout au monstre tout nu qu'on imagine."
+      "text": "[excited] Écoute cette histoire vraie. [serious] Dans le désert de Mongolie, les savants ont trouvé un fossile incroyable : un Vélociraptor et un Protocératops, [pauses] figés en plein combat."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Des plumes ?"
+      "text": "[gasps] En plein combat ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[softly] Oui. Un petit chasseur à plumes. La preuve que les dinosaures et les oiseaux sont cousins très proches."
+      "text": "[whispers] Oui. La griffe du raptor plantée dans le cou de l'autre, [slowly] et l'autre qui mordait son bras. [softly] Une dune de sable s'est effondrée sur eux, et ils sont restés comme ça, ensemble, pendant 75 millions d'années."
     }
   ],
   "model_id": "eleven_v3",

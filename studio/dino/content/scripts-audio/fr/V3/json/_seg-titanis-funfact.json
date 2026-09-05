@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Titanis est un vrai oiseau, avec des plumes — mais il ne volait pas du tout."
+      "text": "[amazed] Titanis est le seul oiseau-terreur qui soit venu jusqu'en Amérique du Nord — [proud] tous ses cousins vivaient plus au sud."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Un oiseau qui ne vole pas."
+      "text": "[gasps] Il a voyagé tout seul ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Un oiseau coureur, et un sacré chasseur."
+      "text": "[softly] Un grand voyage à pied, [slowly] pour un oiseau qui ne vole pas."
     }
   ],
   "model_id": "eleven_v3",

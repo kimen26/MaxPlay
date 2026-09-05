@@ -13,10 +13,10 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Di-lo-fo-saure. [curious] « Di », c'est deux en grec. « Lopho », c'est une crête. [playful] Et « saure », le lézard. Le lézard à deux crêtes !
-**WEX** [confident] : Le lézard à deux crêtes.
-**NARRATEUR H** [happily] : Exactement. Deux crêtes dressées sur la tête. [confident] Il vivait en Amérique du Nord, [amazed] il y a 193 millions d'années — un des premiers grands chasseurs de l'histoire.
-**WEX** [curious] : Des crêtes comme une couronne ?
+**NARRATEUR H** [excited] : Di-lo-fo-saure. [curious] « Di », c'est deux en grec. « Lopho », c'est une crête. [playful] Et « saure », c'est le…
+**WEX** [hesitant] : Attends, laisse-moi deviner : le lézard à deux crêtes.
+**NARRATEUR H** [happily] : Trouvé ! Deux crêtes dressées sur la tête. [confident] Il vivait en Amérique du Nord, [amazed] il y a 193 millions d'années — un des premiers grands chasseurs de l'histoire.
+**WEX** [amazed] : Des crêtes comme une couronne ?
 **NARRATEUR H** [playful] : Comme une couronne de fête. [amazed] Sûrement très colorée, pour se faire remarquer.
 
 ### BLOC B — Taille

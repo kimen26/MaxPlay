@@ -14,15 +14,15 @@
 ### BLOC A — Présentation
 
 **NARRATEUR H** [excited] : Cé-ra-to-saure. [curious] « Cérato », en grec, ça veut dire corne. [playful] Et « saure », le lézard. Le lézard à corne !
-**WEX** [confident] : Le lézard à corne.
-**NARRATEUR H** [happily] : Oui, une vraie corne sur le nez. [confident] Il vivait en Amérique du Nord, [hesitant] et peut-être aussi en Europe, au Portugal, [amazed] il y a 150 millions d'années.
+**WEX** [amazed] : Une vraie corne, sur le nez, comme un rhinocéros ?
+**NARRATEUR H** [happily] : Exactement ça, le lézard à corne. Il vivait en Amérique du Nord, [confident] et peut-être aussi en Europe, au Portugal, [amazed] il y a 150 millions d'années.
 **WEX** [curious] : Une corne, comme une licorne ?
 **NARRATEUR H** [playful] : Presque ! [proud] Le seul grand carnivore de son époque avec une corne sur le nez.
 
 ### BLOC B — Taille
 
 **NARRATEUR H** [excited] : Il mesurait 6 mètres de long — aussi long qu'une rue à deux voies est large — il barrait la route ! [quickly] Debout, il faisait 2 mètres de haut — aussi haut qu'une porte ! Et il pesait 900 kilos — [amazed] aussi lourd qu'une petite voiture ! [serious] Et il pouvait courir à 25 kilomètres à l'heure — aussi vite qu'un vélo qui roule bien.
-**WEX** [curious] : Plus petit que les grands rois carnivores ?
+**WEX** [amazed] : Plus petit que les grands rois carnivores ?
 **NARRATEUR H** [confident] : Oui, mais rapide et agile. [proud] Sa corne le rendait unique parmi tous les autres.
 
 ### BLOC C — Comment il vivait

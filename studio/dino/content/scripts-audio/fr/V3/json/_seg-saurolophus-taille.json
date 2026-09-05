@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 9 mètres de long — aussi long qu'un camion. 3 mètres de haut — aussi haut qu'un panier de basket. Et 3 500 kilos — aussi lourd que deux rhinocéros."
+      "text": "[excited] 9 mètres de long — aussi long qu'un camion. 3 mètres de haut — [quickly] aussi haut qu'un panier de basket. Et 3 500 kilos — [amazed] aussi lourd qu'un hippopotame et un cheval ensemble !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Aussi haut qu'un panier de basket, avec la crête en plus ?"
+      "text": "[gasps] Aussi haut qu'un panier de basket, avec la crête en plus ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui. Un grand herbivore à bec de canard, avec son éperon d'os dressé tout en haut du crâne."
+      "text": "[confident] Oui. Un grand herbivore à bec de canard, [proud] avec son éperon d'os dressé tout en haut du crâne."
     }
   ],
   "model_id": "eleven_v3",

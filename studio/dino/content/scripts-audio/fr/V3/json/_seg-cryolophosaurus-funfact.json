@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Sa crête était dressée en travers sur sa tête, comme une vague gelée au-dessus de ses yeux."
+      "text": "[excited] Sa crête était dressée en travers sur sa tête, [amazed] comme une vague gelée [pauses] au-dessus de ses yeux."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Une crête en travers."
+      "text": "[curious] Une crête en travers ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Oui. C'était le seul dinosaure au monde avec une crête posée comme ça, juste entre les yeux. Une drôle de coiffure de pierre."
+      "text": "[playful] Oui, le seul dinosaure connu avec une crête posée comme ça, [amazed] juste entre les yeux. Une drôle de coiffure de pierre."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 13 mètres de long — aussi long qu'un bus RATP. 4 mètres de haut — aussi haut qu'un bus anglais à deux étages. 8 mille kilos — aussi lourd que 3 hippopotames."
+      "text": "[excited] Il mesurait 13 mètres de long — aussi long qu'un bus RATP ! Debout, il faisait 4 mètres de haut — aussi haut qu'un bus anglais à deux étages ! [amazed] Et il pesait 8 mille kilos — aussi lourd que 4 rhinocéros ! [serious] Et pourtant, les savants pensent qu'il courait à 20 kilomètres à l'heure — aussi vite que Papa qui court. Pas plus."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Et ses petits bras ?"
+      "text": "[curious] Pas plus vite qu'une voiture, comme dans les films ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Pour se relever ou tenir sa proie. Minuscules, mais utiles."
+      "text": "[confident] Non, [gently] ses pattes étaient trop lourdes pour ça. Mais 20 kilomètres à l'heure, pour lui, ça suffisait largement."
     }
   ],
   "model_id": "eleven_v3",

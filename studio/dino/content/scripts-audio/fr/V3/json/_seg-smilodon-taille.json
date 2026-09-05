@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Un mètre au garrot — aussi grand qu'un enfant de quatre ans. Mais deux cent cinquante kilos — aussi lourd qu'un gros cochon."
+      "text": "[excited] Il mesurait 1 mètre 75 de long — comme un grand Papa allongé par terre ! Debout, il faisait 1 mètre de haut — [amazed] aussi grand qu'un enfant de 4 ans ! Et il pesait 220 kilos — [proud] aussi lourd qu'un lion !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Pas très grand, mais si lourd."
+      "text": "[curious] Pas très grand, alors ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui. Trapu et tout en muscles."
+      "text": "[confident] Non, mais trapu et tout en muscles. [proud] Un vrai bloc de force."
     }
   ],
   "model_id": "eleven_v3",

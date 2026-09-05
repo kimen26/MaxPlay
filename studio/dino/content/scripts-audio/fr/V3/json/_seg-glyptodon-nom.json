@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Glyp-to-don. En grec, glypto veut dire sculpté, gravé. Et odon veut dire dent. La dent sculptée."
+      "text": "[excited] Gli-pto-don. En grec, « glypto » veut dire sculpté, gravé. [proud] Et « don » veut dire dent. La dent sculptée."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] On dirait une tortue géante."
+      "text": "[curious] Il ressemble à une tortue géante ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Ça y ressemble, mais c'était un cousin du tatou ! Il vivait en Amérique du Sud, près du Mégathère."
+      "text": "[happily] On dirait, mais c'était en fait un cousin du tatou ! [serious] Pas un dinosaure non plus : il vivait bien après, à l'Âge de glace, [pauses] en Amérique du Sud."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il rentrait dans sa carapace ?"
+      "text": "[curious] Avec qui, là-bas ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Non, sa carapace était collée à lui, comme un casque géant."
+      "text": "[confident] Avec le Mégathérium, le paresseux géant, [warmly] sur le même continent."
     }
   ],
   "model_id": "eleven_v3",

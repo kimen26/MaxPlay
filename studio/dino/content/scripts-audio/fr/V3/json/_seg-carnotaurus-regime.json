@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] C'était un carnivore très rapide. Il chassait les dinosaures moyens. Il vivait tout seul. Personne ne l'attaquait dans son territoire."
+      "text": "[serious] C'était un carnivore très rapide. Il chassait les dinosaures moyens, [confident] tout seul, sur ses longues pattes puissantes."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Plus rapide que les autres rois."
+      "text": "[curious] Ses bras aussi étaient tout petits ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Peut-être. Le sprinter des grands carnivores. Ses pattes arrière étaient faites pour courir très vite."
+      "text": "[serious] Encore plus petits que ceux du T-Rex. [warmly] Mais avec des cornes et des pattes pareilles, il n'en avait pas besoin."
     }
   ],
   "model_id": "eleven_v3",

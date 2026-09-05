@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Sa voile ressemble presque à celle du Dimétrodon. Mais c'est tout le contraire : le Dimétrodon mangeait de la viande, et l'Édaphosaure, seulement des plantes."
+      "text": "[amazed] Le Dimétrodon mangeait de la viande. [serious] L'Édaphosaure, lui, ne mangeait pas de viande — seulement des plantes. [confident] Même voile, régimes complètement opposés."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] La même voile, mais pas le même repas."
+      "text": "[gasps] Deux voiles presque pareilles, mais un mange de la viande et l'autre des plantes ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[softly] Exactement. La forme ne dit pas tout. Et le Dimétrodon pouvait très bien le chasser."
+      "text": "[softly] Exactement. La forme, sur un animal, [confident] ne dit pas toujours ce qu'il mange."
     }
   ],
   "model_id": "eleven_v3",

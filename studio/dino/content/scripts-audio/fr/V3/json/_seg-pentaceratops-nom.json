@@ -2,15 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Pen-ta-sé-ra-tops. En grec, « penta » veut dire cinq, « cérat » veut dire corne, et « ops » veut dire face. La face à cinq cornes."
+      "text": "[excited] Pen-ta-sé-ra-tops. [curious] « Penta », en grec, ça veut dire cinq. « Cérat », la corne. Et « ops », la face."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Cinq cornes, c'est beaucoup."
+      "text": "[confident] La face à cinq cornes."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Trois vraies cornes, plus deux pointes sur les joues. Il vivait aux États-Unis, en Amérique du Nord, il y a 75 millions d'années. Le Bistahieversor le chassait."
+      "text": "[happily] Presque : trois vraies cornes, [pauses] plus deux pointes osseuses sur les joues. [warmly] Il vivait au Nouveau-Mexique, en Amérique du Nord, il y a 75 millions d'années."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[nervous] Il avait des ennemis, là-bas ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Un grand chasseur nommé Bistahieversor."
     }
   ],
   "model_id": "eleven_v3",

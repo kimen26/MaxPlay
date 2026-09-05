@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Pa-ra-sau-ro-lofe. En grec ancien, « para » veut dire « à côté de », « proche de ». « Sauro », c'est le lézard. Et « lophus », c'est la crête. Le lézard à crête d'à côté."
+      "text": "[excited] Pa-ra-sau-ro-lofe. [curious] « Para », en grec ancien, ça veut dire à côté de, presque pareil que. « Sauro », le lézard. Et « lophus », la crête."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il avait une grosse crête sur la tête."
+      "text": "[playful] Presque le lézard à crête."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactement. Une longue crête creuse en arrière. Il vivait en Amérique du Nord, il y a 76 millions d'années."
+      "text": "[happily] Exactement. [warmly] Une longue crête creuse, penchée vers l'arrière. Il vivait en Amérique du Nord, il y a 76 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Et les méchants dinosaures, ils étaient là aussi ?"
+      "text": "[nervous] Et il y avait des méchants dinosaures, par là ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Oui. Le T-Rex et le Gorgosaure chassaient dans le coin. Alors son troupeau devait être très vigilant."
+      "text": "[serious] Oui. Le T-Rex chassait dans le coin. [confident] Alors son troupeau restait très vigilant."
     }
   ],
   "model_id": "eleven_v3",

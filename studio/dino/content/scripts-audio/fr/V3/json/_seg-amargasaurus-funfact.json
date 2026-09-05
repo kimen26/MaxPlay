@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] L'Amargasaure avait DEUX rangées d'épines immenses sur le cou et le dos. Peut-être 60 centimètres chacune."
+      "text": "[excited] Certains savants pensent même que ses épines portaient de la peau tendue entre elles — [pauses] comme une drôle de voile sur le dos."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Comme deux peignes géants."
+      "text": "[gasps] Une voile, sur un dinosaure."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Exactement. Une haie d'épines vivante. Difficile à croquer."
+      "text": "[softly] Peut-être. [amazed] Une haie d'épines vivante, ou une voile — le mystère reste entier."
     }
   ],
   "model_id": "eleven_v3",

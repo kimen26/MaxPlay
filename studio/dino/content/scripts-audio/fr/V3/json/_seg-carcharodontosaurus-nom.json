@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Car-ka-ro-don-to-saure. « Carcharo », en grec, c'est pointu et coupant, comme un requin. « Odonto », dent. « Saure », lézard."
+      "text": "[excited] Car-ka-ro-don-to-saure. [curious] « Carcharo », en grec, ça veut dire pointu et déchiqueté — c'est le mot qui a donné « requin ». [serious] « Odonto », c'est la dent. Et « saure », le lézard."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Le lézard aux dents de requin."
+      "text": "[playful] Requin… dent… j'ai retenu « requin ». [hesitant] Et le reste, ça donne quoi tout collé ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Exactement. En Afrique du Nord, il y a 95 millions d'années."
+      "text": "[happily] Le lézard aux dents de requin. Il vivait en Afrique du Nord, [amazed] il y a 95 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -18,7 +18,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Oui, dans la même Afrique. Lui chassait sur terre, l'autre dans l'eau."
+      "text": "[playful] Oui, dans la même Afrique. [confident] Lui chassait sur la terre, [calm] l'autre dans l'eau — ils ne se gênaient pas."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Spi-no-saure. « Spino », en latin, c'est épine. « Saure », lézard en grec."
+      "text": "[excited] Spi-no-saure. [curious] « Spino », en latin, c'est une épine — comme les grandes piques sur son dos. Et « saure », le lé…"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Le lézard à épines."
+      "text": "[hesitant] Attends, je sais : le lézard à épines."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Oui. En Afrique du Nord, il y a 95 millions d'années."
+      "text": "[happily] Exactement, trouvé avant la fin ! Il vivait en Afrique du Nord, [amazed] il y a 95 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il était copain avec le Carcharodontosaure ?"
+      "text": "[curious] Et il mangeait quoi, avec toutes ces épines ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Peut-être. Lui aimait l'eau, l'autre la savane."
+      "text": "[playful] Du poisson ! [confident] D'énormes poissons, aussi longs que toi et Papa ensemble."
     }
   ],
   "model_id": "eleven_v3",

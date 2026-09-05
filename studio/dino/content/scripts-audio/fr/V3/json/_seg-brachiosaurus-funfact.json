@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Certains savants pensent que le Brachiosaure avalait des PIERRES pour broyer les plantes dans son ventre. Des gastrolithes, un moulin interne."
+      "text": "[excited] Sa tête touchait les 13 mètres de haut — [pauses] aussi haut qu'un immeuble de quatre étages, [amazed] rien que sa tête."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Des cailloux dans le ventre."
+      "text": "[amazed] Il voyait par-dessus les arbres, alors ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Des cailloux mangeurs de salade. Pas besoin de dents quand on a un moulin de pierre."
+      "text": "[softly] Il voyait par-dessus tout. [warmly] Un géant tranquille, la tête dans les nuages."
     }
   ],
   "model_id": "eleven_v3",

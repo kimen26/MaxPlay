@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 12 mètres de long — aussi long qu'un bus RATP. 4 virgule 5 mètres de haut — aussi haut qu'un bus anglais à deux étages. 5 mille kilos — aussi lourd que 2 hippopotames."
+      "text": "[excited] Il mesurait 12 mètres de long — aussi long qu'un bus RATP ! [quickly] Debout, il faisait 4 virgule 5 mètres de haut — aussi haut qu'un bus anglais à deux étages ! [serious] Et il pesait 5 mille kilos — [amazed] aussi lourd qu'un éléphant !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Un peu moins lourd ?"
+      "text": "[amazed] Un peu moins lourd que le T-Rex ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Un peu moins. Mais assez pour être le roi du désert de Gobi."
+      "text": "[confident] Un peu moins. [proud] Mais bien assez pour être le roi du désert de Gobi."
     }
   ],
   "model_id": "eleven_v3",

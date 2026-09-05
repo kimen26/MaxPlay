@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore. Il mangeait des feuilles et des branches. Il vivait plutôt seul, tout tranquille."
+      "text": "[serious] C'était un herbivore. Il mangeait des feuilles et des branches, [gently] plutôt seul, bien tranquille."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Personne ne l'attaquait ?"
+      "text": "[curious] Personne ne l'embêtait ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Presque personne. Sa taille énorme le protégeait tout seul."
+      "text": "[confident] Presque personne. Sa taille énorme le protégeait toute seule — [hesitant] sauf peut-être ses tout petits, que le Smilodon aurait pu approcher."
     }
   ],
   "model_id": "eleven_v3",

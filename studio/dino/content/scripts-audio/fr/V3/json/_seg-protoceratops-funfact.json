@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] On a trouvé un fossile incroyable : un Vélociraptor et un Protocératops morts en plein combat, ensevelis par une tempête de sable."
+      "text": "[excited] Dans le désert de Gobi, on a [amazed] retrouvé des CENTAINES de squelettes de Protocératops — des œufs, des bébés, des jeunes, des adultes. [whispers] On connaît sa vie entière, du tout petit au tout grand."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Figés ensemble pour toujours."
+      "text": "[gasps] Toute sa vie, dans la pierre."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Oui. Une bataille figée dans la pierre. Le petit Protocératops était un vrai guerrier."
+      "text": "[softly] Oui. Un des dinosaures les mieux connus de toute la Terre."
     }
   ],
   "model_id": "eleven_v3",

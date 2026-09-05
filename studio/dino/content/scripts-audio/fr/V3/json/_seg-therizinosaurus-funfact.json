@@ -2,7 +2,7 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Imagine : des griffes de guerrier… pour manger des feuilles. Le Thérizinosaure était un géant pacifiste avec les plus grandes armes du monde animal."
+      "text": "[excited] Imagine : des griffes de guerrier… [playful] pour manger des feuilles tranquillement. [amazed] Le Thérizinosaure était un géant paisible avec les plus grandes armes de tout le monde animal."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -10,7 +10,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[softly] Juste manger tranquille. Les apparences sont trompeuses."
+      "text": "[softly] Juste manger tranquille. [gently] Les apparences sont trompeuses."
     }
   ],
   "model_id": "eleven_v3",

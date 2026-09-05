@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 7 mètres de long — comme deux voitures l'une derrière l'autre. 1 mètre 80 de haut — aussi grand que Papa debout. 6 tonnes — aussi lourd que 2 hippopotames."
+      "text": "[excited] 7 mètres et demi de long — [amazed] comme deux voitures l'une derrière l'autre. Debout, 1 virgule 8 mètres de haut — [curious] aussi grand que Papa debout. Et 6 mille kilos — [proud] aussi lourd que TROIS rhinocéros. [calm] Il ne courait pas vite : à peine 7 kilomètres à l'heure, comme Papa qui marche vite."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious][gasps] Aussi lourd que deux hippopotames ? Et il était tout bas ?"
+      "text": "[amazed] Pas vite du tout, alors."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui. Quatre pattes courtes et un gros corps près du sol. Une vraie forteresse vivante."
+      "text": "[confident] Non. [serious] Il n'en avait pas besoin — son armure suffisait."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,31 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Ty-ran-no-saure Rex. « Tyrannos », en grec, c'est le roi qui commande tout seul. « Saure », lézard. Et « Rex », roi en latin."
+      "text": "[excited] Ty-ran-no-saure Rex. [curious] Tu sais ce que ça veut dire, « tyrannos » ? [pauses] Le roi qui commande tout seul, à qui personne ne dit non."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Le lézard-roi tyran."
+      "text": "[gasps] Personne ? [nervous] Même pas sa maman ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactement. En Amérique du Nord, il y a 66 millions d'années."
+      "text": "[chuckles] Sa maman, si, quand il était petit. [warmly] Mais une fois grand, c'était lui le roi. Il vivait en Amérique du Nord, [amazed] il y a 66 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Et y avait [gasps] des copains dangereux ?"
+      "text": "[curious] Et Tritri, il était où, lui ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Oui. Le Tricératops, l'Edmontosaure et l'Ankylosaure vivaient dans son royaume."
-    },
-    {
-      "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[softly] Le Tricératops. C'est Tritri."
-    },
-    {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Oui, ton préféré vivait juste à côté du roi. Et il savait se défendre."
+      "text": "[happily] Juste à côté ! [confident] Le Tricératops vivait dans le même royaume que le T-Rex, avec l'Edmontosaure et l'Ankylosaure."
     }
   ],
   "model_id": "eleven_v3",

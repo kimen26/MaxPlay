@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Vé-lo-ci-rap-tor. « Veloci » en latin, c'est rapide. Et « raptor », c'est le voleur. Le voleur rapide."
+      "text": "[excited] Vé-lo-ci-rap-tor. En latin, « veloci » veut dire rapide — comme un vélo. Et [curious] « raptor », c'est le voleur. Tu devines ?"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il volait ?"
+      "text": "[confident] Le voleur rapide."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Non, il ne volait pas. Il courait très vite. Il vivait en Mongolie, dans le désert de Gobi, il y a 75 millions d'années."
+      "text": "[happily] Exactement. [proud] Il vivait en Asie, dans le désert de Mongolie, il y a 75 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il était tout seul ?"
+      "text": "[curious] Il chassait en grande bande, [nervous] comme dans les films ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Plutôt. La grande meute des films, c'est un mythe. Le vrai Vélociraptor chassait seul ou à deux."
+      "text": "[serious] Non, ça, [gently] c'est un mythe. Le vrai Vélociraptor chassait plutôt seul, ou à deux."
     }
   ],
   "model_id": "eleven_v3",

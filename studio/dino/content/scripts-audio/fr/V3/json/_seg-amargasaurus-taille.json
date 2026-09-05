@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 10 mètres de long — aussi long qu'un camion. 2 virgule 5 mètres de haut — aussi haut qu'un but de foot. 3 mille kilos — aussi lourd que DEUX rhinocéros."
+      "text": "[excited] 10 mètres de long — [amazed] aussi long qu'un camion. Debout, 2 mètres et demi de haut — [curious] aussi haut qu'un but de foot. Et 3 mille kilos — [proud] aussi lourd qu'un hippopotame."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] C'est le plus petit des longs-cou ?"
+      "text": "[curious] Et les épines, elles étaient grandes comment ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Presque. Un petit sauropode. Le bébé géant de la famille."
+      "text": "[confident] Jusqu'à 60 centimètres — [amazed] au MILIEU du cou. Les plus hautes de tous les sauropodes connus."
     }
   ],
   "model_id": "eleven_v3",

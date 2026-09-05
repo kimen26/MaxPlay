@@ -2,7 +2,7 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Ed-mon-to-nia. Ce nom-là ne vient pas du grec — il vient d'un endroit !"
+      "text": "[excited] Ed-mon-to-nia. Ce nom-là ne vient pas du grec — [pauses] il vient d'un endroit."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -10,15 +10,15 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Oui, on l'a trouvé près de la ville d'Edmonton, au Canada. Alors on l'a appelé « celui d'Edmonton ». Il vivait au Crétacé, tout couvert d'armure."
+      "text": "[happily] Oui, on l'a trouvé près de la ville d'Edmonton, au Canada. [amazed] Alors on l'a appelé « celui d'Edmonton ». [calm] Il vivait il y a 72 millions d'années, tout couvert d'armure."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Comme l'Ankylosaure ?"
+      "text": "[amazed] Comme l'Ankylosaure ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Un cousin, oui. Mais avec une grande différence, tu vas voir."
+      "text": "[confident] Un cousin, oui. [curious] Mais avec une grande différence, tu vas voir."
     }
   ],
   "model_id": "eleven_v3",

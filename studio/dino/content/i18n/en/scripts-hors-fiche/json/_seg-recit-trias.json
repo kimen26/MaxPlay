@@ -3,52 +3,80 @@
   "language_code": "en",
   "inputs": [
     {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Here we are in the [serious] Triassic! [happily] Two hundred fifty million years ago. [playful] The name comes from \"three\": three groups of animals share the Earth."
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] Here comes the Triassic. [serious] Two hundred fifty million years ago, [pauses] give or take. [playful] \"Triassic\" means \"three\": scientists found three layers of rock from this time, stacked like a cake."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Which ones?"
+      "text": "[curious] Were there dinosaurs already?"
     },
     {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[pauses] The dinosaurs, tiny at first. [pauses] The reptiles with [serious] crocodile jaws, they run the show. [playful] And the ancestors of mammals, small as mice."
-    },
-    {
-      "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[hesitant] Really? Dinosaurs are tiny?"
-    },
-    {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[chuckles] Tiny! [happily] Smaller than a dog. [serious] Coelophysis is there, and Plateosaurus, and Eoraptor. [pauses] Eoraptor hunts small lizards and insects."
-    },
-    {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[pauses] Nobody knows yet that they'll become the kings."
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited] The very first ones! [calm] Small, on two legs, really fast. [softly] Back then, nobody guesses they'll one day rule the whole Earth."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Did the plants change too?"
+      "text": "[curious] And what did the continents look like?"
     },
     {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Yes! [pauses] Ferns, conifers, mosses. [serious] But still no grass, not one flower! [playful] Plants spread with spores — tiny specks carried by the wind or by animals."
-    },
-    {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[amazed] And you know what? [excited] There's only one continent: Pangea! [pauses] One giant crescent of land, with every continent stuck together inside it."
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[amazed] [pauses] Just one, huge, all stuck together: Pangea. [calm] You could walk from America all the way to Africa without ever seeing the ocean."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Whoa."
+      "text": "[gasps] Without a boat?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[chuckles] Without a boat. [serious] It's hot everywhere, [softly] and very dry in the middle, far from the coasts."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[excited][curious] What else?"
+      "text": "[curious] Were there plants?"
     },
     {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Millions of years pass. [playful] Then, [pauses] the Earth shifts. [pauses] The climate changes. [playful] And [chuckles] the dinosaurs start to grow…"
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] Conifers, [calm] like prickly pine trees, [softly] and cycads, [playful] which look like spiky palm trees. [serious] But not one single flower yet."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] What did the dinos eat?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[warmly] Plateosaurus munched on those plants all day long. [calm] A long neck, [softly] a small head, [excited] and already almost thirty feet long!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Was it scared of anything?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious] On land, almost nothing worried it. [pauses] But in the ocean, [calm] a giant was swimming: Shonisaurus. [amazed] A marine reptile as long as a building lying on its side, [softly] hunting fish and squid in deep water."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Is that one a dinosaur too?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[chuckles] No! [calm] Shonisaurus swims in the sea, [softly] dinosaurs stay on dry land."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[hesitant] Hey, [pauses] was Tritri there?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[gently] Not yet. [softly] Triceratops doesn't exist yet, [calm] we'll have to wait a very, very long time."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] What comes after the Triassic?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited] After this, [pauses] the Earth warms up even more, [softly] rain finally falls on the deserts, [happily] and dinosaurs start to grow…"
     }
   ]
 }

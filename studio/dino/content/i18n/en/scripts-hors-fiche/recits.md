@@ -35,71 +35,140 @@
 ---
 
 ### recit-trias
-**NARRATEUR H** [happily] : Here we are in the [serious] Triassic! [happily] Two hundred fifty million years ago. [playful] The name comes from "three": three groups of animals share the Earth.
-**WEX** [curious] : Which ones?
 
-**NARRATEUR H** [pauses] : The dinosaurs, tiny at first. [pauses] The reptiles with [serious] crocodile jaws, they run the show. [playful] And the ancestors of mammals, small as mice.
-**WEX** [hesitant] : Really? Dinosaurs are tiny?
+**NARRATRICE** [happily] : Here comes the Triassic. [serious] Two hundred fifty million years ago, [pauses] give or take. [playful] "Triassic" means "three": scientists found three layers of rock from this time, stacked like a cake.
 
-**NARRATEUR H** [chuckles] : Tiny! [happily] Smaller than a dog. [serious] Coelophysis is there, and Plateosaurus, and Eoraptor. [pauses] Eoraptor hunts small lizards and insects.
+**WEX** [curious] : Were there dinosaurs already?
 
-**NARRATEUR H** [pauses] : Nobody knows yet that they'll become the kings.
-**WEX** [curious] : Did the plants change too?
+**NARRATRICE** [excited] : The very first ones! [calm] Small, on two legs, really fast. [softly] Back then, nobody guesses they'll one day rule the whole Earth.
 
-**NARRATEUR H** [happily] : Yes! [pauses] Ferns, conifers, mosses. [serious] But still no grass, not one flower! [playful] Plants spread with spores — tiny specks carried by the wind or by animals.
+**WEX** [curious] : And what did the continents look like?
 
-**NARRATEUR H** [amazed] : And you know what? [excited] There's only one continent: Pangea! [pauses] One giant crescent of land, with every continent stuck together inside it.
-**WEX** [gasps] : Whoa.
+**NARRATRICE** [amazed] : [pauses] Just one, huge, all stuck together: Pangea. [calm] You could walk from America all the way to Africa without ever seeing the ocean.
 
-**WEX** [excited][curious] : What else?
+**WEX** [gasps] : Without a boat?
 
-**NARRATEUR H** [excited] : Millions of years pass. [playful] Then, [pauses] the Earth shifts. [pauses] The climate changes. [playful] And [chuckles] the dinosaurs start to grow…
+**NARRATRICE** [chuckles] : Without a boat. [serious] It's hot everywhere, [softly] and very dry in the middle, far from the coasts.
 
----
+**WEX** [curious] : Were there plants?
+
+**NARRATRICE** [happily] : Conifers, [calm] like prickly pine trees, [softly] and cycads, [playful] which look like spiky palm trees. [serious] But not one single flower yet.
+
+**WEX** [curious] : What did the dinos eat?
+
+**NARRATRICE** [warmly] : Plateosaurus munched on those plants all day long. [calm] A long neck, [softly] a small head, [excited] and already almost thirty feet long!
+
+**WEX** [gasps] : Was it scared of anything?
+
+**NARRATRICE** [serious] : On land, almost nothing worried it. [pauses] But in the ocean, [calm] a giant was swimming: Shonisaurus. [amazed] A marine reptile as long as a building lying on its side, [softly] hunting fish and squid in deep water.
+
+**WEX** [curious] : Is that one a dinosaur too?
+
+**NARRATRICE** [chuckles] : No! [calm] Shonisaurus swims in the sea, [softly] dinosaurs stay on dry land.
+
+**WEX** [hesitant] : Hey, [pauses] was Tritri there?
+
+**NARRATRICE** [gently] : Not yet. [softly] Triceratops doesn't exist yet, [calm] we'll have to wait a very, very long time.
+
+**WEX** [curious] : What comes after the Triassic?
+
+**NARRATRICE** [excited] : After this, [pauses] the Earth warms up even more, [softly] rain finally falls on the deserts, [happily] and dinosaurs start to grow…
 
 ### recit-jurassique
-**NARRATEUR H** [excited][playful] : Here we are in the [serious] Jurassic! [happily] One hundred fifty million years ago. [chuckles] Its name comes from the Jura Mountains, between France and Switzerland.
-**WEX** [curious] : Is that close by?
 
-**NARRATEUR H** [chuckles] : Not far! [excited] Pangea splits in two: north and south. [gasps] An ocean opens right in the middle! It's hot and humid.
-**WEX** [curious] : Wasn't there already water everywhere?
+**NARRATRICE** [excited] : Here comes the Jurassic! [happily] One hundred eighty million years ago. [chuckles] Its name comes from the Jura mountains, [playful] between France and Switzerland.
 
-**NARRATEUR H** [chuckles] : All around, yes! [happily] But not down the middle. [excited] Huge fern forests grow everywhere.
-**WEX** [curious] : Do the dinosaurs eat that?
+**WEX** [curious] : Had the continents moved?
 
-**NARRATEUR H** [happily][chuckles] : Oh yes! [quickly] So much food that the plant-eaters get [amazed] ENORMOUS! Diplodocus! Brachiosaurus!
-**WEX** [curious] : What about the meat-eaters?
+**NARRATRICE** [amazed] : [pauses] Pangea starts to crack. [calm] A long rift opens in the middle, [softly] and a sea slowly settles in.
 
-**NARRATEUR H** [happily] : Yes, it's all connected! [softly] The carnivores grow bigger too. [happily] Allosaurus, Ceratosaurus. [gasps] And there were fish-eaters too: in the sky, Pteranodon, a flying reptile! [excited] And in the seas, Plesiosaurus, with a long, long neck!
-**WEX** [gasps] : Whoa.
+**WEX** [curious] : Is it hot?
 
-**WEX** [excited][curious] : What else?
+**NARRATRICE** [happily] : Hot and humid! [playful] Huge fern forests grow everywhere, [calm] along with conifers and ginkgos.
 
-**NARRATEUR H** [excited][quickly] : Millions more years go by. [playful] Then, [pauses] the continents drift even farther apart. [gasps] So much happens. [playful] Want to hear what?
-**WEX** [excited][playful] : Yes.
+**WEX** [gasps] : What's a ginkgo?
 
----
+**NARRATRICE** [chuckles] : A tree with fan-shaped leaves. [amazed] And the wildest part: it still exists today, [softly] almost the same!
+
+**WEX** [excited] : Did the dinos eat all that?
+
+**NARRATRICE** [happily] : So much of it! [excited] So much food that the plant-eaters grew huge. [shouts] Diplodocus, almost as long as an Olympic pool!
+
+**WEX** [amazed] : Wow…
+
+**NARRATRICE** [warmly] : Brachiosaurus raised its long neck straight up, [calm] like a crane, [softly] to reach the tops of the trees.
+
+**WEX** [curious] : Why were they so big?
+
+**NARRATRICE** [serious] : Their long necks let them eat without moving their legs. [calm] And inside their bones, [softly] tiny air pockets, [playful] light like a bird's.
+
+**WEX** [curious] : What about the carnivores?
+
+**NARRATRICE** [excited] : Allosaurus hunted them. [serious] Sharp teeth, [softly] powerful claws. [calm] And Stegosaurus defended itself with its spiked tail.
+
+**WEX** [curious] : Were there animals in the sky?
+
+**NARRATRICE** [playful] : Archaeopteryx! [gently] Almost a bird, almost a dinosaur, [softly] with feathers and small wings.
+
+**WEX** [curious] : And in the ocean?
+
+**NARRATRICE** [serious] : Ophthalmosaurus hunted squid [calm] with its huge eyes. [pauses] And Liopleurodon, [amazed] a powerful thirty-foot hunter, [softly] snapped its jaws shut on anything nearby.
+
+**WEX** [hesitant] : Thirty feet, [pauses] is that huge?
+
+**NARRATRICE** [chuckles] : As long as a tennis court. [calm] Huge, yes, but not more.
+
+**WEX** [curious] : What comes after the Jurassic?
+
+**NARRATRICE** [excited] : The continents keep drifting apart, [pauses] slowly, [happily] and something brand new is about to appear on Earth…
 
 ### recit-cretace
-**NARRATEUR H** [excited][playful] : Here we are in the [serious] Cretaceous! [happily] One hundred million years ago. [chuckles] Its name comes from "chalk" — those white cliffs are made of this rock.
 
-**NARRATEUR H** [happily][excited] : White! [gasps] Billions of tiny dead algae piled up at the bottom of warm seas. [softly] The continents keep drifting apart.
-**WEX** [curious] : Are there dinosaurs everywhere?
+**NARRATRICE** [excited] : Here comes the Cretaceous! [happily] One hundred million years ago. [chuckles] Its name comes from "chalk," [playful] that white rock you can still find on cliffs today.
 
-**NARRATEUR H** [excited][quickly] : Everywhere! [amazed] In North America, T. rex and Triceratops! [happily] In Africa, Spinosaurus. [playful] In Asia, Velociraptor and Tarbosaurus.
-**WEX** [curious] : Did Velociraptor have feathers?
+**WEX** [curious] : Did the continents look like today's?
 
-**NARRATEUR H** [playful][chuckles] : Like a big turkey! [excited] And in the sky, Quetzalcoatlus. [gasps] In the seas, Mosasaurus rules the oceans!
-**WEX** [curious] : What about the plants?
+**NARRATRICE** [amazed] : [pauses] Almost! [calm] The Atlantic Ocean is already wide, [softly] and a long sea cuts North America in two, [happily] from one end to the other.
 
-**NARRATEUR H** [gasps][excited] : For the very first time, flowers! [happily] Fruit! [playful] Bees! [amazed] The world turns colorful!
-**WEX** [gasps] : Whoa.
+**WEX** [gasps] : A sea in the middle of a continent?
 
-**WEX** [excited][curious] : What else?
+**NARRATRICE** [chuckles] : A whole sea! [calm] The climate is mild, [softly] pleasant almost everywhere.
 
-**NARRATEUR H** [softly][serious] : Time goes on. [pauses] But near the end of this age, the sky starts to darken…
+**WEX** [curious] : Were there flowers?
 
----
+**NARRATRICE** [happily] : For the first time in all of history, [gasps] yes! [excited] Flowers everywhere, [playful] and little bees flying from one to another!
+
+**WEX** [amazed] : Bees with the dinosaurs?
+
+**NARRATRICE** [chuckles] : With the dinosaurs! [happily] The world turns colorful and fragrant.
+
+**WEX** [curious] : Were there dinos everywhere?
+
+**NARRATRICE** [excited] : Everywhere! [shouts] In North America, Tyrannosaurus and Triceratops! [softly] One hunted, [calm] the other defended itself with its three horns.
+
+**WEX** [curious] : What about Spinosaurus?
+
+**NARRATRICE** [serious] : It lived by the water. [calm] A sail on its back, [softly] it fished in the rivers, [playful] almost like a bear catching salmon.
+
+**WEX** [curious] : Was Velociraptor huge?
+
+**NARRATRICE** [chuckles] : Not at all! [calm] Barely bigger than a large dog, [softly] covered in feathers, [playful] like a fast, clever turkey.
+
+**WEX** [hesitant] : Really? [pauses] I thought it was giant.
+
+**NARRATRICE** [gently] : That's a movie myth. [calm] The real one was small, [softly] but very smart, [happily] and it hunted in packs.
+
+**WEX** [curious] : What about the sky, and the sea?
+
+**NARRATRICE** [excited] : Pteranodon soared high, [calm] a flying reptile without a single feather, [softly] with a toothless beak. [pauses] And in the ocean, [amazed] Mosasaurus ruled, [softly] a marine reptile as long as a building lying on its side.
+
+**WEX** [gasps] : Was Tritri there?
+
+**NARRATRICE** [happily] : [pauses] Yes! [excited] At last, Tritri is here: Triceratops, [gently] with its three horns and its big frill. [warmly] Wex found him.
+
+**WEX** [excited] : Is he really here?
+
+**NARRATRICE** [happily] : Really here. [calm] But one day, [pauses] everything is about to change all at once…
 
 ### recit-extinction
 

@@ -3,48 +3,96 @@
   "language_code": "en",
   "inputs": [
     {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited][playful] Here we are in the [serious] Cretaceous! [happily] One hundred million years ago. [chuckles] Its name comes from \"chalk\" — those white cliffs are made of this rock."
-    },
-    {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily][excited] White! [gasps] Billions of tiny dead algae piled up at the bottom of warm seas. [softly] The continents keep drifting apart."
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited] Here comes the Cretaceous! [happily] One hundred million years ago. [chuckles] Its name comes from \"chalk,\" [playful] that white rock you can still find on cliffs today."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Are there dinosaurs everywhere?"
+      "text": "[curious] Did the continents look like today's?"
     },
     {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited][quickly] Everywhere! [amazed] In North America, T. rex and Triceratops! [happily] In Africa, Spinosaurus. [playful] In Asia, Velociraptor and Tarbosaurus."
-    },
-    {
-      "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Did Velociraptor have feathers?"
-    },
-    {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful][chuckles] Like a big turkey! [excited] And in the sky, Quetzalcoatlus. [gasps] In the seas, Mosasaurus rules the oceans!"
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[amazed] [pauses] Almost! [calm] The Atlantic Ocean is already wide, [softly] and a long sea cuts North America in two, [happily] from one end to the other."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] What about the plants?"
+      "text": "[gasps] A sea in the middle of a continent?"
     },
     {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[gasps][excited] For the very first time, flowers! [happily] Fruit! [playful] Bees! [amazed] The world turns colorful!"
-    },
-    {
-      "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Whoa."
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[chuckles] A whole sea! [calm] The climate is mild, [softly] pleasant almost everywhere."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[excited][curious] What else?"
+      "text": "[curious] Were there flowers?"
     },
     {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[softly][serious] Time goes on. [pauses] But near the end of this age, the sky starts to darken…"
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] For the first time in all of history, [gasps] yes! [excited] Flowers everywhere, [playful] and little bees flying from one to another!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Bees with the dinosaurs?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[chuckles] With the dinosaurs! [happily] The world turns colorful and fragrant."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Were there dinos everywhere?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited] Everywhere! [shouts] In North America, Tyrannosaurus and Triceratops! [softly] One hunted, [calm] the other defended itself with its three horns."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] What about Spinosaurus?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious] It lived by the water. [calm] A sail on its back, [softly] it fished in the rivers, [playful] almost like a bear catching salmon."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Was Velociraptor huge?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[chuckles] Not at all! [calm] Barely bigger than a large dog, [softly] covered in feathers, [playful] like a fast, clever turkey."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[hesitant] Really? [pauses] I thought it was giant."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[gently] That's a movie myth. [calm] The real one was small, [softly] but very smart, [happily] and it hunted in packs."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] What about the sky, and the sea?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited] Pteranodon soared high, [calm] a flying reptile without a single feather, [softly] with a toothless beak. [pauses] And in the ocean, [amazed] Mosasaurus ruled, [softly] a marine reptile as long as a building lying on its side."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Was Tritri there?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] [pauses] Yes! [excited] At last, Tritri is here: Triceratops, [gently] with its three horns and its big frill. [warmly] Wex found him."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Is he really here?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] Really here. [calm] But one day, [pauses] everything is about to change all at once…"
     }
   ]
 }

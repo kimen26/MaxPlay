@@ -195,87 +195,154 @@
 
 **NARRATRICE** [happily] [excited] : Les tout premiers dinosaures !
 
-## ÉP. 1 — LE TRIAS (recit-trias.mp3)
+## LE TRIAS (recit-trias.mp3)
 
-**NARRATRICE** [happily] : On arrive au [serious] Trias ! [happily] Il y a deux cent cinquante millions d'années. [playful] Ce nom vient de « trois » : trois groupes d'animaux partagent la Terre.
+> Sources : Grokipedia "Triassic", "Plateosaurus", "Shonisaurus" (Playwright) ; croisement Wikipedia/Britannica pour la Pangée et le climat.
+> Faits : Trias -251,9 à -201,4 Ma. Pangée assemblée, climat chaud et sec, pas de calottes polaires. Végétation : conifères et cycas dominants, fougères présentes, aucune fleur. Plateosaure (sauropodomorphe, Norien -214/-204 Ma, 6 à 10 m, herbivore) est un des tout premiers grands dinosaures — représentatif du Trias. Shonisaure (ichtyosaure, Trias supérieur, jusqu'à 15-21 m selon l'espèce) est un reptile marin, pas un dinosaure. Rifting Laurasia/Gondwana amorcé seulement en toute fin de période — au Trias, un seul bloc.
 
-**WEX** [curious] : Lesquels ?
+**NARRATRICE** [happily] : On arrive au Trias. [serious] Deux cent cinquante millions d'années, [pauses] presque. [playful] Trias, ça veut dire "trois" : les savants ont trouvé trois couches de roches de cette époque, empilées comme un gâteau.
 
-**NARRATRICE** [matter-of-fact] : Les dinosaures, tout petits. Les reptiles à [deadpan] gueule de crocodile, eux ils [serious] dominent. Et les ancêtres des mammifères, [playful] gros comme des souris.
+**WEX** [curious] : Il y avait déjà des dinosaures ?
 
-**WEX** [hesitant] : Ah bon ? [laughs] ... [curious] Les dinosaures sont tout petits ?
+**NARRATRICE** [excited] : Les tout premiers ! [calm] Petits, sur deux pattes, très rapides. [softly] Personne, à l'époque, ne devine qu'ils vont un jour dominer la Terre entière.
 
-**NARRATRICE** [laughs] : Tout petits ! [happily] Plus petit qu'un chien. [serious] Le Coelophysis, [serious] le Plateosaurus, et [serious] le Eoraptor sont là. [matter-of-fact] Le Eoraptor chasse les petits lézards et les insectes.
+**WEX** [curious] : Et les continents, ils étaient comment ?
 
-**NARRATRICE** [reflective] : Personne ne sait encore qu'ils deviendront les rois.
+**NARRATRICE** [amazed] : [pauses] Un seul, immense, tout collé : la Pangée. [calm] Tu pourrais marcher de l'Amérique jusqu'en Afrique sans jamais voir la mer.
 
-**WEX** [curious] : Et les plantes ? Elles ont évolué aussi ?
+**WEX** [gasps] : Sans bateau ?
 
-**NARRATRICE** [happily] : Oui ! [matter-of-fact] Des fougères, des conifères, des mousses. [serious] Mais pour l'instant pas d'herbe, pas une fleur ! Les plantes se reproduisent avec des [playful] spores, de petites poussières transportées par le vent ou les animaux.
+**NARRATRICE** [chuckles] : Sans bateau. [serious] Il fait chaud partout, [softly] et très sec au milieu, loin des côtes.
 
-**NARRATRICE** [awe] : Et tu sais quoi ? [excited] Il n'y a qu'un seul continent : la Pangée ! [matter-of-fact] Un croissant de terre géant, avec tous les continents collés dedans.
+**WEX** [curious] : Il y avait des plantes ?
 
-**WEX** [gasps] : Wouah…
+**NARRATRICE** [happily] : Des conifères, [calm] comme des sapins piquants, [softly] et des cycas, [playful] qui ressemblent à des palmiers à épines. [serious] Mais pas encore une seule fleur.
 
-**WEX** [excited][curious] : Et quoi d'autre ?
+**WEX** [curious] : Et les dinos, ils mangeaient quoi ?
 
-**NARRATRICE** [excited] : Des millions d'années passent. [playful] Puis, [pauses] la Terre bouge. [pauses] Le climat change. [playful] Et [laughs] les dinosaures commencent à grandir… [pauses]
+**NARRATRICE** [warmly] : Le Plateosaure broutait ces plantes toute la journée. [calm] Un cou long, [softly] une petite tête, [excited] et déjà presque dix mètres de long !
 
----
+**WEX** [gasps] : Il avait peur de quelque chose ?
 
-## ÉP. 2 — LE JURASSIQUE (recit-jurassique.mp3)
+**NARRATRICE** [serious] : Sur terre, presque rien ne l'inquiétait. [pauses] Mais dans la mer, [calm] un géant nageait : le Shonisaure. [amazed] Un reptile marin aussi long qu'un immeuble couché, [softly] il chassait les poissons et les calmars en eaux profondes.
 
-**NARRATRICE** [excited][playful] : On arrive au [serious] Jurassique ! [happily] Il y a cent cinquante millions d'années. [chuckles] Son nom vient des montagnes du Jura, entre la France et la Suisse.
+**WEX** [curious] : C'est un dinosaure, lui aussi ?
 
-**WEX** [curious] : C'est près de chez nous ?
+**NARRATRICE** [chuckles] : Non ! [calm] Le Shonisaure nage dans la mer, [softly] les dinosaures, eux, restent sur la terre ferme.
 
-**NARRATRICE** [laughs][playful] : Pas loin ! [excited] La Pangée se fend en deux : le nord et le sud. [gasps] Un océan s'ouvre au milieu ! Il fait chaud et humide.
+**WEX** [hesitant] : Dis, [pauses] y'avait Tritri ?
 
-**WEX** [curious] : Il y avait pas déjà de l'eau ?
+**NARRATRICE** [gently] : Pas encore. [softly] Le Tricératops n'existe pas encore, [calm] il faudra attendre très, très longtemps.
 
-**NARRATRICE** [deadpan][chuckles] : Si, tout autour ! [happily] Mais pas au milieu. [excited] Des forêts de fougères [shouts] gigantesques poussent partout.
+**WEX** [curious] : Et après le Trias ?
 
-**WEX** [curious] : Les dinos mangent ça ?
-
-**NARRATRICE** [happily][chuckles] : Oh oui ! [quickly] Tant de nourriture que les herbivores deviennent [awe][shouts] ÉNORMES ! [shouts] Le Diplodocus ! Le Brachio-saure !
-
-**WEX** [curious] : Et pour ceux qui mangent de la viande ?
-
-**NARRATRICE** [happily] : Oui, tout est lié ! [softly][serious] Les carnivores aussi grandissent. [happily] Le Allo-saure, le Cerato-saure. [gasps] Et il y avait aussi les piscivores : dans les airs, le Ptéranodon, un reptile volant ! [excited] Et dans les mers, le Plésio-saure, un reptile avec un long cou !
-
-**WEX** [gasps] : Wouah…
-
-**WEX** [excited][curious] : Et quoi d'autre ?
-
-**NARRATRICE** [excited][quickly] : Des millions d'années passent encore. [playful] Puis, [pauses] les continents s'éloignent encore. [gasps] Il se passe plein de choses. [lighthearted][playful] Tu veux savoir quoi ?
-
-**WEX** [excited][playful] : OUIII !!
+**NARRATRICE** [excited] : Après, [pauses] la Terre se réchauffe encore, [softly] la pluie tombe enfin sur les déserts, [happily] et les dinosaures commencent à grandir…
 
 ---
 
-## ÉP. 3 — LE CRÉTACÉ (recit-cretace.mp3)
+## LE JURASSIQUE (recit-jurassique.mp3)
 
-**NARRATRICE** [excited][playful] : On arrive au [serious] Crétacé ! [happily] Il y a cent millions d'années. [chuckles] Son nom vient de « craie » : les falaises blanches sont faites de cette roche.
+> Sources : Grokipedia "Jurassic", "Diplodocus", "Brachiosaurus", "Allosaurus", "Stegosaurus", "Archaeopteryx", "Liopleurodon", "Ophthalmosaurus" (Playwright) ; croisement Sander et al. 2011 / Smithsonian pour le gigantisme sauropode.
+> Faits : Jurassique -201,4 à -145 Ma. Pangée en train de se fissurer, ouverture de l'Atlantique central, mers peu profondes qui s'installent. Climat chaud et humide. Végétation : fougères géantes, conifères, cycas, ginkgos. Diplodocus (jusqu'à 26 m), Brachiosaure (18-22 m, 28-47 t), Allosaure (8-12 m, carnivore), Stégosaure (7-9 m, plaques dorsales) : casting confirmé Jurassique. Archaeoptéryx (~150 Ma, 50 cm, plumes, vol primitif) — reptile volant à part, PAS un ptérosaure (transition dinosaure-oiseau, à ne pas confondre). Liopleurodon (Jurassique moyen, jusqu'à 9 m réel — pas 25 m). Ophthalmosaure (ichtyosaure, gros yeux, chasseur de calmars). Gigantisme sauropode : cou long pour brouter sans bouger, squelette allégé par des sacs d'air, pas de mastication.
 
-**NARRATRICE** [happily][excited] : Blanches ! [gasps] Des milliards de petites algues mortes se sont accumulées au fond des mers chaudes. [softly] Les continents se séparent encore.
+**NARRATRICE** [excited] : On arrive au Jurassique ! [happily] Cent quatre-vingts millions d'années. [chuckles] Son nom vient des montagnes du Jura, [playful] entre la France et la Suisse.
 
-**WEX** [curious] : Y a des dinos partout ?
+**WEX** [curious] : Les continents avaient bougé ?
 
-**NARRATRICE** [excited][quickly] : Partout ! [shouts] En Amérique du Nord, le T-Rex et le Tricératops ! [happily] En Afrique, le Spino-saure. [playful] En Asie, le Vélociraptor et le Tarbo-saure.
+**NARRATRICE** [amazed] : [pauses] La Pangée commence à se fendre. [calm] Une longue fissure s'ouvre au milieu, [softly] et une mer s'y installe, doucement.
 
-**WEX** [curious] : Le Vélociraptor avait des plumes ?
+**WEX** [curious] : Il fait chaud ?
 
-**NARRATRICE** [playful][laughs] : Comme un gros dindon ! [excited] Et dans les airs, le Quetzalcoatlus. [gasps] Dans les mers, le Mosa-saure domine les océans !
+**NARRATRICE** [happily] : Chaud et humide ! [playful] De grandes forêts de fougères poussent partout, [calm] avec des conifères et des ginkgos.
 
-**WEX** [curious] : Et les plantes ?
+**WEX** [gasps] : C'est quoi un ginkgo ?
 
-**NARRATRICE** [gasps][excited] : Pour la première fois, des fleurs ! [happily] Des fruits ! [playful] Des abeilles ! [shouts] Le monde devient coloré !
+**NARRATRICE** [chuckles] : Un arbre aux feuilles en éventail. [amazed] Et le plus fou : il existe encore aujourd'hui, [softly] presque pareil !
 
-**WEX** [gasps] : Wouah…
+**WEX** [excited] : Et les dinos, ils mangeaient tout ça ?
 
-**WEX** [excited][curious] : Et quoi d'autre ?
+**NARRATRICE** [happily] : Énormément ! [excited] Tellement de nourriture que les herbivores sont devenus géants. [shouts] Le Diplodocus, presque aussi long qu'une piscine olympique !
 
-**NARRATRICE** [softly][serious] : Le temps passe. [pauses] Mais à la fin de cette époque, le ciel s'assombrit… [pauses]
+**WEX** [amazed] : Wouah…
+
+**NARRATRICE** [warmly] : Le Brachiosaure, lui, [calm] dressait son long cou tout droit, [softly] comme une grue, [happily] pour manger le sommet des arbres.
+
+**WEX** [curious] : Pourquoi ils étaient si gros ?
+
+**NARRATRICE** [serious] : Leur cou long leur permettait de brouter sans bouger les pattes. [calm] Et leurs os, à l'intérieur, [softly] étaient remplis de petites poches d'air, [playful] légers comme ceux d'un oiseau.
+
+**WEX** [curious] : Et les carnivores ?
+
+**NARRATRICE** [excited] : L'Allosaure les chassait. [serious] Des dents tranchantes, [softly] des griffes puissantes. [calm] Et le Stégosaure se défendait avec sa queue à pointes.
+
+**WEX** [curious] : Il y avait des animaux dans le ciel ?
+
+**NARRATRICE** [playful] : L'Archaeoptéryx ! [gently] Presque un oiseau, presque un dinosaure, [softly] avec des plumes et des petites ailes.
+
+**WEX** [curious] : Et dans la mer ?
+
+**NARRATRICE** [serious] : L'Ophthalmosaure chassait les calmars [calm] avec ses immenses yeux. [pauses] Et le Liopleurodon, [amazed] un chasseur puissant de neuf mètres, [softly] refermait sa mâchoire sur tout ce qui passait.
+
+**WEX** [hesitant] : Neuf mètres, [pauses] c'est énorme ?
+
+**NARRATRICE** [chuckles] : Aussi long qu'un court de tennis. [calm] Énorme, oui, mais pas plus.
+
+**WEX** [curious] : Et après le Jurassique ?
+
+**NARRATRICE** [excited] : Les continents continuent de s'écarter, [pauses] doucement, [happily] et une chose toute nouvelle va bientôt apparaître sur Terre…
+
+---
+
+## LE CRÉTACÉ (recit-cretace.mp3)
+
+> Sources : Grokipedia "Cretaceous", "Tyrannosaurus", "Triceratops", "Velociraptor", "Spinosaurus", "Pteranodon", "Mosasaurus" (Playwright) ; croisement NPS/Britannica pour les continents et Smithsonian/PLOS pour les angiospermes+abeilles.
+> Faits : Crétacé -145 à -66 Ma. Continents proches de l'actuel, Atlantique large, Voie maritime intérieure de l'Ouest (Amérique du Nord coupée en deux par une mer). Climat doux, refroidissement en fin de période. Fleurs (angiospermes) apparues ~125-130 Ma, diversifiées au Crétacé moyen ~100 Ma ; abeilles attestées dès ~100 Ma (fossile Melittosphex burmensis) — le lien fleurs/abeilles est réel, situé au Crétacé moyen. T-Rex (jusqu'à 14 m, 6,3 t), Tricératops (7,4-9 m), Vélociraptor (~1,8 m, ~15 kg, plumes confirmées par fossiles — PAS le monstre du cinéma), Spinosaure (semi-aquatique, piscivore), Ptéranodon (envergure 3,8-5,6 m selon le sexe, strictement Crétacé), Mosasaure (jusqu'à 17 m, reptile marin) : casting confirmé Crétacé.
+
+**NARRATRICE** [excited] : On arrive au Crétacé ! [happily] Cent millions d'années. [chuckles] Son nom vient de "craie", [playful] cette roche blanche qu'on trouve encore sur les falaises aujourd'hui.
+
+**WEX** [curious] : Les continents ressemblaient à ceux d'aujourd'hui ?
+
+**NARRATRICE** [amazed] : [pauses] Presque ! [calm] L'océan Atlantique est déjà large, [softly] et une longue mer coupe l'Amérique du Nord en deux, [happily] d'un bout à l'autre.
+
+**WEX** [gasps] : Une mer au milieu d'un continent ?
+
+**NARRATRICE** [chuckles] : Une mer entière ! [calm] Le climat est doux, [softly] agréable presque partout.
+
+**WEX** [curious] : Et il y avait des fleurs ?
+
+**NARRATRICE** [happily] : Pour la première fois de toute l'histoire, [gasps] oui ! [excited] Des fleurs partout, [playful] et de petites abeilles qui volent de l'une à l'autre !
+
+**WEX** [amazed] : Des abeilles avec les dinosaures ?
+
+**NARRATRICE** [chuckles] : Avec les dinosaures ! [happily] Le monde devient coloré et parfumé.
+
+**WEX** [curious] : Il y avait des dinos partout ?
+
+**NARRATRICE** [excited] : Partout ! [shouts] En Amérique du Nord, le Tyrannosaure et le Tricératops ! [softly] Le premier chassait, [calm] l'autre se défendait avec ses trois cornes.
+
+**WEX** [curious] : Et le Spinosaure ?
+
+**NARRATRICE** [serious] : Lui vivait au bord de l'eau. [calm] Une voile sur le dos, [softly] il pêchait les poissons dans les rivières, [playful] presque comme un ours qui pêche le saumon.
+
+**WEX** [curious] : Et le Vélociraptor, il était énorme ?
+
+**NARRATRICE** [chuckles] : Pas du tout ! [calm] À peine plus grand qu'un gros chien, [softly] couvert de plumes, [playful] comme un dindon rapide et malin.
+
+**WEX** [hesitant] : Ah bon ? [pauses] Je croyais qu'il était géant.
+
+**NARRATRICE** [gently] : C'est un mythe de dessin animé. [calm] Le vrai était petit, [softly] mais très intelligent, [happily] et il chassait en groupe.
+
+**WEX** [curious] : Et dans le ciel, dans la mer ?
+
+**NARRATRICE** [excited] : Le Ptéranodon planait haut, [calm] un reptile volant sans une seule plume, [softly] avec un bec sans dents. [pauses] Et dans l'océan, [amazed] le Mosasaure régnait, [softly] un reptile marin aussi long qu'un immeuble couché sur le flanc.
+
+**WEX** [gasps] : Y'avait Tritri ?
+
+**NARRATRICE** [happily] : [pauses] Oui ! [excited] Enfin, Tritri est là : le Tricératops, [gently] avec ses trois cornes et sa grande collerette. [warmly] Wex l'a trouvé.
+
+**WEX** [excited] : Il est là pour de vrai ?
+
+**NARRATRICE** [happily] : Pour de vrai. [calm] Mais un jour, [pauses] tout va changer d'un seul coup…
 
 ---
 

@@ -2,55 +2,95 @@
   "inputs": [
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[excited][playful] On arrive au [serious] Jurassique ! [happily] Il y a cent cinquante millions d'années. [chuckles] Son nom vient des montagnes du Jura, entre la France et la Suisse."
+      "text": "[excited] On arrive au Jurassique ! [happily] Cent quatre-vingts millions d'années. [chuckles] Son nom vient des montagnes du Jura, [playful] entre la France et la Suisse."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] C'est près de chez nous ?"
+      "text": "[curious] Les continents avaient bougé ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[laughs][playful] Pas loin ! [excited] La Pangée se fend en deux : le nord et le sud. [gasps] Un océan s'ouvre au milieu ! Il fait chaud et humide."
+      "text": "[amazed] [pauses] La Pangée commence à se fendre. [calm] Une longue fissure s'ouvre au milieu, [softly] et une mer s'y installe, doucement."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il y avait pas déjà de l'eau ?"
+      "text": "[curious] Il fait chaud ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[deadpan][chuckles] Si, tout autour ! [happily] Mais pas au milieu. [excited] Des forêts de fougères [shouts] gigantesques poussent partout."
+      "text": "[happily] Chaud et humide ! [playful] De grandes forêts de fougères poussent partout, [calm] avec des conifères et des ginkgos."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Les dinos mangent ça ?"
+      "text": "[gasps] C'est quoi un ginkgo ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily][chuckles] Oh oui ! [quickly] Tant de nourriture que les herbivores deviennent [awe][shouts] ÉNORMES ! [shouts] Le Diplodocus ! Le Brachio-saure !"
+      "text": "[chuckles] Un arbre aux feuilles en éventail. [amazed] Et le plus fou : il existe encore aujourd'hui, [softly] presque pareil !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Et pour ceux qui mangent de la viande ?"
+      "text": "[excited] Et les dinos, ils mangeaient tout ça ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily] Oui, tout est lié ! [softly][serious] Les carnivores aussi grandissent. [happily] Le Allo-saure, le Cerato-saure. [gasps] Et il y avait aussi les piscivores : dans les airs, le Ptéranodon, un reptile volant ! [excited] Et dans les mers, le Plésio-saure, un reptile avec un long cou !"
+      "text": "[happily] Énormément ! [excited] Tellement de nourriture que les herbivores sont devenus géants. [shouts] Le Diplodocus, presque aussi long qu'une piscine olympique !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Wouah…"
-    },
-    {
-      "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[excited][curious] Et quoi d'autre ?"
+      "text": "[amazed] Wouah…"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[excited][quickly] Des millions d'années passent encore. [playful] Puis, [pauses] les continents s'éloignent encore. [gasps] Il se passe plein de choses. [lighthearted][playful] Tu veux savoir quoi ?"
+      "text": "[warmly] Le Brachiosaure, lui, [calm] dressait son long cou tout droit, [softly] comme une grue, [happily] pour manger le sommet des arbres."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[excited][playful] OUIII !!"
+      "text": "[curious] Pourquoi ils étaient si gros ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious] Leur cou long leur permettait de brouter sans bouger les pattes. [calm] Et leurs os, à l'intérieur, [softly] étaient remplis de petites poches d'air, [playful] légers comme ceux d'un oiseau."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et les carnivores ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited] L'Allosaure les chassait. [serious] Des dents tranchantes, [softly] des griffes puissantes. [calm] Et le Stégosaure se défendait avec sa queue à pointes."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il y avait des animaux dans le ciel ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[playful] L'Archaeoptéryx ! [gently] Presque un oiseau, presque un dinosaure, [softly] avec des plumes et des petites ailes."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et dans la mer ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious] L'Ophthalmosaure chassait les calmars [calm] avec ses immenses yeux. [pauses] Et le Liopleurodon, [amazed] un chasseur puissant de neuf mètres, [softly] refermait sa mâchoire sur tout ce qui passait."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[hesitant] Neuf mètres, [pauses] c'est énorme ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[chuckles] Aussi long qu'un court de tennis. [calm] Énorme, oui, mais pas plus."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et après le Jurassique ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited] Les continents continuent de s'écarter, [pauses] doucement, [happily] et une chose toute nouvelle va bientôt apparaître sur Terre…"
     }
   ],
   "model_id": "eleven_v3",

@@ -1,7 +1,7 @@
 {
  "date": "2026-09-05",
  "base": "6c544fb0",
- "note": "Champs de dinos-data.js modifies par HO-010 (audit HO-009). Les champs TEXTE (region, epoque, fait, chasseurs, proies, superpower, comp_*) doivent etre recroises dans i18n/<lang>/strings.json (HO-013). vitesse_kmh = nouveau champ.",
+ "note": "Champs de dinos-data.js modifies depuis 6c544fb0 (audit HO-009 + corrections de session). Les champs TEXTE (region, epoque, fait, chasseurs, proies, superpower, desc, comp_*) sont recroises dans i18n/<lang>/strings.json (I18N-STRINGS-RECROISER). vitesse_kmh = nouveau champ.",
  "champs": [
   {
    "id": "tyrannosaurus",
@@ -104,6 +104,12 @@
    "champ": "vitesse_kmh",
    "avant": null,
    "apres": 52
+  },
+  {
+   "id": "carnotaurus",
+   "champ": "superpower",
+   "avant": "Le chasseur le PLUS RAPIDE parmi les grands carnivores — jusqu'à 56 km/h !",
+   "apres": "Le chasseur le PLUS RAPIDE parmi les grands carnivores — jusqu'à 52 km/h, aussi vite qu'une voiture en ville !"
   },
   {
    "id": "brachiosaurus",
@@ -322,6 +328,12 @@
    "apres": 12
   },
   {
+   "id": "archaeopteryx",
+   "champ": "desc",
+   "avant": "L'Archaeoptéryx est l'ancêtre de tous les oiseaux ! Il avait des plumes comme un oiseau mais aussi des dents et des griffes de dino. C'est le premier oiseau du monde entier !",
+   "apres": "L'Archaeoptéryx est un des tout premiers oiseaux ! Il avait des plumes comme un oiseau, mais aussi des dents et des griffes de dino. Les oiseaux d'aujourd'hui sont ses cousins."
+  },
+  {
    "id": "mosasaurus",
    "champ": "continent",
    "avant": "Europe",
@@ -388,6 +400,18 @@
    "apres": "Adulte, aucun prédateur connu : c'était l'un des plus gros animaux de son océan"
   },
   {
+   "id": "patagotitan",
+   "champ": "chasseurs",
+   "avant": "Giganotosaure et Mapusaurus — qui l'attaquaient en meute",
+   "apres": "Adulte, presque personne : on n'a trouvé aucune marque de morsure sur ses os. Les jeunes, eux, devaient se méfier des grands carnivores de Patagonie."
+  },
+  {
+   "id": "patagotitan",
+   "champ": "desc",
+   "avant": "Le Titanosaure Patagotitan était le plus grand animal qui ait jamais marché sur Terre. Même le Brachiosaure était petit à côté de lui ! Il vivait en troupeau en Argentine, et les Giganotosaures l'attaquaient en meute, comme des loups contre un éléphant.",
+   "apres": "Le Titanosaure Patagotitan était le plus grand animal qui ait jamais marché sur Terre. Même le Brachiosaure était petit à côté de lui ! Il vivait en troupeau en Argentine, et sa taille énorme le protégeait des grands carnivores."
+  },
+  {
    "id": "centrosaurus",
    "champ": "poids_t",
    "avant": 2.5,
@@ -433,7 +457,7 @@
    "id": "megatherium",
    "champ": "fait",
    "avant": "C'était un paresseux, mais géant ! Quand il se dressait debout contre un arbre, il était plus haut que deux Papas. Ses griffes avant étaient longues comme ton avant-bras pour attraper les branches.",
-   "apres": "C'était un paresseux, mais géant ! Quand il se dressait debout sur ses pattes arrière, contre un arbre, sa tête montait à 4 mètres — plus haut que deux Papas. Ses griffes avant étaient longues comme ton avant-bras pour attraper les branches."
+   "apres": "C'était un paresseux, mais géant ! Quand il se dressait debout sur ses pattes arrière, contre un arbre, il était plus haut que deux Papas. Ses griffes avant étaient longues comme ton avant-bras pour attraper les branches."
   },
   {
    "id": "paraceratherium",

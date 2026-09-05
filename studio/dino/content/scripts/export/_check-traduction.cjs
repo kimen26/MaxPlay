@@ -28,6 +28,8 @@ function scan(kind, ref, got) {
     Object.keys(ref[id]).forEach(champ => {
       const src = ref[id][champ], dst = got[id][champ];
       if (dst === undefined) { err.push(`${kind}/${id}.${champ} : champ manquant`); return; }
+      // Un champ vide en FR (ex. `continent` d'un animal marin) doit rester vide dans la langue cible.
+      if (typeof src === 'string' && !src.trim()) { if (typeof dst === 'string' && dst.trim()) warn.push(`${kind}/${id}.${champ} : FR vide mais traduction non vide`); return; }
       if (typeof dst !== 'string' || !dst.trim()) { err.push(`${kind}/${id}.${champ} : vide`); return; }
 
       // Un binome latin (`full`) est identique dans toutes les langues : c'est normal.
@@ -57,7 +59,9 @@ function scan(kind, ref, got) {
         warn.push(`${kind}/${id}.${champ} : metrique non converti en EN (${dst.match(METRIQUE_RESIDUEL)[0]})`);
     });
     Object.keys(got[id]).forEach(champ => {
-      if (!ref[id][champ]) err.push(`${kind}/${id}.${champ} : champ INCONNU (hors corpus)`);
+      // Un champ absent du corpus mais vide (ex. `continent` marin, que l'extracteur ne retient pas) n'est pas une erreur.
+
+      if ((typeof got[id][champ] !== 'string' || got[id][champ].trim()) && !ref[id][champ]) err.push(`${kind}/${id}.${champ} : champ INCONNU (hors corpus)`);
     });
   });
 }

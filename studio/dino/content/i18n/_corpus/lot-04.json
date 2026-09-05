@@ -104,7 +104,7 @@
       "chasseurs": "T-Rex, grands carnivores",
       "proies": "Mange des plantes",
       "amis": "En groupe",
-      "fait": "Son crâne mesurait 25 cm d'épaisseur — presque autant que ta tête entière ! Il faisait des joutes comme les béliers !",
+      "fait": "Son crâne mesurait 25 cm d'épaisseur — presque autant que ta tête entière ! Les scientifiques pensent qu'il se battait peut-être en donnant des coups de tête, comme les béliers d'aujourd'hui.",
       "desc": "Le Pachycephalosaure avait un crâne super épais, comme un casque de moto en os ! Les mâles se battaient en se frappant la tête comme les béliers font aujourd'hui.",
       "continent": "Amérique du Nord"
     },
@@ -152,7 +152,7 @@
       "region": "Amérique du Nord",
       "comp_taille": "aussi long qu'une rue à deux voies est large — il barrait la route !",
       "comp_hauteur": "aussi haut qu'une porte !",
-      "comp_poids": "aussi lourd qu'un cheval !",
+      "comp_poids": "aussi lourd que 2 lions !",
       "nom_etym": "« Utahraptor » mélange un lieu et du latin ! Utah, c'est l'État américain où on l'a trouvé. Et raptor, en latin, c'est le voleur. En entier : le voleur de l'Utah !",
       "regime": "🥩 Carnivore",
       "superpower": "La plus grande griffe de tous les raptors — 24 cm ! Un couteau de cuisine géant !",

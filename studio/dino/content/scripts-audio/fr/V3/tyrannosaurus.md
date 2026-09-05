@@ -5,7 +5,7 @@
 > ⚠️ Écart avec l'ancien fichier `trex-lot1.md` (archivé) qui disait « 3 hippopotames » : périmé — la fonction `_compPoids(8)` retourne aujourd'hui « 4 rhinocéros » (le multiplicateur choisit le plus honnête parmi éléphant/hippopotame/rhinocéros). Le script suit la sortie EXACTE recalculée, pas l'archive.
 > Étymologie conforme à `_ETYMO-RACINES-50.md` + `nom_etym` : *tyrannos* (grec) = le maître qui commande tout seul, personne ne dit non · *saurus/saure* (grec) = lézard · *rex* (latin) = roi. En entier : le lézard-roi tyran.
 > Fact-check cohabitations (Grokipedia + Wikipedia, 2026-09-05) : Formation Hell Creek/Lance, ~68-66 Ma, Amérique du Nord. Proies contemporaines confirmées : Triceratops, Edmontosaurus, Ankylosaurus — tous trois attestés dans les mêmes formations. **Vitesse** : le mythe « 80 km/h » est démenti par les études biomécaniques récentes (os des pattes trop fragiles pour courir vite) ; consensus actuel ≈ 20 km/h, une marche rapide/trot, jamais un sprint — dit comme un fait qui corrige le mythe, pas une déception.
-> **Touche Tritri (demande PY)** : Tritri (le Tricératops de Wex) vivait à côté du T-Rex → running gag posé en bloc A, léger, sans casser le 4e mur (jamais « Max », jamais « doudou »).
+> **Touche Tritri (demande PY, recadrée 2026-09-05)** : UNE seule mention, en bloc C (Wex), le T-Rex reste le centre de sa fiche. Le voisinage (Tricératops, Edmontosaure, Ankylosaure) est dit comme écosystème, pas comme gag. Retour PY : « sur le T-Rex tu parles un peu trop de Tritri… c'est eux le centre ».
 > Prononciation : « Ty-ran-no-saure » respellé (lexique §2, Th→Thé règle non applicable ici car pas de Th, mais -us→-saure appliqué). « Rex » se lit tel quel.
 > Grep-interdits OK. Wex FR standard, aucun tic écrit, jamais de `!` final.
 
@@ -16,8 +16,8 @@
 **NARRATEUR H** [excited] : Ty-ran-no-saure Rex. [curious] Tu sais ce que ça veut dire, « tyrannos » ? [pauses] Le roi qui commande tout seul, à qui personne ne dit non.
 **WEX** [gasps] : Personne ? [nervous] Même pas sa maman ?
 **NARRATEUR H** [chuckles] : Sa maman, si, quand il était petit. [warmly] Mais une fois grand, c'était lui le roi. Il vivait en Amérique du Nord, [amazed] il y a 66 millions d'années.
-**WEX** [curious] : Et Tritri, il était où, lui ?
-**NARRATEUR H** [happily] : Juste à côté ! [confident] Le Tricératops vivait dans le même royaume que le T-Rex, avec l'Edmontosaure et l'Ankylosaure.
+**WEX** [curious] : Et il commandait à qui, ce roi ?
+**NARRATEUR H** [happily] : À tout son royaume ! [confident] Autour de lui vivaient le Tricératops, l'Edmontosaure et l'Ankylosaure, [pauses] et tous le surveillaient du coin de l'œil.
 
 ### BLOC B — Taille
 
@@ -29,7 +29,7 @@
 
 **NARRATEUR H** [serious] : C'était un carnivore. Il chassait le Tricératops, l'Edmontosaure et l'Ankylosaure. [calm] Plutôt solitaire.
 **WEX** [nervous] : Alors Tritri, il devait faire super attention ?
-**NARRATEUR H** [encouraging] : Oui, [confident] mais Tritri avait ses trois cornes pour se défendre. Le T-Rex ne le mangeait pas sans se battre.
+**NARRATEUR H** [encouraging] : Oui, [confident] mais avec ses trois cornes, il savait se défendre. Le T-Rex ne l'attrapait jamais sans se battre.
 
 ### BLOC D — Le truc fou
 

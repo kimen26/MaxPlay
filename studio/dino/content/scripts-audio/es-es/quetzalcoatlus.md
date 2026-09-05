@@ -24,10 +24,10 @@
 
 **NARRATEUR H** [serious] : A diferencia de otros reptiles voladores que pescaban, [confident] él cazaba más bien en el suelo — animalitos, insectos. [slowly] Caminaba muy bien sobre sus cuatro patas.
 **WEX** [curious] : ¿Y quién podía atraparlo a él?
-**NARRATEUR H** [confident] : En el aire, nadie. [warmly] En el suelo, se mantenía alerta, [pauses] como todo el mundo en esa época — aunque quizá se cruzaba con Tritri, en la misma región.
+**NARRATEUR H** [confident] : En el aire, nadie. [warmly] En el suelo, se mantenía alerta, [pauses] como todo el mundo en esa época — aunque quizá se cruzaba con el Triceratops, en la misma región.
 
 ### BLOC D — Lo más loco
 
 **NARRATEUR H** [excited] : Es uno de los seres voladores más grandes de toda la historia de la Tierra. [pauses] Ningún pájaro, ningún murciélago ha alcanzado jamás su tamaño.
 **WEX** [amazed] : El rey del cielo.
-**NARRATEUR H** [softly] : El rey del cielo, sí — [proud] mientras Tritri, abajo, mantenía bien los pies en la tierra.
+**NARRATEUR H** [softly] : El rey del cielo, sí — [proud] y nadie, allá arriba, venía a disputarle su sitio.

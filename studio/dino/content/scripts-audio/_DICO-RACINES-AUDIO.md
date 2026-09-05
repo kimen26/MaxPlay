@@ -769,6 +769,22 @@ wex: [excited] **Titanis** — l'oiseau-terreur ! Un oiseau géant qui courait p
 
 ---
 
+## CLIP AJOUTÉ 2026-09-05 (HO-018 lot B) — racine `scélido-`, absente du dico jusqu'ici
+
+> Scelidosaurus n'avait qu'une entrée générique via `-saure` dans `dinos-racines.js`. Sens fact-checké
+> `studio/dino/content/sources/etymo/_ETYMO-RACINES-50.md` (§ scelidosaurus, vérifié Wikipedia 2026-08-23,
+> erreur Owen documentée Steyskal 1970) : *skelis* veut dire « côte de bœuf », mais Owen visait *skelos*
+> (« patte »). Le clip dit le sens voulu, honnête sur la petite bourde du savant.
+
+---
+
+**`scélido- / skelis`** | grec | `dico-scelido`
+
+narrateur_h: *scé-li-do-*, en grec ça veut dire patte — enfin presque : le savant qui a choisi ce nom s'est trompé de mot et a écrit « côte de bœuf » !
+wex: [chuckles] **Scélido**-saure — le lézard aux grosses pattes, même avec un nom un peu raté !
+
+---
+
 ## BILAN
 
 - Clips racines (type "racine") : **61**

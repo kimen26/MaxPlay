@@ -104,6 +104,11 @@ function checkFile(file) {
     if (L !== 'B' && /\bbus\b/i.test(plain)) errs.push(`bloc ${L} : « bus » hors échelle du bloc B`);
     if (/elvis|ferrari|jurassic park|vroum/i.test(plain)) errs.push(`bloc ${L} : référence adulte interdite`);
   }
+  // Retour PY 2026-09-05 : le dino de la fiche est le centre. Tritri (le Tricératops de Wex) = 1 mention max par fiche
+  // (2 pour le Tricératops lui-même). Les notes d'en-tête (lignes « > ») ne comptent pas.
+  const corps = fs.readFileSync(file, 'utf8').split(/\r?\n/).filter(l => !l.startsWith('>') && !l.startsWith('- [')).join('\n');
+  const nTritri = (corps.match(/tritri/gi) || []).length, maxTritri = id === 'triceratops' ? 2 : 1;
+  if (nTritri > maxTritri) errs.push(`Tritri > ${maxTritri} mention(s) (${nTritri}) — le dino de la fiche reste le centre (PY 2026-09-05)`);
   if (total > 1900) errs.push(`fiche = ${total} car. (> 1900, ne tient plus en un appel dialogue)`);
 
   if (LANG === 'fr' && blocs.B) {

@@ -2,7 +2,7 @@
 # Génère les MP3 EL (4 blocs + recap concaténé) pour une liste de dinos,
 # depuis les segments V3 (scripts-audio/fr/V3/json) produits par _md2json-v3.cjs.
 # Diffère de _gen-audio-nouveaux.sh uniquement par le dossier source (V3/json vs json-top).
-# Usage: bash _gen-audio-v3.sh "minmi scutellosaurus ..."
+# Usage: bash _gen-audio-v3.sh "minmi scutellosaurus ..." ["nom regime"]   (2e arg optionnel = blocs, defaut 4)
 cd "c:/ProjetsPerso/Claude_Projects/MaxPlay"
 # Résolution de la clé : .claude.json ne contient qu'un placeholder "${ELEVENLABS_API_KEY}"
 # depuis le passage à la norme secrets (valeurs dans ~/.claude/settings.json > env).
@@ -24,8 +24,9 @@ SRC="studio/dino/content/scripts-audio/fr/V3/json"
 OUT="site/audio/dinos/fr"
 mkdir -p "$OUT"
 OK=0; KO=0
+BLOCS="${2:-nom taille regime funfact}"
 for d in $1; do
-  for b in nom taille regime funfact; do
+  for b in $BLOCS; do
     J="$SRC/_seg-${d}-${b}.json"
     O="$OUT/${d}-${b}.mp3"
     if [ ! -f "$J" ]; then echo "KO ${d}-${b} JSON-absent"; KO=$((KO+1)); continue; fi

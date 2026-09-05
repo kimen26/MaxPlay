@@ -13,8 +13,8 @@
 **NARRATEUR H** [excited] : Ty… ran… no… saurus rex. [curious] Do you know what "tyranno" means? [pauses] A ruler who answers to no one — nobody gets to say no to him.
 **WEX** [gasps] : Nobody? [nervous] Not even his mom?
 **NARRATEUR H** [chuckles] : His mom, yes, back when he was little. [warmly] But once he was grown, he was the king. He lived in North America, [amazed] sixty-six million years ago.
-**WEX** [curious] : And where was Tritri back then?
-**NARRATEUR H** [happily] : Right next door! [confident] Triceratops lived in the same kingdom as T. rex, along with Edmontosaurus and Ankylosaurus.
+**WEX** [curious] : And who did this king rule over?
+**NARRATEUR H** [happily] : His whole kingdom! [confident] All around him lived Triceratops, Edmontosaurus, and Ankylosaurus, [pauses] and every one of them kept a careful eye on him.
 
 ### BLOC B — Taille
 
@@ -26,7 +26,7 @@
 
 **NARRATEUR H** [serious] : He was a carnivore. He hunted Triceratops, Edmontosaurus, and Ankylosaurus. [calm] Mostly a loner.
 **WEX** [nervous] : So Tritri had to be super careful?
-**NARRATEUR H** [encouraging] : Yes, [confident] but Tritri had his three horns to defend himself. T. rex never got him without a fight.
+**NARRATEUR H** [encouraging] : Yes, [confident] but with his three horns, he knew how to defend himself. T. rex never got him without a fight.
 
 ### BLOC D — Le truc fou
 

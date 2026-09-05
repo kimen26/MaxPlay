@@ -63,14 +63,28 @@
   <div class="rep-head">
     <button class="rep-back" aria-label="Retour à la vallée">‹</button>
     <div class="grow"><b style="font-family:'Fredoka One';font-weight:400;font-size:20px">Espace parents</b>
-      <span>Tous les jeux, même les cachés</span></div>
+      <span>Statistiques · Paramètres · Compte · Retours</span></div>
   </div>
+  <!-- 4 tuiles (demande PY 2026-09-05 : « un truc stat, un truc param, un truc compte, un truc commentaire/retour »).
+       Les jeux cachés (catalogue complet) vivent sous Paramètres, plus en vrac sous les liens. -->
   <div class="parents-zone">
-    <div class="parents-links">
-      <a href="suivi.html">📊 Suivi</a>
-      <a href="compte.html">👨‍👩‍👦 Compte</a>
+    <div class="parents-tiles">
+      <a href="suivi.html"><span class="pt-ico">📊</span><b>Statistiques</b><span>Progression, temps de jeu</span></a>
+      <button type="button" id="parents-params"><span class="pt-ico">⚙️</span><b>Paramètres</b><span>Langue, jeux cachés</span></button>
+      <a href="compte.html"><span class="pt-ico">👨‍👩‍👦</span><b>Compte</b><span>Profils, sauvegarde</span></a>
+      <a href="suivi.html#sec-comments"><span class="pt-ico">💬</span><b>Retours</b><span>Commentaires, remarques</span></a>
     </div>
-    <div class="col" style="gap:10px" id="parents-board"></div>
+    <div id="parents-params-panel" hidden>
+      <div class="params-bloc">
+        <div class="params-titre">🌍 Langue de l'application</div>
+        <div class="lang-row" id="lang-row"></div>
+        <div class="params-note">Fiches dino et voix : français complet · anglais, espagnol, portugais en cours (les fiches sans voix enregistrée sont lues par la voix du téléphone).</div>
+      </div>
+      <div class="params-bloc">
+        <div class="params-titre">🎮 Tous les jeux, même les cachés</div>
+        <div class="col" style="gap:10px" id="parents-board"></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -117,6 +131,7 @@
 
   <div class="toast" id="toast" role="status"></div>
 
+  <script src="js/lang.js"></script>
   <script src="js/ping.js"></script>
   <script src="js/tracker.js"></script>
   <script src="js/cloud.js"></script>

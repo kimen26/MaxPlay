@@ -321,8 +321,24 @@
       '<span class="g-title grow">' + e.titre + '</span>' + foot + '</div>';
   }
 
+  // Langues proposées aux parents = celles qui ont du contenu dino traduit (strings + UI).
+  // Source de vérité de la langue active : js/lang.js (localStorage maxplay_lang, ?lang=).
+  var LANGUES = [
+    { code: 'fr', label: 'Français' }, { code: 'en', label: 'English' },
+    { code: 'es-es', label: 'Español' }, { code: 'pt-br', label: 'Português' }
+  ];
+  function renderLangs() {
+    var row = $('lang-row');
+    if (!row) return;
+    var cur = (global.Lang && global.Lang.current()) || 'fr';
+    row.innerHTML = LANGUES.map(function (l) {
+      return '<button type="button" class="lang-btn' + (l.code === cur ? ' active' : '') + '" data-lang="' + l.code + '">' + l.label + '</button>';
+    }).join('');
+  }
+
   var parentsRendered = false;
   function renderParents() {
+    renderLangs();
     if (parentsRendered) return;
     parentsRendered = true;
     var cats = global.MAXPLAY_CATEGORIES || [];
@@ -377,6 +393,16 @@
     document.addEventListener('click', function (ev) {
       // retour depuis l'espace parents
       if (ev.target.closest('.rep-back')) { showMur(); return; }
+      // tuile Paramètres : déplie langue + jeux cachés
+      var pbtn = ev.target.closest('#parents-params');
+      if (pbtn) {
+        var panel = $('parents-params-panel');
+        if (panel) { panel.hidden = !panel.hidden; pbtn.classList.toggle('active', !panel.hidden); }
+        return;
+      }
+      // choix de langue : lang.js persiste puis recharge la page
+      var lbtn = ev.target.closest('.lang-btn[data-lang]');
+      if (lbtn) { if (global.Lang) global.Lang.set(lbtn.dataset.lang); return; }
       // tiroir parents : un seul ouvert à la fois
       var head = ev.target.closest('.mp-drawer-head');
       if (head && head.closest('#parents-board')) {

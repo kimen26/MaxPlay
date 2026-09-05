@@ -3,56 +3,96 @@
   "language_code": "en",
   "inputs": [
     {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited][playful] Here we are in the [serious] Jurassic! [happily] One hundred fifty million years ago. [chuckles] Its name comes from the Jura Mountains, between France and Switzerland."
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited] Here comes the Jurassic! [happily] One hundred eighty million years ago. [chuckles] Its name comes from the Jura mountains, [playful] between France and Switzerland."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Is that close by?"
+      "text": "[curious] Had the continents moved?"
     },
     {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[chuckles] Not far! [excited] Pangea splits in two: north and south. [gasps] An ocean opens right in the middle! It's hot and humid."
-    },
-    {
-      "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Wasn't there already water everywhere?"
-    },
-    {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[chuckles] All around, yes! [happily] But not down the middle. [excited] Huge fern forests grow everywhere."
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[amazed] [pauses] Pangea starts to crack. [calm] A long rift opens in the middle, [softly] and a sea slowly settles in."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Do the dinosaurs eat that?"
+      "text": "[curious] Is it hot?"
     },
     {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily][chuckles] Oh yes! [quickly] So much food that the plant-eaters get [amazed] ENORMOUS! Diplodocus! Brachiosaurus!"
-    },
-    {
-      "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] What about the meat-eaters?"
-    },
-    {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Yes, it's all connected! [softly] The carnivores grow bigger too. [happily] Allosaurus, Ceratosaurus. [gasps] And there were fish-eaters too: in the sky, Pteranodon, a flying reptile! [excited] And in the seas, Plesiosaurus, with a long, long neck!"
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] Hot and humid! [playful] Huge fern forests grow everywhere, [calm] along with conifers and ginkgos."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Whoa."
+      "text": "[gasps] What's a ginkgo?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[chuckles] A tree with fan-shaped leaves. [amazed] And the wildest part: it still exists today, [softly] almost the same!"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[excited][curious] What else?"
+      "text": "[excited] Did the dinos eat all that?"
     },
     {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited][quickly] Millions more years go by. [playful] Then, [pauses] the continents drift even farther apart. [gasps] So much happens. [playful] Want to hear what?"
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] So much of it! [excited] So much food that the plant-eaters grew huge. [shouts] Diplodocus, almost as long as an Olympic pool!"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[excited][playful] Yes."
+      "text": "[amazed] Wow…"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[warmly] Brachiosaurus raised its long neck straight up, [calm] like a crane, [softly] to reach the tops of the trees."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Why were they so big?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious] Their long necks let them eat without moving their legs. [calm] And inside their bones, [softly] tiny air pockets, [playful] light like a bird's."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] What about the carnivores?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited] Allosaurus hunted them. [serious] Sharp teeth, [softly] powerful claws. [calm] And Stegosaurus defended itself with its spiked tail."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Were there animals in the sky?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[playful] Archaeopteryx! [gently] Almost a bird, almost a dinosaur, [softly] with feathers and small wings."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] And in the ocean?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious] Ophthalmosaurus hunted squid [calm] with its huge eyes. [pauses] And Liopleurodon, [amazed] a powerful thirty-foot hunter, [softly] snapped its jaws shut on anything nearby."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[hesitant] Thirty feet, [pauses] is that huge?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[chuckles] As long as a tennis court. [calm] Huge, yes, but not more."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] What comes after the Jurassic?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited] The continents keep drifting apart, [pauses] slowly, [happily] and something brand new is about to appear on Earth…"
     }
   ]
 }

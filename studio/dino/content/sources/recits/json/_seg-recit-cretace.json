@@ -2,47 +2,95 @@
   "inputs": [
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[excited][playful] On arrive au [serious] Crétacé ! [happily] Il y a cent millions d'années. [chuckles] Son nom vient de « craie » : les falaises blanches sont faites de cette roche."
-    },
-    {
-      "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily][excited] Blanches ! [gasps] Des milliards de petites algues mortes se sont accumulées au fond des mers chaudes. [softly] Les continents se séparent encore."
+      "text": "[excited] On arrive au Crétacé ! [happily] Cent millions d'années. [chuckles] Son nom vient de \"craie\", [playful] cette roche blanche qu'on trouve encore sur les falaises aujourd'hui."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Y a des dinos partout ?"
+      "text": "[curious] Les continents ressemblaient à ceux d'aujourd'hui ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[excited][quickly] Partout ! [shouts] En Amérique du Nord, le T-Rex et le Tricératops ! [happily] En Afrique, le Spino-saure. [playful] En Asie, le Vélociraptor et le Tarbo-saure."
+      "text": "[amazed] [pauses] Presque ! [calm] L'océan Atlantique est déjà large, [softly] et une longue mer coupe l'Amérique du Nord en deux, [happily] d'un bout à l'autre."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Le Vélociraptor avait des plumes ?"
+      "text": "[gasps] Une mer au milieu d'un continent ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[playful][laughs] Comme un gros dindon ! [excited] Et dans les airs, le Quetzalcoatlus. [gasps] Dans les mers, le Mosa-saure domine les océans !"
+      "text": "[chuckles] Une mer entière ! [calm] Le climat est doux, [softly] agréable presque partout."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Et les plantes ?"
+      "text": "[curious] Et il y avait des fleurs ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[gasps][excited] Pour la première fois, des fleurs ! [happily] Des fruits ! [playful] Des abeilles ! [shouts] Le monde devient coloré !"
+      "text": "[happily] Pour la première fois de toute l'histoire, [gasps] oui ! [excited] Des fleurs partout, [playful] et de petites abeilles qui volent de l'une à l'autre !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Wouah…"
-    },
-    {
-      "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[excited][curious] Et quoi d'autre ?"
+      "text": "[amazed] Des abeilles avec les dinosaures ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[softly][serious] Le temps passe. [pauses] Mais à la fin de cette époque, le ciel s'assombrit… [pauses]"
+      "text": "[chuckles] Avec les dinosaures ! [happily] Le monde devient coloré et parfumé."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il y avait des dinos partout ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited] Partout ! [shouts] En Amérique du Nord, le Tyrannosaure et le Tricératops ! [softly] Le premier chassait, [calm] l'autre se défendait avec ses trois cornes."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et le Spinosaure ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious] Lui vivait au bord de l'eau. [calm] Une voile sur le dos, [softly] il pêchait les poissons dans les rivières, [playful] presque comme un ours qui pêche le saumon."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et le Vélociraptor, il était énorme ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[chuckles] Pas du tout ! [calm] À peine plus grand qu'un gros chien, [softly] couvert de plumes, [playful] comme un dindon rapide et malin."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[hesitant] Ah bon ? [pauses] Je croyais qu'il était géant."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[gently] C'est un mythe de dessin animé. [calm] Le vrai était petit, [softly] mais très intelligent, [happily] et il chassait en groupe."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et dans le ciel, dans la mer ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited] Le Ptéranodon planait haut, [calm] un reptile volant sans une seule plume, [softly] avec un bec sans dents. [pauses] Et dans l'océan, [amazed] le Mosasaure régnait, [softly] un reptile marin aussi long qu'un immeuble couché sur le flanc."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Y'avait Tritri ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] [pauses] Oui ! [excited] Enfin, Tritri est là : le Tricératops, [gently] avec ses trois cornes et sa grande collerette. [warmly] Wex l'a trouvé."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Il est là pour de vrai ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] Pour de vrai. [calm] Mais un jour, [pauses] tout va changer d'un seul coup…"
     }
   ],
   "model_id": "eleven_v3",

@@ -2,51 +2,79 @@
   "inputs": [
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily] On arrive au [serious] Trias ! [happily] Il y a deux cent cinquante millions d'années. [playful] Ce nom vient de « trois » : trois groupes d'animaux partagent la Terre."
+      "text": "[happily] On arrive au Trias. [serious] Deux cent cinquante millions d'années, [pauses] presque. [playful] Trias, ça veut dire \"trois\" : les savants ont trouvé trois couches de roches de cette époque, empilées comme un gâteau."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Lesquels ?"
+      "text": "[curious] Il y avait déjà des dinosaures ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[matter-of-fact] Les dinosaures, tout petits. Les reptiles à [deadpan] gueule de crocodile, eux ils [serious] dominent. Et les ancêtres des mammifères, [playful] gros comme des souris."
+      "text": "[excited] Les tout premiers ! [calm] Petits, sur deux pattes, très rapides. [softly] Personne, à l'époque, ne devine qu'ils vont un jour dominer la Terre entière."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[hesitant] Ah bon ? [laughs] ... [curious] Les dinosaures sont tout petits ?"
+      "text": "[curious] Et les continents, ils étaient comment ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[laughs] Tout petits ! [happily] Plus petit qu'un chien. [serious] Le Coelophysis, [serious] le Plateosaurus, et [serious] le Eoraptor sont là. [matter-of-fact] Le Eoraptor chasse les petits lézards et les insectes."
-    },
-    {
-      "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[reflective] Personne ne sait encore qu'ils deviendront les rois."
+      "text": "[amazed] [pauses] Un seul, immense, tout collé : la Pangée. [calm] Tu pourrais marcher de l'Amérique jusqu'en Afrique sans jamais voir la mer."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Et les plantes ? Elles ont évolué aussi ?"
+      "text": "[gasps] Sans bateau ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily] Oui ! [matter-of-fact] Des fougères, des conifères, des mousses. [serious] Mais pour l'instant pas d'herbe, pas une fleur ! Les plantes se reproduisent avec des [playful] spores, de petites poussières transportées par le vent ou les animaux."
-    },
-    {
-      "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[awe] Et tu sais quoi ? [excited] Il n'y a qu'un seul continent : la Pangée ! [matter-of-fact] Un croissant de terre géant, avec tous les continents collés dedans."
+      "text": "[chuckles] Sans bateau. [serious] Il fait chaud partout, [softly] et très sec au milieu, loin des côtes."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Wouah…"
-    },
-    {
-      "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[excited][curious] Et quoi d'autre ?"
+      "text": "[curious] Il y avait des plantes ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[excited] Des millions d'années passent. [playful] Puis, [pauses] la Terre bouge. [pauses] Le climat change. [playful] Et [laughs] les dinosaures commencent à grandir… [pauses]"
+      "text": "[happily] Des conifères, [calm] comme des sapins piquants, [softly] et des cycas, [playful] qui ressemblent à des palmiers à épines. [serious] Mais pas encore une seule fleur."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et les dinos, ils mangeaient quoi ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[warmly] Le Plateosaure broutait ces plantes toute la journée. [calm] Un cou long, [softly] une petite tête, [excited] et déjà presque dix mètres de long !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Il avait peur de quelque chose ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious] Sur terre, presque rien ne l'inquiétait. [pauses] Mais dans la mer, [calm] un géant nageait : le Shonisaure. [amazed] Un reptile marin aussi long qu'un immeuble couché, [softly] il chassait les poissons et les calmars en eaux profondes."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] C'est un dinosaure, lui aussi ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[chuckles] Non ! [calm] Le Shonisaure nage dans la mer, [softly] les dinosaures, eux, restent sur la terre ferme."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[hesitant] Dis, [pauses] y'avait Tritri ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[gently] Pas encore. [softly] Le Tricératops n'existe pas encore, [calm] il faudra attendre très, très longtemps."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et après le Trias ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited] Après, [pauses] la Terre se réchauffe encore, [softly] la pluie tombe enfin sur les déserts, [happily] et les dinosaures commencent à grandir…"
     }
   ],
   "model_id": "eleven_v3",

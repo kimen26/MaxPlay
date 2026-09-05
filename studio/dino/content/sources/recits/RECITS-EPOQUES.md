@@ -44,6 +44,42 @@
 
 ---
 
+## ÉP. 0 — LA GRANDE MORT (recit-grande-mort.mp3)
+
+> Ajouté 2026-09-05 (demande PY « parler aussi des autres extinctions que celle de la fin du Crétacé »).
+> Proposition et fact-check : `PROPOSITION-ERES-EXTINCTIONS.md` (Permien-Trias ≈ 252 Ma, trapps de Sibérie, > 90 % des espèces marines).
+> Se place entre l'INTRO et le TRIAS. Tritri : 1 mention (« pas encore »), conforme L-D-75 et à la règle « pas de Tritri avant le Crétacé ».
+
+**NARRATRICE** [serious] [softly] : Avant les dinosaures, [pauses] il y a deux cent cinquante-deux millions d'années, [gasps] la Terre a failli mourir.
+
+**WEX** [curious] : Une météorite, comme les dinosaures ?
+
+**NARRATRICE** [softly] : Non, [serious] pas cette fois. [calm] Ce jour-là, [pauses] ce sont des volcans. [gasps] Des volcans immenses, en Sibérie, [shouts] qui crachent du feu pendant des milliers d'années.
+
+**WEX** [gasps] : Des milliers d'années ?
+
+**NARRATRICE** [calm] [softly] : Oui. [serious] Une fumée épaisse couvre le ciel. [softly] L'air devient brûlant, [pauses] et empoisonné.
+
+**WEX** [curious] : Et les animaux ?
+
+**NARRATRICE** [sad] [softly] : Presque tous meurent. [serious] Dans la mer, presque tous les animaux disparaissent. [pauses] Sur la terre aussi, la plupart. [softly] Les savants l'appellent [serious] « la Grande Mort ». [pauses] C'est la plus grande extinction que la Terre ait connue.
+
+**WEX** [curious] : Plus grande que celle des dinosaures ?
+
+**NARRATRICE** [serious] : Plus grande. [calm] Bien plus grande.
+
+**WEX** [curious] : Il y en a eu d'autres, des grandes extinctions ?
+
+**NARRATRICE** [calm] : Cinq, en tout. [softly] Trois très anciennes, surtout dans les mers, [pauses] celle-ci, la plus grande, [serious] et celle des dinosaures, avec la météorite, bien plus tard. [softly] Mais à chaque fois, quelques animaux survivent, cachés, résistants.
+
+**WEX** [gasps] : Y'avait Tritri ?
+
+**NARRATRICE** [chuckles] [softly] : Pas encore ! [playful] Les Tricératops n'existent pas encore. [happily] Il faudra attendre très, très longtemps. [pauses] Mais ces survivants vont donner naissance à quelque chose de nouveau…
+
+**WEX** [excited] [curious] : Quoi ?
+
+**NARRATRICE** [happily] [excited] : Les tout premiers dinosaures !
+
 ## ÉP. 1 — LE TRIAS (recit-trias.mp3)
 
 **NARRATRICE** [happily] : On arrive au [serious] Trias ! [happily] Il y a deux cent cinquante millions d'années. [playful] Ce nom vient de « trois » : trois groupes d'animaux partagent la Terre.

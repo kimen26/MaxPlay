@@ -193,3 +193,22 @@
 
 **NARRATEUR H** [happily][excited] : Anytime you want. [playful] The journey's always here, ready and waiting.
 **WEX** [excited][playful] : Yes.
+
+### recit-grande-mort
+
+**NARRATRICE** [serious] [softly] : Before the dinosaurs, [pauses] two hundred fifty-two million years ago, [gasps] the Earth nearly died.
+**WEX** [curious] : A meteorite, like the dinosaurs?
+**NARRATRICE** [softly] : No, [serious] not this time. [calm] This time, [pauses] it was volcanoes. [gasps] Huge volcanoes, in Siberia, [shouts] spitting fire for thousands of years.
+**WEX** [gasps] : Thousands of years?
+**NARRATRICE** [calm] [softly] : Yes. [serious] Thick smoke covers the sky. [softly] The air turns burning hot, [pauses] and poisoned.
+**WEX** [curious] : What about the animals?
+**NARRATRICE** [sad] [softly] : Almost all of them die. [serious] In the sea, almost every animal disappears. [pauses] On land too, most of them. [softly] Scientists call it [serious] "the Great Dying." [pauses] It's the biggest extinction the Earth has ever known.
+**WEX** [curious] : Bigger than the dinosaurs' extinction?
+**NARRATRICE** [serious] : Bigger. [calm] Much bigger.
+**WEX** [curious] : Were there other big extinctions?
+**NARRATRICE** [calm] : Five, in all. [softly] Three very old ones, mostly in the seas, [pauses] this one, the biggest, [serious] and the dinosaurs' one, with the meteorite, much later. [softly] But every time, a few animals survive, hidden, tough.
+**WEX** [gasps] : Was Tritri there?
+**NARRATRICE** [chuckles] [softly] : Not yet! [playful] Triceratops don't exist yet. [happily] We'll have to wait a very, very long time. [pauses] But these survivors will give birth to something new…
+**WEX** [excited] [curious] : What?
+**NARRATRICE** [happily] [excited] : The very first dinosaurs!
+

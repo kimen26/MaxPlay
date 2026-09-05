@@ -1407,5 +1407,25 @@
   "omnivores": {
    "label": "Onívoros"
   }
+ },
+ "eres": {
+  "paleo": {
+   "label": "Paleozoico",
+   "surnom": "a era de antes dos dinossauros",
+   "bornes": "541 – 252 Ma",
+   "accroche": "Antes dos dinossauros, a vida inventa tudo: peixes, plantas, os primeiros passos fora da água."
+  },
+  "meso": {
+   "label": "Mesozoico",
+   "surnom": "a era dos dinossauros",
+   "bornes": "252 – 66 Ma",
+   "accroche": "A era dos dinossauros: três épocas, dos bem pequenos aos gigantes."
+  },
+  "ceno": {
+   "label": "Cenozoico",
+   "surnom": "a era dos mamíferos",
+   "bornes": "66 Ma – hoje",
+   "accroche": "Depois dos dinossauros, os mamíferos crescem, até chegar a você."
+  }
  }
 }

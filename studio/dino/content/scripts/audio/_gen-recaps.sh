@@ -11,7 +11,7 @@ for d in $1; do
     for b in nom taille regime funfact; do echo "file '${d}-${b}.mp3'" >> "$LIST"; done
     # ffmpeg lit le concat avec des chemins relatifs à l'emplacement du fichier liste
     (cd "$OUT" && ffmpeg -y -f concat -safe 0 -i "_concat-${d}.txt" -af loudnorm -c:a libmp3lame -b:a 128k "${d}-recap.mp3" -loglevel error) \
-      && { echo "RECAP ${d} OK"; OK=$((OK+1)); } || { echo "RECAP ${d} KO"; KO=$((KO+1)); }
+      && { node studio/dino/content/scripts/audio/_pad-tete.mjs "$OUT/${d}-recap.mp3" >/dev/null; echo "RECAP ${d} OK"; OK=$((OK+1)); } || { echo "RECAP ${d} KO"; KO=$((KO+1)); }
     rm -f "$LIST"
   else
     echo "RECAP ${d} SKIP (blocs manquants)"; KO=$((KO+1))

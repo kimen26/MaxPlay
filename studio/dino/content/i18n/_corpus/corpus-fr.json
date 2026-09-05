@@ -137,6 +137,26 @@
       "label": "Omnivores"
     }
   },
+  "eres": {
+    "paleo": {
+      "label": "Paléozoïque",
+      "surnom": "l'âge d'avant les dinosaures",
+      "bornes": "541 – 252 Ma",
+      "accroche": "Avant les dinosaures, la vie invente tout : poissons, plantes, premiers pas hors de l'eau."
+    },
+    "meso": {
+      "label": "Mésozoïque",
+      "surnom": "l'âge des dinosaures",
+      "bornes": "252 – 66 Ma",
+      "accroche": "L'âge des dinosaures : trois époques, des tout petits aux géants."
+    },
+    "ceno": {
+      "label": "Cénozoïque",
+      "surnom": "l'âge des mammifères",
+      "bornes": "66 Ma – aujourd'hui",
+      "accroche": "Après les dinosaures, les mammifères grandissent, jusqu'à toi."
+    }
+  },
   "dinos": {
     "tyrannosaurus": {
       "name": "T-Rex",

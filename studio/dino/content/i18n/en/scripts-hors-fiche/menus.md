@@ -80,3 +80,16 @@
 
 ### menu-dico
 **NARRATEUR H** [curious] : Dino names are made of little science words! [happily] Tap a word [pauses] to hear it.
+
+### ere-paleo
+
+**NARRATRICE** [happily] [excited] : The Paleozoic! [playful] The age before dinosaurs, [curious] when life invents everything.
+
+### ere-meso
+
+**NARRATRICE** [excited] [playful] : The Mesozoic! [happily] The age of dinosaurs, [gasps] from tiny Eoraptor to giant Brachiosaurus.
+
+### ere-ceno
+
+**NARRATRICE** [happily] [excited] : The Cenozoic! [playful] The age of mammals, [softly] all the way to us, today.
+

@@ -70,6 +70,7 @@ scan('familles', corpus.familles, trad.familles || {});
 if (corpus.racines) scan('racines', corpus.racines, trad.racines || {});
 if (corpus.periodes) scan('periodes', corpus.periodes, trad.periodes || {});
 if (corpus.categories) scan('categories', corpus.categories, trad.categories || {});
+if (corpus.eres) scan('eres', corpus.eres, trad.eres || {});
 
 // Pangee et Extinction : objets UNIQUES (pas des collections id -> fiche), donc pas
 // passes a scan() (qui attend {id: {champ: valeur}}). On les adapte a la meme forme :

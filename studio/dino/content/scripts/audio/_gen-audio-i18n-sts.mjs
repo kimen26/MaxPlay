@@ -25,6 +25,7 @@ import os from 'node:os';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { padTete } from './_pad-tete.mjs'; // règle 250 ms de silence de tête (DEC-AUDIO-SILENCE-001)
 
 const ICI = path.dirname(fileURLToPath(import.meta.url));
 const RACINE = path.resolve(ICI, '..', '..', '..', '..', '..');
@@ -134,6 +135,7 @@ function concatLoudnorm(parties, dest, avecGap) {
   fs.writeFileSync(liste, lignes.join('\n') + '\n');
   execFileSync('ffmpeg', ['-y', '-f', 'concat', '-safe', '0', '-i', liste, '-af', 'loudnorm=I=-16:TP=-1.5:LRA=11', '-codec:a', 'libmp3lame', '-b:a', '128k', dest, '-loglevel', 'error']);
   fs.unlinkSync(liste);
+  padTete(dest);
 }
 
 // ── plan ────────────────────────────────────────────────────────────────────

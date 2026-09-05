@@ -96,10 +96,10 @@
 
   <!-- Pots de couleur -->
   <div class="pots-zone">
-    <button class="pot pot-rouge" onclick="addCouleur('r')"><span class="pot-emoji">&#128308;</span><span class="pot-lbl">ROUGE</span></button>
-    <button class="pot pot-jaune" onclick="addCouleur('j')"><span class="pot-emoji">&#128993;</span><span class="pot-lbl">JAUNE</span></button>
-    <button class="pot pot-bleu"  onclick="addCouleur('b')"><span class="pot-emoji">&#128309;</span><span class="pot-lbl">BLEU</span></button>
-    <button class="pot pot-blanc" onclick="addCouleur('w')"><span class="pot-emoji">&#11036;</span><span class="pot-lbl">BLANC</span></button>
+    <button class="pot pot-rouge" onclick="addCouleur('r')"><span class="pot-emoji">&#128308;</span><span class="pot-lbl" id="lblRouge">ROUGE</span></button>
+    <button class="pot pot-jaune" onclick="addCouleur('j')"><span class="pot-emoji">&#128993;</span><span class="pot-lbl" id="lblJaune">JAUNE</span></button>
+    <button class="pot pot-bleu"  onclick="addCouleur('b')"><span class="pot-emoji">&#128309;</span><span class="pot-lbl" id="lblBleu">BLEU</span></button>
+    <button class="pot pot-blanc" onclick="addCouleur('w')"><span class="pot-emoji">&#11036;</span><span class="pot-lbl" id="lblBlanc">BLANC</span></button>
   </div>
 
   <!-- Tube à gauche (nom couleur créée dessous), boutons centrés à droite -->
@@ -109,7 +109,7 @@
       <div class="tube-result" id="tube-result"></div>
     </div>
     <div class="tube-actions">
-      <button class="btn-tube btn-vider" onclick="viderTube()">&#128703; Vider</button>
+      <button class="btn-tube btn-vider" id="viderBtn" onclick="viderTube()">&#128703; Vider</button>
       <button class="btn-tube btn-mixer" id="btn-mixer" onclick="mixerTube()">&#128256; Mixer !</button>
     </div>
   </div>
@@ -124,7 +124,7 @@
   </div>
 
   <div class="hint-row">
-    <button class="btn-hint" onclick="showHint()">&#128161; Indice</button>
+    <button class="btn-hint" id="indiceBtn" onclick="showHint()">&#128161; Indice</button>
   </div>
 
 </div>
@@ -135,21 +135,21 @@
 <div class="brun-overlay" id="brun-overlay">
   <div class="brun-content">
     <span class="brun-emoji">&#128169;</span>
-    <div class="brun-text">Prrrout !<br>C’est du marron !<br>Lave le tube !</div>
-    <button class="btn-laver" onclick="viderTube()">&#128703; Laver !</button>
+    <div class="brun-text" id="brunText">Prrrout !<br>C’est du marron !<br>Lave le tube !</div>
+    <button class="btn-laver" id="laverBtn" onclick="viderTube()">&#128703; Laver !</button>
   </div>
 </div>
 
 <div class="overlay" id="hint-overlay" style="z-index:102;">
   <div class="ov-box">
     <div class="ov-emoji">&#128161;</div>
-    <div class="ov-title" style="font-size:1.2rem;">Voil&#224; le secret !</div>
+    <div class="ov-title" style="font-size:1.2rem;" id="hintTitle">Voil&#224; le secret !</div>
     <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:10px;">
       <div id="hint-cercle" style="width:44px;height:44px;border-radius:50%;border:3px solid rgba(255,255,255,0.85);flex-shrink:0;"></div>
       <div style="color:#fff;font-size:1rem;font-weight:900;" id="hint-label"></div>
     </div>
     <div class="ov-text" id="hint-text" style="font-size:1.3rem;letter-spacing:2px;"></div>
-    <button class="ov-btn" onclick="document.getElementById('hint-overlay').classList.remove('show')">OK !</button>
+    <button class="ov-btn" id="hintOkBtn" onclick="document.getElementById('hint-overlay').classList.remove('show')">OK !</button>
   </div>
 </div>
 
@@ -159,8 +159,20 @@
 <script src="js/mj-shell.js"></script>
 <script>
 MJ.ready(function () {
+  document.title = 'MJ-21 — ' + MJi18n.titre('mj-21', 'Peins les bus !');
+  document.getElementById('lblRouge').textContent = MJi18n.t('mj-21', 'pot.rouge', 'ROUGE');
+  document.getElementById('lblJaune').textContent = MJi18n.t('mj-21', 'pot.jaune', 'JAUNE');
+  document.getElementById('lblBleu').textContent = MJi18n.t('mj-21', 'pot.bleu', 'BLEU');
+  document.getElementById('lblBlanc').textContent = MJi18n.t('mj-21', 'pot.blanc', 'BLANC');
+  document.getElementById('viderBtn').innerHTML = '&#128703; ' + MJi18n.t('mj-21', 'vider', 'Vider');
+  document.getElementById('indiceBtn').innerHTML = '&#128161; ' + MJi18n.t('mj-21', 'indice', 'Indice');
+  document.getElementById('laverBtn').innerHTML = '&#128703; ' + MJi18n.t('mj-21', 'laver', 'Laver !');
+  document.getElementById('hintTitle').textContent = MJi18n.t('mj-21', 'voilaLeSecret', 'Voilà le secret !');
+  document.getElementById('hintOkBtn').textContent = MJi18n.t('mj-21', 'ok', 'OK !');
+  document.getElementById('brunText').innerHTML = MJi18n.t('mj-21', 'brunTexte', 'Prrrout !<br>C’est du marron !<br>Lave le tube !');
+
   const shell = MJ.init({
-    id: 'mj-21', emoji: '🎨', titre: 'Peins les bus !',
+    id: 'mj-21', emoji: '🎨', titre: MJi18n.titre('mj-21', 'Peins les bus !'),
     golden: true,
     consigne: false,
     regle: {
@@ -197,6 +209,18 @@ const DEFIS = [
 
 // Couleurs primaires = défi à 1 seule couleur, pas besoin de Mixer
 const PRIMAIRES = new Set(DEFIS.filter(d => (d.r>0)+(d.j>0)+(d.b>0)+(d.w>0) === 1).map(d=>DEFIS.indexOf(d)));
+
+// Traduction des noms de couleur (DEFIS[].label, FR interne) — un seul point de passage,
+// jamais de duplication du texte dans les 3 endroits qui l'affichent (bus cible, indice, tube).
+const COULEUR_LABEL_KEYS = {
+  'rouge':'rouge', 'jaune':'jaune', 'bleu':'bleu', 'vert':'vert', 'violet':'violet',
+  'rose':'rose', 'vert clair':'vertClair', 'bleu ciel':'bleuCiel', 'orange':'orange',
+  'or':'or', 'rose pâle':'rosePale', 'lavande':'lavande', 'brun':'brun'
+};
+function labelI18n(label){
+  const k = COULEUR_LABEL_KEYS[label];
+  return k ? MJi18n.t('mj-21', 'couleur.' + k, label) : label;
+}
 
 const QCOL = { r:'#E8192C', j:'#FFD700', b:'#3344CC', w:'#EEEEEE' };
 
@@ -268,7 +292,7 @@ function renderTubeSVG(t,opts){
 function renderTube(){
   document.getElementById('tube-wrap').innerHTML=renderTubeSVG(tube);
   const res=document.getElementById('tube-result');
-  if(tube.mixed&&tube.mixed!=='BRUN'){res.textContent=tube.mixed.label;res.style.color='#ffe066';}
+  if(tube.mixed&&tube.mixed!=='BRUN'){res.textContent=labelI18n(tube.mixed.label);res.style.color='#ffe066';}
   else if(tube.mixed==='BRUN'){res.innerHTML='💩 marron';res.style.color='#cc8844';}
   else if(tube.doses.length>0){
     // Conservation du volume : on affiche le nombre de doses versées (jamais de "3" par défaut).
@@ -287,7 +311,7 @@ function renderBusBas(hex){
   // Pastille de la couleur à trouver, à côté du bus, même hauteur
   document.getElementById('cible-swatch').style.background=defi.hex;
   const nm=document.getElementById('cible-name');
-  nm.textContent=hex?`✓ ${defi.label} !`:defi.label;
+  nm.textContent=hex?`✓ ${labelI18n(defi.label)} !`:labelI18n(defi.label);
   nm.style.color=hex?'#00c47a':'#fff';
 }
 
@@ -314,7 +338,7 @@ function showTubePlein(){
   const wrap=document.getElementById('tube-wrap');
   wrap.classList.remove('shaking'); wrap.offsetWidth; wrap.classList.add('shaking');
   const res=document.getElementById('tube-result');
-  res.textContent='Plein ! Vide-moi 🧽';
+  res.textContent=MJi18n.t('mj-21', 'pleinVideMoi', 'Plein ! Vide-moi 🧽');
   res.style.color='#ff9a5a';
 }
 
@@ -470,7 +494,7 @@ function showHint(){
   if(defi.b>0)parts.push(`${defi.b} 🔵`);
   if(defi.w>0)parts.push(`${defi.w} ⬜`);
   document.getElementById('hint-cercle').style.background=defi.hex;
-  document.getElementById('hint-label').textContent=`Bus ${defi.num} — ${defi.label}`;
+  document.getElementById('hint-label').textContent=`${MJi18n.t('mj-21','bus','Bus')} ${defi.num} — ${labelI18n(defi.label)}`;
   document.getElementById('hint-text').textContent=parts.join(' + ');
   document.getElementById('hint-overlay').classList.add('show');
 }

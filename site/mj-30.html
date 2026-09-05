@@ -98,7 +98,7 @@
     <div class="mode-badge" id="modeBadge"></div>
 
     <div class="game-zone" id="gameZone">
-      <div class="arrow-row"><span class="lbl-small">🔹 petit</span><span>→</span><span class="lbl-big">🔷 GRAND</span></div>
+      <div class="arrow-row"><span class="lbl-small" id="lblSmall">🔹 petit</span><span>→</span><span class="lbl-big" id="lblBig">🔷 GRAND</span></div>
       <div class="tray" id="tray"></div>
       <div class="slots-row" id="slots"></div>
       <button class="validate-btn" id="validateBtn" disabled>C’est bon !</button>
@@ -183,8 +183,10 @@
     ];
     function shadowSrc(d){ return 'img/dinos/ombres/' + d.png.replace(/\.(jpg|png)$/i,'') + '_ombre.png'; }
 
+    document.title = 'MJ-30 – ' + MJi18n.titre('mj-30', 'Range-les par taille');
+
     const shell = MJ.init({
-      id: 'mj-30', emoji: '📏', titre: 'Range-les par taille',
+      id: 'mj-30', emoji: '📏', titre: MJi18n.titre('mj-30', 'Range-les par taille'),
       golden: true,
       consigne: true,
       regle: {
@@ -259,6 +261,10 @@
 
     function init(){
       G.buildPips();
+      document.getElementById('validateBtn').textContent = MJi18n.t('mj-30', 'cestBon', 'C’est bon !');
+      document.getElementById('nextBtn').textContent = MJi18n.t('mj-30', 'suivant', 'Suivant →');
+      document.getElementById('lblSmall').textContent = '🔹 ' + MJi18n.t('mj-30', 'petit', 'petit');
+      document.getElementById('lblBig').textContent = '🔷 ' + MJi18n.t('mj-30', 'grand', 'GRAND');
       document.getElementById('validateBtn').onclick = onValidate;
       document.getElementById('nextBtn').onclick = () => { qCount++; nextQuestion(); };
       nextQuestion();
@@ -266,8 +272,8 @@
 
     function currentInstruction(){
       return curMeasure === 'poids_t'
-        ? 'Range-les du plus léger au plus lourd !'
-        : 'Range-les du plus petit au plus grand !';
+        ? MJi18n.t('mj-30', 'consigne.poids', 'Range-les du plus léger au plus lourd !')
+        : MJi18n.t('mj-30', 'consigne.taille', 'Range-les du plus petit au plus grand !');
     }
 
     function nextQuestion(){
@@ -282,7 +288,9 @@
       document.getElementById('nextBtn').classList.remove('show');
 
       const modeBadge = document.getElementById('modeBadge');
-      modeBadge.textContent = curMeasure === 'poids_t' ? '⚖️ Par poids' : '📏 Par taille';
+      modeBadge.textContent = curMeasure === 'poids_t'
+        ? '⚖️ ' + MJi18n.t('mj-30', 'modePoids', 'Par poids')
+        : '📏 ' + MJi18n.t('mj-30', 'modeTaille', 'Par taille');
 
       shell.setConsigne(currentInstruction());
 
@@ -537,7 +545,7 @@
       } else if (res.outcome === 'reveal'){
         sndBuzz();
         G.notePip(qCount, 4, document.getElementById('validateBtn'));
-        SoundPool.phrase('regardons-ensemble', 'Regardons ensemble !');
+        SoundPool.phrase('regardons-ensemble', MJi18n.t('mj-30', 'regardonsEnsemble', 'Regardons ensemble !'));
         setTimeout(showReveal, 900);
       } else {
         // Erreur douce : échange les deux mal placés avec explication, sans buzz punitif
@@ -578,8 +586,10 @@
 
       const big = dinoI[curMeasure] > dinoJ[curMeasure] ? dinoI : dinoJ;
       const small = big === dinoI ? dinoJ : dinoI;
-      const wordBig = curMeasure === 'poids_t' ? 'plus LOURD' : 'PLUS GRAND';
-      speak('Le ' + big.name + ' est ' + wordBig + ' que le ' + small.name + ' !');
+      const wordBig = curMeasure === 'poids_t'
+        ? MJi18n.t('mj-30', 'plusLourd', 'plus LOURD')
+        : MJi18n.t('mj-30', 'plusGrand', 'PLUS GRAND');
+      speak(MJi18n.t('mj-30', 'comparaison', 'Le {big} est {mot} que le {small} !', { big: big.name, mot: wordBig, small: small.name }));
     }
 
     // ── Révélation à l'échelle honnête ──
@@ -609,8 +619,8 @@
         const label = document.createElement('div');
         label.className = 'm-label';
         label.textContent = curMeasure === 'poids_t'
-          ? (d.poids_t >= 1 ? Math.round(d.poids_t) + ' t' : Math.round(d.poids_t*1000) + ' kg')
-          : fr(d.taille_m) + ' m';
+          ? (d.poids_t >= 1 ? Math.round(d.poids_t) + ' ' + MJi18n.t('mj-30', 'unite.tCourt', 't') : Math.round(d.poids_t*1000) + ' ' + MJi18n.t('mj-30', 'unite.kgCourt', 'kg'))
+          : fr(d.taille_m) + ' ' + MJi18n.t('mj-30', 'unite.mCourt', 'm');
         item.appendChild(label);
         ground.appendChild(item);
 
@@ -631,16 +641,16 @@
           + '<rect x="10" y="24" width="20" height="42" rx="8" fill="#ff8a3d"/>'
           + '<rect x="4" y="66" width="12" height="30" rx="5" fill="#ff8a3d"/>'
           + '<rect x="24" y="66" width="12" height="30" rx="5" fill="#ff8a3d"/>'
-          + '</svg><span class="lbl">1 m (toi)</span>';
+          + '</svg><span class="lbl">' + MJi18n.t('mj-30', 'unite.reperEnfant', '1 m (toi)') + '</span>';
         ground.appendChild(kid);
       }
 
       // TTS : énonce les vraies mesures dans l'ordre petit→grand
       const phrase = curSet.map(d => {
         const val = curMeasure === 'poids_t'
-          ? (d.poids_t >= 1 ? Math.round(d.poids_t) + ' tonnes' : Math.round(d.poids_t*1000) + ' kilos')
-          : fr(d.taille_m) + ' mètres';
-        return 'Le ' + d.name + ' : ' + val + ' !';
+          ? (d.poids_t >= 1 ? Math.round(d.poids_t) + ' ' + MJi18n.t('mj-30', 'unite.tonnes', 'tonnes') : Math.round(d.poids_t*1000) + ' ' + MJi18n.t('mj-30', 'unite.kilos', 'kilos'))
+          : fr(d.taille_m) + ' ' + MJi18n.t('mj-30', 'unite.metres', 'mètres');
+        return MJi18n.t('mj-30', 'annonceMesure', 'Le {nom} : {val} !', { nom: d.name, val: val });
       }).join(' ');
       setTimeout(() => speak(phrase), 700);
 

@@ -26,7 +26,7 @@
   <div id="app">
     <div class="hdr">
       <a href="index.html" class="back">←</a>
-      <span class="htitle">🦕 Trouve le dino</span>
+      <span class="htitle" id="htitle">🦕 Trouve le dino</span>
     </div>
     <div class="pips" id="pips"></div>
 
@@ -47,6 +47,12 @@
     // ─── MJ-24 — Trouve le dino (reconnaissance par nom, ombres chinoises par-dino) ───
     // Refonte 2026-07-05 (ordre Papa Yann) : anciennes silhouettes par-famille supprimees,
     // remplacees par les ombres chinoises canon (img/dinos/ombres/) + voix reelle <id>-nom.mp3.
+    // Titre (onglet + en-tête) traduit — le span htitle est déjà dans le HTML (emoji + FR
+    // en dur), mj-shell ne le recrée pas s'il existe déjà : on le met à jour ici.
+    document.title = 'MJ-24 – ' + MJi18n.titre('mj-24', 'Trouve le dino');
+    const htitleEl = document.getElementById('htitle');
+    if (htitleEl) htitleEl.textContent = '🦕 ' + MJi18n.titre('mj-24', 'Trouve le dino');
+
     const OMBRES = DinoOmbres.pool();
     // Especes iconiques pour le niveau 1 (tres reconnaissables pour un fan de dinos)
     const ICONIC_IDS = ['triceratops','tyrannosaurus','diplodocus','stegosaurus','spinosaurus',
@@ -69,15 +75,17 @@
     // sur 4, la consigne est dite dans une autre grande langue via le TTS
     // navigateur (nom = genre scientifique, prononcable par une voix non-FR).
     // Repli FR si la voix de la langue n'existe pas sur l'appareil.
+    // Consignes traduites via MJi18n.t('mj-24', 'phrase.N', frFallback) — chaque
+    // formulation garde son FR d'origine en repli (canon jamais perdu).
     const FR_PHRASES = [
-      'Trouve le {n} !',
-      'Où est le {n} ?',
-      'Et maintenant… le {n} !',
-      'Tu me retrouves le {n} ?',
-      'Cherche le {n} !',
-      'Montre-moi le {n} !',
-      'À toi de jouer : le {n} !',
-      'Vite, trouve le {n} !'
+      MJi18n.t('mj-24', 'phrase.0', 'Trouve le {n} !'),
+      MJi18n.t('mj-24', 'phrase.1', 'Où est le {n} ?'),
+      MJi18n.t('mj-24', 'phrase.2', 'Et maintenant… le {n} !'),
+      MJi18n.t('mj-24', 'phrase.3', 'Tu me retrouves le {n} ?'),
+      MJi18n.t('mj-24', 'phrase.4', 'Cherche le {n} !'),
+      MJi18n.t('mj-24', 'phrase.5', 'Montre-moi le {n} !'),
+      MJi18n.t('mj-24', 'phrase.6', 'À toi de jouer : le {n} !'),
+      MJi18n.t('mj-24', 'phrase.7', 'Vite, trouve le {n} !')
     ];
     const I18N_PHRASES = [
       { bcp47: 'en-US', t: 'Find the {n}!' },
@@ -133,7 +141,7 @@
     }
 
     const shell = MJ.init({
-      id: 'mj-24', emoji: '🦕', titre: 'Trouve le dino',
+      id: 'mj-24', emoji: '🦕', titre: MJi18n.titre('mj-24', 'Trouve le dino'),
       consigne: true,
       onRepeat: function () { sayFr(); }, // réécouter = TOUJOURS la langue originale (FR)
       regle: {

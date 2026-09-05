@@ -162,8 +162,10 @@
     wrap.addEventListener('mousemove', (e) => { if (dragging) onPointerMove(e); });
     window.addEventListener('mouseup', () => { dragging = false; });
 
+    document.title = 'MJ-28 – ' + MJi18n.titre('mj-28', 'La lampe du dino');
+
     const shell = MJ.init({
-      id: 'mj-28', emoji: '🔦', titre: 'La lampe du dino',
+      id: 'mj-28', emoji: '🔦', titre: MJi18n.titre('mj-28', 'La lampe du dino'),
       golden: true,
       consigne: true,
       regle: {
@@ -212,7 +214,7 @@
       document.getElementById('digColor').src = 'img/dinos/paleoart/' + target.png;
       document.getElementById('fait').textContent = '';
 
-      shell.setConsigne('Quel dino se cache dans le noir ?');
+      shell.setConsigne(MJi18n.t('mj-28', 'consigne', 'Quel dino se cache dans le noir ?'));
 
       const box = document.getElementById('choices');
       box.style.gridTemplateColumns = 'repeat(' + Math.min(opts.length, 2) + ', 1fr)';
@@ -255,7 +257,7 @@
       } else {
         btn.classList.add('ko'); btn.disabled = true; streak = 0;
         sndBuzz();
-        speak('Essaie encore !');
+        speak(MJi18n.t('mj-28', 'essaieEncore', 'Essaie encore !'));
       }
     }
 
@@ -264,7 +266,7 @@
       sndDing();
       document.getElementById('fait').textContent = dino.fait || '';
       stopCurrentFait();
-      speak('Bravo ! C’est le ' + dino.name + ' !');
+      speak(MJi18n.t('mj-28', 'bravoNom', 'Bravo ! C’est le {nom} !', { nom: dino.name }));
       if (dino.fait) {
         currentFaitAudio = playDinoFunfact(dino.id, dino.fait);
       }

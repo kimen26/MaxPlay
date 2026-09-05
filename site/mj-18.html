@@ -138,14 +138,14 @@
   <div id="app">
     <div class="hdr">
       <a href="index.html" class="back">←</a>
-      <span class="htitle">🧪 Tubes de couleurs</span>
+      <span class="htitle" id="htitle">🧪 Tubes de couleurs</span>
     </div>
     <div class="info" id="info">Tape un tube, puis tape un autre pour verser !</div>
     <div class="stage" id="stage"></div>
     <div class="controls">
-      <span style="color:#fff;font-weight:900;font-size:1rem;padding:0 4px;">Niveau <span id="lvlVal">1</span> · 🧪 <span id="tubeCountVal">4</span> couleurs</span>
-      <button class="btn" onclick="resetSameColors()">🔄 Remélanger</button>
-      <button class="btn" onclick="newGame()">🎲 Nouveau</button>
+      <span style="color:#fff;font-weight:900;font-size:1rem;padding:0 4px;" id="levelLine">Niveau <span id="lvlVal">1</span> · 🧪 <span id="tubeCountVal">4</span> couleurs</span>
+      <button class="btn" id="remelangerBtn" onclick="resetSameColors()">🔄 Remélanger</button>
+      <button class="btn" id="nouveauBtn" onclick="newGame()">🎲 Nouveau</button>
     </div>
   </div>
 
@@ -156,8 +156,15 @@
   <script src="js/mj-shell.js"></script>
   <script>
   MJ.ready(function () {
+    document.title = 'MJ-18 — ' + MJi18n.titre('mj-18', 'Tubes de couleurs');
+    const htitleEl18 = document.getElementById('htitle');
+    if (htitleEl18) htitleEl18.textContent = '🧪 ' + MJi18n.titre('mj-18', 'Tubes de couleurs');
+    document.getElementById('info').textContent = MJi18n.t('mj-18', 'tapeUnTube', 'Tape un tube, puis tape un autre pour verser !');
+    document.getElementById('remelangerBtn').textContent = '🔄 ' + MJi18n.t('mj-18', 'remelanger', 'Remélanger');
+    document.getElementById('nouveauBtn').textContent = '🎲 ' + MJi18n.t('mj-18', 'nouveau', 'Nouveau');
+
     const shell = MJ.init({
-      id: 'mj-18', emoji: '🧪', titre: 'Tubes de couleurs',
+      id: 'mj-18', emoji: '🧪', titre: MJi18n.titre('mj-18', 'Tubes de couleurs'),
       golden: true,
       consigne: false, // jeu de manipulation continue (puzzle water-sort), pas de consigne parlée
       regle: {
@@ -202,7 +209,13 @@
       return assets[keys[Math.floor(Math.random() * keys.length)]].paleoart.coloriage;
     }
 
+    // Reconstruit la ligne "Niveau X · 🧪 Y couleurs" avec les mots traduits, en gardant
+    // les 2 valeurs dynamiques dans des <span id> (jamais de concat fige les valeurs).
     function updateCountDisplay() {
+      const line = document.getElementById('levelLine');
+      if (line) {
+        line.innerHTML = MJi18n.t('mj-18', 'niveauLabel', 'Niveau') + ' <span id="lvlVal"></span> · 🧪 <span id="tubeCountVal"></span> ' + MJi18n.t('mj-18', 'couleursLabel', 'couleurs');
+      }
       const tv = document.getElementById('tubeCountVal'); if (tv) tv.textContent = colorCount;
       const lv = document.getElementById('lvlVal'); if (lv) lv.textContent = level + 1;
     }
@@ -382,8 +395,8 @@
       const stage = document.getElementById('stage');
       stage.innerHTML =
         '<div class="paint-wrap">' +
-          '<div class="paint-title">Bravo !</div>' +
-          '<div class="paint-text">Tu as trié toutes les couleurs ! Regarde les bus repeints :</div>' +
+          '<div class="paint-title">' + MJi18n.t('mj-18', 'bravo', 'Bravo !') + '</div>' +
+          '<div class="paint-text">' + MJi18n.t('mj-18', 'tuAsTrie', 'Tu as trié toutes les couleurs ! Regarde les bus repeints :') + '</div>' +
           '<div class="paint-scene" id="paintScene"></div>' +
           '<div class="dino-color-wrap" id="dinoColorWrap" style="display:none;">' +
             '<div class="dino-color-fill" id="dinoColorFill"></div>' +
@@ -412,7 +425,7 @@
         fill.style.clipPath = 'inset(0 100% 0 0)';
         wrap.style.display = '';
         caption.style.display = '';
-        caption.textContent = 'Le dino se colorie avec toi !';
+        caption.textContent = MJi18n.t('mj-18', 'leDinoSeColorie', 'Le dino se colorie avec toi !');
       } else {
         wrap.style.display = 'none';
         caption.style.display = 'none';

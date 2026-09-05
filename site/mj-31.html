@@ -55,7 +55,7 @@
   <div id="app">
     <div class="hdr">
       <a href="index.html" class="back">←</a>
-      <span class="htitle">🌋 Le grand voyage du temps</span>
+      <span class="htitle" id="htitle">🌋 Le grand voyage du temps</span>
     </div>
     <div class="pips" id="pips"></div>
 
@@ -78,8 +78,12 @@
   <script>
   MJ.ready(function () {
     // ─── MJ-31 — Le grand voyage du temps (dino → bonne bande d'époque) ───
+    document.title = 'MJ-31 – ' + MJi18n.titre('mj-31', 'Le voyage du temps');
+    const htitleEl31 = document.getElementById('htitle');
+    if (htitleEl31) htitleEl31.textContent = '🌋 ' + MJi18n.t('mj-31', 'htitreLong', 'Le grand voyage du temps');
+
     const shell = MJ.init({
-      id: 'mj-31', emoji: '🌋', titre: 'Le voyage du temps',
+      id: 'mj-31', emoji: '🌋', titre: MJi18n.titre('mj-31', 'Le voyage du temps'),
       golden: true,
       consigne: true,
       onRepeat: function () { announceTarget(); },
@@ -102,13 +106,22 @@
     const MAX_Q = G.totalQ;
     const level = G.level;
 
-    // Bandes d'époque (ordre chronologique, la plus ancienne en haut)
+    // Bandes d'époque (ordre chronologique, la plus ancienne en haut). Le label de
+    // chaque bande vient de DINO_PERIODES[].label (déjà i18n via dinos-i18n.js, brief
+    // HO-MJ-03 : ne pas dupliquer un texte déjà traduit ailleurs) — sauf "permien" et
+    // "cenozoique" qui portent ici un libellé PÉDAGOGIQUE propre à ce jeu (« Avant les
+    // dinosaures » / « Après la météorite »), différent du label DINO_PERIODES générique
+    // ("Permien"/"Cénozoïque") : ceux-ci restent des clés MJi18n locales.
+    function periodeLabel(id, frFallback){
+      var p = (typeof DINO_PERIODES !== 'undefined' ? DINO_PERIODES : window.DINO_PERIODES || []).find(x => x.id === id);
+      return (p && p.label) || frFallback;
+    }
     const BANDS_BASE = [
-      { id:'permien',     emoji:'🟣', label:'Avant les dinosaures', date:'il y a 280 millions d’années', cls:'band-permien' },
-      { id:'trias',       emoji:'🟤', label:'Trias',                date:'il y a 230 millions d’années', cls:'band-trias' },
-      { id:'jurassique',  emoji:'🟢', label:'Jurassique',           date:'il y a 150 millions d’années', cls:'band-jurassique' },
-      { id:'cretace',     emoji:'🟠', label:'Crétacé',              date:'il y a 66 à 100 millions d’années', cls:'band-cretace' },
-      { id:'cenozoique',  emoji:'🔵', label:'Après la météorite',   date:'après 66 millions d’années', cls:'band-cenozoique' },
+      { id:'permien',     emoji:'🟣', label: MJi18n.t('mj-31', 'bande.permien', 'Avant les dinosaures'), date: MJi18n.t('mj-31', 'date.permien', 'il y a 280 millions d’années'), cls:'band-permien' },
+      { id:'trias',       emoji:'🟤', label: periodeLabel('trias', 'Trias'),                date: MJi18n.t('mj-31', 'date.trias', 'il y a 230 millions d’années'), cls:'band-trias' },
+      { id:'jurassique',  emoji:'🟢', label: periodeLabel('jurassique', 'Jurassique'),       date: MJi18n.t('mj-31', 'date.jurassique', 'il y a 150 millions d’années'), cls:'band-jurassique' },
+      { id:'cretace',     emoji:'🟠', label: periodeLabel('cretace', 'Crétacé'),             date: MJi18n.t('mj-31', 'date.cretace', 'il y a 66 à 100 millions d’années'), cls:'band-cretace' },
+      { id:'cenozoique',  emoji:'🔵', label: MJi18n.t('mj-31', 'bande.cenozoique', 'Après la météorite'), date: MJi18n.t('mj-31', 'date.cenozoique', 'après 66 millions d’années'), cls:'band-cenozoique' },
     ];
     // Toutes les bandes dès le niveau 1, dont « Avant les dinosaures » (permien)
     // — demande PY 2026-08-10 : « il manque le "avant les dinos" ».
@@ -220,7 +233,10 @@
     function announceTarget(){
       if (!targetDino) return;
       playEl(window.AUDIO_DINOS + '' + targetDino.id + '-nom.mp3', targetDino.name + ' !', () => {
-        playEl('sounds/voix/phrases/il-vivait-quand.mp3', 'Il vivait quand ?');
+        // sons/voix/phrases/il-vivait-quand.mp3 = voix FR pré-enregistrée, hors périmètre
+        // HO-MJ-03 (consignes parlées MP3) : reste en FR même en EN. Seul le texte de
+        // repli TTS (si le MP3 est absent) est traduit ici.
+        playEl('sounds/voix/phrases/il-vivait-quand.mp3', MJi18n.t('mj-31', 'ilVivaitQuand', 'Il vivait quand ?'));
       });
     }
 
@@ -235,7 +251,7 @@
 
       targetDino = pickTarget();
 
-      shell.setConsigne('Il vivait quand ?', false); // l'audio custom (announceTarget) suit
+      shell.setConsigne(MJi18n.t('mj-31', 'ilVivaitQuand', 'Il vivait quand ?'), false); // l'audio custom (announceTarget) suit
       document.getElementById('dinoName').textContent = targetDino.name;
       document.getElementById('dinoCard').innerHTML = '<img src="' + ombreSrc(targetDino) + '" alt="">';
       announceTarget();

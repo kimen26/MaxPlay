@@ -82,3 +82,65 @@ Porte : `node studio/dino/content/scripts/export/_check-traduction.cjs en` -> 0 
 4 avertissements residuels (mismatch de comptage de chiffres du checker sur therizinosaurus
 50->20 et smilodon "vingt"->8, consequence normale de la conversion d'unite, pas des
 warnings "metrique non converti" ni "conversion non arrondie" — aucun des deux ne remonte).
+
+## Recroisement HO-010 (2026-09-05) — I18N-STRINGS-RECROISER
+
+Le canon FR (`site/js/dinos-data.js`) a change sur 89 champs le 2026-09-05 (audit HO-009/010,
+rapport `studio/dino/docs/handoffs/rapports/HO-010-champs-modifies.json`). 45 de ces champs
+sont TEXTE/comparaison (les autres sont `vitesse_kmh`, un champ numerique nouveau, hors
+perimetre ici). `strings.json` datait d'avant HO-010 et disait encore l'ancien contenu sur
+ces 45 champs — corrige un a un, en reutilisant en priorite la formulation deja ecrite par
+le traducteur EN dans `content/scripts-audio/en/<id>.md` (deja localisee, memes reperes
+d'echelle valides) plutot que de re-traduire a la main.
+
+Champs mis a jour (id · champ · logique du fix) :
+
+| id | champ | fix |
+|---|---|---|
+| spinosaurus | fait | "could stand 7 feet tall" -> "could stand almost 7 feet tall" (FR ajoute "près de") |
+| giganotosaurus | comp_hauteur | bucket redescendu (hauteur_m 4->3.3m) : "double-decker bus" -> "two Dads standing on each other's shoulders" |
+| giganotosaurus | proies | Argentinosaurus (anachronisme retire) -> Andesaurus |
+| allosaurus | comp_hauteur | bucket remonte (hauteur_m 3.5->4m) : "two Dads..." -> "double-decker bus" |
+| allosaurus | continent | "North America" -> "North America / Europe" |
+| ceratosaurus | region | ajout hedge Portugal : "North America (and maybe Europe, in Portugal)" |
+| ceratosaurus | comp_poids | bucket remonte (poids_t 0.7->0.9t) : "as heavy as a cow!" -> "as heavy as a small car!" |
+| carnotaurus | superpower | vitesse structuree (52 km/h, pas le 56 du texte FR) : "up to 35 mph" -> "up to 32 miles an hour, as fast as a car in the city!" |
+| brachiosaurus | region | ajout etats : "North America (Colorado, Wyoming, Utah)" |
+| diplodocus | fait | claim "sonic boom" adouci en hypothese scientifique hedgee ("scientists think... as loud as thunder") |
+| amargasaurus | region | ajout pays : "South America (Argentina)" |
+| plateosaurus | region | ajout pays : "Europe (Germany, France, Switzerland)" |
+| euoplocephalus | region | "Canada" -> "Alberta, Canada" |
+| edmontonia | comp_hauteur | bucket remonte (hauteur_m 1.5->2m) : "car — look up!" -> "as tall as a door!" |
+| scelidosaurus | chasseurs | Dracoraptor retire (anachronisme) -> "small two-legged hunters" generique |
+| kentrosaurus | comp_hauteur | bucket remonte (hauteur_m 1.5->1.8m) : "car — look up!" -> "as tall as Dad standing up!" |
+| pachycephalosaurus | fait | claim tete-a-tete affirmee -> hedgee ("scientists think it may have...") |
+| utahraptor | comp_poids | bucket redescendu (poids_t 0.5->0.425t) : "as heavy as a horse!" -> "as heavy as 2 lions!" |
+| gallimimus | superpower, fait | vitesse re-auditee 70->50 km/h (mythe corrige) : "45 mph" -> "31 miles an hour, as fast as a car in the city" |
+| archaeopteryx | desc | "ancestor of all birds" (perime) -> "one of the very first birds... today's birds are its cousins" |
+| mosasaurus | continent | "Europe" -> "" (FR vidé, aucun continent unique pertinent pour un animal pan-oceanique) |
+| baryonyx | region | ajout pays : "Europe (England, Spain, Portugal)" |
+| lystrosaurus | region | ajout pays : "..., Russia, Mongolia" |
+| ophthalmosaurus | epoque | "160 million years ago" -> "150 million years ago" |
+| archelon | comp_taille | bucket redescendu (taille_m 4.6->4m, figure "Brigitta" retiree) : "big SUV" -> "small car" |
+| archelon | fait | anecdote "Brigitta" retiree -> carapace en cuir + vitesse de nage (repris du `desc`) |
+| shonisaurus | chasseurs | Cymbospondylus retire (anachronisme) -> "no known predator once grown" |
+| patagotitan | chasseurs, desc | Giganotosaurus/Mapusaurus en meute retire (non contemporains) -> absence de traces de morsure |
+| centrosaurus | comp_poids | bucket redescendu (poids_t 2.5->1.8t) : "5 horses" -> "a rhino" |
+| ichthyosaurus | chasseurs | Liopleurodon retire (anachronisme, 30-40 Ma d'ecart) -> Rhomaleosaurus |
+| mammuthus | chasseurs | "cave lions" (non sourcé) retire -> humains prehistoriques seuls |
+| smilodon | comp_poids | bucket redescendu (poids_t 0.25->0.22t) : "as heavy as a tiger!" -> "as heavy as a lion!" |
+| megatherium | fait | precision "sur ses pattes arrière" ajoutee (pas de nouveau chiffre : le "4 metres" vu dans une version intermediaire du rapport HO-010 n'est plus dans le FR deploye au moment du fix — verifie contre `dinos-data.js` directement) |
+| paraceratherium | region | ajout pays : "Asia (Pakistan, China, Mongolia)" |
+| glyptodon | comp_taille | bucket redescendu (taille_m 3.3->3m) : "small car" -> "three 4-year-olds lying end to end" |
+| glyptodon | fait | massue caudale ré-attribuee au cousin Doedicurus, pas a Glyptodon lui-meme |
+| coelodonta | epoque | "100,000 years ago" -> "50,000 years ago" |
+| coelodonta | comp_hauteur | bucket redescendu (hauteur_m 1.9->1.5m) : "front door" -> "car — look up!" |
+| coelodonta | comp_poids | bucket redescendu (poids_t 2.5->1.75t) : "5 horses" -> "small car and a cow put together" |
+| titanis | comp_poids | bucket redescendu (poids_t 0.3->0.15t) : "2 donkeys" -> "a donkey" |
+
+Pentaceratops.region ("United States") et pentaceratops.fait, triceratops.fait, protoceratops.comp_hauteur
+verifies deja a jour (pas de fix necessaire — la formulation existante correspondait deja au FR post-HO-010,
+confirme contre les scripts audio EN correspondants).
+
+Portes : `node -e "JSON.parse(...)"` -> JSON valide. `node .../\_check-traduction.cjs en` -> 0 erreurs,
+4 avertissements (therizinosaurus x3 + smilodon.fait, pattern deja documente ci-dessus, non lies a ce fix).

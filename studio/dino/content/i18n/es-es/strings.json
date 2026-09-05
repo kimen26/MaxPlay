@@ -1375,23 +1375,28 @@
  "periodes": {
   "permien": {
    "label": "Pérmico",
-   "desc": "Antes de los dinosaurios"
+   "desc": "Antes de los dinosaurios",
+   "range": "280 Ma"
   },
   "trias": {
    "label": "Triásico",
-   "desc": "Los primeros dinosaurios"
+   "desc": "Los primeros dinosaurios",
+   "range": "252 – 201 Ma"
   },
   "jurassique": {
    "label": "Jurásico",
-   "desc": "Los gigantes saurópodos"
+   "desc": "Los gigantes saurópodos",
+   "range": "201 – 145 Ma"
   },
   "cretace": {
    "label": "Cretácico",
-   "desc": "El reinado del T-Rex"
+   "desc": "El reinado del T-Rex",
+   "range": "145 – 66 Ma"
   },
   "cenozoique": {
    "label": "Cenozoico",
-   "desc": "Después de los dinosaurios: los mamíferos"
+   "desc": "Después de los dinosaurios: los mamíferos",
+   "range": "66 Ma – hoy"
   }
  },
  "categories": {
@@ -1406,6 +1411,376 @@
   },
   "omnivores": {
    "label": "Omnívoros"
+  }
+ },
+ "racines": {
+  "-saure": {
+   "sens": "lagarto"
+  },
+  "-odon": {
+   "sens": "diente"
+  },
+  "-lophe": {
+   "sens": "cresta"
+  },
+  "-ops": {
+   "sens": "cara, rostro"
+  },
+  "-raptor": {
+   "sens": "ladrón, el que roba"
+  },
+  "cérat-": {
+   "sens": "cuerno"
+  },
+  "para-": {
+   "sens": "al lado de"
+  },
+  "-céphale": {
+   "sens": "cabeza"
+  },
+  "-mime": {
+   "sens": "que imita"
+  },
+  "-onyx": {
+   "sens": "garra"
+  },
+  "-pteryx / pterux": {
+   "sens": "ala"
+  },
+  "-thérium / thèrion": {
+   "sens": "bestia, animal salvaje"
+  },
+  "coelo- / koilos": {
+   "sens": "hueco"
+  },
+  "di-": {
+   "sens": "dos"
+  },
+  "-a-": {
+   "sens": "sin"
+  },
+  "-cantho-": {
+   "sens": "espina, púa"
+  },
+  "-céras- / keras": {
+   "sens": "cuerno"
+  },
+  "-cyon / kuôn": {
+   "sens": "perro"
+  },
+  "-docus / dokos": {
+   "sens": "viga"
+  },
+  "-elon / khelônè": {
+   "sens": "tortuga"
+  },
+  "-gnathus / gnathos": {
+   "sens": "mandíbula"
+  },
+  "-ia": {
+   "sens": "terminación latina que dice \"el de\""
+  },
+  "-metro- / metron": {
+   "sens": "medida, tamaño"
+  },
+  "-odonta / odous": {
+   "sens": "diente"
+  },
+  "-oplo-": {
+   "sens": "arma, armadura"
+  },
+  "-physis": {
+   "sens": "forma, naturaleza"
+  },
+  "-pleuro- / pleura": {
+   "sens": "lado, costado"
+  },
+  "-taurus": {
+   "sens": "toro"
+  },
+  "-titan / Titan": {
+   "sens": "los Titanes, gigantes de las viejas historias griegas"
+  },
+  "-us": {
+   "sens": "terminación latina de género"
+  },
+  "-vertebra": {
+   "sens": "vértebra"
+  },
+  "acro-": {
+   "sens": "arriba del todo, lo más alto"
+  },
+  "aeno- / ainos": {
+   "sens": "terrible, temible"
+  },
+  "Alberto-": {
+   "sens": "Alberta, región de Canadá donde se encontró"
+  },
+  "allo-": {
+   "sens": "otro, diferente"
+  },
+  "Amarga-": {
+   "sens": "\"La Amarga\", lugar de Argentina donde se descubrió"
+  },
+  "an-": {
+   "sens": "sin"
+  },
+  "anky- / ankylo-": {
+   "sens": "curvado, soldado, rígido"
+  },
+  "apato-": {
+   "sens": "engaño, ilusión"
+  },
+  "arch- / arkhè": {
+   "sens": "jefe, primero"
+  },
+  "archaeo- / arkhaios": {
+   "sens": "antiguo, del principio"
+  },
+  "bary- / barus": {
+   "sens": "pesado"
+  },
+  "brachio-": {
+   "sens": "brazo"
+  },
+  "camara-": {
+   "sens": "cámara, sala abovedada"
+  },
+  "carcharo-": {
+   "sens": "afilado, cortante"
+  },
+  "carno-": {
+   "sens": "carne"
+  },
+  "compso- / kompsos": {
+   "sens": "elegante, bonito, delicado"
+  },
+  "corytho- / korus": {
+   "sens": "casco"
+  },
+  "cryo-": {
+   "sens": "hielo, frío"
+  },
+  "deino- / deinos": {
+   "sens": "terrible, espantoso"
+  },
+  "diplo-": {
+   "sens": "doble"
+  },
+  "édapho- / edaphos": {
+   "sens": "el suelo, la losa, la piedra plana"
+  },
+  "Edmonto-": {
+   "sens": "Edmonton, ciudad de Canadá"
+  },
+  "Edmonton-": {
+   "sens": "la formación de Edmonton (hoy Horseshoe Canyon), en Alberta, Canadá, donde se hallaron sus huesos"
+  },
+  "élasmo- / elasmos": {
+   "sens": "placa de metal fina, chapa"
+  },
+  "eu-": {
+   "sens": "bien"
+  },
+  "galli-": {
+   "sens": "gallo, gallina"
+  },
+  "giga- / gigas": {
+   "sens": "gigante"
+  },
+  "glypto- / glyptos": {
+   "sens": "esculpido, grabado"
+  },
+  "gorgo-": {
+   "sens": "feroz, terrible"
+  },
+  "gorgon-": {
+   "sens": "la Gorgona, monstruo de las viejas historias griegas con un rostro aterrador"
+  },
+  "Hatzego-": {
+   "sens": "Hațeg, región de Rumanía (una isla en la época de los dinosaurios) donde se hallaron sus huesos"
+  },
+  "ichthyo- / ikhthus": {
+   "sens": "pez"
+  },
+  "iguano-": {
+   "sens": "iguana"
+  },
+  "kentro- / kentron": {
+   "sens": "punta, aguijón"
+  },
+  "lio- / leios": {
+   "sens": "liso"
+  },
+  "lystro- / lystron": {
+   "sens": "la pala, la azada"
+  },
+  "maia-": {
+   "sens": "buena madre, nodriza"
+  },
+  "Mammuth-": {
+   "sens": "NO viene del griego ni del latín: viene del ruso *mamont*, y este a su vez de una lengua de Siberia (mansi) que significa \"cuerno de la tierra\" — los colmillos hallados en la tierra helada se confundían con cuernos"
+  },
+  "méga- / megas": {
+   "sens": "grande"
+  },
+  "micro- / mikros": {
+   "sens": "pequeño"
+  },
+  "Minmi": {
+   "sens": "NO es una raíz griega ni latina: es el nombre de un lugar, *Minmi Crossing* (Queensland, Australia), donde se hallaron los huesos"
+  },
+  "Mosa-": {
+   "sens": "el Mosa, río de Europa"
+  },
+  "moscho- / moschos": {
+   "sens": "el ternero, la cría de vaca"
+  },
+  "noto-": {
+   "sens": "del sur"
+  },
+  "ophthalmo- / ophthalmos": {
+   "sens": "ojo"
+  },
+  "ovi-": {
+   "sens": "huevo"
+  },
+  "pachy- / pakhus": {
+   "sens": "grueso"
+  },
+  "Patago-": {
+   "sens": "la Patagonia, región de Argentina donde se hallaron sus huesos"
+  },
+  "plateo-": {
+   "sens": "ancho, plano"
+  },
+  "proto-": {
+   "sens": "primero"
+  },
+  "psittaco- / psittakos": {
+   "sens": "loro"
+  },
+  "ptér- / pteron": {
+   "sens": "ala"
+  },
+  "Quetzalcoatl-": {
+   "sens": "Quetzalcóatl, dios serpiente emplumada de los aztecas"
+  },
+  "rex": {
+   "sens": "rey"
+  },
+  "scélido- / skelis": {
+   "sens": "costilla de buey"
+  },
+  "scutello- / scutellum": {
+   "sens": "escudo pequeño"
+  },
+  "Shoni-": {
+   "sens": "los montes Shoshone (Nevada, Estados Unidos), donde se hallaron sus huesos"
+  },
+  "smilo- / smilè": {
+   "sens": "cuchillo, hoja"
+  },
+  "spino-": {
+   "sens": "espina"
+  },
+  "stégo- / stegos": {
+   "sens": "tejado"
+  },
+  "styraco- / sturax": {
+   "sens": "punta (de lanza), pica"
+  },
+  "sucho- / soukhos": {
+   "sens": "cocodrilo"
+  },
+  "tarbo-": {
+   "sens": "el miedo, el espanto"
+  },
+  "therizino- / therizo": {
+   "sens": "segar, cortar"
+  },
+  "Titanis": {
+   "sens": "los Titanes, gigantes de las viejas historias griegas"
+  },
+  "tri-": {
+   "sens": "tres"
+  },
+  "troo- / titrosko": {
+   "sens": "herir, el que hiere"
+  },
+  "tyrannos-": {
+   "sens": "rey que lo manda todo, tirano"
+  },
+  "Utah-": {
+   "sens": "Utah, estado de Estados Unidos donde se encontró"
+  },
+  "veloci-": {
+   "sens": "rápido"
+  }
+ },
+ "pangee": {
+  "titre": "La Pangea",
+  "soustitre": "¡Cuando todos los continentes estaban pegados!",
+  "intro": "Antes de los dinosaurios, todos los continentes de la Tierra estaban pegados en un solo trozo gigante. Lo llamamos la Pangea. Se podía caminar desde África hasta América sin necesitar un barco.",
+  "credit": "Mapas: C. Scotese / PALEOMAP — Wikimedia Commons, CC BY 4.0",
+  "fun_fact": "¡Los continentes se siguen moviendo hoy! Pero muy muy despacio: casi a la misma velocidad a la que te crecen las uñas.",
+  "pourquoi": "Por eso el Criolofosaurio vivía en la Antártida: en esa época allí hacía calor, ¡y estaba pegada a las demás tierras!",
+  "etapes": {
+   "trias": {
+    "label": "Triásico",
+    "ma": "hace 250 millones de años",
+    "titre": "Todo está pegado",
+    "texte": "En la época de los primeros dinosaurios, toda la tierra formaba un solo supercontinente: la Pangea. Hacía mucho calor y mucha sequedad en todas partes."
+   },
+   "jurassique": {
+    "label": "Jurásico",
+    "ma": "hace 155 millones de años",
+    "titre": "Empieza a partirse",
+    "texte": "La Pangea se rompe poco a poco en dos grandes trozos. Se abre un océano enorme en medio. Los dinosaurios de cada lado ya no se pueden ver."
+   },
+   "cretace": {
+    "label": "Cretácico",
+    "ma": "hace 85 millones de años",
+    "titre": "Se sigue separando",
+    "texte": "Los continentes siguen deslizándose muy despacio, como balsas gigantes. Esto empieza a parecerse a la Tierra de hoy."
+   },
+   "present": {
+    "label": "Hoy",
+    "ma": "ahora mismo",
+    "titre": "La Tierra que conocemos",
+    "texte": "Después de millones de años, los continentes llegaron a donde están hoy. Y todavía se mueven... muy despacio."
+   }
+  }
+ },
+ "extinction": {
+  "titre": "La Gran Extinción",
+  "soustitre": "Hace 66 millones de años...",
+  "fun_fact": "¡Las aves son verdaderos dinosaurios! Cada vez que ves una paloma, estás viendo un dinosaurio.",
+  "hypotheses": {
+   "meteorite": {
+    "titre": "El meteorito gigante",
+    "texte": "Una roca de 10 km caída del cielo se estrella en lo que hoy es México. La explosión es 10 mil millones de veces más potente que una bomba atómica. Todo arde en miles de kilómetros a la redonda. ¡Es la teoría más probable!",
+    "label_certitude": "Muy probable"
+   },
+   "volcan": {
+    "titre": "Los supervolcanes",
+    "texte": "En la India, volcanes gigantescos escupen lava y gases durante miles de años. El humo envenena el aire y calienta la Tierra. ¡Los volcanes del Decán cubrieron de lava la mitad de la India!",
+    "label_certitude": "Muy plausible"
+   },
+   "cendres": {
+    "titre": "La nube de cenizas",
+    "texte": "Después del impacto del meteorito, una nube de polvo y cenizas tapa el sol durante meses... ¡puede que durante años! Sin sol, las plantas mueren. Sin plantas, mueren los herbívoros. Sin herbívoros, mueren los carnívoros.",
+    "label_certitude": "Casi seguro"
+   },
+   "froid": {
+    "titre": "El invierno nuclear",
+    "texte": "La Tierra se hunde en la oscuridad y el frío. La temperatura baja entre 10 y 20 grados en todas partes. Las plantas tropicales mueren. Los océanos se enfrían. ¡Es un invierno que dura años!",
+    "label_certitude": "Muy probable"
+   },
+   "survivants": {
+    "titre": "¿Y los supervivientes?",
+    "texte": "Los animales pequeños que comían semillas y podían esconderse sobreviven. Las aves —¡verdaderos dinosaurios!— logran pasar. Los cocodrilos, las tortugas y los lagartos resisten. La vida vuelve a empezar... y millones de años después, ¡llegan los humanos!"
+   }
   }
  },
  "eres": {

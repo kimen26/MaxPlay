@@ -43,6 +43,11 @@
 
   function init(opts) {
     opts = opts || {};
+    // Surcouche i18n (HO-MJ-02) : mj-i18n.js fusionne la traduction de la langue active
+    // par-dessus une COPIE de opts — le FR d'origine (canon dans le HTML) n'est jamais
+    // muté. Absence de mj-i18n.js (page pas encore migrée) ou de traduction pour ce jeu
+    // -> repli sur opts tel quel, comportement strictement inchangé.
+    if (window.MJi18n && MJi18n.regle) opts = MJi18n.regle(gameId(), opts);
     var texte = opts.texte || '';
     var etapes = (opts.etapes || []).map(function (e) {
       return (typeof e === 'string') ? { t: e, d: '' } : e;

@@ -23,6 +23,14 @@ GitHub Pages → kimen26.github.io/MaxPlay/
 - `studio/minijeux/docs/` = specs/audit/recherche (.md)
 - `_site/` dans `.gitignore`
 
+## i18n panneau règle (HO-MJ-02, 2026-09-05)
+
+Plomberie calquée sur le dino : `site/js/lang.js` → `studio/minijeux/i18n/<lang>/strings.json`
+(source, généré depuis le FR par `_extract-mj-regles.mjs`) → pack `site/js/i18n/mj-strings.<lang>.js`
+(généré) → surcouche `site/js/mj-i18n.js` fusionnée dans `RegleInfo.init` (`regle-info.js`).
+FR reste le canon en dur dans les 36 `mj-XX.html` ; injection zéro-HTML via `mj-shell.js` (SCRIPTS).
+Outils : `studio/minijeux/tools/_extract-mj-regles.mjs` / `_check-mj-traduction.cjs` / `_gen-mj-strings-bundle.cjs`.
+
 ## Règle critique bus
 
 **Toujours** utiliser `busSVG()` / `busSVGHiddenNum()` de `site/js/bus-svg.js`.

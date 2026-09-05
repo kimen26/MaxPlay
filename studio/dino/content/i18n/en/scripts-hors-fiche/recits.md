@@ -220,3 +220,129 @@
 **WEX** [excited] [curious] : What?
 **NARRATRICE** [happily] [excited] : The very first dinosaurs!
 
+### recit-naissance-terre
+
+```
+**NARRATRICE** [happily] : Listen, Wex! Today [excited] we go all the way back to the very beginning. Before Earth even existed.
+
+**WEX** [curious] : Before Earth? So what was there instead?
+
+**NARRATRICE** [playful][calm] : A cloud. A huge cloud of dust and gas, spinning around the Sun, [softly] which was brand new too.
+
+**WEX** [amazed] : A cloud… can that turn into a planet?
+
+**NARRATRICE** [warmly] : It sure can. Little by little, all those grains of dust stuck together. [serious] Gravity did that: an invisible force [calm] that pulls everything toward the center.
+
+**NARRATRICE** [excited] : The ball grew, and grew, and grew. [pauses] And deep inside, the heaviest metals sank all the way down: they formed the core, [amazed] Earth's burning-hot heart.
+
+**WEX** [curious] : Does that time have a name?
+
+**NARRATRICE** [serious][calm] : We call it the Hadean. [softly] It comes from Hades, the Greek god of the underworld, [calm] because Earth looked like a lava-filled underworld.
+
+**WEX** [gasps] : Was there already water, at least?
+
+**NARRATRICE** [sad] : Not yet. It was much too hot for that: [softly] volcanoes everywhere, and lava as far as you could see.
+
+**NARRATRICE** [calm] : But Earth finally cooled down. [pauses] Slowly, over millions of years.
+
+**WEX** [amazed] : And then?
+
+**NARRATRICE** [happily][excited] : Then it started to rain! [gasps] A huge rain, falling for a very very long time, filled up Earth's low places.
+
+**NARRATRICE** [warmly] : That is how the very first oceans were born. [pauses] And it's in that water, Wex, [amazed] that the greatest adventure was about to begin.
+```
+
+### recit-vie-dans-eau
+
+```
+**NARRATRICE** [happily] : Listen to what's next, Wex: the very first oceans have just been born. [curious] And guess what shows up inside them...
+
+**WEX** [curious] : Fish?
+
+**NARRATRICE** [chuckles][playful] : Not yet! Long before fish, [softly] tiny beings, invisible to the eye: bacteria. [calm] The very first living things on Earth.
+
+**WEX** [amazed] : How tiny?
+
+**NARRATRICE** [softly] : So tiny that thousands could fit on the tip of a pencil. [pauses] And among them, some are special: cyanobacteria.
+
+**WEX** [curious] : What makes them special?
+
+**NARRATRICE** [excited][calm] : They breathe in sunlight! [gasps] They turn it into food, and while making their food, they release something precious: oxygen, the air we breathe.
+
+**NARRATRICE** [amazed] : Over hundreds of millions of years, they make so much of it that Earth's air changes completely. [serious] Scientists call this the Great Oxidation.
+
+**WEX** [gasps] : The air we breathe today, does it come from those tiny bacteria?
+
+**NARRATRICE** [happily] : A good part of it, yes! [chuckles] And meanwhile, in the ocean, life keeps inventing new things.
+
+**NARRATRICE** [excited][quickly] : Algae, [gasps] soft little animals, [calm] then the very first shelled animals appear.
+
+**WEX** [amazed] : Does all that take a long time?
+
+**NARRATRICE** [calm][softly] : Hundreds of millions of years, Wex. [pauses] Life is never in a hurry. [warmly] But it never stops inventing.
+```
+
+### recit-sortie-eau
+
+```
+**NARRATRICE** [happily] : Listen close, Wex: we're moving forward in time again. [excited] Dry land, though, is still completely bare.
+
+**WEX** [curious] : Completely bare? No plants at all?
+
+**NARRATRICE** [calm] : Not yet, but it's coming: mosses, then the very first green plants appear on the continents. [softly] And soon, [happily] the very first trees.
+
+**WEX** [amazed] : And in the sea, what's happening?
+
+**NARRATRICE** [excited] : In the sea, this time is called the Devonian. [serious] It comes from Devon, a region in England where scientists found its rocks. [happily] People call it "the age of fishes."
+
+**WEX** [gasps] : Why?
+
+**NARRATRICE** [playful][calm] : Because there are fish of every shape! [amazed] And some of them have thick, fleshy fins, [gasps] almost like legs.
+
+**WEX** [curious] : Almost like legs? Like this one, Tiktaalik?
+
+**NARRATRICE** [happily][excited] : Exactly! Tiktaalik can even lift its head out of the water, [pauses] to look around.
+
+**NARRATRICE** [serious][softly] : And one day, some of these fish dare to come out completely. [pauses] The very first amphibians are born: animals that live in water AND on land, [calm] like frogs today.
+
+**WEX** [amazed] : And after that, does it become a giant forest?
+
+**NARRATRICE** [chuckles][happily] : Almost! A bit later comes the Carboniferous, [serious] named that way because it formed the coal we still use today. [excited] Huge forests, air rich in oxygen...
+
+**NARRATRICE** [amazed] : And giant insects flying between the trees!
+
+**WEX** [gasps] : How giant?
+
+**NARRATRICE** [playful][calm] : A dragonfly as big as a dinner tray, Wex. [pauses] Life on land is only just beginning.
+```
+
+### recit-reptiles-permien
+
+```
+**NARRATRICE** [happily] : Listen, Wex: amphibians now live on land. [curious] But they're still missing something.
+
+**WEX** [curious] : What's that?
+
+**NARRATRICE** [calm] : They always have to go back near water to lay their eggs, [softly] or else the eggs dry out. [serious] So life invents a solution.
+
+**NARRATRICE** [excited][amazed] : An egg with a hard shell, [gasps] that keeps the water sealed inside! [happily] And there you have the very first true reptiles.
+
+**WEX** [amazed] : So they can lay eggs anywhere they want?
+
+**NARRATRICE** [playful] : Exactly! Even far from water, right in a desert. [calm] This time is called the Permian.
+
+**WEX** [curious] : And are the continents like today?
+
+**NARRATRICE** [serious][calm] : Not at all! All the continents are stuck together into one giant block: Pangea. [softly] That means "all the Earth," in Greek.
+
+**NARRATRICE** [amazed] : Around it, one single huge ocean. [pauses] And at the center of the block, so far from the sea that the climate turns very, very dry: a giant desert.
+
+**WEX** [gasps] : Were there dinosaurs, in that desert?
+
+**NARRATRICE** [chuckles][softly] : Not yet! [playful] There is an animal with a big sail on its back, Dimetrodon, [serious] but it's not a dinosaur: it's a distant cousin of mammals. [calm] Dinosaurs will arrive forty million years later.
+
+**WEX** [nervous] : What happens next, in that desert?
+
+**NARRATRICE** [serious][softly] : The climate keeps getting drier, and harder. [pauses] And far beneath our feet, something is brewing...
+```
+

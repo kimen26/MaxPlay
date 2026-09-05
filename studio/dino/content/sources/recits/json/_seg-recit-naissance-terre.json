@@ -1,0 +1,64 @@
+{
+  "inputs": [
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] Écoute, Wex ! Aujourd'hui, [excited] on remonte au tout, tout début. Avant même la Terre."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Avant la Terre ? Mais alors il y avait quoi ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[playful][calm] Un nuage. Un immense nuage de poussière et de gaz qui tournait autour du Soleil, [softly] tout neuf lui aussi."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Un nuage… ça peut devenir une planète ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[warmly] Eh oui. Petit à petit, tous ces grains de poussière se sont collés les uns aux autres. [serious] C'est la gravité qui a fait ça : une force invisible [calm] qui attire tout vers le centre."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited] La boule a grandi, grandi, grandi. [pauses] Et tout au fond, les métaux les plus lourds sont tombés : ils ont formé le noyau, [amazed] le cœur brûlant de la Terre."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et cette période-là, elle a un nom ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious][calm] On l'appelle l'Hadéen. [softly] Ça vient d'Hadès, le dieu grec des enfers, [calm] parce que la Terre ressemblait à un enfer de lave."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Il y avait déjà de l'eau, au moins ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[sad] Pas encore. Il faisait bien trop chaud pour ça : [softly] partout des volcans, et de la lave à perte de vue."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[calm] Mais la Terre a fini par refroidir. [pauses] Doucement, pendant des millions d'années."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Et alors ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily][excited] Alors il s'est mis à pleuvoir ! [gasps] Une pluie immense, tombée pendant très très longtemps, a rempli les creux de la Terre."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[warmly] C'est comme ça que sont nés les tout premiers océans. [pauses] Et c'est dans cette eau, Wex, [amazed] que la plus grande aventure allait commencer."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

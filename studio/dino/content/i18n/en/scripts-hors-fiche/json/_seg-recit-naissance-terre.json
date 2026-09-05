@@ -1,0 +1,62 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] Listen, Wex! Today [excited] we go all the way back to the very beginning. Before Earth even existed."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Before Earth? So what was there instead?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[playful][calm] A cloud. A huge cloud of dust and gas, spinning around the Sun, [softly] which was brand new too."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] A cloud… can that turn into a planet?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[warmly] It sure can. Little by little, all those grains of dust stuck together. [serious] Gravity did that: an invisible force [calm] that pulls everything toward the center."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited] The ball grew, and grew, and grew. [pauses] And deep inside, the heaviest metals sank all the way down: they formed the core, [amazed] Earth's burning-hot heart."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Does that time have a name?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious][calm] We call it the Hadean. [softly] It comes from Hades, the Greek god of the underworld, [calm] because Earth looked like a lava-filled underworld."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Was there already water, at least?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[sad] Not yet. It was much too hot for that: [softly] volcanoes everywhere, and lava as far as you could see."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[calm] But Earth finally cooled down. [pauses] Slowly, over millions of years."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] And then?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily][excited] Then it started to rain! [gasps] A huge rain, falling for a very very long time, filled up Earth's low places."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[warmly] That is how the very first oceans were born. [pauses] And it's in that water, Wex, [amazed] that the greatest adventure was about to begin."
+    }
+  ]
+}

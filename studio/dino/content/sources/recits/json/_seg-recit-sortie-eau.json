@@ -1,0 +1,68 @@
+{
+  "inputs": [
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] Écoute bien, Wex : on avance encore dans le temps. [excited] La terre ferme, elle, est encore toute nue."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Toute nue ? Il y a pas de plantes ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[calm] Pas encore, mais ça arrive : des mousses, puis les toutes premières plantes vertes apparaissent sur les continents. [softly] Et bientôt, [happily] les tout premiers arbres."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Et dans la mer, il se passe quoi ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited] Dans la mer, cette époque s'appelle le Dévonien. [serious] Ça vient du Devon, une région d'Angleterre où les savants ont trouvé ses roches. [happily] On l'appelle « l'âge des poissons »."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Pourquoi ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[playful][calm] Parce qu'il y en a de toutes les formes ! [amazed] Et certains ont des nageoires épaisses, charnues, [gasps] presque des pattes."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Presque des pattes ? Comme celui-là, Tiktaalik ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily][excited] Exactement ! Tiktaalik peut même relever la tête hors de l'eau, [pauses] et respirer un peu d'air, avant de replonger."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious][softly] Et un jour, certains de ces poissons osent sortir complètement. [pauses] Les tout premiers amphibiens sont nés : des animaux qui vivent dans l'eau ET sur terre, [calm] comme la grenouille aujourd'hui."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Et après, ça devient une forêt géante ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[chuckles][happily] Presque ! Un peu plus tard vient le Carbonifère, [serious] nommé ainsi car il a formé le charbon qu'on utilise encore aujourd'hui. [excited] Des forêts immenses, un air riche en oxygène..."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[amazed] Et des insectes géants qui volent entre les arbres !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Géants comment ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[playful][calm] Une libellule grande comme un plateau-repas, Wex. [pauses] La vie sur terre ne fait que commencer."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

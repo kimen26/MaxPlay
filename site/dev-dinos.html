@@ -956,9 +956,12 @@ function buildMenuRegime(el) {
 }
 
 /* ── MENU période = chronomap inline ── */
-// ─── Le voyage dans le temps (9 épisodes audio · story-first · regroupés par ère depuis 2026-09-05) ───
+// ─── Le voyage dans le temps (12 épisodes audio · story-first · regroupés par ère ; V2 2026-09-05 : l'intro devient 4 récits) ───
 const JOURNEY = [
-  { id:'intro',          emoji:'🌍', get label(){ return T('journey_ep_intro_label'); },          get date(){ return T('journey_ep_intro_date'); },          color:'#5dade2', dinos:[], ere:'paleo' },
+  { id:'naissance-terre', emoji:'🌍', get label(){ return T('journey_ep_naissance-terre_label'); }, get date(){ return T('journey_ep_naissance-terre_date'); }, color:'#5dade2', dinos:[], ere:'paleo' },
+  { id:'vie-dans-eau', emoji:'🦠', get label(){ return T('journey_ep_vie-dans-eau_label'); }, get date(){ return T('journey_ep_vie-dans-eau_date'); }, color:'#26a69a', dinos:[], ere:'paleo' },
+  { id:'sortie-eau', emoji:'🐟', get label(){ return T('journey_ep_sortie-eau_label'); }, get date(){ return T('journey_ep_sortie-eau_date'); }, color:'#8bc34a', dinos:[], ere:'paleo' },
+  { id:'reptiles-permien', emoji:'🦎', get label(){ return T('journey_ep_reptiles-permien_label'); }, get date(){ return T('journey_ep_reptiles-permien_date'); }, color:'#c0763a', dinos:['dimetrodon','gorgonops','lystrosaurus'], ere:'paleo' },
   { id:'grande-mort',    emoji:'🌋', get label(){ return T('journey_ep_grande-mort_label'); },    get date(){ return T('journey_ep_grande-mort_date'); },    color:'#7a2e2e', dinos:[], ere:'paleo' },
   { id:'trias',          emoji:'🌋', get label(){ return T('journey_ep_trias_label'); },          get date(){ return T('journey_ep_trias_date'); },          color:'#ff7043', dinos:['coelophysis','plateosaurus'], ere:'meso' },
   { id:'jurassique',     emoji:'🦕', get label(){ return T('journey_ep_jurassique_label'); },     get date(){ return T('journey_ep_jurassique_date'); },     color:'#66bb6a', dinos:['diplodocus','brachiosaurus','allosaurus'], ere:'meso' },

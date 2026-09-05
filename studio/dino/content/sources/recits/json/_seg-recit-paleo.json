@@ -42,19 +42,19 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[chuckles][happily] Orange. Parfait. [softly] On ne connaît pas tout. [happily] Mais on sait que la vie est une aventure immense, depuis la première bactérie jusqu'aux oiseaux d'aujourd'hui. [pauses]"
+      "text": "[chuckles][happily] Orange. Parfait. [softly] On ne connaît pas tout. [happily] Mais on sait que la vie est une aventure immense, [pauses] depuis la première bactérie jusqu'aux oiseaux d'aujourd'hui."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] On peut re-écouter ?"
+      "text": "[curious] On peut réécouter ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily][excited] Quand tu veux. [playful] Le voyage est là, toujours prêt. [pauses]"
+      "text": "[happily][excited] Quand tu veux. [playful] Le voyage est là, [pauses] toujours prêt."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[excited][playful] OUIII !!"
+      "text": "[excited][playful] Ouiii, encore."
     }
   ],
   "model_id": "eleven_v3",

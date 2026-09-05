@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Listen to this true story. [serious] In the Mongolian desert, scientists found an incredible fossil: a Velociraptor and a Protoceratops, [pauses] frozen mid-fight."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Mid-fight?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[whispers] Yes. The raptor's claw stuck in the other one's neck, [slowly] and the other one biting down on its arm. [softly] A sand dune collapsed on top of them, and they stayed like that, together, for seventy-five million years."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

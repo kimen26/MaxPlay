@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] YOO… oh… ploh… SEF… uh… lus. In Greek, \"eu\" means well. [curious] And \"oplo\" is a weapon, an armor — like the Greek soldiers called hoplites!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] The well-armored head?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Right, \"cephalo\" means the head. [amazed] All together: the well-protected head. [calm] It lived in Alberta, Canada, seventy-five million years ago."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Did it look like Ankylosaurus?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] A cousin, but even more armored. [amazed] Even its eyelids were covered in bone."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

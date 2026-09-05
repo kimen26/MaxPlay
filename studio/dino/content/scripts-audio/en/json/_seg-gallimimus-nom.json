@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] GAL… ih… MY… mus. \"Galli,\" in Latin, [serious] means rooster, chicken. And \"mimus\" means one who imitates. [curious] So what does that give us?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] The chicken imitator."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[chuckles] There you go, except it was much bigger than a chicken. [proud] It lived in Asia, in the Mongolian desert, seventy million years ago."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Is it a cousin of the raptors, [gasps] like Velociraptor?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] A distant cousin, yes, [amazed] but this one didn't even have teeth — just a beak, like a bird."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

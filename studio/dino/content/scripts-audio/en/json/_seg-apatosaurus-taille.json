@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Seventy-two feet long — [amazed] as long as two school buses. Standing up, fifteen feet tall — [curious] as tall as a double-decker bus. And twenty-three thousand kilos — [proud] as heavy as 8 hippos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] 8 hippos."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Yep. [whispers] And its neck alone was twenty feet long, for reaching leaves way up high."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

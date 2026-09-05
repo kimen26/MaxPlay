@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Seventy-two feet long — as long as two school buses. Standing up, [pauses] forty-three feet tall — as tall as a 4-story building. And forty-seven thousand kilos — [amazed] as heavy as NINE elephants."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Nine elephants?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Yep. But here's the thing, [pauses] it's not even the tail that makes it so long: it's the neck, stretched straight up toward the sky."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Thirty feet long — [amazed] as long as a truck. Standing up, nine feet tall — [curious] as tall as a basketball hoop. And four thousand kilos — [proud] as heavy as 2 rhinos. [calm] It walked calmly: 4 miles an hour, [pauses] like Dad walking fast."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Not very fast, then."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Nope — [serious] it didn't need to be. Its tail did the work."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

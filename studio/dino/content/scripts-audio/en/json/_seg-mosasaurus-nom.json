@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] MOH… sah… SOR… us. His name comes from a river — [curious] the Meuse, in Europe, where his first bones were found. And \"saurus,\" [confident] you're starting to know that one."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] Lizard. The Meuse River lizard."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactly. Except he didn't live in a river — [amazed] he swam in every ocean on Earth, [serious] seventy million years ago."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Every ocean? Even Tritri's?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] That very one. Mosasaurus and Triceratops lived at the same time, [serious] right at the end of the age of dinosaurs — him in the water, [warmly] Tritri on land."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

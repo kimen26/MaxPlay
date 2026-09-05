@@ -59,7 +59,7 @@ Stress = CAPS. Hyphens split syllables for the TTS.
 | cryolophosaurus | Cryolophosaurus | **kry-oh-LOH-foh-SOR-us** (kree-) | ph→f, y→"ih/ee" |
 | deinonychus | Deinonychus | **dye-NON-ih-kus** | ei→"eye", ch→k, y→"ih" |
 | dilophosaurus | Dilophosaurus | **dye-LOH-foh-SOR-us** (dih-) | ph→f |
-| dimetrodon | Dimetrodon | **dye-MET-roh-don** (dih-) | not a dinosaur but keep std |
+| dimetrodon | Dimetrodon | **dye-MET-roh-don** | not a dinosaur but keep std — confirmed 2026-09-05, "eye" form locked as house style (the dominant reading in US kids' science media), the "dih-" alternate dropped |
 | diplodocus | Diplodocus | **dih-PLOD-oh-kus** | confirmed 2026-09-05 — house style locked to the traditional stress (PLOD); DIP-loh-DOH-kus dropped as an alternate, matches the most common US children's-media reading |
 | edaphosaurus | Edaphosaurus | **ed-ah-foh-SOR-us** | ph→f; Permian synapsid, not a dinosaur — confirmed 2026-09-05, plain stress pattern, no ambiguity for a US reader |
 | edmontonia | Edmontonia | **ed-mon-TOH-nee-ah** | straightforward |
@@ -70,7 +70,7 @@ Stress = CAPS. Hyphens split syllables for the TTS.
 | giganotosaurus | Giganotosaurus | **jig-ah-NOH-toh-SOR-us** (GIG-) | soft g "j"; NOT "giganTO" |
 | glyptodon | Glyptodon | **GLIP-toh-don** | y→"ih" |
 | gorgonops | Gorgonops | **gor-GON-ops** | g hard; Permian gorgonopsian, not a dinosaur — confirmed 2026-09-05, matches the standard English zoology-media pronunciation, no rival form in circulation |
-| hatzegopteryx | Hatzegopteryx | **HAT-seh-gop-TER-iks** | Romanian Hațeg ≈ "ha-TSEG"; giant pterosaur, y→"ih", x→iks — added 2026-08-10, native check pending |
+| hatzegopteryx | Hatzegopteryx | **HAT-seh-gop-TER-iks** | Romanian Hațeg ≈ "ha-TSEG"; giant pterosaur, y→"ih", x→iks — confirmed 2026-09-05 (HO-013 lot W2): no competing popular English form exists for this rare genus, the mechanical Greek/Romanian-root respelling is the only defensible reading for a US TTS voice |
 | ichthyosaurus | Ichthyosaurus | **IK-thee-oh-SOR-us** | ch→k, th kept, y→"ee" |
 | iguanodon | Iguanodon | **ig-WAH-noh-don** (ih-GWAH-) | gua→"gwah" |
 | kentrosaurus | Kentrosaurus | **KEN-troh-SOR-us** | straightforward |
@@ -82,7 +82,7 @@ Stress = CAPS. Hyphens split syllables for the TTS.
 | microraptor | Microraptor | **MY-kroh-RAP-tor** | micro→"MY-kroh" |
 | minmi | Minmi | **MIN-mee** | Australian place name (Minmi Crossing), not Greek/Latin — confirmed 2026-09-05, two flat syllables, no stress ambiguity |
 | mosasaurus | Mosasaurus | **MOH-sah-SOR-us** | -us not dropped |
-| moschops | Moschops | **MOS-kops** | ch→k (Greek *moschos*); Permian therapsid, not a dinosaur — added 2026-08-10, native check pending |
+| moschops | Moschops | **MOS-kops** | ch→k (Greek *moschos*); Permian therapsid, not a dinosaur — confirmed 2026-09-05, single plausible reading, no competing form found |
 | ophthalmosaurus | Ophthalmosaurus | **off-THAL-moh-SOR-us** | ph→f, th kept |
 | oviraptor | Oviraptor | **OH-vih-RAP-tor** | straightforward |
 | pachycephalosaurus | Pachycephalosaurus | **PAK-ee-SEF-ah-loh-SOR-us** | ch→k, ph→f, ce→"se", y→"ee" |
@@ -129,7 +129,7 @@ English has **multiple competing "correct" pronunciations** for many dinosaur na
 - **Therizinosaurus** — stress placement varies widely (**THER-ih-ZEEN-oh-** vs **theh-RIZ-ih-noh-**). Long name, worth a listen test.
 - **Giganotosaurus** — very commonly MIS-said as "giganTOsaurus" (confusing with "giganto-"). Correct is **jig-ah-NOH-toh-SOR-us** ("giga-NOTO-", from Greek *notos* = south). Flag so the voice doesn't drift to the wrong one.
 - **Ankylosaurus** `y` — I wrote **ang-KY-loh-** ("ky" = "kih/kigh"); the very common casual form is **ang-KEE-loh-**. Either reads fine; pick one.
-- **Spinosaurus / Dilophosaurus / Dimetrodon** initial `i` — English wavers between "eye" (SPY-, DYE-) and "ih/ee" (SPEE-, dih-). I defaulted to the "eye" forms (most common in English media); confirm preference.
+- **Spinosaurus / Dilophosaurus** initial `i` — English wavers between "eye" (SPY-, DYE-) and "ih/ee" (SPEE-, dih-). I defaulted to the "eye" forms (most common in English media); confirm preference.
 - **Quetzalcoatlus** — Nahuatl origin; English speakers approximate it many ways. **ket-sal-koh-AT-lus** is the widely-used anglicization; a purist rendering would differ.
 
 **Rule kept:** where no single established English form exists, I gave the most standard reconstruction AND flagged it here rather than inventing a confident-sounding but unverified pronunciation.

@@ -1,0 +1,36 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] OH… vih… RAP… tor. \"Ovi,\" in Latin, [serious] means egg — like in \"oval.\" And \"raptor\" is thief. [curious] So what does that give us?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] The egg thief."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] That's its name. [proud] It lived in Asia, in the Mongolian desert, seventy-five million years ago."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Is it a cousin of the raptors, [gasps] like Velociraptor?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] A cousin, yes, [amazed] but this one had no teeth — a beak, a pretty colorful crest, almost like a parrot."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] An egg thief? [nervous] That's not very nice."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[gently] Wait for the end of the story. [warmly] It doesn't deserve that name at all."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

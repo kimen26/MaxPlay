@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] A herbivore. He grazed on plants in a big herd, [calm] young and old together. [confident] In America, Albertosaurus hunted him. In Asia, it was Tarbosaurus."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] And what was his crest for?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Unlike Parasaurolophus, [curious] it didn't echo like a trumpet. [hesitant] Scientists think it was just for being seen and recognized by the rest of the herd."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

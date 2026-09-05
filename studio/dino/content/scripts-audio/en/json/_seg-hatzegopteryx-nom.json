@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] HAT… seh… gop… TER… iks. A name in three pieces. \"Hatzego\" comes from Hațeg, a region of Romania, [serious] where its bones were found. [curious] \"Pteryx,\" in Greek, is wing. And \"thambema\" means monster."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] The monster wing from Hațeg."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactly. [serious] Careful: not a dinosaur — a flying reptile. It lived sixty-six million years ago, [amazed] on a lost island out at sea."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] An island, all alone?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[calm] Yes, cut off from the rest of the world. [pauses] And out there, almost nothing was like anywhere else."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

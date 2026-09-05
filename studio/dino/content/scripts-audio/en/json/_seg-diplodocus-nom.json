@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Dih… PLOD… oh… kus. In Greek, \"diplo\" means [curious] double. And \"dokos,\" a beam — [pauses] a big wooden bar."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] The double beam?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Yep — because of the [amazed] shape of the bones in its tail. It lived in North America, a hundred fifty million years ago."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[hesitant] How did it defend itself, with such a long neck?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] With its tail, actually. [serious] Allosaurus and Ceratosaurus preferred going after young ones who wandered off — [calm] a tight herd was a whole different story."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

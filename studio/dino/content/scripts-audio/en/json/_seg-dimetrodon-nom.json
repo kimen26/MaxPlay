@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[curious] Dimetrodon. \"Di,\" in Greek, means two. [serious] \"Metron,\" measure — like in \"meter.\" And \"odon,\" tooth."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] Two-measure teeth?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Right — he had two different sizes of teeth in his mouth. He lived two hundred eighty million years ago, [amazed] in North America."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Is he a dinosaur, if he lived that long before them?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] No, actually — not at all. He lived fifty million years BEFORE the first dinosaurs. [warmly] He's a very ancient cousin [confident] of furry animals, like us."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

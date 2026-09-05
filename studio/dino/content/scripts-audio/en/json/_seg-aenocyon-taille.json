@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] It was 5.5 feet long — like a tall Dad lying on the ground! Standing up, it was about 3 feet tall — [amazed] as tall as a 4-year-old! And it weighed 70 kilos — [proud] as heavy as a kangaroo!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Bigger than a wolf today?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Stockier, mostly. [proud] A bigger head, stronger teeth than a gray wolf."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

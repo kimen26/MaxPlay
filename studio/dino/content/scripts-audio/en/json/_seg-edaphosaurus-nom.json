@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[curious] ed… ah… foh… SOR… us. \"Edaphos,\" in Greek, means the ground, the paving stone — [serious] flat rock. And \"saurus,\" lizard."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] The paving-stone lizard?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Close — the lizard with paving-stone teeth. [amazed] He had dozens of little teeth packed tight, [serious] like paving stones in a street, for crushing plants."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Where did he live?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] In Texas, two hundred eighty million years ago — [serious] way before the first dinosaurs. He's not a dinosaur either."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Its open wings spanned 6 meters wingtip to wingtip — wide as a car and a half! Laid end to end, that's [quickly] as long as a road is wide — it takes up the whole street! Standing up, it was 1.8 meters tall — [proud] as tall as Dad standing up! And it weighed 25 kilos — as heavy as a dog. [amazed] And flying, scientists think it could go 20 miles an hour — as fast as a horse cantering."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] And that funny crest, [gasps] behind its head?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] It may have helped steer its flight, [slowly] like a rudder."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

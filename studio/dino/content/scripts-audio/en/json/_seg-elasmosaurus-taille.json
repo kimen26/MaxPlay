@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] He was 13 meters long — as long as a school bus! [amazed] He was as tall as a 4-year-old! And he weighed 2,500 kilos — [serious] as heavy as 5 horses!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Thirteen meters, but he was pretty skinny, right?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Very skinny, yes — mostly because of his neck. [amazed] The neck alone is already half his whole length."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

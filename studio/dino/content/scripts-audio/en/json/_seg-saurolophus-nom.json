@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] sor… OL… oh… fus. [curious] In ancient Greek, \"sauro\" is lizard. And \"lophus\" is crest. [pauses] The crested lizard."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] A crest, like a pointy hat?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Almost. A long spike of solid bone, straight, [curious] pointing up and back. [warmly] He lived seventy million years ago."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] And where did he live?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Here's the amazing part: in Canada, and [confident] in Mongolia too, on the other side of the world, at the same time. [amazed] A land bridge connected the two continents back then."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

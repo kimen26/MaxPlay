@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] He was 2 meters 20 long — as long as a motorcycle! 0 point 75 meters tall — [gently] it would come up to your waist! And 80 kilos — as heavy as Dad! [amazed] Scientists think he could run about 16 miles an hour — as fast as a bike going fast."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Small, but heavy as Dad?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Compact and tough. A really muscular little dinosaur."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

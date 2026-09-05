@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[curious] Liopleurodon. Three little Greek pieces: \"leios\" means smooth. [serious] \"Pleura,\" the side. \"Odon,\" tooth."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] Teeth... smooth on the side?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Right — no little ridges on them, like some shark teeth have. He lived one hundred sixty-five million years ago, [amazed] in the seas of Europe, [confident] in France and England."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] And how did he hunt, with a lizard's nose?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Not with his eyes first — [serious] with his sense of smell. His nostrils pointed forward, like a dog tracking a scent."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

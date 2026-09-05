@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] It was 10 feet long — like three 4-year-olds lying end to end! Standing up, it was 5 feet tall — as tall as a car, [amazed] you'd have to look up! And it weighed 1,000 kilos — [proud] as heavy as a small car!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Could it pull into its shell, like an armadillo?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] No. Its shell was stuck to it forever, [amazed] like a giant helmet it wore and never took off."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

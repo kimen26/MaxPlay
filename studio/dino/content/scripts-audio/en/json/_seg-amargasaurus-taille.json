@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Thirty-three feet long — [amazed] as long as a truck. Standing up, eight feet tall — [curious] as tall as a soccer goal. And three thousand kilos — [proud] as heavy as a hippo."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] And how big were the spikes?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Up to two feet tall — [amazed] right in the MIDDLE of its neck. The tallest of any known sauropod."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

@@ -540,8 +540,9 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 ::-webkit-scrollbar-track { background:transparent; }
 ::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.2); border-radius:2px; }
 /* Bandeau d'ère (Voyage + Époques, 2026-09-05) */
-.ere-bandeau { display:flex; align-items:center; gap:10px; margin:14px 12px 6px; padding:10px 12px; border-radius:14px;
+.ere-bandeau { grid-column:1 / -1; min-width:0; display:flex; align-items:center; gap:10px; margin:14px 0 6px; padding:10px 12px; border-radius:14px;
   background:color-mix(in srgb, var(--ere) 18%, transparent); border:1px solid color-mix(in srgb, var(--ere) 55%, transparent); }
+#chrono-scroll .ere-bandeau { margin-left:12px; margin-right:12px; }
 .ere-emoji { font-size:1.6rem; line-height:1; }
 .ere-info { flex:1; min-width:0; }
 .ere-label { font-weight:900; font-size:1.05rem; }
@@ -753,6 +754,7 @@ function buildMenu() {
   } else if (currentMode === 'periode') {
     buildMenuPeriode(el);
   } else if (currentMode === 'epoque') {
+    el.classList.add('mode-famille'); // 2026-09-05 : même gabarit pleine largeur que Familles (la grille 2 colonnes débordait à 420 px)
     buildMenuEpoque(el);
   } else if (currentMode === 'dico') {
     el.classList.add('mode-dico');

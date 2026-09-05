@@ -52,7 +52,14 @@ export function padTete(fichier, cibleMs = CIBLE_MS) {
   execFileSync('ffmpeg', ['-y', '-hide_banner', '-loglevel', 'error', '-i', fichier, '-af', `adelay=${ajout}:all=1`, '-codec:a', 'libmp3lame', '-b:a', '128k', tmp]);
   fs.copyFileSync(tmp, fichier);
   fs.unlinkSync(tmp);
-  return { fichier, avant, apres: silenceTeteMs(fichier), modifie: true };
+  let apres = silenceTeteMs(fichier);
+  // Le ré-encodage MP3 ajoute un peu de souffle en tête : si la mesure retombe sous la cible, on complète une 2e fois.
+  if (apres < cibleMs - 10) {
+    execFileSync('ffmpeg', ['-y', '-hide_banner', '-loglevel', 'error', '-i', fichier, '-af', `adelay=${cibleMs - apres}:all=1`, '-codec:a', 'libmp3lame', '-b:a', '128k', tmp]);
+    fs.copyFileSync(tmp, fichier); fs.unlinkSync(tmp);
+    apres = silenceTeteMs(fichier);
+  }
+  return { fichier, avant, apres, modifie: true };
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1'))) {

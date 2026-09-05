@@ -91,6 +91,8 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
   border-radius:14px; padding:12px 14px; margin-bottom:2px;
 }
 .fam-explic-banner p { font-size:0.84rem; line-height:1.45; opacity:0.95; margin:0; }
+/* HO-021 : la grille impose grid-auto-rows 150px — un bandeau doit garder sa hauteur de texte. */
+.fam-explic-banner { align-self:start; }
 .fam-explic-play {
   flex-shrink:0; width:40px; height:40px; border-radius:50%; border:none; cursor:pointer;
   background:rgba(255,255,255,0.2); color:#fff; font-size:1.2rem; line-height:1;
@@ -103,7 +105,9 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
   flex:1; min-height:0; overflow-y:auto; overflow-x:hidden; padding:14px;
   -webkit-overflow-scrolling:touch;
   display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px;
-  grid-auto-rows:minmax(150px, auto);
+  /* HO-021 : `auto` + hauteur mini portée par la carte elle-même. Avec grid-auto-rows:minmax(150px,…),
+     la rangée d'un bandeau pleine largeur (section plantes) gardait 150 px de vide sous son texte. */
+  grid-auto-rows:auto; align-content:start;
 }
 #grid-scroll::-webkit-scrollbar { width:8px; }
 #grid-scroll::-webkit-scrollbar-track { background:rgba(255,255,255,0.05); border-radius:4px; }
@@ -111,6 +115,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 .dino-card {
   background:var(--card); border:1px solid var(--line);
   border-radius:var(--r-card); padding:14px 8px 10px;
+  min-height:150px; /* HO-021 : reprise du grid-auto-rows retiré (bandeau plantes) */
   display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
   cursor:pointer; touch-action:manipulation; user-select:none;
   position:relative; overflow:hidden;
@@ -152,6 +157,16 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 .card-regime { font-size:0.85rem; color:rgba(255,255,255,0.78); text-align:center; margin-bottom:4px; }
 .card-region { font-size:0.78rem; color:rgba(255,255,255,0.55); text-align:center; margin-top:2px; line-height:1.2; }
 .card-bar { position:absolute; bottom:0; left:0; right:0; height:4px; }
+
+/* ── Plantes (HO-021) : vignettes en vraie couleur, pas de silhouette -> pas d'invert (contrairement a .dino-thumb img) ── */
+.plante-thumb img { width:100%; height:100%; object-fit:contain; padding:8px; box-sizing:border-box; filter:drop-shadow(0 1px 3px rgba(0,0,0,.4)); }
+.plante-thumb-emoji, .plante-hero-emoji { font-size:2.2rem; }
+.plante-hero-emoji { display:flex; align-items:center; justify-content:center; width:100%; height:100%; }
+.plante-mangeurs { display:flex; flex-wrap:wrap; gap:10px; margin-top:6px; }
+.plante-mangeur { display:flex; flex-direction:column; align-items:center; width:64px; cursor:pointer; touch-action:manipulation; }
+.plante-mangeur:active { transform:scale(0.93); }
+.plante-mangeur img { width:52px; height:52px; object-fit:contain; padding:4px; box-sizing:border-box; filter:invert(1) brightness(1.4) drop-shadow(0 1px 3px rgba(0,0,0,.6)); }
+.plante-mangeur span { font-size:0.68rem; text-align:center; line-height:1.15; margin-top:2px; }
 
 /* ══════════════ FICHE DINO ══════════════ */
 #fiche-scroll {
@@ -617,6 +632,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 </script>
 <script src="js/dino-ui.js"></script>
   <script src="js/dinos-data.js"></script>
+<script src="js/dinos-plantes.js"></script>
 <script src="js/dinos-racines.js"></script>
 <script src="js/dinos-i18n.js"></script>
 <script src="js/dinos-world-map.js"></script>
@@ -857,6 +873,8 @@ function buildMenuEpoque(el) {
   DINO_PERIODES.forEach(per => {
     const count = DINOS.filter(d => d.periode === per.id).length;
     if (!count) return;
+    // HO-021 : compte les plantes de la periode, affichees seulement si > 0 (DINO_PLANTES peut etre absent avant HO-020).
+    const countPlantes = (typeof DINO_PLANTES !== 'undefined' ? DINO_PLANTES : []).filter(p => (p.periodes || []).includes(per.id)).length;
     if (per.ere && per.ere !== ereCourante) { ereCourante = per.ere; el.insertAdjacentHTML('beforeend', ereBandeauHtml(per.ere)); }
     const card = document.createElement('div');
     card.className = 'fam-card';
@@ -870,7 +888,7 @@ function buildMenuEpoque(el) {
         <div class="fam-label">${per.emoji} ${per.label}</div>
         <div class="fam-savant">${per.range}</div>
         <div class="fam-desc">${per.desc}</div>
-        <div class="fam-count">${esc(Tn('compteur_dinos', count))} →</div>
+        <div class="fam-count">${esc(Tn('compteur_dinos', count))}${countPlantes ? ' · ' + esc(Tn('compteur_plantes', countPlantes)) : ''} →</div>
       </div>
     `;
     card.addEventListener('click', () => { setTimeout(() => showGridEpoque(per.id), 250); });
@@ -1195,6 +1213,92 @@ function showFiche2(dinoId) {
   if (dino) showFiche(dino);
 }
 
+/* ── FICHE PLANTE (HO-021) ──
+   Réutilise l'écran fiche + les classes v1-* de buildFiche (zéro CSS inventé, sauf plante-thumb ci-dessous).
+   currentDino n'est PAS touché : le bouton retour (showGrid(), câblage existant l.591) revient donc
+   toujours à la grille d'époque courante, exactement comme pour une fiche dino classique. */
+function showFichePlante(p) {
+  if (!p) return;
+  buildFichePlante(p);
+  const hdr = document.getElementById('fiche-hdr-name');
+  if (hdr) hdr.textContent = p.name;
+  showScreen('fiche');
+  const sc = document.getElementById('fiche-scroll');
+  if (sc) sc.scrollTop = 0;
+}
+
+function buildFichePlante(p) {
+  const scroll = document.getElementById('fiche-scroll');
+  const perLabels = (p.periodes || []).map(id => (DINO_PERIODES.find(per => per.id === id) || {}).label).filter(Boolean).join(' · ');
+  const mangeurs = (p.mangee_par || []).map(id => DINOS.find(d => d.id === id)).filter(Boolean);
+
+  scroll.innerHTML = `
+    <!-- BLOC 1 — Hero : image + repli emoji (pas d'ombre dispo pour une plante) -->
+    <div class="v1-hero" id="v1-hero" style="background:linear-gradient(135deg,#2e7d32,#2e7d3255)">
+      <img class="v1-hero-img" src="img/dinos/plantes/${p.png}" alt="${p.name}"
+           onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <span class="plante-hero-emoji" style="display:none">${p.emoji}</span>
+      <div class="v1-hero-nm">
+        <b>${p.name}</b>
+        <span class="v1-lat">${p.full}</span>
+      </div>
+    </div>
+    <p class="v1-sub" style="margin:6px 16px 0">${p.nom_etym || ''}</p>
+
+    <!-- BLOC 2 — Où elle pousse -->
+    <div class="v1-panel v1-a">
+      <button class="v1-sp" onclick="playBloc('plante:${p.id}','pousse','${esc(T('plantes_tts_pousse', { nom: esc(p.name), environnement: esc(p.environnement), region: esc(p.region) }))}',this)">🔊</button>
+      <div class="v1-pic"><span class="v1-ic">🌍</span><span class="v1-tt">${T('plantes_titre_pousse')}</span></div>
+      <p>${p.environnement || ''}</p>
+      <p class="v1-sub">⏳ ${perLabels}</p>
+      <p class="v1-sub">📍 ${p.region || ''}</p>
+    </div>
+
+    <!-- BLOC 3 — Sa taille -->
+    <div class="v1-panel v1-b">
+      <button class="v1-sp" onclick="playBloc('plante:${p.id}','taille','${esc(T('plantes_tts_taille', { nom: esc(p.name), hauteur: esc(DinoUI.longueurTxt(p.hauteur_m)), comparaison: esc(p.comp_hauteur) }))}',this)">🔊</button>
+      <div class="v1-pic"><span class="v1-ic">📏</span><span class="v1-tt">${T('plantes_titre_taille')}</span></div>
+      <div class="v1-stats">
+        <div class="v1-stat"><div class="l">↕️ ${T('fiche_stat_haut')}</div><div class="v">${DinoUI.longueurTxt(p.hauteur_m)}</div><div class="c">${p.comp_hauteur || ''}</div></div>
+      </div>
+    </div>
+
+    <!-- BLOC 4 — Sa feuille et ses graines -->
+    <div class="v1-panel v1-c">
+      <button class="v1-sp" onclick="playBloc('plante:${p.id}','feuille','${esc(T('plantes_tts_feuille', { feuille: esc(p.feuille), graines: esc(p.graines) }))}',this)">🔊</button>
+      <div class="v1-pic"><span class="v1-ic">🍃</span><span class="v1-tt">${T('plantes_titre_feuille')}</span></div>
+      <p>${p.feuille || ''}</p>
+      <p>${T('plantes_label_graines')}</p>
+      <div class="v1-list-box">${p.graines || ''}</div>
+    </div>
+
+    <!-- BLOC 5 — Qui la mangeait -->
+    <div class="v1-panel v1-d">
+      <button class="v1-sp" onclick="playBloc('plante:${p.id}','mangee','${esc(T('plantes_tts_mangee', { comment: esc(p.mangee_comment) }))}',this)">🔊</button>
+      <div class="v1-pic"><span class="v1-ic">🦴</span><span class="v1-tt">${T('plantes_titre_mangee')}</span></div>
+      <p>${p.mangee_comment || ''}</p>
+      ${mangeurs.length ? `
+        <p>${T('plantes_label_mangeurs')}</p>
+        <div class="plante-mangeurs">${mangeurs.map(d => `
+          <div class="plante-mangeur" onclick="showFiche2('${d.id}')">
+            <img src="${ombreSrc(d.png)}" alt="${d.name}" loading="lazy" onerror="this.style.display='none'">
+            <span>${d.name}</span>
+          </div>
+        `).join('')}</div>
+      ` : ''}
+    </div>
+
+    <!-- BLOC 6 — Le truc fou -->
+    <div class="v1-panel v1-a">
+      <button class="v1-sp" onclick="playBloc('plante:${p.id}','truc_fou','${esc(T('plantes_tts_truc_fou', { superpower: esc(p.superpower), fait: esc(p.fait) }))}',this)">🔊</button>
+      <div class="v1-pic"><span class="v1-ic">✨</span><span class="v1-tt">${T('plantes_titre_truc_fou')}</span></div>
+      <p><b>${T('fiche_label_superpouvoir')}</b> ${p.superpower || ''}</p>
+      <p>💡 ${p.fait || ''}</p>
+      ${p.vivant ? `<p class="v1-sub">🌱 ${p.vivant}</p>` : ''}
+    </div>
+  `;
+}
+
 /* ── GRID régime ── */
 function showGridRegime(catId) {
   currentCatId = catId;
@@ -1303,6 +1407,32 @@ function showGridEpoque(perId) {
     });
     el.appendChild(card);
   });
+  // Section plantes de l'époque (HO-021) — après les dinos, même gabarit de carte.
+  // DINO_PLANTES est genere par _gen-plantes.cjs ; absent tant que HO-020 n'a pas livre -> section masquee.
+  const plantes = (typeof DINO_PLANTES !== 'undefined' ? DINO_PLANTES : []).filter(p => (p.periodes || []).includes(perId));
+  if (plantes.length) {
+    const plantesBanner = document.createElement('div');
+    plantesBanner.className = 'fam-explic-banner';
+    plantesBanner.innerHTML = `<p><b>🌿 ${T('plantes_titre_section')}</b></p>`;
+    el.appendChild(plantesBanner);
+    plantes.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'dino-card plante-card';
+      card.innerHTML = `
+        <div class="dino-thumb plante-thumb" style="background:${hexToRgba(per.color, .12)}">
+          <img src="img/dinos/plantes/${p.png}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <span class="plante-thumb-emoji" style="display:none">${p.emoji}</span>
+        </div>
+        <div class="card-name">${p.name}</div>
+        <div class="card-bar" style="background:${per.color}"></div>
+      `;
+      card.addEventListener('click', () => {
+        card.classList.remove('bounce'); void card.offsetWidth; card.classList.add('bounce');
+        setTimeout(() => showFichePlante(p), 350);
+      });
+      el.appendChild(card);
+    });
+  }
   // En entrant : « Le Jurassique ! » en vraie voix si le MP3 existe, sinon la dame dit tout.
   setTimeout(() => playPeriodeVoice(per.id, per.label + ' ! ' + per.desc + '. ' + T('grid_accroche_suffixe')), 200);
 }

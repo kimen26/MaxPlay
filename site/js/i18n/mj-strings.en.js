@@ -26,7 +26,54 @@ window.MJ_STRINGS = {
   "mettreEnFavoriCoeur": "❤️ Add to favorites",
   "deja5JeuxEnAvant": "Already 5 games up front — remove one first 🙂",
   "ajouteAuxFavoris": "Added to favorites ❤️",
-  "dicteeNonDispo": "Speech input not available on this browser"
+  "dicteeNonDispo": "Speech input not available on this browser",
+  "voix": {
+   "a-toi-de-jouer": "Your turn!",
+   "cest-parti": "Let's go!",
+   "cherche-bien": "Nope, not that one. Keep looking.",
+   "combien-d-oeufs": "How many eggs?",
+   "combien-d-oeufs-en-tout": "How many eggs in total?",
+   "combien-de-dinos": "How many dinos?",
+   "combien-de-dinos-compte-les": "How many dinos? Count them!",
+   "combien-en-tout": "How many in total?",
+   "complete-la-grille-les-4-symboles-partout": "Fill the grid: all 4 symbols everywhere!",
+   "compte-encore": "Count again!",
+   "compte-les-un-par-un": "Count the buses BEFORE the requested one, one by one.",
+   "construis-le-mot": "Build the word!",
+   "continue-a-faire-eclore-les-oeufs": "Keep hatching the eggs!",
+   "deux-boites-pleines-combien-en-tout": "Two full boxes… how many in total?",
+   "ecoute-le-premier-son": "Listen to the first sound.",
+   "encore-une-fois": "One more time!",
+   "etoile-gagnee": "You earned a star!",
+   "fais-monter-les-passagers": "Get the passengers on board.",
+   "gros-niveau-regroupe": "Big level: group them up!",
+   "il-en-faut-beaucoup": "You need a lot of them!",
+   "il-vivait-quand": "When did it live?",
+   "la-boite-est-pleine-il-faut-encore-combien-d-oeufs": "The box is full. How many more eggs do you need?",
+   "le-son-quon-entend": "The sound you hear.",
+   "lequel-ne-va-pas": "Which one does not belong?",
+   "mode-libre-encore-une-caisse": "Free mode: one more crate!",
+   "ouvre-bien-les-yeux": "Keep your eyes wide open!",
+   "premier-son-l-ou-r": "First sound: L or R?",
+   "qu-est-ce-qui-manque": "What is missing from the grid?",
+   "qu-est-ce-qui-vient-ensuite": "What comes next?",
+   "quel-bus-arrive-en-premier": "Which bus arrives first?",
+   "quel-bus-manque": "Which bus is missing from the grid?",
+   "quel-dino-se-cache-dans-le-noir": "Which dino is hiding in the dark?",
+   "quel-mot-manque-dans-la-phrase": "Which word is missing from the sentence?",
+   "range-dans-la-bonne-boite": "Put it in the right box.",
+   "range-les-des": "Put the dice away.",
+   "regardons-ensemble": "Let's look together!",
+   "regroupe-les-points": "Group the dots.",
+   "remplis-chaque-caisse": "Fill each crate.",
+   "tape-pour-sauter-par-dessus-les-cactus": "Tap to jump over the cactuses!",
+   "terminus-fais-les-descendre": "Last stop! Get them off the bus.",
+   "touche-la-lettre-qui-fait-ce-son": "Touch the letter that makes this sound!",
+   "trouve-2-tuiles-avec-le-meme-dino": "Find 2 tiles with the same dino!",
+   "trouve-l-ombre-et-son-dino": "Find the shadow and its dino!",
+   "trouve-le-meme-dino": "Find the same dino!",
+   "un-dino-par-ligne-colonne-et-enclos-jamais-colles": "One dino per row, column and pen… never side by side!"
+  }
  },
  "mj-06": {
   "titre": "Read the Sentence",
@@ -54,6 +101,9 @@ window.MJ_STRINGS = {
   },
   "ui": {
    "quelMotManque": "Which word is missing from the sentence?"
+  },
+  "voix": {
+   "regle-mj-06": "Find the missing word in the sentence!. I listen to the sentence . A voice reads the sentence with a little gap. I tap the instruction to hear it again.. I look at the picture . An emoji gives a hint about the missing word.. I tap the right word . If I get it wrong, the voice says the right answer and the full sentence.. I keep going with 5 sentences . Buses, dinos, trips… a new sentence to complete every time!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-09": {
@@ -96,6 +146,9 @@ window.MJ_STRINGS = {
    "bravoTangeRange": "GREAT JOB! All sorted!",
    "voilaFamilles": "Here are all the bus families!",
    "continuer": "Continue →"
+  },
+  "voix": {
+   "regle-mj-09": "Put each bus in its matching color box!. I look at the bus color . Every bus has a color: blue, green, orange, purple, red, or brown.. I drag the bus to its box . The box glows green when it's the right spot. I hear the line name!. If I get it wrong, the bus comes back by itself . No worries, I can try again as many times as I want.. The more stars I earn, the more buses and colors . Level 1: 2 colors, 6 buses. Level 3: all 6 colors, 26 buses, with the final parade!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-13a": {
@@ -129,6 +182,9 @@ window.MJ_STRINGS = {
    "bravo": "Well done!",
    "cetaitLe": "It was the",
    "essaieEncore": "Try again!"
+  },
+  "voix": {
+   "regle-mj-13a": "Look at the boards and find the bus arriving first!. I look at the countdowns . Each board shows how many minutes until the bus arrives. The countdown ticks down by itself.. I look for the smallest number . The bus arriving first is the one with the fewest minutes to wait.. I tap its board . If I get it wrong, I can try again. After 3 tries, the right board lights up.. The more stars I earn, the more buses . At first there are 2 buses with a big gap, then more and more with tighter gaps.. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-13c": {
@@ -165,6 +221,9 @@ window.MJ_STRINGS = {
    "avantLe": "before the",
    "cetait": "It was",
    "compteLesUnParUn": "Count the buses BEFORE the requested one, one by one."
+  },
+  "voix": {
+   "regle-mj-13c": "Count the buses that arrive before the one asked!. I listen for which bus to find . The voice asks: \"How many buses before the 162?\" The number is also shown in color.. I count the boards before it . The boards are lined up in arrival order. I count the ones that arrive BEFORE the bus asked, one by one.. I tap the right number . Buttons 0, 1, 2… pop up. If I get it wrong, I get a hint to recount, then I try again.. The more stars I earn, the more buses . At first there are 3 buses to count, then more and more (up to 10)!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-14": {
@@ -232,6 +291,9 @@ window.MJ_STRINGS = {
    "strongHintC": "Look at the row of the empty square and its column. The right answer combines both.",
    "strongHintD": "Look closely: every row has 3 different patterns, and so does every column. Find the one missing in the last row AND the last column.",
    "niveauSur3": "Level {n} / 3"
+  },
+  "voix": {
+   "regle-mj-14": "A square is missing from the magic grid! Find the hidden pattern by looking at the rows and columns.. I look at the grid . There's a square with a question mark: that's the mystery square!. I look for the rule . Look closely at the row and column of the empty square: a pattern repeats.. I pick one at the bottom . Tap the pattern that completes the grid, out of 3 choices.. The more stars I earn, the trickier it gets . First just one easy rule, then two rules at once: all the way to expert level!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-15": {
@@ -296,6 +358,9 @@ window.MJ_STRINGS = {
    "hintRoues": "Look closely at the wheels!",
    "hintDoubleCritere": "Color AND number… two things to check!",
    "niveauSur3": "Level {n} / 3"
+  },
+  "voix": {
+   "regle-mj-15": "Look at the 5 buses, find the one that doesn't belong!. I listen to the question . \"Which one doesn't belong?\" A hint shows up to help me know what to look at.. I compare the 5 buses . 4 buses look alike (same color, same family…), only 1 is different: that's the odd one out!. I tap the odd one out . If I get it wrong, the bus shakes and I can try again with a hint — the answer is never just given away.. The more stars I earn, the trickier it gets . At first it's the color, then the wheels, then the line family… and even two clues at once!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-18": {
@@ -331,6 +396,9 @@ window.MJ_STRINGS = {
    "bravo": "Well done!",
    "tuAsTrie": "You sorted all the colors! Look at the repainted buses:",
    "leDinoSeColorie": "The dino is coloring with you!"
+  },
+  "voix": {
+   "regle-mj-18": "Pour the colors so each tube ends up with just one color!. I tap a tube to pick it . The tube lifts up a little — that's the one I'm about to pour.. I tap a 2nd tube to pour into it . The color on top flows into the other tube, only if it's the same color (or the tube is empty).. I sort out all the colors . Every tube must end with just one color, top to bottom. Empty tubes help with sorting!. The more stars I earn, the more colors to sort . We start with 2 colors, then 4, up to 6 for the champions!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-19": {
@@ -363,6 +431,9 @@ window.MJ_STRINGS = {
    "questDino": "Find the <b>{n}</b>!",
    "questBus": "Find bus <b>{n}</b>!",
    "trouveLeBusN": "Find bus {n}"
+  },
+  "voix": {
+   "regle-mj-19": "Listen to the instruction and tap the right target among all the moving ones!. I listen for the target . A voice says \"Find bus 162!\" or a dino's name — and it's written up top, in yellow.. I look at everything moving . Buses… and sometimes dinos wander around the screen!. I tap the right target . If I get it wrong, no big deal: I try again, there's no penalty.. The more stars I earn, the more it moves . At first, just a few slow targets. Then more and more, and faster!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-20": {
@@ -388,6 +459,24 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "langues": {
+    "fr": "French",
+    "en": "English",
+    "es": "Spanish",
+    "pt-br": "Brazilian",
+    "de": "German",
+    "ru": "Russian",
+    "zh": "Chinese",
+    "ja": "Japanese"
+   },
+   "confirmNumero": "{n}!",
+   "cEtait": "It was {n}",
+   "nouveauNiveauDebloque": "New level unlocked: {lang} numbers {tier}!"
+  },
+  "voix": {
+   "regle-mj-20": "Learn to count to 20 in lots of different languages!. I pick \"Learn\" to listen . I pick a language (flag) and tap a number: a voice says it in that language!. I pick \"Quiz\" to play . A voice says a number in an unlocked language. I tap the right number among the choices.. I get 3 right answers in a row to unlock more . Every language starts small (1 to 3), then I move up to 1-20 if I keep it up.. I check \"Progress\" to see where I stand . Each language has its own dots: the more I fill in, the more numbers and languages I know!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-21": {
@@ -444,6 +533,9 @@ window.MJ_STRINGS = {
     "lavande": "lavender",
     "brun": "brown"
    }
+  },
+  "voix": {
+   "regle-mj-21": "Mix the colors to paint the right bus!. I look at the color I need to make . Next to the plain white bus, there's a colored circle: that's the color I need to make!. I pour the pots into the tube . Red, Yellow, Blue, White: I tap the pots to pour them into the tube. Just one color? That's an instant win!. I tap Mix to blend them . If I poured several colors, I tap \"Mix!\" to blend them. If it turns brown, no worries, I rinse the tube and start over!. The tube pours the color onto the bus . If it's the right color, the tube tips over and paints the bus! A hint helps if I'm stuck.. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-22": {
@@ -469,6 +561,47 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "pays": {
+    "fr": "France",
+    "de": "Germany",
+    "es": "Spain",
+    "it": "Italy",
+    "gb": "the United Kingdom",
+    "pt": "Portugal",
+    "be": "Belgium",
+    "nl": "the Netherlands",
+    "ch": "Switzerland",
+    "at": "Austria",
+    "pl": "Poland",
+    "se": "Sweden",
+    "no": "Norway",
+    "gr": "Greece",
+    "ro": "Romania",
+    "dk": "Denmark",
+    "ie": "Ireland",
+    "hr": "Croatia",
+    "rs": "Serbia",
+    "sk": "Slovakia",
+    "cz": "the Czech Republic",
+    "hu": "Hungary",
+    "bg": "Bulgaria",
+    "ua": "Ukraine",
+    "fi": "Finland",
+    "is": "Iceland",
+    "si": "Slovenia",
+    "ba": "Bosnia and Herzegovina",
+    "al": "Albania",
+    "mk": "North Macedonia"
+   },
+   "trouveLePays": "Find {pays}!",
+   "bravoCestLePays": "Well done! It’s {pays}!",
+   "nonChercheBien": "Not quite. Look carefully.",
+   "suivant": "Next →"
+  },
+  "voix": {
+   "regle-mj-22": "Listen to the country's name, find it on the map!. I listen to the flag and the name . A voice says \"Find France!\" and the flag shows up top. I can hear it again if I didn't catch it.. I look at the map and tap a country . The country I touch lights up orange. If it's not the right one, I can touch another one.. I tap \"That's it!\" to confirm . Right answer: the flag celebrates! Not yet: a voice says \"Keep looking\" and I try again, without ever losing.. The more stars I earn, the more countries . Easy: 5 countries. Then 15, then 25! The tiniest countries aren't in the game, too hard to tap.. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-24": {
@@ -506,6 +639,9 @@ window.MJ_STRINGS = {
     "Your turn: the {n}!",
     "Quick, find the {n}!"
    ]
+  },
+  "voix": {
+   "regle-mj-24": "Listen to the name, find the right dino!. I listen to the dino's name . A voice says the name: \"Find the Triceratops!\" I tap the instruction to hear it again.. I look at the shadows . Each card shows a dino's shadow. Only one is the right one!. I tap the right shadow . If I get it wrong, I hear a hint and I can try again.. The more stars I earn, the trickier it gets . More shadows to compare… and sometimes two cousins from the same family!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-28": {
@@ -536,6 +672,9 @@ window.MJ_STRINGS = {
    "consigne": "Which dino is hiding in the dark?",
    "essaieEncore": "Try again!",
    "bravoNom": "Well done! It’s the {nom}!"
+  },
+  "voix": {
+   "regle-mj-28": "Search for the dino hiding in the dark with your flashlight!. I move my finger in the dark . A light follows my finger and lights up a hidden shadow.. I look closely at the shadow's shape . Every dino has a different silhouette: horns, spiky back, long neck…. I tap the right scientific name . If I get it wrong, the right name lights up green, and the dino appears in color with a fun fact!. The more stars I earn, the more the names look alike . At first the dinos are very different. With stars: cousins from the same family!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-30": {
@@ -587,6 +726,9 @@ window.MJ_STRINGS = {
     "metres": "feet"
    },
    "annonceMesure": "The {nom}: {val}!"
+  },
+  "voix": {
+   "regle-mj-30": "Sort the mystery dinos from the smallest to the BIGGEST!. I look at the shadows . Mystery dinos! There's a small one, a medium one… and a giant.. I drag each shadow into a slot . The smallest on the left, the BIGGEST on the right. I can swap two slots if I change my mind.. I tap \"Done!\" . The dinos step out of the shadows: we discover their REAL size in feet, next to a kid just like you!. The more stars I earn, the tougher it gets . More dinos to sort… and sometimes I have to sort them by WEIGHT!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-31": {
@@ -627,6 +769,9 @@ window.MJ_STRINGS = {
     "cretace": "66 to 100 million years ago",
     "cenozoique": "after 66 million years ago"
    }
+  },
+  "voix": {
+   "regle-mj-31": "Put the dino in the right time period!. I listen to the dino's name . A voice announces a mystery dino, with its shadow. I tap the instruction to hear it again.. I look at the colored bands . Each band is a time period: Triassic, Jurassic, Cretaceous… One of them is right for the dino!. I tap the right band . The dino lands in it! If I get it wrong, a voice helps me and I can try again.. The more stars I earn, the tougher it gets . New bands show up, and sometimes two cousins lived in very different time periods!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-32": {
@@ -667,6 +812,9 @@ window.MJ_STRINGS = {
    "oui": "Yes",
    "magnifiqueNom": "Beautiful! Your {nom} looks amazing!",
    "magnifique": "Beautiful!"
+  },
+  "voix": {
+   "regle-mj-32": "Color your dino however you like, there's no wrong way!. I pick a dino to color . I tap the dino I like best from the list.. I pick a color and tap the drawing . The color fills the whole area I touch. I can switch colors as many times as I want!. I check the model if I need to . The \"Model\" button shows the dino in color for 2 seconds, to help me if I want.. I tap \"Done!\" to save my drawing . My artwork goes into \"My Gallery\": I can look at it, pick it back up, or delete it. No stars, no mistakes: I do it my way!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-34": {
@@ -696,6 +844,9 @@ window.MJ_STRINGS = {
   "ui": {
    "libereLeBusJaune": "Free the yellow bus!",
    "sortie": "EXIT"
+  },
+  "voix": {
+   "regle-mj-34": "Slide the buses to free the yellow bus!. I spot the yellow bus . It blinks at the start of the level. It needs to get out through the \"EXIT\" door on the right.. I slide the other buses . Each bus only moves one way (flat or upright). I push them to clear the path.. If a bus can't move, it bounces back gently . No worries: I try the other direction, nothing ever counts against me.. The yellow bus gets out, then all the others follow . More levels: the grid grows (4x4 then 5x5) and there are more buses to move. 3 levels won equals one star!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-35": {
@@ -730,6 +881,9 @@ window.MJ_STRINGS = {
    "trouveLeTrouPile": "Find the hole that fills the nest EXACTLY!",
    "presqueCompteBien": "Almost! Count carefully, try again.",
    "pileExcl": "EXACT! ✨"
+  },
+  "voix": {
+   "regle-mj-35": "Find the hole that fills the nest EXACTLY RIGHT!. I look at the eggs in the holes . Each hole has dino eggs in it. I can count on my fingers if I want!. I look for THE right hole . Only one hole has JUST enough eggs to land exactly in the nest, not before, not after.. I tap the hole, the eggs hop . They hop one by one toward the nest. If the last one lands exactly inside: \"EXACT!\" . I get it wrong? No big deal, I recount . Nothing is lost, the board resets and I try again. 3 exact hits equals the round is won!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-37": {
@@ -776,6 +930,9 @@ window.MJ_STRINGS = {
    "gouterRestant": "snack left",
    "gouterRestants": "snacks left",
    "bravoToutCroque": "Well done, all munched up!"
+  },
+  "voix": {
+   "regle-mj-37": "Move your piece to snack up all the treats!. I discover a chess piece . The Bishop slides diagonally, the Rook goes straight, the Knight jumps in an L… each one moves its own way!. I tap my piece, the squares light up . Every square that lights up is a spot my piece can move to.. I tap a lit square to snack . If there's a treat on it, my piece snacks it up when it lands. Wrong pick? I try again, nothing is lost.. The further I go, the trickier the pieces . After the Bishop and Rook come the Knight, Queen, King, Pawn… then 2 pieces together!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-38": {
@@ -807,6 +964,9 @@ window.MJ_STRINGS = {
    "niveauSurTotal": "Level {n} / {total}",
    "combo": "Combo!",
    "essaieEncoreRecommencer": "Try again! Tap Restart 🙂"
+  },
+  "voix": {
+   "regle-mj-38": "Jump over the sleepy pieces to make them disappear!. I tap my sheep . It starts to glow: that's the one I'm about to jump.. I look at the squares glowing gold . They show where my sheep can land by jumping over a sleepy neighbor.. I tap the golden square: hop, it jumps! . The sleepy sheep it jumped over disappears in a poof. I can chain several jumps in a row: combo!. Stuck? I calmly start over . The \"Restart\" button resets the level, without losing anything. All sheep gone equals level won!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-39": {
@@ -836,6 +996,9 @@ window.MJ_STRINGS = {
   "ui": {
    "ligne": "line",
    "lignes": "lines"
+  },
+  "voix": {
+   "regle-mj-39": "Place the blocks to fill whole lines!. I look at the 3 blocks at the bottom . Each block has its own shape: small square, long bar, L-shape…. I drag a block onto the grid with my finger . A green square shows I can place it there, a red square means it won't fit.. I let go to place the block . If I fill a WHOLE row or column, it bursts into sparkles and I get more room!. The more lines I clear, the more stars I earn . New blocks show up every time. 5 lines equals one star, 12 equals two stars, 25 equals three stars!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-40": {
@@ -873,6 +1036,9 @@ window.MJ_STRINGS = {
    "figEcailleTournee": "Turned Scale",
    "figCouTourne": "Turned Neck",
    "figOeufTourne": "Turned Egg"
+  },
+  "voix": {
+   "regle-mj-40": "Place the 7 pieces onto the dino's silhouette!. I look at the silhouette . A mystery shape waits up top: an egg, a scale, a long dino neck…. I drag a piece onto it . I pick a colored piece at the bottom and drag it onto the right spot on the silhouette.. I tap a piece to turn it . If it doesn't fit right, a little tap spins it until it clicks into place!. The more stars I earn, the tougher it gets . The ★★ and ★★★ levels have harder shapes to rebuild.. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-42": {
@@ -898,6 +1064,18 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "jeuDuKenya": "A game from Kenya 🇰🇪",
+   "aToiDeJouer": "Your turn!",
+   "cameleonReflechit": "The chameleon is thinking...",
+   "bravo": "Well done!",
+   "alignePionsShisima": "You lined up your 3 pieces on the shisima!",
+   "danseCameleon": "Chameleon dance!",
+   "presqueEncoreUne": "So close! One more?"
+  },
+  "voix": {
+   "regle-mj-42": "Line up your 3 pieces by passing through the water point!. I look at the board . There are 8 points all around and 1 water point in the middle. My 3 red pieces are already placed.. I tap my piece, then an empty point next to it . My piece can only move to a free neighboring point, or pass through the water point in the middle.. I line up my 3 pieces with the center . If my 3 pieces and the water point are in a straight line, I win!. The chameleon plays too, without ever punishing me . The more stars I earn, the more the chameleon thinks ahead and blocks my moves. If it wins, we play again right away!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-46": {
@@ -929,6 +1107,9 @@ window.MJ_STRINGS = {
    "oeufSing": "egg",
    "oeufPlur": "eggs",
    "recomptonsEnsemble": "Let's count together, one by one!"
+  },
+  "voix": {
+   "regle-mj-46": "Count the eggs in the nest, then touch the right number!. I answer right away if I know it! . I count the eggs in my head and touch the right number.. Or I tap the eggs to count . A yellow dot lands on each one: 1, 2, 3… and the egg cracks!. The last number is the total . The number on the last egg is how many eggs there are in all!. When it's right… the eggs dance . They wiggle and crack! And at the end I earn an egg for my nest — it will hatch on the home screen.. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-47": {
@@ -958,6 +1139,9 @@ window.MJ_STRINGS = {
   "ui": {
    "combienEnTout": "How many in total?",
    "etCaFait": "{a} and {b} make {total}!"
+  },
+  "voix": {
+   "regle-mj-47": "Two dino constellations shine in the night sky. How many dinos in all? Take a quick look!. I look at the sky domino . Two glowing panels: in each one, dinos arranged like the dots on a die.. I tap the TOTAL . The dinos from both panels together, how many is that? If I get it wrong, I try again, no big deal!. I look at the math . After each answer, both panels light up: \"3 and 4 makes 7!\". The more stars I earn, the bigger it gets . First small groups, then constellations up to 12!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-48": {
@@ -1011,6 +1195,9 @@ window.MJ_STRINGS = {
    "sEtNCaFaitDixPlein": "{s0} and {n} make 10! The bus is full!",
    "lePremierCEstCelui": "The first one is right next to the stop. Count: one, two, three…",
    "recomptonsEnsembleExcl": "Let's count together!"
+  },
+  "voix": {
+   "regle-mj-48": "Passengers get on and off the bus. Count carefully!. I look at the bus seats . The bus has 2 rows of 5 seats, like a domino. A full row is 5 at once!. Passengers get on or off . At the stop, dinos wait in line. Some get on, others get off.. I tap the right number . How many on the bus? How many empty seats? If I get it wrong, we recount together.. The line has an order . The first in line is right next to the stop! Sometimes I'm asked to touch the 2nd or 3rd.. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-49": {
@@ -1049,6 +1236,9 @@ window.MJ_STRINGS = {
    "dixVingtEtNCaFait": "10, 20… and {reste} make {n}!",
    "dixVingtCaFait": "10, 20, that makes {n}!",
    "dixEtNCaFaitTotal": "10 and {n} make {total}!"
+  },
+  "voix": {
+   "regle-mj-49": "A full ten-frame is 10! With it, big numbers get easy.. I look at the ten-frame . The tray has 2 rows of 5: full, that's 10 eggs. No need to recount!. I answer right away if I know it . Otherwise I tap the eggs (or the empty slots!) to count: a dot lands on each one.. The math shows up . \"10 and 4 makes 14!\" — the ten-frame glows, and I see the group of ten.. The more stars I earn, the bigger it gets . First one ten-frame, then 10 plus more, then TWO ten-frames: all the way past 20!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-50": {
@@ -1074,6 +1264,9 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "voix": {
+   "regle-mj-50": "Listen to the sound, and touch the letter that makes it!. I listen to the sound . The voice makes the SOUND of the letter: \"mmm\", \"sss\"… never its school name.. I touch the right letter . The letters are written in cursive. The speaker repeats the sound if I touch it.. The letters change costume . The more stars I earn, the more the letters dress up: cursive, print, CAPITALS!. And even the sound inside words . At the last level: \"what sound do you hear at the start of mom?\" — with letters that look alike!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-51": {
@@ -1099,6 +1292,9 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "voix": {
+   "regle-mj-51": "The same letter wears many costumes: sort them all into their box!. I look closely at the letter . A cursive a, a print a, a CAPITAL A… it's always the letter a!. I drag it into its box . The box glows green when it's the right spot. I hear its sound!. If I get it wrong, it comes back . No worries! I try again as many times as I want.. The more stars I earn, the tougher it gets . At the end: letters that look really alike, like b, d, h, and k!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-52": {
@@ -1124,6 +1320,9 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "voix": {
+   "regle-mj-52": "Listen to the word, and build it with the moving letters!. I listen to the word . The voice says a word I know: mom, dad, car…. I look at the box . The word is broken into chunks: ca | r. Each slot waits for its letter.. I place the letters in order . I touch the letter I need: it hops into its slot and makes its sound!. The word is built . The voice reads back MY word! The more stars I earn, the more trick letters there are.. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-53": {
@@ -1149,6 +1348,9 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "voix": {
+   "regle-mj-53": "Here, the only way to know what to do is to read!. I read the word . The word is written in cursive. If it's tricky, I touch the word: the voice helps me (only at the start!).. I touch the right picture . Then dino names come up, broken into chunks: tri-cer-a-tops!. I read… and I DO . At the last level, the instruction tells me what to do: \"Touch 3 red eggs\"!. Without reading, no way! . That's the secret: reading is how you find out what to do.. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-54": {
@@ -1177,6 +1379,9 @@ window.MJ_STRINGS = {
   },
   "ui": {
    "consigne": "Fill the grid: all 4 symbols everywhere!"
+  },
+  "voix": {
+   "regle-mj-54": "Every row, every column, and every mini square needs all 4 symbols, never the same one twice!. I tap an empty square . It turns yellow: that's the one I'm filling in.. I pick a symbol at the bottom . It drops into the yellow square.. If two match next to each other, it shakes . Both squares shake orange: I can change it, it's never a problem.. I can clear a square I placed . Tap it again to empty it and start over.. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-55": {
@@ -1207,6 +1412,9 @@ window.MJ_STRINGS = {
    "bienJoue": "Well done!",
    "consigneAvecEquilibre": "Fill the grid: never 3 in a row, and as many dinos as eggs!",
    "consigneSimple": "Fill the grid: never 3 in a row!"
+  },
+  "voix": {
+   "regle-mj-55": "Never 3 in a row that match! Tap to change.. I tap an empty square . It turns into a dino . I tap again: an egg . Again: it empties.. Never 3 matching in a row . In a row or column: no 3 dinos or 3 eggs stuck together. Otherwise it lights up orange!. I fix it calmly . Orange isn't a problem: I tap again to change it and keep going.. The grid full and right equals win . Later on, each row and column also needs the same number of dinos as eggs!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-56": {
@@ -1235,6 +1443,9 @@ window.MJ_STRINGS = {
   },
   "ui": {
    "consigne": "One dino per row, column and pen… never side by side!"
+  },
+  "voix": {
+   "regle-mj-56": "One dino per row, per column, per pen… and never touching, even at a corner!. I place a dino . I tap a square to place a dino in it.. Watch out for neighbors . The squares that turn red are where I can't place another one.. They're grumpy . Two dinos can never touch, even diagonally — otherwise they shake, and I need to separate them.. One per pen . Each colored pen only gets one dino.. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-57": {
@@ -1266,6 +1477,9 @@ window.MJ_STRINGS = {
    "continueAFaireEclore": "Keep hatching the eggs!",
    "faisEcloreDores": "Hatch the eggs, especially the golden ones!",
    "tapoteUnGroupe": "Tap a group of the same color!"
+  },
+  "voix": {
+   "regle-mj-57": "Tap a group of same-colored eggs: they hatch!. I look at the grid . Colorful eggs, round or speckled, fill the box.. I touch an egg . The whole group of the same color lights up around my finger.. I tap it . The group hatches: baby dinos fly out!. The grid resets . The eggs fall, the empty columns close up. I keep going until everything has hatched!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-59": {
@@ -1295,6 +1509,9 @@ window.MJ_STRINGS = {
   "ui": {
    "traceRectangleN": "Draw a rectangle of {n} around the stone!",
    "faisUnTerritoire": "Make a territory for each stone!"
+  },
+  "voix": {
+   "regle-mj-59": "Divide up the valley: every stone needs its own plot, just the right size!. I look at the number . Each stone carries a number: that's the size of its plot.. I drag my finger . I start from one square and drag to another: a rectangle appears.. I aim for the right count . The number of squares shows up big while I drag.. I let go . If it's right, a little dino moves in! If not, it fades away gently.. Answer right on the first try for every question to win the champion star!"
   }
  }
 };

@@ -75,6 +75,9 @@ function checkUiTree(id, path, srcNode, dstNode) {
 
 // _commun (HO-MJ-04) : chrome transverse du panneau regle (regle-info.js), pas un
 // jeu — meme forme qu'un sous-arbre "ui" (objet plat cle -> texte), verifie a part.
+// _commun.voix (HO-MJ-06) : phrases vocales partagees (slugs hors regle-mj-XX,
+// site/js/textes-jeux.js) — sous-cle de _commun, deja couverte par le parcours
+// recursif de checkUiTree (descend dans tout objet imbrique, "voix" y compris).
 if (corpus._commun) {
   const gotCommun = trad._commun;
   if (!gotCommun) err.push('_commun : entree manquante');
@@ -105,6 +108,10 @@ Object.keys(corpus).forEach(id => {
   // Clés ui (HO-MJ-03) : optionnelles (tous les jeux n'en ont pas), mais quand le FR en a,
   // l'EN doit les couvrir a l'identique (memes cles, aucune vide, placeholders identiques).
   if (ref.ui) checkUiTree(id, '', ref.ui, got.ui || {});
+
+  // Clé voix (HO-MJ-06) : consigne parlée regle-mj-XX (repli TTS du bouton « Écoute
+  // toutes les règles », site/js/regle-info.js). Même sous-arbre plat que ui.
+  if (ref.voix) checkUiTree(id, 'voix', ref.voix, got.voix || {});
 });
 
 // Cle inconnue (hors corpus) : signal d'un jeu retire/renomme depuis la derniere extraction.

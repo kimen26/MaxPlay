@@ -1,9 +1,10 @@
 {
   "_meta": {
-    "source": "site/js/dinos-data.js",
+    "source": "site/js/dinos-data.js + site/js/dinos-racines.js",
     "genere": "2026-09-05",
     "nb_dinos": 71,
-    "nb_familles": 11
+    "nb_familles": 11,
+    "nb_racines": 101
   },
   "familles": {
     "trex": {
@@ -98,23 +99,28 @@
   "periodes": {
     "permien": {
       "label": "Permien",
-      "desc": "Avant les dinosaures"
+      "desc": "Avant les dinosaures",
+      "range": "280 Ma"
     },
     "trias": {
       "label": "Trias",
-      "desc": "Les premiers dinosaures"
+      "desc": "Les premiers dinosaures",
+      "range": "252 – 201 Ma"
     },
     "jurassique": {
       "label": "Jurassique",
-      "desc": "Les géants sauropodes"
+      "desc": "Les géants sauropodes",
+      "range": "201 – 145 Ma"
     },
     "cretace": {
       "label": "Crétacé",
-      "desc": "Le règne du T-Rex"
+      "desc": "Le règne du T-Rex",
+      "range": "145 – 66 Ma"
     },
     "cenozoique": {
       "label": "Cénozoïque",
-      "desc": "Après les dinos : les mammifères"
+      "desc": "Après les dinos : les mammifères",
+      "range": "66 Ma – aujourd'hui"
     }
   },
   "categories": {
@@ -1406,6 +1412,376 @@
       "fait": "C'était un oiseau, mais bien trop grand et lourd pour voler : il courait ! Debout, il était haut comme une porte. Et son bec crochu, plus gros que ta tête, était sa grande arme.",
       "desc": "Le Titanis était un oiseau-terreur, un oiseau géant qui ne volait pas. Il courait sur deux grandes pattes pour chasser, avec un bec énorme et pointu. C'est le seul oiseau-terreur qui soit venu vivre en Amérique du Nord, longtemps après les dinosaures.",
       "continent": "Amérique du Nord"
+    }
+  },
+  "racines": {
+    "-saure": {
+      "sens": "lézard"
+    },
+    "-odon": {
+      "sens": "dent"
+    },
+    "-lophe": {
+      "sens": "crête"
+    },
+    "-ops": {
+      "sens": "face, visage"
+    },
+    "-raptor": {
+      "sens": "voleur, ravisseur"
+    },
+    "cérat-": {
+      "sens": "corne"
+    },
+    "para-": {
+      "sens": "à côté de"
+    },
+    "-céphale": {
+      "sens": "tête"
+    },
+    "-mime": {
+      "sens": "qui imite"
+    },
+    "-onyx": {
+      "sens": "griffe"
+    },
+    "-pteryx / pterux": {
+      "sens": "aile"
+    },
+    "-thérium / thèrion": {
+      "sens": "bête, animal sauvage"
+    },
+    "coelo- / koilos": {
+      "sens": "creux"
+    },
+    "di-": {
+      "sens": "deux"
+    },
+    "-a-": {
+      "sens": "sans"
+    },
+    "-cantho-": {
+      "sens": "épine, piquant"
+    },
+    "-céras- / keras": {
+      "sens": "corne"
+    },
+    "-cyon / kuôn": {
+      "sens": "chien"
+    },
+    "-docus / dokos": {
+      "sens": "poutre"
+    },
+    "-elon / khelônè": {
+      "sens": "tortue"
+    },
+    "-gnathus / gnathos": {
+      "sens": "mâchoire"
+    },
+    "-ia": {
+      "sens": "terminaison latine qui dit « celui de »"
+    },
+    "-metro- / metron": {
+      "sens": "mesure, taille"
+    },
+    "-odonta / odous": {
+      "sens": "dent"
+    },
+    "-oplo-": {
+      "sens": "arme, armure"
+    },
+    "-physis": {
+      "sens": "forme, nature"
+    },
+    "-pleuro- / pleura": {
+      "sens": "côté, flanc"
+    },
+    "-taurus": {
+      "sens": "taureau"
+    },
+    "-titan / Titan": {
+      "sens": "les Titans, géants des vieilles histoires grecques"
+    },
+    "-us": {
+      "sens": "terminaison latine de genre"
+    },
+    "-vertebra": {
+      "sens": "vertèbre"
+    },
+    "acro-": {
+      "sens": "en haut, le plus haut"
+    },
+    "aeno- / ainos": {
+      "sens": "terrible, redoutable"
+    },
+    "Alberto-": {
+      "sens": "l'Alberta, région du Canada où on l'a trouvé"
+    },
+    "allo-": {
+      "sens": "autre, différent"
+    },
+    "Amarga-": {
+      "sens": "« La Amarga », lieu en Argentine où on l'a découvert"
+    },
+    "an-": {
+      "sens": "sans"
+    },
+    "anky- / ankylo-": {
+      "sens": "courbé, soudé, rigide"
+    },
+    "apato-": {
+      "sens": "tromperie, illusion"
+    },
+    "arch- / arkhè": {
+      "sens": "chef, premier"
+    },
+    "archaeo- / arkhaios": {
+      "sens": "ancien, du début"
+    },
+    "bary- / barus": {
+      "sens": "lourd"
+    },
+    "brachio-": {
+      "sens": "bras"
+    },
+    "camara-": {
+      "sens": "chambre, pièce voûtée"
+    },
+    "carcharo-": {
+      "sens": "pointu, coupant"
+    },
+    "carno-": {
+      "sens": "viande, chair"
+    },
+    "compso- / kompsos": {
+      "sens": "élégant, joli, délicat"
+    },
+    "corytho- / korus": {
+      "sens": "casque"
+    },
+    "cryo-": {
+      "sens": "glace, froid"
+    },
+    "deino- / deinos": {
+      "sens": "terrible, effrayant"
+    },
+    "diplo-": {
+      "sens": "double"
+    },
+    "édapho- / edaphos": {
+      "sens": "le sol, le pavé, la pierre plate"
+    },
+    "Edmonto-": {
+      "sens": "Edmonton, ville du Canada"
+    },
+    "Edmonton-": {
+      "sens": "la formation d'Edmonton (aujourd'hui Horseshoe Canyon), en Alberta, Canada, où ses os ont été trouvés"
+    },
+    "élasmo- / elasmos": {
+      "sens": "plaque de métal fine, tôle"
+    },
+    "eu-": {
+      "sens": "bien"
+    },
+    "galli-": {
+      "sens": "coq, poule"
+    },
+    "giga- / gigas": {
+      "sens": "géant"
+    },
+    "glypto- / glyptos": {
+      "sens": "sculpté, gravé"
+    },
+    "gorgo-": {
+      "sens": "féroce, terrible"
+    },
+    "gorgon-": {
+      "sens": "la Gorgone, monstre des vieilles histoires grecques au visage terrifiant"
+    },
+    "Hatzego-": {
+      "sens": "Hațeg, région de Roumanie (une île au temps des dinos) où ses os ont été trouvés"
+    },
+    "ichthyo- / ikhthus": {
+      "sens": "poisson"
+    },
+    "iguano-": {
+      "sens": "iguane"
+    },
+    "kentro- / kentron": {
+      "sens": "pointe, aiguillon"
+    },
+    "lio- / leios": {
+      "sens": "lisse"
+    },
+    "lystro- / lystron": {
+      "sens": "la pelle, la bêche"
+    },
+    "maia-": {
+      "sens": "bonne mère, nourrice"
+    },
+    "Mammuth-": {
+      "sens": "PAS du grec ni du latin : vient du russe *mamont*, lui-même d'une langue de Sibérie (mansi) qui veut dire « corne de la terre » — les défenses trouvées dans la terre gelée étaient prises pour des cornes"
+    },
+    "méga- / megas": {
+      "sens": "grand"
+    },
+    "micro- / mikros": {
+      "sens": "petit"
+    },
+    "Minmi": {
+      "sens": "PAS une racine grecque ni latine : nom d'un lieu, *Minmi Crossing* (Queensland, Australie), là où les os ont été trouvés"
+    },
+    "Mosa-": {
+      "sens": "la Meuse, rivière d'Europe"
+    },
+    "moscho- / moschos": {
+      "sens": "le veau, le jeune bovin"
+    },
+    "noto-": {
+      "sens": "du sud"
+    },
+    "ophthalmo- / ophthalmos": {
+      "sens": "œil"
+    },
+    "ovi-": {
+      "sens": "œuf"
+    },
+    "pachy- / pakhus": {
+      "sens": "épais"
+    },
+    "Patago-": {
+      "sens": "la Patagonie, région d'Argentine où ses os ont été trouvés"
+    },
+    "plateo-": {
+      "sens": "large, plat"
+    },
+    "proto-": {
+      "sens": "premier"
+    },
+    "psittaco- / psittakos": {
+      "sens": "perroquet"
+    },
+    "ptér- / pteron": {
+      "sens": "aile"
+    },
+    "Quetzalcoatl-": {
+      "sens": "Quetzalcoatl, dieu serpent à plumes des Aztèques"
+    },
+    "rex": {
+      "sens": "roi"
+    },
+    "scélido- / skelis": {
+      "sens": "côte de bœuf"
+    },
+    "scutello- / scutellum": {
+      "sens": "petit bouclier"
+    },
+    "Shoni-": {
+      "sens": "les monts Shoshone (Nevada, États-Unis), où ses os ont été trouvés"
+    },
+    "smilo- / smilè": {
+      "sens": "couteau, lame"
+    },
+    "spino-": {
+      "sens": "épine"
+    },
+    "stégo- / stegos": {
+      "sens": "toit"
+    },
+    "styraco- / sturax": {
+      "sens": "pointe (de lance), pique"
+    },
+    "sucho- / soukhos": {
+      "sens": "crocodile"
+    },
+    "tarbo-": {
+      "sens": "la peur, l'effroi"
+    },
+    "therizino- / therizo": {
+      "sens": "faucher, couper"
+    },
+    "Titanis": {
+      "sens": "les Titans, géants des vieilles histoires grecques"
+    },
+    "tri-": {
+      "sens": "trois"
+    },
+    "troo- / titrosko": {
+      "sens": "blesser, qui blesse"
+    },
+    "tyrannos-": {
+      "sens": "roi qui commande tout, tyran"
+    },
+    "Utah-": {
+      "sens": "l'Utah, État des États-Unis où on l'a trouvé"
+    },
+    "veloci-": {
+      "sens": "rapide"
+    }
+  },
+  "pangee": {
+    "titre": "La Pangée",
+    "soustitre": "Quand tous les continents étaient collés !",
+    "intro": "Avant les dinosaures, tous les continents de la Terre étaient collés ensemble en un seul morceau géant ! On l'appelle la Pangée. On pouvait marcher de l'Afrique jusqu'en Amérique à pied, sans bateau !",
+    "credit": "Cartes : C. Scotese / PALEOMAP — Wikimedia Commons, CC BY 4.0",
+    "fun_fact": "Les continents bougent encore aujourd'hui ! Mais très très lentement : à peine la vitesse à laquelle tes ongles poussent !",
+    "pourquoi": "C'est pour ça que le Cryolophosaure vivait en Antarctique : à l'époque il y faisait chaud, et c'était collé aux autres terres !",
+    "etapes": {
+      "trias": {
+        "label": "Trias",
+        "ma": "il y a 250 millions d'années",
+        "titre": "Tout est collé",
+        "texte": "Au temps des premiers dinosaures, toute la terre formait un seul super-continent : la Pangée. Il faisait très chaud et très sec partout."
+      },
+      "jurassique": {
+        "label": "Jurassique",
+        "ma": "il y a 155 millions d'années",
+        "titre": "Ça commence à se fendre",
+        "texte": "La Pangée se casse lentement en deux gros morceaux. Un grand océan s'ouvre au milieu. Les dinosaures des deux côtés ne se voient plus !"
+      },
+      "cretace": {
+        "label": "Crétacé",
+        "ma": "il y a 85 millions d'années",
+        "titre": "Ça s'écarte",
+        "texte": "Les continents continuent de glisser tout doucement, comme des radeaux géants. Ça commence à ressembler à la Terre d'aujourd'hui !"
+      },
+      "present": {
+        "label": "Aujourd'hui",
+        "ma": "maintenant",
+        "titre": "La Terre qu'on connaît",
+        "texte": "Après des millions d'années, les continents sont arrivés là où ils sont aujourd'hui. Et ils bougent encore… tout doucement !"
+      }
+    }
+  },
+  "extinction": {
+    "titre": "La Grande Extinction",
+    "soustitre": "Il y a 66 millions d'années…",
+    "fun_fact": "Les oiseaux sont de VRAIS dinosaures ! Chaque fois que tu vois un pigeon, tu vois un dino !",
+    "hypotheses": {
+      "meteorite": {
+        "titre": "La météorite géante",
+        "texte": "Un rocher de 10 km venu du ciel s'écrase dans le Mexique actuel. L'explosion est 10 milliards de fois plus puissante qu'une bombe atomique. Tout brûle dans un rayon de milliers de kilomètres. C'est la théorie la plus probable !",
+        "label_certitude": "Très probable"
+      },
+      "volcan": {
+        "titre": "Les super-volcans",
+        "texte": "En Inde, des volcans gigantesques crachent des laves et des gaz pendant des milliers d'années. La fumée empoisonne l'air et réchauffe la Terre. Les volcans Dekkan ont recouvert la moitié de l'Inde de lave !",
+        "label_certitude": "Très plausible"
+      },
+      "cendres": {
+        "titre": "Le nuage de cendres",
+        "texte": "Après le choc de la météorite, un nuage de poussière et de cendres cache le soleil pendant des mois… peut-être des années ! Sans soleil, les plantes meurent. Sans plantes, les herbivores meurent. Sans herbivores, les carnivores meurent.",
+        "label_certitude": "Presque certain"
+      },
+      "froid": {
+        "titre": "L'hiver nucléaire",
+        "texte": "La Terre plonge dans le noir et le froid. La température chute de 10 à 20 degrés partout sur Terre. Les plantes tropicales meurent. Les océans refroidissent. C'est un hiver qui dure des années !",
+        "label_certitude": "Très probable"
+      },
+      "survivants": {
+        "titre": "Et les survivants ?",
+        "texte": "Les petits animaux qui mangeaient des graines et pouvaient se cacher survivent. Les oiseaux — qui sont de vrais dinosaures ! — passent à travers. Les crocodiles, les tortues, les lézards résistent. La vie repart… et des millions d'années plus tard, les humains arrivent !"
+      }
     }
   }
 }

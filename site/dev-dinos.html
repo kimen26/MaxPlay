@@ -639,6 +639,8 @@ const MENU_VOICE = {
   regime:   window.AUDIO_DINOS + 'menu-regime.mp3',
   famille:  window.AUDIO_DINOS + 'menu-familles.mp3',
   periode:  window.AUDIO_DINOS + 'menu-voyage.mp3',
+  epoque:   window.AUDIO_DINOS + 'menu-epoques.mp3',   // 2026-09-05 : onglets époques + dico avaient seulement le repli TTS
+  dico:     window.AUDIO_DINOS + 'menu-dico.mp3',
 };
 let _menuAudio = null;
 function _stopMenuAudio() { if (_menuAudio) { _menuAudio.pause(); _menuAudio = null; } }
@@ -943,14 +945,14 @@ function buildMenuRegime(el) {
 /* ── MENU période = chronomap inline ── */
 // ─── Le voyage dans le temps (8 épisodes audio · story-first) ───
 const JOURNEY = [
-  { id:'intro',          emoji:'🌍', label:'Le grand voyage',              date:'le début de l\'aventure',  color:'#5dade2', dinos:[] },
-  { id:'trias',          emoji:'🌋', label:'Le Trias',                     date:"il y a 250 millions d'années", color:'#ff7043', dinos:['coelophysis','plateosaurus'] },
-  { id:'jurassique',     emoji:'🦕', label:'Le Jurassique',                date:"il y a 150 millions d'années", color:'#66bb6a', dinos:['diplodocus','brachiosaurus','allosaurus'] },
-  { id:'cretace',        emoji:'🦖', label:'Le Crétacé',                   date:"il y a 100 millions d'années", color:'#42a5f5', dinos:['tyrannosaurus','triceratops','velociraptor'] },
-  { id:'extinction',     emoji:'☄️', label:'La Grande Extinction',         date:"il y a 66 millions d'années",  color:'#ff6b35', dinos:['triceratops','tyrannosaurus'] },
-  { id:'mammiferes',     emoji:'🐯', label:'L’ère des mammifères',    date:'après les dinos',           color:'#a1887f', dinos:[] },
-  { id:'glace-mammouth', emoji:'🦣', label:'L’âge de glace & le mammouth', date:"l'époque du froid",    color:'#00bcd4', dinos:[] },
-  { id:'paleo',          emoji:'🔬', label:'La paléontologie',             date:'aujourd’hui',          color:'#9b59b6', dinos:[] },
+  { id:'intro',          emoji:'🌍', get label(){ return T('journey_ep_intro_label'); },          get date(){ return T('journey_ep_intro_date'); },          color:'#5dade2', dinos:[] },
+  { id:'trias',          emoji:'🌋', get label(){ return T('journey_ep_trias_label'); },          get date(){ return T('journey_ep_trias_date'); },          color:'#ff7043', dinos:['coelophysis','plateosaurus'] },
+  { id:'jurassique',     emoji:'🦕', get label(){ return T('journey_ep_jurassique_label'); },     get date(){ return T('journey_ep_jurassique_date'); },     color:'#66bb6a', dinos:['diplodocus','brachiosaurus','allosaurus'] },
+  { id:'cretace',        emoji:'🦖', get label(){ return T('journey_ep_cretace_label'); },        get date(){ return T('journey_ep_cretace_date'); },        color:'#42a5f5', dinos:['tyrannosaurus','triceratops','velociraptor'] },
+  { id:'extinction',     emoji:'☄️', get label(){ return T('journey_ep_extinction_label'); },     get date(){ return T('journey_ep_extinction_date'); },     color:'#ff6b35', dinos:['triceratops','tyrannosaurus'] },
+  { id:'mammiferes',     emoji:'🐯', get label(){ return T('journey_ep_mammiferes_label'); },     get date(){ return T('journey_ep_mammiferes_date'); },     color:'#a1887f', dinos:[] },
+  { id:'glace-mammouth', emoji:'🦣', get label(){ return T('journey_ep_glace-mammouth_label'); }, get date(){ return T('journey_ep_glace-mammouth_date'); }, color:'#00bcd4', dinos:[] },
+  { id:'paleo',          emoji:'🔬', get label(){ return T('journey_ep_paleo_label'); },          get date(){ return T('journey_ep_paleo_date'); },          color:'#9b59b6', dinos:[] },
 ];
 
 function buildMenuPeriode(el) {

@@ -1369,41 +1369,415 @@ window.DINO_STRINGS = {
    "explic": "Birds! Want to know a secret? Birds are the little cousins of dinosaurs — they're the only dinosaur family still alive today! But after the meteorite, some birds grew GIANT, too heavy to fly. They ran on two big legs to hunt, with a huge beak. The star: Titanis, the terror bird!"
   }
  },
- "racines": {},
+ "racines": {
+  "-saure": {
+   "sens": "lizard"
+  },
+  "-odon": {
+   "sens": "tooth"
+  },
+  "-lophe": {
+   "sens": "crest"
+  },
+  "-ops": {
+   "sens": "face"
+  },
+  "-raptor": {
+   "sens": "thief"
+  },
+  "cérat-": {
+   "sens": "horn"
+  },
+  "para-": {
+   "sens": "next to"
+  },
+  "-céphale": {
+   "sens": "head"
+  },
+  "-mime": {
+   "sens": "who copies"
+  },
+  "-onyx": {
+   "sens": "claw"
+  },
+  "-pteryx / pterux": {
+   "sens": "wing"
+  },
+  "-thérium / thèrion": {
+   "sens": "beast, wild animal"
+  },
+  "coelo- / koilos": {
+   "sens": "hollow"
+  },
+  "di-": {
+   "sens": "two"
+  },
+  "-a-": {
+   "sens": "without"
+  },
+  "-cantho-": {
+   "sens": "spine, spike"
+  },
+  "-céras- / keras": {
+   "sens": "horn"
+  },
+  "-cyon / kuôn": {
+   "sens": "dog"
+  },
+  "-docus / dokos": {
+   "sens": "beam"
+  },
+  "-elon / khelônè": {
+   "sens": "turtle"
+  },
+  "-gnathus / gnathos": {
+   "sens": "jaw"
+  },
+  "-ia": {
+   "sens": "Latin ending meaning \"the one from\""
+  },
+  "-metro- / metron": {
+   "sens": "measure, size"
+  },
+  "-odonta / odous": {
+   "sens": "tooth"
+  },
+  "-oplo-": {
+   "sens": "weapon, armor"
+  },
+  "-physis": {
+   "sens": "shape, nature"
+  },
+  "-pleuro- / pleura": {
+   "sens": "side"
+  },
+  "-taurus": {
+   "sens": "bull"
+  },
+  "-titan / Titan": {
+   "sens": "the Titans, giants from old Greek stories"
+  },
+  "-us": {
+   "sens": "Latin gender ending"
+  },
+  "-vertebra": {
+   "sens": "vertebra"
+  },
+  "acro-": {
+   "sens": "up high, the highest"
+  },
+  "aeno- / ainos": {
+   "sens": "terrible, fearsome"
+  },
+  "Alberto-": {
+   "sens": "Alberta, the Canadian province where it was found"
+  },
+  "allo-": {
+   "sens": "other, different"
+  },
+  "Amarga-": {
+   "sens": "\"La Amarga,\" a place in Argentina where it was discovered"
+  },
+  "an-": {
+   "sens": "without"
+  },
+  "anky- / ankylo-": {
+   "sens": "bent, fused, rigid"
+  },
+  "apato-": {
+   "sens": "trick, illusion"
+  },
+  "arch- / arkhè": {
+   "sens": "chief, first"
+  },
+  "archaeo- / arkhaios": {
+   "sens": "ancient, from the beginning"
+  },
+  "bary- / barus": {
+   "sens": "heavy"
+  },
+  "brachio-": {
+   "sens": "arm"
+  },
+  "camara-": {
+   "sens": "chamber, arched room"
+  },
+  "carcharo-": {
+   "sens": "sharp, cutting"
+  },
+  "carno-": {
+   "sens": "meat, flesh"
+  },
+  "compso- / kompsos": {
+   "sens": "elegant, pretty, delicate"
+  },
+  "corytho- / korus": {
+   "sens": "helmet"
+  },
+  "cryo-": {
+   "sens": "ice, cold"
+  },
+  "deino- / deinos": {
+   "sens": "terrible, frightening"
+  },
+  "diplo-": {
+   "sens": "double"
+  },
+  "édapho- / edaphos": {
+   "sens": "the ground, the pavement, the flat stone"
+  },
+  "Edmonto-": {
+   "sens": "Edmonton, a city in Canada"
+  },
+  "Edmonton-": {
+   "sens": "the Edmonton Formation (today's Horseshoe Canyon), in Alberta, Canada, where its bones were found"
+  },
+  "élasmo- / elasmos": {
+   "sens": "thin metal plate"
+  },
+  "eu-": {
+   "sens": "well"
+  },
+  "galli-": {
+   "sens": "rooster, chicken"
+  },
+  "giga- / gigas": {
+   "sens": "giant"
+  },
+  "glypto- / glyptos": {
+   "sens": "carved, engraved"
+  },
+  "gorgo-": {
+   "sens": "fierce, terrible"
+  },
+  "gorgon-": {
+   "sens": "the Gorgon, a monster from old Greek stories with a terrifying face"
+  },
+  "Hatzego-": {
+   "sens": "Hațeg, a region in Romania (an island back in dinosaur times) where its bones were found"
+  },
+  "ichthyo- / ikhthus": {
+   "sens": "fish"
+  },
+  "iguano-": {
+   "sens": "iguana"
+  },
+  "kentro- / kentron": {
+   "sens": "point, spike"
+  },
+  "lio- / leios": {
+   "sens": "smooth"
+  },
+  "lystro- / lystron": {
+   "sens": "shovel, spade"
+  },
+  "maia-": {
+   "sens": "good mother, nurse"
+  },
+  "Mammuth-": {
+   "sens": "NOT Greek or Latin: it comes from the Russian word *mamont*, itself from a Siberian (Mansi) language meaning \"horn of the earth\" — the tusks found frozen in the ground were mistaken for horns"
+  },
+  "méga- / megas": {
+   "sens": "big"
+  },
+  "micro- / mikros": {
+   "sens": "small"
+  },
+  "Minmi": {
+   "sens": "NOT a Greek or Latin root: the name of a place, *Minmi Crossing* (Queensland, Australia), where the bones were found"
+  },
+  "Mosa-": {
+   "sens": "the Meuse, a river in Europe"
+  },
+  "moscho- / moschos": {
+   "sens": "calf, young cattle"
+  },
+  "noto-": {
+   "sens": "from the south"
+  },
+  "ophthalmo- / ophthalmos": {
+   "sens": "eye"
+  },
+  "ovi-": {
+   "sens": "egg"
+  },
+  "pachy- / pakhus": {
+   "sens": "thick"
+  },
+  "Patago-": {
+   "sens": "Patagonia, a region in Argentina where its bones were found"
+  },
+  "plateo-": {
+   "sens": "wide, flat"
+  },
+  "proto-": {
+   "sens": "first"
+  },
+  "psittaco- / psittakos": {
+   "sens": "parrot"
+  },
+  "ptér- / pteron": {
+   "sens": "wing"
+  },
+  "Quetzalcoatl-": {
+   "sens": "Quetzalcoatl, the feathered serpent god of the Aztecs"
+  },
+  "rex": {
+   "sens": "king"
+  },
+  "scélido- / skelis": {
+   "sens": "rib of beef"
+  },
+  "scutello- / scutellum": {
+   "sens": "small shield"
+  },
+  "Shoni-": {
+   "sens": "the Shoshone Mountains (Nevada, United States), where its bones were found"
+  },
+  "smilo- / smilè": {
+   "sens": "knife, blade"
+  },
+  "spino-": {
+   "sens": "spine"
+  },
+  "stégo- / stegos": {
+   "sens": "roof"
+  },
+  "styraco- / sturax": {
+   "sens": "spear-point, spike"
+  },
+  "sucho- / soukhos": {
+   "sens": "crocodile"
+  },
+  "tarbo-": {
+   "sens": "fear, fright"
+  },
+  "therizino- / therizo": {
+   "sens": "to cut, to reap"
+  },
+  "Titanis": {
+   "sens": "the Titans, giants from old Greek stories"
+  },
+  "tri-": {
+   "sens": "three"
+  },
+  "troo- / titrosko": {
+   "sens": "to wound, to injure"
+  },
+  "tyrannos-": {
+   "sens": "king who rules everything, tyrant"
+  },
+  "Utah-": {
+   "sens": "Utah, the US state where it was found"
+  },
+  "veloci-": {
+   "sens": "fast"
+  }
+ },
  "periodes": {
   "permien": {
    "label": "Permian",
-   "desc": "Before the dinosaurs"
+   "desc": "Before the dinosaurs",
+   "range": "280 Mya"
   },
   "trias": {
    "label": "Triassic",
-   "desc": "The first dinosaurs"
+   "desc": "The first dinosaurs",
+   "range": "252 to 201 Mya"
   },
   "jurassique": {
    "label": "Jurassic",
-   "desc": "The giant sauropods"
+   "desc": "The giant sauropods",
+   "range": "201 to 145 Mya"
   },
   "cretace": {
    "label": "Cretaceous",
-   "desc": "The reign of the T-Rex"
+   "desc": "The age of T. rex",
+   "range": "145 to 66 Mya"
   },
   "cenozoique": {
    "label": "Cenozoic",
-   "desc": "After the dinos: the mammals"
+   "desc": "After the dinosaurs: the mammals",
+   "range": "66 Mya to today"
   }
  },
  "categories": {
   "carnivores": {
-   "label": "Carnivores"
+   "label": "Meat-Eaters"
   },
   "herbivores": {
-   "label": "Herbivores"
+   "label": "Plant-Eaters"
   },
   "piscivores": {
-   "label": "Piscivores"
+   "label": "Fish-Eaters"
   },
   "omnivores": {
-   "label": "Omnivores"
+   "label": "Eats Everything"
   }
+ },
+ "pangee": {
+  "titre": "Pangea",
+  "soustitre": "When all the continents were stuck together!",
+  "intro": "Before the dinosaurs, all the continents on Earth were stuck together in one giant piece! We call it Pangea. You could walk from Africa all the way to America, no boat needed!",
+  "credit": "Maps: C. Scotese / PALEOMAP — Wikimedia Commons, CC BY 4.0",
+  "etapes": {
+   "trias": {
+    "label": "Triassic",
+    "ma": "250 million years ago",
+    "titre": "Everything is stuck together",
+    "texte": "Back when the first dinosaurs lived, the whole world was one giant supercontinent: Pangea. It was hot and dry almost everywhere."
+   },
+   "jurassique": {
+    "label": "Jurassic",
+    "ma": "155 million years ago",
+    "titre": "It starts to crack",
+    "texte": "Pangea slowly splits into two big pieces. A huge ocean opens up in the middle. Dinosaurs on each side can't see each other anymore!"
+   },
+   "cretace": {
+    "label": "Cretaceous",
+    "ma": "85 million years ago",
+    "titre": "It keeps spreading apart",
+    "texte": "The continents keep drifting apart, slowly, like giant rafts. It's starting to look like the Earth we know today!"
+   },
+   "present": {
+    "label": "Today",
+    "ma": "now",
+    "titre": "The Earth we know",
+    "texte": "After millions of years, the continents ended up right where they are today. And they're still moving… very, very slowly!"
+   }
+  },
+  "fun_fact": "The continents are still moving today! But super slowly — about as fast as your fingernails grow!",
+  "pourquoi": "That's why Cryolophosaurus lived in Antarctica: back then it was warm there, and it was stuck to the other lands!"
+ },
+ "extinction": {
+  "titre": "The Great Extinction",
+  "soustitre": "66 million years ago…",
+  "hypotheses": {
+   "meteorite": {
+    "titre": "The giant meteorite",
+    "texte": "A rock 6 miles wide comes crashing down from the sky into what is now Mexico. The explosion is 10 billion times more powerful than an atomic bomb. Everything burns for thousands of miles around. This is the most likely theory!",
+    "label_certitude": "Very likely"
+   },
+   "volcan": {
+    "titre": "The super-volcanoes",
+    "texte": "In India, gigantic volcanoes spew out lava and gas for thousands of years. The smoke poisons the air and heats up the Earth. The Deccan volcanoes covered half of India in lava!",
+    "label_certitude": "Very plausible"
+   },
+   "cendres": {
+    "titre": "The cloud of ash",
+    "texte": "After the meteorite hits, a cloud of dust and ash blocks out the sun for months… maybe even years! Without sun, the plants die. Without plants, the plant-eaters die. Without plant-eaters, the meat-eaters die.",
+    "label_certitude": "Almost certain"
+   },
+   "froid": {
+    "titre": "The nuclear winter",
+    "texte": "The Earth plunges into darkness and cold. The temperature drops 18 to 36 degrees Fahrenheit everywhere on Earth. Tropical plants die. The oceans grow colder. It's a winter that lasts for years!",
+    "label_certitude": "Very likely"
+   },
+   "survivants": {
+    "titre": "And the survivors?",
+    "texte": "The small animals that ate seeds and could hide away survive. Birds — which are real dinosaurs! — make it through. Crocodiles, turtles, and lizards hold on. Life starts over… and millions of years later, humans show up!"
+   }
+  },
+  "fun_fact": "Birds are REAL dinosaurs! Every time you see a pigeon, you're looking at a dinosaur!"
  }
 };

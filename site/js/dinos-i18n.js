@@ -33,9 +33,37 @@
     // On resout donc l'identifiant nu d'abord, window ensuite.
     merge(typeof DINOS !== 'undefined' ? DINOS : window.DINOS, S.dinos);
     merge(typeof DINO_FAMILLES !== 'undefined' ? DINO_FAMILLES : window.DINO_FAMILLES, S.familles);
-    merge(typeof DINO_RACINES !== 'undefined' ? DINO_RACINES : window.DINO_RACINES, S.racines);
+    // DINO_RACINES n'est PAS un tableau/objet indexe par cle a plat : c'est
+    // { racines:[...], dinos:{...} }. Le tableau a fusionner est sa propriete `.racines`.
+    var _racinesRoot = typeof DINO_RACINES !== 'undefined' ? DINO_RACINES : window.DINO_RACINES;
+    merge(_racinesRoot && _racinesRoot.racines, S.racines);
     merge(typeof DINO_PERIODES !== 'undefined' ? DINO_PERIODES : window.DINO_PERIODES, S.periodes);
     merge(typeof DINO_CATEGORIES !== 'undefined' ? DINO_CATEGORIES : window.DINO_CATEGORIES, S.categories);
+
+    // PANGEE et EXTINCTION sont des objets uniques (pas des collections indexees par id) :
+    // fusion PROFONDE champ par champ, `etapes`/`hypotheses` indexes par periode/id.
+    function mergeDeep(cible, over) {
+      if (!cible || !over) return;
+      Object.keys(over).forEach(function (k) {
+        var v = over[k];
+        if (Array.isArray(cible[k]) && Array.isArray(v) === false && typeof v === 'object' && v !== null) {
+          // over[k] est un objet indexe (ex. etapes:{trias:{...}}) qui doit se fusionner
+          // dans le tableau cible[k] (ex. PANGEE.etapes) par la cle 'periode' ou 'id'.
+          cible[k].forEach(function (item) {
+            var o = v[item.periode || item.id];
+            if (o) Object.keys(o).forEach(function (kk) { item[kk] = o[kk]; });
+          });
+        } else if (typeof v === 'object' && v !== null && !Array.isArray(v) && typeof cible[k] === 'object' && cible[k] !== null && !Array.isArray(cible[k])) {
+          mergeDeep(cible[k], v);
+        } else {
+          cible[k] = v;
+        }
+      });
+    }
+    if (typeof PANGEE !== 'undefined') mergeDeep(PANGEE, S.pangee);
+    else if (window.PANGEE) mergeDeep(window.PANGEE, S.pangee);
+    if (typeof EXTINCTION !== 'undefined') mergeDeep(EXTINCTION, S.extinction);
+    else if (window.EXTINCTION) mergeDeep(window.EXTINCTION, S.extinction);
   };
 
   /* eslint-disable no-useless-escape */

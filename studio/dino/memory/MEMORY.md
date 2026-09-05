@@ -27,7 +27,7 @@ Complétude par dino : voir `memory/_ETAT-DINOS.md` (généré). Compte dinos/fa
 
 - **Vague i18n texte (HO-001..007, LIVRÉE)** : fiches + menu/UI traduits en en/es-es/pt-br (données, dictionnaire UI, relecture native). Reste ouvert non fait : `sens` des 100 racines du Dico + `label`/`date` des 8 épisodes du Voyage (pistes HO-009 si Papa Yann le veut). Détail complet de la vague : `archive/backlog-fermes-2026.md` § 2026-09-03.
 - **Refonte infra Claude (vague « mémoire convergente »)** : ce chantier (HO-008) fait passer `pmo/` → `memory/` (quintette). Registre transverse : `docs/handoffs/README.md`.
-- **Vague Fiches dino complètes (2026-09-05)** : data + scripts (4 langues) + audio théropodes livrés ; reste l'audio FR des 58 autres (solde ElevenLabs, reset 2026-09-10), le recroisement `strings.json`, l'écoute de Papa Yann (musiques, SFX, T-Rex 4 langues) et la question vitesse en UI. L'ancien blocage « 32 fiches hors tolérance » est levé (tous les blocs B sortent des fonctions exécutées).
+- **Vague Fiches dino complètes (2026-09-05)** : data + scripts (4 langues) + audio théropodes livrés ; reste l'audio FR des 58 autres (solde ElevenLabs, reset 2026-09-11), le recroisement `strings.json`, l'écoute de Papa Yann (musiques, SFX, T-Rex 4 langues) et la question vitesse en UI. L'ancien blocage « 32 fiches hors tolérance » est levé (tous les blocs B sortent des fonctions exécutées).
 - **Questions Papa Yann non tranchées (2026-09-03)** : macro-périodes/Ères (Mésozoïque), challenge taxo (Pachycéphalosaure/Gallimimus/Oviraptor), drift count 70 vs 71. Détail : `memory/TODO.md` § Questions Papa Yann.
 
 ## Journal (3 dernières sessions substantielles)

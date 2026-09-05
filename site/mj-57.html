@@ -78,7 +78,7 @@
 
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">🎨 Œufs Surprise</span>
+    <span class="htitle" id="htitle">🎨 Œufs Surprise</span>
   </div>
 
   <div class="stage">
@@ -101,9 +101,12 @@
     // gravité verticale + compactage horizontal. Score = bébés éclos (JAMAIS chiffre brut).
     // Fin NATURELLE quand plus aucun groupe ≥2 — JAMAIS de défaite.
     const GAME_ID = 'mj-57';
+    document.title = 'MJ-57 – ' + MJi18n.titre(GAME_ID, 'Œufs Surprise');
+    const htitleEl = document.getElementById('htitle');
+    if (htitleEl) htitleEl.textContent = '🎨 ' + MJi18n.titre(GAME_ID, 'Œufs Surprise');
 
     const shell = MJ.init({
-      id: GAME_ID, emoji: '🎨', titre: 'Œufs Surprise',
+      id: GAME_ID, emoji: '🎨', titre: MJi18n.titre(GAME_ID, 'Œufs Surprise'),
       golden: true, consigne: true,
       regle: {
         picto: '🥚✨',
@@ -117,6 +120,7 @@
       }
     });
     const G = shell.G;
+    const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t(GAME_ID, cle, fr, params) : fr);
 
     // ── Spec : UNE PARTIE = 3 grilles (pips golden), pas 4/6/8 ──
     G.totalQ = 3;
@@ -362,7 +366,7 @@
     // ── Fin de grille : plus aucun groupe ≥2 → « Tous les œufs ont éclos ! » ──
     function checkGridEnd() {
       if (!hasAnyGroup(grid, rows, cols)) {
-        lastGridEndMsg = 'Tous les œufs ont éclos !';
+        lastGridEndMsg = T('tousLesOeufsOntEclos', 'Tous les œufs ont éclos !');
         shell.setConsigne(lastGridEndMsg, gridIndex === 0 ? undefined : true);
         // attempts pour notePip : 1 si ≤3 œufs restants (belle éclosion), sinon 2 —
         // jamais formulé comme un échec à l'écran (spec).
@@ -372,7 +376,7 @@
         gridIndex++;
         setTimeout(nextGrid, testMode ? 0 : 1600);
       } else {
-        shell.setConsigne('Continue à faire éclore les œufs !', false);
+        shell.setConsigne(T('continueAFaireEclore', 'Continue à faire éclore les œufs !'), false);
       }
     }
 
@@ -390,7 +394,7 @@
       attemptsThisGrid = 0;
       gameLock = false;
       shell.setConsigne(
-        hasGoldenEggs ? 'Fais éclore les œufs, surtout les dorés !' : 'Tapote un groupe de la même couleur !',
+        hasGoldenEggs ? T('faisEcloreDores', 'Fais éclore les œufs, surtout les dorés !') : T('tapoteUnGroupe', 'Tapote un groupe de la même couleur !'),
         gridIndex === 0 ? undefined : true
       );
       render();

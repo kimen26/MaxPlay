@@ -87,12 +87,12 @@
   <!-- HEADER — copier tel quel, changer uniquement l'emoji et le titre -->
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">🧩 Blocs magiques</span>
+    <span class="htitle" id="htitle">🧩 Blocs magiques</span>
   </div>
 
   <div id="progress">
     <div class="jauge"><div class="jauge-fill" id="jaugeFill" style="width:0%"></div></div>
-    <div class="lignes-label" id="lignesLabel">0 lignes</div>
+    <div class="lignes-label" id="lignesLabel"></div>
   </div>
 
   <div id="board-wrap">
@@ -109,8 +109,11 @@
   MJ.ready(function () {
     'use strict';
 
+    document.title = 'MJ-39 — ' + MJi18n.titre('mj-39', 'Blocs magiques');
+    const htitleEl = document.getElementById('htitle');
+    if (htitleEl) htitleEl.textContent = '🧩 ' + MJi18n.titre('mj-39', 'Blocs magiques');
     const shell = MJ.init({
-      id: 'mj-39', emoji: '🧩', titre: 'Blocs magiques',
+      id: 'mj-39', emoji: '🧩', titre: MJi18n.titre('mj-39', 'Blocs magiques'),
       golden: true,
       consigne: false, // jauge + compteur de lignes gèrent le retour visuel
       regle: {
@@ -137,6 +140,8 @@
     const jaugeFill = document.getElementById('jaugeFill');
     const lignesLabel = document.getElementById('lignesLabel');
     const G = shell.G;
+    const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t('mj-39', cle, fr, params) : fr);
+    const plural = (n, one, many) => (window.MJi18n && MJi18n.plural) ? MJi18n.plural(n, one, many) : (n === 1 ? one : many);
     // 🔒 3 paliers fixes de lignes (indépendant du barème questions Golden 4/6/8)
     G.totalQ = 3;
 
@@ -390,7 +395,7 @@
 
     // ── Jauge + paliers golden (billes de progression) ───────────────────
     function updateProgressUI() {
-      lignesLabel.textContent = lignesEffacees + (lignesEffacees > 1 ? ' lignes' : ' ligne');
+      lignesLabel.textContent = lignesEffacees + ' ' + plural(lignesEffacees, T('ligne', 'ligne'), T('lignes', 'lignes'));
       const maxPalier = PALIERS[PALIERS.length - 1];
       const pct = Math.min(100, (lignesEffacees / maxPalier) * 100);
       jaugeFill.style.width = pct + '%';

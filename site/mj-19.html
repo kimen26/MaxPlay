@@ -76,10 +76,10 @@
   <div id="app">
     <div class="hdr">
       <a href="index.html" class="back">←</a>
-      <span class="htitle">🎯 Trouve le bus !</span>
+      <span class="htitle" id="htitle">🎯 Trouve le bus !</span>
     </div>
     <div class="pips" id="pips"></div>
-    <div class="quest" id="quest">Trouve le bus <b>162</b> !</div>
+    <div class="quest" id="quest"></div>
     <div class="arena" id="arena"></div>
   </div>
   <div class="flash-ok" id="flashOk"></div>
@@ -95,8 +95,11 @@
   <script src="js/mj-shell.js"></script>
   <script>
   MJ.ready(function () {
+    document.title = 'MJ-19 – ' + MJi18n.titre('mj-19', 'Trouve le bus !');
+    const htitleEl = document.getElementById('htitle');
+    if (htitleEl) htitleEl.textContent = '🎯 ' + MJi18n.titre('mj-19', 'Trouve le bus !');
     const shell = MJ.init({
-      id: 'mj-19', emoji: '🎯', titre: 'Trouve le bus !',
+      id: 'mj-19', emoji: '🎯', titre: MJi18n.titre('mj-19', 'Trouve le bus !'),
       golden: true,
       consigne: false, // consigne portée par #quest (spécifique, mise à jour à chaque manche)
       regle: {
@@ -119,6 +122,7 @@
     // N bus se déplacent, Max doit taper celui demandé.
 
     const G = shell.G;
+    const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t('mj-19', cle, fr, params) : fr);
     // 🔒 7 manches fixes (indépendant du barème questions Golden 4/6/8 — voir figée mj-19.md)
     G.totalQ = 7;
     G.buildPips();
@@ -171,8 +175,8 @@
     // nom (même règle de voix que mj-24 ; repli TTS phrase complète si le MP3
     // manque). Chaîne factorisée DinoOmbres.annoncer (anti-course + filet).
     function sayDino(d){
-      DinoOmbres.annoncer(d.id, 'Trouve le ' + d.name + ' !', {
-        amorce: 'Trouve le…', filet: 2200,
+      DinoOmbres.annoncer(d.id, T('trouveLeDino', 'Trouve le {n} !', { n: d.name }), {
+        amorce: T('trouveLeAmorce', 'Trouve le…'), filet: 2200,
       });
     }
 
@@ -190,7 +194,7 @@
         const target = DinoOmbres.pick(OMBRES);
         const others = DinoOmbres.pickCousins(OMBRES, target, count, { minCousins: 0 });
         targetKey = 'd:' + target.id;
-        document.getElementById('quest').innerHTML = `Trouve le <b>${target.name}</b> !`;
+        document.getElementById('quest').innerHTML = T('questDino', 'Trouve le <b>{n}</b> !', { n: target.name });
         sayDino(target);
         defs = DinoOmbres.shuffle([target, ...others]).map(d => ({
           key: 'd:' + d.id, dino: true,
@@ -210,10 +214,10 @@
         // Cible parmi les bus présents (doublons = tous gagnants, comme avant)
         const target = pick(pool);
         targetKey = 'b:' + target.num;
-        document.getElementById('quest').innerHTML = `Trouve le bus <b>${target.num}</b> !`;
+        document.getElementById('quest').innerHTML = T('questBus', 'Trouve le bus <b>{n}</b> !', { n: target.num });
         // TTS partagé (cancel-then-speak, respell lexique FR) — garde try/catch WebKit/iOS
         try {
-          if (window.TTS && TTS.speak) TTS.speak(`Trouve le bus ${target.num}`, { rate: 0.95 });
+          if (window.TTS && TTS.speak) TTS.speak(T('trouveLeBusN', 'Trouve le bus {n}', { n: target.num }), { rate: 0.95 });
         } catch(e) {}
         defs = pool.map(line => ({
           key: 'b:' + line.num, dino: false,

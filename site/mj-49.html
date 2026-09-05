@@ -89,7 +89,7 @@
 
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">🥚 Les barquettes de 10</span>
+    <span class="htitle" id="htitle">🥚 Les barquettes de 10</span>
   </div>
 
   <div class="stage">
@@ -122,9 +122,12 @@
     // N2 : 2 barquettes (20 + n) · « remplis pour atteindre N » (le rendre-la-monnaie de PY)
     //      + célébration bocal : les paquets de 10 brillent et descendent (geste ex-S5).
     const GAME_ID = 'mj-49';
+    document.title = 'MJ-49 – ' + MJi18n.titre(GAME_ID, 'Les barquettes de 10');
+    const htitleEl = document.getElementById('htitle');
+    if (htitleEl) htitleEl.textContent = '🥚 ' + MJi18n.titre(GAME_ID, 'Les barquettes de 10');
 
     const shell = MJ.init({
-      id: GAME_ID, emoji: '🥚', titre: 'Les barquettes de 10',
+      id: GAME_ID, emoji: '🥚', titre: MJi18n.titre(GAME_ID, 'Les barquettes de 10'),
       golden: true, consigne: true,
       regle: {
         picto: '🥚🔟',
@@ -142,6 +145,7 @@
       }
     });
     const G = shell.G;
+    const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t(GAME_ID, cle, fr, params) : fr);
 
     const barquettesEl = document.getElementById('barquettes');
     const vracEl = document.getElementById('vrac');
@@ -250,8 +254,8 @@
         correctAnswer = 10 - filled;
         barquettesEl.appendChild(barquetteHtml(filled, 46));
         const consigneManque = (qCount % 2 === 0)
-          ? 'Il en faut combien pour faire 10 ?'
-          : 'Il en manque combien pour remplir la boîte ?';
+          ? T('ilEnFautCombien', 'Il en faut combien pour faire 10 ?')
+          : T('ilEnManqueCombien', 'Il en manque combien pour remplir la boîte ?');
         shell.setConsigne(consigneManque, qCount === 1 ? undefined : true);
         showChoices({ min: 1, max: 6 });
 
@@ -261,7 +265,7 @@
         correctAnswer = 10 + n;
         barquettesEl.appendChild(barquetteHtml(10, 40));
         looseHtml(n, 40);
-        shell.setConsigne('Combien d’œufs en tout ?', qCount === 1 ? undefined : true);
+        shell.setConsigne(T('combienDoeufsEnTout', 'Combien d’œufs en tout ?'), qCount === 1 ? undefined : true);
         showChoices({ min: 10, max: 20 });
 
       } else if (curSub === 'deux-barquettes') {
@@ -271,16 +275,16 @@
         barquettesEl.appendChild(barquetteHtml(10, 30));
         barquettesEl.appendChild(barquetteHtml(10, 30));
         looseHtml(n, 34);
-        shell.setConsigne('Deux boîtes pleines… combien en tout ?', qCount === 1 ? undefined : true);
+        shell.setConsigne(T('deuxBoitesPleines', 'Deux boîtes pleines… combien en tout ?'), qCount === 1 ? undefined : true);
         showChoices({ min: 18, max: 28 });
 
       } else if (curSub === 'atteindre') {
         // N2b : « il me faut N » — barquette pleine, combien d'œufs encore ? (rendre la monnaie)
         const target = rand(12, 19);
         correctAnswer = target - 10;
-        targetEl.innerHTML = 'Il me faut <b>' + target + '</b> œufs !';
+        targetEl.innerHTML = T('ilMeFautN', 'Il me faut <b>{n}</b> œufs !', { n: target });
         barquettesEl.appendChild(barquetteHtml(10, 40));
-        shell.setConsigne('La boîte est pleine. Il faut encore combien d’œufs ?', qCount === 1 ? undefined : true);
+        shell.setConsigne(T('boiteEstPleine', 'La boîte est pleine. Il faut encore combien d’œufs ?'), qCount === 1 ? undefined : true);
         showChoices({ min: 1, max: 9 });
       }
     }
@@ -333,14 +337,16 @@
             }
           }, testMode ? 0 : 350 + i * 320);
         });
-        sentence = 'Il en manquait ' + correctAnswer + ' ! Et 10, la boîte est pleine !';
+        sentence = T('ilEnManquaitNEtDix', 'Il en manquait {n} ! Et 10, la boîte est pleine !', { n: correctAnswer });
       } else if (curSub === 'dix-plus') {
-        sentence = '10 et ' + (correctAnswer - 10) + ', ça fait ' + correctAnswer + ' !';
+        sentence = T('dixEtNCaFait', '10 et {reste}, ça fait {n} !', { reste: correctAnswer - 10, n: correctAnswer });
       } else if (curSub === 'deux-barquettes') {
-        sentence = '10, 20' + (correctAnswer > 20 ? '… et ' + (correctAnswer - 20) : '') + ', ça fait ' + correctAnswer + ' !';
+        sentence = correctAnswer > 20
+          ? T('dixVingtEtNCaFait', '10, 20… et {reste}, ça fait {n} !', { reste: correctAnswer - 20, n: correctAnswer })
+          : T('dixVingtCaFait', '10, 20, ça fait {n} !', { n: correctAnswer });
       } else if (curSub === 'atteindre') {
         looseHtml(correctAnswer, 40);
-        sentence = '10 et ' + correctAnswer + ', ça fait ' + (10 + correctAnswer) + ' !';
+        sentence = T('dixEtNCaFaitTotal', '10 et {n}, ça fait {total} !', { n: correctAnswer, total: 10 + correctAnswer });
       }
       MJKit.calcLine(calcEl, sentence);
     }

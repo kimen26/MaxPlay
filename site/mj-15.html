@@ -123,7 +123,7 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   <!-- Header -->
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">🔍 L’intrus</span>
+    <span class="htitle" id="htitle">🔍 L’intrus</span>
   </div>
   <div class="pips" id="pips"></div>
   <!-- 🔒 Bandeau niveau (figée mj-15) — restauré 2026-08-10 (perdu à la migration shell) -->
@@ -131,7 +131,7 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 
   <!-- Zone principale -->
   <div id="main">
-    <div id="q-label">Lequel ne va pas avec les autres ?</div>
+    <div id="q-label"></div>
     <div id="hint-label"></div>
 
     <div id="buses-wrap">
@@ -151,8 +151,11 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 <script src="js/mj-shell.js"></script>
 <script>
 MJ.ready(function () {
+  document.title = 'MJ-15 – ' + MJi18n.titre('mj-15', 'L’intrus');
+  const htitleEl = document.getElementById('htitle');
+  if (htitleEl) htitleEl.textContent = '🔍 ' + MJi18n.titre('mj-15', 'L’intrus');
   const shell = MJ.init({
-    id: 'mj-15', emoji: '🔍', titre: 'L’intrus',
+    id: 'mj-15', emoji: '🔍', titre: MJi18n.titre('mj-15', 'L’intrus'),
     golden: true,
     consigne: false,
     regle: {
@@ -186,6 +189,8 @@ MJ.ready(function () {
 
 const ROUNDS_PER_GAME = 5;
 const G = shell.G;
+const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t('mj-15', cle, fr, params) : fr);
+document.getElementById('q-label').textContent = T('quiNeVaPas', 'Lequel ne va pas avec les autres ?');
 // 🔒 5 manches fixes (indépendant du barème questions Golden 4/6/8 — voir figée mj-15.md)
 G.totalQ = ROUNDS_PER_GAME;
 G.buildPips();
@@ -204,11 +209,11 @@ const FAMILIES = {
 };
 
 const FAMILY_NAMES = {
-  valouette: 'Valouette',
-  noctilien: 'Noctilien',
-  metro:     'Métro',
-  rer:       'RER',
-  standard:  'Bus standard',
+  valouette: T('familleValouette', 'Valouette'),
+  noctilien: T('familleNoctilien', 'Noctilien'),
+  metro:     T('familleMetro', 'Métro'),
+  rer:       T('familleRer', 'RER'),
+  standard:  T('familleStandard', 'Bus standard'),
 };
 
 // ── Parité : est-ce qu'un numéro de ligne est "pair" ?
@@ -234,14 +239,14 @@ function pick(arr, n) {
 // Chaque groupe = un thème neutre, sans hiérarchie ni jugement (rien de stigmatisant).
 // L'intrus est toujours un élément qui ne va PAS avec le thème du groupe.
 const EMOJI_GROUPS = [
-  { theme: 'le ciel et la terre', items: ['🌍','🌙','☀️'], odd: '🐢', oddLabel: 'Tortue' },
-  { theme: 'les fruits',          items: ['🍎','🍌','🍓'], odd: '⚽', oddLabel: 'Ballon' },
-  { theme: 'les animaux de la ferme', items: ['🐄','🐷','🐔'], odd: '🦁', oddLabel: 'Lion' },
-  { theme: 'les véhicules qui roulent', items: ['🚗','🚚','🏍️'], odd: '✈️', oddLabel: 'Avion' },
-  { theme: 'les fleurs et les arbres', items: ['🌸','🌳','🌻'], odd: '🍕', oddLabel: 'Pizza' },
-  { theme: 'les jouets', items: ['🧸','🪀','🎈'], odd: '🥕', oddLabel: 'Carotte' },
-  { theme: 'la mer', items: ['🐟','🐠','🐬'], odd: '🦋', oddLabel: 'Papillon' },
-  { theme: 'les desserts', items: ['🍰','🍩','🍫'], odd: '🚀', oddLabel: 'Fusée' },
+  { theme: T('themeCiel', 'le ciel et la terre'), items: ['🌍','🌙','☀️'], odd: '🐢', oddLabel: T('oddTortue', 'Tortue') },
+  { theme: T('themeFruits', 'les fruits'),          items: ['🍎','🍌','🍓'], odd: '⚽', oddLabel: T('oddBallon', 'Ballon') },
+  { theme: T('themeFerme', 'les animaux de la ferme'), items: ['🐄','🐷','🐔'], odd: '🦁', oddLabel: T('oddLion', 'Lion') },
+  { theme: T('themeVehicules', 'les véhicules qui roulent'), items: ['🚗','🚚','🏍️'], odd: '✈️', oddLabel: T('oddAvion', 'Avion') },
+  { theme: T('themeFleurs', 'les fleurs et les arbres'), items: ['🌸','🌳','🌻'], odd: '🍕', oddLabel: T('oddPizza', 'Pizza') },
+  { theme: T('themeJouets', 'les jouets'), items: ['🧸','🪀','🎈'], odd: '🥕', oddLabel: T('oddCarotte', 'Carotte') },
+  { theme: T('themeMer', 'la mer'), items: ['🐟','🐠','🐬'], odd: '🦋', oddLabel: T('oddPapillon', 'Papillon') },
+  { theme: T('themeDesserts', 'les desserts'), items: ['🍰','🍩','🍫'], odd: '🚀', oddLabel: T('oddFusee', 'Fusée') },
 ];
 
 function generatePuzzleF() {
@@ -260,7 +265,7 @@ function generatePuzzleF() {
     kind: 'emoji',
     buses: placed,
     intrusIdx: intrusPos,
-    hint: `4 vont avec ${group.theme}…`,
+    hint: T('hintF', '4 vont avec {theme}…', { theme: group.theme }),
     level: 'F',
   };
 }
@@ -301,7 +306,7 @@ function generatePuzzleG() {
       kind: 'dino',
       buses: placed,
       intrusIdx: intrusPos,
-      hint: 'Regarde bien la couleur des ombres !',
+      hint: T('hintOmbreCouleur', 'Regarde bien la couleur des ombres !'),
       level: 'G',
     };
   }
@@ -324,7 +329,7 @@ function generatePuzzleG() {
     kind: 'dino',
     buses: placed,
     intrusIdx: intrusPos,
-    hint: 'Regarde bien la forme de l’ombre !',
+    hint: T('hintOmbreForme', 'Regarde bien la forme de l’ombre !'),
     level: 'G',
   };
 }
@@ -336,13 +341,13 @@ function generatePuzzleG() {
 // ombre : c'est une tâche de connaissance, volontairement réservée au niveau max.
 const DINO_ATTR_AXES = [
   { norm: d => (d.regime || '').replace(/^[^ ]+ /, '').split(' ')[0],
-    hint: v => ({ 'Carnivore': '4 mangent de la viande…',
-                  'Herbivore': '4 mangent des plantes…',
-                  'Piscivore': '4 mangent du poisson…' }[v] || '4 mangent la même chose…') },
+    hint: v => ({ 'Carnivore': T('hintRegimeCarnivore', '4 mangent de la viande…'),
+                  'Herbivore': T('hintRegimeHerbivore', '4 mangent des plantes…'),
+                  'Piscivore': T('hintRegimePiscivore', '4 mangent du poisson…') }[v] || T('hintRegimeAutre', '4 mangent la même chose…')) },
   { norm: d => (d.epoque || '').split(' ')[0],
-    hint: v => '4 sont du ' + v + '…' },
+    hint: v => T('hintEpoque', '4 sont du {v}…', { v }) },
   { norm: d => d.famille || '',
-    hint: () => '4 sont de la même famille de dinos…' },
+    hint: () => T('hintFamille', '4 sont de la même famille de dinos…') },
 ];
 
 function generatePuzzleH() {
@@ -435,7 +440,7 @@ function generatePuzzleA() {
   return {
     buses: placed,
     intrusIdx: intrusPos,
-    hint: 'Regarde les couleurs !',
+    hint: T('hintCouleurs', 'Regarde les couleurs !'),
     level: 'A',
   };
 }
@@ -466,7 +471,7 @@ function generatePuzzleB() {
   return {
     buses: placed,
     intrusIdx: intrusPos,
-    hint: 'Pair ou impair ?',
+    hint: T('hintPairImpair', 'Pair ou impair ?'),
     level: 'B',
   };
 }
@@ -507,7 +512,7 @@ function generatePuzzleC() {
   return {
     buses: placed,
     intrusIdx: intrusPos,
-    hint: `4 bus sont de la famille ${hintMaj}…`,
+    hint: T('hintFamilleBus', '4 bus sont de la famille {fam}…', { fam: hintMaj }),
     level: 'C',
   };
 }
@@ -528,7 +533,7 @@ function generatePuzzleD() {
   return {
     buses: placed,
     intrusIdx: intrusPos,
-    hint: 'Regarde bien les roues !',
+    hint: T('hintRoues', 'Regarde bien les roues !'),
     level: 'D',
     wheelColor,
   };
@@ -571,7 +576,7 @@ function generatePuzzleE() {
   return {
     buses: placed,
     intrusIdx: intrusPos,
-    hint: 'Couleur ET numéro… deux choses à voir !',
+    hint: T('hintDoubleCritere', 'Couleur ET numéro… deux choses à voir !'),
     level: 'E',
   };
 }
@@ -657,7 +662,7 @@ function renderPuzzle(puzzle) {
     else         rowBot.appendChild(btn);
   });
 
-  SoundPool.phrase('lequel-ne-va-pas', 'Lequel ne va pas avec les autres ?');
+  SoundPool.phrase('lequel-ne-va-pas', T('quiNeVaPas', 'Lequel ne va pas avec les autres ?'));
 }
 
 // ── Interaction ───────────────────────────────────────────────────────────
@@ -732,7 +737,7 @@ function startGame() {
   round    = 1;
   answered = false;
   // 🔒 Bandeau niveau (figée) — palier courant (3★)
-  document.getElementById('levelbar').textContent = 'Niveau ' + (level + 1) + ' / 3';
+  document.getElementById('levelbar').textContent = T('niveauSur3', 'Niveau {n} / 3', { n: level + 1 });
   renderPuzzle(generatePuzzle(round));
 }
 

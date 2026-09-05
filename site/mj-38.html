@@ -129,12 +129,12 @@
   <!-- HEADER — copier tel quel, changer uniquement l'emoji et le titre -->
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">🐑 Saute-mouton !</span>
+    <span class="htitle" id="htitle">🐑 Saute-mouton !</span>
   </div>
 
   <div class="toolbar">
-    <div class="lvl-label" id="lvl-label">Niveau 1</div>
-    <button class="btn-restart" id="btn-restart" onclick="restartLevel()">&#8630; Recommencer</button>
+    <div class="lvl-label" id="lvl-label"></div>
+    <button class="btn-restart" id="btn-restart" onclick="restartLevel()"><span>&#8630;</span> <span id="lbl-recommencer"></span></button>
   </div>
   <div class="pips" id="pips"></div>
 
@@ -152,8 +152,11 @@
 <script>
 MJ.ready(function () {
 
+  document.title = 'MJ-38 — ' + MJi18n.titre('mj-38', 'Saute-mouton !');
+  const htitleEl = document.getElementById('htitle');
+  if (htitleEl) htitleEl.textContent = '🐑 ' + MJi18n.titre('mj-38', 'Saute-mouton !');
   const shell = MJ.init({
-    id: 'mj-38', emoji: '🐑', titre: 'Saute-mouton !',
+    id: 'mj-38', emoji: '🐑', titre: MJi18n.titre('mj-38', 'Saute-mouton !'),
     golden: true,
     consigne: false, // msg-zone gère les messages contextuels (Combo/Coincé)
     regle: {
@@ -192,6 +195,8 @@ function inb(r,c){ return r>=0 && r<N && c>=0 && c<N; }
 function pk(r,c){ return r+','+c; }
 
 const G = shell.G;
+const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t('mj-38', cle, fr, params) : fr);
+document.getElementById('lbl-recommencer').textContent = T('recommencer', 'Recommencer');
 // 🔒 9 niveaux fixes (indépendant du barème questions Golden 4/6/8)
 G.totalQ = LEVELS.length;
 G.buildPips();
@@ -224,7 +229,7 @@ function loadLevel(idx) {
   selected = false;
   animating = false;
   comboCount = 0;
-  document.getElementById('lvl-label').textContent = `Niveau ${idx+1} / ${LEVELS.length}`;
+  document.getElementById('lvl-label').textContent = T('niveauSurTotal', 'Niveau {n} / {total}', { n: idx + 1, total: LEVELS.length });
   document.getElementById('msg-zone').innerHTML = '';
   renderBoard();
 }
@@ -376,11 +381,11 @@ function showCombo(cellEl) {
   sp.style.position = 'fixed';
   document.body.appendChild(sp);
   setTimeout(() => sp.remove(), 650);
-  document.getElementById('msg-zone').innerHTML = '<span class="msg">✨ Combo !</span>';
+  document.getElementById('msg-zone').innerHTML = '<span class="msg">✨ ' + T('combo', 'Combo !') + '</span>';
 }
 
 function showStuck() {
-  document.getElementById('msg-zone').innerHTML = '<span class="msg soft">Essaie encore ! Appuie sur Recommencer 🙂</span>';
+  document.getElementById('msg-zone').innerHTML = '<span class="msg soft">' + T('essaieEncoreRecommencer', 'Essaie encore ! Appuie sur Recommencer 🙂') + '</span>';
 }
 
 function showWin() {

@@ -63,7 +63,7 @@
 
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">🟦 Territoires</span>
+    <span class="htitle" id="htitle">🟦 Territoires</span>
   </div>
 
   <div class="stage">
@@ -87,10 +87,13 @@
     // s'y installe ; invalide → s'efface doucement (son doux, zéro message).
     // Tap sur un territoire verrouillé → le libère.
     const GAME_ID = 'mj-59';
+    document.title = 'MJ-59 – ' + MJi18n.titre(GAME_ID, 'Territoires');
+    const htitleEl = document.getElementById('htitle');
+    if (htitleEl) htitleEl.textContent = '🟦 ' + MJi18n.titre(GAME_ID, 'Territoires');
     const DINO_EMOJIS = ['🦕', '🦖', '🐊', '🦎'];
 
     const shell = MJ.init({
-      id: GAME_ID, emoji: '🟦', titre: 'Territoires',
+      id: GAME_ID, emoji: '🟦', titre: MJi18n.titre(GAME_ID, 'Territoires'),
       golden: true, consigne: true,
       regle: {
         picto: '🟦🪨',
@@ -104,6 +107,7 @@
       }
     });
     const G = shell.G;
+    const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t(GAME_ID, cle, fr, params) : fr);
     // Le pack "Territoires" = toujours 4 puzzles par partie (pas 4/6/8 :
     // la difficulté vient de la taille de grille/du nombre de pierres, pas du
     // nombre de manches — décision spec mj-59).
@@ -205,8 +209,8 @@
 
       renderGrid();
       const label = stones.length === 1
-        ? 'Trace un rectangle de ' + stones[0].n + ' autour de la pierre !'
-        : 'Fais un territoire pour chaque pierre !';
+        ? T('traceRectangleN', 'Trace un rectangle de {n} autour de la pierre !', { n: stones[0].n })
+        : T('faisUnTerritoire', 'Fais un territoire pour chaque pierre !');
       shell.setConsigne(label, qCount === 1 ? undefined : true);
     }
 

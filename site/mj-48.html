@@ -83,7 +83,7 @@
 
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">🚌 Tout le monde monte !</span>
+    <span class="htitle" id="htitle">🚌 Tout le monde monte !</span>
   </div>
 
   <div class="stage">
@@ -96,7 +96,7 @@
       <div class="arret-zone">
         <img class="arret" src="img/decor/arret_bus.png" alt="Arrêt de bus">
         <div class="file" id="file"></div>
-        <div class="file-fleche" id="file-fleche" style="display:none">← le 1ᵉʳ est près de l'arrêt</div>
+        <div class="file-fleche" id="file-fleche" style="display:none"></div>
       </div>
     </div>
     <div id="calc-line"></div>
@@ -121,6 +121,9 @@
     // N0 : combien de passagers (≤5, une rangée) · N1 : qui monte (+1/+2, ≤10)
     // N2 : monte ET descend · places libres · compléments à 10 · ordre dans la file.
     const GAME_ID = 'mj-48';
+    document.title = 'MJ-48 – ' + MJi18n.titre(GAME_ID, 'Tout le monde monte');
+    const htitleEl = document.getElementById('htitle');
+    if (htitleEl) htitleEl.textContent = '🚌 ' + MJi18n.titre(GAME_ID, 'Tout le monde monte !');
     const SEATS = 10;
 
     // Passagers = AVATARS low-poly (règle 🔒 2026-07-21) — pool via mj-kit
@@ -128,7 +131,7 @@
     const ORDINAUX = ['premier', 'deuxième', 'troisième', 'quatrième', 'cinquième'];
 
     const shell = MJ.init({
-      id: GAME_ID, emoji: '🚌', titre: 'Tout le monde monte',
+      id: GAME_ID, emoji: '🚌', titre: MJi18n.titre(GAME_ID, 'Tout le monde monte'),
       golden: true, consigne: true,
       regle: {
         picto: '🚌🔢',
@@ -146,6 +149,14 @@
       }
     });
     const G = shell.G;
+    const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t(GAME_ID, cle, fr, params) : fr);
+    const plural = (n, one, many) => (window.MJi18n && MJi18n.plural) ? MJi18n.plural(n, one, many) : (n === 1 ? one : many);
+    // ORDINAUX (HO-MJ-04) : tableau par langue dans le pack (ui.ordinaux), même
+    // longueur/ordre que le FR — repli FR si absent (langue non traduite).
+    const _ordEntry = window.MJ_STRINGS && window.MJ_STRINGS[GAME_ID] && window.MJ_STRINGS[GAME_ID].ui;
+    const ORDINAUX_I18N = (_ordEntry && Array.isArray(_ordEntry.ordinaux) && _ordEntry.ordinaux.length === ORDINAUX.length)
+      ? _ordEntry.ordinaux : ORDINAUX;
+    document.getElementById('file-fleche').textContent = T('leFPremierPresArret', '← le 1ᵉʳ est près de l\'arrêt');
 
     // ── Bus SVG canonique — couleur via LIGNES (jamais de hex en dur) ──
     // Bug corrigé (retour Papa Yann 2026-07-22, "le 162 est bleu... ennorme erreur") :
@@ -274,7 +285,7 @@
         correctAnswer = n;
         fillSeats(n, true);
         buildFile(0, false);
-        ask('Combien de passagers dans le bus ?', n * 100 + 500);
+        ask(T('combienPassagersBus', 'Combien de passagers dans le bus ?'), n * 100 + 500);
 
       } else if (curType === 'monte') {
         const k = rand(1, 2);
@@ -282,7 +293,7 @@
         correctAnswer = Math.min(SEATS, s0 + k);
         fillSeats(s0, false);
         buildFile(k, false);
-        shell.setConsigne('' + k + (k > 1 ? ' passagers montent !' : ' passager monte !'), qCount === 1 ? false : undefined);
+        shell.setConsigne('' + k + ' ' + plural(k, T('passagerMonte', 'passager monte'), T('passagersMontent', 'passagers montent')) + ' !', qCount === 1 ? false : undefined);
         sfx('sounds/bus-closing-door-sound.flac', 0.4);
         // les k de la file montent un par un
         const persos = [...fileEl.children];
@@ -297,7 +308,7 @@
             });
           }, 300 + i * 550);
         });
-        setTimeout(() => ask('Combien de passagers maintenant ?'), 300 + k * 550 + 1000);
+        setTimeout(() => ask(T('combienPassagersMaintenant', 'Combien de passagers maintenant ?')), 300 + k * 550 + 1000);
 
       } else if (curType === 'descend') {
         const s0 = rand(5, 10);
@@ -305,7 +316,7 @@
         correctAnswer = s0 - b;
         fillSeats(s0, false);
         buildFile(0, false);
-        shell.setConsigne('' + b + (b > 1 ? ' passagers descendent !' : ' passager descend !'));
+        shell.setConsigne('' + b + ' ' + plural(b, T('passagerDescend', 'passager descend'), T('passagersDescendent', 'passagers descendent')) + ' !');
         document.getElementById('bus-top').classList.add('roule');
         sfx('sounds/bus-closing-door-sound.flac', 0.4);
         const partants = sieges.slice(s0 - b, s0);
@@ -317,7 +328,7 @@
         });
         setTimeout(() => {
           document.getElementById('bus-top').classList.remove('roule');
-          ask('Combien il en reste dans le bus ?');
+          ask(T('combienIlEnReste', 'Combien il en reste dans le bus ?'));
         }, 300 + b * 450 + 1000);
 
       } else if (curType === 'places') {
@@ -325,14 +336,14 @@
         correctAnswer = SEATS - s0;
         fillSeats(s0, true);
         buildFile(0, false);
-        ask('Combien de places libres ?', s0 * 90 + 500);
+        ask(T('combienDePlacesLibres', 'Combien de places libres ?'), s0 * 90 + 500);
 
       } else if (curType === 'manque') {
         const s0 = rand(3, 9);
         correctAnswer = SEATS - s0;
         fillSeats(s0, true);
         buildFile(0, false);
-        ask('Il manque combien de passagers pour remplir le bus ?', s0 * 90 + 500);
+        ask(T('ilManqueCombien', 'Il manque combien de passagers pour remplir le bus ?'), s0 * 90 + 500);
 
       } else if (curType === 'ordinal') {
         const q = rand(3, 5);
@@ -340,7 +351,7 @@
         correctAnswer = ordRank;
         fillSeats(rand(0, 3), false);
         buildFile(q, true);
-        shell.setConsigne('Touche le ' + ORDINAUX[ordRank - 1] + ' de la file !');
+        shell.setConsigne(T('toucheLeOrdinal', 'Touche le {ord} de la file !', { ord: ORDINAUX_I18N[ordRank - 1] }));
       }
     }
 
@@ -389,12 +400,12 @@
         fly(target, document.getElementById('bus-top'), () => {
           target.style.visibility = 'hidden';
         });
-        MJKit.calcLine(calcEl, 'Le ' + ORDINAUX[ordRank - 1] + ' monte dans le bus !');
+        MJKit.calcLine(calcEl, T('leOrdinalMonte', 'Le {ord} monte dans le bus !', { ord: ORDINAUX_I18N[ordRank - 1] }));
         setTimeout(nextQuestion, testMode ? 0 : 2400);
       } else {
         p.classList.add('ko');
         try { sndBuzz(); } catch (e) {}
-        shell.say('Le premier, c’est celui qui est juste à côté de l’arrêt. Compte : un, deux, trois…');
+        shell.say(T('lePremierCEstCelui', 'Le premier, c’est celui qui est juste à côté de l’arrêt. Compte : un, deux, trois…'));
       }
     }
 
@@ -406,17 +417,17 @@
         if (n > 5) {
           rangees[0].classList.add('lit');
           setTimeout(() => rangees[1].classList.add('lit'), 700);
-          sentence = '5 et ' + (n - 5) + ', ça fait ' + n + ' !';
+          sentence = T('cinqEtNCaFait', '5 et {reste}, ça fait {n} !', { reste: n - 5, n });
         } else {
           rangees[0].classList.add('lit');
-          sentence = n + (n > 1 ? ' passagers !' : ' passager !');
+          sentence = n + ' ' + plural(n, T('passagerSing', 'passager'), T('passagerPlur', 'passagers')) + ' !';
         }
       } else if (curType === 'descend') {
-        sentence = 'Il en reste ' + n + ' !';
+        sentence = T('ilEnResteN', 'Il en reste {n} !', { n });
         rangees[0].classList.add('lit');
       } else if (curType === 'places' || curType === 'manque') {
         const s0 = seatCount();
-        sentence = s0 + ' et ' + n + ', ça fait 10 ! Le bus est plein !';
+        sentence = T('sEtNCaFaitDixPlein', '{s0} et {n}, ça fait 10 ! Le bus est plein !', { s0, n });
         rangees.forEach(r => r.classList.add('lit'));
       }
       MJKit.calcLine(calcEl, sentence);
@@ -428,7 +439,7 @@
       const list = (curType === 'places' || curType === 'manque')
         ? sieges.filter(s => !s.classList.contains('occupe'))
         : occ;
-      shell.say('Recomptons ensemble !');
+      shell.say(T('recomptonsEnsembleExcl', 'Recomptons ensemble !'));
       list.forEach((s, i) => {
         setTimeout(() => {
           s.classList.remove('pop'); void s.offsetWidth; s.classList.add('pop');

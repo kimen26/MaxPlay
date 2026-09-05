@@ -65,7 +65,7 @@
 
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">🦕 Les Enclos</span>
+    <span class="htitle" id="htitle">🦕 Les Enclos</span>
   </div>
 
   <div class="stage">
@@ -91,6 +91,9 @@
     // Retirer un dino est toujours possible (re-tap). Jamais de blocage,
     // jamais de "perdu" — juste le feedback qui guide.
     const GAME_ID = 'mj-56';
+    document.title = 'MJ-56 – ' + MJi18n.titre(GAME_ID, 'Les Enclos');
+    const htitleEl = document.getElementById('htitle');
+    if (htitleEl) htitleEl.textContent = '🦕 ' + MJi18n.titre(GAME_ID, 'Les Enclos');
     const N4_ZONES = [
       [0,0,1,1],
       [0,0,1,1],
@@ -101,7 +104,7 @@
     const ZONE_COLORS = ['#7fbf8f', '#f2c464', '#7fa8d9', '#e08fa0', '#c79bdb', '#8fd0c9'];
 
     const shell = MJ.init({
-      id: GAME_ID, emoji: '🦕', titre: 'Les Enclos',
+      id: GAME_ID, emoji: '🦕', titre: MJi18n.titre(GAME_ID, 'Les Enclos'),
       golden: true, consigne: true,
       regle: {
         picto: '🦕🚧',
@@ -119,6 +122,7 @@
       }
     });
     const G = shell.G;
+    const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t(GAME_ID, cle, fr, params) : fr);
 
     const gridEl = document.getElementById('grid');
 
@@ -354,7 +358,7 @@
       fixedRow = -1;
       if (lv === 0) { fixedRow = 0; placed[0] = solution[0]; }
       render();
-      shell.setConsigne('Un dino par ligne, colonne et enclos… jamais collés !', qCount === 1 ? undefined : true);
+      shell.setConsigne(T('consigne', 'Un dino par ligne, colonne et enclos… jamais collés !'), qCount === 1 ? undefined : true);
     }
 
     function showEnd() { G.showEnd({ replayUrl: 'mj-56.html' }); }

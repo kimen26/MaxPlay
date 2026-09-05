@@ -104,7 +104,7 @@
   <!-- HEADER — copier tel quel, changer uniquement l'emoji et le titre -->
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">♟️ Croque-échecs !</span>
+    <span class="htitle" id="htitle">♟️ Croque-échecs !</span>
   </div>
   <div class="pips" id="pips"></div>
 
@@ -142,8 +142,11 @@
   MJ.ready(function () {
     'use strict';
 
+    document.title = 'MJ-37 — ' + MJi18n.titre('mj-37', 'Croque-échecs !');
+    const htitleEl = document.getElementById('htitle');
+    if (htitleEl) htitleEl.textContent = '♟️ ' + MJi18n.titre('mj-37', 'Croque-échecs !');
     const shell = MJ.init({
-      id: 'mj-37', emoji: '♟️', titre: 'Croque-échecs !',
+      id: 'mj-37', emoji: '♟️', titre: MJi18n.titre('mj-37', 'Croque-échecs !'),
       golden: true,
       consigne: false, // écran intro pièce + snacks-left gèrent la consigne visuelle
       regle: {
@@ -185,13 +188,19 @@
       { id:'mix-3', tier:3, n:5, pieces:[{type:'roi', start:[2,0]}, {type:'tour', start:[0,4]}], snacks:[[2,1],[2,2],[4,4],[1,4]] },
     ];
 
+    const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t('mj-37', cle, fr, params) : fr);
+
     const TIER_LABELS = {
-      1: { emoji:'★', label:'Fou & Tour' },
-      2: { emoji:'★★', label:'Cavalier & Dame' },
-      3: { emoji:'★★★', label:'Roi, Pion & Mix' },
+      1: { emoji:'★', label: T('tierFouTour', 'Fou & Tour') },
+      2: { emoji:'★★', label: T('tierCavalierDame', 'Cavalier & Dame') },
+      3: { emoji:'★★★', label: T('tierRoiPionMix', 'Roi, Pion & Mix') },
     };
 
-    const PIECE_NAMES = { fou:'Le Fou', tour:'La Tour', cavalier:'Le Cavalier', dame:'La Dame', roi:'Le Roi', pion:'Le Pion' };
+    const PIECE_NAMES = {
+      fou: T('pieceFou', 'Le Fou'), tour: T('pieceTour', 'La Tour'),
+      cavalier: T('pieceCavalier', 'Le Cavalier'), dame: T('pieceDame', 'La Dame'),
+      roi: T('pieceRoi', 'Le Roi'), pion: T('piecePion', 'Le Pion'),
+    };
 
     const G = shell.G;
     // 🔒 19 niveaux fixes (indépendant du barème questions Golden 4/6/8)
@@ -199,12 +208,12 @@
     G.buildPips();
 
     const PIECE_VOICELINES = {
-      fou:      { text: 'Moi je file en diagonale, zioup !',   file: 'sounds/pieces/fou-intro.mp3' },
-      tour:     { text: 'Moi j’avance droit devant, vroum !',  file: 'sounds/pieces/tour-intro.mp3' },
-      cavalier: { text: 'Et hop, je saute en L !',              file: 'sounds/pieces/cavalier-intro.mp3' },
-      dame:     { text: 'Je peux aller absolument partout !',   file: 'sounds/pieces/dame-intro.mp3' },
-      roi:      { text: 'Doucement, un petit pas à la fois.',   file: 'sounds/pieces/roi-intro.mp3' },
-      pion:     { text: 'Je suis petit mais je croque bien !',  file: 'sounds/pieces/pion-intro.mp3' },
+      fou:      { text: T('voxFou', 'Moi je file en diagonale, zioup !'),   file: 'sounds/pieces/fou-intro.mp3' },
+      tour:     { text: T('voxTour', 'Moi j’avance droit devant, vroum !'),  file: 'sounds/pieces/tour-intro.mp3' },
+      cavalier: { text: T('voxCavalier', 'Et hop, je saute en L !'),              file: 'sounds/pieces/cavalier-intro.mp3' },
+      dame:     { text: T('voxDame', 'Je peux aller absolument partout !'),   file: 'sounds/pieces/dame-intro.mp3' },
+      roi:      { text: T('voxRoi', 'Doucement, un petit pas à la fois.'),   file: 'sounds/pieces/roi-intro.mp3' },
+      pion:     { text: T('voxPion', 'Je suis petit mais je croque bien !'),  file: 'sounds/pieces/pion-intro.mp3' },
     };
 
     const SNACK_EMOJIS = ['🍎','🥐','🍪'];
@@ -415,8 +424,10 @@
 
     function updateSnackCounter() {
       const remaining = state.snacks.size;
-      document.getElementById('snacks-left').textContent =
-        remaining === 0 ? 'Tout croqué !' : (remaining + (remaining > 1 ? ' goûters restants' : ' goûter restant'));
+      const plural = (n, one, many) => (window.MJi18n && MJi18n.plural) ? MJi18n.plural(n, one, many) : (n === 1 ? one : many);
+      document.getElementById('snacks-left').textContent = remaining === 0
+        ? T('toutCroque', 'Tout croqué !')
+        : remaining + ' ' + plural(remaining, T('gouterRestant', 'goûter restant'), T('gouterRestants', 'goûters restants'));
     }
 
     function clearGlow() {
@@ -503,7 +514,7 @@
       else if (window.sndVictory) { try { sndVictory(); } catch (e) {} }
 
       const vz = document.getElementById('victory-zone');
-      vz.innerHTML = '<div class="victory-banner">🎉 Bravo, tout croqué ! 🎉</div>';
+      vz.innerHTML = '<div class="victory-banner">🎉 ' + T('bravoToutCroque', 'Bravo, tout croqué !') + ' 🎉</div>';
       document.getElementById('btn-next').style.display = 'block';
 
       if (window.MaxFX) {

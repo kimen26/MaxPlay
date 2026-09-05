@@ -79,14 +79,19 @@
   // (le FR reste toujours en dur dans le jeu = canon, jamais de trou). `cle` supporte
   // un chemin en points ("confirm.msg") pour les jeux avec plusieurs sous-groupes ui.
   // params = {n:3} -> "{n}" remplacé dans le texte choisi (FR ou traduit).
+  // Cas spécial '_commun' (HO-MJ-04) : chrome transverse du panneau regle-info.js,
+  // pas un jeu — pas de sous-clé `.ui`, l'objet du pack EST directement la table
+  // cle -> texte (voir studio/minijeux/i18n/<lang>/strings.json § _commun).
   function t(id, cle, frFallback, params) {
     var S = window.MJ_STRINGS;
-    var entry = S && S[id || gameId()];
+    var gid = id || gameId();
+    var entry = S && S[gid];
+    var root = (gid === '_commun') ? entry : (entry && entry.ui);
     var val;
-    if (entry && entry.ui) {
+    if (root) {
       val = cle.split('.').reduce(function (acc, k) {
         return (acc && typeof acc === 'object') ? acc[k] : undefined;
-      }, entry.ui);
+      }, root);
     }
     var texte = (typeof val === 'string' && val) ? val : frFallback;
     return applyParams(texte, params);

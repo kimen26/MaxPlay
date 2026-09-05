@@ -76,3 +76,47 @@ Entrées « à relire natif » présentes dans le lexique pour les théropodes d
 théropodes (toutes les entrées « à relire natif » du lexique concernent des dinos hors théropodes :
 corythosaurus, edaphosaurus, gorgonops, hatzegopteryx, lystrosaurus, maiasaura, minmi, moschops,
 saurolophus, scutellosaurus). Relecture complète du lexique faite en fin de chantier (58 dinos restants).
+
+## Lexique — arbitrages finaux (HO-013, 2026-09-05)
+
+Les 10 entrées ci-dessus, tranchées à l'oreille native BR. Flag « à relire natif » retiré de la table
+`i18n/lexiques-prononciation/pt-br.md` §2 pour chacune. Une ligne de raison par id :
+
+- **corythosaurus** → `Co-ri-to-SSAU-ro` (Coritossauro). Confirmé tel quel : th→t et y→i sont déjà la
+  norme du lexique (ichthyosaurus, ankylosaurus), le respelling sonne comme la forme vernaculaire BR
+  attendue. Correspond au flat form déjà utilisé dans `corythosaurus.md` (« Coritossauro »).
+- **edaphosaurus** → `E-da-fo-SSAU-ro` (Edafossauro). Confirmé tel quel : ph→f est la règle constante du
+  lexique (dilophosaurus, ophthalmosaurus). Correspond au flat form du script (« Edafossauro »).
+- **gorgonops** → corrigé de `Gor-go-NOPS` à **`Gor-go-NOP-se`**. Un locuteur BR ne dit jamais la
+  terminaison grecque brute « -ops » pour ce genre précis : le terme déjà établi en paléonto BR est
+  « Gorgonopse » (avec -e final, comme dans « gorgonopsídeo »). Le script audio (`gorgonops.md`) utilise
+  déjà « Gorgonopse » deux fois — le lexique était en décalage avec sa propre production, corrigé pour
+  matcher.
+- **hatzegopteryx** → `A-tse-gop-TÉ-riks` confirmé tel quel pour la colonne TTS (guide phonétique pur :
+  h muet, tz→ts, x→ks). Le flat form du script (« Hatzegoptérix », avec x et h) est volontairement
+  différent — même écart que pour archaeopteryx/« Arqueópterix » déjà dans la table §2 : la colonne TTS
+  encode le SON, le flat form du script garde une graphie lisible proche du grec. Pas une incohérence,
+  c'est la convention du fichier (voir préambule §0).
+- **lystrosaurus** → `Lis-tro-SSAU-ro` (Listrossauro). Confirmé tel quel : y→i est la règle constante
+  (baryonyx, pachycephalosaurus). Correspond au flat form du script (« Listrossauro »).
+- **maiasaura** → `Maia-SSAU-ra` (Maiassaura). Confirmé tel quel : le -a féminin de « -saura » suit le
+  même patron que le masculin « -sauro » de toute la table, « ai » diphtongué naturel en BR. Correspond
+  au flat form du script (« Maiassaura »).
+- **minmi** → `MIN-mi` confirmé tel quel : nom de lieu australien (Minmi Crossing), aucune racine
+  grecque à respeller, tonique sur la première syllabe naturelle pour un mot de 2 syllabes en portugais.
+  Correspond au flat form du script (« Minmi »).
+- **moschops** → corrigé de `Mos-KOPS` à **`Mos-COPS`**. Le « k » latin est une béquille inutile en
+  BR : « sc » devant une voyelle arrière (o) se lit déjà « sk » nativement (cf. « escola », « escova »),
+  pas besoin de forcer un k. Le script audio (`moschops.md`) utilise déjà « Moscops » trois fois — même
+  décalage que gorgonops, corrigé pour matcher.
+- **saurolophus** → `Sau-RÓ-lo-fus` (Saurolofo) confirmé tel quel : cohérent avec parasaurolophus déjà
+  dans la table (`Pa-ra-sau-RÓ-lo-fus`), le piège oral « pas de para- » est déjà noté en clair dans la
+  ligne. Correspond au flat form du script (« Saurolofo »).
+- **scutellosaurus** → `Es-cu-te-lo-SSAU-ro` (Escutelossauro) confirmé tel quel : Sc- initial → « Es- »
+  est la règle constante du lexique (spinosaurus, stegosaurus), ll→l déjà appliqué ailleurs. Correspond
+  au flat form du script (« Escutelossauro »).
+
+Les 2 corrections (gorgonops, moschops) ont été rejouées via
+`node studio/dino/content/scripts/export/_verif-scripts-audio.cjs pt-br gorgonops` et
+`... moschops` après édition — porte au vert, aucune graphie du script à modifier (les scripts avaient
+déjà la bonne forme, seul le lexique était en retard).

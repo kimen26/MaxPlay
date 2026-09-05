@@ -24,7 +24,54 @@
   "mettreEnFavoriCoeur": "❤️ Mettre en favori",
   "deja5JeuxEnAvant": "Déjà 5 jeux en avant — retires-en un d'abord 🙂",
   "ajouteAuxFavoris": "Ajouté aux favoris ❤️",
-  "dicteeNonDispo": "Dictée non dispo sur ce navigateur"
+  "dicteeNonDispo": "Dictée non dispo sur ce navigateur",
+  "voix": {
+   "a-toi-de-jouer": "À toi de jouer !",
+   "cest-parti": "C'est parti !",
+   "cherche-bien": "Non ce n'est pas ça. Cherche bien.",
+   "combien-d-oeufs": "Combien d’œufs ?",
+   "combien-d-oeufs-en-tout": "Combien d’œufs en tout ?",
+   "combien-de-dinos": "Combien de dinos ?",
+   "combien-de-dinos-compte-les": "Combien de dinos ? Compte-les !",
+   "combien-en-tout": "Combien en tout ?",
+   "complete-la-grille-les-4-symboles-partout": "Complète la grille : les 4 symboles partout !",
+   "compte-encore": "Compte encore !",
+   "compte-les-un-par-un": "Compte les bus AVANT le bus demandé, un par un.",
+   "construis-le-mot": "Construis le mot !",
+   "continue-a-faire-eclore-les-oeufs": "Continue à faire éclore les œufs !",
+   "deux-boites-pleines-combien-en-tout": "Deux boîtes pleines… combien en tout ?",
+   "ecoute-le-premier-son": "Écoute le premier son.",
+   "encore-une-fois": "Encore une fois !",
+   "etoile-gagnee": "Tu as gagné une étoile !",
+   "fais-monter-les-passagers": "Fais monter les passagers.",
+   "gros-niveau-regroupe": "Gros niveau : regroupe !",
+   "il-en-faut-beaucoup": "Il en faut beaucoup !",
+   "il-vivait-quand": "Il vivait quand ?",
+   "la-boite-est-pleine-il-faut-encore-combien-d-oeufs": "La boîte est pleine. Il faut encore combien d’œufs ?",
+   "le-son-quon-entend": "Le son qu'on entend.",
+   "lequel-ne-va-pas": "Lequel ne va pas avec les autres ?",
+   "mode-libre-encore-une-caisse": "Mode libre : encore une caisse !",
+   "ouvre-bien-les-yeux": "Ouvre bien les yeux !",
+   "premier-son-l-ou-r": "Premier son : L ou R ?",
+   "qu-est-ce-qui-manque": "Qu'est-ce qui manque dans la grille ?",
+   "qu-est-ce-qui-vient-ensuite": "Qu'est-ce qui vient ensuite ?",
+   "quel-bus-arrive-en-premier": "Quel bus arrive en premier ?",
+   "quel-bus-manque": "Quel bus manque dans la grille ?",
+   "quel-dino-se-cache-dans-le-noir": "Quel dino se cache dans le noir ?",
+   "quel-mot-manque-dans-la-phrase": "Quel mot manque dans la phrase ?",
+   "range-dans-la-bonne-boite": "Range dans la bonne boîte.",
+   "range-les-des": "Range les dés.",
+   "regardons-ensemble": "Regardons ensemble !",
+   "regroupe-les-points": "Regroupe les points.",
+   "remplis-chaque-caisse": "Remplis chaque caisse.",
+   "tape-pour-sauter-par-dessus-les-cactus": "Tape pour sauter par-dessus les cactus !",
+   "terminus-fais-les-descendre": "Terminus ! Fais-les descendre.",
+   "touche-la-lettre-qui-fait-ce-son": "Touche la lettre qui fait ce son !",
+   "trouve-2-tuiles-avec-le-meme-dino": "Trouve 2 tuiles avec le même dino !",
+   "trouve-l-ombre-et-son-dino": "Trouve l’ombre et son dino !",
+   "trouve-le-meme-dino": "Trouve le même dino !",
+   "un-dino-par-ligne-colonne-et-enclos-jamais-colles": "Un dino par ligne, colonne et enclos… jamais collés !"
+  }
  },
  "mj-06": {
   "titre": "Lis la phrase",
@@ -52,6 +99,9 @@
   },
   "ui": {
    "quelMotManque": "Quel mot manque dans la phrase ?"
+  },
+  "voix": {
+   "regle-mj-06": "Trouve le mot qui manque dans la phrase !. J’écoute la phrase . Une voix lit la phrase avec un petit trou. Je tape la consigne pour réécouter.. Je regarde le dessin . Un emoji donne un indice sur le mot qui manque.. Je tape le bon mot . Si je me trompe, la voix dit la bonne réponse et la phrase complète.. Je continue avec 5 phrases . Bus, dinos, voyages… à chaque fois une nouvelle phrase à compléter !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-09": {
@@ -94,6 +144,9 @@
    "bravoTangeRange": "BRAVO ! Tout rangé !",
    "voilaFamilles": "Voilà toutes les familles de bus !",
    "continuer": "Continuer →"
+  },
+  "voix": {
+   "regle-mj-09": "Range chaque bus dans la bonne boîte de couleur !. Je regarde la couleur du bus . Chaque bus a une couleur : bleu, vert, orange, violet, rouge ou brun.. Je glisse le bus vers sa boîte . La boîte s’allume en vert quand je suis au bon endroit. J’entends le nom de la ligne !. Si je me trompe, le bus revient tout seul . Pas de souci, je peux réessayer autant de fois que je veux.. Plus j’ai d’étoiles, plus il y a de bus et de couleurs . Niveau 1 : 2 couleurs, 6 bus. Niveau 3 : les 6 couleurs, 26 bus, avec le défilé final !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-13a": {
@@ -127,6 +180,9 @@
    "bravo": "Bravo !",
    "cetaitLe": "C’était le",
    "essaieEncore": "Essaie encore !"
+  },
+  "voix": {
+   "regle-mj-13a": "Regarde les fiches et trouve le bus qui arrive en premier !. Je regarde les compteurs . Chaque fiche montre le nombre de minutes avant l’arrivée du bus. Le compteur descend tout seul.. Je cherche le plus petit nombre . Le bus qui arrive en premier, c’est celui qui a le moins de minutes à attendre.. Je tape sa fiche . Si je me trompe, je peux réessayer. Après 3 essais, la bonne fiche s’allume.. Plus j’ai d’étoiles, plus il y a de bus . Au début il y a 2 bus avec un grand écart, puis de plus en plus de bus avec des écarts serrés.. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-13c": {
@@ -163,6 +219,9 @@
    "avantLe": "avant le",
    "cetait": "C’était",
    "compteLesUnParUn": "Compte les bus AVANT le bus demandé, un par un."
+  },
+  "voix": {
+   "regle-mj-13c": "Compte les bus qui passent avant le bus demandé !. J’écoute quel bus chercher . La voix demande : « Combien de bus avant le 162 ? » Le numéro est aussi affiché en couleur.. Je compte les fiches avant lui . Les fiches sont rangées par ordre d’arrivée. Je compte celles qui arrivent AVANT le bus demandé, une par une.. Je tape le bon chiffre . Des boutons 0, 1, 2… apparaissent. Si je me trompe, j’ai un indice pour recompter, puis je réessaie.. Plus j’ai d’étoiles, plus il y a de bus . Au début il y a 3 bus à compter, puis de plus en plus (jusqu’à 10) !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-14": {
@@ -230,6 +289,9 @@
    "strongHintC": "Regarde la ligne de la case vide et la colonne de la case vide. La bonne réponse combine les deux.",
    "strongHintD": "Regarde bien : dans chaque ligne il y a 3 motifs différents, et dans chaque colonne aussi. Trouve celui qui manque dans la dernière ligne ET la dernière colonne.",
    "niveauSur3": "Niveau {n} / 3"
+  },
+  "voix": {
+   "regle-mj-14": "Une case manque dans la grille magique ! Trouve le motif caché en regardant les lignes et les colonnes.. Je regarde la grille . Il y a une case avec un point d’interrogation : c’est la case mystère !. Je cherche la règle . Regarde bien la ligne et la colonne de la case vide : un motif se répète.. Je choisis en bas . Tape le motif qui complète la grille parmi les 3 propositions.. Plus je gagne d’étoiles, plus c’est malin . D’abord une seule règle facile, puis deux règles à la fois : jusqu’au niveau expert !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-15": {
@@ -294,6 +356,9 @@
    "hintRoues": "Regarde bien les roues !",
    "hintDoubleCritere": "Couleur ET numéro… deux choses à voir !",
    "niveauSur3": "Niveau {n} / 3"
+  },
+  "voix": {
+   "regle-mj-15": "Regarde les 5 bus, trouve celui qui ne va pas avec les autres !. J’écoute la question . « Lequel ne va pas avec les autres ? » Un indice s’affiche pour m’aider à savoir quoi regarder.. Je compare les 5 bus . 4 bus se ressemblent (même couleur, même famille…), 1 seul est différent : c’est l’intrus !. Je tape l’intrus . Si je me trompe, le bus tremble et je peux réessayer avec un indice — l’intrus n’est jamais révélé tout seul.. Plus j’ai d’étoiles, plus c’est subtil . Au début c’est la couleur, puis les roues, puis la famille de ligne… et même deux indices en même temps !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-18": {
@@ -329,6 +394,9 @@
    "bravo": "Bravo !",
    "tuAsTrie": "Tu as trié toutes les couleurs ! Regarde les bus repeints :",
    "leDinoSeColorie": "Le dino se colorie avec toi !"
+  },
+  "voix": {
+   "regle-mj-18": "Verse les couleurs pour que chaque tube n’ait qu’une seule couleur !. Je tape un tube pour le choisir . Le tube se soulève un peu — c’est celui que je vais verser.. Je tape un 2ᵉ tube pour verser dedans . La couleur du dessus coule dans l’autre tube, seulement si c’est la même couleur (ou si le tube est vide).. Je range toutes les couleurs . Chaque tube doit finir avec une seule couleur, du haut en bas. Les tubes vides aident à trier !. Plus j’ai d’étoiles, plus j’ai de couleurs à trier . On commence avec 2 couleurs, puis 4, jusqu’à 6 pour les champions !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-19": {
@@ -361,6 +429,9 @@
    "questDino": "Trouve le <b>{n}</b> !",
    "questBus": "Trouve le bus <b>{n}</b> !",
    "trouveLeBusN": "Trouve le bus {n}"
+  },
+  "voix": {
+   "regle-mj-19": "Écoute la consigne et tape la bonne cible parmi toutes celles qui bougent !. J’écoute la cible . Une voix dit « Trouve le bus 162 ! » ou le nom d’un dino — et c’est écrit en haut, en jaune.. Je regarde tout ce qui bouge . Des bus… et parfois des dinos se baladent dans l’écran !. Je tape la bonne cible . Si je me trompe, ce n’est pas grave : je réessaie, il n’y a pas de pénalité.. Plus j’ai d’étoiles, plus ça bouge . Au début, peu de cibles lentes. Puis de plus en plus nombreuses et rapides !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-20": {
@@ -386,6 +457,24 @@
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "langues": {
+    "fr": "Français",
+    "en": "Anglais",
+    "es": "Espagnol",
+    "pt-br": "Brésilien",
+    "de": "Allemand",
+    "ru": "Russe",
+    "zh": "Chinois",
+    "ja": "Japonais"
+   },
+   "confirmNumero": "{n} !",
+   "cEtait": "C’était {n}",
+   "nouveauNiveauDebloque": "Nouveau niveau débloqué : {lang} chiffres {tier} !"
+  },
+  "voix": {
+   "regle-mj-20": "Apprends à compter jusqu’à 20 dans plein de langues différentes !. Je choisis « Apprendre » pour écouter . Je choisis une langue (drapeau) et je tape un chiffre : une voix le dit dans cette langue !. Je choisis « Quiz » pour jouer . Une voix dit un chiffre dans une langue débloquée. Je tape le bon chiffre parmi les choix.. Je gagne 3 bonnes réponses de suite pour débloquer la suite . Chaque langue commence petit (1 à 3), puis j’avance jusqu’à 1-20 si je continue bien.. Je regarde « Progression » pour voir où j’en suis . Chaque langue a ses pastilles : plus j’en remplis, plus je maîtrise de chiffres et de langues !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-21": {
@@ -442,6 +531,9 @@
     "lavande": "lavande",
     "brun": "brun"
    }
+  },
+  "voix": {
+   "regle-mj-21": "Mélange les couleurs pour peindre le bon bus !. Je regarde la couleur à trouver . À côté du bus tout blanc, il y a un rond de couleur : c’est la couleur que je dois fabriquer !. Je verse les pots dans le tube . Rouge, Jaune, Bleu, Blanc : je tape sur les pots pour les verser dans le tube. Une seule couleur ? C’est gagné tout de suite !. Je tape Mixer pour mélanger . Si j’ai versé plusieurs couleurs, je tape « Mixer ! » pour les mélanger. Si ça devient marron, pas grave, je lave le tube et je recommence !. Le tube verse la couleur sur le bus . Si c’est la bonne couleur, le tube se renverse et peint le bus ! Un indice m’aide si je cherche.. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-22": {
@@ -467,6 +559,47 @@
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "pays": {
+    "fr": "France",
+    "de": "Allemagne",
+    "es": "Espagne",
+    "it": "Italie",
+    "gb": "Royaume-Uni",
+    "pt": "Portugal",
+    "be": "Belgique",
+    "nl": "Pays-Bas",
+    "ch": "Suisse",
+    "at": "Autriche",
+    "pl": "Pologne",
+    "se": "Suède",
+    "no": "Norvège",
+    "gr": "Grèce",
+    "ro": "Roumanie",
+    "dk": "Danemark",
+    "ie": "Irlande",
+    "hr": "Croatie",
+    "rs": "Serbie",
+    "sk": "Slovaquie",
+    "cz": "Rép. Tchèque",
+    "hu": "Hongrie",
+    "bg": "Bulgarie",
+    "ua": "Ukraine",
+    "fi": "Finlande",
+    "is": "Islande",
+    "si": "Slovénie",
+    "ba": "Bosnie-Herzégovine",
+    "al": "Albanie",
+    "mk": "Macédoine"
+   },
+   "trouveLePays": "Trouve {pays} !",
+   "bravoCestLePays": "Bravo ! C’est {pays} !",
+   "nonChercheBien": "Non ce n’est pas ça. Cherche bien.",
+   "suivant": "Suivant →"
+  },
+  "voix": {
+   "regle-mj-22": "Écoute le nom du pays, trouve-le sur la carte !. J’écoute le drapeau et le nom . Une voix dit « Trouve la France ! » et le drapeau s’affiche en haut. Je peux réessayer si j’ai pas compris.. Je regarde la carte et je tape un pays . Le pays que je touche s’allume en orange. Si c’est pas le bon, je peux en toucher un autre.. Je tape « C’est ça ! » pour valider ✓. Bonne réponse : le drapeau fait la fête ! Pas encore : une voix dit « Cherche bien » et je réessaie, sans jamais perdre.. Plus j’ai d’étoiles, plus il y a de pays . Facile : 5 pays. Puis 15, puis 25 ! Les tout petits pays ne sont pas dans le jeu, trop difficiles à toucher.. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-24": {
@@ -504,6 +637,9 @@
     "À toi de jouer : le {n} !",
     "Vite, trouve le {n} !"
    ]
+  },
+  "voix": {
+   "regle-mj-24": "Écoute le nom, trouve le bon dino !. J’écoute le nom du dino . Une voix dit le nom : « Trouve le Tricératops ! ». Je tape la consigne pour réécouter.. Je regarde les ombres . Chaque carte montre l’ombre d’un dino. Une seule est le bon !. Je tape la bonne ombre . Si je me trompe, j’écoute un indice et je peux réessayer.. Plus j’ai d’étoiles, plus c’est malin . Plus d’ombres à comparer… et parfois deux cousins de la même famille !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-28": {
@@ -534,6 +670,9 @@
    "consigne": "Quel dino se cache dans le noir ?",
    "essaieEncore": "Essaie encore !",
    "bravoNom": "Bravo ! C’est le {nom} !"
+  },
+  "voix": {
+   "regle-mj-28": "Cherche le dino caché dans le noir avec ta lampe !. Je bouge mon doigt dans le noir . Une lumière suit mon doigt et éclaire une ombre cachée.. Je regarde bien la forme de l’ombre . Chaque dino a une silhouette différente : cornes, dos épineux, long cou…. Je tape le bon nom savant . Si je me trompe, le bon nom s’allume en vert, et le dino apparaît en couleur avec un fait rigolo !. Plus j’ai d’étoiles, plus les noms se ressemblent . Au début les dinos sont très différents. Avec les étoiles : des cousins de la même famille !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-30": {
@@ -585,6 +724,9 @@
     "metres": "mètres"
    },
    "annonceMesure": "Le {nom} : {val} !"
+  },
+  "voix": {
+   "regle-mj-30": "Range les dinos mystères du plus petit au plus GRAND !. Je regarde les ombres . Des dinos mystères ! Il y a un petit, un moyen… et un géant.. Je glisse chaque ombre dans une case . Le plus petit à gauche, le plus GRAND à droite. Je peux échanger deux cases si je change d’avis.. Je tape « C’est bon ! » ✓. Les dinos sortent de l’ombre : on découvre leur VRAIE taille en mètres, à côté d’un enfant comme toi !. Plus j’ai d’étoiles, plus c’est costaud . Plus de dinos à ranger… et parfois il faut les ranger par POIDS !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-31": {
@@ -625,6 +767,9 @@
     "cretace": "il y a 66 à 100 millions d’années",
     "cenozoique": "après 66 millions d’années"
    }
+  },
+  "voix": {
+   "regle-mj-31": "Range le dino dans la bonne époque !. J’écoute le nom du dino . Une voix annonce un dino mystère, avec son ombre. Je tape la consigne pour réécouter.. Je regarde les bandes de couleur . Chaque bande est une époque : Trias, Jurassique, Crétacé… Il y en a une bonne pour le dino !. Je tape la bonne bande . Le dino se pose dedans ! Si je me trompe, une voix m’aide et je peux réessayer.. Plus j’ai d’étoiles, plus c’est costaud . De nouvelles bandes apparaissent, et parfois deux cousins vivaient à des époques très différentes !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-32": {
@@ -665,6 +810,9 @@
    "oui": "Oui",
    "magnifiqueNom": "Magnifique ! Ton {nom} est superbe !",
    "magnifique": "Magnifique !"
+  },
+  "voix": {
+   "regle-mj-32": "Colorie ton dino comme tu veux, il n’y a pas d’erreur !. Je choisis un dino à colorier . Je tape sur le dino que je préfère dans la liste.. Je choisis une couleur et je tape dans le dessin . La couleur remplit toute la zone que je touche. Je peux changer de couleur autant de fois que je veux !. Je regarde le modèle si j’ai besoin . Le bouton « Modèle » montre le dino en couleur 2 secondes, pour m’aider si je veux.. Je tape « Fini ! » pour garder mon dessin . Mon œuvre part dans « Ma galerie » : je peux la regarder, la reprendre pour continuer, ou la supprimer. Pas d’étoiles, pas d’erreur : je fais comme je veux !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-34": {
@@ -694,6 +842,9 @@
   "ui": {
    "libereLeBusJaune": "Libère le bus jaune !",
    "sortie": "SORTIE"
+  },
+  "voix": {
+   "regle-mj-34": "Fais glisser les bus pour libérer le bus jaune !. Je repère le bus jaune . Il clignote au début du niveau. Il doit sortir par la porte « SORTIE » à droite.. Je fais glisser les autres bus . Chaque bus ne bouge que dans un sens (à plat ou debout). Je les pousse pour dégager le chemin.. Si un bus ne peut pas bouger, il rebondit doucement . Pas de souci : je réessaie dans l’autre sens, il n’y a jamais d’erreur qui compte contre moi.. Le bus jaune sort, puis tous les autres suivent . Plus de niveaux : la grille grandit (4×4 puis 5×5) et il y a plus de bus à déplacer. 3 niveaux gagnés = une étoile !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-35": {
@@ -728,6 +879,9 @@
    "trouveLeTrouPile": "Trouve le trou qui remplit PILE le nid !",
    "presqueCompteBien": "Presque ! Compte bien, essaie encore.",
    "pileExcl": "PILE ! ✨"
+  },
+  "voix": {
+   "regle-mj-35": "Trouve le trou qui remplit le nid PILE-POIL !. Je regarde les œufs dans les trous . Chaque trou a des œufs de dino dedans. Je compte avec mes doigts si je veux !. Je cherche LE bon trou . Un seul trou a JUSTE assez d’œufs pour arriver PILE dans le nid, pas avant, pas après.. Je tape le trou, les œufs sautent . Ils sautent un par un vers le nid. Si le dernier tombe pile dedans : « PILE ! » . Je me trompe ? Pas grave, je recompte . Rien n’est perdu, le plateau se réarrange et je réessaie. 3 PILE réussis = la partie est gagnée !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-37": {
@@ -774,6 +928,9 @@
    "gouterRestant": "goûter restant",
    "gouterRestants": "goûters restants",
    "bravoToutCroque": "Bravo, tout croqué !"
+  },
+  "voix": {
+   "regle-mj-37": "Déplace ta pièce pour croquer tous les goûters !. Je découvre une pièce d’échecs . Le Fou glisse en diagonale, la Tour va tout droit, le Cavalier saute en L… chacune bouge à sa façon !. Je tape ma pièce, les cases s’allument . Toutes les cases qui s’illuminent sont les endroits où ma pièce peut aller.. Je tape une case allumée pour croquer . Si un goûter est dessus, ma pièce le croque en y arrivant. Plus de choix : je réessaie, rien n’est perdu.. Plus j’avance, plus les pièces sont malines . Après le Fou et la Tour viennent le Cavalier, la Dame, le Roi, le Pion… puis 2 pièces ensemble !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-38": {
@@ -805,6 +962,9 @@
    "niveauSurTotal": "Niveau {n} / {total}",
    "combo": "Combo !",
    "essaieEncoreRecommencer": "Essaie encore ! Appuie sur Recommencer 🙂"
+  },
+  "voix": {
+   "regle-mj-38": "Saute par-dessus les pions dodo pour les faire disparaître !. Je tape mon mouton . Il se met à briller : c’est lui que je vais faire sauter.. Je regarde les cases qui brillent en or . Elles montrent où mon mouton peut atterrir en sautant par-dessus un dodo voisin .. Je tape la case dorée : hop, il saute ! ↷. Le mouton endormi qu’il a sauté disparaît en pouf. Je peux enchaîner plusieurs sauts d’affilée : combo !. Coincé ? Je recommence tranquille . Le bouton « Recommencer » remet le niveau à zéro, sans rien perdre. Tous les dodos envolés = niveau gagné !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-39": {
@@ -834,6 +994,9 @@
   "ui": {
    "ligne": "ligne",
    "lignes": "lignes"
+  },
+  "voix": {
+   "regle-mj-39": "Pose les blocs pour remplir des lignes entières !. Je regarde les 3 blocs en bas . Chaque bloc a sa forme : petit carré, longue barre, forme en L…. Je glisse un bloc avec mon doigt sur la grille . Une case verte montre que je peux le poser là, une case rouge veut dire que ça ne rentre pas.. Je lâche le bloc pour le poser . Si je remplis une ligne ou une colonne ENTIÈRE, elle explose en étincelles et j’ai plus de place !. Plus j’efface de lignes, plus j’ai d’étoiles . De nouveaux blocs arrivent à chaque fois. 5 lignes = ★, 12 = ★★, 25 = ★★★ !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-40": {
@@ -871,6 +1034,9 @@
    "figEcailleTournee": "Écaille tournée",
    "figCouTourne": "Cou tourné",
    "figOeufTourne": "Œuf tourné"
+  },
+  "voix": {
+   "regle-mj-40": "Place les 7 pièces sur la silhouette du dino !. Je regarde la silhouette . Une forme mystère attend en haut : un œuf, une écaille, un long cou de dino…. Je glisse une pièce dessus . Je prends une pièce colorée en bas et je la fais glisser sur la bonne case de la silhouette.. Je tape une pièce pour la tourner . Si elle ne rentre pas bien, un petit tap la fait pivoter jusqu’à ce qu’elle s’accroche !. Plus j’ai d’étoiles, plus c’est costaud . Les paliers ★★ et ★★★ ont des figures plus difficiles à reconstituer.. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-42": {
@@ -896,6 +1062,18 @@
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "jeuDuKenya": "Un jeu du Kenya 🇰🇪",
+   "aToiDeJouer": "À toi de jouer !",
+   "cameleonReflechit": "Le caméléon réfléchit...",
+   "bravo": "Bravo !",
+   "alignePionsShisima": "Tu as aligné tes 3 pions sur le shisima !",
+   "danseCameleon": "Danse du caméléon !",
+   "presqueEncoreUne": "Presque ! Encore une ?"
+  },
+  "voix": {
+   "regle-mj-42": "Aligne tes 3 pions en passant par le point d’eau !. Je regarde le plateau . Il y a 8 points tout autour et 1 point d’eau au milieu. Mes 3 pions rouges sont déjà posés.. Je tape mon pion, puis un point vide à côté . Mon pion ne peut avancer que sur un point voisin libre, ou passer par le point d’eau au milieu.. J’aligne mes 3 pions avec le centre . Si mes 3 pions et le point d’eau sont sur la même ligne droite, j’ai gagné !. Le caméléon joue aussi, sans jamais me punir . Plus j’ai d’étoiles, plus le caméléon réfléchit et bloque mes coups. S’il gagne, on rejoue tout de suite !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-46": {
@@ -927,6 +1105,9 @@
    "oeufSing": "œuf",
    "oeufPlur": "œufs",
    "recomptonsEnsemble": "Recomptons ensemble, un par un !"
+  },
+  "voix": {
+   "regle-mj-46": "Compte les œufs du nid, puis touche le bon chiffre !. Je réponds direct si je sais ! . Je compte les œufs dans ma tête et je touche le bon chiffre.. Ou je tapote les œufs pour compter . Une pastille jaune se pose dessus : 1, 2, 3… et l’œuf se fissure !. Le dernier chiffre dit le total . Le chiffre du dernier œuf, c’est combien il y a d’œufs en tout !. Quand c’est juste… les œufs dansent . Ils frétillent et se fissurent ! Et à la fin je gagne un œuf pour mon nid — il éclora sur l’accueil.. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-47": {
@@ -956,6 +1137,9 @@
   "ui": {
    "combienEnTout": "Combien en tout ?",
    "etCaFait": "{a} et {b}, ça fait {total} !"
+  },
+  "voix": {
+   "regle-mj-47": "Deux constellations de dinos brillent dans la nuit. Combien de dinos en tout ? Regarde d’un coup d’œil !. Je regarde le domino du ciel . Deux cases brillantes : dans chacune, des dinos rangés comme les points d’un dé.. Je tape le TOTAL . Les dinos des deux cases ensemble, ça fait combien ? Si je me trompe, je réessaie, ce n’est pas grave !. Je regarde le calcul . Après chaque réponse, les deux cases s’illuminent : « 3 et 4, ça fait 7 ! ». Plus j’ai d’étoiles, plus c’est grand . D’abord des petits groupes, puis des constellations jusqu’à 12 !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-48": {
@@ -1009,6 +1193,9 @@
    "sEtNCaFaitDixPlein": "{s0} et {n}, ça fait 10 ! Le bus est plein !",
    "lePremierCEstCelui": "Le premier, c’est celui qui est juste à côté de l’arrêt. Compte : un, deux, trois…",
    "recomptonsEnsembleExcl": "Recomptons ensemble !"
+  },
+  "voix": {
+   "regle-mj-48": "Des passagers montent et descendent du bus. À toi de bien compter !. Je regarde les sièges du bus . Le bus a 2 rangées de 5 places, comme un domino. Une rangée pleine, c’est 5 d’un coup !. Des passagers montent ou descendent . À l’arrêt, des dinos attendent dans la file. Certains montent, d’autres descendent.. Je tape le bon nombre . Combien dans le bus ? Combien de places libres ? Si je me trompe, on recompte ensemble.. La file a un ordre . Le premier de la file est juste à côté de l’arrêt ! On me demande parfois de toucher le 2ᵉ ou le 3ᵉ.. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-49": {
@@ -1047,6 +1234,9 @@
    "dixVingtEtNCaFait": "10, 20… et {reste}, ça fait {n} !",
    "dixVingtCaFait": "10, 20, ça fait {n} !",
    "dixEtNCaFaitTotal": "10 et {n}, ça fait {total} !"
+  },
+  "voix": {
+   "regle-mj-49": "Une barquette pleine, c’est 10 ! Avec elle, les grands nombres deviennent faciles.. Je regarde la barquette . La boîte a 2 rangées de 5 : pleine, ça fait 10 œufs. Pas besoin de recompter !. Je réponds direct si je sais . Sinon je tapote les œufs (ou les trous !) pour compter : une pastille se pose dessus.. Le calcul s’affiche . « 10 et 4, ça fait 14 ! » — la barquette brille, et je vois la dizaine.. Plus j’ai d’étoiles, plus c’est grand . D’abord une barquette, puis 10 et encore, puis DEUX barquettes : jusqu’à plus de 20 !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-50": {
@@ -1072,6 +1262,9 @@
     }
    ],
    "etoiles": ""
+  },
+  "voix": {
+   "regle-mj-50": "Écoute le son, et touche la lettre qui le fait !. J’écoute le son . La voix fait le SON de la lettre : « mmm », « sss »… jamais son nom d’école.. Je touche la bonne lettre . Les lettres sont écrites en attaché. Le haut-parleur répète le son si je le touche.. Les lettres changent de costume . Plus j’ai d’étoiles, plus les lettres s’habillent : attaché, détaché, MAJUSCULES !. Et même le son des mots . Au dernier niveau : « quel son au début de maman ? » — et des lettres qui se ressemblent !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-51": {
@@ -1097,6 +1290,9 @@
     }
    ],
    "etoiles": ""
+  },
+  "voix": {
+   "regle-mj-51": "La même lettre a plusieurs costumes : range-les toutes dans leur boîte !. Je regarde bien la lettre . Un a attaché, un a détaché, un A MAJUSCULE… c’est toujours la lettre a !. Je la glisse dans sa boîte . La boîte s’allume en vert quand je suis au bon endroit. J’entends son son !. Si je me trompe, elle revient . Pas grave ! Je réessaie autant de fois que je veux.. Plus j’ai d’étoiles, plus c’est costaud . À la fin : les lettres qui se ressemblent très fort, comme b, d, h et k !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-52": {
@@ -1122,6 +1318,9 @@
     }
    ],
    "etoiles": ""
+  },
+  "voix": {
+   "regle-mj-52": "Écoute le mot, et construis-le avec les lettres mobiles !. J’écoute le mot . La voix dit un mot que je connais : papa, maman, moto…. Je regarde la boîte . Le mot est découpé en morceaux : pa | pa. Chaque case attend sa lettre.. Je pose les lettres dans l’ordre . Je touche la lettre qu’il faut : elle saute dans sa case et fait son son !. Le mot est construit . La voix relit MON mot ! Plus j’ai d’étoiles, plus il y a de lettres pièges.. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-53": {
@@ -1147,6 +1346,9 @@
     }
    ],
    "etoiles": ""
+  },
+  "voix": {
+   "regle-mj-53": "Ici, on ne sait quoi faire QUE si on lit !. Je lis le mot . Le mot est écrit en attaché. Si c’est dur, je touche le mot : la voix m’aide (au début seulement !).. Je touche la bonne image . Puis les noms de dinos arrivent, découpés en morceaux : tri-cé-ra-tops !. Je lis… et je FAIS . Au dernier niveau, la consigne me dit quoi faire : « Touche 3 oeufs rouges » !. Sans lire, impossible ! . C’est ça le secret : lire, ça sert à découvrir ce qu’il faut faire.. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-54": {
@@ -1175,6 +1377,9 @@
   },
   "ui": {
    "consigne": "Complète la grille : les 4 symboles partout !"
+  },
+  "voix": {
+   "regle-mj-54": "Chaque ligne, chaque colonne et chaque petit carré doit avoir les 4 symboles, jamais deux fois le même !. Je tapote une case vide . Elle devient jaune : c’est elle que je remplis.. Je choisis un symbole en bas . Il se pose dans la case jaune.. Si deux pareils se touchent, ça tremble . Les deux cases tremblent en orange : je peux changer, ce n’est jamais grave.. Je peux effacer une case que j’ai posée . Retape dessus pour la vider et recommencer.. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-55": {
@@ -1205,6 +1410,9 @@
    "bienJoue": "Bien joué !",
    "consigneAvecEquilibre": "Complète la grille : jamais 3 pareils, autant de dinos que d’œufs !",
    "consigneSimple": "Complète la grille : jamais 3 pareils !"
+  },
+  "voix": {
+   "regle-mj-55": "Jamais 3 pareils qui se suivent ! Tapote pour changer.. Je tapote une case vide . Elle devient un dino . Je retapote : un œuf . Encore : elle se vide.. Jamais 3 pareils à la suite . En ligne ou en colonne : pas 3 dinos ni 3 œufs collés. Sinon ça s’allume orange !. Je corrige tranquillement . L’orange n’est pas grave : je retapote pour changer et ça repart.. La grille pleine et juste = gagné . Plus tard, il faudra aussi autant de dinos que d’œufs sur chaque ligne et colonne !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-56": {
@@ -1233,6 +1441,9 @@
   },
   "ui": {
    "consigne": "Un dino par ligne, colonne et enclos… jamais collés !"
+  },
+  "voix": {
+   "regle-mj-56": "Un dino par ligne, par colonne, par enclos… et jamais collés, même en coin !. Je pose un dino . Je tape une case pour poser un dino dedans.. Attention aux voisins . Les cases qui deviennent rouges, c’est là où je ne peux plus en poser.. Ils sont grognons . Deux dinos jamais collés, même en diagonale — sinon ils tremblent, je les sépare.. Un par enclos . Chaque couleur d’enclos n’a droit qu’à un seul dino.. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-57": {
@@ -1264,6 +1475,9 @@
    "continueAFaireEclore": "Continue à faire éclore les œufs !",
    "faisEcloreDores": "Fais éclore les œufs, surtout les dorés !",
    "tapoteUnGroupe": "Tapote un groupe de la même couleur !"
+  },
+  "voix": {
+   "regle-mj-57": "Tapote un groupe d’œufs de la même couleur : ils éclosent !. Je regarde la grille . Des œufs colorés, ronds ou mouchetés, remplissent la boîte.. Je touche un œuf . Le groupe entier de la même couleur s’illumine autour de mon doigt.. Je tapote . Le groupe éclot : des bébés dinos s’envolent !. La grille se réorganise . Les œufs tombent, les colonnes vides se resserrent. Je continue jusqu’à ce que tout ait éclos !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
  "mj-59": {
@@ -1293,6 +1507,9 @@
   "ui": {
    "traceRectangleN": "Trace un rectangle de {n} autour de la pierre !",
    "faisUnTerritoire": "Fais un territoire pour chaque pierre !"
+  },
+  "voix": {
+   "regle-mj-59": "Découpe la vallée : chaque pierre doit avoir son terrain, juste à sa taille !. Je regarde le chiffre . Chaque pierre porte un nombre : c'est la taille de son terrain.. Je glisse mon doigt . Je pars d'une case et je glisse jusqu'à une autre : un rectangle apparaît.. Je vise le bon compte . Le nombre de cases s'affiche en grand pendant que je glisse.. Je relâche . Si c'est juste, un petit dino s'installe ! Sinon, ça s'efface tout doux.. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  }
 }

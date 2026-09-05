@@ -346,8 +346,11 @@
   <script src="js/mj-shell.js"></script>
   <script>
   MJ.ready(function () {
+    const GAME_ID = 'mj-20';
+    const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t(GAME_ID, cle, fr, params) : fr);
+
     const shell = MJ.init({
-      id: 'mj-20', emoji: '🌍', titre: 'Compte en 8 langues',
+      id: GAME_ID, emoji: '🌍', titre: 'Compte en 8 langues',
       golden: true,
       consigne: false, // pas de consigne unique : 3 modes (Apprendre / Quiz / Progression)
       regle: {
@@ -368,14 +371,14 @@
 
     // ─── Langues ────────────────────────────────────────────────────────────────
     const LANGS = [
-      { code:'fr',    flag:'fr', nom:'Français',  lang:'fr-FR' },
-      { code:'en',    flag:'gb', nom:'Anglais',   lang:'en-GB' },
-      { code:'es',    flag:'es', nom:'Espagnol',  lang:'es-ES' },
-      { code:'pt-br', flag:'br', nom:'Brésilien', lang:'pt-BR' },
-      { code:'de',    flag:'de', nom:'Allemand',  lang:'de-DE' },
-      { code:'ru',    flag:'ru', nom:'Russe',     lang:'ru-RU' },
-      { code:'zh',    flag:'cn', nom:'Chinois',   lang:'zh-CN' },
-      { code:'ja',    flag:'jp', nom:'Japonais',  lang:'ja-JP' },
+      { code:'fr',    flag:'fr', nom:T('langues.fr', 'Français'),    lang:'fr-FR' },
+      { code:'en',    flag:'gb', nom:T('langues.en', 'Anglais'),     lang:'en-GB' },
+      { code:'es',    flag:'es', nom:T('langues.es', 'Espagnol'),    lang:'es-ES' },
+      { code:'pt-br', flag:'br', nom:T('langues.pt-br', 'Brésilien'), lang:'pt-BR' },
+      { code:'de',    flag:'de', nom:T('langues.de', 'Allemand'),    lang:'de-DE' },
+      { code:'ru',    flag:'ru', nom:T('langues.ru', 'Russe'),       lang:'ru-RU' },
+      { code:'zh',    flag:'cn', nom:T('langues.zh', 'Chinois'),     lang:'zh-CN' },
+      { code:'ja',    flag:'jp', nom:T('langues.ja', 'Japonais'),    lang:'ja-JP' },
     ];
 
     // ─── Paliers ────────────────────────────────────────────────────────────────
@@ -728,7 +731,10 @@
 
         // Retour PY 2026-07-27 : « elle dit 4, 4 c'est 4… trop long » —
         // UNE seule confirmation courte, pas de re-lecture du mot avant.
-        setTimeout(() => TTS.speak(`${quizNumber} !`, { lang:'fr-FR', rate:0.9, priority:false }), 350);
+        // Langue TTS de la confirmation : celle de l'UI active (HO-MJ-05), pas
+        // toujours fr-FR — comportement FR inchangé car Lang.bcp47() vaut 'fr-FR' par défaut.
+        const uiLang = (window.Lang && Lang.bcp47) ? Lang.bcp47() : 'fr-FR';
+        setTimeout(() => TTS.speak(T('confirmNumero', `${quizNumber} !`, { n: quizNumber }), { lang:uiLang, rate:0.9, priority:false }), 350);
         round++;
         setTimeout(nextQuizRound, 1800);
 
@@ -741,7 +747,8 @@
         showFeedback('');
         recordWrong(quizLang.code);
         G.notePip(round, 4, document.querySelector('.choice-btn.correct'));
-        setTimeout(() => TTS.speak(`C’était ${quizNumber}`, { lang:'fr-FR', rate:0.85 }), 300);
+        const uiLangReveal = (window.Lang && Lang.bcp47) ? Lang.bcp47() : 'fr-FR';
+        setTimeout(() => TTS.speak(T('cEtait', `C’était ${quizNumber}`, { n: quizNumber }), { lang:uiLangReveal, rate:0.85 }), 300);
         round++;
         setTimeout(nextQuizRound, 2000);
 
@@ -765,7 +772,7 @@
     let _toastTimer = null;
     function showUnlockToast(lang, tier) {
       const toast = document.getElementById('unlockToast');
-      toast.textContent = `Nouveau niveau débloqué : ${lang.nom} chiffres ${tier.label} !`;
+      toast.textContent = T('nouveauNiveauDebloque', `Nouveau niveau débloqué : ${lang.nom} chiffres ${tier.label} !`, { lang: lang.nom, tier: tier.label });
       toast.classList.add('show');
       clearTimeout(_toastTimer);
       _toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);

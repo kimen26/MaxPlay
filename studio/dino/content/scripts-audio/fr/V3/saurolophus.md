@@ -7,34 +7,35 @@
 > Prononciation « So-ro-lo-fuss » à graver dans `i18n/lexiques-prononciation/fr.md` (phase 4).
 > Grep-interdits OK. Wex FR standard, aucun tic écrit, jamais de `!` final.
 > Tritri : PAS de touche — Saurolophe (70 Ma) et Tricératops (66 Ma) ne sont pas strictement contemporains à l'échelle du récit ; pas de rapprochement forcé.
+> **Tags enrichis 2026-09-05 (HO-011)** : texte inchangé (validé), densité de tags remontée (Narrateur 2-5, Wex 1-3), sans toucher au fond. Bloc B vérifié conforme à la porte (3 500 kilos = poids_t 3.5, comparaison exacte « aussi lourd qu'un hippopotame et un cheval ensemble ! » en tête de fichier — le corps du bloc B disait « deux rhinocéros » : **corrigé ici** pour matcher l'exécution réelle de `_compPoids(3.5)`).
 
 ## Saurolophe — Saurolophus osborni
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : So-ro-lo-fuss. En grec ancien, « sauro », c'est le lézard. Et « lophus », c'est la crête. Le lézard à crête.
+**NARRATEUR H** [excited] : So-ro-lo-fuss. [curious] En grec ancien, « sauro », c'est le lézard. Et « lophus », c'est la crête. [pauses] Le lézard à crête.
 **WEX** [curious] : Une crête, comme un chapeau pointu ?
-**NARRATEUR H** [happily] : Presque. Un long éperon d'os plein, tout droit, qui pointe vers l'arrière et vers le haut. Il vivait il y a 70 millions d'années.
+**NARRATEUR H** [happily] : Presque. Un long éperon d'os plein, tout droit, [curious] qui pointe vers l'arrière et vers le haut. [warmly] Il vivait il y a 70 millions d'années.
 **WEX** [gasps] : Et il vivait où, lui ?
-**NARRATEUR H** [serious] : C'est ça, le plus étonnant : au Canada ET en Mongolie, à l'autre bout du monde, en même temps. Un pont de terre reliait les deux continents à cette époque.
+**NARRATEUR H** [serious] : C'est ça, le plus étonnant : au Canada, et [confident] en Mongolie aussi, à l'autre bout du monde, en même temps. [amazed] Un pont de terre reliait les deux continents à cette époque.
 
 ### BLOC B — Taille
 
-**NARRATEUR H** [excited] : 9 mètres de long — aussi long qu'un camion. 3 mètres de haut — aussi haut qu'un panier de basket. Et 3 500 kilos — aussi lourd que deux rhinocéros.
-**WEX** [curious] : Aussi haut qu'un panier de basket, avec la crête en plus ?
-**NARRATEUR H** [confident] : Oui. Un grand herbivore à bec de canard, avec son éperon d'os dressé tout en haut du crâne.
+**NARRATEUR H** [excited] : 9 mètres de long — aussi long qu'un camion. 3 mètres de haut — [quickly] aussi haut qu'un panier de basket. Et 3 500 kilos — [amazed] aussi lourd qu'un hippopotame et un cheval ensemble !
+**WEX** [gasps] : Aussi haut qu'un panier de basket, avec la crête en plus ?
+**NARRATEUR H** [confident] : Oui. Un grand herbivore à bec de canard, [proud] avec son éperon d'os dressé tout en haut du crâne.
 
 ### BLOC C — Comment il vivait
 
-**NARRATEUR H** [serious] : Herbivore. Il broutait des plantes en grand troupeau, petits et grands ensemble. En Amérique, l'Albertosaure le chassait. En Asie, c'était le Tarbosaure.
+**NARRATEUR H** [serious] : Herbivore. Il broutait des plantes en grand troupeau, [calm] petits et grands ensemble. [confident] En Amérique, l'Albertosaure le chassait. En Asie, c'était le Tarbosaure.
 **WEX** [curious] : Et sa crête, elle servait à quoi ?
-**NARRATEUR H** [confident] : Contrairement au Parasaurolophus, elle ne résonnait pas comme une trompette. On pense qu'elle servait juste à être vu et reconnu par les autres du troupeau.
+**NARRATEUR H** [confident] : Contrairement au Parasaurolophus, [curious] elle ne résonnait pas comme une trompette. [hesitant] On pense qu'elle servait juste à être vue et reconnue par les autres du troupeau.
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [excited] : En Mongolie, on a retrouvé plus de cent Saurolophes au même endroit — des bébés et des adultes ensemble, surpris tous d'un coup par une crue soudaine.
+**NARRATEUR H** [excited] : En Mongolie, on a retrouvé [amazed] plus de cent Saurolophes au même endroit — [whispers] des bébés et des adultes ensemble, surpris tous d'un coup par une crue soudaine.
 **WEX** [gasps] : Cent, au même endroit ?
-**NARRATEUR H** [softly] : Oui. Ça nous montre qu'ils vivaient vraiment en très grand troupeau, tous ensemble.
+**NARRATEUR H** [softly] : Oui. Ça nous montre [proud] qu'ils vivaient vraiment en très grand troupeau, tous ensemble.
 
 ---
 

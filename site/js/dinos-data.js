@@ -1660,7 +1660,7 @@ const DINOS = [
     proies: 'Insectes, petits lézards',
     amis: 'Solitaire',
     fait: 'C\'est l\'ANCÊTRE DE TOUS LES OISEAUX ! Il avait des plumes ET des dents ET des griffes. Le fossile le plus précieux du monde !',
-    desc: 'L\'Archaeoptéryx est l\'ancêtre de tous les oiseaux ! Il avait des plumes comme un oiseau mais aussi des dents et des griffes de dino. C\'est le premier oiseau du monde entier !',
+    desc: 'L\'Archaeoptéryx est un des tout premiers oiseaux ! Il avait des plumes comme un oiseau, mais aussi des dents et des griffes de dino. Les oiseaux d\'aujourd\'hui sont ses cousins.',
     png: 'Archaeopteryx.jpg',
     color: '#2e86c1',
     continent: 'Europe',

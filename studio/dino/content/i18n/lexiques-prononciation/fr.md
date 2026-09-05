@@ -62,6 +62,7 @@
 | Shastasaure | **Chas-ta-saure** | sh→ch |
 | Archélon | **Ar-ké-lon** | ch→k |
 | Ophthalmosaure | **Of-tal-mo-saure** | ph→f, th→t |
+| Hatzegopteryx thambema (espèce, dite dans l'étymologie de la fiche) | **tam-bé-ma** | grec *thambos* = monstre ; complète le genre déjà gravé « Hat-zé-gop-té-rix » (2026-07-20) — ajouté HO-011 W2 2026-09-05 |
 | Moschops | **Mos-kops** | ch→k (khi grec de *moschos*, même règle que Brachiosaure) — ajouté 2026-07-25 |
 | Édaphosaure | **É-da-fo-saure** | ph→f — ajouté 2026-07-25 |
 | Lystrosaure | **Lis-tro-saure** | y→i — ajouté 2026-07-25 |
@@ -72,6 +73,8 @@
 | Coelodonta | **Sé-lo-don-ta** | oe→é — **✅ VALIDÉ Papa Yann à l'oreille 2026-07-28** (preview groupé), régénéré en production (`coelodonta-nom.mp3`) |
 | Ichthyosaurus (latin, dit dans l'étymologie de la fiche Ichtyosaure) | **Ik-ti-o-saure** | th→t, y→i — **✅ VALIDÉ Papa Yann à l'oreille 2026-07-28** (preview groupé), régénéré en production (`ichthyosaurus-nom.mp3`) |
 | Titanis | **Ti-ta-niss** | -is final, S à garantir entendu — **✅ VALIDÉ Papa Yann à l'oreille 2026-07-28** (preview groupé), régénéré en production (`titanis-nom.mp3` + `titanis-funfact.mp3`) |
+| Tylosaurus (dit dans le bloc C de la fiche Archélon, prédateur cité) | **Ti-lo-saure** | y→i, forme FR en -saure — ajouté 2026-09-05 (HO-011 W5, archelon.md) |
+| Rhomaleosaurus (dit dans le bloc C de la fiche Ichtyosaure, prédateur cité) | **Ro-ma-lé-o-saure** | forme FR en -saure, aucun autre piège — ajouté 2026-09-05 (HO-011 W5, ichthyosaurus.md) |
 
 ---
 

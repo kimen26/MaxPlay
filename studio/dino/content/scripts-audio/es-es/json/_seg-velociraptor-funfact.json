@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Escucha esta historia de verdad. [serious] En el desierto de Mongolia, los científicos encontraron un fósil increíble: un Velociraptor y un Protoceratops, [pauses] congelados en pleno combate."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] ¿En pleno combate?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[whispers] Sí. La garra del raptor clavada en el cuello del otro, [slowly] y el otro mordiéndole el brazo. [softly] Una duna de arena se derrumbó sobre ellos, y se quedaron así, juntos, durante 75 millones de años."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

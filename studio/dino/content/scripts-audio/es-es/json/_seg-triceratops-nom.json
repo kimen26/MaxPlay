@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Tri… CE… ra… tops. [curious] En griego, «tri» significa tres. «Cerat» es el cuerno. Y «ops» es el rostro. [pauses] ¿Qué crees que sale?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] El rostro de tres cuernos."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exacto. [warmly] Vivía en Norteamérica, hace 66 millones de años."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Espera. [softly] Es Tritri."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Sí. [happily] El auténtico Triceratops. Vivía con el Torosaurio y el Edmontosaurio — y el T-Rex rondaba por la zona."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

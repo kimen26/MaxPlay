@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[amazed] Justo después de esa catástrofe, en algunos lugares, casi todos los animales de cuatro patas que se encuentran, [serious] son Listrosaurios — [proud] a veces nueve de cada diez."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] ¿Nueve de cada diez, solo él?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly] Solo él. El gran superviviente, [proud] el que aguantó cuando casi todo lo demás se extinguió."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

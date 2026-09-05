@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 4 metros de largo — [amazed] como un coche pequeño. De pie, 1 con 2 metros de alto — [curious] tan grande como un niño de 4 años. Y 270 kilos — [proud] tan pesado como un tigre. [calm] Caminaba sin prisa: unos 15 kilómetros por hora, [pauses] como una bici que va tranquila."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Tan pesado como un tigre, para un comedor de plantas?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Sí. [whispers] Ese peso era sobre todo su armadura de hueso — y sus patas fuertes la llevaban sin problema."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

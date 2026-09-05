@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era un cazador solitario, que atrapaba pequeños reptiles. [confident] Tenía que tener cuidado con otros grandes cazadores de su época."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Y su vela, para qué servía al cazar?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] No tanto para cazar — más bien para calentarse. [calm] Por la mañana, se giraba hacia el sol, [amazed] con la vela bien desplegada, como un radiador viviente."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Medía 5 metros y medio de largo — ¡tan largo como un todoterreno grande! De pie, tenía 3 metros 30 de alto — [amazed] ¡como dos papás uno encima del otro! Y pesaba 5 mil kilos — [proud] ¡tan pesado como un elefante!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Sus colmillos, para qué servían?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Para apartar la nieve. [amazed] Sus dos colmillos curvados podían superar los 4 metros — más largos que papá tumbado en el suelo."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

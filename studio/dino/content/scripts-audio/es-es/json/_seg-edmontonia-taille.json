@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 6 con 6 metros de largo — [amazed] tan largo como ancha es una calle: ni siquiera cabía en ella. De pie, dos metros de alto — [curious] tan alto como una puerta. Y tres mil kilos — [proud] tan pesado como un hipopótamo."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Un hipopótamo."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Sí. [whispers] Una auténtica fortaleza con patas, pero bien pegada al suelo."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

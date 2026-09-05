@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[whispers] Su caparazón no era dura como la de una tortuga de jardín. [amazed] Era piel gruesa y correosa, como el cuero — [softly] flexible, casi como un ala."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Un caparazón blando, para qué sirve?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Para nadar más rápido. Con ese caparazón, [proud] surcaba el agua como la tortuga laúd de hoy — la campeona de velocidad de las tortugas."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

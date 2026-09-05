@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Es… ce… li… do… SAU… rio. En griego, «saurio» es el lagarto. [curious] Y «escélido» quería decir «patas grandes», [amazed] porque tenía los muslos muy fuertes."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Un lagarto de patas grandes."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Sí. Pero escucha esto: [amazed] el científico que le puso el nombre se equivocó de palabra griega — la que escribió en realidad significa «costilla de buey». [playful] Sin querer, lo llamó el lagarto-costilla-de-buey."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Y dónde vivía, el lagarto-costilla-de-buey?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] En Inglaterra, junto al mar, hace 193 millones de años. [curious] Y ya entonces, [pauses] pequeños cazadores de dos patas rondaban por la región."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

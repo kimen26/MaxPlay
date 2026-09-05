@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Comía medusas, calamares, moluscos blandos. [confident] Y en su mar, dos cazadores podían atacarla: [nervous] el Tylosaurio, un gran Mosasaurio, y viejos tiburones."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[nervous] ¿Podía esconderse en su caparazón, como las tortugas de hoy?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[gently] No exactamente — y ahí está su secreto."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

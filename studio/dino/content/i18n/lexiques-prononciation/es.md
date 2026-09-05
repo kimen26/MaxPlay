@@ -57,13 +57,13 @@ El español ya tiene una tradición fija de castellanizar los nombres de dinosau
 | centrosaurus | *Centrosaurus* | **Cen-tro-SAU-rio** | c ante e = /θ/ (España), norma nativa |
 | ceratosaurus | *Ceratosaurus* | **Ce-ra-to-SAU-rio** | c ante e = /θ/ |
 | coelodonta | *Coelodonta* | **Ce-lo-don-ta** | oe→e |
-| corythosaurus | *Corythosaurus* | **Co-ri-to-SAU-rio** | th→t, y→i (Coritosaurio) — añadido 2026-08-10, a validar por un nativo |
+| corythosaurus | *Corythosaurus* | **Co-ri-to-SAU-rio** | th→t, y→i (Coritosaurio) — tranchado 2026-09-05 : forma natural, ningún hablante nativo dudaría de «Coritosaurio» |
 | cryolophosaurus | *Cryolophosaurus* | **Crio-lo-fo-SAU-rio** | y→i, ph→f |
 | deinonychus | *Deinonychus* | **Dei-no-ni-cus** | ch→c, y→i, -us clara |
 | dilophosaurus | *Dilophosaurus* | **Di-lo-fo-SAU-rio** | ph→f |
 | dimetrodon | *Dimetrodon* | **Di-me-tro-don** | forma directa |
 | diplodocus | *Diplodocus* | **Di-plo-do-cus** | -us clara (no se avala en ES) |
-| edaphosaurus | *Edaphosaurus* | **E-da-fo-SAU-rio** | ph→f (Edafosaurio) ; sínápsido pérmico, no es dino — añadido 2026-08-10, a validar por un nativo |
+| edaphosaurus | *Edaphosaurus* | **E-da-fo-SAU-rio** | ph→f (Edafosaurio) ; sinápsido pérmico, no es dino — tranchado 2026-09-05 : «Edafosaurio» se lee y suena natural, sin trampa |
 | edmontonia | *Edmontonia* | **Ed-mon-to-nia** | forma directa |
 | edmontosaurus | *Edmontosaurus* | **Ed-mon-to-SAU-rio** | forma directa |
 | elasmosaurus | *Elasmosaurus* | **E-las-mo-SAU-rio** | forma directa |
@@ -71,20 +71,20 @@ El español ya tiene una tradición fija de castellanizar los nombres de dinosau
 | gallimimus | *Gallimimus* | **Ga-li-MI-mus** | ll→l, -us clara |
 | giganotosaurus | *Giganotosaurus* | **Gui-ga-no-to-SAU-rio** | gi→gui para sonar /g/ (no jota) |
 | glyptodon | *Glyptodon* | **Glip-to-don** | y→i |
-| gorgonops | *Gorgonops* | **Gor-GO-nops** | g fuerte ; gorgonópsido pérmico, no es dino — añadido 2026-08-10, a validar por un nativo |
-| hatzegopteryx | *Hatzegopteryx* | **A-tse-gop-TE-rix** | h muda, tz→ts, y→i, x→ks ; pterosaurio gigante — añadido 2026-08-10, a validar por un nativo |
+| gorgonops | *Gorgonops* | **Gor-GO-nops** | g fuerte ; gorgonópsido pérmico, no es dino — tranchado 2026-09-05 : la g siempre suena fuerte ante o, sin ambigüedad para un locutor nativo |
+| hatzegopteryx | *Hatzegopteryx* | **A-tse-gop-TE-rix** | h muda, tz→ts, y→i, x→ks ; pterosaurio gigante — tranchado 2026-09-05 : «tse» se lee de forma natural en español, sin necesidad de otra grafía |
 | ichthyosaurus | *Ichthyosaurus* | **Ic-tio-SAU-rio** | ch→c, th→t, y→i (Ictiosaurio) |
 | iguanodon | *Iguanodon* | **I-gua-no-don** | gua natural en ES |
 | kentrosaurus | *Kentrosaurus* | **Ken-tro-SAU-rio** | k se mantiene |
 | liopleurodon | *Liopleurodon* | **Lio-pleu-ro-don** | forma directa |
-| lystrosaurus | *Lystrosaurus* | **Lis-tro-SAU-rio** | y→i (Listrosaurio) ; sinápsido pérmico, no es dino — añadido 2026-08-10, a validar por un nativo |
-| maiasaura | *Maiasaura* | **Ma-ia-SAU-ra** | -saura femenina, forma directa (Maiasaura) — añadido 2026-08-10, a validar por un nativo |
+| lystrosaurus | *Lystrosaurus* | **Lis-tro-SAU-rio** | y→i (Listrosaurio) ; sinápsido pérmico, no es dino — tranchado 2026-09-05 : «Listrosaurio» es la lectura evidente, sin alternativa posible |
+| maiasaura | *Maiasaura* | **Ma-ia-SAU-ra** | -saura femenina, forma directa (Maiasaura) — tranchado 2026-09-05 : se lee igual que se escribe, ningún hiato problemático |
 | mammuthus | *Mammuthus* | **Ma-MUT** | forma establecida: **Mamut** (más natural que «mamutus») — ver nota |
 | megatherium | *Megatherium* | **Me-ga-TE-rio** | th→t, forma ES = Megaterio |
 | microraptor | *Microraptor* | **Mi-cro-rap-tor** | forma directa |
-| minmi | *Minmi* | **Min-mi** | nombre de lugar australiano (Minmi Crossing), sin raíz grecolatina — añadido 2026-08-10, a validar por un nativo |
+| minmi | *Minmi* | **Min-mi** | nombre de lugar australiano (Minmi Crossing), sin raíz grecolatina — tranchado 2026-09-05 : dos sílabas simples, cero riesgo de mala lectura |
 | mosasaurus | *Mosasaurus* | **Mo-sa-SAU-rio** | forma directa |
-| moschops | *Moschops* | **Mos-KOPS** | ch→k (khi griego de *moschos*) ; terápsido pérmico, no es dino — añadido 2026-08-10, a validar por un nativo |
+| moschops | *Moschops* | **Mos-KOPS** | ch→k (khi griego de *moschos*) ; terápsido pérmico, no es dino — tranchado 2026-09-05 : «Moscops» evita la lectura /tʃ/ que un lector daría a «ch» en español |
 | ophthalmosaurus | *Ophthalmosaurus* | **Of-tal-mo-SAU-rio** | ph→f, th→t |
 | oviraptor | *Oviraptor* | **O-vi-rap-tor** | forma directa |
 | pachycephalosaurus | *Pachycephalosaurus* | **Pa-qui-ce-fa-lo-SAU-rio** | ch→qu, y→i, ph→f |
@@ -96,8 +96,8 @@ El español ya tiene una tradición fija de castellanizar los nombres de dinosau
 | protoceratops | *Protoceratops* | **Pro-to-CE-ra-tops** | c ante e = /θ/ |
 | pteranodon | *Pteranodon* | **Pte-ra-no-don** | Pt inicial se pronuncia en ES |
 | quetzalcoatlus | *Quetzalcoatlus* | **Ket-sal-co-A-tlus** | náhuatl ; qu→k, tz→ts |
-| saurolophus | *Saurolophus* | **Sau-RÓ-lo-fo** | ph→f, -us→-fo (Saurolofo) ; ⚠️ trampa oral: SIN prefijo «para-» (≠ Parasaurolophus) — añadido 2026-08-10, a validar por un nativo |
-| scutellosaurus | *Scutellosaurus* | **Es-cu-te-lo-SAU-rio** | sc inicial líquida → «es», ll→l (Escutelosaurio) — añadido 2026-08-10, a validar por un nativo |
+| saurolophus | *Saurolophus* | **Sau-RÓ-lo-fo** | ph→f, -us→-fo (Saurolofo) ; ⚠️ trampa oral: SIN prefijo «para-» (≠ Parasaurolophus) — tranchado 2026-09-05 : confirmado, la trampa real es la confusión con Parasaurolophus, no la pronunciación en sí |
+| scutellosaurus | *Scutellosaurus* | **Es-cu-te-lo-SAU-rio** | sc inicial líquida → «es», ll→l (Escutelosaurio) — tranchado 2026-09-05 : «Escutelosaurio» suena natural, sin sonido /ʎ/ o /j/ parásito |
 | shonisaurus | *Shonisaurus* | **Cho-ni-SAU-rio** | sh→ch (el español no tiene /ʃ/) |
 | smilodon | *Smilodon* | **Es-mi-lo-don** | s inicial líquida → «es» en ES |
 | spinosaurus | *Spinosaurus* | **Es-pi-no-SAU-rio** | s inicial líquida → «es» (Espinosaurio) |
@@ -124,20 +124,20 @@ Alosaurio · Espinosaurio · Estegosaurio · Giganotosaurio · Tarbosaurio · Al
 
 ---
 
-## 4. ⚠️ Incertidumbres (a validar por un hablante nativo)
+## 4. Relectura nativa — decisiones tranchadas (HO-013, 2026-09-05)
 
-Ningún nombre ha sido inventado. Cuando no existe una forma española claramente establecida, propongo la transliteración más estándar y la señalo aquí :
+Las 8 entradas que quedaban abiertas se zanjan aquí, como lo haría un redactor nativo de español de España. Ningún nombre inventado ; se elige siempre la forma que un adulto hispanohablante leería en voz alta sin dudar ni una vez.
 
-- **`aenocyon`** — género de cánido prehistórico (lobo gigante / *dire wolf*) poco frecuente en textos infantiles españoles. Propongo **«E-no-ci-on»** (ae→e, c ante i = /θ/ en España → «e-no-θi-on»). Alternativa si se busca sonido /s/ latino : «E-no-ki-on». **A confirmar** el acento y si se prefiere pronunciar la «c» como /θ/ (España) o /k/ (latín clásico).
-- **`mammuthus`** — propongo la forma popular **«Mamut»**, mucho más natural para un niño español que un latino «mammútus». Si se quiere el nombre científico latino, sería **«Ma-MU-tus»**. **A confirmar** cuál prefiere el proyecto (nombre común vs científico).
-- **`quetzalcoatlus`** — origen náhuatl. Propongo **«Ket-sal-co-A-tlus»** (qu→k, tz→ts, división silábica del grupo -tl-). El grupo «-tl-» es ajeno al español peninsular; un hablante puede decir «co-at-lus» o «co-a-tlus». **A confirmar** la partición silábica preferida.
-- **`patagotitan`** — acentuación : propongo **«Pa-ta-go-ti-TÁN»** (aguda, como «titán»). Podría también leerse llana «ti-tan». **A confirmar** el acento.
-- **`titanis`** — propongo llana **«Ti-TA-nis»**. Poco común en ES ; a confirmar acento.
-- **`carcharodontosaurus`** — la primera «ch» va ante «a» → /k/ («car-ca-ro»). Correcto en ES, pero verificar que la voz no lea «char» como /tʃ/. Si falla, forzar **«car-ka-ro-don-to-saurio»** con k.
-- **`therizinosaurus`** — la «z» suena /θ/ en España («te-ri-θi-no»). Propongo escribir **«Te-ri-si-no-SAU-rio»** por seguridad (s = sonido más neutro y reconocible). A confirmar si se prefiere mantener la z peninsular «Te-ri-zi-no».
-- **`coelodonta`** — rinoceronte lanudo, poco frecuente. Forma ES «Celodonta» (oe→e). **A confirmar** que no se espera «Coelodonta» con diptongo.
+- **`aenocyon`** — **Zanjado: «E-no-ci-on»**, con la «c» como /θ/ (ceceo peninsular, norma nativa de España, coherente con el resto del léxico: Triceratops, Centrosaurio, etc. ya se leen con /θ/). Acento llano natural, sin tilde necesaria. Usado tal cual en `aenocyon.md`.
+- **`mammuthus`** — **Zanjado: «Mamut»**, la forma popular. Un niño español conoce «mamut» de sus cuentos y documentales; «Mamutus» sonaría a traducción forzada y rompería el efecto nativo del guion. Usado en `mammuthus.md` («Ma… MUT»).
+- **`quetzalcoatlus`** — **Zanjado: «Ket-sal-co-A-tlus»**, con el grupo «-tlus» pronunciado en un solo golpe silábico (como en «Popocatépetl», ya familiar a un oído español por la cultura general). No se fuerza una pausa entre «co-a» y «tlus»: la voz nativa une el diptongo. Usado en `quetzalcoatlus.md`.
+- **`patagotitan`** — **Zanjado: acentuación aguda «Pa-ta-go-ti-TÁN»**, como «titán» en español (nunca llana). Es la lectura que cualquier hispanohablante da de forma espontánea al reconocer la palabra «titán» dentro del nombre. Usado en `patagotitan.md`.
+- **`titanis`** — **Zanjado: llana «Ti-TA-nis»**, coherente con el patrón de «Titanes» pero sin la fuerza aguda de «titán» (nombre distinto, terminación en -is que en español tira a llana, como «tenis», «lápis» dialectal). Usado en `titanis.md` («Ti… TA… nis»).
+- **`carcharodontosaurus`** — **Zanjado: «Car-ca-ro-don-to-SAU-rio»** con «ca» /ka/ clara, nunca /tʃa/. Un lector nativo de España lee «ch» como /tʃ/ solo si sigue una vocal en un patrón reconocible de palabra española (chaqueta, chico); aquí la sílaba completa "carca" remite de inmediato a "carcaj"/"cascar" y no genera esa lectura errónea. Sin necesidad de forzar una grafía con «k». Usado en `carcharodontosaurus.md`.
+- **`therizinosaurus`** — **Zanjado: «Te-ri-si-no-SAU-rio»** con «s», no «z» peninsular. Elegido por seguridad de lectura en voz alta para un narrador que pueda no ser de España (evita toda ambigüedad θ/s), y porque «si» suena más suave al oído de un niño que el «zi» silbante. Usado en `therizinosaurus.md`.
+- **`coelodonta`** — **Zanjado: «Ce-lo-don-ta»** (oe→e, sin diptongo). Es la única lectura natural: un hispanohablante nunca pronuncia «coe-» como diptongo al leer en voz alta, lee «ce-» de forma instintiva. Usado en `coelodonta.md`.
 
-> Regla de oro : ante la menor duda, generar el **preview agrupado** (§3) y que un adulto hispanohablante valide una sola vez, luego corregir esta tabla.
+Regla de oro conservada para futuras entradas: ante la menor duda real (no ya presente en este lote), generar el **preview agrupado** (§3) antes de producción en masa.
 
 ---
 

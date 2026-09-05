@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Medía 14 metros de largo — ¡tan largo como un autobús! [amazed] De pie, tenía 2 metros de alto — ¡tan alto como una puerta! Y pesaba 25 mil kilos — [serious] ¡tan pesado como 5 elefantes!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] ¿5 elefantes, en el agua?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[chuckles] 5 elefantes que nadan, sí — [proud] uno de los animales más grandes de todo su mar."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

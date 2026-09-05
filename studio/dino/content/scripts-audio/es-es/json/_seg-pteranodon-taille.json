@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Sus alas abiertas medían 6 metros de un extremo al otro — anchas como un coche y medio. [quickly] De pie, tenía 1 con 8 metros de alto — [proud] ¡tan grande como papá de pie! Y pesaba 25 kilos — tan pesado como un perro. [amazed] Y en vuelo, los científicos creen que podía llegar a 32 kilómetros por hora — tan rápido como un caballo al trote."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Y su curiosa cresta, [gasps] detrás de la cabeza?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Quizá le ayudaba a guiar su vuelo, [slowly] como un timón."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

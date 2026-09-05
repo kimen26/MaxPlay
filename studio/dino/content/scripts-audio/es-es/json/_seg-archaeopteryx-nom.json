@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ar… que… óp… te… rix. En griego, «arqueo» significa antiguo, muy viejo. [serious] Y «pterix» es el ala. [curious] ¿Qué sale, entonces?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] El ala antigua."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Eso es. [proud] Vivía en Europa, en Alemania, hace 150 millones de años — es uno de los primerísimos pájaros que conocemos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] ¿Un pájaro que vivía con los dinosaurios?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Exacto. [amazed] Y todavía no era del todo un pájaro como los de ahora."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

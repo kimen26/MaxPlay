@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Cazaba peces y calamares, en grupo, un poco como los delfines de hoy. [confident] Pero en su mar, había algo más fuerte que él."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[scared] ¿Qué?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[gently] Los grandes pliosaurios de su época, como el Romaleosaurio. [warmly] Frente a ellos, el Ictiosaurio tenía que ser prudente."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

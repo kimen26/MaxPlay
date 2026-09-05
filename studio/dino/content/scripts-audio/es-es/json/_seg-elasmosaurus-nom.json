@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[curious] E… las… mo… SAU… rio. En griego, «elasmo» significa una placa de metal muy fina. [serious] Sus huesos de hombro eran planos como placas, [confident] así que los científicos lo llamaron así."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[playful] ¿El lagarto-placa?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Casi. El lagarto de placas finas. Vivía hace 80 millones de años, [amazed] en un gran mar que partía [serious] Norteamérica en dos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] ¿Un mar en pleno MEDIO de la tierra?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Exacto. Toda esa región estaba bajo el agua, en aquella época."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

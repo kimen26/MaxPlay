@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Di… plo… do… cus. En griego, «diplo» significa [curious] doble. Y «docus», una viga — [pauses] una gran barra de madera."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿La doble viga?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Sí — por la [amazed] forma de los huesos de su cola. Vivía en Norteamérica, hace 150 millones de años."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[hesitant] ¿Cómo se defendía, con un cuello tan largo?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Con su cola, precisamente. [serious] El Alosaurio y el Ceratosaurio preferían atacar a las crías aisladas — [calm] la manada apretada era otra historia."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

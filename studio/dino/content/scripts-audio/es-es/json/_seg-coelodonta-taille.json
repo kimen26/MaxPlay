@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Medía 3 metros 50 de largo — como un coche pequeño. De pie, tenía 1 metro 50 de alto — tan alto como un coche — [amazed] ¡había que levantar la cabeza! Y pesaba 1 750 kilos — [proud] ¡tan pesado como un coche pequeño y una vaca juntos!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Su cuerno, para qué servía?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] De escoba. [playful] Empujaba la nieve con él para encontrar la hierba escondida debajo."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

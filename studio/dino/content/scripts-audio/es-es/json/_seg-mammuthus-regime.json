@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era herbívoro. Comía hierba y pequeñas plantas escondidas bajo la nieve. [warmly] Un pelaje espeso y una gruesa capa de grasa lo mantenían caliente, y vivía en manada, [gently] como los elefantes de hoy."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[nervous] ¿Quién podía atacarlo, con ese pelaje?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Solo los hombres prehistóricos. [warmly] Nadie más se atrevía con una bestia tan grande."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

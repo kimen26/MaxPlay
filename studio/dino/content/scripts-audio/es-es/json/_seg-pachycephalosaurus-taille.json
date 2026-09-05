@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 4 metros 50 de largo — ¡tan largo como un todoterreno grande! 1 metro 50 de alto — [quickly] ¡tan alto como un coche, había que levantar la cabeza! Y 450 kilos — [amazed] ¡tan pesado como un caballo!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] No muy grande, entonces."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] No muy grande, no. [serious] Pero su cráneo medía 25 centímetros de grosor. Un verdadero casco-bala."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

@@ -31,4 +31,4 @@
 
 **NARRATEUR H** [excited] : Su cabeza, con el collar, medía MÁS de 3 metros. [whispers] Una de las cabezas más grandes de todos los animales que hayan caminado sobre la Tierra.
 **WEX** [gasps] : Más grande que papá de pie.
-**NARRATEUR H** [softly] : Mucho más grande. El Pentaceratops, el campeón de la cabeza más grande.
+**NARRATEUR H** [softly] : Mucho más grande. [proud] El Pentaceratops, el campeón de la cabeza más grande.

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era un cazador solitario. Atrapaba a los grandes comedores de plantas de su época, [confident] con dos largos colmillos en forma de sable, [amazed] tan largos como tu mano."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[scared] ¿Dos dientes como mi mano?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[gently] Como tu mano, sí — verdaderas armas. Pero tranquilo, [warmly] eso fue hace 260 millones de años: ya no queda ningún Gorgonops hoy."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

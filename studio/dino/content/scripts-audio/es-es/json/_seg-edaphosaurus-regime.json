@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Comía helechos, tranquilamente, con sus pequeños dientes en losas. [confident] Vivía en el mismo lugar que otro animal, [curious] con una vela casi igual en el lomo."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Quién?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] El Dimetrodon. Su vela se parece mucho a la suya — [playful] pero cuidado, es todo lo contrario por dentro."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

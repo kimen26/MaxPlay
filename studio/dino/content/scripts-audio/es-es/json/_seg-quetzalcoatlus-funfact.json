@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Es uno de los seres voladores más grandes de toda la historia de la Tierra. [pauses] Ningún pájaro, ningún murciélago ha alcanzado jamás su tamaño."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] El rey del cielo."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly] El rey del cielo, sí — [proud] mientras Tritri, abajo, mantenía bien los pies en la tierra."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

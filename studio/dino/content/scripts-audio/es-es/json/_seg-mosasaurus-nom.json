@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Mo… sa… SAU… rio. Su nombre habla de un río: el Mosa, [curious] en Europa, donde se encontraron sus primeros huesos. [playful] Y «saurio», ya empiezas a saberlo."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] El lagarto. El lagarto del Mosa."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exacto. [serious] Solo que él no vivía en un río — [amazed] nadaba en TODOS los mares del mundo, hace 70 millones de años."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Todos los mares? ¿Incluso el de Tritri?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Ese mismo. [amazed] El Mosasaurio y el Triceratops vivieron en la misma época, [serious] justo al final de la era de los dinosaurios — él en el agua, [warmly] Tritri en tierra."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

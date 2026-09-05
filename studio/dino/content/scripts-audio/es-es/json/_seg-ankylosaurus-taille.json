@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 7 metros y medio de largo — [amazed] como dos coches uno detrás de otro. De pie, 1 con 8 metros de alto — [curious] tan alto como papá de pie. Y 6 mil kilos — [proud] tan pesado como TRES rinocerontes. [calm] No corría rápido: apenas 7 kilómetros por hora, como papá caminando rápido."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Nada rápido, entonces."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] No. [serious] No lo necesitaba — su armadura le bastaba."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

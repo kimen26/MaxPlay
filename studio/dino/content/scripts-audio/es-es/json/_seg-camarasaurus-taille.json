@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 15 metros de largo — [amazed] tan largo como un autobús. De pie, 6 metros de alto — [curious] tan alto como una farola. Y 18 mil kilos — [proud] tan pesado como 6 hipopótamos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] 6 hipopótamos."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Sí. [whispers] Una cabeza grande, y dientes gruesos para masticar ramas muy duras."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

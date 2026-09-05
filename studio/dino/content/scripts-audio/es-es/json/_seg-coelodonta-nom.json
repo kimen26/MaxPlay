@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ce… lo… don… ta. En griego, «celo» significa hueco, [serious] y «donta» significa los dientes. El diente hueco."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Un rinoceronte todo peludo?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exacto, lo llamamos el Rinoceronte lanudo. [serious] No es un dinosaurio: vivía mucho después, en la Edad de hielo, [pauses] hace 50 000 años, en el frío de Europa y Asia."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Con quién compartía el frío?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Con el Mamut, justo al lado. [warmly] Los dos hechos para la nieve."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

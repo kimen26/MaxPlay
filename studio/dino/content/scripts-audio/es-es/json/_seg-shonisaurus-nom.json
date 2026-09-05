@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[curious] Cho… ni… SAU… rio. Su nombre viene de un lugar: [amazed] los montes Shoshone, [serious] en el desierto de Nevada, Estados Unidos — allí se encontraron sus huesos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] ¿El lagarto de los montes Shoshone?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exacto. Vivía hace 230 millones de años — [amazed] mucho antes que la mayoría de los dinosaurios que conoces."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Un desierto, pero vivía en el agua?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] En esa época, ese desierto era un mar. [amazed] Toda la región estaba bajo el agua."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

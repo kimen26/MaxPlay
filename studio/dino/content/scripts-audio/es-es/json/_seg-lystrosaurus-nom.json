@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[curious] Lis… tro… SAU… rio. «Listron», en griego, es la pala. [serious] Y «saurio», el lagarto."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] ¿El lagarto-pala?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Eso es — por su hocico, ancho y plano, como una pequeña pala. Vivía hace 250 millones de años — [amazed] antes que los dinosaurios."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Dónde vivía?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[amazed] Casi por todas partes: en Sudáfrica, en la Antártida, en la India, en China, en Rusia, en Mongolia. [serious] En esa época, todas las tierras estaban pegadas [confident] en un solo bloque."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

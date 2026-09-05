@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Sau… ro… LO… fo. [curious] En griego antiguo, «sauro» es el lagarto. Y «lofo», la cresta. [pauses] El lagarto con cresta."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Una cresta, como un sombrero puntiagudo?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Casi. Un largo espolón de hueso macizo, bien recto, [curious] que apunta hacia atrás y hacia arriba. [warmly] Vivía hace 70 millones de años."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] ¿Y dónde vivía?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Eso es lo más sorprendente: en Canadá, y [confident] también en Mongolia, al otro lado del mundo, al mismo tiempo. [amazed] Un puente de tierra unía los dos continentes en esa época."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

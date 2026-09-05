@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 22 metros de largo — tan largo como un autobús articulado. De pie, [pauses] 13 metros de alto — tan alto como un edificio de 4 plantas. Y 47 mil kilos — [amazed] tan pesado como NUEVE elefantes."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] ¿Nueve elefantes?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Sí. Pero en él, [pauses] ni siquiera es la cola lo que le da su tamaño: es su cuello, levantado recto hacia el cielo."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

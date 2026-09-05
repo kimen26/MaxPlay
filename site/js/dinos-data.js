@@ -620,7 +620,7 @@ const DINOS = [
     comp_poids: _compPoids(1.6),
     nom_etym: '« Carnotaurus », deux morceaux latins ! Carno, en latin, ça veut dire la viande, la chair. Et taurus, c\'est le taureau — il avait deux cornes, comme un taureau ! En entier : le taureau qui mange de la viande !',
     regime: '🥩 Carnivore',
-    superpower: 'Le chasseur le PLUS RAPIDE parmi les grands carnivores — jusqu\'à 56 km/h !',
+    superpower: 'Le chasseur le PLUS RAPIDE parmi les grands carnivores — jusqu\'à 52 km/h, aussi vite qu\'une voiture en ville !',
     chasseurs: 'Aucun dans son territoire',
     proies: 'Hadrosaures, dinosaures moyens',
     amis: 'Solitaire',

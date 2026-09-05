@@ -9,34 +9,35 @@
 > Deux doigts aux pattes avant : fact-checké (Grokipedia « forelimbs short and two-fingered »), signature de la famille, lien T-Rex porté par Wex.
 > Prononciation : « Albertosaure » se lit bien tel quel (lexique §3) ; « Sarcophagus » respellé « Sar-ko-fa-guss » (ph→f, -us→-uss, règles §1).
 > Grep-interdits OK. Wex FR standard, aucun tic écrit, jamais de `!` final.
+> **Vitesse (ajout 2026-09-05, HO-011)** : `vitesse_kmh: 30` dans dinos-data.js. `_compVitesse(30)` exécutée node : « aussi vite qu'un cheval au petit galop ! ». Ajoutée en fin de bloc B, formulée en estimation (« les savants pensent »).
 
 ## Albertosaure — Albertosaurus sarcophagus
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Al-ber-to-saure. « Alberto », ça vient de l'Alberta, une GRANDE région du Canada où on a trouvé ses os. Et « saure », tu sais ce que ça veut dire ?
+**NARRATEUR H** [excited] : Al-ber-to-saure. [curious] « Alberto », ça vient de l'Alberta, une GRANDE région du Canada où on a trouvé ses os. [playful] Et « saure », tu sais ce que ça veut dire ?
 **WEX** [confident] : Lézard. Alors... le lézard de l'Alberta.
-**NARRATEUR H** [happily] : Exactement. Il vivait là-bas, il y a 70 millions d'années. Un cousin du T-Rex.
-**WEX** [curious] : Et il avait des ennemis ? Des chasseurs encore plus forts que lui ?
-**NARRATEUR H** [confident] : Non. Dans son pays, c'était lui le plus grand chasseur. Aucun autre carnivore n'était assez costaud pour l'embêter.
+**NARRATEUR H** [happily] : Exactement. [amazed] Il vivait là-bas, il y a 70 millions d'années. [warmly] Un cousin du T-Rex.
+**WEX** [curious] : Et il avait des ennemis ? [nervous] Des chasseurs encore plus forts que lui ?
+**NARRATEUR H** [confident] : Non. [warmly] Dans son pays, c'était lui le plus grand chasseur. [proud] Aucun autre carnivore n'était assez costaud pour l'embêter.
 
 ### BLOC B — Taille
 
-**NARRATEUR H** [excited] : Il mesurait 9 virgule 5 mètres de long — aussi long qu'un camion ! Debout, il faisait 3 mètres de haut — aussi haut qu'un panier de basket ! Et il pesait 2 mille kilos — aussi lourd qu'un rhinocéros !
-**WEX** [curious] : Et ses bras ? Tout petits, comme le T-Rex ?
-**NARRATEUR H** [confident] : Oui, tout pareil : minuscules, avec seulement DEUX doigts à chaque patte.
+**NARRATEUR H** [excited] : Il mesurait 9 virgule 5 mètres de long — aussi long qu'un camion ! [quickly] Debout, il faisait 3 mètres de haut — aussi haut qu'un panier de basket ! Et il pesait 2 mille kilos — aussi lourd qu'un rhinocéros ! [amazed] Et les savants pensent qu'il pouvait courir à 30 kilomètres à l'heure — aussi vite qu'un cheval au petit galop.
+**WEX** [curious] : Et ses bras ? [playful] Tout petits, comme le T-Rex ?
+**NARRATEUR H** [confident] : Oui, tout pareil : minuscules, [amazed] avec seulement DEUX doigts à chaque patte.
 
 ### BLOC C — Comment il vivait
 
-**NARRATEUR H** [serious] : C'était un carnivore. Il chassait les gros mangeurs de plantes de son pays — l'Edmontosaure, et le Saurolophe avec sa crête. Et peut-être qu'il ne chassait pas tout seul : on a retrouvé 26 Albertosaures ensemble, au même endroit.
+**NARRATEUR H** [serious] : C'était un carnivore. Il chassait les gros mangeurs de plantes de son pays — [confident] l'Edmontosaure, et le Saurolophe avec sa crête. [pauses] Et peut-être qu'il ne chassait pas tout seul : [amazed] on a retrouvé 26 Albertosaures ensemble, au même endroit.
 **WEX** [gasps] : 26 ? Alors, ils étaient copains ?
-**NARRATEUR H** [playful] : C'est exactement la question que se posent les savants. Peut-être une vraie meute, comme les loups d'aujourd'hui. Ils cherchent encore la réponse.
+**NARRATEUR H** [playful] : C'est exactement la question que se posent les savants. [mischievously] Peut-être une vraie meute, comme les loups d'aujourd'hui. [curious] Ils cherchent encore la réponse.
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [excited] : En vrai, les savants l'appellent par son nom en entier : Albertosaurus sarcophagus. Albertosaurus, tu le connais déjà. Et « Sar-ko-fa-guss », en grec, ça veut dire... qui MANGE la viande.
+**NARRATEUR H** [excited] : En vrai, les savants l'appellent par son nom en entier : Albertosaurus sarcophagus. [confident] Albertosaurus, tu le connais déjà. [whispers] Et « Sar-ko-fa-guss », en grec, ça veut dire... qui MANGE la viande.
 **WEX** [playful] : Carrément écrit dans son nom.
-**NARRATEUR H** [softly] : Oui. Avec des dents pareilles, le nom était tout trouvé.
+**NARRATEUR H** [softly] : Oui. [amazed] Avec des dents pareilles, le nom était tout trouvé.
 
 ---
 

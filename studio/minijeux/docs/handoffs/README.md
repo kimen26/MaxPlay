@@ -5,3 +5,4 @@
 | ID | Titre | Fichiers possédés | Statut |
 |----|-------|-------------------|--------|
 | HO-MJ-01 | Mémoire convergente pôle JEU (pmo/ → memory/ quintette) | `studio/minijeux/**` sauf `tests/`, `docs/handoffs/`, `docs/jeux/figees/` | pret |
+| HO-MJ-02 | EPIC i18n mini-jeux · lot 0 plomberie (mj-i18n.js, packs mj-strings.<lang>.js, RegleInfo surcouche) + panneaux regle des 36 jeux en anglais | site/js/mj-i18n.js, regle-info.js, mj-shell.js, studio/minijeux/i18n/**, tools/ | fait (36/36 EN, portes rejouées) |

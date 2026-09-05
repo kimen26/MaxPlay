@@ -139,3 +139,5 @@ Fonctionne identiquement pour drapeaux et dinosaures. Même code, contenu diffé
 - **Font** : Fredoka One (Google Fonts, gratuit, arrondie)
 - **Palette** : 6-8 couleurs max, contours gras, couleurs saturées (pas de pastel), contraste élevé
 - **Personnages** : anthropomorphisés (bus avec yeux = plus engageant pour < 5 ans)
+
+- **D-022** (2026-09-05, HO-MJ-02, décision PY « tous les mini-jeux devront être traduits ») — **Plomberie i18n mini-jeux = miroir du dino** : le FR reste le canon en dur dans chaque  ; la traduction est une SURCOUCHE (, appliquée dans  sur une copie), pack par langue GÉNÉRÉ depuis , chargé par la file  de  (pas de  : le shell est asynchrone). Langue sans pack = repli FR, jamais de trou. Registre 4 ans, charte de traduction dino.

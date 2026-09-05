@@ -38,7 +38,36 @@
 (function () {
   'use strict';
 
+  // Langue active, calculée AVANT la file de scripts (même logique que lang.js — dupliquée
+  // ici à dessein : SCRIPTS est une liste statique construite au parse, mj-shell.js ne peut
+  // pas attendre que lang.js soit chargé pour savoir s'il doit ajouter un pack de langue).
+  // lang.js (plus bas dans SCRIPTS) refait exactement ce calcul et pose window.Lang — les
+  // deux ne peuvent pas diverger, ce sont la même whitelist et la même résolution qs/storage.
+  function langActive() {
+    var SUPPORTED = ['fr', 'en', 'pt-br', 'es-es', 'es-mx', 'it', 'ar', 'ru', 'zh', 'ja', 'de', 'hi'];
+    var qs = null;
+    try { qs = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+    var stored = null;
+    try { stored = localStorage.getItem('maxplay_lang'); } catch (e) {}
+    var cur = qs || stored || 'fr';
+    return SUPPORTED.indexOf(cur) >= 0 ? cur : 'fr';
+  }
+  var LANG = langActive();
+
   var SCRIPTS = [
+    // Langue active + surcouche i18n panneau règle (HO-MJ-02) : chargés en tête, avant
+    // tout écran, pour que RegleInfo.init (plus bas) trouve MJi18n déjà posé.
+    // hasScript() déduplique : les 8 jeux qui chargeaient déjà js/lang.js à la main
+    // (mj-14/15/19/24/28/30/31/32, dino) ne le rechargent pas une 2e fois.
+    'js/lang.js',
+    'js/mj-i18n.js',
+  ];
+  // Pack de chaînes de la langue active, seulement s'il y en a une (FR = canon, jamais de
+  // pack) — un pack absent (langue sans traduction encore prête, ex. es-es/pt-br) donne un
+  // 404 silencieux : loadSeq() ignore l'erreur (onerror -> continue), MJi18n reste sans
+  // MJ_STRINGS et RegleInfo retombe sur le FR (repli assumé, jamais de trou).
+  if (LANG !== 'fr') SCRIPTS.push('js/i18n/mj-strings.' + LANG + '.js');
+  SCRIPTS = SCRIPTS.concat([
     'js/sounds.js',
     'js/lexique-fr.js',
     'js/tts.js',
@@ -64,7 +93,7 @@
     // dispo). Défensifs : si absents (404), le shell continue sans capsule.
     'js/collection.js',
     'js/collection-dinos.js',
-  ];
+  ]);
 
   // mp-theme.css si la page ne l'a pas déjà
   if (!document.querySelector('link[href*="mp-theme.css"]')) {

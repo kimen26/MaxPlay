@@ -29,12 +29,12 @@ portes aient été rejouées par lui.
 
 | ID | Titre | Fichiers possedes | Statut |
 |----|-------|-------------------|--------|
-| HO-009 | Audit data 71 dinos (mesures, lieux, Texte fiche), 4 lots | `docs/handoffs/rapports/HO-009-lot-*.{md,json}` | en cours |
-| HO-010 | Application corrections data (orchestrateur) | `site/js/dinos-data.js`, strings.json touches, bundles | bloque par HO-009 |
-| HO-011 | Reecriture 71 Scripts audio FR, tags v3 riches, 6 lots | `scripts-audio/fr/V3/<id>.md` | bloque par HO-010 |
-| HO-012 | Relecture croisee FR (porte + dino-conseiller) | `rapports/HO-012-*.md` | bloque par HO-011 |
-| HO-013 | i18n Scripts audio en / es-es / pt-br + lexiques relus | `scripts-audio/<lang>/**`, `lexiques-prononciation/<lang>.md` | bloque par HO-012 |
-| HO-014 | Generation EL 13 theropodes × 4 langues | `site/audio/dinos/<lang>/<id>-*.mp3`, manifest | bloque par HO-012/013 |
+| HO-009 | Audit data 71 dinos (mesures, lieux, Texte fiche), 4 lots | `docs/handoffs/rapports/HO-009-lot-*.{md,json}` | fait |
+| HO-010 | Application corrections data (orchestrateur) | `site/js/dinos-data.js`, strings.json touches, bundles | fait (strings.json : reste I18N-STRINGS-RECROISER) |
+| HO-011 | Reecriture 71 Scripts audio FR, tags v3 riches, 6 lots | `scripts-audio/fr/V3/<id>.md` | fait (71/71) |
+| HO-012 | Relecture croisee FR (porte + dino-conseiller) | `rapports/HO-012-*.md` | fait (71 PASS + polish) |
+| HO-013 | i18n Scripts audio en / es-es / pt-br + lexiques relus | `scripts-audio/<lang>/**`, `lexiques-prononciation/<lang>.md` | fait (71 × 3) |
+| HO-014 | Generation EL 13 theropodes × 4 langues | `site/audio/dinos/<lang>/<id>-*.mp3`, manifest | fait (13 × 4) |
 | HO-015 | Musiques de fond (Eleven Music) | `site/sounds/music/**` | fait |
 | HO-016 | Banque SFX dinos | `site/sounds/fx/dino/**` | fait |
 

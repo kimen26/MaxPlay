@@ -4,7 +4,7 @@
 > Chiffres data (`dinos-data.js` id `diplodocus`) : 26 m long · 4,5 m haut · 12 t. Sorties EXACTES exécutées node : `_compLong(26)` = « comme deux bus l'un derrière l'autre ! » · `_compHaut(4.5)` = « aussi haut qu'un bus anglais à deux étages ! » · `_compPoids(12)` = « aussi lourd que 4 hippopotames ! ».
 > Étymologie (`_ETYMO-RACINES-50.md`) : *diplo-* (grec *diploos*) = double + *-docus/dokos* (grec) = poutre → « la double poutre » (forme des os de la queue). Respelling lexique : « Di-plo-do-kuss ».
 > Fact-check Grokipedia (agent dino-conseiller, 2026-09-05) : le claquement de queue « supersonique » vient d'une **modélisation** (Myhrvold & Currie 1997, maquette métallique) contestée depuis (étude 2022 avec position de queue réaliste ne retrouve pas la vitesse supersonique). → Formulé en HYPOTHÈSE, jamais comme un fait établi : « disent les scientifiques ».
-> Prédateurs contemporains Formation Morrison : Allosaure, Ceratosaure (surtout les jeunes).
+> Prédateurs contemporains Formation Morrison : Allosaure, Ceratosaure (surtout les jeunes isolés, le troupeau protégeait les adultes).
 > Grep-interdits OK. Wex FR standard, aucun tic écrit, jamais de `!` final.
 
 ## Diplodocus — Diplodocus longus
@@ -14,8 +14,8 @@
 **NARRATEUR H** [excited] : Di-plo-do-kuss. En grec, « diplo », ça veut dire [curious] double. Et « dokos », une poutre — [pauses] une grosse barre de bois.
 **WEX** [curious] : La double poutre ?
 **NARRATEUR H** [happily] : Oui — à cause de la [amazed] forme des os de sa queue. Il vivait en Amérique du Nord, il y a 150 millions d'années.
-**WEX** [curious] : Il se défendait comment, avec un si long cou ?
-**NARRATEUR H** [confident] : Avec sa queue, justement. [serious] L'Allosaure et le Cératosaure rôdaient près de lui, mais surtout autour des jeunes.
+**WEX** [hesitant] : Il se défendait comment, avec un si long cou ?
+**NARRATEUR H** [confident] : Avec sa queue, justement. [serious] L'Allosaure et le Cératosaure préféraient s'attaquer aux jeunes isolés — [calm] le troupeau serré, c'était une autre affaire.
 
 ### BLOC B — Taille
 

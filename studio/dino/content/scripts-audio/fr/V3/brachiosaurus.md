@@ -14,7 +14,7 @@
 **NARRATEUR H** [excited] : Bra-ki-o-saure. En grec, « brakhio », ça veut dire le bras. Et « saure », [pauses] le lézard.
 **WEX** [curious] : Le lézard aux bras ?
 **NARRATEUR H** [happily] : Exactement. Il avait des pattes avant [pauses] plus longues que ses pattes arrière — comme deux grands bras. Il vivait en Amérique du Nord, [amazed] il y a 150 millions d'années.
-**WEX** [curious] : Il était tout seul là-bas ?
+**WEX** [playful] : Il était tout seul là-bas ?
 **NARRATEUR H** [confident] : Non, en troupeau. Et les chasseurs comme l'Allosaure [serious] n'osaient s'en prendre qu'aux petits — un adulte, c'était bien trop haut pour eux.
 
 ### BLOC B — Taille

@@ -20,7 +20,6 @@
 | Dino | Vignette / image signature | Fichier |
 |---|---|---|
 | Ankylosaure | massue = boule d'os qui casse la patte d'un carnivore ; le T-Rex n'ose pas | armes-bizarres |
-| Minmi | les chasseurs essaient de le **retourner sur le dos** pour contourner l'armure | thyreophores-nouveaux |
 | Tricératops | se défend avec ses 3 cornes (Tritri tient bon) | ceratopsiens |
 | Pentacératops | collerette-bouclier ; le Bistahieversor « réfléchit à deux fois » | ceratopsiens |
 | Tarbosaure | secoue sa proie comme un chien avec une corde | trex-lot1 |

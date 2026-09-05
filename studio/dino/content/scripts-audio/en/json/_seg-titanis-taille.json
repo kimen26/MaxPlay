@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] It was about 6 feet long — as long as a motorcycle! Standing up, it was about 6 feet tall — [amazed] as tall as a front door! And it weighed 150 kilos — [proud] as heavy as a donkey!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] As tall as a door, but a bird?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] A bird on two very long legs, yes. [playful] Built for running, not for flying."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

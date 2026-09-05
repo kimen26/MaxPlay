@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[curious] LIS… troh… SOR… us. \"Lystron,\" in Greek, means shovel. [serious] And \"saurus,\" lizard."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] The shovel lizard?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] That's the one — because of his snout, [serious] wide and flat, like a little shovel. He lived two hundred fifty million years ago — [amazed] before the dinosaurs."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Where did he live?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[amazed] Almost everywhere: South Africa, Antarctica, India, China, Russia, Mongolia. [serious] Back then, all the land was stuck together [confident] in one single piece."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

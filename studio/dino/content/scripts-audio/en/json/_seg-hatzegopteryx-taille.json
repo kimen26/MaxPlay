@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Its open wings spanned 10 meters wingtip to wingtip — as wide as six Dads lying head to toe. [quickly] Laid end to end, as long as a truck. Standing up, 3 meters tall — [proud] as tall as a basketball hoop. And 220 kilos — as heavy as a lion."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] As tall as a basketball hoop?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Yes. [slowly] But its real difference is its neck: unlike Quetzalcoatlus, its long, thin-necked cousin, [amazed] this one had a short, thick neck, almost like a bull, with a huge head on top."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

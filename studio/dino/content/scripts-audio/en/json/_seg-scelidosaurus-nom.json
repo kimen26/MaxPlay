@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] skeh… LY… doh… SOR… us. In Greek, \"saurus\" is lizard. [curious] And \"scelido\" was supposed to mean \"strong legs,\" [amazed] because it had really powerful thighs."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] A strong-legged lizard."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Yes. But here's the thing: [amazed] the scientist who named it got the Greek word wrong — the one he actually wrote means \"rib of beef.\" [playful] Without meaning to, he named it the beef-rib lizard."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] And where did the beef-rib lizard live?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] In England, by the sea, a hundred ninety-three million years ago. [curious] And already, [pauses] small two-legged hunters were prowling the area."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

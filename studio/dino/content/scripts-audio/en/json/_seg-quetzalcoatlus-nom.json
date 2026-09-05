@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] ket… sal… koh… AT… lus. This name comes from a god! [serious] Quetzalcoatl is the great feathered serpent god of the Aztecs, a people from Mexico. [curious] Quite a name for quite an animal, huh?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] The dinosaur of the feathered serpent god."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Careful, [gently] it's actually not a dinosaur at all — it's a flying reptile, a pterosaur. [proud] It lived in North America, sixty-eight million years ago."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Was that Tritri's time?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Yes, the very end of the Cretaceous — [amazed] Quetzalcoatlus may have flown right over Triceratops's head."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

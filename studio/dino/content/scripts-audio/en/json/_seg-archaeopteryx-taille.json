@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] It was 0.5 meters long — [quickly] like a big cat stretched out! Standing up, it was only 0.3 meters tall — it would come up to your knees! And it weighed barely 1 kilo — [gently] light as a small bird."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] That small, could it really fly?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[hesitant] Scientists still debate it. [gently] It had real flight feathers, but maybe it flew poorly, or only over short distances."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

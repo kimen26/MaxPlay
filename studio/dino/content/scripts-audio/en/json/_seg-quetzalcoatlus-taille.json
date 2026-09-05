@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Its open wings spanned 11 meters wingtip to wingtip — as wide as a city bus! [quickly] Laid end to end, as long as a city bus too. Standing up, it was 5 meters tall — [proud] almost as tall as three Dads standing on each other's shoulders! And it weighed 200 kilos — as heavy as a lion. [amazed] And flying, scientists think it could go 56 miles an hour — almost as fast as a cheetah."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Standing tall like a giraffe?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[proud] Exactly. [amazed] And yet, this animal could fly."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

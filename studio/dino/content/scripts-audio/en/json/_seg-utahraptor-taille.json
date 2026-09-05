@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] It was 6 meters long — [quickly] as long as a road is wide — it takes up the whole street! Standing up, it was 2 meters tall — as tall as a front door! And it weighed 425 kilos — [proud] as heavy as 2 lions."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] And its claw, [gasps] was that huge too?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] [amazed] The biggest of any raptor: about 9 inches. Almost as long as your whole hand and your arm to the elbow."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

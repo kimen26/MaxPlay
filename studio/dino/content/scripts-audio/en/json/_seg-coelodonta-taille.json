@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] It was 11.5 feet long — like a small car! Standing up, it was about 5 feet tall — as tall as a car, [amazed] you'd have to look up! And it weighed 1,750 kilos — [proud] as heavy as a small car and a cow put together!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] What was its horn for?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Like a broom. [playful] It pushed the snow aside to find the grass hidden underneath."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

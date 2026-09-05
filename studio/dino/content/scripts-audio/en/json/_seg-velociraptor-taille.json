@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] It was 2 meters long — [quickly] as long as a motorcycle! Standing up, it was only half a meter tall — [playful] it would come up to your waist! And it weighed 15 kilos — as heavy as a 4-year-old."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] That small?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Yes. [amazed] In the movies they show it giant, with no feathers, but the real Velociraptor was covered in feathers, [proud] barely bigger than a big dog."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

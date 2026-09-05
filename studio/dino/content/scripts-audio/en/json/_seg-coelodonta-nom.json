@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] SEE… loh… DON… tah. In Greek, \"coelo\" means hollow, [serious] and \"donta\" means teeth. The hollow tooth."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] A rhino covered in fur?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactly, people call it the Woolly Rhino. [serious] Not a dinosaur: it lived way later, in the Ice Age, [pauses] fifty thousand years ago, in the cold of Europe and Asia."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Who shared the cold with it?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] The Woolly Mammoth, right nearby. [warmly] Both built for the snow."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

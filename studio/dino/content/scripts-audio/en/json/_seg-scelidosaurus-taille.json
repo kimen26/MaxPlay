@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Thirteen feet long — [amazed] like a small car. Standing up, four feet tall — [curious] as tall as a 4-year-old. And two hundred seventy kilos — [proud] as heavy as a tiger. [calm] It moved without rushing: about 9 miles an hour, [pauses] like a bike riding chill."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] As heavy as a tiger, for a plant-eater?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Yep. [whispers] Most of that weight was its bony armor — and those strong legs carried it just fine."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

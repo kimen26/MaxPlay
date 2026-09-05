@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] It was a lone hunter. It caught the big plant-eaters of its time, [confident] with two long saber teeth, [amazed] as long as your hand."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[scared] Two teeth as long as my hand?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[gently] As long as your hand, yes — real weapons. But don't worry, [warmly] that was two hundred sixty million years ago: no Gorgonops left today."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

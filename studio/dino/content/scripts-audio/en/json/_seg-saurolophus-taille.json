@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] He was 9 meters long — as long as a truck. 3 meters tall — [quickly] as tall as a basketball hoop. And 3,500 kilos — [amazed] as heavy as a hippo and a horse put together!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] As tall as a basketball hoop, plus the crest?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Yes. A big duck-billed herbivore, [proud] with his bone spike standing tall on his skull."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

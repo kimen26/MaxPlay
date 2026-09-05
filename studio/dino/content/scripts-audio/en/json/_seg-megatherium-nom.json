@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Meh… gah… THEER… ee… um. In Greek, \"mega\" means giant, huge. [proud] And \"therium\" means beast. The giant beast."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] A giant dinosaur?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Nope, not a dinosaur — [serious] it showed up way later, in the Ice Age, [pauses] a million years ago. It was a giant sloth, in South America."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] A sloth?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] The biggest sloth that ever lived — [amazed] as big as an elephant, not like the one sleeping in a tree."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

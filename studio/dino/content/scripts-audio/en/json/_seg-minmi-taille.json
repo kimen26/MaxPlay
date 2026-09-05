@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ten feet long — [amazed] like three 4-year-olds lying end to end. Standing up, three feet tall — [curious] as tall as a 4-year-old. And three hundred kilos — [proud] as heavy as 2 donkeys."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] 2 donkeys, for such a little dino?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Yep, [pauses] all that weight came from its armor. [amazed] But it had longer legs than its armored cousins."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

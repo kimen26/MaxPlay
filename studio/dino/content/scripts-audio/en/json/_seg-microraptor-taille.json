@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] It was 0.77 meters long — [quickly] like a big cat stretched out! Standing up, it was only 0.3 meters tall — it would come up to your knees! And it weighed barely 1 kilo — [gently] light as a small bird."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] That tiny, and still a carnivore?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Yes. [proud] Tiny but it ate anything — lizards, fish, small animals."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] kor… ih… thoh… SOR… us. [curious] In ancient Greek, \"corytho\" means helmet, like a warrior's. And \"saurus\" is lizard. [pauses] The helmet lizard."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] A helmet on his head."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactly. A big rounded crest, hollow on the inside. [warmly] He lived in North America, seventy-six million years ago."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[nervous] And were there dangers around there?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Yes. Gorgosaurus and Daspletosaurus, two cousins of T. rex, hunted in that area. [confident] So Corythosaurus never stayed alone."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

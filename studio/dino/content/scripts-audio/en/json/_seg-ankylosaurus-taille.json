@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Twenty-five feet long — [amazed] as long as two cars, one behind the other. Standing up, six feet tall — [curious] as tall as Dad standing up. And six thousand kilos — [proud] as heavy as THREE rhinos. [calm] It wasn't fast at all: only about 4 miles an hour, like Dad walking fast."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Not fast at all, then."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Nope. [serious] It didn't need to be — its armor did the job."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

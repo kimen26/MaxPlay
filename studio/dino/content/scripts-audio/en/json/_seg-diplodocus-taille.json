@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Eighty-five feet long — [amazed] like TWO buses, one behind the other. Standing up, fifteen feet tall — [curious] as tall as a double-decker bus. And twelve thousand kilos — [proud] as heavy as 4 hippos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Two whole buses."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Yep. [whispers] And out of those eighty-five feet, the tail alone is almost half."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Twenty feet long — [amazed] as long as a road is wide — it takes up the whole street. Standing up, five feet tall — [curious] as tall as a car — you'd have to look up. And two thousand two hundred kilos — [proud] as heavy as a rhino. [calm] And slow: about 4 miles an hour, like Dad walking fast."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Its eyelids too, had ARMOR?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Yep, [pauses] even its eyes were protected. [proud] The most armored dinosaur in all of history."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

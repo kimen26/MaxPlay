@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Unlike other flying reptiles that fished, [confident] this one mostly hunted on the ground — small animals, insects. [slowly] It walked really well on all four legs."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] And could anything catch it?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] In the air, nobody. [warmly] On the ground, it stayed careful, [pauses] like everyone back then — even if it crossed paths with Tritri, in the same region."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

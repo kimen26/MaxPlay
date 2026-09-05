@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] ar… kee… OP… ter… iks. In Greek, \"archaeo\" means ancient, very old. [serious] And \"pteryx\" is wing. [curious] So what does that give us?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] The ancient wing."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] There you go. [proud] It lived in Europe, in Germany, one hundred fifty million years ago — it's one of the very first birds we know of."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] A bird that lived with the dinosaurs?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Exactly. [amazed] And it wasn't quite a bird like the ones we have today."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

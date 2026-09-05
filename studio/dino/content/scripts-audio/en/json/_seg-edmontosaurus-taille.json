@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] He was 12 meters long — as long as a school bus! 3 meters 50 tall — [quickly] like two Dads standing on each other's shoulders! And 4,000 kilos — [amazed] as heavy as 2 rhinos!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] As long as a bus?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Yes, twelve meters of meat and bone. [warmly] A gentle giant with a duck bill."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

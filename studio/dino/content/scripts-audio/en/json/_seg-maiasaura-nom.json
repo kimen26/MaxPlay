@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] MY… ah… SOR… ah. [curious] In Greek, \"maia\" means good mother, nursemaid. And \"saura\" is lizard, in the feminine."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] The good mother lizard."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactly. [warmly] She lived in the United States, in Montana, seventy-six million years ago."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Why do they call her that, \"good mother\"?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[gently] Because scientists found her nests, full of eggs and babies. [serious] Daspletosaurus hunted the young ones; [nervous] the little Troodon would sometimes come steal eggs."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

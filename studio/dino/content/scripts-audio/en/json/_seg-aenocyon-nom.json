@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] EE… noh… SY… on. In Greek, \"cyon\" means dog. [serious] And \"dirus,\" in Latin, means terrible, fearsome. The terrible dog."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] A big wolf?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] People call it the Dire Wolf, yes — [serious] but not a dinosaur: it lived way later, in the Ice Age, [pauses] fifty thousand years ago, in North and South America."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Who did it hunt alongside?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Often in packs, just its own kind. [warmly] And Smilodon, not too far off, hunted the same prey."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

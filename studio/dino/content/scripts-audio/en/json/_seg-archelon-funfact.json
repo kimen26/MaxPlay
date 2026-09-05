@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[whispers] Her shell wasn't hard like a backyard turtle's. [amazed] It was thick, tough skin, like leather — [softly] soft, almost like a wing."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] A soft shell, what's that even good for?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] For swimming faster. With that shell, she flew through the water [confident] just like a leatherback turtle does today — [proud] the speed champion of all turtles."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

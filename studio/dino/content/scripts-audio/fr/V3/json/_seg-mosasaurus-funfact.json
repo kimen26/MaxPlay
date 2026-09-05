@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Le Ptéranodon planait au ras de l'eau pour pêcher. Quand il volait trop près... le Mosasaure bondissait et l'attrapait en plein vol. Et il avait deux rangées de dents — une devant, une cachée au fond du palais."
+      "text": "[whispers] Le Mosasaure ne restait pas sous l'eau. [amazed] Il bondissait hors des vagues pour attraper des reptiles volants, comme le Ptéranodon, [excited] en plein ciel."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Il chassait dans le ciel depuis l'eau."
+      "text": "[gasps] Il attrapait des trucs qui VOLENT ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Exactement. Le prédateur le plus total du Crétacé."
+      "text": "[softly] Depuis l'eau, oui. Un coup de mâchoire, et hop — repas servi."
     }
   ],
   "model_id": "eleven_v3",

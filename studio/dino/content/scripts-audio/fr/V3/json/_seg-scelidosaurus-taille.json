@@ -2,7 +2,7 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 4 mètres de long — comme une petite voiture. Debout, aussi grand qu'un enfant de 4 ans. Et 270 kilos — aussi lourd qu'un tigre."
+      "text": "[excited] 4 mètres de long — [amazed] comme une petite voiture. Debout, 1 virgule 2 mètre de haut — [curious] aussi grand qu'un enfant de 4 ans. Et 270 kilos — [proud] aussi lourd qu'un tigre. [calm] Il marchait sans se presser : environ 15 kilomètres à l'heure, [pauses] comme un vélo qui roule tranquille."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -10,7 +10,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui. Ce poids, c'était surtout son armure d'os — et ses grosses pattes la portaient sans problème."
+      "text": "[confident] Oui. [whispers] Ce poids, c'était surtout son armure d'os — et ses grosses pattes la portaient sans problème."
     }
   ],
   "model_id": "eleven_v3",

@@ -15,8 +15,8 @@
 ### BLOC A — Présentation
 
 **NARRATEUR H** [excited] : Car-no-taure. [curious] « Carno », en latin, c'est la viande, la chair. Et « taurus », c'est le taureau.
-**WEX** [confident] : Le taureau qui mange de la viande.
-**NARRATEUR H** [happily] : Exactement. [confident] Un taureau chasseur avec de vraies cornes au-dessus des yeux. Il vivait en Amérique du Sud, [amazed] il y a 72 millions d'années.
+**WEX** [playful] : « Carno »… j'ai retenu la viande. [hesitant] Et « taurus », c'est quoi déjà ?
+**NARRATEUR H** [happily] : Le taureau ! Le taureau qui mange de la viande. [confident] Un vrai taureau chasseur avec des cornes au-dessus des yeux. Il vivait en Amérique du Sud, [amazed] il y a 72 millions d'années.
 **WEX** [curious] : Des cornes de taureau, mais il mangeait de la viande ?
 **NARRATEUR H** [playful] : Oui. [confident] Il chassait les hadrosaures et les dinosaures moyens de son territoire.
 

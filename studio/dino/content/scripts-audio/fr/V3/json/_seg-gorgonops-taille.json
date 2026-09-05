@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 1 mètre 80 de long — comme un grand Papa allongé par terre. 80 centimètres de haut — il t'arrivait au nombril. Et 100 kilos — aussi lourd que Papa."
+      "text": "[excited] Il mesurait 1 mètre 80 de long — comme un grand Papa allongé par terre ! [amazed] Debout, il faisait 0 virgule 8 mètre de haut — il t'arrivait au nombril ! Et il pesait 100 kilos — [serious] aussi lourd qu'un cochon !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Il m'arrivait au nombril ?"
+      "text": "[curious] Pas très grand, alors ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui. Pas très grand — mais c'était le plus redoutable de toute son époque."
+      "text": "[confident] Pas très grand — mais dans sa région, [serious] à son époque, personne n'était plus fort que lui."
     }
   ],
   "model_id": "eleven_v3",

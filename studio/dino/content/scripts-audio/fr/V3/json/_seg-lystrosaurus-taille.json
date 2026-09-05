@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 70 centimètres de long — comme un gros chat allongé. 35 centimètres de haut — il t'arrivait aux genoux. Et 17 kilos — aussi lourd qu'un enfant de 4 ans."
+      "text": "[excited] Il mesurait 0 virgule 7 mètre de long — comme un gros chat allongé ! [amazed] Debout, il faisait 0 virgule 35 mètre de haut — il t'arrivait aux genoux ! Et il pesait 17 kilos — [serious] aussi lourd qu'un enfant de 4 ans ! [curious] Les savants pensent qu'il pouvait avancer à 5 kilomètres à l'heure — aussi vite que toi quand tu marches."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Aussi lourd que moi ?"
+      "text": "[playful] Petit, mais costaud ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui. Tout petit, avec un bec corné comme celui d'une tortue."
+      "text": "[chuckles] Petit, mais costaud, oui — [proud] et surtout, incroyablement résistant."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore. Il broutait des plantes en troupeau. Sa grande collerette lui servait de bouclier contre les chasseurs. Le Bistahieversor réfléchissait à deux fois avant d'attaquer."
+      "text": "[serious] C'était un herbivore. Il broutait des plantes en troupeau. [confident] Sa grande collerette lui servait de bouclier contre les chasseurs."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Sa collerette couvrait tout son cou."
+      "text": "[curious] Alors Bistahieversor n'osait pas l'attaquer ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Tout son cou et même ses épaules. Un bouclier osseux géant."
+      "text": "[playful] Disons qu'il [hesitant] réfléchissait à deux fois. Un bouclier osseux géant, ça calme les ardeurs."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Pa-ra-cé-ra-thé-rium. En grec, cérat veut dire corne, et thérium veut dire la bête."
+      "text": "[excited] Pa-ra-cé-ra-té-rioum. En grec, « céra » veut dire corne, et le petit bout devant veut dire « sans ». [playful] Proche de la bête... sans corne."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] La bête à corne ?"
+      "text": "[curious] Un rhinocéros sans corne ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Justement non ! C'était un cousin du rhinocéros, mais sans aucune corne. Il vivait en Asie, très longtemps avant le Mammouth."
+      "text": "[happily] Presque — un cousin du rhinocéros, mais oui, sans une seule corne. [serious] Pas un dinosaure : il est arrivé bien après, [pauses] il y a 30 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Sans corne du tout."
+      "text": "[curious] Il vivait où ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Pas une seule."
+      "text": "[confident] En Asie — au Pakistan, en Chine, et en Mongolie."
     }
   ],
   "model_id": "eleven_v3",

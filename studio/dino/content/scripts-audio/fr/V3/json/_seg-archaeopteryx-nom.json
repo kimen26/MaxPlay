@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Ar-ké-op-té-rix. Deux morceaux grecs. « Archéo », c'est « ancien ». Et « ptéryx », c'est « aile ». Archéoptéryx : l'aile ancienne."
+      "text": "[excited] Ar-ké-op-té-rix. En grec, « arkhaios » veut dire ancien, très vieux. [serious] Et « ptéryx », c'est l'aile. [curious] Alors, ça donne quoi ?"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] C'est le premier oiseau ?"
+      "text": "[confident] L'aile ancienne."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Un des tout premiers. Le chaînon entre les dinosaures à plumes et les oiseaux d'aujourd'hui. Il vivait en Allemagne, il y a 150 millions d'années."
+      "text": "[happily] Voilà. [proud] Il vivait en Europe, en Allemagne, il y a 150 millions d'années — c'est un des tout premiers oiseaux qu'on connaisse."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Donc c'est un dinosaure-oiseau."
+      "text": "[gasps] Un oiseau qui vivait avec les dinosaures ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Exactement. Mi-dinosaure, mi-oiseau."
+      "text": "[serious] Exactement. [amazed] Et il n'était pas encore tout à fait un oiseau comme aujourd'hui."
     }
   ],
   "model_id": "eleven_v3",

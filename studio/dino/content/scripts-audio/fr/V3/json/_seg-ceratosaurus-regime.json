@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] C'était un carnivore. Il mangeait des petits dinosaures et des poissons. Il vivait tout seul. L'Allosaure, plus grand, pouvait l'attaquer."
+      "text": "[serious] C'était un carnivore. Il mangeait de petits dinosaures et des poissons. [calm] Il vivait plutôt seul. [nervous] L'Allosaure, bien plus grand, pouvait l'attaquer."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il avait peur de l'Allosaure."
+      "text": "[curious] Il avait peur de l'Allosaure ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[softly] Peut-être un peu. Mais il était rapide et sa corne pouvait impressionner. Pas besoin d'être le plus gros pour survivre."
+      "text": "[gently] Un peu, sûrement. [confident] Mais il était rapide, [playful] et sa corne pouvait impressionner un adversaire hésitant."
     }
   ],
   "model_id": "eleven_v3",

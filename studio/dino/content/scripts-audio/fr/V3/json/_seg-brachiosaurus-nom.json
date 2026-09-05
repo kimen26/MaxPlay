@@ -2,15 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Bra-ki-o-saure. En grec, « brakhio » veut dire bras, et « saure » veut dire lézard. Le lézard à bras."
+      "text": "[excited] Bra-ki-o-saure. En grec, « brakhio », ça veut dire le bras. Et « saure », [pauses] le lézard."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Comme mes bras, mais en géant."
+      "text": "[curious] Le lézard aux bras ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactement. Ses pattes avant étaient ses bras géants. Il vivait en Amérique du Nord et en Afrique, il y a 150 millions d'années, avec Diplodocus, Apatosaure, Camarasaure. L'Allosaure rôdait pour attraper les petits."
+      "text": "[happily] Exactement. Il avait des pattes avant [pauses] plus longues que ses pattes arrière — comme deux grands bras. Il vivait en Amérique du Nord, [amazed] il y a 150 millions d'années."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[playful] Il était tout seul là-bas ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Non, en troupeau. Et les chasseurs comme l'Allosaure [serious] n'osaient s'en prendre qu'aux petits — un adulte, c'était bien trop haut pour eux."
     }
   ],
   "model_id": "eleven_v3",

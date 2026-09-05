@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Ba-ry-o-nyx. « Bary », en grec, ça veut dire lourd, pesant. Et « onyx », c'est la griffe. La griffe lourde."
+      "text": "[excited] Ba-ri-o-nix. [curious] « Bary », en grec, ça veut dire lourd, pesant. [playful] Et « onyx », c'est la griffe. La griffe lourde !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Une grosse griffe."
+      "text": "[amazed] Onyx, comme la pierre noire brillante ? [confident] Alors ça fait : la griffe lourde."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Une ÉNORME griffe de 31 centimètres sur le pouce. Il vivait en Angleterre, il y a 125 millions d'années."
+      "text": "[happily] Tout à fait, même mot. [confident] Une ÉNORME griffe de 31 centimètres sur le pouce. Il vivait en Europe — en Angleterre, en Espagne et au Portugal, [amazed] il y a 125 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il attrapait quoi avec ça."
+      "text": "[curious] Il attrapait quoi, avec une griffe pareille ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Des poissons. Comme un ours pêcheur, mais en dinosaure."
+      "text": "[playful] Des poissons. [amazed] Comme un ours pêcheur, mais en dinosaure."
     }
   ],
   "model_id": "eleven_v3",

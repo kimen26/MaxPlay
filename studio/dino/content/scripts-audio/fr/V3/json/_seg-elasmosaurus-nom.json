@@ -2,15 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] É-las-mo-saure. « Elasmo », c'est une plaque mince — parce que ses vertèbres de cou étaient plates comme des disques. Et « saure », c'est le lézard."
+      "text": "[curious] Élasmosaure. En grec, « élasmo », ça veut dire une plaque de métal toute fine. [serious] Ses os d'épaule étaient plats comme des plaques, [confident] alors les savants l'ont appelé comme ça."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Lézard aux plaques minces."
+      "text": "[playful] Le lézard-plaque ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactement. Attention : ce n'est pas un dinosaure, c'est un énaliosaure, un reptile marin. Il vivait au Crétacé, il y a 80 millions d'années, dans la mer intérieure d'Amérique du Nord."
+      "text": "[happily] Presque. Le lézard aux plaques fines. Il vivait il y a 80 millions d'années, [amazed] dans une grande mer qui coupait [serious] l'Amérique du Nord en deux."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Une mer en plein MILIEU de la terre ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Exactement. Toute cette région était sous l'eau, à cette époque."
     }
   ],
   "model_id": "eleven_v3",

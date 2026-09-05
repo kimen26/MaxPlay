@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Scutellosaure. En latin, « scutellum », c'est un petit bouclier. Et « saure », en grec, c'est le lézard. Le lézard au petit bouclier."
+      "text": "[excited] Scu-tel-lo-saure. [curious] En latin, « scutellum », ça veut dire un petit bouclier."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Un bouclier, comme un chevalier ?"
+      "text": "[curious] Le lézard au petit bouclier ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Un peu, oui — plein de tout petits boucliers d'os sur le dos. Il vivait au Jurassique, il y a 196 millions d'années, en Arizona."
+      "text": "[happily] Oui — à cause des centaines de petites plaques d'os sur son dos. [calm] Il vivait en Arizona, il y a 196 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il avait des chasseurs, par là ?"
+      "text": "[curious] Il vivait avec des dangers, à cette époque ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Le Dilophosaure, un chasseur à crête, vivait dans le même coin. Alors le Scutellosaure ne traînait pas."
+      "text": "[confident] Le Dilophosaure, un grand chasseur à crête, [serious] rôdait dans le même coin."
     }
   ],
   "model_id": "eleven_v3",

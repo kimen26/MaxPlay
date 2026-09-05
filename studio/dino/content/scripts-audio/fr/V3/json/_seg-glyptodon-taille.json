@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Trois mètres et demi de long — comme une petite voiture. Un mètre et demi de haut — il fallait lever la tête. Et mille kilos — aussi lourd qu'une vache."
+      "text": "[excited] Il mesurait 3 mètres de long — comme trois enfants de 4 ans allongés ! Debout, il faisait 1 mètre 50 de haut — aussi haut qu'une voiture — [amazed] il fallait lever la tête ! Et il pesait 1 000 kilos — [proud] aussi lourd qu'une petite voiture !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Gros comme une petite voiture toute ronde."
+      "text": "[curious] Il pouvait rentrer dans sa carapace, comme le tatou ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui, une voiture blindée sur pattes."
+      "text": "[confident] Non. Sa carapace était collée à lui pour toujours, [amazed] comme un casque géant qu'il portait sans jamais l'enlever."
     }
   ],
   "model_id": "eleven_v3",

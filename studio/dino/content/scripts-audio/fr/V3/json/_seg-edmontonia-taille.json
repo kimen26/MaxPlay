@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Six mètres et demi de long — aussi long qu'une rue à deux voies est large, il barrait la route. Bas sur ses pattes, un mètre et demi de haut. Et trois mille kilos — aussi lourd que deux rhinocéros."
+      "text": "[excited] 6 virgule 6 mètres de long — [amazed] aussi long qu'une rue à deux voies est large — il barrait la route. Debout, deux mètres de haut — [curious] aussi haut qu'une porte. Et trois mille kilos — [proud] aussi lourd qu'un hippopotame."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Deux rhinocéros."
+      "text": "[gasps] Un hippopotame."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui. Une vraie forteresse sur pattes, mais bien à plat sur le sol."
+      "text": "[confident] Oui. [whispers] Une vraie forteresse sur pattes, mais bien à plat sur le sol."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Carnivore. Il mangeait des poissons géants, des ichtyosaures et d'autres reptiles marins. Il vivait seul, en maître de son territoire. Personne ne le chassait."
+      "text": "[serious] Il chassait seul, et dans sa mer, c'était lui le chasseur numéro un. [confident] Poissons géants, autres reptiles marins — [proud] rien ne lui résistait vraiment."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il trouvait ses proies comment ?"
+      "text": "[curious] Le patron de toute la mer ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Comme un chien de chasse sous l'eau, grâce à ses narines orientées vers l'avant. Il sentait ses proies de très loin."
+      "text": "[confident] Le patron, oui. Grâce à son nez surtout — [proud] il sentait ses proies avant même de les voir."
     }
   ],
   "model_id": "eleven_v3",

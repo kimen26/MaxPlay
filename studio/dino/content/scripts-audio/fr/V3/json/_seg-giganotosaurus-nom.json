@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Gi-ga-no-to-saure. « Giga », géant. « Noto », du sud. « Saure », lézard."
+      "text": "[excited] Gi-ga-no-to-saure. [curious] « Giga », ça veut dire géant — comme dans « gigantesque ». « Noto », ça veut dire du sud. Et « saure », le lézard."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Le lézard géant du sud."
+      "text": "[amazed] Géant du sud, comme « gigantesque » mais en lézard."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactement. En Argentine, en Amérique du Sud, il y a 98 millions d'années."
+      "text": "[happily] Exactement. Il vivait en Argentine, en Amérique du Sud, [amazed] il y a 98 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il chassait qui ?"
+      "text": "[curious] Il chassait qui, un géant pareil ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Les dinosaures à long cou géants, le plus grand dinosaure du monde."
+      "text": "[playful] L'Andésaure. [confident] Un cousin à long cou, aussi grand qu'un immeuble, qui vivait dans le même coin que lui."
     }
   ],
   "model_id": "eleven_v3",

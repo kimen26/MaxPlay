@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Piscivore : il mangeait du poisson. Il vivait près des rivières et attrapait de gros poissons, comme un crocodile géant."
+      "text": "[serious] C'était un piscivore : il mangeait du poisson. [calm] Il vivait près des rivières et nageait pour attraper de gros poissons, [confident] comme un crocodile géant."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il nageait vraiment ?"
+      "text": "[curious] Un dinosaure qui nage vraiment ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui. Le seul grand dinosaure carnivore qui savait nager."
+      "text": "[amazed] Vraiment. [proud] Le seul grand dinosaure carnivore qui savait nager aussi bien."
     }
   ],
   "model_id": "eleven_v3",

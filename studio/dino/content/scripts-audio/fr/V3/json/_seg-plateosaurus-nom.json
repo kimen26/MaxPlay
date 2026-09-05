@@ -2,15 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Pla-té-o-saure. En grec, « plateos » veut dire large, plat. Le lézard plat."
+      "text": "[excited] Pla-té-o-saure. [curious] En grec, « platus », ça veut dire large, plat."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il était aplati ?"
+      "text": "[curious] Le lézard plat ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Ses os étaient larges et plats. Il vivait en Europe, surtout en Allemagne et en Suisse, il y a 210 millions d'années. 140 millions d'années avant le T-Rex."
+      "text": "[happily] C'est son nom, oui — [amazed] même si lui-même n'était pas plat du tout. [calm] Il vivait en Europe, en Allemagne, en France et en Suisse, il y a 210 millions d'années."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] 210 millions ? C'est avant le T-Rex ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Bien avant. [proud] Le Plateosaure est l'un des tout premiers grands dinosaures herbivores de toute l'histoire."
     }
   ],
   "model_id": "eleven_v3",

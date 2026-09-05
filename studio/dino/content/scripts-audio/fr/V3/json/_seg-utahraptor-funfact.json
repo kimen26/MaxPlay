@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Sa griffe faisait 24 centimètres. Aussi longue que ta main ENTIÈRE."
+      "text": "[excited] Sa griffe géante, [slowly] en forme de faucille, servait à trancher et à accrocher. [serious] Un seul coup pouvait ouvrir une blessure profonde chez sa proie."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Toute ma main ?"
+      "text": "[amazed] Comme un vrai couteau."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui, du poignet au bout des doigts. Un sabre à chaque pied. Le plus grand raptor de tous les temps."
+      "text": "[softly] Un couteau de la taille de ta main, oui. [proud] Avec ça, même une proie deux fois plus grande que lui n'était pas hors d'atteinte."
     }
   ],
   "model_id": "eleven_v3",

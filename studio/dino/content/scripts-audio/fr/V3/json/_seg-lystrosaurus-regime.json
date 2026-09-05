@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore. Il coupait les plantes basses avec son bec, et vivait en très, très grand nombre."
+      "text": "[serious] Il coupait les plantes basses avec son bec, et vivait en très, très grand nombre. [confident] Juste après la plus grosse catastrophe de l'histoire de la Terre, [calm] presque plus aucun chasseur ne restait pour le menacer."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Pourquoi il y en avait tant ?"
+      "text": "[curious] Une catastrophe, c'est-à-dire ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Parce qu'il a survécu à la plus grosse catastrophe de toute l'histoire de la Terre — quand presque tous les autres animaux avaient disparu."
+      "text": "[gently] La plus terrible extinction que la Terre ait connue. [warmly] Presque tous les animaux ont disparu — mais pas lui."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Huit mètres de long — comme deux voitures l'une derrière l'autre. Debout, cinq mètres — presque trois Papas l'un sur l'autre. Et dix-sept mille kilos — aussi lourd que trois éléphants."
+      "text": "[excited] Il mesurait 7 mètres 40 de long — comme deux voitures l'une derrière l'autre ! Debout, il faisait 5 mètres de haut — [amazed] presque trois Papas l'un sur l'autre ! Et il pesait 17 mille kilos — [proud] aussi lourd que 6 hippopotames !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Trois éléphants."
+      "text": "[gasps] Six hippopotames ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui. Le plus grand animal à poils qui ait jamais marché sur la Terre."
+      "text": "[amazed] Oui. C'est le plus grand animal à poils [proud] qui ait jamais marché sur la Terre."
     }
   ],
   "model_id": "eleven_v3",

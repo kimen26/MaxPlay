@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Ich-thyo-saure. « Ichthyo », en grec, ça veut dire poisson. Et « saure », c'est le lézard. Le lézard-poisson."
+      "text": "[curious] Ik-ti-o-saure. « Ikhthus », en grec, ça veut dire poisson. [serious] Et « saure », le lézard."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Un dinosaure qui nageait."
+      "text": "[confident] Le lézard-poisson ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Attention, ce n'est pas un dinosaure. C'est un reptile marin, un cousin qui vivait dans la mer. Il ressemblait à un dauphin, mais c'était un lézard."
+      "text": "[happily] Voilà. Il vivait il y a 190 millions d'années, [amazed] dans les mers peu profondes d'Europe."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Avant les dauphins."
+      "text": "[curious] Un lézard qui ressemble à un poisson, ça existe vraiment ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Beaucoup avant. Les dauphins n'existaient pas encore. Lui, il nageait déjà comme une torpille."
+      "text": "[confident] Ça existait, oui — mais ce n'était pas un poisson du tout. [serious] C'était un vrai reptile, qui avait pris cette forme pour bien nager."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Ses ailes ouvertes faisaient 10 mètres d'un bout à l'autre — aussi large que six Papas couchés bout à bout. Debout, 3 mètres de haut — aussi haut qu'un panier de basket. Et 220 kilos — aussi lourd qu'un gros cochon."
+      "text": "[excited] Ses ailes ouvertes faisaient 10 mètres d'un bout à l'autre — aussi large que six Papas couchés bout à bout. [quickly] Mises bout à bout, aussi long qu'un camion. Debout, 3 mètres de haut — [proud] aussi haut qu'un panier de basket. Et 220 kilos — aussi lourd qu'un lion."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious][gasps] Aussi haut qu'un panier de basket ?"
+      "text": "[gasps] Aussi haut qu'un panier de basket ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui. Mais sa vraie différence, c'est son cou : contrairement au Quetzalcoatlus, son cousin volant au cou tout fin et tout long, lui avait un cou COURT et épais, presque comme un taureau, avec une tête énorme au bout."
+      "text": "[confident] Oui. [slowly] Mais sa vraie différence, c'est son cou : contrairement au Quetzalcoatlus, son cousin au cou fin et long, [amazed] lui avait un cou court et épais, presque comme un taureau, avec une tête énorme au bout."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Il était herbivore : il ne mangeait que des plantes. Il attrapait les branches hautes avec ses griffes et les ramenait vers son bec. Il vivait seul."
+      "text": "[serious] C'était un herbivore : il ne mangeait que des plantes. [calm] Il attrapait les branches hautes avec ses longues griffes et les ramenait vers son bec. [confident] Il vivait plutôt seul."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Le Tarbosaure avait peur de ses griffes ?"
+      "text": "[curious] Le Tarbosaure, il l'attaquait ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui. Le Thérizinosaure levait ses bras comme deux COUTEAUX géants. Le Tarbosaure reculait devant ces lames de géant."
+      "text": "[confident] Rarement. [serious] Le Thérizinosaure levait ses bras comme deux grands couteaux, [playful] et le Tarbosaure préférait souvent chasser ailleurs."
     }
   ],
   "model_id": "eleven_v3",

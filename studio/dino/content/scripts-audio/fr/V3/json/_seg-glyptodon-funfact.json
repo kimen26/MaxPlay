@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Sa carapace toute ronde ressemblait à la coque d'une petite voiture retournée."
+      "text": "[playful] Sa carapace toute ronde ressemblait à la coque [amazed] d'une petite voiture retournée sur le dos."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Une carapace-voiture."
+      "text": "[gasps] Une carapace-voiture ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Et certains de ses cousins avaient même une massue au bout de la queue, comme l'Ankylosaure."
+      "text": "[amazed] Exactement. Et son cousin, le Doedicurus, avait en plus une vraie massue au bout de la queue — [serious] pas le Glyptodon, lui, juste son cousin."
     }
   ],
   "model_id": "eleven_v3",

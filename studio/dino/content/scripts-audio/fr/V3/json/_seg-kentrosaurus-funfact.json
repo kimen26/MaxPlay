@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Le Kéntrosaure avait des piques jusqu'aux épaules. Même sur les flancs. Une forêt d'aiguillons vivante."
+      "text": "[excited] Le Kéntrosaure avait encore plus de piques que son cousin le Stégosaure — [pauses] jusque sur les hanches."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Il devait être difficile à câliner."
+      "text": "[amazed] Le plus piquant de la famille."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[chuckles] Très difficile. Mais très efficace contre les morsures."
+      "text": "[softly] Exactement. [proud] Un petit dinosaure, mais une vraie forêt d'épines à ne surtout pas approcher par derrière."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] On a retrouvé les os de MILLIERS de Centrosaures, tous ensemble au même endroit. Ils marchaient en troupeaux géants."
+      "text": "[excited] On a retrouvé les os de MILLIERS de Centrosaures, tous ensemble, au même endroit. [pauses] Ils marchaient vraiment en troupeaux géants."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Des milliers de dinosaures à cornes ensemble."
+      "text": "[gasps] Des milliers de dinosaures à cornes."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Comme un immense troupeau de vaches, mais en dinosaures. Imagine le bruit de tous ces pas : boum, boum, boum."
+      "text": "[mischievously] Imagine le bruit de tous ces pas : boum, boum, boum."
     }
   ],
   "model_id": "eleven_v3",

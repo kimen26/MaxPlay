@@ -2,7 +2,7 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore. Il broutait des plantes en grand troupeau, petits et grands ensemble. En Amérique, l'Albertosaure le chassait. En Asie, c'était le Tarbosaure."
+      "text": "[serious] Herbivore. Il broutait des plantes en grand troupeau, [calm] petits et grands ensemble. [confident] En Amérique, l'Albertosaure le chassait. En Asie, c'était le Tarbosaure."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -10,7 +10,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Contrairement au Parasaurolophus, elle ne résonnait pas comme une trompette. On pense qu'elle servait juste à être vu et reconnu par les autres du troupeau."
+      "text": "[confident] Contrairement au Parasaurolophus, [curious] elle ne résonnait pas comme une trompette. [hesitant] On pense qu'elle servait juste à être vue et reconnue par les autres du troupeau."
     }
   ],
   "model_id": "eleven_v3",

@@ -13,7 +13,7 @@
 ### BLOC A — Présentation
 
 **NARRATEUR H** [excited] : Gi-ga-no-to-saure. [curious] « Giga », ça veut dire géant — comme dans « gigantesque ». « Noto », ça veut dire du sud. Et « saure », le lézard.
-**WEX** [confident] : Le lézard géant du sud.
+**WEX** [amazed] : Géant du sud, comme « gigantesque » mais en lézard.
 **NARRATEUR H** [happily] : Exactement. Il vivait en Argentine, en Amérique du Sud, [amazed] il y a 98 millions d'années.
 **WEX** [curious] : Il chassait qui, un géant pareil ?
 **NARRATEUR H** [playful] : L'Andésaure. [confident] Un cousin à long cou, aussi grand qu'un immeuble, qui vivait dans le même coin que lui.
@@ -27,7 +27,7 @@
 ### BLOC C — Comment il vivait
 
 **NARRATEUR H** [serious] : C'était un carnivore. Il chassait l'Andésaure, [amazed] un géant à long cou bien plus grand que lui.
-**WEX** [curious] : Tout seul, contre un géant ?
+**WEX** [nervous] : Tout seul, contre un géant ?
 **NARRATEUR H** [hesitant] : Les savants pensent que non, [confident] peut-être plusieurs Giganotosaures ensemble. Ils cherchent encore à en être sûrs.
 
 ### BLOC D — Le truc fou

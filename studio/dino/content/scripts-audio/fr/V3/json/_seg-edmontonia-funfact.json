@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] L'Edmontonia avait de grandes épines pointues sur les épaules — mais pas de boule au bout de la queue comme l'Ankylosaure."
+      "text": "[excited] L'Edmontonia avait de grandes épines pointues sur les épaules — [serious] mais pas de boule au bout de la queue comme l'Ankylosaure."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Alors comment il se défendait ?"
+      "text": "[hesitant] Alors comment il se défendait ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Il baissait la tête et présentait ses épines. Impossible de l'attraper sans se piquer !"
+      "text": "[playful] Il baissait la tête et présentait ses épines. [confident] Impossible de l'attraper sans se piquer."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 26 mètres de long — aussi long que DEUX bus l'un derrière l'autre. 4 virgule 5 mètres de haut — aussi haut qu'un bus anglais à deux étages. 12 mille kilos — aussi lourd que DEUX éléphants."
+      "text": "[excited] 26 mètres de long — [amazed] comme DEUX bus l'un derrière l'autre. Debout, 4 mètres et demi de haut — [curious] aussi haut qu'un bus anglais à deux étages. Et 12 mille kilos — [proud] aussi lourd que 4 hippopotames."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Deux bus de queue ?"
+      "text": "[gasps] Deux bus entiers."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Presque la moitié, oui. Près de 13 mètres de queue-fouet à elle seule."
+      "text": "[confident] Oui. [whispers] Et sur ces 26 mètres, sa queue à elle seule en fait presque la moitié."
     }
   ],
   "model_id": "eleven_v3",

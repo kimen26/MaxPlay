@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Daï-no-ni-kuss. « Deino » en grec, c'est terrible, effrayant. Et « nychus », c'est la griffe. La griffe terrible."
+      "text": "[excited] Daï-no-ni-kuss. En grec, « deinos » veut dire terrible — [serious] c'est la même racine que le mot « dinosaure » ! Et « onyx », c'est la griffe. [curious] Alors, ça donne quoi ?"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Une griffe en forme de faucille."
+      "text": "[confident] La griffe terrible."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Tout à fait. Il vivait en Amérique du Nord, il y a 115 millions d'années. Et quand on imagine un grand raptor chasseur, c'est à lui qu'on pense sans le savoir."
+      "text": "[happily] Voilà. [proud] Il vivait en Amérique du Nord, il y a 115 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Pas au Vélociraptor ?"
+      "text": "[curious] C'est lui, [gasps] le grand raptor qui fait peur dans les films ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Non. Le Vélociraptor, lui, était tout petit. Le grand chasseur à griffe, c'est le Deinonychus."
+      "text": "[serious] Oui, en vrai [gently] c'est plutôt lui qui a inspiré ces images-là — pas le petit Vélociraptor. Mais lui aussi avait des plumes."
     }
   ],
   "model_id": "eleven_v3",

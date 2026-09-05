@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Carnivore. Il chassait en meute les chevaux et les bisons. Exactement comme les loups aujourd'hui."
+      "text": "[serious] C'était un carnivore. Il chassait en meute les chevaux sauvages, [amazed] les bisons et les jeunes animaux — jamais tout seul."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Toujours en groupe ?"
+      "text": "[curious] Il se disputait avec le Smilodon ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Toujours. Plus fort à plusieurs, jamais tout seul."
+      "text": "[confident] Parfois, oui, pour la même proie. [warmly] Deux grands chasseurs, sur le même territoire glacé."
     }
   ],
   "model_id": "eleven_v3",

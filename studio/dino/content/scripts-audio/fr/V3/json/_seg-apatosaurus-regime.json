@@ -2,15 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore. Il arrachait les feuilles avec son bec et mâchait peu. Il vivait en troupeau, les grands autour des petits."
+      "text": "[serious] Herbivore, en troupeau. [calm] Il mangeait des plantes toute la journée — énormément de plantes."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Les parents gardaient les bébés ?"
+      "text": "[curious] Il pouvait manger pendant combien de temps ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[softly] Oui. Une forêt de pattes pour cacher les bébés de l'Allosaure."
+      "text": "[amazed] 250 kilos de plantes chaque JOUR. [proud] Autant que toi en une année entière, en un seul jour."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Et il avait des ennemis, avec un cou pareil ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] L'Allosaure essayait bien, sur les jeunes surtout. [serious] Un adulte de 23 mille kilos, ça ne valait pas le coup — bien trop lourd à faire tomber."
     }
   ],
   "model_id": "eleven_v3",

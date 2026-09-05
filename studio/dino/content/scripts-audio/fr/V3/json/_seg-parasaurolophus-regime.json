@@ -2,7 +2,7 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore. Il broutait des plantes en grand troupeau. Quand un T-Rex approchait, il poussait un cri très grave dans sa crête pour alerter les copains."
+      "text": "[serious] C'était un herbivore. Il broutait des plantes en grand troupeau. [confident] Quand un T-Rex approchait, [quickly] il poussait un cri très grave dans sa crête, pour prévenir les copains."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -10,7 +10,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Oui. Sa crête creuse faisait office de gros klaxon naturel. Tout le troupeau entendait et se sauvait ensemble."
+      "text": "[playful] Oui. Sa crête creuse faisait office de gros klaxon naturel. [warmly] Tout le troupeau entendait et se sauvait ensemble."
     }
   ],
   "model_id": "eleven_v3",

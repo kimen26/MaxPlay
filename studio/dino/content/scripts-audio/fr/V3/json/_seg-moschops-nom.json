@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Mos-kops. En grec, « moschos », c'est le veau, le bébé de la vache. Et « ops », le visage. Le visage de veau."
+      "text": "[curious] Mos-kops. « Moschos », en grec, c'est le veau — [serious] le bébé de la vache. Et « ops », le visage."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Une tête de bébé vache ?"
+      "text": "[confident] Le visage de veau ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] C'est ce que les savants ont trouvé en regardant sa grosse tête ! Il vivait en Afrique du Sud, il y a 265 millions d'années, avant les tout premiers dinosaures — encore un cousin très ancien des animaux à poils."
+      "text": "[happily] Voilà — les savants ont trouvé que sa grosse tête ressemblait à celle d'un veau. [amazed] Il vivait en Afrique du Sud, il y a 265 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il avait peur de qui ?"
+      "text": "[curious] Encore avant les dinosaures ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Des grands chasseurs du Permien, comme le Gorgonops, qui rôdait dans la même région."
+      "text": "[confident] Encore avant, oui. Un cousin très ancien des animaux à poils — [warmly] comme le Gorgonops, qui vivait dans la même région."
     }
   ],
   "model_id": "eleven_v3",

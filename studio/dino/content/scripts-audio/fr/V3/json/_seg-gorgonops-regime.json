@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Carnivore. Il chassait seul, et mangeait de gros herbivores — c'était sa façon de vivre, tout simplement. Ce n'est pas un dinosaure, c'est un cousin encore plus proche de nous que l'Édaphosaure."
+      "text": "[serious] C'était un chasseur solitaire. Il attrapait les gros mangeurs de plantes de son époque, [confident] avec deux longues dents en sabre, [amazed] longues comme ta main."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il attrapait ses proies comment ?"
+      "text": "[scared] Deux dents comme ma main ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Avec ses deux longues dents en sabre, longues comme ta main. Personne, à son époque, n'avait de dents pareilles."
+      "text": "[gently] Comme ta main, oui — de vraies armes. Mais rassure-toi, [warmly] c'était il y a 260 millions d'années : plus aucun Gorgonops aujourd'hui."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Les tout derniers mammouths ont vécu sur une petite île, très loin dans le nord, jusqu'à il y a seulement quatre mille ans."
+      "text": "[whispers] Les tout derniers mammouths de toute la Terre ont survécu sur [pauses] une petite île, tout au nord, très longtemps après les autres."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Quatre mille ans seulement."
+      "text": "[gasps] Longtemps comment ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] À cette époque-là, les grandes pyramides d'Égypte existaient déjà."
+      "text": "[amazed] Jusqu'à il y a seulement 4 000 ans. [slowly] À cette époque-là, les grandes pyramides d'Égypte étaient déjà construites."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore, et peut-être quelques insectes. Il vivait en groupe. Le T-Rex et les grands carnivores le chassaient, mais sa tête dure pouvait impressionner."
+      "text": "[serious] C'était un herbivore, [calm] et peut-être quelques insectes. Il vivait en groupe. [hesitant] Les grands carnivores le chassaient, mais sa tête dure pouvait impressionner."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il tapait le T-Rex avec sa tête ?"
+      "text": "[curious] Il se battait avec sa tête ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Probablement pas le T-Rex. Plutôt les copains pour savoir qui est le plus fort. Comme un match de tête contre tête."
+      "text": "[playful] C'est ce que les scientifiques pensent. [curious] Les mâles se seraient chargés la tête, comme les béliers d'aujourd'hui. [hesitant] Mais on n'en est pas totalement sûr."
     }
   ],
   "model_id": "eleven_v3",

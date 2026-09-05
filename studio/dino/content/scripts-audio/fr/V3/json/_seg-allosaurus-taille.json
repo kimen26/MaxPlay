@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 9 virgule 5 mètres de long — aussi long qu'un camion. 3 virgule 5 mètres de haut — comme deux Papas l'un sur l'autre. 2 mille kilos — aussi lourd qu'un rhinocéros."
+      "text": "[excited] Il mesurait 9 virgule 5 mètres de long — aussi long qu'un camion ! [quickly] Debout, il faisait 4 mètres de haut — aussi haut qu'un bus anglais à deux étages ! Et il pesait 2 mille kilos — [amazed] aussi lourd qu'un rhinocéros ! [serious] Et les savants pensent qu'il pouvait courir à 34 kilomètres à l'heure — aussi vite qu'un chien qui court."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Moins gros que le T-Rex ?"
+      "text": "[amazed] Moins gros que le T-Rex, alors ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Oui, mais rapide et intelligent. Et il vivait 90 millions d'années avant le T-Rex."
+      "text": "[serious] Oui, mais rapide et malin. [confident] Et il vivait 90 millions d'années [amazed] avant lui."
     }
   ],
   "model_id": "eleven_v3",

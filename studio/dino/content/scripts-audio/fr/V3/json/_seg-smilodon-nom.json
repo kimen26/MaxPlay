@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Smi-lo-don. En grec, smilo veut dire couteau. Et odon veut dire dent. La dent-couteau."
+      "text": "[excited] Smi-lo-don. En grec, « smilo » veut dire couteau, et « odon » veut dire dent. [proud] La dent-couteau."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Le tigre à dents de sabre."
+      "text": "[confident] Le tigre à dents de sabre ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Voilà, mais ce n'était pas un tigre. Il vivait en Amérique, à l'âge de glace, à côté du Loup terrible."
+      "text": "[happily] C'est son surnom, mais ce n'était pas un tigre — [serious] et il ne vivait pas avec les dinosaures non plus. Il est arrivé bien après, à l'Âge de glace, [pauses] il y a 1 million d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Ils chassaient ensemble ?"
+      "text": "[curious] Il vivait où ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Non, ils se disputaient plutôt les mêmes proies."
+      "text": "[confident] En Amérique du Nord et du Sud, dans le froid, [warmly] aux côtés du Loup terrible."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore. Il mangeait des plantes et des feuilles. Il vivait en petit groupe, comme ses cousins à cornes. Le T-Rex restait à distance quand le groupe se serrait."
+      "text": "[serious] C'était un herbivore. Il mangeait des plantes et des feuilles, [calm] en petit groupe, comme ses cousins à cornes."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Les trous de sa collerette servaient à quoi."
+      "text": "[curious] Les trous de sa collerette, ils servaient à quoi ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] À alléger sa tête géante. Moins lourde, plus facile à porter. C'est comme ça qu'on le reconnaît."
+      "text": "[confident] À l'alléger. [gently] Une collerette géante, mais pleine de fenêtres — moins lourde à porter toute la journée."
     }
   ],
   "model_id": "eleven_v3",

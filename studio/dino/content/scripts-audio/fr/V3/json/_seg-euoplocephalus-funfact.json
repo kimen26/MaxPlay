@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Ses paupières étaient blindées. Ses narines pouvaient se fermer. Il avait même un couvercle osseux sur les yeux."
+      "text": "[excited] Sa queue se terminait par une massue puissante, [pauses] presque aussi forte que celle de l'Ankylosaure."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Comme des lunettes de protection."
+      "text": "[amazed] Alors le Gorgosaure gagnait rarement."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Exactement. De la tête jusqu'à la queue, c'était un tank. Le dino le mieux protégé de l'histoire."
+      "text": "[softly] Rarement, oui. [proud] Un dos en armure, des paupières blindées, une massue au bout de la queue — presque rien à quoi se raccrocher."
     }
   ],
   "model_id": "eleven_v3",

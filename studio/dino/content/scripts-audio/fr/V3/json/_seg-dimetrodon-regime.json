@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Carnivore. Il mangeait des petits reptiles et des amphibiens. Il vivait seul. D'autres gros prédateurs du Permien pouvaient l'attaquer."
+      "text": "[serious] C'était un chasseur solitaire, qui attrapait de petits reptiles. [confident] Il devait se méfier des autres grands chasseurs de son époque."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] La voile, ça servait à quoi ?"
+      "text": "[curious] Et sa voile, ça servait à quoi pour chasser ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[softly] À se réchauffer au soleil. Elle captait la chaleur, comme un panneau solaire. Le matin, il tournait le dos vers le soleil pour monter en température."
+      "text": "[confident] Pas vraiment à chasser — plutôt à se réchauffer. [calm] Le matin, il se tournait vers le soleil, la voile bien dépliée, comme un radiateur vivant."
     }
   ],
   "model_id": "eleven_v3",

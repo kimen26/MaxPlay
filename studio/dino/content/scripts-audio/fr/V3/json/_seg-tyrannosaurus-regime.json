@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Carnivore. Il chassait le Tricératops, l'Edmontosaure et l'Ankylosaure. Plutôt solitaire."
+      "text": "[serious] C'était un carnivore. Il chassait le Tricératops, l'Edmontosaure et l'Ankylosaure. [calm] Plutôt solitaire."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il avait peur de quelqu'un ?"
+      "text": "[nervous] Alors Tritri, il devait faire super attention ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Personne. C'était le chef absolu."
+      "text": "[encouraging] Oui, [confident] mais Tritri avait ses trois cornes pour se défendre. Le T-Rex ne le mangeait pas sans se battre."
     }
   ],
   "model_id": "eleven_v3",

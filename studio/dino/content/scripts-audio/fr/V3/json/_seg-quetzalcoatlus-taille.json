@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Ses ailes faisaient 11 mètres d'envergure — larges comme un bus de Paris. Debout au sol, il faisait 5 mètres de haut — aussi haut qu'une girafe. Et il pesait 200 kilos — comme un gros cochon."
+      "text": "[excited] Ses ailes ouvertes faisaient 11 mètres d'un bout de l'aile à l'autre — larges comme un bus de Paris ! [quickly] Mises bout à bout, aussi long qu'un bus RATP. Debout, il faisait 5 mètres de haut — [proud] presque trois Papas l'un sur l'autre ! Et il pesait 200 kilos — aussi lourd qu'un lion. [amazed] Et en vol, les savants pensent qu'il pouvait filer à 90 kilomètres à l'heure — presque aussi vite qu'un guépard."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] 5 mètres ? Mais comment il décollait ?"
+      "text": "[gasps] Debout comme une girafe ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] En courant comme un oiseau géant, puis en prenant le vent. Ses os étaient creux et très légers."
+      "text": "[proud] Exactement. [amazed] Et pourtant, cet animal-là volait."
     }
   ],
   "model_id": "eleven_v3",

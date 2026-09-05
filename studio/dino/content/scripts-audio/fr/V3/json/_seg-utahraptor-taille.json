@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 6 mètres de long — aussi long qu'une rue à deux voies est large. 2 mètres de haut — aussi haut qu'une porte. Et 500 kilos — aussi lourd qu'une vache."
+      "text": "[excited] Il mesurait 6 mètres de long — [quickly] aussi long qu'une rue à deux voies est large — il barrait la route ! Debout, il faisait 2 mètres de haut — aussi haut qu'une porte ! Et il pesait 425 kilos — [proud] aussi lourd que 2 lions."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious][gasps] Aussi haut qu'une porte ?"
+      "text": "[curious] Et sa griffe, [gasps] elle était énorme aussi ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui, un raptor plus grand que Papa. Imagine-le avec une queue, des griffes et une gueule pleine de dents."
+      "text": "[confident] [amazed] La plus grande de tous les raptors : environ 24 centimètres. Presque aussi longue que ta main entière et ton bras jusqu'au coude."
     }
   ],
   "model_id": "eleven_v3",

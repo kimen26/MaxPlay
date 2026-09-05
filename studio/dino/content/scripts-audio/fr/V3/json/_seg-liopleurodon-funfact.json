@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Pendant longtemps, on a raconté que le Liopleurodon faisait 25 mètres. Puis les savants ont mesuré ses os pour de vrai : 6 à 7 mètres. Beaucoup moins grand, mais toujours aussi redoutable."
+      "text": "[playful] Une émission à la télé a dit un jour qu'il mesurait 25 mètres — comme quatre voitures bout à bout. [amazed] Les vrais savants ont vérifié : c'est faux. [serious] 7 mètres, pas plus."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Ils s'étaient trompés."
+      "text": "[chuckles] Même à la télé, on peut se tromper ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[softly] Oui. Même les grands se trompent parfois. C'est pour ça qu'on vérifie toujours avec les vrais os."
+      "text": "[warmly] Même à la télé. 7 mètres, c'est déjà un sacré chasseur — [confident] pas besoin d'en rajouter."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Carnivore. Il marchait dans les plaines et attrapait de petits animaux au sol, des lézards, un peu comme une cigogne géante. Il vivait seul ou en petit groupe. Personne ne pouvait l'attraper en l'air."
+      "text": "[serious] Contrairement à d'autres reptiles volants qui pêchaient, [confident] lui chassait plutôt au sol — de petits animaux, des insectes. [slowly] Il marchait très bien sur ses quatre pattes."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il mangeait par terre ?"
+      "text": "[curious] Et qui pouvait l'attraper, lui ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Oui. Il marchait sur ses quatre pattes au sol, puis il s'envolait. Le roi du ciel et du sol."
+      "text": "[confident] Dans les airs, personne. [warmly] Au sol, il restait prudent, [pauses] comme tout le monde à cette époque — même s'il croisait peut-être Tritri, dans la même région."
     }
   ],
   "model_id": "eleven_v3",

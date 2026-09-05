@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore. Elle vivait en immense colonie, avec des dizaines d'autres mamans. Et elle s'occupait de ses bébés, au nid."
+      "text": "[serious] C'était une herbivore. Elle vivait en immense colonie : [amazed] des centaines de nids, côte à côte."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Elle leur apportait à manger ?"
+      "text": "[curious] Elle s'occupait de ses bébés, alors ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui, tant qu'ils étaient trop petits pour sortir. C'est la toute première preuve qu'un dinosaure prenait soin de ses petits."
+      "text": "[warmly] Oui, [proud] et c'était même la toute première preuve qu'un dinosaure faisait ça. [gently] Elle leur rapportait à manger tant qu'ils étaient trop petits pour sortir du nid."
     }
   ],
   "model_id": "eleven_v3",

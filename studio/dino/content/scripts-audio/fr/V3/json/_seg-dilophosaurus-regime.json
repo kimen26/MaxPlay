@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] C'était un carnivore. Il mangeait des petits animaux et parfois des charognes. Il vivait peut-être en groupe."
+      "text": "[serious] C'était un carnivore. [calm] Il mangeait de petits animaux, [hesitant] et peut-être des charognes trouvées sur son chemin."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Ses crêtes, ça servait à quoi."
+      "text": "[curious] Ses crêtes, ça servait à quoi ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Probablement pour montrer qu'il était beau, ou pour reconnaître ses amis. Comme un oiseau très coloré."
+      "text": "[playful] Sûrement à montrer qu'il était beau, [confident] ou à se reconnaître entre eux. Comme un oiseau très coloré."
     }
   ],
   "model_id": "eleven_v3",

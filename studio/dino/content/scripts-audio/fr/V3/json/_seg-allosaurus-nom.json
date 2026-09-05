@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Al-lo-saure. « Allo », en grec, c'est autre, différent. « Saure », lézard."
+      "text": "[excited] Al-lo-saure. [curious] « Allo », en grec, ça veut dire autre, différent — ses os ne ressemblaient à aucun autre. [serious] Et « saure », le lézard."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Le lézard différent."
+      "text": "[confident] Le lézard… allô ? Comme au téléphone ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Oui. Ses os ne ressemblaient à aucun autre. En Amérique du Nord et en Europe, il y a 155 millions d'années."
+      "text": "[chuckles] Presque le même mot, mais ça veut dire différent, pas bonjour. [serious] Le lézard différent. Il vivait en Amérique du Nord, [confident] mais aussi en Europe, [amazed] il y a 155 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] C'était le champion du Jurassique ?"
+      "text": "[curious] Sur deux continents en même temps ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Exactement. Le super chasseur du Jurassique."
+      "text": "[confident] Exactement. [proud] Le super chasseur du Jurassique, des deux côtés de l'océan."
     }
   ],
   "model_id": "eleven_v3",

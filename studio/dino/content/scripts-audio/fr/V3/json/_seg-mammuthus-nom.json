@@ -2,7 +2,7 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Mam-mouth laineux. Laineux, ça veut dire couvert de longs poils, comme un gros pull vivant."
+      "text": "[excited] Mam-mouth. [curious] C'est un très vieux mot qui veut dire à peu près « corne de la terre » — les tout premiers chasseurs trouvaient ses défenses gelées dans le sol et [amazed] croyaient que c'était des cornes."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -10,15 +10,15 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Oui, un éléphant tout poilu ! Il vivait dans le froid de l'âge de glace, en Europe, en Asie et en Amérique du Nord."
+      "text": "[happily] Un éléphant tout poilu, oui. [serious] Et attention : il ne vivait pas avec les dinosaures. Il est arrivé bien après, à l'Âge de glace, [pauses] il y a 100 000 ans, quand la Terre était toute froide."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Avec qui, là-bas ?"
+      "text": "[gasps] Après les dinosaures ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Avec le Rhinocéros laineux et le Loup terrible. Tous faits pour le grand froid."
+      "text": "[confident] Longtemps après. En Europe, en Asie et [warmly] en Amérique du Nord, là où il faisait glacial."
     }
   ],
   "model_id": "eleven_v3",

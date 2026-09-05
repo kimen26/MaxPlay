@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Mi-cro-rap-tor. « Micro » en grec, c'est tout petit. Et « raptor », c'est le voleur. Le petit voleur."
+      "text": "[excited] Mi-cro-rap-tor. « Micro », en grec, [serious] ça veut dire tout petit — comme un microbe. Et « raptor », c'est le voleur. [curious] Alors ?"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il était minuscule."
+      "text": "[confident] Le petit voleur."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Oui. Le plus petit des raptors. Il vivait en Chine, il y a 120 millions d'années."
+      "text": "[happily] Exactement. [proud] Il vivait en Chine, en Asie, il y a 120 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il volait ?"
+      "text": "[gasps] C'est le plus petit raptor que tu connaisses ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Pas vraiment. Il planait. Entre les arbres, comme un écureuil volant."
+      "text": "[amazed] Un des plus petits dinosaures qu'on ait jamais trouvés, oui. [playful] Et il a un secret que personne d'autre n'a."
     }
   ],
   "model_id": "eleven_v3",

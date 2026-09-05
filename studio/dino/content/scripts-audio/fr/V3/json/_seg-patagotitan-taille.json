@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 31 mètres de long — comme un bus accordéon et un bus, l'un derrière l'autre. Cou dressé vers le ciel, 12 mètres de haut — aussi haut qu'un immeuble de 4 étages. 70 mille kilos — aussi lourd que 12 éléphants."
+      "text": "[excited] 31 mètres de long — [amazed] comme un bus accordéon et un bus, l'un derrière l'autre. Debout, 12 mètres de haut — [curious] aussi haut qu'un immeuble de quatre étages. Et 70 mille kilos — [proud] aussi lourd que QUATORZE éléphants."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] 12 éléphants."
+      "text": "[gasps] Quatorze éléphants."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Son cœur à lui tout seul était gros comme une petite voiture. Il fallait une pompe immense pour faire circuler le sang dans son corps."
+      "text": "[confident] Oui. [whispers] Son cœur, à lui tout seul, était gros comme une petite voiture."
     }
   ],
   "model_id": "eleven_v3",

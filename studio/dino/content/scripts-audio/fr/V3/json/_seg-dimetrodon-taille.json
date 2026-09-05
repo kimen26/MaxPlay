@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 3 mètres 50 de long — comme une petite voiture. 1 mètre 80 de haut — aussi grand que Papa debout. 250 kilos — aussi lourd qu'un ours brun."
+      "text": "[excited] Il mesurait 3 mètres 50 de long — comme une petite voiture ! [amazed] Debout, il faisait 1 mètre 80 de haut — aussi grand que Papa debout ! Et il pesait 250 kilos — [serious] aussi lourd qu'un tigre !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious][gasps] Et la voile sur le dos ? Elle faisait quelle taille ?"
+      "text": "[gasps] Aussi grand que Papa ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Elle pouvait faire un mètre de haut. Une grande voile de peau tendue sur des épines."
+      "text": "[chuckles] Aussi grand, oui — [proud] surtout à cause de sa voile, bien dressée sur son dos."
     }
   ],
   "model_id": "eleven_v3",

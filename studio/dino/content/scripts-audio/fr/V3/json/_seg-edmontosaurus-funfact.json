@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Il avait jusqu'à 1000 petites dents. Quand une tombait, une autre poussait immédiatement."
+      "text": "[excited] Il avait jusqu'à MILLE petites dents. [pauses] Quand une tombait, une autre poussait immédiatement."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] 1000 dents ?"
+      "text": "[gasps] Mille dents ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Oui. Une usine à mâcher. Il ne manquait jamais de dents pour broyer les branches dures."
+      "text": "[playful] Oui, une vraie usine [amazed] à mâcher. Il ne manquait jamais de dents pour broyer les branches dures."
     }
   ],
   "model_id": "eleven_v3",

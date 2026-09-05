@@ -2,11 +2,11 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Ses dents faisaient 20 centimètres et étaient dentelées comme une scie."
+      "text": "[excited] Ses dents faisaient 20 centimètres [amazed] et étaient dentelées comme une scie."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Comme une scie dans sa bouche."
+      "text": "[gasps] Une scie dans la bouche."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",

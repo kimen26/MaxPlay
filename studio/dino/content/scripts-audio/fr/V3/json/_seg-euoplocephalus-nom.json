@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Eu-o-plo-cé-fale. Trois morceaux grecs. « Eu », c'est « bien ». « Oplo », c'est « armure ». Et « céfale », c'est « tête »."
+      "text": "[excited] Eu-o-plo-cé-fale. En grec, « eu », ça veut dire bien. [curious] Et « oplo », c'est une armure — comme les soldats grecs, les hoplites."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] La tête bien armurée."
+      "text": "[curious] La tête bien armée ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactement. Il vivait au Canada, il y a 75 millions d'années. Le dino le plus blindé de tous."
+      "text": "[happily] Voilà, « céphale », ça veut dire la tête. [amazed] En entier : la tête bien protégée. [calm] Il vivait en Alberta, au Canada, il y a 75 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Même sa tête était protégée ?"
+      "text": "[curious] Il ressemblait à l'Ankylosaure ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Oui. Même ses paupières avaient une armure en os. Le Gorgosaure, son voisin, n'avait presque rien à mordre."
+      "text": "[confident] Un cousin, mais encore plus blindé. [amazed] Même ses paupières étaient couvertes d'os."
     }
   ],
   "model_id": "eleven_v3",

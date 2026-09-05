@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 6 mètres de long — aussi long qu'une rue à deux voies est large. 2 mètres de haut — aussi haut qu'une porte. Et 440 kilos — aussi lourd qu'un grand cochon."
+      "text": "[excited] Il mesurait 6 mètres de long — [quickly] aussi long qu'une rue à deux voies est large — il barrait la route ! Debout, il faisait 2 mètres de haut — aussi haut qu'une porte ! Et il pesait 440 kilos — [proud] aussi lourd que 2 lions. [amazed] Et les savants pensent qu'il pouvait courir jusqu'à 50 kilomètres à l'heure — aussi vite qu'une voiture en ville."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious][gasps] 440 kilos et rapide ?"
+      "text": "[gasps] Aussi vite qu'une voiture ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui. Lourd pour un coureur, mais ses jambes étaient longues et légères. Comme une autruche géante."
+      "text": "[proud] Oui, avec ses longues jambes fines. [amazed] Un des dinosaures les plus rapides qu'on connaisse."
     }
   ],
   "model_id": "eleven_v3",

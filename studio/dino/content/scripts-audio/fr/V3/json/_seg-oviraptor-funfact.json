@@ -2,15 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Il avait une crête colorée sur la tête, comme un perroquet, et une queue en drapeau. Les scientifiques pensent qu'il dansait pour séduire sa compagne."
+      "text": "[excited] Écoute cette histoire. [serious] Le tout premier fossile d'Oviraptor a été trouvé [pauses] juste à côté d'un nid d'œufs. Les savants ont cru qu'il venait de les voler."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Il dansait ?"
+      "text": "[gasps] Alors c'était vrai, il volait des œufs."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Oui. Des pas de danse et des couleurs vives pour dire : « Je serai un bon papa. » Le dino le plus romantique du Crétacé."
+      "text": "[softly] Non, justement. [hesitant] Bien plus tard, on a retrouvé un autre Oviraptor, [whispers] assis sur son nid, les bras ouverts, en train de couver."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Ses propres œufs."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Ses propres œufs. [proud] C'était un bon papa, pas un voleur. Son nom, en fait, est complètement injuste."
     }
   ],
   "model_id": "eleven_v3",

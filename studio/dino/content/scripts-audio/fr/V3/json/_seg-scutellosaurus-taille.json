@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 1 mètre 20 de long — comme un grand chien, un labrador. Il t'arrivait aux genoux. Et 4 kilos — aussi lourd qu'un gros chat."
+      "text": "[excited] 1 virgule 2 mètre de long — [amazed] comme un grand chien — un labrador. Debout, 0 virgule 4 mètre de haut — [curious] il t'arrivait aux genoux. Et 4 kilos — [proud] aussi lourd qu'un gros chat."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Aussi petit qu'un chat ?"
+      "text": "[gasps] Tout petit, alors."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui, un vrai petit dino. Mais avec plus de 300 petites plaques d'os sur le dos et la queue, comme une mosaïque."
+      "text": "[confident] Minuscule, oui. [amazed] Mais il courait déjà sur ses deux pattes arrière."
     }
   ],
   "model_id": "eleven_v3",

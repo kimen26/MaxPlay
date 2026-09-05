@@ -2,7 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Carnivore. Il marchait sur ses quatre pattes et chassait autant à pied qu'en vol. Sur son île, personne n'était assez fort pour l'attaquer : c'était lui, le plus grand chasseur."
+      "text": "[serious] Carnivore. [confident] Et il menait une double vie : il chassait aussi bien à pied qu'en plein ciel."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] À pied ? [gasps] Un animal volant qui marche ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Oui, sur ses quatre pattes. [slowly] Et les savants pensent qu'au sol, il avançait à environ 12 kilomètres à l'heure — [amazed] aussi vite qu'un enfant qui court."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -10,15 +18,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] De petits dinosaures nains, des cousins miniatures des géants à long cou et des dinosaures à bec. Sur cette île, presque tout avait rapetissé."
-    },
-    {
-      "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Rapetissé ?"
-    },
-    {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Oui. Presque tout... sauf lui."
+      "text": "[warmly] De petits dinosaures nains, [confident] cousins miniatures des géants à long cou. Sur cette île, presque tout avait rapetissé."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Ses cornes faisaient 1 mètre de long. On a trouvé des os de T-Rex avec des marques de cornes de Tricératops. Ils se battaient vraiment."
+      "text": "[excited] Ses cornes faisaient PLUS d'un mètre de long. [whispers] Et on a retrouvé des os de T-Rex... avec des marques de cornes de Tricératops dessus."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Des marques de cornes sur les os."
+      "text": "[gasps] Ils se battaient pour de vrai."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Comme des cicatrices de bataille. Le Tricératops ne reculait devant personne."
+      "text": "[softly] Pour de vrai. Des vraies cicatrices de bataille, gravées dans l'os."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Il ouvrait sa gueule comme une hache pour frapper ses proies. On a trouvé des centaines de ses os au même endroit, en Utah."
+      "text": "[excited] Il ouvrait sa gueule très grande, [quickly] comme une hache, pour frapper ses proies. [amazed] Et on a trouvé les os de plus de QUARANTE Allosaures mélangés au même endroit, en Utah."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Un cimetière entier ?"
+      "text": "[gasps] Quarante dans un seul endroit ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[softly] Un cimetière mystérieux. Beaucoup d'Allosaures ensemble."
+      "text": "[whispers] Un cimetière fossile géant. [curious] Personne ne sait vraiment pourquoi ils sont tous là."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 10 mètres de long — aussi long qu'un camion. 2 mètres 70 de haut — aussi grand que Papa debout. Et 3 tonnes — aussi lourd que 2 rhinocéros."
+      "text": "[excited] 10 mètres de long — aussi long qu'un camion ! 2 mètres 70 de haut — [quickly] aussi haut qu'un but de foot ! Et 3 mille kilos — [amazed] aussi lourd qu'un hippopotame !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious][gasps] Aussi grand que Papa ?"
+      "text": "[gasps] Aussi haut qu'un but de foot ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui, au niveau des épaules. Mais il avait une longue queue et un gros bec de canard."
+      "text": "[confident] Oui, au niveau des épaules. [warmly] Avec une longue queue, et un gros bec de canard."
     }
   ],
   "model_id": "eleven_v3",

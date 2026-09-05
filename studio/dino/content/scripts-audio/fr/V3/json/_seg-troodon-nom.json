@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Tro-o-don. « Troo » en grec, c'est qui blesse, qui entaille. Et « odon », c'est la dent. La dent qui blesse."
+      "text": "[excited] Tro-o-don. En grec, la première partie veut dire « qui blesse », [serious] et « odon », c'est la dent. [curious] Alors ça donne quoi ?"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il avait des dents coupantes."
+      "text": "[confident] La dent qui blesse."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui, mais le plus important, c'était son cerveau. Le Troodon était probablement le dinosaure le plus intelligent."
+      "text": "[happily] Voilà. [proud] Il vivait en Amérique du Nord, il y a 75 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Plus malin que les autres ?"
+      "text": "[curious] Il avait quoi de spécial, lui ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Beaucoup. Il vivait en Amérique du Nord, il y a 75 millions d'années. Le professeur des dinosaures."
+      "text": "[proud] Une chose énorme : [amazed] c'est peut-être le dinosaure le plus intelligent qu'on connaisse."
     }
   ],
   "model_id": "eleven_v3",

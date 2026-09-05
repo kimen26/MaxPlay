@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore. Il broutait des plantes au sol et des fougères. Il vivait en grand troupeau, par centaines."
+      "text": "[serious] Herbivore, en grand troupeau. [calm] Il broutait les plantes basses avec son long cou tenu presque à l'horizontale."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Pourquoi les chasseurs prenaient les petits ?"
+      "text": "[curious] Et sa queue, elle servait à quoi d'autre que se défendre ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Parce qu'un adulte, c'était une montagne. Même un Allosaure n'avale pas une montagne."
+      "text": "[playful] Il la faisait claquer comme un fouet, très vite. [whispers] Les savants pensent que ça pouvait faire un bruit énorme, presque comme le tonnerre."
     }
   ],
   "model_id": "eleven_v3",

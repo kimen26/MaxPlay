@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore. Il mangeait des plantes. Peut-être en troupeau. Les carnivores apprenaient à ne jamais l'attaquer par derrière."
+      "text": "[serious] Herbivore, peut-être en troupeau. [amazed] Des piques sur le milieu du dos, sur les hanches, [pauses] et jusqu'à 70 centimètres sur la queue."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Parce qu'il y avait plus de piques derrière ?"
+      "text": "[curious] Et les carnivores osaient s'approcher ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[softly] Oui. Les plus grosses piques étaient vers la queue et les épaules. Son arrière était le plus dangereux."
+      "text": "[confident] Par devant, peut-être. [serious] Mais jamais par derrière : sa queue à piques frappait trop fort."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Ken-tro-saure. En grec, « kentro » veut dire « pointe, aiguillon ». Et « saure », c'est « lézard »."
+      "text": "[excited] Kén-tro-saure. [curious] En grec, « kentron », ça veut dire une pointe, un aiguillon qui pique."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Lézard à aiguillons. Comme un hérisson."
+      "text": "[curious] Le lézard à pointes ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactement. Il vivait en Afrique, en Tanzanie, il y a 155 millions d'années. C'était le cousin africain du Stégosaure."
+      "text": "[happily] Voilà — il en avait partout sur le dos. [calm] Il vivait en Afrique, en Tanzanie, il y a 155 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il avait des copains dangereux ?"
+      "text": "[curious] Il connaissait le Brachiosaure, alors ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Des carnivores africains, et aussi le Allosaure de son époque. Mais ses piques en dissuadaient plus d'un."
+      "text": "[amazed] Son cousin africain, le Giraffatitan, [proud] vivait exactement dans le même coin, à la même époque."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Sa queue claquait comme un fouet et faisait un BOOM supersonique. Assez fort pour effrayer un chasseur."
+      "text": "[excited] Sur ses 26 mètres, sa queue mesure à elle seule [amazed] environ 13 mètres — la moitié de tout son corps."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Un fouet de 13 mètres."
+      "text": "[amazed] La moitié, rien que la queue."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Un fouet dinosaure. CLAC, et l'Allosaure faisait demi-tour."
+      "text": "[softly] Une queue-fouet géante, [proud] au bout d'un cou tout aussi long. Un animal fait d'extrêmes."
     }
   ],
   "model_id": "eleven_v3",

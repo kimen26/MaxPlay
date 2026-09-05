@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 13 mètres de long — aussi long qu'un bus RATP. 3 virgule 8 mètres de haut — comme deux Papas l'un sur l'autre. 7 mille kilos — aussi lourd que 2 hippopotames."
+      "text": "[excited] Il mesurait 13 mètres de long — aussi long qu'un bus RATP ! [quickly] Debout, il faisait 3 virgule 8 mètres de haut — comme deux Papas l'un sur l'autre ! Et il pesait 7 mille kilos — [amazed] aussi lourd qu'un éléphant et un rhinocéros ensemble !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il me dépassait de beaucoup ?"
+      "text": "[amazed] Il me dépasserait de beaucoup ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Oui. Un des trois plus grands carnivores de tous les temps."
+      "text": "[serious] Énormément. [amazed] C'est l'un des plus grands carnivores de toute l'histoire."
     }
   ],
   "model_id": "eleven_v3",

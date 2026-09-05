@@ -2,15 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] A-pa-to-saure. En grec, « apato » veut dire tromperie, illusion. Le lézard trompeur."
+      "text": "[excited] A-pa-to-saure. [curious] En grec, « apate », ça veut dire la tromperie, l'illusion."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il trompait les gens ?"
+      "text": "[curious] Le lézard trompeur ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Non, ce sont les savants qu'il a trompés. Ils l'ont appelé Brontosaure, puis ont dit « oups, c'est Apatosaure ». Il vivait en Amérique du Nord, il y a 150 millions d'années, avec Diplodocus et Camarasaure. L'Allosaure chassait les jeunes."
+      "text": "[happily] Oui — [amazed] ses os ont trompé les savants pendant très longtemps. [calm] Il vivait en Amérique du Nord, il y a 150 millions d'années."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[hesitant] Trompé comment ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] On a longtemps cru que c'était un autre dinosaure, [serious] le Brontosaure. En fait, c'est son tout proche cousin — pas tout à fait le même animal."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,7 +2,7 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Scé-li-do-saure. En grec, « saure », c'est le lézard. Et « scélido », ça voulait dire « grosses pattes », parce qu'il avait des cuisses très fortes."
+      "text": "[excited] Scé-li-do-saure. En grec, « saure », c'est le lézard. [curious] Et « scélido », ça voulait dire « grosses pattes », [amazed] parce qu'il avait des cuisses très fortes."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -10,7 +10,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Oui. Mais écoute ça : le savant qui l'a nommé s'est trompé de mot grec — celui qu'il a écrit veut dire « côte de bœuf ». Sans le vouloir, il l'a appelé le lézard-côte-de-bœuf."
+      "text": "[happily] Oui. Mais écoute ça : [amazed] le savant qui l'a nommé s'est trompé de mot grec — celui qu'il a écrit veut dire « côte de bœuf ». [playful] Sans le vouloir, il l'a appelé le lézard-côte-de-bœuf."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -18,7 +18,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] En Angleterre, au bord de la mer, il y a 193 millions d'années. Et un chasseur, le Dracoraptor, rôdait dans le même coin."
+      "text": "[serious] En Angleterre, au bord de la mer, il y a 193 millions d'années. [curious] Et déjà, [pauses] de petits chasseurs à deux pattes rôdaient dans la région."
     }
   ],
   "model_id": "eleven_v3",

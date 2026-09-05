@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Piscivore. Il mangeait des poissons et des calmars dans l'eau sombre. Il vivait en groupes dans les mers chaudes. Le Liopleurodon pouvait le chasser."
+      "text": "[serious] C'était un chasseur de poissons et de calmars, en groupes, dans les eaux chaudes. [confident] Mais dans ces mers-là, [nervous] de gros prédateurs comme le Liopleurodon rôdaient aussi."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il voyait dans le noir ?"
+      "text": "[nervous] Il fallait qu'il fasse attention ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Ses yeux faisaient 23 centimètres de diamètre. Parmi les plus grands yeux de tous les animaux."
+      "text": "[warmly] Oui — mais il avait une arme pour ça. Ses yeux."
     }
   ],
   "model_id": "eleven_v3",

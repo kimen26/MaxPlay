@@ -2,15 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore. Il mangeait des plantes basses et des fougères. Il vivait en petit groupe, pas en immense troupeau."
+      "text": "[serious] Herbivore, en petit groupe. [calm] Il broutait les plantes du sol et des buissons."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Pourquoi pas un grand troupeau ?"
+      "text": "[curious] Mais elles servaient à quoi, ses épines ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[softly] Moins de bouche à nourrir. Et ses épines servaient déjà de panneau « attention, piquant »."
+      "text": "[hesitant] [pauses] Les savants ne sont pas encore sûrs. [curious] Peut-être pour se défendre, en frappant. Ou peut-être pour se faire remarquer par les autres Amargasaures."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et si personne ne sait, comment on choisit ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[gently] On ne choisit pas. [calm] On dit les deux idées, et on continue de chercher la vraie réponse."
     }
   ],
   "model_id": "eleven_v3",

@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 8 mètres de long — comme deux voitures l'une derrière l'autre. 2 virgule 8 mètres de haut — aussi haut qu'un panier de basket. 2 mille kilos — aussi lourd qu'un rhinocéros."
+      "text": "[excited] 8 mètres de long — [amazed] comme deux voitures l'une derrière l'autre. Debout, 2 virgule 8 mètres de haut — [curious] aussi haut qu'un panier de basket. Et 2 mille kilos — [proud] aussi lourd qu'un rhinocéros."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] C'était déjà un géant à cette époque ?"
+      "text": "[gasps] Un rhinocéros, pour un des tout premiers."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui. Le PREMIER grand herbivore de l'histoire des dinosaures."
+      "text": "[confident] Oui — [whispers] déjà un vrai géant pour son époque."
     }
   ],
   "model_id": "eleven_v3",

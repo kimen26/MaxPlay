@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Ae-no-cyon. En grec, cyon veut dire chien. Et dirus, en latin, veut dire terrible. Le chien terrible."
+      "text": "[excited] É-no-si-on. En grec, « cyon » veut dire chien. [serious] Et « dirus », en latin, veut dire terrible, qui fait très peur. Le chien terrible."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Un loup, alors."
+      "text": "[confident] Un grand loup ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Presque ! Plus costaud que le loup d'aujourd'hui. Il vivait en Amérique, près du Smilodon."
+      "text": "[happily] On l'appelle le Loup terrible, oui — [serious] mais pas un dinosaure : il vivait bien après, à l'Âge de glace, [pauses] il y a 50 000 ans, en Amérique du Nord et du Sud."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] C'était un vrai loup ?"
+      "text": "[curious] Il chassait avec qui, là-bas ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Les savants ont découvert que non — juste un cousin éloigné."
+      "text": "[confident] Souvent en meute, tout seul entre eux. [warmly] Et le Smilodon, un peu plus loin, chassait les mêmes proies."
     }
   ],
   "model_id": "eleven_v3",

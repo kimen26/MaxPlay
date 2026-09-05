@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Pté-ra-no-don. Trois morceaux grecs. « Ptér », c'est l'aile. « An », c'est « sans ». Et « odon », c'est la dent. Alors Ptéranodon..."
+      "text": "[excited] Pté-ra-no-don. En grec, « ptér » veut dire l'aile. « An », ça veut dire sans. [serious] Et « odon », c'est la dent. [curious] Alors, ça donne quoi ?"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] ...l'aile sans dents."
+      "text": "[confident] L'aile sans dents."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactement. Attention : ce n'est PAS un dinosaure. C'est un ptérosaure, un reptile volant. Il vivait au Crétacé, il y a 85 millions d'années, au-dessus des mers d'Amérique du Nord."
+      "text": "[happily] Exactement, un grand bec sans une seule dent. [proud] Il vivait en Amérique du Nord, il y a 85 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Comme le Quetzalcoatlus ?"
+      "text": "[gasps] C'est un dinosaure, lui aussi ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Un peu plus petit. Dans le même ciel que le T-Rex, au-dessus des mers du Kansas."
+      "text": "[serious] Non, justement. [amazed] Ce n'est pas un dinosaure — c'est un reptile volant, un ptérosaure."
     }
   ],
   "model_id": "eleven_v3",

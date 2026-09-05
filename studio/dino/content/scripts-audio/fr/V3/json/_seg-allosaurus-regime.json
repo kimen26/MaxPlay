@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Carnivore. Il chassait le Stégosaure et les jeunes dinosaures à long cou. Peut-être en groupe."
+      "text": "[serious] C'était un carnivore. Il chassait le Stégosaure [confident] et les jeunes dinosaures à long cou."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Comme des loups ?"
+      "text": "[curious] Il chassait tout seul, alors ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Peut-être. Les loups du Jurassique."
+      "text": "[hesitant] Peut-être pas, [confident] certains fossiles ont été trouvés proches les uns des autres. [curious] Un vrai mystère encore ouvert."
     }
   ],
   "model_id": "eleven_v3",

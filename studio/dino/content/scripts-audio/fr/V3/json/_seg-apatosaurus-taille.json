@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 22 mètres de long — aussi long qu'un bus accordéon. 4 virgule 5 mètres de haut — aussi haut qu'un bus anglais à deux étages. 23 mille kilos — aussi lourd que QUATRE éléphants."
+      "text": "[excited] 22 mètres de long — [amazed] aussi long qu'un bus accordéon. Debout, 4 mètres et demi de haut — [curious] aussi haut qu'un bus anglais à deux étages. Et 23 mille kilos — [proud] aussi lourd que 8 hippopotames."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il mangeait beaucoup pour être si lourd."
+      "text": "[gasps] 8 hippopotames."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] 250 kilos de plantes PAR JOUR. Dix fois ce que tu manges en un mois."
+      "text": "[confident] Oui. [whispers] Et son cou à lui seul mesurait 6 mètres, pour attraper les feuilles tout en haut."
     }
   ],
   "model_id": "eleven_v3",

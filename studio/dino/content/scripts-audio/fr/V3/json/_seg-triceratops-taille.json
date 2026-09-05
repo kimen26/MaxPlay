@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 9 mètres de long — aussi long qu'un camion. 3 mètres de haut — aussi haut qu'un panier de basket. 9 mille kilos — aussi lourd que 3 hippopotames."
+      "text": "[excited] 9 mètres de long — aussi long qu'un camion ! [quickly] 3 mètres de haut — aussi haut qu'un panier de basket ! Et 9 mille kilos — [amazed] aussi lourd que 3 hippopotames !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Il était large comme un camion."
+      "text": "[gasps] Trois hippopotames dans un seul dino."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui. Et solide comme un tank. Ses os et ses cornes étaient très épais."
+      "text": "[confident] Oui. Et solide [proud] comme un tank : ses os et ses cornes étaient très épais."
     }
   ],
   "model_id": "eleven_v3",

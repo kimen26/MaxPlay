@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 9 mètres de long — aussi long qu'un camion. 2 mètres de haut — aussi haut qu'une porte. Et 4 mille kilos — aussi lourd qu'un hippopotame."
+      "text": "[excited] 9 mètres de long — aussi long qu'un camion. 2 mètres de haut — aussi haut qu'une porte. Et 4 mille kilos — [amazed] aussi lourd que 2 rhinocéros."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious][gasps] Aussi haut qu'une porte, avec un casque en plus ?"
+      "text": "[gasps] Aussi haut qu'une porte, avec un casque en plus ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui. Un grand herbivore à bec de canard, avec sa crête tout en haut du crâne."
+      "text": "[confident] Oui. Un grand herbivore à bec de canard, [proud] avec sa crête tout en haut du crâne."
     }
   ],
   "model_id": "eleven_v3",

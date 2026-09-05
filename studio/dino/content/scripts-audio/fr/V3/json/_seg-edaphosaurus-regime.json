@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore. Il broutait des fougères, plutôt seul, sans jamais chasser personne."
+      "text": "[serious] Il broutait des fougères, tranquillement, avec ses petites dents en pavés. [confident] Il vivait au même endroit qu'un autre animal, [curious] avec une voile presque pareille sur le dos."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il servait à quoi, ce truc sur son dos ?"
+      "text": "[curious] Qui ça ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Sa voile ! Elle l'aidait à se réchauffer au soleil, comme un grand thermomètre vivant."
+      "text": "[confident] Le Dimétrodon. Sa voile ressemble beaucoup à la sienne — [playful] mais attention, c'est tout le contraire dedans."
     }
   ],
   "model_id": "eleven_v3",

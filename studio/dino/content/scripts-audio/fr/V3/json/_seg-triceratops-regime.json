@@ -2,23 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Herbivore. Il broutait des plantes basses et des fougères. Il vivait peut-être en troupeau pour protéger les petits. Le T-Rex le chassait, mais il se défendait avec ses cornes."
+      "text": "[serious] C'était un herbivore. Il broutait des plantes basses et des fougères, [confident] peut-être en troupeau, pour mieux protéger les petits."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il se battait contre le T-Rex."
+      "text": "[nervous] Et le T-Rex, il l'attaquait ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui. Un combat de géants. Le T-Rex avait ses dents, le Tricératops avait ses cornes pointues."
-    },
-    {
-      "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[softly] Tritri était en danger."
-    },
-    {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Non. Tritri se défendait avec ses trois cornes. Le Tricératops tenait bon."
+      "text": "[confident] Il essayait. [warmly] Mais Tritri se défendait avec ses trois cornes. Le Tricératops ne reculait devant personne."
     }
   ],
   "model_id": "eleven_v3",

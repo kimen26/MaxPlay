@@ -28,7 +28,7 @@
 ### BLOC C — Comment il vivait
 
 **NARRATEUR H** [serious] : C'était un carnivore. Il chassait le Tricératops, l'Edmontosaure et l'Ankylosaure. [calm] Plutôt solitaire.
-**WEX** [curious] : Alors Tritri, il devait faire super attention ?
+**WEX** [nervous] : Alors Tritri, il devait faire super attention ?
 **NARRATEUR H** [encouraging] : Oui, [confident] mais Tritri avait ses trois cornes pour se défendre. Le T-Rex ne le mangeait pas sans se battre.
 
 ### BLOC D — Le truc fou

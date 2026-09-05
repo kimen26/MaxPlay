@@ -2,23 +2,31 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] O-vi-rap-tor. « Ovi » en latin, c'est l'œuf. Et « raptor », c'est le voleur. Le voleur d'œufs."
+      "text": "[excited] O-vi-rap-tor. « Ovi », en latin, [serious] c'est l'œuf — comme dans « ovale ». Et « raptor », c'est le voleur. [curious] Alors, ça donne quoi ?"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il volait des œufs ?"
+      "text": "[confident] Le voleur d'œufs."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Non. C'était une fausse accusation. Il vivait en Mongolie, il y a 75 millions d'années, et il gardait SES propres œufs comme un bon papa."
+      "text": "[happily] Voilà son nom. [proud] Il vivait en Asie, dans le désert de Mongolie, il y a 75 millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] On lui avait fait un procès injuste."
+      "text": "[curious] C'est un cousin des raptors, [gasps] comme le Vélociraptor ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[softly] Exactement. Les savants se sont trompés. C'était un excellent parent, pas un voleur."
+      "text": "[confident] Un cousin, oui, [amazed] mais lui n'avait pas de dents — un bec, une jolie crête colorée, presque comme un perroquet."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Un voleur d'œufs ? [nervous] Pas très gentil, ça."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[gently] Attends la fin de l'histoire. [warmly] Ce nom-là, il ne le mérite pas du tout."
     }
   ],
   "model_id": "eleven_v3",

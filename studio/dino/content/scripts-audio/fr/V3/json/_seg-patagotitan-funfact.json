@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Le Patagotitan a été découvert en Patagonie, au sud de l'Argentine. On a trouvé 7 squelettes ensemble. Des os si gros qu'on ne pouvait pas les transporter en camion normal."
+      "text": "[excited] Ses os étaient si énormes qu'il a fallu des camions spéciaux [pauses] et des grues géantes pour les transporter jusqu'au musée."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Trop gros pour un camion."
+      "text": "[amazed] Même les os, ils étaient géants."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Il a fallu des camions spéciaux et des grues géantes. Le dinosaure qui ne rentrait dans rien."
+      "text": "[softly] Son nom complet, c'est Patagotitan mayorum — [proud] le titan de Patagonie. [curious] Les savants se disputent encore : lui, ou son cousin l'Argentinosaure — qui était vraiment le plus grand ?"
     }
   ],
   "model_id": "eleven_v3",

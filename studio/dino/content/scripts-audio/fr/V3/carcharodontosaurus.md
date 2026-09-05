@@ -13,15 +13,15 @@
 ### BLOC A — Présentation
 
 **NARRATEUR H** [excited] : Car-ka-ro-don-to-saure. [curious] « Carcharo », en grec, ça veut dire pointu et déchiqueté — c'est le mot qui a donné « requin ». [serious] « Odonto », c'est la dent. Et « saure », le lézard.
-**WEX** [confident] : Le lézard aux dents de requin.
-**NARRATEUR H** [happily] : Exactement. Il vivait en Afrique du Nord, [amazed] il y a 95 millions d'années.
+**WEX** [playful] : Requin… dent… j'ai retenu « requin ». [hesitant] Et le reste, ça donne quoi tout collé ?
+**NARRATEUR H** [happily] : Le lézard aux dents de requin. Il vivait en Afrique du Nord, [amazed] il y a 95 millions d'années.
 **WEX** [curious] : Il vivait avec le Spinosaure ?
 **NARRATEUR H** [playful] : Oui, dans la même Afrique. [confident] Lui chassait sur la terre, [calm] l'autre dans l'eau — ils ne se gênaient pas.
 
 ### BLOC B — Taille
 
 **NARRATEUR H** [excited] : Il mesurait 13 mètres de long — aussi long qu'un bus RATP ! [quickly] Debout, il faisait 3 virgule 8 mètres de haut — comme deux Papas l'un sur l'autre ! Et il pesait 7 mille kilos — [amazed] aussi lourd qu'un éléphant et un rhinocéros ensemble !
-**WEX** [curious] : Il me dépasserait de beaucoup ?
+**WEX** [amazed] : Il me dépasserait de beaucoup ?
 **NARRATEUR H** [serious] : Énormément. [amazed] C'est l'un des plus grands carnivores de toute l'histoire.
 
 ### BLOC C — Comment il vivait

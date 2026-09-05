@@ -128,7 +128,7 @@
     <!-- Header -->
     <div class="hdr">
       <a href="index.html" class="back">←</a>
-      <span class="htitle">📖 Lis la phrase</span>
+      <span class="htitle" id="htitle">📖 Lis la phrase</span>
     </div>
     
     <div class="pips" id="pips"></div>
@@ -209,8 +209,12 @@
     let currentPhrase = null;
     let usedIndices = [];
 
+    document.title = 'MJ-06 – ' + MJi18n.titre('mj-06', 'Lis la phrase');
+    const htitleEl06 = document.getElementById('htitle');
+    if (htitleEl06) htitleEl06.textContent = '📖 ' + MJi18n.titre('mj-06', 'Lis la phrase');
+
     const shell = MJ.init({
-      id: 'mj-06', emoji: '📖', titre: 'Lis la phrase',
+      id: 'mj-06', emoji: '📖', titre: MJi18n.titre('mj-06', 'Lis la phrase'),
       golden: true,
       consigne: true,
       onRepeat: function () { speakQuestion(false); },
@@ -241,6 +245,9 @@
       if (!currentPhrase) return;
       const text = full
         ? `${currentPhrase.before} ${currentPhrase.answer} ${currentPhrase.after}`
+        // "quelque chose" reste en FR : PHRASES (before/after) est un contenu de lecture
+        // phonétique FR non traduit (hors périmètre HO-MJ-03, cf. rapport) — mélanger un
+        // mot EN dans une phrase FR serait un charabia audible pire que rien.
         : `${currentPhrase.before} quelque chose ${currentPhrase.after}`;
       TTS.speak(text, { rate: 0.85 });
     }
@@ -280,7 +287,7 @@
       // Afficher la phrase avec case [?]
       const sentenceText = document.getElementById('sentenceText');
       sentenceText.innerHTML = `${currentPhrase.before} <span class="blank" id="blank">?</span> ${currentPhrase.after}`;
-      shell.setConsigne('Quel mot manque dans la phrase ?', false);
+      shell.setConsigne(MJi18n.t('mj-06', 'quelMotManque', 'Quel mot manque dans la phrase ?'), false);
 
       // Afficher les 4 choix (grands boutons texte en majuscules)
       const choicesDiv = document.getElementById('choices');

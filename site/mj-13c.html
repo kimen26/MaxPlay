@@ -62,11 +62,11 @@ html, body {
               font-family:'Nunito',sans-serif; font-weight:900; color:#aaa; }
 </style>
 </head>
-<body data-mp-intro-emoji="🚌" data-mp-intro-title="Combien avant le bus ?" data-mp-intro-hint="Compte les bus avant">
+<body data-mp-intro-emoji="🚌" data-mp-intro-title="Combien avant le bus ?" data-mp-intro-hint="Compte les bus avant" id="mjBody">
 
 <div class="hdr">
   <a href="index.html">&#8592;</a>
-  <span class="htitle">🔢 Combien avant ?</span>
+  <span class="htitle" id="htitle">🔢 Combien avant ?</span>
 </div>
 <div class="pips" id="pips"></div>
 
@@ -81,14 +81,32 @@ html, body {
   <div class="q-text" id="q-text">Chargement…</div>
 </div>
 
+<script>
+  // Voir mj-13a.html pour l'explication complète : intro-splash.js s'auto-init sur
+  // DOMContentLoaded AVANT que mj-i18n.js/MJ_STRINGS soient chargés (async via mj-shell.js).
+  (function () {
+    var qs = null; try { qs = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+    var stored = null; try { stored = localStorage.getItem('maxplay_lang'); } catch (e) {}
+    if ((qs || stored) === 'en') {
+      var b = document.getElementById('mjBody');
+      b.setAttribute('data-mp-intro-title', 'How many buses before?');
+      b.setAttribute('data-mp-intro-hint', 'Count the buses before');
+    }
+  })();
+  </script>
 <script src="js/bus-svg.js"></script>
   <script src="js/intro-splash.js"></script>
 <script src="js/mj-kit.js"></script>
 <script src="js/mj-shell.js"></script>
 <script>
 MJ.ready(function () {
+  document.title = 'MJ-13c – ' + MJi18n.titre('mj-13c', 'Combien avant ?');
+  const htitleEl13c = document.getElementById('htitle');
+  if (htitleEl13c) htitleEl13c.textContent = '🔢 ' + MJi18n.titre('mj-13c', 'Combien avant ?');
+  document.getElementById('q-text').textContent = MJi18n.t('mj-13c', 'chargement', 'Chargement…');
+
   const shell = MJ.init({
-    id: 'mj-13c', emoji: '🔢', titre: 'Combien avant ?',
+    id: 'mj-13c', emoji: '🔢', titre: MJi18n.titre('mj-13c', 'Combien avant ?'),
     golden: true,
     consigne: false,
     regle: {
@@ -299,8 +317,8 @@ function initRound(){
 function renderQuestion(){
   const tl=lines.find(l=>l.num===targetNum);
   document.getElementById('q-text').innerHTML=
-    `Combien de bus avant le <span style="background:${tl.color};color:${tl.textColor};border-radius:8px;padding:3px 14px;font-size:1.3rem;font-weight:900;">${tl.num}</span> ?`;
-  tts(`Combien de bus avant le ${tl.num} ?`);
+    `${MJi18n.t('mj-13c','combienAvantLe','Combien de bus avant le')} <span style="background:${tl.color};color:${tl.textColor};border-radius:8px;padding:3px 14px;font-size:1.3rem;font-weight:900;">${tl.num}</span> ?`;
+  tts(MJi18n.t('mj-13c','combienAvantLeNum','Combien de bus avant le {num} ?', { num: tl.num }));
 }
 
 function renderButtons(){
@@ -393,8 +411,10 @@ function onAnswer(isCorrect,btn){
       const pika=new Audio('sounds/'+(['pikachu_mw38Ry2.mp3','pikachu_scream.mp3'][Math.floor(Math.random()*2)]));
       pika.volume=0.7; pika.play().catch(()=>{});
       qb.style.background='#1a4a1a';
-      qt.innerHTML=`<span style="color:#4CAF50;font-size:1.3rem;">✓ Bravo !</span>
-        <span style="color:#fff;font-size:1rem;display:block;margin-top:4px;">${correctBefore} bus avant le <span style="background:${tl.color};color:${tl.textColor};border-radius:6px;padding:1px 10px;">${tl.num}</span></span>`;
+      // Piège pluriel EN (bus/buses) : MJi18n.plural(n, singulier, pluriel) — le FR "bus"
+      // est invariable donc le repli FR utilise le même mot dans les deux cas.
+      qt.innerHTML=`<span style="color:#4CAF50;font-size:1.3rem;">✓ ${MJi18n.t('mj-13c','bravo','Bravo !')}</span>
+        <span style="color:#fff;font-size:1rem;display:block;margin-top:4px;">${correctBefore} ${MJi18n.plural(correctBefore, MJi18n.t('mj-13c','busSing','bus'), MJi18n.t('mj-13c','busPlur','bus'))} ${MJi18n.t('mj-13c','avantLe','avant le')} <span style="background:${tl.color};color:${tl.textColor};border-radius:6px;padding:1px 10px;">${tl.num}</span></span>`;
     },300);
     setTimeout(()=>{
       qb.style.background='';
@@ -418,9 +438,9 @@ function onAnswer(isCorrect,btn){
     setTimeout(()=>{
       qb.querySelectorAll('.btn-count').forEach(e=>e.remove());
       qb.style.background='#4a1a1a';
-      qt.innerHTML=`<span style="color:#e53935;font-size:1rem;">C’était</span>
+      qt.innerHTML=`<span style="color:#e53935;font-size:1rem;">${MJi18n.t('mj-13c','cetait','C’était')}</span>
         <span style="color:#ffe066;font-size:1.5rem;font-weight:900;margin:0 6px;">${correctBefore}</span>
-        <span style="color:#e53935;font-size:1rem;">bus avant le <span style="background:${tl.color};color:${tl.textColor};border-radius:6px;padding:1px 10px;">${tl.num}</span></span>`;
+        <span style="color:#e53935;font-size:1rem;">${MJi18n.plural(correctBefore, MJi18n.t('mj-13c','busSing','bus'), MJi18n.t('mj-13c','busPlur','bus'))} ${MJi18n.t('mj-13c','avantLe','avant le')} <span style="background:${tl.color};color:${tl.textColor};border-radius:6px;padding:1px 10px;">${tl.num}</span></span>`;
     },400);
     setTimeout(()=>{
       qb.style.background='';
@@ -431,7 +451,7 @@ function onAnswer(isCorrect,btn){
     if(btn){btn.style.background='#e53935';btn.disabled=true;}
     playErrorSound();
     if(tickId){clearInterval(tickId);tickId=null;}
-    SoundPool.phrase('compte-les-un-par-un', 'Compte les bus AVANT le bus demandé, un par un.');
+    SoundPool.phrase('compte-les-un-par-un', MJi18n.t('mj-13c','compteLesUnParUn', 'Compte les bus AVANT le bus demandé, un par un.'));
   }
 }
 

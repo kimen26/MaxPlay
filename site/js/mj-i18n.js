@@ -64,5 +64,42 @@
     return (entry && typeof entry.titre === 'string' && entry.titre) ? entry.titre : titreFr;
   }
 
-  window.MJi18n = { regle: regle, titre: titre, gameId: gameId };
+  // Remplace les placeholders {cle} d'un texte par params[cle] (HO-MJ-03). Une clé
+  // absente de params n'est PAS remplacée (reste visible {cle}, signal de bug plutôt
+  // que trou silencieux). params est optionnel.
+  function applyParams(texte, params) {
+    if (!params) return texte;
+    return String(texte).replace(/\{([a-zA-Z0-9_]+)\}/g, function (m, k) {
+      return Object.prototype.hasOwnProperty.call(params, k) ? params[k] : m;
+    });
+  }
+
+  // t(gameId, cle, frFallback, params) — chaîne UI hors panneau règle (HO-MJ-03).
+  // Cherche MJ_STRINGS[gameId].ui[cle] (langue active), sinon retombe sur frFallback
+  // (le FR reste toujours en dur dans le jeu = canon, jamais de trou). `cle` supporte
+  // un chemin en points ("confirm.msg") pour les jeux avec plusieurs sous-groupes ui.
+  // params = {n:3} -> "{n}" remplacé dans le texte choisi (FR ou traduit).
+  function t(id, cle, frFallback, params) {
+    var S = window.MJ_STRINGS;
+    var entry = S && S[id || gameId()];
+    var val;
+    if (entry && entry.ui) {
+      val = cle.split('.').reduce(function (acc, k) {
+        return (acc && typeof acc === 'object') ? acc[k] : undefined;
+      }, entry.ui);
+    }
+    var texte = (typeof val === 'string' && val) ? val : frFallback;
+    return applyParams(texte, params);
+  }
+
+  // plural(n, one, many) — accord anglais simple (n===1 -> one, sinon -> many).
+  // En FR le jeu garde sa logique actuelle (cette fonction ne s'applique qu'à l'EN,
+  // les autres langues futures ajouteront leur propre règle le jour venu).
+  function plural(n, one, many) {
+    var lang = (window.Lang && Lang.current()) || 'fr';
+    if (lang === 'en') return n === 1 ? one : many;
+    return n === 1 ? one : many; // repli neutre tant qu'aucune langue n'a de règle dédiée
+  }
+
+  window.MJi18n = { regle: regle, titre: titre, gameId: gameId, t: t, plural: plural };
 })();

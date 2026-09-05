@@ -24,6 +24,9 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "quelMotManque": "Which word is missing from the sentence?"
   }
  },
  "mj-09": {
@@ -49,6 +52,23 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "famille": {
+    "bleu": "Blue",
+    "vert": "Green",
+    "orangeJaune": "Orange/Yellow",
+    "violetRose": "Purple/Pink",
+    "rouge": "Red",
+    "brun": "Brown"
+   },
+   "rer": "RER {num}",
+   "metro": "Subway {num}",
+   "tram": "Tram {num}",
+   "glisseDansBoite": "Drag into the right box",
+   "bravoTangeRange": "GREAT JOB! All sorted!",
+   "voilaFamilles": "Here are all the bus families!",
+   "continuer": "Continue →"
   }
  },
  "mj-13a": {
@@ -74,6 +94,14 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "chargement": "Loading…",
+   "quelBusPremier": "Which bus arrives first?",
+   "appuieSaFiche": "Tap its board!",
+   "bravo": "Well done!",
+   "cetaitLe": "It was the",
+   "essaieEncore": "Try again!"
   }
  },
  "mj-13c": {
@@ -99,6 +127,17 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "chargement": "Loading…",
+   "combienAvantLe": "How many buses before the",
+   "combienAvantLeNum": "How many buses before the {num}?",
+   "bravo": "Well done!",
+   "busSing": "bus",
+   "busPlur": "buses",
+   "avantLe": "before the",
+   "cetait": "It was",
+   "compteLesUnParUn": "Count the buses BEFORE the requested one, one by one."
   }
  },
  "mj-14": {
@@ -174,6 +213,16 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "tapeUnTube": "Tap a tube, then tap another to pour!",
+   "remelanger": "Shuffle",
+   "nouveau": "New",
+   "niveauLabel": "Level",
+   "couleursLabel": "colors",
+   "bravo": "Well done!",
+   "tuAsTrie": "You sorted all the colors! Look at the repainted buses:",
+   "leDinoSeColorie": "The dino is coloring with you!"
   }
  },
  "mj-19": {
@@ -249,6 +298,37 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "pot": {
+    "rouge": "RED",
+    "jaune": "YELLOW",
+    "bleu": "BLUE",
+    "blanc": "WHITE"
+   },
+   "vider": "Empty",
+   "indice": "Hint",
+   "laver": "Wash!",
+   "voilaLeSecret": "Here’s the secret!",
+   "ok": "OK!",
+   "brunTexte": "Ewww!<br>That’s brown!<br>Wash the tube!",
+   "pleinVideMoi": "Full! Empty me 🧽",
+   "bus": "Bus",
+   "couleur": {
+    "rouge": "red",
+    "jaune": "yellow",
+    "bleu": "blue",
+    "vert": "green",
+    "violet": "purple",
+    "rose": "pink",
+    "vertClair": "light green",
+    "bleuCiel": "sky blue",
+    "orange": "orange",
+    "or": "gold",
+    "rosePale": "pale pink",
+    "lavande": "lavender",
+    "brun": "brown"
+   }
   }
  },
  "mj-22": {
@@ -299,6 +379,18 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "phrase": [
+    "Find the {n}!",
+    "Where is the {n}?",
+    "And now… the {n}!",
+    "Can you find the {n} for me?",
+    "Look for the {n}!",
+    "Show me the {n}!",
+    "Your turn: the {n}!",
+    "Quick, find the {n}!"
+   ]
   }
  },
  "mj-28": {
@@ -324,6 +416,11 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "consigne": "Which dino is hiding in the dark?",
+   "essaieEncore": "Try again!",
+   "bravoNom": "Well done! It’s the {nom}!"
   }
  },
  "mj-30": {
@@ -349,6 +446,32 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "cestBon": "Done!",
+   "suivant": "Next →",
+   "petit": "small",
+   "grand": "BIG",
+   "consigne": {
+    "poids": "Sort them from lightest to heaviest!",
+    "taille": "Sort them from smallest to biggest!"
+   },
+   "modePoids": "By weight",
+   "modeTaille": "By size",
+   "regardonsEnsemble": "Let’s look together!",
+   "plusLourd": "HEAVIER",
+   "plusGrand": "BIGGER",
+   "comparaison": "The {big} is {mot} than the {small}!",
+   "unite": {
+    "tCourt": "t",
+    "kgCourt": "kg",
+    "mCourt": "ft",
+    "reperEnfant": "3 ft (you)",
+    "tonnes": "tons",
+    "kilos": "kilos",
+    "metres": "feet"
+   },
+   "annonceMesure": "The {nom}: {val}!"
   }
  },
  "mj-31": {
@@ -374,6 +497,21 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "htitreLong": "The Great Time Journey",
+   "ilVivaitQuand": "When did it live?",
+   "bande": {
+    "permien": "Before the dinosaurs",
+    "cenozoique": "After the meteor"
+   },
+   "date": {
+    "permien": "280 million years ago",
+    "trias": "230 million years ago",
+    "jurassique": "150 million years ago",
+    "cretace": "66 to 100 million years ago",
+    "cenozoique": "after 66 million years ago"
+   }
   }
  },
  "mj-32": {
@@ -399,6 +537,21 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "maGalerie": "My gallery",
+   "choisisUnDino": "Choose a dino to color!",
+   "autreDino": "Another dino",
+   "modele": "Model",
+   "fini": "Done!",
+   "colorierAutre": "Color another dino!",
+   "galerieVide": "No drawing yet... Color your first dino!",
+   "reprendreEnCopie": "Continue as a copy",
+   "supprimerCeDessin": "Delete this drawing?",
+   "non": "No",
+   "oui": "Yes",
+   "magnifiqueNom": "Beautiful! Your {nom} looks amazing!",
+   "magnifique": "Beautiful!"
   }
  },
  "mj-34": {
@@ -424,6 +577,10 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "libereLeBusJaune": "Free the yellow bus!",
+   "sortie": "EXIT"
   }
  },
  "mj-35": {

@@ -61,11 +61,11 @@ html, body {
               font-family:'Nunito',sans-serif; font-weight:900; color:#aaa; }
 </style>
 </head>
-<body data-mp-intro-emoji="🚏" data-mp-intro-title="Quel bus arrive ?" data-mp-intro-hint="Touche le premier qui arrive">
+<body data-mp-intro-emoji="🚏" data-mp-intro-title="Quel bus arrive ?" data-mp-intro-hint="Touche le premier qui arrive" id="mjBody">
 
 <div class="hdr">
   <a href="index.html">&#8592;</a>
-  <span class="htitle">🚏 Le premier bus</span>
+  <span class="htitle" id="htitle">🚏 Le premier bus</span>
 </div>
 <div class="pips" id="pips"></div>
 
@@ -80,14 +80,35 @@ html, body {
   <div class="q-text" id="q-text">Chargement…</div>
 </div>
 
+<script>
+  // Le splash d'intro (intro-splash.js) auto-init sur DOMContentLoaded, AVANT que
+  // mj-shell.js ait fini de charger mj-i18n.js/MJ_STRINGS de façon asynchrone —
+  // MJi18n.t() n'est pas encore disponible à ce stade. On calcule donc la langue ici
+  // avec la même résolution que lang.js (querystring puis localStorage), et on pose
+  // directement les 2 chaînes EN en dur (mini-lot fixe, pas besoin du pack complet).
+  (function () {
+    var qs = null; try { qs = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+    var stored = null; try { stored = localStorage.getItem('maxplay_lang'); } catch (e) {}
+    if ((qs || stored) === 'en') {
+      var b = document.getElementById('mjBody');
+      b.setAttribute('data-mp-intro-title', 'Which bus is coming?');
+      b.setAttribute('data-mp-intro-hint', 'Tap the one arriving first');
+    }
+  })();
+  </script>
 <script src="js/bus-svg.js"></script>
   <script src="js/intro-splash.js"></script>
 <script src="js/mj-kit.js"></script>
 <script src="js/mj-shell.js"></script>
 <script>
 MJ.ready(function () {
+  document.title = 'MJ-13a – ' + MJi18n.titre('mj-13a', 'Le premier bus');
+  const htitleEl13a = document.getElementById('htitle');
+  if (htitleEl13a) htitleEl13a.textContent = '🚏 ' + MJi18n.titre('mj-13a', 'Le premier bus');
+  document.getElementById('q-text').textContent = MJi18n.t('mj-13a', 'chargement', 'Chargement…');
+
   const shell = MJ.init({
-    id: 'mj-13a', emoji: '🚏', titre: 'Le premier bus',
+    id: 'mj-13a', emoji: '🚏', titre: MJi18n.titre('mj-13a', 'Le premier bus'),
     golden: true,
     consigne: false,
     regle: {
@@ -299,8 +320,8 @@ function initRound(){
 
 /* ══ QUESTION ══ */
 function renderQuestion(){
-  document.getElementById('q-text').innerHTML=`<span style="color:#ffe066;font-size:1.1rem;">🚌 Quel bus arrive en premier ?</span><br><span style="color:#aaa;font-size:0.85rem;">Appuie sur sa fiche !</span>`;
-  SoundPool.phrase('quel-bus-arrive-en-premier', 'Quel bus arrive en premier ?');
+  document.getElementById('q-text').innerHTML=`<span style="color:#ffe066;font-size:1.1rem;">🚌 ${MJi18n.t('mj-13a','quelBusPremier','Quel bus arrive en premier ?')}</span><br><span style="color:#aaa;font-size:0.85rem;">${MJi18n.t('mj-13a','appuieSaFiche','Appuie sur sa fiche !')}</span>`;
+  SoundPool.phrase('quel-bus-arrive-en-premier', MJi18n.t('mj-13a','quelBusPremier','Quel bus arrive en premier ?'));
 }
 
 function tts(t){ TTS.speak(t, { rate: 0.85, volume: 0.9 }); }
@@ -384,7 +405,7 @@ function onFicheTap(num){
     const pika=new Audio('sounds/'+(['pikachu_mw38Ry2.mp3','pikachu_scream.mp3'][Math.floor(Math.random()*2)]));
     pika.volume=0.7; pika.play().catch(()=>{});
     qb.style.background='#1a4a1a';
-    qt.innerHTML=`<span style="color:#4CAF50;font-size:1.3rem;">✓ Bravo !</span>
+    qt.innerHTML=`<span style="color:#4CAF50;font-size:1.3rem;">✓ ${MJi18n.t('mj-13a','bravo','Bravo !')}</span>
       <span style="background:${tl.color};color:${tl.textColor};border-radius:8px;padding:3px 14px;font-size:1.4rem;font-weight:900;margin-left:8px;">${tl.num}</span>`;
     setTimeout(()=>{
       qb.style.background='';
@@ -403,7 +424,7 @@ function onFicheTap(num){
     playErrorSound();
     if(typeof Tracker!=='undefined')Tracker.logAnswer(false);
     qb.style.background='#4a1a1a';
-    qt.innerHTML=`<span style="color:#e53935;font-size:1.1rem;">C’était le</span>
+    qt.innerHTML=`<span style="color:#e53935;font-size:1.1rem;">${MJi18n.t('mj-13a','cetaitLe','C’était le')}</span>
       <span style="background:${tl.color};color:${tl.textColor};border-radius:8px;padding:3px 14px;font-size:1.4rem;font-weight:900;margin-left:6px;">${tl.num}</span>`;
     setTimeout(()=>{
       qb.style.background='';
@@ -415,7 +436,7 @@ function onFicheTap(num){
     if(tickId){clearInterval(tickId);tickId=null;}
     if(el){el.style.outline='3px solid #e53935';el.style.outlineOffset='2px';el.dataset.disabled='1';}
     playErrorSound();
-    qt.innerHTML=`<span style="color:#ffb74d;font-size:1rem;">Essaie encore !</span>`;
+    qt.innerHTML=`<span style="color:#ffb74d;font-size:1rem;">${MJi18n.t('mj-13a','essaieEncore','Essaie encore !')}</span>`;
   }
 }
 

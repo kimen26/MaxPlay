@@ -45,6 +45,32 @@ function checkTexte(id, champ, src, dst) {
   if (conversion && /\d+\.\d/.test(dst)) warn.push(`${id}.${champ} : conversion non arrondie (${dst.match(/\d+\.\d+/)[0]}) — arrondir`);
 
   if (lang === 'en' && METRIQUE_RESIDUEL.test(dst)) warn.push(`${id}.${champ} : metrique non converti en EN (${dst.match(METRIQUE_RESIDUEL)[0]})`);
+
+  // Placeholders {cle} : memes cles des deux cotes (sinon MJi18n.t laisse {cle} visible a l'ecran).
+  const phSrc = (src.match(/\{[a-zA-Z0-9_]+\}/g) || []).slice().sort().join(',');
+  const phDst = (dst.match(/\{[a-zA-Z0-9_]+\}/g) || []).slice().sort().join(',');
+  if (phSrc !== phDst) err.push(`${id}.${champ} : placeholders FR [${phSrc}] vs [${phDst}]`);
+}
+
+// Parcours recursif d'un sous-arbre "ui" : objets, tableaux (mj-24.phrase) et feuilles texte.
+// Cle presente en FR mais absente en EN -> erreur (checkTexte gere deja le vide) ; cle presente
+// en EN mais absente en FR -> avertissement (cle orpheline, jeu modifie sans regenerer le FR).
+function checkUiTree(id, path, srcNode, dstNode) {
+  if (srcNode == null) return;
+  if (Array.isArray(srcNode)) {
+    if (!Array.isArray(dstNode)) { err.push(`${id}.ui.${path} : tableau attendu, absent en ${lang}`); return; }
+    if (dstNode.length !== srcNode.length) {
+      err.push(`${id}.ui.${path} : ${dstNode.length} entrees contre ${srcNode.length} en FR`);
+    }
+    srcNode.forEach((v, i) => checkUiTree(id, `${path}[${i}]`, v, dstNode[i]));
+    return;
+  }
+  if (typeof srcNode === 'object') {
+    const dst = (dstNode && typeof dstNode === 'object') ? dstNode : {};
+    Object.keys(srcNode).forEach(k => checkUiTree(id, path ? `${path}.${k}` : k, srcNode[k], dst[k]));
+    return;
+  }
+  checkTexte(id, `ui.${path}`, srcNode, dstNode);
 }
 
 Object.keys(corpus).forEach(id => {
@@ -66,6 +92,10 @@ Object.keys(corpus).forEach(id => {
     });
   }
   if (ref.regle.etoiles) checkTexte(id, 'regle.etoiles', ref.regle.etoiles, (got.regle && got.regle.etoiles) || '');
+
+  // Clés ui (HO-MJ-03) : optionnelles (tous les jeux n'en ont pas), mais quand le FR en a,
+  // l'EN doit les couvrir a l'identique (memes cles, aucune vide, placeholders identiques).
+  if (ref.ui) checkUiTree(id, '', ref.ui, got.ui || {});
 });
 
 // Cle inconnue (hors corpus) : signal d'un jeu retire/renomme depuis la derniere extraction.

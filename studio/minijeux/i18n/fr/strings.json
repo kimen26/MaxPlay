@@ -22,6 +22,9 @@
         }
       ],
       "etoiles": ""
+    },
+    "ui": {
+      "quelMotManque": "Quel mot manque dans la phrase ?"
     }
   },
   "mj-09": {
@@ -47,6 +50,23 @@
         }
       ],
       "etoiles": ""
+    },
+    "ui": {
+      "famille": {
+        "bleu": "Bleu",
+        "vert": "Vert",
+        "orangeJaune": "Orange/Jaune",
+        "violetRose": "Violet/Rose",
+        "rouge": "Rouge",
+        "brun": "Brun"
+      },
+      "rer": "RER {num}",
+      "metro": "Métro {num}",
+      "tram": "Tram {num}",
+      "glisseDansBoite": "Glisse dans la bonne boîte",
+      "bravoTangeRange": "BRAVO ! Tout rangé !",
+      "voilaFamilles": "Voilà toutes les familles de bus !",
+      "continuer": "Continuer →"
     }
   },
   "mj-13a": {
@@ -72,6 +92,14 @@
         }
       ],
       "etoiles": ""
+    },
+    "ui": {
+      "chargement": "Chargement…",
+      "quelBusPremier": "Quel bus arrive en premier ?",
+      "appuieSaFiche": "Appuie sur sa fiche !",
+      "bravo": "Bravo !",
+      "cetaitLe": "C’était le",
+      "essaieEncore": "Essaie encore !"
     }
   },
   "mj-13c": {
@@ -97,6 +125,17 @@
         }
       ],
       "etoiles": ""
+    },
+    "ui": {
+      "chargement": "Chargement…",
+      "combienAvantLe": "Combien de bus avant le",
+      "combienAvantLeNum": "Combien de bus avant le {num} ?",
+      "bravo": "Bravo !",
+      "busSing": "bus",
+      "busPlur": "bus",
+      "avantLe": "avant le",
+      "cetait": "C’était",
+      "compteLesUnParUn": "Compte les bus AVANT le bus demandé, un par un."
     }
   },
   "mj-14": {
@@ -172,6 +211,16 @@
         }
       ],
       "etoiles": ""
+    },
+    "ui": {
+      "tapeUnTube": "Tape un tube, puis tape un autre pour verser !",
+      "remelanger": "Remélanger",
+      "nouveau": "Nouveau",
+      "niveauLabel": "Niveau",
+      "couleursLabel": "couleurs",
+      "bravo": "Bravo !",
+      "tuAsTrie": "Tu as trié toutes les couleurs ! Regarde les bus repeints :",
+      "leDinoSeColorie": "Le dino se colorie avec toi !"
     }
   },
   "mj-19": {
@@ -247,6 +296,37 @@
         }
       ],
       "etoiles": ""
+    },
+    "ui": {
+      "pot": {
+        "rouge": "ROUGE",
+        "jaune": "JAUNE",
+        "bleu": "BLEU",
+        "blanc": "BLANC"
+      },
+      "vider": "Vider",
+      "indice": "Indice",
+      "laver": "Laver !",
+      "voilaLeSecret": "Voilà le secret !",
+      "ok": "OK !",
+      "brunTexte": "Prrrout !<br>C’est du marron !<br>Lave le tube !",
+      "pleinVideMoi": "Plein ! Vide-moi 🧽",
+      "bus": "Bus",
+      "couleur": {
+        "rouge": "rouge",
+        "jaune": "jaune",
+        "bleu": "bleu",
+        "vert": "vert",
+        "violet": "violet",
+        "rose": "rose",
+        "vertClair": "vert clair",
+        "bleuCiel": "bleu ciel",
+        "orange": "orange",
+        "or": "or",
+        "rosePale": "rose pâle",
+        "lavande": "lavande",
+        "brun": "brun"
+      }
     }
   },
   "mj-22": {
@@ -297,6 +377,18 @@
         }
       ],
       "etoiles": ""
+    },
+    "ui": {
+      "phrase": [
+        "Trouve le {n} !",
+        "Où est le {n} ?",
+        "Et maintenant… le {n} !",
+        "Tu me retrouves le {n} ?",
+        "Cherche le {n} !",
+        "Montre-moi le {n} !",
+        "À toi de jouer : le {n} !",
+        "Vite, trouve le {n} !"
+      ]
     }
   },
   "mj-28": {
@@ -322,6 +414,11 @@
         }
       ],
       "etoiles": ""
+    },
+    "ui": {
+      "consigne": "Quel dino se cache dans le noir ?",
+      "essaieEncore": "Essaie encore !",
+      "bravoNom": "Bravo ! C’est le {nom} !"
     }
   },
   "mj-30": {
@@ -347,6 +444,32 @@
         }
       ],
       "etoiles": ""
+    },
+    "ui": {
+      "cestBon": "C’est bon !",
+      "suivant": "Suivant →",
+      "petit": "petit",
+      "grand": "GRAND",
+      "consigne": {
+        "poids": "Range-les du plus léger au plus lourd !",
+        "taille": "Range-les du plus petit au plus grand !"
+      },
+      "modePoids": "Par poids",
+      "modeTaille": "Par taille",
+      "regardonsEnsemble": "Regardons ensemble !",
+      "plusLourd": "plus LOURD",
+      "plusGrand": "PLUS GRAND",
+      "comparaison": "Le {big} est {mot} que le {small} !",
+      "unite": {
+        "tCourt": "t",
+        "kgCourt": "kg",
+        "mCourt": "m",
+        "reperEnfant": "1 m (toi)",
+        "tonnes": "tonnes",
+        "kilos": "kilos",
+        "metres": "mètres"
+      },
+      "annonceMesure": "Le {nom} : {val} !"
     }
   },
   "mj-31": {
@@ -372,6 +495,21 @@
         }
       ],
       "etoiles": ""
+    },
+    "ui": {
+      "htitreLong": "Le grand voyage du temps",
+      "ilVivaitQuand": "Il vivait quand ?",
+      "bande": {
+        "permien": "Avant les dinosaures",
+        "cenozoique": "Après la météorite"
+      },
+      "date": {
+        "permien": "il y a 280 millions d’années",
+        "trias": "il y a 230 millions d’années",
+        "jurassique": "il y a 150 millions d’années",
+        "cretace": "il y a 66 à 100 millions d’années",
+        "cenozoique": "après 66 millions d’années"
+      }
     }
   },
   "mj-32": {
@@ -397,6 +535,21 @@
         }
       ],
       "etoiles": ""
+    },
+    "ui": {
+      "maGalerie": "Ma galerie",
+      "choisisUnDino": "Choisis un dino à colorier !",
+      "autreDino": "Autre dino",
+      "modele": "Modèle",
+      "fini": "Fini !",
+      "colorierAutre": "Colorier un autre dino !",
+      "galerieVide": "Pas encore d'œuvre... Colorie ton premier dino !",
+      "reprendreEnCopie": "Reprendre en copie",
+      "supprimerCeDessin": "Supprimer ce dessin ?",
+      "non": "Non",
+      "oui": "Oui",
+      "magnifiqueNom": "Magnifique ! Ton {nom} est superbe !",
+      "magnifique": "Magnifique !"
     }
   },
   "mj-34": {
@@ -422,6 +575,10 @@
         }
       ],
       "etoiles": ""
+    },
+    "ui": {
+      "libereLeBusJaune": "Libère le bus jaune !",
+      "sortie": "SORTIE"
     }
   },
   "mj-35": {

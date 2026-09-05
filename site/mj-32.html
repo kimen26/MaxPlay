@@ -138,13 +138,13 @@
   <div id="app">
     <div class="hdr">
       <a href="index.html" class="back">←</a>
-      <span class="htitle">🖍️ L’atelier coloriage</span>
+      <span class="htitle" id="htitle">🖍️ L’atelier coloriage</span>
     </div>
 
     <!-- ÉCRAN CHOIX -->
     <div class="screen" id="screenChoice">
       <button id="galleryBtn">🖼️ Ma galerie</button>
-      <div class="choice-title">Choisis un dino à colorier !</div>
+      <div class="choice-title" id="choiceTitle">Choisis un dino à colorier !</div>
       <div class="grid" id="grid"></div>
     </div>
 
@@ -167,7 +167,7 @@
     <!-- ÉCRAN GALERIE -->
     <div class="screen hidden" id="screenGallery">
       <button id="galleryColorBtn">🎨 Colorier un autre dino !</button>
-      <div class="choice-title">🖼️ Ma galerie</div>
+      <div class="choice-title" id="galleryTitle">🖼️ Ma galerie</div>
       <div class="grid" id="galleryView"></div>
       <div class="gallery-empty hidden" id="galleryEmpty">Pas encore d'œuvre... Colorie ton premier dino !</div>
     </div>
@@ -181,7 +181,7 @@
 
   <div id="confirmModal" class="hidden">
     <div class="box">
-      <div class="msg">Supprimer ce dessin ?</div>
+      <div class="msg" id="confirmMsg">Supprimer ce dessin ?</div>
       <div class="row">
         <button class="no" id="confirmNo">Non</button>
         <button class="yes" id="confirmYes">Oui</button>
@@ -195,8 +195,12 @@
   <script src="js/mj-shell.js"></script>
   <script>
   MJ.ready(function () {
+    document.title = 'MJ-32 – ' + MJi18n.titre('mj-32', 'L’atelier coloriage');
+    const htitleEl32 = document.getElementById('htitle');
+    if (htitleEl32) htitleEl32.textContent = '🖍️ ' + MJi18n.titre('mj-32', 'L’atelier coloriage');
+
     MJ.init({
-      id: 'mj-32', emoji: '🖍️', titre: 'L’atelier coloriage',
+      id: 'mj-32', emoji: '🖍️', titre: MJi18n.titre('mj-32', 'L’atelier coloriage'),
       golden: false,
       consigne: false,
       regle: {
@@ -545,9 +549,9 @@
 
       if (typeof playEndSound === 'function') playEndSound(1, 1);
       if (window.TTS && TTS.supported()) {
-        TTS.speak('Magnifique ! Ton ' + currentDino.name + ' est superbe !', { pitch: 1.05, priority: true });
+        TTS.speak(MJi18n.t('mj-32', 'magnifiqueNom', 'Magnifique ! Ton {nom} est superbe !', { nom: currentDino.name }), { pitch: 1.05, priority: true });
       }
-      if (window.MaxFX) MaxFX.finalStar(document.getElementById('screenAtelier'), {style:'breathe', label:'Magnifique !'});
+      if (window.MaxFX) MaxFX.finalStar(document.getElementById('screenAtelier'), {style:'breathe', label: MJi18n.t('mj-32', 'magnifique', 'Magnifique !')});
 
       setTimeout(() => openGallery(), 900);
     }
@@ -683,7 +687,25 @@
       document.getElementById('screenChoice').classList.remove('hidden');
     }
 
+    // Textes statiques du DOM (boutons, titres d'écran, modale) traduits une fois au
+    // démarrage — le FR d'origine reste le repli si la clé est absente du pack.
+    function applyStaticUi() {
+      document.getElementById('galleryBtn').textContent = '🖼️ ' + MJi18n.t('mj-32', 'maGalerie', 'Ma galerie');
+      document.getElementById('choiceTitle').textContent = MJi18n.t('mj-32', 'choisisUnDino', 'Choisis un dino à colorier !');
+      document.getElementById('backChoiceBtn').textContent = '🔙 ' + MJi18n.t('mj-32', 'autreDino', 'Autre dino');
+      document.getElementById('modelBtn').textContent = '🦕 ' + MJi18n.t('mj-32', 'modele', 'Modèle');
+      document.getElementById('finBtn').textContent = '✅ ' + MJi18n.t('mj-32', 'fini', 'Fini !');
+      document.getElementById('galleryColorBtn').textContent = '🎨 ' + MJi18n.t('mj-32', 'colorierAutre', 'Colorier un autre dino !');
+      document.getElementById('galleryTitle').textContent = '🖼️ ' + MJi18n.t('mj-32', 'maGalerie', 'Ma galerie');
+      document.getElementById('galleryEmpty').textContent = MJi18n.t('mj-32', 'galerieVide', 'Pas encore d\'œuvre... Colorie ton premier dino !');
+      document.getElementById('resumeBtn').textContent = '🖍️ ' + MJi18n.t('mj-32', 'reprendreEnCopie', 'Reprendre en copie');
+      document.getElementById('confirmMsg').textContent = MJi18n.t('mj-32', 'supprimerCeDessin', 'Supprimer ce dessin ?');
+      document.getElementById('confirmNo').textContent = MJi18n.t('mj-32', 'non', 'Non');
+      document.getElementById('confirmYes').textContent = MJi18n.t('mj-32', 'oui', 'Oui');
+    }
+
     function init() {
+      applyStaticUi();
       buildGrid();
       buildPalette();
       document.getElementById('galleryBtn').onclick = openGallery;

@@ -210,3 +210,9 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 
 ---
 
+
+### L-100 – Un fichier pack partagé (strings.json) = un seul agent à la fois
+2026-09-06, EPIC i18n mini-jeux : deux agents en parallèle (HO-MJ-05 sur 4 jeux, HO-MJ-06 sur les consignes parlées) écrivaient tous deux `studio/minijeux/i18n/{fr,en}/strings.json` et le bundle généré. Rien n'a été perdu cette fois (le second a relu après l'écriture du premier), mais le commit du premier a embarqué les clés du second : paternité mélangée et risque réel d'écrasement lire-modifier-écrire (même mécanique que L-D-73 côté dino). Règle : quand deux chantiers touchent le même fichier pack, les enchaîner, ou donner à chacun son propre fichier fusionné ensuite par l'orchestrateur.
+
+### L-101 – Un outil « emprunté » à un autre pôle écrit chez lui
+2026-09-06 : `studio/dino/content/scripts/audio/_md2json-hors-fiche.cjs` accepte un `.md` en argument, donc il a servi pour les consignes parlées des mini-jeux… et a écrit les 81 JSON dans le dossier du dino (supprimés à la main). Avant de réutiliser un outil d'un autre pôle sur du contenu du sien : vérifier où il écrit, ajouter une option de sortie (`--out=`) ou le dupliquer proprement dans `studio/minijeux/tools/`. Ticket VOIX-MJ-EN-AUDIO.

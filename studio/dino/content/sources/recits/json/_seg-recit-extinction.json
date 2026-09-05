@@ -2,47 +2,103 @@
   "inputs": [
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[serious][softly] Il y a soixante-six millions d'années. [pauses] Une météorite tombe du ciel. [gasps] Dix kilomètres de large — grande comme Paris."
+      "text": "[serious] [softly] Il y a soixante-six millions d'années, [pauses] à la fin du Crétacé. [calm] Depuis longtemps déjà, la Terre gronde."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Elle est énorme !"
+      "text": "[curious] Elle gronde comment ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[softly][serious] Énorme. [pauses] Elle s'écrase au Mexique, sur la péninsule du Yucatán, à Chicxulub. [shouts] KA-BOOM ! [excited] Des tremblements de terre ! Des tsunamis !"
+      "text": "[serious] En Inde, d'immenses volcans crachent de la lave, [pauses] de la fumée et des cendres. [gasps] Le sol se fend sur des kilomètres, et la lave jaillit des fissures. [calm] Des tremblements de terre secouent régulièrement la terre, [softly] soulèvent de la poussière, et affolent les animaux. [pauses] Le ciel est déjà gris."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Tout le monde meurt ?"
+      "text": "[nervous] Et les dinosaures, ils vivent quand même ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[serious][softly] Pas tout de suite. [pauses] En Inde, des volcans crachent des cendres depuis des années. [gasps] Le ciel devient noir. [serious] Plus de soleil. Il fait très froid."
+      "text": "[warmly] Ils vivent. [softly] Le soleil passe encore. Il y a parfois des drames, [calm] mais c'est leur vie : Tritri broute, le T-Rex chasse, [happily] la vie continue."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Les plantes ?"
+      "text": "[curious] Et alors ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[softly][sad] Les plantes meurent. [serious] Les grands herbivores n'ont plus à manger. Les carnivores n'ont plus d'herbivores. [pauses] Tous les grands dinosaures disparaissent."
+      "text": "[softly] Mais un jour, [pauses] au loin dans le ciel, un minuscule point brille. [serious] Il se rapproche. [gasps] Il devient de plus en plus gros. [shouts] C'est une météorite géante ! [amazed] Dix kilomètres de large, aussi large que la ville de Paris."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Les oiseaux sont des dinosaures ?"
+      "text": "[gasps] Elle tombe où ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[excited][happily] Exactement ! [gasps] Le moineau sur le balcon, c'est un dinosaure vivant. Les crocodiles, les tortues, les grenouilles survivent aussi."
+      "text": "[serious] En Amérique du Nord, au Mexique, [pauses] sur la péninsule du Yucatán, dans une mer peu profonde. [gasps] Elle creuse un trou de cent quatre-vingts kilomètres : [calm] le cratère de Chicxulub. [softly] Aujourd'hui encore, il est moitié sous la terre, moitié sous la mer."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[excited][curious] Et quoi d'autre ?"
+      "text": "[curious] Elle fait juste un gros trou, c'est si grave ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily] Le temps passe. [playful] Puis, [pauses] le ciel redevient clair. [gasps] Et de nouveaux animaux vont grandir… [pauses]"
+      "text": "[serious] Au moment de l'impact, [pauses] une chaleur terrible. [gasps] À plus de mille kilomètres, tout est balayé ou brûle en quelques secondes. [serious] La Terre tremble comme jamais : [pauses] dans les montagnes, des pans de rocher s'effondrent, [softly] des forêts entières tombent."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[nervous] Et dans la mer ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious] Des vagues géantes. [gasps] Près du cratère, plus hautes qu'un immeuble de trente étages. [pauses] Loin, sur tous les océans du monde, encore hautes comme trois étages, [serious] elles ravagent toutes les terres au bord de l'eau. [softly] Et des tonnes de terre et de poussière montent encore dans le ciel."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Pourquoi tu me parles autant du ciel ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[softly] Parce que sur la terre et dans les mers, c'est terrible : [sad] des milliers d'animaux blessés, séparés de leur troupeau, [pauses] beaucoup qui meurent. [serious] Mais ce n'est pas le pire. [pauses] La vraie catastrophe est dans le ciel."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[nervous] Il devient noir ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious] [softly] Tout noir. [pauses] Pendant des jours, des mois, [gasps] sûrement des années. [calm] Le soleil ne passe plus. Plus de lumière, plus de chaleur. [softly] Il fait froid, de plus en plus froid."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Qui meurt en premier ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[sad] Les plantes. [serious] Sans soleil, les plantes meurent, [pauses] et la chaîne alimentaire est cassée. [softly] Les grands herbivores n'ont plus rien à manger, ils meurent de faim. [serious] Puis les carnivores, qui n'ont plus d'herbivores, [pauses] meurent à leur tour."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[sad] Tritri aussi ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[softly] Tritri aussi. [serious] Sur terre, tout ce qui est plus gros qu'un gros chien disparaît. [pauses] Tous les dinosaures meurent."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il reste quelqu'un ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[warmly] Les petits, [pauses] agiles, solides : des petits mammifères, des petits oiseaux, [happily] qui sont de vrais dinosaures. [calm] Dans la mer aussi : les requins, les tortues, les crocodiles."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et c'est la fin ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious] C'est la fin du Crétacé, [pauses] mais c'est aussi la fin du Mésozoïque, l'âge des dinosaures. [calm] Les savants appellent ce moment la limite Crétacé-Paléogène. [warmly] Car avec cette grande extinction, une nouvelle ère s'ouvre : [pauses] le Cénozoïque, avec sa première période, le Paléogène. [happily] Et quand le ciel redevient clair, [pauses] c'est le tour des petits."
     }
   ],
   "model_id": "eleven_v3",

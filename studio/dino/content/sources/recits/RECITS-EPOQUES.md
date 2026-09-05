@@ -166,27 +166,64 @@
 
 ## ÉP. 4 — LA GRANDE EXTINCTION (recit-extinction.mp3)
 
-**NARRATRICE** [serious][softly] : Il y a soixante-six millions d'années. [pauses] Une météorite tombe du ciel. [gasps] Dix kilomètres de large — grande comme Paris.
+> **V2 2026-09-05** — réécrit avec Papa Yann (« les mots et l'enchaînement sont importants »). Enchaînement : volcans déjà actifs
+> (trapps du Deccan, Inde : la lave jaillit de longues fissures — éruptions fissurales, vrai) → la vie continue → météorite de 10 km,
+> Yucatán, mer peu profonde, cratère de Chicxulub (180 km, moitié terre moitié mer aujourd'hui) → chaleur et débris à plus de
+> 1 000 km → séismes géants, éboulements, tsunamis (plus de 100 m près de l'impact = 30 étages ; ~10 m au loin = 3 étages)
+> → poussière → NUIT de plusieurs mois, peut-être des années → froid → plantes → herbivores → carnivores → sur terre rien de plus
+> gros qu'un gros chien ne survit (~25 kg) → survivants : petits mammifères, oiseaux, en mer requins, tortues, crocodiles →
+> limite Crétacé-Paléogène : fin du Mésozoïque, le Cénozoïque s'ouvre avec le Paléogène. Fact-check Wikipedia/Britannica/NASA
+> (Grokipedia 403 ce soir). Tritri : 2 mentions assumées ici (fil rouge du Voyage, pas une fiche). Durée visée ~80 s (PY : « le voyage est hyper important »).
 
-**WEX** [gasps] : Elle est énorme !
+**NARRATRICE** [serious] [softly] : Il y a soixante-six millions d'années, [pauses] à la fin du Crétacé. [calm] Depuis longtemps déjà, la Terre gronde.
 
-**NARRATRICE** [softly][serious] : Énorme. [pauses] Elle s'écrase au Mexique, sur la péninsule du Yucatán, à Chicxulub. [shouts] KA-BOOM ! [excited] Des tremblements de terre ! Des tsunamis !
+**WEX** [curious] : Elle gronde comment ?
 
-**WEX** [curious] : Tout le monde meurt ?
+**NARRATRICE** [serious] : En Inde, d'immenses volcans crachent de la lave, [pauses] de la fumée et des cendres. [gasps] Le sol se fend sur des kilomètres, et la lave jaillit des fissures. [calm] Des tremblements de terre secouent régulièrement la terre, [softly] soulèvent de la poussière, et affolent les animaux. [pauses] Le ciel est déjà gris.
 
-**NARRATRICE** [serious][softly] : Pas tout de suite. [pauses] En Inde, des volcans crachent des cendres depuis des années. [gasps] Le ciel devient noir. [serious] Plus de soleil. Il fait très froid.
+**WEX** [nervous] : Et les dinosaures, ils vivent quand même ?
 
-**WEX** [curious] : Les plantes ?
+**NARRATRICE** [warmly] : Ils vivent. [softly] Le soleil passe encore. Il y a parfois des drames, [calm] mais c'est leur vie : Tritri broute, le T-Rex chasse, [happily] la vie continue.
 
-**NARRATRICE** [softly][sad] : Les plantes meurent. [serious] Les grands herbivores n'ont plus à manger. Les carnivores n'ont plus d'herbivores. [pauses] Tous les grands dinosaures disparaissent.
+**WEX** [curious] : Et alors ?
 
-**WEX** [curious] : Les oiseaux sont des dinosaures ?
+**NARRATRICE** [softly] : Mais un jour, [pauses] au loin dans le ciel, un minuscule point brille. [serious] Il se rapproche. [gasps] Il devient de plus en plus gros. [shouts] C'est une météorite géante ! [amazed] Dix kilomètres de large, aussi large que la ville de Paris.
 
-**NARRATRICE** [excited][happily] : Exactement ! [gasps] Le moineau sur le balcon, c'est un dinosaure vivant. Les crocodiles, les tortues, les grenouilles survivent aussi.
+**WEX** [gasps] : Elle tombe où ?
 
-**WEX** [excited][curious] : Et quoi d'autre ?
+**NARRATRICE** [serious] : En Amérique du Nord, au Mexique, [pauses] sur la péninsule du Yucatán, dans une mer peu profonde. [gasps] Elle creuse un trou de cent quatre-vingts kilomètres : [calm] le cratère de Chicxulub. [softly] Aujourd'hui encore, il est moitié sous la terre, moitié sous la mer.
 
-**NARRATRICE** [happily] : Le temps passe. [playful] Puis, [pauses] le ciel redevient clair. [gasps] Et de nouveaux animaux vont grandir… [pauses]
+**WEX** [curious] : Elle fait juste un gros trou, c'est si grave ?
+
+**NARRATRICE** [serious] : Au moment de l'impact, [pauses] une chaleur terrible. [gasps] À plus de mille kilomètres, tout est balayé ou brûle en quelques secondes. [serious] La Terre tremble comme jamais : [pauses] dans les montagnes, des pans de rocher s'effondrent, [softly] des forêts entières tombent.
+
+**WEX** [nervous] : Et dans la mer ?
+
+**NARRATRICE** [serious] : Des vagues géantes. [gasps] Près du cratère, plus hautes qu'un immeuble de trente étages. [pauses] Loin, sur tous les océans du monde, encore hautes comme trois étages, [serious] elles ravagent toutes les terres au bord de l'eau. [softly] Et des tonnes de terre et de poussière montent encore dans le ciel.
+
+**WEX** [curious] : Pourquoi tu me parles autant du ciel ?
+
+**NARRATRICE** [softly] : Parce que sur la terre et dans les mers, c'est terrible : [sad] des milliers d'animaux blessés, séparés de leur troupeau, [pauses] beaucoup qui meurent. [serious] Mais ce n'est pas le pire. [pauses] La vraie catastrophe est dans le ciel.
+
+**WEX** [nervous] : Il devient noir ?
+
+**NARRATRICE** [serious] [softly] : Tout noir. [pauses] Pendant des jours, des mois, [gasps] sûrement des années. [calm] Le soleil ne passe plus. Plus de lumière, plus de chaleur. [softly] Il fait froid, de plus en plus froid.
+
+**WEX** [curious] : Qui meurt en premier ?
+
+**NARRATRICE** [sad] : Les plantes. [serious] Sans soleil, les plantes meurent, [pauses] et la chaîne alimentaire est cassée. [softly] Les grands herbivores n'ont plus rien à manger, ils meurent de faim. [serious] Puis les carnivores, qui n'ont plus d'herbivores, [pauses] meurent à leur tour.
+
+**WEX** [sad] : Tritri aussi ?
+
+**NARRATRICE** [softly] : Tritri aussi. [serious] Sur terre, tout ce qui est plus gros qu'un gros chien disparaît. [pauses] Tous les dinosaures meurent.
+
+**WEX** [curious] : Il reste quelqu'un ?
+
+**NARRATRICE** [warmly] : Les petits, [pauses] agiles, solides : des petits mammifères, des petits oiseaux, [happily] qui sont de vrais dinosaures. [calm] Dans la mer aussi : les requins, les tortues, les crocodiles.
+
+**WEX** [curious] : Et c'est la fin ?
+
+**NARRATRICE** [serious] : C'est la fin du Crétacé, [pauses] mais c'est aussi la fin du Mésozoïque, l'âge des dinosaures. [calm] Les savants appellent ce moment la limite Crétacé-Paléogène. [warmly] Car avec cette grande extinction, une nouvelle ère s'ouvre : [pauses] le Cénozoïque, avec sa première période, le Paléogène. [happily] Et quand le ciel redevient clair, [pauses] c'est le tour des petits.
 
 ---
 

@@ -102,24 +102,32 @@
 ---
 
 ### recit-extinction
-**NARRATEUR H** [serious][softly] : Sixty-six million years ago. [pauses] A meteorite falls from the sky. [gasps] Six miles wide — as big as an entire city.
-**WEX** [gasps] : That's huge.
 
-**NARRATEUR H** [softly][serious] : Huge. [pauses] It crashes into Mexico, on the Yucatan Peninsula, at Chicxulub. [amazed] KA-BOOM! [excited] Earthquakes! Tsunamis!
-**WEX** [curious] : Does everything die?
-
-**NARRATEUR H** [serious][softly] : Not right away. [pauses] In India, volcanoes have been spewing ash for years. [gasps] The sky turns black. [serious] No more sun. It gets very cold.
-**WEX** [curious] : What about the plants?
-
-**NARRATEUR H** [softly][sad] : The plants die. [serious] The big plant-eaters have nothing left to eat. The meat-eaters have no more plant-eaters. [pauses] All the big dinosaurs disappear.
-**WEX** [curious] : Are birds dinosaurs?
-
-**NARRATEUR H** [excited] : Exactly! [gasps] The sparrow on the porch — that's a living dinosaur. [happily] Crocodiles, turtles, and frogs survive too.
-**WEX** [excited][curious] : What else?
-
-**NARRATEUR H** [happily] : Time goes on. [playful] Then, [pauses] the sky clears up again. [gasps] And new animals begin to grow…
-
----
+**NARRATRICE** [serious] [softly] : Sixty-six million years ago, [pauses] at the end of the Cretaceous. [calm] For a long time already, the Earth has been rumbling.
+**WEX** [curious] : Rumbling how?
+**NARRATRICE** [serious] : In India, huge volcanoes spit lava, [pauses] smoke, and ash. [gasps] The ground splits open for miles, and lava pours out of the cracks. [calm] Earthquakes shake the land again and again, [softly] lifting dust, scaring the animals. [pauses] The sky is already gray.
+**WEX** [nervous] : And the dinosaurs, do they still live?
+**NARRATRICE** [warmly] : They live. [softly] The sun still gets through. Sometimes there are dramas, [calm] but that's their life: Tritri grazes, T. rex hunts, [happily] life goes on.
+**WEX** [curious] : And then?
+**NARRATRICE** [softly] : But one day, [pauses] far away in the sky, a tiny dot is shining. [serious] It gets closer. [gasps] It gets bigger and bigger. [shouts] It's a giant meteorite! [amazed] Six miles wide, as wide as a whole big city.
+**WEX** [gasps] : Where does it land?
+**NARRATRICE** [serious] : In North America, in Mexico, [pauses] on the Yucatán peninsula, in a shallow sea. [gasps] It digs a hole a hundred and ten miles wide: [calm] the Chicxulub crater. [softly] Even today, half of it is under the land, half under the sea.
+**WEX** [curious] : It just makes a big hole, is that so bad?
+**NARRATRICE** [serious] : At the moment of impact, [pauses] a terrible heat. [gasps] More than six hundred miles away, everything is swept away or burns in seconds. [serious] The Earth shakes like never before: [pauses] in the mountains, whole cliffs collapse, [softly] entire forests fall.
+**WEX** [nervous] : And in the sea?
+**NARRATRICE** [serious] : Giant waves. [gasps] Near the crater, taller than a thirty-story building. [pauses] Far away, on every ocean in the world, still three stories tall, [serious] they wreck every land along the water. [softly] And tons of dirt and dust rise higher still into the sky.
+**WEX** [curious] : Why do you keep talking about the sky?
+**NARRATRICE** [softly] : Because on land and in the seas, it's terrible: [sad] thousands of animals hurt, lost from their herds, [pauses] many dying. [serious] But that's not the worst. [pauses] The real disaster is in the sky.
+**WEX** [nervous] : Does it turn black?
+**NARRATRICE** [serious] [softly] : All black. [pauses] For days, for months, [gasps] surely for years. [calm] The sun can't get through. No more light, no more warmth. [softly] It gets cold, colder and colder.
+**WEX** [curious] : Who dies first?
+**NARRATRICE** [sad] : The plants. [serious] Without sun, the plants die, [pauses] and the food chain is broken. [softly] The big plant-eaters have nothing left to eat, they starve. [serious] Then the meat-eaters, with no plant-eaters left, [pauses] die in their turn.
+**WEX** [sad] : Tritri too?
+**NARRATRICE** [softly] : Tritri too. [serious] On land, everything bigger than a big dog disappears. [pauses] All the dinosaurs die.
+**WEX** [curious] : Is anyone left?
+**NARRATRICE** [warmly] : The small ones, [pauses] quick and tough: little mammals, little birds, [happily] which are true dinosaurs. [calm] In the sea too: sharks, turtles, crocodiles.
+**WEX** [curious] : And is that the end?
+**NARRATRICE** [serious] : It's the end of the Cretaceous, [pauses] but it's also the end of the Mesozoic, the age of dinosaurs. [calm] Scientists call this moment the Cretaceous-Paleogene boundary. [warmly] Because with this great extinction, a new era opens: [pauses] the Cenozoic, with its first period, the Paleogene. [happily] And when the sky clears again, [pauses] it's the small ones' turn.
 
 ### recit-mammiferes
 **NARRATEUR H** [excited][playful] : Here we are in the [serious] age of mammals! [happily] The sky clears up. The weather turns mild again. The forests grow back.

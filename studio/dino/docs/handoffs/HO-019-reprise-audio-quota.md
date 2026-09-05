@@ -12,6 +12,8 @@
 | EN — hors fiches : 5 accroches d'onglet, 11 familles, 4 régimes, 8 récits, 8 spéciaux, 5 périodes, 101 clips dico (scripts HO-018, JSON prêts) | 142 clips | 26 814 (mesuré) | ≈ 54 000 |
 | **Total** | | | **≈ 270 000** |
 
+Mise à jour 2026-09-05 (nuit) : les 12 récits FR du Voyage V2 (dont Grande Mort, Grande Extinction V2) et les 3 accroches d ères sont DÉJÀ générés ; le solde est tombé à ≈ 3,7 k. Le poste FR restant = les 35 fiches. Les récits EN (12) sont dans les 150 clips hors fiches.
+
 Palier actuel : Creator, 173 048 caractères / mois, reset le **2026-09-11 à 03:15** (Europe/Paris). Solde au 2026-09-05 après les régénérations du jour : ≈ 15 000.
 Les scripts sont prêts : fiches 71 × 4 langues (porte 0 KO) et 142 clips EN hors fiches (HO-018, JSON dans `content/i18n/en/scripts-hors-fiche/json/`).
 

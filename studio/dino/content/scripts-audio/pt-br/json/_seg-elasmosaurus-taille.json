@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 13 metros de comprimento — do tamanho de um ônibus articulado! [amazed] De pé, ele tinha 1 metro de altura — do tamanho de uma criança de 4 anos! E pesava 2500 quilos — [serious] tão pesado quanto 5 cavalos!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] 13 metros, mas ele era bem fininho, né?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Bem fininho, sim — principalmente por causa do pescoço. [amazed] Só o pescoço já é metade do comprimento dele."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

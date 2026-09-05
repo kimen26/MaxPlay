@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era carnívoro. Caçava mamíferos pequenos e cavalos filhotes, [amazed] correndo, sozinho. [quickly] Os cientistas acham que ele conseguia correr a 45 quilômetros por hora — que nem um cavalo a galope."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele pegava a presa como, sem mãos?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Com o bico enorme e curvo dele, [amazed] maior que sua cabeça."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

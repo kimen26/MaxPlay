@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] O Escelidossauro é um dos primeiríssimos dinossauros encontrados quase INTEIROS. [amazed] Um operário inglês descobriu ele [curious] num penhasco, há quase 170 anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Quase inteiro, num penhasco."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly] Isso. E o esqueleto dele ainda está lá hoje, no grande museu de Londres. [proud] Batizaram ele de \"harrisonii\", [warmly] de presente pra quem o encontrou."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

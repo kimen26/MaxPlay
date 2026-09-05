@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Ele comia de tudo — [confident] bichinhos pequenos, plantas, talvez ovos também. Vivia em casal pra criar os filhotes."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele tinha inimigos?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Carnívoros, que nem o Velocirraptor. [serious] Ele tinha que ficar atento, principalmente perto do ninho."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

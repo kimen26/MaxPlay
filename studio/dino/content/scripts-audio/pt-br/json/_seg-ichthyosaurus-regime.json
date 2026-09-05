@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Ele caçava peixes e lulas, em grupo, meio que nem os golfinhos de hoje. [confident] Mas no mar dele, tinha algo mais forte."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[scared] O quê?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[gently] Os grandes pliossauros da época dele, que nem o Romaleossauro. [warmly] Perto deles, o Ictiossauro tinha que ficar esperto."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

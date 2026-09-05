@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Herbívoro, sozinho ou em grupo pequeno. [calm] Comia as plantas baixas."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele corria rápido, pra escapar do Dilofossauro?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] O rabo comprido dele ajudava a manter o equilíbrio ao correr, [pauses] que nem um balancim. O único dino com armadura que corria em duas patas."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

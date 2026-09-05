@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Sau… ro… lo… fo. [curious] Em grego antigo, \"sauro\" é o lagarto. E \"lofo\" é a crista. [pauses] O lagarto de crista."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Uma crista, que nem um chapéu pontudo?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Quase. Um espinho de osso maciço, bem reto, [curious] apontando pra trás e pra cima. [warmly] Ele vivia há 70 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] E onde ele vivia?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] É isso que é mais surpreendente: no Canadá, e [confident] na Mongólia também, do outro lado do mundo, ao mesmo tempo. [amazed] Uma ponte de terra ligava os dois continentes naquela época."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Pla… té… o… ssauro. [curious] Em grego, \"plateo\" quer dizer largo, chato."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] O lagarto chato?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] É esse o nome dele, sim — [amazed] mesmo que ele mesmo não fosse nada chato. [calm] Ele vivia na Europa, na Alemanha, na França e na Suíça, há 210 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] 210 milhões? Isso é antes do T-Rex?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Bem antes. [proud] O Platéossauro é um dos primeiríssimos grandes dinossauros herbívoros de toda a história."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

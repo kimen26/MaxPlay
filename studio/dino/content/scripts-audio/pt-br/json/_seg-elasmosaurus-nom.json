@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[curious] Elasmossauro. Em grego, \"elasmo\" quer dizer uma placa de metal bem fina. [serious] Os ossos do ombro dele eram achatados que nem placas, [confident] então os cientistas chamaram ele assim."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[playful] O lagarto-placa?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Quase. O lagarto de placas finas. Ele vivia há 80 milhões de anos, [amazed] num mar enorme que cortava [serious] a América do Norte ao meio."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Um mar bem no MEIO da terra?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Exatamente. Toda essa região estava debaixo d'água, naquela época."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

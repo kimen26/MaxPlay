@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Herbívoro, em manada grande. [calm] Comia plantas baixas com o pescoço comprido quase na horizontal."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] E o rabo dele, servia pra mais alguma coisa além de se defender?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Ele estalava o rabo que nem um chicote, bem rápido. [whispers] Os cientistas acham que isso podia fazer um barulho enorme, quase que nem trovão."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

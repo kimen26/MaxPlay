@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[curious] Mos… cops. \"Moscos\", em grego, é o bezerro — [serious] o filhote da vaca. E \"ops\", o rosto."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] O rosto de bezerro?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso — os cientistas acharam que a cabeça grande dele parecia com a de um bezerro. [amazed] Ele vivia na África do Sul, há 265 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ainda antes dos dinossauros?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Ainda antes, sim. Um primo bem antigo dos bichos peludos — [warmly] que nem o Gorgonopse, que vivia na mesma região."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

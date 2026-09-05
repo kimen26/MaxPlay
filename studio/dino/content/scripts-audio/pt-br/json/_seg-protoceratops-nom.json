@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Pro… to… ce… rá… tops. [curious] \"Proto\", em grego, quer dizer o primeiro. \"Cerat\", o chifre. E \"ops\", o rosto."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] O primeiro rosto com chifre."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Quase: ele ainda [curious] não tinha um chifre de verdade, só uma bossinha no nariz. [warmly] O primeiríssimo ancestral dos dinos de chifre. Ele vivia na Mongólia, na Ásia, há 75 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Com quem ele vivia, lá?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] O Velocirraptor caçava no mesmo deserto."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

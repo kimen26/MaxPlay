@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ela media 4 metros de comprimento — que nem um carro pequeno! [amazed] De pé, ela tinha 1 metro e 20 de altura — do tamanho de uma criança de 4 anos! E pesava 2200 quilos — [serious] tão pesado quanto um rinoceronte!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Uma tartaruga tão pesada quanto um rinoceronte?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[chuckles] Uma tartaruga tão pesada quanto um rinoceronte, sim — [confident] mas que flutuava, graças às nadadeiras grandes dela."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

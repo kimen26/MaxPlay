@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era herbívoro. Comia plantas baixas e samambaias, [confident] talvez em manada, pra proteger melhor os filhotes."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[nervous] E o T-Rex, ele atacava?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Ele tentava. [warmly] Mas o Tritri se defendia com os três chifres dele. O Tricerátops não recuava diante de ninguém."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

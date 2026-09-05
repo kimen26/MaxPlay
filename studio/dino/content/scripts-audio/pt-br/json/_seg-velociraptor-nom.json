@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ve… lo… ci… rrap… tor. Em latim, \"veloci\" quer dizer rápido — que nem velocidade. [curious] E \"raptor\" é o ladrão. Você adivinha?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] O ladrão veloz."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso mesmo. [proud] Ele vivia na Ásia, no deserto da Mongólia, há 75 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele caçava em bando grande, [nervous] que nem nos filmes?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Não, isso [gently] é um mito. O Velocirraptor de verdade caçava mais sozinho, ou em dupla."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

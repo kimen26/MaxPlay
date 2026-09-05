@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Herbívoro, em manada. [calm] Andava principalmente nas quatro patas."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele tinha inimigos, numa época tão antiga assim?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Grandes caçadores de quatro patas rondavam a Europa. [serious] Mas nenhum grande carnívoro de duas patas existia ainda — [calm] esses viriam bem mais tarde."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

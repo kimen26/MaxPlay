@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Quet… zal… co… a… tlus. Esse nome vem de um deus! [serious] Quetzalcoatl é a grande serpente emplumada dos astecas, um povo antigo do México. [curious] Um nome e tanto pra um animal e tanto, né?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] O dinossauro do deus serpente emplumada."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Atenção, [gently] ele não é um dinossauro — é um réptil voador, um pterossauro. [proud] Ele vivia na América do Norte, há 68 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Essa era a época do Tritri?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Era, bem no fim do Cretáceo — [amazed] o Quetzalcoatlus talvez voasse bem por cima da cabeça do Tricerátops."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

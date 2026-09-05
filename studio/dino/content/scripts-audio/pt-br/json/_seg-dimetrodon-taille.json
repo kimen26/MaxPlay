@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 3 metros e 50 de comprimento — que nem um carro pequeno! [amazed] De pé, ele tinha 1 metro e 80 de altura — do tamanho do papai em pé! E pesava 250 quilos — [serious] tão pesado quanto um tigre!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Do tamanho do papai?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[chuckles] Do tamanho dele, sim — [proud] principalmente por causa da vela, bem em pé nas costas dele."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ma… ia… ssau… ra. [curious] Em grego, \"maia\" quer dizer a boa mãe, a parteira. E \"saura\" é lagarto, no feminino."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] A lagarta boa mãe."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exatamente. [warmly] Ela vivia nos Estados Unidos, em Montana, há 76 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Por que chamam ela assim, \"boa mãe\"?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[gently] Porque encontraram os ninhos dela, cheios de ovos e filhotes. [serious] O Daspletossauro caçava os jovens; [nervous] o pequeno Troodon, às vezes, vinha roubar ovos."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

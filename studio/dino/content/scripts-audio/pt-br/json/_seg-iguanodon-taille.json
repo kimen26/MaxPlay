@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 10 metros de comprimento — do tamanho de um caminhão! 2 metros e 70 de altura — [quickly] da altura de uma trave de futebol! E 3 mil quilos — [amazed] tão pesado quanto um hipopótamo!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Da altura de uma trave de futebol?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Isso, na altura dos ombros. [warmly] Com um rabo comprido, e um bico grande de pato."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

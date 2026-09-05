@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 4 metros e 50 de comprimento — do tamanho de uma 4x4 grande! 1 metro e 50 de altura — [quickly] da altura de um carro — tinha que olhar pra cima! E 450 quilos — [amazed] tão pesado quanto um cavalo!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Não muito grande, então."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Não muito grande, não. [serious] Mas o crânio dele tinha 25 centímetros de espessura. Um verdadeiro capacete-bala."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ar… que… op… té… rix. Em grego, \"arqueo\" quer dizer antigo, bem velho. [serious] E \"ptérix\" é a asa. [curious] Então, o que dá?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] A asa antiga."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso mesmo. [proud] Ele vivia na Europa, na Alemanha, há 150 milhões de anos — é um dos primeiríssimos pássaros que a gente conhece."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Um pássaro que vivia junto com os dinossauros?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Exatamente. [amazed] E ele ainda não era bem um pássaro que nem os de hoje."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Ele cortava plantas baixas com o bico, e vivia em quantidade enorme. [confident] Logo depois da maior catástrofe da história da Terra, [calm] quase nenhum caçador restava pra ameaçar ele."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Uma catástrofe, tipo o quê?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[gently] A extinção mais terrível que a Terra já viu. [warmly] Quase todos os animais desapareceram — mas não ele."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

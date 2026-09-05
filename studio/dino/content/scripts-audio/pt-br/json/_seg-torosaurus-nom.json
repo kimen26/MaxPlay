@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] To… ro… ssauro. [curious] Em grego, \"toro\", aqui, quer dizer furado, com buracos. Não é touro, mesmo parecendo. E \"sauro\" é o lagarto."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[playful] O lagarto furado."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Quase isso: o lagarto de gola furada. [warmly] Ele vivia na América do Norte, há 66 milhões de anos, junto com o Tricerátops."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[softly] É o primo do Tritri."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Exatamente. Um grande primo, com uma gola cheia de buracos."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 2 metros de comprimento — do tamanho de uma moto! [amazed] De pé, ele tinha 0 vírgula 5 metro de altura — ele chegava até sua bunda! E pesava 150 quilos — [serious] tão pesado quanto um jumento!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[playful] Tão pesado quanto um jumento, mas com nadadeiras?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[chuckles] Com nadadeiras, sim — [confident] feitas de dedos, que nem uma mão grande e chata."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 1 metro e 80 de comprimento — que nem um papai grande deitado no chão! [amazed] De pé, ele tinha 0 vírgula 8 metro de altura — ele chegava até seu umbigo! E pesava 100 quilos — [serious] tão pesado quanto um porco!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Não muito grande, então?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Não muito grande — mas na região dele, [serious] na época dele, ninguém era mais forte."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

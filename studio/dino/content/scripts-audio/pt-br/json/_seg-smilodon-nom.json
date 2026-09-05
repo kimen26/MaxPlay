@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Smi… lo… don… te. Em grego, \"smilo\" quer dizer faca, e \"odon\" quer dizer dente. [proud] O dente-faca."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] O tigre-dente-de-sabre?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] É esse o apelido, mas não era um tigre — [serious] e ele também não vivia com os dinossauros. Ele chegou bem depois, na Era do Gelo, [pauses] há 1 milhão de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele vivia onde?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Na América do Norte e do Sul, no frio, [warmly] ao lado do Lobo terrível."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 10 metros de comprimento — [amazed] do tamanho de um caminhão. De pé, 2 metros e meio de altura — [curious] da altura de uma trave de futebol. E 3 mil quilos — [proud] tão pesado quanto um hipopótamo."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] E os espinhos, eram grandes como?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Até 60 centímetros — [amazed] no MEIO do pescoço. Os mais altos de todos os saurópodes conhecidos."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Gor… go… nop… se. \"Górgona\" é um monstro das histórias antigas gregas — [scared] tão assustador que dava medo só de olhar. [confident] E \"ops\", o rosto."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[nervous] O rosto que dá medo?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Isso — os cientistas acharam que o crânio dele era realmente impressionante. [confident] Ele vivia na África do Sul, há 260 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] É um dinossauro?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Não, nada disso — ele viveu bem antes deles. [warmly] É um primo ainda mais próximo da gente do que o Dimetrodonte."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

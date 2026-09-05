@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 15 metros de comprimento — [amazed] do tamanho de um ônibus articulado. De pé, 6 metros de altura — [curious] da altura de um poste de luz. E 18 mil quilos — [proud] tão pesado quanto 6 hipopótamos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] 6 hipopótamos."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Isso. [whispers] Uma cabeça grande, e dentes grossos pra mastigar galhos bem duros."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

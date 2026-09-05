@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] I… gua… no… don… te. [curious] \"Iguano\" vem de iguana, um lagarto grande. E \"odon\", em grego, é o dente."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] O dente de iguana."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exatamente, [warmly] os dentes dele pareciam bastante com os de uma iguana. Ele vivia na Europa e na América do Norte, há 125 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele é um dos primeiríssimos dinossauros encontrados?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[proud] É, um dos primeiríssimos. [amazed] Descoberto na Bélgica, há muito, muito tempo."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

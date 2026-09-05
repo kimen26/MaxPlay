@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Dei… no… ní… quio. Em grego, \"deino\" quer dizer terrível — [serious] é a mesma raiz da palavra \"dinossauro\"! E \"onyx\" é a garra. [curious] Então, o que dá?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] A garra terrível."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso mesmo. [proud] Ele vivia na América do Norte, há 115 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] É ele, [gasps] o raptor grandão que dá medo nos filmes?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] É, na verdade [gently] foi mais ele que inspirou essas imagens — não o Velocirraptor pequeno. Mas ele também tinha penas."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

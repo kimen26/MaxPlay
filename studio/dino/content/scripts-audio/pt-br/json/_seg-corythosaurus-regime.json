@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Herbívoro. Comia plantas em manada, nunca sozinho. [confident] O Gorgossauro e o Daspletossauro rondavam por lá, [nervous] então o grupo ficava bem unido."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Como eles se avisavam de um perigo?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Com gritos poderosos, que chegavam bem longe. [warmly] A manada inteira fugia junto, ao primeiro sinal."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

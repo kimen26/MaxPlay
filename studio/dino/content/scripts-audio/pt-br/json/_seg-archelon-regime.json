@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Ela comia águas-vivas, lulas, moluscos moles. [confident] E no mar dela, dois caçadores podiam atacar: [nervous] o Tylossauro, um grande Mosassauro, e tubarões antigos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[nervous] Ela conseguia se esconder na carapaça, que nem as tartarugas de hoje?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[gently] Não bem assim — e esse é o segredo dela."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

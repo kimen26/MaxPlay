@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Escuta essa história real. [serious] No deserto da Mongólia, os cientistas encontraram um fóssil incrível: um Velocirraptor e um Protocerátops, [pauses] parados no meio de uma briga."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] No meio de uma briga?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[whispers] Isso. A garra do raptor cravada no pescoço do outro, [slowly] e o outro mordendo o braço dele. [softly] Uma duna de areia caiu em cima dos dois, e eles ficaram assim, juntos, por 75 milhões de anos."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Por muito tempo, esse dinossauro se chamava [curious] \"Brontossauro\" em todos os livros."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] E não era o nome de verdade dele?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly] Os cientistas trocaram a etiqueta. [amazed] Hoje se sabe: [confident] Apatossauro e Brontossauro são dois primos bem próximos, mas não são o mesmo animal."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

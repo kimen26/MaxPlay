@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[curious] Ic… ti… o… ssauro. \"Iktus\", em grego, quer dizer peixe. [serious] E \"sauro\", o lagarto."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] O lagarto-peixe?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso. Ele vivia há 190 milhões de anos, [amazed] nos mares rasos da Europa."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Um lagarto parecido com peixe existe mesmo?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Existia, sim — mas não era um peixe de jeito nenhum. [serious] Era um réptil de verdade, que ganhou essa forma pra nadar bem."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

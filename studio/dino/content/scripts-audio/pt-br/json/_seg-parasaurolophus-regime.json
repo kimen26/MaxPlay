@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era herbívoro. Comia plantas em manada grande. [confident] Quando um T-Rex se aproximava, [quickly] ele soltava um grito bem grave dentro da crista, pra avisar os amigos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele gritava dentro da crista?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Isso. A crista oca dele funcionava que nem uma buzina natural bem grande. [warmly] A manada inteira ouvia e fugia junta."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

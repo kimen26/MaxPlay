@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Ele comia de tudo — [confident] bichinhos pequenos, ovos, plantas. Vivia em manada grande, que nem as avestruzes de hoje."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] E o T-Rex, conseguia pegar ele?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Não fácil. [warmly] Com essa velocidade, o Galimimo disparava antes do T-Rex chegar perto."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

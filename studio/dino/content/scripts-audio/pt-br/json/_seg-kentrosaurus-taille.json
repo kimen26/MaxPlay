@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 4 vírgula 5 metros de comprimento — [amazed] do tamanho de uma 4x4 grande. De pé, 1 vírgula 8 metro de altura — [curious] do tamanho do papai em pé. E 1 vírgula 1 tonelada — [proud] tão pesado quanto um carro pequeno. [calm] Ele andava tranquilo: 7 quilômetros por hora, [pauses] que nem o papai andando rápido."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Do tamanho do papai."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Isso — [playful] mas bem mais pontudo do que ele."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

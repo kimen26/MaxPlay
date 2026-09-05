@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Herbívoro. Comia plantas baixas, samambaias, nas quatro patas. [amazed] A pele dele era cheia de ossinhos, [curious] enfileirados do pescoço até o rabo — que nem botões."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele vivia com amigos?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Mistério — ninguém sabe ainda. [serious] Mas com essa armadura, mesmo sozinho, ele não tinha medo de quase nada."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

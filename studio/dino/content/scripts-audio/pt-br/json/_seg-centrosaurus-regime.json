@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era herbívoro. Comia plantas em manada. [confident] Quando o Gorgossauro se aproximava, [calm] os Centrossauros se apertavam uns contra os outros."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Eram quantos, na manada?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Milhares, talvez. [amazed] Quando eles se juntavam todos, nenhum caçador ousava se aproximar."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

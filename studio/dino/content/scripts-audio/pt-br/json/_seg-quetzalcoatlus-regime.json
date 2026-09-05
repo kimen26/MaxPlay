@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Diferente de outros répteis voadores que pescavam, [confident] ele caçava mais no chão — bichinhos pequenos, insetos. [slowly] Ele andava muito bem nas quatro patas."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] E quem conseguia pegar ele?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] No ar, ninguém. [warmly] No chão, ele ficava esperto, [pauses] que nem todo mundo naquela época — mesmo que ele cruzasse com o Tritri, na mesma região."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

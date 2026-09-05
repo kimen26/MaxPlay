@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] O Platéossauro conseguia ficar de pé bem reto nas patas de trás, [pauses] que nem um urso que se levanta."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Pra pegar os galhos altos."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Exatamente. [proud] Um pioneiro, nas quatro patas ou de pé nas duas, dependendo do que ele queria comer."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

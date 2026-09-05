@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 0 vírgula 7 metro de comprimento — que nem um gato grande deitado! [amazed] De pé, ele tinha 0 vírgula 35 metro de altura — ele chegava até seu joelho! E pesava 17 quilos — [serious] tão pesado quanto uma criança de 4 anos! [curious] Os cientistas acham que ele conseguia avançar a 5 quilômetros por hora — que nem você quando anda."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[playful] Pequeno, mas forte?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[chuckles] Pequeno, mas forte, sim — [proud] e principalmente, incrivelmente resistente."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

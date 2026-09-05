@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Mo… sa… ssauro. O nome dele fala de um rio: o Meuse, [curious] na Europa, onde encontraram os primeiros ossos dele. [serious] E \"sauro\", você já está pegando o jeito."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] O lagarto. O lagarto do Meuse."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exatamente. [serious] Só que ele não vivia num rio — [amazed] ele nadava em TODOS os mares do mundo, [proud] há 70 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Todos os mares? Até o do Tritri?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Esse mesmo. O Mosassauro e o Tricerátops viveram na mesma época, [serious] bem no fim do tempo dos dinossauros — ele na água, [warmly] o Tritri na terra."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era herbívoro. Comia grama e plantinhas escondidas embaixo da neve. [warmly] Um pelo grosso e uma camada de gordura mantinham ele aquecido, e vivia em manada, [gently] que nem os elefantes de hoje."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[nervous] Quem conseguia atacar ele, com esse pelo todo?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Só os homens pré-históricos. [warmly] Mais ninguém ousava se meter com um bicho tão grande."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

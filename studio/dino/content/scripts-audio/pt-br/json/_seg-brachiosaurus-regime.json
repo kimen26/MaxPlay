@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Herbívoro. Ele comia as folhas lá no topo das árvores — [pauses] aquelas que os outros não alcançavam. [confident] Ninguém disputava essa refeição com ele."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] E pra digerir folhas tão duras?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Ele engolia pedras. [pauses] Elas ficavam na barriga dele e trituravam a comida, que nem um moinho."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

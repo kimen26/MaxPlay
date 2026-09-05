@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 6 metros de comprimento — com a largura de uma rua de duas faixas — ele fechava a rua toda! Em pé nas patas de trás, ele chegava a 3 metros e 50 de altura — [amazed] que nem dois papais um em cima do outro! E pesava 4 mil quilos — [proud] tão pesado quanto 2 rinocerontes!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele ficava em pé pra quê?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Pra pegar as folhas lá no alto das árvores, [warmly] onde mais ninguém conseguia comer."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

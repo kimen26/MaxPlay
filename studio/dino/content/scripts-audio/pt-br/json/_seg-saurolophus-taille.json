@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 9 metros de comprimento — do tamanho de um caminhão. 3 metros de altura — [quickly] da altura de uma cesta de basquete. E 3500 quilos — [amazed] tão pesado quanto um hipopótamo e um cavalo juntos!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Da altura de uma cesta de basquete, e ainda com a crista?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Isso. Um grande herbívoro de bico de pato, [proud] com o espinho de osso dele em pé lá no topo do crânio."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

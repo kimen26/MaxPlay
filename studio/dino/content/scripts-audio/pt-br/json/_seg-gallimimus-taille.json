@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 6 metros de comprimento — [quickly] com a largura de uma rua de duas faixas — ele fechava a rua toda! De pé, ele tinha 2 metros de altura — da altura de uma porta! E pesava 440 quilos — [proud] tão pesado quanto 2 leões. [amazed] E os cientistas acham que ele conseguia correr até 50 quilômetros por hora — que nem um carro na cidade."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Que nem um carro?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[proud] Isso, com as pernas longas e finas. [amazed] Um dos dinossauros mais rápidos que a gente conhece."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

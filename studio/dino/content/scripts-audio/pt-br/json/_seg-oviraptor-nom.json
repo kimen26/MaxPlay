@@ -1,0 +1,36 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] O… vi… rap… tor. \"Ovi\", em latim, [serious] é o ovo — que nem em \"oval\". E \"raptor\" é o ladrão. [curious] Então, o que dá?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] O ladrão de ovos."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] É esse o nome dele. [proud] Ele vivia na Ásia, no deserto da Mongólia, há 75 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele é primo dos raptores, [gasps] que nem o Velocirraptor?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Um primo, sim, [amazed] mas ele não tinha dentes — um bico, uma crista bem colorida, quase que nem um papagaio."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Um ladrão de ovos? [nervous] Isso não é muito legal."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[gently] Espera o final da história. [warmly] Esse nome, ele não merece nadinha."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Herbívoro, em manada. [calm] Comia plantas o dia inteiro — muitas, muitas plantas."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele conseguia comer por quanto tempo?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[amazed] 250 quilos de plantas todo DIA. [proud] Tanto quanto você em um ano inteiro, num único dia."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] E ele tinha inimigos, com um pescoço desse?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] O Alossauro até tentava, principalmente nos filhotes. [serious] Um adulto de 23 mil quilos não valia a pena — pesado demais pra derrubar."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era um caçador solitário. Pegava os grandes comedores de plantas da época dele, [confident] com dois dentes compridos em formato de sabre, [amazed] do tamanho da sua mão."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[scared] Dois dentes do tamanho da minha mão?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[gently] Do tamanho da sua mão, sim — armas de verdade. Mas fique tranquilo, [warmly] isso foi há 260 milhões de anos: nenhum Gorgonopse hoje em dia."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

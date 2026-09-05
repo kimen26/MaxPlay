@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Herbívoro, mais solitário. [calm] As costas dele eram cobertas de placas de osso, e o rabo terminava numa bola grande."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[nervous] E o T-Rex, ele ousava atacar?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Podia até tentar. [serious] Mas era bem arriscado: os pontos fracos do Anquilossauro — a barriga, os olhos, as patas — ficavam bem escondidos. E com um golpe de cauda-maçã, [pauses] ele podia quebrar a pata do carnívoro."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

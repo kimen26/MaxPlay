@@ -38,5 +38,485 @@
     "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
     "language_code": "es",
     "date": "2026-09-05T00:36:15.995Z"
+  },
+  "spinosaurus-nom": {
+    "empreinte": "c58476ccb0f2",
+    "repliques": 5,
+    "duree_s": 29.6,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:43:17.140Z"
+  },
+  "spinosaurus-taille": {
+    "empreinte": "d36e7f9673a6",
+    "repliques": 3,
+    "duree_s": 23.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:43:44.897Z"
+  },
+  "spinosaurus-regime": {
+    "empreinte": "99b245455a2b",
+    "repliques": 3,
+    "duree_s": 15.4,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:44:03.544Z"
+  },
+  "spinosaurus-funfact": {
+    "empreinte": "1152cbf46648",
+    "repliques": 3,
+    "duree_s": 15.6,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:44:21.696Z"
+  },
+  "giganotosaurus-nom": {
+    "empreinte": "ce798eb756be",
+    "repliques": 5,
+    "duree_s": 31.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:45:00.347Z"
+  },
+  "giganotosaurus-taille": {
+    "empreinte": "6814b95194d5",
+    "repliques": 3,
+    "duree_s": 26.7,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:45:25.795Z"
+  },
+  "giganotosaurus-regime": {
+    "empreinte": "cd2f589fa548",
+    "repliques": 3,
+    "duree_s": 15.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:45:43.932Z"
+  },
+  "giganotosaurus-funfact": {
+    "empreinte": "7d73fdf9df8a",
+    "repliques": 3,
+    "duree_s": 15.2,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:46:02.293Z"
+  },
+  "carcharodontosaurus-nom": {
+    "empreinte": "c0616cfe47a6",
+    "repliques": 5,
+    "duree_s": 36.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:46:37.241Z"
+  },
+  "carcharodontosaurus-taille": {
+    "empreinte": "16f4b3ac7356",
+    "repliques": 3,
+    "duree_s": 21.4,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:46:59.071Z"
+  },
+  "carcharodontosaurus-regime": {
+    "empreinte": "e4f9e11c2fb0",
+    "repliques": 3,
+    "duree_s": 15,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:47:21.572Z"
+  },
+  "carcharodontosaurus-funfact": {
+    "empreinte": "eb8251604f7c",
+    "repliques": 3,
+    "duree_s": 11.6,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:47:38.297Z"
+  },
+  "allosaurus-nom": {
+    "empreinte": "9919ae7f899b",
+    "repliques": 5,
+    "duree_s": 32.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:48:12.124Z"
+  },
+  "allosaurus-taille": {
+    "empreinte": "6f4372a3bbcf",
+    "repliques": 3,
+    "duree_s": 27,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:48:36.636Z"
+  },
+  "allosaurus-regime": {
+    "empreinte": "3f63517405f1",
+    "repliques": 3,
+    "duree_s": 12.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:48:59.197Z"
+  },
+  "allosaurus-funfact": {
+    "empreinte": "a3d51d17aa00",
+    "repliques": 3,
+    "duree_s": 17.6,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:49:18.785Z"
+  },
+  "tarbosaurus-nom": {
+    "empreinte": "030012db8345",
+    "repliques": 5,
+    "duree_s": 25.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:49:48.046Z"
+  },
+  "tarbosaurus-taille": {
+    "empreinte": "c6f91be7bd7c",
+    "repliques": 3,
+    "duree_s": 22.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:50:09.875Z"
+  },
+  "tarbosaurus-regime": {
+    "empreinte": "4f2dfbd84cc1",
+    "repliques": 3,
+    "duree_s": 19.2,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:50:30.612Z"
+  },
+  "tarbosaurus-funfact": {
+    "empreinte": "1114fc8a519c",
+    "repliques": 3,
+    "duree_s": 12.4,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:50:51.774Z"
+  },
+  "albertosaurus-nom": {
+    "empreinte": "585a2f07d844",
+    "repliques": 5,
+    "duree_s": 33.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:51:24.988Z"
+  },
+  "albertosaurus-taille": {
+    "empreinte": "cb2f3112307c",
+    "repliques": 3,
+    "duree_s": 28.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:51:49.097Z"
+  },
+  "albertosaurus-regime": {
+    "empreinte": "54f2bb53de81",
+    "repliques": 3,
+    "duree_s": 24.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:52:10.930Z"
+  },
+  "albertosaurus-funfact": {
+    "empreinte": "d95e35d1e111",
+    "repliques": 3,
+    "duree_s": 17.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:52:39.817Z"
+  },
+  "ceratosaurus-nom": {
+    "empreinte": "1b6c247f829a",
+    "repliques": 5,
+    "duree_s": 30.6,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:53:15.276Z"
+  },
+  "ceratosaurus-taille": {
+    "empreinte": "bd1ea430db85",
+    "repliques": 3,
+    "duree_s": 28.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:53:38.770Z"
+  },
+  "ceratosaurus-regime": {
+    "empreinte": "b9812f337be3",
+    "repliques": 3,
+    "duree_s": 16.2,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:53:57.197Z"
+  },
+  "ceratosaurus-funfact": {
+    "empreinte": "92a81c307ddf",
+    "repliques": 3,
+    "duree_s": 15.2,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:54:15.082Z"
+  },
+  "dilophosaurus-nom": {
+    "empreinte": "211f8d78e26a",
+    "repliques": 5,
+    "duree_s": 31.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:54:46.000Z"
+  },
+  "dilophosaurus-taille": {
+    "empreinte": "a75bfce935aa",
+    "repliques": 3,
+    "duree_s": 26.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:55:09.777Z"
+  },
+  "dilophosaurus-regime": {
+    "empreinte": "4fc78056c969",
+    "repliques": 3,
+    "duree_s": 14.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:55:27.944Z"
+  },
+  "dilophosaurus-funfact": {
+    "empreinte": "0aa0c21d4094",
+    "repliques": 3,
+    "duree_s": 13,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:55:44.166Z"
+  },
+  "carnotaurus-nom": {
+    "empreinte": "6c893f75749d",
+    "repliques": 5,
+    "duree_s": 30.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:56:15.092Z"
+  },
+  "carnotaurus-taille": {
+    "empreinte": "08b08339661f",
+    "repliques": 3,
+    "duree_s": 27.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:56:39.222Z"
+  },
+  "carnotaurus-regime": {
+    "empreinte": "d2d13344f63b",
+    "repliques": 3,
+    "duree_s": 15.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:56:57.931Z"
+  },
+  "carnotaurus-funfact": {
+    "empreinte": "a8a35b687337",
+    "repliques": 3,
+    "duree_s": 16.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:57:16.328Z"
+  },
+  "cryolophosaurus-nom": {
+    "empreinte": "f87949c632e0",
+    "repliques": 5,
+    "duree_s": 37.6,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:58:07.783Z"
+  },
+  "cryolophosaurus-taille": {
+    "empreinte": "6b7e89a1d2f1",
+    "repliques": 3,
+    "duree_s": 24.4,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:58:30.909Z"
+  },
+  "cryolophosaurus-regime": {
+    "empreinte": "dde4ef0e6e3b",
+    "repliques": 3,
+    "duree_s": 15.2,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:58:56.290Z"
+  },
+  "cryolophosaurus-funfact": {
+    "empreinte": "5e348b577de7",
+    "repliques": 3,
+    "duree_s": 16.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:59:17.734Z"
+  },
+  "baryonyx-nom": {
+    "empreinte": "6d7dabfc12ab",
+    "repliques": 5,
+    "duree_s": 33.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:59:51.311Z"
+  },
+  "baryonyx-taille": {
+    "empreinte": "fcf791b8842a",
+    "repliques": 3,
+    "duree_s": 28.6,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T01:00:17.814Z"
+  },
+  "baryonyx-regime": {
+    "empreinte": "feaade0ff964",
+    "repliques": 3,
+    "duree_s": 14.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T01:00:36.395Z"
+  },
+  "baryonyx-funfact": {
+    "empreinte": "2096593d390e",
+    "repliques": 3,
+    "duree_s": 16.6,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T01:00:55.107Z"
+  },
+  "therizinosaurus-nom": {
+    "empreinte": "a74a3d957f9c",
+    "repliques": 5,
+    "duree_s": 29.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T01:01:30.242Z"
+  },
+  "therizinosaurus-taille": {
+    "empreinte": "9febc23fc3ba",
+    "repliques": 3,
+    "duree_s": 28,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T01:01:54.310Z"
+  },
+  "therizinosaurus-regime": {
+    "empreinte": "54175a7d1918",
+    "repliques": 3,
+    "duree_s": 19.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T01:02:14.175Z"
+  },
+  "therizinosaurus-funfact": {
+    "empreinte": "40928bc2cbf7",
+    "repliques": 3,
+    "duree_s": 16.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T01:02:32.178Z"
   }
 }

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Tri… ce… rá… tops. [curious] Em grego, \"tri\" quer dizer três. \"Cerat\" é o chifre. E \"ops\" é o rosto. [pauses] Então, o que você acha?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] O rosto de três chifres."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso mesmo. [warmly] Ele vivia na América do Norte, há 66 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Espera. [softly] É o Tritri."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] É sim. [happily] O Tricerátops de verdade. Ele vivia com o Torossauro e o Edmontossauro — e o T-Rex rondava por perto."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Ele comia samambaias, tranquilamente, com os dentinhos em lajinhas. [confident] Vivia no mesmo lugar que outro animal, [curious] com uma vela quase igual nas costas."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Quem?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] O Dimetrodonte. A vela dele se parece muito com a do outro — [playful] mas cuidado, é bem diferente por dentro."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

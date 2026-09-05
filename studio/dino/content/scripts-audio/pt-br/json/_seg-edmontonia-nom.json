@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ed… mon… tô… ni… a. Esse nome não vem do grego — [pauses] vem de um lugar."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] De um lugar?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso, encontraram ele perto da cidade de Edmonton, no Canadá. [amazed] Então chamaram ele de \"o de Edmonton\". [calm] Ele vivia há 72 milhões de anos, todo coberto de armadura."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Que nem o Anquilossauro?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Um primo, sim. [curious] Mas com uma grande diferença, você vai ver."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

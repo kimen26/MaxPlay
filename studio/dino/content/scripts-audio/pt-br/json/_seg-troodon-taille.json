@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 2 vírgula 2 metros de comprimento — [quickly] do tamanho de uma moto! De pé, ele tinha 0 vírgula 9 metro de altura — do tamanho de uma criança de 4 anos! E pesava 50 quilos — [proud] tão pesado quanto um lobo. [amazed] E os cientistas acham que ele conseguia correr a 50 quilômetros por hora — que nem um carro na cidade."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Que nem um carro?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Isso, com pernas compridas e finas, [proud] feitas pra correr."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

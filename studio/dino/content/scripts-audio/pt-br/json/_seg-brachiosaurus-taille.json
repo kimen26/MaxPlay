@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 22 metros de comprimento — do tamanho de um ônibus articulado. De pé, [pauses] 13 metros de altura — da altura de um prédio de quatro andares. E 47 mil quilos — [amazed] tão pesado quanto NOVE elefantes."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Nove elefantes?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Isso. Mas nele, [pauses] o que faz o tamanho não é nem o rabo: é o pescoço, esticado bem reto pro céu."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

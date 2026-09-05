@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Pa… ra… ssau… ro… lo… fo. [curious] \"Para\", em grego antigo, quer dizer ao lado de, quase igual. \"Sauro\", o lagarto. E \"lofo\", a crista."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[playful] Quase o lagarto de crista."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exatamente. [warmly] Uma crista comprida e oca, inclinada pra trás. Ele vivia na América do Norte, há 76 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[nervous] E tinha dinossauros malvados, por lá?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Tinha. O T-Rex caçava por perto. [confident] Então a manada dele ficava bem atenta."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

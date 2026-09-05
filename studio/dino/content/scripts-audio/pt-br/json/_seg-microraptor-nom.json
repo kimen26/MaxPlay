@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Mi… cro… rrap… tor. \"Micro\", em grego, [serious] quer dizer bem pequeno — que nem um micróbio. E \"raptor\" é o ladrão. [curious] Então?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] O pequeno ladrão."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso mesmo. [proud] Ele vivia na China, na Ásia, há 120 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] É o menor raptor que você conhece?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[amazed] Um dos menores dinossauros que já encontramos, sim. [playful] E ele tem um segredo que mais ninguém tem."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

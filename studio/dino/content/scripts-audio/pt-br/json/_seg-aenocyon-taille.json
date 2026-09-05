@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 1 metro e 70 de comprimento — que nem um papai grande deitado no chão! De pé, ele tinha 0 metro e 85 de altura — [amazed] do tamanho de uma criança de 4 anos! E pesava 70 quilos — [proud] tão pesado quanto um canguru!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Maior que um lobo de hoje?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Mais robusto, principalmente. [proud] Uma cabeça maior, dentes mais fortes que o lobo cinzento."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

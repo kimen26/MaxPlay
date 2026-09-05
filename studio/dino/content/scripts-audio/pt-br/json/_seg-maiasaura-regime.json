@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era herbívora. Vivia numa colônia enorme: [amazed] centenas de ninhos, lado a lado."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ela cuidava dos filhotes, então?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Cuidava, [proud] e essa foi a primeiríssima prova de que um dinossauro fazia isso. [gently] Ela trazia comida enquanto eles eram pequenos demais pra sair do ninho."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

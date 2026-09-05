@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] A carapaça toda redonda dele lembrava a lataria [amazed] de um carro pequeno virado de cabeça pra baixo."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Uma carapaça-carro?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[amazed] Exatamente. E o primo dele, o Doedicurus, tinha além disso uma maça de verdade na ponta do rabo — [serious] não o Gliptodonte, só o primo dele."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

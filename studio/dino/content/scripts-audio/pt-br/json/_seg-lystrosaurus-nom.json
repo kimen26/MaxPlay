@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[curious] Lis… tro… ssauro. \"Lystron\", em grego, é a pá, a enxada. [serious] E \"sauro\", o lagarto."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] O lagarto-pá?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso — por causa do focinho dele, largo e bem chato, que nem uma pazinha. Ele vivia há 250 milhões de anos — [amazed] antes dos dinossauros."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele vivia onde?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[amazed] Quase em todo lugar: na África do Sul, na Antártida, na Índia, na China, na Rússia, na Mongólia. [serious] Naquela época, todas as terras estavam coladas [confident] num único pedaço."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] An… qui… lo… ssauro. [curious] Em grego, \"anquilo\" quer dizer fundido, todo travado."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] O lagarto todo travado?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso — as costas dele eram fundidas que nem uma armadura dura. [calm] Ele vivia na América do Norte, há 66 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] 66 milhões? Essa é a época do T-Rex, né?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Exatamente, [pauses] e do Tricerátops também. [amazed] Os três viviam no mesmo lugar, na mesma época."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

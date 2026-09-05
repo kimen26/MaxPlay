@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Pa… ra… ce… ra… té… rio. Em grego, \"cera\" quer dizer chifre, e o pedacinho na frente quer dizer \"sem\". [playful] Perto do bicho... sem chifre."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Um rinoceronte sem chifre?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Quase — um primo do rinoceronte, mas isso mesmo, sem chifre nenhum. [serious] Não é um dinossauro: ele chegou bem depois, [pauses] há 30 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele vivia onde?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Na Ásia — no Paquistão, na China, e na Mongólia."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

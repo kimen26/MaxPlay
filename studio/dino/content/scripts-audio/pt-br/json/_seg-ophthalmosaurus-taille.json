@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 4 metros de comprimento — que nem um carro pequeno! [amazed] De pé, ele tinha 1 metro de altura — do tamanho de uma criança de 4 anos! E pesava 950 quilos — [serious] tão pesado quanto um carro pequeno!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[playful] Um carro que pesa um carro?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[chuckles] Exatamente — o tamanho e o peso de um carro pequeno, tudo junto."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

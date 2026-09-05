@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 2 metros de comprimento — [quickly] do tamanho de uma moto! De pé, ele tinha só 0 vírgula 5 metro de altura — [playful] ele chegava até sua bunda! E pesava 15 quilos — tão pesado quanto uma criança de 4 anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Tão pequeno assim?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Isso mesmo. [amazed] Nos filmes mostram ele enorme e sem penas, mas o Velocirraptor de verdade era coberto de penas, [proud] pouco maior que um cachorro grande."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

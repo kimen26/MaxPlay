@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 9 metros de comprimento — [amazed] do tamanho de um caminhão. De pé, 2 vírgula 8 metros de altura — [curious] da altura de uma cesta de basquete. E 4 mil quilos — [proud] tão pesado quanto 2 rinocerontes. [calm] Ele andava tranquilo: 7 quilômetros por hora, [pauses] que nem o papai andando rápido."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Não era muito rápido, então."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Não — [serious] ele não precisava. O rabo dele fazia o trabalho."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

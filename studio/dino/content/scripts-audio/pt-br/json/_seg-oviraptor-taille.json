@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 2 metros de comprimento — [quickly] do tamanho de uma moto! De pé, ele tinha 0 vírgula 9 metro de altura — do tamanho de uma criança de 4 anos! E pesava 35 quilos — [proud] tão pesado quanto uma criança grande de 10 anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] E a crista dele, servia pra quê?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Provavelmente pra ficar bonito, [playful] meio que nem a cauda de um pavão."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

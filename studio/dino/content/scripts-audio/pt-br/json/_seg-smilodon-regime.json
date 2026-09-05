@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era carnívoro. Caçava bisões, cavalos selvagens e [amazed] filhotes de preguiça gigante. [hesitant] Talvez em grupo, que nem os leões — os cientistas ainda não têm certeza."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[nervous] Quem ousava atacar ele?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Quase ninguém. [confident] Com caninos desses, o pessoal deixava ele em paz."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

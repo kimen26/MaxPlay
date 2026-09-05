@@ -2,59 +2,59 @@
 
 > **FICHIER GÉNÉRÉ — ne jamais éditer à la main.**
 > Régénérer : `node studio/referentiel/build.mjs`
-> Plan d'ensemble : [`memory/ARCHI-REFERENTIEL-CONTENU.md`](../../memory/ARCHI-REFERENTIEL-CONTENU.md) · généré le 2026-09-04
+> Plan d'ensemble : [`memory/ARCHI-REFERENTIEL-CONTENU.md`](../../memory/ARCHI-REFERENTIEL-CONTENU.md) · généré le 2026-09-05
 
 ---
 
-## 🔴 Dettes ouvertes — 99
+## 🔴 Dettes ouvertes — 300
 
 Une dette ne se résout **jamais toute seule** : un humain tranche entre
 `node studio/referentiel/acquitter.mjs <clé> <canal> --propage` (canal régénéré)
 et `… --sans-impact "raison"` (le changement de source ne remet pas le canal en cause).
 Base de référence : [`empreintes.json`](empreintes.json) (versionnée).
 
-- **dino.tyrannosaurus.taille** · canal `el` — repère de poids : dit « 3 hippopotames », la donnée dit « 4 rhinocéros »
-- **dino.tyrannosaurus.taille** · canal `mp3` — repère de poids : dit « 3 hippopotames », la donnée dit « 4 rhinocéros »
-- **dino.spinosaurus.taille** · canal `el` — repère de poids : dit « 2 hippopotames », la donnée dit « éléphant + rhinocéros »
-- **dino.spinosaurus.taille** · canal `mp3` — repère de poids : dit « 2 hippopotames », la donnée dit « éléphant + rhinocéros »
-- **dino.giganotosaurus.taille** · canal `el` — repère de poids : dit « 2 hippopotames », la donnée dit « éléphant + rhinocéros »
-- **dino.giganotosaurus.taille** · canal `mp3` — repère de poids : dit « 2 hippopotames », la donnée dit « éléphant + rhinocéros »
-- **dino.carcharodontosaurus.taille** · canal `el` — repère de poids : dit « 2 hippopotames », la donnée dit « éléphant + rhinocéros »
-- **dino.carcharodontosaurus.taille** · canal `mp3` — repère de poids : dit « 2 hippopotames », la donnée dit « éléphant + rhinocéros »
-- **dino.tarbosaurus.taille** · canal `el` — repère de poids : dit « 2 hippopotames », la donnée dit « 1 éléphant »
-- **dino.tarbosaurus.taille** · canal `mp3` — repère de poids : dit « 2 hippopotames », la donnée dit « 1 éléphant »
-- **dino.albertosaurus.nom** · canal `mp3` — script modifié le 2026-09-03, audio produit le 2026-08-19
-- **dino.albertosaurus.taille** · canal `mp3` — script modifié le 2026-09-03, audio produit le 2026-08-19
-- **dino.albertosaurus.regime** · canal `mp3` — script modifié le 2026-09-03, audio produit le 2026-08-19
-- **dino.albertosaurus.funfact** · canal `mp3` — script modifié le 2026-09-03, audio produit le 2026-08-19
-- **dino.dilophosaurus.taille** · canal `mp3` — script modifié le 2026-09-03, audio produit le 2026-08-10
-- **dino.carnotaurus.taille** · canal `el` — repère de poids : dit « 1 rhinocéros », la donnée dit « petite voiture + vache »
-- **dino.carnotaurus.taille** · canal `mp3` — repère de poids : dit « 1 rhinocéros », la donnée dit « petite voiture + vache »
-- **dino.cryolophosaurus.taille** · canal `mp3` — script modifié le 2026-09-03, audio produit le 2026-08-10
-- **dino.brachiosaurus.taille** · canal `mp3` — script modifié le 2026-09-03, audio produit le 2026-08-10
-- **dino.diplodocus.taille** · canal `mp3` — script modifié le 2026-09-03, audio produit le 2026-08-10
-- **dino.apatosaurus.taille** · canal `mp3` — script modifié le 2026-09-03, audio produit le 2026-08-10
-- **dino.camarasaurus.taille** · canal `mp3` — script modifié le 2026-09-03, audio produit le 2026-08-10
-- **dino.amargasaurus.taille** · canal `mp3` — script modifié le 2026-09-03, audio produit le 2026-08-10
-- **dino.ankylosaurus.taille** · canal `el` — repère de poids : dit « 2 hippopotames », la donnée dit « 3 rhinocéros »
-- **dino.ankylosaurus.taille** · canal `mp3` — repère de poids : dit « 2 hippopotames », la donnée dit « 3 rhinocéros »
-- **dino.edmontonia.taille** · canal `mp3` — script modifié le 2026-09-03, audio produit le 2026-08-10
-- **dino.minmi.taille** · canal `mp3` — script modifié le 2026-09-03, audio produit le 2026-08-10
-- **dino.stegosaurus.taille** · canal `el` — repère de poids : dit « 1 hippopotame », la donnée dit « 2 rhinocéros »
-- **dino.stegosaurus.taille** · canal `mp3` — repère de poids : dit « 1 hippopotame », la donnée dit « 2 rhinocéros »
-- **dino.kentrosaurus.taille** · canal `el` — repère de poids : dit « 1 cheval », la donnée dit « petite voiture »
-- **dino.kentrosaurus.taille** · canal `mp3` — repère de poids : dit « 1 cheval », la donnée dit « petite voiture »
-- **dino.triceratops.taille** · canal `mp3` — script modifié le 2026-09-03, audio produit le 2026-08-10
-- **dino.torosaurus.taille** · canal `el` — repère de poids : dit « 3 hippopotames », la donnée dit « 4 rhinocéros »
-- **dino.torosaurus.taille** · canal `mp3` — repère de poids : dit « 3 hippopotames », la donnée dit « 4 rhinocéros »
-- **dino.pentaceratops.taille** · canal `el` — repère de poids : dit « 2 hippopotames », la donnée dit « 1 éléphant »
-- **dino.pentaceratops.taille** · canal `mp3` — repère de poids : dit « 2 hippopotames », la donnée dit « 1 éléphant »
-- **dino.parasaurolophus.taille** · canal `el` — repère de poids : dit « 2 rhinocéros », la donnée dit « 5 chevaux »
-- **dino.parasaurolophus.taille** · canal `mp3` — repère de poids : dit « 2 rhinocéros », la donnée dit « 5 chevaux »
-- **dino.corythosaurus.taille** · canal `el` — repère de poids : dit « 1 hippopotame », la donnée dit « 2 rhinocéros »
-- **dino.corythosaurus.taille** · canal `mp3` — repère de poids : dit « 1 hippopotame », la donnée dit « 2 rhinocéros »
+- **dino.spinosaurus.funfact** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.spinosaurus.funfact** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.spinosaurus.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.giganotosaurus.taille** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.giganotosaurus.taille** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.giganotosaurus.regime** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.giganotosaurus.regime** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.giganotosaurus.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.allosaurus.taille** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.allosaurus.taille** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.allosaurus.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.ceratosaurus.taille** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.ceratosaurus.taille** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.ceratosaurus.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.carnotaurus.funfact** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.carnotaurus.funfact** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.carnotaurus.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.brachiosaurus.nom** · canal `mp3` — script modifié le 2026-09-05, audio produit le 2026-07-10
+- **dino.brachiosaurus.taille** · canal `mp3` — script modifié le 2026-09-05, audio produit le 2026-08-10
+- **dino.brachiosaurus.regime** · canal `mp3` — script modifié le 2026-09-05, audio produit le 2026-07-10
+- **dino.brachiosaurus.funfact** · canal `mp3` — script modifié le 2026-09-05, audio produit le 2026-07-10
+- **dino.brachiosaurus.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.diplodocus.nom** · canal `mp3` — script modifié le 2026-09-05, audio produit le 2026-07-10
+- **dino.diplodocus.taille** · canal `mp3` — script modifié le 2026-09-05, audio produit le 2026-08-10
+- **dino.diplodocus.regime** · canal `mp3` — script modifié le 2026-09-05, audio produit le 2026-07-10
+- **dino.diplodocus.funfact** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.diplodocus.funfact** · canal `mp3` — script modifié le 2026-09-05, audio produit le 2026-07-10
+- **dino.diplodocus.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.apatosaurus.nom** · canal `mp3` — script modifié le 2026-09-05, audio produit le 2026-07-10
+- **dino.apatosaurus.taille** · canal `mp3` — script modifié le 2026-09-05, audio produit le 2026-08-10
+- **dino.apatosaurus.regime** · canal `mp3` — script modifié le 2026-09-05, audio produit le 2026-07-10
+- **dino.apatosaurus.funfact** · canal `mp3` — script modifié le 2026-09-05, audio produit le 2026-07-10
+- **dino.camarasaurus.nom** · canal `mp3` — script modifié le 2026-09-05, audio produit le 2026-07-10
+- **dino.camarasaurus.taille** · canal `mp3` — script modifié le 2026-09-05, audio produit le 2026-08-10
+- **dino.camarasaurus.regime** · canal `mp3` — script modifié le 2026-09-05, audio produit le 2026-07-10
+- **dino.camarasaurus.funfact** · canal `mp3` — script modifié le 2026-09-05, audio produit le 2026-07-10
+- **dino.amargasaurus.nom** · canal `mp3` — script modifié le 2026-09-05, audio produit le 2026-07-10
+- **dino.amargasaurus.taille** · canal `mp3` — script modifié le 2026-09-05, audio produit le 2026-08-10
+- **dino.amargasaurus.regime** · canal `mp3` — script modifié le 2026-09-05, audio produit le 2026-07-10
+- **dino.amargasaurus.funfact** · canal `mp3` — script modifié le 2026-09-05, audio produit le 2026-07-10
 
-_… et 59 autres — détail complet dans `registre.json`._
+_… et 260 autres — détail complet dans `registre.json`._
 
 ---
 
@@ -66,10 +66,10 @@ _… et 59 autres — détail complet dans `registre.json`._
 | — domaine DINO | 355 |
 | — domaine JEU | 581 |
 | Lignes suivies par le moteur de dette (clé × canal) | 639 |
-| 🔴 Dettes ouvertes | **99** |
+| 🔴 Dettes ouvertes | **300** |
 | Clés vérifiables automatiquement | 71 |
-| 🔴 Dérives de fait confirmées | **31** |
-| 🟠 Audio en retard sur son script | **37** |
+| 🔴 Dérives de fait confirmées | **1** |
+| 🟠 Audio en retard sur son script | **231** |
 | 🟡 Canaux manquants au contrat | 0 |
 | 🟡 Consignes lues sans voix réelle | 16 |
 | ⚪ Voix dont le texte verbatim n'est pas tracé | 167 |
@@ -79,68 +79,8 @@ _… et 59 autres — détail complet dans `registre.json`._
 Le texte parlé n'énonce plus ce que `dinos-data.js` calcule aujourd'hui.
 Détection exacte et rétroactive : le bloc « taille » a un générateur déterministe (`_statsPhrase`).
 
-- **dino.tyrannosaurus.taille** — repère de poids : dit « 3 hippopotames », la donnée dit « 4 rhinocéros »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-tyrannosaurus-taille.json`
-- **dino.spinosaurus.taille** — repère de poids : dit « 2 hippopotames », la donnée dit « éléphant + rhinocéros »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-spinosaurus-taille.json`
-- **dino.giganotosaurus.taille** — repère de poids : dit « 2 hippopotames », la donnée dit « éléphant + rhinocéros »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-giganotosaurus-taille.json`
-- **dino.carcharodontosaurus.taille** — repère de poids : dit « 2 hippopotames », la donnée dit « éléphant + rhinocéros »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-carcharodontosaurus-taille.json`
-- **dino.tarbosaurus.taille** — repère de poids : dit « 2 hippopotames », la donnée dit « 1 éléphant »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-tarbosaurus-taille.json`
-- **dino.carnotaurus.taille** — repère de poids : dit « 1 rhinocéros », la donnée dit « petite voiture + vache »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-carnotaurus-taille.json`
-- **dino.ankylosaurus.taille** — repère de poids : dit « 2 hippopotames », la donnée dit « 3 rhinocéros »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-ankylosaurus-taille.json`
-- **dino.stegosaurus.taille** — repère de poids : dit « 1 hippopotame », la donnée dit « 2 rhinocéros »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-stegosaurus-taille.json`
-- **dino.kentrosaurus.taille** — repère de poids : dit « 1 cheval », la donnée dit « petite voiture »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-kentrosaurus-taille.json`
-- **dino.torosaurus.taille** — repère de poids : dit « 3 hippopotames », la donnée dit « 4 rhinocéros »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-torosaurus-taille.json`
-- **dino.pentaceratops.taille** — repère de poids : dit « 2 hippopotames », la donnée dit « 1 éléphant »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-pentaceratops-taille.json`
-- **dino.parasaurolophus.taille** — repère de poids : dit « 2 rhinocéros », la donnée dit « 5 chevaux »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-parasaurolophus-taille.json`
-- **dino.corythosaurus.taille** — repère de poids : dit « 1 hippopotame », la donnée dit « 2 rhinocéros »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-corythosaurus-taille.json`
-- **dino.edmontosaurus.taille** — repère de poids : dit « 1 hippopotame », la donnée dit « 2 rhinocéros »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-edmontosaurus-taille.json`
-- **dino.iguanodon.taille** — repère de hauteur : dit « Papa debout », la donnée dit « but de foot » · repère de poids : dit « 2 rhinocéros », la donnée dit « 1 hippopotame »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-iguanodon-taille.json`
-- **dino.pachycephalosaurus.taille** — repère de hauteur : dit « enfant de 4 ans », la donnée dit « voiture »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-pachycephalosaurus-taille.json`
-- **dino.velociraptor.taille** — repère de hauteur : dit « nombril », la donnée dit « fesses »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-velociraptor-taille.json`
-- **dino.utahraptor.taille** — repère de poids : dit « vache », la donnée dit « 1 cheval »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-utahraptor-taille.json`
-- **dino.troodon.taille** — repère de poids : dit « enfant de 10 ans », la donnée dit « loup »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-troodon-taille.json`
-- **dino.mosasaurus.taille** — repère de longueur : dit « 2 bus », la donnée dit « bus accordéon » · repère de hauteur : dit « porte », la donnée dit « voiture » · repère de poids : dit « 3 hippopotames », la donnée dit « 2 éléphants »
+- **dino.mosasaurus.taille** — repère de hauteur : dit « porte », la donnée dit « voiture »
   <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-mosasaurus-taille.json`
-- **dino.baryonyx.taille** — repère de poids : dit « 1 rhinocéros », la donnée dit « petite voiture + vache »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-baryonyx-taille.json`
-- **dino.edaphosaurus.taille** — repère de poids : dit « Papa », la donnée dit « cochon »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-edaphosaurus-taille.json`
-- **dino.gorgonops.taille** — repère de poids : dit « Papa », la donnée dit « cochon »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-gorgonops-taille.json`
-- **dino.elasmosaurus.taille** — repère de poids : dit « 2 rhinocéros », la donnée dit « 5 chevaux »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-elasmosaurus-taille.json`
-- **dino.ophthalmosaurus.taille** — repère de poids : dit « 1 cheval », la donnée dit « petite voiture »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-ophthalmosaurus-taille.json`
-- **dino.shonisaurus.taille** — repère de poids : dit « 4 éléphants », la donnée dit « 5 éléphants »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-shonisaurus-taille.json`
-- **dino.patagotitan.taille** — repère de poids : dit « 12 éléphants », la donnée dit « 14 éléphants »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-patagotitan-taille.json`
-- **dino.centrosaurus.taille** — repère de longueur : dit « rue à deux voies », la donnée dit « grand 4x4 » · repère de poids : dit « 2 rhinocéros », la donnée dit « 5 chevaux »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-centrosaurus-taille.json`
-- **dino.megatherium.taille** — repère de poids : dit « 1 hippopotame », la donnée dit « 2 rhinocéros »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-megatherium-taille.json`
-- **dino.glyptodon.taille** — repère de poids : dit « vache », la donnée dit « petite voiture »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-glyptodon-taille.json`
-- **dino.aenocyon.taille** — repère de poids : dit « Papa », la donnée dit « kangourou »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-aenocyon-taille.json`
 
 ## 🟠 Audio en retard sur son script
 
@@ -148,43 +88,48 @@ Le MP3 a été produit avant la dernière modification réelle de son script.
 Comparaison sur les **dates de commit**, pas les dates de fichiers (un déplacement de dossier
 réécrit les secondes sans changer le contenu — s'y fier produirait des centaines de faux retards).
 
-- **dino.albertosaurus.nom** — script 2026-09-03 · audio 2026-08-19
-- **dino.albertosaurus.taille** — script 2026-09-03 · audio 2026-08-19
-- **dino.albertosaurus.regime** — script 2026-09-03 · audio 2026-08-19
-- **dino.albertosaurus.funfact** — script 2026-09-03 · audio 2026-08-19
-- **dino.dilophosaurus.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.cryolophosaurus.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.brachiosaurus.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.diplodocus.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.apatosaurus.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.camarasaurus.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.amargasaurus.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.edmontonia.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.minmi.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.triceratops.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.maiasaura.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.saurolophus.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.gallimimus.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.oviraptor.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.pteranodon.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.quetzalcoatlus.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.hatzegopteryx.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.therizinosaurus.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.dimetrodon.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.moschops.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.liopleurodon.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.ichthyosaurus.nom** — script 2026-09-03 · audio 2026-07-28
-- **dino.ichthyosaurus.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.mammuthus.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.smilodon.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.paraceratherium.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.glyptodon.nom** — script 2026-09-03 · audio 2026-07-28
-- **dino.aenocyon.nom** — script 2026-09-03 · audio 2026-07-28
-- **dino.coelodonta.nom** — script 2026-09-03 · audio 2026-07-28
-- **dino.coelodonta.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.titanis.nom** — script 2026-09-03 · audio 2026-07-28
-- **dino.titanis.taille** — script 2026-09-03 · audio 2026-08-10
-- **dino.titanis.funfact** — script 2026-09-03 · audio 2026-07-28
+- **dino.brachiosaurus.nom** — script 2026-09-05 · audio 2026-06-15
+- **dino.brachiosaurus.taille** — script 2026-09-05 · audio 2026-08-10
+- **dino.brachiosaurus.regime** — script 2026-09-05 · audio 2026-06-15
+- **dino.brachiosaurus.funfact** — script 2026-09-05 · audio 2026-06-15
+- **dino.diplodocus.nom** — script 2026-09-05 · audio 2026-06-15
+- **dino.diplodocus.taille** — script 2026-09-05 · audio 2026-08-10
+- **dino.diplodocus.regime** — script 2026-09-05 · audio 2026-06-15
+- **dino.diplodocus.funfact** — script 2026-09-05 · audio 2026-06-15
+- **dino.apatosaurus.nom** — script 2026-09-05 · audio 2026-06-15
+- **dino.apatosaurus.taille** — script 2026-09-05 · audio 2026-08-10
+- **dino.apatosaurus.regime** — script 2026-09-05 · audio 2026-06-15
+- **dino.apatosaurus.funfact** — script 2026-09-05 · audio 2026-06-15
+- **dino.camarasaurus.nom** — script 2026-09-05 · audio 2026-06-15
+- **dino.camarasaurus.taille** — script 2026-09-05 · audio 2026-08-10
+- **dino.camarasaurus.regime** — script 2026-09-05 · audio 2026-06-15
+- **dino.camarasaurus.funfact** — script 2026-09-05 · audio 2026-06-15
+- **dino.amargasaurus.nom** — script 2026-09-05 · audio 2026-06-15
+- **dino.amargasaurus.taille** — script 2026-09-05 · audio 2026-08-10
+- **dino.amargasaurus.regime** — script 2026-09-05 · audio 2026-06-15
+- **dino.amargasaurus.funfact** — script 2026-09-05 · audio 2026-06-15
+- **dino.plateosaurus.nom** — script 2026-09-05 · audio 2026-06-15
+- **dino.plateosaurus.taille** — script 2026-09-05 · audio 2026-06-15
+- **dino.plateosaurus.regime** — script 2026-09-05 · audio 2026-06-15
+- **dino.plateosaurus.funfact** — script 2026-09-05 · audio 2026-06-15
+- **dino.ankylosaurus.nom** — script 2026-09-05 · audio 2026-06-15
+- **dino.ankylosaurus.taille** — script 2026-09-05 · audio 2026-08-10
+- **dino.ankylosaurus.regime** — script 2026-09-05 · audio 2026-06-15
+- **dino.ankylosaurus.funfact** — script 2026-09-05 · audio 2026-06-15
+- **dino.euoplocephalus.nom** — script 2026-09-05 · audio 2026-07-25
+- **dino.euoplocephalus.taille** — script 2026-09-05 · audio 2026-07-25
+- **dino.euoplocephalus.regime** — script 2026-09-05 · audio 2026-07-25
+- **dino.euoplocephalus.funfact** — script 2026-09-05 · audio 2026-07-25
+- **dino.edmontonia.nom** — script 2026-09-05 · audio 2026-07-25
+- **dino.edmontonia.taille** — script 2026-09-05 · audio 2026-08-10
+- **dino.edmontonia.regime** — script 2026-09-05 · audio 2026-07-25
+- **dino.edmontonia.funfact** — script 2026-09-05 · audio 2026-07-25
+- **dino.minmi.nom** — script 2026-09-05 · audio 2026-07-25
+- **dino.minmi.taille** — script 2026-09-05 · audio 2026-08-10
+- **dino.minmi.regime** — script 2026-09-05 · audio 2026-07-25
+- **dino.minmi.funfact** — script 2026-09-05 · audio 2026-07-25
+
+_… et 191 autres — détail complet dans `registre.json`._
 
 ## 🟡 Canaux manquants au contrat
 

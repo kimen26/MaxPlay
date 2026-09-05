@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] O Barioníquio foi descoberto por um encanador, na Inglaterra. [curious] Ele achou ossos enormes numa pedreira de areia, [amazed] e ninguém sabia o que era aquilo."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Um encanador que encontra um dinossauro."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly] Isso mesmo. [amazed] William Walker, o encanador que ficou famoso. Foi ele que encontrou a garra pesada."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

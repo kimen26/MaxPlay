@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Crio… lo… fo… saurio. [curious] «Crio», en griego, es el hielo, el frío. [playful] «Lofo» es una cresta. Y «saurio», el lagarto."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] El lagarto todo congelado, hecho un cubito de hielo."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[chuckles] No exactamente — el hielo está solo en su nombre. [amazed] El lagarto de cresta helada. Vivía en la Antártida, hace 190 millones de años. [confident] Pero en esa época, la Antártida estaba llena de bosques, hacía calor."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] ¿Nada de hielo, entonces?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Nada de nada. [amazed] Árboles, plantas, y muchos herbívoros que cazar, en el extremo sur del mundo."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

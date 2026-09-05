@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Na verdade, os cientistas o chamam pelo nome completo: Albertosaurus sarcophagus. [confident] Albertosaurus, você já conhece. [whispers] E \"Sar-co-fa-gus\", em grego, quer dizer... que COME carne."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[playful] Já vem escrito no nome dele."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly] Isso. [amazed] Com dentes desses, o nome não podia ser outro."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ce… ra… to… ssauro. [curious] \"Cerato\", em grego, quer dizer chifre. [playful] E \"sauro\", o lagarto. O lagarto com chifre!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Um chifre de verdade, no nariz, que nem um rinoceronte?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso mesmo, o lagarto com chifre. Ele vivia na América do Norte, [confident] e talvez também na Europa, em Portugal, [amazed] há 150 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Um chifre, que nem um unicórnio?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Quase! [proud] O único grande carnívoro da época dele com um chifre no nariz."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

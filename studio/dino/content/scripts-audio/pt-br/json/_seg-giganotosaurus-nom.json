@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ji… ga… no… to… ssauro. [curious] \"Giga\" quer dizer gigante — que nem em \"gigantesco\"! \"Noto\" quer dizer do sul. E \"sauro\", o lagarto."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Gigante do sul, que nem \"gigantesco\", só que em lagarto."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso mesmo. Ele vivia na Argentina, na América do Sul, [amazed] há 98 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] E quem ele caçava, um gigante desse tamanho?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] O Andessauro. [confident] Um primo de pescoço comprido, do tamanho de um prédio, que vivia bem perto dele."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

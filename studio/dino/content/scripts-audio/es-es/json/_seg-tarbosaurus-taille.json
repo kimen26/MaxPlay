@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Medía 12 metros de largo — ¡tan largo como un autobús! [quickly] De pie, tenía 4 con 5 metros de alto — ¡tan alto como un autobús de dos pisos! [serious] Y pesaba 5 mil kilos — [amazed] ¡tan pesado como un elefante!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] ¿Un poco menos pesado que el T-Rex?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Un poco menos. [proud] Pero de sobra para ser el rey del desierto de Gobi."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Di… lo… fo… saurio. [curious] «Di» es dos en griego. «Lofo» es una cresta. [playful] Y «saurio», es el…"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[hesitant] Espera, déjame adivinar: el lagarto de dos crestas."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] ¡Acertaste! Dos crestas levantadas sobre la cabeza. [confident] Vivía en Norteamérica, [amazed] hace 193 millones de años — uno de los primeros grandes cazadores de la historia."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] ¿Crestas como una corona?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Como una corona de fiesta. [amazed] Seguramente muy coloridas, para llamar la atención."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

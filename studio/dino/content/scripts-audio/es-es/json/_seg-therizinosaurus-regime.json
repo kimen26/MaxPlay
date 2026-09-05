@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era herbívoro: solo comía plantas. [calm] Atrapaba las ramas altas con sus largas garras y las acercaba a su pico. [confident] Vivía más bien solo."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿El Tarbosaurio lo atacaba?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Raramente. [serious] El Terizinosaurio levantaba sus brazos como dos grandes cuchillos, [playful] y el Tarbosaurio prefería ir a cazar a otro sitio."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

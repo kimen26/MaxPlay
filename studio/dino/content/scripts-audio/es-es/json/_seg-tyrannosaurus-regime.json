@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era carnívoro. Cazaba al Triceratops, al Edmontosaurio y al Anquilosaurio. [calm] Bastante solitario."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[nervous] Entonces Tritri tenía que tener mucho cuidado, ¿no?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[encouraging] Sí, [confident] pero Tritri tenía sus tres cuernos para defenderse. El T-Rex no se lo comía sin pelear."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

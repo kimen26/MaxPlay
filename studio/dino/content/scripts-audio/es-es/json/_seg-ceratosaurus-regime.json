@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era carnívoro. Comía dinosaurios pequeños y peces. [calm] Vivía más bien solo. [nervous] El Alosaurio, mucho más grande, podía atacarlo."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Le tenía miedo al Alosaurio?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[gently] Un poco, seguramente. [confident] Pero era rápido, [playful] y su cuerno podía impresionar a un rival dudoso."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era piscívoro: comía pescado. [calm] Vivía cerca de los ríos y nadaba para atrapar peces enormes, [confident] como un cocodrilo gigante."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Un dinosaurio que nada de verdad?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[amazed] De verdad. [proud] El único gran dinosaurio carnívoro que sabía nadar tan bien."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

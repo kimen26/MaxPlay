@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era herbívoro: só comia plantas. [calm] Ele pegava os galhos altos com as garras compridas e trazia pra perto do bico. [confident] Vivia mais sozinho."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] O Tarbossauro, ele atacava?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Raramente. [serious] O Terizinossauro levantava os braços que nem duas facas gigantes, [playful] e o Tarbossauro preferia ir caçar em outro lugar."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

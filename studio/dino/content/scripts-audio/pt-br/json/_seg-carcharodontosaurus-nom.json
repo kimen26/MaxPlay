@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Car… ca… ro… don… to… ssauro. [curious] \"Carcaro\", em grego, quer dizer pontudo e serrilhado — é a palavra que deu origem a \"tubarão\". [serious] \"Odonto\" é o dente. E \"sauro\", o lagarto."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[playful] Tubarão… dente… eu guardei \"tubarão\". [hesitant] E o resto, juntando tudo, dá o quê?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] O lagarto de dentes de tubarão. Ele vivia no norte da África, [amazed] há 95 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele vivia junto com o Espinossauro?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Vivia, na mesma África. [confident] Um caçava na terra, [calm] o outro na água — não atrapalhavam um ao outro."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

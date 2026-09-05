@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Medía 7 metros de largo — ¡como dos coches uno detrás de otro! [quickly] De pie, tenía 2 con 4 metros de alto — ¡tan alto como una portería de fútbol! Y pesaba 350 kilos — [amazed] ¡tan pesado como 2 burros! [serious] Y podía correr a 25 kilómetros por hora — tan rápido como una bici que va bien."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Corría rápido para cazar?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Bastante rápido, sí. [quickly] Patas largas y finas, hechas para correr."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

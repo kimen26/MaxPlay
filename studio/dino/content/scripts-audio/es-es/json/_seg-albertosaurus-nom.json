@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Al… ber… to… saurio. [curious] «Alberto» viene de Alberta, una GRAN región de Canadá donde se encontraron sus huesos. [playful] Y «saurio», ¿sabes qué significa?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] Lagarto. Entonces… el lagarto de Alberta."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exacto. [amazed] Vivía allí, hace 70 millones de años. [warmly] Un primo del T-Rex."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Y tenía enemigos? [nervous] ¿Cazadores todavía más fuertes que él?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] No. [warmly] En su país, era él el mayor cazador. [proud] Ningún otro carnívoro era lo bastante fuerte para molestarlo."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ty… ran… no… saurus rex. [curious] Do you know what \"tyranno\" means? [pauses] A ruler who answers to no one — nobody gets to say no to him."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Nobody? [nervous] Not even his mom?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[chuckles] His mom, yes, back when he was little. [warmly] But once he was grown, he was the king. He lived in North America, [amazed] sixty-six million years ago."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] And where was Tritri back then?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Right next door! [confident] Triceratops lived in the same kingdom as T. rex, along with Edmontosaurus and Ankylosaurus."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

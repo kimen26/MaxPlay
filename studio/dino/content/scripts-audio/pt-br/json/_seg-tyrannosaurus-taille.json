@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 13 metros de comprimento — do tamanho de um ônibus articulado! De pé, ele tinha 4 metros de altura — da altura de um ônibus de dois andares! [amazed] E pesava 8 mil quilos — tão pesado quanto 4 rinocerontes! [serious] E mesmo assim, os cientistas acham que ele corria a 20 quilômetros por hora — que nem o papai correndo. Só isso."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Não corria mais rápido que um carro, que nem nos filmes?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Não, [gently] as patas dele eram pesadas demais pra isso. Mas 20 quilômetros por hora já dava pra ele sobrando."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] A… lo… ssauro. [curious] \"Alo\", em grego, quer dizer diferente, esquisito — os ossos dele não pareciam com os de nenhum outro. [serious] E \"sauro\", o lagarto."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] O lagarto... alô? Que nem no telefone?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[chuckles] Quase a mesma palavra, mas quer dizer diferente, não oi. [serious] O lagarto diferente. Ele vivia na América do Norte, [confident] mas também na Europa, [amazed] há 155 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Em dois continentes ao mesmo tempo?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Exatamente. [proud] O super caçador do Jurássico, dos dois lados do oceano."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

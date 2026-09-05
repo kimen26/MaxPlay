@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Di… lo… fo… ssauro. [curious] \"Di\" é dois em grego. \"Lofo\" é uma crista. [playful] E \"sauro\" é o..."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[hesitant] Espera, deixa eu adivinhar: o lagarto de duas cristas."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Acertou! Duas cristas empinadas na cabeça. [confident] Ele vivia na América do Norte, [amazed] há 193 milhões de anos — um dos primeiros grandes caçadores da história."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Cristas que nem uma coroa?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Que nem uma coroa de festa. [amazed] Provavelmente bem coloridas, pra chamar atenção."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

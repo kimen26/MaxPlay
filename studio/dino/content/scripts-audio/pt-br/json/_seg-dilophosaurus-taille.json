@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 7 metros de comprimento — que nem dois carros um atrás do outro! [quickly] De pé, ele tinha 2 vírgula 4 metros de altura — da altura de uma trave de futebol! E pesava 350 quilos — [amazed] tão pesado quanto 2 jumentos! [serious] E ele conseguia correr a 25 quilômetros por hora — que nem andar de bicicleta rápido."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele corria rápido pra caçar?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Bem rápido, sim. [quickly] Patas compridas e finas, feitas pra correr."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

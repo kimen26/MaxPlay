@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Al… oh… saurus. [curious] \"Allo,\" in Greek, means other, different — its bones didn't look like any other dinosaur's. [serious] And \"saurus\" means lizard."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] The lizard… hello? Like on the phone?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[chuckles] Almost the same word, but this one means different, not hi. [serious] The different lizard. It lived in North America, [confident] but also in Europe, [amazed] one hundred fifty-five million years ago."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] On two continents at the same time?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Exactly. [proud] The top hunter of the Jurassic, on both sides of the ocean."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

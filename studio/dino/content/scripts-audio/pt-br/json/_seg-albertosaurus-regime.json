@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era carnívoro. Caçava os grandes herbívoros do seu país — [confident] o Edmontossauro, e o Saurolofo com a crista dele. [pauses] E talvez ele não caçasse sozinho: [amazed] encontraram 26 Albertossauros juntos, no mesmo lugar."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Vinte e seis? Então, eles eram amigos?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] É exatamente a pergunta que os cientistas se fazem. [mischievously] Talvez uma verdadeira matilha, que nem os lobos de hoje. [curious] Eles ainda estão procurando a resposta."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

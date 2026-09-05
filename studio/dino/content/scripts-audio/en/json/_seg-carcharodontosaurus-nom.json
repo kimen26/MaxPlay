@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Kar… kar… oh… don… toh… saurus. [curious] \"Charcharo,\" in Greek, means jagged and sharp — it's the same root that gives us the word \"shark.\" [serious] \"Odonto\" means tooth. And \"saurus\" means lizard."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[playful] Shark… tooth… I got \"shark.\" [hesitant] So what's it all mean stuck together?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] The shark-toothed lizard. It lived in North Africa, [amazed] ninety-five million years ago."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Did it live with Spinosaurus?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Yes, same Africa. [confident] One hunted on land, [calm] the other in the water — they stayed out of each other's way."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

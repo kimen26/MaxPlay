@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Tar… bo… ssauro. [curious] \"Tarbo\", em grego, é o medo, o pavor — aquele que faz todo mundo tremer. E \"sauro\", o lagarto."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[proud] O lagarto que dá medo, eu entendi tudo de uma vez."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Perfeito. [confident] Ele era primo do T-Rex, na Ásia, [amazed] no deserto de Gobi, há 70 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele se parecia mesmo com o T-Rex?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Bastante. [confident] Mesma família de caçadores, só que na versão Mongólia."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

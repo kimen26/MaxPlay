@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ba… ri… o… nix. [curious] «Bari», en griego, significa pesado. [playful] Y «onix» es la garra. ¡La garra pesada!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] ¿Ónix, como la piedra negra brillante? [confident] Entonces sale: la garra pesada."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exacto, la misma palabra. [confident] Una garra ENORME de 31 centímetros en el pulgar. Vivía en Europa — en Inglaterra, en España y en Portugal, [amazed] hace 125 millones de años."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Y qué atrapaba, con una garra así?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Peces. [amazed] Como un oso pescador, pero en dinosaurio."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

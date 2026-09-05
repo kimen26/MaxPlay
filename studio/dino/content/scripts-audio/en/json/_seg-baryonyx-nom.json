@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Bar… ee… on… iks. [curious] \"Bary,\" in Greek, means heavy. [playful] And \"onyx\" means claw. The heavy claw!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Onyx, like the shiny black stone? [confident] So that makes: the heavy claw."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactly right, same word. [confident] A HUGE claw, 12 inches long, on its thumb. It lived in Europe — England, Spain, and Portugal, [amazed] one hundred twenty-five million years ago."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] What did it catch with a claw like that?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Fish. [amazed] Like a fishing bear, but a dinosaur."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

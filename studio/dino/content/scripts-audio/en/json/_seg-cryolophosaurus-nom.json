@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Kry… oh… loh… foh… saurus. [curious] \"Cryo,\" in Greek, means ice, cold. [playful] \"Lopho\" means a crest. And \"saurus\" means lizard."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] The frozen lizard, turned into an ice cube."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[chuckles] Not quite — the ice is just in its name. [amazed] The ice-crested lizard. It lived in Antarctica, one hundred ninety million years ago. [confident] But back then, Antarctica was covered in forests, warm and green."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] No ice at all?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] None at all. [amazed] Trees, plants, and plenty of plant-eaters to hunt, way down at the bottom of the world."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

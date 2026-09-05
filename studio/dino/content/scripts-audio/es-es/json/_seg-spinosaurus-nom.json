@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Es… pi… no… saurio. [curious] «Espino», en latín, es una espina — como las grandes púas de su vela en el lomo. Y «saurio», el la…"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[hesitant] Espera, ya sé: el lagarto de espinas."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exacto, ¡lo has dicho antes de que acabara! Vivía en el norte de África, [amazed] hace 95 millones de años."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Y qué comía, con tantas espinas?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] ¡Pescado! [confident] Peces enormes, tan largos como tú y papá juntos."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

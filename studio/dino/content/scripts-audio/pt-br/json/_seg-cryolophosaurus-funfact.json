@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] A crista dele ficava atravessada na cabeça, [amazed] que nem uma onda congelada [pauses] bem em cima dos olhos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Uma crista atravessada?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Isso, o único dinossauro conhecido com uma crista desse jeito, [amazed] bem entre os olhos. Um penteado de pedra bem esquisito."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

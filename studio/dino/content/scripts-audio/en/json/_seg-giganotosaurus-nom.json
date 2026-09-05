@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Jig… ah… no… toh… saurus. [curious] \"Giga\" means giant — like in \"gigantic.\" \"Noto\" means from the south. And \"saurus\" means lizard."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Giant from the south, like \"gigantic\" but a lizard."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactly. It lived in Argentina, in South America, [amazed] ninety-eight million years ago."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] What did a giant like that even hunt?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Andesaurus. [confident] A long-necked cousin, as tall as a building, that lived in the very same area."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

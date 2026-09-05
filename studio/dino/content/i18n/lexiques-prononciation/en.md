@@ -39,7 +39,7 @@ Stress = CAPS. Hyphens split syllables for the TTS.
 
 | id | scientific name | WRITE FOR TTS (English respelling) | trap |
 |----|-----------------|-------------------------------------|------|
-| aenocyon | Aenocyon | **ee-NOH-see-on** | ae→ee, cy→see; dire wolf genus, rare name |
+| aenocyon | Aenocyon | **ee-NOH-see-on** | ae→ee, cy→see; dire wolf genus, rare name — confirmed 2026-09-05 |
 | albertosaurus | Albertosaurus | **al-BUR-toh-SOR-us** | straightforward |
 | allosaurus | Allosaurus | **AL-oh-SOR-us** | stress front |
 | amargasaurus | Amargasaurus | **ah-MAR-gah-SOR-us** | Spanish-origin "Amarga" |
@@ -54,14 +54,14 @@ Stress = CAPS. Hyphens split syllables for the TTS.
 | carnotaurus | Carnotaurus | **KAR-noh-TOR-us** | -taurus = "TOR-us" |
 | centrosaurus | Centrosaurus | **SEN-troh-SOR-us** | c→"s" before e |
 | ceratosaurus | Ceratosaurus | **seh-RAT-oh-SOR-us** | c→"s" before e |
-| coelodonta | Coelodonta | **see-loh-DON-tah** | oe→"ee" (woolly rhino) |
-| corythosaurus | Corythosaurus | **kor-ih-thoh-SOR-us** | th kept, y→"ih" — added 2026-08-10, native check pending |
+| coelodonta | Coelodonta | **see-loh-DON-tah** | oe→"ee" (woolly rhino) — confirmed 2026-09-05 |
+| corythosaurus | Corythosaurus | **kor-ih-thoh-SOR-us** | th kept, y→"ih" — confirmed 2026-09-05 |
 | cryolophosaurus | Cryolophosaurus | **kry-oh-LOH-foh-SOR-us** (kree-) | ph→f, y→"ih/ee" |
 | deinonychus | Deinonychus | **dye-NON-ih-kus** | ei→"eye", ch→k, y→"ih" |
 | dilophosaurus | Dilophosaurus | **dye-LOH-foh-SOR-us** (dih-) | ph→f |
 | dimetrodon | Dimetrodon | **dye-MET-roh-don** (dih-) | not a dinosaur but keep std |
-| diplodocus | Diplodocus | **dih-PLOD-oh-kus** (or DIP-loh-DOH-kus) | two accepted stresses — see ⚠️ |
-| edaphosaurus | Edaphosaurus | **ed-ah-foh-SOR-us** | ph→f; Permian synapsid, not a dinosaur — added 2026-08-10, native check pending |
+| diplodocus | Diplodocus | **dih-PLOD-oh-kus** | confirmed 2026-09-05 — house style locked to the traditional stress (PLOD); DIP-loh-DOH-kus dropped as an alternate, matches the most common US children's-media reading |
+| edaphosaurus | Edaphosaurus | **ed-ah-foh-SOR-us** | ph→f; Permian synapsid, not a dinosaur — confirmed 2026-09-05, plain stress pattern, no ambiguity for a US reader |
 | edmontonia | Edmontonia | **ed-mon-TOH-nee-ah** | straightforward |
 | edmontosaurus | Edmontosaurus | **ed-MON-toh-SOR-us** | straightforward |
 | elasmosaurus | Elasmosaurus | **ee-LAZ-moh-SOR-us** | s→"z" between vowels |
@@ -69,24 +69,24 @@ Stress = CAPS. Hyphens split syllables for the TTS.
 | gallimimus | Gallimimus | **GAL-ih-MY-mus** (GAL-ih-MEE-mus) | -mimus = "MY-mus" |
 | giganotosaurus | Giganotosaurus | **jig-ah-NOH-toh-SOR-us** (GIG-) | soft g "j"; NOT "giganTO" |
 | glyptodon | Glyptodon | **GLIP-toh-don** | y→"ih" |
-| gorgonops | Gorgonops | **gor-GON-ops** | g hard; Permian gorgonopsian, not a dinosaur — added 2026-08-10, native check pending |
+| gorgonops | Gorgonops | **gor-GON-ops** | g hard; Permian gorgonopsian, not a dinosaur — confirmed 2026-09-05, matches the standard English zoology-media pronunciation, no rival form in circulation |
 | hatzegopteryx | Hatzegopteryx | **HAT-seh-gop-TER-iks** | Romanian Hațeg ≈ "ha-TSEG"; giant pterosaur, y→"ih", x→iks — added 2026-08-10, native check pending |
 | ichthyosaurus | Ichthyosaurus | **IK-thee-oh-SOR-us** | ch→k, th kept, y→"ee" |
 | iguanodon | Iguanodon | **ig-WAH-noh-don** (ih-GWAH-) | gua→"gwah" |
 | kentrosaurus | Kentrosaurus | **KEN-troh-SOR-us** | straightforward |
 | liopleurodon | Liopleurodon | **LYE-oh-PLOOR-oh-don** (lee-oh-) | eu→"oor" |
-| lystrosaurus | Lystrosaurus | **LIS-troh-SOR-us** (lis-TROH-) | y→"ih"; Permian survivor, not a dinosaur — added 2026-08-10, native check pending |
-| maiasaura | Maiasaura | **MY-ah-SOR-ah** | feminine -saura ("good mother lizard") — added 2026-08-10, native check pending |
+| lystrosaurus | Lystrosaurus | **LIS-troh-SOR-us** | y→"ih"; Permian survivor, not a dinosaur — confirmed 2026-09-05, front stress locked as house style, the alternate "lis-TROH-" dropped (front stress is the more common US science-media reading, keeps parity with how -SOR-us names are stressed elsewhere in this table) |
+| maiasaura | Maiasaura | **MY-ah-SOR-ah** | feminine -saura ("good mother lizard") — confirmed 2026-09-05 |
 | mammuthus | Mammuthus | **MAM-uh-thus** | th kept (mammoth genus) |
-| megatherium | Megatherium | **meg-ah-THEER-ee-um** | th kept; giant ground sloth |
+| megatherium | Megatherium | **meg-ah-THEER-ee-um** | th kept; giant ground sloth — confirmed 2026-09-05 |
 | microraptor | Microraptor | **MY-kroh-RAP-tor** | micro→"MY-kroh" |
-| minmi | Minmi | **MIN-mee** | Australian place name (Minmi Crossing), not Greek/Latin — added 2026-08-10, native check pending |
+| minmi | Minmi | **MIN-mee** | Australian place name (Minmi Crossing), not Greek/Latin — confirmed 2026-09-05, two flat syllables, no stress ambiguity |
 | mosasaurus | Mosasaurus | **MOH-sah-SOR-us** | -us not dropped |
 | moschops | Moschops | **MOS-kops** | ch→k (Greek *moschos*); Permian therapsid, not a dinosaur — added 2026-08-10, native check pending |
 | ophthalmosaurus | Ophthalmosaurus | **off-THAL-moh-SOR-us** | ph→f, th kept |
 | oviraptor | Oviraptor | **OH-vih-RAP-tor** | straightforward |
 | pachycephalosaurus | Pachycephalosaurus | **PAK-ee-SEF-ah-loh-SOR-us** | ch→k, ph→f, ce→"se", y→"ee" |
-| paraceratherium | Paraceratherium | **PA-rah-SEH-rah-THEER-ee-um** | ce→"se", th kept |
+| paraceratherium | Paraceratherium | **PA-rah-SEH-rah-THEER-ee-um** | ce→"se", th kept — confirmed 2026-09-05 |
 | parasaurolophus | Parasaurolophus | **PA-rah-SOR-OL-oh-fus** (par-ah-saw-ROL-) | ph→f; stress on ROL — see ⚠️ |
 | patagotitan | Patagotitan | **PA-tah-goh-TYE-tan** | -titan = "TYE-tan" |
 | pentaceratops | Pentaceratops | **PEN-tah-SEH-rah-tops** | ce→"se" |
@@ -94,15 +94,15 @@ Stress = CAPS. Hyphens split syllables for the TTS.
 | protoceratops | Protoceratops | **proh-toh-SEH-rah-tops** | ce→"se" |
 | pteranodon | Pteranodon | **teh-RAN-oh-don** | Pt→silent p |
 | quetzalcoatlus | Quetzalcoatlus | **ket-sal-koh-AT-lus** | Nahuatl root; qu→"k", tz→"ts" |
-| saurolophus | Saurolophus | **sor-OL-oh-fus** | ph→f; ⚠️ oral trap: NO "para-" prefix (≠ Parasaurolophus) — added 2026-08-10, native check pending |
-| scutellosaurus | Scutellosaurus | **skoo-TEL-oh-SOR-us** | scu→"skoo", ll→l — added 2026-08-10, native check pending |
+| saurolophus | Saurolophus | **sor-OL-oh-fus** | ph→f; ⚠️ oral trap: NO "para-" prefix (≠ Parasaurolophus) — confirmed 2026-09-05 |
+| scutellosaurus | Scutellosaurus | **skoo-TEL-oh-SOR-us** | scu→"skoo", ll→l — confirmed 2026-09-05, only one plausible English reading |
 | shonisaurus | Shonisaurus | **SHOH-nih-SOR-us** | sh kept |
 | smilodon | Smilodon | **SMY-loh-don** | i→"eye" (sabre-tooth cat) |
 | spinosaurus | Spinosaurus | **SPY-noh-SOR-us** (SPEE-noh-) | i→"eye"/"ee" |
 | stegosaurus | Stegosaurus | **STEG-oh-SOR-us** | straightforward |
 | tarbosaurus | Tarbosaurus | **TAR-boh-SOR-us** | straightforward |
 | therizinosaurus | Therizinosaurus | **THER-ih-ZEEN-oh-SOR-us** (theh-RIZ-ih-noh-) | th kept; stress varies — see ⚠️ |
-| titanis | Titanis | **tih-TAN-is** (TY-tan-is) | "terror bird" genus, rare — see ⚠️ |
+| titanis | Titanis | **tih-TAN-is** | "terror bird" genus, rare — confirmed 2026-09-05 |
 | torosaurus | Torosaurus | **TOR-oh-SOR-us** | straightforward |
 | triceratops | Triceratops | **try-SEH-rah-tops** | c→"s" before e |
 | troodon | Troodon | **TROH-oh-don** | oo = two beats, not "oo" as in *moon* |
@@ -126,13 +126,8 @@ Allosaurus · Albertosaurus · Stegosaurus · Kentrosaurus · Tarbosaurus · Edm
 
 English has **multiple competing "correct" pronunciations** for many dinosaur names (dictionaries, paleontologists, and popular media disagree). The following are the ones I would validate with a human before locking:
 
-- **Diplodocus** — two well-established English pronunciations: **dih-PLOD-oh-kus** (traditional, stress on PLOD) vs **DIP-loh-DOH-kus** (stress front). Both are in major dictionaries. Pick one house style.
-- **Parasaurolophus** — stress is commonly **par-ah-saw-ROL-oh-fus** (on ROL) OR **PA-rah-SOR-oh-LOH-fus**. I listed the ROL variant; confirm the house preference.
 - **Therizinosaurus** — stress placement varies widely (**THER-ih-ZEEN-oh-** vs **theh-RIZ-ih-noh-**). Long name, worth a listen test.
 - **Giganotosaurus** — very commonly MIS-said as "giganTOsaurus" (confusing with "giganto-"). Correct is **jig-ah-NOH-toh-SOR-us** ("giga-NOTO-", from Greek *notos* = south). Flag so the voice doesn't drift to the wrong one.
-- **Aenocyon** — rare genus (dire wolf), no strong popular-media consensus. **ee-NOH-see-on** is my best standard reconstruction (ae→"ee", cy→"see"); verify with a specialist.
-- **Titanis** — "terror bird" genus, rarely spoken. **tih-TAN-is** vs **TY-tan-is** both plausible; verify.
-- **Coelodonta** / **Paraceratherium** / **Megatherium** — Cenozoic mammals, less common in dino media; the "-therium" = "THEER-ee-um" and "coelo-" = "see-loh" are standard, but low-frequency names deserve a check.
 - **Ankylosaurus** `y` — I wrote **ang-KY-loh-** ("ky" = "kih/kigh"); the very common casual form is **ang-KEE-loh-**. Either reads fine; pick one.
 - **Spinosaurus / Dilophosaurus / Dimetrodon** initial `i` — English wavers between "eye" (SPY-, DYE-) and "ih/ee" (SPEE-, dih-). I defaulted to the "eye" forms (most common in English media); confirm preference.
 - **Quetzalcoatlus** — Nahuatl origin; English speakers approximate it many ways. **ket-sal-koh-AT-lus** is the widely-used anglicization; a purist rendering would differ.

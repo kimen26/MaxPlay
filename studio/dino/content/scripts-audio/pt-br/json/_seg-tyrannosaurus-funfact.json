@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Os dentes dele tinham 20 centímetros — [amazed] maiores que a sua mão! Ele tinha 60 deles. [serious] A mordida dele era a mais forte de todos os dinossauros terrestres."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Ele esmagava os ossos?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[whispers] Que nem você quebra um gravetinho. Os ossos viravam pó."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,42 @@
+{
+  "tyrannosaurus-nom": {
+    "empreinte": "9eeedb6b1239",
+    "repliques": 5,
+    "duree_s": 32.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:35:08.282Z"
+  },
+  "tyrannosaurus-taille": {
+    "empreinte": "59b61cb04667",
+    "repliques": 3,
+    "duree_s": 33.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:35:37.331Z"
+  },
+  "tyrannosaurus-regime": {
+    "empreinte": "88026b58a030",
+    "repliques": 3,
+    "duree_s": 15.6,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:35:55.681Z"
+  },
+  "tyrannosaurus-funfact": {
+    "empreinte": "09ae06ad2810",
+    "repliques": 3,
+    "duree_s": 18.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Gabriel Blanco",
+    "voice_id_source": "LQDLKBDLh2L4weLEgCIE",
+    "language_code": "es",
+    "date": "2026-09-05T00:36:15.995Z"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Além do chifre grande, [playful] ele tinha chifrinhos por cima dos olhos, que nem um dragão. [amazed] E os dentes finos dele eram perfeitos pra pegar peixes escorregadios."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Um dragão pescador."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Um unicórnio carnívoro e pescador. [proud] Só existia um igual a ele."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -58,11 +58,11 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[excited][quickly] Encore ! [gasps] Ils inventent l'électricité, la machine à vapeur, le moteur. [happily] La voiture, le bus, le train, le téléphone."
+      "text": "[excited][quickly] Encore ! [gasps] Ils inventent l'électricité, la machine à vapeur, le moteur. [happily] La voiture, le train, le vélo, le téléphone."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Wouah !"
+      "text": "[gasps] Wouah, tout ça ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
@@ -74,7 +74,7 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[softly][happily] On arrive presque à aujourd'hui. [pauses] Tu es prêt à découvrir comment on sait tout ça ? [pauses]"
+      "text": "[softly][happily] On arrive presque à aujourd'hui. [pauses] Tu es prêt à découvrir [curious] comment on sait tout ça ?"
     }
   ],
   "model_id": "eleven_v3",

@@ -22,7 +22,7 @@
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Treize mètres ?!"
+      "text": "[gasps] Treize mètres ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
@@ -30,7 +30,11 @@
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Du lait sous l'eau ?!"
+      "text": "[gasps] Du lait sous l'eau ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[chuckles][warmly] Du lait sous l'eau. [softly] La maman baleine nourrit son petit en nageant, [pauses] comme toutes les mamans mammifères."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -38,7 +42,7 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[excited] Le temps passe. [playful] Puis, [pauses] le froid revient. [serious] Vraiment froid… [pauses]"
+      "text": "[excited] Le temps passe. [playful] Puis, [pauses] le froid revient. [serious] Vraiment froid, de plus en plus froid."
     }
   ],
   "model_id": "eleven_v3",

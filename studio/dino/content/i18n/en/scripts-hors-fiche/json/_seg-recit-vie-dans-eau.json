@@ -1,0 +1,58 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] Listen to what's next, Wex: the very first oceans have just been born. [curious] And guess what shows up inside them..."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Fish?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[chuckles][playful] Not yet! Long before fish, [softly] tiny beings, invisible to the eye: bacteria. [calm] The very first living things on Earth."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] How tiny?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[softly] So tiny that thousands could fit on the tip of a pencil. [pauses] And among them, some are special: cyanobacteria."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] What makes them special?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited][calm] They breathe in sunlight! [gasps] They turn it into food, and while making their food, they release something precious: oxygen, the air we breathe."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[amazed] Over hundreds of millions of years, they make so much of it that Earth's air changes completely. [serious] Scientists call this the Great Oxidation."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] The air we breathe today, does it come from those tiny bacteria?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] A good part of it, yes! [chuckles] And meanwhile, in the ocean, life keeps inventing new things."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited][quickly] Algae, [gasps] soft little animals, [calm] then the very first shelled animals appear."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Does all that take a long time?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[calm][softly] Hundreds of millions of years, Wex. [pauses] Life is never in a hurry. [warmly] But it never stops inventing."
+    }
+  ]
+}

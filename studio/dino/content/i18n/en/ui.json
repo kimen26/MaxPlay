@@ -97,5 +97,13 @@
   "langue_grec": "Greek",
   "langue_latin": "Latin",
   "journey_ep_grande-mort_label": "The Great Dying",
-  "journey_ep_grande-mort_date": "252 million years ago"
+  "journey_ep_grande-mort_date": "252 million years ago",
+  "journey_ep_naissance-terre_label": "The Birth of the Earth",
+  "journey_ep_naissance-terre_date": "4 and a half billion years ago",
+  "journey_ep_vie-dans-eau_label": "Life Begins in the Water",
+  "journey_ep_vie-dans-eau_date": "3 and a half billion years ago",
+  "journey_ep_sortie-eau_label": "Fish Come Out of the Water",
+  "journey_ep_sortie-eau_date": "375 million years ago",
+  "journey_ep_reptiles-permien_label": "The First True Reptiles",
+  "journey_ep_reptiles-permien_date": "300 million years ago"
 }

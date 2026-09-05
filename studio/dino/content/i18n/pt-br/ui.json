@@ -97,5 +97,13 @@
   "langue_grec": "grego",
   "langue_latin": "latim",
   "journey_ep_grande-mort_label": "A Grande Mortandade",
-  "journey_ep_grande-mort_date": "há 252 milhões de anos"
+  "journey_ep_grande-mort_date": "há 252 milhões de anos",
+  "journey_ep_naissance-terre_label": "O nascimento da Terra",
+  "journey_ep_naissance-terre_date": "há 4 bilhões e meio de anos",
+  "journey_ep_vie-dans-eau_label": "A vida começa na água",
+  "journey_ep_vie-dans-eau_date": "há 3 bilhões e meio de anos",
+  "journey_ep_sortie-eau_label": "Os peixes saem da água",
+  "journey_ep_sortie-eau_date": "há 375 milhões de anos",
+  "journey_ep_reptiles-permien_label": "Os primeiros répteis de verdade",
+  "journey_ep_reptiles-permien_date": "há 300 milhões de anos"
 }

@@ -1,0 +1,58 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] Listen, Wex: amphibians now live on land. [curious] But they're still missing something."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] What's that?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[calm] They always have to go back near water to lay their eggs, [softly] or else the eggs dry out. [serious] So life invents a solution."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited][amazed] An egg with a hard shell, [gasps] that keeps the water sealed inside! [happily] And there you have the very first true reptiles."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] So they can lay eggs anywhere they want?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[playful] Exactly! Even far from water, right in a desert. [calm] This time is called the Permian."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] And are the continents like today?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious][calm] Not at all! All the continents are stuck together into one giant block: Pangea. [softly] That means \"all the Earth,\" in Greek."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[amazed] Around it, one single huge ocean. [pauses] And at the center of the block, so far from the sea that the climate turns very, very dry: a giant desert."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Were there dinosaurs, in that desert?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[chuckles][softly] Not yet! [playful] There is an animal with a big sail on its back, Dimetrodon, [serious] but it's not a dinosaur: it's a distant cousin of mammals. [calm] Dinosaurs will arrive forty million years later."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[nervous] What happens next, in that desert?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious][softly] The climate keeps getting drier, and harder. [pauses] And far beneath our feet, something is brewing..."
+    }
+  ]
+}

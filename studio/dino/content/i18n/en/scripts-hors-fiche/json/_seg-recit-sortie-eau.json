@@ -1,0 +1,66 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] Listen close, Wex: we're moving forward in time again. [excited] Dry land, though, is still completely bare."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Completely bare? No plants at all?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[calm] Not yet, but it's coming: mosses, then the very first green plants appear on the continents. [softly] And soon, [happily] the very first trees."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] And in the sea, what's happening?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited] In the sea, this time is called the Devonian. [serious] It comes from Devon, a region in England where scientists found its rocks. [happily] People call it \"the age of fishes.\""
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Why?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[playful][calm] Because there are fish of every shape! [amazed] And some of them have thick, fleshy fins, [gasps] almost like legs."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Almost like legs? Like this one, Tiktaalik?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily][excited] Exactly! Tiktaalik can even lift its head out of the water, [pauses] to look around."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious][softly] And one day, some of these fish dare to come out completely. [pauses] The very first amphibians are born: animals that live in water AND on land, [calm] like frogs today."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] And after that, does it become a giant forest?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[chuckles][happily] Almost! A bit later comes the Carboniferous, [serious] named that way because it formed the coal we still use today. [excited] Huge forests, air rich in oxygen..."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[amazed] And giant insects flying between the trees!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] How giant?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[playful][calm] A dragonfly as big as a dinner tray, Wex. [pauses] Life on land is only just beginning."
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "inputs": [
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] Écoute, Wex : les amphibiens vivent maintenant sur terre. [curious] Mais il leur manque encore quelque chose."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Quoi donc ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[calm] Ils doivent toujours retourner près de l'eau pour pondre leurs œufs, [softly] sinon les œufs se dessèchent. [serious] Alors la vie invente une solution."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited][amazed] Un œuf avec une coquille dure, [gasps] qui garde l'eau à l'intérieur ! [happily] Et voilà les tout premiers vrais reptiles."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Ils peuvent pondre où ils veulent, alors ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[playful] Exactement ! Même loin de l'eau, en plein désert. [calm] Cette époque s'appelle le Permien."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et les continents, ils sont comme aujourd'hui ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious][calm] Pas du tout ! Tous les continents sont collés en un seul bloc géant : la Pangée. [softly] Ça veut dire « toute la Terre », en grec."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[amazed] Autour, un seul immense océan. [pauses] Et au centre du bloc, tellement loin de la mer que le climat devient très, très sec : un désert géant."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Il y avait des dinosaures, dans ce désert ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[chuckles][softly] Pas encore ! [playful] Il y a bien un animal à grande voile sur le dos, le Dimétrodon, [serious] mais ce n'est pas un dinosaure : c'est un lointain cousin des mammifères. [calm] Les dinosaures arriveront quarante millions d'années plus tard."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[nervous] Il se passe quoi, après, dans ce désert ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[serious][softly] Le climat devient de plus en plus sec, de plus en plus dur. [pauses] Et loin sous nos pieds, quelque chose se prépare..."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

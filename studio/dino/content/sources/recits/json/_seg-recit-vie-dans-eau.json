@@ -1,0 +1,60 @@
+{
+  "inputs": [
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] Écoute la suite, Wex : les tout premiers océans viennent de naître. [curious] Et devine ce qui apparaît dedans..."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Des poissons ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[chuckles][playful] Pas encore ! Bien avant les poissons, [softly] des êtres minuscules, invisibles à l'œil : les bactéries. [calm] Les tout premiers vivants sur Terre."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Minuscules comment ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[softly] Si petits qu'il en tiendrait des milliers sur la pointe d'un crayon. [pauses] Et parmi elles, il y en a des spéciales : les cyanobactéries."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Elles sont spéciales pourquoi ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited][calm] Elles respirent la lumière du soleil ! [gasps] Elles la transforment en nourriture, et en fabriquant leur nourriture, elles rejettent quelque chose de précieux : de l'oxygène, l'air qu'on respire."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[amazed] Pendant des centaines de millions d'années, elles en fabriquent tellement [gasps] que l'air de la Terre change complètement. [serious] Les savants appellent ça la Grande Oxydation."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] L'air d'aujourd'hui, il vient de ces toutes petites bactéries ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] Une bonne partie, oui ! [chuckles] Et pendant ce temps, dans l'océan, la vie continue d'inventer des choses."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited][quickly] Des algues, [gasps] des animaux tout mous, [calm] puis les tout premiers animaux à coquille apparaissent."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Et ça prend longtemps, tout ça ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[calm][softly] Des centaines de millions d'années, Wex. [pauses] La vie n'est jamais pressée. [warmly] Mais elle n'arrête jamais d'inventer."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Te… ri… si… no… saurio. [curious] En griego antiguo, «terizino» significa segar, cortar la hierba — como una GUADAÑA. [playful] Y «saurio», el lagarto."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] ¿El lagarto-guadaña, con una guadaña de verdad?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exacto. [confident] Vivía en Mongolia, en el desierto de Gobi, [amazed] hace 70 millones de años."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Y también había dinosaurios malos por ahí?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] ¡Sí! [confident] El Tarbosaurio, primo del T-Rex, vivía muy cerca de él."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

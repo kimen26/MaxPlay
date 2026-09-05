@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Es… pi… no… ssauro. [curious] \"Espino\", em latim, quer dizer espinho — que nem os espinhos grandes da vela nas costas dele. E \"sauro\", o le…"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[hesitant] Espera, eu sei: o lagarto de espinhos."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso mesmo, você acertou antes de eu terminar! Ele vivia no norte da África, [amazed] há 95 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] E o que ele comia, com todos esses espinhos?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Peixe! [confident] Peixes enormes, do tamanho de você e do papai juntos."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

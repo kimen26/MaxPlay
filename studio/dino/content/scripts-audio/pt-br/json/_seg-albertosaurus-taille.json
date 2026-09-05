@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 9 vírgula 5 metros de comprimento — do tamanho de um caminhão! [quickly] De pé, ele tinha 3 metros de altura — da altura de uma cesta de basquete! E pesava 2 mil quilos — tão pesado quanto um rinoceronte! [amazed] E os cientistas acham que ele conseguia correr a 30 quilômetros por hora — que nem um cavalo a meio galope."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] E os braços dele? [playful] Bem pequenininhos, que nem o T-Rex?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Isso mesmo, igualzinho: minúsculos, [amazed] com só DOIS dedos em cada pata."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

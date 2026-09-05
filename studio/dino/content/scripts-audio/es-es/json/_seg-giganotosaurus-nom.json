@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Gui… ga… no… to… saurio. [curious] «Giga» significa gigante, como en «gigantesco». «Noto» significa del sur. Y «saurio», el lagarto."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Gigante del sur, como «gigantesco» pero en lagarto."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exacto. Vivía en Argentina, en Sudamérica, [amazed] hace 98 millones de años."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Y a quién cazaba, un gigante así?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Al Andesaurio. [confident] Un primo de cuello largo, tan grande como un edificio, que vivía en la misma zona que él."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] It was a carnivore. It hunted the big plant-eaters of its country — [confident] Edmontosaurus, and Saurolophus with its crest. [pauses] And maybe it didn't hunt alone: [amazed] scientists found 26 Albertosaurus together, in one spot."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] 26? So they were friends?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] That's exactly what scientists are trying to figure out. [mischievously] Maybe a real pack, like wolves today. [curious] They're still searching for the answer."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

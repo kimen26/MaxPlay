@@ -1,0 +1,42 @@
+{
+  "tyrannosaurus-nom": {
+    "empreinte": "123d50eabe05",
+    "repliques": 5,
+    "duree_s": 42.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:39:16.417Z"
+  },
+  "tyrannosaurus-taille": {
+    "empreinte": "d252edda7b7f",
+    "repliques": 3,
+    "duree_s": 39.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:39:54.409Z"
+  },
+  "tyrannosaurus-regime": {
+    "empreinte": "4f8ab120b416",
+    "repliques": 3,
+    "duree_s": 22.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:40:16.499Z"
+  },
+  "tyrannosaurus-funfact": {
+    "empreinte": "5a95a1b2a052",
+    "repliques": 3,
+    "duree_s": 25.7,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:40:39.975Z"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] It was a carnivore. It hunted the big herbivores of Mongolia, [confident] like Therizinosaurus. [calm] Mostly a loner."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] How did Therizinosaurus defend itself?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] With its ENORMOUS claws, three feet long, [serious] lined up like a fence of knives. [confident] Faced with that, Tarbosaurus usually went looking for an easier meal."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

@@ -94,6 +94,8 @@ function checkFile(file) {
       if (/sau-rus/i.test(lm[3])) warns.push(`bloc ${L} : « sau-rus » syllabé latin (S avalé) → syllaber « -saure »`);
     }
     if (n === 0) errs.push(`bloc ${L} : aucune réplique parsée (format « **NARRATEUR H** [tag] : … »)`);
+    const autres = [...body.matchAll(/^\*\*([^*]+)\*\*/gm)].map(x => x[1]).filter(x => x !== 'NARRATEUR H' && x !== 'WEX');
+    if (autres.length) errs.push(`bloc ${L} : locuteur inconnu « ${[...new Set(autres)].join(', ')} » — les libellés machine restent NARRATEUR H / WEX dans toutes les langues`);
     if (blocChars > 700) warns.push(`bloc ${L} : ${blocChars} car. (> 700, vise 15-35 s)`);
     total += blocChars;
     const plain = body.replace(/\[[^\]]+\]/g, '');

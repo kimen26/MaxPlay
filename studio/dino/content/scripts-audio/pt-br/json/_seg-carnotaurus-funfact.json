@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Os bracinhos dele eram tão minúsculos [chuckles] que quase não serviam pra nada. [amazed] Mas as patas de trás dele, essas sim, eram patas de corredor de verdade."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Um touro-foguete."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] O campeão de velocidade entre os grandes carnívoros. [chuckles] Nem os bracinhos pequenos o atrapalhavam."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

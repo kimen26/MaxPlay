@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Abría la boca muchísimo, [quickly] como un hacha, para golpear a sus presas. [amazed] Y se encontraron los huesos de más de CUARENTA Alosaurios mezclados en el mismo sitio, en Utah."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] ¿Cuarenta en un solo sitio?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[whispers] Un cementerio fósil gigante. [curious] Nadie sabe todavía por qué están todos ahí."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

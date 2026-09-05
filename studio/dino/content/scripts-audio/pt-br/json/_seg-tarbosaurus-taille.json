@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 12 metros de comprimento — do tamanho de um ônibus articulado! [quickly] De pé, ele tinha 4 vírgula 5 metros de altura — da altura de um ônibus de dois andares! [serious] E pesava 5 mil quilos — [amazed] tão pesado quanto um elefante!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Um pouco mais leve que o T-Rex?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Um pouco mais leve. [proud] Mas dava conta de ser o rei do deserto de Gobi."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

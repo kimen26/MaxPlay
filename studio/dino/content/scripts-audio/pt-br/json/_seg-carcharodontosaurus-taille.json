@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 13 metros de comprimento — do tamanho de um ônibus articulado! [quickly] De pé, ele tinha 3 vírgula 8 metros de altura — que nem dois Papais um em cima do outro! E pesava 7 mil quilos — [amazed] tão pesado quanto um elefante e um rinoceronte juntos!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Ele ia me passar bem de longe?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] De muito longe. [amazed] É um dos maiores carnívoros de toda a história."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

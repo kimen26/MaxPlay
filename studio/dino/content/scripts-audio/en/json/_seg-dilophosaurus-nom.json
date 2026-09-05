@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Dye… loh… foh… saurus. [curious] \"Di\" means two in Greek. \"Lopho\" means a crest. [playful] And \"saurus\" means the…"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[hesitant] Wait, let me guess: the two-crested lizard."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Got it! Two crests standing up on its head. [confident] It lived in North America, [amazed] one hundred ninety-three million years ago — one of the very first big hunters in history."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Crests like a crown?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Like a party crown. [amazed] Probably very colorful, made to be noticed."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

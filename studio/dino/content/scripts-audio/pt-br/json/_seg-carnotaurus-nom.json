@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Car… no… tau… ro. [curious] \"Carno\", em latim, é a carne. E \"tauro\" é o touro."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[playful] \"Carno\"... eu guardei a carne. [hesitant] E \"tauro\", o que era mesmo?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] O touro! O touro que come carne. [confident] Um touro caçador de verdade, com chifres em cima dos olhos. Ele vivia na América do Sul, [amazed] há 72 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Chifres de touro, mas ele comia carne?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Comia. [confident] Ele caçava hadrossauros e dinossauros médios do território dele."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

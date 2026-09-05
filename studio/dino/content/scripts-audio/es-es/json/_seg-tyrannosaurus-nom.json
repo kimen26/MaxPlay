@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ti… ra… no… saurio Rex. [curious] ¿Sabes qué significa «tyrannos»? [pauses] El señor que manda solo, [serious] al que nadie se atreve a decirle que no."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] ¿Nadie? [nervous] ¿Ni siquiera su mamá?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[chuckles] Su mamá sí, cuando era pequeño. [warmly] Pero de mayor, el rey era él. Vivía en Norteamérica, [amazed] hace 66 millones de años."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Y Tritri, dónde vivía?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] ¡Justo al lado! [confident] El Triceratops vivía en el mismo territorio que el T-Rex, con el Edmontosaurio y el Anquilosaurio."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

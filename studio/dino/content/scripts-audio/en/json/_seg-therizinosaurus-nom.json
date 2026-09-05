@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Thair… ih… zeen… oh… saurus. [curious] In ancient Greek, \"therizino\" means to scythe, to cut grass — like a giant curved blade. [playful] And \"saurus\" means lizard."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] The scythe lizard, with a real scythe?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactly. [confident] It lived in Mongolia, in the Gobi Desert, [amazed] seventy million years ago."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] And were there scary dinosaurs out there too?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Oh yes! [confident] Tarbosaurus, T. rex's cousin, lived right nearby."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

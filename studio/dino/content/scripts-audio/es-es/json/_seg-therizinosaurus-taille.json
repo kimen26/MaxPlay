@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Medía 10 metros de largo — ¡tan largo como un camión! [quickly] De pie, tenía 5 metros de alto — ¡casi tres papás uno encima del otro! Y pesaba 5 mil kilos — [amazed] ¡tan pesado como un elefante! [serious] Y caminaba bastante despacio, a 7 kilómetros por hora — como papá caminando rápido."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] ¿Y sus garras? ¿De qué tamaño eran?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] CINCUENTA CENTÍMETROS cada una. [amazed] Las garras más largas de todos los animales conocidos."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

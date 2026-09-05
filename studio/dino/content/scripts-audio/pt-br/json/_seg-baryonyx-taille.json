@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 9 metros de comprimento — do tamanho de um caminhão! [quickly] De pé, ele tinha 2 vírgula 5 metros de altura — da altura de uma trave de futebol! E pesava 1700 quilos — [amazed] tão pesado quanto um carro pequeno e uma vaca juntos! [serious] E ele conseguia nadar a 22 quilômetros por hora — que nem o papai correndo."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Ele tinha um focinho comprido que nem um crocodilo?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Tinha. [serious] Um focinho estreito cheio de dentes pontudos, perfeito pra pegar peixes escorregadios."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,42 @@
+{
+  "tyrannosaurus-nom": {
+    "empreinte": "2b793c370672",
+    "repliques": 5,
+    "duree_s": 39.2,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:37:13.155Z"
+  },
+  "tyrannosaurus-taille": {
+    "empreinte": "ac20bcd10cc8",
+    "repliques": 3,
+    "duree_s": 37.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:37:43.775Z"
+  },
+  "tyrannosaurus-regime": {
+    "empreinte": "16c37b4ee704",
+    "repliques": 3,
+    "duree_s": 18.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:38:05.340Z"
+  },
+  "tyrannosaurus-funfact": {
+    "empreinte": "9be4a28da6c2",
+    "repliques": 3,
+    "duree_s": 19.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:38:29.699Z"
+  }
+}

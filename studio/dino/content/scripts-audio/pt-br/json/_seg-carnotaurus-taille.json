@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 8 metros de comprimento — que nem dois carros um atrás do outro! [quickly] De pé, ele tinha 2 vírgula 5 metros de altura — da altura de uma trave de futebol! E pesava 1600 quilos — [amazed] tão pesado quanto um carro pequeno e uma vaca juntos! [excited] E ele conseguia correr a 52 quilômetros por hora — que nem um carro na cidade!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Que nem um carro?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] De verdade. [proud] O velocista dos grandes carnívoros da época dele."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 9 vírgula 5 metros de comprimento — do tamanho de um caminhão! [quickly] De pé, ele tinha 4 metros de altura — da altura de um ônibus de dois andares! E pesava 2 mil quilos — [amazed] tão pesado quanto um rinoceronte! [serious] E os cientistas acham que ele conseguia correr a 34 quilômetros por hora — que nem um cachorro correndo."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Menor que o T-Rex, então?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Menor, mas rápido e esperto. [confident] E ele viveu 90 milhões de anos [amazed] antes dele."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

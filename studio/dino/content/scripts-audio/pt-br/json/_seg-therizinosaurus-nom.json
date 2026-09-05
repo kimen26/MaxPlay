@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Te… ri… zi… no… ssauro. [curious] Em grego antigo, \"terizino\" quer dizer ceifar, cortar o mato — que nem uma FOICE. [playful] E \"sauro\", o lagarto."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] O lagarto-foice, com uma foice de verdade?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso mesmo. [confident] Ele vivia na Mongólia, no deserto de Gobi, [amazed] há 70 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] E tinha dinossauro malvado por lá também?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Tinha! [confident] O Tarbossauro, primo do T-Rex, vivia bem pertinho dele."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

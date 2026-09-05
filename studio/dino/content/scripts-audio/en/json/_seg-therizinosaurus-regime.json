@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] It was a herbivore: it only ate plants. [calm] It grabbed high branches with its long claws and pulled them toward its beak. [confident] It mostly lived alone."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Did Tarbosaurus attack it?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Rarely. [serious] Therizinosaurus raised its arms like two giant knives, [playful] and Tarbosaurus usually went looking for an easier meal."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

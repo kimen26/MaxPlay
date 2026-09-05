@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era carnívoro. Caçava os grandes herbívoros da Mongólia, [confident] que nem o Terizinossauro. [calm] Bem solitário."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] E o Terizinossauro, como ele se defendia?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Com as garras ENORMES de um metro, [serious] levantadas que nem uma cerca de facas. [confident] Diante disso, o Tarbossauro ia procurar uma presa menos espinhenta."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

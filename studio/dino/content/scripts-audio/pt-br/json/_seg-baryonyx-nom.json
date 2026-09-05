@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ba… ri… o… ní… quio. [curious] \"Bary\", em grego, quer dizer pesado. [playful] E \"onix\" é a garra. A garra pesada!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Ônix, que nem a pedra preta brilhante? [confident] Então dá: a garra pesada."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso mesmo, a mesma palavra. [confident] Uma garra ENORME de 31 centímetros no polegar. Ele vivia na Europa — na Inglaterra, na Espanha e em Portugal, [amazed] há 125 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele pegava o quê, com uma garra dessas?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Peixes. [amazed] Que nem um urso pescador, só que em dinossauro."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 6 metros de comprimento — com a largura de uma rua de duas faixas — ele fechava a rua toda! [quickly] De pé, ele tinha 2 metros de altura — da altura de uma porta! E pesava 900 quilos — [amazed] tão pesado quanto um carro pequeno! [serious] E ele conseguia correr a 25 quilômetros por hora — que nem andar de bicicleta rápido."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Menor que os grandes reis carnívoros?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Menor, mas rápido e ágil. [proud] O chifre dele fazia ele ser único entre todos os outros."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

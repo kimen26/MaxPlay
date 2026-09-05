@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Kar… noh… tor… us. [curious] \"Carno,\" in Latin, means meat, flesh. And \"taurus\" means bull."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[playful] \"Carno\"… I got the meat part. [hesitant] What's \"taurus\" again?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] The bull! The meat-eating bull. [confident] A real hunting bull, with horns above its eyes. It lived in South America, [amazed] seventy-two million years ago."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Bull horns, but it ate meat?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Yes. [confident] It hunted the plant-eaters of its territory, medium-sized dinosaurs."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

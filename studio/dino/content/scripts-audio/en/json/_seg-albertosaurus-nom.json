@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Al… bur… toh… saurus. [curious] \"Alberto\" comes from Alberta, a BIG region of Canada where its bones were found. [playful] And \"saurus,\" you know what that means?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] Lizard. So… the Alberta lizard."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactly. [amazed] It lived there, seventy million years ago. [warmly] A cousin of T. rex."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Did it have enemies? [nervous] Hunters even tougher than it?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] No. [warmly] In its own country, it was the biggest hunter around. [proud] No other carnivore was big enough to mess with it."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

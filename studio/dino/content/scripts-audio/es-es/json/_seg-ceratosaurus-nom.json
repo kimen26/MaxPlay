@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ce… ra… to… saurio. [curious] «Cerato», en griego, significa cuerno. [playful] Y «saurio», el lagarto. ¡El lagarto con cuerno!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] ¿Un cuerno de verdad, en el hocico, como un rinoceronte?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exacto, el lagarto con cuerno. Vivía en Norteamérica, [confident] y quizá también en Europa, en Portugal, [amazed] hace 150 millones de años."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ¿Un cuerno, como un unicornio?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] ¡Casi! [proud] El único gran carnívoro de su época con un cuerno en el hocico."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "es",
+  "apply_text_normalization": "auto"
+}

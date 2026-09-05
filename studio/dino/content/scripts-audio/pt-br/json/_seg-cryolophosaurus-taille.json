@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 6 vírgula 5 metros de comprimento — com a largura de uma rua de duas faixas — ele fechava a rua toda! [quickly] De pé, ele tinha 2 vírgula 5 metros de altura — da altura de uma trave de futebol! E pesava 400 quilos — [amazed] tão pesado quanto 2 leões!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Um carnívoro sozinho, tão longe de tudo?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] É. [proud] O rei do fim do mundo, sem nenhum rival conhecido do tamanho dele."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

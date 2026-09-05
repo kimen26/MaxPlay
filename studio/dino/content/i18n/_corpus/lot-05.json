@@ -28,11 +28,11 @@
       "comp_poids": "aussi lourd que 2 lions !",
       "nom_etym": "« Gallimimus » mélange latin et grec ! Galli, en latin, c'est le coq, la poule. Et mimus, ça vient du grec et veut dire « qui imite » — comme un mime ! En entier : celui qui imite la poule — il courait comme une grande autruche !",
       "regime": "🌿 Omnivore (mange tout !)",
-      "superpower": "Le dino le plus RAPIDE — jusqu'à 70 km/h ! Plus vite qu'un cheval au galop !",
+      "superpower": "Le dino le plus RAPIDE — jusqu'à 50 km/h, aussi vite qu'une voiture en ville !",
       "chasseurs": "T-Rex, grands carnivores",
       "proies": "Petits animaux, œufs, plantes",
       "amis": "En grand troupeau — comme les autruches",
-      "fait": "Il courait à 70 km/h — aussi vite qu'une voiture en ville ! Personne ne pouvait l'attraper.",
+      "fait": "Il courait à 50 km/h — aussi vite qu'une voiture en ville ! Beaucoup de prédateurs ne pouvaient pas l'attraper.",
       "desc": "Le Gallimimus était le champion de la vitesse ! Il ressemblait à une grande autruche et courait en grand troupeau. Tellement rapide que même le T-Rex ne pouvait pas l'attraper !",
       "continent": "Asie"
     },
@@ -123,7 +123,7 @@
       "proies": "Insectes, petits lézards",
       "amis": "Solitaire",
       "fait": "C'est l'ANCÊTRE DE TOUS LES OISEAUX ! Il avait des plumes ET des dents ET des griffes. Le fossile le plus précieux du monde !",
-      "desc": "L'Archaeoptéryx est l'ancêtre de tous les oiseaux ! Il avait des plumes comme un oiseau mais aussi des dents et des griffes de dino. C'est le premier oiseau du monde entier !",
+      "desc": "L'Archaeoptéryx est un des tout premiers oiseaux ! Il avait des plumes comme un oiseau, mais aussi des dents et des griffes de dino. Les oiseaux d'aujourd'hui sont ses cousins.",
       "continent": "Europe"
     },
     "mosasaurus": {
@@ -141,14 +141,13 @@
       "proies": "Requins, grands poissons, reptiles volants",
       "amis": "Solitaire (territorial)",
       "fait": "Il attrapait même les reptiles volants, comme le Ptéranodon, en plein vol ! Et il mangeait des requins pour le petit déjeuner !",
-      "desc": "Le Mosasaure était le monstre des mers préhistoriques ! Aussi long que deux voitures, il régnait sur tous les océans. Il mangeait même les requins et les reptiles volants comme le Ptéranodon !",
-      "continent": "Europe"
+      "desc": "Le Mosasaure était le monstre des mers préhistoriques ! Aussi long que deux voitures, il régnait sur tous les océans. Il mangeait même les requins et les reptiles volants comme le Ptéranodon !"
     },
     "baryonyx": {
       "name": "Baryonyx",
       "full": "Baryonyx walkeri",
       "epoque": "Crétacé · il y a 125 millions d'ans",
-      "region": "Europe (Angleterre)",
+      "region": "Europe (Angleterre, Espagne, Portugal)",
       "comp_taille": "aussi long qu'un camion !",
       "comp_hauteur": "aussi haut qu'un but de foot !",
       "comp_poids": "aussi lourd qu'une petite voiture et une vache ensemble !",

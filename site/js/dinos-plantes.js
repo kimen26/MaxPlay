@@ -1,0 +1,554 @@
+// GENERE par studio/dino/content/scripts/export/_gen-plantes.cjs — ne pas editer a la main.
+// Source : studio/dino/content/sources/flore/plantes.json
+const DINO_PLANTES = [
+  {
+    "id": "dicroidium",
+    "name": "Dicroïdium",
+    "full": "Dicroidium",
+    "nom_etym": "Dicroidium : du grec dikroos, « fourchu » — sa feuille se sépare en deux comme une fourchette.",
+    "type": "fougere",
+    "periodes": [
+      "trias"
+    ],
+    "emoji": "🌿",
+    "png": "Dicroidium.jpg",
+    "region": "Tout le sud de la Terre : Afrique du Sud, Australie, Nouvelle-Zélande, Amérique du Sud, Inde, Madagascar, Antarctique.",
+    "hauteur_m": 10,
+    "comp_hauteur": "Un peu plus haut qu'une maison de trois étages.",
+    "environnement": "Des forêts basses et chaudes, au sud de la Pangée. Au Trias, cet arbre pousse partout : c'est lui, la forêt.",
+    "feuille": "Une grande feuille verte qui se fend en deux à la base, comme une fourchette. Elle est souple, découpée en petites folioles. À l'automne, l'arbre les laisse tomber, comme nos arbres à nous.",
+    "graines": "Ce n'est pas une vraie fougère : elle fait des graines. Les graines sont cachées dans de petites coupes au bout d'un rameau. Le vent emporte le pollen, le vent emporte les graines.",
+    "mangee_par": [
+      "plateosaurus"
+    ],
+    "mangee_comment": "Le Plateosaure se dressait sur ses pattes arrière pour attraper les feuilles hautes, puis les coupait avec ses petites dents en feuille de scie.",
+    "superpower": "L'arbre qui faisait la forêt",
+    "fait": "Après la plus grande extinction de tous les temps, la Terre était presque vide. Le Dicroïdium a repoussé le premier, et il a recouvert la moitié sud de la planète.",
+    "vivant": "Non : disparue. Elle s'est éteinte à la fin du Trias, il y a 201 millions d'années."
+  },
+  {
+    "id": "prele_geante",
+    "name": "Prêle géante",
+    "full": "Equisetites",
+    "nom_etym": "Equisetites : du latin equus, « cheval », et seta, « crin » — la plante en crin de cheval.",
+    "type": "prele",
+    "periodes": [
+      "trias",
+      "jurassique"
+    ],
+    "emoji": "🎋",
+    "png": "Prele_geante.jpg",
+    "region": "Europe (Allemagne, France), Mexique, Chine — partout où il y avait de l'eau.",
+    "hauteur_m": 4,
+    "comp_hauteur": "Deux portes posées l'une sur l'autre.",
+    "environnement": "Les bords de rivière et les marécages. Elle pousse serrée, en forêt de tiges, les pieds dans la boue.",
+    "feuille": "Presque pas de feuilles ! Juste des petites dents en couronne autour de chaque nœud. La tige est creuse, rayée dans la longueur, et elle est râpeuse : il y a du sable dans sa peau.",
+    "graines": "Pas de graines du tout. Au bout de la tige il y a un petit épi, et cet épi lâche des spores, une poussière vivante que le vent emporte.",
+    "mangee_par": [
+      "plateosaurus",
+      "diplodocus",
+      "apatosaurus",
+      "stegosaurus"
+    ],
+    "mangee_comment": "Les prêles sont pleines de sable minuscule : elles usaient les dents. Le Diplodocus les arrachait en peigne avec ses dents en crayon, sans les mâcher.",
+    "superpower": "Une tige râpeuse comme du papier de verre",
+    "fait": "Ses tiges faisaient jusqu'à vingt centimètres de large — plus gros que ton bras. Aujourd'hui les prêles existent encore, mais elles t'arrivent au genou.",
+    "vivant": "Oui : les prêles poussent toujours au bord des rivières, en beaucoup plus petit."
+  },
+  {
+    "id": "pleuromeia",
+    "name": "Pleuroméia",
+    "full": "Pleuromeia",
+    "nom_etym": "Pleuromeia : du grec pleuron, « côte, flanc » — pour les côtes qui marquent sa tige.",
+    "type": "fougere",
+    "periodes": [
+      "trias"
+    ],
+    "emoji": "🎍",
+    "png": "Pleuromeia.jpg",
+    "region": "Europe, Asie, Australie, Amérique du Sud, Japon.",
+    "hauteur_m": 1.5,
+    "comp_hauteur": "Une fois et demie ta taille : tu lui arrives au milieu du tronc.",
+    "environnement": "Des plaines de sable et de vase, au bord de la mer. Un sol nu, salé, où presque rien d'autre ne pousse. Elle est seule, à perte de vue.",
+    "feuille": "Un seul tronc tout droit, sans une seule branche. En haut, une touffe de feuilles pointues, en triangle, disposées en spirale. En bas, un pied bulbeux à quatre bosses, planté de racines.",
+    "graines": "Pas de graines : un gros cône au sommet, comme un épi de maïs dressé. Il lâche deux sortes de spores, des petites et des grosses.",
+    "mangee_par": [
+      "plateosaurus"
+    ],
+    "mangee_comment": "Le Plateosaure passait dessus et arrachait la touffe du haut d'un coup de bec. La tige nue restait plantée.",
+    "superpower": "Pousse là où tout est mort",
+    "fait": "Juste après la Grande Mort, quand presque tout avait disparu, la Pleuroméia a couvert des plaines entières toute seule. Pas un arbre, pas une fleur : que des Pleuroméias.",
+    "vivant": "Non : disparue. Mais ses cousines les isoètes vivent encore au fond des mares, minuscules."
+  },
+  {
+    "id": "voltzia",
+    "name": "Voltzia",
+    "full": "Voltzia",
+    "nom_etym": "Voltzia : nommée en l'honneur de Philippe-Louis Voltz, un géologue français des Vosges.",
+    "type": "conifere",
+    "periodes": [
+      "trias"
+    ],
+    "emoji": "🌲",
+    "png": "Voltzia.jpg",
+    "region": "Europe : les Vosges en France, la Suisse, l'Italie. Et jusqu'en Mongolie.",
+    "hauteur_m": 3,
+    "comp_hauteur": "Aussi haut qu'un étage de maison.",
+    "environnement": "Un delta : là où la rivière se répand en éventail avant d'entrer dans la mer. Du sable, des mares, et ces petits conifères touffus.",
+    "feuille": "Des feuilles courtes et pointues, plaquées contre le rameau, un peu comme un cyprès. Le rameau est raide et pique un peu quand on le serre.",
+    "graines": "Deux sortes de cônes sur le même arbre. Les cônes mâles font le pollen. Les cônes femelles portent des écailles à cinq pointes, et sous chaque écaille, trois graines nues.",
+    "mangee_par": [
+      "plateosaurus"
+    ],
+    "mangee_comment": "Le Plateosaure attrapait les rameaux entiers dans sa gueule et les tirait d'un coup de tête, comme on tire une poignée d'herbe.",
+    "superpower": "Elle a donné son nom à une roche",
+    "fait": "Dans les Vosges, elle est si présente dans la pierre que les géologues ont appelé la roche « le grès à Voltzia ». Une plante qui donne son nom à une montagne, c'est rare.",
+    "vivant": "Non : disparue. Mais les cyprès et les araucarias d'aujourd'hui sont ses cousins."
+  },
+  {
+    "id": "ginkgo",
+    "name": "Ginkgo",
+    "full": "Ginkgo",
+    "nom_etym": "Ginkgo : du chinois yín xìng, « abricot d'argent », arrivé jusqu'à nous par le japonais.",
+    "type": "arbre",
+    "periodes": [
+      "jurassique",
+      "cretace"
+    ],
+    "emoji": "🍃",
+    "png": "Ginkgo.jpg",
+    "region": "Partout dans le monde au temps des dinosaures. Aujourd'hui, sauvage, seulement en Chine.",
+    "hauteur_m": 30,
+    "comp_hauteur": "Cinq lampadaires empilés.",
+    "environnement": "Les bords de rivière et les forêts humides. Un grand arbre au tronc droit, avec des branches qui partent presque à l'horizontale.",
+    "feuille": "Une feuille en éventail, fendue au milieu. Les nervures partent toutes du pied et s'écartent en rayons — aucune autre feuille au monde n'est faite comme ça. En automne, elle devient jaune d'or.",
+    "graines": "Pas de fruit, pas de fleur : une graine nue, ronde, enveloppée de chair. Quand elle tombe et pourrit, elle sent très mauvais. C'est le prix à payer.",
+    "mangee_par": [
+      "brachiosaurus",
+      "camarasaurus",
+      "diplodocus",
+      "edmontosaurus",
+      "iguanodon"
+    ],
+    "mangee_comment": "Le Brachiosaure tendait son cou et brossait les branches du haut. Plus bas, l'Iguanodon coupait les rameaux avec son bec corné.",
+    "superpower": "Il n'a pas changé depuis les dinosaures",
+    "fait": "Regarde une feuille de ginkgo dans une rue aujourd'hui : elle a exactement la même forme que celle qu'un Brachiosaure mâchait il y a 150 millions d'années.",
+    "vivant": "Oui : il existe encore, et on en plante dans les villes. C'est le dernier de toute sa famille."
+  },
+  {
+    "id": "cycas",
+    "name": "Cycas",
+    "full": "Cycadales",
+    "nom_etym": "Cycadales : du grec koïkas, un mot qui désignait un palmier — parce qu'il y ressemble sans en être un.",
+    "type": "cycas",
+    "periodes": [
+      "trias",
+      "jurassique",
+      "cretace"
+    ],
+    "emoji": "🌿",
+    "png": "Cycas.jpg",
+    "region": "Le monde entier au temps des dinosaures. Aujourd'hui surtout en Asie, en Australie et en Afrique de l'Est.",
+    "hauteur_m": 3,
+    "comp_hauteur": "Aussi haut qu'un étage de maison.",
+    "environnement": "Les sous-bois chauds et les clairières. Un gros tronc court et trapu, comme un ananas géant, avec une couronne de feuilles tout en haut.",
+    "feuille": "De longues feuilles en plume, dures comme du plastique, avec des dizaines de folioles pointues de chaque côté. On peut se piquer dessus. Elles restent vertes toute l'année.",
+    "graines": "Des cônes, comme les pins. Un gros cône femelle plein de grosses graines, et des cônes mâles pleins de pollen. Ce sont des scarabées qui portent le pollen de l'un à l'autre.",
+    "mangee_par": [
+      "stegosaurus",
+      "triceratops",
+      "kentrosaurus",
+      "scelidosaurus",
+      "protoceratops",
+      "edmontonia"
+    ],
+    "mangee_comment": "Le Stégosaure broutait à un mètre du sol, tête baissée, et arrachait les feuilles dures avec ses petites dents. Le Tricératops coupait la base des feuilles net, avec son bec de perroquet.",
+    "superpower": "Ses graines sont un poison",
+    "fait": "Les graines de cycas contiennent un vrai poison qui attaque les nerfs. Certains dinosaures les mangeaient quand même — on ne sait toujours pas comment ils faisaient.",
+    "vivant": "Oui : les cycas poussent encore, mais beaucoup d'espèces sont aujourd'hui menacées de disparaître."
+  },
+  {
+    "id": "araucaria",
+    "name": "Araucaria",
+    "full": "Araucaria",
+    "nom_etym": "Araucaria : du nom de l'Arauco, la région du peuple mapuche au Chili, où l'arbre pousse encore.",
+    "type": "conifere",
+    "periodes": [
+      "jurassique",
+      "cretace"
+    ],
+    "emoji": "🌲",
+    "png": "Araucaria.jpg",
+    "region": "Partout, jusque dans l'hémisphère nord. Aujourd'hui : Chili, Argentine, Australie, Nouvelle-Calédonie, Nouvelle-Guinée.",
+    "hauteur_m": 40,
+    "comp_hauteur": "Presque sept lampadaires empilés.",
+    "environnement": "De grandes forêts claires. Le tronc monte tout droit et nu, et les branches partent en couronnes régulières, comme les étages d'une tour.",
+    "feuille": "Pas d'aiguilles fines : des écailles triangulaires épaisses, dures, très piquantes, collées tout autour de la branche. Une branche d'araucaria, ça ne s'attrape pas à main nue. Chaque écaille vit plus de vingt ans.",
+    "graines": "De gros cônes ronds, gros comme un ballon de handball, qui tombent et éclatent au sol. Dedans : jusqu'à deux cents grosses graines, comme des amandes. Elles se mangent.",
+    "mangee_par": [
+      "brachiosaurus",
+      "camarasaurus",
+      "diplodocus",
+      "apatosaurus",
+      "patagotitan",
+      "therizinosaurus"
+    ],
+    "mangee_comment": "C'est l'arbre des géants. Le Brachiosaure levait la tête à treize mètres et brossait le feuillage du sommet. Les scientifiques pensent que le long cou des sauropodes a grandi justement pour atteindre ces branches-là.",
+    "superpower": "L'arbre au feuillage qui pique",
+    "fait": "En Patagonie, il existe une forêt d'araucarias entièrement transformée en pierre. Les troncs sont couchés là, gris, durs, vieux de 160 millions d'années. On peut marcher entre eux.",
+    "vivant": "Oui : une vingtaine d'espèces poussent encore, dont le fameux « désespoir des singes » du Chili."
+  },
+  {
+    "id": "cypres",
+    "name": "Cyprès",
+    "full": "Cupressaceae",
+    "nom_etym": "Cupressaceae : du latin cupressus, le nom du cyprès — un arbre que les Romains plantaient déjà.",
+    "type": "conifere",
+    "periodes": [
+      "jurassique",
+      "cretace"
+    ],
+    "emoji": "🌲",
+    "png": "Cypres.jpg",
+    "region": "Le monde entier. C'est une des familles d'arbres les plus répandues de la planète.",
+    "hauteur_m": 30,
+    "comp_hauteur": "Cinq lampadaires empilés.",
+    "environnement": "Des forêts épaisses et sombres, souvent près de l'eau. Les branches se touchent, très peu de lumière arrive au sol.",
+    "feuille": "Des écailles minuscules, plates, collées les unes contre les autres tout le long du rameau, comme des tuiles. Le rameau est souple et plat. Quand on le froisse, ça sent fort et frais.",
+    "graines": "Des cônes petits et durs, parfois ronds comme des billes de bois. Ils s'ouvrent en écailles quand il fait sec et laissent tomber des graines minuscules à ailettes.",
+    "mangee_par": [
+      "diplodocus",
+      "apatosaurus",
+      "camarasaurus",
+      "edmontosaurus",
+      "parasaurolophus",
+      "saurolophus",
+      "iguanodon"
+    ],
+    "mangee_comment": "Les becs de canard broyaient ces rameaux coriaces entre des centaines de dents empilées en batterie. Ils mâchaient vraiment, contrairement aux sauropodes.",
+    "superpower": "Sa famille bat le record de hauteur",
+    "fait": "Le plus grand arbre du monde aujourd'hui est de cette famille : un séquoia de plus de cent quinze mètres. Ça fait presque vingt lampadaires les uns sur les autres.",
+    "vivant": "Oui : les cyprès, les genévriers et les séquoias sont tous de cette famille."
+  },
+  {
+    "id": "podocarpe",
+    "name": "Podocarpe",
+    "full": "Podocarpus",
+    "nom_etym": "Podocarpus : du grec podos, « pied », et karpos, « fruit » — le fruit posé sur un pied.",
+    "type": "conifere",
+    "periodes": [
+      "jurassique",
+      "cretace"
+    ],
+    "emoji": "🌲",
+    "png": "Podocarpe.jpg",
+    "region": "Né sur le grand continent du sud. Aujourd'hui : Afrique, Asie, Australie, Amérique du Sud.",
+    "hauteur_m": 20,
+    "comp_hauteur": "Un peu plus haut que trois lampadaires empilés.",
+    "environnement": "Des forêts humides et fraîches, souvent en montagne ou près des côtes du sud. Un arbre au feuillage dense et sombre.",
+    "feuille": "Des feuilles longues et étroites, comme de petites lames vertes, disposées en spirale autour du rameau. Elles sont plus larges et plus souples que des aiguilles de pin.",
+    "graines": "Le plus surprenant : la graine est posée sur un petit coussin de chair rouge ou violette, sucré. Ça ressemble à une baie sur un pied. Les oiseaux la mangent et emportent la graine ailleurs.",
+    "mangee_par": [
+      "diplodocus",
+      "camarasaurus",
+      "kentrosaurus",
+      "scelidosaurus",
+      "edmontosaurus",
+      "corythosaurus",
+      "maiasaura"
+    ],
+    "mangee_comment": "Les feuilles sont souples : plus faciles à avaler que les écailles piquantes de l'araucaria. Le Corythosaure les cueillait avec son bec plat et les broyait en arrière.",
+    "superpower": "Une graine posée sur un bonbon",
+    "fait": "C'est un conifère qui a inventé le fruit avant les arbres à fruits : un coussin sucré pour que les oiseaux emportent sa graine plus loin.",
+    "vivant": "Oui : plus de cent espèces vivent encore, surtout dans l'hémisphère sud."
+  },
+  {
+    "id": "fougere_arborescente",
+    "name": "Fougère arborescente",
+    "full": "Cyatheales",
+    "nom_etym": "Cyatheales : du grec kyathos, « coupe » — pour la petite coupe qui protège les spores sous la feuille.",
+    "type": "fougere",
+    "periodes": [
+      "jurassique",
+      "cretace"
+    ],
+    "emoji": "🌿",
+    "png": "Fougere_arborescente.jpg",
+    "region": "Régions chaudes et humides : Australie, Nouvelle-Zélande, Amérique du Sud, Afrique du Sud, Asie.",
+    "hauteur_m": 8,
+    "comp_hauteur": "Un lampadaire et un tiers.",
+    "environnement": "Le sous-bois humide, dans l'ombre des grands conifères. Elle aime les ravins, la brume et l'eau qui ruisselle.",
+    "feuille": "D'immenses frondes découpées en mille petites folioles, comme une plume géante. La jeune feuille sort enroulée en escargot, puis se déroule lentement vers le ciel.",
+    "graines": "Aucune graine, aucune fleur. Sous les feuilles, des milliers de petits points bruns : les sacs à spores. Ils s'ouvrent et lâchent une poudre fine que le vent emporte.",
+    "mangee_par": [
+      "stegosaurus",
+      "kentrosaurus",
+      "scutellosaurus",
+      "scelidosaurus",
+      "triceratops",
+      "iguanodon",
+      "maiasaura",
+      "protoceratops",
+      "minmi"
+    ],
+    "mangee_comment": "C'est la nourriture de base des brouteurs bas. Le petit Scutellosaure, qui t'arrive au genou, mangeait les frondes tout en bas du tronc. Le Tricératops coupait les tiges entières avec son bec.",
+    "superpower": "Son tronc est fait de racines",
+    "fait": "Ce tronc n'est pas du bois. C'est un paquet de racines mortes serrées les unes contre les autres, qui grossit d'année en année. La fougère se construit son propre poteau.",
+    "vivant": "Oui : environ mille espèces poussent encore dans les forêts humides."
+  },
+  {
+    "id": "williamsonia",
+    "name": "Williamsonia",
+    "full": "Williamsonia",
+    "nom_etym": "Williamsonia : nommée en l'honneur de William Crawford Williamson, un paléobotaniste anglais.",
+    "type": "arbre",
+    "periodes": [
+      "jurassique"
+    ],
+    "emoji": "🌿",
+    "png": "Williamsonia.jpg",
+    "region": "Le monde entier : Europe, Inde, Amérique du Nord, Asie.",
+    "hauteur_m": 2.5,
+    "comp_hauteur": "Deux fois et demie ta taille : une porte, plus ta tête au-dessus.",
+    "environnement": "Les clairières et les bords de forêt. Un buisson trapu, très ramifié, au tronc couvert de vieilles bases de feuilles comme des écailles.",
+    "feuille": "Des feuilles en plume, raides, en couronne au bout de chaque branche. De loin, on dirait un cycas. De près, ce n'est pas du tout la même plante.",
+    "graines": "Une structure ronde en forme de fleur, avec des bractées disposées en étoile autour d'un cœur plein de graines. Attention : ça ressemble à une fleur, mais ce n'en est pas une. Les vraies fleurs n'existaient pas encore.",
+    "mangee_par": [
+      "stegosaurus",
+      "kentrosaurus",
+      "scelidosaurus",
+      "camarasaurus"
+    ],
+    "mangee_comment": "À deux mètres cinquante, c'est pile la hauteur du Stégosaure quand il se dressait un peu. Il arrachait les couronnes de feuilles au bout des branches.",
+    "superpower": "La fausse fleur du Jurassique",
+    "fait": "On a retrouvé une mouche fossile avec son long nez encore couvert du pollen de cette plante. Des insectes la butinaient déjà, des millions d'années avant la première vraie fleur.",
+    "vivant": "Non : disparue à la fin du Crétacé, sans laisser un seul descendant."
+  },
+  {
+    "id": "mousse",
+    "name": "Mousses",
+    "full": "Bryophyta",
+    "nom_etym": "Bryophyta : du grec bryon, « mousse », et phyton, « plante » — tout simplement, la plante-mousse.",
+    "type": "mousse",
+    "periodes": [
+      "trias",
+      "jurassique",
+      "cretace"
+    ],
+    "emoji": "🌱",
+    "png": "Mousse.jpg",
+    "region": "Partout sur la Terre, sur tous les continents, y compris l'Antarctique.",
+    "hauteur_m": 0.05,
+    "comp_hauteur": "L'épaisseur de ta main posée à plat.",
+    "environnement": "Les rochers mouillés, les troncs à l'ombre, le bord des sources. Partout où c'est humide et sombre, il y a de la mousse. Un tapis vert, doux et froid.",
+    "feuille": "Des milliers de feuilles minuscules, épaisses d'une seule cellule. Sous les doigts, c'est mou et frais comme une éponge. La mousse n'a pas de racines : elle s'accroche, c'est tout.",
+    "graines": "Ni fleur ni graine. De fines tiges se dressent au-dessus du tapis, chacune coiffée d'une capsule. La capsule s'ouvre et libère une poussière de spores.",
+    "mangee_par": [
+      "minmi",
+      "protoceratops",
+      "scutellosaurus"
+    ],
+    "mangee_comment": "Personne ne mangeait que ça — trop peu nourrissant. Mais les petits brouteurs au ras du sol en avalaient forcément avec le reste.",
+    "superpower": "Elle vit sans racines",
+    "fait": "La mousse boit par ses feuilles, directement. C'est pour ça qu'elle pousse sur la pierre nue, là où aucune autre plante ne tient.",
+    "vivant": "Oui : elle est là depuis plus de 400 millions d'années, et elle n'a presque pas changé."
+  },
+  {
+    "id": "archaefructus",
+    "name": "Archaefructus",
+    "full": "Archaefructus",
+    "nom_etym": "Archaefructus : du grec archaios, « ancien », et du latin fructus, « fruit » — le fruit d'autrefois.",
+    "type": "fleur",
+    "periodes": [
+      "cretace"
+    ],
+    "emoji": "🌸",
+    "png": "Archaefructus.jpg",
+    "region": "Chine, province du Liaoning. On ne l'a trouvée nulle part ailleurs.",
+    "hauteur_m": 0.5,
+    "comp_hauteur": "Elle t'arrive à la hanche.",
+    "environnement": "Un lac calme, il y a 125 millions d'années. Elle flotte, les racines dans la vase, les tiges à moitié sous l'eau.",
+    "feuille": "Des feuilles très fines, découpées en filaments, comme des cheveux verts qui ondulent dans le courant. La tige est molle : ce n'est pas un arbre, c'est une herbe d'eau.",
+    "graines": "Voilà le plus étonnant : cette fleur n'a ni pétales ni sépales. Les graines et le pollen sont posés directement le long d'une tige dressée, les uns après les autres.",
+    "mangee_par": [
+      "gallimimus",
+      "protoceratops"
+    ],
+    "mangee_comment": "Une plante d'eau tendre, sans épines ni dureté. Le Gallimimus, qui mangeait de tout, en attrapait au bord des mares.",
+    "superpower": "Une des toutes premières fleurs",
+    "fait": "Pendant très longtemps, il n'y avait aucune fleur sur Terre. Puis celle-ci est apparue dans un lac de Chine. Elle n'était pas jolie — mais tout ce qui fleurit aujourd'hui vient de plantes comme elle.",
+    "vivant": "Non : disparue. Mais les nénuphars sont peut-être ses cousins les plus proches."
+  },
+  {
+    "id": "magnolia",
+    "name": "Magnolia",
+    "full": "Magnolia",
+    "nom_etym": "Magnolia : nommé en l'honneur de Pierre Magnol, un botaniste français de Montpellier.",
+    "type": "fleur",
+    "periodes": [
+      "cretace"
+    ],
+    "emoji": "🌷",
+    "png": "Magnolia.jpg",
+    "region": "Asie et Amérique. Sa famille est connue en fossile depuis 95 millions d'années.",
+    "hauteur_m": 20,
+    "comp_hauteur": "Un peu plus haut que trois lampadaires empilés.",
+    "environnement": "Les forêts chaudes et humides du Crétacé, au bord des fleuves. Un arbre large, aux grandes feuilles luisantes.",
+    "feuille": "De grandes feuilles ovales, épaisses, brillantes dessus, plus pâles dessous. Elles claquent un peu quand on les plie.",
+    "graines": "Une grosse fleur crémeuse, dure au toucher. Elle n'a pas de vrais pétales : toutes ses pièces se ressemblent. Au centre, un cône ferme qui deviendra un paquet de graines rouges.",
+    "mangee_par": [
+      "triceratops",
+      "edmontosaurus",
+      "parasaurolophus",
+      "iguanodon",
+      "torosaurus"
+    ],
+    "mangee_comment": "Les becs de canard cassaient les branches basses et broyaient feuilles et fleurs ensemble, avec leurs batteries de dents.",
+    "superpower": "Une fleur bâtie pour les scarabées",
+    "fait": "Le magnolia est apparu avant les abeilles. Ce sont des scarabées lourds et maladroits qui le pollinisaient — et ils mordent. C'est pour ça que sa fleur est si épaisse et si dure : elle résiste à leurs mâchoires.",
+    "vivant": "Oui : on plante encore des magnolias dans les parcs et les jardins."
+  },
+  {
+    "id": "nenuphar",
+    "name": "Nénuphar",
+    "full": "Nymphaeales",
+    "nom_etym": "Nymphaeales : du grec nymphê, la nymphe des eaux — l'esprit qui habitait les sources.",
+    "type": "fleur",
+    "periodes": [
+      "cretace"
+    ],
+    "emoji": "🪷",
+    "png": "Nenuphar.jpg",
+    "region": "Fossiles du Crétacé inférieur au Portugal et au Brésil. Aujourd'hui : partout dans le monde.",
+    "hauteur_m": 0.15,
+    "comp_hauteur": "Il t'arrive à mi-mollet — le reste est sous l'eau.",
+    "environnement": "Les mares et les bras morts des fleuves. Un tapis de feuilles rondes posées à plat sur l'eau, et des fleurs qui sortent entre elles.",
+    "feuille": "Une grande feuille ronde, fendue d'un côté, qui flotte comme une assiette. Le dessus est lisse et repousse l'eau : les gouttes roulent dessus sans mouiller.",
+    "graines": "Une fleur large, à beaucoup de pièces en spirale, qui s'ouvre le matin et se referme le soir. Après la fleur, le fruit mûrit sous l'eau et lâche des graines qui flottent avant de couler.",
+    "mangee_par": [
+      "edmontosaurus",
+      "parasaurolophus",
+      "corythosaurus",
+      "gallimimus"
+    ],
+    "mangee_comment": "Les becs de canard entraient dans l'eau jusqu'au ventre et raclaient les feuilles flottantes à la surface, comme des canards géants.",
+    "superpower": "Presque la plus vieille des fleurs",
+    "fait": "Les nénuphars font partie des trois toutes premières branches de l'arbre des fleurs. Quand tu en vois un sur une mare, tu regardes une invention du temps des dinosaures.",
+    "vivant": "Oui : les nénuphars fleurissent encore sur toutes les mares du monde."
+  },
+  {
+    "id": "platane",
+    "name": "Platane",
+    "full": "Platanaceae",
+    "nom_etym": "Platanaceae : du grec platys, « large » — pour ses feuilles larges comme une main ouverte.",
+    "type": "arbre",
+    "periodes": [
+      "cretace"
+    ],
+    "emoji": "🍁",
+    "png": "Platane.jpg",
+    "region": "Amérique du Nord, Liban, Asie. Ses plus vieux fossiles ont environ 110 millions d'années.",
+    "hauteur_m": 30,
+    "comp_hauteur": "Cinq lampadaires empilés.",
+    "environnement": "Les berges des rivières et les terrains inondés. C'est un arbre pionnier : il pousse vite là où le sol vient d'être remué par l'eau.",
+    "feuille": "Une grande feuille à cinq pointes, découpée comme une main ouverte. Le dessous est un peu duveteux. La tige de la feuille est creuse à sa base et coiffe le bourgeon.",
+    "graines": "Des boules pendantes au bout d'un fil, grosses comme une balle de ping-pong. Chaque boule est faite de centaines de petites graines à poils. Quand elle se casse, tout s'envole.",
+    "mangee_par": [
+      "triceratops",
+      "edmontosaurus",
+      "parasaurolophus",
+      "saurolophus",
+      "corythosaurus",
+      "iguanodon",
+      "pentaceratops"
+    ],
+    "mangee_comment": "Feuilles larges et tendres, faciles à cueillir : les becs de canard cassaient les branches basses et les épluchaient de leurs feuilles en un passage.",
+    "superpower": "Il change de peau",
+    "fait": "L'écorce du platane se détache en grandes plaques et laisse en dessous du bois clair, presque blanc. L'arbre pèle, comme après un coup de soleil.",
+    "vivant": "Oui : sa famille a traversé la crise des dinosaures, et on plante des platanes dans presque toutes les villes."
+  },
+  {
+    "id": "palmier",
+    "name": "Palmier",
+    "full": "Arecaceae",
+    "nom_etym": "Arecaceae : de areca, le nom malais d'un palmier — et « palmier » vient du latin palma, la paume de la main.",
+    "type": "arbre",
+    "periodes": [
+      "cretace"
+    ],
+    "emoji": "🌴",
+    "png": "Palmier.jpg",
+    "region": "Toutes les régions chaudes du globe. Les premiers fossiles ont environ 108 millions d'années.",
+    "hauteur_m": 15,
+    "comp_hauteur": "Cinq étages de maison.",
+    "environnement": "Les plaines côtières chaudes et les deltas du Crétacé. Des troncs nus dressés, avec toutes les feuilles rassemblées tout en haut.",
+    "feuille": "Deux formes possibles : un éventail plissé, ou une immense plume. Ces feuilles sont géantes, raides, et leur base entoure le tronc comme un manchon.",
+    "graines": "Des grappes de fruits charnus à une seule graine dure au centre — comme la noix de coco, en plus petit. On a même retrouvé des fleurs de palmier prises dans l'ambre.",
+    "mangee_par": [
+      "triceratops",
+      "torosaurus",
+      "edmontosaurus",
+      "pentaceratops",
+      "centrosaurus",
+      "therizinosaurus"
+    ],
+    "mangee_comment": "Le Tricératops coupait la base des palmes avec son bec crochu et les tirait vers le bas. Le Therizinosaure, lui, crochetait les palmes du haut avec ses griffes immenses.",
+    "superpower": "Un seul bourgeon, pas une branche",
+    "fait": "Un palmier ne fait jamais de branches. Tout pousse à partir d'un unique bourgeon au sommet. Si ce bourgeon est détruit, l'arbre entier meurt.",
+    "vivant": "Oui : dattiers, cocotiers, palmiers des villes — ils sont tous de cette famille."
+  },
+  {
+    "id": "herbe",
+    "name": "Herbe",
+    "full": "Poaceae",
+    "nom_etym": "Poaceae : du grec poa, « herbe de pâturage » — la plante qu'on broute.",
+    "type": "herbe",
+    "periodes": [
+      "cretace"
+    ],
+    "emoji": "🌾",
+    "png": "Herbe.jpg",
+    "region": "Inde et Chine pour les plus vieilles traces connues.",
+    "hauteur_m": 0.4,
+    "comp_hauteur": "Elle t'arrive juste au-dessus du genou.",
+    "environnement": "Attention : pas de prairie au temps des dinosaures ! Juste quelques touffes éparses, au bord de l'eau ou dans les clairières. Le reste du sol est couvert de fougères et de mousse.",
+    "feuille": "Une lame longue et étroite, à nervures parallèles, qui part d'une gaine serrée autour de la tige. Le bord coupe un peu : il est plein de silice, un sable minuscule.",
+    "graines": "Pas de vraie fleur colorée : de petits épillets verts, discrets, tout en haut de la tige. C'est le vent qui porte leur pollen — pas les insectes.",
+    "mangee_par": [
+      "patagotitan",
+      "gallimimus",
+      "protoceratops"
+    ],
+    "mangee_comment": "On sait qu'un gros herbivore en a mangé, mais on ne sait pas encore lequel avec certitude — les savants en discutent toujours.",
+    "superpower": "Retrouvée dans du crottin fossile",
+    "fait": "En Inde, on a ouvert des crottes de dinosaure devenues pierre, vieilles de 67 millions d'années. Dedans : des morceaux de verre minuscules fabriqués par l'herbe. Il y avait même l'ancêtre du riz.",
+    "vivant": "Oui : le blé, le riz, le maïs et le bambou sont tous des herbes de cette famille."
+  },
+  {
+    "id": "wollemia",
+    "name": "Pin de Wollemi",
+    "full": "Wollemia",
+    "nom_etym": "Wollemia : du parc national de Wollemi, en Australie, où on l'a retrouvé.",
+    "type": "conifere",
+    "periodes": [
+      "cretace"
+    ],
+    "emoji": "🌲",
+    "png": "Wollemia.jpg",
+    "region": "Un seul canyon secret d'Australie, en Nouvelle-Galles du Sud. Moins de cent arbres sauvages.",
+    "hauteur_m": 35,
+    "comp_hauteur": "Presque six lampadaires empilés.",
+    "environnement": "Le fond d'un canyon étroit et humide, à l'abri du vent et du feu. C'est cette cachette qui l'a sauvé.",
+    "feuille": "Des feuilles plates et longues, disposées en deux rangs de chaque côté du rameau, comme les dents d'un peigne. Elles sont d'un vert sombre, souples au toucher.",
+    "graines": "Des cônes ronds au bout des branches hautes. En mûrissant, ils se désagrègent sur place et laissent tomber des graines plates à ailettes.",
+    "mangee_par": [
+      "patagotitan",
+      "therizinosaurus",
+      "edmontosaurus"
+    ],
+    "mangee_comment": "Sa famille, les araucariacées, était le grand garde-manger des géants au long cou : ils brossaient les branches hautes d'un coup de tête.",
+    "superpower": "Retrouvé vivant en 1994",
+    "fait": "Sa famille vivait déjà au temps des dinosaures. Cet arbre-là, on le croyait disparu — jusqu'à ce qu'un garde forestier en trouve un bosquet vivant au fond d'un canyon australien, en 1994.",
+    "vivant": "Oui : il vit encore, mais il est très rare. Son écorce fait des bulles brunes, comme du chocolat qui a bouilli."
+  }
+];

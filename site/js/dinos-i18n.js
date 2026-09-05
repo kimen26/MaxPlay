@@ -40,6 +40,8 @@
     merge(typeof DINO_PERIODES !== 'undefined' ? DINO_PERIODES : window.DINO_PERIODES, S.periodes);
     merge(typeof DINO_CATEGORIES !== 'undefined' ? DINO_CATEGORIES : window.DINO_CATEGORIES, S.categories);
     merge(typeof DINO_ERES !== 'undefined' ? DINO_ERES : window.DINO_ERES, S.eres);
+    // Flore (HO-021) : prete pour HO-023 (traduction contenu plantes), sans casser si absente.
+    merge(typeof DINO_PLANTES !== 'undefined' ? DINO_PLANTES : window.DINO_PLANTES, S.plantes);
 
     // PANGEE et EXTINCTION sont des objets uniques (pas des collections indexees par id) :
     // fusion PROFONDE champ par champ, `etapes`/`hypotheses` indexes par periode/id.

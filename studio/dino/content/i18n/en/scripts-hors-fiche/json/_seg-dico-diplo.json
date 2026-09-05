@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] *diplo-*, in Greek that means double."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[happily] Diplodocus. A double beam in its back to carry that huge tail."
+    }
+  ]
+}

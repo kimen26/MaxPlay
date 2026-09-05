@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] [serious] *gorgon-*, in Greek that's the Gorgon — [pauses] a monster from old Greek myths with a terrifying face."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Gorgonops. Gorgon face. A hunter with saber teeth, long before the dinosaurs."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] *psittaco-*, in Greek that means parrot."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[happily] Psittacosaurus. Its curved beak looked exactly like a parrot's."
+    }
+  ]
+}

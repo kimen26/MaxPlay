@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] *elasmo-*, in Greek that means thin metal plate, sheet metal."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Elasmosaurus. Its bones were thin like sheet metal. A sea serpent with a huge long neck."
+    }
+  ]
+}

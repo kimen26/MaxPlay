@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] *scelido-*, in Greek that means leg — well, [chuckles] almost: the scientist who named it mixed up his words and wrote \"beef rib\" instead!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[chuckles] Scelidosaurus. The lizard with big legs, even with a name that got a little muddled."
+    }
+  ]
+}

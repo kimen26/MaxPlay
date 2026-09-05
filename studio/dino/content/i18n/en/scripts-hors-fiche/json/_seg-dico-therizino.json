@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] *therizino-*, in Greek that means to reap, to cut."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[happily] Therizinosaurus. Its huge claws reaped the plants like a scythe. Impressive."
+    }
+  ]
+}

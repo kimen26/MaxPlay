@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] *maia-*, in Greek that means good mother, nurse."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[happily] Maiasaura. A dino mom who cared for her babies in the nest. Scientists noticed right away."
+    }
+  ]
+}

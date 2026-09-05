@@ -1,0 +1,50 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious][softly] Sixty-six million years ago. [pauses] A meteorite falls from the sky. [gasps] Six miles wide — as big as an entire city."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] That's huge."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly][serious] Huge. [pauses] It crashes into Mexico, on the Yucatan Peninsula, at Chicxulub. [amazed] KA-BOOM! [excited] Earthquakes! Tsunamis!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Does everything die?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious][softly] Not right away. [pauses] In India, volcanoes have been spewing ash for years. [gasps] The sky turns black. [serious] No more sun. It gets very cold."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] What about the plants?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly][sad] The plants die. [serious] The big plant-eaters have nothing left to eat. The meat-eaters have no more plant-eaters. [pauses] All the big dinosaurs disappear."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Are birds dinosaurs?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Exactly! [gasps] The sparrow on the porch — that's a living dinosaur. [happily] Crocodiles, turtles, and frogs survive too."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited][curious] What else?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Time goes on. [playful] Then, [pauses] the sky clears up again. [gasps] And new animals begin to grow…"
+    }
+  ]
+}

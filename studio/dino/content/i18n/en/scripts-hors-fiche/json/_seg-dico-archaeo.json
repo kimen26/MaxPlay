@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] *archaeo-*, in Greek that means ancient, from the beginning."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Archaeopteryx. The very old wing, one of the first feathered animals in all of history."
+    }
+  ]
+}

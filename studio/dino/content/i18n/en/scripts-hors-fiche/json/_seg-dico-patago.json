@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] [pauses] *Patago-*, that's not a Greek word — [amazed] it's Patagonia, a region of Argentina where its bones were found."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Patagotitan. The titan of Patagonia. One of the biggest dinosaurs ever found."
+    }
+  ]
+}

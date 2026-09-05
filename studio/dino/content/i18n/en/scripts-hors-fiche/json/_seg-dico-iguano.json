@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] [pauses] *iguano-*, that's the iguana, a reptile from the Caribbean islands — [amazed] not a Greek word, not a Latin word!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Iguanodon. Its teeth looked like an iguana's. An island word for a giant dino."
+    }
+  ]
+}

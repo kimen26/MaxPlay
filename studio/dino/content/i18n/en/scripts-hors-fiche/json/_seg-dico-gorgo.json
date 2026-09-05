@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] [serious] *gorgo-*, in Greek that means terrible, fearsome — [pauses] like the Gorgon from old Greek myths."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[happily] Gorgosaurus. As fierce as a legendary monster, a great hunter from North America."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] *edapho-*, in Greek that means ground, pavement."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[happily] Edaphosaurus. Its teeth were packed tight like paving stones, and it carried a huge sail on its back."
+    }
+  ]
+}

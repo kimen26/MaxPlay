@@ -1,0 +1,18 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Why am I telling you this? [pauses] Because it changes EVERYTHING for the dinosaurs! [curious] Take Cryolophosaurus: it lived in Antarctica during the Jurassic. [amazed] But guess what — back then, Antarctica wasn't icy and white like it is now. It was warm, with forests, because it was still part of Pangea, stuck to the rest of the world!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Antarctica, WARM? Not cold at all?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Not cold at all! [pauses] When the Earth changes shape, [curious] hot and cold change too. [happily] Cryolophosaurus lived happily in a warm Antarctica, with trees and sunshine!"
+    }
+  ]
+}

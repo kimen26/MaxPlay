@@ -1,0 +1,22 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited][happily] The SMALL animals, they survive! [pauses] The little ones who can hide, who don't need so, so much food. [amazed] And the BIRDS? They survive too. [curious] You know why? Because birds are REAL dinosaurs! [pauses] Wild, right?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps][happily] Birds? Dinosaurs? For real?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful][confident] REALLY! [pauses] And here's something even wilder: next time you see a pigeon on the street, or a sparrow, or a crow — YOU'RE LOOKING AT A DINOSAUR! [amazed] Today's birds are the babies-babies-babies of the dinosaurs from back then. [softly] Life never stopped. [pauses] It just changed shape. And that's why the dinosaurs never really left. They're everywhere! [happily] They fly through the sky — pretty cool, huh?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[happily] Yes. The pigeon is a dino. I love it."
+    }
+  ]
+}

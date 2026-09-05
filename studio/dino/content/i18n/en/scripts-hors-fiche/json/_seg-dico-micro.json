@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] [pauses] *micro-*, in Greek that means small. And *-raptor* in Latin means thief — [amazed] two languages in one single name!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Microraptor. The tiny thief with four wings. Small in Greek, a thief in Latin."
+    }
+  ]
+}

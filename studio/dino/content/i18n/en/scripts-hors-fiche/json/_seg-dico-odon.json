@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] *-odon* or *-odonto-*, in Greek that means tooth — it's the same word!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[happily] Iguanodon, Pteranodon, Troodon. All named for their teeth."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] [pauses] *Hatzego-*, that's not a Greek word — [amazed] it's Hațeg, a region of Romania, an island back when dinosaurs lived."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Hatzegopteryx. The wing of Hațeg. A giant flying reptile that hunted on all fours."
+    }
+  ]
+}

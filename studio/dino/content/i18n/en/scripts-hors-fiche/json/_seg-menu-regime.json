@@ -1,0 +1,10 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Dinosaurs didn't all eat the same thing! [curious] Meat-eaters ate meat. [pauses] Plant-eaters ate plants."
+    }
+  ]
+}

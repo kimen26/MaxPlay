@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] *Quetzalcoatl-*, that's Quetzalcoatl, [amazed] the feathered serpent god of the Aztecs, a people from the Americas."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Quetzalcoatlus. A flying reptile as big as an airplane. Named after an Aztec god."
+    }
+  ]
+}

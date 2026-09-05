@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] *tyrannos-*, in Greek that means [amazed] a king who answers to no one, a tyrant."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Tyrannosaurus rex. The tyrant, king of the lizards, king of everything. The most famous of them all."
+    }
+  ]
+}

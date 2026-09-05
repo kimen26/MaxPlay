@@ -1,0 +1,50 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited][playful] Here we are in the [serious] Cretaceous! [happily] One hundred million years ago. [chuckles] Its name comes from \"chalk\" — those white cliffs are made of this rock."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily][excited] White! [gasps] Billions of tiny dead algae piled up at the bottom of warm seas. [softly] The continents keep drifting apart."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Are there dinosaurs everywhere?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited][quickly] Everywhere! [amazed] In North America, T. rex and Triceratops! [happily] In Africa, Spinosaurus. [playful] In Asia, Velociraptor and Tarbosaurus."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Did Velociraptor have feathers?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful][chuckles] Like a big turkey! [excited] And in the sky, Quetzalcoatlus. [gasps] In the seas, Mosasaurus rules the oceans!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] What about the plants?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[gasps][excited] For the very first time, flowers! [happily] Fruit! [playful] Bees! [amazed] The world turns colorful!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Whoa."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited][curious] What else?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly][serious] Time goes on. [pauses] But near the end of this age, the sky starts to darken…"
+    }
+  ]
+}

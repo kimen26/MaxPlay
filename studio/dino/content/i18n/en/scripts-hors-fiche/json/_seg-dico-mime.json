@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] *-mimus*, in Greek that means one who mimics."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Gallimimus mimicked a chicken. Suchomimus mimicked a crocodile. Real copycats."
+    }
+  ]
+}

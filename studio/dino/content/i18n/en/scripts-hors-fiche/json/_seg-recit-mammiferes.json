@@ -1,0 +1,46 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited][playful] Here we are in the [serious] age of mammals! [happily] The sky clears up. The weather turns mild again. The forests grow back."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Is it warm?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Warm and humid, [happily] like a giant greenhouse. [softly] Mammals, once hiding under the dinosaurs' feet, can finally grow."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] What do they become?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited][quickly] Huge! [amazed] Smilodon, the saber-tooth cat! [happily] A giant sloth, big as an elephant. [gasps] Titanoboa, a snake forty feet long!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Forty feet?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[gasps][excited] As long as a house! [playful] And some mammals go back to living in the water: whales and dolphins. [softly] Their babies drink milk… [pauses] underwater."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Milk underwater?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited][curious] What else?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Time goes on. [playful] Then, [pauses] the cold comes back. [serious] Really cold…"
+    }
+  ]
+}

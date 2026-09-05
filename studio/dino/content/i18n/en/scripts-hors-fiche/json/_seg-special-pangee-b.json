@@ -1,0 +1,18 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] But the Earth moves! [pauses] Back when the first dinosaurs lived, everything was still stuck together in one piece. [softly] Then, little by little, over a very, very long time, the pieces drifted apart — [amazed] like two big rafts sliding far away from each other. A huge ocean opens up between them! [pauses] Dinosaurs on one side could no longer see the ones on the other."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] It broke apart all at once? Like, CRACK?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly] No, no, very, very slowly! [pauses] Over millions of years, it splits apart bit by bit. [calm] The continents drift like giant rafts floating farther and farther from each other. [amazed] And after a very long time, they end up right where they are today."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] *Alberto-*, that's Alberta, [pauses] a big region of Canada where they found this dino's fossils."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[happily] Albertosaurus. Found in Canada, a great northern hunter, T. rex's cousin."
+    }
+  ]
+}

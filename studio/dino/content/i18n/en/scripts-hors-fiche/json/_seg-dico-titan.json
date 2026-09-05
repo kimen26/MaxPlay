@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] [amazed] *-titan*, in Greek those are the Titans — giants from old Greek myths."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Patagotitan. The giant of Patagonia, one of the biggest dinosaurs in all of history."
+    }
+  ]
+}

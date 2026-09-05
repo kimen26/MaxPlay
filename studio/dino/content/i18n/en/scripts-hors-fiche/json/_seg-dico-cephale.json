@@ -1,0 +1,14 @@
+{
+  "model_id": "eleven_v3",
+  "language_code": "en",
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] *-cephalus* or *-cephalo-*, [pauses] in Greek that means head — it's the same word!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[happily] Euoplocephalus and Pachycephalosaurus, both named for their special heads."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Pa… qui… ce… fa… lo… ssauro. [curious] \"Paqui\", em grego, quer dizer grosso. \"Céfalo\" é a cabeça. E \"sauro\", o lagarto."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] O lagarto de cabeça grossa."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exatamente, [warmly] com um crânio duro que nem um capacete. Ele vivia na América do Norte, há 70 milhões de anos — [gently] junto com o Tricerátops."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele é primo do Tritri, então?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Um primo dos dinos de chifre, sim, [pauses] mas nele, a arma é a cabeça, não os chifres."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

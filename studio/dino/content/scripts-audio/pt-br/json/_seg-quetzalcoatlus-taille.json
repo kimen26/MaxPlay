@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] As asas dele abertas faziam 11 metros de uma ponta à outra — [amazed] largas que nem um ônibus articulado! De pé, ele tinha 5 metros de altura — [proud] quase três Papais um em cima do outro! E pesava 200 quilos — tão pesado quanto um leão. [amazed] E voando, os cientistas acham que ele conseguia ir a 90 quilômetros por hora — quase tão rápido quanto um guepardo."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] De pé que nem uma girafa?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[proud] Exatamente. [amazed] E mesmo assim, esse bicho voava."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] E… no… si… on. Em grego, \"cyon\" quer dizer cachorro. [serious] E \"dirus\", em latim, quer dizer terrível, que dá medo. O cachorro terrível."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] Um lobo grande?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Chamam ele de Lobo terrível, sim — [serious] mas não é um dinossauro: ele vivia bem depois, na Era do Gelo, [pauses] há 50 mil anos, na América do Norte e do Sul."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele caçava com quem, por lá?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Sempre em matilha, entre eles. [warmly] E o Smilodonte, um pouco mais longe, caçava as mesmas presas."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

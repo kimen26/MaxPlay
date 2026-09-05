@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Herbívoro, talvez em grupo pequeno. [calm] As placas grandes e coloridas serviam provavelmente de radiador, [pauses] pra esquentar ou esfriar."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] E pra se defender?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] O rabo dele tinha 4 espinhos compridos na ponta. [serious] O Alossauro tinha que ter bastante cuidado ao se aproximar."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

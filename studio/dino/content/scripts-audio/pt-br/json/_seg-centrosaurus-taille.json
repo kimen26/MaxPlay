@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 5 metros e 50 de comprimento — do tamanho de uma 4x4 grande! 1 metro e 80 de altura — [quickly] do tamanho do papai em pé! E 1800 quilos — [amazed] tão pesado quanto um rinoceronte! Os cientistas acham que ele conseguia correr a 25 quilômetros por hora — que nem andar de bicicleta rápido."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Do tamanho do papai."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Isso, [amazed] com um chifre bonito e curvo no nariz, que nem uma lua crescente."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

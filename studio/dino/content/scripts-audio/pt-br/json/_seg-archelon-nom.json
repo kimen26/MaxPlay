@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[curious] Ar… que… lon. \"Arqué\" quer dizer chefe, primeiro — [serious] que nem em \"arqueologia\". E \"quelon\" é a tartaruga."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] A tartaruga-chefe?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso — a maior tartaruga de todos os tempos. Ela vivia há 75 milhões de anos, [amazed] num mar que cortava [serious] a América do Norte ao meio."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Uma tartaruga, mas não é dinossauro então?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Não, uma tartaruga marinha gigante de verdade — [warmly] prima das tartarugas de hoje, só que bem, bem maior."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

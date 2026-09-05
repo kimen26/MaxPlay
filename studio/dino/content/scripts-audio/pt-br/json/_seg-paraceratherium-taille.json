@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 7 metros e 40 de comprimento — que nem dois carros um atrás do outro! De pé, ele tinha 5 metros de altura — [amazed] quase três papais um em cima do outro! E pesava 17 mil quilos — [proud] tão pesado quanto 6 hipopótamos!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Seis hipopótamos?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[amazed] Isso. É o maior animal peludo [proud] que já andou na Terra."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

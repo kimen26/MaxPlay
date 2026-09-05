@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 10 metros de comprimento — do tamanho de um caminhão! 3 metros e 50 de altura — [quickly] que nem dois papais um em cima do outro! E 2500 quilos — [amazed] tão pesado quanto 5 cavalos!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Cinco cavalos, num único dino."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Isso. Um gigante de bico de pato, com um cano na cabeça."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

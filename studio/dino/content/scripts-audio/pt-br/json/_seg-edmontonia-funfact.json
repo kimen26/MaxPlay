@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] A Edmontônia tinha espinhos grandes e pontudos nos ombros — [serious] mas não tinha bolota na ponta do rabo que nem o Anquilossauro."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[hesitant] Então como ela se defendia?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Ela abaixava a cabeça e mostrava os espinhos. [confident] Impossível pegar ela sem se furar."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

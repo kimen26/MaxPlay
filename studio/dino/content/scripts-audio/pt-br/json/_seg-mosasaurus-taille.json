@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 17 metros de comprimento — do tamanho de um ônibus articulado! [amazed] De pé, ele tinha 2 metros de altura — da altura de uma porta! E pesava 10 mil quilos — [serious] tão pesado quanto 2 elefantes!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Dois elefantes que nadam?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[chuckles] Dois elefantes que nadam, sim — e bem mais rápido do que eles."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -38,5 +38,485 @@
     "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
     "language_code": "pt",
     "date": "2026-09-05T00:40:39.975Z"
+  },
+  "spinosaurus-nom": {
+    "empreinte": "167ed757cb6d",
+    "repliques": 5,
+    "duree_s": 39.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:43:16.681Z"
+  },
+  "spinosaurus-taille": {
+    "empreinte": "636120bf830b",
+    "repliques": 3,
+    "duree_s": 34.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:43:45.644Z"
+  },
+  "spinosaurus-regime": {
+    "empreinte": "6c15ea5640dc",
+    "repliques": 3,
+    "duree_s": 22.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:44:06.866Z"
+  },
+  "spinosaurus-funfact": {
+    "empreinte": "c5e9f67d115f",
+    "repliques": 3,
+    "duree_s": 20.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:44:27.313Z"
+  },
+  "giganotosaurus-nom": {
+    "empreinte": "1a0337611a32",
+    "repliques": 5,
+    "duree_s": 36.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:45:05.860Z"
+  },
+  "giganotosaurus-taille": {
+    "empreinte": "491acdd9c7cc",
+    "repliques": 3,
+    "duree_s": 33.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:45:36.264Z"
+  },
+  "giganotosaurus-regime": {
+    "empreinte": "43e48c86432b",
+    "repliques": 3,
+    "duree_s": 21.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:45:56.330Z"
+  },
+  "giganotosaurus-funfact": {
+    "empreinte": "532d1b326ce8",
+    "repliques": 3,
+    "duree_s": 19.2,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:46:14.451Z"
+  },
+  "carcharodontosaurus-nom": {
+    "empreinte": "31e6a271a0ea",
+    "repliques": 5,
+    "duree_s": 49.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:46:55.911Z"
+  },
+  "carcharodontosaurus-taille": {
+    "empreinte": "ad8d37b1b0aa",
+    "repliques": 3,
+    "duree_s": 31.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:47:20.524Z"
+  },
+  "carcharodontosaurus-regime": {
+    "empreinte": "9d530cb1e261",
+    "repliques": 3,
+    "duree_s": 18.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:47:40.817Z"
+  },
+  "carcharodontosaurus-funfact": {
+    "empreinte": "0c9a8ebbe7c6",
+    "repliques": 3,
+    "duree_s": 15.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:47:58.678Z"
+  },
+  "allosaurus-nom": {
+    "empreinte": "a644e7a52565",
+    "repliques": 5,
+    "duree_s": 43.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:48:43.414Z"
+  },
+  "allosaurus-taille": {
+    "empreinte": "2f464ff06ad8",
+    "repliques": 3,
+    "duree_s": 39.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:49:15.794Z"
+  },
+  "allosaurus-regime": {
+    "empreinte": "c6af2a21e976",
+    "repliques": 3,
+    "duree_s": 20.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:49:35.146Z"
+  },
+  "allosaurus-funfact": {
+    "empreinte": "dcf08c113c36",
+    "repliques": 3,
+    "duree_s": 24.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:49:56.871Z"
+  },
+  "tarbosaurus-nom": {
+    "empreinte": "2a60aa834659",
+    "repliques": 5,
+    "duree_s": 35.4,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:50:32.660Z"
+  },
+  "tarbosaurus-taille": {
+    "empreinte": "508668161c85",
+    "repliques": 3,
+    "duree_s": 31.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:50:58.568Z"
+  },
+  "tarbosaurus-regime": {
+    "empreinte": "a33afbbd156b",
+    "repliques": 3,
+    "duree_s": 23.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:51:26.326Z"
+  },
+  "tarbosaurus-funfact": {
+    "empreinte": "9fd7daf91e60",
+    "repliques": 3,
+    "duree_s": 20.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:51:45.458Z"
+  },
+  "albertosaurus-nom": {
+    "empreinte": "35cdf095b365",
+    "repliques": 5,
+    "duree_s": 40.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:52:20.870Z"
+  },
+  "albertosaurus-taille": {
+    "empreinte": "378c5964cb57",
+    "repliques": 3,
+    "duree_s": 40.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:52:54.223Z"
+  },
+  "albertosaurus-regime": {
+    "empreinte": "9497dd193065",
+    "repliques": 3,
+    "duree_s": 35.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:53:22.008Z"
+  },
+  "albertosaurus-funfact": {
+    "empreinte": "6250c2273688",
+    "repliques": 3,
+    "duree_s": 26.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:53:49.592Z"
+  },
+  "ceratosaurus-nom": {
+    "empreinte": "0a355da50320",
+    "repliques": 5,
+    "duree_s": 38.2,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:54:26.932Z"
+  },
+  "ceratosaurus-taille": {
+    "empreinte": "c8efdc77599e",
+    "repliques": 3,
+    "duree_s": 37.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:54:53.596Z"
+  },
+  "ceratosaurus-regime": {
+    "empreinte": "1da1dfbd1e2e",
+    "repliques": 3,
+    "duree_s": 22.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:55:13.704Z"
+  },
+  "ceratosaurus-funfact": {
+    "empreinte": "baa3322f1bac",
+    "repliques": 3,
+    "duree_s": 22.4,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:55:35.268Z"
+  },
+  "dilophosaurus-nom": {
+    "empreinte": "954ce07fd545",
+    "repliques": 5,
+    "duree_s": 37.7,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:56:09.584Z"
+  },
+  "dilophosaurus-taille": {
+    "empreinte": "0af871b2fb90",
+    "repliques": 3,
+    "duree_s": 34.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:56:37.438Z"
+  },
+  "dilophosaurus-regime": {
+    "empreinte": "e482138cbb09",
+    "repliques": 3,
+    "duree_s": 19.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:56:56.575Z"
+  },
+  "dilophosaurus-funfact": {
+    "empreinte": "cab61d74aec3",
+    "repliques": 3,
+    "duree_s": 18.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:57:15.615Z"
+  },
+  "carnotaurus-nom": {
+    "empreinte": "d36aba100cc8",
+    "repliques": 5,
+    "duree_s": 39.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:57:57.639Z"
+  },
+  "carnotaurus-taille": {
+    "empreinte": "75ea361871fd",
+    "repliques": 3,
+    "duree_s": 39.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:58:32.966Z"
+  },
+  "carnotaurus-regime": {
+    "empreinte": "81f9b183d44a",
+    "repliques": 3,
+    "duree_s": 20.6,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:58:53.009Z"
+  },
+  "carnotaurus-funfact": {
+    "empreinte": "ab2b9659e445",
+    "repliques": 3,
+    "duree_s": 23.7,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:59:16.061Z"
+  },
+  "cryolophosaurus-nom": {
+    "empreinte": "b3ac27cfa825",
+    "repliques": 5,
+    "duree_s": 47.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T00:59:55.701Z"
+  },
+  "cryolophosaurus-taille": {
+    "empreinte": "37ead3816cc2",
+    "repliques": 3,
+    "duree_s": 34.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T01:00:23.475Z"
+  },
+  "cryolophosaurus-regime": {
+    "empreinte": "d4d88147cc2f",
+    "repliques": 3,
+    "duree_s": 22.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T01:00:45.999Z"
+  },
+  "cryolophosaurus-funfact": {
+    "empreinte": "1d062fec259b",
+    "repliques": 3,
+    "duree_s": 23.4,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T01:01:13.073Z"
+  },
+  "baryonyx-nom": {
+    "empreinte": "19146d7c854a",
+    "repliques": 5,
+    "duree_s": 46.2,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T01:01:51.206Z"
+  },
+  "baryonyx-taille": {
+    "empreinte": "18995b7be948",
+    "repliques": 3,
+    "duree_s": 38.2,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T01:02:19.532Z"
+  },
+  "baryonyx-regime": {
+    "empreinte": "5a52269a49af",
+    "repliques": 3,
+    "duree_s": 20.7,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T01:02:38.608Z"
+  },
+  "baryonyx-funfact": {
+    "empreinte": "5aa8bbb1de40",
+    "repliques": 3,
+    "duree_s": 22.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T01:02:58.880Z"
+  },
+  "therizinosaurus-nom": {
+    "empreinte": "5c33b5fc1c87",
+    "repliques": 5,
+    "duree_s": 35.6,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T01:03:38.934Z"
+  },
+  "therizinosaurus-taille": {
+    "empreinte": "2e4f42630a6f",
+    "repliques": 3,
+    "duree_s": 42.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T01:04:08.821Z"
+  },
+  "therizinosaurus-regime": {
+    "empreinte": "3c62d18931de",
+    "repliques": 3,
+    "duree_s": 24.6,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T01:04:31.246Z"
+  },
+  "therizinosaurus-funfact": {
+    "empreinte": "422d6edc835c",
+    "repliques": 3,
+    "duree_s": 20.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "language_code": "pt",
+    "date": "2026-09-05T01:04:50.950Z"
   }
 }

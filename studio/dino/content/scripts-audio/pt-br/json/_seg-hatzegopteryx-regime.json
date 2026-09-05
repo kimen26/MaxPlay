@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Carnívoro. [confident] E ele levava uma dupla vida: caçava tanto a pé quanto lá no alto, voando."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] A pé? [gasps] Um bicho voador que anda?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Isso, nas quatro patas. [slowly] E os cientistas acham que no chão ele ia a uns 12 quilômetros por hora — [amazed] que nem uma criança correndo."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] E ele comia o quê, na ilha dele?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Dinossauros anões, [confident] primos em miniatura dos gigantes de pescoço comprido. Naquela ilha, quase tudo tinha ficado pequeno."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ti… ta… nis. Vem dos Titãs, [proud] gigantes todo-poderosos das histórias antigas gregas. O pássaro Titã."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Um pássaro gigante?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Um pássaro de verdade, sim — [serious] mas não é um dinossauro. Ele chegou bem depois, [pauses] há 3 milhões de anos, na América do Norte."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Um pássaro, com penas?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Com penas de verdade, sim. [amazed] Mas grande e pesado demais pra voar."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

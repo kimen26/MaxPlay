@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[curious] Di… me… tro… don… te. \"Di\", em grego, quer dizer dois. [serious] \"Metro\", a medida — que nem em metro. E \"odon\", o dente."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] Os dentes de duas medidas?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso — ele tinha dois tamanhos de dentes diferentes na boca. Ele vivia há 280 milhões de anos, [amazed] na América do Norte."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Então ele é um dinossauro, se viveu tão antes assim?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Não, justamente — nada disso. Ele viveu 50 milhões de anos ANTES dos primeiros dinossauros. [warmly] Ele é um primo bem antigo [confident] dos bichos peludos, que nem a gente."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

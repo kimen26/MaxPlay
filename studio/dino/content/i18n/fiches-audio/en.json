@@ -38,5 +38,485 @@
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
     "date": "2026-09-05T00:38:29.699Z"
+  },
+  "spinosaurus-nom": {
+    "empreinte": "c7bb5e3b045e",
+    "repliques": 5,
+    "duree_s": 30.6,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:43:23.412Z"
+  },
+  "spinosaurus-taille": {
+    "empreinte": "b3896026afae",
+    "repliques": 3,
+    "duree_s": 24.6,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:43:46.272Z"
+  },
+  "spinosaurus-regime": {
+    "empreinte": "e5f09c6a6e19",
+    "repliques": 3,
+    "duree_s": 18.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:44:05.692Z"
+  },
+  "spinosaurus-funfact": {
+    "empreinte": "378bed2e3efb",
+    "repliques": 3,
+    "duree_s": 19.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:44:25.233Z"
+  },
+  "giganotosaurus-nom": {
+    "empreinte": "785121cb6686",
+    "repliques": 5,
+    "duree_s": 38.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:45:01.031Z"
+  },
+  "giganotosaurus-taille": {
+    "empreinte": "17b8132ebfc9",
+    "repliques": 3,
+    "duree_s": 32.4,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:45:30.862Z"
+  },
+  "giganotosaurus-regime": {
+    "empreinte": "640bbb2c5717",
+    "repliques": 3,
+    "duree_s": 17.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:45:49.409Z"
+  },
+  "giganotosaurus-funfact": {
+    "empreinte": "c474bdfe7649",
+    "repliques": 3,
+    "duree_s": 13.6,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:46:06.875Z"
+  },
+  "carcharodontosaurus-nom": {
+    "empreinte": "22acf12c4207",
+    "repliques": 5,
+    "duree_s": 40.6,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:46:42.161Z"
+  },
+  "carcharodontosaurus-taille": {
+    "empreinte": "4e53b197fdbd",
+    "repliques": 3,
+    "duree_s": 25.4,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:47:03.546Z"
+  },
+  "carcharodontosaurus-regime": {
+    "empreinte": "9c382fbcd5f5",
+    "repliques": 3,
+    "duree_s": 17.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:47:23.195Z"
+  },
+  "carcharodontosaurus-funfact": {
+    "empreinte": "afc69961d51c",
+    "repliques": 3,
+    "duree_s": 11.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:47:47.728Z"
+  },
+  "allosaurus-nom": {
+    "empreinte": "324c44a0003f",
+    "repliques": 5,
+    "duree_s": 38.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:48:23.773Z"
+  },
+  "allosaurus-taille": {
+    "empreinte": "a5990b7187d7",
+    "repliques": 3,
+    "duree_s": 28.6,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:48:46.758Z"
+  },
+  "allosaurus-regime": {
+    "empreinte": "aaa1da76a087",
+    "repliques": 3,
+    "duree_s": 15.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:49:03.267Z"
+  },
+  "allosaurus-funfact": {
+    "empreinte": "9c46ef51da25",
+    "repliques": 3,
+    "duree_s": 21.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:49:23.347Z"
+  },
+  "tarbosaurus-nom": {
+    "empreinte": "ff3b82f968f6",
+    "repliques": 5,
+    "duree_s": 29.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:49:52.413Z"
+  },
+  "tarbosaurus-taille": {
+    "empreinte": "3c070cc87e85",
+    "repliques": 3,
+    "duree_s": 21.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:50:12.637Z"
+  },
+  "tarbosaurus-regime": {
+    "empreinte": "f0d97a180844",
+    "repliques": 3,
+    "duree_s": 23.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:50:34.622Z"
+  },
+  "tarbosaurus-funfact": {
+    "empreinte": "cf33544a5cdf",
+    "repliques": 3,
+    "duree_s": 15.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:50:52.163Z"
+  },
+  "albertosaurus-nom": {
+    "empreinte": "5bb3f5484e61",
+    "repliques": 5,
+    "duree_s": 34.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:51:25.832Z"
+  },
+  "albertosaurus-taille": {
+    "empreinte": "7697e4e8f466",
+    "repliques": 3,
+    "duree_s": 30.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:51:54.706Z"
+  },
+  "albertosaurus-regime": {
+    "empreinte": "232df548d863",
+    "repliques": 3,
+    "duree_s": 25.6,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:52:26.314Z"
+  },
+  "albertosaurus-funfact": {
+    "empreinte": "7b8711c62517",
+    "repliques": 3,
+    "duree_s": 17.7,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:52:44.359Z"
+  },
+  "ceratosaurus-nom": {
+    "empreinte": "4ac4068b84bb",
+    "repliques": 5,
+    "duree_s": 34.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:53:16.306Z"
+  },
+  "ceratosaurus-taille": {
+    "empreinte": "3e4908c2f88f",
+    "repliques": 3,
+    "duree_s": 31.4,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:53:40.229Z"
+  },
+  "ceratosaurus-regime": {
+    "empreinte": "2a7e0192556f",
+    "repliques": 3,
+    "duree_s": 18.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:53:59.603Z"
+  },
+  "ceratosaurus-funfact": {
+    "empreinte": "7e32fedee1ff",
+    "repliques": 3,
+    "duree_s": 19.2,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:54:19.175Z"
+  },
+  "dilophosaurus-nom": {
+    "empreinte": "7b6097bc5c74",
+    "repliques": 5,
+    "duree_s": 31.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:54:52.557Z"
+  },
+  "dilophosaurus-taille": {
+    "empreinte": "de2bfc7f84af",
+    "repliques": 3,
+    "duree_s": 30.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:55:19.876Z"
+  },
+  "dilophosaurus-regime": {
+    "empreinte": "a64d8054ae75",
+    "repliques": 3,
+    "duree_s": 16.2,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:55:38.648Z"
+  },
+  "dilophosaurus-funfact": {
+    "empreinte": "5bcd39e56ab1",
+    "repliques": 3,
+    "duree_s": 15.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:55:56.903Z"
+  },
+  "carnotaurus-nom": {
+    "empreinte": "03e61b476df6",
+    "repliques": 5,
+    "duree_s": 35.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:56:30.459Z"
+  },
+  "carnotaurus-taille": {
+    "empreinte": "1e20a41fe091",
+    "repliques": 3,
+    "duree_s": 27.7,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:56:53.826Z"
+  },
+  "carnotaurus-regime": {
+    "empreinte": "d003dccdc608",
+    "repliques": 3,
+    "duree_s": 17.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:57:13.049Z"
+  },
+  "carnotaurus-funfact": {
+    "empreinte": "1eb9fbea3cdb",
+    "repliques": 3,
+    "duree_s": 16,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:57:31.932Z"
+  },
+  "cryolophosaurus-nom": {
+    "empreinte": "b1088bda024e",
+    "repliques": 5,
+    "duree_s": 41.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:58:09.472Z"
+  },
+  "cryolophosaurus-taille": {
+    "empreinte": "b0634deceb26",
+    "repliques": 3,
+    "duree_s": 25.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:58:32.581Z"
+  },
+  "cryolophosaurus-regime": {
+    "empreinte": "453c5f314225",
+    "repliques": 3,
+    "duree_s": 19.2,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:58:59.741Z"
+  },
+  "cryolophosaurus-funfact": {
+    "empreinte": "387aeb960c11",
+    "repliques": 3,
+    "duree_s": 16.4,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:59:17.462Z"
+  },
+  "baryonyx-nom": {
+    "empreinte": "137deca584a2",
+    "repliques": 5,
+    "duree_s": 36.6,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T00:59:57.951Z"
+  },
+  "baryonyx-taille": {
+    "empreinte": "6638114fa589",
+    "repliques": 3,
+    "duree_s": 29.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T01:00:22.270Z"
+  },
+  "baryonyx-regime": {
+    "empreinte": "57e35f627008",
+    "repliques": 3,
+    "duree_s": 17.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T01:00:42.761Z"
+  },
+  "baryonyx-funfact": {
+    "empreinte": "51f6bf2cdd1c",
+    "repliques": 3,
+    "duree_s": 17.6,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T01:01:13.662Z"
+  },
+  "therizinosaurus-nom": {
+    "empreinte": "fa501b3a372d",
+    "repliques": 5,
+    "duree_s": 31.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T01:01:45.404Z"
+  },
+  "therizinosaurus-taille": {
+    "empreinte": "18574a5b1251",
+    "repliques": 3,
+    "duree_s": 30.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T01:02:10.510Z"
+  },
+  "therizinosaurus-regime": {
+    "empreinte": "893ada3966bf",
+    "repliques": 3,
+    "duree_s": 21.4,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T01:02:31.772Z"
+  },
+  "therizinosaurus-funfact": {
+    "empreinte": "fa449c75c47e",
+    "repliques": 3,
+    "duree_s": 19.7,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-05T01:02:50.953Z"
   }
 }

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 1 vírgula 2 metro de comprimento — [amazed] que nem um cachorro grande — um labrador. De pé, 0 vírgula 4 metro de altura — [curious] ele chegava até seu joelho. E 4 quilos — [proud] tão pesado quanto um gato grande."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Bem pequeno, então."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Minúsculo, sim. [amazed] Mas ele já corria nas duas patas de trás."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

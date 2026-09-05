@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Bra… qui… o… ssauro. Em grego, \"bráquio\" quer dizer o braço. E \"sauro\", [pauses] o lagarto."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] O lagarto de braços?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso mesmo. As patas da frente dele eram [pauses] mais compridas que as de trás — que nem dois braços grandes. Ele vivia na América do Norte, [amazed] há 150 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[playful] Ele ficava sozinho por lá?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Não, em manada. E caçadores como o Alossauro [serious] só ousavam atacar os filhotes — um adulto era alto demais pra eles."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

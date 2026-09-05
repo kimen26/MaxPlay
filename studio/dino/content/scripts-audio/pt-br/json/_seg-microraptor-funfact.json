@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] O segredo dele é que ele tinha [amazed] quatro asas: duas nos braços, [pauses] e outras duas nas pernas."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Quatro asas, ao mesmo tempo?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[whispers] As quatro juntas, abertas, faziam que nem um planadorzinho. [softly] Ele pulava de uma árvore, [slowly] abria as quatro asas, e deslizava pelo ar até a próxima."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

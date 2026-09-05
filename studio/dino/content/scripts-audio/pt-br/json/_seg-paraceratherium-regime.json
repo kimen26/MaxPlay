@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era herbívoro. [amazed] Com o pescoço comprido, pegava as folhas lá no alto das árvores, [gently] onde mais ninguém conseguia comer. Vivia tranquilo, em grupos pequenos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele tinha medo de algum caçador?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Nenhum caçador da época dele era forte o bastante pra atacar ele — [warmly] o tamanho dele já bastava."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

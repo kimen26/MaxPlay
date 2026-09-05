@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 3 metros e 50 de comprimento — que nem um carro pequeno! De pé, ele tinha 1 metro e 50 de altura — da altura de uma porta — [amazed] tinha que olhar pra cima! E pesava 1750 quilos — [proud] tão pesado quanto um carro pequeno e uma vaca juntos!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] O chifre dele, servia pra quê?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] De vassoura. [playful] Ele empurrava a neve com ele pra achar o capim escondido embaixo."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

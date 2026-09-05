@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Co… ri… to… ssauro. [curious] Em grego antigo, \"coritho\" é o capacete, que nem o de um guerreiro. E \"sauro\" é o lagarto. [pauses] O lagarto de capacete."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Um capacete na cabeça."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exatamente. Uma crista grande e arredondada, oca por dentro. [warmly] Ele vivia na América do Norte, há 76 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[nervous] E tinha perigos, por lá?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Tinha. O Gorgossauro e o Daspletossauro, dois primos do T-Rex, caçavam por perto. [confident] Então o Coritossauro nunca ficava sozinho."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

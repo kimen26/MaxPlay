@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 14 metros de comprimento — do tamanho de um ônibus articulado! [amazed] De pé, ele tinha 2 metros de altura — da altura de uma porta! E pesava 25 mil quilos — [serious] tão pesado quanto 5 elefantes!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] 5 elefantes, na água?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[chuckles] 5 elefantes que nadam, sim — [proud] um dos maiores animais de todo aquele mar."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

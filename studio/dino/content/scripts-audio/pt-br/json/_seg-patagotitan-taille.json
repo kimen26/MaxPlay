@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 31 metros de comprimento — [amazed] que nem um ônibus articulado e um ônibus, um atrás do outro. De pé, 12 metros de altura — [curious] da altura de um prédio de quatro andares. E 70 mil quilos — [proud] tão pesado quanto QUATORZE elefantes."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Quatorze elefantes."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Isso. [whispers] O coração dele sozinho era do tamanho de um carro pequeno."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

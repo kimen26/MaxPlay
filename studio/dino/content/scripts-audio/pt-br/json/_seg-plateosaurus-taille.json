@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 8 metros de comprimento — [amazed] que nem dois carros um atrás do outro. De pé, 2 vírgula 8 metros de altura — [curious] da altura de uma cesta de basquete. E 2 mil quilos — [proud] tão pesado quanto um rinoceronte."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Um rinoceronte, pra um dos primeiríssimos."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Isso — [whispers] já era um verdadeiro gigante pra época dele."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

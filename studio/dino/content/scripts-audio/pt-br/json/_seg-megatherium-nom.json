@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Me… ga… té… rio. Em grego, \"mega\" quer dizer grande, enorme. [proud] E \"tério\" quer dizer o bicho. O bicho gigante."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Um dinossauro gigante?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Não, não é um dinossauro — [serious] ele chegou bem depois, na Era do Gelo, [pauses] há 1 milhão de anos. Era uma preguiça gigante, na América do Sul."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Uma preguiça?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] A maior preguiça que já existiu — [amazed] do tamanho de um elefante, não daquela que dorme na árvore."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

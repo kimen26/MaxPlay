@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[amazed] O Dimetrodonte nem é um réptil que nem os outros. [serious] Ele é um ancestral bem, bem antigo dos bichos peludos — [warmly] um primo distante da gente."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Um primo da gente, com uma vela nas costas?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly] Um primo bem, bem distante, sim — [warmly] mas um parentesco de verdade, mesmo assim."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

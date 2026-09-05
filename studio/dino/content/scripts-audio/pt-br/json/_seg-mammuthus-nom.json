@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ma… mu… te. [curious] É uma palavra bem antiga que quer dizer mais ou menos \"chifre da terra\" — os primeiros caçadores encontravam as presas dele congeladas no chão e [amazed] achavam que eram chifres."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Um primo do elefante?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Um elefante todo peludo, sim. [serious] E atenção: ele não vivia com os dinossauros. Ele chegou bem depois, na Era do Gelo, [pauses] há 100 mil anos, quando a Terra estava toda gelada."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Depois dos dinossauros?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Bem depois. Na Europa, na Ásia e [warmly] na América do Norte, onde fazia um frio congelante."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

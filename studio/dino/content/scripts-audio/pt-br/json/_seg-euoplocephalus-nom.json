@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Eu… o… plo… cé… fa… lo. Em grego, \"eu\" quer dizer bem. [curious] E \"oplo\" é uma arma, uma armadura — que nem os soldados gregos, os hoplitas."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] A cabeça bem armada?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso, \"céfalo\" quer dizer a cabeça. [amazed] Juntando tudo: a cabeça bem protegida. [calm] Ele vivia em Alberta, no Canadá, há 75 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele se parecia com o Anquilossauro?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Um primo, mas ainda mais blindado. [amazed] Até as pálpebras dele eram cobertas de osso."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

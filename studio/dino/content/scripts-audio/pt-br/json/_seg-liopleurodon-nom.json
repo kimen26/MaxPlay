@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[curious] Liopleurodonte. Três pedacinhos gregos: \"léios\", liso. [serious] \"Pleura\", o lado. \"Odon\", o dente."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] Dentes... lisos na lateral?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso — sem riscadinhos, que nem em alguns dentes de tubarão. Ele vivia há 165 milhões de anos, [amazed] nos mares da Europa, [confident] na França e na Inglaterra."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] E ele caçava como, com um nariz de lagarto?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Não com os olhos primeiro — [serious] com o olfato. As narinas dele apontavam pra frente, que nem um cachorro seguindo um rastro."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

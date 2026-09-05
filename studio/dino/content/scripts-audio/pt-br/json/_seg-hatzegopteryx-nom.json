@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Hat… ze… gop… té… rix. Um nome em três pedaços. \"Hatzego\" vem de Hațeg, uma região da Romênia, [serious] onde encontraram os ossos dele. [curious] \"Ptérix\", em grego, é a asa. E \"thambema\" quer dizer monstro."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] A asa-monstro de Hațeg."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso mesmo. [serious] Atenção: não é um dinossauro — é um réptil voador. Ele vivia há 66 milhões de anos, [amazed] numa ilha perdida no meio do mar."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Uma ilha, sozinha assim?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[calm] Sim, separada do resto do mundo. [pauses] E lá, quase nada era como em outro lugar."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

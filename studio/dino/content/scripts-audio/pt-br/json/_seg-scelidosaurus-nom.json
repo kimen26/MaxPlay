@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Es… ce… li… do… ssauro. Em grego, \"sauro\" é o lagarto. [curious] E \"escélido\" queria dizer \"pernas grossas\", [amazed] porque ele tinha coxas bem fortes."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Um lagarto de pernas grossas."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso. Mas escuta só: [amazed] o cientista que batizou ele errou a palavra grega — a que ele escreveu quer dizer \"costela de boi\". [playful] Sem querer, ele chamou o bicho de lagarto-costela-de-boi."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] E onde ele vivia, o lagarto-costela-de-boi?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Na Inglaterra, na beira do mar, há 193 milhões de anos. [curious] E já naquela época, [pauses] pequenos caçadores de duas patas rondavam a região."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

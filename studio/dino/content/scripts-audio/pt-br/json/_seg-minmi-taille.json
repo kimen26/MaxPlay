@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 3 metros de comprimento — [amazed] que nem três crianças de 4 anos deitadas. De pé, 0 vírgula 9 metro de altura — [curious] do tamanho de uma criança de 4 anos. E 300 quilos — [proud] tão pesado quanto 2 jumentos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] 2 jumentos, pra um dino tão pequeno?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Isso, [pauses] todo esse peso vinha da armadura dele. [amazed] Mas ele tinha patas mais compridas que os primos blindados."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

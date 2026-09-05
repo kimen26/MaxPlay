@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 3 vírgula 4 metros de comprimento — [quickly] que nem um carro pequeno! De pé, ele tinha 0 vírgula 9 metro de altura — do tamanho de uma criança de 4 anos! E pesava 80 quilos — [proud] tão pesado quanto o papai. [amazed] E os cientistas acham que ele conseguia correr a 30 quilômetros por hora — que nem um cavalo a meio galope."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] E a garra famosa dele, [gasps] ela media quanto?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Uns 13 centímetros. [serious] Bem curva, afiada — uma arma de verdade pra prender a presa."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

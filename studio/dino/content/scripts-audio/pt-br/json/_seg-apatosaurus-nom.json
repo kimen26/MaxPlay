@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] A… pa… to… ssauro. [curious] Em grego, \"apato\" quer dizer o engano, a ilusão."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] O lagarto enganador?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso — [amazed] os ossos dele enganaram os cientistas por muito tempo. [calm] Ele vivia na América do Norte, há 150 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[hesitant] Enganaram como?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Durante muito tempo acharam que era outro dinossauro, [serious] o Brontossauro. [calm] Na verdade, é primo bem próximo dele — mas não é exatamente o mesmo bicho."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

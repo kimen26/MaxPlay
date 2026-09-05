@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 9 metros de comprimento — do tamanho de um caminhão! 2 metros e 50 de altura — [quickly] da altura de uma trave de futebol! E 2500 quilos — [amazed] tão pesado quanto 5 cavalos!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Da altura de uma trave, e ainda com filhotes?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Isso. Uma grande mamãe herbívora, [warmly] que mantinha os filhotes bem pertinho."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

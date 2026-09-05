@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era herbívoro, [calm] e talvez comesse alguns insetos. Vivia em grupo. [hesitant] Os grandes carnívoros o caçavam, mas a cabeça dura dele podia impressionar."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele brigava com a cabeça?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] É o que os cientistas acham. [curious] Os machos se batiam de cabeça, que nem os carneiros de hoje. [hesitant] Mas não é totalmente certo."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

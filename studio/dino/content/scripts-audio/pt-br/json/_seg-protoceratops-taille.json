@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 2 metros e 20 de comprimento — do tamanho de uma moto! 0 vírgula 75 metro de altura — [gently] ele chegava até seu umbigo! E 80 quilos — tão pesado quanto o papai! [amazed] Os cientistas acham que ele conseguia correr a 25 quilômetros por hora — que nem andar de bicicleta rápido."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Pequeno, mas pesado que nem o papai?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Compacto e forte. Um dinossaurinho bem musculoso."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

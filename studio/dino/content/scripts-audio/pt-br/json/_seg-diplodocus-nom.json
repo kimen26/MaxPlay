@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Di… plo… do… co. Em grego, \"diplo\" quer dizer [curious] duplo. E \"docus\", uma viga — [pauses] uma barra de madeira grossa."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] A viga dupla?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso — por causa do [amazed] formato dos ossos do rabo dele. Ele vivia na América do Norte, há 150 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[hesitant] Como ele se defendia, com um pescoço tão comprido?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Com o rabo, justamente. [serious] O Alossauro e o Ceratossauro preferiam atacar os jovens isolados — [calm] a manada bem junta era outra história."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

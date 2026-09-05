@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 1 metro e 90 de comprimento — do tamanho de uma moto! De pé, ele tinha 1 metro e 90 de altura — [amazed] da altura de uma porta! E pesava 150 quilos — [proud] tão pesado quanto um jumento!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Alto que nem uma porta, mas um pássaro?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Um pássaro em duas patas bem grandes, sim. [playful] Feito pra correr, não pra voar."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

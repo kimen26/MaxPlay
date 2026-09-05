@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Gli… pto… don… te. Em grego, \"glipto\" quer dizer esculpido, gravado. [proud] E \"don\" quer dizer dente. O dente esculpido."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ele parece uma tartaruga gigante?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Parece, mas na verdade era um primo do tatu! [serious] Também não é um dinossauro: ele vivia bem depois, na Era do Gelo, [pauses] na América do Sul."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Com quem, por lá?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Com o Megatério, a preguiça gigante, [warmly] no mesmo continente."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

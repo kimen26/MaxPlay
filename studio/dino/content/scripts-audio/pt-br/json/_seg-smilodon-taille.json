@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 1 metro e 75 de comprimento — que nem um papai grande deitado no chão! De pé, ele tinha 1 metro de altura — [amazed] do tamanho de uma criança de 4 anos! E pesava 220 quilos — [proud] tão pesado quanto um leão!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Não muito grande, então?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Não, mas atarracado e todo em músculo. [proud] Um verdadeiro bloco de força."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 4 metros de comprimento — [amazed] que nem um carro pequeno. De pé, 1 vírgula 2 metro de altura — [curious] do tamanho de uma criança de 4 anos. E 270 quilos — [proud] tão pesado quanto um tigre. [calm] Ele andava sem pressa: uns 15 quilômetros por hora, [pauses] que nem andar de bicicleta tranquilo."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Tão pesado quanto um tigre, pra um comedor de plantas?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Isso. [whispers] Esse peso era principalmente a armadura de osso — e as pernas grossas dele aguentavam tranquilo."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

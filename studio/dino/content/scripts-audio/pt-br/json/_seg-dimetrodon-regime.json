@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era um caçador solitário, que pegava répteis pequenos. [confident] Ele tinha que se cuidar dos outros grandes caçadores da época dele."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] E a vela dele, servia pra caçar?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Não bem pra caçar — mais pra se esquentar. [calm] De manhã, ele virava pro sol, com a vela bem aberta, que nem um radiador vivo."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Era carnívoro. Caçava grandes herbívoros, [confident] talvez em equipe de caçadores, e não sozinho."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Uma equipe, que nem no futebol?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[hesitant] Os cientistas não têm certeza, [gently] mas é possível: vários raptores juntos podiam derrubar uma presa bem maior do que eles."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[scared] E ele, alguém conseguia pegar ele?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] No lugar e na época dele, [warmly] ninguém forte o bastante pra isso foi encontrado. Ele era o grande caçador."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

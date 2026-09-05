@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[curious] Xo… ni… ssauro. O nome dele vem de um lugar: [amazed] as montanhas Shoshone, [serious] no deserto de Nevada, nos Estados Unidos — foi lá que encontraram os ossos dele."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] O lagarto das montanhas Shoshone?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exatamente. Ele vivia há 230 milhões de anos — [amazed] bem antes da maioria dos dinossauros que você conhece."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Um deserto, mas ele vivia na água?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Naquela época, esse deserto era um mar. [amazed] Toda a região estava debaixo d'água."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

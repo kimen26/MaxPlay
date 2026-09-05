@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ele media 0 vírgula 5 metro de comprimento — [quickly] que nem um gato grande deitado! De pé, ele tinha só 0 vírgula 3 metro de altura — ele chegava até seu joelho! E pesava só 1 quilo — [gently] leve que nem um passarinho."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Tão pequeno assim, ele conseguia mesmo voar?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[hesitant] Os cientistas ainda discutem isso. [gently] Ele tinha penas de voo de verdade, mas talvez voasse mal, ou só em distâncias curtas."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

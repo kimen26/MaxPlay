@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Herbívoro, em grupo pequeno. [calm] Comia as plantas do chão e dos arbustos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Mas pra que serviam os espinhos dele?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[hesitant] [pauses] Os cientistas ainda não têm certeza. [curious] Talvez pra se defender, batendo com eles. Ou talvez pra se destacar entre os outros Amargassauros."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] E se ninguém sabe, como a gente escolhe?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[gently] A gente não escolhe. [calm] Conta as duas ideias, e continua procurando a resposta certa."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

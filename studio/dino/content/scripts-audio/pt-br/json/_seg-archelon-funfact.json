@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[whispers] A carapaça dela não era dura que nem a de uma tartaruga de jardim. [amazed] Era pele grossa e resistente, [pauses] que nem couro — [softly] flexível, [serious] quase como uma asa."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Uma carapaça mole, pra que serve?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Pra nadar mais rápido. [amazed] Com essa carapaça, ela disparava na água que nem a tartaruga-de-couro de hoje — [proud] a campeã de velocidade das tartarugas."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 22 metros de comprimento — [amazed] do tamanho de um ônibus articulado. De pé, 4 metros e meio de altura — [curious] da altura de um ônibus de dois andares. E 23 mil quilos — [proud] tão pesado quanto 8 hipopótamos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] 8 hipopótamos."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Isso. [whispers] E só o pescoço dele media 6 metros, pra pegar as folhas lá no alto."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

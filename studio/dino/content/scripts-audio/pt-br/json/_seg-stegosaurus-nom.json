@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Es… te… go… ssauro. [curious] Em grego, \"estego\" quer dizer o telhado."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] O lagarto de telhado?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Isso — o cientista que encontrou ele achava que as placas grandes ficavam deitadas nas costas, [amazed] que nem as telhas de um telhado. [calm] Ele vivia na América do Norte e na Europa, há 155 milhões de anos."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] E elas ficavam deitadas mesmo, as placas?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Não! [pauses] Descobriram depois que elas ficavam em pé, bem retinhas, ao longo de todas as costas."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "pt",
+  "apply_text_normalization": "auto"
+}

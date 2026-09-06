@@ -8,7 +8,7 @@
 //   --dino   cible des sujets précis
 //   --retry  régénère même ce qui est déjà en staging (2e tentative après refus visuel)
 import { readFileSync, writeFileSync, existsSync, appendFileSync, mkdirSync } from 'node:fs';
-import { execFileSync } from 'node:child_process';
+import { execFileSync, execSync } from 'node:child_process';
 
 const ROOT = 'c:/ProjetsPerso/Claude_Projects/MaxPlay';
 // --grok bascule sur le projet Grok "Dinosaures" (plan B quand ChatGPT limite la cadence).
@@ -37,6 +37,28 @@ const REF_AUTO = arg('--ref-auto');
 // l acces (2026-09-06). La generation prend deja ~90 s, la pause double l intervalle.
 const PAUSE = parseInt(arg('--pause', '90'), 10) * 1000;
 const dors = ms => new Promise(r => setTimeout(r, ms));
+
+// Le navigateur de debug peut disparaitre en cours de lot : sans lui, toutes les images
+// suivantes echouent en cascade (ECONNREFUSED). On le remet debout avant de retenter.
+const BRAVE = 'C:/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe';
+async function relanceNavigateur(port) {
+  const profil = port === '9223' ? 'c:/tmp/brave-debug2' : 'c:/tmp/brave-debug';
+  const cible = port === '9223' ? 'https://grok.com/' : 'https://chatgpt.com/';
+  try {
+    execSync(`powershell -NoProfile -Command "Start-Process '${BRAVE}' -ArgumentList `
+      + `'--remote-debugging-port=${port}','--user-data-dir=${profil}','--no-first-run',`
+      + `'--no-default-browser-check','${cible}'"`, { stdio: 'pipe' });
+  } catch {}
+  await dors(15000);
+}
+
+function navigateurVivant(port) {
+  try {
+    execSync(`powershell -NoProfile -Command "(Invoke-WebRequest 'http://127.0.0.1:${port}/json/version'`
+      + ` -TimeoutSec 3 -UseBasicParsing).StatusCode"`, { stdio: 'pipe' });
+    return true;
+  } catch { return false; }
+}
 
 const file = JSON.parse(readFileSync(FILE, 'utf8'));
 let cible = file;
@@ -108,7 +130,22 @@ for (const e of cible) {
       console.log('\n⛔ QUOTA/LIMITE ChatGPT atteint — arrêt propre. Relancer plus tard.');
       break;
     }
-    console.log(`⚠️  échec (code ${code}) sur ${e.fichier} — on continue.`);
+    console.log(`⚠️  échec (code ${code}) sur ${e.fichier}`);
+    // Code 1 = plantage du generateur, typiquement le navigateur ferme. On le remet
+    // debout et on retente UNE fois : sinon tout le reste du lot echoue en cascade.
+    if (code === 1 && !navigateurVivant(PORT)) {
+      console.log('   navigateur absent — relance puis nouvelle tentative…');
+      await relanceNavigateur(PORT);
+      try {
+        execFileSync('node', args, { stdio: 'inherit', cwd: ROOT, env: { ...process.env, CDP_PORT: PORT } });
+        appendFileSync(JOURNAL, `${new Date().toISOString()}	${e.fichier}	${e.motif}	GENERE-RETRY
+`);
+        ok++; ko--;
+        if (PAUSE) await dors(PAUSE);
+        sujetCourant = null;
+        continue;
+      } catch { console.log('   deuxieme echec — on passe.'); }
+    }
     sujetCourant = null; // repartir sur un chat neuf après un échec
   }
 }

@@ -11,7 +11,10 @@ import { readFileSync, writeFileSync, existsSync, appendFileSync, mkdirSync } fr
 import { execFileSync } from 'node:child_process';
 
 const ROOT = 'c:/ProjetsPerso/Claude_Projects/MaxPlay';
-const GEN = ROOT + '/.claude/skills/dino-images-lunii/scripts/gpt-gen-dino.mjs';
+// --grok bascule sur le projet Grok "Dinosaures" (plan B quand ChatGPT limite la cadence).
+const USE_GROK = process.argv.includes('--grok');
+const GEN = ROOT + '/.claude/skills/dino-images-lunii/scripts/'
+  + (USE_GROK ? 'grok-gen-dino.mjs' : 'gpt-gen-dino.mjs');
 const GPTS = 'https://chatgpt.com/g/g-p-6a2c67ebc22c8191971eecf695ec5fec-dinosaure/project';
 const FILE = ROOT + '/studio/dino/content/sources/_audit-images-2026-09/_FILE-REGEN.json';
 const OUTD = ROOT + '/site/img/dinos/_new-audit';
@@ -23,6 +26,9 @@ const N = parseInt(arg('--n', '6'), 10);
 const ONLY = arg('--only') ? arg('--only').split(',').map(s => s.trim()) : null;
 const DINOS = arg('--dino') ? arg('--dino').split(',').map(s => s.trim()) : null;
 const RETRY = process.argv.includes('--retry');
+// Une cadence trop rapide declenche le rate limit : on espace explicitement les generations.
+const PAUSE = parseInt(arg('--pause', '20'), 10) * 1000;
+const dors = ms => new Promise(r => setTimeout(r, ms));
 
 const file = JSON.parse(readFileSync(FILE, 'utf8'));
 let cible = file;
@@ -62,17 +68,20 @@ const CADRE_COLORIAGE = [
   "tres lisible, parfait pour qu'un enfant de 4 ans colorie. Pas de texte ni de chiffre dans l'image.",
 ].join('\n');
 
-// 1 chat neuf par sujet : les scènes d'un même dino partagent le contexte, ce qui aide
-// le modèle à VARIER la pose (il voit ce qu'il vient de produire) — le défaut CLONE
-// vient justement de scènes générées en vase clos.
+// 1 chat neuf par IMAGE. Le partage de contexte entre scenes d un meme sujet devait
+// aider a varier la pose ; il fait l inverse — sur un sujet ou il n a pas d idee neuve,
+// le modele resert l image precedente (Liopleurodon _funfact rendu clone pixel de son
+// _manger, 2026-09-06). La differenciation passe par le prompt, qui nomme deja les
+// scenes dont il faut se demarquer, pas par la memoire du chat.
 let sujetCourant = null;
 let ok = 0, ko = 0;
 
 for (const e of cible) {
   const out = sortie(e);
-  const neuf = e.id !== sujetCourant;
+  const neuf = true; // toujours un chat neuf : voir le commentaire ci-dessus
   const args = [GEN, e.prompt + (e.fichier.endsWith('.webp') ? CADRE_COLORIAGE : CADRE), out];
-  if (neuf) args.push('--url', GPTS);
+  // Grok gere son projet lui-meme via --new ; ChatGPT a besoin de l'URL du projet.
+  if (neuf) args.push(...(USE_GROK ? ['--new'] : ['--url', GPTS]));
   sujetCourant = e.id;
 
   console.log(`\n─── ${e.fichier}  [${e.motif}]${neuf ? '  (chat neuf)' : ''}`);
@@ -80,6 +89,7 @@ for (const e of cible) {
     execFileSync('node', args, { stdio: 'inherit', cwd: ROOT });
     appendFileSync(JOURNAL, `${new Date().toISOString()}\t${e.fichier}\t${e.motif}\tGENERE\n`);
     ok++;
+    if (PAUSE) await dors(PAUSE);
   } catch (err) {
     const code = err.status;
     appendFileSync(JOURNAL, `${new Date().toISOString()}\t${e.fichier}\t${e.motif}\tECHEC-${code}\n`);

@@ -13,7 +13,9 @@ const OUT = process.argv[3];
 const NEW = process.argv.includes('--new');
 if (!PROMPT || !OUT) { console.log('usage: node grok-gen-dino.mjs "<prompt>" <out.png> [--new]'); process.exit(1); }
 
-const CDP = 'http://127.0.0.1:9222';
+// Port pilotable par CDP_PORT : deux navigateurs distincts permettent de faire
+// tourner ChatGPT et Grok en parallele sans qu ils se volent l onglet actif.
+const CDP = 'http://127.0.0.1:' + (process.env.CDP_PORT || '9222');
 const PROJECT = 'https://grok.com/project/89187fb9-a866-4373-82c4-cd136bb6905c?tab=conversations';
 // Grok sert les images GÉNÉRÉES sur assets.grok.com/users/.../generated/... (≠ profile-picture).
 const IMG_SEL = 'img[src*="assets.grok.com"][src*="/generated/"]';

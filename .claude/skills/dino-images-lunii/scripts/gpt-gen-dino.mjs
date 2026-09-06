@@ -33,7 +33,9 @@ if (REF && !existsSync(REF)) {
   process.exit(1);
 }
 
-const CDP = 'http://127.0.0.1:9222';
+// Port pilotable par CDP_PORT : deux navigateurs distincts permettent de faire
+// tourner ChatGPT et Grok en parallele sans qu ils se volent l onglet actif.
+const CDP = 'http://127.0.0.1:' + (process.env.CDP_PORT || '9222');
 const ESTUARY = 'img[src*="backend-api/estuary/content"]';
 const BLOCK_RE = /enfreindre nos règles|illustrations acceptables|violate our|content policy|n'avons pas pu générer|impossible de générer cette image/i;
 const LIMIT_RE = /limite de génération|limite de créations d'images|plus de crédit|réessayez plus tard|try again later|usage cap|rate limit|vous avez atteint|image generation limit|reached your limit|hit the Plus plan limit|limit resets in|passez à une offre supérieure|passer à chatgpt pro/i;
@@ -72,13 +74,17 @@ async function checkModalRateLimit(page, browser) {
       await browser.close(); process.exit(5);
     }
   }
-  // Vérifie aussi que le textarea est réellement accessible
+  // Le composer met plusieurs secondes a monter apres une navigation : on l ATTEND.
+  // Ne pas attendre faisait sortir en code 5 (signal quota) alors que ChatGPT etait
+  // disponible — faux positif constate le 2026-09-06 sur la page projet.
   const box = page.locator('#prompt-textarea, div[contenteditable="true"]').first();
-  const isVisible = await box.isVisible().catch(() => false);
-  const isEnabled = await box.isEnabled().catch(() => false);
-  if (!isVisible || !isEnabled) {
-    console.log('\n⛔ Textarea inaccessible (probablement modal ou overlay). ARRÊT propre.');
-    await browser.close(); process.exit(5);
+  try {
+    await box.waitFor({ state: 'visible', timeout: 45000 });
+  } catch {
+    // Absence du composer = probleme local (page pas montee, overlay), PAS un quota :
+    // exit 3 pour que le batch enchaine au lieu de s arreter net sur un faux signal.
+    console.log('\n✗ composer introuvable apres 45 s (page pas montee ?) — on passe.');
+    await browser.close(); process.exit(3);
   }
 }
 

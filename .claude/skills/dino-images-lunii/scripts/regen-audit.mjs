@@ -26,6 +26,8 @@ const N = parseInt(arg('--n', '6'), 10);
 const ONLY = arg('--only') ? arg('--only').split(',').map(s => s.trim()) : null;
 const DINOS = arg('--dino') ? arg('--dino').split(',').map(s => s.trim()) : null;
 const RETRY = process.argv.includes('--retry');
+// Port du navigateur a piloter (9222 par defaut, 9223 pour la seconde instance).
+const PORT = arg('--port', '9222');
 // Une cadence trop rapide declenche le rate limit : on espace explicitement les generations.
 const PAUSE = parseInt(arg('--pause', '20'), 10) * 1000;
 const dors = ms => new Promise(r => setTimeout(r, ms));
@@ -86,7 +88,7 @@ for (const e of cible) {
 
   console.log(`\n─── ${e.fichier}  [${e.motif}]${neuf ? '  (chat neuf)' : ''}`);
   try {
-    execFileSync('node', args, { stdio: 'inherit', cwd: ROOT });
+    execFileSync('node', args, { stdio: 'inherit', cwd: ROOT, env: { ...process.env, CDP_PORT: PORT } });
     appendFileSync(JOURNAL, `${new Date().toISOString()}\t${e.fichier}\t${e.motif}\tGENERE\n`);
     ok++;
     if (PAUSE) await dors(PAUSE);

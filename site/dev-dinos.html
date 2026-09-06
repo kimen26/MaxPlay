@@ -324,6 +324,16 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
    on cadre BAS : c'est la qu'est l'enfant, le metre-etalon de la scene. */
 /* Gros plan feuille/graines dans le bloc « Sa feuille et ses graines ». Absent tant que
    l'image n'est pas generee : le onerror retire l'element, le bloc reste correct sans lui. */
+/* Raccourci « N plantes 👇 » en haut de la grille d'epoque : pleine largeur, couleur vegetale
+   pour se distinguer des cartes dino, gros doigt tactile. */
+.plantes-jump {
+  grid-column:1/-1; align-self:start; display:flex; align-items:center; justify-content:center; gap:10px;
+  background:rgba(102,187,106,0.16); border:1px solid rgba(102,187,106,0.5); color:#c8f0cc;
+  border-radius:14px; padding:12px 14px; font-family:inherit; font-size:0.95rem; font-weight:700;
+  cursor:pointer; touch-action:manipulation; -webkit-tap-highlight-color:transparent;
+}
+.plantes-jump:active { transform:scale(0.97); }
+.plantes-jump-emojis { font-size:1.25rem; letter-spacing:2px; }
 .plante-detail { display:block; width:100%; border-radius:12px; margin:8px 0 10px; cursor:pointer; }
 .plante-hero-img { max-width:100%; width:100%; height:100%; object-fit:cover; object-position:center 72%; filter:none; }
 .v1-hero-nm { position:absolute; left:16px; bottom:12px; text-shadow:0 2px 8px rgba(0,0,0,0.7); pointer-events:none; }
@@ -1405,6 +1415,23 @@ function showGridEpoque(perId) {
   banner.className = 'fam-explic-banner';
   banner.innerHTML = `<p><b>${per.label}</b> <span style="opacity:.7">— ${per.range}</span><br>${per.desc}</p>`;
   el.appendChild(banner);
+
+  // Raccourci vers les plantes, VISIBLE des l'arrivee : la section flore est en bas de grille,
+  // derriere jusqu'a 16 dinos (mesure : elle commence a 1111 px pour 800 px d'ecran au
+  // Jurassique). Un enfant de 4 ans ne devine pas qu'il faut faire defiler.
+  const plantesEpoque = (typeof DINO_PLANTES !== 'undefined' ? DINO_PLANTES : []).filter(p => (p.periodes || []).includes(perId));
+  if (plantesEpoque.length) {
+    const jump = document.createElement('button');
+    jump.className = 'plantes-jump';
+    jump.innerHTML = `<span class="plantes-jump-emojis">${plantesEpoque.slice(0, 4).map(p => p.emoji).join('')}</span>
+      <span>${esc(Tn('compteur_plantes', plantesEpoque.length))} 👇</span>`;
+    jump.addEventListener('click', () => {
+      const cible = document.getElementById('plantes-ancre');
+      if (cible) cible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    el.appendChild(jump);
+  }
+
   const dinos = DINOS.filter(d => d.periode === perId);
   dinos.forEach(d => {
     const card = document.createElement('div');
@@ -1425,10 +1452,11 @@ function showGridEpoque(perId) {
   });
   // Section plantes de l'époque (HO-021) — après les dinos, même gabarit de carte.
   // DINO_PLANTES est genere par _gen-plantes.cjs ; absent tant que HO-020 n'a pas livre -> section masquee.
-  const plantes = (typeof DINO_PLANTES !== 'undefined' ? DINO_PLANTES : []).filter(p => (p.periodes || []).includes(perId));
+  const plantes = plantesEpoque;
   if (plantes.length) {
     const plantesBanner = document.createElement('div');
     plantesBanner.className = 'fam-explic-banner';
+    plantesBanner.id = 'plantes-ancre';   // cible du raccourci pose en haut de grille
     plantesBanner.innerHTML = `<p><b>🌿 ${T('plantes_titre_section')}</b></p>`;
     el.appendChild(plantesBanner);
     plantes.forEach(p => {

@@ -113,13 +113,13 @@
     return frFallback;
   }
 
-  // plural(n, one, many) — accord anglais simple (n===1 -> one, sinon -> many).
-  // En FR le jeu garde sa logique actuelle (cette fonction ne s'applique qu'à l'EN,
-  // les autres langues futures ajouteront leur propre règle le jour venu).
+  // plural(n, one, many) — accord simple : en / es-es / pt-br mettent le pluriel dès que
+  // n !== 1 (« 0 stars », « 0 estrellas », « 0 estrelas ») ; le FR garde le singulier
+  // pour 0 et 1 (« 0 étoile »). Les jeux FR n'appellent pas cette fonction (logique en dur).
   function plural(n, one, many) {
     var lang = (window.Lang && Lang.current()) || 'fr';
-    if (lang === 'en') return n === 1 ? one : many;
-    return n === 1 ? one : many; // repli neutre tant qu'aucune langue n'a de règle dédiée
+    if (lang === 'fr') return n <= 1 ? one : many;
+    return n === 1 ? one : many;
   }
 
   window.MJi18n = { regle: regle, titre: titre, gameId: gameId, t: t, plural: plural, voix: voix };

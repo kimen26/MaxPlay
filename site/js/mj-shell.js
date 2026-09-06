@@ -63,7 +63,7 @@
     'js/mj-i18n.js',
   ];
   // Pack de chaînes de la langue active, seulement s'il y en a une (FR = canon, jamais de
-  // pack) — un pack absent (langue sans traduction encore prête, ex. es-es/pt-br) donne un
+  // pack) — un pack absent (langue sans traduction encore prête, ex. es-mx/it) donne un
   // 404 silencieux : loadSeq() ignore l'erreur (onerror -> continue), MJi18n reste sans
   // MJ_STRINGS et RegleInfo retombe sur le FR (repli assumé, jamais de trou).
   if (LANG !== 'fr') SCRIPTS.push('js/i18n/mj-strings.' + LANG + '.js');

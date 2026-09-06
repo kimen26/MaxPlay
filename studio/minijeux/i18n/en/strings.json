@@ -716,11 +716,11 @@
    "comparaison": "The {big} is {mot} than the {small}!",
    "unite": {
     "tCourt": "t",
-    "kgCourt": "kg",
+    "kgCourt": "lb",
     "mCourt": "ft",
     "reperEnfant": "3 ft (you)",
     "tonnes": "tons",
-    "kilos": "kilos",
+    "kilos": "pounds",
     "metres": "feet"
    },
    "annonceMesure": "The {nom}: {val}!"

@@ -1,0 +1,1517 @@
+// GENERE par studio/minijeux/tools/_gen-mj-strings-bundle.cjs — ne pas editer a la main.
+// Source : studio/minijeux/i18n/es-es/strings.json
+window.MJ_STRINGS = {
+ "_commun": {
+  "ariaRegleAvis": "Regla del juego y opinión",
+  "commentGagner": "¿Cómo se ganan las estrellas? ★★★",
+  "justeDuPremierCoup": "bien a la 1ª vez = verde",
+  "justeApresUnEssai": "bien tras 1 intento = naranja",
+  "avecAide": "con ayuda = rojo suave",
+  "toutVert": "todo verde = ¡la estrella de campeón ⭐!",
+  "tabRegle": "La regla",
+  "tabAvis": "Opinión",
+  "ariaFermer": "Cerrar",
+  "ecouteToutesLesRegles": "Escucha toda la regla",
+  "jaiCompris": "¡Lo entendí! 👍",
+  "coinDesParents": "Rincón de los padres",
+  "mettreEnFavori": "Poner en favoritos",
+  "placeholderAvis": "¿Un fallo? ¿Una idea? ¿Muy difícil, muy fácil?…",
+  "titreDicter": "dictar en vez de escribir",
+  "envoyer": "Enviar 📨",
+  "zeroDonneeEnfant": "no se pide nada al niño — cero datos suyos 👍",
+  "merciAvisEnvoye": "¡Gracias! Opinión enviada ✓",
+  "oupsReessaie": "Vaya, inténtalo otra vez 🙏",
+  "ecrisAvisDabord": "Escribe (o dicta) tu opinión primero 🙂",
+  "retirerDesFavoris": "❤️ Quitar de favoritos",
+  "mettreEnFavoriCoeur": "❤️ Poner en favoritos",
+  "deja5JeuxEnAvant": "Ya tienes 5 juegos destacados — quita uno primero 🙂",
+  "ajouteAuxFavoris": "Añadido a favoritos ❤️",
+  "dicteeNonDispo": "Dictado no disponible en este navegador",
+  "voix": {
+   "a-toi-de-jouer": "¡Te toca jugar!",
+   "cest-parti": "¡Vamos allá!",
+   "cherche-bien": "No, no es eso. Busca bien.",
+   "combien-d-oeufs": "¿Cuántos huevos?",
+   "combien-d-oeufs-en-tout": "¿Cuántos huevos en total?",
+   "combien-de-dinos": "¿Cuántos dinosaurios?",
+   "combien-de-dinos-compte-les": "¿Cuántos dinosaurios? ¡Cuéntalos!",
+   "combien-en-tout": "¿Cuántos en total?",
+   "complete-la-grille-les-4-symboles-partout": "Completa la cuadrícula: ¡los 4 símbolos por todas partes!",
+   "compte-encore": "¡Cuenta otra vez!",
+   "compte-les-un-par-un": "Cuenta los autobuses ANTES del autobús pedido, uno por uno.",
+   "construis-le-mot": "¡Construye la palabra!",
+   "continue-a-faire-eclore-les-oeufs": "¡Sigue haciendo eclosionar los huevos!",
+   "deux-boites-pleines-combien-en-tout": "Dos cajas llenas… ¿cuántos en total?",
+   "ecoute-le-premier-son": "Escucha el primer sonido.",
+   "encore-une-fois": "¡Otra vez!",
+   "etoile-gagnee": "¡Has ganado una estrella!",
+   "fais-monter-les-passagers": "Haz subir a los pasajeros.",
+   "gros-niveau-regroupe": "Nivel grande: ¡agrupa!",
+   "il-en-faut-beaucoup": "¡Hacen falta muchos!",
+   "il-vivait-quand": "¿Cuándo vivía?",
+   "la-boite-est-pleine-il-faut-encore-combien-d-oeufs": "La caja está llena. ¿Cuántos huevos faltan todavía?",
+   "le-son-quon-entend": "El sonido que se oye.",
+   "lequel-ne-va-pas": "¿Cuál no va con los demás?",
+   "mode-libre-encore-une-caisse": "Modo libre: ¡una caja más!",
+   "ouvre-bien-les-yeux": "¡Abre bien los ojos!",
+   "premier-son-l-ou-r": "Primer sonido: ¿L o R?",
+   "qu-est-ce-qui-manque": "¿Qué falta en la cuadrícula?",
+   "qu-est-ce-qui-vient-ensuite": "¿Qué viene después?",
+   "quel-bus-arrive-en-premier": "¿Qué autobús llega primero?",
+   "quel-bus-manque": "¿Qué autobús falta en la cuadrícula?",
+   "quel-dino-se-cache-dans-le-noir": "¿Qué dinosaurio se esconde en la oscuridad?",
+   "quel-mot-manque-dans-la-phrase": "¿Qué palabra falta en la frase?",
+   "range-dans-la-bonne-boite": "Guárdalo en la caja correcta.",
+   "range-les-des": "Ordena los dados.",
+   "regardons-ensemble": "¡Miremos juntos!",
+   "regroupe-les-points": "Agrupa los puntos.",
+   "remplis-chaque-caisse": "Llena cada caja.",
+   "tape-pour-sauter-par-dessus-les-cactus": "¡Toca para saltar por encima de los cactus!",
+   "terminus-fais-les-descendre": "¡Terminal! Haz que se bajen.",
+   "touche-la-lettre-qui-fait-ce-son": "¡Toca la letra que hace este sonido!",
+   "trouve-2-tuiles-avec-le-meme-dino": "¡Encuentra 2 fichas con el mismo dinosaurio!",
+   "trouve-l-ombre-et-son-dino": "¡Encuentra la sombra y su dinosaurio!",
+   "trouve-le-meme-dino": "¡Encuentra el mismo dinosaurio!",
+   "un-dino-par-ligne-colonne-et-enclos-jamais-colles": "Un dinosaurio por fila, columna y corral… ¡nunca pegados!"
+  }
+ },
+ "mj-06": {
+  "titre": "Lee la frase",
+  "regle": {
+   "texte": "¡Encuentra la palabra que falta en la frase!",
+   "etapes": [
+    {
+     "t": "Escucho la frase 👂",
+     "d": "Una voz lee la frase con un pequeño hueco. Toco la consigna para volver a escucharla."
+    },
+    {
+     "t": "Miro el dibujo 👀",
+     "d": "Un emoji da una pista sobre la palabra que falta."
+    },
+    {
+     "t": "Toco la palabra correcta 👆",
+     "d": "Si me equivoco, la voz dice la respuesta correcta y la frase completa."
+    },
+    {
+     "t": "Sigo con 5 frases 💪",
+     "d": "Autobuses, dinosaurios, viajes… ¡cada vez una nueva frase para completar!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "quelMotManque": "¿Qué palabra falta en la frase?"
+  },
+  "voix": {
+   "regle-mj-06": "¡Encuentra la palabra que falta en la frase!. Escucho la frase . Una voz lee la frase con un pequeño hueco. Toco la consigna para volver a escucharla.. Miro el dibujo . Un emoji da una pista sobre la palabra que falta.. Toco la palabra correcta . Si me equivoco, la voz dice la respuesta correcta y la frase completa.. Sigo con 5 frases . Autobuses, dinosaurios, viajes… ¡cada vez una nueva frase para completar!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-09": {
+  "titre": "¡Clasifica los autobuses!",
+  "regle": {
+   "texte": "¡Coloca cada autobús en la caja de su color!",
+   "etapes": [
+    {
+     "t": "Miro el color del autobús 👀",
+     "d": "Cada autobús tiene un color: azul, verde, naranja, morado, rojo o marrón."
+    },
+    {
+     "t": "Deslizo el autobús hasta su caja 👆",
+     "d": "La caja se ilumina en verde cuando está en el sitio correcto. ¡Y oigo el nombre de la línea!"
+    },
+    {
+     "t": "Si me equivoco, el autobús vuelve solo 🔄",
+     "d": "No pasa nada, puedo intentarlo tantas veces como quiera."
+    },
+    {
+     "t": "Cuantas más estrellas gano, más autobuses y colores hay 💪",
+     "d": "Nivel 1: 2 colores, 6 autobuses. Nivel 3: los 6 colores, 26 autobuses, ¡con el desfile final!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "famille": {
+    "bleu": "Azul",
+    "vert": "Verde",
+    "orangeJaune": "Naranja/Amarillo",
+    "violetRose": "Morado/Rosa",
+    "rouge": "Rojo",
+    "brun": "Marrón"
+   },
+   "rer": "Cercanías {num}",
+   "metro": "Metro {num}",
+   "tram": "Tranvía {num}",
+   "glisseDansBoite": "Desliza a la caja correcta",
+   "bravoTangeRange": "¡BIEN HECHO! ¡Todo ordenado!",
+   "voilaFamilles": "¡Aquí están todas las familias de autobuses!",
+   "continuer": "Continuar →"
+  },
+  "voix": {
+   "regle-mj-09": "¡Coloca cada autobús en la caja de su color!. Miro el color del autobús . Cada autobús tiene un color: azul, verde, naranja, morado, rojo o marrón.. Deslizo el autobús hasta su caja . La caja se ilumina en verde cuando está en el sitio correcto. ¡Y oigo el nombre de la línea!. Si me equivoco, el autobús vuelve solo . No pasa nada, puedo intentarlo tantas veces como quiera.. Cuantas más estrellas gano, más autobuses y colores hay . Nivel 1: 2 colores, 6 autobuses. Nivel 3: los 6 colores, 26 autobuses, ¡con el desfile final!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-13a": {
+  "titre": "El primer autobús",
+  "regle": {
+   "texte": "¡Mira las fichas y encuentra el autobús que llega primero!",
+   "etapes": [
+    {
+     "t": "Miro los contadores ⏱️",
+     "d": "Cada ficha muestra los minutos que faltan para que llegue el autobús. El contador baja solo."
+    },
+    {
+     "t": "Busco el número más pequeño 🔎",
+     "d": "El autobús que llega primero es el que tiene menos minutos de espera."
+    },
+    {
+     "t": "Toco su ficha 👆",
+     "d": "Si me equivoco, puedo intentarlo otra vez. Tras 3 intentos, la ficha correcta se ilumina."
+    },
+    {
+     "t": "Cuantas más estrellas gano, más autobuses hay 💪",
+     "d": "Al principio hay 2 autobuses con mucha diferencia, luego cada vez más autobuses con diferencias más cerradas."
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "chargement": "Cargando…",
+   "quelBusPremier": "¿Qué autobús llega primero?",
+   "appuieSaFiche": "¡Toca su ficha!",
+   "bravo": "¡Bien hecho!",
+   "cetaitLe": "Era el",
+   "essaieEncore": "¡Inténtalo otra vez!"
+  },
+  "voix": {
+   "regle-mj-13a": "¡Mira las fichas y encuentra el autobús que llega primero!. Miro los contadores . Cada ficha muestra los minutos que faltan para que llegue el autobús. El contador baja solo.. Busco el número más pequeño . El autobús que llega primero es el que tiene menos minutos de espera.. Toco su ficha . Si me equivoco, puedo intentarlo otra vez. Tras 3 intentos, la ficha correcta se ilumina.. Cuantas más estrellas gano, más autobuses hay . Al principio hay 2 autobuses con mucha diferencia, luego cada vez más autobuses con diferencias más cerradas.. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-13c": {
+  "titre": "¿Cuántos antes?",
+  "regle": {
+   "texte": "¡Cuenta los autobuses que pasan antes del autobús pedido!",
+   "etapes": [
+    {
+     "t": "Escucho qué autobús buscar 👂",
+     "d": "La voz pregunta: «¿Cuántos autobuses antes del 162?» El número también aparece en color."
+    },
+    {
+     "t": "Cuento las fichas antes de él 🔎",
+     "d": "Las fichas están ordenadas por orden de llegada. Cuento las que llegan ANTES del autobús pedido, una por una."
+    },
+    {
+     "t": "Toco el número correcto 👆",
+     "d": "Aparecen botones 0, 1, 2… Si me equivoco, tengo una pista para volver a contar, y lo intento de nuevo."
+    },
+    {
+     "t": "Cuantas más estrellas gano, más autobuses hay 💪",
+     "d": "Al principio hay 3 autobuses que contar, luego cada vez más (¡hasta 10!)."
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "chargement": "Cargando…",
+   "combienAvantLe": "Cuántos autobuses antes del",
+   "combienAvantLeNum": "¿Cuántos autobuses antes del {num}?",
+   "bravo": "¡Bien hecho!",
+   "busSing": "autobús",
+   "busPlur": "autobuses",
+   "avantLe": "antes del",
+   "cetait": "Era",
+   "compteLesUnParUn": "Cuenta los autobuses ANTES del autobús pedido, uno por uno."
+  },
+  "voix": {
+   "regle-mj-13c": "¡Cuenta los autobuses que pasan antes del autobús pedido!. Escucho qué autobús buscar . La voz pregunta: «¿Cuántos autobuses antes del 162?» El número también aparece en color.. Cuento las fichas antes de él . Las fichas están ordenadas por orden de llegada. Cuento las que llegan ANTES del autobús pedido, una por una.. Toco el número correcto . Aparecen botones 0, 1, 2… Si me equivoco, tengo una pista para volver a contar, y lo intento de nuevo.. Cuantas más estrellas gano, más autobuses hay . Al principio hay 3 autobuses que contar, luego cada vez más (¡hasta 10!).. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-14": {
+  "titre": "Las casillas misteriosas",
+  "regle": {
+   "texte": "¡Falta una casilla en la cuadrícula mágica! Encuentra el patrón oculto mirando las filas y las columnas.",
+   "etapes": [
+    {
+     "t": "Miro la cuadrícula 👀",
+     "d": "Hay una casilla con un signo de interrogación: ¡es la casilla misteriosa!"
+    },
+    {
+     "t": "Busco la regla 🔍",
+     "d": "Mira bien la fila y la columna de la casilla vacía: un patrón se repite."
+    },
+    {
+     "t": "Elijo abajo ✅",
+     "d": "Toca el patrón que completa la cuadrícula entre las 3 opciones."
+    },
+    {
+     "t": "Cuantas más estrellas gano, más listo hay que ser 🧠",
+     "d": "Primero una sola regla fácil, luego dos reglas a la vez: ¡hasta el nivel experto!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "modeFormes": "Formas",
+   "modeBus": "Autobuses",
+   "modeDinos": "Dinosaurios",
+   "choisis": "Elige ↓",
+   "hintShapesA": "Mira: ¡cada fila tiene la misma forma!",
+   "hintShapesB": "Mira: ¡cada columna tiene el mismo relleno!",
+   "hintShapesC": "Fila = forma, columna = relleno. ¡Encuentra los dos!",
+   "hintShapesD": "Cada fila y cada columna tienen las 3 formas una sola vez. ¿Cuál falta?",
+   "hintBusA": "¡Cada fila tiene siempre el mismo autobús!",
+   "hintBusB": "¡Cada columna tiene siempre el mismo autobús!",
+   "hintBusC1": "¡El color cambia por fila, el número por columna!",
+   "hintBusC2": "¡La carrocería cambia por fila, el número por columna!",
+   "hintBusC3": "¡El color cambia por fila, las ruedas por columna!",
+   "hintBusD": "Cada fila y cada columna tienen los 3 autobuses una sola vez. ¿Cuál falta?",
+   "hintDinoA": "¡Cada fila tiene el mismo dinosaurio y el mismo color!",
+   "hintDinoB": "¡Cada columna tiene el mismo color!",
+   "hintDinoC": "Fila = dinosaurio, columna = color. ¡Encuentra los dos!",
+   "hintDinoD": "Cada fila y cada columna tienen los 3 dinosaurios una sola vez. ¿Cuál falta?",
+   "consigneBus": "¿Qué autobús falta en la cuadrícula?",
+   "consigneDino": "¿Qué dinosaurio falta en la cuadrícula?",
+   "consigneFormes": "¿Qué falta?",
+   "ligneBus": "Fila {n}",
+   "formeRond": "Círculo",
+   "formeCarre": "Cuadrado",
+   "formeLosange": "Rombo",
+   "formeTriangle": "Triángulo",
+   "remplissageVide": "Vacío",
+   "remplissagePlein": "Lleno",
+   "remplissageRaye": "Rayado",
+   "couleurOlive": "oliva",
+   "couleurCoeur": "corazón",
+   "couleurBleu": "azul",
+   "consigneBusGrille": "¿Qué autobús falta en la cuadrícula?",
+   "consigneDinoGrille": "¿Qué dinosaurio falta en la cuadrícula?",
+   "consigneFormesGrille": "¿Qué falta en la cuadrícula?",
+   "strongHintA": "Mira bien: en cada fila horizontal, todos los patrones son iguales. Busca la fila de la casilla vacía.",
+   "strongHintB": "Mira bien: en cada columna vertical, todos los patrones son iguales. Busca la columna de la casilla vacía.",
+   "strongHintC": "Mira la fila de la casilla vacía y la columna de la casilla vacía. La respuesta correcta combina las dos.",
+   "strongHintD": "Mira bien: en cada fila hay 3 patrones diferentes, y en cada columna también. Encuentra el que falta en la última fila Y en la última columna.",
+   "niveauSur3": "Nivel {n} / 3"
+  },
+  "voix": {
+   "regle-mj-14": "¡Falta una casilla en la cuadrícula mágica! Encuentra el patrón oculto mirando las filas y las columnas.. Miro la cuadrícula . Hay una casilla con un signo de interrogación: ¡es la casilla misteriosa!. Busco la regla . Mira bien la fila y la columna de la casilla vacía: un patrón se repite.. Elijo abajo . Toca el patrón que completa la cuadrícula entre las 3 opciones.. Cuantas más estrellas gano, más listo hay que ser . Primero una sola regla fácil, luego dos reglas a la vez: ¡hasta el nivel experto!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-15": {
+  "titre": "El intruso",
+  "regle": {
+   "texte": "Mira los 5 autobuses, ¡encuentra el que no va con los demás!",
+   "etapes": [
+    {
+     "t": "Escucho la pregunta 👂",
+     "d": "«¿Cuál no va con los demás?» Aparece una pista para ayudarme a saber qué mirar."
+    },
+    {
+     "t": "Comparo los 5 autobuses 👀",
+     "d": "4 autobuses se parecen (mismo color, misma familia…), 1 solo es diferente: ¡es el intruso!"
+    },
+    {
+     "t": "Toco el intruso 👆",
+     "d": "Si me equivoco, el autobús tiembla y puedo intentarlo otra vez con una pista — el intruso nunca se revela solo."
+    },
+    {
+     "t": "Cuantas más estrellas gano, más sutil es 💪",
+     "d": "Al principio es el color, luego las ruedas, luego la familia de línea… ¡e incluso dos pistas a la vez!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "quiNeVaPas": "¿Cuál no va con los demás?",
+   "familleValouette": "Valouette",
+   "familleNoctilien": "Noctilien",
+   "familleMetro": "Metro",
+   "familleRer": "Cercanías",
+   "familleStandard": "Autobús estándar",
+   "themeCiel": "el cielo y la tierra",
+   "themeFruits": "las frutas",
+   "themeFerme": "los animales de granja",
+   "themeVehicules": "los vehículos que ruedan",
+   "themeFleurs": "las flores y los árboles",
+   "themeJouets": "los juguetes",
+   "themeMer": "el mar",
+   "themeDesserts": "los postres",
+   "oddTortue": "Tortuga",
+   "oddBallon": "Globo",
+   "oddLion": "León",
+   "oddAvion": "Avión",
+   "oddPizza": "Pizza",
+   "oddCarotte": "Zanahoria",
+   "oddPapillon": "Mariposa",
+   "oddFusee": "Cohete",
+   "hintF": "4 van con {theme}…",
+   "hintOmbreCouleur": "¡Mira bien el color de las sombras!",
+   "hintOmbreForme": "¡Mira bien la forma de la sombra!",
+   "hintRegimeCarnivore": "4 comen carne…",
+   "hintRegimeHerbivore": "4 comen plantas…",
+   "hintRegimePiscivore": "4 comen pescado…",
+   "hintRegimeAutre": "4 comen lo mismo…",
+   "hintEpoque": "4 son del {v}…",
+   "hintFamille": "4 son de la misma familia de dinosaurios…",
+   "hintCouleurs": "¡Mira los colores!",
+   "hintPairImpair": "¿Par o impar?",
+   "hintFamilleBus": "4 autobuses son de la familia {fam}…",
+   "hintRoues": "¡Mira bien las ruedas!",
+   "hintDoubleCritere": "Color Y número… ¡dos cosas que mirar!",
+   "niveauSur3": "Nivel {n} / 3"
+  },
+  "voix": {
+   "regle-mj-15": "Mira los 5 autobuses, ¡encuentra el que no va con los demás!. Escucho la pregunta . «¿Cuál no va con los demás?» Aparece una pista para ayudarme a saber qué mirar.. Comparo los 5 autobuses . 4 autobuses se parecen (mismo color, misma familia…), 1 solo es diferente: ¡es el intruso!. Toco el intruso . Si me equivoco, el autobús tiembla y puedo intentarlo otra vez con una pista — el intruso nunca se revela solo.. Cuantas más estrellas gano, más sutil es . Al principio es el color, luego las ruedas, luego la familia de línea… ¡e incluso dos pistas a la vez!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-18": {
+  "titre": "Tubos de colores",
+  "regle": {
+   "texte": "¡Vierte los colores para que cada tubo tenga un solo color!",
+   "etapes": [
+    {
+     "t": "Toco un tubo para elegirlo 👆",
+     "d": "El tubo se levanta un poco — es el que voy a verter."
+    },
+    {
+     "t": "Toco un 2º tubo para verter dentro 🫗",
+     "d": "El color de arriba cae en el otro tubo, solo si es el mismo color (o si el tubo está vacío)."
+    },
+    {
+     "t": "Ordeno todos los colores 🎯",
+     "d": "Cada tubo debe terminar con un solo color, de arriba abajo. ¡Los tubos vacíos ayudan a ordenar!"
+    },
+    {
+     "t": "Cuantas más estrellas gano, más colores tengo que ordenar 💪",
+     "d": "Se empieza con 2 colores, luego 4, ¡hasta 6 para los campeones!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "tapeUnTube": "¡Toca un tubo, y luego otro para verter!",
+   "remelanger": "Volver a mezclar",
+   "nouveau": "Nuevo",
+   "niveauLabel": "Nivel",
+   "couleursLabel": "colores",
+   "bravo": "¡Bien hecho!",
+   "tuAsTrie": "¡Has ordenado todos los colores! Mira los autobuses repintados:",
+   "leDinoSeColorie": "¡El dinosaurio se colorea contigo!"
+  },
+  "voix": {
+   "regle-mj-18": "¡Vierte los colores para que cada tubo tenga un solo color!. Toco un tubo para elegirlo . El tubo se levanta un poco — es el que voy a verter.. Toco un 2º tubo para verter dentro . El color de arriba cae en el otro tubo, solo si es el mismo color (o si el tubo está vacío).. Ordeno todos los colores . Cada tubo debe terminar con un solo color, de arriba abajo. ¡Los tubos vacíos ayudan a ordenar!. Cuantas más estrellas gano, más colores tengo que ordenar . Se empieza con 2 colores, luego 4, ¡hasta 6 para los campeones!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-19": {
+  "titre": "¡Encuentra el autobús!",
+  "regle": {
+   "texte": "¡Escucha la consigna y toca el objetivo correcto entre todos los que se mueven!",
+   "etapes": [
+    {
+     "t": "Escucho el objetivo 👂",
+     "d": "Una voz dice «¡Encuentra el autobús 162!» o el nombre de un dinosaurio — y está escrito arriba, en amarillo."
+    },
+    {
+     "t": "Miro todo lo que se mueve 👀",
+     "d": "Autobuses… ¡y a veces dinosaurios que se pasean por la pantalla!"
+    },
+    {
+     "t": "Toco el objetivo correcto 👆",
+     "d": "Si me equivoco, no pasa nada: lo intento otra vez, no hay penalización."
+    },
+    {
+     "t": "Cuantas más estrellas gano, más se mueve 💪",
+     "d": "Al principio, pocos objetivos y lentos. Luego cada vez más numerosos y rápidos."
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "trouveLeDino": "¡Encuentra el {n}!",
+   "trouveLeAmorce": "Encuentra el…",
+   "questDino": "¡Encuentra el <b>{n}</b>!",
+   "questBus": "¡Encuentra el autobús <b>{n}</b>!",
+   "trouveLeBusN": "Encuentra el autobús {n}"
+  },
+  "voix": {
+   "regle-mj-19": "¡Escucha la consigna y toca el objetivo correcto entre todos los que se mueven!. Escucho el objetivo . Una voz dice «¡Encuentra el autobús 162!» o el nombre de un dinosaurio — y está escrito arriba, en amarillo.. Miro todo lo que se mueve . Autobuses… ¡y a veces dinosaurios que se pasean por la pantalla!. Toco el objetivo correcto . Si me equivoco, no pasa nada: lo intento otra vez, no hay penalización.. Cuantas más estrellas gano, más se mueve . Al principio, pocos objetivos y lentos. Luego cada vez más numerosos y rápidos.. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-20": {
+  "titre": "Cuenta en 8 idiomas",
+  "regle": {
+   "texte": "¡Aprende a contar hasta 20 en muchos idiomas diferentes!",
+   "etapes": [
+    {
+     "t": "Elijo «Aprender» para escuchar 👂",
+     "d": "Elijo un idioma (bandera) y toco un número: ¡una voz lo dice en ese idioma!"
+    },
+    {
+     "t": "Elijo «Quiz» para jugar 🎮",
+     "d": "Una voz dice un número en un idioma desbloqueado. Toco el número correcto entre las opciones."
+    },
+    {
+     "t": "Gano 3 respuestas correctas seguidas para desbloquear más 🔓",
+     "d": "Cada idioma empieza pequeño (1 a 3), y avanzo hasta 1-20 si sigo haciéndolo bien."
+    },
+    {
+     "t": "Miro «Progreso» para ver cómo voy 📊",
+     "d": "Cada idioma tiene sus pastillas: ¡cuantas más completo, más números e idiomas domino!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "langues": {
+    "fr": "Francés",
+    "en": "Inglés",
+    "es": "Español",
+    "pt-br": "Brasileño",
+    "de": "Alemán",
+    "ru": "Ruso",
+    "zh": "Chino",
+    "ja": "Japonés"
+   },
+   "confirmNumero": "¡{n}!",
+   "cEtait": "Era {n}",
+   "nouveauNiveauDebloque": "¡Nuevo nivel desbloqueado: {lang} números {tier}!"
+  },
+  "voix": {
+   "regle-mj-20": "¡Aprende a contar hasta 20 en muchos idiomas diferentes!. Elijo «Aprender» para escuchar . Elijo un idioma (bandera) y toco un número: ¡una voz lo dice en ese idioma!. Elijo «Quiz» para jugar . Una voz dice un número en un idioma desbloqueado. Toco el número correcto entre las opciones.. Gano 3 respuestas correctas seguidas para desbloquear más . Cada idioma empieza pequeño (1 a 3), y avanzo hasta 1-20 si sigo haciéndolo bien.. Miro «Progreso» para ver cómo voy . Cada idioma tiene sus pastillas: ¡cuantas más completo, más números e idiomas domino!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-21": {
+  "titre": "¡Pinta los autobuses!",
+  "regle": {
+   "texte": "¡Mezcla los colores para pintar el autobús correcto!",
+   "etapes": [
+    {
+     "t": "Miro el color que hay que encontrar 👀",
+     "d": "Junto al autobús blanco, hay un círculo de color: ¡es el color que tengo que fabricar!"
+    },
+    {
+     "t": "Vierto los botes en el tubo 🧪",
+     "d": "Rojo, Amarillo, Azul, Blanco: toco los botes para verterlos en el tubo. ¿Un solo color? ¡Se gana enseguida!"
+    },
+    {
+     "t": "Toco Mezclar para combinar 🔄",
+     "d": "Si he vertido varios colores, toco «¡Mezclar!» para combinarlos. Si sale marrón, no pasa nada, lavo el tubo y empiezo de nuevo."
+    },
+    {
+     "t": "El tubo vierte el color sobre el autobús 🚌",
+     "d": "Si es el color correcto, ¡el tubo se vuelca y pinta el autobús! Una pista 💡 me ayuda si la busco."
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "pot": {
+    "rouge": "ROJO",
+    "jaune": "AMARILLO",
+    "bleu": "AZUL",
+    "blanc": "BLANCO"
+   },
+   "vider": "Vaciar",
+   "indice": "Pista",
+   "laver": "¡Lavar!",
+   "voilaLeSecret": "¡Aquí está el secreto!",
+   "ok": "¡Vale!",
+   "brunTexte": "¡Puaj!<br>¡Esto es marrón!<br>¡Lava el tubo!",
+   "pleinVideMoi": "¡Lleno! Vacíame 🧽",
+   "bus": "Autobús",
+   "couleur": {
+    "rouge": "rojo",
+    "jaune": "amarillo",
+    "bleu": "azul",
+    "vert": "verde",
+    "violet": "morado",
+    "rose": "rosa",
+    "vertClair": "verde claro",
+    "bleuCiel": "azul cielo",
+    "orange": "naranja",
+    "or": "oro",
+    "rosePale": "rosa pálido",
+    "lavande": "lavanda",
+    "brun": "marrón"
+   }
+  },
+  "voix": {
+   "regle-mj-21": "¡Mezcla los colores para pintar el autobús correcto!. Miro el color que hay que encontrar . Junto al autobús blanco, hay un círculo de color: ¡es el color que tengo que fabricar!. Vierto los botes en el tubo . Rojo, Amarillo, Azul, Blanco: toco los botes para verterlos en el tubo. ¿Un solo color? ¡Se gana enseguida!. Toco Mezclar para combinar . Si he vertido varios colores, toco «¡Mezclar!» para combinarlos. Si sale marrón, no pasa nada, lavo el tubo y empiezo de nuevo.. El tubo vierte el color sobre el autobús . Si es el color correcto, ¡el tubo se vuelca y pinta el autobús! Una pista me ayuda si la busco.. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-22": {
+  "titre": "¡Encuentra el país!",
+  "regle": {
+   "texte": "¡Escucha el nombre del país, encuéntralo en el mapa!",
+   "etapes": [
+    {
+     "t": "Escucho la bandera y el nombre 👂",
+     "d": "Una voz dice «¡Encuentra Francia!» y la bandera aparece arriba. Puedo volver a escuchar si no lo he entendido."
+    },
+    {
+     "t": "Miro el mapa y toco un país 👆",
+     "d": "El país que toco se ilumina en naranja. Si no es el correcto, puedo tocar otro."
+    },
+    {
+     "t": "Toco «¡Es este!» para confirmar ✓",
+     "d": "Respuesta correcta: ¡la bandera lo celebra! Todavía no: una voz dice «Busca bien» y lo intento otra vez, sin perder nunca."
+    },
+    {
+     "t": "Cuantas más estrellas gano, más países hay 💪",
+     "d": "Fácil: 5 países. Luego 15, luego 25. Los países muy pequeños no están en el juego, son demasiado difíciles de tocar."
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "pays": {
+    "fr": "Francia",
+    "de": "Alemania",
+    "es": "España",
+    "it": "Italia",
+    "gb": "Reino Unido",
+    "pt": "Portugal",
+    "be": "Bélgica",
+    "nl": "Países Bajos",
+    "ch": "Suiza",
+    "at": "Austria",
+    "pl": "Polonia",
+    "se": "Suecia",
+    "no": "Noruega",
+    "gr": "Grecia",
+    "ro": "Rumanía",
+    "dk": "Dinamarca",
+    "ie": "Irlanda",
+    "hr": "Croacia",
+    "rs": "Serbia",
+    "sk": "Eslovaquia",
+    "cz": "Chequia",
+    "hu": "Hungría",
+    "bg": "Bulgaria",
+    "ua": "Ucrania",
+    "fi": "Finlandia",
+    "is": "Islandia",
+    "si": "Eslovenia",
+    "ba": "Bosnia y Herzegovina",
+    "al": "Albania",
+    "mk": "Macedonia"
+   },
+   "trouveLePays": "¡Encuentra {pays}!",
+   "bravoCestLePays": "¡Bien hecho! ¡Es {pays}!",
+   "nonChercheBien": "No, no es eso. Busca bien.",
+   "suivant": "Siguiente →"
+  },
+  "voix": {
+   "regle-mj-22": "¡Escucha el nombre del país, encuéntralo en el mapa!. Escucho la bandera y el nombre . Una voz dice «¡Encuentra Francia!» y la bandera aparece arriba. Puedo volver a escuchar si no lo he entendido.. Miro el mapa y toco un país . El país que toco se ilumina en naranja. Si no es el correcto, puedo tocar otro.. Toco «¡Es este!» para confirmar ✓. Respuesta correcta: ¡la bandera lo celebra! Todavía no: una voz dice «Busca bien» y lo intento otra vez, sin perder nunca.. Cuantas más estrellas gano, más países hay . Fácil: 5 países. Luego 15, luego 25. Los países muy pequeños no están en el juego, son demasiado difíciles de tocar.. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-24": {
+  "titre": "Encuentra el dinosaurio",
+  "regle": {
+   "texte": "¡Escucha el nombre, encuentra el dinosaurio correcto!",
+   "etapes": [
+    {
+     "t": "Escucho el nombre del dinosaurio 👂",
+     "d": "Una voz dice el nombre: «¡Encuentra el Triceratops!». Toco la consigna para volver a escucharla."
+    },
+    {
+     "t": "Miro las sombras 👀",
+     "d": "Cada carta muestra la sombra de un dinosaurio. ¡Solo una es la correcta!"
+    },
+    {
+     "t": "Toco la sombra correcta 👆",
+     "d": "Si me equivoco, escucho una pista y puedo intentarlo otra vez."
+    },
+    {
+     "t": "Cuantas más estrellas gano, más difícil es 💪",
+     "d": "Más sombras que comparar… ¡y a veces dos primos de la misma familia!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "phrase": [
+    "¡Encuentra el {n}!",
+    "¿Dónde está el {n}?",
+    "Y ahora… ¡el {n}!",
+    "¿Me encuentras el {n}?",
+    "¡Busca el {n}!",
+    "¡Muéstrame el {n}!",
+    "A ti te toca: ¡el {n}!",
+    "¡Rápido, encuentra el {n}!"
+   ]
+  },
+  "voix": {
+   "regle-mj-24": "¡Escucha el nombre, encuentra el dinosaurio correcto!. Escucho el nombre del dinosaurio . Una voz dice el nombre: «¡Encuentra el Triceratops!». Toco la consigna para volver a escucharla.. Miro las sombras . Cada carta muestra la sombra de un dinosaurio. ¡Solo una es la correcta!. Toco la sombra correcta . Si me equivoco, escucho una pista y puedo intentarlo otra vez.. Cuantas más estrellas gano, más difícil es . Más sombras que comparar… ¡y a veces dos primos de la misma familia!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-28": {
+  "titre": "La linterna del dinosaurio",
+  "regle": {
+   "texte": "¡Busca el dinosaurio escondido en la oscuridad con tu linterna!",
+   "etapes": [
+    {
+     "t": "Muevo mi dedo en la oscuridad 👆",
+     "d": "Una luz sigue mi dedo e ilumina una sombra escondida."
+    },
+    {
+     "t": "Miro bien la forma de la sombra 👀",
+     "d": "Cada dinosaurio tiene una silueta diferente: cuernos, espalda con púas, cuello largo…"
+    },
+    {
+     "t": "Toco el nombre científico correcto 👆",
+     "d": "Si me equivoco, el nombre correcto se ilumina en verde, ¡y el dinosaurio aparece en color con un dato curioso!"
+    },
+    {
+     "t": "Cuantas más estrellas gano, más se parecen los nombres 💪",
+     "d": "Al principio los dinosaurios son muy diferentes. Con las estrellas: ¡primos de la misma familia!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "consigne": "¿Qué dinosaurio se esconde en la oscuridad?",
+   "essaieEncore": "¡Inténtalo otra vez!",
+   "bravoNom": "¡Bien hecho! ¡Es el {nom}!"
+  },
+  "voix": {
+   "regle-mj-28": "¡Busca el dinosaurio escondido en la oscuridad con tu linterna!. Muevo mi dedo en la oscuridad . Una luz sigue mi dedo e ilumina una sombra escondida.. Miro bien la forma de la sombra . Cada dinosaurio tiene una silueta diferente: cuernos, espalda con púas, cuello largo…. Toco el nombre científico correcto . Si me equivoco, el nombre correcto se ilumina en verde, ¡y el dinosaurio aparece en color con un dato curioso!. Cuantas más estrellas gano, más se parecen los nombres . Al principio los dinosaurios son muy diferentes. Con las estrellas: ¡primos de la misma familia!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-30": {
+  "titre": "Ordénalos por tamaño",
+  "regle": {
+   "texte": "¡Ordena los dinosaurios misteriosos del más pequeño al más GRANDE!",
+   "etapes": [
+    {
+     "t": "Miro las sombras 👀",
+     "d": "¡Dinosaurios misteriosos! Hay uno pequeño, uno mediano… y uno gigante."
+    },
+    {
+     "t": "Deslizo cada sombra a una casilla 👆",
+     "d": "El más pequeño a la izquierda, el más GRANDE a la derecha. Puedo intercambiar dos casillas si cambio de idea."
+    },
+    {
+     "t": "Toco «¡Ya está!» ✓",
+     "d": "¡Los dinosaurios salen de la sombra: descubrimos su VERDADERO tamaño en metros, al lado de un niño como tú!"
+    },
+    {
+     "t": "Cuantas más estrellas gano, más complicado es 💪",
+     "d": "Más dinosaurios que ordenar… ¡y a veces hay que ordenarlos por PESO ⚖️!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "cestBon": "¡Ya está!",
+   "suivant": "Siguiente →",
+   "petit": "pequeño",
+   "grand": "GRANDE",
+   "consigne": {
+    "poids": "¡Ordénalos del más ligero al más pesado!",
+    "taille": "¡Ordénalos del más pequeño al más grande!"
+   },
+   "modePoids": "Por peso",
+   "modeTaille": "Por tamaño",
+   "regardonsEnsemble": "¡Miremos juntos!",
+   "plusLourd": "más PESADO",
+   "plusGrand": "MÁS GRANDE",
+   "comparaison": "¡El {big} es {mot} que el {small}!",
+   "unite": {
+    "tCourt": "t",
+    "kgCourt": "kg",
+    "mCourt": "m",
+    "reperEnfant": "1 m (tú)",
+    "tonnes": "toneladas",
+    "kilos": "kilos",
+    "metres": "metros"
+   },
+   "annonceMesure": "El {nom}: ¡{val}!"
+  },
+  "voix": {
+   "regle-mj-30": "¡Ordena los dinosaurios misteriosos del más pequeño al más GRANDE!. Miro las sombras . ¡Dinosaurios misteriosos! Hay uno pequeño, uno mediano… y uno gigante.. Deslizo cada sombra a una casilla . El más pequeño a la izquierda, el más GRANDE a la derecha. Puedo intercambiar dos casillas si cambio de idea.. Toco «¡Ya está!» ✓. ¡Los dinosaurios salen de la sombra: descubrimos su VERDADERO tamaño en metros, al lado de un niño como tú!. Cuantas más estrellas gano, más complicado es . Más dinosaurios que ordenar… ¡y a veces hay que ordenarlos por PESO!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-31": {
+  "titre": "El viaje en el tiempo",
+  "regle": {
+   "texte": "¡Coloca el dinosaurio en la época correcta!",
+   "etapes": [
+    {
+     "t": "Escucho el nombre del dinosaurio 👂",
+     "d": "Una voz anuncia un dinosaurio misterioso, con su sombra. Toco la consigna para volver a escucharla."
+    },
+    {
+     "t": "Miro las franjas de color 🎨",
+     "d": "Cada franja es una época: Triásico, Jurásico, Cretácico… ¡hay una que es la correcta para el dinosaurio!"
+    },
+    {
+     "t": "Toco la franja correcta 👆",
+     "d": "¡El dinosaurio se posa dentro! Si me equivoco, una voz me ayuda y puedo intentarlo otra vez."
+    },
+    {
+     "t": "Cuantas más estrellas gano, más complicado es 💪",
+     "d": "Aparecen nuevas franjas, ¡y a veces dos primos vivían en épocas muy diferentes!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "htitreLong": "El gran viaje en el tiempo",
+   "ilVivaitQuand": "¿Cuándo vivía?",
+   "bande": {
+    "permien": "Antes de los dinosaurios",
+    "cenozoique": "Después del meteorito"
+   },
+   "date": {
+    "permien": "hace 280 millones de años",
+    "trias": "hace 230 millones de años",
+    "jurassique": "hace 150 millones de años",
+    "cretace": "hace 66 a 100 millones de años",
+    "cenozoique": "después de hace 66 millones de años"
+   }
+  },
+  "voix": {
+   "regle-mj-31": "¡Coloca el dinosaurio en la época correcta!. Escucho el nombre del dinosaurio . Una voz anuncia un dinosaurio misterioso, con su sombra. Toco la consigna para volver a escucharla.. Miro las franjas de color . Cada franja es una época: Triásico, Jurásico, Cretácico… ¡hay una que es la correcta para el dinosaurio!. Toco la franja correcta . ¡El dinosaurio se posa dentro! Si me equivoco, una voz me ayuda y puedo intentarlo otra vez.. Cuantas más estrellas gano, más complicado es . Aparecen nuevas franjas, ¡y a veces dos primos vivían en épocas muy diferentes!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-32": {
+  "titre": "El taller de colorear",
+  "regle": {
+   "texte": "¡Colorea tu dinosaurio como quieras, no hay ningún error!",
+   "etapes": [
+    {
+     "t": "Elijo un dinosaurio para colorear 🦕",
+     "d": "Toco el dinosaurio que prefiero de la lista."
+    },
+    {
+     "t": "Elijo un color y toco en el dibujo 🎨",
+     "d": "El color rellena toda la zona que toco. ¡Puedo cambiar de color tantas veces como quiera!"
+    },
+    {
+     "t": "Miro el modelo si lo necesito 🔍",
+     "d": "El botón «Modelo» muestra el dinosaurio en color durante 2 segundos, para ayudarme si quiero."
+    },
+    {
+     "t": "Toco «¡Terminado!» para guardar mi dibujo 🖼️",
+     "d": "Mi obra va a «Mi galería»: puedo verla, retomarla para continuar, o borrarla. Sin estrellas, sin errores: ¡hago lo que quiero!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "maGalerie": "Mi galería",
+   "choisisUnDino": "¡Elige un dinosaurio para colorear!",
+   "autreDino": "Otro dinosaurio",
+   "modele": "Modelo",
+   "fini": "¡Terminado!",
+   "colorierAutre": "¡Colorear otro dinosaurio!",
+   "galerieVide": "Todavía no hay obras... ¡Colorea tu primer dinosaurio!",
+   "reprendreEnCopie": "Retomar como copia",
+   "supprimerCeDessin": "¿Borrar este dibujo?",
+   "non": "No",
+   "oui": "Sí",
+   "magnifiqueNom": "¡Precioso! ¡Tu {nom} es magnífico!",
+   "magnifique": "¡Precioso!"
+  },
+  "voix": {
+   "regle-mj-32": "¡Colorea tu dinosaurio como quieras, no hay ningún error!. Elijo un dinosaurio para colorear . Toco el dinosaurio que prefiero de la lista.. Elijo un color y toco en el dibujo . El color rellena toda la zona que toco. ¡Puedo cambiar de color tantas veces como quiera!. Miro el modelo si lo necesito . El botón «Modelo» muestra el dinosaurio en color durante 2 segundos, para ayudarme si quiero.. Toco «¡Terminado!» para guardar mi dibujo . Mi obra va a «Mi galería»: puedo verla, retomarla para continuar, o borrarla. Sin estrellas, sin errores: ¡hago lo que quiero!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-34": {
+  "titre": "El depósito bloqueado",
+  "regle": {
+   "texte": "¡Desliza los autobuses para liberar el autobús amarillo!",
+   "etapes": [
+    {
+     "t": "Localizo el autobús amarillo 🟡",
+     "d": "Parpadea al principio del nivel. Tiene que salir por la puerta «SALIDA» a la derecha."
+    },
+    {
+     "t": "Deslizo los demás autobuses 👆",
+     "d": "Cada autobús solo se mueve en un sentido (horizontal o vertical). Los empujo para despejar el camino."
+    },
+    {
+     "t": "Si un autobús no puede moverse, rebota suavemente ↩️",
+     "d": "No pasa nada: lo intento en el otro sentido, nunca hay un error que cuente en mi contra."
+    },
+    {
+     "t": "El autobús amarillo sale, y luego todos los demás le siguen 🎉",
+     "d": "Más niveles: la cuadrícula crece (4×4 y luego 5×5) y hay más autobuses que mover. ¡3 niveles ganados = una estrella!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "libereLeBusJaune": "¡Libera el autobús amarillo!",
+   "sortie": "SALIDA"
+  },
+  "voix": {
+   "regle-mj-34": "¡Desliza los autobuses para liberar el autobús amarillo!. Localizo el autobús amarillo . Parpadea al principio del nivel. Tiene que salir por la puerta «SALIDA» a la derecha.. Deslizo los demás autobuses . Cada autobús solo se mueve en un sentido (horizontal o vertical). Los empujo para despejar el camino.. Si un autobús no puede moverse, rebota suavemente . No pasa nada: lo intento en el otro sentido, nunca hay un error que cuente en mi contra.. El autobús amarillo sale, y luego todos los demás le siguen . Más niveles: la cuadrícula crece (4×4 y luego 5×5) y hay más autobuses que mover. ¡3 niveles ganados = una estrella!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-35": {
+  "titre": "El juego de las semillas",
+  "regle": {
+   "texte": "¡Encuentra el agujero que llena el nido JUSTITO!",
+   "etapes": [
+    {
+     "t": "Miro los huevos en los agujeros 👀",
+     "d": "Cada agujero tiene huevos de dinosaurio dentro. ¡Puedo contar con los dedos si quiero!"
+    },
+    {
+     "t": "Busco EL agujero correcto 🤔",
+     "d": "Solo un agujero tiene JUSTO los huevos suficientes para llegar EXACTO al nido, ni antes ni después."
+    },
+    {
+     "t": "Toco el agujero, los huevos saltan 👉🥚",
+     "d": "Saltan uno a uno hacia el nido. Si el último cae justo dentro: «¡JUSTO!» ✨"
+    },
+    {
+     "t": "¿Me equivoco? No pasa nada, vuelvo a contar 💡",
+     "d": "Nada se pierde, el tablero se reorganiza y lo intento otra vez. ¡3 aciertos JUSTOS = partida ganada!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "nid": "Nido",
+   "niveau1": "Nivel 1",
+   "niveau2": "Nivel 2",
+   "niveau3GrosTas": "Nivel 3 — ¡montón grande!",
+   "trouveLeTrouPile": "¡Encuentra el agujero que llena JUSTO el nido!",
+   "presqueCompteBien": "¡Casi! Cuenta bien, inténtalo otra vez.",
+   "pileExcl": "¡JUSTO! ✨"
+  },
+  "voix": {
+   "regle-mj-35": "¡Encuentra el agujero que llena el nido JUSTITO!. Miro los huevos en los agujeros . Cada agujero tiene huevos de dinosaurio dentro. ¡Puedo contar con los dedos si quiero!. Busco EL agujero correcto . Solo un agujero tiene JUSTO los huevos suficientes para llegar EXACTO al nido, ni antes ni después.. Toco el agujero, los huevos saltan . Saltan uno a uno hacia el nido. Si el último cae justo dentro: «¡JUSTO!» . ¿Me equivoco? No pasa nada, vuelvo a contar . Nada se pierde, el tablero se reorganiza y lo intento otra vez. ¡3 aciertos JUSTOS = partida ganada!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-37": {
+  "titre": "¡Ajedrez goloso!",
+  "regle": {
+   "texte": "¡Mueve tu pieza para comerte todas las meriendas!",
+   "etapes": [
+    {
+     "t": "Descubro una pieza de ajedrez 🧑‍🎓",
+     "d": "El Alfil se desliza en diagonal, la Torre va todo recto, el Caballo salta en L… ¡cada una se mueve a su manera!"
+    },
+    {
+     "t": "Toco mi pieza, las casillas se iluminan ✨",
+     "d": "Todas las casillas que se iluminan son los sitios donde mi pieza puede ir."
+    },
+    {
+     "t": "Toco una casilla iluminada para comer 🍎",
+     "d": "Si hay una merienda encima, mi pieza se la come al llegar. ¿Más opciones? Lo intento otra vez, nada se pierde."
+    },
+    {
+     "t": "Cuanto más avanzo, más listas son las piezas 💪",
+     "d": "Después del Alfil y la Torre vienen el Caballo, la Dama, el Rey, el Peón… ¡y luego 2 piezas juntas!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "tierFouTour": "Alfil y Torre",
+   "tierCavalierDame": "Caballo y Dama",
+   "tierRoiPionMix": "Rey, Peón y Mix",
+   "pieceFou": "El Alfil",
+   "pieceTour": "La Torre",
+   "pieceCavalier": "El Caballo",
+   "pieceDame": "La Dama",
+   "pieceRoi": "El Rey",
+   "piecePion": "El Peón",
+   "voxFou": "¡Yo me deslizo en diagonal, zas!",
+   "voxTour": "¡Yo avanzo recto hacia delante, vroom!",
+   "voxCavalier": "¡Y hala, salto en L!",
+   "voxDame": "¡Puedo ir absolutamente a todas partes!",
+   "voxRoi": "Despacito, un pasito cada vez.",
+   "voxPion": "¡Soy pequeño pero como bien!",
+   "toutCroque": "¡Todo comido!",
+   "gouterRestant": "merienda restante",
+   "gouterRestants": "meriendas restantes",
+   "bravoToutCroque": "¡Bien hecho, todo comido!"
+  },
+  "voix": {
+   "regle-mj-37": "¡Mueve tu pieza para comerte todas las meriendas!. Descubro una pieza de ajedrez . El Alfil se desliza en diagonal, la Torre va todo recto, el Caballo salta en L… ¡cada una se mueve a su manera!. Toco mi pieza, las casillas se iluminan . Todas las casillas que se iluminan son los sitios donde mi pieza puede ir.. Toco una casilla iluminada para comer . Si hay una merienda encima, mi pieza se la come al llegar. ¿Más opciones? Lo intento otra vez, nada se pierde.. Cuanto más avanzo, más listas son las piezas . Después del Alfil y la Torre vienen el Caballo, la Dama, el Rey, el Peón… ¡y luego 2 piezas juntas!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-38": {
+  "titre": "¡Salta y captura!",
+  "regle": {
+   "texte": "¡Salta por encima de las fichas dormidas para hacerlas desaparecer!",
+   "etapes": [
+    {
+     "t": "Toco mi oveja 😊",
+     "d": "Empieza a brillar: es ella la que voy a hacer saltar."
+    },
+    {
+     "t": "Miro las casillas que brillan en dorado ✨",
+     "d": "Muestran dónde puede aterrizar mi oveja saltando por encima de un dormilón vecino 💤."
+    },
+    {
+     "t": "Toco la casilla dorada: ¡hala, salta! 🐑↷",
+     "d": "La oveja dormida que ha saltado desaparece en un pum. ¡Puedo encadenar varios saltos seguidos: combo ✨!"
+    },
+    {
+     "t": "¿Atascado? Empiezo tranquilo de nuevo 🔄",
+     "d": "El botón «Reiniciar» pone el nivel a cero, sin perder nada. ¡Todos los dormilones fuera = nivel ganado!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "recommencer": "Reiniciar",
+   "niveauSurTotal": "Nivel {n} / {total}",
+   "combo": "¡Combo!",
+   "essaieEncoreRecommencer": "¡Inténtalo otra vez! Toca Reiniciar 🙂"
+  },
+  "voix": {
+   "regle-mj-38": "¡Salta por encima de las fichas dormidas para hacerlas desaparecer!. Toco mi oveja . Empieza a brillar: es ella la que voy a hacer saltar.. Miro las casillas que brillan en dorado . Muestran dónde puede aterrizar mi oveja saltando por encima de un dormilón vecino .. Toco la casilla dorada: ¡hala, salta! ↷. La oveja dormida que ha saltado desaparece en un pum. ¡Puedo encadenar varios saltos seguidos: combo !. ¿Atascado? Empiezo tranquilo de nuevo . El botón «Reiniciar» pone el nivel a cero, sin perder nada. ¡Todos los dormilones fuera = nivel ganado!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-39": {
+  "titre": "Bloques mágicos",
+  "regle": {
+   "texte": "¡Coloca los bloques para llenar líneas enteras!",
+   "etapes": [
+    {
+     "t": "Miro los 3 bloques de abajo 🟥🟨🟦",
+     "d": "Cada bloque tiene su forma: cuadrado pequeño, barra larga, forma en L…"
+    },
+    {
+     "t": "Deslizo un bloque con el dedo sobre la cuadrícula 👆",
+     "d": "Una casilla verde muestra que puedo colocarlo ahí, una casilla roja significa que no cabe."
+    },
+    {
+     "t": "Suelto el bloque para colocarlo 🧩",
+     "d": "Si lleno una línea o una columna ENTERA, ¡explota en chispas ✨ y tengo más espacio!"
+    },
+    {
+     "t": "Cuantas más líneas borro, más estrellas gano ⭐",
+     "d": "Llegan nuevos bloques cada vez. ¡5 líneas = ★, 12 = ★★, 25 = ★★★!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "ligne": "línea",
+   "lignes": "líneas"
+  },
+  "voix": {
+   "regle-mj-39": "¡Coloca los bloques para llenar líneas enteras!. Miro los 3 bloques de abajo . Cada bloque tiene su forma: cuadrado pequeño, barra larga, forma en L…. Deslizo un bloque con el dedo sobre la cuadrícula . Una casilla verde muestra que puedo colocarlo ahí, una casilla roja significa que no cabe.. Suelto el bloque para colocarlo . Si lleno una línea o una columna ENTERA, ¡explota en chispas y tengo más espacio!. Cuantas más líneas borro, más estrellas gano . Llegan nuevos bloques cada vez. ¡5 líneas = ★, 12 = ★★, 25 = ★★★!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-40": {
+  "titre": "Tangram de dinosaurios",
+  "regle": {
+   "texte": "¡Coloca las 7 piezas sobre la silueta del dinosaurio!",
+   "etapes": [
+    {
+     "t": "Miro la silueta 👀",
+     "d": "Una forma misteriosa espera arriba: un huevo, una escama, un cuello largo de dinosaurio…"
+    },
+    {
+     "t": "Deslizo una pieza sobre ella 👆",
+     "d": "Cojo una pieza de color de abajo y la deslizo hasta la casilla correcta de la silueta."
+    },
+    {
+     "t": "Toco una pieza para girarla 🔄",
+     "d": "Si no encaja bien, un pequeño toque la hace girar hasta que encaja."
+    },
+    {
+     "t": "Cuantas más estrellas gano, más complicado es 💪",
+     "d": "Los niveles ★★ y ★★★ tienen figuras más difíciles de reconstruir."
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "instruction": "Desliza las piezas sobre la silueta. Toca una pieza para girarla.",
+   "figOeufDeDino": "Huevo de dinosaurio",
+   "figEcailleTriceratops": "Escama de Triceratops",
+   "figCouSauropode": "Cuello de saurópodo",
+   "figOeufMystere": "Huevo misterioso",
+   "figEcailleBrillante": "Escama brillante",
+   "figLongCouCache": "Cuello largo escondido",
+   "figEcailleTournee": "Escama girada",
+   "figCouTourne": "Cuello girado",
+   "figOeufTourne": "Huevo girado"
+  },
+  "voix": {
+   "regle-mj-40": "¡Coloca las 7 piezas sobre la silueta del dinosaurio!. Miro la silueta . Una forma misteriosa espera arriba: un huevo, una escama, un cuello largo de dinosaurio…. Deslizo una pieza sobre ella . Cojo una pieza de color de abajo y la deslizo hasta la casilla correcta de la silueta.. Toco una pieza para girarla . Si no encaja bien, un pequeño toque la hace girar hasta que encaja.. Cuantas más estrellas gano, más complicado es . Los niveles ★★ y ★★★ tienen figuras más difíciles de reconstruir.. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-42": {
+  "titre": "¡Shisima!",
+  "regle": {
+   "texte": "¡Alinea tus 3 fichas pasando por el punto de agua!",
+   "etapes": [
+    {
+     "t": "Miro el tablero 👀",
+     "d": "Hay 8 puntos alrededor y 1 punto de agua en el medio. Mis 3 fichas rojas ya están colocadas."
+    },
+    {
+     "t": "Toco mi ficha, luego un punto vacío al lado 👆",
+     "d": "Mi ficha solo puede avanzar a un punto vecino libre, o pasar por el punto de agua del medio."
+    },
+    {
+     "t": "Alineo mis 3 fichas con el centro 🎯",
+     "d": "Si mis 3 fichas y el punto de agua están en la misma línea recta, ¡he ganado!"
+    },
+    {
+     "t": "El camaleón también juega, sin castigarme nunca 🦎",
+     "d": "Cuantas más estrellas gano, más piensa el camaleón y bloquea mis jugadas. Si gana él, ¡jugamos otra vez enseguida!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "jeuDuKenya": "Un juego de Kenia 🇰🇪",
+   "aToiDeJouer": "¡Te toca jugar!",
+   "cameleonReflechit": "El camaleón está pensando...",
+   "bravo": "¡Bien hecho!",
+   "alignePionsShisima": "¡Has alineado tus 3 fichas en el shisima!",
+   "danseCameleon": "¡Baile del camaleón!",
+   "presqueEncoreUne": "¡Casi! ¿Otra vez?"
+  },
+  "voix": {
+   "regle-mj-42": "¡Alinea tus 3 fichas pasando por el punto de agua!. Miro el tablero . Hay 8 puntos alrededor y 1 punto de agua en el medio. Mis 3 fichas rojas ya están colocadas.. Toco mi ficha, luego un punto vacío al lado . Mi ficha solo puede avanzar a un punto vecino libre, o pasar por el punto de agua del medio.. Alineo mis 3 fichas con el centro . Si mis 3 fichas y el punto de agua están en la misma línea recta, ¡he ganado!. El camaleón también juega, sin castigarme nunca . Cuantas más estrellas gano, más piensa el camaleón y bloquea mis jugadas. Si gana él, ¡jugamos otra vez enseguida!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-46": {
+  "titre": "Los huevos sorpresa",
+  "regle": {
+   "texte": "¡Cuenta los huevos del nido, y luego toca el número correcto!",
+   "etapes": [
+    {
+     "t": "¡Respondo directo si lo sé! 🔢",
+     "d": "Cuento los huevos en mi cabeza y toco el número correcto."
+    },
+    {
+     "t": "O toco los huevos para contar 👆",
+     "d": "Una pastilla amarilla se posa encima: 1, 2, 3… ¡y el huevo se agrieta!"
+    },
+    {
+     "t": "El último número dice el total 🗣️",
+     "d": "El número del último huevo, ¡es cuántos huevos hay en total!"
+    },
+    {
+     "t": "Cuando acierto… los huevos bailan 🥚",
+     "d": "¡Se agitan y se agrietan! Y al final gano un huevo para mi nido — eclosionará en la pantalla de inicio."
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "combienDoeufs": "¿Cuántos huevos?",
+   "oeufSing": "huevo",
+   "oeufPlur": "huevos",
+   "recomptonsEnsemble": "¡Contemos juntos, uno por uno!"
+  },
+  "voix": {
+   "regle-mj-46": "¡Cuenta los huevos del nido, y luego toca el número correcto!. ¡Respondo directo si lo sé! . Cuento los huevos en mi cabeza y toco el número correcto.. O toco los huevos para contar . Una pastilla amarilla se posa encima: 1, 2, 3… ¡y el huevo se agrieta!. El último número dice el total . El número del último huevo, ¡es cuántos huevos hay en total!. Cuando acierto… los huevos bailan . ¡Se agitan y se agrietan! Y al final gano un huevo para mi nido — eclosionará en la pantalla de inicio.. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-47": {
+  "titre": "Las constelaciones",
+  "regle": {
+   "texte": "Dos constelaciones de dinosaurios brillan en la noche. ¿Cuántos dinosaurios en total? ¡Míralo de un vistazo!",
+   "etapes": [
+    {
+     "t": "Miro el dominó del cielo 👀",
+     "d": "Dos casillas brillantes: en cada una, dinosaurios ordenados como los puntos de un dado."
+    },
+    {
+     "t": "Toco el TOTAL 👆",
+     "d": "Los dinosaurios de las dos casillas juntos, ¿cuánto suman? Si me equivoco, lo intento otra vez, no pasa nada."
+    },
+    {
+     "t": "Miro la cuenta ✨",
+     "d": "Después de cada respuesta, las dos casillas se iluminan: «¡3 y 4, son 7!»"
+    },
+    {
+     "t": "Cuantas más estrellas gano, más grande es 💪",
+     "d": "Primero grupos pequeños, ¡luego constelaciones hasta 12!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "combienEnTout": "¿Cuántos en total?",
+   "etCaFait": "¡{a} y {b}, son {total}!"
+  },
+  "voix": {
+   "regle-mj-47": "Dos constelaciones de dinosaurios brillan en la noche. ¿Cuántos dinosaurios en total? ¡Míralo de un vistazo!. Miro el dominó del cielo . Dos casillas brillantes: en cada una, dinosaurios ordenados como los puntos de un dado.. Toco el TOTAL . Los dinosaurios de las dos casillas juntos, ¿cuánto suman? Si me equivoco, lo intento otra vez, no pasa nada.. Miro la cuenta . Después de cada respuesta, las dos casillas se iluminan: «¡3 y 4, son 7!». Cuantas más estrellas gano, más grande es . Primero grupos pequeños, ¡luego constelaciones hasta 12!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-48": {
+  "titre": "Todos suben",
+  "regle": {
+   "texte": "Pasajeros suben y bajan del autobús. A ti te toca contar bien.",
+   "etapes": [
+    {
+     "t": "Miro los asientos del autobús 🪑",
+     "d": "El autobús tiene 2 filas de 5 plazas, como un dominó. ¡Una fila llena son 5 de golpe!"
+    },
+    {
+     "t": "Pasajeros suben o bajan 🚏",
+     "d": "En la parada, dinosaurios esperan en la fila. Unos suben, otros bajan."
+    },
+    {
+     "t": "Toco el número correcto 🔢",
+     "d": "¿Cuántos hay en el autobús? ¿Cuántas plazas libres quedan? Si me equivoco, contamos juntos otra vez."
+    },
+    {
+     "t": "La fila tiene un orden 🥇",
+     "d": "¡El primero de la fila está justo al lado de la parada! A veces me piden tocar el 2º o el 3º."
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "ordinaux": [
+    "primero",
+    "segundo",
+    "tercero",
+    "cuarto",
+    "quinto"
+   ],
+   "leFPremierPresArret": "← el 1º está cerca de la parada",
+   "toucheLeOrdinal": "¡Toca el {ord} de la fila!",
+   "leOrdinalMonte": "¡El {ord} sube al autobús!",
+   "passagerMonte": "pasajero sube",
+   "passagersMontent": "pasajeros suben",
+   "passagerDescend": "pasajero baja",
+   "passagersDescendent": "pasajeros bajan",
+   "combienPassagersBus": "¿Cuántos pasajeros hay en el autobús?",
+   "combienPassagersMaintenant": "¿Cuántos pasajeros hay ahora?",
+   "combienIlEnReste": "¿Cuántos quedan en el autobús?",
+   "combienDePlacesLibres": "¿Cuántas plazas libres hay?",
+   "ilManqueCombien": "¿Cuántos pasajeros faltan para llenar el autobús?",
+   "cinqEtNCaFait": "¡5 y {reste}, son {n}!",
+   "passagerSing": "pasajero",
+   "passagerPlur": "pasajeros",
+   "ilEnResteN": "¡Quedan {n}!",
+   "sEtNCaFaitDixPlein": "¡{s0} y {n}, son 10! ¡El autobús está lleno!",
+   "lePremierCEstCelui": "El primero es el que está justo al lado de la parada. Cuenta: uno, dos, tres…",
+   "recomptonsEnsembleExcl": "¡Contemos juntos!"
+  },
+  "voix": {
+   "regle-mj-48": "Pasajeros suben y bajan del autobús. A ti te toca contar bien.. Miro los asientos del autobús . El autobús tiene 2 filas de 5 plazas, como un dominó. ¡Una fila llena son 5 de golpe!. Pasajeros suben o bajan . En la parada, dinosaurios esperan en la fila. Unos suben, otros bajan.. Toco el número correcto . ¿Cuántos hay en el autobús? ¿Cuántas plazas libres quedan? Si me equivoco, contamos juntos otra vez.. La fila tiene un orden . ¡El primero de la fila está justo al lado de la parada! A veces me piden tocar el 2º o el 3º.. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-49": {
+  "titre": "Las bandejas de 10",
+  "regle": {
+   "texte": "¡Una bandeja llena son 10! Con ella, los números grandes se vuelven fáciles.",
+   "etapes": [
+    {
+     "t": "Miro la bandeja 👀",
+     "d": "La caja tiene 2 filas de 5: llena, hacen 10 huevos. ¡No hace falta volver a contar!"
+    },
+    {
+     "t": "Respondo directo si lo sé 🔢",
+     "d": "Si no, toco los huevos (¡o los huecos!) para contar: una pastilla se posa encima."
+    },
+    {
+     "t": "La cuenta aparece ✨",
+     "d": "«¡10 y 4, son 14!» — la bandeja brilla, y veo la decena."
+    },
+    {
+     "t": "Cuantas más estrellas gano, más grande es 💪",
+     "d": "Primero una bandeja, luego 10 más, luego DOS bandejas: ¡hasta más de 20!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "ilEnFautCombien": "¿Cuántos hacen falta para llegar a 10?",
+   "ilEnManqueCombien": "¿Cuántos faltan para llenar la caja?",
+   "combienDoeufsEnTout": "¿Cuántos huevos en total?",
+   "deuxBoitesPleines": "Dos cajas llenas… ¿cuántos en total?",
+   "ilMeFautN": "¡Necesito <b>{n}</b> huevos!",
+   "boiteEstPleine": "La caja está llena. ¿Cuántos huevos faltan todavía?",
+   "ilEnManquaitNEtDix": "¡Faltaban {n}! ¡Y 10, la caja está llena!",
+   "dixEtNCaFait": "¡10 y {reste}, son {n}!",
+   "dixVingtEtNCaFait": "10, 20… y {reste}, ¡son {n}!",
+   "dixVingtCaFait": "10, 20, ¡son {n}!",
+   "dixEtNCaFaitTotal": "¡10 y {n}, son {total}!"
+  },
+  "voix": {
+   "regle-mj-49": "¡Una bandeja llena son 10! Con ella, los números grandes se vuelven fáciles.. Miro la bandeja . La caja tiene 2 filas de 5: llena, hacen 10 huevos. ¡No hace falta volver a contar!. Respondo directo si lo sé . Si no, toco los huevos (¡o los huecos!) para contar: una pastilla se posa encima.. La cuenta aparece . «¡10 y 4, son 14!» — la bandeja brilla, y veo la decena.. Cuantas más estrellas gano, más grande es . Primero una bandeja, luego 10 más, luego DOS bandejas: ¡hasta más de 20!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-50": {
+  "titre": "Encuentra la letra",
+  "regle": {
+   "texte": "¡Escucha el sonido, y toca la letra que lo hace!",
+   "etapes": [
+    {
+     "t": "Escucho el sonido 👂",
+     "d": "La voz hace el SONIDO de la letra: «mmm», «sss»… nunca su nombre de colegio."
+    },
+    {
+     "t": "Toco la letra correcta 👆",
+     "d": "Las letras están escritas en cursiva. El altavoz repite el sonido si la toco."
+    },
+    {
+     "t": "Las letras cambian de disfraz 🎭",
+     "d": "Cuantas más estrellas gano, más se disfrazan las letras: cursiva, imprenta, ¡MAYÚSCULAS!"
+    },
+    {
+     "t": "Y hasta el sonido de las palabras 🗣️",
+     "d": "En el último nivel: «¿qué sonido hay al principio de mamá?» — ¡y letras que se parecen!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "voix": {
+   "regle-mj-50": "¡Escucha el sonido, y toca la letra que lo hace!. Escucho el sonido . La voz hace el SONIDO de la letra: «mmm», «sss»… nunca su nombre de colegio.. Toco la letra correcta . Las letras están escritas en cursiva. El altavoz repite el sonido si la toco.. Las letras cambian de disfraz . Cuantas más estrellas gano, más se disfrazan las letras: cursiva, imprenta, ¡MAYÚSCULAS!. Y hasta el sonido de las palabras . En el último nivel: «¿qué sonido hay al principio de mamá?» — ¡y letras que se parecen!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-51": {
+  "titre": "La clasificación de letras",
+  "regle": {
+   "texte": "La misma letra tiene varios disfraces: ¡ordénalos todos en su caja!",
+   "etapes": [
+    {
+     "t": "Miro bien la letra 👀",
+     "d": "Una a cursiva, una a de imprenta, una A MAYÚSCULA… ¡siempre es la letra a!"
+    },
+    {
+     "t": "La deslizo hasta su caja 👆",
+     "d": "La caja se ilumina en verde cuando está en el sitio correcto. ¡Y oigo su sonido!"
+    },
+    {
+     "t": "Si me equivoco, vuelve 🔄",
+     "d": "¡No pasa nada! Lo intento tantas veces como quiera."
+    },
+    {
+     "t": "Cuantas más estrellas gano, más complicado es 💪",
+     "d": "Al final: ¡las letras que se parecen muchísimo, como b, d, h y k!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "voix": {
+   "regle-mj-51": "La misma letra tiene varios disfraces: ¡ordénalos todos en su caja!. Miro bien la letra . Una a cursiva, una a de imprenta, una A MAYÚSCULA… ¡siempre es la letra a!. La deslizo hasta su caja . La caja se ilumina en verde cuando está en el sitio correcto. ¡Y oigo su sonido!. Si me equivoco, vuelve . ¡No pasa nada! Lo intento tantas veces como quiera.. Cuantas más estrellas gano, más complicado es . Al final: ¡las letras que se parecen muchísimo, como b, d, h y k!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-52": {
+  "titre": "La caja de palabras",
+  "regle": {
+   "texte": "¡Escucha la palabra, y constrúyela con las letras móviles!",
+   "etapes": [
+    {
+     "t": "Escucho la palabra 👂",
+     "d": "La voz dice una palabra que conozco: papa, maman, moto…"
+    },
+    {
+     "t": "Miro la caja 👀",
+     "d": "La palabra está dividida en trozos: pa | pa. Cada casilla espera su letra."
+    },
+    {
+     "t": "Coloco las letras en orden 👆",
+     "d": "Toco la letra que hace falta: ¡salta a su casilla y hace su sonido!"
+    },
+    {
+     "t": "La palabra está construida 🎉",
+     "d": "¡La voz vuelve a leer MI palabra! Cuantas más estrellas gano, más letras trampa hay."
+    }
+   ],
+   "etoiles": ""
+  },
+  "voix": {
+   "regle-mj-52": "¡Escucha la palabra, y constrúyela con las letras móviles!. Escucho la palabra . La voz dice una palabra que conozco: papa, maman, moto…. Miro la caja . La palabra está dividida en trozos: pa | pa. Cada casilla espera su letra.. Coloco las letras en orden . Toco la letra que hace falta: ¡salta a su casilla y hace su sonido!. La palabra está construida . ¡La voz vuelve a leer MI palabra! Cuantas más estrellas gano, más letras trampa hay.. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-53": {
+  "titre": "Lee y hazlo",
+  "regle": {
+   "texte": "¡Aquí, solo sabes qué hacer SI lees!",
+   "etapes": [
+    {
+     "t": "Leo la palabra 👀",
+     "d": "La palabra está escrita en cursiva. Si es difícil, toco la palabra: la voz me ayuda (¡solo al principio!)."
+    },
+    {
+     "t": "Toco la imagen correcta 👆",
+     "d": "Luego llegan los nombres de dinosaurios, divididos en trozos: tri-cé-ra-tops!"
+    },
+    {
+     "t": "Leo… y HAGO 💪",
+     "d": "En el último nivel, la consigna me dice qué hacer: «¡Toca 3 huevos rojos»!"
+    },
+    {
+     "t": "¡Sin leer, imposible! 🤫",
+     "d": "Ese es el secreto: leer sirve para descubrir qué hay que hacer."
+    }
+   ],
+   "etoiles": ""
+  },
+  "voix": {
+   "regle-mj-53": "¡Aquí, solo sabes qué hacer SI lees!. Leo la palabra . La palabra está escrita en cursiva. Si es difícil, toco la palabra: la voz me ayuda (¡solo al principio!).. Toco la imagen correcta . Luego llegan los nombres de dinosaurios, divididos en trozos: tri-cé-ra-tops!. Leo… y HAGO . En el último nivel, la consigna me dice qué hacer: «¡Toca 3 huevos rojos»!. ¡Sin leer, imposible! . Ese es el secreto: leer sirve para descubrir qué hay que hacer.. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-54": {
+  "titre": "Sudoku Dinosaurio",
+  "regle": {
+   "texte": "¡Cada fila, cada columna y cada bloque debe tener los 4 símbolos, nunca el mismo dos veces!",
+   "etapes": [
+    {
+     "t": "Toco una casilla vacía 👆",
+     "d": "Se vuelve amarilla: es la que voy a rellenar."
+    },
+    {
+     "t": "Elijo un símbolo de abajo 🦕🦖🥚🌋",
+     "d": "Se coloca en la casilla amarilla."
+    },
+    {
+     "t": "Si dos iguales se tocan, tiembla 🫨",
+     "d": "Las dos casillas tiemblan en naranja: puedo cambiarlo, nunca es grave."
+    },
+    {
+     "t": "Puedo borrar una casilla que haya puesto 🧹",
+     "d": "Vuelve a tocarla para vaciarla y empezar de nuevo."
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "consigne": "Completa la cuadrícula: ¡los 4 símbolos por todas partes!"
+  },
+  "voix": {
+   "regle-mj-54": "¡Cada fila, cada columna y cada bloque debe tener los 4 símbolos, nunca el mismo dos veces!. Toco una casilla vacía . Se vuelve amarilla: es la que voy a rellenar.. Elijo un símbolo de abajo . Se coloca en la casilla amarilla.. Si dos iguales se tocan, tiembla . Las dos casillas tiemblan en naranja: puedo cambiarlo, nunca es grave.. Puedo borrar una casilla que haya puesto . Vuelve a tocarla para vaciarla y empezar de nuevo.. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-55": {
+  "titre": "Equilibrio",
+  "regle": {
+   "texte": "¡Nunca 3 iguales seguidos! Toca para cambiar.",
+   "etapes": [
+    {
+     "t": "Toco una casilla vacía 👆",
+     "d": "Se convierte en un dinosaurio 🦕. Vuelvo a tocar: un huevo 🥚. Otra vez: se vacía."
+    },
+    {
+     "t": "Nunca 3 iguales seguidos 🚫",
+     "d": "En fila o en columna: ni 3 dinosaurios ni 3 huevos juntos. ¡Si no, se ilumina en naranja!"
+    },
+    {
+     "t": "Corrijo con calma 🧩",
+     "d": "El naranja no es grave: vuelvo a tocar para cambiarlo y sigue adelante."
+    },
+    {
+     "t": "Cuadrícula llena y correcta = ganado ✨",
+     "d": "¡Más adelante también habrá que tener tantos dinosaurios como huevos en cada fila y columna!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "bienJoue": "¡Bien jugado!",
+   "consigneAvecEquilibre": "Completa la cuadrícula: ¡nunca 3 iguales, tantos dinosaurios como huevos!",
+   "consigneSimple": "Completa la cuadrícula: ¡nunca 3 iguales!"
+  },
+  "voix": {
+   "regle-mj-55": "¡Nunca 3 iguales seguidos! Toca para cambiar.. Toco una casilla vacía . Se convierte en un dinosaurio . Vuelvo a tocar: un huevo . Otra vez: se vacía.. Nunca 3 iguales seguidos . En fila o en columna: ni 3 dinosaurios ni 3 huevos juntos. ¡Si no, se ilumina en naranja!. Corrijo con calma . El naranja no es grave: vuelvo a tocar para cambiarlo y sigue adelante.. Cuadrícula llena y correcta = ganado . ¡Más adelante también habrá que tener tantos dinosaurios como huevos en cada fila y columna!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-56": {
+  "titre": "Los corrales",
+  "regle": {
+   "texte": "¡Un dinosaurio por fila, por columna, por corral… y nunca pegados, ni siquiera en diagonal!",
+   "etapes": [
+    {
+     "t": "Coloco un dinosaurio 🦕",
+     "d": "Toco una casilla para poner un dinosaurio dentro."
+    },
+    {
+     "t": "Cuidado con los vecinos 🔴",
+     "d": "Las casillas que se vuelven rojas son donde ya no puedo colocar ninguno."
+    },
+    {
+     "t": "Son gruñones 😤",
+     "d": "Dos dinosaurios nunca pegados, ni siquiera en diagonal — si no, tiemblan, y los separo."
+    },
+    {
+     "t": "Uno por corral 🚧",
+     "d": "Cada color de corral solo puede tener un dinosaurio."
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "consigne": "Un dinosaurio por fila, columna y corral… ¡nunca pegados!"
+  },
+  "voix": {
+   "regle-mj-56": "¡Un dinosaurio por fila, por columna, por corral… y nunca pegados, ni siquiera en diagonal!. Coloco un dinosaurio . Toco una casilla para poner un dinosaurio dentro.. Cuidado con los vecinos . Las casillas que se vuelven rojas son donde ya no puedo colocar ninguno.. Son gruñones . Dos dinosaurios nunca pegados, ni siquiera en diagonal — si no, tiemblan, y los separo.. Uno por corral . Cada color de corral solo puede tener un dinosaurio.. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-57": {
+  "titre": "Huevos Sorpresa",
+  "regle": {
+   "texte": "¡Toca un grupo de huevos del mismo color: eclosionan!",
+   "etapes": [
+    {
+     "t": "Miro la cuadrícula 👀",
+     "d": "Huevos de colores, redondos o moteados, llenan la caja."
+    },
+    {
+     "t": "Toco un huevo ✋",
+     "d": "Todo el grupo del mismo color se ilumina alrededor de mi dedo."
+    },
+    {
+     "t": "Toco 🎉",
+     "d": "¡El grupo eclosiona: bebés dinosaurio salen volando!"
+    },
+    {
+     "t": "La cuadrícula se reorganiza 🔄",
+     "d": "Los huevos caen, las columnas vacías se juntan. ¡Sigo hasta que todo haya eclosionado!"
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "tousLesOeufsOntEclos": "¡Todos los huevos han eclosionado!",
+   "continueAFaireEclore": "¡Sigue haciendo eclosionar los huevos!",
+   "faisEcloreDores": "¡Haz eclosionar los huevos, sobre todo los dorados!",
+   "tapoteUnGroupe": "¡Toca un grupo del mismo color!"
+  },
+  "voix": {
+   "regle-mj-57": "¡Toca un grupo de huevos del mismo color: eclosionan!. Miro la cuadrícula . Huevos de colores, redondos o moteados, llenan la caja.. Toco un huevo . Todo el grupo del mismo color se ilumina alrededor de mi dedo.. Toco . ¡El grupo eclosiona: bebés dinosaurio salen volando!. La cuadrícula se reorganiza . Los huevos caen, las columnas vacías se juntan. ¡Sigo hasta que todo haya eclosionado!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ },
+ "mj-59": {
+  "titre": "Territorios",
+  "regle": {
+   "texte": "¡Divide el valle: cada piedra debe tener su terreno, justo a su medida!",
+   "etapes": [
+    {
+     "t": "Miro el número 👀",
+     "d": "Cada piedra lleva un número: es el tamaño de su terreno."
+    },
+    {
+     "t": "Deslizo mi dedo 👆",
+     "d": "Parto de una casilla y deslizo hasta otra: aparece un rectángulo."
+    },
+    {
+     "t": "Apunto a la cuenta correcta 🔢",
+     "d": "El número de casillas se muestra en grande mientras deslizo."
+    },
+    {
+     "t": "Suelto ✋",
+     "d": "¡Si es correcto, un pequeño dinosaurio se instala! Si no, se borra suavemente."
+    }
+   ],
+   "etoiles": ""
+  },
+  "ui": {
+   "traceRectangleN": "¡Traza un rectángulo de {n} alrededor de la piedra!",
+   "faisUnTerritoire": "¡Haz un territorio para cada piedra!"
+  },
+  "voix": {
+   "regle-mj-59": "¡Divide el valle: cada piedra debe tener su terreno, justo a su medida!. Miro el número . Cada piedra lleva un número: es el tamaño de su terreno.. Deslizo mi dedo . Parto de una casilla y deslizo hasta otra: aparece un rectángulo.. Apunto a la cuenta correcta . El número de casillas se muestra en grande mientras deslizo.. Suelto . ¡Si es correcto, un pequeño dinosaurio se instala! Si no, se borra suavemente.. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
+  }
+ }
+};

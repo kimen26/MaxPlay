@@ -97,9 +97,26 @@ function phraseEchelle(p) {
 }
 
 // Un herbivore mangeur, nommé, en arrière-plan : lie la plante à l'encyclopédie sans scène de prédation.
+// L-D28 : le NOM seul ne suffit pas. Sur les 4 plantes du Trias, « un Plateosaure broute »
+// a donné 4 sauropodes au long cou (le cliché du dino herbivore). Comme pour les fiches dino
+// (signature morphologique martelée), il faut DÉCRIRE la silhouette des espèces que le modèle
+// rate. Table volontairement courte : seulement les mangeurs non-sauropodes qui risquent le
+// cliché — un sauropode nommé n'a pas besoin d'entrée, le cliché EST sa vraie silhouette.
+const SILHOUETTE_MANGEUR = {
+  'Plateosaure': "un Plateosaure, dinosaure de 8 m de long et 2,8 m de haut au cou MOYEN et épais, à la tête petite et étroite, dressé sur ses deux puissantes pattes arrière, le corps à l'horizontale équilibré par une longue queue, ses petites pattes avant à pouce griffu tenant une branche qu'il tire vers sa bouche",
+  'Stegosaure': "un Stégosaure, reconnaissable à la double rangée de grandes plaques osseuses en losange dressées le long de son dos et aux quatre longues pointes de sa queue, la tête très basse près du sol",
+  'Minmi': "un Minmi, petit dinosaure cuirassé trapu de moins d'un mètre de haut, le dos couvert de plaques osseuses, qui broute au ras du sol sur ses quatre pattes courtes",
+  'Gallimimus': "un Gallimimus, dinosaure élancé sans dents au bec corné, silhouette d'autruche sur deux longues pattes fines, petite tête au bout d'un cou souple",
+  'Triceratops': "un Tricératops, avec sa grande collerette osseuse derrière le crâne, ses deux longues cornes au-dessus des yeux et sa corne nasale, son bec de perroquet au ras de la végétation",
+  'Edmontosaure': "un Edmontosaure, dinosaure à bec de canard sans crête, large museau plat, qui broute sur ses quatre pattes",
+};
+const sansAccent = s => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 function ligneMangeur(p) {
   const n = (p.mangee_par || []).map(dinoName).filter(Boolean)[0];
-  return n ? `\n\nPEUPLEMENT : au second plan, à bonne distance, un ${n} broute paisiblement. Scène calme, animaux herbivores uniquement.` : `\n\nPEUPLEMENT : scène calme et paisible, nature préhistorique intacte.`;
+  if (!n) return `\n\nPEUPLEMENT : scène calme et paisible, nature préhistorique intacte.`;
+  const cle = Object.keys(SILHOUETTE_MANGEUR).find(k => sansAccent(k) === sansAccent(n));
+  const desc = cle ? SILHOUETTE_MANGEUR[cle] : `un ${n}`;
+  return `\n\nPEUPLEMENT : au second plan, à bonne distance, ${desc}, broute paisiblement. Scène calme, animaux herbivores uniquement.`;
 }
 
 function buildEchelle(p) {

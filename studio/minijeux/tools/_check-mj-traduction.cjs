@@ -23,7 +23,10 @@ const METRIQUE_SRC = /\b(cm|m|km\/h|kg|t|metre|metres|mètre|mètres)\b/i;
 const METRIQUE_RESIDUEL = /\d+\s*(cm|km\/h|kg)\b/i;
 
 // Mots FR residuels : signal fort de traduction incomplete/oubliee.
-const FR_MARQUEURS = /\b(le|la|les|des|une|dans|avec|pour|tape|regarde|trouve|compte|je\s)\b/i;
+// es/pt partagent « la » et « les » (pronom) avec le FR : liste reduite pour ces langues.
+const FR_MARQUEURS = lang === 'en'
+  ? /\b(le|la|les|des|une|dans|avec|pour|tape|regarde|trouve|compte|je\s)\b/i
+  : /\b(des|une|dans|avec|pour|tape|regarde|trouve|compte|je\s)\b/i;
 
 const err = [], warn = [];
 

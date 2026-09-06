@@ -219,6 +219,19 @@
     const shuffle = MJKit.shuffle;
     function speak(t){ TTS.speak(t,{pitch:1.05,priority:true}); }
     function fr(n){ return (Math.round(n*10)/10).toString().replace('.', ' virgule '); }
+    // Mesures affichées / dites : l'EN parle en pieds et en livres (charte i18n dino, chiffres ronds,
+    // pas de décimale), toute autre langue reste en métrique — les données taille_m / poids_t ne bougent pas.
+    const IMPERIAL = !!(window.Lang && Lang.current && Lang.current() === 'en');
+    function fmtTaille(d, court){
+      if (IMPERIAL) return Math.round(d.taille_m * 3.281) + ' ' + MJi18n.t('mj-30', court ? 'unite.mCourt' : 'unite.metres', court ? 'm' : 'mètres');
+      return fr(d.taille_m) + ' ' + MJi18n.t('mj-30', court ? 'unite.mCourt' : 'unite.metres', court ? 'm' : 'mètres');
+    }
+    function fmtPoids(d, court){
+      const kT = court ? 'unite.tCourt' : 'unite.tonnes', kKg = court ? 'unite.kgCourt' : 'unite.kilos';
+      if (d.poids_t >= 1) return Math.round(d.poids_t * (IMPERIAL ? 1.1 : 1)) + ' ' + MJi18n.t('mj-30', kT, court ? 't' : 'tonnes');
+      const kg = d.poids_t * 1000;
+      return (IMPERIAL ? Math.round(kg * 2.205 / 10) * 10 : Math.round(kg)) + ' ' + MJi18n.t('mj-30', kKg, court ? 'kg' : 'kilos');
+    }
 
     // Joue le nom du dino (voix réelle, fallback TTS), en stoppant le son en cours.
     function playDinoNomExclusive(id, fallbackName, opts) {
@@ -618,9 +631,7 @@
         item.appendChild(img);
         const label = document.createElement('div');
         label.className = 'm-label';
-        label.textContent = curMeasure === 'poids_t'
-          ? (d.poids_t >= 1 ? Math.round(d.poids_t) + ' ' + MJi18n.t('mj-30', 'unite.tCourt', 't') : Math.round(d.poids_t*1000) + ' ' + MJi18n.t('mj-30', 'unite.kgCourt', 'kg'))
-          : fr(d.taille_m) + ' ' + MJi18n.t('mj-30', 'unite.mCourt', 'm');
+        label.textContent = curMeasure === 'poids_t' ? fmtPoids(d, true) : fmtTaille(d, true);
         item.appendChild(label);
         ground.appendChild(item);
 
@@ -647,9 +658,7 @@
 
       // TTS : énonce les vraies mesures dans l'ordre petit→grand
       const phrase = curSet.map(d => {
-        const val = curMeasure === 'poids_t'
-          ? (d.poids_t >= 1 ? Math.round(d.poids_t) + ' ' + MJi18n.t('mj-30', 'unite.tonnes', 'tonnes') : Math.round(d.poids_t*1000) + ' ' + MJi18n.t('mj-30', 'unite.kilos', 'kilos'))
-          : fr(d.taille_m) + ' ' + MJi18n.t('mj-30', 'unite.metres', 'mètres');
+        const val = curMeasure === 'poids_t' ? fmtPoids(d, false) : fmtTaille(d, false);
         return MJi18n.t('mj-30', 'annonceMesure', 'Le {nom} : {val} !', { nom: d.name, val: val });
       }).join(' ');
       setTimeout(() => speak(phrase), 700);

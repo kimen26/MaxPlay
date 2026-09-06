@@ -121,7 +121,7 @@ Résolus via `narration/personnages/voix-meta/voice-map.json`. Modèle **eleven_
 ## Règles verrouillées (voir figees/encyclopedie.md)
 
 - 🔒 Tritri = running gag Wex, JAMAIS Max/doudou/peluche.
-- 🔒 4 onglets : Familles (défaut) · Ce qu'il mange · Le voyage · Le dico (racines grec/latin, ajouté 2026-06-08).
+- 🔒 5 onglets : Familles (défaut) · Ce qu'il mange · Le voyage · Les époques (ajouté 2026-07-28 ; porte la flore depuis 2026-09-06) · Le dico (racines grec/latin, ajouté 2026-06-08).
 - 🔒 Encyclopédie = vrais noms + vraies dates. Terme savant nouveau → expliqué (ex « ptérosaure » → « reptile volant comme le Ptéranodon »).
 - 🔒 Voyage : vignettes décoratives (pas de lien), avancement reset session.
 - 🔒 Fiche : bouton audio masqué si pas d'audio complet.

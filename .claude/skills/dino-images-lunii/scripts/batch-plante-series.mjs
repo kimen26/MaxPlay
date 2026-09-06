@@ -49,14 +49,30 @@ const STYLE = `STYLE : illustration documentaire réaliste, lumière naturelle, 
 
 function nf(x) { return String(x).replace('.', ','); }
 
+// ZÉRO STREISAND (règle d'or du skill dino-paleoart) : les fiches sont écrites pour l'oreille d'un
+// enfant et contiennent des tournures négatives (« Pas d'aiguilles fines : des écailles… »,
+// « ce n'en est pas une »). Envoyées telles quelles au modèle d'image, elles PLANTENT ce qu'elles
+// nient. On coupe donc la phrase négative et on ne garde que ce qui est affirmé.
+function cleanNeg(txt) {
+  if (!txt) return '';
+  return String(txt)
+    // « Pas d'aiguilles fines : des écailles… » → « des écailles… »
+    .replace(/(^|\.\s+)(Pas|Aucune?|Ni)\b[^.:]*:\s*/gi, '$1')
+    // phrases entièrement négatives ou méta (« Attention : ça ressemble…, mais ce n'en est pas une. »)
+    .split(/(?<=\.)\s+/)
+    .filter(ph => !/\b(pas|jamais|aucun|n'en est|n'existai|attention)\b/i.test(ph))
+    .join(' ')
+    .trim();
+}
+
 // SECTION PLANTE : identité + mesure réelle + forme des feuilles + reproduction. Chiffres toujours donnés.
 function sectionPlante(p) {
   const l = [];
   const per = (p.periodes || []).map(x => PERIODE_MOT[x] || x).join(' et ');
   l.push(`- ${p.name}${p.full && p.full !== p.name ? ` (${p.full})` : ''}, plante du ${per}.`);
   if (parseFloat(p.hauteur_m)) l.push(`- Taille réelle : ${nf(p.hauteur_m)} m de haut à l'âge adulte.`);
-  if (p.feuille) l.push(`- Feuillage : ${p.feuille}`);
-  if (p.graines) l.push(`- Reproduction : ${p.graines}`);
+  if (cleanNeg(p.feuille)) l.push(`- Feuillage : ${cleanNeg(p.feuille)}`);
+  if (cleanNeg(p.graines)) l.push(`- Reproduction : ${cleanNeg(p.graines)}`);
   l.push(`- Couleur : choisis librement des verts crédibles de plante vivante (vert profond, vert-bleuté, vert-olive, jeunes pousses plus claires), avec l'écorce et les tiges dans des bruns naturels. Rends-la belle et vivante comme une plante photographiée en pleine lumière.`);
   return l.join('\n');
 }
@@ -64,7 +80,7 @@ function sectionPlante(p) {
 function sectionDecor(p) {
   const per = (p.periodes || []).map(x => PERIODE_MOT[x] || x).join(' ou ');
   const l = [`DÉCOR (très important, soigne-le) :`];
-  l.push(`- ${p.environnement || `paysage naturel du ${per}`}`);
+  l.push(`- ${cleanNeg(p.environnement) || `paysage naturel du ${per}`}`);
   l.push(`- Autour d'elle, la végétation de son époque à différentes hauteurs (fougères, prêles, cycadées, conifères), un sol détaillé (terre, mousse, cailloux, feuilles tombées) et une petite faune discrète (insectes, libellules) pour rendre la scène vivante.`);
   return l.join('\n');
 }
@@ -100,7 +116,7 @@ function buildDetail(p) {
   return [ENTETE,
     `OBJECTIF : montrer de tout près à quoi ressemblent la feuille et la partie qui fait les graines de cette plante, pour qu'un enfant reconnaisse sa forme.`,
     `LA PLANTE :\n${sectionPlante(p)}`,
-    `SCÈNE : gros plan botanique sur un rameau vivant de la plante, tenu dans la lumière : on voit nettement la forme et la nervure des feuilles, et sur le même rameau la structure qui porte les graines (${p.graines || 'cône, spore ou fleur selon la plante'}). Quelques gouttes de rosée, un insecte discret posé à côté.`,
+    `SCÈNE : gros plan botanique sur un rameau vivant de la plante, tenu dans la lumière : on voit nettement la forme et la nervure des feuilles, et sur le même rameau la structure qui porte les graines (${cleanNeg(p.graines) || 'cône, spore ou fleur selon la plante'}). Quelques gouttes de rosée, un insecte discret posé à côté.`,
     `CAMÉRA : très gros plan net, faible profondeur de champ, arrière-plan de forêt préhistorique flou et doux.`,
     STYLE].join('\n\n');
 }

@@ -89,7 +89,7 @@
 
 ## Lane — Idées produit (basse priorité, jamais démarrées)
 
-- **EP-D13** [~] — Flore du Mésozoïque dans l'encyclopédie (idée PY 2026-09-06, **tranché PY le jour même** : sous chaque époque de l'onglet « Les époques », pas de 6ᵉ onglet). 6 axes par plante : environnement · qui la mangeait (dino existant) · taille vs enfant 1 m · forme feuille/fleur · graines/reproduction · truc fou. 19 plantes Trias/Jura/Crétacé. Handoffs HO-020 (contenu) · HO-021 (data+UI) · HO-022 (images) · HO-023 (i18n, à suivre). Audio EL des fiches plantes = ticket à ouvrir après (solde EL bloqué jusqu'au 2026-09-11).
+- **EP-D13** [~] — Flore du Mésozoïque dans l'encyclopédie (idée PY 2026-09-06, **tranché PY le jour même** : sous chaque époque de l'onglet « Les époques », pas de 6ᵉ onglet). 6 axes par plante : environnement · qui la mangeait (dino existant) · taille vs enfant 1 m · forme feuille/fleur · graines/reproduction · truc fou. 19 plantes Trias/Jura/Crétacé. HO-020 (contenu) FAIT · HO-021 (data+UI) FAIT · **HO-022 (images) BLOQUÉ** : profil Brave de debug sur le port 9223 et non logué à ChatGPT/Grok → Papa Yann doit se loguer dans ce profil, puis `node .claude/skills/dino-images-lunii/scripts/batch-plante-series.mjs --all` ; repli emoji en place en attendant. HO-023 (i18n) à suivre. Audio EL des fiches plantes = ticket à ouvrir après (solde EL bloqué jusqu'au 2026-09-11).
 
 - **EP-D02** [ ] — Audio des ~28 dinos sans recap (génération progressive vs TTS).
 - **EP-D03** [ ] — Visuels/illustrations des écrans d'époque du voyage (optionnel).

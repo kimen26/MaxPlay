@@ -1,6 +1,6 @@
 # HO-022 — Flore : images hero (plante dans son environnement + enfant 1 m)
 
-**Statut :** BLOQUE (attente action Papa Yann)
+**Statut :** 15/19 FAIT — 4 restantes (attente redemarrage Brave)
 **Depend de :** HO-020 (plantes.json : hauteur, environnement, feuille) · Brave debug 9222 logué ChatGPT/Grok (`launch-brave.ps1`).
 
 ## Objectif
@@ -48,3 +48,35 @@ attendu, sinon il rate le cas present (un autre Chrome/Brave sur 9222).
 
 En attendant, l'encyclopedie affiche l'**emoji de la plante** en repli : les fiches et la grille
 sont pleinement utilisables sans image.
+
+
+---
+
+## ✅ Reprise 2026-09-06 (apres login PY) — 15/19
+
+Les deux canaux etaient bien logues. **ChatGPT etait en limite d'images** (exit 5 des la
+premiere scene) → tout est passe par **Grok**, qui a produit **15 images** avant de lacher.
+
+**Rangees en PROD** : `site/img/dinos/plantes/<Id>.jpg`, 900 px, ~290 Ko piece, 4,3 Mo au total.
+Staging `_new-plantes/` vide aussitot (regle inbox). Conversion PNG→JPG par canvas headless
+(`scratchpad/range-plantes.mjs`) : pas de dependance image native ajoutee au repo.
+
+**Qualite verifiee visuellement** (Araucaria, Mousse, Nenuphar) : plante entiere, enfant a
+l'echelle reelle (accroupi pour les plantes basses), herbivore mangeur au second plan, zero
+texte incruste. La consigne d'echelle chiffree fait son travail.
+
+**4 manquantes** : `platane`, `palmier`, `herbe`, `wollemia` — les 4 derniers ids du lot.
+Grok a expire (TimeoutError) sur chacune, et **le pilotage CDP ne repond plus du tout**
+(`connectOverCDP` se connecte au websocket puis expire, Brave a ~4,6 Go de memoire).
+Le port 9222 repond encore et les 3 onglets sont sains : c'est le navigateur qui sature,
+pas le pipeline.
+
+**Reprise** : fermer et relancer Brave (profil `c:/tmp/brave-debug`), se reloguer si besoin, puis
+
+```bash
+node .claude/skills/dino-images-lunii/scripts/batch-plante-series.mjs platane palmier herbe wollemia --grok --only echelle
+node <scratchpad>/range-plantes.mjs
+```
+
+**Scene `detail`** (gros plan feuille/graines) : jamais lancee, aucune des 19. Le pipeline la
+sait faire (`--only detail`), c'est un lot a part entiere a passer quand un canal est frais.

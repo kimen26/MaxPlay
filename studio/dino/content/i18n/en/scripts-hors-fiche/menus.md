@@ -63,8 +63,7 @@
 
 > 4 accroches déjà en MP3 FR (`menu-accueil`, `menu-regime`, `menu-familles`, `menu-voyage`) + 2 nouvelles (époques, dico) jamais produites en FR — texte source = `T('menu_epoque_intro')` / `tts_fallback_dico`, adapté en dialogue accroche.
 
-### menu-accueil
-> ⚠️ AMBIGUÏTÉ DE SOURCE : `menu-accueil.mp3` existe côté FR (`site/audio/dinos/fr/menu-accueil.mp3`) mais aucun texte source FR n'est présent nulle part dans le repo (ni `MENU_FALLBACK`, ni scripts-audio, ni git history — cherché). Le mode `accueil` n'est même plus appelé par `setMode()` dans le code actuel (seuls regime/famille/periode/epoque/dico le sont). Probable orphelin d'une ancienne version du menu. NON ÉCRIT — voir rapport.
+> menu-accueil : retiré 2026-09-06 (MP3 FR orphelin, mode accueil inexistant, aucun texte source) — 149 clips.
 
 ### menu-regime
 **NARRATEUR H** [happily] : Dinosaurs didn't all eat the same thing! [curious] Meat-eaters ate meat. [pauses] Plant-eaters ate plants.

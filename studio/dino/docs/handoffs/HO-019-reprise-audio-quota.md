@@ -36,7 +36,8 @@ Toutes les commandes se lancent depuis la racine du repo, dans cet ordre, en vé
 3. EN hors fiches : `node studio/dino/content/scripts/audio/_gen-audio-i18n-sts.mjs --lang=en --hors-fiche --pour-de-vrai` (JSON déjà produits par `_md2json-hors-fiche.cjs en` ; sortie miroir `site/audio/dinos/en/<slug>.mp3`, ledger `content/i18n/fiches-audio/en-hors-fiche.json`).
 4. `node studio/dino/content/scripts/export/_gen-audio-manifest.cjs` puis Playwright `dev-dinos.html?lang=en` : chaque zone qui a un MP3 FR doit avoir son MP3 EN, sinon le repli TTS navigateur reste en place (pas de 404).
 5. `audio-verif` (skill globale) sur un échantillon de 5 fiches FR + 5 EN + 3 récits EN, rapport dans `docs/handoffs/rapports/HO-019-*.md`.
-6. Mettre à jour `memory/INVARIANTS.md` (audio complet FR 71/71, audio EN 71/71 + hors fiches), `memory/TODO.md` (fermer AUDIO-FR-35 et AUDIO-EN-INTEGRAL), commit + push.
+6. Lunii (LUNII-VOYAGE-12, ≈ 100 caractères) : 5 étiquettes NARRATRICE `menu-ep-{naissance-terre,vie-dans-eau,sortie-eau,reptiles-permien,grande-mort}.mp3` (texte = le label du JOURNEY, 2-4 mots, `_pad-tete.mjs`), puis `EPOQUES` à 12 dans `studio/lunii/scripts/build-voyage-pack.mjs`, 5 images `ep-<id>.png`, rebuild, `lunii-sync`.
+7. Mettre à jour `memory/INVARIANTS.md` (audio complet FR 71/71, audio EN 71/71 + hors fiches), `memory/TODO.md` (fermer AUDIO-FR-35 et AUDIO-EN-INTEGRAL), commit + push.
 
 ## Hors périmètre
 

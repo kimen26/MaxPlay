@@ -29,7 +29,7 @@ for (const file of files) {
     const [frPart, ...enParts] = sec.split(/^### EN\s*$/m);
     for (const [lang, body] of [['fr', frPart], ['en', enParts.join('\n')]]) {
       if (!body.trim() || (lang === 'en' && !enParts.length)) continue;
-      const errs = []; let chars = 0, n = 0, tritri = 0;
+      const errs = []; let chars = 0, charsTags = 0, n = 0, tritri = 0;
       for (const l of body.split('\n')) {
         if (l.startsWith('>') || !l.trim()) continue;
         const lm = l.match(/^\*\*([^*]+)\*\*\s*(.*?)\s*:\s*(.+)$/);
@@ -46,7 +46,7 @@ for (const file of files) {
         if (/\[[^\]]+\]\s*[,.;:!?]/.test(full)) errs.push(`${who} : tag suivi d'une ponctuation`);
         const seul = texte.replace(/\[[^\]]+\]\s*/g, '').trim();
         const milieu = (texte.match(/\[[^\]]+\]/g) || []).length;
-        chars += seul.length;
+        chars += seul.length; charsTags += full.length;
         if (who === 'NARRATRICE') {
           if (!tags.length) errs.push('Narratrice sans tag');
           else if (seul.length > 140 && tags.length < 3) errs.push(`Narratrice : ${seul.length} car. et ${tags.length} tags (min 3)`);
@@ -64,7 +64,10 @@ for (const file of files) {
         if (/tritri/i.test(seul)) tritri += (seul.match(/tritri/gi) || []).length;
       }
       if (!n) errs.push('aucune réplique parsée');
-      if (chars > 3000) errs.push(`${chars} caractères hors tags (> 3 000 : l'API coupe, découper)`);
+      // L-D-81 : l'API coupe (et facture) au-delà de ≈ 3 000 caractères TAGS COMPRIS. Entre 3 000 et 6 000 :
+      // générer en 2 parts avec scripts/audio/_gen-recit-split.mjs (averti, pas bloqué) ; au-delà : réécrire.
+      if (charsTags > 6000) errs.push(`${charsTags} caractères tags compris (> 6 000 : trop long même en 2 parts, réécrire)`);
+      else if (charsTags > 3000) console.log(`     ⚠ ${id} : ${charsTags} caractères tags compris (> 3 000) → générer en 2 parts (_gen-recit-split.mjs)`);
       if (tritri > 1 && !TRITRI_LIBRE.has(id)) errs.push(`Tritri ${tritri} mentions (max 1 hors Crétacé/Extinction)`);
       if (errs.length) { totalKo++; console.log(`KO  ${id} [${lang}] (${chars} car.)`); [...new Set(errs)].forEach(e => console.log('     ✖ ' + e)); }
       else { totalOk++; console.log(`OK  ${id} [${lang}] (${chars} car., ${n} répliques)`); }

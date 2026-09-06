@@ -12,7 +12,7 @@
 | EN — hors fiches : 5 accroches d'onglet, 11 familles, 4 régimes, 8 récits, 8 spéciaux, 5 périodes, 101 clips dico (scripts HO-018, JSON prêts) | 142 clips | 26 814 (mesuré) | ≈ 54 000 |
 | **Total** | | | **≈ 270 000** |
 
-Mise à jour 2026-09-05 (nuit) : les 12 récits FR du Voyage V2 (dont Grande Mort, Grande Extinction V2) et les 3 accroches d ères sont DÉJÀ générés ; le solde est tombé à ≈ 3,7 k. Le poste FR restant = les 35 fiches. Les récits EN (12) sont dans les 150 clips hors fiches.
+Mise à jour 2026-09-05 (nuit) : les 12 récits FR du Voyage V2 (dont Grande Mort, Grande Extinction V2) et les 3 accroches d ères sont DÉJÀ générés ; le solde est tombé à ≈ 3,7 k, puis à ≈ 0,4 k le 2026-09-06 (Grande Extinction V3 : un appel coupé facturé 2 064 + part 1 générée). Le poste FR restant = les 35 fiches + part 2 de la Grande Extinction. Les récits EN (12) sont dans les 150 clips hors fiches.
 
 Palier actuel : Creator, 173 048 caractères / mois, reset le **2026-09-11 à 03:15** (Europe/Paris). Solde au 2026-09-05 après les régénérations du jour : ≈ 15 000.
 Les scripts sont prêts : fiches 71 × 4 langues (porte 0 KO) et 142 clips EN hors fiches (HO-018, JSON dans `content/i18n/en/scripts-hors-fiche/json/`).
@@ -36,8 +36,9 @@ Toutes les commandes se lancent depuis la racine du repo, dans cet ordre, en vé
 3. EN hors fiches : `node studio/dino/content/scripts/audio/_gen-audio-i18n-sts.mjs --lang=en --hors-fiche --pour-de-vrai` (JSON déjà produits par `_md2json-hors-fiche.cjs en` ; sortie miroir `site/audio/dinos/en/<slug>.mp3`, ledger `content/i18n/fiches-audio/en-hors-fiche.json`).
 4. `node studio/dino/content/scripts/export/_gen-audio-manifest.cjs` puis Playwright `dev-dinos.html?lang=en` : chaque zone qui a un MP3 FR doit avoir son MP3 EN, sinon le repli TTS navigateur reste en place (pas de 404).
 5. `audio-verif` (skill globale) sur un échantillon de 5 fiches FR + 5 EN + 3 récits EN, rapport dans `docs/handoffs/rapports/HO-019-*.md`.
-6. Lunii (LUNII-VOYAGE-12, ≈ 100 caractères) : 5 étiquettes NARRATRICE `menu-ep-{naissance-terre,vie-dans-eau,sortie-eau,reptiles-permien,grande-mort}.mp3` (texte = le label du JOURNEY, 2-4 mots, `_pad-tete.mjs`), puis `EPOQUES` à 12 dans `studio/lunii/scripts/build-voyage-pack.mjs`, 5 images `ep-<id>.png`, rebuild, `lunii-sync`.
-7. Mettre à jour `memory/INVARIANTS.md` (audio complet FR 71/71, audio EN 71/71 + hors fiches), `memory/TODO.md` (fermer AUDIO-FR-35 et AUDIO-EN-INTEGRAL), commit + push.
+6. Grande Extinction V3 (RECIT-EXTINCTION-V3, ≈ 1 100 crédits) : `node studio/dino/content/scripts/audio/_gen-recit-split.mjs extinction --part=2` puis `--concat` (part 1 déjà dans `content/sources/recits/audio-wip/`), écoute du crescendo, commit du MP3.
+7. Lunii (LUNII-VOYAGE-12, ≈ 100 caractères) : 5 étiquettes NARRATRICE `menu-ep-{naissance-terre,vie-dans-eau,sortie-eau,reptiles-permien,grande-mort}.mp3` (texte = le label du JOURNEY, 2-4 mots, `_pad-tete.mjs`), puis `EPOQUES` à 12 dans `studio/lunii/scripts/build-voyage-pack.mjs`, 5 images `ep-<id>.png`, rebuild, `lunii-sync`.
+8. Mettre à jour `memory/INVARIANTS.md` (audio complet FR 71/71, audio EN 71/71 + hors fiches), `memory/TODO.md` (fermer AUDIO-FR-35 et AUDIO-EN-INTEGRAL), commit + push.
 
 ## Hors périmètre
 

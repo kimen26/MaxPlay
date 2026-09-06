@@ -10,11 +10,18 @@ totale), museau allongé garni de longues dents coniques, narines orientées ver
 QUATRE grandes nageoires en pagaie de taille comparable, courte queue effilée. Ce n'est PAS un
 plésiosaure à long cou.
 
-**ACTION** — Vue sous-marine en contre-plongée, l'animal remonte en diagonale vers la surface, mâchoires
-ouvertes, en train de saisir un gros poisson argenté (leptolepis) d'un banc qui se disperse en éventail.
-Bulles à la commissure des mâchoires, nageoires antérieures en pleine poussée vers le bas.
-Explicitement DIFFÉRENT de : Liopleurodon.jpg et Liopleurodon_ecosysteme.jpg, où l'animal est vu de
-profil gauche, à l'horizontale, juste sous la surface, sans proie.
+**ACTION** — Le fait est « on le croyait deux fois plus grand qu'il ne l'etait » : il s'illustre par
+une **echelle que l'oeil sait mesurer**, pas par un alignement d'animaux libres. Scene en **coupe
+eau / air pres d'un rivage**, vue **laterale stricte**, le Liopleurodon (7 m) nageant sous la
+surface au premier plan, **corps entier visible d'un bout a l'autre du cadre**. Sur le **ponton de
+bois** au-dessus de lui, **un enfant debout de profil, habille, calme**, regarde l'animal : la
+comparaison se fait entre l'enfant d'1 m et les 7 m du reptile, soit **sept fois lui**. Le ponton,
+ses planches et ses pilotis donnent une seconde graduation naturelle.
+**Aucun ichtyosaure, aucun banc de poissons alignes le long de son flanc** — c'est ce dispositif
+qui a echoue cinq fois, il se lit comme une nage en groupe et non comme une mesure.
+Aucune silhouette fantome geante, aucune surimpression translucide, aucun texte ni chiffre.
+Explicitement DIFFERENT des trois autres scenes marines du sujet (pas de profil gauche isole en
+pleine eau, pas de gueule ouverte sur une proie, pas de panorama de lagon).
 
 **DÉCOR** — Pleine eau d'une mer épicontinentale européenne du Jurassique, bleu-vert profond, rais de
 lumière descendants, quelques ammonites en suspension au loin. Pas de récif corallien moderne, pas de

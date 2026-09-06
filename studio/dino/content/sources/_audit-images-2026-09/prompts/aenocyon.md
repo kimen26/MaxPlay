@@ -9,17 +9,21 @@ palette douce, lisible par un enfant de 4 ans.
 
 **MORPHO** — Aenocyon dirus, **ce n'est PAS un loup gris** : c'est un canidé lourd, à part.
 Crâne **large et massif**, boîte crânienne haute avec une **crête sagittale marquée** sur le dessus
-du front. **Museau court et épais**, nettement plus court et plus large que celui d'un loup gris,
-au chanfrein presque droit. **Mâchoires très puissantes**, joues épaisses et musclées (muscles
+du front. **Museau de canidé, franchement allongé** — celui d'un loup, pas d'un chien à face
+plate : il avance nettement devant les yeux, sur environ la moitié de la longueur de la tête. Il est
+seulement **plus profond et plus large de mâchoire** que celui d'un loup gris. En AUCUN cas un museau
+court et retroussé de chow-chow, de husky, d'ours ou de molosse. **Mâchoires très puissantes**, joues épaisses et musclées (muscles
 temporaux visibles en volume sous la peau), **carnassières et canines fortes et larges**, pas
-d'aiguilles fines. **Oreilles courtes et arrondies**, plantées bas de chaque côté du crâne large —
-jamais les grandes oreilles triangulaires dressées du loup gris. Fourrure d'hiver épaisse formant
+d'aiguilles fines. **Oreilles triangulaires dressées mais courtes et à pointe émoussée**, plantées
+de chaque côté du crâne large — ni les longues oreilles pointues du loup gris, ni les petites
+oreilles rondes d'ours ou de spitz. Fourrure d'hiver épaisse formant
 une **collerette lourde sur les épaules et la gorge**. Robe **fauve-sable à roux**, pas de masque
 facial gris-et-blanc de loup de dessin animé : joues et gorge crème sales, dessus du museau plus
 sombre, œil ambre petit et enfoncé.
 Le défaut à corriger : la version actuelle est un portrait de loup gris ordinaire (museau long et
-étroit, masque gris/blanc net, mâchoire fine). **Il faut voir un animal plus lourd, plus large,
-plus « ours-canidé » qu'un loup.**
+étroit, masque gris/blanc net, mâchoire fine). **Il faut voir un loup plus lourd et plus large de
+crâne — un loup costaud, jamais un chien de race ni un ours.** La fourrure reste un pelage de loup
+sauvage, rêche et irrégulier, jamais la toison épaisse et moelleuse d'un chow-chow ou d'un samoyède.
 
 **ACTION** — Gros plan **tête et haut du poitrail, de trois quarts face, légère contre-plongée**,
 gueule fermée ou à peine entrouverte, l'animal regarde de côté, calme, souffle visible dans l'air

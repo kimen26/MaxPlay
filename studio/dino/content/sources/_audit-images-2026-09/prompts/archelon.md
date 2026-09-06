@@ -37,6 +37,14 @@ clair. Aucun texte, aucun logo lisible.
 **Fait à illustrer** : sa carapace n'était pas dure — c'était de la peau coriace, comme du cuir épais ;
 avec ses grandes nageoires, elle « volait » dans l'eau comme la tortue luth d'aujourd'hui.
 
+**MORPHO — POINT CRITIQUE, la carapace** : Archelon n'a **PAS de carapace de tortue marine
+moderne**. Aucune plaque, aucune écaille polygonale, aucun damier hexagonal, aucun bord dentelé,
+aucune surface bombée et lisse. Sa dossière est une **charpente de côtes osseuses rayonnantes
+recouverte de PEAU CORIACE**, exactement comme la **tortue luth** actuelle : surface **sombre, mate,
+souple**, parcourue de **longues arêtes longitudinales en relief** qui courent de l'avant vers
+l'arrière, avec des **creux de cuir entre elles**. Le bord de la dossière est **irrégulier et souple**,
+pas un cercle net. La peau du cou et des nageoires est grenue et sombre, sans motif d'écailles claires.
+
 **ACTION** — Plein cadre sous-marin en légère contre-plongée : l'Archélon en plein « vol » aquatique,
 les deux nageoires antérieures relevées au sommet du battement, corps incliné vers le haut, vu de
 trois-quarts avant. La texture de la dossière est le sujet : cuir sombre et mat, arêtes de côtes

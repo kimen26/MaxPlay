@@ -68,13 +68,23 @@ la viande tenue par le loup est sombre et nette, sans écoulement rouge.
 spitz (corps court, museau très court et arrondi, queue touffue relevée en panache sur le dos,
 pattes grêles). Il faut à la place :
 - **corps long et bas, poitrail large et profond**, dos droit et puissant ;
-- **grosse tête large**, museau **court mais épais et carré** (pas rond, pas de petit nez de
-  peluche), oreilles **courtes, arrondies, écartées** ;
+- **grosse tête large** portée sur un cou epais, avec un **MUSEAU DE LOUP FRANCHEMENT ALLONGE** :
+  il avance nettement devant les yeux, sur environ la moitie de la longueur de la tete, et se
+  termine en truffe large. Il est seulement **plus profond et plus large de machoire** que celui
+  d un loup gris. **Jamais un museau court, rond ou retrousse de chien a face plate** (spitz,
+  husky, chow-chow, samoyede) ;
+- oreilles **triangulaires et dressees**, courtes, a **pointe emoussee** — ni longues et effilees
+  comme chez le loup gris, ni petites et rondes comme chez un ours ou un spitz ;
 - **pattes épaisses et solides**, grosses pattes rondes ;
 - **queue droite et touffue, portée BASSE**, à peu près à l'horizontale ou pendante — jamais
   relevée en boucle au-dessus du dos ;
 - fourrure suggérée par des **mèches à l'encre** sur la nuque, la gorge et le poitrail
-  (collerette), pas par des hachures de remplissage.
+  (collerette), pas par des hachures de remplissage. Le pelage est celui d un **loup sauvage,
+  reche et irregulier**, jamais la toison epaisse et moelleuse d un chien de compagnie.
+
+**Reference** : la silhouette a viser est celle d un LOUP costaud — museau long, allure de
+predateur sauvage — simplement plus lourd de crane et de machoire. Si le dessin evoque un chien
+de race, il est faux.
 
 **ACTION** — Dessin au **trait noir sur fond blanc pur**, sans aucun aplat gris ni noir plein :
 l'animal **debout de profil, tête légèrement tournée vers le spectateur**, gueule fermée,

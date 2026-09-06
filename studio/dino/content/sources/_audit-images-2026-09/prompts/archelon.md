@@ -12,6 +12,8 @@ crochu. Longue queue conique.
 
 ## Archelon_ecosysteme.jpg
 
+**MORPHO — la carapace, point critique** : Archelon n'a **PAS de carapace de tortue marine moderne**. Aucune plaque, aucune ecaille polygonale, aucun damier hexagonal, aucun contour de plaque dessine sur le dos. Sa dossiere est une **charpente de cotes osseuses rayonnantes recouverte de PEAU CORIACE**, comme la **tortue luth** actuelle : surface **sombre, mate, souple**, parcourue de **longues aretes longitudinales en relief** de l'avant vers l'arriere, avec des **creux de cuir entre elles**. Bord de la dossiere **irregulier et souple**, pas un cercle net. Les nageoires sont couvertes de peau grenue sombre, sans motif d'ecailles claires.
+
 **ACTION** — L'Archélon est vu de DESSUS en plongée, remontant vers la surface qu'il vient crever :
 tête et bec émergent, les deux nageoires antérieures largement déployées à plat, on voit le dessus de
 la carapace et ses arêtes de côtes en pleine lumière. Explicitement DIFFÉRENT de Archelon_manger.jpg

@@ -195,7 +195,12 @@
   function longueurTxt(m) {
     if (m == null) return '?';
     var v = longueur(m);
-    return imperial() ? v + ' ' + T('unite_metres') : v + ' m';
+    // Separateur decimal LOCALISE, comme masseTxt. Aucun dino ne descend sous 1 m avec
+    // une decimale, mais les plantes si (herbe 0,4 m, mousse 0,05 m) : la concatenation
+    // brute affichait "0.4 m" a un enfant francophone.
+    var loc = global.Lang ? global.Lang.bcp47() : 'fr-FR';
+    var n = (typeof v === 'number') ? v.toLocaleString(loc) : v;
+    return imperial() ? n + ' ' + T('unite_metres') : n + ' m';
   }
   function masseTxt(t) {
     if (t == null) return '?';

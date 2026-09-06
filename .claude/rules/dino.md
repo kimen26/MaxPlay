@@ -45,7 +45,7 @@ paths:
 - 🔒 **Tritri** = running gag Wex (dino préféré). JAMAIS « Max », « doudou », « peluche ». **Dans une fiche : 1 mention max** (2 pour le Tricératops), le dino de la fiche reste le centre (L-D-75, mesuré par la porte des scripts).
 - 🔒 **Encyclopédie = vrai** : vrais noms + vraies dates. Terme savant nouveau → expliqué (« ptérosaure » → « reptile volant comme le Ptéranodon »).
 - 🔒 **Échelle honnête** : aucune comparaison qui ment > 10 %. **Bus interdit dans les récits narrés** (OK en échelle de taille des fiches).
-- 🔒 **4 onglets** : Familles (défaut, titres = noms scientifiques) · Ce qu'il mange (régimes alimentaires) · Le voyage (8 récits, avancement reset session) · **Le dico** (racines grec/latin, source `js/dinos-racines.js` généré). [4ᵉ onglet ajouté 2026-06-08]
+- 🔒 **5 onglets** : Familles (défaut, titres = noms scientifiques) · Ce qu'il mange (régimes alimentaires) · Le voyage (8 récits, avancement reset session) · **Les époques** (tri par période + la FLORE de l'époque, `DINO_PLANTES`) · **Le dico** (racines grec/latin, source `js/dinos-racines.js` généré). Liste faisant foi : `studio/dino/figees/encyclopedie.md` § 5 onglets.
 - 🔒 **Audio** : « écoute » jamais « regarde » · Wex FR standard sans tic écrit · accroche menu 2-7 s · narrateur_h (menus) / narrateur_f (voyage) · eleven_v3 stability 0,4 · loudnorm.
 - 🔒 **AVANT toute génération audio** : `grep -niE "max|doudou|peluche|bus" <texte>` → match (hors échelle) = STOP.
 

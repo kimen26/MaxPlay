@@ -51,7 +51,7 @@
 
 ## 🦕 Le produit
 
-Encyclopédie dino pour Max (4 ans), 4 onglets (Familles · Ce qu'il mange · Le voyage · Le dico). Détail : [`INDEX.md`](INDEX.md) + [`memory/INVARIANTS.md`](memory/INVARIANTS.md).
+Encyclopédie dino pour Max (4 ans), 5 onglets (Familles · Ce qu'il mange · Le voyage · Les époques · Le dico). L'onglet Les époques porte aussi la **flore** de chaque période (`site/js/dinos-plantes.js`, généré depuis `content/sources/flore/plantes.json`). Détail : [`INDEX.md`](INDEX.md) + [`memory/INVARIANTS.md`](memory/INVARIANTS.md).
 
 ## 🔊 Audio (PROCESS MILITAIRE)
 

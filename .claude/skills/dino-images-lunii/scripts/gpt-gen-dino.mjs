@@ -14,7 +14,8 @@
 //
 // Usage: node gpt-gen-dino.mjs "<prompt>" <out.png> [--url <gpts-url>] [--new] [--ref <image>]
 import pw from 'file:///C:/ProjetsPerso/Claude_Projects/MaxPlay/studio/minijeux/tests/node_modules/playwright/index.js';
-import { writeFileSync, existsSync } from 'node:fs';
+import { writeFileSync, existsSync, readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 const { chromium } = pw;
 
 const PROMPT = process.argv[2];
@@ -36,6 +37,9 @@ if (REF && !existsSync(REF)) {
 // Port pilotable par CDP_PORT : deux navigateurs distincts permettent de faire
 // tourner ChatGPT et Grok en parallele sans qu ils se volent l onglet actif.
 const CDP = 'http://127.0.0.1:' + (process.env.CDP_PORT || '9222');
+// Empreinte de la reference : l image jointe apparait sous le meme selecteur que
+// les images generees, il faut pouvoir la reconnaitre pour ne pas la re-telecharger.
+const REF_SUM = REF ? createHash('md5').update(readFileSync(REF)).digest('hex') : null;
 const ESTUARY = 'img[src*="backend-api/estuary/content"]';
 const BLOCK_RE = /enfreindre nos règles|illustrations acceptables|violate our|content policy|n'avons pas pu générer|impossible de générer cette image/i;
 const LIMIT_RE = /limite de génération|limite de créations d'images|plus de crédit|réessayez plus tard|try again later|usage cap|rate limit|vous avez atteint|image generation limit|reached your limit|hit the Plus plan limit|limit resets in|passez à une offre supérieure|passer à chatgpt pro/i;
@@ -141,8 +145,21 @@ while (Date.now() - start < 220000) {
   if (fresh) {
     await page.waitForTimeout(3000); // laisser finir le rendu HD
     const cur2 = await page.locator(ESTUARY).evaluateAll(els => els.map(e => e.getAttribute('src')));
-    url = cur2.find(u => u && !beforeUrls.includes(u)) || fresh;
-    break;
+    const cand = cur2.filter(u => u && !beforeUrls.includes(u));
+    // Ecarter la reference : meme selecteur, absente de beforeUrls, donc prise a tort
+    // pour l image generee (elle revenait telle quelle, checksum identique).
+    let retenue = null;
+    for (const u of cand.reverse()) {
+      const octets = await page.evaluate(async (x) =>
+        Array.from(new Uint8Array(await (await fetch(x)).arrayBuffer())), u).catch(() => null);
+      if (!octets) continue;
+      const buf = Buffer.from(octets);
+      if (REF_SUM && createHash('md5').update(buf).digest('hex') === REF_SUM) continue;
+      retenue = { url: u, buf };
+      break;
+    }
+    if (retenue) { url = retenue.url; global.__buf = retenue.buf; break; }
+    // seule la reference est apparue : on continue d attendre l image generee
   }
   await page.waitForTimeout(2000);
   process.stdout.write('.');
@@ -154,8 +171,8 @@ if (!url) {
   await browser.close(); process.exit(3);
 }
 
-const buf = await page.evaluate(async (u) =>
-  Array.from(new Uint8Array(await (await fetch(u)).arrayBuffer())), url);
-writeFileSync(OUT, Buffer.from(buf));
+const buf = global.__buf || Buffer.from(await page.evaluate(async (u) =>
+  Array.from(new Uint8Array(await (await fetch(u)).arrayBuffer())), url));
+writeFileSync(OUT, buf);
 console.log('✓ →', OUT, `(${buf.length} o)`);
 await browser.close();

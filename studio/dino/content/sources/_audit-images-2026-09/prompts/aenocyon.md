@@ -48,16 +48,9 @@ retroussée en rictus agressif, aucune gueule ensanglantée.
 poitrail large, pattes robustes et relativement courtes, fourrure épaisse fauve-sable, oreilles
 courtes arrondies. Silhouette plus trapue et plus musclée qu'un loup gris.
 
-**ACTION** — Le régime doit être **identifiable au premier coup d'œil** : la carcasse doit être une
-vraie carcasse lisible, pas une tache brune. Un Loup terrible **au premier plan, de trois quarts
-face, tête levée**, tenant en travers de la gueule **un gros morceau de viande sombre bien net**
-arraché à la carcasse d'un cheval sauvage couché derrière lui — le cheval doit être reconnaissable
-comme un cheval (tête, encolure, sabots, robe baie). Un deuxième loup, en retrait, la tête basse
-sur la carcasse. Neige piétinée autour.
-Se démarquer explicitement de : l'actuel `_manger` (deux loups debout de profil, museau au sol,
-proie indistincte) ; de `Aenocyon_ecosysteme.jpg` (plan large avec chevaux et bisons AU LOIN, aucun
-contact) ; de `Aenocyon.jpg` et `Aenocyon_funfact.jpg` (profils gauche debout, sans nourriture).
-**Le point clé : la nourriture au centre du cadre, tenue dans la gueule.**
+**ACTION** — **Scene de CHASSE, pas de repas sur une carcasse.** La meute (trois Aenocyon) **poursuit un jeune cheval sauvage bien VIVANT** dans la steppe enneigee : le cheval galope vers la gauche, encolure tendue, criniere au vent, **totalement indemne** ; le loup de tete est a sa hauteur, **gueule ouverte tendue vers le flanc sans le toucher encore**, pattes en pleine extension, neige projetee sous les foulees. Deux autres loups suivent en arriere-plan. Vue laterale, mouvement lisible de gauche a droite. L image raconte **l instant d avant la capture**, jamais l apres.
+
+**PROIE INTACTE — regle absolue de la collection** : la proie doit etre montree **entiere et non entamee**, saisie dans les machoires ou tenue sous une patte, comme un rapace qui vient de capturer. **Aucune plaie ouverte, aucune chair rouge visible, aucun lambeau pendant de la gueule, aucun sang, aucun os denude, aucun ventre ouvert.** La peau de la proie reste fermee et intacte partout. Ce qui raconte le repas, c'est la PRISE (machoires refermees sur la proie, posture de capture), jamais la blessure.
 
 **DÉCOR** — Âge de glace, Amérique du Nord, il y a 50 000 ans : steppe froide, plaques de neige
 et herbes sèches jaunes, collines basses enneigées au fond, ciel couvert. Pas d'arbre moderne

@@ -13,13 +13,9 @@ osseuses orangées au-dessus des yeux**, dents fines et dentelées, plus courtes
 **Bras courts à 2 doigts griffus**. Cou en S, corps horizontal, **queue tenue haute et effilée**,
 pattes arrière longues et fines à 3 doigts. Peau écailleuse mouchetée fauve et brun sombre.
 
-**ACTION** — Il **mange en meute** : deux Albertosaures autour de la carcasse d'un hadrosaure,
-celui du premier plan campé sur ses pattes, une griffe posée sur le flanc de la proie, tête levée
-avec un morceau tenu dans la gueule, le second qui approche en arrière-plan.
-La carcasse est entière et couverte de peau, couchée sur le flanc.
-Éviter explicitement : boire à la mare, museau dans l'eau, encolure pliée (c'est la version actuelle
-**et** la pose de `Albertosaurus_ecosysteme.jpg`) ; le profil marchant vers la gauche avec un enfant
-(hero) ; le grand rassemblement au bord du lac (`_funfact`) ; le portrait de tête (`_headshot`).
+**ACTION** — **Scene de CHASSE en meute, proie vivante.** Deux Albertosaures **encadrent un jeune hadrosaure VIVANT et indemne** qui detale entre eux, tete haute et bouche ouverte de panique, **debout sur ses pattes, en pleine course**. L Albertosaure du premier plan est lance a sa poursuite, **gueule ouverte, machoires vides**, corps a l horizontale, queue tendue en balancier ; le second coupe la trajectoire au fond. Poussiere soulevee. **Aucun animal a terre, aucune morsure en cours** : c est la traque.
+
+**PROIE INTACTE — regle absolue de la collection** : la proie doit etre montree **entiere et non entamee**, saisie dans les machoires ou tenue sous une patte, comme un rapace qui vient de capturer. **Aucune plaie ouverte, aucune chair rouge visible, aucun lambeau pendant de la gueule, aucun sang, aucun os denude, aucun ventre ouvert.** La peau de la proie reste fermee et intacte partout. Ce qui raconte le repas, c'est la PRISE (machoires refermees sur la proie, posture de capture), jamais la blessure.
 
 **DÉCOR** — Crétacé supérieur, Canada (Alberta, formation Horseshoe Canyon), il y a
 70 millions d'années : plaine côtière boisée, conifères type métaséquoias, fougères, prêles,

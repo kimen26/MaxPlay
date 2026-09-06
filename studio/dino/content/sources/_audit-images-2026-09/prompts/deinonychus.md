@@ -13,11 +13,9 @@ duvet brun-fauve barré de blanc sur tout le corps, longues rémiges sur les ava
 plumes en bout de queue raide. Museau allongé, dents recourbées. **Griffe en faucille de 13 cm au
 2e orteil, relevée hors du sol** à chaque pied — elle doit être bien visible.
 
-**ACTION** — Le Deinonychus est **campé sur une patte, l'autre pied posé sur un jeune Iguanodontidé
-abattu au sol**, tête baissée, tirant une bouchée de chair (aucun sang, aucun viscère : la proie est
-intacte, simplement immobile sous la patte). Ailes légèrement écartées pour l'équilibre.
-*Évite explicitement* : le profil marchant du hero, la tête plongée dans l'eau, la posture de profil
-statique du funfact actuel.
+**ACTION** — **Capture au sol d une petite proie, portee dans la gueule.** Le Deinonychus est **debout sur ses deux pattes**, redresse, et tient **un petit mammifere ou un lezard ENTIER et INTACT dans ses machoires**, la proie pendant en travers du bec, **corps complet et peau fermee**. Une main griffue relevee, plumes des bras ecartees en equilibre, **griffe en faucille du deuxieme orteil bien relevee et visible**. Vue de trois quarts. **Aucun grand animal a terre dans le cadre, aucune chair visible.**
+
+**PROIE INTACTE — regle absolue de la collection** : la proie doit etre montree **entiere et non entamee**, saisie dans les machoires ou tenue sous une patte, comme un rapace qui vient de capturer. **Aucune plaie ouverte, aucune chair rouge visible, aucun lambeau pendant de la gueule, aucun sang, aucun os denude, aucun ventre ouvert.** La peau de la proie reste fermee et intacte partout. Ce qui raconte le repas, c'est la PRISE (machoires refermees sur la proie, posture de capture), jamais la blessure.
 
 **DÉCOR** — Crétacé inférieur, il y a 115 millions d'années, Amérique du Nord (formation de Cloverly) :
 plaine boisée de conifères et de séquoias, fougères arborescentes, prêles au bord d'un cours d'eau.

@@ -29,6 +29,8 @@ poisson, ossements d'Iguanodon sur la berge à droite).
 **Interdiction absolue du profil gauche museau-vers-l'eau : les quatre scènes actuelles sont
 la même. On veut un trois quarts face, dans l'eau, tête levée.**
 
+**PROIE INTACTE — regle absolue de la collection** : la proie doit etre montree **entiere et non entamee**, saisie dans les machoires ou tenue sous une patte, comme un rapace qui vient de capturer. **Aucune plaie ouverte, aucune chair rouge visible, aucun lambeau pendant de la gueule, aucun sang, aucun os denude, aucun ventre ouvert.** La peau de la proie reste fermee et intacte partout. Ce qui raconte le repas, c'est la PRISE (machoires refermees sur la proie, posture de capture), jamais la blessure.
+
 **DÉCOR** — Crétacé inférieur, Europe (Angleterre / Wealden), il y a 125 millions d'années :
 rivière lente à bancs de gravier, berges de fougères, prêles, cycas, conifères et araucarias en
 arrière-plan. Ciel clair. Pas de graminées modernes, pas de fleurs de jardin.

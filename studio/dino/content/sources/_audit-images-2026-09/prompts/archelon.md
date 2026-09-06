@@ -23,6 +23,8 @@ du cadre. Pas de coraux durs modernes, pas de palmiers, pas de cactus.
 
 ## Archelon_paris.jpg
 
+**MORPHO — la carapace, point critique** : Archelon n'a **PAS de carapace de tortue marine moderne**. Aucune plaque, aucune ecaille polygonale, aucun damier hexagonal, aucune surface bombee et lisse. Sa dossiere est une **charpente de cotes osseuses rayonnantes recouverte de PEAU CORIACE**, comme la **tortue luth** actuelle : surface **sombre, mate, souple**, parcourue de **longues aretes longitudinales en relief** de l'avant vers l'arriere, avec des **creux de cuir entre elles**. Bord de la dossiere **irregulier et souple**, pas un cercle net. Bec crochu marque, quatre nageoires en pagaie.
+
 **ACTION** — Comparaison d'échelle honnête en ville : l'Archélon posé au milieu d'une rue parisienne
 haussmannienne mouillée, vu de trois-quarts avant, à côté d'un bus urbain vert et blanc à l'arrêt. Ses
 4 m de long font environ un tiers de la longueur du bus, ses nageoires déployées touchent presque les

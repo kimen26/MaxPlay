@@ -33,6 +33,7 @@ Tarbosaure au loin) ; `Therizinosaurus_headshot.jpg` (portrait).
 Donc : **l'animal est ASSIS/ACCROUPI, pas debout de profil ; la branche est TENUE ET COURBÉE,
 pas effleurée ; il y a du feuillage DANS le bec.**
 
+
 **DÉCOR** — Crétacé supérieur, Mongolie (formation de Nemegt), il y a 70 millions d'années :
 **forêt-galerie humide le long d'une rivière** — grands conifères, ginkgos, fougères arborescentes,
 prêles au sol, flaques et bancs de sable. Aucune graminée moderne, aucune fleur de jardin.

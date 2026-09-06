@@ -14,13 +14,9 @@ haut que celui du T-Rex**, museau profond, crêtes rugueuses au-dessus des yeux,
 Corps horizontal, **queue tenue haute**, pattes arrière massives à 3 doigts d'appui.
 Peau écailleuse fauve et grise, pas de plumage.
 
-**ACTION** — Il **mange** : debout, une patte posée sur la carcasse d'un grand herbivore asiatique
-(hadrosaure type Saurolophus), tête baissée qui arrache une bouchée, encolure tendue vers l'arrière
-dans le mouvement, corps de trois quarts arrière par rapport au spectateur.
-La carcasse est entière, couchée sur le flanc, couverte de peau.
-Éviter explicitement : boire la tête dans l'eau du ruisseau (la version actuelle) ; le profil
-marchant vers la gauche avec un enfant (hero `Tarbosaurus.jpg`) ; le désert de dunes vide
-(`_ecosysteme`) ; le portrait de tête (`_headshot`).
+**ACTION** — **Poursuite, proie vivante.** Le Tarbosaure charge **un troupeau de saurolophes VIVANTS et indemnes** qui se disperse devant lui : l un d eux, au premier plan, court vers la droite **debout sur ses pattes**, tete tournee en arriere. Le Tarbosaure est **lance en pleine foulee, corps a l horizontale, gueule ouverte machoires VIDES**, queue tendue. Poussiere de la plaine mongole soulevee par les deux animaux. **Aucun animal a terre, aucune morsure en cours.**
+
+**PROIE INTACTE — regle absolue de la collection** : la proie doit etre montree **entiere et non entamee**, saisie dans les machoires ou tenue sous une patte, comme un rapace qui vient de capturer. **Aucune plaie ouverte, aucune chair rouge visible, aucun lambeau pendant de la gueule, aucun sang, aucun os denude, aucun ventre ouvert.** La peau de la proie reste fermee et intacte partout. Ce qui raconte le repas, c'est la PRISE (machoires refermees sur la proie, posture de capture), jamais la blessure.
 
 **DÉCOR** — Crétacé supérieur, Asie / Mongolie (formation Nemegt, désert de Gobi), il y a
 70 millions d'années : plaine semi-aride, méandre de rivière bordé d'une frange verte, dunes et

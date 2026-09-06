@@ -13,13 +13,9 @@ Dents **plates, triangulaires, dentelées comme une scie** — des lames de requ
 Cou musclé, corps massif mais élancé, **bras courts à 3 doigts griffus**, longue queue tenue haute,
 pattes arrière puissantes. Peau écailleuse, teintes fauve et gris de savane.
 
-**ACTION** — Il **mange vraiment** : accroupi sur ses pattes arrière, une patte posée sur la carcasse
-d'un grand herbivore africain (sauropode type Paralititan), tête basse en train de **découper une
-tranche de chair** d'un mouvement de recul de la mâchoire — la dentelure des dents en action.
-La carcasse est vue de dos, entière et couverte de peau, aucune ouverture visible.
-Éviter explicitement : rester simplement debout gueule ouverte au bord d'une mare (la version
-actuelle) ; le profil marchant vers la gauche avec un enfant (hero) ; le panorama de fleuve avec
-Spinosaure (`_ecosysteme`) ; le portrait de tête (`_headshot`).
+**ACTION** — **Capture debout, proie entiere dans les machoires.** Le Carcharodontosaure est **debout, tete haute**, et tient **en travers de ses machoires un jeune iguanodontien ENTIER et INTACT**, saisi par le milieu du corps comme un heron tient un poisson : la proie est **suspendue au-dessus du sol**, silhouette complete et lisible, **peau fermee, aucune plaie**. Vue laterale legere contre-plongee, le crane long et les dents en lame de couteau bien visibles. **Rien au sol, aucun animal couche dans le cadre.**
+
+**PROIE INTACTE — regle absolue de la collection** : la proie doit etre montree **entiere et non entamee**, saisie dans les machoires ou tenue sous une patte, comme un rapace qui vient de capturer. **Aucune plaie ouverte, aucune chair rouge visible, aucun lambeau pendant de la gueule, aucun sang, aucun os denude, aucun ventre ouvert.** La peau de la proie reste fermee et intacte partout. Ce qui raconte le repas, c'est la PRISE (machoires refermees sur la proie, posture de capture), jamais la blessure.
 
 **DÉCOR** — Crétacé, Afrique du Nord (Sahara, formation Kem Kem), il y a 95 millions d'années :
 plaine chaude et sèche, bancs de sable, prêles, fougères, palmiers-fougères, araucarias épars,

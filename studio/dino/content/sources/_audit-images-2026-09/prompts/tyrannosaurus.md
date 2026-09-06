@@ -14,13 +14,7 @@ Cou en S épais, corps horizontal, **queue tenue haute, jamais traînante au sol
 Pattes arrière massives à 3 doigts d'appui + ergot. Peau écailleuse fine, quelques soies éparses
 possibles sur le dos et la nuque, jamais de plumage complet.
 
-**ACTION** — Gueule grande ouverte vue **de trois quarts avant, tête en gros plan de côté au tiers
-supérieur du cadre**, le corps s'éloignant en raccourci : on doit voir l'intérieur de la gueule et
-la longueur des dents, une dent isolée bien nette au premier plan.
-Éviter explicitement : le profil intégral marchant vers la gauche avec un enfant au sol
-(c'est le hero `Tyrannosaurus.jpg`) ; l'encolure pliée sur une carcasse (`_manger`) ;
-le panorama large avec d'autres dinosaures (`_ecosysteme`) ; le portrait bouche entrouverte
-statique (`_headshot`).
+**ACTION** — Le fait a illustrer tient a la **force de morsure**, montree **sans aucune proie blessee** : le Tyrannosaure est **debout de trois quarts face, gueule grande ouverte**, et **broie un gros tronc d arbre mort** tombe en travers de ses machoires — le bois eclate en echardes, des copeaux volent. Contre-plongee pour lire la hauteur du crane et l epaisseur des dents en bananes. **Aucun animal dans le cadre, ni vivant ni mort, aucune chair, aucun sang.**
 
 **DÉCOR** — Crétacé supérieur, Amérique du Nord (Hell Creek), il y a 66 millions d'années :
 conifères type séquoias et araucarias, fougères, magnolias primitifs, cycas.

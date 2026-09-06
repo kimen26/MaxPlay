@@ -14,12 +14,9 @@ ventre crème, longues rémeges noir et blanc sur les avant-bras, éventail caud
 Museau haut, grosses dents recourbées. **Griffe en faucille énorme, 24 cm, au 2e orteil de chaque pied**,
 relevée hors du sol.
 
-**ACTION** — L'Utahraptor est **arrêté, une patte posée sur la croupe d'un grand herbivore abattu**
-(iguanodontidé adulte, corps intact, pas de plaie visible), tête baissée en train d'arracher une bouchée,
-ailes déployées en couverture au-dessus de la carcasse (posture de « mantling » des rapaces actuels).
-Vue de trois quarts avant, pas de profil pur.
-*Évite explicitement* : le profil vers la gauche du hero, la station dans le ruisseau, la posture debout
-statique du funfact actuel.
+**ACTION** — **Capture d une proie de sa taille, saisie et entiere.** L Utahraptor est **debout, dresse sur ses deux pattes**, et **maintient contre lui un jeune iguanodontien VIVANT et INTACT** avec ses deux mains griffues, la proie **debout elle aussi, se debattant**, cou tendu, **peau fermee, sans une seule blessure**. Les ailes emplumees de l Utahraptor sont deployees en couverture autour de la scene (posture de mantling des rapaces actuels), **griffe en faucille de 24 cm bien visible sur le pied**. **Rien au sol, aucune chair, aucun sang.**
+
+**PROIE INTACTE — regle absolue de la collection** : la proie doit etre montree **entiere et non entamee**, saisie dans les machoires ou tenue sous une patte, comme un rapace qui vient de capturer. **Aucune plaie ouverte, aucune chair rouge visible, aucun lambeau pendant de la gueule, aucun sang, aucun os denude, aucun ventre ouvert.** La peau de la proie reste fermee et intacte partout. Ce qui raconte le repas, c'est la PRISE (machoires refermees sur la proie, posture de capture), jamais la blessure.
 
 **DÉCOR** — Crétacé inférieur, il y a 126 millions d'années, Amérique du Nord (Utah, formation de Cedar
 Mountain) : plaine semi-aride à ravines, bosquets de conifères, cycas, fougères, sol sablonneux ocre.

@@ -10,6 +10,8 @@ Interdits communs : aucun texte incruste, aucun watermark, aucun humain, aucun s
 **ACTION** — Le Ceratosaure vient d attraper un gros poisson jurassique argente : le poisson est **serre en travers des machoires ouvertes**, encore frétillant, quelques gouttes d eau projetees. L animal releve la tete et le buste, une patte encore dans la vase de la berge. Vue de trois quarts avant, l observateur legerement en contrebas.
 *Explicitement different de :* le hero (profil strict debout en foret), l ecosysteme (debout dans la riviere tete baissee), le funfact (profil en clairiere). Ici on veut une tete relevee, de trois quarts, avec la proie visible.
 
+**PROIE INTACTE — regle absolue de la collection** : la proie doit etre montree **entiere et non entamee**, saisie dans les machoires ou tenue sous une patte, comme un rapace qui vient de capturer. **Aucune plaie ouverte, aucune chair rouge visible, aucun lambeau pendant de la gueule, aucun sang, aucun os denude, aucun ventre ouvert.** La peau de la proie reste fermee et intacte partout. Ce qui raconte le repas, c'est la PRISE (machoires refermees sur la proie, posture de capture), jamais la blessure.
+
 **DECOR** — Berge boueuse d une riviere jurassique d Amerique du Nord, il y a 150 millions d annees. Fougeres arborescentes, prêles hautes, cycas, conifères type araucaria a l arriere plan. Aucune fleur, aucune herbe de gazon, aucun cactus, aucun mammifere.
 
 **INTERDITS** — pas de texte, pas de watermark, pas d humain, pas de sang ni de chair dechiree ; le poisson est intact dans la gueule.
@@ -20,6 +22,8 @@ Interdits communs : aucun texte incruste, aucun watermark, aucun humain, aucun s
 
 **ACTION** — Le Ceratosaure est **petit dans le cadre**, vu de loin et de dos-trois quarts, en train de traverser une clairiere en marchant vers le fond de l image. Le sujet du plan est le milieu, pas l animal : on doit voir la profondeur du paysage jurassique autour de lui.
 *Explicitement different de :* le _manger (gros plan de trois quarts avec proie), le hero (profil rapproche avec enfant), le funfact (profil en clairiere ensoleillee). Ici : plan tres large, animal a distance, dos tourne.
+
+**PROIE INTACTE — regle absolue de la collection** : la proie doit etre montree **entiere et non entamee**, saisie dans les machoires ou tenue sous une patte, comme un rapace qui vient de capturer. **Aucune plaie ouverte, aucune chair rouge visible, aucun lambeau pendant de la gueule, aucun sang, aucun os denude, aucun ventre ouvert.** La peau de la proie reste fermee et intacte partout. Ce qui raconte le repas, c'est la PRISE (machoires refermees sur la proie, posture de capture), jamais la blessure.
 
 **DECOR** — Plaine alluviale du Jurassique superieur d Amerique du Nord (formation Morrison). Meandres, bancs de sable, bosquets de conifères et de ginkgos, fougeres arborescentes, prêles. Au loin un troupeau de sauropodes, un stegosaure a l ecart, des ptérosaures dans le ciel. Lumiere de fin de matinee, ciel degage. Aucune plante a fleurs, aucun cactus, aucun mammifere moderne.
 

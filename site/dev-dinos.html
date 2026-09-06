@@ -159,7 +159,9 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 .card-bar { position:absolute; bottom:0; left:0; right:0; height:4px; }
 
 /* ── Plantes (HO-021) : vignettes en vraie couleur, pas de silhouette -> pas d'invert (contrairement a .dino-thumb img) ── */
-.plante-thumb img { width:100%; height:100%; object-fit:contain; padding:8px; box-sizing:border-box; filter:drop-shadow(0 1px 3px rgba(0,0,0,.4)); }
+/* `cover` sans padding : une PHOTO doit remplir le disque. `contain`+padding (herité de
+   .dino-thumb, taillé pour des silhouettes détourées) laissait un carré dans le rond. */
+.plante-thumb img { width:100%; height:100%; object-fit:cover; padding:0; border-radius:50%; filter:none; }
 .plante-thumb-emoji, .plante-hero-emoji { font-size:2.2rem; }
 .plante-hero-emoji { display:flex; align-items:center; justify-content:center; width:100%; height:100%; }
 .plante-mangeurs { display:flex; flex-wrap:wrap; gap:10px; margin-top:6px; }
@@ -316,6 +318,11 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
    Reste raisonnable (pas plein écran) pour laisser voir le nom tout de suite sous la photo. */
 .v1-hero { position:relative; height:min(46vh, 320px); min-height:220px; margin:12px 12px 0; border-radius:var(--r-card); overflow:hidden; display:flex; align-items:center; justify-content:center; }
 .v1-hero-img { max-height:100%; max-width:88%; object-fit:contain; filter:drop-shadow(0 6px 14px rgba(0,0,0,0.55)); cursor:pointer; }
+/* Les images de plantes sont VERTICALES (c'est le sujet : la hauteur). Le hero partage
+   .v1-hero-img avec les fiches dino, calibre pour des scenes horizontales (max-width 88 %,
+   contain) -> deux bandes vertes sur les cotes. Ici on remplit le bandeau et on cadre haut,
+   on cadre BAS : c'est la qu'est l'enfant, le metre-etalon de la scene. */
+.plante-hero-img { max-width:100%; width:100%; height:100%; object-fit:cover; object-position:center 72%; filter:none; }
 .v1-hero-nm { position:absolute; left:16px; bottom:12px; text-shadow:0 2px 8px rgba(0,0,0,0.7); pointer-events:none; }
 .v1-hero-nm b { display:block; font-family:'Fredoka One',cursive; font-weight:400; font-size:1.7rem; line-height:1.1; }
 .v1-alias { display:block; font-size:0.74rem; color:#ffe0a0; font-weight:700; }
@@ -1238,7 +1245,7 @@ function buildFichePlante(p) {
   scroll.innerHTML = `
     <!-- BLOC 1 — Hero : image + repli emoji (pas d'ombre dispo pour une plante) -->
     <div class="v1-hero" id="v1-hero" style="background:linear-gradient(135deg,#2e7d32,#2e7d3255)">
-      <img class="v1-hero-img" src="img/dinos/plantes/${p.png}" alt="${p.name}"
+      <img class="v1-hero-img plante-hero-img" src="img/dinos/plantes/${p.png}" alt="${p.name}"
            onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex'">
       <span class="plante-hero-emoji" style="display:none">${p.emoji}</span>
       <div class="v1-hero-nm">

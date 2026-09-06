@@ -1,15 +1,40 @@
-# Prompts de regeneration — Diplodocus (1 image recalee)
+# Prompts de régénération — Diplodocus
 
-Style : paleoart realiste, lumiere naturelle, lisible pour un enfant de 4 ans.
-Interdits communs : aucun texte incruste, aucun watermark, aucun humain, aucun sang ni gore.
+Style visé : paléoart réaliste, lumière naturelle de jour, palette douce, lisible par un enfant
+de 4 ans.
 
-## Diplodocus_manger.jpg — RECALE (CONTENU : rien a manger dans le cadre ; en plus clone du hero)
+---
 
-**MORPHO** — Sauropode de 26 m de long mais seulement 4,5 m de haut, 12 tonnes : silhouette **tres longue et basse**, jamais dressee a la verticale. Cou long tenu proche de l'horizontale, tete petite et allongee, **narines placees haut sur le crane**, dents en crayon groupees uniquement a l'avant de la bouche. Queue en fouet extremement longue et effilee, portee au-dessus du sol. Pattes avant legerement plus courtes que les arriere.
+## Diplodocus_manger.jpg
 
-**ACTION** — Le Diplodocus **ratisse la vegetation basse** : cou baisse jusqu'au ras du sol, museau enfonce dans un massif de fougeres et de prêles, une **touffe de frondes arrachee et clairement visible entre ses dents**, quelques feuilles qui pendent de sa bouche. Vue de trois quarts avant, camera basse au niveau de la tete, le corps s'eloignant en forte perspective vers le fond du cadre.
-*Explicitement different de :* le hero (profil gauche entier, cou a l'horizontale, animal immobile — la pose exacte que cette image copiait), l'ecosysteme (trois quarts au bord du lac avec stegosaure), le funfact (queue fouettee en grand arc de mouvement avec debris), le headshot (portrait de tete, gueule fermee). Ici : tete au ras du sol, nourriture arrachee bien visible, forte perspective.
+**MORPHO** — Diplodocus longus : sauropode **très long (26 m) mais bas** (4,5 m au garrot) et
+relativement léger (12 t). Silhouette **horizontale** : cou long et **fin** tenu à peu près à
+l'horizontale, dos presque droit, hanches un peu plus hautes que les épaules, et surtout
+**une queue extrêmement longue qui s'affine en fouet** — la moitié de l'animal. Pattes colonnaires,
+pied avant à **un seul gros ongle au pouce**. Petite tête **allongée et étroite** à **narines
+placées sur le dessus du crâne**, **dents en crayon uniquement à l'avant de la bouche**, alignées
+en peigne — aucune dent au fond. Peau granuleuse gris-vert clair à mouchetures ocre ;
+une rangée de **petites épines dermiques** peut courir le long du dos.
 
-**DECOR** — Plaine boisee du Jurassique superieur d'Amerique du Nord (formation Morrison), il y a 150 millions d'annees. Massifs de fougeres, prêles hautes, cycas, conifères en arriere-plan, sol humide et pietine. Aucune plante a fleurs, aucune graminee de prairie, aucun mammifere moderne.
+**ACTION** — Il **mange, et le contact est explicite**. Cadrage **de trois quarts avant gauche,
+en légère plongée**, l'animal tourné vers le spectateur : **le cou ramené bas et de côté, la tête
+engagée DANS une touffe de prêles hautes et de fougères**, les dents en peigne refermées sur les
+tiges qu'il **racle vers l'arrière** — plusieurs tiges vertes tordues et arrachées **dépassent
+nettement de la gueule**, des fragments tombent, la végétation autour de la tête est couchée et
+mâchée. Un deuxième diplodocus au fond, tête basse lui aussi. La longue queue en fouet part vers
+le fond à droite.
+Se démarquer explicitement de : `Diplodocus.jpg` (profil gauche entier, cou tendu à l'horizontale
+dans le vide, enfant repère au sol) et de l'actuel `_manger` **qui en est le décalque exact, l'enfant
+en moins, gueule fermée et sans plante** ; de `Diplodocus_ecosysteme.jpg` (plan large, trois quarts
+au bord du lac avec un stégosaure) ; de `Diplodocus_funfact.jpg` (queue fouettée en grand arc flou) ;
+de `Diplodocus_headshot.jpg` (gros plan tête et cou).
+**Points clés : trois quarts AVANT, tête basse ENGAGÉE dans la végétation, tiges visibles dans
+la gueule. Aucun profil gauche jambes tendues cou horizontal.**
 
-**INTERDITS** — pas de texte incruste, pas de watermark, pas d'humain, pas de sang.
+**DÉCOR** — Jurassique supérieur, Amérique du Nord (Formation Morrison), il y a 150 millions
+d'années : plaine humide de fougères et de **prêles hautes**, cycas, bosquets de conifères et
+d'araucarias, flaques et bras d'eau, collines boisées au fond, lumière chaude de fin de journée.
+Pas de graminées, pas de fleurs modernes, pas de feuillus.
+
+**INTERDITS** — Aucun texte incrusté, aucun watermark, aucun humain, aucun sang.
+Aucune queue traînant au sol.

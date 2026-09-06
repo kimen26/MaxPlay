@@ -1,55 +1,64 @@
-# Prompts de régénération — Ankylosaure (Ankylosaurus magniventris)
+# Prompts de régénération — Ankylosaurus
 
-Style commun : paléoart réaliste, lumière naturelle de jour, adapté à un enfant de 4 ans.
-Interdits communs : aucun texte incrusté, aucun watermark, aucun humain (sauf le hero et le _paris),
-aucun sang ni scène de mise à mort.
+Style visé pour tous les blocs : paléoart réaliste, lumière naturelle de jour, palette douce,
+lisible par un enfant de 4 ans.
 
 ---
 
 ## Ankylosaurus_manger.jpg
 
-**MORPHO** — Thyréophore de 7,5 m de long, 1,8 m de haut, 6 tonnes. Corps très large et très BAS
-sur pattes, presque collé au sol. Dos entièrement pavé d'ostéodermes ovales disposés en bandes
-transversales, rangées de petites pointes coniques sur les flancs. Crâne large, plat et pavé d'os,
-QUATRE cornes : deux cornes jugales pointant vers le bas sous les yeux, deux cornes occipitales
-pointant vers l'arrière. Bec corné large, petites dents en feuille au fond. Queue rigide terminée
-par une MASSUE OSSEUSE massive, portée au-dessus du sol, jamais traînée. Ventre nu, sans armure.
+**MORPHO** — Ankylosaurus magniventris : **quadrupède très large et très bas**, corps ovale
+« bouclier » d'environ 7,5 m de long pour 1,8 m de haut au dos, **ventre presque au ras du sol**.
+Dos entièrement pavé d'**ostéodermes ovales bombés** disposés en bandes transversales régulières,
+flancs bordés d'une rangée de **pointes latérales**. **Queue raide terminée par une grosse massue
+osseuse** en deux lobes. Tête large, basse, triangulaire, elle-même couverte d'ostéodermes, avec
+**quatre cornes** : deux jugales pointant vers l'arrière sous les yeux, deux occipitales aux angles
+du crâne. **Bec corné large** à l'avant de la gueule, petites dents en feuille derrière.
+Pattes courtes et colonnaires, plus longues à l'arrière qu'à l'avant.
 
-**ACTION** — Scène de REPAS explicite, en CONTRE-PLONGÉE BASSE, caméra posée au ras du sol devant
-l'animal qui arrive de FACE, légèrement de trois quarts droit : le bec large est plongé dans un
-tapis de fougères basses et une touffe de frondes est CLAIREMENT ARRACHÉE ET SERRÉE dans le bec,
-avec des brins qui dépassent des deux côtés. La massue caudale est visible en fond de plan,
-détachée du corps.
-Explicitement DIFFÉRENT de : Ankylosaurus.jpg (profil gauche entier, tête baissée, massue tendue
-vers la droite, forêt de conifères — à NE PAS reproduire) ; différent aussi du _ecosysteme (plan
-large au bord d'un lac avec d'autres dinos), du _headshot (portrait de la tête) et du _paris.
+**ACTION** — Il **mange, et on le voit** : cadrage rapproché de trois quarts avant, **l'animal vu
+depuis l'avant-droit**, tête tournée vers le spectateur, **une grosse touffe de fougères arrachée
+serrée en travers du bec corné**, quelques frondes qui dépassent de chaque côté de la gueule,
+d'autres fougères déjà broutées et couchées au sol devant lui, la queue-massue repliée sur le côté
+gauche dans le cadre. La bouche entrouverte, le bec fermé sur la végétation : c'est le sujet.
+Se démarquer explicitement de : `Ankylosaurus.jpg` (profil gauche entier, tête baissée, massue
+tendue vers la droite, enfant repère), de l'actuel `_manger` qui en est un décalque sans enfant,
+de `Ankylosaurus_ecosysteme.jpg` (plan large de bord de lac, même profil gauche) et de
+`Ankylosaurus_headshot.jpg` (gros plan de tête seule).
+**Interdiction du profil gauche intégral : on veut un trois quarts avant, avec de la végétation
+dans le bec.**
 
-**DÉCOR** — Crétacé final, Amérique du Nord, il y a 66 millions d'années. Sous-bois de séquoias et
-de conifères, fougères, magnolias primitifs, sol de terre humide et de mousse. Aucune herbe de
-prairie moderne, aucun mammifère moderne.
+**DÉCOR** — Crétacé final, Amérique du Nord, il y a 66 millions d'années : sous-bois clair de
+conifères et d'araucarias, tapis de **fougères**, prêles, cycas, quelques magnolias primitifs en
+arrière-plan flou. Pas de graminées modernes, pas de pelouse, pas de fleurs de jardin.
 
-**INTERDITS** — Pas de texte, pas de watermark, pas d'humain, pas de sang.
+**INTERDITS** — Aucun texte incrusté, aucun watermark, aucun humain, aucun sang.
 
 ---
 
 ## Ankylosaurus_funfact.jpg
 
-**MORPHO** — Idem ci-dessus. Le point à montrer : le dessus est une forteresse d'ostéodermes, mais
-le VENTRE est nu et sans armure, et l'animal est si bas sur pattes qu'il n'y a presque pas de vide
-entre son ventre et le sol.
+**MORPHO** — Identique au bloc ci-dessus. Le point critique ici est le **contraste dessus/dessous** :
+le dos et les flancs entièrement blindés d'ostéodermes et de pointes, et **le ventre nu, à la peau
+claire, lisse et sans armure**, plus **la très faible garde au sol** — le ventre est presque collé
+à la terre, on ne pourrait pas glisser la main dessous.
 
-**ACTION** — L'animal est vu de PROFIL STRICT, caméra posée TRÈS BAS au niveau du sol, dans un
-léger creux de terrain, de sorte que la ligne du ventre nu et lisse et le très faible dégagement
-sous le corps soient la première chose lue : le contraste entre le dos hérissé de plaques et le
-dessous nu est le sujet de l'image. L'animal est immobile, ramassé sur ses quatre pattes courtes,
-le corps plaqué au sol comme un char à l'arrêt. Lumière rasante venue du côté pour souligner le
-relief des ostéodermes en haut et la peau lisse en bas.
-Explicitement DIFFÉRENT de : Ankylosaurus.jpg et Ankylosaurus_manger.jpg (tête baissée vers le sol
-en marche) — ici la tête reste levée à l'horizontale, le corps est immobile, la caméra est au ras
-du sol et non à hauteur d'homme ; différent aussi du _ecosysteme (plan large multi-espèces).
+**ACTION** — Le fait à illustrer : « tout en haut c'est une forteresse, mais son ventre n'a pas
+d'armure — heureusement il est tout bas sur ses pattes ». **Vue de face, au ras du sol** (caméra
+posée sur la terre, à hauteur des pattes), l'animal marchant droit vers le spectateur en légère
+contre-plongée : on voit le **mur de plaques et de pointes du dos et des épaules**, et **la fente
+d'ombre minuscule entre le ventre pâle et le sol**, où quelques brins de fougère sont couchés au
+passage. Les quatre pattes courtes bien plantées. Un petit lézard ou une libellule au premier plan
+comme repère de faible hauteur (facultatif).
+Se démarquer explicitement de : l'actuel `_funfact` (profil gauche debout au bord d'une mare, museau
+au ras de l'eau — ni le dessous ni la garde au sol ne sont visibles), de `Ankylosaurus.jpg` et
+`Ankylosaurus_ecosysteme.jpg` (profils gauche), du nouveau `_manger` (trois quarts avant en train
+de brouter) et de `Ankylosaurus_headshot.jpg` (tête seule).
+**Le sujet est le point de vue bas de face, pas la silhouette.**
 
-**DÉCOR** — Crétacé final, Amérique du Nord, il y a 66 millions d'années. Clairière de terre battue
-et de mousse, conifères et fougères à l'arrière-plan, quelques pierres plates.
+**DÉCOR** — Crétacé final, Amérique du Nord, il y a 66 millions d'années : sol de forêt humide,
+mousse, fougères basses, prêles, troncs de conifères et araucarias en arrière-plan flou,
+lumière rasante du matin qui souligne le relief des ostéodermes. Pas de flore moderne.
 
-**INTERDITS** — Aucun carnivore dans le cadre, aucune scène d'attaque. Pas de texte, pas de
-watermark, pas d'humain, pas de sang.
+**INTERDITS** — Aucun texte incrusté (pas de flèche vers le ventre, pas de légende), aucun watermark,
+aucun humain, aucun sang, aucun prédateur en train d'attaquer.

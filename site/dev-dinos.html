@@ -322,6 +322,9 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
    .v1-hero-img avec les fiches dino, calibre pour des scenes horizontales (max-width 88 %,
    contain) -> deux bandes vertes sur les cotes. Ici on remplit le bandeau et on cadre haut,
    on cadre BAS : c'est la qu'est l'enfant, le metre-etalon de la scene. */
+/* Gros plan feuille/graines dans le bloc « Sa feuille et ses graines ». Absent tant que
+   l'image n'est pas generee : le onerror retire l'element, le bloc reste correct sans lui. */
+.plante-detail { display:block; width:100%; border-radius:12px; margin:8px 0 10px; cursor:pointer; }
 .plante-hero-img { max-width:100%; width:100%; height:100%; object-fit:cover; object-position:center 72%; filter:none; }
 .v1-hero-nm { position:absolute; left:16px; bottom:12px; text-shadow:0 2px 8px rgba(0,0,0,0.7); pointer-events:none; }
 .v1-hero-nm b { display:block; font-family:'Fredoka One',cursive; font-weight:400; font-size:1.7rem; line-height:1.1; }
@@ -1277,6 +1280,9 @@ function buildFichePlante(p) {
     <div class="v1-panel v1-c">
       <button class="v1-sp" onclick="playBloc('plante:${p.id}','feuille','${esc(T('plantes_tts_feuille', { feuille: esc(p.feuille), graines: esc(p.graines) }))}',this)">🔊</button>
       <div class="v1-pic"><span class="v1-ic">🍃</span><span class="v1-tt">${T('plantes_titre_feuille')}</span></div>
+      <img class="plante-detail" src="img/dinos/plantes/${p.png.replace(/\.(jpg|png)$/i, '_detail.$1')}" alt="${p.name}"
+           loading="lazy" onerror="this.remove()"
+           onclick="openCarousel([{src:this.src,label:'${esc(p.name)}'}],0)">
       <p>${p.feuille || ''}</p>
       <p>${T('plantes_label_graines')}</p>
       <div class="v1-list-box">${p.graines || ''}</div>

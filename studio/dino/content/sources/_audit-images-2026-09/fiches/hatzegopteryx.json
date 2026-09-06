@@ -1,0 +1,33 @@
+{
+  "id": "hatzegopteryx",
+  "name": "Hatzegopteryx",
+  "full": "Hatzegopteryx thambema",
+  "base": "Hatzegopteryx",
+  "famille": "pterosaures",
+  "famille_sci": "Ptérosaures",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore (chassait au sol, sur son île)",
+  "epoque": "Crétacé · il y a 66 millions d'ans",
+  "periode": "cretace",
+  "region": "Europe (Roumanie)",
+  "continent": "Europe",
+  "taille_m": 10,
+  "hauteur_m": 3,
+  "poids_t": 0.22,
+  "vitesse_kmh": 12,
+  "superpower": "Une tête immense — parmi les plus grandes de tous les reptiles volants — et il chassait aussi bien à pied qu'en plein ciel !",
+  "proies": "Petits dinosaures nains de son île — cousins miniatures des géants à long cou et des dinosaures à bec",
+  "chasseurs": "Aucun : sur son île, c'était lui le plus grand chasseur",
+  "amis": "Solitaire, seul géant chasseur de son île",
+  "fait": "Sa tête toute seule était aussi longue que Papa allongé par terre ! Il vivait sur une île, en Europe, où beaucoup de dinosaures avaient rapetissé — lui restait énorme, et marchait très bien sur ses quatre pattes pour chasser au sol.",
+  "desc": "L'Hatzegopteryx vivait sur une île perdue en pleine mer, en Europe — pas du tout en Amérique comme ses cousins Ptéranodon et Quetzalcoatlus ! Sur cette île, la plupart des dinosaures étaient devenus tout petits. Mais lui restait immense, avec un cou court et costaud et un bec énorme, et il marchait aussi bien qu'il volait pour attraper ses proies.",
+  "images": [
+    "Hatzegopteryx.jpg",
+    "Hatzegopteryx_coloriage.webp",
+    "Hatzegopteryx_ecosysteme.jpg",
+    "Hatzegopteryx_funfact.jpg",
+    "Hatzegopteryx_headshot.jpg",
+    "Hatzegopteryx_manger.jpg",
+    "Hatzegopteryx_paris.jpg"
+  ]
+}

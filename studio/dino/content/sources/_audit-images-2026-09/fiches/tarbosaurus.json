@@ -1,0 +1,32 @@
+{
+  "id": "tarbosaurus",
+  "name": "Tarbosaure",
+  "full": "Tarbosaurus bataar",
+  "base": "Tarbosaurus",
+  "famille": "trex",
+  "famille_sci": "Théropodes",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore",
+  "epoque": "Crétacé · il y a 70 millions d'ans",
+  "periode": "cretace",
+  "region": "Asie (Mongolie)",
+  "continent": "Asie",
+  "taille_m": 12,
+  "hauteur_m": 4.5,
+  "poids_t": 5,
+  "superpower": "Le T-Rex d'Asie — cousin direct !",
+  "proies": "Grands herbivores d'Asie",
+  "chasseurs": "Aucun dans son territoire",
+  "amis": "Solitaire",
+  "fait": "C'est le cousin asiatique du T-Rex ! Il vivait dans le désert de Gobi en Mongolie.",
+  "desc": "Le Tarbosaure était le T-Rex de l'Asie ! Il vivait dans les déserts de Mongolie et ressemblait beaucoup à son cousin américain.",
+  "images": [
+    "Tarbosaurus.jpg",
+    "Tarbosaurus_coloriage.webp",
+    "Tarbosaurus_ecosysteme.jpg",
+    "Tarbosaurus_funfact.jpg",
+    "Tarbosaurus_headshot.jpg",
+    "Tarbosaurus_manger.jpg",
+    "Tarbosaurus_paris.jpg"
+  ]
+}

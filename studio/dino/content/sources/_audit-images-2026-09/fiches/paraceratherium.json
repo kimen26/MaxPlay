@@ -1,0 +1,32 @@
+{
+  "id": "paraceratherium",
+  "name": "Paracérathérium",
+  "full": "Paraceratherium",
+  "base": "Paraceratherium",
+  "famille": "mammiferes",
+  "famille_sci": "Mammifères",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Après les dinos · il y a 30 millions d'ans",
+  "periode": "cenozoique",
+  "region": "Asie (Pakistan, Chine, Mongolie)",
+  "continent": "Asie",
+  "taille_m": 7.4,
+  "hauteur_m": 5,
+  "poids_t": 17,
+  "superpower": "Le plus grand animal à poils qui ait jamais marché sur la Terre — plus haut qu'une girafe !",
+  "proies": "Rien : il mangeait les feuilles tout en haut des arbres",
+  "chasseurs": "Personne : bien trop grand pour être attaqué !",
+  "amis": "Tranquille, en petits groupes",
+  "fait": "C'était un cousin du rhinocéros, mais SANS corne, et absolument géant : sa tête montait à cinq mètres, plus haut qu'une girafe ! C'est le plus grand animal à poils qui ait jamais existé.",
+  "desc": "Le Paracérathérium était un rhinocéros géant sans corne, si grand qu'il dépassait tous les autres animaux à poils de l'histoire. Avec ses longues pattes et son grand cou, il attrapait les feuilles tout en haut des arbres, là où personne d'autre ne pouvait manger.",
+  "images": [
+    "Paraceratherium.jpg",
+    "Paraceratherium_coloriage.webp",
+    "Paraceratherium_ecosysteme.jpg",
+    "Paraceratherium_funfact.jpg",
+    "Paraceratherium_headshot.jpg",
+    "Paraceratherium_manger.jpg",
+    "Paraceratherium_paris.jpg"
+  ]
+}

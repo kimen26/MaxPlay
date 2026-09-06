@@ -1,0 +1,33 @@
+{
+  "id": "titanis",
+  "name": "Titanis",
+  "full": "Titanis walleri",
+  "base": "Titanis",
+  "famille": "oiseaux",
+  "famille_sci": "Oiseaux",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore",
+  "epoque": "Après les dinos · il y a 3 millions d'ans",
+  "periode": "cenozoique",
+  "region": "Amérique du Nord",
+  "continent": "Amérique du Nord",
+  "taille_m": 1.9,
+  "hauteur_m": 1.9,
+  "poids_t": 0.15,
+  "vitesse_kmh": 45,
+  "superpower": "Courir très vite sur deux grandes pattes et frapper avec un bec énorme et crochu !",
+  "proies": "Petits mammifères, jeunes chevaux",
+  "chasseurs": "Peu de bêtes osaient s'attaquer à ce grand chasseur",
+  "amis": "Chasseur solitaire",
+  "fait": "C'était un oiseau, mais bien trop grand et lourd pour voler : il courait ! Debout, il était haut comme une porte. Et son bec crochu, plus gros que ta tête, était sa grande arme.",
+  "desc": "Le Titanis était un oiseau-terreur, un oiseau géant qui ne volait pas. Il courait sur deux grandes pattes pour chasser, avec un bec énorme et pointu. C'est le seul oiseau-terreur qui soit venu vivre en Amérique du Nord, longtemps après les dinosaures.",
+  "images": [
+    "Titanis.jpg",
+    "Titanis_coloriage.webp",
+    "Titanis_ecosysteme.jpg",
+    "Titanis_funfact.jpg",
+    "Titanis_headshot.jpg",
+    "Titanis_manger.jpg",
+    "Titanis_paris.jpg"
+  ]
+}

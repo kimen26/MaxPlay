@@ -1,0 +1,33 @@
+{
+  "id": "pentaceratops",
+  "name": "Pentacératops",
+  "full": "Pentaceratops sternbergii",
+  "base": "Pentaceratops",
+  "famille": "cornu",
+  "famille_sci": "Cératopsiens",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Crétacé · il y a 75 millions d'ans",
+  "periode": "cretace",
+  "region": "États-Unis (Nouveau-Mexique)",
+  "continent": "Amérique du Nord",
+  "taille_m": 6,
+  "hauteur_m": 2,
+  "poids_t": 5,
+  "vitesse_kmh": 25,
+  "superpower": "Une des plus GRANDES têtes de tous les animaux qui ont marché sur Terre — presque aussi grande qu'un Papa !",
+  "proies": "Mange des plantes",
+  "chasseurs": "Bistahieversor — un grand chasseur féroce",
+  "amis": "En troupeau",
+  "fait": "Sa tête (avec la collerette) mesurait plus de 3 mètres : bien plus grande qu'un Papa debout ! Une des plus grandes têtes du monde animal.",
+  "desc": "Le Pentacératops avait «cinq cornes» : trois vraies, plus deux pointes sur les joues. Et une tête énorme, parmi les plus grandes de tous les animaux terrestres !",
+  "images": [
+    "Pentaceratops.jpg",
+    "Pentaceratops_coloriage.webp",
+    "Pentaceratops_ecosysteme.jpg",
+    "Pentaceratops_funfact.jpg",
+    "Pentaceratops_headshot.jpg",
+    "Pentaceratops_manger.jpg",
+    "Pentaceratops_paris.jpg"
+  ]
+}

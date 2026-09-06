@@ -1,0 +1,31 @@
+{
+  "id": "shonisaurus",
+  "name": "Shonisaure",
+  "full": "Shonisaurus popularis",
+  "base": "Shonisaurus",
+  "famille": "enaliosaures",
+  "famille_sci": "Énaliosaures",
+  "cat": "piscivores",
+  "regime": "🐟 Piscivore",
+  "epoque": "Trias · il y a 230 millions d'ans",
+  "periode": "trias",
+  "region": "Amérique du Nord (Nevada)",
+  "taille_m": 14,
+  "hauteur_m": 2,
+  "poids_t": 25,
+  "superpower": "Ressemblait à un dauphin géant — mais vécu 170 millions d'années avant les dauphins !",
+  "proies": "Poissons, céphalopodes (cousins des calmars)",
+  "chasseurs": "Adulte, aucun prédateur connu : c'était l'un des plus gros animaux de son océan",
+  "amis": "En grands groupes (37 squelettes trouvés ensemble !)",
+  "fait": "Au Nevada, dans ce qui est aujourd'hui un désert, on a trouvé 37 squelettes ensemble ! Des dizaines de Shonisaures s'étaient peut-être échoués là, comme les baleines aujourd'hui. Et le Nevada était une mer à l'époque !",
+  "desc": "Le Shonisaure n'était pas un dinosaure — c'était un ichtyosaure géant du Trias, un reptile marin qui ressemblait à un dauphin géant. On a trouvé ses ossements dans le désert du Nevada, qui était autrefois sous la mer.",
+  "images": [
+    "Shonisaurus.jpg",
+    "Shonisaurus_coloriage.webp",
+    "Shonisaurus_ecosysteme.jpg",
+    "Shonisaurus_funfact.jpg",
+    "Shonisaurus_headshot.jpg",
+    "Shonisaurus_manger.jpg",
+    "Shonisaurus_paris.jpg"
+  ]
+}

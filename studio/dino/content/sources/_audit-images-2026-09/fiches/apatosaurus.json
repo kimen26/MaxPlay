@@ -1,0 +1,32 @@
+{
+  "id": "apatosaurus",
+  "name": "Apatosaure (Brontosaure)",
+  "full": "Apatosaurus louisae",
+  "base": "Apatosaurus",
+  "famille": "cou_long",
+  "famille_sci": "Sauropodes",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Jurassique · il y a 150 millions d'ans",
+  "periode": "jurassique",
+  "region": "Amérique du Nord",
+  "continent": "Amérique du Nord",
+  "taille_m": 22,
+  "hauteur_m": 4.5,
+  "poids_t": 23,
+  "superpower": "Un cou de 6 mètres pour manger des feuilles très haut !",
+  "proies": "Mange des plantes",
+  "chasseurs": "Allosaure pour les jeunes",
+  "amis": "En troupeau",
+  "fait": "Pendant longtemps, on l'appelait \"Brontosaure\" — mais son vrai nom c'est Apatosaure ! Il mangeait 250 kg de plantes PAR JOUR !",
+  "desc": "L'Apatosaure est le géant gentil que beaucoup appellent Brontosaure. Il mangeait autant de plantes en un jour que toi en une année !",
+  "images": [
+    "Apatosaurus.jpg",
+    "Apatosaurus_coloriage.webp",
+    "Apatosaurus_ecosysteme.jpg",
+    "Apatosaurus_funfact.jpg",
+    "Apatosaurus_headshot.jpg",
+    "Apatosaurus_manger.jpg",
+    "Apatosaurus_paris.jpg"
+  ]
+}

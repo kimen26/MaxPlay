@@ -1,0 +1,32 @@
+{
+  "id": "utahraptor",
+  "name": "Utahraptor",
+  "full": "Utahraptor ostrommaysorum",
+  "base": "Utahraptor",
+  "famille": "raptor",
+  "famille_sci": "Dromæosaures",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore",
+  "epoque": "Crétacé · il y a 126 millions d'ans",
+  "periode": "cretace",
+  "region": "Amérique du Nord",
+  "continent": "Amérique du Nord",
+  "taille_m": 6,
+  "hauteur_m": 2,
+  "poids_t": 0.425,
+  "superpower": "La plus grande griffe de tous les raptors — 24 cm ! Un couteau de cuisine géant !",
+  "proies": "Grands herbivores",
+  "chasseurs": "Aucun de son époque n'osait l'attaquer",
+  "amis": "Peut-être en meute",
+  "fait": "Sa griffe faisait 24 cm — aussi longue que ta main entière ! C'est le plus grand raptor qui ait jamais existé !",
+  "desc": "L'Utahraptor était un GÉANT parmi les raptors ! Il avait une griffe énorme, courait vite, et était très intelligent. Le super prédateur de son époque !",
+  "images": [
+    "Utahraptor.jpg",
+    "Utahraptor_coloriage.webp",
+    "Utahraptor_ecosysteme.jpg",
+    "Utahraptor_funfact.jpg",
+    "Utahraptor_headshot.jpg",
+    "Utahraptor_manger.jpg",
+    "Utahraptor_paris.jpg"
+  ]
+}

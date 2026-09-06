@@ -1,0 +1,33 @@
+{
+  "id": "kentrosaurus",
+  "name": "Kéntrosaure",
+  "full": "Kentrosaurus aethiopicus",
+  "base": "Kentrosaurus",
+  "famille": "arme",
+  "famille_sci": "Thyréophores",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Jurassique · il y a 155 millions d'ans",
+  "periode": "jurassique",
+  "region": "Afrique (Tanzanie)",
+  "continent": "Afrique",
+  "taille_m": 4.5,
+  "hauteur_m": 1.8,
+  "poids_t": 1.1,
+  "vitesse_kmh": 7,
+  "superpower": "Des piques partout sur le dos ET sur les épaules — une forêt d'épines !",
+  "proies": "Mange des plantes",
+  "chasseurs": "Carnivores africains",
+  "amis": "Peut-être en troupeau",
+  "fait": "Le cousin africain du Stégosaure ! Il avait encore plus de piques — jusqu'aux épaules ! Même les carnivores évitaient de l'attaquer par derrière.",
+  "desc": "Le Kéntrosaure était le cousin africain du Stégosaure. Il était plus petit mais avait encore plus de piques sur tout le corps. Même sur les épaules !",
+  "images": [
+    "Kentrosaurus.jpg",
+    "Kentrosaurus_coloriage.webp",
+    "Kentrosaurus_ecosysteme.jpg",
+    "Kentrosaurus_funfact.jpg",
+    "Kentrosaurus_headshot.jpg",
+    "Kentrosaurus_manger.jpg",
+    "Kentrosaurus_paris.jpg"
+  ]
+}

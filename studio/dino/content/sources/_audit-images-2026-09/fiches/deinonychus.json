@@ -1,0 +1,33 @@
+{
+  "id": "deinonychus",
+  "name": "Deinonychus",
+  "full": "Deinonychus antirrhopus",
+  "base": "Deinonychus",
+  "famille": "raptor",
+  "famille_sci": "Dromæosaures",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore",
+  "epoque": "Crétacé · il y a 115 millions d'ans",
+  "periode": "cretace",
+  "region": "Amérique du Nord",
+  "continent": "Amérique du Nord",
+  "taille_m": 3.4,
+  "hauteur_m": 0.9,
+  "poids_t": 0.08,
+  "vitesse_kmh": 30,
+  "superpower": "Sa grande griffe de 13 cm était une arme mortelle pour accrocher sa proie !",
+  "proies": "Iguanodon, dinos moyens",
+  "chasseurs": "Grands carnivores",
+  "amis": "Chassait peut-être en groupe — c'est débattu !",
+  "fait": "Dans les films, les gros \"raptors\" qui font peur ressemblent en vrai au Deinonychus, pas au petit Vélociraptor !",
+  "desc": "Le Deinonychus avait une énorme griffe tranchante à chaque pied et chassait peut-être en groupe. Super rapide et super malin ! C'est lui, le vrai grand chasseur à griffe des films.",
+  "images": [
+    "Deinonychus.jpg",
+    "Deinonychus_coloriage.webp",
+    "Deinonychus_ecosysteme.jpg",
+    "Deinonychus_funfact.jpg",
+    "Deinonychus_headshot.jpg",
+    "Deinonychus_manger.jpg",
+    "Deinonychus_paris.jpg"
+  ]
+}

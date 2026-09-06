@@ -1,0 +1,31 @@
+{
+  "id": "archelon",
+  "name": "Archélon",
+  "full": "Archelon ischyros",
+  "base": "Archelon",
+  "famille": "enaliosaures",
+  "famille_sci": "Énaliosaures",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore",
+  "epoque": "Crétacé · il y a 75 millions d'ans",
+  "periode": "cretace",
+  "region": "Amérique du Nord (mer intérieure)",
+  "taille_m": 4,
+  "hauteur_m": 1.2,
+  "poids_t": 2.2,
+  "superpower": "La plus grande tortue qui ait jamais vécu — 4 mètres et demi de long !",
+  "proies": "Méduses, calmars, mollusques à coquille molle",
+  "chasseurs": "Tylosaurus (un grand mosasaure) et requins préhistoriques",
+  "amis": "Solitaire",
+  "fait": "Sa carapace n'était pas dure comme celle d'une tortue d'aujourd'hui — c'était de la peau coriace, comme du cuir épais ! Avec ses grandes nageoires, elle volait dans l'eau, comme la tortue luth de nos jours.",
+  "desc": "L'Archélon n'était pas un dinosaure — c'était la plus grande tortue de mer qui ait jamais existé ! Sa carapace était souple comme du cuir, pas dure. Elle nageait dans les mers du Crétacé avec ses grandes nageoires.",
+  "images": [
+    "Archelon.jpg",
+    "Archelon_coloriage.webp",
+    "Archelon_ecosysteme.jpg",
+    "Archelon_funfact.jpg",
+    "Archelon_headshot.jpg",
+    "Archelon_manger.jpg",
+    "Archelon_paris.jpg"
+  ]
+}

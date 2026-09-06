@@ -1,0 +1,33 @@
+{
+  "id": "protoceratops",
+  "name": "Protocératops",
+  "full": "Protoceratops andrewsi",
+  "base": "Protoceratops",
+  "famille": "cornu",
+  "famille_sci": "Cératopsiens",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Crétacé · il y a 75 millions d'ans",
+  "periode": "cretace",
+  "region": "Asie (Mongolie)",
+  "continent": "Asie",
+  "taille_m": 2.2,
+  "hauteur_m": 0.75,
+  "poids_t": 0.08,
+  "vitesse_kmh": 25,
+  "superpower": "Le grand-père de tous les dinos à cornes ! Et une mâchoire très puissante.",
+  "proies": "Mange des plantes",
+  "chasseurs": "Vélociraptor — et ils se battaient !",
+  "amis": "En troupeau avec des nids en groupe",
+  "fait": "On a trouvé un fossile incroyable : un Vélociraptor et un Protocératops morts en train de se battre ! Ensevelis par une tempête de sable !",
+  "desc": "Le Protocératops était le petit ancêtre des Tricératops. Il avait déjà une collerette mais pas encore de cornes. Et il se battait courageusement contre les Vélociraptors !",
+  "images": [
+    "Protoceratops.jpg",
+    "Protoceratops_coloriage.webp",
+    "Protoceratops_ecosysteme.jpg",
+    "Protoceratops_funfact.jpg",
+    "Protoceratops_headshot.jpg",
+    "Protoceratops_manger.jpg",
+    "Protoceratops_paris.jpg"
+  ]
+}

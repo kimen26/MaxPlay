@@ -1,0 +1,33 @@
+{
+  "id": "euoplocephalus",
+  "name": "Euoplocéphale",
+  "full": "Euoplocephalus tutus",
+  "base": "Euoplocephalus",
+  "famille": "arme",
+  "famille_sci": "Thyréophores",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Crétacé · il y a 75 millions d'ans",
+  "periode": "cretace",
+  "region": "Alberta, Canada",
+  "continent": "Amérique du Nord",
+  "taille_m": 6,
+  "hauteur_m": 1.5,
+  "poids_t": 2.2,
+  "vitesse_kmh": 7,
+  "superpower": "Même ses paupières étaient blindées ! Rien ne pouvait le blesser !",
+  "proies": "Mange des plantes",
+  "chasseurs": "Gorgosaure tentait l'attaque",
+  "amis": "Solitaire",
+  "fait": "Même SES YEUX avaient une armure osseuse ! Le dino le mieux protégé de toute l'histoire !",
+  "desc": "L'Euoplocéphale était encore plus blindé que l'Ankylosaure. Même ses paupières étaient faites d'os ! Il avait aussi une queue-massue super puissante.",
+  "images": [
+    "Euoplocephalus.jpg",
+    "Euoplocephalus_coloriage.webp",
+    "Euoplocephalus_ecosysteme.jpg",
+    "Euoplocephalus_funfact.jpg",
+    "Euoplocephalus_headshot.jpg",
+    "Euoplocephalus_manger.jpg",
+    "Euoplocephalus_paris.jpg"
+  ]
+}

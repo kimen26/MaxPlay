@@ -1,0 +1,33 @@
+{
+  "id": "tyrannosaurus",
+  "name": "T-Rex",
+  "full": "Tyrannosaurus Rex",
+  "base": "Tyrannosaurus",
+  "famille": "trex",
+  "famille_sci": "Théropodes",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore",
+  "epoque": "Crétacé · il y a 66 millions d'ans",
+  "periode": "cretace",
+  "region": "Amérique du Nord",
+  "continent": "Amérique du Nord",
+  "taille_m": 13,
+  "hauteur_m": 4,
+  "poids_t": 8,
+  "vitesse_kmh": 20,
+  "superpower": "La morsure la plus puissante de tous les dinos terrestres !",
+  "proies": "Triceratops, Edmontosaurus, Ankylosaure",
+  "chasseurs": "Personne n'osait l'attaquer... il était le roi !",
+  "amis": "Plutôt solitaire, mais peut-être en famille parfois",
+  "fait": "Ses dents mesuraient 20 cm — plus longues que ta main ! Et il en avait 60 !",
+  "desc": "Le T-Rex est le roi des dinosaures. Il avait une tête énorme, des dents géantes, et des bras tout petits. Mais attention, ses pattes arrière couraient très vite !",
+  "images": [
+    "Tyrannosaurus.jpg",
+    "Tyrannosaurus_coloriage.webp",
+    "Tyrannosaurus_ecosysteme.jpg",
+    "Tyrannosaurus_funfact.jpg",
+    "Tyrannosaurus_headshot.jpg",
+    "Tyrannosaurus_manger.jpg",
+    "Tyrannosaurus_paris.jpg"
+  ]
+}

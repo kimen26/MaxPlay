@@ -1,0 +1,32 @@
+{
+  "id": "diplodocus",
+  "name": "Diplodocus",
+  "full": "Diplodocus longus",
+  "base": "Diplodocus",
+  "famille": "cou_long",
+  "famille_sci": "Sauropodes",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Jurassique · il y a 150 millions d'ans",
+  "periode": "jurassique",
+  "region": "Amérique du Nord",
+  "continent": "Amérique du Nord",
+  "taille_m": 26,
+  "hauteur_m": 4.5,
+  "poids_t": 12,
+  "superpower": "Sa queue claquait comme un fouet — BOOM ! — pour faire peur aux chasseurs !",
+  "proies": "Mange des plantes",
+  "chasseurs": "Allosaure, Ceratosaure pour les jeunes",
+  "amis": "En grand troupeau",
+  "fait": "Sa queue en fouet claquait si vite qu'elle aurait pu faire un bruit aussi fort qu'un coup de tonnerre, disent les scientifiques !",
+  "desc": "Le Diplodocus était l'un des plus longs dinosaures. Il avait un très long cou ET une très longue queue. Cette queue faisait un énorme bruit de fouet pour effrayer les chasseurs !",
+  "images": [
+    "Diplodocus.jpg",
+    "Diplodocus_coloriage.webp",
+    "Diplodocus_ecosysteme.jpg",
+    "Diplodocus_funfact.jpg",
+    "Diplodocus_headshot.jpg",
+    "Diplodocus_manger.jpg",
+    "Diplodocus_paris.jpg"
+  ]
+}

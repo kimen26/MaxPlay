@@ -1,0 +1,32 @@
+{
+  "id": "megatherium",
+  "name": "Mégathérium",
+  "full": "Megatherium americanum",
+  "base": "Megatherium",
+  "famille": "mammiferes",
+  "famille_sci": "Mammifères",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Âge de glace · il y a 1 million d'ans",
+  "periode": "cenozoique",
+  "region": "Amérique du Sud",
+  "continent": "Amérique du Sud",
+  "taille_m": 6,
+  "hauteur_m": 3.5,
+  "poids_t": 4,
+  "superpower": "Se dresser tout droit sur ses pattes arrière pour attraper les feuilles tout en haut des arbres !",
+  "proies": "Rien : il mangeait des feuilles et des branches",
+  "chasseurs": "Sa taille énorme le protégeait ; peut-être le Smilodon sur les petits",
+  "amis": "Plutôt tranquille et solitaire",
+  "fait": "C'était un paresseux, mais géant ! Quand il se dressait debout sur ses pattes arrière, contre un arbre, il était plus haut que deux Papas. Ses griffes avant étaient longues comme ton avant-bras pour attraper les branches.",
+  "desc": "Le Mégathérium était un paresseux terrestre géant, grand comme un éléphant. Au lieu de grimper aux arbres comme les petits paresseux d'aujourd'hui, il se dressait debout par terre pour manger les feuilles du haut. Il vivait tranquillement en Amérique du Sud.",
+  "images": [
+    "Megatherium.jpg",
+    "Megatherium_coloriage.webp",
+    "Megatherium_ecosysteme.jpg",
+    "Megatherium_funfact.jpg",
+    "Megatherium_headshot.jpg",
+    "Megatherium_manger.jpg",
+    "Megatherium_paris.jpg"
+  ]
+}

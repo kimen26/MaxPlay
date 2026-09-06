@@ -1,0 +1,33 @@
+{
+  "id": "stegosaurus",
+  "name": "Stégosaure",
+  "full": "Stegosaurus ungulatus",
+  "base": "Stegosaurus",
+  "famille": "arme",
+  "famille_sci": "Thyréophores",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Jurassique · il y a 155 millions d'ans",
+  "periode": "jurassique",
+  "region": "Amérique du Nord, Europe",
+  "continent": "Amérique du Nord",
+  "taille_m": 9,
+  "hauteur_m": 2.8,
+  "poids_t": 4,
+  "vitesse_kmh": 7,
+  "superpower": "Les grandes plaques sur son dos régulaient sa température comme un radiateur !",
+  "proies": "Mange des plantes",
+  "chasseurs": "Allosaure — mais attention à la queue !",
+  "amis": "Peut-être en petit groupe",
+  "fait": "Son cerveau était de la taille d'une noix de noix ! Mais sa queue avec 4 piques pouvait percer l'Allosaure !",
+  "desc": "Le Stégosaure avait de grandes plaques colorées sur le dos et 4 longues piques au bout de la queue. Ses plaques lui servaient peut-être de radiateur pour se réchauffer ou se refroidir !",
+  "images": [
+    "Stegosaurus.jpg",
+    "Stegosaurus_coloriage.webp",
+    "Stegosaurus_ecosysteme.jpg",
+    "Stegosaurus_funfact.jpg",
+    "Stegosaurus_headshot.jpg",
+    "Stegosaurus_manger.jpg",
+    "Stegosaurus_paris.jpg"
+  ]
+}

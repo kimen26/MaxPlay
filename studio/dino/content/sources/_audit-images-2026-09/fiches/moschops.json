@@ -1,0 +1,32 @@
+{
+  "id": "moschops",
+  "name": "Moschops",
+  "full": "Moschops capensis",
+  "base": "Moschops",
+  "famille": "volant",
+  "famille_sci": "Avant les dinosaures",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Permien · il y a 265 millions d'ans (avant les dinos !)",
+  "periode": "permien",
+  "region": "Afrique du Sud",
+  "continent": "Afrique",
+  "taille_m": 2.7,
+  "hauteur_m": 1.1,
+  "poids_t": 0.41,
+  "superpower": "Un crâne épais comme un casque : il pouvait foncer tête la première sans se faire mal !",
+  "proies": "Aucune, il mangeait des plantes dures",
+  "chasseurs": "Les grands chasseurs du Permien, comme le Gorgonops",
+  "amis": "Se mesurait aux autres Moschops à coups de tête",
+  "fait": "Le dessus de son crâne était épais de cinq centimètres — presque la largeur de ta main ! Deux Moschops pouvaient se foncer dessus tête contre tête, comme les mouflons de la montagne aujourd'hui, pour montrer qui était le plus fort.",
+  "desc": "Le Moschops n'est pas un dinosaure — c'est un cousin très ancien des animaux à poils. Gros, trapu, avec un crâne épais comme un casque, il se cognait la tête contre celle de ses rivaux au lieu de se mordre.",
+  "images": [
+    "Moschops.jpg",
+    "Moschops_coloriage.webp",
+    "Moschops_ecosysteme.jpg",
+    "Moschops_funfact.jpg",
+    "Moschops_headshot.jpg",
+    "Moschops_manger.jpg",
+    "Moschops_paris.jpg"
+  ]
+}

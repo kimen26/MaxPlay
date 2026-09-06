@@ -1,0 +1,33 @@
+{
+  "id": "gallimimus",
+  "name": "Gallimimus",
+  "full": "Gallimimus bullatus",
+  "base": "Gallimimus",
+  "famille": "raptor",
+  "famille_sci": "Dromæosaures",
+  "cat": "omnivores",
+  "regime": "🌿 Omnivore (mange tout !)",
+  "epoque": "Crétacé · il y a 70 millions d'ans",
+  "periode": "cretace",
+  "region": "Asie (Mongolie)",
+  "continent": "Asie",
+  "taille_m": 6,
+  "hauteur_m": 2,
+  "poids_t": 0.44,
+  "vitesse_kmh": 50,
+  "superpower": "Le dino le plus RAPIDE — jusqu'à 50 km/h, aussi vite qu'une voiture en ville !",
+  "proies": "Petits animaux, œufs, plantes",
+  "chasseurs": "T-Rex, grands carnivores",
+  "amis": "En grand troupeau — comme les autruches",
+  "fait": "Il courait à 50 km/h — aussi vite qu'une voiture en ville ! Beaucoup de prédateurs ne pouvaient pas l'attraper.",
+  "desc": "Le Gallimimus était le champion de la vitesse ! Il ressemblait à une grande autruche et courait en grand troupeau. Tellement rapide que même le T-Rex ne pouvait pas l'attraper !",
+  "images": [
+    "Gallimimus.jpg",
+    "Gallimimus_coloriage.webp",
+    "Gallimimus_ecosysteme.jpg",
+    "Gallimimus_funfact.jpg",
+    "Gallimimus_headshot.jpg",
+    "Gallimimus_manger.jpg",
+    "Gallimimus_paris.jpg"
+  ]
+}

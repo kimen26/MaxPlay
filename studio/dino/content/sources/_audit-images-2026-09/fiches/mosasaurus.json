@@ -1,0 +1,32 @@
+{
+  "id": "mosasaurus",
+  "name": "Mosasaure",
+  "full": "Mosasaurus hoffmannii",
+  "base": "Mosasaurus",
+  "famille": "enaliosaures",
+  "famille_sci": "Énaliosaures",
+  "cat": "carnivores",
+  "regime": "🐟 Carnivore marin",
+  "epoque": "Crétacé · il y a 70 millions d'ans",
+  "periode": "cretace",
+  "region": "Toutes les mers du monde",
+  "continent": "",
+  "taille_m": 17,
+  "hauteur_m": 2,
+  "poids_t": 10,
+  "superpower": "Le monstre marin — roi absolu de toutes les mers du Crétacé !",
+  "proies": "Requins, grands poissons, reptiles volants",
+  "chasseurs": "Aucun — il était au sommet",
+  "amis": "Solitaire (territorial)",
+  "fait": "Il attrapait même les reptiles volants, comme le Ptéranodon, en plein vol ! Et il mangeait des requins pour le petit déjeuner !",
+  "desc": "Le Mosasaure était le monstre des mers préhistoriques ! Aussi long que deux voitures, il régnait sur tous les océans. Il mangeait même les requins et les reptiles volants comme le Ptéranodon !",
+  "images": [
+    "Mosasaurus.jpg",
+    "Mosasaurus_coloriage.webp",
+    "Mosasaurus_ecosysteme.jpg",
+    "Mosasaurus_funfact.jpg",
+    "Mosasaurus_headshot.jpg",
+    "Mosasaurus_manger.jpg",
+    "Mosasaurus_paris.jpg"
+  ]
+}

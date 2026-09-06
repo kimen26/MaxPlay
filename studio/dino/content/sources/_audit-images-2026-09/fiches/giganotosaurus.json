@@ -1,0 +1,33 @@
+{
+  "id": "giganotosaurus",
+  "name": "Giganotosaure",
+  "full": "Giganotosaurus carolinii",
+  "base": "Giganotosaurus",
+  "famille": "trex",
+  "famille_sci": "Théropodes",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore",
+  "epoque": "Crétacé · il y a 98 millions d'ans",
+  "periode": "cretace",
+  "region": "Amérique du Sud",
+  "continent": "Amérique du Sud",
+  "taille_m": 13,
+  "hauteur_m": 3.3,
+  "poids_t": 7,
+  "vitesse_kmh": 50,
+  "superpower": "Chassait en groupe pour attaquer les ÉNORMES sauropodes !",
+  "proies": "Andesaurus, un immense dinosaure au long cou qui vivait dans la même région",
+  "chasseurs": "Aucun prédateur ne l'attaquait",
+  "amis": "Chassait peut-être en meutes, comme des lions",
+  "fait": "C'est le plus grand carnivore d'Amérique du Sud ! Plus grand encore que le T-Rex !",
+  "desc": "Le Giganotosaure vivait en Amérique du Sud. Il était ÉNORME et chassait peut-être en groupe pour attraper des dinosaures encore plus grands que lui !",
+  "images": [
+    "Giganotosaurus.jpg",
+    "Giganotosaurus_coloriage.webp",
+    "Giganotosaurus_ecosysteme.jpg",
+    "Giganotosaurus_funfact.jpg",
+    "Giganotosaurus_headshot.jpg",
+    "Giganotosaurus_manger.jpg",
+    "Giganotosaurus_paris.jpg"
+  ]
+}

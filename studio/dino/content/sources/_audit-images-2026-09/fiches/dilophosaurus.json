@@ -1,0 +1,33 @@
+{
+  "id": "dilophosaurus",
+  "name": "Dilophosaure",
+  "full": "Dilophosaurus wetherilli",
+  "base": "Dilophosaurus",
+  "famille": "trex",
+  "famille_sci": "Théropodes",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore",
+  "epoque": "Jurassique · il y a 193 millions d'ans",
+  "periode": "jurassique",
+  "region": "Amérique du Nord",
+  "continent": "Amérique du Nord",
+  "taille_m": 7,
+  "hauteur_m": 2.4,
+  "poids_t": 0.35,
+  "vitesse_kmh": 25,
+  "superpower": "2 crêtes colorées sur la tête comme un chapeau de fête !",
+  "proies": "Petits dinos, charognes",
+  "chasseurs": "Prédateurs plus grands",
+  "amis": "Peut-être en groupe",
+  "fait": "Il avait 2 crêtes parallèles sur la tête — elles étaient probablement très colorées pour attirer les amis !",
+  "desc": "Le Dilophosaure avait deux belles crêtes colorées sur la tête. C'est un des premiers grands dinosaures carnivores !",
+  "images": [
+    "Dilophosaurus.jpg",
+    "Dilophosaurus_coloriage.webp",
+    "Dilophosaurus_ecosysteme.jpg",
+    "Dilophosaurus_funfact.jpg",
+    "Dilophosaurus_headshot.jpg",
+    "Dilophosaurus_manger.jpg",
+    "Dilophosaurus_paris.jpg"
+  ]
+}

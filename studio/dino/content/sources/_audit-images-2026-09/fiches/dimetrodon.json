@@ -1,0 +1,32 @@
+{
+  "id": "dimetrodon",
+  "name": "Dimétrodon",
+  "full": "Dimetrodon grandis",
+  "base": "Dimetrodon",
+  "famille": "volant",
+  "famille_sci": "Avant les dinosaures",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore",
+  "epoque": "Permien · il y a 280 millions d'ans (avant les dinos !)",
+  "periode": "permien",
+  "region": "Amérique du Nord",
+  "continent": "Amérique du Nord",
+  "taille_m": 3.5,
+  "hauteur_m": 1.8,
+  "poids_t": 0.25,
+  "superpower": "Une grande voile pour se réchauffer au soleil — le thermomètre vivant !",
+  "proies": "Petits reptiles",
+  "chasseurs": "Autres prédateurs du Permien",
+  "amis": "Solitaire",
+  "fait": "Attention : le Dimétrodon N'EST PAS un dinosaure ! Il vivait 50 millions d'ans AVANT eux et est en fait plus proche de nous (les mammifères) que des dinos !",
+  "desc": "Le Dimétrodon n'est pas un dinosaure — c'est un ancêtre des mammifères ! Il vivait bien avant les dinos. Sa grande voile sur le dos lui servait à se réchauffer au soleil.",
+  "images": [
+    "Dimetrodon.jpg",
+    "Dimetrodon_coloriage.webp",
+    "Dimetrodon_ecosysteme.jpg",
+    "Dimetrodon_funfact.jpg",
+    "Dimetrodon_headshot.jpg",
+    "Dimetrodon_manger.jpg",
+    "Dimetrodon_paris.jpg"
+  ]
+}

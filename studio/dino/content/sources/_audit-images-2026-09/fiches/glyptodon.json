@@ -1,0 +1,32 @@
+{
+  "id": "glyptodon",
+  "name": "Glyptodon",
+  "full": "Glyptodon",
+  "base": "Glyptodon",
+  "famille": "mammiferes",
+  "famille_sci": "Mammifères",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Âge de glace · il y a 1 million d'ans",
+  "periode": "cenozoique",
+  "region": "Amérique du Sud",
+  "continent": "Amérique du Sud",
+  "taille_m": 3,
+  "hauteur_m": 1.5,
+  "poids_t": 1,
+  "superpower": "Une énorme carapace ronde et dure sur le dos, comme un bouclier vivant — impossible à croquer !",
+  "proies": "Rien : il broutait l'herbe",
+  "chasseurs": "Sa carapace le protégeait de presque tout",
+  "amis": "Tranquille, il broutait dans son coin",
+  "fait": "Il ressemblait à une tortue géante, mais c'était un cousin du tatou ! Sa carapace ronde était aussi grande qu'une petite voiture. Et son cousin le Doedicurus avait même une massue au bout de la queue, comme l'Ankylosaure !",
+  "desc": "Le Glyptodon était un gros animal à carapace, de la taille d'une petite voiture. Sa coquille dure et bombée le protégeait comme un bouclier. C'était un cousin lointain des petits tatous d'aujourd'hui, en beaucoup, beaucoup plus grand.",
+  "images": [
+    "Glyptodon.jpg",
+    "Glyptodon_coloriage.webp",
+    "Glyptodon_ecosysteme.jpg",
+    "Glyptodon_funfact.jpg",
+    "Glyptodon_headshot.jpg",
+    "Glyptodon_manger.jpg",
+    "Glyptodon_paris.jpg"
+  ]
+}

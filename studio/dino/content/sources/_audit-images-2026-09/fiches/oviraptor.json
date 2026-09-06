@@ -1,0 +1,32 @@
+{
+  "id": "oviraptor",
+  "name": "Oviraptor",
+  "full": "Oviraptor philoceratops",
+  "base": "Oviraptor",
+  "famille": "raptor",
+  "famille_sci": "Dromæosaures",
+  "cat": "omnivores",
+  "regime": "🥩 Omnivore (mange tout !)",
+  "epoque": "Crétacé · il y a 75 millions d'ans",
+  "periode": "cretace",
+  "region": "Asie (Mongolie)",
+  "continent": "Asie",
+  "taille_m": 2,
+  "hauteur_m": 0.9,
+  "poids_t": 0.035,
+  "superpower": "Une crête colorée de perroquet ET un papa poule — il couvait ses œufs !",
+  "proies": "Œufs (peut-être), plantes, petits animaux",
+  "chasseurs": "Velociraptor, carnivores",
+  "amis": "En couple pour élever les petits",
+  "fait": "Son nom veut dire \"voleur d'œufs\"... mais c'était un mensonge ! On a découvert qu'il couvait SES PROPRES œufs comme les oiseaux !",
+  "desc": "L'Oviraptor a été injustement accusé de voler des œufs — en fait il couvait les siens comme un oiseau ! Il avait une belle crête colorée et était un excellent papa !",
+  "images": [
+    "Oviraptor.jpg",
+    "Oviraptor_coloriage.webp",
+    "Oviraptor_ecosysteme.jpg",
+    "Oviraptor_funfact.jpg",
+    "Oviraptor_headshot.jpg",
+    "Oviraptor_manger.jpg",
+    "Oviraptor_paris.jpg"
+  ]
+}

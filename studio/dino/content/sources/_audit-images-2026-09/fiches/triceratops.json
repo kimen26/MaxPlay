@@ -1,0 +1,32 @@
+{
+  "id": "triceratops",
+  "name": "Tricératops",
+  "full": "Triceratops horridus",
+  "base": "Triceratops",
+  "famille": "cornu",
+  "famille_sci": "Cératopsiens",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Crétacé · il y a 66 millions d'ans",
+  "periode": "cretace",
+  "region": "Amérique du Nord",
+  "continent": "Amérique du Nord",
+  "taille_m": 9,
+  "hauteur_m": 3,
+  "poids_t": 9,
+  "superpower": "3 cornes et une collerette osseuse géante — le bouclier parfait contre le T-Rex !",
+  "proies": "Mange des plantes",
+  "chasseurs": "T-Rex — mais le Tricératops se défendait bien !",
+  "amis": "Peut-être en troupeau pour protéger les petits",
+  "fait": "Ses cornes faisaient plus d'un mètre de long ! Et des os de Tricératops portent encore aujourd'hui les marques de dents du T-Rex — ils se battaient vraiment !",
+  "desc": "Le Tricératops avait 3 cornes et un grand bouclier osseux autour de la tête. Il n'avait pas peur du T-Rex ! C'était le grand guerrier des herbivores.",
+  "images": [
+    "Triceratops.jpg",
+    "Triceratops_coloriage.webp",
+    "Triceratops_ecosysteme.jpg",
+    "Triceratops_funfact.jpg",
+    "Triceratops_headshot.jpg",
+    "Triceratops_manger.jpg",
+    "Triceratops_paris.jpg"
+  ]
+}

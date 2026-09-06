@@ -1,0 +1,31 @@
+{
+  "id": "ophthalmosaurus",
+  "name": "Ophthalmosaure",
+  "full": "Ophthalmosaurus icenicus",
+  "base": "Ophthalmosaurus",
+  "famille": "enaliosaures",
+  "famille_sci": "Énaliosaures",
+  "cat": "piscivores",
+  "regime": "🐟 Piscivore",
+  "epoque": "Jurassique · il y a 150 millions d'ans",
+  "periode": "jurassique",
+  "region": "Europe, Amérique du Nord (mers peu profondes)",
+  "taille_m": 4,
+  "hauteur_m": 1,
+  "poids_t": 0.95,
+  "superpower": "Des yeux GÉANTS de 23 cm — parmi les plus grands yeux de tous les animaux, pour voir dans le noir des profondeurs !",
+  "proies": "Calmars, poissons attrapés dans l'eau sombre",
+  "chasseurs": "Gros prédateurs marins (Liopleurodon)",
+  "amis": "En groupes dans les mers chaudes",
+  "fait": "C'est un ichtyosaure — un reptile marin en forme de dauphin ! Ses yeux étaient si grands qu'ils prenaient presque toute sa tête. Et comme les dauphins, il faisait ses bébés vivants dans l'eau, jamais d'œufs sur la terre !",
+  "desc": "L'Ophthalmosaure n'était pas un dinosaure — c'était un ichtyosaure, un reptile marin qui ressemblait à un dauphin. Avec ses yeux immenses, il voyait ses proies dans les profondeurs sombres de l'océan.",
+  "images": [
+    "Ophthalmosaurus.jpg",
+    "Ophthalmosaurus_coloriage.webp",
+    "Ophthalmosaurus_ecosysteme.jpg",
+    "Ophthalmosaurus_funfact.jpg",
+    "Ophthalmosaurus_headshot.jpg",
+    "Ophthalmosaurus_manger.jpg",
+    "Ophthalmosaurus_paris.jpg"
+  ]
+}

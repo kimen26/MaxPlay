@@ -1,0 +1,32 @@
+{
+  "id": "aenocyon",
+  "name": "Loup terrible",
+  "full": "Aenocyon dirus",
+  "base": "Aenocyon",
+  "famille": "mammiferes",
+  "famille_sci": "Mammifères",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore",
+  "epoque": "Âge de glace · il y a 50 000 ans",
+  "periode": "cenozoique",
+  "region": "Amérique du Nord et du Sud",
+  "continent": "Amériques",
+  "taille_m": 1.7,
+  "hauteur_m": 0.85,
+  "poids_t": 0.07,
+  "superpower": "Une mâchoire plus puissante et un corps plus costaud que le loup d'aujourd'hui !",
+  "proies": "Chevaux sauvages, bisons, jeunes animaux",
+  "chasseurs": "Le Smilodon, quand ils se disputaient une proie",
+  "amis": "En meute, comme les loups d'aujourd'hui",
+  "fait": "Il ressemblait à un loup, mais en plus costaud, avec une tête plus grosse et des dents plus fortes. Et surprise : les savants ont découvert que ce n'était même pas un vrai loup, juste un cousin éloigné !",
+  "desc": "Le Loup terrible chassait en meute pendant l'âge de glace, comme les loups d'aujourd'hui, mais il était plus lourd et plus musclé. On en a retrouvé des milliers dans le grand piège de goudron d'Amérique, à côté des Smilodons.",
+  "images": [
+    "Aenocyon.jpg",
+    "Aenocyon_coloriage.webp",
+    "Aenocyon_ecosysteme.jpg",
+    "Aenocyon_funfact.jpg",
+    "Aenocyon_headshot.jpg",
+    "Aenocyon_manger.jpg",
+    "Aenocyon_paris.jpg"
+  ]
+}

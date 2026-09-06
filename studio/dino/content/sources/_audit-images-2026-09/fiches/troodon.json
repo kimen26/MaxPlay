@@ -1,0 +1,33 @@
+{
+  "id": "troodon",
+  "name": "Troodon",
+  "full": "Troodon formosus",
+  "base": "Troodon",
+  "famille": "raptor",
+  "famille_sci": "Dromæosaures",
+  "cat": "omnivores",
+  "regime": "🥩 Carnivore (et omnivore)",
+  "epoque": "Crétacé · il y a 75 millions d'ans",
+  "periode": "cretace",
+  "region": "Amérique du Nord",
+  "continent": "Amérique du Nord",
+  "taille_m": 2.2,
+  "hauteur_m": 0.9,
+  "poids_t": 0.05,
+  "vitesse_kmh": 50,
+  "superpower": "Le dinosaure le plus INTELLIGENT ! Le plus grand cerveau par rapport à sa taille !",
+  "proies": "Petits mammifères, lézards",
+  "chasseurs": "Grands carnivores",
+  "amis": "En groupe, peut-être s'occupait des œufs",
+  "fait": "Certains scientifiques pensent que si les dinos n'avaient pas disparu, le Troodon aurait pu devenir aussi intelligent qu'un humain en quelques millions d'années !",
+  "desc": "Le Troodon était le dinosaure le plus intelligent de tous ! Il avait de grands yeux pour voir la nuit, de longs bras habiles, et un cerveau énorme. Le professeur des dinosaures !",
+  "images": [
+    "Troodon.jpg",
+    "Troodon_coloriage.webp",
+    "Troodon_ecosysteme.jpg",
+    "Troodon_funfact.jpg",
+    "Troodon_headshot.jpg",
+    "Troodon_manger.jpg",
+    "Troodon_paris.jpg"
+  ]
+}

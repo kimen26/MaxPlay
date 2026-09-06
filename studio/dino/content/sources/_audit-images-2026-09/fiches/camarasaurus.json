@@ -1,0 +1,32 @@
+{
+  "id": "camarasaurus",
+  "name": "Camarasaure",
+  "full": "Camarasaurus lentus",
+  "base": "Camarasaurus",
+  "famille": "cou_long",
+  "famille_sci": "Sauropodes",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Jurassique · il y a 155 millions d'ans",
+  "periode": "jurassique",
+  "region": "Amérique du Nord",
+  "continent": "Amérique du Nord",
+  "taille_m": 15,
+  "hauteur_m": 6,
+  "poids_t": 18,
+  "superpower": "Des dents épaisses pour mâcher des branches très dures !",
+  "proies": "Mange des plantes",
+  "chasseurs": "Allosaure pour les jeunes",
+  "amis": "En troupeau avec ses petits",
+  "fait": "Le sauropode le plus commun d'Amérique du Nord ! Il avait de grandes fenêtres dans son crâne pour alléger sa tête.",
+  "desc": "Le Camarasaure était un dinosaure géant avec une grosse tête et de fortes dents. Il vivait en troupeau et s'occupait bien de ses bébés.",
+  "images": [
+    "Camarasaurus.jpg",
+    "Camarasaurus_coloriage.webp",
+    "Camarasaurus_ecosysteme.jpg",
+    "Camarasaurus_funfact.jpg",
+    "Camarasaurus_headshot.jpg",
+    "Camarasaurus_manger.jpg",
+    "Camarasaurus_paris.jpg"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "pteranodon",
+  "name": "Ptéranodon",
+  "full": "Pteranodon longiceps",
+  "base": "Pteranodon",
+  "famille": "pterosaures",
+  "famille_sci": "Ptérosaures",
+  "cat": "piscivores",
+  "regime": "🐟 Piscivore",
+  "epoque": "Crétacé · il y a 85 millions d'ans",
+  "periode": "cretace",
+  "region": "Amérique du Nord (Kansas)",
+  "continent": "Amérique du Nord",
+  "taille_m": 6,
+  "hauteur_m": 1.8,
+  "poids_t": 0.025,
+  "vitesse_kmh": 32,
+  "superpower": "Volait sans effort en planant sur les courants chauds — le roi des airs !",
+  "proies": "Gros poissons, calmars",
+  "chasseurs": "Mosasaurus dans l'eau",
+  "amis": "En colonies sur les falaises",
+  "fait": "Pas un vrai dino — un reptile volant ! Sa crête orientait son vol comme un gouvernail. Il plongeait pour attraper des poissons.",
+  "desc": "Le Ptéranodon n'était pas un dinosaure mais un reptile volant ! Il avait une envergure énorme et planait sur les vents. Il pêchait en plongeant dans la mer comme un pélican géant !",
+  "images": [
+    "Pteranodon.jpg",
+    "Pteranodon_coloriage.webp",
+    "Pteranodon_ecosysteme.jpg",
+    "Pteranodon_funfact.jpg",
+    "Pteranodon_headshot.jpg",
+    "Pteranodon_manger.jpg",
+    "Pteranodon_paris.jpg"
+  ]
+}

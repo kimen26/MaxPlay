@@ -1,0 +1,31 @@
+{
+  "id": "liopleurodon",
+  "name": "Liopleurodon",
+  "full": "Liopleurodon ferox",
+  "base": "Liopleurodon",
+  "famille": "enaliosaures",
+  "famille_sci": "Énaliosaures",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore",
+  "epoque": "Jurassique · il y a 165 millions d'ans",
+  "periode": "jurassique",
+  "region": "Europe (France, Angleterre)",
+  "taille_m": 7,
+  "hauteur_m": 1.5,
+  "poids_t": 5,
+  "superpower": "Un odorat incroyable : ses narines orientées vers l'avant détectaient ses proies de très loin !",
+  "proies": "Poissons géants, ichtyosaures, autres reptiles marins",
+  "chasseurs": "Aucun — le chasseur numéro un de ses mers",
+  "amis": "Solitaire",
+  "fait": "Une émission télé en 1999 lui avait donné 25 mètres de long — comme quatre voitures bout à bout ! Les vrais scientifiques ont rectifié : 6 à 7 mètres. Beaucoup moins grand, mais toujours aussi redoutable !",
+  "desc": "Le Liopleurodon était un pliosaure — un reptile marin au cou court et à la grande mâchoire. Il chassait dans les mers européennes au Jurassique. Son odorat exceptionnel lui permettait de sentir ses proies de loin.",
+  "images": [
+    "Liopleurodon.jpg",
+    "Liopleurodon_coloriage.webp",
+    "Liopleurodon_ecosysteme.jpg",
+    "Liopleurodon_funfact.jpg",
+    "Liopleurodon_headshot.jpg",
+    "Liopleurodon_manger.jpg",
+    "Liopleurodon_paris.jpg"
+  ]
+}

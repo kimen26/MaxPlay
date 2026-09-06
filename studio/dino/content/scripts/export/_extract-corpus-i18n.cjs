@@ -5,6 +5,8 @@ const fs = require('fs'), path = require('path');
 const ROOT = path.resolve(__dirname, '../../../../..');
 const src = fs.readFileSync(path.join(ROOT, 'site/js/dinos-data.js'), 'utf8');
 eval(src.replace(/^const /gm, 'global.'));
+const plantesPath = path.join(ROOT, 'site/js/dinos-plantes.js');
+if (fs.existsSync(plantesPath)) eval(fs.readFileSync(plantesPath, 'utf8').replace(/^const /gm, 'global.'));
 const racinesSrc = fs.readFileSync(path.join(ROOT, 'site/js/dinos-racines.js'), 'utf8');
 eval(racinesSrc.replace(/^const /gm, 'global._RACINES_'));
 
@@ -50,6 +52,17 @@ const categories = {};
   categories[c.id] = o;
 });
 
+// Plantes (flore du Mesozoique, onglet Les epoques). Champs NEUTRES exclus :
+// id, type, periodes, emoji, png, hauteur_m, mangee_par (des ids de dinos, pas du texte).
+const CHAMPS_PLANTE = ['name', 'full', 'nom_etym', 'region', 'comp_hauteur', 'environnement',
+  'feuille', 'graines', 'mangee_comment', 'superpower', 'fait', 'vivant'];
+const plantes = {};
+(global.DINO_PLANTES || []).forEach(p => {
+  const o = {};
+  CHAMPS_PLANTE.forEach(k => { if (typeof p[k] === 'string' && p[k].trim()) o[k] = p[k]; });
+  plantes[p.id] = o;
+});
+
 // Racines du dico (sens des racines grecques/latines + noms propres) : site/js/dinos-racines.js.
 const racines = {};
 (global._RACINES_DINO_RACINES.racines || []).forEach(r => {
@@ -81,8 +94,8 @@ extinction.hypotheses = {};
 });
 
 const out = { _meta: { source: 'site/js/dinos-data.js + site/js/dinos-racines.js', genere: new Date().toISOString().slice(0, 10),
-  nb_dinos: Object.keys(dinos).length, nb_familles: Object.keys(familles).length, nb_racines: Object.keys(racines).length },
-  familles, periodes, categories, eres, dinos, racines, pangee, extinction };
+  nb_dinos: Object.keys(dinos).length, nb_plantes: Object.keys(plantes).length, nb_familles: Object.keys(familles).length, nb_racines: Object.keys(racines).length },
+  familles, periodes, categories, eres, dinos, plantes, racines, pangee, extinction };
 
 const dir = path.join(ROOT, 'studio/dino/content/i18n/_corpus');
 fs.mkdirSync(dir, { recursive: true });
@@ -102,4 +115,5 @@ for (let i = 0; i < ids.length; i += TAILLE_LOT) {
 let chars = 0;
 Object.values(dinos).forEach(d => Object.values(d).forEach(v => chars += v.length));
 Object.values(familles).forEach(f => Object.values(f).forEach(v => chars += v.length));
-console.log(`corpus-fr.json : ${Object.keys(dinos).length} dinos, ${Object.keys(familles).length} familles, ${Object.keys(racines).length} racines, ${nbLots} lots, ${chars} caracteres`);
+Object.values(plantes).forEach(p => Object.values(p).forEach(v => chars += v.length));
+console.log(`corpus-fr.json : ${Object.keys(dinos).length} dinos, ${Object.keys(plantes).length} plantes, ${Object.keys(familles).length} familles, ${Object.keys(racines).length} racines, ${nbLots} lots, ${chars} caracteres`);

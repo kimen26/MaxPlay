@@ -6,11 +6,16 @@
 //          le MP3 final devra s'appeler site/audio/dinos/<lang>/<slug>.mp3 (miroir exact du FR).
 // Porte intégrée : tags hors liste blanche, locuteur inconnu, « ! » chez Wex, tag en fin de réplique,
 // clip vide → le clip est REFUSÉ (rien d'écrit pour lui) et compté en KO.
-// Usage : node studio/dino/content/scripts/audio/_md2json-hors-fiche.cjs <lang> [fichier.md ...]
+// Usage : node studio/dino/content/scripts/audio/_md2json-hors-fiche.cjs <lang> [fichier.md ...] [--out=<dossier>]
+//   --out : dossier de sortie explicite (relatif à la racine du repo) — obligatoire dès qu'on convertit un .md
+//   d'un autre pôle (mini-jeux…), sinon les JSON atterrissent dans le dossier dino (L-101).
 const fs = require('fs'), path = require('path');
 const ROOT = path.resolve(__dirname, '../../../../..');
-const lang = process.argv[2];
-if (!lang) { console.error('usage: node _md2json-hors-fiche.cjs <lang> [fichier.md ...]'); process.exit(2); }
+const argv = process.argv.slice(2);
+const outOpt = (argv.find(a => a.startsWith('--out=')) || '').slice(6);
+const args = argv.filter(a => !a.startsWith('--'));
+const lang = args[0];
+if (!lang) { console.error('usage: node _md2json-hors-fiche.cjs <lang> [fichier.md ...] [--out=<dossier>]'); process.exit(2); }
 const LANG_CODE = { 'es-es': 'es', 'pt-br': 'pt' }[lang] || lang;
 
 const voiceMap = JSON.parse(fs.readFileSync(path.join(ROOT, 'studio/narration/personnages/voix-meta/voice-map.json'), 'utf8'));
@@ -23,8 +28,10 @@ if (!m) { console.error('TAGS_OK introuvable dans _verif-scripts-audio.cjs'); pr
 const TAGS_OK = new Set([...m[1].matchAll(/'([^']+)'/g)].map(x => x[1]));
 
 const dir = path.join(ROOT, 'studio/dino/content/i18n', lang, 'scripts-hors-fiche');
-const files = process.argv.length > 3 ? process.argv.slice(3) : fs.readdirSync(dir).filter(f => f.endsWith('.md')).map(f => path.join(dir, f));
-const outDir = path.join(dir, 'json');
+const files = args.length > 1 ? args.slice(1) : fs.readdirSync(dir).filter(f => f.endsWith('.md')).map(f => path.join(dir, f));
+const horsDino = files.some(f => !path.resolve(f).startsWith(path.resolve(dir)));
+if (horsDino && !outOpt) { console.error('fichier .md hors du pôle dino : --out=<dossier> obligatoire (L-101)'); process.exit(2); }
+const outDir = outOpt ? path.resolve(ROOT, outOpt) : path.join(dir, 'json');
 fs.mkdirSync(outDir, { recursive: true });
 
 let ok = 0, ko = 0, caracteres = 0;

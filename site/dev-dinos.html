@@ -658,10 +658,9 @@ function speakText(txt) {
 function stopSpeak() { if (window.TTS) TTS.cancel(); }
 
 /* ── Voix réelle des MENUS (MP3 ElevenLabs) ──
-   Narrateur H : accueil / régime / familles · Narratrice F : voyage.
+   Narrateur H : régime / familles / époques / dico · Narratrice F : voyage.
    Si le MP3 manque ou ne charge pas → fallback speechSynthesis (on garde toujours l'existant). */
 const MENU_VOICE = {
-  accueil:  window.AUDIO_DINOS + 'menu-accueil.mp3',
   regime:   window.AUDIO_DINOS + 'menu-regime.mp3',
   famille:  window.AUDIO_DINOS + 'menu-familles.mp3',
   periode:  window.AUDIO_DINOS + 'menu-voyage.mp3',
@@ -1024,6 +1023,9 @@ function buildMenuPeriode(el) {
       const dinos = ep.dinos.map(id => DINOS.find(d => d.id === id)).filter(Boolean);
       const dinosHtml = dinos.length
         ? `<div class="chrono-dinos">${dinos.map(buildChronoDinoThumb).join('')}</div>` : '';
+      // Écrans « macro » du Voyage : la Pangée après le Trias (le seul continent), la Grande
+      // Extinction (4 hypothèses) après l'épisode météorite. Inatteignables depuis 2026-06 (HO-017), rebranchés 2026-09-06.
+      const macro = ep.id === 'trias' ? buildPangeeBloc() : ep.id === 'extinction' ? buildExtinctionBloc() : '';
       return bandeau + `
         <div class="chrono-periode journey-ep" data-ep="${ep.id}" style="border-left:5px solid ${ep.color}">
           <div class="chrono-header" style="background:${ep.color}22">
@@ -1041,10 +1043,11 @@ function buildMenuPeriode(el) {
             ${dinosHtml}
           </div>
         </div>
-      `;
+      ` + macro;
     }).join('');
 
   el.appendChild(wrapper);
+  pangeeStartAuto(); // carrousel des cartes (s'arrête seul quand le bloc quitte le DOM)
   _refreshJourneyNext(); // pointe la 1re époque dès l'ouverture
 }
 
@@ -1101,7 +1104,7 @@ function buildPangeeBloc() {
 
   const etapesHtml = PANGEE.etapes.map(e => `
     <div class="pangee-etape">
-      <div class="pangee-etape-label">${e.label} · ${esc(e.ma)}</div>
+      <div class="pangee-etape-label">${e.label} · ${e.ma}</div>
       <div class="pangee-etape-titre">${e.titre}</div>
       <div class="pangee-etape-texte">${e.texte}</div>
     </div>

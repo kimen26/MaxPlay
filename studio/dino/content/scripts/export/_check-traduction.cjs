@@ -67,6 +67,7 @@ function scan(kind, ref, got) {
 }
 scan('dinos', corpus.dinos, trad.dinos || {});
 scan('familles', corpus.familles, trad.familles || {});
+if (corpus.plantes) scan('plantes', corpus.plantes, trad.plantes || {});
 if (corpus.racines) scan('racines', corpus.racines, trad.racines || {});
 if (corpus.periodes) scan('periodes', corpus.periodes, trad.periodes || {});
 if (corpus.categories) scan('categories', corpus.categories, trad.categories || {});

@@ -1,36 +1,65 @@
-# Prompts de régénération — Baryonyx (Baryonyx walkeri)
+# Prompts de régénération — Baryonyx
 
-Rappel morpho commun : théropode BIPÈDE de 9 m de long, 2,5 m de haut. Museau ÉTROIT et
-allongé de crocodile, terminé par une rosette de dents ; dents coniques serrées (pas des
-lames dentelées de T-Rex). ÉNORME GRIFFE DE POUCE recourbée d'environ 31 cm sur chaque main.
-Crête basse sur le nez. Dos à faible crête, longue queue tenue à l'horizontale, jamais traînée
-au sol. Piscivore.
+Style visé : paléoart réaliste, lumière naturelle de jour, palette douce, lisible par un enfant
+de 4 ans.
 
-## `Baryonyx_manger.jpg`
+---
 
-**ACTION** — Debout dans une rivière peu profonde, il vient de HARPONNER UN GROS POISSON avec
-la griffe de son pouce : le poisson, argenté et bien visible, est empalé sur la griffe et
-soulevé hors de l'eau, tête relevée, gouttes qui retombent. La griffe et la proie sont les
-deux points d'intérêt.
-*À éviter explicitement* : le museau plongé dans la mare sans aucun poisson (scène actuelle),
-qui double aussi la pose de `_ecosysteme` ; et la tête relevée poisson en travers des
-mâchoires de `_funfact` (ici le poisson est sur la GRIFFE, pas dans la gueule).
+## Baryonyx_manger.jpg
 
-**DÉCOR** — Crétacé, il y a 125 millions d'années, Europe (Angleterre) : rivière large à
-bancs de graviers, berges de fougères arborescentes, conifères et prêles, ciel nuageux doux.
-Aucune herbe ni fleur moderne.
+**MORPHO** — Baryonyx walkeri : théropode **bipède** de 9 m de long pour 2,5 m de haut aux hanches.
+**Crâne long et étroit de crocodile / gavial**, museau terminé par une **rosette élargie** garnie de
+dents, **dents coniques droites, serrées, non dentelées**, **petite crête osseuse triangulaire sur
+le nez**. Cou long et légèrement en S. Bras longs et puissants à **trois doigts**, dont un pouce
+portant une **énorme griffe recourbée de 31 cm** — le trait signature, qui doit être **bien visible
+et bien détachée**. Dos à basse crête d'épines neurales (jamais une voile haute de Spinosaure).
+Longue queue tenue à l'horizontale, **jamais traînante au sol**.
 
-## `Baryonyx_ecosysteme.jpg`
+**ACTION** — Le régime **piscivore doit être explicite** : un poisson dans la gueule, pas un museau
+plongé dans le vide. Cadrage rapproché, **l'animal debout dans une rivière peu profonde, vu de
+trois quarts face droite**, tronc redressé, **tête haute levée vers le ciel** en train d'avaler,
+**un gros poisson argenté tenu en travers de la rosette du museau**, gerbes d'eau et gouttes qui
+retombent, **la grande griffe du pouce refermée sur un second poisson** contre son flanc. Remous et
+poissons visibles sous la surface autour de ses pattes.
+Se démarquer explicitement de : l'actuel `_manger` (profil gauche, museau plongé dans une mare, rien
+dans la gueule), de `Baryonyx_ecosysteme.jpg` (**exactement la même inclinaison de cou et de museau
+vers la même mare, en profil gauche**), de `Baryonyx.jpg` (profil gauche entier marchant au bord du
+marais avec un enfant repère) et de `Baryonyx_funfact.jpg` (profil gauche, tête redressée avec un
+poisson, ossements d'Iguanodon sur la berge à droite).
+**Interdiction absolue du profil gauche museau-vers-l'eau : les quatre scènes actuelles sont
+la même. On veut un trois quarts face, dans l'eau, tête levée.**
 
-**ACTION** — Vue large du milieu où le Baryonyx N'EST PAS penché vers l'eau : il MARCHE sur la
-berge de trois quarts vers l'observateur, tête haute, queue à l'horizontale, en traversant une
-plaine où paissent des Iguanodons ; des ptérosaures passent dans le ciel.
-*À éviter explicitement* : le profil gauche penché museau vers la mare, angle actuellement
-partagé mot pour mot avec `Baryonyx_manger.jpg`.
+**DÉCOR** — Crétacé inférieur, Europe (Angleterre / Wealden), il y a 125 millions d'années :
+rivière lente à bancs de gravier, berges de fougères, prêles, cycas, conifères et araucarias en
+arrière-plan. Ciel clair. Pas de graminées modernes, pas de fleurs de jardin.
 
-**DÉCOR** — Plaine fluviale du Crétacé anglais, panorama : méandre de rivière, troupeau
-d'Iguanodons au second plan, forêt de conifères et de fougères arborescentes au fond.
+**INTERDITS** — Aucun texte incrusté, aucun watermark, aucun humain, aucun sang :
+les poissons sont entiers, intacts, jamais déchiquetés.
 
-**INTERDITS (les deux images)** — aucun texte incrusté, aucun watermark ; aucun humain ;
-pas de sang, pas de chair déchirée, pas d'agonie. Paléoart réaliste, lumière naturelle,
-adapté à un enfant de 4 ans.
+---
+
+## Baryonyx_ecosysteme.jpg
+
+**MORPHO** — Identique au bloc ci-dessus. Sur un plan large, il faut encore lire :
+le **long museau étroit de crocodile**, la **crête nasale**, la **grande griffe du pouce**,
+la posture bipède, la queue horizontale.
+
+**ACTION** — Le milieu est le sujet, mais la posture doit être **inédite** : le Baryonyx
+**au repos, couché-accroupi sur un banc de sable au premier plan droit**, corps posé sur les
+tarses replies, **de trois quarts arrière, la tête tournée vers la gauche du cadre** pour regarder
+la plaine, la queue étendue derrière lui, les deux mains posées au sol devant, griffes du pouce
+visibles à plat sur le sable. Autour de lui, le milieu peuplé : troupeau d'**Iguanodons** qui
+s'abreuve au loin, un **Hypsilophodon** entre les fougères, des **ptérosaures** dans le ciel,
+un crocodilien immobile sur la rive opposée, poissons dans l'eau claire.
+Se démarquer explicitement de : `Baryonyx.jpg`, de l'actuel `_manger`, de l'actuel `_ecosysteme` et
+de `Baryonyx_funfact.jpg` — **tous montrent le même profil gauche, debout, cou penché vers l'eau**.
+Ici l'animal est **couché, de trois quarts arrière, la tête tournée** : rien à voir avec les autres.
+Se démarquer aussi de `Baryonyx_headshot.jpg` (gros plan de tête de profil).
+
+**DÉCOR** — Crétacé inférieur, Europe (Angleterre / Wealden), il y a 125 millions d'années :
+plaine alluviale, méandre de rivière, bancs de sable et de galets, fougères, prêles, cycas,
+forêt de conifères et araucarias, collines basses au fond, lumière de milieu de journée.
+Pas de graminées, pas de fleurs modernes, pas de mammifère moderne.
+
+**INTERDITS** — Aucun texte incrusté, aucun watermark, aucun humain, aucun sang, aucune carcasse
+ouverte.

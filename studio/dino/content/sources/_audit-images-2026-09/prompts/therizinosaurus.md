@@ -1,41 +1,67 @@
-# Prompts de régénération — Therizinosaurus (Therizinosaurus cheloniformis)
+# Prompts de régénération — Therizinosaurus
 
-Rappel morpho commun : théropode BIPÈDE de 10 m de long et 5 m de haut, corps massif et
-ventru ENTIÈREMENT EMPLUMÉ (duvet épais sur tout le corps, plumes plus longues aux bras et à
-la queue). Long cou, petite tête à BEC CORNÉ d'herbivore. Trois GRIFFES DE MAIN démesurées,
-faiblement recourbées, atteignant 50 à 70 cm. Pattes robustes à quatre orteils.
-**HERBIVORE** — jamais montré en train de chasser ou de manger un animal.
+Style visé pour tous les blocs : paléoart réaliste, lumière naturelle, palette douce,
+lisible par un enfant de 4 ans.
 
-## `Therizinosaurus_manger.jpg`
+**MORPHO commune aux deux blocs** — *Therizinosaurus cheloniformis*, théropode **HERBIVORE** de
+10 m de long et 5 m de haut, 5 tonnes :
+- **TROIS GRIFFES DE MAIN IMMENSES (jusqu'à 70 cm), en faux, minces, recourbées et pointues**,
+  la plus longue à l'intérieur — le trait signature, à rendre lisible dans chaque image.
+- **Corps entièrement EMPLUMÉ**, plumage duveteux brun-doré à taches claires, poitrine et hanches
+  larges, ventre massif de digesteur de feuilles.
+- **Long cou souple** portant une **petite tête à BEC CORNÉ d'herbivore**, dents en feuille
+  minuscules au fond, jamais de crocs.
+- **Bipède strict**, deux pattes courtes et robustes à quatre orteils, queue courte et emplumée.
+- **Aucun comportement de prédateur** : il ne saisit jamais d'animal, jamais de proie.
 
-**ACTION** — Assis en appui sur ses pattes arrière, il RABAT vers son bec, avec ses deux mains
-aux longues griffes, une haute branche feuillue de conifère et arrache une bouchée de
-feuillage ; des aiguilles tombent, une touffe verte dépasse clairement du bec. On voit qu'il
-mange réellement des plantes.
-*À éviter explicitement* : la station debout, bras tendu, griffes dans le vide sans rien
-saisir (scène actuelle) ; et le profil gauche griffes accrochant la branche déjà utilisé par
-`_funfact` et `_ecosysteme` — ici l'animal est ASSIS, vu de trois quarts face, et la nourriture
-est DANS le bec.
+---
 
-**DÉCOR** — Crétacé, il y a 70 millions d'années, Mongolie (désert de Gobi) : bosquet de
-conifères en bordure de dunes de sable clair, buissons bas et arbustes secs, ciel large.
-Aucune herbe de prairie ni fleur moderne.
+## Therizinosaurus_manger.jpg
 
-## `Therizinosaurus_funfact.jpg`
+**ACTION** — Il **mange vraiment**, et la nourriture doit être **saisie ET dans le bec** :
+l'animal **assis sur ses hanches / accroupi au pied d'un grand conifère**, vu **de trois quarts
+avant en légère contre-plongée**, **une main qui a CROCHETÉ une grosse branche feuillue et l'a
+COURBÉE vers son bec** — les griffes visiblement passées par-dessus le rameau, la branche pliée,
+les aiguilles arrivant au niveau de la bouche — pendant que **le bec ARRACHE une touffe de
+feuilles nettement visible entre les mandibules**, quelques aiguilles tombant devant lui.
+La seconde main tient un autre rameau plus bas.
+Se démarquer explicitement de : l'ancienne version de `Therizinosaurus_manger.jpg` (debout de
+profil, main tendue vers un conifère mais **griffes dans le vide**, rien dans le bec) ;
+`Therizinosaurus.jpg` (hero — debout de profil entier avec un enfant en repère) ;
+`Therizinosaurus_ecosysteme.jpg` (debout au bord du désert de Gobi, griffe accrochant une branche,
+Tarbosaure au loin) ; `Therizinosaurus_headshot.jpg` (portrait).
+Donc : **l'animal est ASSIS/ACCROUPI, pas debout de profil ; la branche est TENUE ET COURBÉE,
+pas effleurée ; il y a du feuillage DANS le bec.**
 
-Le `fait` à illustrer : *des griffes de 50 centimètres — presque la longueur de ton bras,
-les plus longues de tous les animaux — et pourtant il mangeait des feuilles paisiblement.*
+**DÉCOR** — Crétacé supérieur, Mongolie (formation de Nemegt), il y a 70 millions d'années :
+**forêt-galerie humide le long d'une rivière** — grands conifères, ginkgos, fougères arborescentes,
+prêles au sol, flaques et bancs de sable. Aucune graminée moderne, aucune fleur de jardin.
 
-**ACTION** — Gros plan en contre-plongée sur UNE MAIN au premier plan, les trois immenses
-griffes déployées en travers du cadre et occupant toute la largeur de l'image, nettement
-détaillées ; derrière, en léger flou, le reste de l'animal debout, tête paisiblement baissée
-vers un buisson. Le contraste arme redoutable / animal tranquille est le sujet.
-*À éviter explicitement* : le plan large de profil gauche, bras tendu vers un conifère, qui
-est la version actuelle de ce fichier ET la pose de `_manger` et de `_ecosysteme`.
+**INTERDITS** — Aucun texte incrusté, aucun watermark, aucun humain, aucun sang.
+**Aucune proie animale, aucune carcasse** : c'est un herbivore, l'image doit le dire.
 
-**DÉCOR** — Bordure du désert de Gobi au Crétacé, arrière-plan volontairement simple et flou :
-sable clair, quelques conifères, lumière chaude de fin de journée.
+---
 
-**INTERDITS (les deux images)** — aucun texte incrusté, aucun watermark ; aucun humain ;
-aucune proie animale, aucune scène de chasse (c'est un herbivore) ; pas de sang.
-Paléoart réaliste, lumière naturelle, adapté à un enfant de 4 ans.
+## Therizinosaurus_funfact.jpg
+
+**ACTION** — Le fait à illustrer : « **les griffes les plus longues de tous les animaux — presque
+la longueur de ton bras — et pourtant il mangeait des feuilles** ». Illustrer par **les griffes,
+en gros plan de posture** : cadrage **serré sur le buste, les deux bras et les mains**, vu **de
+face légèrement en contre-plongée**, l'animal **dressé de toute sa hauteur, les deux bras ramenés
+en avant et écartés**, **les six immenses griffes déployées en éventail au premier plan, nettes
+et pleinement dans le cadre**, la tête au bec paisible penchée au-dessus d'elles et regardant vers
+le spectateur, corps emplumé légèrement flou en arrière. Lumière rasante qui souligne la courbe et
+la longueur de chaque griffe.
+Se démarquer explicitement de : l'ancienne version de `Therizinosaurus_funfact.jpg` (profil gauche,
+même bras tendu vers le même conifère que `_manger`, même forêt marécageuse — l'angle et l'action
+étaient quasi identiques) ; le nouveau `Therizinosaurus_manger.jpg` (assis, branche courbée,
+feuillage dans le bec) ; `Therizinosaurus.jpg` (profil entier avec enfant) ;
+`Therizinosaurus_ecosysteme.jpg` (Gobi, dunes, Tarbosaure) ; `Therizinosaurus_headshot.jpg`
+(portrait tête et cou seuls — ici les **mains** sont le sujet, pas la tête).
+Donc : **vue de FACE, cadrage BUSTE, aucun arbre saisi, aucun profil gauche.**
+
+**DÉCOR** — Crétacé supérieur, Mongolie : lisière de forêt de conifères, arrière-plan volontairement
+simple et peu contrasté pour que les griffes ressortent, ciel de fin de journée.
+
+**INTERDITS** — Aucun texte incrusté (aucune cote « 70 cm », aucune flèche, aucun objet de
+comparaison moderne), aucun watermark, aucun humain, aucun sang, aucune griffe ensanglantée.

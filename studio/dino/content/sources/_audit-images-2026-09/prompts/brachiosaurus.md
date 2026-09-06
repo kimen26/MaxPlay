@@ -1,17 +1,40 @@
-# Prompts de regeneration — Brachiosaurus (1 image recalee)
+# Prompts de régénération — Brachiosaurus
 
-Style : paleoart realiste, lumiere naturelle, lisible pour un enfant de 4 ans.
-Interdits communs : aucun texte incruste, aucun watermark, aucun humain, aucun sang ni gore.
+Style visé : paléoart réaliste, lumière naturelle de jour, palette douce, lisible par un enfant
+de 4 ans.
 
-## Brachiosaurus_funfact.jpg — RECALE (CLONE de _manger : meme action de brouter la cime d'un conifère)
+---
 
-Le fait a illustrer : « sa tete etait a 13 metres de haut — aussi haut qu'un immeuble de quatre etages ! Pour avaler, il avalait des pierres pour broyer sa nourriture dans son estomac. »
+## Brachiosaurus_funfact.jpg
 
-**MORPHO** — Sauropode de 22 m de long, 13 m de haut au sommet du crane, 47 tonnes. **Pattes avant nettement plus longues que les pattes arriere**, donc dos incline vers l'arriere et epaules tres hautes — c'est le trait signature a ne pas rater. Cou tres long tenu haut, petite tete cubique a museau bombe avec une **bosse nasale proeminente sur le dessus du crane**, dents en spatule. Queue relativement courte pour un sauropode, portee au-dessus du sol, jamais trainante.
+**MORPHO** — Brachiosaurus altithorax : sauropode de 22 m de long et **13 m de haut**, 47 tonnes.
+Silhouette **en girafe** : **pattes AVANT nettement plus longues que les arrière**, épaules hautes,
+**dos qui descend en pente vers la queue**, queue relativement **courte** et portée en l'air.
+**Cou très long, dressé haut, presque à la verticale.** Petite tête **cubique à museau bombé**,
+avec **une haute bosse nasale et des narines placées tout en haut du crâne**, bouche à
+**dents en spatule**. Peau granuleuse gris-brun à réseau de taches ocre.
 
-**ACTION** — Le Brachiosaure est vu **en forte contre-plongee depuis le sol, presque a la verticale**, l'observateur au niveau de ses pieds : le cou monte vers le ciel jusqu'en haut du cadre, la petite tete est minuscule tout la-haut, et **deux ptérosaures volent a mi-hauteur du cou** pour donner l'echelle verticale d'un coup d'oeil. L'animal est immobile, cou dresse, gueule fermee — **il ne broute pas**.
-*Explicitement different de :* le _manger (cou tendu vers la cime d'un conifère, feuillage arrache en gueule — la scene que cette image copiait), le hero (profil entier lateral avec enfant au sol), l'ecosysteme (trois quarts au bord du lac, plan large peuple), le paris (silhouette laterale en ville), le headshot (portrait de tete). Ici : cadrage vertical, contre-plongee extreme, aucune action de manger.
+**ACTION** — Le fait à illustrer : « sa tête était à 13 mètres de haut, aussi haut qu'un immeuble
+de quatre étages ». Il faut donc un **repère de hauteur DANS l'image, sans texte** :
+**contre-plongée forte depuis le sol, au pied de l'animal**, le cou dressé à la verticale montant
+hors du milieu du cadre, **la tête minuscule tout en haut, ARRIVANT AU-DESSUS de la cime des plus
+grands araucarias du bosquet** — les arbres, échelonnés en profondeur, servent de règle graduée et
+la tête les dépasse. Au premier plan, au pied de la patte avant, un petit dinosaure (Othnielosaurus)
+et des fougères pour donner l'écrasement d'échelle. La bouche entrouverte laisse voir quelques
+**gastrolithes** (galets lisses) au sol devant lui, écho au « il avalait des pierres ».
+**Il ne broute PAS.**
+Se démarquer explicitement de : `Brachiosaurus_manger.jpg` (le cou tendu vers la cime d'un conifère,
+en train de brouter les aiguilles, un second sauropode à droite) et de l'actuel `_funfact` qui en
+est un quasi-doublon ; de `Brachiosaurus.jpg` (profil entier de plain-pied, enfant repère au sol) ;
+de `Brachiosaurus_ecosysteme.jpg` (plan large de plaine lacustre avec stégosaures) ;
+de `Brachiosaurus_headshot.jpg` (gros plan de tête).
+**Points clés : contre-plongée extrême + tête plus haute que les arbres + aucune bouchée de
+feuillage.**
 
-**DECOR** — Foret du Jurassique superieur d'Amerique du Nord (Colorado, Wyoming, Utah), il y a 150 millions d'annees. Troncs de conifères geants qui montent avec le cou, cycas et fougeres arborescentes au sol, trouee de ciel bleu au-dessus. Aucune plante a fleurs, aucune herbe de gazon, aucun mammifere moderne.
+**DÉCOR** — Jurassique supérieur, Amérique du Nord (Colorado, Wyoming, Utah — Formation Morrison),
+il y a 150 millions d'années : bosquet d'**araucarias très hauts** et de conifères, fougères
+arborescentes, cycas, prêles au sol, ciel bleu profond avec quelques cumulus, lumière du matin.
+Pas de graminées, pas de fleurs modernes, pas de feuillus.
 
-**INTERDITS** — pas de texte incruste (aucun repere chiffre ni echelle dessinee dans l'image), pas de watermark, pas d'humain, pas de sang.
+**INTERDITS** — Aucun texte incrusté (aucune cote « 13 m », aucune flèche, aucune silhouette
+d'immeuble), aucun watermark, aucun humain, aucun sang.

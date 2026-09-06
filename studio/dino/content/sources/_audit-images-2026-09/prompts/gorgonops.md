@@ -1,59 +1,67 @@
 # Prompts de régénération — Gorgonops
 
-Style visé : paléoart réaliste, lumière naturelle, adapté à un enfant de 4 ans.
+Style visé pour tous les blocs : paléoart réaliste, lumière naturelle de jour, palette douce,
+lisible par un enfant de 4 ans.
 
 ---
 
-## `Gorgonops_manger.jpg` — motif CONTENU (l'animal boit, aucune proie)
+## Gorgonops_manger.jpg
 
-**MORPHO** — Gorgonops torvus, thérapside du Permien supérieur, ~1,8 m de long, ~100 kg.
-Allure de « proto-mammifère » : crâne long et massif, DEUX très longues canines en sabre à la
-mâchoire supérieure (longues comme une main d'adulte) dépassant sous la lèvre, petites incisives
-devant, oreille externe absente mais orifice auditif visible. Pattes plus DROITES et placées
-sous le corps qu'un lézard (démarche semi-dressée), queue courte et fine, dos légèrement voûté,
-peau nue et ridée brun-fauve marbrée de taches sombres, sans poils apparents.
+**MORPHO** — *Gorgonops torvus*, **ce n'est PAS un dinosaure** : thérapside gorgonopsien du Permien,
+cousin ancien des mammifères. 1,80 m de long. **Deux immenses CANINES EN SABRE** dépassant très
+nettement de la mâchoire supérieure, longues comme une main d'adulte, plus des incisives pointues à
+l'avant. **Crâne allongé et étroit à museau de chien**, mâchoire puissante, œil placé haut.
+**Pattes semi-dressées, portées SOUS le corps** (pas écartées façon lézard) : c'est son trait
+signature. Peau nue et ridée, sans poils apparents, sans écailles de reptile marquées.
+Queue courte et effilée.
 
-**ACTION** — Le Gorgonops vient d'abattre un dicynodonte trapu (type Lystrosaure ou Diictodon,
-la proie « gros herbivore d'avant les dinos » de sa fiche). Il se tient de trois quarts face,
-une patte avant posée sur le flanc de la carcasse intacte, la tête relevée vers l'objectif, les
-sabres bien visibles, la gueule fermée. La proie est couchée sur le flanc, corps entier, YEUX
-FERMÉS, aucune blessure visible, aucune trace rouge. Lecture claire : le chasseur et son repas.
-**Explicitement différent de** : `Gorgonops.jpg` (marche latérale vers la gauche avec enfant),
-`Gorgonops_funfact.jpg` (marche latérale identique sans enfant),
-`Gorgonops_ecosysteme.jpg` (point d'eau vu de très large, plusieurs espèces).
-Surtout : ne PAS le remettre le museau dans l'eau — la version actuelle donne l'impression
-qu'il boit.
+**ACTION** — C'est **le grand chasseur de son époque** et la scène doit le montrer, ce que la
+version actuelle rate complètement (elle le montre en train de BOIRE au ruisseau). À la place :
+l'animal **campé sur ses quatre pattes bien calées, tête baissée, mâchoires refermées en travers du
+flanc d'un dicynodonte** (gros herbivore permien trapu à bec corné) **qu'il vient d'abattre et qui
+gît sur le sol** — canines plantées, corps du Gorgonops tendu en arrière comme s'il tirait. Vue de
+**trois quarts avant depuis la droite**, l'œil du prédateur dirigé vers le spectateur.
+La proie est **entière, immobile, intacte** : pas de plaie, pas de sang, pas de chair ouverte.
+Se démarquer explicitement de :
+- la version actuelle du `_manger` — **penché au bord d'un ruisseau, museau dans l'eau** : interdit ;
+- `Gorgonops.jpg` (hero) — marche latérale de profil gauche avec enfant repère d'échelle ;
+- `Gorgonops_ecosysteme.jpg` — panorama de point d'eau avec troupe de dicynodontes qui boivent :
+  **ne pas refaire un point d'eau ni un groupe de dicynodontes debout** ;
+- `Gorgonops_headshot.jpg` — gros plan de tête de profil.
 
-**DÉCOR** — Permien supérieur (~260 Ma), Karoo, Afrique du Sud. Plaine semi-aride ouverte,
-sol rouge-ocre craquelé, touffes de Glossopteris, quelques prêles au bord d'un lit de rivière
-asséché, collines plates au fond, lumière chaude de fin de journée.
-Aucune plante à fleurs, aucune herbe moderne, aucun dinosaure.
+**DÉCOR** — Permien, **Karoo d'Afrique du Sud**, il y a 260 millions d'années : plaine sèche et
+ouverte, sol rougeâtre craquelé, touffes éparses de **prêles (*Calamites*)**, fougères à graines
+type **Glossopteris**, quelques conifères primitifs bas au loin, mesas rocheuses à l'horizon.
+Pas de graminées, pas de fleurs, pas de conifères modernes touffus.
 
-**INTERDITS** — texte incrusté, watermark, humain, sang, plaie, chair arrachée, agonie.
+**INTERDITS** — Aucun texte incrusté, aucun watermark, aucun humain, **aucun sang, aucune plaie,
+aucune tripaille, aucune agonie** : la prise est ferme mais la scène reste douce.
 
 ---
 
-## `Gorgonops_funfact.jpg` — motif CLONE (doublon du hero)
+## Gorgonops_funfact.jpg
 
-**MORPHO** — identique au bloc ci-dessus. Le point à rendre lisible : les pattes DROITES sous
-le corps, pas écartées sur les côtés.
+**MORPHO** — Identique au bloc ci-dessus. Le point critique ici est **LA POSTURE DES PATTES** :
+les quatre membres sont **droits, verticaux, ramenés SOUS le corps comme ceux d'un chien**, coudes
+serrés contre le flanc, genoux dirigés vers l'avant — et non écartés en croix sur les côtés comme
+chez un lézard. Le ventre est **nettement décollé du sol**.
 
-**FAIT À ILLUSTRER** — « Ses pattes étaient déjà un peu plus droites sous son corps, comme celles
-d'un chien, au lieu d'être écartées sur les côtés comme celles d'un lézard. »
+**ACTION** — Le fait à illustrer : « ses pattes étaient déjà droites sous son corps, comme celles
+d'un chien ». Vue **de FACE, en légère contre-plongée au ras du sol**, l'animal marchant droit vers
+le spectateur : cet angle montre les quatre membres alignés à la verticale sous le tronc, les deux
+canines pendantes bien visibles, la poitrine haute. **Pour appuyer le contraste, placer au second
+plan sur la droite un petit reptile permien classique (pareiasaure ou petit pélycosaure) aux pattes
+écartées, ventre au ras du sol** — la comparaison se lit alors sans un mot.
+Se démarquer explicitement de :
+- la version actuelle du `_funfact` — **marche latérale vers la gauche au bord d'une mare, en forêt
+  de conifères : c'est le hero `Gorgonops.jpg` sans l'enfant**, doublon interdit ;
+- `Gorgonops.jpg` (hero) lui-même — profil gauche, enfant à gauche ;
+- `Gorgonops_ecosysteme.jpg` — panorama de point d'eau ;
+- le nouveau `_manger` ci-dessus — trois quarts avant avec proie.
 
-**ACTION** — Scène de contraste explicite, pas un portrait. Le Gorgonops TROTTE de trois quarts
-avant vers l'objectif, corps haut sur pattes, les quatre membres bien verticaux sous le tronc,
-foulée allongée d'un animal qui court — la démarche « de chien » saute aux yeux. Au premier plan
-bas, sur une pierre plate, un petit reptile primitif (pareiasaure juvénile ou petit captorhinide)
-rampe avec ses pattes ÉCARTÉES sur les côtés, ventre presque au sol : la comparaison se fait dans
-la même image. Contre-plongée légère, l'animal occupe le centre du cadre.
-**Explicitement différent de** : `Gorgonops.jpg` (le hero — profil latéral complet vers la gauche
-au bord d'une mare avec enfant : la version actuelle du `_funfact` en est exactement la copie
-sans l'enfant, il faut changer d'angle ET d'action),
-`Gorgonops_manger.jpg` (chasseur debout sur sa proie),
-`Gorgonops_ecosysteme.jpg` (vue large du point d'eau).
+**DÉCOR** — Permien, Karoo d'Afrique du Sud, il y a 260 millions d'années : sol sec et pierreux au
+premier plan, prêles et Glossopteris épars, horizon dégagé, lumière rasante de matin.
+Aucune flore moderne.
 
-**DÉCOR** — Permien supérieur du Karoo sud-africain, plaine ouverte poussiéreuse, Glossopteris
-et prêles éparses, ciel clair. Aucune plante à fleurs, aucun dinosaure.
-
-**INTERDITS** — texte incrusté, watermark, humain, sang/gore.
+**INTERDITS** — Aucun texte incrusté (pas de flèche, pas de schéma, pas de comparaison légendée),
+aucun watermark, aucun humain, aucun sang.

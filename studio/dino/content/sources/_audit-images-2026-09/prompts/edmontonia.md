@@ -1,34 +1,42 @@
-# Prompts de régénération — Edmontonia (Edmontonia rugosidens)
+# Prompts de régénération — Edmontonia
 
-Style commun : paléoart réaliste, lumière naturelle de jour, adapté à un enfant de 4 ans.
-Interdits communs : aucun texte incrusté, aucun watermark, aucun humain (sauf le hero et le _paris),
-aucun sang ni scène de mise à mort.
+Style visé pour tous les blocs : paléoart réaliste, lumière naturelle de jour, palette douce,
+lisible par un enfant de 4 ans.
 
 ---
 
 ## Edmontonia_headshot.jpg
 
-**MORPHO** — Nodosauridé de 6,6 m de long, 2 m de haut, 3 tonnes. La tête est LARGE, BASSE et
-APLATIE, en forme de poire vue de dessus, portée TRÈS BAS au bout d'un cou court et épais tenu à
-l'horizontale — jamais dressée à la verticale. Museau terminé par un BEC CORNÉ plat et arrondi,
-sans dents à l'avant ; petites dents en feuille loin en arrière. Le crâne est recouvert de petites
-plaques osseuses polygonales soudées, plates et jointives — un pavage, PAS une couronne de cornes
-pointues. Deux petites cornes triangulaires basses à l'arrière des joues seulement. Oeil petit,
-placé bas sur le côté du crâne. Juste derrière la tête, on doit apercevoir le début des ÉPAULES
-armées : les grandes épines d'épaule claires, longues et pointues, dirigées vers l'avant et le
-côté — signature de l'animal.
+**MORPHO** — *Edmontonia rugosidens*, **nodosauridé** (thyréophore cuirassé, PAS un théropode).
+Le défaut à corriger : la version actuelle montre une **tête haute et étroite dressée sur un cou
+vertical, museau pointu hérissé de cornes pyramidales** — c'est une silhouette de théropode cornu,
+totalement fausse. À la place :
+- **crâne LARGE, BAS et APLATI**, plus large que haut, en forme de coin arrondi vu de dessus ;
+- **museau terminé par un BEC CORNÉ sans dents à l'avant**, bec large et émoussé d'herbivore
+  brouteur, joues gonflées derrière ;
+- **dessus du crâne couvert d'ostéodermes plats et polygonaux soudés** (pavage osseux régulier),
+  **sans cornes dressées** — au plus de petites cornes jugales et occipitales basses, plaquées vers
+  l'arrière ;
+- **petit œil placé bas sur le côté du crâne**, sous un bourrelet osseux ;
+- **cou court, épais, porté BAS, presque à l'horizontale**, jamais dressé ;
+- et surtout : **les deux grandes ÉPINES D'ÉPAULE doivent entrer dans le cadre**, longues,
+  pointues, dirigées vers l'avant et l'extérieur, avec en dessous une seconde rangée d'épines plus
+  petites. C'est la signature de l'espèce et elle manque totalement dans l'image recalée.
 
-**ACTION** — Portrait de trois quarts avant, caméra BASSE, à hauteur de la tête de l'animal donc
-très près du sol, l'animal tourné vers la gauche du cadre, immobile, bec fermé ou à peine
-entrouvert. La tête occupe le cadre, les premières épines d'épaule entrent dans le champ en bas à
-droite pour l'identifier sans ambiguïté.
-Explicitement DIFFÉRENT de : Edmontonia.jpg et Edmontonia_funfact.jpg (corps entier de profil ou
-de trois quarts) — ici c'est un plan serré sur la tête uniquement ; différent du _manger (tête
-plongée dans les fougères) et du _ecosysteme (plan large multi-espèces).
+**ACTION** — Portrait rapproché **tête + encolure + épaules**, en **trois quarts avant légèrement
+en contre-plongée**, l'animal au ras du sol qui relève juste le museau vers l'objectif, bec
+entrouvert. Le cadrage doit couper au niveau du milieu du dos pour que les épines d'épaule soient
+visibles au premier plan gauche et droit.
+Se démarquer explicitement de :
+- `Edmontonia.jpg` (hero) — corps entier de profil gauche avec enfant repère d'échelle, marais ;
+- `Edmontonia_funfact.jpg` — trois quarts avant en sous-bois, corps entier, épines très en avant :
+  **ne pas refaire cette pose corps entier**, ici on veut un vrai gros plan de tête ;
+- `Edmontonia_manger.jpg` — bec plongé dans un massif de fougères basses, plaine humide ;
+- `Edmontonia_ecosysteme.jpg` — panorama de marécage avec hadrosaures et cératopsiens.
 
-**DÉCOR** — Crétacé, Amérique du Nord, il y a 72 millions d'années. Arrière-plan flou de conifères,
-fougères et cycas. Aucune herbe de prairie moderne.
+**DÉCOR** — Crétacé supérieur, Amérique du Nord, il y a 72 millions d'années : arrière-plan **flou
+en faible profondeur de champ** — fougères, cycadales, séquoias et araucarias d'un sous-bois humide.
+Pas de fleurs modernes, pas de graminées.
 
-**INTERDITS** — Aucune corne pointue sur le museau ou le dessus du crâne, aucun profil de
-théropode, aucun cou dressé à la verticale. Pas de texte, pas de watermark, pas d'humain, pas de
-sang.
+**INTERDITS** — Aucun texte incrusté, aucun watermark, aucun humain, aucun sang. Pas de massue
+caudale (l'Edmontonia n'en a pas — si la queue apparaît, elle est lisse et effilée).

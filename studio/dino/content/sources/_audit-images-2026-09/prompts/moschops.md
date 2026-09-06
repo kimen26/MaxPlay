@@ -1,29 +1,43 @@
 # Prompts de régénération — Moschops
 
-Style visé : paléoart réaliste, lumière naturelle, adapté à un enfant de 4 ans.
+Style visé pour tous les blocs : paléoart réaliste, lumière naturelle de jour, palette douce,
+lisible par un enfant de 4 ans.
 
 ---
 
-## `Moschops_coloriage.webp` — motif MORPHO (défenses de dicynodonte en trop)
+## Moschops_coloriage.webp
 
-**MORPHO** — Moschops capensis, thérapside herbivore du Permien, ~2,7 m de long, ~410 kg.
-Corps très TRAPU et massif, poitrail large, ventre en tonneau, dos qui monte vers les épaules.
-Pattes avant nettement plus longues et plus épaisses que les pattes arrière, quatre membres
-courts placés presque sous le corps. Queue COURTE et épaisse. Tête petite par rapport au corps,
-FRONT TRÈS BOMBÉ et arrondi comme un casque, museau court et émoussé.
-**Point critique du recalage** : AUCUNE défense, AUCUNE canine, AUCUN croc dépassant de la
-bouche — la version actuelle porte deux longues défenses recourbées vers le bas qui appartiennent
-au Lystrosaure (dicynodonte). Le Moschops a une bouche simple d'herbivore, lèvre lisse, dents
-non visibles de l'extérieur. Ne pas non plus lui donner de bec corné.
+**MORPHO** — *Moschops capensis*, **ce n'est PAS un dinosaure** : thérapside dinocéphale du Permien,
+cousin ancien des mammifères, **gros herbivore trapu de 2,70 m**.
+Le défaut à corriger : la version actuelle porte **deux longues défenses recourbées vers le bas
+sortant de la mâchoire supérieure** — c'est un trait de **dicynodonte type Lystrosaure**, pas du
+Moschops, et cela crée une confusion directe avec la fiche Lystrosaure du même lot.
+**AUCUNE DÉFENSE, AUCUNE CANINE SAILLANTE, AUCUNE DENT VISIBLE** : la gueule est close, la lèvre
+lisse. Les traits justes à dessiner :
+- **crâne très épais au FRONT NETTEMENT BOMBÉ**, en dôme, comme un casque — le trait signature ;
+- **museau court et arrondi d'herbivore**, sans bec ni défense ;
+- **petite oreille discrète, petit œil rond** ;
+- **corps massif en tonneau, dos haut aux épaules**, ventre large ;
+- **pattes avant plus longues et plus épaisses que les pattes arrière**, ce qui incline le dos vers
+  l'arrière — deuxième trait signature à ne pas rater ;
+- **queue courte et conique**, jamais longue ni traînante.
 
-**ACTION** — Silhouette de coloriage : l'animal entier de profil trois quarts, debout sur ses
-quatre pattes, tête légèrement tournée vers l'observateur, expression douce et amicale
-(gros œil rond, léger sourire) — registre mignon adapté à 4 ans, cohérent avec les autres
-coloriages du lot.
+**ACTION** — Coloriage : **silhouette entière de profil**, quatre pattes bien séparées et lisibles,
+tête tournée légèrement vers le spectateur, allure débonnaire. Le **front bombé** doit être souligné
+par un trait de contour marqué, et **la différence de longueur avant/arrière des pattes doit se
+voir**. Facultatif : **une petite fronde de fougère au sol** devant lui, en trait simple, pour dire
+l'herbivore.
+Se démarquer de : le hero `Moschops.jpg` sert de référence morphologique (bon crâne bombé, bonnes
+proportions), mais le coloriage garde son style propre — silhouette simplifiée, pas une copie
+détourée de la photo.
 
-**RENDU** — Trait NOIR pur, épais et régulier, sur fond BLANC uni. Aucun niveau de gris, aucun
-aplat noir, aucune hachure, aucun dégradé, aucune ombre portée. Grandes zones fermées faciles à
-colorier au feutre. Pas de décor, ou au plus deux ou trois brins de végétation simples au sol.
+**DÉCOR** — **Aucun décor** : fond blanc pur. Au plus une ligne de sol simple sous les pattes et une
+fougère au trait. Contexte de référence pour la posture : Permien d'Afrique du Sud, il y a
+265 millions d'années.
 
-**INTERDITS** — texte incrusté, watermark, humain, couleurs, remplissage gris ou noir,
-défenses/crocs/bec.
+**TECHNIQUE COLORIAGE** — **Trait noir pur sur fond blanc**, épaisseur régulière, **aucun aplat
+gris, aucun dégradé, aucune trame, aucun remplissage noir** hors de la pupille. Zones internes
+larges et faciles à colorier pour un enfant de 4 ans.
+
+**INTERDITS** — Aucun texte incrusté, aucun watermark, aucun humain, aucun sang, **aucune défense
+ni canine**.

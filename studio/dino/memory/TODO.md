@@ -92,7 +92,7 @@
 
 ## Lane — Idées produit (basse priorité, jamais démarrées)
 
-- **EP-D13** [~] — Flore du Mésozoïque dans l'encyclopédie (idée PY 2026-09-06, **tranché PY le jour même** : sous chaque époque de l'onglet « Les époques », pas de 6ᵉ onglet). 6 axes par plante : environnement · qui la mangeait (dino existant) · taille vs enfant 1 m · forme feuille/fleur · graines/reproduction · truc fou. 19 plantes Trias/Jura/Crétacé. HO-020 (contenu) FAIT · HO-021 (data+UI) FAIT · **HO-022 (images) 15/19** : générées via Grok (ChatGPT en limite d'images), rangées en JPG dans `site/img/dinos/plantes/`. Restent `platane`, `palmier`, `herbe`, `wollemia` — Brave sature (~4,6 Go), le pilotage CDP ne répond plus : **redémarrer Brave** puis relancer le batch sur ces 4 ids. La scène `detail` (gros plan feuille/graines) n'a jamais été lancée : lot à part. HO-023 (i18n) à suivre. Audio EL des fiches plantes = ticket à ouvrir après (solde EL bloqué jusqu'au 2026-09-11).
+- **EP-D13** [~] — Flore du Mésozoïque dans l'encyclopédie (idée PY 2026-09-06, tranché PY le jour même : sous chaque époque de l'onglet « Les époques », pas de 6ᵉ onglet). 19 plantes Trias/Jura/Crétacé, 6 axes par fiche. **HO-020 (contenu) FAIT · HO-021 (data+UI) FAIT · HO-022 (images) FAIT — 38/38** (19 échelle + 19 gros plans feuille/graines). **Reste HO-023 (i18n en/es-es/pt-br)** : les 19 plantes sont dans le corpus et la porte `_check-traduction.cjs` les compte, elle sort 19 entrées manquantes par langue. Audio EL des fiches plantes = ticket à ouvrir (solde EL bloqué jusqu'au 2026-09-11).
 
 - **EP-D02** [ ] — Audio des ~28 dinos sans recap (génération progressive vs TTS).
 - **EP-D03** [ ] — Visuels/illustrations des écrans d'époque du voyage (optionnel).

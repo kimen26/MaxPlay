@@ -1,6 +1,6 @@
 # HO-022 — Flore : images hero (plante dans son environnement + enfant 1 m)
 
-**Statut :** 15/19 FAIT — 4 restantes (attente redemarrage Brave)
+**Statut :** FAIT — 38/38 images (19 echelle + 19 detail)
 **Depend de :** HO-020 (plantes.json : hauteur, environnement, feuille) · Brave debug 9222 logué ChatGPT/Grok (`launch-brave.ps1`).
 
 ## Objectif
@@ -80,3 +80,38 @@ node <scratchpad>/range-plantes.mjs
 
 **Scene `detail`** (gros plan feuille/graines) : jamais lancee, aucune des 19. Le pipeline la
 sait faire (`--only detail`), c'est un lot a part entiere a passer quand un canal est frais.
+
+
+---
+
+## ✅ CLOS 2026-09-06 — 38 images sur 38
+
+Reprise apres relance du profil Brave de debug (le port 9222 etait mort : le profil avait ete
+ferme ; `Start-Process` direct avec `--user-data-dir=c:/tmp/brave-debug` l'a rouvert, les deux
+canaux etaient logues).
+
+| Lot | Etat |
+|---|---|
+| `<Id>.jpg` — plante entiere + enfant d'1 m | **19/19** |
+| `<Id>_detail.jpg` — gros plan feuille/graines | **19/19** |
+
+Total 7,6 Mo dans `site/img/dinos/plantes/`. Staging vide. Le gros plan s'affiche dans le bloc
+« Sa feuille et ses graines » de la fiche (`.plante-detail`, cliquable, `onerror` = retrait).
+
+**Fact-check visuel (declencheur : retour PY « faut fact check les photos hein ! »)**
+
+Les plantes sont justes. Ce que la revue a confirme : feuille en eventail du ginkgo, tige
+articulee et cone a spores de la prele, tronc unique a base bulbeuse de la pleuromeia, feuille
+fourchue en Y du Dicroidium, pseudo-fleur SANS petale de la Williamsonia, carpelles alignes
+d'Archaefructus, touffe d'herbe isolee sans prairie.
+
+Le cas platane : la ressemblance avec l'erable est **reelle** (feuilles palmees a 5 lobes ; en
+anglais le platane se dit *sycamore*, nom qui designe aussi un erable). Ce qui tranche —
+**boules pendantes** vs samares en helice, **ecorce qui pele**, **feuilles alternes** — est
+present sur les deux images. Rien a corriger : verifier avant de corriger.
+
+**Le vrai defaut trouve par la revue** : sur les 4 plantes du Trias, le prompt nommait « un
+Plateosaure » et Grok a dessine 4 **sauropodes au long cou** (le cliche du dino herbivore). Le
+NOM seul ne suffit pas — meme piege que la signature morphologique des fiches dino (L-D15).
+Table `SILHOUETTE_MANGEUR` ajoutee a `batch-plante-series.mjs` (6 especes non-sauropodes qui
+risquent le cliche), 4 images regenerees, Plateosaure desormais correct. Grave en **L-D28**.

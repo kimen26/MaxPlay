@@ -1,0 +1,31 @@
+{
+  "id": "ichthyosaurus",
+  "name": "Ichtyosaure",
+  "full": "Ichthyosaurus communis",
+  "base": "Ichthyosaurus",
+  "famille": "enaliosaures",
+  "famille_sci": "Énaliosaures",
+  "cat": "piscivores",
+  "regime": "🐟 Piscivore",
+  "epoque": "Jurassique · il y a 190 millions d'ans",
+  "periode": "jurassique",
+  "region": "Europe (mers peu profondes)",
+  "taille_m": 2,
+  "hauteur_m": 0.5,
+  "poids_t": 0.15,
+  "superpower": "Des yeux ÉNORMES protégés par des os en forme d'anneau, pour voir dans le noir des profondeurs !",
+  "proies": "Poissons et calmars",
+  "chasseurs": "Les grands pliosaures de son époque, comme le Rhomaleosaurus",
+  "amis": "En groupe, comme les dauphins",
+  "fait": "Il ressemblait à un dauphin, mais c'était un reptile ! Il faisait ses bébés vivants dans l'eau, pas des œufs — comme les baleines et les dauphins. Et ses nageoires étaient faites de doigts palmés, comme une main géante !",
+  "desc": "L'Ichtyosaure n'était pas un dinosaure — c'était un reptile marin qui ressemblait à un dauphin. Son corps fuselé fendait l'eau comme une torpille. La nature a inventé la forme du dauphin bien avant les vrais dauphins !",
+  "images": [
+    "Ichthyosaurus.jpg",
+    "Ichthyosaurus_coloriage.webp",
+    "Ichthyosaurus_ecosysteme.jpg",
+    "Ichthyosaurus_funfact.jpg",
+    "Ichthyosaurus_headshot.jpg",
+    "Ichthyosaurus_manger.jpg",
+    "Ichthyosaurus_paris.jpg"
+  ]
+}

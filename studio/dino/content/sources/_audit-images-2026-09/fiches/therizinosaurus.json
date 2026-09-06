@@ -1,0 +1,33 @@
+{
+  "id": "therizinosaurus",
+  "name": "Therizinosaurus",
+  "full": "Therizinosaurus cheloniformis",
+  "base": "Therizinosaurus",
+  "famille": "trex",
+  "famille_sci": "Théropodes",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Crétacé · il y a 70 millions d'ans",
+  "periode": "cretace",
+  "region": "Asie (Mongolie)",
+  "continent": "Asie",
+  "taille_m": 10,
+  "hauteur_m": 5,
+  "poids_t": 5,
+  "vitesse_kmh": 7,
+  "superpower": "Les griffes les plus LONGUES de tous les animaux — 50 centimètres ! Mais mangeait des plantes !",
+  "proies": "Mange des plantes",
+  "chasseurs": "Tarbosaure — mais les griffes repoussaient !",
+  "amis": "Solitaire",
+  "fait": "Il avait des griffes de 50 centimètres de long — presque la longueur de ton bras, et les plus longues de tous les animaux ! Et pourtant il mangeait des feuilles et des plantes paisiblement !",
+  "desc": "Le Therizinosaurus avait les griffes les plus longues de toute l'histoire des animaux — 50 centimètres chacune ! Mais malgré ces griffes impressionnantes, il ne mangeait que des plantes et des feuilles !",
+  "images": [
+    "Therizinosaurus.jpg",
+    "Therizinosaurus_coloriage.webp",
+    "Therizinosaurus_ecosysteme.jpg",
+    "Therizinosaurus_funfact.jpg",
+    "Therizinosaurus_headshot.jpg",
+    "Therizinosaurus_manger.jpg",
+    "Therizinosaurus_paris.jpg"
+  ]
+}

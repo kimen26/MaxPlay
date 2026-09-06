@@ -1,0 +1,33 @@
+{
+  "id": "albertosaurus",
+  "name": "Albertosaure",
+  "full": "Albertosaurus sarcophagus",
+  "base": "Albertosaurus",
+  "famille": "trex",
+  "famille_sci": "Théropodes",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore",
+  "epoque": "Crétacé · il y a 70 millions d'ans",
+  "periode": "cretace",
+  "region": "Canada",
+  "continent": "Amérique du Nord",
+  "taille_m": 9.5,
+  "hauteur_m": 3,
+  "poids_t": 2,
+  "vitesse_kmh": 30,
+  "superpower": "Chassait peut-être en meute ! Le loup des T-Rex !",
+  "proies": "Hadrosaures, cératopsiens",
+  "chasseurs": "Aucun de son époque",
+  "amis": "Vivait peut-être en groupe — on a trouvé 26 squelettes ensemble !",
+  "fait": "On a trouvé 26 Albertosaures ensemble au Canada ! Ils chassaient peut-être en groupe comme des loups !",
+  "desc": "L'Albertosaure était plus petit que le T-Rex mais il était très malin. Il chassait peut-être en groupe comme les loups d'aujourd'hui !",
+  "images": [
+    "Albertosaurus.jpg",
+    "Albertosaurus_coloriage.webp",
+    "Albertosaurus_ecosysteme.jpg",
+    "Albertosaurus_funfact.jpg",
+    "Albertosaurus_headshot.jpg",
+    "Albertosaurus_manger.jpg",
+    "Albertosaurus_paris.jpg"
+  ]
+}

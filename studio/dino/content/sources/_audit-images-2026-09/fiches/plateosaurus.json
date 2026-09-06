@@ -1,0 +1,32 @@
+{
+  "id": "plateosaurus",
+  "name": "Plateosaure",
+  "full": "Plateosaurus engelhardti",
+  "base": "Plateosaurus",
+  "famille": "cou_long",
+  "famille_sci": "Sauropodes",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Trias · il y a 210 millions d'ans",
+  "periode": "trias",
+  "region": "Europe (Allemagne, France, Suisse)",
+  "continent": "Europe",
+  "taille_m": 8,
+  "hauteur_m": 2.8,
+  "poids_t": 2,
+  "superpower": "L'un des PREMIERS grands dinosaures herbivores — le pionnier !",
+  "proies": "Mange des plantes",
+  "chasseurs": "Premiers grands carnivores du Trias",
+  "amis": "En troupeau",
+  "fait": "Un des premiers grands dinos ! Il marchait sur 4 pattes mais pouvait se dresser sur 2 pour atteindre les hautes branches.",
+  "desc": "Le Plateosaure était l'un des premiers grands dinosaures. Il vivait au Trias, longtemps avant le T-Rex. Il pouvait se lever sur ses pattes arrière pour manger plus haut !",
+  "images": [
+    "Plateosaurus.jpg",
+    "Plateosaurus_coloriage.webp",
+    "Plateosaurus_ecosysteme.jpg",
+    "Plateosaurus_funfact.jpg",
+    "Plateosaurus_headshot.jpg",
+    "Plateosaurus_manger.jpg",
+    "Plateosaurus_paris.jpg"
+  ]
+}

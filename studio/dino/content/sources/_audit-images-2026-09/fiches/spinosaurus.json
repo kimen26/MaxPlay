@@ -1,0 +1,32 @@
+{
+  "id": "spinosaurus",
+  "name": "Spinosaure",
+  "full": "Spinosaurus aegyptiacus",
+  "base": "Spinosaurus",
+  "famille": "trex",
+  "famille_sci": "Théropodes",
+  "cat": "piscivores",
+  "regime": "🐟 Piscivore (mange du poisson !)",
+  "epoque": "Crétacé · il y a 95 millions d'ans",
+  "periode": "cretace",
+  "region": "Afrique du Nord",
+  "continent": "Afrique",
+  "taille_m": 15,
+  "hauteur_m": 4,
+  "poids_t": 7,
+  "superpower": "Nager comme un crocodile géant ! Il adorait l'eau.",
+  "proies": "Gros poissons, requins préhistoriques",
+  "chasseurs": "Personne n'osait s'y frotter",
+  "amis": "Solitaire",
+  "fait": "La voile sur son dos pouvait faire près de 2 mètres de haut — comme une porte d'entrée !",
+  "desc": "Le Spinosaure était encore plus grand que le T-Rex ! Il vivait près des rivières et attrapait d'énormes poissons. Il avait une grande voile rouge sur le dos.",
+  "images": [
+    "Spinosaurus.jpg",
+    "Spinosaurus_coloriage.webp",
+    "Spinosaurus_ecosysteme.jpg",
+    "Spinosaurus_funfact.jpg",
+    "Spinosaurus_headshot.jpg",
+    "Spinosaurus_manger.jpg",
+    "Spinosaurus_paris.jpg"
+  ]
+}

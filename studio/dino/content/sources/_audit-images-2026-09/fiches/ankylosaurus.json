@@ -1,0 +1,33 @@
+{
+  "id": "ankylosaurus",
+  "name": "Ankylosaure",
+  "full": "Ankylosaurus magniventris",
+  "base": "Ankylosaurus",
+  "famille": "arme",
+  "famille_sci": "Thyréophores",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Crétacé · il y a 66 millions d'ans",
+  "periode": "cretace",
+  "region": "Amérique du Nord",
+  "continent": "Amérique du Nord",
+  "taille_m": 7.5,
+  "hauteur_m": 1.8,
+  "poids_t": 6,
+  "vitesse_kmh": 7,
+  "superpower": "Son dos était une armure de plaques osseuses + une queue-massue pour casser les os du T-Rex !",
+  "proies": "Mange des plantes",
+  "chasseurs": "Le T-Rex pouvait essayer ! Mais c'était très risqué : ses seuls points faibles (le ventre, les yeux, les pattes) étaient bien cachés, et d'un coup de queue-massue il pouvait casser la patte du carnivore. Mieux valait ne pas l'embêter !",
+  "amis": "Solitaire ou petit groupe",
+  "fait": "Tout en haut il était une vraie forteresse — mais son ventre, lui, n'avait pas d'armure ! Heureusement il était tout bas sur ses pattes, presque collé au sol, alors c'était très dur de le retourner.",
+  "desc": "L'Ankylosaure était le char d'assaut des dinosaures ! Son dos était recouvert d'une armure dure comme de la roche, et sa queue finissait par une grosse boule. Même un grand carnivore devait faire très attention : un coup de massue pouvait lui casser une patte !",
+  "images": [
+    "Ankylosaurus.jpg",
+    "Ankylosaurus_coloriage.webp",
+    "Ankylosaurus_ecosysteme.jpg",
+    "Ankylosaurus_funfact.jpg",
+    "Ankylosaurus_headshot.jpg",
+    "Ankylosaurus_manger.jpg",
+    "Ankylosaurus_paris.jpg"
+  ]
+}

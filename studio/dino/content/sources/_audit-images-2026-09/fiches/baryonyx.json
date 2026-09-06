@@ -1,0 +1,33 @@
+{
+  "id": "baryonyx",
+  "name": "Baryonyx",
+  "full": "Baryonyx walkeri",
+  "base": "Baryonyx",
+  "famille": "trex",
+  "famille_sci": "Théropodes",
+  "cat": "piscivores",
+  "regime": "🐟 Piscivore",
+  "epoque": "Crétacé · il y a 125 millions d'ans",
+  "periode": "cretace",
+  "region": "Europe (Angleterre, Espagne, Portugal)",
+  "continent": "Europe",
+  "taille_m": 9,
+  "hauteur_m": 2.5,
+  "poids_t": 1.7,
+  "vitesse_kmh": 22,
+  "superpower": "Une énorme griffe sur le pouce — 31 cm ! Pour harponner les poissons !",
+  "proies": "Poissons, Iguanodon",
+  "chasseurs": "Grands carnivores européens",
+  "amis": "Solitaire ou petit groupe",
+  "fait": "Découvert par un plombier en Angleterre ! On a trouvé dans son estomac des écailles de poisson ET des os d'Iguanodon !",
+  "desc": "Le Baryonyx avait une énorme griffe pour attraper les poissons, comme un ours pêcheur ! Découvert en Angleterre, on a trouvé du poisson dans son estomac. Un vrai pêcheur géant !",
+  "images": [
+    "Baryonyx.jpg",
+    "Baryonyx_coloriage.webp",
+    "Baryonyx_ecosysteme.jpg",
+    "Baryonyx_funfact.jpg",
+    "Baryonyx_headshot.jpg",
+    "Baryonyx_manger.jpg",
+    "Baryonyx_paris.jpg"
+  ]
+}

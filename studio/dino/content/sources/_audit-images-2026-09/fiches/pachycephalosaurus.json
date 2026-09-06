@@ -1,0 +1,32 @@
+{
+  "id": "pachycephalosaurus",
+  "name": "Pachycéphalosaure",
+  "full": "Pachycephalosaurus wyomingensis",
+  "base": "Pachycephalosaurus",
+  "famille": "cornu",
+  "famille_sci": "Cératopsiens",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore (et peut-être des insectes)",
+  "epoque": "Crétacé · il y a 70 millions d'ans",
+  "periode": "cretace",
+  "region": "Amérique du Nord",
+  "continent": "Amérique du Nord",
+  "taille_m": 4.5,
+  "hauteur_m": 1.5,
+  "poids_t": 0.45,
+  "superpower": "Un crâne de 25 cm d'épaisseur ! Il se battait en se frappant la tête comme les béliers !",
+  "proies": "Mange des plantes",
+  "chasseurs": "T-Rex, grands carnivores",
+  "amis": "En groupe",
+  "fait": "Son crâne mesurait 25 cm d'épaisseur — presque autant que ta tête entière ! Les scientifiques pensent qu'il se battait peut-être en donnant des coups de tête, comme les béliers d'aujourd'hui.",
+  "desc": "Le Pachycephalosaure avait un crâne super épais, comme un casque de moto en os ! Les mâles se battaient en se frappant la tête comme les béliers font aujourd'hui.",
+  "images": [
+    "Pachycephalosaurus.jpg",
+    "Pachycephalosaurus_coloriage.webp",
+    "Pachycephalosaurus_ecosysteme.jpg",
+    "Pachycephalosaurus_funfact.jpg",
+    "Pachycephalosaurus_headshot.jpg",
+    "Pachycephalosaurus_manger.jpg",
+    "Pachycephalosaurus_paris.jpg"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "allosaurus",
+  "name": "Allosaure",
+  "full": "Allosaurus fragilis",
+  "base": "Allosaurus",
+  "famille": "trex",
+  "famille_sci": "Théropodes",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore",
+  "epoque": "Jurassique · il y a 155 millions d'ans",
+  "periode": "jurassique",
+  "region": "Amérique du Nord, Europe",
+  "continent": "Amérique du Nord / Europe",
+  "taille_m": 9.5,
+  "hauteur_m": 4,
+  "poids_t": 2,
+  "vitesse_kmh": 34,
+  "superpower": "Ouvrait sa gueule TRÈS grande comme une hache pour frapper !",
+  "proies": "Stégosaure, Camarasaure, jeunes sauropodes",
+  "chasseurs": "Aucun de son époque n'osait l'affronter seul",
+  "amis": "Peut-être en groupe parfois",
+  "fait": "Le T-Rex du Jurassique ! On a trouvé des centaines de ses os dans un seul endroit !",
+  "desc": "L'Allosaure était le super chasseur du Jurassique. Il ouvrait sa mâchoire très grande pour frapper sa proie comme un coup de hache !",
+  "images": [
+    "Allosaurus.jpg",
+    "Allosaurus_coloriage.webp",
+    "Allosaurus_ecosysteme.jpg",
+    "Allosaurus_funfact.jpg",
+    "Allosaurus_headshot.jpg",
+    "Allosaurus_manger.jpg",
+    "Allosaurus_paris.jpg"
+  ]
+}

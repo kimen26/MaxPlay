@@ -1,0 +1,32 @@
+{
+  "id": "corythosaurus",
+  "name": "Corythosaure",
+  "full": "Corythosaurus casuarius",
+  "base": "Corythosaurus",
+  "famille": "bec",
+  "famille_sci": "Ornithopodes",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Crétacé · il y a 76 millions d'ans",
+  "periode": "cretace",
+  "region": "Amérique du Nord",
+  "continent": "Amérique du Nord",
+  "taille_m": 9,
+  "hauteur_m": 2,
+  "poids_t": 4,
+  "superpower": "Sa crête était creuse à l'intérieur — elle faisait résonner sa voix comme une trompette pour parler à son troupeau, même de loin !",
+  "proies": "Mange des plantes",
+  "chasseurs": "Gorgosaure, Daspletosaure",
+  "amis": "En troupeau — la crête servait à prévenir les autres d'un danger !",
+  "fait": "Sa crête en forme de casque n'était pas juste jolie : à l'intérieur, des petits tuyaux d'os faisaient résonner sa voix, comme un instrument de musique creux !",
+  "desc": "Le Corythosaure portait un vrai casque sur la tête — une crête arrondie et creuse, comme celle d'un guerrier grec ou d'un casoar. Il vivait en troupeau et s'en servait peut-être pour appeler les autres, même sans les voir !",
+  "images": [
+    "Corythosaurus.jpg",
+    "Corythosaurus_coloriage.webp",
+    "Corythosaurus_ecosysteme.jpg",
+    "Corythosaurus_funfact.jpg",
+    "Corythosaurus_headshot.jpg",
+    "Corythosaurus_manger.jpg",
+    "Corythosaurus_paris.jpg"
+  ]
+}

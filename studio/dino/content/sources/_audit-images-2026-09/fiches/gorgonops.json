@@ -1,0 +1,32 @@
+{
+  "id": "gorgonops",
+  "name": "Gorgonops",
+  "full": "Gorgonops torvus",
+  "base": "Gorgonops",
+  "famille": "volant",
+  "famille_sci": "Avant les dinosaures",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore",
+  "epoque": "Permien · il y a 260 millions d'ans (avant les dinos !)",
+  "periode": "permien",
+  "region": "Afrique du Sud",
+  "continent": "Afrique",
+  "taille_m": 1.8,
+  "hauteur_m": 0.8,
+  "poids_t": 0.1,
+  "superpower": "Deux longues dents pointues comme des sabres, longues comme ta main !",
+  "proies": "Les gros herbivores d'avant les dinos",
+  "chasseurs": "Aucun — c'était le plus grand chasseur de son époque",
+  "amis": "Chasseur solitaire",
+  "fait": "Ce n'est pas un dinosaure : c'est un cousin encore plus proche de nous que le Dimétrodon ! Ses pattes étaient déjà un peu plus droites sous son corps, comme celles d'un chien, au lieu d'être écartées sur les côtés comme celles d'un lézard.",
+  "desc": "Le Gorgonops n'est pas un dinosaure — c'est un ancêtre lointain des animaux à poils, donc un peu de nous ! Avec ses deux longues dents en sabre, c'était le plus grand chasseur d'Afrique du Sud, bien avant les premiers dinosaures.",
+  "images": [
+    "Gorgonops.jpg",
+    "Gorgonops_coloriage.webp",
+    "Gorgonops_ecosysteme.jpg",
+    "Gorgonops_funfact.jpg",
+    "Gorgonops_headshot.jpg",
+    "Gorgonops_manger.jpg",
+    "Gorgonops_paris.jpg"
+  ]
+}

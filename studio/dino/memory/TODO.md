@@ -116,3 +116,31 @@
 - **Drift count détecté** : `dinos-data.js` live = **71** entrées DINOS (zéro doublon id), INVARIANTS dit 70 et sa table familles est plus vieille encore (Thyréophores=8 live vs 7, `arme`=5). À réconcilier par `dino-pmo` au prochain audit (qui est le 71ᵉ ? vraisemblablement ajout post-Saurolophe non tracé).
 
 - 2026-09-03 (audit infra, HO-G08) : `audio-verif` (skill global) mesure ~80 ms de silence de tête sur les MP3 dino (règle 250 ms) et une dérive texte/audio sur `aenocyon-taille` (MP3 « kangourou » vs JSON « Papa »). Ticket : passer `audio-verif` sur les 70 fiches (voir `memory/TODO.md` racine).
+
+## Lane — Audit + régénération images paléoart (2026-09-06, demande PY)
+
+> Demande PY : « récupérer les caractéristiques de chaque dinosaure, parcourir toutes les images
+> sauvegardées, supprimer celles qui ne correspondent pas, régénérer et valider ». Objectif de fond :
+> **plus de cohérence** — le dino doit CHANGER de posture et d'action d'une image à l'autre
+> (pas un copié-collé du hero), tout en gardant ses caractéristiques et son environnement.
+
+- **HO-024** [x] — Socle d'audit. Extraction des caractéristiques depuis `site/js/dinos-data.js`
+  (70 sujets × 7 assets = 490 fichiers + 2 planches hypothèse Amargasaure = 492, zéro orphelin) vers
+  `content/sources/_audit-images-2026-09/` : `_dinos-base.json`, une fiche par sujet, `_PROTOCOLE.md`
+  (grille 6 motifs : MORPHO · IDENTITE · CLONE · ENVIRONNEMENT · CONTENU · TECHNIQUE, règle « doute = OK »).
+  Consolidateur généré : `content/scripts/export/_gen-audit-images.cjs` → `_TABLEAU-DE-BORD.md`.
+- **HO-025** [x] — Audit visuel des 492 images par lots de 7 sujets (10 lots, agents en parallèle).
+  Chaque image est réellement OUVERTE et décrite, jugée contre les caractéristiques du sujet.
+  Sortie : `verdicts/<id>.tsv` (1 ligne/image) + `prompts/<id>.md` (prompt de régénération par image recalée).
+  **FAIT 2026-09-06** : 70 sujets, 492 images vues, **396 OK - 96 RECALE**. 70 verdicts + 57 fichiers
+  de prompts = 96 blocs (1 par image recalee, couverture verifiee). Tableau : `_TABLEAU-DE-BORD.md`.
+  Motifs : CLONE 39 - CONTENU 33 - MORPHO 8 - IDENTITE 5 - ENVIRONNEMENT 2 - TECHNIQUE 0.
+  Par asset : `_manger` 42 - `_funfact` 31 - `_ecosysteme` 10 - `_paris` 6 - `_coloriage` 4 - `_headshot` 3.
+- **HO-026** [ ] — Régénération des images recalées puis validation visuelle avant rangement.
+  ⚠️ La génération passe par ChatGPT/Grok pilotés par PY (pas d'API image côté agent) : les prompts
+  sont produits par l'audit, la génération reste manuelle, la validation revient à l'agent.
+
+**Défauts systémiques trouvés dès le 1er lot** (théropodes) : le `_funfact` est très souvent un clone
+du hero et n'illustre pas le champ `fait` de la fiche ; le `_manger` montre un carnivore qui boit ou
+se tient debout sans aucune proie dans le cadre. Modèles à imiter : `Allosaurus_funfact` (charnier d'os)
+et `Albertosaurus_funfact` (meute).

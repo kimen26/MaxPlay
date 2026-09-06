@@ -1,0 +1,32 @@
+{
+  "id": "edaphosaurus",
+  "name": "Édaphosaure",
+  "full": "Edaphosaurus pogonias",
+  "base": "Edaphosaurus",
+  "famille": "volant",
+  "famille_sci": "Avant les dinosaures",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Permien · il y a 280 millions d'ans (avant les dinos !)",
+  "periode": "permien",
+  "region": "Texas, États-Unis",
+  "continent": "Amérique du Nord",
+  "taille_m": 3,
+  "hauteur_m": 1.3,
+  "poids_t": 0.12,
+  "superpower": "Une grande voile sur le dos, presque comme celle du Dimétrodon — mais lui ne mangeait que des plantes !",
+  "proies": "Aucune, il broutait des fougères",
+  "chasseurs": "Le Dimétrodon, qui vivait au même endroit",
+  "amis": "Plutôt solitaire",
+  "fait": "Il a presque la même voile que le Dimétrodon — mais c'est tout le contraire : le Dimétrodon mangeait de la viande, et lui seulement des plantes. La forme ne dit pas tout !",
+  "desc": "L'Édaphosaure n'est pas un dinosaure — il vivait bien avant eux. C'est un cousin très ancien des animaux à poils, donc un peu de nous ! Il portait une voile sur le dos, et broyait les plantes avec ses dizaines de petites dents en pavés.",
+  "images": [
+    "Edaphosaurus.jpg",
+    "Edaphosaurus_coloriage.webp",
+    "Edaphosaurus_ecosysteme.jpg",
+    "Edaphosaurus_funfact.jpg",
+    "Edaphosaurus_headshot.jpg",
+    "Edaphosaurus_manger.jpg",
+    "Edaphosaurus_paris.jpg"
+  ]
+}

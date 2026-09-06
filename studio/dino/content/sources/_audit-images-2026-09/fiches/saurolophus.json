@@ -1,0 +1,32 @@
+{
+  "id": "saurolophus",
+  "name": "Saurolophe",
+  "full": "Saurolophus osborni",
+  "base": "Saurolophus",
+  "famille": "bec",
+  "famille_sci": "Ornithopodes",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Crétacé · il y a 70 millions d'ans",
+  "periode": "cretace",
+  "region": "Amérique du Nord (Canada) et Asie (Mongolie)",
+  "continent": "Amérique du Nord / Asie",
+  "taille_m": 9,
+  "hauteur_m": 3,
+  "poids_t": 3.5,
+  "superpower": "Vivait des DEUX côtés de la planète en même temps — au Canada ET en Mongolie, reliés à l'époque par un pont de terre !",
+  "proies": "Mange des plantes",
+  "chasseurs": "Albertosaure en Amérique, Tarbosaure en Asie",
+  "amis": "En grand troupeau, petits et grands ensemble",
+  "fait": "En Mongolie, on a retrouvé plus de cent Saurolophes au même endroit, bébés et adultes — surpris ensemble par une crue, tous d'un coup.",
+  "desc": "Le Saurolophe porte un long éperon d'os plein sur le crâne, dressé vers l'arrière. On pense qu'il servait à être vu et reconnu dans le troupeau — pas à faire de la musique, comme la crête creuse du Parasaurolophus. Il vivait à la fois au Canada et en Mongolie, à l'autre bout du monde !",
+  "images": [
+    "Saurolophus.jpg",
+    "Saurolophus_coloriage.webp",
+    "Saurolophus_ecosysteme.jpg",
+    "Saurolophus_funfact.jpg",
+    "Saurolophus_headshot.jpg",
+    "Saurolophus_manger.jpg",
+    "Saurolophus_paris.jpg"
+  ]
+}

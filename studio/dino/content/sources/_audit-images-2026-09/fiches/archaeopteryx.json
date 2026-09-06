@@ -1,0 +1,32 @@
+{
+  "id": "archaeopteryx",
+  "name": "Archaeoptéryx",
+  "full": "Archaeopteryx lithographica",
+  "base": "Archaeopteryx",
+  "famille": "raptor",
+  "famille_sci": "Dromæosaures",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore",
+  "epoque": "Jurassique · il y a 150 millions d'ans",
+  "periode": "jurassique",
+  "region": "Europe (Allemagne)",
+  "continent": "Europe",
+  "taille_m": 0.5,
+  "hauteur_m": 0.3,
+  "poids_t": 0.001,
+  "superpower": "Le PREMIER oiseau du monde ! Le chaînon entre dinosaures et oiseaux !",
+  "proies": "Insectes, petits lézards",
+  "chasseurs": "Prédateurs plus grands",
+  "amis": "Solitaire",
+  "fait": "C'est l'ANCÊTRE DE TOUS LES OISEAUX ! Il avait des plumes ET des dents ET des griffes. Le fossile le plus précieux du monde !",
+  "desc": "L'Archaeoptéryx est un des tout premiers oiseaux ! Il avait des plumes comme un oiseau, mais aussi des dents et des griffes de dino. Les oiseaux d'aujourd'hui sont ses cousins.",
+  "images": [
+    "Archaeopteryx.jpg",
+    "Archaeopteryx_coloriage.webp",
+    "Archaeopteryx_ecosysteme.jpg",
+    "Archaeopteryx_funfact.jpg",
+    "Archaeopteryx_headshot.jpg",
+    "Archaeopteryx_manger.jpg",
+    "Archaeopteryx_paris.jpg"
+  ]
+}

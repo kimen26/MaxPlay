@@ -1,0 +1,32 @@
+{
+  "id": "parasaurolophus",
+  "name": "Parasaurolophus",
+  "full": "Parasaurolophus walkeri",
+  "base": "Parasaurolophus",
+  "famille": "bec",
+  "famille_sci": "Ornithopodes",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Crétacé · il y a 76 millions d'ans",
+  "periode": "cretace",
+  "region": "Amérique du Nord",
+  "continent": "Amérique du Nord",
+  "taille_m": 10,
+  "hauteur_m": 3.5,
+  "poids_t": 2.5,
+  "superpower": "Sa crête était un instrument de musique ! Il soufflait dedans pour faire des sons très forts !",
+  "proies": "Mange des plantes",
+  "chasseurs": "T-Rex, Gorgosaure",
+  "amis": "En grand troupeau — les cris avertissaient le groupe du danger !",
+  "fait": "Sa crête creuse faisait des sons comme un trombone ! On peut reconstruire sa musique en ordinateur !",
+  "desc": "Le Parasaurolophus avait une grande crête creuse sur la tête. Il soufflait de l'air dedans pour faire des sons très forts — comme un grand klaxon — pour parler avec son troupeau !",
+  "images": [
+    "Parasaurolophus.jpg",
+    "Parasaurolophus_coloriage.webp",
+    "Parasaurolophus_ecosysteme.jpg",
+    "Parasaurolophus_funfact.jpg",
+    "Parasaurolophus_headshot.jpg",
+    "Parasaurolophus_manger.jpg",
+    "Parasaurolophus_paris.jpg"
+  ]
+}

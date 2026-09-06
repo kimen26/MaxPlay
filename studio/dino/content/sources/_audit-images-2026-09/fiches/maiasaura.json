@@ -1,0 +1,32 @@
+{
+  "id": "maiasaura",
+  "name": "Maiasaura",
+  "full": "Maiasaura peeblesorum",
+  "base": "Maiasaura",
+  "famille": "bec",
+  "famille_sci": "Ornithopodes",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Crétacé · il y a 76 millions d'ans",
+  "periode": "cretace",
+  "region": "Montana, États-Unis",
+  "continent": "Amérique du Nord",
+  "taille_m": 9,
+  "hauteur_m": 2.5,
+  "poids_t": 2.5,
+  "superpower": "Elle s'occupait de ses bébés au nid, et leur rapportait à manger tant qu'ils étaient trop petits pour sortir !",
+  "proies": "Mange des plantes",
+  "chasseurs": "Le Daspletosaure, un cousin du T-Rex, chassait les jeunes. Des petits chasseurs comme le Troodon venaient parfois voler les œufs dans les nids mal gardés.",
+  "amis": "En immense colonie, des centaines de nids côte à côte",
+  "fait": "Les nids étaient posés à environ sept mètres les uns des autres : juste la longueur d'une maman, pour qu'elle puisse se retourner sans écraser le nid du voisin !",
+  "desc": "La Maiasaura, c'est LA découverte qui a tout changé : avant elle, personne ne savait que des dinosaures s'occupaient de leurs petits. On a trouvé au même endroit des dizaines de nids, avec des œufs, des bébés et des mamans — on a surnommé cet endroit la Montagne aux Œufs.",
+  "images": [
+    "Maiasaura.jpg",
+    "Maiasaura_coloriage.webp",
+    "Maiasaura_ecosysteme.jpg",
+    "Maiasaura_funfact.jpg",
+    "Maiasaura_headshot.jpg",
+    "Maiasaura_manger.jpg",
+    "Maiasaura_paris.jpg"
+  ]
+}

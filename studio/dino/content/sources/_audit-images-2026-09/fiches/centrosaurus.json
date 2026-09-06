@@ -1,0 +1,33 @@
+{
+  "id": "centrosaurus",
+  "name": "Centrosaure",
+  "full": "Centrosaurus apertus",
+  "base": "Centrosaurus",
+  "famille": "cornu",
+  "famille_sci": "Cératopsiens",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Crétacé · il y a 75 millions d'ans",
+  "periode": "cretace",
+  "region": "Amérique du Nord (Canada)",
+  "continent": "Amérique du Nord",
+  "taille_m": 5.5,
+  "hauteur_m": 1.8,
+  "poids_t": 1.8,
+  "vitesse_kmh": 25,
+  "superpower": "Vivait en troupeaux GÉANTS — on a retrouvé les os de MILLIERS de Centrosaures ensemble au même endroit !",
+  "proies": "Mange des plantes",
+  "chasseurs": "Gorgosaure — qui le poursuivait",
+  "amis": "En immenses troupeaux",
+  "fait": "On a retrouvé les os de MILLIERS de Centrosaures, tous ensemble ! Ils marchaient en troupeaux géants. Quand ils se serraient les uns contre les autres, aucun chasseur n'osait s'approcher.",
+  "desc": "Le Centrosaure avait une belle corne recourbée sur le nez, comme un croissant, et une collerette bordée de pointes. Il vivait au Canada en troupeaux immenses : quand le Gorgosaure approchait, tout le troupeau se regroupait pour se protéger.",
+  "images": [
+    "Centrosaurus.jpg",
+    "Centrosaurus_coloriage.webp",
+    "Centrosaurus_ecosysteme.jpg",
+    "Centrosaurus_funfact.jpg",
+    "Centrosaurus_headshot.jpg",
+    "Centrosaurus_manger.jpg",
+    "Centrosaurus_paris.jpg"
+  ]
+}

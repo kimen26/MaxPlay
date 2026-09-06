@@ -1,0 +1,32 @@
+{
+  "id": "torosaurus",
+  "name": "Torosaure",
+  "full": "Torosaurus latus",
+  "base": "Torosaurus",
+  "famille": "cornu",
+  "famille_sci": "Cératopsiens",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Crétacé · il y a 66 millions d'ans",
+  "periode": "cretace",
+  "region": "Amérique du Nord",
+  "continent": "Amérique du Nord",
+  "taille_m": 8,
+  "hauteur_m": 3,
+  "poids_t": 8,
+  "superpower": "Une des plus grandes têtes de TOUS les animaux qui ont marché sur Terre — sa collerette faisait presque 3 mètres !",
+  "proies": "Mange des plantes",
+  "chasseurs": "T-Rex — comme son cousin le Tricératops",
+  "amis": "Peut-être en petit groupe, comme les autres dinos à cornes",
+  "fait": "Sa collerette avait des grands trous (des fenêtres !), alors que celle du Tricératops était toute pleine. C'est comme ça qu'on les reconnaît !",
+  "desc": "Le Torosaure ressemblait beaucoup au Tricératops, mais avec une collerette ENCORE plus grande, percée de deux grands trous. Il avait le plus grand crâne de tous les animaux terrestres !",
+  "images": [
+    "Torosaurus.jpg",
+    "Torosaurus_coloriage.webp",
+    "Torosaurus_ecosysteme.jpg",
+    "Torosaurus_funfact.jpg",
+    "Torosaurus_headshot.jpg",
+    "Torosaurus_manger.jpg",
+    "Torosaurus_paris.jpg"
+  ]
+}

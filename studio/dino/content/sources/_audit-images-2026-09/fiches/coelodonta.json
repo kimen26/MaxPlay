@@ -1,0 +1,32 @@
+{
+  "id": "coelodonta",
+  "name": "Rhino laineux",
+  "full": "Coelodonta antiquitatis",
+  "base": "Coelodonta",
+  "famille": "mammiferes",
+  "famille_sci": "Mammifères",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Âge de glace · il y a 50 000 ans",
+  "periode": "cenozoique",
+  "region": "Europe et Asie (froid)",
+  "continent": "Eurasie",
+  "taille_m": 3.5,
+  "hauteur_m": 1.5,
+  "poids_t": 1.75,
+  "superpower": "Une grande corne sur le nez, longue comme ton bras, pour balayer la neige et trouver l'herbe !",
+  "proies": "Rien : il broutait l'herbe des plaines froides",
+  "chasseurs": "Les hommes préhistoriques",
+  "amis": "Plutôt solitaire",
+  "fait": "C'était un rhinocéros tout poilu ! Sa grande corne de devant pouvait être longue comme ton bras. Il s'en servait comme d'un balai pour pousser la neige et manger l'herbe cachée dessous.",
+  "desc": "Le Rhinocéros laineux vivait dans le froid de l'âge de glace, aux côtés des mammouths. Couvert d'une épaisse fourrure, il portait deux cornes sur le nez, dont une très grande. Les hommes préhistoriques l'ont même dessiné sur les murs des grottes !",
+  "images": [
+    "Coelodonta.jpg",
+    "Coelodonta_coloriage.webp",
+    "Coelodonta_ecosysteme.jpg",
+    "Coelodonta_funfact.jpg",
+    "Coelodonta_headshot.jpg",
+    "Coelodonta_manger.jpg",
+    "Coelodonta_paris.jpg"
+  ]
+}

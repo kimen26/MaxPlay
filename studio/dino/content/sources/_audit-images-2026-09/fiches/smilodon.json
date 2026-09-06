@@ -1,0 +1,32 @@
+{
+  "id": "smilodon",
+  "name": "Smilodon",
+  "full": "Smilodon fatalis",
+  "base": "Smilodon",
+  "famille": "mammiferes",
+  "famille_sci": "Mammifères",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore",
+  "epoque": "Âge de glace · il y a 1 million d'ans",
+  "periode": "cenozoique",
+  "region": "Amérique du Nord et du Sud",
+  "continent": "Amériques",
+  "taille_m": 1.75,
+  "hauteur_m": 1,
+  "poids_t": 0.22,
+  "superpower": "Deux canines longues comme ta main pour attraper ses proies d'un seul coup précis !",
+  "proies": "Bisons, chevaux sauvages, jeunes paresseux géants",
+  "chasseurs": "Personne n'osait vraiment l'attaquer",
+  "amis": "Peut-être en groupe, comme les lions",
+  "fait": "On l'appelle le tigre à dents de sabre, mais ce n'était pas un tigre ! Ses canines mesuraient presque vingt centimètres, plus longues que ta main. Il ouvrait sa gueule bien plus grand qu'un lion.",
+  "desc": "Le Smilodon était un grand chasseur de l'âge de glace, plus trapu et musclé qu'un lion. Ses deux dents géantes étaient sa grande arme. On en a retrouvé des milliers dans un piège de goudron collant, en Amérique, là où ils restaient coincés.",
+  "images": [
+    "Smilodon.jpg",
+    "Smilodon_coloriage.webp",
+    "Smilodon_ecosysteme.jpg",
+    "Smilodon_funfact.jpg",
+    "Smilodon_headshot.jpg",
+    "Smilodon_manger.jpg",
+    "Smilodon_paris.jpg"
+  ]
+}

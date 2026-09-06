@@ -1,0 +1,33 @@
+{
+  "id": "carnotaurus",
+  "name": "Carnotaure",
+  "full": "Carnotaurus sastrei",
+  "base": "Carnotaurus",
+  "famille": "trex",
+  "famille_sci": "Théropodes",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore",
+  "epoque": "Crétacé · il y a 72 millions d'ans",
+  "periode": "cretace",
+  "region": "Amérique du Sud",
+  "continent": "Amérique du Sud",
+  "taille_m": 8,
+  "hauteur_m": 2.5,
+  "poids_t": 1.6,
+  "vitesse_kmh": 52,
+  "superpower": "Le chasseur le PLUS RAPIDE parmi les grands carnivores — jusqu'à 52 km/h, aussi vite qu'une voiture en ville !",
+  "proies": "Hadrosaures, dinosaures moyens",
+  "chasseurs": "Aucun dans son territoire",
+  "amis": "Solitaire",
+  "fait": "Il avait DE VRAIES CORNES au-dessus des yeux — comme un taureau ! Et il était ultra-rapide !",
+  "desc": "Le Carnotaure avait des cornes comme un taureau et courait très très vite ! C'est un des dinos les plus rapides de toute son époque.",
+  "images": [
+    "Carnotaurus.jpg",
+    "Carnotaurus_coloriage.webp",
+    "Carnotaurus_ecosysteme.jpg",
+    "Carnotaurus_funfact.jpg",
+    "Carnotaurus_headshot.jpg",
+    "Carnotaurus_manger.jpg",
+    "Carnotaurus_paris.jpg"
+  ]
+}

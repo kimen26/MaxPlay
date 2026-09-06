@@ -1,0 +1,32 @@
+{
+  "id": "edmontonia",
+  "name": "Edmontonia",
+  "full": "Edmontonia rugosidens",
+  "base": "Edmontonia",
+  "famille": "arme",
+  "famille_sci": "Thyréophores",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Crétacé · il y a 72 millions d'ans",
+  "periode": "cretace",
+  "region": "Amérique du Nord",
+  "continent": "Amérique du Nord",
+  "taille_m": 6.6,
+  "hauteur_m": 2,
+  "poids_t": 3,
+  "superpower": "De grandes épines pointues sur les épaules pour se défendre — pas besoin de fuir !",
+  "proies": "Mange des plantes basses",
+  "chasseurs": "Le Gorgosaure et le Daspletosaure, deux cousins du T-Rex, essayaient. Mais avec ses épines d'épaule, l'attaquer par le côté était très dangereux.",
+  "amis": "Plutôt solitaire",
+  "fait": "L'Edmontonia avait de grandes épines pointues sur les épaules, mais PAS de boule au bout de la queue comme l'Ankylosaure ! Pour se protéger, il baissait la tête et présentait ses épines : difficile de l'attraper sans se piquer.",
+  "desc": "L'Edmontonia était un herbivore couvert d'une armure : des plaques osseuses sur le dos et de grandes épines sur les épaules. Bas sur ses pattes, tout blindé, il broutait tranquillement les plantes. Contrairement à l'Ankylosaure, il n'avait pas de queue-massue : ses épines suffisaient à le défendre.",
+  "images": [
+    "Edmontonia.jpg",
+    "Edmontonia_coloriage.webp",
+    "Edmontonia_ecosysteme.jpg",
+    "Edmontonia_funfact.jpg",
+    "Edmontonia_headshot.jpg",
+    "Edmontonia_manger.jpg",
+    "Edmontonia_paris.jpg"
+  ]
+}

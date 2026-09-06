@@ -1,0 +1,32 @@
+{
+  "id": "minmi",
+  "name": "Minmi",
+  "full": "Minmi paravertebra",
+  "base": "Minmi",
+  "famille": "arme",
+  "famille_sci": "Thyréophores",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Crétacé · il y a 120 millions d'ans",
+  "periode": "cretace",
+  "region": "Queensland, Australie",
+  "continent": "Océanie",
+  "taille_m": 3,
+  "hauteur_m": 0.9,
+  "poids_t": 0.3,
+  "superpower": "Des pattes plus longues que ses cousins blindés — de quoi filer se cacher si un chasseur approchait !",
+  "proies": "Mange des plantes",
+  "chasseurs": "De grands chasseurs d'Australie essayaient de le retourner sur le dos, là où il n'avait pas d'armure. Avec ses pattes rapides, il partait souvent avant.",
+  "amis": "Plutôt solitaire",
+  "fait": "On a retrouvé son tout dernier repas fossilisé dans son ventre : des graines, des morceaux de fruits et des fougères ! C'est très rare de savoir EXACTEMENT ce qu'un dinosaure avait mangé avant de mourir.",
+  "desc": "Le Minmi était un petit dino blindé d'Australie. Il avait une armure sur le dos ET sous le ventre, ce qui est rare. Et pour un dino à armure, il avait de longues pattes : il pouvait filer se mettre à l'abri.",
+  "images": [
+    "Minmi.jpg",
+    "Minmi_coloriage.webp",
+    "Minmi_ecosysteme.jpg",
+    "Minmi_funfact.jpg",
+    "Minmi_headshot.jpg",
+    "Minmi_manger.jpg",
+    "Minmi_paris.jpg"
+  ]
+}

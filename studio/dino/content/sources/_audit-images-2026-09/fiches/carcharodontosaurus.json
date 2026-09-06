@@ -1,0 +1,32 @@
+{
+  "id": "carcharodontosaurus",
+  "name": "Carcharodontosaure",
+  "full": "Carcharodontosaurus saharicus",
+  "base": "Carcharodontosaurus",
+  "famille": "trex",
+  "famille_sci": "Théropodes",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore",
+  "epoque": "Crétacé · il y a 95 millions d'ans",
+  "periode": "cretace",
+  "region": "Afrique du Nord",
+  "continent": "Afrique",
+  "taille_m": 13,
+  "hauteur_m": 3.8,
+  "poids_t": 7,
+  "superpower": "Des dents en forme de dents de requin — couper comme un couteau !",
+  "proies": "Grands herbivores africains",
+  "chasseurs": "Aucun dans son territoire",
+  "amis": "Solitaire",
+  "fait": "Son nom veut dire \"lézard aux dents de requin\" ! Ses dents étaient dentelées comme une scie !",
+  "desc": "Le Carcharodontosaure vivait en Afrique en même temps que le Spinosaure. Il avait des dents en forme de dents de requin pour découper sa nourriture.",
+  "images": [
+    "Carcharodontosaurus.jpg",
+    "Carcharodontosaurus_coloriage.webp",
+    "Carcharodontosaurus_ecosysteme.jpg",
+    "Carcharodontosaurus_funfact.jpg",
+    "Carcharodontosaurus_headshot.jpg",
+    "Carcharodontosaurus_manger.jpg",
+    "Carcharodontosaurus_paris.jpg"
+  ]
+}

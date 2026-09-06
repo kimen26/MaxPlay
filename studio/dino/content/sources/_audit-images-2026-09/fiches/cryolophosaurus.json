@@ -1,0 +1,32 @@
+{
+  "id": "cryolophosaurus",
+  "name": "Cryolophosaure",
+  "full": "Cryolophosaurus ellioti",
+  "base": "Cryolophosaurus",
+  "famille": "trex",
+  "famille_sci": "Théropodes",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore",
+  "epoque": "Jurassique · il y a 190 millions d'ans",
+  "periode": "jurassique",
+  "region": "Antarctique !",
+  "continent": "Antarctique",
+  "taille_m": 6.5,
+  "hauteur_m": 2.5,
+  "poids_t": 0.4,
+  "superpower": "Vivait en Antarctique ! Le dino des neiges !",
+  "proies": "Herbivores de l'Antarctique",
+  "chasseurs": "Prédateurs plus grands",
+  "amis": "Inconnu",
+  "fait": "Découvert en Antarctique ! Il vivait là quand c'était encore chaud. Et il avait une drôle de crête en éventail dressée sur la tête, comme une petite vague !",
+  "desc": "Le Cryolophosaure vivait en Antarctique quand il faisait encore un peu chaud là-bas ! Il avait une crête rigolote en travers de la tête, dressée comme une vague — c'est ce qui le rend facile à reconnaître !",
+  "images": [
+    "Cryolophosaurus.jpg",
+    "Cryolophosaurus_coloriage.webp",
+    "Cryolophosaurus_ecosysteme.jpg",
+    "Cryolophosaurus_funfact.jpg",
+    "Cryolophosaurus_headshot.jpg",
+    "Cryolophosaurus_manger.jpg",
+    "Cryolophosaurus_paris.jpg"
+  ]
+}

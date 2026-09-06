@@ -1,0 +1,33 @@
+{
+  "id": "quetzalcoatlus",
+  "name": "Quetzalcoatlus",
+  "full": "Quetzalcoatlus northropi",
+  "base": "Quetzalcoatlus",
+  "famille": "pterosaures",
+  "famille_sci": "Ptérosaures",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore (petits animaux au sol, insectes)",
+  "epoque": "Crétacé · il y a 68 millions d'ans",
+  "periode": "cretace",
+  "region": "Amérique du Nord",
+  "continent": "Amérique du Nord",
+  "taille_m": 11,
+  "hauteur_m": 5,
+  "poids_t": 0.2,
+  "vitesse_kmh": 90,
+  "superpower": "Un des plus grands animaux volants de TOUS LES TEMPS ! Aussi haut qu'une girafe debout !",
+  "proies": "Petits animaux, insectes et crustacés (attrapés au sol)",
+  "chasseurs": "Aucun ne pouvait l'attraper dans les airs",
+  "amis": "Solitaire ou petit groupe",
+  "fait": "Debout au sol il mesurait 5 mètres de haut — aussi grand qu'une girafe… et pourtant il VOLAIT ! Un des plus grands êtres volants qui aient jamais existé !",
+  "desc": "Le Quetzalcoatlus était le plus grand être volant de toute l'histoire de la Terre ! Debout, il était grand comme une girafe. Il volait sur des milliers de kilomètres.",
+  "images": [
+    "Quetzalcoatlus.jpg",
+    "Quetzalcoatlus_coloriage.webp",
+    "Quetzalcoatlus_ecosysteme.jpg",
+    "Quetzalcoatlus_funfact.jpg",
+    "Quetzalcoatlus_headshot.jpg",
+    "Quetzalcoatlus_manger.jpg",
+    "Quetzalcoatlus_paris.jpg"
+  ]
+}

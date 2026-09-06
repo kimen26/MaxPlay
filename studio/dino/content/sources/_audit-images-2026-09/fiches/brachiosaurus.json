@@ -1,0 +1,32 @@
+{
+  "id": "brachiosaurus",
+  "name": "Brachiosaure",
+  "full": "Brachiosaurus altithorax",
+  "base": "Brachiosaurus",
+  "famille": "cou_long",
+  "famille_sci": "Sauropodes",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Jurassique · il y a 150 millions d'ans",
+  "periode": "jurassique",
+  "region": "Amérique du Nord (Colorado, Wyoming, Utah)",
+  "continent": "Amérique du Nord",
+  "taille_m": 22,
+  "hauteur_m": 13,
+  "poids_t": 47,
+  "superpower": "Mangeait les feuilles tout en haut des arbres que les autres ne pouvaient pas atteindre !",
+  "proies": "Mange des plantes",
+  "chasseurs": "Seulement les très grands carnivores osaient attaquer les jeunes",
+  "amis": "Vivait en troupeau — plus fort ensemble !",
+  "fait": "Sa tête était à 13 mètres de haut — aussi haut qu'un immeuble de quatre étages ! Pour avaler, il avalait des pierres pour broyer sa nourriture dans son estomac.",
+  "desc": "Le Brachiosaure était immense ! Il mangeait les feuilles tout en haut des arbres. Il avait un très long cou et de grandes pattes avant. Un géant gentil !",
+  "images": [
+    "Brachiosaurus.jpg",
+    "Brachiosaurus_coloriage.webp",
+    "Brachiosaurus_ecosysteme.jpg",
+    "Brachiosaurus_funfact.jpg",
+    "Brachiosaurus_headshot.jpg",
+    "Brachiosaurus_manger.jpg",
+    "Brachiosaurus_paris.jpg"
+  ]
+}

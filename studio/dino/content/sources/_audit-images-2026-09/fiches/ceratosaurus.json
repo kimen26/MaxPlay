@@ -1,0 +1,33 @@
+{
+  "id": "ceratosaurus",
+  "name": "Cératosaure",
+  "full": "Ceratosaurus nasicornis",
+  "base": "Ceratosaurus",
+  "famille": "trex",
+  "famille_sci": "Théropodes",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore",
+  "epoque": "Jurassique · il y a 150 millions d'ans",
+  "periode": "jurassique",
+  "region": "Amérique du Nord (et peut-être l'Europe, au Portugal)",
+  "continent": "Amérique du Nord",
+  "taille_m": 6,
+  "hauteur_m": 2,
+  "poids_t": 0.9,
+  "vitesse_kmh": 25,
+  "superpower": "Il avait UNE corne sur le nez — unique chez les grands carnivores !",
+  "proies": "Petits dinosaures, poissons",
+  "chasseurs": "Allosaure pouvait l'affronter",
+  "amis": "Solitaire",
+  "fait": "Il avait des petites cornes sur la tête et une grande corne sur le nez — le seul grand carnivore avec une corne !",
+  "desc": "Le Cératosaure avait quelque chose de spécial : une corne sur le nez ! Il vivait au Jurassique et chassait de petits animaux et des poissons.",
+  "images": [
+    "Ceratosaurus.jpg",
+    "Ceratosaurus_coloriage.webp",
+    "Ceratosaurus_ecosysteme.jpg",
+    "Ceratosaurus_funfact.jpg",
+    "Ceratosaurus_headshot.jpg",
+    "Ceratosaurus_manger.jpg",
+    "Ceratosaurus_paris.jpg"
+  ]
+}

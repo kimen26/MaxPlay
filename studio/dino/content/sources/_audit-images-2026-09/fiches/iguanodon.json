@@ -1,0 +1,32 @@
+{
+  "id": "iguanodon",
+  "name": "Iguanodon",
+  "full": "Iguanodon bernissartensis",
+  "base": "Iguanodon",
+  "famille": "bec",
+  "famille_sci": "Ornithopodes",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Crétacé · il y a 125 millions d'ans",
+  "periode": "cretace",
+  "region": "Europe, Amérique du Nord",
+  "continent": "Europe",
+  "taille_m": 10,
+  "hauteur_m": 2.7,
+  "poids_t": 3,
+  "superpower": "Un pique osseux sur le pouce — comme un couteau sur la main !",
+  "proies": "Mange des plantes",
+  "chasseurs": "Baryonyx, Carnosaures",
+  "amis": "En troupeau",
+  "fait": "C'est l'un des PREMIERS dinosaures découverts en 1820 ! Au début, on croyait que la corne du pouce était sa corne nasale !",
+  "desc": "L'Iguanodon était un dino célèbre car c'est l'un des premiers découverts. Il avait un pique tranchant sur le pouce pour se défendre. Il marchait sur 4 pattes mais pouvait se lever sur 2 !",
+  "images": [
+    "Iguanodon.jpg",
+    "Iguanodon_coloriage.webp",
+    "Iguanodon_ecosysteme.jpg",
+    "Iguanodon_funfact.jpg",
+    "Iguanodon_headshot.jpg",
+    "Iguanodon_manger.jpg",
+    "Iguanodon_paris.jpg"
+  ]
+}

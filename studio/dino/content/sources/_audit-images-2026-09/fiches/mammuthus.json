@@ -1,0 +1,32 @@
+{
+  "id": "mammuthus",
+  "name": "Mammouth",
+  "full": "Mammuthus primigenius",
+  "base": "Mammuthus",
+  "famille": "mammiferes",
+  "famille_sci": "Mammifères",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Âge de glace · il y a 100 000 ans",
+  "periode": "cenozoique",
+  "region": "Europe, Asie et Amérique du Nord (froid)",
+  "continent": "Eurasie et Amérique du Nord",
+  "taille_m": 5.5,
+  "hauteur_m": 3.3,
+  "poids_t": 5,
+  "superpower": "Une fourrure épaisse et une couche de graisse pour vivre dans le froid glacial, là où personne d'autre ne tenait !",
+  "proies": "Rien : il mangeait de l'herbe et des petites plantes",
+  "chasseurs": "Les hommes préhistoriques, ses seuls vrais chasseurs",
+  "amis": "En troupeaux, comme les éléphants d'aujourd'hui",
+  "fait": "Ses deux grandes défenses recourbées pouvaient être plus longues que Papa couché — plus de 4 mètres ! Il s'en servait pour balayer la neige et trouver l'herbe cachée dessous.",
+  "desc": "Le Mammouth vivait pendant l'âge de glace, quand la Terre était toute froide et couverte de neige. Couvert de longs poils et d'une grosse bosse de graisse, il traversait les plaines gelées en troupeaux. Les tout derniers ont disparu il y a seulement quatre mille ans.",
+  "images": [
+    "Mammuthus.jpg",
+    "Mammuthus_coloriage.webp",
+    "Mammuthus_ecosysteme.jpg",
+    "Mammuthus_funfact.jpg",
+    "Mammuthus_headshot.jpg",
+    "Mammuthus_manger.jpg",
+    "Mammuthus_paris.jpg"
+  ]
+}

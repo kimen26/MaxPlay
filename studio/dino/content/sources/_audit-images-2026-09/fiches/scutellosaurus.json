@@ -1,0 +1,32 @@
+{
+  "id": "scutellosaurus",
+  "name": "Scutellosaure",
+  "full": "Scutellosaurus lawleri",
+  "base": "Scutellosaurus",
+  "famille": "arme",
+  "famille_sci": "Thyréophores",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Jurassique · il y a 196 millions d'ans",
+  "periode": "jurassique",
+  "region": "Arizona, États-Unis",
+  "continent": "Amérique du Nord",
+  "taille_m": 1.2,
+  "hauteur_m": 0.4,
+  "poids_t": 0.004,
+  "superpower": "Le SEUL dino à armure qui courait sur deux pattes ! Tous ses cousins blindés d'après, comme l'Ankylosaure, marchaient à quatre pattes.",
+  "proies": "Mange des plantes basses",
+  "chasseurs": "Le Dilophosaure, un chasseur à crête, vivait dans le même coin",
+  "amis": "Seul ou en petit groupe",
+  "fait": "Il avait plus de 300 petites plaques d'os sur le dos et la queue — mais pas de grosse armure ni de queue-massue comme ses cousins d'après. C'était la toute première version, en tout léger !",
+  "desc": "Le Scutellosaure était minuscule : à peine plus long qu'un vélo, et léger comme un gros chat. Des centaines de petites plaques d'os couvraient son dos comme une mosaïque. Sa longue queue lui servait de balancier pour courir sur ses deux pattes arrière.",
+  "images": [
+    "Scutellosaurus.jpg",
+    "Scutellosaurus_coloriage.webp",
+    "Scutellosaurus_ecosysteme.jpg",
+    "Scutellosaurus_funfact.jpg",
+    "Scutellosaurus_headshot.jpg",
+    "Scutellosaurus_manger.jpg",
+    "Scutellosaurus_paris.jpg"
+  ]
+}

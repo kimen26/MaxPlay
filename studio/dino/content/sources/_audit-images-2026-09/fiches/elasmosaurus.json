@@ -1,0 +1,31 @@
+{
+  "id": "elasmosaurus",
+  "name": "Élasmosaure",
+  "full": "Elasmosaurus platyurus",
+  "base": "Elasmosaurus",
+  "famille": "enaliosaures",
+  "famille_sci": "Énaliosaures",
+  "cat": "piscivores",
+  "regime": "🐟 Piscivore",
+  "epoque": "Crétacé · il y a 80 millions d'ans",
+  "periode": "cretace",
+  "region": "Amérique du Nord (mer intérieure)",
+  "taille_m": 13,
+  "hauteur_m": 1,
+  "poids_t": 2.5,
+  "superpower": "Le cou le plus long de TOUS les reptiles : 72 vertèbres, 7 mètres de cou !",
+  "proies": "Poissons, calmars, petites proies dans l'eau",
+  "chasseurs": "Mosasaure (le redoutable prédateur des mers)",
+  "amis": "En petits groupes",
+  "fait": "En 1868, un scientifique a collé sa tête... à l'autre bout ! Il avait confondu la queue et le cou. Son rival lui a dit : tu l'as mis à l'envers ! La plus grande bourde de la paléontologie !",
+  "desc": "L'Élasmosaure n'était pas un dinosaure — c'était un reptile marin géant du Crétacé ! Son cou mesurait 7 mètres, la moitié de son corps. Il ne pouvait pas lever la tête hors de l'eau comme dans les films.",
+  "images": [
+    "Elasmosaurus.jpg",
+    "Elasmosaurus_coloriage.webp",
+    "Elasmosaurus_ecosysteme.jpg",
+    "Elasmosaurus_funfact.jpg",
+    "Elasmosaurus_headshot.jpg",
+    "Elasmosaurus_manger.jpg",
+    "Elasmosaurus_paris.jpg"
+  ]
+}

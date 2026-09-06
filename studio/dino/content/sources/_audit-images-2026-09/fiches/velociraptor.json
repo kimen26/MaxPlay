@@ -1,0 +1,32 @@
+{
+  "id": "velociraptor",
+  "name": "Vélociraptor",
+  "full": "Velociraptor mongoliensis",
+  "base": "Velociraptor",
+  "famille": "raptor",
+  "famille_sci": "Dromæosaures",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore",
+  "epoque": "Crétacé · il y a 75 millions d'ans",
+  "periode": "cretace",
+  "region": "Asie (Mongolie)",
+  "continent": "Asie",
+  "taille_m": 2,
+  "hauteur_m": 0.5,
+  "poids_t": 0.015,
+  "superpower": "Ultra-malin, rapide, avec une grande griffe en faucille rétractable !",
+  "proies": "Protocératops, petits dinos",
+  "chasseurs": "Grands carnivores",
+  "amis": "Plutôt seul — la meute des raptors, c'est un mythe des films !",
+  "fait": "Le vrai Vélociraptor était de la taille d'un dindon ! Et il avait DES PLUMES ! Rien à voir avec les gros monstres sans plumes des films !",
+  "desc": "Le Vélociraptor n'était pas énorme — de la taille d'un grand chien. Mais il était couvert de plumes et très très malin ! Il chassait sûrement seul ou à deux, pas en grande meute comme dans les films.",
+  "images": [
+    "Velociraptor.jpg",
+    "Velociraptor_coloriage.webp",
+    "Velociraptor_ecosysteme.jpg",
+    "Velociraptor_funfact.jpg",
+    "Velociraptor_headshot.jpg",
+    "Velociraptor_manger.jpg",
+    "Velociraptor_paris.jpg"
+  ]
+}

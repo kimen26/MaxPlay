@@ -1,0 +1,32 @@
+{
+  "id": "microraptor",
+  "name": "Microraptor",
+  "full": "Microraptor gui",
+  "base": "Microraptor",
+  "famille": "raptor",
+  "famille_sci": "Dromæosaures",
+  "cat": "carnivores",
+  "regime": "🥩 Carnivore",
+  "epoque": "Crétacé · il y a 120 millions d'ans",
+  "periode": "cretace",
+  "region": "Chine",
+  "continent": "Asie",
+  "taille_m": 0.77,
+  "hauteur_m": 0.3,
+  "poids_t": 0.001,
+  "superpower": "4 ailes ! Planait entre les arbres comme un écureuil volant !",
+  "proies": "Lézards, petits mammifères, poissons",
+  "chasseurs": "Autres carnivores, grands reptiles",
+  "amis": "Solitaire ou petit groupe",
+  "fait": "Il avait 4 ailes — 2 sur les bras ET 2 sur les jambes ! Il planait entre les arbres comme un avion miniature !",
+  "desc": "Le Microraptor était minuscule avec 4 ailes ! Il planait entre les arbres en Chine pour attraper des lézards et des petits poissons. Incroyable !",
+  "images": [
+    "Microraptor.jpg",
+    "Microraptor_coloriage.webp",
+    "Microraptor_ecosysteme.jpg",
+    "Microraptor_funfact.jpg",
+    "Microraptor_headshot.jpg",
+    "Microraptor_manger.jpg",
+    "Microraptor_paris.jpg"
+  ]
+}

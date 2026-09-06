@@ -1,0 +1,33 @@
+{
+  "id": "lystrosaurus",
+  "name": "Lystrosaure",
+  "full": "Lystrosaurus murrayi",
+  "base": "Lystrosaurus",
+  "famille": "volant",
+  "famille_sci": "Avant les dinosaures",
+  "cat": "herbivores",
+  "regime": "🌿 Herbivore",
+  "epoque": "Permien · il y a 250 millions d'ans (avant les dinos !)",
+  "periode": "permien",
+  "region": "Afrique du Sud, Antarctique, Inde, Chine, Russie, Mongolie",
+  "continent": "Afrique",
+  "taille_m": 0.7,
+  "hauteur_m": 0.35,
+  "poids_t": 0.017,
+  "vitesse_kmh": 5,
+  "superpower": "Le grand survivant : il a traversé la plus grosse catastrophe de toute l'histoire de la Terre !",
+  "proies": "Aucune, il coupait les plantes basses avec son bec",
+  "chasseurs": "Presque plus aucun juste après la catastrophe — ils avaient disparu",
+  "amis": "Vivait en très, très grand nombre",
+  "fait": "Après la plus grosse catastrophe de l'histoire de la Terre, à certains endroits, presque tous les animaux à quatre pattes qu'on retrouve, ce sont des Lystrosaures — parfois plus de neuf sur dix !",
+  "desc": "Le Lystrosaure n'est pas un dinosaure — c'est un cousin lointain des animaux à poils. Petit, avec un bec corné comme celui d'une tortue, il a survécu à la plus terrible catastrophe qu'ait connue la Terre. On retrouve ses os en Afrique, en Chine, en Inde et jusqu'en Antarctique : à cette époque, toutes les terres étaient collées en un seul morceau.",
+  "images": [
+    "Lystrosaurus.jpg",
+    "Lystrosaurus_coloriage.webp",
+    "Lystrosaurus_ecosysteme.jpg",
+    "Lystrosaurus_funfact.jpg",
+    "Lystrosaurus_headshot.jpg",
+    "Lystrosaurus_manger.jpg",
+    "Lystrosaurus_paris.jpg"
+  ]
+}

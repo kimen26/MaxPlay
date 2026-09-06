@@ -51,7 +51,7 @@ const DINO_PLANTES = [
       "stegosaurus"
     ],
     "mangee_comment": "Les prêles sont pleines de sable minuscule : elles usaient les dents. Le Diplodocus les arrachait en peigne avec ses dents en crayon, sans les mâcher.",
-    "superpower": "Une tige râpeuse comme du papier de verre",
+    "superpower": "Une tige râpeuse comme du sable",
     "fait": "Ses tiges faisaient jusqu'à vingt centimètres de large — plus gros que ton bras. Aujourd'hui les prêles existent encore, mais elles t'arrivent au genou.",
     "vivant": "Oui : les prêles poussent toujours au bord des rivières, en beaucoup plus petit."
   },
@@ -101,7 +101,7 @@ const DINO_PLANTES = [
       "plateosaurus"
     ],
     "mangee_comment": "Le Plateosaure attrapait les rameaux entiers dans sa gueule et les tirait d'un coup de tête, comme on tire une poignée d'herbe.",
-    "superpower": "Elle a donné son nom à une roche",
+    "superpower": "Elle a nommé une roche",
     "fait": "Dans les Vosges, elle est si présente dans la pierre que les géologues ont appelé la roche « le grès à Voltzia ». Une plante qui donne son nom à une montagne, c'est rare.",
     "vivant": "Non : disparue. Mais les cyprès et les araucarias d'aujourd'hui sont ses cousins."
   },
@@ -131,7 +131,7 @@ const DINO_PLANTES = [
       "iguanodon"
     ],
     "mangee_comment": "Le Brachiosaure tendait son cou et brossait les branches du haut. Plus bas, l'Iguanodon coupait les rameaux avec son bec corné.",
-    "superpower": "Il n'a pas changé depuis les dinosaures",
+    "superpower": "Inchangé depuis les dinosaures",
     "fait": "Regarde une feuille de ginkgo dans une rue aujourd'hui : elle a exactement la même forme que celle qu'un Brachiosaure mâchait il y a 150 millions d'années.",
     "vivant": "Oui : il existe encore, et on en plante dans les villes. C'est le dernier de toute sa famille."
   },
@@ -226,7 +226,7 @@ const DINO_PLANTES = [
       "iguanodon"
     ],
     "mangee_comment": "Les becs de canard broyaient ces rameaux coriaces entre des centaines de dents empilées en batterie. Ils mâchaient vraiment, contrairement aux sauropodes.",
-    "superpower": "Sa famille bat le record de hauteur",
+    "superpower": "Sa famille bat tous les records",
     "fait": "Le plus grand arbre du monde aujourd'hui est de cette famille : un séquoia de plus de cent quinze mètres. Ça fait presque vingt lampadaires les uns sur les autres.",
     "vivant": "Oui : les cyprès, les genévriers et les séquoias sont tous de cette famille."
   },
@@ -445,7 +445,7 @@ const DINO_PLANTES = [
     "periodes": [
       "cretace"
     ],
-    "emoji": "🍁",
+    "emoji": "🌳",
     "png": "Platane.jpg",
     "region": "Amérique du Nord, Liban, Asie. Ses plus vieux fossiles ont environ 110 millions d'années.",
     "hauteur_m": 30,

@@ -48,6 +48,20 @@ const CADRE = [
   'Aucun sang, aucune plaie, aucune agonie. Génère l\'image directement, sans commentaire.',
 ].join('\n');
 
+// Les coloriages ne sont pas du paleoart : page blanche, trait noir, deux valeurs.
+// Style repris de batch-dino-coloriage.mjs (formule en positif, cf. L-D24).
+const CADRE_COLORIAGE = [
+  '',
+  '---',
+  "STYLE : dessin au trait pour livre de coloriage, style cartoon mignon. L'image est une PAGE",
+  "ENTIEREMENT BLANCHE sur laquelle l'animal est dessine uniquement avec des CONTOURS NOIRS EPAIS",
+  "ET NETS, comme au feutre noir. L'interieur de l'animal reste BLANC, vide, pret a etre colorie",
+  "aux crayons ; le fond autour de lui est BLANC PUR lui aussi, du blanc de la page. Seulement deux",
+  "valeurs dans toute l'image : le blanc de la page et le noir du trait. Grandes zones blanches",
+  "simples et bien fermees. Formes arrondies et douces, yeux grands et expressifs. Tres simple,",
+  "tres lisible, parfait pour qu'un enfant de 4 ans colorie. Pas de texte ni de chiffre dans l'image.",
+].join('\n');
+
 // 1 chat neuf par sujet : les scènes d'un même dino partagent le contexte, ce qui aide
 // le modèle à VARIER la pose (il voit ce qu'il vient de produire) — le défaut CLONE
 // vient justement de scènes générées en vase clos.
@@ -57,7 +71,7 @@ let ok = 0, ko = 0;
 for (const e of cible) {
   const out = sortie(e);
   const neuf = e.id !== sujetCourant;
-  const args = [GEN, e.prompt + CADRE, out];
+  const args = [GEN, e.prompt + (e.fichier.endsWith('.webp') ? CADRE_COLORIAGE : CADRE), out];
   if (neuf) args.push('--url', GPTS);
   sujetCourant = e.id;
 

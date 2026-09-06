@@ -28,8 +28,14 @@ const DINOS = arg('--dino') ? arg('--dino').split(',').map(s => s.trim()) : null
 const RETRY = process.argv.includes('--retry');
 // Port du navigateur a piloter (9222 par defaut, 9223 pour la seconde instance).
 const PORT = arg('--port', '9222');
+// --ref-auto <Fichier.jpg> : joint cette image de la collection prod comme reference
+// visuelle a CHAQUE generation du lot (lecon L-D-59). A n utiliser que sur un lot
+// homogene — typiquement toutes les scenes d un meme sujet.
+const REF_AUTO = arg('--ref-auto');
 // Une cadence trop rapide declenche le rate limit : on espace explicitement les generations.
-const PAUSE = parseInt(arg('--pause', '20'), 10) * 1000;
+// 90 s par defaut : a 25 s, ChatGPT a repondu 'demandes trop rapidement' et restreint
+// l acces (2026-09-06). La generation prend deja ~90 s, la pause double l intervalle.
+const PAUSE = parseInt(arg('--pause', '90'), 10) * 1000;
 const dors = ms => new Promise(r => setTimeout(r, ms));
 
 const file = JSON.parse(readFileSync(FILE, 'utf8'));
@@ -84,6 +90,8 @@ for (const e of cible) {
   const args = [GEN, e.prompt + (e.fichier.endsWith('.webp') ? CADRE_COLORIAGE : CADRE), out];
   // Grok gere son projet lui-meme via --new ; ChatGPT a besoin de l'URL du projet.
   if (neuf) args.push(...(USE_GROK ? ['--new'] : ['--url', GPTS]));
+  // grok-gen-dino.mjs ne gere pas --ref : la reference visuelle est ChatGPT seulement.
+  if (REF_AUTO && !USE_GROK) args.push('--ref', ROOT + '/site/img/dinos/paleoart/' + REF_AUTO);
   sujetCourant = e.id;
 
   console.log(`\n─── ${e.fichier}  [${e.motif}]${neuf ? '  (chat neuf)' : ''}`);

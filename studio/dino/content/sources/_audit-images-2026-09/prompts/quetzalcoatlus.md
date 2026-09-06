@@ -21,10 +21,14 @@ la taille d'une girafe.
 ## Quetzalcoatlus_manger.jpg
 
 **ACTION** — Il **attrape une proie au sol** : **tête et cou plongés en avant en un coup sec**,
-**le bec refermé en travers sur un petit mammifère (ou un jeune dinosaure de la taille d'un lapin)
-qui pend nettement visible des mandibules**, l'animal en appui quadrupède mais **une patte avant
+**le bec refermé en travers sur un jeune dinosaure herbivore d'environ 40 cm — un petit
+ornithopode bipède au bec corné, à longue queue raide et pattes arrière allongées — qui pend
+nettement visible des mandibules, ENTIER et INTACT**, l'animal en appui quadrupède mais **une patte avant
 levée en pleine foulée**, cadrage **serré à mi-corps**, vu **de trois quarts avant en légère
-plongée** pour qu'on voie ce qu'il tient. Autour, quelques petits animaux qui détalent.
+plongée** pour qu'on voie ce qu'il tient. Autour, quelques **jeunes ornithopodes et petits lézards du Crétacé** qui détalent sur deux
+pattes ou en rasant le sol. **Aucun mammifère moderne dans le cadre : ni lapin, ni lièvre,
+ni rongeur à grandes oreilles.** Les seuls mammifères du Crétacé sont de petites bêtes
+discrètes de la taille d'une souris, à museau pointu et longue queue nue.
 Se démarquer explicitement de : l'ancienne version de `Quetzalcoatlus_manger.jpg` (penché,
 pointe du bec trempée dans une mare — il **buvait**, il ne mangeait pas) ;
 `Quetzalcoatlus.jpg` (hero — debout de profil, cou dressé, enfant en repère à gauche) ;

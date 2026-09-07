@@ -92,7 +92,7 @@
 
 ## Lane — Idées produit (basse priorité, jamais démarrées)
 
-- **EP-D13** [~] — Flore du Mésozoïque dans l'encyclopédie (idée PY 2026-09-06, tranché PY le jour même : sous chaque époque de l'onglet « Les époques », pas de 6ᵉ onglet). 19 plantes Trias/Jura/Crétacé, 6 axes par fiche. **HO-020 (contenu) FAIT · HO-021 (data+UI) FAIT · HO-022 (images) FAIT — 38/38** (19 échelle + 19 gros plans feuille/graines). **Reste HO-023 (i18n en/es-es/pt-br)** : les 19 plantes sont dans le corpus et la porte `_check-traduction.cjs` les compte, elle sort 19 entrées manquantes par langue. Audio EL des fiches plantes = ticket à ouvrir (solde EL bloqué jusqu'au 2026-09-11).
+- **EP-D13** [x] — **FERMÉ 2026-09-07.** Flore du Mésozoïque dans l'encyclopédie (idée + arbitrage PY 2026-09-06 : sous chaque époque de l'onglet « Les époques », pas de 6ᵉ onglet). 19 plantes Trias/Jura/Crétacé, 6 axes par fiche, 38 images (19 échelle enfant 1 m + 19 gros plans feuille/graines), 4 langues. HO-020 contenu · HO-021 data+UI · HO-022 images · HO-023 i18n : tous FAITS. **Reste en dette** : audio ElevenLabs des fiches plantes (solde bloqué jusqu'au 2026-09-11) → ticket à ouvrir.
 
 - **EP-D02** [ ] — Audio des ~28 dinos sans recap (génération progressive vs TTS).
 - **EP-D03** [ ] — Visuels/illustrations des écrans d'époque du voyage (optionnel).

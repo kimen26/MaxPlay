@@ -1,5 +1,43 @@
 # NOTES — traducción es-es (HO-004)
 
+## Plantas (19 fichas, 2026-09-07)
+
+Traducidas las 19 fichas de flora (`plantes` en corpus-fr.json) siguiendo la misma charte
+que los dinos: texto nativo, no calco, tuteo `tú`, sistema métrico sin tocar las cifras.
+
+**Nombres elegidos** (los que un niño español oye/lee realmente): Dicroidium (sin traducir,
+sin equivalente vernáculo) · Cola de caballo gigante · Pleuromeia (sin traducir) · Voltzia
+(sin traducir) · Ginkgo · Cica · Araucaria (nombre local muy conocido en España, se mantiene) ·
+Ciprés · Podocarpo · Helecho arborescente · Williamsonia (sin traducir) · Musgo ·
+Archaefructus (sin traducir) · Magnolia · Nenúfar · Plátano de sombra (para no confundir con
+la fruta «plátano/banana») · Palmera · Hierba · Pino de Wollemi.
+
+**Referentes de escala adaptados** (mismo léxico ya usado en `dinos`: farola/piso/puerta/
+rodillas, más cadera y media pantorrilla para las plantas bajas): «farola» (lampadaire, 6 m,
+ya usado en dinos) y «piso» (étage, 3 m) para los árboles altos; «puerta» (porte, 2 m) para
+las medianas; «rodillas», «cadera», «media pantorrilla» y «el grosor de tu mano» para las
+plantas rastreras o acuáticas. Todos los cálculos verificados contra `hauteur_m` de
+`plantes.json`: mismo ratio que el FR en cada caso (lampadaire=lampadaire, étage=piso,
+porte=puerta), 0 % de desviación — nunca hizo falta cambiar el orden de magnitud.
+
+**Formulaciones delicadas trancadas** (verdad científica intocable, charte):
+- `williamsonia.graines`: mantenido explícito «se parece a una flor, pero no lo es. Las
+  flores de verdad todavía no existían» — nunca llamarla flor sin matizar.
+- `herbe.environnement`: mantenido «¡no había praderas en el tiempo de los dinosaurios!»
+  tal cual, con la misma exclamación de aviso que el FR.
+- `wollemia.mangee_comment` / `.fait`: siempre «su familia» (las araucariáceas) como sujeto
+  de lo que vivía con los dinosaurios, nunca el pino de Wollemi en sí (que es una especie
+  descubierta viva en 1994).
+- `platane.vivant`: «su familia sobrevivió a la crisis de los dinosaurios» — la especie
+  actual no es la misma que vivió entonces, solo la familia.
+- `nom_etym`: raíces griegas/latinas sin traducir en los 19 casos (dikroos, equus/seta,
+  pleuron, koïkas, platys, poa, archaios/fructus, podos/karpos, kyathos, bryon/phyton,
+  nymphê), solo se tradujo la explicación alrededor, según charte.
+
+Porte `_check-traduction.cjs es-es`: 0 erreurs, 0 avertissements (incluye plantes, aunque el
+resumen de consola solo muestra el conteo dinos/familles por convención del script — el bloc
+`if (corpus.plantes) scan('plantes', ...)` sí se ejecuta y pasó limpio).
+
 ## Avisos del checker justificados (9, 0 errores)
 
 - **4 × `full` idéntico al FR** (`carcharodontosaurus`, `pachycephalosaurus`, `archaeopteryx`,

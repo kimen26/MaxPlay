@@ -17,11 +17,15 @@ lisible par un enfant de 4 ans.
 - **Deux longues pattes de coureur**, écailleuses, à **trois doigts armés de griffes courbes**.
 - Pas de queue longue, juste un bouquet de plumes court à l'arrière.
 
-**ACTION** — Il **mange sa proie**, ce que l'image actuelle ne montre pas du tout : l'oiseau
-**vu de trois quarts avant, cadré à mi-corps, une patte griffue POSÉE FERMEMENT sur un petit
-mammifère (rongeur ou jeune pécari) qu'il maintient au sol**, **le bec crochu baissé qui tient
-un morceau bien visible**, l'œil jaune fixant le spectateur, corps légèrement penché en avant.
-La nourriture doit occuper une place franche dans le cadre.
+**ACTION** — Il **vient d'attraper sa proie**, ce que l'image actuelle ne montre pas du tout :
+l'oiseau **vu de trois quarts avant, cadré à mi-corps**, qui **tient en travers de son bec crochu
+un petit mammifère ENTIER et INTACT** (rongeur ou jeune pécari), saisi par le milieu du corps
+**comme une cigogne tient une grenouille** — l'animal est **vivant, complet, sans aucune blessure**,
+pattes qui gigotent. L'œil jaune fixe le spectateur, le corps est légèrement penché en avant.
+La proie doit occuper une place franche dans le cadre.
+**INTERDIT ABSOLU dans cette action** : le bec ne tient **JAMAIS un morceau, un lambeau, un
+fragment de chair ou une bouchée** — toujours **l'animal entier**. Aucune proie couchée, écrasée
+ou immobile au sol sous la patte.
 Se démarquer explicitement de : `Titanis.jpg` (hero — debout de profil, immobile, un enfant en
 repère d'échelle à gauche, plaine enneigée) — l'ancienne version de `_manger` en était le clone
 au cadrage près, enfant compris et sans aucune nourriture ; `Titanis_funfact.jpg` (en pleine
@@ -38,5 +42,6 @@ seulement (chevaux primitifs, pécaris, lamas) et seulement au lointain. Aucun b
 animal domestique moderne.
 
 **INTERDITS** — Aucun texte incrusté, aucun watermark, aucun humain, **aucun sang, aucune plaie,
-aucune tripaille, aucun corps déchiqueté** : la proie reste entière et intacte sous la patte,
-la scène est calme, pas une mise à mort.
+aucune tripaille, aucun corps déchiqueté, aucun morceau de viande, aucun lambeau de chair rose ou
+rouge** : la proie est **un animal entier, intact et vivant**, tenu dans le bec. La scène montre
+une capture, **jamais un repas, jamais une mise à mort, jamais un cadavre**.

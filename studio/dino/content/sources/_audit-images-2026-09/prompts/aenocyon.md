@@ -78,9 +78,10 @@ pattes grêles). Il faut à la place :
 - **pattes épaisses et solides**, grosses pattes rondes ;
 - **queue droite et touffue, portée BASSE**, à peu près à l'horizontale ou pendante — jamais
   relevée en boucle au-dessus du dos ;
-- fourrure suggérée par des **mèches à l'encre** sur la nuque, la gorge et le poitrail
-  (collerette), pas par des hachures de remplissage. Le pelage est celui d un **loup sauvage,
-  reche et irregulier**, jamais la toison epaisse et moelleuse d un chien de compagnie.
+- fourrure suggérée **seulement par le contour** : la ligne de dos, de gorge et de poitrail est
+  légèrement dentelée pour dire le poil rêche du **loup sauvage** (jamais la toison moelleuse d un
+  chien de compagnie). **AUCUNE mèche, AUCUNE hachure, AUCUN trait de poil À L INTERIEUR du corps** :
+  l intérieur de l animal reste **entièrement blanc et vide**, prêt à être colorié.
 
 **Reference** : la silhouette a viser est celle d un LOUP costaud — museau long, allure de
 predateur sauvage — simplement plus lourd de crane et de machoire. Si le dessin evoque un chien
@@ -89,7 +90,9 @@ de race, il est faux.
 **ACTION** — Dessin au **trait noir sur fond blanc pur**, sans aucun aplat gris ni noir plein :
 l'animal **debout de profil, tête légèrement tournée vers le spectateur**, gueule fermée,
 sur un sol suggéré par une simple ligne. Grandes zones fermées et bien séparées, faciles à colorier
-par un enfant de 4 ans ; épaisseur de trait régulière et généreuse.
+par un enfant de 4 ans. **Trait ÉPAIS et net, d épaisseur constante**, façon livre de coloriage
+maternelle : gros contours réguliers, **pas de trait fin, pas de trait griffonné, pas de détail
+minuscule**. Une dizaine de grandes zones à colorier, pas cinquante petites.
 Se démarquer de : l'actuel `_coloriage` (petit spitz mignon assis-debout, queue en panache).
 
 **DÉCOR** — Aucun décor chargé : au plus quelques touffes d'herbe sèche au trait et une ligne de sol.

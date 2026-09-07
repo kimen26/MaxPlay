@@ -41,13 +41,21 @@ const dors = ms => new Promise(r => setTimeout(r, ms));
 // Le navigateur de debug peut disparaitre en cours de lot : sans lui, toutes les images
 // suivantes echouent en cascade (ECONNREFUSED). On le remet debout avant de retenter.
 const BRAVE = 'C:/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe';
+// Chromium de Playwright : porte de secours quand Brave tourne deja SANS port de debug.
+// Ses processus etant partages entre profils, on ne peut pas ouvrir une seconde instance
+// en debug sans fermer la premiere — ce qui fermerait les fenetres de Papa Yann.
+const CHROMIUM = 'C:/Users/kimen/AppData/Local/ms-playwright/chromium-1223/chrome-win64/chrome.exe';
+const NAVIGATEURS = {
+  '9222': { exe: BRAVE, profil: 'c:/tmp/brave-debug', cible: 'https://chatgpt.com/' },
+  '9223': { exe: BRAVE, profil: 'c:/tmp/brave-debug2', cible: 'https://grok.com/' },
+  '9225': { exe: CHROMIUM, profil: 'c:/tmp/chromium-dino', cible: 'https://chatgpt.com/' },
+};
 async function relanceNavigateur(port) {
-  const profil = port === '9223' ? 'c:/tmp/brave-debug2' : 'c:/tmp/brave-debug';
-  const cible = port === '9223' ? 'https://grok.com/' : 'https://chatgpt.com/';
+  const n = NAVIGATEURS[port] || NAVIGATEURS['9222'];
   try {
-    execSync(`powershell -NoProfile -Command "Start-Process '${BRAVE}' -ArgumentList `
-      + `'--remote-debugging-port=${port}','--user-data-dir=${profil}','--no-first-run',`
-      + `'--no-default-browser-check','${cible}'"`, { stdio: 'pipe' });
+    execSync(`powershell -NoProfile -Command "Start-Process '${n.exe}' -ArgumentList `
+      + `'--remote-debugging-port=${port}','--user-data-dir=${n.profil}','--no-first-run',`
+      + `'--no-default-browser-check','${n.cible}'"`, { stdio: 'pipe' });
   } catch {}
   await dors(15000);
 }

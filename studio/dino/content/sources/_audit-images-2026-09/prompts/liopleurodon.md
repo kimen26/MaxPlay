@@ -48,12 +48,27 @@ en haut du cadre. Au-delà du rivage lointain, araucarias, cycadales, prêles et
 
 **MORPHO** — Idem : cou court, tête énorme, quatre nageoires en pagaie.
 
-**ACTION** — Comparaison de taille LISIBLE et honnête, sans texte : dans une eau claire, le
-Liopleurodon réel (7 m) nage au premier plan à côté d'un repère de taille naturel du même milieu —
-par exemple un banc de trois ichtyosaures de 2 m alignés bout à bout le long de son flanc, montrant
-qu'il en fait à peine plus de trois. Aucune silhouette fantôme géante dans le ciel, aucune surimpression
-translucide. Explicitement DIFFÉRENT des trois autres scènes marines (pas de profil gauche isolé à
-fleur d'eau, pas de vue de lagon depuis la berge).
+**ACTION** — Comparaison de taille LISIBLE et honnête, sans texte, **en vue de coupe eau / air** :
+un **ponton de bois** s'avance depuis la droite au-dessus d'une eau claire ; **un enfant est debout
+au bout du ponton**, de dos, penché sur la rambarde et regardant l'eau. **Juste sous la surface,
+le Liopleurodon (7 m) passe à l'horizontale, de profil**, tête vers la gauche : il fait **environ
+six fois la hauteur de l'enfant** — grand, mais pas monstrueux. L'enfant et l'animal sont **dans la
+même image, à la même échelle**, ce qui rend la comparaison immédiate.
+**Aucune silhouette fantôme géante**, aucune surimpression translucide, aucun autre animal marin
+qui viendrait brouiller le repère : il n'y a QUE l'enfant et le Liopleurodon.
+Se démarquer explicitement de :
+- l'ancienne version de ce `_funfact` — **trois ichtyosaures alignés le long du flanc** : la scène
+  se lisait comme un groupe qui nage, jamais comme une échelle ; concept abandonné ;
+- le `_manger` — scène de chasse sous l'eau, sans humain ;
+- `Liopleurodon.jpg` (hero) et `_ecosysteme` — profil isolé à fleur d'eau, vue de lagon.
 
-**DÉCOR** — Pleine eau claire du Jurassique européen, fond de sable pâle visible, lumière solaire
-filtrée. Pas de décor urbain, pas de récif moderne.
+**DÉCOR** — Mer claire et calme du Jurassique européen vue **en coupe : moitié haute au-dessus de
+l'eau** (ciel clair de jour, ponton de bois simple sur pilotis, horizon marin dégagé), **moitié
+basse sous l'eau** (eau bleu-vert limpide, fond de sable pâle loin en dessous, lumière solaire
+filtrée). Le ponton est en bois brut, sans bâtiment, sans bateau à moteur, sans décor urbain,
+sans récif de corail moderne.
+
+**INTERDITS** — Aucun texte incrusté, aucun chiffre, aucune flèche ni règle graduée, aucun
+watermark, aucun sang, aucune scène de chasse. **L'enfant sur le ponton est le SEUL humain** et il
+est **parfaitement en sécurité** : il regarde l'animal passer, l'animal ne le regarde pas et ne
+monte pas vers lui. Aucun visage reconnaissable, l'enfant est vu **de dos**.

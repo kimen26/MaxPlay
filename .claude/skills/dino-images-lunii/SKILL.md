@@ -77,28 +77,106 @@ Pour un dino précis, prendre la ⭐ **signature** et le bloc CONTEXTE dans :
 - ❌ Réinventer les specs d'un dino → lire `_FICHES-DINOS-GROKIPEDIA.md`.
 - ❌ Batcher les 9 sans avoir validé 1 brique.
 
-## Rate Limit ChatGPT — Ce qu'il faut savoir
+## Quota et cadence ChatGPT — mesures de la campagne du 2026-09-06/07
 
-> ⚠️ **Limite empirique observée : ~20 images par session/jour** par compte ChatGPT (compte Plus/Pro).
+> **90 images generees en une session** (et non « ~20/jour » comme l'indiquait la version
+> precedente de cette fiche). Ce qui limite n'est pas un plafond journalier bas, mais **deux
+> mecanismes distincts** qu'il faut savoir distinguer.
 
-### Phases de dégradation
-| Phase | Images | Comportement | Stratégie |
-|-------|--------|--------------|-----------|
-| 1 | 1-12 | Fonctionnement normal | Lots de 3, pause 10s |
-| 2 | 13-18 | Rate limit intermittent | Lots de 2, pause 1min |
-| 3 | 19-20 | Blocage fréquent | Lot de 1, pause 5min |
-| 4 | 20+ | Blocage total | Arrêt, reprendre le lendemain |
+### Les deux blocages, a ne pas confondre
 
-### Bonnes pratiques
-- **Ne pas redémarrer Brave** — la limite est liée au compte ChatGPT, pas au navigateur
-- **Utiliser `--resume`** ou le fichier `_BATCH-STATE.json` pour reprendre un batch interrompu
-- **Le script `batch-dino-*.mjs`** gère automatiquement : quota journalier, pause adaptative, reprise après échec
-- **Comptes multiples** : si disponible, rotation de comptes pour accélérer
+| Blocage | Message | Duree | Reaction |
+|---|---|---|---|
+| **Cadence** | modal « Trop de requetes — vous envoyez des demandes trop rapidement » | quelques minutes | ralentir, reprendre |
+| **Quota image** | « Vous n'avez plus d'images… Reessayez a HH:MM » + « limite de l'offre Plus » | jusqu'a la reinitialisation (heure donnee dans le message) | arreter, rien ne passera avant |
 
-### Signes du rate limit
-- Modal "Trop de requêtes" / `modal-conversation-history-rate-limit`
-- Timeout sur le textarea (clic bloqué par overlay)
-- Code 3 (timeout) ou code 5 (limite) dans les logs
+Le second est le seul vrai plafond. Il annonce **l'heure exacte** de reprise : la lire dans la
+capture plutot que de retenter (chaque tentative coute 220 s de timeout pour rien).
+
+### Cadence
+
+**90 secondes de pause entre deux generations** (`--pause 90`, valeur par defaut de
+`regen-audit.mjs`). Mesure directe : a 25 s, ChatGPT a repondu « demandes trop rapidement » et
+restreint l'acces deux fois. A 90 s, trois lots de 10 et un lot de 20 sont passes sans un seul
+incident. La generation prend deja ~90 s, la pause double donc l'intervalle reel.
+
+### Grok comme plan B — ce qu'il vaut vraiment
+
+Teste en parallele sur le meme corpus : **il ne remplace pas ChatGPT sur ce travail**.
+- Suit un prompt simple (proie portee, coloriage au trait) — 8 reussites sur 10.
+- **Decroche sur un prompt complexe** : deux animaux en mouvement, ou un trait qui contredit un
+  cliche animalier. Il a redessine deux fois « le Carnotaure qui boit » (le defaut d'origine) et
+  rendu un spitz la ou il fallait un loup terrible.
+- Rend en **1168x778 contre 1536x1024** chez ChatGPT — sous la norme de la collection
+  (moyenne 379 Ko ; ses fichiers tombent a 250-280 Ko apres conversion).
+- Quota **hebdomadaire**, pas journalier : une fois epuise, il l'est pour la semaine.
+
+Conclusion : Grok pour les scenes simples quand ChatGPT est en cadence, jamais pour un cas
+morphologique difficile.
+
+### Deux navigateurs en parallele
+
+Les generateurs font `bringToFront()` : sur un port partage, deux pilotes se volent l'onglet et
+recuperent l'image l'un de l'autre. Il faut **un navigateur par moteur**, port distinct
+(`--port 9222` / `--port 9223`, profils `c:/tmp/brave-debug` et `brave-debug2`).
+
+⚠️ **Piege** : Brave partage ses processus entre profils. Un `Stop-Process` filtre sur un
+`--user-data-dir` **tue les deux navigateurs**. Constate en session : le lot ChatGPT est mort en
+silence, les images suivantes ont echoue en cascade sur `ECONNREFUSED`.
+
+### Signes a lire dans les logs
+
+- Code **5** = quota ou modale de rate limit → arret propre, lire l'heure de reprise.
+- Code **3** = timeout 220 s. Trois d'affilee = quota atteint sans modale : **ouvrir la capture
+  `<nom>-timeout.png`** ecrite par le script, elle porte le message exact.
+- Code **1** = plantage du generateur, typiquement **le navigateur ferme**. `regen-audit.mjs` le
+  detecte, le relance et retente une fois.
+- Code **2** = pas logue. Code **4** = moderation (reformuler).
+
+## Chaine d'audit et de regeneration (campagne 2026-09)
+
+Outillage ajoute pour corriger en masse des images deja en production. Quatre etapes, chacune
+son script — aucune ne se saute.
+
+| Etape | Script | Role |
+|---|---|---|
+| 1. File | `studio/dino/content/scripts/export/_gen-file-regen.cjs` | Construit `_FILE-REGEN.json` depuis les verdicts d'audit + les blocs de prompt. **Genere**, jamais tenu a la main. |
+| 2. Generation | `.claude/skills/dino-images-lunii/scripts/regen-audit.mjs` | Pilote ChatGPT ou Grok, ecrit en staging `site/img/dinos/_new-audit/`. **Ne touche jamais la production.** |
+| 3. Jugement | *(humain / agent)* | Ouvrir CHAQUE image, la juger contre les caracteristiques du dino. |
+| 4. Substitution | `.claude/skills/dino-images-lunii/scripts/substitue-audit.mjs` | Convertit (Pillow via `png2prod.py`) et **supprime definitivement l'originale**. |
+
+**Options de `regen-audit.mjs`** : `--only <fichiers>` · `--dino <ids>` · `--n <nb>` ·
+`--pause 90` · `--port 9222|9223` · `--grok` · `--retry` · `--ref-auto <Fichier.jpg>`.
+
+### Les cinq regles apprises a la dure
+
+1. **Un chat neuf par image.** Partager le contexte entre scenes d'un meme sujet devait aider a
+   varier la pose ; le modele **resert l'image precedente** (le `_funfact` du Liopleurodon est
+   revenu clone pixel de son `_manger`). La differenciation passe par le prompt, qui nomme deja
+   les scenes dont il faut se demarquer.
+2. **Deux echecs sur le meme trait = joindre une reference** (`--ref-auto`), ne pas reecrire une
+   troisieme fois. La carapace d'Archelon a resiste a quatre reformulations et cede a la premiere
+   image jointe (L-D32).
+3. **Deux echecs sur le meme asset = relire le prompt avant de relancer.** Cinq spitz d'Aenocyon
+   et cinq echecs du Liopleurodon venaient de prompts fautifs, pas du modele (L-D34).
+4. **Autant d'images jugees que d'images substituees.** La liste passee a `substitue-audit.mjs`
+   ne contient que des fichiers dont le verdict a ete formule explicitement (L-D33).
+5. **`--ref` et l'image generee partagent le meme selecteur.** La reference uploadee est absente
+   du releve fait avant envoi : sans garde-fou, le script la re-telecharge telle quelle
+   (checksum identique). Corrige par comparaison d'empreinte.
+
+### Ce que l'audit de 492 images a revele sur les prompts
+
+- `_manger` **42 recalages** et `_funfact` **31** a eux seuls = 76 % des defauts. Schema
+  stereotype : le `_funfact` est le hero recadre sans l'enfant (il n'illustre donc jamais le champ
+  `fait`), le `_manger` montre la bete qui **boit**, museau dans l'eau, gueule vide.
+- **Une ACTION qui pose la proie morte au sol produit une scene de curee**, quels que soient les
+  INTERDITS ecrits plus bas : le modele peint l'ACTION. Formuler en **chasse sur proie vivante**
+  ou **capture d'une proie entiere portee** (L-D31).
+- Une comparaison de taille glissee dans un prompt est lue comme une **consigne d'espece**
+  (« de la taille d'un lapin » a produit de vrais lapins au Cretace). Decrire la silhouette.
+- Un **alignement d'animaux libres ne fait pas une echelle** : l'oeil ne le lit pas comme une
+  mesure. Utiliser le dispositif enfant + objet familier, qui fonctionne dans toute la collection.
 
 ## Détails techniques (rappel)
 

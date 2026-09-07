@@ -1,19 +1,46 @@
 // Substitution : remplace l'image de production par sa version validée du staging.
 // L'originale est SUPPRIMÉE (demande PY 2026-09-06 : « toute image que tu remplaces
 // est purement et simplement supprimée »). Ne s'exécute que sur des fichiers
-// explicitement listés, jamais en balayage automatique : la validation visuelle
-// se fait en amont, image par image, par l'agent.
+// explicitement listés, jamais en balayage automatique.
 //
-// Usage : node substitue-audit.mjs <Fichier1.jpg> [Fichier2.jpg ...]
-import { existsSync, unlinkSync, statSync } from 'node:fs';
+// GARDE-FOU (leçon L-D33) : la suppression étant irréversible, elle exige la preuve que
+// l'image a été OUVERTE et JUGÉE. En session 2026-09-06, une image est partie en production
+// sans avoir été regardée — glissée dans la commande par continuité après cinq autres —
+// et elle portait justement le défaut morphologique interdit. Le journal des verdicts rend
+// cet oubli impossible : on ne substitue que ce qui a été explicitement validé.
+//
+// Usage :
+//   node substitue-audit.mjs --valide <Fichier.jpg> [...]   enregistre un verdict (après avoir vu l'image)
+//   node substitue-audit.mjs <Fichier.jpg> [...]            substitue (refuse si non validé)
+//   node substitue-audit.mjs --force <Fichier.jpg> [...]    passe outre (revue humaine hors journal)
+import { existsSync, unlinkSync, statSync, readFileSync, appendFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 
 const ROOT = 'c:/ProjetsPerso/Claude_Projects/MaxPlay';
 const PALEO = ROOT + '/site/img/dinos/paleoart';
 const STAGE = ROOT + '/site/img/dinos/_new-audit';
+const VERDICTS = STAGE + '/_VERDICTS.tsv';
 
 const cibles = process.argv.slice(2).filter(a => !a.startsWith('--'));
-if (!cibles.length) { console.log('usage: node substitue-audit.mjs <Fichier.jpg> [...]'); process.exit(1); }
+const FORCE = process.argv.includes('--force');
+const VALIDE = process.argv.includes('--valide');
+
+if (!cibles.length) {
+  console.log('usage: node substitue-audit.mjs [--valide|--force] <Fichier.jpg> [...]');
+  process.exit(1);
+}
+
+// Mode enregistrement : note les verdicts, ne substitue rien.
+if (VALIDE) {
+  const horodatage = new Date().toISOString();
+  for (const f of cibles) appendFileSync(VERDICTS, [f, 'OK', horodatage].join('\t') + '\n');
+  console.log(`✓ ${cibles.length} verdict(s) enregistré(s) dans _VERDICTS.tsv`);
+  process.exit(0);
+}
+
+const juges = existsSync(VERDICTS)
+  ? new Set(readFileSync(VERDICTS, 'utf8').split(/\r?\n/).filter(Boolean).map(l => l.split('\t')[0]))
+  : new Set();
 
 let ok = 0, ko = 0;
 for (const f of cibles) {
@@ -21,6 +48,12 @@ for (const f of cibles) {
   const dst = PALEO + '/' + f;
   if (!existsSync(src)) { console.log(`✗ staging absent : ${f}`); ko++; continue; }
   if (!existsSync(dst)) { console.log(`✗ production absente : ${f}`); ko++; continue; }
+  // L'originale va être supprimée : exiger le verdict visuel.
+  if (!FORCE && !juges.has(f)) {
+    console.log(`✗ ${f} : aucun verdict — ouvrir l'image et la juger, puis :`);
+    console.log(`     node substitue-audit.mjs --valide ${f}`);
+    ko++; continue;
+  }
   const avant = statSync(dst).size;
   try {
     if (!/\.(jpg|webp)$/.test(f)) { console.log(`✗ extension non gérée : ${f}`); ko++; continue; }

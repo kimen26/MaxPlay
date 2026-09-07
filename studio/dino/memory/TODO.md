@@ -144,3 +144,51 @@
 du hero et n'illustre pas le champ `fait` de la fiche ; le `_manger` montre un carnivore qui boit ou
 se tient debout sans aucune proie dans le cadre. Modèles à imiter : `Allosaurus_funfact` (charnier d'os)
 et `Albertosaurus_funfact` (meute).
+
+### HO-026 — regeneration des images recalees (etat au 2026-09-07)
+
+**77/96 images regenerees, validees a l oeil et en production.** Les originales
+recalees ont ete supprimees a la substitution (demande PY).
+
+**Reste 19 images.** Les deux moteurs sont a court de quota image : ChatGPT Plus
+se reinitialise a 18:26 le 2026-09-07, Grok est epuise pour la semaine.
+
+**Reprendre en une commande** (la liste se recalcule seule depuis git) :
+
+```bash
+# 1. Brave debug sur le profil logue
+powershell .claude/skills/dino-images-lunii/scripts/launch-brave.ps1
+# 2. Relancer le lot restant a cadence lente (90 s, la seule qui ne declenche pas
+#    la restriction « demandes trop rapidement »)
+node .claude/skills/dino-images-lunii/scripts/regen-audit.mjs --port 9222 --n 20 --pause 90
+```
+
+Puis, pour CHAQUE image produite : l ouvrir, la juger contre les caracteristiques du dino,
+et ne passer a `substitue-audit.mjs` que celles dont le verdict a ete formule (L-D33).
+
+Images restantes :
+
+- `Aenocyon_coloriage.webp` — MORPHO
+- `Liopleurodon_funfact.jpg` — CONTENU
+- `Oviraptor_ecosysteme.jpg` — CLONE
+- `Pachycephalosaurus_manger.jpg` — CLONE
+- `Paraceratherium_funfact.jpg` — CLONE
+- `Paraceratherium_manger.jpg` — CLONE
+- `Parasaurolophus_manger.jpg` — CLONE
+- `Protoceratops_ecosysteme.jpg` — ENVIRONNEMENT
+- `Quetzalcoatlus_ecosysteme.jpg` — CLONE
+- `Quetzalcoatlus_funfact.jpg` — CLONE
+- `Scutellosaurus_ecosysteme.jpg` — CLONE
+- `Spinosaurus_funfact.jpg` — CLONE
+- `Spinosaurus_manger.jpg` — CLONE
+- `Tarbosaurus_funfact.jpg` — CLONE
+- `Therizinosaurus_funfact.jpg` — CLONE
+- `Titanis_manger.jpg` — CLONE
+- `Triceratops_funfact.jpg` — CLONE
+- `Tyrannosaurus_funfact.jpg` — CLONE
+- `Utahraptor_funfact.jpg` — CLONE
+
+Deux d entre elles ont vu leur prompt corrige apres echecs repetes et n ont pas encore ete
+retentees avec la nouvelle version : `Aenocyon_coloriage.webp` (le bloc MORPHO decrivait un
+spitz, cinq echecs — L-D34) et `Liopleurodon_funfact.jpg` (l alignement d ichtyosaures ne se
+lisait pas comme une echelle, concept remplace par le repere enfant sur ponton).

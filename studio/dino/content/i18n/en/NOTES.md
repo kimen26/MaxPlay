@@ -144,3 +144,91 @@ confirme contre les scripts audio EN correspondants).
 
 Portes : `node -e "JSON.parse(...)"` -> JSON valide. `node .../\_check-traduction.cjs en` -> 0 erreurs,
 4 avertissements (therizinosaurus x3 + smilodon.fait, pattern deja documente ci-dessus, non lies a ce fix).
+
+## Cle `plantes` ajoutee (2026-09-07) — 19 fiches flore
+
+Traduction complete des 19 plantes du corpus (`corpus-fr.json` -> `plantes`), meme registre
+que les fiches `dinos` deja en place. Charte appliquee integralement : `full` jamais traduit
+(nom latin), `nom_etym` racines grecques/latines gardees intactes (seule l'explication autour
+est reecrite), `name` = nom vernaculaire qu'un enfant americain reconnait.
+
+### Noms vernaculaires (`name`) retenus
+
+| id | FR | EN retenu | pourquoi |
+|---|---|---|---|
+| araucaria | Araucaria | Monkey puzzle tree | nom courant US pour ce genre precis (vs terme generique) |
+| cycas | Cycas | Cycad | nom anglais standard du groupe |
+| platane | Platane | Sycamore | equivalent US courant (le mot "plane tree" existe mais "sycamore" est ce qu'un enfant americain entend) |
+| wollemia | Pin de Wollemi | Wollemi pine | traduction directe, deja le nom anglais standard |
+| Les 15 autres | -- | identique ou evident (Ginkgo, Grass, Water lily, Moss, Magnolia, Palm tree, Cypress, Podocarp, Tree fern, Giant horsetail, Dicroidium, Pleuromeia, Voltzia, Williamsonia, Archaefructus) | noms scientifiques/genres deja utilises tels quels en anglais, ou traduction directe non ambigue |
+
+### Conversion metrique -> imperial (`comp_hauteur`), calcul verifie (1 m = 3,28084 ft)
+
+Le referentiel FR de ces fiches (lampadaire, etage de maison, porte, hanche, genou, mollet)
+est reutilise a l'identique quand il existe deja en EN dans le corpus `dinos` ("street lamp",
+"front door" sont deja les reperes choisis pour les dinos — coherence inter-corpus). Aucun
+ecart > 10 % par rapport a la conversion exacte (verifie par script, cf. tableau ci-dessous).
+
+| id | FR (hauteur_m) | repere FR | EN retenu | ecart vs conversion exacte |
+|---|---|---|---|---|
+| dicroidium | 10 m | maison de 3 etages | "About 33 feet tall — taller than a 3-story house." | +0.6 % |
+| prele_geante | 4 m | 2 portes empilees | "Thirteen feet tall — two front doors stacked on top of each other." | -0.9 % |
+| pleuromeia | 1,5 m | 1,5x la taille de l'enfant | "Five feet tall — one and a half times as tall as you..." | +1.6 % |
+| voltzia | 3 m | 1 etage de maison | "Ten feet tall — as tall as one floor of a house." | +1.6 % |
+| ginkgo | 30 m | 5 lampadaires | "About 100 feet tall — five street lamps stacked up." | +1.6 % |
+| cycas | 3 m | 1 etage de maison | "Ten feet tall — as tall as one floor of a house." | +1.6 % |
+| araucaria | 40 m | 7 lampadaires (presque) | "About 130 feet tall — almost seven street lamps stacked up." | -0.9 % |
+| cypres | 30 m | 5 lampadaires | "About 100 feet tall — five street lamps stacked up." | +1.6 % |
+| podocarpe | 20 m | 3 lampadaires (un peu plus) | "About 65 feet tall — a bit taller than three street lamps stacked up." | -0.9 % |
+| fougere_arborescente | 8 m | 1 lampadaire et un tiers | "About 26 feet tall — one street lamp and a bit more." | -0.9 % |
+| williamsonia | 2,5 m | 2,5x taille enfant (porte + tete) | "Eight feet tall — two and a half times as tall as you: a door, plus your head on top." | -2.5 % |
+| mousse | 0,05 m | epaisseur d'une main | "About 2 inches thick — as thick as your hand, laid flat." | +1.6 % |
+| archaefructus | 0,5 m | hauteur de hanche | "About 20 inches tall — it comes up to your hip." | +1.6 % |
+| magnolia | 20 m | 3 lampadaires (un peu plus) | "About 65 feet tall — a bit taller than three street lamps stacked up." | -0.9 % |
+| nenuphar | 0,15 m | mi-mollet | "About 6 inches tall — it comes up to the middle of your calf..." | +1.6 % |
+| platane | 30 m | 5 lampadaires | "About 100 feet tall — five street lamps stacked up." | +1.6 % |
+| palmier | 15 m | 5 etages de maison | "About 50 feet tall — five floors of a house stacked up." | +1.6 % |
+| herbe | 0,4 m | juste au-dessus du genou | "About 16 inches tall — it comes up just above your knee." | +1.6 % |
+| wollemia | 35 m | 6 lampadaires (presque) | "About 115 feet tall — almost six street lamps stacked up." | +0.1 % |
+
+Le checker remonte un WARN "chiffres FR [] vs [N]" sur 11 de ces `comp_hauteur` : normal,
+la phrase FR d'origine ecrit le nombre en toutes lettres SANS chiffre ("Cinq lampadaires
+empilés", "Un peu plus haut qu'une maison de trois étages") alors que la charte impose de
+"garder le chiffre ET la comparaison" en anglais (§ Unites de mesure, regle 2) — le chiffre
+en EN est un ajout deliberement conforme a la charte, pas une derive.
+
+### Deux mesures supplementaires converties dans `fait` (hors `comp_hauteur`)
+
+- `prele_geante.fait` : "vingt centimètres de large" (tige) -> "8 inches wide" (7,9 ft exact,
+  arrondi). Repere "plus gros que ton bras" garde a l'identique (universel).
+- `cypres.fait` : "cent quinze mètres" (record sequoia) -> "375 feet" (377,3 ft exact, arrondi
+  a la dizaine pour l'oral). Repere "presque vingt lampadaires" garde : 375/20 ft = 18,75,
+  toujours "presque vingt" (ratio FR original 115/6 m = 19,17 — meme lecture arrondie).
+
+### Formulations delicates tranchees (verite scientifique)
+
+- `williamsonia.graines` : traduit "ça ressemble à une fleur, mais ce n'en est pas une" par
+  "it looks like a flower, but it isn't one. Real flowers didn't exist yet." — nuance
+  intouchable gardee intacte (pas de vraie fleur avant le Cretace, Williamsonia n'en est pas
+  une malgre l'apparence).
+- `wollemia.mangee_comment` / `.fait` : le sujet reste bien la FAMILLE ("Its family, the
+  araucarias, was the great pantry...", "Its family was already alive in the age of
+  dinosaurs. This particular tree was thought to be extinct...") — jamais l'arbre
+  Wollemia lui-meme presente comme contemporain des dinosaures, conforme a la regle figee.
+- `platane.vivant` : "sa famille a traverse la crise des dinosaures" -> "its family survived
+  the end of the dinosaurs" — meme logique FAMILLE, pas l'espece actuelle.
+- `herbe.environnement` : garde l'avertissement explicite "there were no grassy prairies in
+  the age of dinosaurs!" — pas de prairie au Mesozoique, nuance volontairement soulignee
+  comme en FR ("Attention : pas de prairie...").
+- `araucaria.name` retenu "Monkey puzzle tree" plutot qu'un calque "Araucaria" seul : c'est
+  le nom qu'un enfant americain entend reellement (charte § `name`), tranche au cas par cas
+  comme demande.
+
+Deux corrections apres premiere passe : `prele_geante.comp_hauteur` et `prele_geante.fait`
+avaient chacun un "!" ajoute par rapport au FR (0 "!" dans les deux champs source) — retire
+pour respecter la charte ("garder le nombre de `!` du FR, sans en ajouter").
+
+Porte : `node studio/dino/content/scripts/export/_check-traduction.cjs en` -> 0 erreurs,
+17 avertissements sur les plantes, tous les "chiffres FR [] vs [N]" documentes ci-dessus
+(charte-conformes), plus 2 avertissements pre-existants sur `extinction.hypotheses`
+(hors perimetre de ce lot).

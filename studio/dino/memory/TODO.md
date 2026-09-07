@@ -136,7 +136,7 @@
   de prompts = 96 blocs (1 par image recalee, couverture verifiee). Tableau : `_TABLEAU-DE-BORD.md`.
   Motifs : CLONE 39 - CONTENU 33 - MORPHO 8 - IDENTITE 5 - ENVIRONNEMENT 2 - TECHNIQUE 0.
   Par asset : `_manger` 42 - `_funfact` 31 - `_ecosysteme` 10 - `_paris` 6 - `_coloriage` 4 - `_headshot` 3.
-- **HO-026** [ ] — Régénération des images recalées puis validation visuelle avant rangement.
+- **HO-026** [x] — Régénération des images recalées puis validation visuelle : CLOS le 2026-09-08, 96/96 en production.
   ⚠️ La génération passe par ChatGPT/Grok pilotés par PY (pas d'API image côté agent) : les prompts
   sont produits par l'audit, la génération reste manuelle, la validation revient à l'agent.
 
@@ -145,50 +145,26 @@ du hero et n'illustre pas le champ `fait` de la fiche ; le `_manger` montre un c
 se tient debout sans aucune proie dans le cadre. Modèles à imiter : `Allosaurus_funfact` (charnier d'os)
 et `Albertosaurus_funfact` (meute).
 
-### HO-026 — regeneration des images recalees (etat au 2026-09-07)
+### HO-026 — regeneration des images recalees : CLOS le 2026-09-08
 
-**77/96 images regenerees, validees a l oeil et en production.** Les originales
-recalees ont ete supprimees a la substitution (demande PY).
+**96/96 images regenerees, jugees une par une et en production.** Les originales
+recalees ont ete supprimees a la substitution (demande PY). Controle final : 96 images
+lisibles, dimensions et poids conformes.
 
-**Reste 19 images.** Les deux moteurs sont a court de quota image : ChatGPT Plus
-se reinitialise a 18:26 le 2026-09-07, Grok est epuise pour la semaine.
+Trois prompts ont du etre corriges a la racine apres echecs repetes, et la correction
+vit dans `sources/_audit-images-2026-09/prompts/` :
 
-**Reprendre en une commande** (la liste se recalcule seule depuis git) :
+- `aenocyon.md` — le coloriage sortait en spitz puis en husky. Les « meches a l encre »
+  du bloc MORPHO produisaient des hachures non coloriables ; le bloc interdit desormais
+  tout trait de poil a l interieur du corps et exige un trait epais constant (L-D34).
+- `liopleurodon.md` — le funfact a echoue six fois : les trois ichtyosaures alignes se
+  lisaient comme un banc qui nage, jamais comme une echelle. Concept remplace par une
+  coupe eau/air avec enfant de dos sur un ponton, plus un bloc INTERDITS qui manquait.
+- `titanis.md` — l ACTION disait « le bec tient un morceau bien visible » : le modele a
+  peint un lambeau de chair malgre les INTERDITS. Elle impose maintenant une proie
+  entiere et vivante tenue en travers du bec (L-D37).
 
-```bash
-# 1. Brave debug sur le profil logue
-powershell .claude/skills/dino-images-lunii/scripts/launch-brave.ps1
-# 2. Relancer le lot restant a cadence lente (90 s, la seule qui ne declenche pas
-#    la restriction « demandes trop rapidement »)
-node .claude/skills/dino-images-lunii/scripts/regen-audit.mjs --port 9222 --n 20 --pause 90
-```
-
-Puis, pour CHAQUE image produite : l ouvrir, la juger contre les caracteristiques du dino,
-et ne passer a `substitue-audit.mjs` que celles dont le verdict a ete formule (L-D33).
-
-Images restantes :
-
-- `Aenocyon_coloriage.webp` — MORPHO
-- `Liopleurodon_funfact.jpg` — CONTENU
-- `Oviraptor_ecosysteme.jpg` — CLONE
-- `Pachycephalosaurus_manger.jpg` — CLONE
-- `Paraceratherium_funfact.jpg` — CLONE
-- `Paraceratherium_manger.jpg` — CLONE
-- `Parasaurolophus_manger.jpg` — CLONE
-- `Protoceratops_ecosysteme.jpg` — ENVIRONNEMENT
-- `Quetzalcoatlus_ecosysteme.jpg` — CLONE
-- `Quetzalcoatlus_funfact.jpg` — CLONE
-- `Scutellosaurus_ecosysteme.jpg` — CLONE
-- `Spinosaurus_funfact.jpg` — CLONE
-- `Spinosaurus_manger.jpg` — CLONE
-- `Tarbosaurus_funfact.jpg` — CLONE
-- `Therizinosaurus_funfact.jpg` — CLONE
-- `Titanis_manger.jpg` — CLONE
-- `Triceratops_funfact.jpg` — CLONE
-- `Tyrannosaurus_funfact.jpg` — CLONE
-- `Utahraptor_funfact.jpg` — CLONE
-
-Deux d entre elles ont vu leur prompt corrige apres echecs repetes et n ont pas encore ete
-retentees avec la nouvelle version : `Aenocyon_coloriage.webp` (le bloc MORPHO decrivait un
-spitz, cinq echecs — L-D34) et `Liopleurodon_funfact.jpg` (l alignement d ichtyosaures ne se
-lisait pas comme une echelle, concept remplace par le repere enfant sur ponton).
+Outillage laisse en place : `launch-chromium.ps1` (Chromium de Playwright sur profil
+dedie, port 9225) pour les sessions ou Brave tourne deja sans port de debug — ses
+processus etant partages entre profils, on ne peut pas ouvrir une seconde instance en
+debug sans fermer les fenetres de l utilisateur (L-D36).

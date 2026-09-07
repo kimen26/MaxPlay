@@ -1674,6 +1674,7 @@ window.DINO_STRINGS = {
    "sens": "rápido"
   }
  },
+ "plantes": {},
  "periodes": {
   "permien": {
    "label": "Permiano",

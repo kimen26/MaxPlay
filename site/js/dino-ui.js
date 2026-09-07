@@ -64,6 +64,8 @@
 
     unite_kg: 'kg',
     unite_metres: 'mètres',
+    unite_metre_un: 'mètre',      // singulier (1 pied / 1 mètre)
+    unite_pouces: 'centimètres',  // sous 2 pieds l'imperial passe en pouces (en FR : reste metrique)
     unite_kilos: 'kilos',
     unite_mille_kilos: 'mille kilos',
 
@@ -194,6 +196,18 @@
   // Libelle complet "22 m" / "72 feet", unite prise au dictionnaire.
   function longueurTxt(m) {
     if (m == null) return '?';
+    // Sous 2 pieds, l'arrondi au pied ecrase la mesure : la mousse (0,05 m) s'affichait
+    // « 0 feet » et le nenuphar « 0 feet ». On bascule en pouces, comme le ferait un
+    // auteur americain. Concerne aussi 4 dinos (microraptor, archaeopteryx...).
+    if (imperial()) {
+      var ft = m * 3.28084;
+      if (ft < 2) {
+        var inch = Math.round(m * 39.3701);
+        return inch + ' ' + T('unite_pouces');
+      }
+      var nft = Math.round(ft);
+      return nft + ' ' + T(nft === 1 ? 'unite_metre_un' : 'unite_metres');
+    }
     var v = longueur(m);
     // Separateur decimal LOCALISE, comme masseTxt. Aucun dino ne descend sous 1 m avec
     // une decimale, mais les plantes si (herbe 0,4 m, mousse 0,05 m) : la concatenation

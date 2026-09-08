@@ -48,7 +48,18 @@
     /* ZÉRO ascenseur en atelier (règle transverse PY 2026-08-10) : l'écran de jeu
        tient dans la hauteur — seules les VRAIES listes (choix dino, galerie) scrollent. */
     #screenAtelier { overflow:hidden; }
-    #atelier { display:flex; flex-direction:column; flex:1; overflow:hidden; }
+    /* HO-MJ-09 correctif : #screenAtelier (classe .screen) est display:block, donc
+       flex:1 sur #atelier n'avait AUCUN effet (les propriétés flex n'agissent que
+       si le PARENT est flex/grid) — ça restait invisible tant que le canvas carré
+       (800×800) tenait par coïncidence dans l'espace dispo. Le nom ajouté sous le
+       dino rend le canvas plus haut (jusqu'à ~800×1030) : #atelier grandissait
+       alors au-delà de #screenAtelier sans que rien ne le contraigne, débordement
+       clippé silencieusement par overflow:hidden (scrollHeight > clientHeight,
+       donc un vrai "ascenseur" caché). height:100% répare le contrat : #atelier
+       occupe exactement la hauteur bornée de #screenAtelier (lui-même flex:1 dans
+       #app), et son propre flex-column + canvas-wrap flex:1 peuvent alors vraiment
+       réduire le canvas pour tenir dedans. */
+    #atelier { display:flex; flex-direction:column; height:100%; overflow:hidden; }
     .atelier-top { display:flex; align-items:center; justify-content:center; gap:10px; padding:6px; flex-shrink:0; }
     .atelier-btn {
       display:flex; align-items:center; gap:6px; border:none; cursor:pointer;
@@ -243,6 +254,171 @@
 
     function baseName(png) { return png.replace(/\.(jpg|jpeg|png|webp)$/i, ''); }
 
+    // ─── HO-MJ-09 chantier A : nom du dino en MAJUSCULES creuses, coloriables ───
+    // Décision figée Papa Yann 2026-09-08 (voir handoff) : MAJUSCULES uniquement,
+    // lettres CREUSES (strokeText, jamais fillText — il faut du vide à l'intérieur
+    // pour que le flood fill existant puisse le remplir comme n'importe quelle
+    // zone du dessin). Le texte est dessiné AVANT buildContourMask() : c'est ce
+    // qui le fait entrer dans le masque de contour comme le reste du lineart,
+    // sans aucune mécanique de coloriage nouvelle.
+    //
+    // Dimensionnement : proportionnel à `w` (largeur du canvas dino, 600-800px
+    // selon le ratio de l'image source, cf. loadLineart) plutôt qu'à des px fixes,
+    // pour rester cohérent quel que soit le dino. Calibré pour qu'un doigt de 4 ans
+    // atteigne l'intérieur d'un O à 360px d'écran (contrainte P30 Pro) :
+    // à w=800 (cas le plus large), le canvas rendu en CSS fait ~345px de large
+    // (.canvas-wrap, padding 6px de chaque côté à 360px d'écran) → ratio canvas/CSS
+    // ≈ 2.3. NAME_FONT_MIN_PX est le plancher ABSOLU en dessous duquel on ne réduit
+    // plus la police, même si le nom déborde encore (mieux vaut un débordement léger
+    // géré par les marges que des lettres trop petites pour un doigt).
+    //
+    // BUG corrigé pendant le développement : le trait était d'abord calculé en
+    // ratio de `w` (fixe), donc à taille de police réduite (nom long sur 2 lignes)
+    // le trait devenait proportionnellement énorme par rapport aux lettres — les
+    // intérieurs des lettres (le "trou" du O, l'espace entre deux lettres voisines)
+    // disparaissaient complètement, fusionnant tout en un bloc noir plein (plus
+    // rien à colorier, capture Playwright "APATOSAURE" illisible). Le trait doit
+    // être un ratio de fontPx (comme dans une police "outline" classique), pas de w.
+    //
+    // Calibrage empirique (capture stroke-ratios, police Fredoka One 900) : au
+    // ratio 0.10×fontPx les lettres voisines commencent à se toucher, 0.14+ les
+    // fusionne complètement. 0.09 reste net avec un trait bien visible. Le plancher
+    // ABSOLU en px canvas (indépendant de fontPx) est volontairement bas — un
+    // plancher calé sur "6px CSS à w=800" (~14px canvas) écraserait tout intérieur
+    // de lettre à la taille de police plancher (57.6px : 14px de trait = 24% de la
+    // hauteur de lettre, les O et les espaces inter-lettres disparaissent). Le vrai
+    // besoin du doigt de 4 ans est un intérieur de lettre assez grand pour taper
+    // dedans (hauteur de lettre >= 56px, déjà garanti par NAME_FONT_MIN_PX) — pas
+    // l'épaisseur du trait lui-même.
+    const NAME_BAND_MAX_LINES = 2;       // 1 ligne si ça tient, sinon 2 (jamais plus)
+    const NAME_FONT_MAX_PX = 0.145;      // ratio de w : taille de police de départ
+    const NAME_FONT_MIN_PX = 0.072;      // ratio de w : plancher (>= 56px à w=800, cf. handoff)
+    const NAME_STROKE_FONT_RATIO = 0.09; // ratio de fontPx : épaisseur du trait (calibrage empirique)
+    const NAME_STROKE_MIN_PX = 3;        // plancher ABSOLU en px canvas (trait toujours visible)
+    const NAME_LINE_GAP_RATIO = 0.10;    // ratio de w : interligne
+    const NAME_SIDE_MARGIN_RATIO = 0.06; // ratio de w : marge gauche/droite pour measureText
+    const NAME_TOP_PAD_RATIO = 0.08;     // ratio de w : espace au-dessus du nom (sépare du dino)
+    const NAME_BOTTOM_PAD_RATIO = 0.06;  // ratio de w : espace sous le nom
+
+    // Casse un nom en <= NAME_BAND_MAX_LINES lignes qui tiennent dans maxWidth
+    // (measureText), en coupant sur les espaces (jamais au milieu d'un mot sauf
+    // dernier recours, cf. splitLongWord). Retourne aussi la taille de police
+    // effectivement utilisée (réduite jusqu'au plancher si besoin).
+    //
+    // Bug corrigé pendant le développement : la première version arrêtait de
+    // réduire la police dès que lines.length <= NAME_BAND_MAX_LINES, sans
+    // vérifier que CHAQUE ligne tenait réellement dans maxWidth — un nom d'un
+    // seul mot sans espace (CRYOLOPHOSAURE) formait toujours "1 ligne" mais
+    // débordait largement du canvas. Le critère d'arrêt est maintenant la
+    // largeur mesurée de la ligne la plus large, pas le nombre de lignes.
+    // Épaisseur de trait pour une taille de police donnée : ratio de fontPx (garde
+    // la même proportion "lettre bulle creuse" à toute taille), jamais en dessous
+    // du plancher absolu NAME_STROKE_MIN_RATIO*w (>= 6px CSS à 360px, cf. handoff).
+    function strokeWidthFor(fontPx, w) {
+      return Math.max(NAME_STROKE_MIN_PX, fontPx * NAME_STROKE_FONT_RATIO);
+    }
+
+    function layoutDinoName(ctx2d, name, w) {
+      const upper = name.toUpperCase();
+      const words = upper.split(' ').filter(Boolean);
+      // maxWidth réduit de l'épaisseur du trait (strokeText déborde du glyph de
+      // ~lineWidth/2 de chaque côté) : sans cette marge, une ligne "mesurée juste
+      // limite" par measureText (qui ne connaît que le glyph plein, pas le trait)
+      // débordait quand même une fois strokée.
+      const maxWidth = w * (1 - 2 * NAME_SIDE_MARGIN_RATIO);
+      let fontPx = w * NAME_FONT_MAX_PX;
+      const minPx = w * NAME_FONT_MIN_PX;
+      const effMaxWidth = (fpx) => maxWidth - strokeWidthFor(fpx, w);
+
+      function wrapAt(fpx) {
+        ctx2d.font = '900 ' + fpx + 'px "Fredoka One","Nunito",sans-serif';
+        const limit = effMaxWidth(fpx);
+        const lines = [];
+        let cur = '';
+        for (const word of words) {
+          const trial = cur ? cur + ' ' + word : word;
+          if (!cur || ctx2d.measureText(trial).width <= limit) {
+            cur = trial;
+          } else {
+            lines.push(cur);
+            cur = word;
+          }
+        }
+        if (cur) lines.push(cur);
+        return lines;
+      }
+
+      function widestLine(lines) {
+        return lines.reduce((m, l) => Math.max(m, ctx2d.measureText(l).width), 0);
+      }
+
+      let lines = wrapAt(fontPx);
+      // Réduit la police tant qu'une ligne déborde de maxWidth OU qu'il y a trop
+      // de lignes, jusqu'au plancher — jamais en dessous (règle du handoff).
+      while (fontPx > minPx && (lines.length > NAME_BAND_MAX_LINES || widestLine(lines) > effMaxWidth(fontPx))) {
+        fontPx = Math.max(minPx, fontPx - w * 0.004);
+        lines = wrapAt(fontPx);
+      }
+      // Toujours plus de NAME_BAND_MAX_LINES lignes au plancher : fusionne
+      // l'excédent dans la dernière ligne autorisée (jamais de 3e ligne).
+      if (lines.length > NAME_BAND_MAX_LINES) {
+        const head = lines.slice(0, NAME_BAND_MAX_LINES - 1);
+        const tail = lines.slice(NAME_BAND_MAX_LINES - 1).join(' ');
+        lines = head.concat([tail]);
+      }
+      // Dernier recours, au plancher, pour un mot SEUL toujours trop large
+      // (pas d'espace où couper, ex. "CRYOLOPHOSAURE" à lui seul sur sa ligne) :
+      // coupe le mot au milieu en 2 lignes plutôt que de laisser déborder du
+      // canvas — un contour de lettre à cheval sur 2 lignes reste coloriable,
+      // c'est le seul cas où on accepte de couper un mot.
+      if (fontPx <= minPx + 0.01 && lines.length <= NAME_BAND_MAX_LINES) {
+        ctx2d.font = '900 ' + fontPx + 'px "Fredoka One","Nunito",sans-serif';
+        const limit = effMaxWidth(fontPx);
+        const tooWide = lines.map((l, i) => ({ l, i })).filter(o => ctx2d.measureText(o.l).width > limit);
+        if (tooWide.length && lines.length < NAME_BAND_MAX_LINES) {
+          const { l, i } = tooWide[0];
+          const mid = Math.ceil(l.length / 2);
+          lines = lines.slice(0, i).concat([l.slice(0, mid), l.slice(mid)]).concat(lines.slice(i + 1));
+        }
+      }
+      return { lines, fontPx };
+    }
+
+    // Dessine le nom en lettres creuses dans la bande réservée en bas du canvas
+    // dino (entre yTop et yTop+bandH). Appelé APRÈS drawImage(lineart) et AVANT
+    // buildContourMask — point clé du handoff : dessiner après casserait le masque.
+    function drawHollowName(ctx2d, name, w, yTop, bandH) {
+      const { lines, fontPx } = layoutDinoName(ctx2d, name, w);
+      ctx2d.save();
+      ctx2d.font = '900 ' + fontPx + 'px "Fredoka One","Nunito",sans-serif';
+      ctx2d.textAlign = 'center';
+      ctx2d.textBaseline = 'middle';
+      ctx2d.strokeStyle = '#000000';
+      ctx2d.lineWidth = strokeWidthFor(fontPx, w);
+      ctx2d.lineJoin = 'round';
+      const lineGap = w * NAME_LINE_GAP_RATIO + fontPx;
+      const totalH = lineGap * (lines.length - 1);
+      const firstY = yTop + bandH / 2 - totalH / 2;
+      lines.forEach((line, i) => {
+        // strokeText SEUL (jamais fillText) : contour épais, intérieur laissé
+        // BLANC (couleur du fond déjà posé par fillRect plus haut) — le flood
+        // fill existant traite alors chaque lettre comme une zone à colorier,
+        // exactement comme n'importe quelle partie du dessin du dino.
+        ctx2d.strokeText(line, w / 2, firstY + lineGap * i);
+      });
+      ctx2d.restore();
+      return { lines, fontPx };
+    }
+
+    // Hauteur de bande nécessaire pour accueillir le nom (calculée AVANT de fixer
+    // canvas.height, pour dimensionner le canvas une seule fois — pas de redraw).
+    function measureNameBandHeight(ctx2d, name, w) {
+      const { lines, fontPx } = layoutDinoName(ctx2d, name, w);
+      const lineGap = w * NAME_LINE_GAP_RATIO + fontPx;
+      const linesH = fontPx + lineGap * (lines.length - 1);
+      return Math.round(w * NAME_TOP_PAD_RATIO + linesH + w * NAME_BOTTOM_PAD_RATIO);
+    }
+
     let currentDino = null;
     let selectedColor = PALETTE[0].hex;
     let canvas, ctx;
@@ -296,7 +472,22 @@
                  // Les intérieurs des coloriages sont quasi blancs purs, ce seuil ne crée
                  // pas de faux murs.
 
-    function buildContourMask(src, w, h) {
+    // nameBandY (optionnel, HO-MJ-09) : à partir de cette ligne Y (le mur de
+    // séparation dino/nom), utilise un rayon de dilatation RÉDUIT (voire nul)
+    // au lieu de CONTOUR_DILATE_R. Bug trouvé en recette Playwright : les
+    // intérieurs de lettres (le trou d'un R, d'un U...) rétrécissent beaucoup à
+    // taille de police réduite (nom long sur 2 lignes) — avec R=7 des deux
+    // côtés du trait, un trou de 30-35px de large se retrouve ENTIÈREMENT
+    // walled off (14px de dilatation avalent tout l'intérieur), rendant la
+    // lettre impossible à colorier alors qu'elle est visuellement bien creuse.
+    // La dilation R=7 existe pour boucher les micro-trous de compression du
+    // LINEART PALÉOART (webp, anti-aliasing) — un trait `strokeText` fraîchement
+    // dessiné n'a AUCUN micro-trou, donc n'a besoin d'AUCUNE dilatation de
+    // sécurité. Ne change rien à la zone dino (même R=7 qu'avant, aucune
+    // régression sur l'anti-fuite Cryolophosaure #6389).
+    const NAME_BAND_DILATE_R = 1; // quasi nul : juste de quoi absorber l'anti-aliasing du strokeText
+
+    function buildContourMask(src, w, h, nameBandY) {
       const base = new Uint8Array(w * h);
       for (let i = 0; i < w * h; i++) {
         const li = i * 4;
@@ -304,15 +495,17 @@
         if (lum < LUM_SEUIL_TRAIT) base[i] = 1;
       }
       const R = CONTOUR_DILATE_R;
+      const RBand = NAME_BAND_DILATE_R;
       const out = new Uint8Array(w * h);
       for (let y = 0; y < h; y++) {
+        const r = (typeof nameBandY === 'number' && y >= nameBandY) ? RBand : R;
         for (let x = 0; x < w; x++) {
           if (!base[y*w+x]) continue;
-          for (let dy = -R; dy <= R; dy++) {
+          for (let dy = -r; dy <= r; dy++) {
             const yy = y + dy; if (yy < 0 || yy >= h) continue;
-            for (let dx = -R; dx <= R; dx++) {
+            for (let dx = -r; dx <= r; dx++) {
               const xx = x + dx; if (xx < 0 || xx >= w) continue;
-              if (dx*dx + dy*dy <= R*R) out[yy*w+xx] = 1;
+              if (dx*dx + dy*dy <= r*r) out[yy*w+xx] = 1;
             }
           }
         }
@@ -373,20 +566,48 @@
         const scale = Math.min(maxSide / w, maxSide / h, 1);
         w = Math.round(w * scale) || maxSide;
         h = Math.round(h * scale) || maxSide;
+        // HO-MJ-09 chantier A : mesure la bande de nom AVANT de fixer canvas.height
+        // (measureText ne dépend pas des dimensions du canvas, seulement de ctx.font) —
+        // on dimensionne le canvas une seule fois, pas de redraw après coup.
+        canvas.width = w; // nécessaire pour que ctx soit lié à un canvas de la bonne largeur
+        const dinoName = (currentDino && currentDino.name) || '';
+        const bandH = dinoName ? measureNameBandHeight(ctx, dinoName, w) : 0;
         canvas.width = w;
-        canvas.height = h;
+        canvas.height = h + bandH;
         ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0, 0, w, h);
+        ctx.fillRect(0, 0, w, h + bandH);
         ctx.drawImage(img, 0, 0, w, h);
-        // Fige le masque de contours AVANT tout coloriage (source de vérité immuable)
-        lineartData = ctx.getImageData(0, 0, w, h).data.slice();
-        contourMask = buildContourMask(lineartData, w, h);
+        if (dinoName) {
+          // Mur de séparation dino/bande de nom (bug trouvé en recette Playwright,
+          // HO-MJ-09) : sans ce trait, le fond blanc du dino et le fond blanc de
+          // la bande de nom ne forment qu'UNE SEULE zone blanche continue pour le
+          // flood fill — colorier n'importe quelle lettre remplissait TOUT le
+          // dino (et inversement). Un trait plein largeur, aussi épais que le
+          // diamètre de dilatation du masque de contour (2×CONTOUR_DILATE_R),
+          // fait de cette ligne un mur infranchissable même après dilation.
+          ctx.strokeStyle = '#000000';
+          ctx.lineWidth = CONTOUR_DILATE_R * 2 + 2;
+          ctx.beginPath();
+          ctx.moveTo(0, h);
+          ctx.lineTo(w, h);
+          ctx.stroke();
+          drawHollowName(ctx, dinoName, w, h, bandH);
+        }
+        // Fige le masque de contours APRÈS avoir dessiné le nom : le texte doit
+        // entrer dans le masque comme le reste du lineart (point clé du handoff —
+        // dessiner après buildContourMask casserait le coloriage des lettres).
+        // nameBandY=h : à partir du mur de séparation, dilatation réduite
+        // (NAME_BAND_DILATE_R) — le mur reste un vrai mur (dessiné épais
+        // directement, cf. plus haut), mais les intérieurs de lettres ne sont
+        // plus avalés par une dilatation de 7px calibrée pour le lineart dino.
+        lineartData = ctx.getImageData(0, 0, w, h + bandH).data.slice();
+        contourMask = buildContourMask(lineartData, w, h + bandH, dinoName ? h : undefined);
 
         fillHistory = [];
         if (resumeFills && resumeFills.length) {
           resumeFills.forEach(f => {
             const x = Math.max(0, Math.min(w - 1, Math.round(f.nx * w)));
-            const y = Math.max(0, Math.min(h - 1, Math.round(f.ny * h)));
+            const y = Math.max(0, Math.min(h + bandH - 1, Math.round(f.ny * (h + bandH))));
             if (floodFill(x, y, f.hex)) fillHistory.push({ nx: f.nx, ny: f.ny, hex: f.hex });
           });
         }

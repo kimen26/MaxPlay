@@ -13,3 +13,4 @@
 | HO-MJ-07 | EPIC i18n mini-jeux · packs es-es et pt-br (texte seul, 2 agents en parallele, fichiers disjoints) | studio/minijeux/i18n/{es-es,pt-br}/, site/js/i18n/mj-strings.{es-es,pt-br}.js | fait (37/37 × 2, 0 erreur) |
 | HO-MJ-08 | Coloriage mj-32 : halo blanc R=7 autour des traits + cacophonie audio de fin (fanfare + voix MP3 FR + TTS langue site) | site/mj-32.html, site/js/victory-sounds.js | pret |
 | HO-MJ-09 | Coloriage mj-32 : nom du dino en MAJUSCULES creuses coloriables + sous-menu Decors (tous fonds pour tous dinos) | site/mj-32.html, i18n | pret (chantier A lance 2026-09-08) |
+| HO-MJ-10 | Coloriage mj-32 : zoom pour clics de precision + bouton retour vue normale (zoom CSS, jamais canvas.width) | site/mj-32.html, i18n | pret (bloque tant que HO-MJ-09-A tient le fichier) |

@@ -11,6 +11,6 @@
 | HO-MJ-05 | EPIC i18n mini-jeux · lot 6 (mj-20, mj-22, mj-42) + titre mj-14 | 4 mj-XX.html, i18n/** | fait |
 | HO-MJ-06 | EPIC i18n mini-jeux · 81 consignes parlees en anglais (voix() + repli TTS + scripts STS) | site/js/mj-i18n.js, victory-sounds.js, i18n/**, tools/ | fait (MP3 EN au quota) |
 | HO-MJ-07 | EPIC i18n mini-jeux · packs es-es et pt-br (texte seul, 2 agents en parallele, fichiers disjoints) | studio/minijeux/i18n/{es-es,pt-br}/, site/js/i18n/mj-strings.{es-es,pt-br}.js | fait (37/37 × 2, 0 erreur) |
-| HO-MJ-08 | Coloriage mj-32 : halo blanc R=7 autour des traits + cacophonie audio de fin (fanfare + voix MP3 FR + TTS langue site) | site/mj-32.html, site/js/victory-sounds.js | pret |
-| HO-MJ-09 | Coloriage mj-32 : nom du dino en MAJUSCULES creuses coloriables + sous-menu Decors (tous fonds pour tous dinos) | site/mj-32.html, i18n | pret (chantier A lance 2026-09-08) |
-| HO-MJ-10 | Coloriage mj-32 : zoom pour clics de precision + bouton retour vue normale (zoom CSS, jamais canvas.width) | site/mj-32.html, i18n | pret (bloque tant que HO-MJ-09-A tient le fichier) |
+| HO-MJ-08 | Coloriage mj-32 : halo blanc R=7 autour des traits + cacophonie audio de fin (fanfare + voix MP3 FR + TTS langue site) | site/mj-32.html, site/js/victory-sounds.js | fait (halo supprime, une seule voix, portes vertes) |
+| HO-MJ-09 | Coloriage mj-32 : nom du dino en MAJUSCULES creuses coloriables + sous-menu Decors (tous fonds pour tous dinos) | site/mj-32.html, i18n | fait (A nom coloriable + B sous-menu Decors, portes vertes) |
+| HO-MJ-10 | Coloriage mj-32 : zoom pour clics de precision + bouton retour vue normale (zoom CSS, jamais canvas.width) | site/mj-32.html, i18n | fait (zoom x2,75, 2 defauts de portee corriges a la recette) |

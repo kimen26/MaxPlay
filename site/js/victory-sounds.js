@@ -11,6 +11,13 @@
 const SOUND_POOLS = {
   // Fin de partie gagnée (≥ 50%) — mix nouveaux + classiques que Max adore
   victory: [
+    // Générées la semaine du 2026-09-05, ajoutées au pool à la demande de Papa Yann
+    // (2,25 s à 5,29 s — le repli d'enchaînement de la voix se cale sur la durée réelle,
+    // cf. FANFARE_FALLBACK_MARGE_MS plus bas).
+    'sounds/music/victoire-v1.mp3',
+    'sounds/music/victoire-v2.mp3',
+    'sounds/music/victoire-v3.mp3',
+    'sounds/music/victoire-v4.mp3',
     'sounds/fx/victoire-grande.mp3',
     'sounds/fx/tada.mp3',
     'sounds/fx/trophee.mp3',
@@ -281,6 +288,12 @@ let _voiceTimer = null;
 // sur certains navigateurs) — HO-MJ-08 : la voix suivante ne doit JAMAIS rester
 // bloquée en attente indéfiniment d'un `ended` qui ne viendra pas.
 const FANFARE_FALLBACK_MS = 4000;
+// Marge ajoutée à la durée RÉELLE du son quand le navigateur la connaît (metadata
+// chargée). Corrigé 2026-09-08 : le repli fixe de 4 s partait AVANT la fin des
+// fanfares plus longues — `victoire-v4.mp3` dure 5,3 s — et relançait donc la voix
+// par-dessus la musique, soit exactement la cacophonie corrigée en HO-MJ-08.
+// Le repli fixe reste le plancher quand la durée est inconnue (metadata absente).
+const FANFARE_FALLBACK_MARGE_MS = 400;
 
 /**
  * Joue un son de fin selon le score, puis une petite voix en réaction.
@@ -315,7 +328,20 @@ function playEndSound(score, maxScore, opts) {
     if (_currentVictoryAudio) {
       _currentVictoryAudio.addEventListener('ended', fire, { once: true });
       _currentVictoryAudio.addEventListener('error', fire, { once: true });
-      setTimeout(fire, FANFARE_FALLBACK_MS);
+      // Le repli se cale sur la durée RÉELLE dès que le navigateur la connaît, sinon
+      // il garderait 4 s et couperait la parole aux fanfares plus longues.
+      const armerRepli = () => {
+        const d = _currentVictoryAudio && _currentVictoryAudio.duration;
+        const ms = (typeof d === 'number' && isFinite(d) && d > 0)
+          ? Math.max(FANFARE_FALLBACK_MS, d * 1000 + FANFARE_FALLBACK_MARGE_MS)
+          : FANFARE_FALLBACK_MS;
+        setTimeout(fire, ms);
+      };
+      if (_currentVictoryAudio.readyState >= 1) armerRepli();          // durée déjà connue
+      else _currentVictoryAudio.addEventListener('loadedmetadata', armerRepli, { once: true });
+      // Filet si la metadata n'arrive jamais (fichier injoignable, décodeur muet) :
+      // sans lui, aucun repli ne serait armé et la voix ne partirait jamais.
+      setTimeout(() => { if (!fired) fire(); }, FANFARE_FALLBACK_MS * 3);
     } else {
       // Pool vide/thème inconnu : aucune fanfare ne part, on enchaîne quand même.
       setTimeout(fire, 0);

@@ -60,7 +60,18 @@
        #app), et son propre flex-column + canvas-wrap flex:1 peuvent alors vraiment
        réduire le canvas pour tenir dedans. */
     #atelier { display:flex; flex-direction:column; height:100%; overflow:hidden; }
-    .atelier-top { display:flex; align-items:center; justify-content:center; gap:10px; padding:6px; flex-shrink:0; }
+    /* La barre passe à la ligne au lieu de déborder. Mesuré 2026-09-08 : avec les
+       boutons Décors et Zoomer ajoutés le même jour, les 5 boutons totalisaient 409 px
+       de large sur un écran de 360 — "Autre dino" sortait à gauche (x = -49) et
+       surtout "Fini !" sortait à droite (jusqu'à 409), donc l'enfant ne pouvait plus
+       terminer son dessin. Un flex sans wrap ne déborde pas visiblement : il pousse
+       les enfants hors du cadre en silence, ce qu'aucune mesure de scrollWidth sur la
+       PAGE ne révèle (la page, elle, ne déborde pas — c'est la barre qui rogne).
+       gap réduit à 6px et padding latéral resserré pour limiter le passage à 2 lignes. */
+    .atelier-top {
+      display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
+      gap:6px; padding:6px 4px; flex-shrink:0;
+    }
     .atelier-btn {
       display:flex; align-items:center; gap:6px; border:none; cursor:pointer;
       border-radius:20px; padding:10px 16px; font-size:.95rem; font-weight:900;

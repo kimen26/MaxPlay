@@ -3,6 +3,14 @@
 > Tickets ouverts uniquement, condensés en 1 ligne chacun (détail complet non recopié ici, mais préservé verbatim dans `archive/backlog-fermes-2026.md` pour les tickets qui ont une partie close, et dans l'historique git pour le reste). Extrait le 2026-09-03 (HO-MJ-01) depuis l'ancien `pmo/backlog.md` (supprimé, contenu distillé dans ce fichier + `LESSONS.md` + `archive/backlog-fermes-2026.md`).
 > Statuts : `[ ]` à faire · `[~]` en cours · `[!]` bloqué · `[?]` question ouverte.
 
+## Lane — Coloriage mj-32 : retours PY 2026-09-08 (2e vague)
+
+- [x] Sons de victoire du 2026-09-05 (victoire-v1 a v4) ajoutes au pool `victory`. Au passage : le repli d'enchainement de la voix etait fixe a 4 s alors que victoire-v4 dure 5,3 s, la voix serait repartie PAR-DESSUS la fanfare — repli desormais cale sur la duree reelle du son
+- [x] Largeur telephone verifiee a 360 et 320 px : aucun debordement de page, aucun ascenseur. DEFAUT TROUVE ET CORRIGE : les boutons Decors et Zoomer ajoutes le meme jour portaient la barre a 409 px de large sur 360 — « Autre dino » sortait a gauche et surtout « Fini ! » sortait a droite, donc l'enfant ne pouvait plus terminer son dessin. La barre passe desormais a la ligne
+- [x] DECISION PY 2026-09-08 : la 2e langue a la victoire n'est PAS un defaut, « c'est style meme pour les dessins ». Ne PAS revenir a une seule langue. La regle « jamais deux voix EN MEME TEMPS » (L-111) reste entiere : c'est la simultaneite qui etait le probleme, pas le bilinguisme
+- [ ] Ajouter les PLANTES dans le dessin, en respectant les infos des fiches (`site/js/dinos-plantes.js`, 19 plantes, Araucaria confirme present)
+- [ ] Menu des FAMILLES dans l'ecran de choix : « 71 dinos en ligne c'est dur » (PY). Regrouper par famille avant la liste des dinos
+
 ## Lane — Coloriage dino mj-32 : retours PY 2026-09-08 (HO-MJ-08)
 
 - [x] Halo blanc de ~7 px autour de chaque trait : corrigé (passe d'extension dans la bande + garde `traitMask`), anti-fuite #6389 toujours vert → HO-MJ-08 (fait 2026-09-08)

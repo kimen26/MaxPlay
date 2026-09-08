@@ -803,6 +803,8 @@ window.MJ_STRINGS = {
    "choisisUnDino": "Escolhe um dino para colorir!",
    "autreDino": "Outro dino",
    "modele": "Modelo",
+   "zoomer": "Ampliar",
+   "vueNormale": "Vista normal",
    "fini": "Pronto!",
    "colorierAutre": "Colorir outro dino!",
    "galerieVide": "Ainda não tem nenhuma obra... Colore seu primeiro dino!",

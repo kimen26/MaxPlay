@@ -68,16 +68,34 @@
     }
     #modelBtn { background:linear-gradient(135deg,#29b6f6,#4fc3f7); color:#012; }
     #finBtn { background:linear-gradient(135deg,#43a047,#66bb6a); color:#fff; }
+    #zoomBtn { background:linear-gradient(135deg,#7e57c2,#9575cd); color:#fff; }
     .atelier-btn:active { transform:scale(.94); }
+    /* Boutons masqués pendant l'écran atelier quand ils ne s'appliquent pas (HO-MJ-10) :
+       zoomBtn disparaît une fois zoomé (le zoom loupe n'a qu'un seul niveau, cf. figée),
+       remplacé par zoomOutBtn (bouton de sortie explicite, toujours visible en zoom). */
+    .atelier-btn.hidden { display:none !important; }
 
     .canvas-wrap {
       flex:1; position:relative; display:flex; align-items:center; justify-content:center;
       padding:6px; min-height:0;
+      /* Cadre de recadrage du canvas zoomé (HO-MJ-10) : le canvas peut dépasser visuellement
+         de ce conteneur une fois scale() appliqué, overflow:hidden coupe proprement sans
+         jamais faire scroller la page (règle transverse zéro ascenseur). */
+      overflow:hidden;
     }
     #paintCanvas {
       max-width:100%; max-height:100%; border-radius:14px; box-shadow:0 6px 18px #0007;
       touch-action:none; background:#fff;
+      /* transform-origin fixe (centre) : le zoom agrandit toujours depuis le centre du
+         canvas, jamais depuis un coin — cf. décision HO-MJ-10 (option a, zoom centré). */
+      transform-origin:center center;
+      /* Transition sur transform SEULEMENT : le zoom/dézoom est animé (fluidité demandée
+         par Papa Yann), le PAN pendant le déplacement au doigt écrase translate en JS à
+         chaque frame sans transition (sinon la vue "traîne" derrière le doigt). */
+      transition:transform var(--mj32-zoom-anim-ms,220ms) ease-out;
+      will-change:transform;
     }
+    #paintCanvas.panning { transition:none; }
     #modelOverlay {
       position:absolute; top:6px; left:6px; right:6px; bottom:6px;
       display:flex; align-items:center; justify-content:center;
@@ -86,6 +104,19 @@
     }
     #modelOverlay.show { opacity:1; }
     #modelOverlay img { max-width:92%; max-height:92%; border-radius:12px; box-shadow:0 8px 24px #000a; }
+
+    /* Bouton de sortie du zoom (HO-MJ-10) : demande explicite de Papa Yann, visible EN
+       PERMANENCE pendant le zoom (jamais caché dans un coin), libellé texte + icône,
+       cible tactile >= 56px (action principale). Flotte par-dessus le canvas sans jamais
+       gêner le coloriage (posé en haut, hors de la zone de dessin la plus utile). */
+    #zoomOutBtn {
+      position:absolute; top:10px; left:50%; transform:translateX(-50%); z-index:5;
+      display:flex; align-items:center; gap:6px; border:none; cursor:pointer;
+      border-radius:22px; padding:12px 20px; font-size:1rem; font-weight:900;
+      min-height:56px; font-family:inherit; box-shadow:0 4px 14px #000a;
+      background:linear-gradient(135deg,#e53935,#ef5350); color:#fff;
+    }
+    #zoomOutBtn:active { transform:translateX(-50%) scale(.94); }
 
     .palette {
       display:flex; flex-wrap:wrap; justify-content:center; gap:8px;
@@ -165,11 +196,13 @@
         <div class="atelier-top">
           <button class="atelier-btn" id="backChoiceBtn">🔙 Autre dino</button>
           <button class="atelier-btn" id="modelBtn">🦕 Modèle</button>
+          <button class="atelier-btn" id="zoomBtn">🔍 Zoomer</button>
           <button class="atelier-btn" id="finBtn">✅ Fini !</button>
         </div>
-        <div class="canvas-wrap">
+        <div class="canvas-wrap" id="canvasWrap">
           <canvas id="paintCanvas" width="800" height="600"></canvas>
           <div id="modelOverlay"><img id="modelImg" alt=""></div>
+          <button class="hidden" id="zoomOutBtn">↩️ Vue normale</button>
         </div>
         <div class="palette" id="palette"></div>
       </div>
@@ -423,6 +456,133 @@
     let selectedColor = PALETTE[0].hex;
     let canvas, ctx;
     let filling = false;
+
+    // ─── Zoom de précision (HO-MJ-10, demande Papa Yann 2026-09-08) ───
+    // Zoome en CSS (transform:scale), JAMAIS en changeant canvas.width : le lineart,
+    // le masque de contour, l'historique fillHistory (coordonnées normalisées) et la
+    // galerie restent intacts, seule la PRÉSENTATION grandit. canvasPointFromEvent()
+    // reste inchangé : getBoundingClientRect() reflète déjà la transformation CSS.
+    //
+    // Option d'entrée retenue : (a) bouton loupe qui zoome sur le CENTRE, puis
+    // déplacement au doigt. Choisie plutôt que (b) "armer puis taper où zoomer" car
+    // elle ne demande de comprendre AUCUN mode intermédiaire — un enfant de 4 ans
+    // appuie sur un bouton et voit un effet immédiat, alors que (b) exige de
+    // comprendre "le prochain tap ne colorie pas, il choisit où zoomer", un concept
+    // à deux temps hors de portée à cet âge (cf. game-design-enfant : un seul geste
+    // à la fois). Un seul niveau de zoom (pas de zoom continu à plusieurs crans) :
+    // la demande n'exige que "zoomer pour les clics de précision", pas un réglage fin.
+    const ZOOM_SCALE = 2.75;          // niveau unique, dans la fourchette 2.5-3 demandée
+    const ZOOM_ANIM_MS = 220;         // durée de la transition CSS zoom/dézoom (fluidité)
+    // Seuil qui distingue un TAP (colorie) d'un DÉPLACEMENT (pan, ne colorie pas).
+    // Piège central du handoff : glisser sert à naviguer dans le zoom, taper sert à
+    // colorier — sans ce seuil Max repeindrait en déplaçant la vue. En dessous de ce
+    // nombre de px CSS parcourus entre pointerdown et pointerup, on considère que le
+    // doigt n'a pas bougé : c'est un tap. Valeur usuelle de tolérance tactile (un doigt
+    // d'enfant n'est jamais parfaitement immobile même pour un simple tap).
+    const PAN_TAP_THRESHOLD_PX = 10;
+    let zoomed = false;
+    let panX = 0, panY = 0;           // décalage courant du canvas zoomé, en px CSS
+    let panPointerId = null;
+    let panStartClientX = 0, panStartClientY = 0;
+    let panStartX = 0, panStartY = 0;
+    let panMoved = false;             // dépassé PAN_TAP_THRESHOLD_PX depuis le pointerdown courant
+    document.documentElement.style.setProperty('--mj32-zoom-anim-ms', ZOOM_ANIM_MS + 'ms');
+
+    // Limite le pan pour que le canvas zoomé ne s'éloigne jamais trop de sa fenêtre
+    // (sinon un enfant peut "perdre" le dessin hors champ et ne plus savoir revenir —
+    // le bouton "Vue normale" recentre de toute façon, mais autant éviter le besoin).
+    // La borne se calcule sur la taille AFFICHÉE DU CANVAS, pas sur celle de la fenêtre.
+    // Corrigé par l'orchestrateur 2026-09-08 : avec la borne calculée sur la fenêtre, le
+    // bas du canvas restait 62 px hors champ une fois le pan poussé à fond (mesuré, canvas
+    // 800x1028 dans une fenêtre 360x390). La bande du nom, ajoutée en bas du canvas par
+    // HO-MJ-09, était donc INATTEIGNABLE en zoom — or colorier l'intérieur d'une petite
+    // lettre est précisément l'usage qui justifie le zoom.
+    // Principe : on autorise le déplacement jusqu'à ce que le bord du canvas affleure le
+    // bord de la fenêtre, jamais au-delà (sinon l'enfant perd le dessin hors champ).
+    // Si le canvas zoomé est plus petit que la fenêtre sur un axe, aucun déplacement n'est
+    // utile sur cet axe : la borne vaut alors 0 et le dessin reste centré.
+    function clampPan(wrap, x, y) {
+      const rect = canvas.getBoundingClientRect(); // dimensions réellement affichées
+      // getBoundingClientRect reflète déjà le scale courant ; on repart donc de la taille
+      // NON transformée pour ne pas composer deux fois le facteur de zoom.
+      const baseW = rect.width / (zoomed ? ZOOM_SCALE : 1);
+      const baseH = rect.height / (zoomed ? ZOOM_SCALE : 1);
+      const maxX = Math.max(0, (baseW * ZOOM_SCALE - wrap.clientWidth) / 2);
+      const maxY = Math.max(0, (baseH * ZOOM_SCALE - wrap.clientHeight) / 2);
+      return [Math.max(-maxX, Math.min(maxX, x)), Math.max(-maxY, Math.min(maxY, y))];
+    }
+
+    function applyCanvasTransform() {
+      const scale = zoomed ? ZOOM_SCALE : 1;
+      canvas.style.transform = 'translate(' + panX + 'px,' + panY + 'px) scale(' + scale + ')';
+    }
+
+    function enterZoom() {
+      if (zoomed || !canvas) return;
+      zoomed = true;
+      panX = 0; panY = 0; // zoom centré (option a) : repart toujours du centre du canvas
+      applyCanvasTransform();
+      document.getElementById('zoomBtn').classList.add('hidden');
+      document.getElementById('zoomOutBtn').classList.remove('hidden');
+    }
+
+    function exitZoom() {
+      if (!zoomed) return;
+      zoomed = false;
+      panX = 0; panY = 0;
+      applyCanvasTransform();
+      document.getElementById('zoomOutBtn').classList.add('hidden');
+      document.getElementById('zoomBtn').classList.remove('hidden');
+      // Sortir du zoom ne touche jamais fillHistory/canvas : seule la transformation
+      // CSS de présentation change, aucune couleur n'est modifiée (règle du handoff).
+    }
+
+    // Pan au doigt (glisser) quand zoomé : ne colorie PAS pendant le geste. Le
+    // flood fill (handleTap) reste branché sur 'pointerdown' — pour ne pas déclencher
+    // une couleur au moment même où le doigt se pose, on retarde la décision "est-ce
+    // un tap ou un pan ?" jusqu'au pointerup (cf. PAN_TAP_THRESHOLD_PX).
+    function onCanvasPointerDown(e) {
+      if (!zoomed) return; // hors zoom, comportement historique (handleTap gère tout)
+      panPointerId = e.pointerId;
+      panStartClientX = e.clientX; panStartClientY = e.clientY;
+      panStartX = panX; panStartY = panY;
+      panMoved = false;
+      canvas.classList.add('panning');
+      // Capture du pointeur : sans elle, `pointermove` cesse d'être reçu dès que le doigt
+      // sort du canvas, et le déplacement s'arrête en pleine course. Mesuré 2026-09-08 :
+      // le bas du canvas restait alors 45 px hors champ, donc la bande du nom demeurait
+      // inatteignable même avec la borne corrigée. Un doigt d'enfant sort très vite du
+      // dessin sur un écran de 360 px de large.
+      try { canvas.setPointerCapture(e.pointerId); } catch (err) {
+        // setPointerCapture échoue si le pointeur a déjà été relâché (course entre
+        // événements). Le pan reste alors limité au canvas : dégradé, jamais cassé.
+        console.warn('setPointerCapture indisponible pour ce pointeur :', err);
+      }
+    }
+
+    function onCanvasPointerMove(e) {
+      if (!zoomed || e.pointerId !== panPointerId) return;
+      const dx = e.clientX - panStartClientX, dy = e.clientY - panStartClientY;
+      if (Math.hypot(dx, dy) > PAN_TAP_THRESHOLD_PX) panMoved = true;
+      if (!panMoved) return; // sous le seuil : on ne bouge pas encore la vue (évite le tremblé)
+      const wrap = document.getElementById('canvasWrap');
+      [panX, panY] = clampPan(wrap, panStartX + dx, panStartY + dy);
+      applyCanvasTransform();
+    }
+
+    function onCanvasPointerUp(e) {
+      if (!zoomed || e.pointerId !== panPointerId) return;
+      canvas.classList.remove('panning');
+      // Libère la capture posée au pointerdown, sinon le pointeur reste rattaché au canvas.
+      try { canvas.releasePointerCapture(e.pointerId); } catch (err) {
+        // Déjà relâchée (pointercancel, pointeur disparu) : sans conséquence ici.
+        console.warn('releasePointerCapture sans effet :', err);
+      }
+      panPointerId = null;
+      // Sous le seuil de mouvement : c'est un TAP, pas un déplacement → on colorie.
+      // Au-delà : c'était un déplacement de vue, aucune couleur ne doit être posée.
+      if (!panMoved) handleTap(e);
+    }
     // Masque des contours figé (lineart original, jamais modifié après chargement).
     // Sert UNIQUEMENT à détecter "est-ce un trait de contour ?" — indépendant des
     // couleurs déjà posées par l'enfant (sinon une zone noircie redevient un "mur"
@@ -555,7 +715,17 @@
     // du bavure/contour-qui-prend-la-couleur-du-fond signalée par Papa Yann
     // (recopier un JPEG dégradé au lieu de reconstruire depuis la source vectorielle).
     function loadLineart(dino, resumeFills) {
+      // Toute (ré)ouverture de l'atelier repart en vue normale (HO-MJ-10) : un zoom
+      // resté actif d'une session précédente sur ce même <canvas> n'a aucun sens pour
+      // un nouveau dino / une nouvelle réédition — sans ce reset la transformation CSS
+      // et panX/panY de l'ancien dino resteraient collés au nouveau canvas.
+      zoomed = false; panX = 0; panY = 0;
       canvas = document.getElementById('paintCanvas');
+      canvas.classList.remove('panning');
+      canvas.style.transform = '';
+      const zb = document.getElementById('zoomBtn'), zob = document.getElementById('zoomOutBtn');
+      if (zb) zb.classList.remove('hidden');
+      if (zob) zob.classList.add('hidden');
       ctx = canvas.getContext('2d', { willReadFrequently: true });
       const lineSrc = COLORIAGE_DIR + baseName(dino.png) + '_coloriage.webp';
       const img = new Image();
@@ -1043,6 +1213,8 @@
       document.getElementById('choiceTitle').textContent = MJi18n.t('mj-32', 'choisisUnDino', 'Choisis un dino à colorier !');
       document.getElementById('backChoiceBtn').textContent = '🔙 ' + MJi18n.t('mj-32', 'autreDino', 'Autre dino');
       document.getElementById('modelBtn').textContent = '🦕 ' + MJi18n.t('mj-32', 'modele', 'Modèle');
+      document.getElementById('zoomBtn').textContent = '🔍 ' + MJi18n.t('mj-32', 'zoomer', 'Zoomer');
+      document.getElementById('zoomOutBtn').textContent = '↩️ ' + MJi18n.t('mj-32', 'vueNormale', 'Vue normale');
       document.getElementById('finBtn').textContent = '✅ ' + MJi18n.t('mj-32', 'fini', 'Fini !');
       document.getElementById('galleryColorBtn').textContent = '🎨 ' + MJi18n.t('mj-32', 'colorierAutre', 'Colorier un autre dino !');
       document.getElementById('galleryTitle').textContent = '🖼️ ' + MJi18n.t('mj-32', 'maGalerie', 'Ma galerie');
@@ -1079,7 +1251,21 @@
       document.getElementById('confirmNo').onclick = () => confirmDelete(false);
 
       canvas = document.getElementById('paintCanvas');
-      canvas.addEventListener('pointerdown', handleTap);
+      // Routeur pointerdown (HO-MJ-10) : hors zoom, comportement historique inchangé
+      // (handleTap colorie directement au pointerdown). En zoom, le pointerdown amorce
+      // un pan potentiel (onCanvasPointerDown) — la décision tap/pan se prend au
+      // pointerup selon PAN_TAP_THRESHOLD_PX (cf. onCanvasPointerUp).
+      canvas.addEventListener('pointerdown', (e) => {
+        if (zoomed) onCanvasPointerDown(e); else handleTap(e);
+      });
+      canvas.addEventListener('pointermove', onCanvasPointerMove);
+      canvas.addEventListener('pointerup', onCanvasPointerUp);
+      canvas.addEventListener('pointercancel', () => {
+        panPointerId = null;
+        canvas.classList.remove('panning');
+      });
+      document.getElementById('zoomBtn').onclick = enterZoom;
+      document.getElementById('zoomOutBtn').onclick = exitZoom;
 
       if (Tracker && Tracker.startSession) Tracker.startSession('mj-32');
     }

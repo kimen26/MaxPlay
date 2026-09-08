@@ -803,6 +803,8 @@ window.MJ_STRINGS = {
    "choisisUnDino": "¡Elige un dinosaurio para colorear!",
    "autreDino": "Otro dinosaurio",
    "modele": "Modelo",
+   "zoomer": "Ampliar",
+   "vueNormale": "Vista normal",
    "fini": "¡Terminado!",
    "colorierAutre": "¡Colorear otro dinosaurio!",
    "galerieVide": "Todavía no hay obras... ¡Colorea tu primer dinosaurio!",

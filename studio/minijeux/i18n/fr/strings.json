@@ -798,6 +798,8 @@
   },
   "ui": {
    "maGalerie": "Ma galerie",
+   "choisisUneFamille": "Choisis une famille de dinos !",
+   "lesFamilles": "Les familles",
    "choisisUnDino": "Choisis un dino à colorier !",
    "autreDino": "Autre dino",
    "modele": "Modèle",

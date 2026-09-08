@@ -44,6 +44,27 @@
     .thumb-card img { width:100%; height:88px; object-fit:contain; pointer-events:none; }
     .thumb-card .tname { color:#222; font-size:.78rem; font-weight:900; text-align:center; }
 
+    /* ── Niveau Familles (HO-MJ-11) : 1er écran de choix, avant la grille des 71 dinos ── */
+    .family-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(140px,1fr)); gap:14px; padding:14px; }
+    .family-card {
+      cursor:pointer; border:none; border-radius:18px; padding:16px 10px;
+      display:flex; flex-direction:column; align-items:center; gap:6px;
+      min-height:120px; box-shadow:0 4px 10px #0005; transition:transform .12s;
+      font-family:inherit; color:#fff;
+    }
+    .family-card:active { transform:scale(.94); }
+    .family-card .femoji { font-size:2.2rem; line-height:1; }
+    .family-card .flabel { font-size:.85rem; font-weight:900; text-align:center; text-shadow:0 1px 3px #0006; }
+    /* Bouton retour familles, visible seulement quand la sous-grille dino est ouverte
+       (cible tactile >=48px, min-height:56px = action de nav principale de cet écran). */
+    #backFamilyBtn {
+      display:flex; align-items:center; justify-content:center; gap:8px;
+      margin:10px auto 0; background:rgba(255,255,255,0.12); color:#fff;
+      border:none; cursor:pointer; border-radius:18px; padding:10px 18px;
+      font-size:.95rem; font-weight:900; min-height:56px; font-family:inherit;
+    }
+    #backFamilyBtn:active { transform:scale(.95); }
+
     /* ── Écran atelier ── */
     /* ZÉRO ascenseur en atelier (règle transverse PY 2026-08-10) : l'écran de jeu
        tient dans la hauteur — seules les VRAIES listes (choix dino, galerie) scrollent. */
@@ -224,11 +245,18 @@
       <span class="htitle" id="htitle">🖍️ L’atelier coloriage</span>
     </div>
 
-    <!-- ÉCRAN CHOIX -->
+    <!-- ÉCRAN CHOIX : niveau 1 = familles, niveau 2 = dinos de la famille (HO-MJ-11) -->
     <div class="screen" id="screenChoice">
       <button id="galleryBtn">🖼️ Ma galerie</button>
-      <div class="choice-title" id="choiceTitle">Choisis un dino à colorier !</div>
-      <div class="grid" id="grid"></div>
+      <div id="familyView">
+        <div class="choice-title" id="familyTitle">Choisis une famille de dinos !</div>
+        <div class="family-grid" id="familyGrid"></div>
+      </div>
+      <div class="hidden" id="dinoView">
+        <button id="backFamilyBtn">🔙 Les familles</button>
+        <div class="choice-title" id="choiceTitle">Choisis un dino à colorier !</div>
+        <div class="grid" id="grid"></div>
+      </div>
     </div>
 
     <!-- ÉCRAN ATELIER -->
@@ -763,10 +791,23 @@
     }
 
     // ═══════════════ ÉCRAN CHOIX ═══════════════
-    function buildGrid() {
+    // HO-MJ-11 : 71 dinos en une seule grille = trop long à parcourir pour un enfant
+    // de 4 ans (retour Papa Yann). Niveau 1 = familles (DINO_FAMILLES, données
+    // existantes, jamais réinventées) ; niveau 2 = dinos de la famille choisie,
+    // même grille/cartes qu'avant. Une famille sans AUCUN coloriage disponible
+    // (asset manquant) est retirée de la grille familles — jamais un écran vide
+    // sans explication : voir markFamilyAvailability() plus bas.
+    let currentFamilyId = null;
+
+    function dinosOfFamily(familyId) {
+      return DINOS.filter(d => d.famille === familyId);
+    }
+
+    function buildGrid(familyId) {
+      currentFamilyId = familyId;
       const grid = document.getElementById('grid');
       grid.innerHTML = '';
-      DINOS.forEach(d => {
+      dinosOfFamily(familyId).forEach(d => {
         const card = document.createElement('div');
         card.className = 'thumb-card';
         const src = COLORIAGE_DIR + baseName(d.png) + '_coloriage.webp';
@@ -776,6 +817,66 @@
         card.onclick = () => openAtelier(d);
         grid.appendChild(card);
       });
+    }
+
+    function buildFamilyGrid() {
+      const fgrid = document.getElementById('familyGrid');
+      fgrid.innerHTML = '';
+      DINO_FAMILLES.forEach(f => {
+        const card = document.createElement('button');
+        card.type = 'button';
+        card.className = 'family-card';
+        card.style.background = f.bg || f.color || '#555';
+        card.dataset.familyId = f.id;
+        card.innerHTML = '<span class="femoji">' + f.emoji + '</span><span class="flabel">' + f.label + '</span>';
+        card.onclick = () => openFamily(f.id);
+        fgrid.appendChild(card);
+      });
+      // Comptage réel des coloriages disponibles par famille (asynchrone, silencieux) :
+      // une famille dont AUCUN dino n'a de coloriage est retirée de la grille. Optimiste
+      // au premier rendu (toutes visibles), correction dès que le préchargement répond —
+      // jamais de blocage de l'écran de choix pour ce test.
+      markFamilyAvailability();
+    }
+
+    // Précharge (sans jamais afficher) le coloriage de chaque dino pour savoir quelles
+    // familles ont au moins 1 coloriage réel. `img.onerror` en grille dino fait déjà ce
+    // travail visuellement (carte retirée) ; ici on le fait une fois en amont pour ne
+    // jamais proposer une famille qui s'ouvrirait sur une grille vide sans explication.
+    let familyAvailabilityChecked = false;
+    function markFamilyAvailability() {
+      if (familyAvailabilityChecked) return;
+      familyAvailabilityChecked = true;
+      const pending = DINOS.length;
+      const okByFamily = {};
+      let done = 0;
+      function finalize() {
+        DINO_FAMILLES.forEach(f => {
+          const card = document.querySelector('.family-card[data-family-id="' + f.id + '"]');
+          if (!card) return;
+          if (!okByFamily[f.id]) card.remove();
+        });
+      }
+      DINOS.forEach(d => {
+        const probe = new Image();
+        const src = COLORIAGE_DIR + baseName(d.png) + '_coloriage.webp';
+        probe.onload = () => { okByFamily[d.famille] = true; if (++done === pending) finalize(); };
+        probe.onerror = () => { if (++done === pending) finalize(); };
+        probe.src = src;
+      });
+    }
+
+    function openFamily(familyId) {
+      currentFamilyId = familyId;
+      buildGrid(familyId);
+      document.getElementById('familyView').classList.add('hidden');
+      document.getElementById('dinoView').classList.remove('hidden');
+    }
+
+    function backToFamilies() {
+      document.getElementById('dinoView').classList.add('hidden');
+      document.getElementById('familyView').classList.remove('hidden');
+      currentFamilyId = null;
     }
 
     function openAtelier(dino, resumeFills, resumeDecorId) {
@@ -1442,16 +1543,29 @@
     const DECOR_FR_NAMES = { desert: 'Désert', foret: 'Forêt', montagne: 'Montagne', neige: 'Neige', volcan: 'Volcan' };
 
     // ═══════════════ Init ═══════════════
+    // HO-MJ-11 : "Autre dino" (atelier) et "Colorier un autre dino !" (galerie) ramènent
+    // à la grille de la MÊME famille si une famille était active (cas courant : l'enfant
+    // recolorie un autre dino du même groupe), sinon à l'écran des familles.
     function backToChoice() {
       document.getElementById('screenAtelier').classList.add('hidden');
       document.getElementById('screenGallery').classList.add('hidden');
       document.getElementById('screenChoice').classList.remove('hidden');
+      if (currentFamilyId) {
+        buildGrid(currentFamilyId);
+        document.getElementById('familyView').classList.add('hidden');
+        document.getElementById('dinoView').classList.remove('hidden');
+      } else {
+        document.getElementById('dinoView').classList.add('hidden');
+        document.getElementById('familyView').classList.remove('hidden');
+      }
     }
 
     // Textes statiques du DOM (boutons, titres d'écran, modale) traduits une fois au
     // démarrage — le FR d'origine reste le repli si la clé est absente du pack.
     function applyStaticUi() {
       document.getElementById('galleryBtn').textContent = '🖼️ ' + MJi18n.t('mj-32', 'maGalerie', 'Ma galerie');
+      document.getElementById('familyTitle').textContent = MJi18n.t('mj-32', 'choisisUneFamille', 'Choisis une famille de dinos !');
+      document.getElementById('backFamilyBtn').textContent = '🔙 ' + MJi18n.t('mj-32', 'lesFamilles', 'Les familles');
       document.getElementById('choiceTitle').textContent = MJi18n.t('mj-32', 'choisisUnDino', 'Choisis un dino à colorier !');
       document.getElementById('backChoiceBtn').textContent = '🔙 ' + MJi18n.t('mj-32', 'autreDino', 'Autre dino');
       document.getElementById('modelBtn').textContent = '🦕 ' + MJi18n.t('mj-32', 'modele', 'Modèle');
@@ -1472,19 +1586,27 @@
 
     function init() {
       applyStaticUi();
-      buildGrid();
+      buildFamilyGrid();
       buildPalette();
       document.getElementById('galleryBtn').onclick = openGallery;
       document.getElementById('modelBtn').onclick = showModel;
       document.getElementById('finBtn').onclick = finishPainting;
       document.getElementById('backChoiceBtn').onclick = backToChoice;
+      document.getElementById('backFamilyBtn').onclick = backToFamilies;
       document.getElementById('galleryColorBtn').onclick = backToChoice;
-      // ← contextuel : en atelier/galerie il ramene au choix des dinos, pas au menu principal.
+      // ← contextuel, 3 niveaux (HO-MJ-11) : atelier/galerie → grille choix (dino de la
+      // famille active, ou familles si aucune) ; grille dino (dans screenChoice) → familles ;
+      // familles (rien de plus haut dans l'écran) → laisse l'ancre remonter au menu principal.
       // Delegation sur .hdr : back-button.js REMPLACE l'ancre .back au DOMContentLoaded,
       // un listener pose directement sur l'ancre serait perdu.
       document.querySelector('.hdr').addEventListener('click', (e) => {
         const a = e.target.closest('a');
-        if (a && document.getElementById('screenChoice').classList.contains('hidden')) {
+        if (!a) return;
+        if (!document.getElementById('screenChoice').classList.contains('hidden')
+            && !document.getElementById('dinoView').classList.contains('hidden')) {
+          e.preventDefault();
+          backToFamilies();
+        } else if (document.getElementById('screenChoice').classList.contains('hidden')) {
           e.preventDefault();
           backToChoice();
         }

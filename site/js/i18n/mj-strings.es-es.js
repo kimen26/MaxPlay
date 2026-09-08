@@ -800,6 +800,8 @@ window.MJ_STRINGS = {
   },
   "ui": {
    "maGalerie": "Mi galería",
+   "choisisUneFamille": "¡Elige una familia de dinosaurios!",
+   "lesFamilles": "Las familias",
    "choisisUnDino": "¡Elige un dinosaurio para colorear!",
    "autreDino": "Otro dinosaurio",
    "modele": "Modelo",

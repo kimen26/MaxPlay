@@ -13,10 +13,40 @@ export async function run({ page, ok }) {
 
   ok('DINOS chargé (60 dinos)', await page.evaluate(() => typeof DINOS !== 'undefined' && Array.isArray(DINOS) && DINOS.length >= 50));
 
-  // Écran choix : au moins quelques vignettes visibles (certaines peuvent onerror-remove)
+  // ─── HO-MJ-11 : niveau familles avant la grille des dinos (retour Papa Yann,
+  // 71 dinos en une seule liste = trop long pour un enfant de 4 ans) ───
+  await page.waitForSelector('.family-card', { timeout: 5000 });
+  const nFamilies = await page.locator('#familyGrid .family-card').count();
+  ok('grille des familles affichée', nFamilies >= 8, `familles=${nFamilies}`);
+  ok('grille dino pas encore affichée (niveau familles d\'abord)',
+     await page.locator('#dinoView').evaluate(el => el.classList.contains('hidden')));
+
+  // Chaque carte famille doit être entièrement dans le viewport 360px (piège flex sans
+  // wrap déjà rencontré ce jour sur .atelier-top — mesurer la position réelle, pas
+  // seulement l'absence de scroll de la page).
+  const familyBoxes = await page.locator('#familyGrid .family-card').evaluateAll(
+    (els) => els.map(el => el.getBoundingClientRect())
+  );
+  const vw = await page.evaluate(() => window.innerWidth);
+  const allFamiliesInViewport = familyBoxes.every(b => b.left >= -1 && b.right <= vw + 1);
+  ok('toutes les cartes famille sont DANS le viewport (pas poussées hors écran)',
+     allFamiliesInViewport, `vw=${vw} boxes=${JSON.stringify(familyBoxes.map(b => [Math.round(b.left), Math.round(b.right)]))}`);
+
+  // Le Cryolophosaure (cas de brèche connu) est dans la famille "trex" (chasseurs à
+  // deux pattes) — ouvrir cette famille pour continuer le scénario existant.
+  const trexIndex = await page.evaluate(() => {
+    const cards = [...document.querySelectorAll('#familyGrid .family-card')];
+    return cards.findIndex(c => c.dataset.familyId === 'trex');
+  });
+  ok('famille "trex" (chasseurs à deux pattes) présente', trexIndex >= 0, `trexIndex=${trexIndex}`);
+  await page.click(`#familyGrid .family-card >> nth=${trexIndex}`);
+  await page.waitForSelector('#dinoView:not(.hidden)', { timeout: 3000 });
+  ok('bouton retour familles visible en grille dino', await page.locator('#backFamilyBtn').isVisible());
+
+  // Écran choix (dino) : au moins quelques vignettes visibles (certaines peuvent onerror-remove)
   await page.waitForSelector('.thumb-card', { timeout: 5000 });
   const nThumbs = await page.locator('#grid .thumb-card').count();
-  ok('grille de coloriages affichée', nThumbs > 10, `thumbs=${nThumbs}`);
+  ok('grille de coloriages affichée', nThumbs > 5, `thumbs=${nThumbs}`);
 
   // ─── ANTI-FUITE (annotation #6389, 2026-08-10) ───
   // Le Cryolophosaure a une VRAIE brèche blanche pure dans le trait du dos

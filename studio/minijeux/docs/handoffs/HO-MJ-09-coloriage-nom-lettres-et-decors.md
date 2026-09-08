@@ -64,11 +64,30 @@ le masque de contour est recalculé sur l'ensemble : le décor devient coloriabl
   | Consommateur de ces PNG | `site/js/decor.js` (`Decor.html(id, opts)`) | Existe, ex-consommateur `index2.html` abandonné. |
   | 19 plantes documentées (fiches, images photo) | `site/js/dinos-plantes.js`, `site/img/dinos/plantes/` | Existent, mais ce sont des **images de fiche**, pas des linearts à colorier. |
 
-  Difficulté à trancher et à **dire dans le rapport** : ces PNG sont en **couleur et détourés**, alors qu'il
-  faut du **lineart noir sur blanc** pour colorier. Trois voies possibles, choisir la plus simple qui marche
-  et justifier : (a) composer les PNG existants en fond décoratif non coloriable, et ne rendre coloriables
-  que le ciel et le sol dessinés au trait ; (b) dériver un lineart de ces PNG ; (c) demander de nouveaux
-  assets. **Si la voie retenue demande de produire des images, s'arrêter et le signaler** au lieu de générer.
+  **La question des assets est tranchée et RÉSOLUE (2026-09-08).** Papa Yann a retenu la voie 3 : de vrais
+  fonds au trait. Ils sont **déjà produits, vérifiés et commités** — rien à générer :
+
+  | Fond | Fichier |
+  |---|---|
+  | Désert | `site/img/dinos/paleoart/fond_desert_coloriage.webp` |
+  | Forêt | `site/img/dinos/paleoart/fond_foret_coloriage.webp` |
+  | Montagne | `site/img/dinos/paleoart/fond_montagne_coloriage.webp` |
+  | Neige | `site/img/dinos/paleoart/fond_neige_coloriage.webp` |
+  | Volcan | `site/img/dinos/paleoart/fond_volcan_coloriage.webp` |
+
+  Ils sont en 1536x1024 (format paysage, alors que les coloriages de dinos sont carrés), en RGB, noir et
+  blanc pur vérifié au pixel (aucune couleur, plus de 92 % de blanc, gris résiduel limité à l'anti-aliasing
+  du trait). Chacun a le **centre volontairement vide** : c'est là que le dino se pose. Les PNG couleur de
+  `site/img/decor/` ne servent PAS à ce chantier, les laisser où ils sont.
+- **Composition : le fond est en paysage (1536x1024), le coloriage de dino est carré (environ 1254x1254).**
+  Les deux ne se superposent donc pas tels quels. C'est la principale décision technique du chantier, à
+  trancher et à justifier dans le rapport. Deux pistes raisonnables : garder le canvas carré et poser le
+  fond centré en le recadrant, ou passer le canvas au format paysage et centrer le dino dedans. Attention
+  dans les deux cas : le masque de contour, l'historique des remplissages en coordonnées normalisées et la
+  galerie dépendent des dimensions du canvas. Vérifier explicitement qu'une œuvre déjà sauvegardée se
+  rouvre toujours correctement, ou trancher et le dire.
+- Le dino doit rester **au-dessus** du fond : là où les deux traits se croisent, c'est celui du dino qui
+  doit gagner, sinon sa silhouette se perd dans le décor.
 - Changer de fond en cours de route : décider ce qui arrive aux couleurs déjà posées et le dire. Le plus
   simple et le plus honnête pour un enfant est de demander confirmation si le dessin n'est pas vierge.
 - L'entrée du décor doit être **sauvegardée dans l'œuvre** (`{dinoId, decorId, fills}`), sinon la

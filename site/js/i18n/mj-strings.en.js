@@ -718,11 +718,11 @@ window.MJ_STRINGS = {
    "comparaison": "The {big} is {mot} than the {small}!",
    "unite": {
     "tCourt": "t",
-    "kgCourt": "kg",
+    "kgCourt": "lb",
     "mCourt": "ft",
     "reperEnfant": "3 ft (you)",
     "tonnes": "tons",
-    "kilos": "kilos",
+    "kilos": "pounds",
     "metres": "feet"
    },
    "annonceMesure": "The {nom}: {val}!"
@@ -803,8 +803,6 @@ window.MJ_STRINGS = {
    "choisisUnDino": "Choose a dino to color!",
    "autreDino": "Another dino",
    "modele": "Model",
-   "zoomer": "Zoom in",
-   "vueNormale": "Normal view",
    "fini": "Done!",
    "colorierAutre": "Color another dino!",
    "galerieVide": "No drawing yet... Color your first dino!",
@@ -813,7 +811,19 @@ window.MJ_STRINGS = {
    "non": "No",
    "oui": "Yes",
    "magnifiqueNom": "Beautiful! Your {nom} looks amazing!",
-   "magnifique": "Beautiful!"
+   "magnifique": "Beautiful!",
+   "decors": {
+    "bouton": "Backgrounds",
+    "titreMenu": "Choose a background",
+    "fermer": "Close",
+    "aucun": "None",
+    "confirmerChangement": "Changing the background erases the colors already added. Continue?",
+    "desert": "Desert",
+    "foret": "Forest",
+    "montagne": "Mountain",
+    "neige": "Snow",
+    "volcan": "Volcano"
+   }
   },
   "voix": {
    "regle-mj-32": "Color your dino however you like, there's no wrong way!. I pick a dino to color . I tap the dino I like best from the list.. I pick a color and tap the drawing . The color fills the whole area I touch. I can switch colors as many times as I want!. I check the model if I need to . The \"Model\" button shows the dino in color for 2 seconds, to help me if I want.. I tap \"Done!\" to save my drawing . My artwork goes into \"My Gallery\": I can look at it, pick it back up, or delete it. No stars, no mistakes: I do it my way!. Answer right on the first try for every question to win the champion star!"

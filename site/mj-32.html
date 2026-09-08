@@ -69,6 +69,7 @@
     #modelBtn { background:linear-gradient(135deg,#29b6f6,#4fc3f7); color:#012; }
     #finBtn { background:linear-gradient(135deg,#43a047,#66bb6a); color:#fff; }
     #zoomBtn { background:linear-gradient(135deg,#7e57c2,#9575cd); color:#fff; }
+    #decorBtn { background:linear-gradient(135deg,#8d6e63,#a1887f); color:#fff; }
     .atelier-btn:active { transform:scale(.94); }
     /* Boutons masqués pendant l'écran atelier quand ils ne s'appliquent pas (HO-MJ-10) :
        zoomBtn disparaît une fois zoomé (le zoom loupe n'a qu'un seul niveau, cf. figée),
@@ -156,6 +157,35 @@
     }
     #bigView .resumeBtn:active { transform:translateX(-50%) scale(.94); }
 
+    /* ── Sous-menu Décors (HO-MJ-09 chantier B) ── */
+    #decorModal {
+      position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:60;
+      display:flex; align-items:center; justify-content:center; padding:20px;
+    }
+    #decorModal .box {
+      background:#2d1f3d; border-radius:20px; padding:20px; max-width:360px; width:100%;
+      text-align:center; box-shadow:0 8px 30px #000a; border:2px solid rgba(255,255,255,0.1);
+    }
+    #decorModal .msg { font-size:1.05rem; font-weight:900; margin-bottom:14px; color:#fff; }
+    #decorModal .decor-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; }
+    /* 6 cartes (5 décors + "Aucun") : cible tactile >= 80px (règle transverse mini-jeux),
+       3 colonnes x 2 lignes tient à 320px de large (carte ~96px avec le gap). */
+    .decor-card {
+      background:#fff; border-radius:14px; padding:6px; cursor:pointer;
+      display:flex; flex-direction:column; align-items:center; gap:4px;
+      min-height:88px; border:3px solid transparent;
+    }
+    .decor-card.sel { border-color:#ffe066; }
+    .decor-card:active { transform:scale(.94); }
+    .decor-card .demoji { font-size:1.8rem; }
+    .decor-card .dname { color:#222; font-size:.72rem; font-weight:900; text-align:center; line-height:1.15; }
+    #decorModal .closeDecor {
+      margin-top:16px; min-height:48px; width:100%; border:none; border-radius:16px;
+      font-size:1rem; font-weight:900; cursor:pointer; font-family:inherit;
+      background:linear-gradient(135deg,#43a047,#66bb6a); color:#fff; box-shadow:0 3px 8px #0005;
+    }
+    #decorModal .closeDecor:active { transform:scale(.96); }
+
     /* ── Modal confirmation suppression ── */
     #confirmModal {
       position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:60;
@@ -196,6 +226,7 @@
         <div class="atelier-top">
           <button class="atelier-btn" id="backChoiceBtn">🔙 Autre dino</button>
           <button class="atelier-btn" id="modelBtn">🦕 Modèle</button>
+          <button class="atelier-btn" id="decorBtn">🏞️ Décors</button>
           <button class="atelier-btn" id="zoomBtn">🔍 Zoomer</button>
           <button class="atelier-btn" id="finBtn">✅ Fini !</button>
         </div>
@@ -221,6 +252,14 @@
     <button class="closeBig" id="closeBig">✕</button>
     <img id="bigImg" alt="">
     <button class="resumeBtn" id="resumeBtn">🖍️ Reprendre en copie</button>
+  </div>
+
+  <div id="decorModal" class="hidden">
+    <div class="box">
+      <div class="msg" id="decorMsg">Choisis un décor</div>
+      <div class="decor-grid" id="decorGrid"></div>
+      <button class="closeDecor" id="closeDecor">👍 Fermer</button>
+    </div>
   </div>
 
   <div id="confirmModal" class="hidden">
@@ -286,6 +325,36 @@
     ];
 
     function baseName(png) { return png.replace(/\.(jpg|jpeg|png|webp)$/i, ''); }
+
+    // ─── HO-MJ-09 chantier B : sous-menu Décors ───
+    // Décision figée Papa Yann 2026-09-08 : TOUS les fonds proposés pour TOUS les
+    // dinos, aucun filtre par biome/époque — ne pas rouvrir ce choix.
+    // 5 fonds au trait, 1536x1024 (ratio 1.5:1), noir et blanc pur, centre volontairement
+    // vide (le sol, sous l'horizon) pour que le dino s'y pose. Déjà produits et commités,
+    // rien à générer ici (cf. handoff HO-MJ-09).
+    const DECORS = [
+      { id: 'desert',   emoji: '🏜️', file: 'fond_desert_coloriage.webp' },
+      { id: 'foret',     emoji: '🌲', file: 'fond_foret_coloriage.webp' },
+      { id: 'montagne',  emoji: '⛰️', file: 'fond_montagne_coloriage.webp' },
+      { id: 'neige',     emoji: '❄️', file: 'fond_neige_coloriage.webp' },
+      { id: 'volcan',    emoji: '🌋', file: 'fond_volcan_coloriage.webp' },
+    ];
+    // Ratio natif mesuré des 5 fichiers (1536x1024) — utilisé pour calculer la hauteur
+    // du fond à partir de la largeur du canvas SANS charger l'image au préalable
+    // (measureNameBandHeight doit connaître la hauteur totale avant de créer le canvas).
+    const DECOR_RATIO_H = 1024 / 1536;
+
+    function decorById(id) { return DECORS.find(d => d.id === id) || null; }
+
+    // Où poser le dino DANS le fond, en fraction de la hauteur du fond (mesuré sur les
+    // 5 aperçus : horizon vers 55-65%, sol vide en dessous) — la base du dino (bas de
+    // son canvas carré) touche cette ligne, jamais plus bas (déborderait du sol visible
+    // ni plus haut (flotterait au-dessus de l'horizon, incohérent avec "posé au sol").
+    const DECOR_DINO_BASE_RATIO = 0.86;
+    // Largeur du dino dans le fond, en fraction de la largeur du canvas — assez grand
+    // pour rester le sujet principal (pas noyé dans le décor), assez petit pour tenir
+    // entièrement dans la bande de sol entre l'horizon et le bas du fond.
+    const DECOR_DINO_WIDTH_RATIO = 0.58;
 
     // ─── HO-MJ-09 chantier A : nom du dino en MAJUSCULES creuses, coloriables ───
     // Décision figée Papa Yann 2026-09-08 (voir handoff) : MAJUSCULES uniquement,
@@ -698,14 +767,21 @@
       });
     }
 
-    function openAtelier(dino, resumeFills) {
+    function openAtelier(dino, resumeFills, resumeDecorId) {
       currentDino = dino;
       document.getElementById('screenChoice').classList.add('hidden');
       document.getElementById('screenGallery').classList.add('hidden');
       document.getElementById('screenAtelier').classList.remove('hidden');
       document.getElementById('modelImg').src = MODEL_DIR + dino.png;
-      loadLineart(dino, resumeFills);
+      currentDecorId = resumeDecorId || null;
+      loadLineart(dino, resumeFills, currentDecorId);
     }
+
+    // Décor actif de l'atelier courant (HO-MJ-09 chantier B) — null = aucun fond,
+    // comportement historique inchangé (canvas carré, pas de composition). Suit
+    // currentDino : remis à null/à la valeur reprise à chaque (ré)ouverture d'atelier
+    // (openAtelier/resumePiece), jamais persistant entre deux dinos différents.
+    let currentDecorId = null;
 
     // ═══════════════ ATELIER : canvas + flood fill ═══════════════
     // resumeFills (optionnel) : tableau [{nx,ny,hex}] d'une œuvre déjà coloriée
@@ -714,7 +790,10 @@
     // sauvegarde. Jamais de dataURL bitmap comme point de départ : c'est la cause
     // du bavure/contour-qui-prend-la-couleur-du-fond signalée par Papa Yann
     // (recopier un JPEG dégradé au lieu de reconstruire depuis la source vectorielle).
-    function loadLineart(dino, resumeFills) {
+    // decorId (optionnel, HO-MJ-09 chantier B) : fond de paysage à composer DERRIÈRE
+    // le dino avant de figer le masque de contour — voir composeDecorAndDino ci-dessous
+    // pour la décision de mise en page (canvas paysage vs carré recadré).
+    function loadLineart(dino, resumeFills, decorId) {
       // Toute (ré)ouverture de l'atelier repart en vue normale (HO-MJ-10) : un zoom
       // resté actif d'une session précédente sur ce même <canvas> n'a aucun sens pour
       // un nouveau dino / une nouvelle réédition — sans ce reset la transformation CSS
@@ -728,58 +807,19 @@
       if (zob) zob.classList.add('hidden');
       ctx = canvas.getContext('2d', { willReadFrequently: true });
       const lineSrc = COLORIAGE_DIR + baseName(dino.png) + '_coloriage.webp';
+      const decor = decorById(decorId);
       const img = new Image();
       img.onload = () => {
-        // Redimensionne le canvas interne pour garder les proportions, plafonné ~800px
-        const maxSide = 800;
-        let w = img.naturalWidth, h = img.naturalHeight;
-        const scale = Math.min(maxSide / w, maxSide / h, 1);
-        w = Math.round(w * scale) || maxSide;
-        h = Math.round(h * scale) || maxSide;
-        // HO-MJ-09 chantier A : mesure la bande de nom AVANT de fixer canvas.height
-        // (measureText ne dépend pas des dimensions du canvas, seulement de ctx.font) —
-        // on dimensionne le canvas une seule fois, pas de redraw après coup.
-        canvas.width = w; // nécessaire pour que ctx soit lié à un canvas de la bonne largeur
-        const dinoName = (currentDino && currentDino.name) || '';
-        const bandH = dinoName ? measureNameBandHeight(ctx, dinoName, w) : 0;
-        canvas.width = w;
-        canvas.height = h + bandH;
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0, 0, w, h + bandH);
-        ctx.drawImage(img, 0, 0, w, h);
-        if (dinoName) {
-          // Mur de séparation dino/bande de nom (bug trouvé en recette Playwright,
-          // HO-MJ-09) : sans ce trait, le fond blanc du dino et le fond blanc de
-          // la bande de nom ne forment qu'UNE SEULE zone blanche continue pour le
-          // flood fill — colorier n'importe quelle lettre remplissait TOUT le
-          // dino (et inversement). Un trait plein largeur, aussi épais que le
-          // diamètre de dilatation du masque de contour (2×CONTOUR_DILATE_R),
-          // fait de cette ligne un mur infranchissable même après dilation.
-          ctx.strokeStyle = '#000000';
-          ctx.lineWidth = CONTOUR_DILATE_R * 2 + 2;
-          ctx.beginPath();
-          ctx.moveTo(0, h);
-          ctx.lineTo(w, h);
-          ctx.stroke();
-          drawHollowName(ctx, dinoName, w, h, bandH);
-        }
-        // Fige le masque de contours APRÈS avoir dessiné le nom : le texte doit
-        // entrer dans le masque comme le reste du lineart (point clé du handoff —
-        // dessiner après buildContourMask casserait le coloriage des lettres).
-        // nameBandY=h : à partir du mur de séparation, dilatation réduite
-        // (NAME_BAND_DILATE_R) — le mur reste un vrai mur (dessiné épais
-        // directement, cf. plus haut), mais les intérieurs de lettres ne sont
-        // plus avalés par une dilatation de 7px calibrée pour le lineart dino.
-        lineartData = ctx.getImageData(0, 0, w, h + bandH).data.slice();
-        contourMask = buildContourMask(lineartData, w, h + bandH, dinoName ? h : undefined);
-
-        fillHistory = [];
-        if (resumeFills && resumeFills.length) {
-          resumeFills.forEach(f => {
-            const x = Math.max(0, Math.min(w - 1, Math.round(f.nx * w)));
-            const y = Math.max(0, Math.min(h + bandH - 1, Math.round(f.ny * (h + bandH))));
-            if (floodFill(x, y, f.hex)) fillHistory.push({ nx: f.nx, ny: f.ny, hex: f.hex });
-          });
+        if (decor) {
+          const decorImg = new Image();
+          decorImg.onload = () => composeAndFinish(img, decorImg, resumeFills, decorId);
+          // Décor manquant/erreur réseau : on ne bloque jamais l'atelier — repli sur
+          // le dino seul (comportement identique à decorId=null), currentDecorId remis
+          // à null pour que la sauvegarde suivante ne mente pas sur ce qui est affiché.
+          decorImg.onerror = () => { currentDecorId = null; composeAndFinish(img, null, resumeFills, null); };
+          decorImg.src = COLORIAGE_DIR + decor.file;
+        } else {
+          composeAndFinish(img, null, resumeFills, null);
         }
       };
       img.onerror = () => {
@@ -792,6 +832,102 @@
         fillHistory = [];
       };
       img.src = lineSrc;
+    }
+
+    // Compose le canvas final (dino seul, ou dino + décor) puis fige contourMask et
+    // rejoue resumeFills. Point commun aux deux chemins de loadLineart (avec/sans
+    // décor) pour ne jamais dupliquer la logique de masque/rejeu (source d'un bug si
+    // les deux chemins divergent un jour).
+    function composeAndFinish(dinoImg, decorImg, resumeFills, decorId) {
+      // Redimensionne le dino pour garder ses proportions, plafonné ~800px de côté —
+      // inchangé du chantier A, c'est la taille de référence pour la police/le trait du nom.
+      const maxSide = 800;
+      let dw = dinoImg.naturalWidth, dh = dinoImg.naturalHeight;
+      const dscale = Math.min(maxSide / dw, maxSide / dh, 1);
+      dw = Math.round(dw * dscale) || maxSide;
+      dh = Math.round(dh * dscale) || maxSide;
+
+      // ─── Décision de composition (HO-MJ-09 chantier B) ───
+      // Le fond est en paysage (1536x1024, ratio 1.5:1), le coloriage du dino est carré.
+      // Piste retenue : le canvas devient PAYSAGE (largeur = celle du dino, hauteur =
+      // largeur/1.5) et affiche le fond EN ENTIER, à pleine largeur — jamais recadré.
+      // Le dino est composé PAR-DESSUS, réduit et centré horizontalement, sa base posée
+      // sur la ligne d'horizon des lineart (mesurée visuellement sur les 5 fichiers :
+      // le sol vide commence vers 55-65% de la hauteur du fond, cf. DECOR_DINO_BASE_RATIO).
+      // Rejetée : recadrer le fond au carré du dino — les 5 fonds ont justement leur
+      // grande zone à colorier (le ciel) en haut, un recadrage carré centré la coupe en
+      // grande partie et perd la moitié de l'intérêt du chantier ("la grande surface à
+      // remplir qui plaît", cf. handoff).
+      // w/h ci-dessous désignent TOUJOURS les dimensions de la zone "dino + décor" du
+      // canvas (avant la bande de nom, ajoutée ensuite comme au chantier A) : avec décor
+      // c'est le paysage entier, sans décor c'est le carré du dino comme avant (aucune
+      // régression sur les proportions historiques quand decorId est absent/null).
+      let w, h, drawScene;
+      if (decorImg) {
+        w = dw;
+        h = Math.round(w * DECOR_RATIO_H);
+        const dinoW = Math.round(w * DECOR_DINO_WIDTH_RATIO);
+        const dinoH = Math.round(dinoW * (dh / dw));
+        const dinoX = Math.round((w - dinoW) / 2);
+        const dinoY = Math.round(h * DECOR_DINO_BASE_RATIO - dinoH);
+        drawScene = (c2d) => {
+          c2d.drawImage(decorImg, 0, 0, w, h);
+          // Le dino se dessine APRÈS le décor : là où les deux traits se croisent,
+          // c'est le trait du dino qui reste visible par-dessus (règle du handoff —
+          // sinon sa silhouette se perd dans le décor). drawImage écrase les pixels
+          // du décor sous le rectangle du dino, contour dino compris.
+          c2d.drawImage(dinoImg, dinoX, dinoY, dinoW, dinoH);
+        };
+      } else {
+        w = dw; h = dh;
+        drawScene = (c2d) => { c2d.drawImage(dinoImg, 0, 0, w, h); };
+      }
+
+      // HO-MJ-09 chantier A : mesure la bande de nom AVANT de fixer canvas.height
+      // (measureText ne dépend pas des dimensions du canvas, seulement de ctx.font) —
+      // on dimensionne le canvas une seule fois, pas de redraw après coup.
+      canvas.width = w; // nécessaire pour que ctx soit lié à un canvas de la bonne largeur
+      const dinoName = (currentDino && currentDino.name) || '';
+      const bandH = dinoName ? measureNameBandHeight(ctx, dinoName, w) : 0;
+      canvas.width = w;
+      canvas.height = h + bandH;
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, w, h + bandH);
+      drawScene(ctx);
+      if (dinoName) {
+        // Mur de séparation scène/bande de nom (bug trouvé en recette Playwright,
+        // HO-MJ-09) : sans ce trait, le fond blanc de la scène et le fond blanc de
+        // la bande de nom ne forment qu'UNE SEULE zone blanche continue pour le
+        // flood fill — colorier n'importe quelle lettre remplissait TOUT le
+        // dino/décor (et inversement). Un trait plein largeur, aussi épais que le
+        // diamètre de dilatation du masque de contour (2×CONTOUR_DILATE_R),
+        // fait de cette ligne un mur infranchissable même après dilation.
+        ctx.strokeStyle = '#000000';
+        ctx.lineWidth = CONTOUR_DILATE_R * 2 + 2;
+        ctx.beginPath();
+        ctx.moveTo(0, h);
+        ctx.lineTo(w, h);
+        ctx.stroke();
+        drawHollowName(ctx, dinoName, w, h, bandH);
+      }
+      // Fige le masque de contours APRÈS avoir dessiné le nom (et le décor) : tout
+      // doit entrer dans le masque comme le reste du lineart (point clé du handoff —
+      // dessiner après buildContourMask casserait le coloriage des lettres/du décor).
+      // nameBandY=h : à partir du mur de séparation, dilatation réduite
+      // (NAME_BAND_DILATE_R) — le mur reste un vrai mur (dessiné épais
+      // directement, cf. plus haut), mais les intérieurs de lettres ne sont
+      // plus avalés par une dilatation de 7px calibrée pour le lineart dino.
+      lineartData = ctx.getImageData(0, 0, w, h + bandH).data.slice();
+      contourMask = buildContourMask(lineartData, w, h + bandH, dinoName ? h : undefined);
+
+      fillHistory = [];
+      if (resumeFills && resumeFills.length) {
+        resumeFills.forEach(f => {
+          const x = Math.max(0, Math.min(w - 1, Math.round(f.nx * w)));
+          const y = Math.max(0, Math.min(h + bandH - 1, Math.round(f.ny * (h + bandH))));
+          if (floodFill(x, y, f.hex)) fillHistory.push({ nx: f.nx, ny: f.ny, hex: f.hex });
+        });
+      }
     }
 
     function hexToRgb(hex) {
@@ -1051,6 +1187,12 @@
         id: 'p' + Date.now() + Math.random().toString(36).slice(2,7),
         name: currentDino.name,
         png: currentDino.png,
+        // decorId (HO-MJ-09 chantier B) : sauvegardé DANS l'œuvre, sinon la réédition
+        // depuis la galerie ne retrouve pas le fond et le rejeu des fills (coordonnées
+        // normalisées sur un canvas paysage) tombe à côté sur un canvas recomposé carré.
+        // null si aucun décor choisi — comportement historique (canvas carré), et c'est
+        // aussi ce que retrouvent les anciennes œuvres sans ce champ (cf. resumePiece).
+        decorId: currentDecorId || null,
         fills: fillHistory.slice(),
         thumb,
         date: Date.now()
@@ -1182,22 +1324,111 @@
       document.getElementById('screenAtelier').classList.remove('hidden');
       currentDino = dino;
       document.getElementById('modelImg').src = MODEL_DIR + dino.png;
-      loadLineart(dino, piece.fills);
+      // decorId (HO-MJ-09 chantier B) : une œuvre sauvegardée AVANT ce chantier n'a
+      // pas ce champ (piece.decorId undefined) → currentDecorId reste null, le canvas
+      // recomposé est le carré historique (aucun fond) — comportement de migration
+      // douce cohérent avec celui déjà en place pour `fills` (cf. figée mj-32.md).
+      currentDecorId = piece.decorId || null;
+      loadLineart(dino, piece.fills, currentDecorId);
     }
 
     function askDelete(id) {
       pendingDeleteId = id;
-      document.getElementById('confirmModal').classList.remove('hidden');
+      askConfirm(MJi18n.t('mj-32', 'supprimerCeDessin', 'Supprimer ce dessin ?'), (yes) => {
+        if (yes && pendingDeleteId) {
+          deleteFromGallery(pendingDeleteId);
+          renderGallery();
+        }
+        pendingDeleteId = null;
+      });
     }
 
     function confirmDelete(doDelete) {
-      document.getElementById('confirmModal').classList.add('hidden');
-      if (doDelete && pendingDeleteId) {
-        deleteFromGallery(pendingDeleteId);
-        renderGallery();
-      }
-      pendingDeleteId = null;
+      confirmAnswer(doDelete);
     }
+
+    // ─── Modal de confirmation générique (HO-MJ-09 chantier B) ───
+    // Réutilise le même #confirmModal que la suppression d'œuvre (askDelete plus haut,
+    // ré-écrit par-dessus ce mécanisme) plutôt que d'en créer un second : un seul enfant
+    // à 4 ans ne verra jamais deux modales de confirmation différentes se chevaucher,
+    // et un seul jeu de boutons Oui/Non à maintenir. `pendingConfirmCb(yes)` est appelé
+    // une fois puis oublié. Message posé dynamiquement (askDelete et le changement de
+    // décor n'ont pas le même texte).
+    let pendingConfirmCb = null;
+    function askConfirm(message, cb) {
+      pendingConfirmCb = cb;
+      document.getElementById('confirmMsg').textContent = message;
+      document.getElementById('confirmModal').classList.remove('hidden');
+    }
+    function confirmAnswer(yes) {
+      document.getElementById('confirmModal').classList.add('hidden');
+      const cb = pendingConfirmCb;
+      pendingConfirmCb = null;
+      // Message repose sur son texte par défaut (suppression) pour le prochain appel
+      // implicite (askDelete le repose de toute façon à chaque ouverture) — pas besoin
+      // de le réinitialiser ici.
+      if (cb) cb(yes);
+    }
+
+    // ═══════════════ Sous-menu Décors (HO-MJ-09 chantier B) ═══════════════
+    function decorDisplayName(id) {
+      return MJi18n.t('mj-32', 'decors.' + id, DECOR_FR_NAMES[id] || id);
+    }
+
+    function buildDecorGrid() {
+      const grid = document.getElementById('decorGrid');
+      grid.innerHTML = '';
+      // "Aucun décor" en première case : revient au canvas carré historique, toujours
+      // proposé (un enfant qui n'aime pas son choix doit pouvoir revenir en arrière).
+      const none = document.createElement('div');
+      none.className = 'decor-card' + (!currentDecorId ? ' sel' : '');
+      none.innerHTML = '<span class="demoji">🚫</span><span class="dname">' + MJi18n.t('mj-32', 'decors.aucun', 'Aucun') + '</span>';
+      none.onclick = () => chooseDecor(null);
+      grid.appendChild(none);
+      DECORS.forEach(d => {
+        const card = document.createElement('div');
+        card.className = 'decor-card' + (currentDecorId === d.id ? ' sel' : '');
+        card.innerHTML = '<span class="demoji">' + d.emoji + '</span><span class="dname">' + decorDisplayName(d.id) + '</span>';
+        card.onclick = () => chooseDecor(d.id);
+        grid.appendChild(card);
+      });
+    }
+
+    function openDecorMenu() {
+      buildDecorGrid();
+      document.getElementById('decorModal').classList.remove('hidden');
+    }
+    function closeDecorMenu() {
+      document.getElementById('decorModal').classList.add('hidden');
+    }
+
+    // Applique le décor choisi (ou son retrait) en recomposant le canvas. Si un dessin
+    // non vierge existe déjà (fillHistory non vide), demande confirmation avant de
+    // recomposer : changer de fond force un rechargement complet du canvas (nouvelles
+    // dimensions possibles, paysage <-> carré), donc TOUTES les couleurs déjà posées
+    // disparaissent avec le lineart précédent — décision du handoff ("le plus simple et
+    // le plus honnête pour un enfant est de demander confirmation si le dessin n'est pas
+    // vierge"). Un choix identique au décor déjà actif ne redemande rien (rien à perdre).
+    function chooseDecor(decorId) {
+      if (decorId === currentDecorId) { closeDecorMenu(); return; }
+      const apply = () => {
+        closeDecorMenu();
+        currentDecorId = decorId;
+        loadLineart(currentDino, null, currentDecorId);
+      };
+      if (fillHistory.length) {
+        closeDecorMenu();
+        askConfirm(MJi18n.t('mj-32', 'decors.confirmerChangement', 'Changer de décor efface les couleurs déjà posées. Continuer ?'), (yes) => {
+          if (yes) apply();
+        });
+      } else {
+        apply();
+      }
+    }
+
+    // Repli FR en dur si une clé decors.<id> manque du pack de traduction (même principe
+    // que le reste du fichier : le FR est le canon, jamais de trou visible pour l'enfant).
+    const DECOR_FR_NAMES = { desert: 'Désert', foret: 'Forêt', montagne: 'Montagne', neige: 'Neige', volcan: 'Volcan' };
 
     // ═══════════════ Init ═══════════════
     function backToChoice() {
@@ -1213,6 +1444,9 @@
       document.getElementById('choiceTitle').textContent = MJi18n.t('mj-32', 'choisisUnDino', 'Choisis un dino à colorier !');
       document.getElementById('backChoiceBtn').textContent = '🔙 ' + MJi18n.t('mj-32', 'autreDino', 'Autre dino');
       document.getElementById('modelBtn').textContent = '🦕 ' + MJi18n.t('mj-32', 'modele', 'Modèle');
+      document.getElementById('decorBtn').textContent = '🏞️ ' + MJi18n.t('mj-32', 'decors.bouton', 'Décors');
+      document.getElementById('decorMsg').textContent = MJi18n.t('mj-32', 'decors.titreMenu', 'Choisis un décor');
+      document.getElementById('closeDecor').textContent = '👍 ' + MJi18n.t('mj-32', 'decors.fermer', 'Fermer');
       document.getElementById('zoomBtn').textContent = '🔍 ' + MJi18n.t('mj-32', 'zoomer', 'Zoomer');
       document.getElementById('zoomOutBtn').textContent = '↩️ ' + MJi18n.t('mj-32', 'vueNormale', 'Vue normale');
       document.getElementById('finBtn').textContent = '✅ ' + MJi18n.t('mj-32', 'fini', 'Fini !');
@@ -1266,6 +1500,9 @@
       });
       document.getElementById('zoomBtn').onclick = enterZoom;
       document.getElementById('zoomOutBtn').onclick = exitZoom;
+      document.getElementById('decorBtn').onclick = openDecorMenu;
+      document.getElementById('closeDecor').onclick = closeDecorMenu;
+      document.getElementById('decorModal').onclick = (e) => { if (e.target.id === 'decorModal') closeDecorMenu(); };
 
       if (Tracker && Tracker.startSession) Tracker.startSession('mj-32');
     }

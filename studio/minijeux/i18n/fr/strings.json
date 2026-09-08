@@ -811,7 +811,19 @@
    "non": "Non",
    "oui": "Oui",
    "magnifiqueNom": "Magnifique ! Ton {nom} est superbe !",
-   "magnifique": "Magnifique !"
+   "magnifique": "Magnifique !",
+   "decors": {
+    "bouton": "Décors",
+    "titreMenu": "Choisis un décor",
+    "fermer": "Fermer",
+    "aucun": "Aucun",
+    "confirmerChangement": "Changer de décor efface les couleurs déjà posées. Continuer ?",
+    "desert": "Désert",
+    "foret": "Forêt",
+    "montagne": "Montagne",
+    "neige": "Neige",
+    "volcan": "Volcan"
+   }
   },
   "voix": {
    "regle-mj-32": "Colorie ton dino comme tu veux, il n’y a pas d’erreur !. Je choisis un dino à colorier . Je tape sur le dino que je préfère dans la liste.. Je choisis une couleur et je tape dans le dessin . La couleur remplit toute la zone que je touche. Je peux changer de couleur autant de fois que je veux !. Je regarde le modèle si j’ai besoin . Le bouton « Modèle » montre le dino en couleur 2 secondes, pour m’aider si je veux.. Je tape « Fini ! » pour garder mon dessin . Mon œuvre part dans « Ma galerie » : je peux la regarder, la reprendre pour continuer, ou la supprimer. Pas d’étoiles, pas d’erreur : je fais comme je veux !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"

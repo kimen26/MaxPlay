@@ -803,8 +803,6 @@ window.MJ_STRINGS = {
    "choisisUnDino": "Escolhe um dino para colorir!",
    "autreDino": "Outro dino",
    "modele": "Modelo",
-   "zoomer": "Ampliar",
-   "vueNormale": "Vista normal",
    "fini": "Pronto!",
    "colorierAutre": "Colorir outro dino!",
    "galerieVide": "Ainda não tem nenhuma obra... Colore seu primeiro dino!",
@@ -813,7 +811,19 @@ window.MJ_STRINGS = {
    "non": "Não",
    "oui": "Sim",
    "magnifiqueNom": "Lindo! Seu {nom} ficou show!",
-   "magnifique": "Lindo!"
+   "magnifique": "Lindo!",
+   "decors": {
+    "bouton": "Cenários",
+    "titreMenu": "Escolhe um cenário",
+    "fermer": "Fechar",
+    "aucun": "Nenhum",
+    "confirmerChangement": "Trocar de cenário apaga as cores que você já colocou. Continuar?",
+    "desert": "Deserto",
+    "foret": "Floresta",
+    "montagne": "Montanha",
+    "neige": "Neve",
+    "volcan": "Vulcão"
+   }
   },
   "voix": {
    "regle-mj-32": "Colore seu dino do jeito que você quiser, não tem erro!. Eu escolho um dino para colorir . Eu toco no dino que eu preferir na lista.. Eu escolho uma cor e toco no desenho . A cor preenche toda a área que eu tocar. Eu posso trocar de cor quantas vezes eu quiser!. Eu olho o modelo se eu precisar . O botão « Modelo » mostra o dino colorido por 2 segundos, para me ajudar se eu quiser.. Eu toco em « Pronto! » para guardar meu desenho . Minha obra vai para « Minha galeria »: eu posso olhar ela, continuar de onde parei, ou apagar. Sem estrelas, sem erro: eu faço do jeito que eu quiser!. Responda certo na primeira tentativa em todas as perguntas para ganhar a estrela de campeão!"

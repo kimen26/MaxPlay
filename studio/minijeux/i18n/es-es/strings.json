@@ -809,7 +809,19 @@
    "non": "No",
    "oui": "Sí",
    "magnifiqueNom": "¡Precioso! ¡Tu {nom} es magnífico!",
-   "magnifique": "¡Precioso!"
+   "magnifique": "¡Precioso!",
+   "decors": {
+    "bouton": "Fondos",
+    "titreMenu": "Elige un fondo",
+    "fermer": "Cerrar",
+    "aucun": "Ninguno",
+    "confirmerChangement": "Cambiar de fondo borra los colores ya puestos. ¿Continuar?",
+    "desert": "Desierto",
+    "foret": "Bosque",
+    "montagne": "Montaña",
+    "neige": "Nieve",
+    "volcan": "Volcán"
+   }
   },
   "voix": {
    "regle-mj-32": "¡Colorea tu dinosaurio como quieras, no hay ningún error!. Elijo un dinosaurio para colorear . Toco el dinosaurio que prefiero de la lista.. Elijo un color y toco en el dibujo . El color rellena toda la zona que toco. ¡Puedo cambiar de color tantas veces como quiera!. Miro el modelo si lo necesito . El botón «Modelo» muestra el dinosaurio en color durante 2 segundos, para ayudarme si quiero.. Toco «¡Terminado!» para guardar mi dibujo . Mi obra va a «Mi galería»: puedo verla, retomarla para continuar, o borrarla. Sin estrellas, sin errores: ¡hago lo que quiero!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"

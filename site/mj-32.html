@@ -268,23 +268,42 @@
     // 1-3px dans le trait (compression webp / anti-aliasing) → le flood fill fuit.
     // La dilation bouche ces trous ; le masque reste figé depuis le lineart original
     // (jamais recalculé depuis le canvas courant — règle 🔒 de la figée).
-    let contourMask = null; // Uint8Array(w*h), 1 = mur infranchissable
+    let contourMask = null; // Uint8Array(w*h), 1 = mur infranchissable (dilaté)
+    // Masque de la BANDE de dilatation (HO-MJ-08, 2026-09-08) : contourMask=1 mais le
+    // lineart original y est CLAIR (lum >= LUM_SEUIL_TRAIT, donc PAS un vrai trait noir,
+    // juste la marge de sécurité ajoutée par la dilatation R px). Sert uniquement à la
+    // passe d'extension post-fill (extendFillIntoBand) — jamais à isContour()/canFill(),
+    // qui continuent d'utiliser contourMask tel quel pour ne jamais rouvrir la fuite
+    // fond→dino du Cryolophosaure (#6389). Précalculé une fois au chargement (pas par fill,
+    // règle perf du handoff).
+    let bandMask = null; // Uint8Array(w*h), 1 = pixel de bande (mur dilaté mais pas trait réel)
+    // Masque du TRAIT RÉEL, non dilaté (lum < LUM_SEUIL_TRAIT dans le lineart original).
+    // HO-MJ-08 correctif orchestrateur 2026-09-08 : la passe d'extension doit s'arrêter
+    // sur le trait lui-même, pas seulement rester dans bandMask. Mesuré sur le Spinosaure :
+    // le trait de la voile du dos fait 3 px de large (médiane, min 1 px) alors que la bande
+    // de dilatation fait CONTOUR_DILATE_R = 7 px de chaque côté — la bande traverse donc
+    // le trait de part en part, et sans cette garde la couleur ressortait de l'autre côté
+    // (orange qui bavait dans la voile et sur la patte avant).
+    let traitMask = null; // Uint8Array(w*h), 1 = pixel de trait réel, infranchissable
+
+    const CONTOUR_DILATE_R = 7; // dilation : bouche les trous à l'échelle du canvas.
+                 // Mesuré (#6389) : le Cryolophosaure a une VRAIE brèche blanche pure
+                 // dans le trait du dos — le chemin de fuite passe à 5,4 px du mur,
+                 // il faut donc R >= 6 (R=4 laissait le torse se remplir avec le fond).
+                 // Le durable serait de patcher le lineart côté pôle dino.
+    const LUM_SEUIL_TRAIT = 200; // seuil haut : certains traits sont du gris CLAIR (dino #10 :
+                 // le contour du dos est gris pâle → invisible à 128, le fill traversait).
+                 // Les intérieurs des coloriages sont quasi blancs purs, ce seuil ne crée
+                 // pas de faux murs.
 
     function buildContourMask(src, w, h) {
       const base = new Uint8Array(w * h);
       for (let i = 0; i < w * h; i++) {
         const li = i * 4;
         const lum = 0.299*src[li] + 0.587*src[li+1] + 0.114*src[li+2];
-        // seuil haut (200) : certains traits sont du gris CLAIR (dino #10 : le contour
-        // du dos est gris pâle → invisible à 128, le fill traversait). Les intérieurs
-        // des coloriages sont quasi blancs purs, ce seuil ne crée pas de faux murs.
-        if (lum < 200) base[i] = 1;
+        if (lum < LUM_SEUIL_TRAIT) base[i] = 1;
       }
-      const R = 7; // dilation : bouche les trous à l'échelle du canvas.
-                   // Mesuré (#6389) : le Cryolophosaure a une VRAIE brèche blanche pure
-                   // dans le trait du dos — le chemin de fuite passe à 5,4 px du mur,
-                   // il faut donc R >= 6 (R=4 laissait le torse se remplir avec le fond).
-                   // Le durable serait de patcher le lineart côté pôle dino.
+      const R = CONTOUR_DILATE_R;
       const out = new Uint8Array(w * h);
       for (let y = 0; y < h; y++) {
         for (let x = 0; x < w; x++) {
@@ -298,6 +317,15 @@
           }
         }
       }
+      // Bande = dilaté (out=1) MAIS pas un vrai trait (base=0). C'est cette zone,
+      // et SEULEMENT elle, que la passe d'extension post-fill est autorisée à
+      // recolorier — jamais un pixel où base=1 (trait réel, lum < seuil).
+      const band = new Uint8Array(w * h);
+      for (let i = 0; i < w * h; i++) {
+        if (out[i] && !base[i]) band[i] = 1;
+      }
+      bandMask = band;
+      traitMask = base; // trait réel non dilaté : mur dur de la passe d'extension
       return out;
     }
 
@@ -426,6 +454,10 @@
       const TOL = 48; // tolérance anti-aliasing webp
       const visited = new Uint8Array(w * h);
       const stack = [[startX, startY]];
+      // Bord de la zone remplie, collecté span par span PENDANT le flood fill (scanline) :
+      // sert de source directe à l'extension dans la bande, sans devoir rescanner w*h
+      // pixels après coup (perf — canvas 800×800, doit rester < 50ms, cf. handoff HO-MJ-08).
+      const filledSpans = []; // [xl, xr, y, xl, xr, y, ...]
 
       while (stack.length) {
         let [x, y] = stack.pop();
@@ -434,6 +466,7 @@
         while (xl > 0 && canFill(data, idx(xl-1, y), startR, startG, startB, TOL)) xl--;
         let xr = x;
         while (xr < w-1 && canFill(data, idx(xr+1, y), startR, startG, startB, TOL)) xr++;
+        filledSpans.push(xl, xr, y);
 
         let spanAbove = false, spanBelow = false;
         for (let xi = xl; xi <= xr; xi++) {
@@ -456,6 +489,7 @@
           }
         }
       }
+      extendFillIntoBand(data, w, h, idx, filledSpans, fr, fg, fb);
       ctx.putImageData(imgData, 0, 0);
       return true;
     }
@@ -464,6 +498,90 @@
       if (isContour(pi)) return false; // jamais franchir un trait du dessin original
       const r = data[pi], g = data[pi+1], b = data[pi+2];
       return Math.abs(r-r0) <= tol && Math.abs(g-g0) <= tol && Math.abs(b-b0) <= tol;
+    }
+
+    // ─── Extension dans la bande de dilatation (HO-MJ-08, 2026-09-08) ───
+    // Le flood fill principal s'arrête sur contourMask (masque DILATÉ de
+    // CONTOUR_DILATE_R px) : nécessaire pour ne pas fuir à travers les micro-trous
+    // du trait (#6389), mais ça laisse une bande blanche de ~R px entre la couleur
+    // et le vrai trait noir — c'est le « halo blanc » signalé par Papa Yann.
+    // Cette passe BFS multi-source part des pixels tout juste remplis (`visited`)
+    // et avance UNIQUEMENT dans bandMask (dilaté mais lineart clair, PAS un vrai
+    // trait) jusqu'à CONTOUR_DILATE_R itérations — donc jamais plus loin que la
+    // largeur de la bande, jamais à travers un pixel où le lineart est sombre.
+    // Effet de bord accepté (documenté dans le handoff) : au droit d'une VRAIE
+    // brèche du trait (Cryolophosaure), la couleur peut baver de R px max de
+    // l'autre côté — une tache, pas une fuite de zone entière.
+    // Buffer de visite RÉUTILISÉ entre les appels (une passe = quelques dizaines de
+    // milliers de marquages max sur un fond entier ; réallouer 640 000 octets par
+    // clic était le principal coût mesuré). Un compteur de "génération" évite d'avoir
+    // à le remettre à zéro entre deux fills : un pixel n'est "visité" que si sa valeur
+    // stockée == la génération courante.
+    let _bandVisitedGen = null;   // Uint32Array(w*h), lazy-créé à la taille du canvas courant
+    let _bandVisitedTag = 0;
+    let _bandFront = null;        // Int32Array(w*h*3), même principe : alloué une fois par taille de canvas
+    function _ensureBandBuffers(w, h) {
+      if (!_bandVisitedGen || _bandVisitedGen.length !== w * h) {
+        _bandVisitedGen = new Uint32Array(w * h);
+        _bandFront = new Int32Array(w * h * 3);
+        _bandVisitedTag = 0;
+      }
+      _bandVisitedTag++;
+    }
+
+    function extendFillIntoBand(data, w, h, idx, filledSpans, fr, fg, fb) {
+      if (!bandMask) return;
+      _ensureBandBuffers(w, h);
+      const bandVisited = _bandVisitedGen;
+      const tag = _bandVisitedTag;
+      const R = CONTOUR_DILATE_R;
+      // Frontière typée réutilisée entre appels (allouée une fois par taille de
+      // canvas, cf. _ensureBandBuffers) : au pire un pixel de bande entre 1 fois
+      // (marqué par tag), donc w*h*3 borne large et sûre sans réallocation ni push().
+      const front = _bandFront;
+      let frontLen = 0;
+
+      function tryAdd(nx, ny, dist) {
+        if (nx < 0 || ny < 0 || nx >= w || ny >= h) return;
+        const ni = ny * w + nx;
+        // Le trait réel est un mur DUR pour l'extension : sans ça, un trait plus fin
+        // que la bande de dilatation (voile du Spinosaure : 3 px contre 7 px de bande)
+        // est entièrement recouvert par la bande, la BFS le traverse et la couleur
+        // ressort de l'autre côté. Mesuré et corrigé par l'orchestrateur (HO-MJ-08).
+        if (traitMask && traitMask[ni]) return;
+        if (bandMask[ni] && bandVisited[ni] !== tag) {
+          bandVisited[ni] = tag;
+          front[frontLen++] = nx; front[frontLen++] = ny; front[frontLen++] = dist;
+        }
+      }
+
+      // Source multi-points : seuls les pixels de bande touchant le BORD de la
+      // zone remplie (spans scanline du fill qui vient de tourner) amorcent la
+      // BFS — jamais un scan w×h. `filledSpans` ne contient que les lignes
+      // effectivement traversées par le fill, donc son coût est proportionnel
+      // à la taille de la zone coloriée, pas à la taille du canvas.
+      for (let s = 0; s < filledSpans.length; s += 3) {
+        const xl = filledSpans[s], xr = filledSpans[s+1], y = filledSpans[s+2];
+        tryAdd(xl - 1, y, 0);
+        tryAdd(xr + 1, y, 0);
+        for (let xi = xl; xi <= xr; xi++) {
+          tryAdd(xi, y - 1, 0);
+          tryAdd(xi, y + 1, 0);
+        }
+      }
+
+      let head = 0;
+      while (head < frontLen) {
+        const x = front[head], y = front[head+1], dist = front[head+2];
+        head += 3;
+        const pi = idx(x, y);
+        data[pi] = fr; data[pi+1] = fg; data[pi+2] = fb; data[pi+3] = 255;
+        if (dist >= R) continue;
+        tryAdd(x - 1, y, dist + 1);
+        tryAdd(x + 1, y, dist + 1);
+        tryAdd(x, y - 1, dist + 1);
+        tryAdd(x, y + 1, dist + 1);
+      }
     }
 
     function canvasPointFromEvent(e) {
@@ -547,9 +665,19 @@
         date: Date.now()
       });
 
-      if (typeof playEndSound === 'function') playEndSound(1, 1);
-      if (window.TTS && TTS.supported()) {
-        TTS.speak(MJi18n.t('mj-32', 'magnifiqueNom', 'Magnifique ! Ton {nom} est superbe !', { nom: currentDino.name }), { pitch: 1.05, priority: true });
+      // Une seule voix à la fois (HO-MJ-08, retour Papa Yann : fanfare + voix MP3
+      // du pool + TTS partaient ensemble, "pas clair"). Fanfare seule d'abord, PUIS
+      // la phrase nominative (langue du site) une fois la fanfare terminée —
+      // opts.voice:false coupe la voix MP3 du pool, opts.onFanfareEnd enchaîne le TTS.
+      const direNom = () => {
+        if (window.TTS && TTS.supported()) {
+          TTS.speak(MJi18n.t('mj-32', 'magnifiqueNom', 'Magnifique ! Ton {nom} est superbe !', { nom: currentDino.name }), { pitch: 1.05, priority: true });
+        }
+      };
+      if (typeof playEndSound === 'function') {
+        playEndSound(1, 1, { voice: false, onFanfareEnd: direNom });
+      } else {
+        direNom();
       }
       if (window.MaxFX) MaxFX.finalStar(document.getElementById('screenAtelier'), {style:'breathe', label: MJi18n.t('mj-32', 'magnifique', 'Magnifique !')});
 

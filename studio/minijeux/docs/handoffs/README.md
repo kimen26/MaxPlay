@@ -11,3 +11,4 @@
 | HO-MJ-05 | EPIC i18n mini-jeux · lot 6 (mj-20, mj-22, mj-42) + titre mj-14 | 4 mj-XX.html, i18n/** | fait |
 | HO-MJ-06 | EPIC i18n mini-jeux · 81 consignes parlees en anglais (voix() + repli TTS + scripts STS) | site/js/mj-i18n.js, victory-sounds.js, i18n/**, tools/ | fait (MP3 EN au quota) |
 | HO-MJ-07 | EPIC i18n mini-jeux · packs es-es et pt-br (texte seul, 2 agents en parallele, fichiers disjoints) | studio/minijeux/i18n/{es-es,pt-br}/, site/js/i18n/mj-strings.{es-es,pt-br}.js | fait (37/37 × 2, 0 erreur) |
+| HO-MJ-08 | Coloriage mj-32 : halo blanc R=7 autour des traits + cacophonie audio de fin (fanfare + voix MP3 FR + TTS langue site) | site/mj-32.html, site/js/victory-sounds.js | pret |

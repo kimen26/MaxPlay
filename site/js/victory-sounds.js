@@ -277,17 +277,50 @@ if (typeof window !== 'undefined') window.SoundPool = SoundPool;
 let _currentVictoryAudio = null;
 let _voiceTimer = null;
 
+// Repli si l'événement `ended` ne vient jamais (fichier corrompu, décodeur muet
+// sur certains navigateurs) — HO-MJ-08 : la voix suivante ne doit JAMAIS rester
+// bloquée en attente indéfiniment d'un `ended` qui ne viendra pas.
+const FANFARE_FALLBACK_MS = 4000;
+
 /**
  * Joue un son de fin selon le score, puis une petite voix en réaction.
  * @param {number} score    - points obtenus
  * @param {number} maxScore - points max possibles
+ * @param {object} [opts]
+ * @param {boolean} [opts.voice=true]   - false : pas de voix MP3 du pool par-dessus
+ *   la fanfare (HO-MJ-08 : « jamais deux voix en même temps » — un jeu qui enchaîne
+ *   sa propre phrase après la fanfare doit désactiver celle-ci). Défaut = comportement
+ *   historique inchangé pour les appelants existants.
+ * @param {function} [opts.onFanfareEnd] - callback appelé une fois la fanfare TERMINÉE
+ *   (événement `ended` de l'Audio, ou repli setTimeout si `ended` ne vient pas). Permet
+ *   d'enchaîner une voix (TTS ou MP3) sans jamais la superposer à la fanfare.
  */
-function playEndSound(score, maxScore) {
+function playEndSound(score, maxScore, opts) {
+  opts = opts || {};
+  const withVoice = opts.voice !== false; // défaut true = comportement historique
   const win = (score / maxScore) >= 0.5;
   _currentVictoryAudio = SoundPool.play(win ? 'victory' : 'end-doux', 0.85);
-  // Réaction vocale par-dessus, légèrement décalée (voix ≠ noyée dans la fanfare)
+
+  // Réaction vocale du pool par-dessus, légèrement décalée (voix ≠ noyée dans la
+  // fanfare) — comportement historique, inchangé sauf si l'appelant demande
+  // explicitement opts.voice:false.
   clearTimeout(_voiceTimer);
-  _voiceTimer = setTimeout(() => SoundPool.voice(win ? 'positif' : 'doux'), win ? 1400 : 900);
+  if (withVoice) {
+    _voiceTimer = setTimeout(() => SoundPool.voice(win ? 'positif' : 'doux'), win ? 1400 : 900);
+  }
+
+  if (typeof opts.onFanfareEnd === 'function') {
+    let fired = false;
+    const fire = () => { if (fired) return; fired = true; opts.onFanfareEnd(); };
+    if (_currentVictoryAudio) {
+      _currentVictoryAudio.addEventListener('ended', fire, { once: true });
+      _currentVictoryAudio.addEventListener('error', fire, { once: true });
+      setTimeout(fire, FANFARE_FALLBACK_MS);
+    } else {
+      // Pool vide/thème inconnu : aucune fanfare ne part, on enchaîne quand même.
+      setTimeout(fire, 0);
+    }
+  }
 }
 
 /**

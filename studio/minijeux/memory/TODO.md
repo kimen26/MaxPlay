@@ -3,6 +3,16 @@
 > Tickets ouverts uniquement, condensés en 1 ligne chacun (détail complet non recopié ici, mais préservé verbatim dans `archive/backlog-fermes-2026.md` pour les tickets qui ont une partie close, et dans l'historique git pour le reste). Extrait le 2026-09-03 (HO-MJ-01) depuis l'ancien `pmo/backlog.md` (supprimé, contenu distillé dans ce fichier + `LESSONS.md` + `archive/backlog-fermes-2026.md`).
 > Statuts : `[ ]` à faire · `[~]` en cours · `[!]` bloqué · `[?]` question ouverte.
 
+## Lane — Coloriage dino mj-32 : retours PY 2026-09-08 (HO-MJ-08)
+
+- [x] Halo blanc de ~7 px autour de chaque trait : corrigé (passe d'extension dans la bande + garde `traitMask`), anti-fuite #6389 toujours vert → HO-MJ-08 (fait 2026-09-08)
+- [x] Fin « Fini ! » : une seule voix — fanfare puis phrase nominative après sa fin (`playEndSound(..., {voice:false, onFanfareEnd})`) → HO-MJ-08 (fait 2026-09-08)
+- [ ] Idée PY 2026-09-08 : nom du dino en lettres creuses (outline) sous le dessin, dans le canvas, chaque lettre coloriable au flood fill (même historique JSON, même galerie). Police grasse ≥ 56 px, trait ≥ 6 px, 2 lignes si nom long, langue du site. À lancer après HO-MJ-08 (question ouverte : majuscules seules ou initiale + minuscules)
+- [ ] Idée PY 2026-09-08 : sous-menu « Décor » dans l'atelier coloriage : 5 fonds lineart (désert, forêt, montagne, neige, volcan) composés derrière le dino avant le masque de contour (même flood fill), puis stickers plantes (fougère, prêle, palmier, fleur) posés au tap, entrée `{type:'sticker'}` dans l'historique JSON. Réutiliser la flore du pôle dino (`dinos-plantes.js`, `img/dinos/_new-plantes/`). Fonds d'abord, stickers ensuite. Question ouverte : fonds filtrés par biome du dino ou tous pour tous
+- [ ] Asset absent : `site/img/dinos/paleoart/Scelidosaurus_coloriage.webp` (70 coloriages présents, celui-là nulle part) → 2 `ERR_FILE_NOT_FOUND` au chargement de mj-32, seul FAIL restant du smoke console. À produire côté pôle dino
+- [ ] Dette perf pré-existante mj-32 : le remplissage du FOND ENTIER coûte ~400 ms (déjà avant HO-MJ-08, calcul JS pur, le canvas n'y est pour rien). À traiter si le 1er tap paraît lent sur P30 Pro
+- [ ] Après HO-MJ-08 : patcher les linearts à brèche côté pôle dino (Cryolophosaure #6389) pour pouvoir baisser R (durable)
+
 ## Lane — EPIC i18n mini-jeux (décision PY 2026-09-05 : « évidemment tous les mini-jeux devront être traduits, les règles, les menus, les actions »)
 
 - **EPIC-I18N-MJ / AUDIT** [x] — FAIT 2026-09-05 : `docs/i18n/AUDIT-I18N-MJ-2026-09-05.md`. Constat : le panneau règle (`regle-info.js`) reçoit du texte FR en dur depuis chaque `mj-XX.html` ; ≈ 27 k caractères écran + les 36 consignes parlées `regle-mj-XX` de `textes-jeux.js` (crédits EL). 6 lots : 0 plomberie (`mj-i18n.js` + `mj-strings.<lang>.js` générés depuis `studio/minijeux/i18n/<lang>/strings.json`, contrat `regle-info.js` par clés — BLOQUANT) · 1 les 5 jeux dino déjà i18n · 2 bus/couleurs (7) · 3 casse-têtes (11) · 4 comptage à pièges pluriel/ordinaux (6) · 5 lecture/phonétique FR = refonte péda par langue (4) · 6 cas particuliers mj-20/22/42. Prochaine étape : briefs handoffs lot 0 puis lots 1-3.

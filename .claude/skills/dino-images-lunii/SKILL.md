@@ -135,7 +135,7 @@ silence, les images suivantes ont echoue en cascade sur `ECONNREFUSED`.
 
 ## Chaine d'audit et de regeneration (campagne 2026-09)
 
-Outillage ajoute pour corriger en masse des images deja en production. Quatre etapes, chacune
+Outillage ajoute pour corriger en masse des images deja en production. Cinq etapes, chacune
 son script — aucune ne se saute.
 
 | Etape | Script | Role |
@@ -143,10 +143,24 @@ son script — aucune ne se saute.
 | 1. File | `studio/dino/content/scripts/export/_gen-file-regen.cjs` | Construit `_FILE-REGEN.json` depuis les verdicts d'audit + les blocs de prompt. **Genere**, jamais tenu a la main. |
 | 2. Generation | `.claude/skills/dino-images-lunii/scripts/regen-audit.mjs` | Pilote ChatGPT ou Grok, ecrit en staging `site/img/dinos/_new-audit/`. **Ne touche jamais la production.** |
 | 3. Jugement | *(humain / agent)* | Ouvrir CHAQUE image, la juger contre les caracteristiques du dino. |
-| 4. Substitution | `.claude/skills/dino-images-lunii/scripts/substitue-audit.mjs` | Convertit (Pillow via `png2prod.py`) et **supprime definitivement l'originale**. |
+| 4. Substitution | `.claude/skills/dino-images-lunii/scripts/substitue-audit.mjs` | Convertit (Pillow via `png2prod.py`) et **supprime definitivement l'originale**. Exige un verdict enregistre (`--valide`). |
+| 5. Verification | `.claude/skills/dino-images-lunii/scripts/verifie-deploiement.mjs` | Apres le push : compare le poids servi par GitHub Pages au poids local. Un ecart = ancienne version encore servie. |
 
 **Options de `regen-audit.mjs`** : `--only <fichiers>` · `--dino <ids>` · `--n <nb>` ·
-`--pause 90` · `--port 9222|9223` · `--grok` · `--retry` · `--ref-auto <Fichier.jpg>`.
+`--pause 90` · `--port 9222|9223|9225` · `--grok` · `--retry` · `--ref-auto <Fichier.jpg>`.
+
+⚠️ **`regen-audit.mjs` ne filtre que sur la presence en staging.** Comme la substitution VIDE le
+staging, relancer un lot apres une serie de substitutions fait **tout regenerer depuis le debut**,
+y compris ce qui est deja valide et en production. Pour reprendre un lot en cours, recalculer les
+restantes depuis `_JOURNAL.tsv` (lignes `GENERE*`) et les passer en `--only`.
+
+**Navigateur** : `launch-brave.ps1` (profil `c:/tmp/brave-debug`, port 9222) par defaut. Si Brave
+tourne deja **sans** port de debug, il n'est pas recuperable — Chromium partage ses processus
+entre profils, donc une seconde instance se rattache a la premiere au lieu d'ouvrir un port. Ne
+JAMAIS fermer le Brave de l'utilisateur : lancer `launch-chromium.ps1` (Chromium de Playwright,
+profil `c:/tmp/chromium-dino`, port 9225). Le login ChatGPT n'y est a faire qu'une fois, le profil
+etant persistant. Et un CDP trouve ouvert n'est pas forcement le sien : inspecter `/json` et lire
+les URL avant de s'y connecter (L-D36).
 
 ### Les cinq regles apprises a la dure
 

@@ -313,6 +313,7 @@
 
   <script src="js/lang.js"></script>
   <script src="js/dinos-data.js"></script>
+  <script src="js/dinos-plantes.js"></script>
   <script src="js/dinos-i18n.js"></script>
   <script src="js/mj-shell.js"></script>
   <script>
@@ -345,6 +346,21 @@
     const GALLERY_MAX = 12;
     const COLORIAGE_DIR = 'img/dinos/paleoart/';
     const MODEL_DIR = 'img/dinos/paleoart/'; // héros racine purgés le 2026-07-17
+    // Plantes (HO-MJ-12) : coloriages dans un dossier distinct de celui des dinos —
+    // même DINO_PLANTES (19 entrées) que l'onglet "Les époques" de l'encyclopédie,
+    // mais seules 6 ont un coloriage produit (les autres n'apparaissent jamais ici,
+    // détecté par onerror comme pour les dinos, jamais une liste en dur).
+    const PLANTES_DIR = 'img/dinos/plantes/';
+    const PLANTES_FAMILY_ID = 'plantes';
+
+    // Une entrée choix (dino OU plante) porte son propre dossier d'assets — évite
+    // de faire dépendre tout le reste du code d'un "id latin" qui n'existe pas pour
+    // les plantes (elles n'ont pas de champ .famille). isPlante posé UNE fois à la
+    // construction de la liste (dinosOfFamily / lookup galerie), jamais recalculé
+    // depuis le nom (fragile) ou l'extension du fichier (les deux dossiers utilisent
+    // le même format .webp).
+    function assetDirFor(entry) { return (entry && entry.isPlante) ? PLANTES_DIR : COLORIAGE_DIR; }
+    function modelDirFor(entry) { return (entry && entry.isPlante) ? PLANTES_DIR : MODEL_DIR; }
 
     // Couleurs vives + nature (10 + marron/gris/vert nature) — pas de hex hardcodé "ligne bus"
     // (ce jeu n'a pas de notion de ligne RATP, palette dédiée coloriage)
@@ -800,6 +816,10 @@
     let currentFamilyId = null;
 
     function dinosOfFamily(familyId) {
+      if (familyId === PLANTES_FAMILY_ID) {
+        const plantes = (typeof DINO_PLANTES !== 'undefined' ? DINO_PLANTES : []);
+        return plantes.map(p => Object.assign({}, p, { isPlante: true }));
+      }
       return DINOS.filter(d => d.famille === familyId);
     }
 
@@ -810,7 +830,7 @@
       dinosOfFamily(familyId).forEach(d => {
         const card = document.createElement('div');
         card.className = 'thumb-card';
-        const src = COLORIAGE_DIR + baseName(d.png) + '_coloriage.webp';
+        const src = assetDirFor(d) + baseName(d.png) + '_coloriage.webp';
         card.innerHTML = '<img loading="lazy" src="' + src + '" alt=""><div class="tname">' + d.name + '</div>';
         const img = card.querySelector('img');
         img.onerror = () => card.remove();
@@ -832,6 +852,19 @@
         card.onclick = () => openFamily(f.id);
         fgrid.appendChild(card);
       });
+      // Carte "Les plantes" (HO-MJ-12) : ajoutée ICI, jamais dans DINO_FAMILLES
+      // (donnée canon du pôle DINO partagée par l'encyclopédie — la frontière
+      // autoring/produit interdit d'y greffer une notion propre à ce mini-jeu).
+      // Retirée automatiquement si aucun des 6 coloriages n'est disponible, comme
+      // les familles de dinos (markFamilyAvailability).
+      const plantCard = document.createElement('button');
+      plantCard.type = 'button';
+      plantCard.className = 'family-card';
+      plantCard.style.background = 'linear-gradient(135deg,#1b5e20,#66bb6a)';
+      plantCard.dataset.familyId = PLANTES_FAMILY_ID;
+      plantCard.innerHTML = '<span class="femoji">🌿</span><span class="flabel">' + MJi18n.t('mj-32', 'lesPlantes', 'Les plantes') + '</span>';
+      plantCard.onclick = () => openFamily(PLANTES_FAMILY_ID);
+      fgrid.appendChild(plantCard);
       // Comptage réel des coloriages disponibles par famille (asynchrone, silencieux) :
       // une famille dont AUCUN dino n'a de coloriage est retirée de la grille. Optimiste
       // au premier rendu (toutes visibles), correction dès que le préchargement répond —
@@ -839,15 +872,16 @@
       markFamilyAvailability();
     }
 
-    // Précharge (sans jamais afficher) le coloriage de chaque dino pour savoir quelles
-    // familles ont au moins 1 coloriage réel. `img.onerror` en grille dino fait déjà ce
-    // travail visuellement (carte retirée) ; ici on le fait une fois en amont pour ne
-    // jamais proposer une famille qui s'ouvrirait sur une grille vide sans explication.
+    // Précharge (sans jamais afficher) le coloriage de chaque dino/plante pour savoir
+    // quelles familles ont au moins 1 coloriage réel. `img.onerror` en grille dino fait
+    // déjà ce travail visuellement (carte retirée) ; ici on le fait une fois en amont
+    // pour ne jamais proposer une famille qui s'ouvrirait sur une grille vide.
     let familyAvailabilityChecked = false;
     function markFamilyAvailability() {
       if (familyAvailabilityChecked) return;
       familyAvailabilityChecked = true;
-      const pending = DINOS.length;
+      const plantes = (typeof DINO_PLANTES !== 'undefined' ? DINO_PLANTES : []);
+      const pending = DINOS.length + plantes.length;
       const okByFamily = {};
       let done = 0;
       function finalize() {
@@ -856,11 +890,21 @@
           if (!card) return;
           if (!okByFamily[f.id]) card.remove();
         });
+        const plantCard = document.querySelector('.family-card[data-family-id="' + PLANTES_FAMILY_ID + '"]');
+        if (plantCard && !okByFamily[PLANTES_FAMILY_ID]) plantCard.remove();
       }
+      if (pending === 0) { finalize(); return; }
       DINOS.forEach(d => {
         const probe = new Image();
         const src = COLORIAGE_DIR + baseName(d.png) + '_coloriage.webp';
         probe.onload = () => { okByFamily[d.famille] = true; if (++done === pending) finalize(); };
+        probe.onerror = () => { if (++done === pending) finalize(); };
+        probe.src = src;
+      });
+      plantes.forEach(p => {
+        const probe = new Image();
+        const src = PLANTES_DIR + baseName(p.png) + '_coloriage.webp';
+        probe.onload = () => { okByFamily[PLANTES_FAMILY_ID] = true; if (++done === pending) finalize(); };
         probe.onerror = () => { if (++done === pending) finalize(); };
         probe.src = src;
       });
@@ -884,7 +928,7 @@
       document.getElementById('screenChoice').classList.add('hidden');
       document.getElementById('screenGallery').classList.add('hidden');
       document.getElementById('screenAtelier').classList.remove('hidden');
-      document.getElementById('modelImg').src = MODEL_DIR + dino.png;
+      document.getElementById('modelImg').src = modelDirFor(dino) + dino.png;
       currentDecorId = resumeDecorId || null;
       loadLineart(dino, resumeFills, currentDecorId);
     }
@@ -918,7 +962,7 @@
       if (zb) zb.classList.remove('hidden');
       if (zob) zob.classList.add('hidden');
       ctx = canvas.getContext('2d', { willReadFrequently: true });
-      const lineSrc = COLORIAGE_DIR + baseName(dino.png) + '_coloriage.webp';
+      const lineSrc = assetDirFor(dino) + baseName(dino.png) + '_coloriage.webp';
       const decor = decorById(decorId);
       const img = new Image();
       img.onload = () => {
@@ -1299,6 +1343,10 @@
         id: 'p' + Date.now() + Math.random().toString(36).slice(2,7),
         name: currentDino.name,
         png: currentDino.png,
+        // isPlante (HO-MJ-12) : sauvegardé DANS l'œuvre pour que "Reprendre en copie"
+        // retrouve le bon dossier d'assets (img/dinos/plantes/ vs paleoart/) sans avoir
+        // à re-chercher le nom dans DINOS/DINO_PLANTES par coïncidence de basename png.
+        isPlante: !!currentDino.isPlante,
         // decorId (HO-MJ-09 chantier B) : sauvegardé DANS l'œuvre, sinon la réédition
         // depuis la galerie ne retrouve pas le fond et le rejeu des fills (coordonnées
         // normalisées sur un canvas paysage) tombe à côté sur un canvas recomposé carré.
@@ -1430,12 +1478,22 @@
       const piece = loadGallery().find(p => p.id === id);
       if (!piece || !piece.png || !piece.fills || !piece.fills.length) return;
       closeBig();
-      const dino = (typeof DINOS !== 'undefined' ? DINOS : []).find(d => d.png === piece.png) || { name: piece.name, png: piece.png };
+      // isPlante décide la source de recherche : une œuvre plante n'existe pas dans
+      // DINOS, une œuvre dino n'a rien à faire dans DINO_PLANTES. Fallback {name,png}
+      // pour les anciennes œuvres sauvegardées avant ce champ (migration douce, comme
+      // pour fills/decorId), toujours cherché côté DINOS (comportement historique).
+      const pool = piece.isPlante
+        ? (typeof DINO_PLANTES !== 'undefined' ? DINO_PLANTES : [])
+        : (typeof DINOS !== 'undefined' ? DINOS : []);
+      const found = pool.find(d => d.png === piece.png);
+      const dino = found
+        ? Object.assign({}, found, { isPlante: !!piece.isPlante })
+        : { name: piece.name, png: piece.png, isPlante: !!piece.isPlante };
       document.getElementById('screenChoice').classList.add('hidden');
       document.getElementById('screenGallery').classList.add('hidden');
       document.getElementById('screenAtelier').classList.remove('hidden');
       currentDino = dino;
-      document.getElementById('modelImg').src = MODEL_DIR + dino.png;
+      document.getElementById('modelImg').src = modelDirFor(dino) + dino.png;
       // decorId (HO-MJ-09 chantier B) : une œuvre sauvegardée AVANT ce chantier n'a
       // pas ce champ (piece.decorId undefined) → currentDecorId reste null, le canvas
       // recomposé est le carré historique (aucun fond) — comportement de migration

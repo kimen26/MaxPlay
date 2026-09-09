@@ -50,11 +50,21 @@ const page = await browser.newPage({ viewport: { width: 480, height: 900 } });
 // si le fichier est absent — comportement voulu, cf. backlog 2026-08-10). Le 404
 // navigateur d'une consigne pas encore générée n'est donc PAS un crash : on l'ignore,
 // tout le reste (JS, images, css) continue de bloquer.
+// EXCEPTION calibrée 2026-09-10 (mj-32) : le catalogue de coloriage sonde
+// `<base>_coloriage.webp` pour CHAQUE dino et CHAQUE plante, et retire de la grille
+// les entrées dont l'image manque (`img.onerror`). L'absence est donc du contrôle de
+// flux VOULU — 13 des 19 plantes n'ont pas encore de lineart — et non une panne. Seul
+// ce suffixe est toléré : n'importe quel autre asset manquant reste bloquant.
+const ASSET_OPTIONNEL = [
+  /sounds\/voix\/phrases\//,   // consignes MP3, repli TTS (2026-08-10)
+  /_coloriage\.webp$/          // sondes du catalogue de coloriage (2026-09-10)
+];
 page.on('pageerror', e => errors.push(`pageerror: ${e.message}`));
 page.on('console', m => {
   if (m.type() !== 'error') return;
   const loc = m.location();
-  if (/Failed to load resource/.test(m.text()) && loc && /sounds\/voix\/phrases\//.test(loc.url || '')) return;
+  const url = (loc && loc.url) || '';
+  if (/Failed to load resource/.test(m.text()) && ASSET_OPTIONNEL.some(re => re.test(url))) return;
   errors.push(`console.error: ${m.text()}`);
 });
 

@@ -308,4 +308,109 @@ export async function run({ page, ok }) {
 
   const lenAfterDelete = await page.evaluate(() => JSON.parse(localStorage.getItem('mj32_galerie') || '[]').length);
   ok('confirmer la suppression retire l\'œuvre de la galerie', lenAfterDelete === 0, `galerie=${lenAfterDelete}`);
+
+  // ─── HO-MJ-12 : les plantes, carte famille supplémentaire (jamais dans DINO_FAMILLES,
+  // données canon du pôle DINO) — seules les 6 plantes ayant un vrai coloriage produit
+  // (img/dinos/plantes/*_coloriage.webp) doivent apparaître, jamais une liste en dur ───
+  // On repart du dernier écran connu (galerie, après la suppression ci-dessus) :
+  // galleryColorBtn ramène à la grille de la famille encore active ("trex", cf. scénario
+  // Cryolophosaure plus haut) — backFamilyBtn remonte explicitement au niveau familles.
+  await page.click('#galleryColorBtn');
+  await page.waitForSelector('#dinoView:not(.hidden)', { timeout: 3000 });
+  await page.click('#backFamilyBtn');
+  await page.waitForSelector('#familyView:not(.hidden)', { timeout: 3000 });
+
+  const plantFamilyIndex = await page.evaluate(() => {
+    const cards = [...document.querySelectorAll('#familyGrid .family-card')];
+    return cards.findIndex(c => c.dataset.familyId === 'plantes');
+  });
+  ok('carte "Les plantes" présente au niveau familles', plantFamilyIndex >= 0, `index=${plantFamilyIndex}`);
+
+  await page.click('#familyGrid .family-card[data-family-id="plantes"]');
+  await page.waitForSelector('#dinoView:not(.hidden)', { timeout: 3000 });
+  await page.waitForTimeout(400); // laisse le temps aux onerror de retirer les cartes sans asset
+
+  const nPlantThumbs = await page.locator('#grid .thumb-card').count();
+  ok('exactement les 6 plantes avec coloriage réel affichées (les 13 autres retirées par onerror)',
+     nPlantThumbs === 6, `plantes affichées=${nPlantThumbs}`);
+
+  const plantNames = await page.locator('#grid .thumb-card .tname').allTextContents();
+  ok('le nom "Araucaria" (fiche DINO_PLANTES) apparaît, jamais un nom inventé',
+     plantNames.includes('Araucaria'), `noms=${JSON.stringify(plantNames)}`);
+
+  // Ouvre la 1ʳᵉ plante de la grille : le nom affiché dans l'atelier doit venir de la
+  // fiche (currentDino.name = DINO_PLANTES[i].name), comme pour un dino.
+  await page.click('#grid .thumb-card >> nth=0');
+  await page.waitForSelector('#screenAtelier:not(.hidden)', { timeout: 4000 });
+  await page.waitForFunction(() => {
+    const c = document.getElementById('paintCanvas');
+    return c && c.width > 0 && c.height > 0;
+  }, { timeout: 5000 });
+  await page.waitForTimeout(200);
+
+  // currentDino est une fermeture locale (pas exposée sur window) : on vérifie l'effet
+  // observable (modèle chargé, nom dans le bandeau) plutôt que la variable interne.
+  const plantAtelierModelSrc = await page.evaluate(() => document.getElementById('modelImg').src);
+  ok('modèle chargé depuis img/dinos/plantes/ (pas paleoart/)',
+     plantAtelierModelSrc.includes('/img/dinos/plantes/') && !plantAtelierModelSrc.includes('/img/dinos/paleoart/'),
+     plantAtelierModelSrc);
+
+  // Zéro ascenseur atelier vaut aussi pour une plante (règle transverse, pas seulement les dinos)
+  const plantAtelierSansScroll = await page.evaluate(() => {
+    const el = document.getElementById('screenAtelier');
+    return el.scrollHeight <= el.clientHeight + 1
+      && document.documentElement.scrollHeight <= window.innerHeight + 1;
+  });
+  ok('écran atelier SANS ascenseur pour une plante', plantAtelierSansScroll);
+
+  // Colorie la plante puis Fini ! → la pièce sauvegardée porte isPlante:true.
+  // Point de tap volontairement décalé du centre (0.15, pas 0.5) : la tige de la
+  // Prêle géante traverse le canvas de haut en bas, un tap pile sur son axe central
+  // retombe sur le trait (snap-graine) au lieu du fond — comportement déjà présent
+  // pour toute silhouette dino à ligne verticale continue, pas une régression HO-MJ-12.
+  await page.click('.palette .swatch >> nth=2');
+  const plantBox = await page.locator('#paintCanvas').boundingBox();
+  const plantBeforeFill = await page.evaluate(() => {
+    const c = document.getElementById('paintCanvas');
+    return Array.from(c.getContext('2d').getImageData(0, 0, c.width, c.height).data);
+  });
+  await page.mouse.click(plantBox.x + plantBox.width * 0.15, plantBox.y + plantBox.height * 0.1);
+  await page.waitForTimeout(250);
+  const plantAfterFill = await page.evaluate(() => {
+    const c = document.getElementById('paintCanvas');
+    return Array.from(c.getContext('2d').getImageData(0, 0, c.width, c.height).data);
+  });
+  let plantDiff = 0;
+  for (let i = 0; i < plantBeforeFill.length; i += 4) {
+    if (plantBeforeFill[i] !== plantAfterFill[i]) plantDiff++;
+  }
+  ok('flood fill a changé des pixels du canvas plante (fond colorié)', plantDiff > 0, `pixels changés=${plantDiff}`);
+  await page.click('#finBtn');
+  await page.waitForSelector('#screenGallery:not(.hidden)', { timeout: 4000 });
+
+  const plantPiece = await page.evaluate(() => {
+    const list = JSON.parse(localStorage.getItem('mj32_galerie') || '[]');
+    return list[list.length - 1];
+  });
+  ok('œuvre plante sauvegardée avec isPlante:true (résolution du bon dossier à la réédition)',
+     !!plantPiece && plantPiece.isPlante === true, JSON.stringify(plantPiece && plantPiece.isPlante));
+  ok('œuvre plante sauvegardée avec fills[] (même modèle JSON que les dinos)',
+     Array.isArray(plantPiece && plantPiece.fills) && plantPiece.fills.length >= 1);
+
+  // Reprendre en copie : doit retrouver img/dinos/plantes/, pas paleoart/
+  const plantCardInGallery = page.locator('#galleryView .thumb-card').first();
+  await plantCardInGallery.click();
+  await page.waitForSelector('#bigView:not(.hidden)', { timeout: 3000 });
+  await page.click('#resumeBtn');
+  await page.waitForSelector('#screenAtelier:not(.hidden)', { timeout: 4000 });
+  await page.waitForFunction(() => {
+    const c = document.getElementById('paintCanvas');
+    return c && c.width > 0 && c.height > 0;
+  }, { timeout: 5000 });
+  await page.waitForTimeout(300);
+
+  const plantResumedModelSrc = await page.evaluate(() => document.getElementById('modelImg').src);
+  ok('reprise en copie d\'une plante reste sur img/dinos/plantes/ (pas de bascule vers paleoart/)',
+     plantResumedModelSrc.includes('/img/dinos/plantes/') && !plantResumedModelSrc.includes('/img/dinos/paleoart/'),
+     plantResumedModelSrc);
 }

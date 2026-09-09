@@ -1,6 +1,6 @@
 // ─── back-button.js — Composant retour menu unifié ───
 //
-// v2 (package v3, 2026-07-14) : ← FANTÔME — cercle discret 42px, fond quasi
+// v2 (package v3, 2026-07-14) : ← FANTÔME — cercle discret 48px, fond quasi
 // transparent, chevron fin en SVG (fini le gros ← moche).
 // Auto-init au DOMContentLoaded : remplace tout élément .back / .back-mj / .back-btn.
 
@@ -23,8 +23,11 @@
       'display:inline-flex',
       'align-items:center',
       'justify-content:center',
-      'width:42px',
-      'height:42px',
+      // 48x48 : plancher de cible tactile (Material 48dp / WCAG AAA). Ce style
+      // INLINE bat la feuille (.mp-ghost-back) — c'est ici qu'il faut corriger,
+      // sinon le bouton reste a 42 quoi que dise le CSS.
+      'width:48px',
+      'height:48px',
       'padding:0',
       'color:var(--ink-2, #c3d0e8)',
       'background:rgba(255,255,255,0.06)',

@@ -248,18 +248,22 @@ body:not([data-ambiance]) { --bg0:#0a1226; --bg1:#0c1730; --card:#0e1a34; --card
    (règle = accent du thème · avis = violet parent FIXE)
    ════════════════════════════════════════════════════════════════════ */
 
-/* ← fantôme : cercle discret, chevron SVG fin (injecté par back-button.js) */
+/* ← fantôme : cercle discret, chevron SVG fin (injecté par back-button.js)
+   48x48 : plancher de cible tactile (Material 48dp / WCAG AAA). Le disque
+   PARAISSAIT 42 px et se ratait au doigt ; on agrandit la zone touchable
+   sans grossir le dessin — le chevron reste centré par le flex. */
 .mp-ghost-back {
-  width:42px; height:42px; border-radius:50%; border:1px solid rgba(255,255,255,.12);
+  width:48px; height:48px; border-radius:50%; border:1px solid rgba(255,255,255,.12);
   background:rgba(255,255,255,.06); color:var(--ink-2); cursor:pointer;
   display:flex; align-items:center; justify-content:center; flex-shrink:0;
   text-decoration:none; padding:0;
 }
 .mp-ghost-back:active { background:rgba(255,255,255,.16); }
 
-/* le savant fou (UN SEUL bouton aide, injecté par regle-info.js) */
+/* le savant fou (UN SEUL bouton aide, injecté par regle-info.js)
+   48x48 : même plancher tactile que le retour ci-dessus (était 46). */
 .mp-prof {
-  width:46px; height:46px; border-radius:15px; cursor:pointer; position:relative; flex-shrink:0;
+  width:48px; height:48px; border-radius:15px; cursor:pointer; position:relative; flex-shrink:0;
   background:var(--accent-soft); border:1px solid var(--accent);
   box-shadow:0 2px 6px rgba(0,0,0,.25);
   display:flex; align-items:center; justify-content:center; font-size:22px; padding:0;

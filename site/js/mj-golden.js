@@ -2,9 +2,14 @@
 //  mj-golden.js — Brique STANDARD GOLDEN MaxPlay (source: studio/minijeux/docs/STANDARD-MJ.md)
 //
 //  Niveaux par étoiles (validé Papa Yann 2026-06-11) :
-//    0 étoile → Niveau 1 : 4 questions (simple)
-//    1 étoile → Niveau 2 : 6 questions (plus dur)
-//    2+ étoiles → Niveau 3 (MAX) : 8 questions — on y reste ensuite
+//    0 étoile → Niveau 1 · 1 étoile → Niveau 2 · 2+ étoiles → Niveau 3 (MAX)
+//  Nombre de manches par niveau : DÉFAUT 4 / 6 / 8 (QS_PER_LEVEL).
+//  ⚠️ D-023 (2026-09-09, EP-124) : ce 4/6/8 est un DÉFAUT, plus une LOI.
+//  Un jeu à manche longue déclare la sienne : Golden.setup(id, { questions:[a,b,c] }).
+//  Sans déclaration, le défaut s'applique — aucun jeu existant ne bouge. Motif :
+//  8 manches d'un jeu dont la manche dure 30 s font ~4 min, Max quitte avant la fin ;
+//  la réponse est MOINS de manches et une difficulté qui monte PLUS VITE, jamais un
+//  jeu plus facile. La formule de niveau min(2, étoiles) est inchangée.
 //  ÉTOILE = SANS FAUTE : toutes les questions réussies du 1er coup (billes vertes).
 //  ⚠️ FORMULE niveau = min(2, Stars) : reste la LOI pour TOUS les jeux SAUF le
 //  PILOTE EP-112 (mj-04) — GO Papa Yann 2026-07-28 (« je veux bien que ce truc
@@ -32,6 +37,7 @@
 //
 //  Usage (après catalog.js/stars.js si le jeu est au catalogue) :
 //    const G = Golden.setup('mj-24');     // → G.level (0..2), G.totalQ (4/6/8)
+//    const G = Golden.setup('mj-28', { questions: [3, 4, 5] });  // manches sur mesure
 //    G.buildPips();                        // construit les billes
 //    G.notePip(index, attempts);           // à CHAQUE question terminée (1..3, 4=révélé)
 //    G.showEnd({ replayUrl:'mj-24.html', celebrate: fn? });  // écran de fin auto
@@ -39,7 +45,26 @@
 //  style.css le 2026-08-01, chargée partout par mj-shell).
 // ─────────────────────────────────────────────────────────────────────────
 (function (global) {
-  const QS_PER_LEVEL = [4, 6, 8];
+  // Défaut historique (2026-06-11). Un jeu peut le remplacer via
+  // Golden.setup(id, { questions:[a,b,c] }) — voir D-023.
+  const QS_PER_LEVEL_DEFAUT = [4, 6, 8];
+
+  // Valide une table de manches fournie par un jeu. Une table invalide est
+  // REFUSÉE bruyamment (console.error) et le défaut reprend la main : mieux vaut
+  // un jeu au format standard qu'un jeu à NaN manches qui ne finit jamais.
+  function tableManches(opts) {
+    const q = opts && opts.questions;
+    if (!q) return QS_PER_LEVEL_DEFAUT;
+    const ok = Array.isArray(q) && q.length === 3
+      && q.every(n => Number.isInteger(n) && n >= 1 && n <= 30)
+      && q[0] <= q[1] && q[1] <= q[2];
+    if (!ok) {
+      console.error('[Golden] questions invalide (attendu 3 entiers croissants 1..30) :', q,
+        '— repli sur le défaut', QS_PER_LEVEL_DEFAUT);
+      return QS_PER_LEVEL_DEFAUT;
+    }
+    return q;
+  }
   const MAX_STARS = 3;
   const RESUME_TTL_MS = 24 * 60 * 60 * 1000; // 24h (avenant P0 §8 : pas de rattrapage rétroactif au-delà)
 
@@ -133,16 +158,17 @@
   }
 
   const Golden = {
-    gameId: null, stars: 0, level: 0, totalQ: 4, _firstTry: 0, _answered: 0,
+    gameId: null, stars: 0, level: 0, totalQ: 4, qsPerLevel: QS_PER_LEVEL_DEFAUT, _firstTry: 0, _answered: 0,
     _pipResults: [], resumed: false,
 
-    setup(gameId) {
+    setup(gameId, opts) {
       this.gameId = gameId;
+      this.qsPerLevel = tableManches(opts);
       this.stars = starsOf(gameId);
       // levelOf = min(2, stars) pour tous les jeux, SAUF pilotes EP-112
       // (2e porte compétence). Identique à l'historique hors pilote.
       this.level = levelOf(gameId, 2);
-      this.totalQ = QS_PER_LEVEL[this.level];
+      this.totalQ = this.qsPerLevel[this.level];
       this._firstTry = 0;
       this._answered = 0;
       this._pipResults = [];
@@ -375,15 +401,35 @@
         (eggDelay + starDelay + .7) + 's',
       ];
 
-      // A3 : 3 boutons rétro-compatibles (.end-btns conservé, data-act ajouté).
+      // A3 : boutons rétro-compatibles (.end-btns conservé, data-act ajouté).
       // « La suite » masqué si MJKit.chain indisponible ou pas de jeu suivant.
       const nextUrl = (global.MJKit && global.MJKit.chain) ? (function () {
         try { const c = global.MJKit.chain(Golden.gameId); return c && c.next ? c.next.url : null; } catch (e) { return null; }
       })() : null;
       const replayUrl = opts.replayUrl || location.pathname.split('/').pop();
-      const nestBadge = readyToHatch ? '<span class="nid-badge" title="ça bouge dans le nid !">🥚</span>' : '';
+
+      // EP-120 : bouton « Aller dans le nid » quand cette partie vient de
+      // rapporter un œuf OU un accessoire (rewardGranted couvre les deux —
+      // demande PY explicite). Le badge 🥚 décoratif sur Suite/Maison n'a de
+      // sens QUE quand rien n'annonce déjà le gain de cette partie : dès que
+      // le bouton nid existe, il porte seul le signal (sinon double message
+      // pour un enfant de 4 ans). Le badge reste utile dans le seul cas où
+      // un œuf attend d'une visite précédente SANS gain cette partie
+      // (readyToHatch vrai, rewardGranted faux) : là, rien d'autre ne le dit.
+      const nestBadge = (readyToHatch && !rewardGranted) ? '<span class="nid-badge" title="ça bouge dans le nid !">🥚</span>' : '';
+      // Deep-link vers la Vallée : ouvre directement la chambre des œufs.
+      // Même convention que dev-dinos.html?open=<id> dans nid-ui.js — seul
+      // le paramètre `open` est lu (le `?v=` qu'on y voit est un reliquat de
+      // cache-busting jamais consommé par le code, pas un contrat : on ne le
+      // reproduit pas ici). Paramètre lu par index.html, cf. commentaire
+      // homologue là-bas.
+      const nidUrl = 'index.html?open=nid';
+      const nidLabel = (global.MJi18n ? MJi18n.t('_commun', 'nidBoutonFin', 'Au nid&nbsp;!') : 'Au nid&nbsp;!');
 
       let btns = '<a href="' + replayUrl + '" data-act="replay" style="background:#00c47a;">🔄 Encore&nbsp;!</a>';
+      if (rewardGranted) {
+        btns += '<a href="' + nidUrl + '" data-act="nid" style="background:#ff8fb8;color:#3a0f22;">🥚 ' + nidLabel + '</a>';
+      }
       if (nextUrl) {
         btns += '<a href="' + nextUrl + '" data-act="next" class="btn-next-big" style="background:#ffd166;color:#3a2a00;">La suite →' + nestBadge + '</a>';
       }

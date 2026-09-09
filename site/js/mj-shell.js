@@ -172,7 +172,10 @@
         pips.id = 'pips';
         hdr.parentNode.insertBefore(pips, hdr.nextSibling);
       }
-      G = Golden.setup(cfg.id || gameIdFromUrl());
+      // EP-124/D-023 : `cfg.questions` (3 entiers croissants) permet a un jeu de
+      // declarer sa propre table de manches. Le shell doit la RELAYER : il rappelle
+      // Golden.setup apres le jeu et ecraserait sinon la table declaree par lui.
+      G = Golden.setup(cfg.id || gameIdFromUrl(), { questions: cfg.questions });
       G.buildPips();
     }
 

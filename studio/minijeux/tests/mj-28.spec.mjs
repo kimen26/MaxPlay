@@ -12,7 +12,9 @@ export async function run({ page, ok }) {
   ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
 
   ok('DINOS chargé', await page.evaluate(() => typeof DINOS !== 'undefined' && DINOS.length > 10));
-  ok('Niveau 1 = 4 billes (standard golden : 4/6/8 selon etoiles)', (await page.locator('.pip').count()) === 4);
+  // EP-124 : mj-28 declare sa propre table de manches [3,4,5] (manche longue :
+  // fouille + funfact audio). Le defaut golden 4/6/8 reste celui des autres jeux.
+  ok('Niveau 1 = 3 billes (mj-28 declare questions:[3,4,5])', (await page.locator('.pip').count()) === 3);
   ok('1re bille marquée courante', (await page.locator('.pip.cur').count()) === 1);
 
   await page.waitForSelector('#digShadow', { timeout: 5000 });
@@ -37,15 +39,28 @@ export async function run({ page, ok }) {
   const mx = await page.evaluate(() => document.getElementById('digWrap').style.getPropertyValue('--mx'));
   ok('position du halo mise à jour (--mx en px)', /px$/.test(mx), mx);
 
-  // Chemin gagnant : 3 bonnes réponses → l'écran s'éclaire (classe revealed) + fait affiché
+  // Chemin gagnant : 3 bonnes réponses → l'écran s'éclaire (classe revealed) + fait affiché.
+  // La 3e est la DERNIERE manche (EP-124) : elle declenche l'ecran de fin, qui remplace
+  // la piste de billes. On releve donc le compte des billes vertes AVANT ce dernier clic,
+  // sinon on compte des billes deja demontees et on lit 0.
+  let v1 = 0;
   for (let q = 0; q < 3; q++) {
     await page.waitForSelector('.name-btn[data-correct="1"]', { timeout: 4000 });
     await page.click('.name-btn[data-correct="1"]').catch(() => {});
     await page.waitForTimeout(300);
     const revealed = await page.evaluate(() => document.getElementById('digWrap').classList.contains('revealed'));
     ok(`question ${q + 1} : révélation couleur au bon clic`, revealed);
+    v1 = Math.max(v1, await page.locator('.pip.v1').count());
     await page.waitForTimeout(2200);
   }
-  const v1 = await page.locator('.pip.v1').count();
   ok('3 bonnes réponses → 3 billes vertes', v1 === 3, `billes vertes=${v1}`);
+
+  // La partie est terminee : l'ecran de fin doit s'ouvrir (garde-fou EP-123 : une
+  // partie finie qui n'ouvre aucune celebration est le bug rapporte par PY).
+  await page.waitForTimeout(1200);
+  const fin = await page.evaluate(() => {
+    const w = document.querySelector('.end-wrap, #endWrap, .mp-end');
+    return !!(w && getComputedStyle(w).display !== 'none');
+  });
+  ok('partie terminée → écran de fin ouvert', fin);
 }

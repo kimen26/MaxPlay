@@ -53,18 +53,33 @@
 
     .choices { display:grid; gap:12px; padding:12px 14px; justify-content:center; max-width:560px; margin:0 auto; }
     .name-btn {
-      background:#fff; border-radius:18px; padding:14px 10px; border:5px solid transparent;
-      box-shadow:0 5px 14px #0005; cursor:pointer; display:flex; align-items:center; justify-content:center;
-      gap:8px; min-width:120px; min-height:80px; transition:transform .12s, border-color .15s;
-      color:#1a1a2e; font-family:'Nunito',sans-serif; font-weight:900; font-size:1.15rem; text-align:center;
+      background:#fff; border-radius:18px; padding:10px; border:5px solid transparent;
+      box-shadow:0 5px 14px #0005; cursor:pointer; display:flex; align-items:center; justify-content:space-between;
+      gap:6px; min-width:120px; min-height:80px; transition:transform .12s, border-color .15s;
+      color:#1a1a2e; font-family:'Nunito',sans-serif; font-weight:900; text-align:left;
     }
     .name-btn:active { transform:scale(.93); }
+    /* Libellé : jamais de height fixe/overflow:hidden (le bloc doit pouvoir grandir) —
+       les noms savants longs (Carcharodontosaurus, Pachycephalosaurus…) passent à la ligne
+       et rétrécissent en douceur via clamp() plutôt que de déborder de la case (EP-126). */
+    .name-btn .label {
+      flex:1; min-width:0; overflow-wrap:anywhere; word-break:break-word; hyphens:auto;
+      line-height:1.15; font-size:clamp(.8rem, 3.6vw, 1.15rem);
+    }
+    /* Pastille "écouter" séparée visuellement du libellé, zone tactile 48x48 mini
+       (règle projet) pour qu'un doigt d'enfant de 4 ans ne déclenche pas le bouton entier. */
     .name-btn .say {
-      font-size:1.2rem; line-height:1; background:none; border:none; padding:4px; cursor:pointer;
-      flex-shrink:0;
+      font-size:1.15rem; line-height:1; background:#f0f1f8; border:none; border-radius:50%;
+      width:48px; height:48px; min-width:48px; flex-shrink:0; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
     }
     .name-btn.ok { border-color:#00c47a; background:#d6fbe7; }
     .name-btn.ko { border-color:#ff5a5a; opacity:.5; }
+
+    /* < 360px : 2 colonnes ne tiennent plus avec les noms longs -> 1 colonne (EP-126) */
+    @media (max-width: 359px) {
+      .choices { grid-template-columns: 1fr !important; }
+    }
 
     .reveal-fait {
       text-align:center; color:#ffe066; font-weight:700; font-size:1.02rem;
@@ -109,12 +124,20 @@
     const ICONIC = POOL.filter(d => ICONIC_IDS.includes(d.id));
     const ICONIC_POOL = ICONIC.length >= 3 ? ICONIC : POOL;
 
-    const G = Golden.setup('mj-28');
+    // EP-124 / D-023 — manches sur mesure. Une manche de MJ-28 coute 10-15 s de
+    // fouille a la lampe PLUS un funfact audio de 15-20 s qu'on ne peut pas
+    // couper sans perdre l'interet pedagogique : a 8 manches la partie depasse
+    // 4 min, dont la moitie en ecoute passive, et Max quitte avant la fin.
+    // On passe a 3/4/5 manches et on compense en montant la difficulte PLUS
+    // VITE (moins de manches ne veut pas dire plus facile) : les 4 choix et les
+    // cousins de meme famille arrivent chacun un niveau plus tot qu'avant.
+    const G = Golden.setup('mj-28', { questions: [3, 4, 5] });
     const MAX_Q = G.totalQ;
     const level = G.level;
     const NCHOICES = level === 0 ? 3 : 4;
-    // Niveau 2 : au moins 1 cousin de meme famille que la cible (discrimination fine)
-    const SAME_FAMILY_MIN = level >= 2;
+    // Discrimination fine (>= 1 cousin de meme famille) des le niveau 2,
+    // au lieu du niveau 3 : c'est la compensation du raccourcissement.
+    const SAME_FAMILY_MIN = level >= 1;
 
     let score = 0, streak = 0, qCount = 0, qcm = null, target = null;
     let dragging = false;
@@ -167,6 +190,9 @@
     const shell = MJ.init({
       id: 'mj-28', emoji: '🔦', titre: MJi18n.titre('mj-28', 'La lampe du dino'),
       golden: true,
+      // EP-124 : le shell rappelle Golden.setup, il doit donc connaitre la table
+      // de manches du jeu, sinon il rend la main au defaut 4/6/8.
+      questions: [3, 4, 5],
       consigne: true,
       regle: {
         picto: '🔦🦴',
@@ -199,8 +225,8 @@
       const pool = level === 0 ? ICONIC_POOL : POOL;
       target = DinoOmbres.pick(pool);
 
-      // Niveau 2 : au moins 1 cousin de meme famille que la cible (discrimination fine).
-      // Sinon : distracteurs de familles differentes pour rester lisible aux plus jeunes.
+      // Des le niveau 2 (EP-124) : au moins 1 cousin de meme famille que la cible.
+      // Niveau 1 seulement : distracteurs de familles differentes, lisibles pour un debutant.
       const distract = DinoOmbres.pickCousins(POOL, target, NCHOICES, { minCousins: SAME_FAMILY_MIN ? 1 : 0 });
 
       const opts = shuffle([{ d: target, correct: true }, ...distract.map(d => ({ d, correct: false }))]);
@@ -229,6 +255,7 @@
         say.textContent = '🔊';
         say.onclick = (ev) => { ev.stopPropagation(); playDinoNom(o.d.id, o.d.name); };
         const label = document.createElement('span');
+        label.className = 'label';
         label.textContent = o.d.name;
         b.appendChild(label);
         b.appendChild(say);
@@ -266,10 +293,16 @@
       sndDing();
       document.getElementById('fait').textContent = dino.fait || '';
       stopCurrentFait();
-      speak(MJi18n.t('mj-28', 'bravoNom', 'Bravo ! C’est le {nom} !', { nom: dino.name }));
-      if (dino.fait) {
-        currentFaitAudio = playDinoFunfact(dino.id, dino.fait);
-      }
+      // Une seule voix a la fois (regle projet) : le TTS ne dit QUE la partie generique
+      // ("Bravo !"), puis le nom savant est enchaine par la banque MP3 ElevenLabs
+      // (playDinoNom) via son callback opts.then -> meme voix que le funfact qui suit
+      // (fix EP-127 : avant, le TTS systeme disait le nom avec une voix differente du MP3).
+      speak(MJi18n.t('mj-28', 'bravo', 'Bravo !'));
+      playDinoNom(dino.id, dino.name, { then: function () {
+        if (dino.fait) {
+          currentFaitAudio = playDinoFunfact(dino.id, dino.fait);
+        }
+      } });
     }
 
     function showEnd(){

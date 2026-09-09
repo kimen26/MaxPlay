@@ -19,7 +19,7 @@
 - [x] Cibles tactiles de l'en-tete : FAIT 2026-09-10, chantier transverse aux 36 jeux. DEUX boutons etaient sous la norme, pas un : le savant fou a 46 et le RETOUR a 42. Les deux passent a 48x48 sans grossir le dessin. Le retour resistait au CSS parce que `back-button.js` posait sa taille en style INLINE (L-124). Mesure a 360 et 320 px sur 4 jeux, 6 specs au vert
 - [x] FAUX POSITIF referme 2026-09-10 : `applyDinoStrings()` s'auto-appelle par `document.write` a la fin de `dinos-i18n.js`, invisible a un grep de callers. Mesure en `?lang=en` : "T-Rex" devient "T. rex", "Dicroidium" perd son trema, familles et plantes traduites. Rien a corriger (L-126)
 - [!] Asset toujours absent : `site/img/dinos/paleoart/Scelidosaurus_coloriage.webp`. Ce n'etait PAS la seule cause du FAIL smoke (13 plantes sondees en plus, cf. L-125) et le smoke est desormais vert sans lui. BLOQUE sur Papa Yann : le Chromium dedie (port 9225, profil `c:/tmp/chromium-dino`) est connecte a un compte TIERS, verifie a nouveau le 2026-09-10
-- [ ] Verifier les 71 dinos x 4 langues un par un dans l'ecran de choix : jamais fait, seuls des echantillons ont ete vus
+- [x] Les 71 dinos x 4 langues : FAIT 2026-09-10, et OUTILLE plutot que verifie a l'oeil — `node studio/minijeux/tools/_check-catalogue-dino-i18n.mjs` charge la vraie page dans les 4 langues et compare les tableaux apres fusion. Resultat : 71 dinos + 19 plantes + 11 familles, **zero nom manquant** dans les 4 langues. Les noms IDENTIQUES au FR (22 en anglais, 21 en espagnol, 6 en portugais) sont des noms scientifiques latins (Diplodocus, Minmi, Troodon, Ginkgo) : les traduire serait le vrai defaut. La porte sort en exit 1 si un nom vient a manquer
 
 ## Lane — Coloriage dino mj-32 : retours PY 2026-09-08 (HO-MJ-08)
 

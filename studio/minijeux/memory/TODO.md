@@ -13,12 +13,12 @@
 
 ### Reste ouvert apres la session du 2026-09-08
 
-- [ ] Brancher les 6 plantes dans mj-32 (voir ligne PLANTES ci-dessus) : verifier le rapport du sous-agent, rejouer les portes, commiter, pousser
+- [x] Brancher les 6 plantes dans mj-32 : FAIT 2026-09-10. Carte "Les plantes" au niveau familles, 6 plantes coloriables, les 13 sans lineart retirees toutes seules, `isPlante` porte la resolution du bon dossier a la reprise. Portes rejouees, capture relue (prele geante coloriee sans bavure). Au passage : le smoke comptait les sondes d'images du catalogue comme des pannes alors que c'est du controle de flux voulu (L-125)
 - [ ] STICKERS de plantes posables au tap dans le dessin (`{type:'sticker'}` dans l'historique) — idee PY du 2026-09-08, jamais commencee, distincte des plantes coloriables livrees
 - [ ] Recette sur le VRAI P30 Pro : rien de tout ce qui a ete livre aujourd'hui n'a ete vu sur l'appareil de Max, seulement en navigateur a 360 et 320 px
-- [ ] Bouton `#btn-regle` mesure a 46x46 px au lieu des 48x48 de la norme. Composant PARTAGE par les 36 mini-jeux (`site/js/regle-info.js`), donc hors perimetre d'un chantier mj-32 : a traiter comme un chantier transverse
-- [ ] `applyDinoStrings()` n'est appele nulle part dans mj-32 : les noms de dinos et de familles restent en francais quelle que soit la langue du site (etat pre-existant, signale par le sous-agent du menu des familles)
-- [ ] Asset toujours absent : `site/img/dinos/paleoart/Scelidosaurus_coloriage.webp` (seule cause du FAIL smoke console de mj-32, tolere dans toutes les portes de la journee)
+- [x] Cibles tactiles de l'en-tete : FAIT 2026-09-10, chantier transverse aux 36 jeux. DEUX boutons etaient sous la norme, pas un : le savant fou a 46 et le RETOUR a 42. Les deux passent a 48x48 sans grossir le dessin. Le retour resistait au CSS parce que `back-button.js` posait sa taille en style INLINE (L-124). Mesure a 360 et 320 px sur 4 jeux, 6 specs au vert
+- [x] FAUX POSITIF referme 2026-09-10 : `applyDinoStrings()` s'auto-appelle par `document.write` a la fin de `dinos-i18n.js`, invisible a un grep de callers. Mesure en `?lang=en` : "T-Rex" devient "T. rex", "Dicroidium" perd son trema, familles et plantes traduites. Rien a corriger (L-126)
+- [!] Asset toujours absent : `site/img/dinos/paleoart/Scelidosaurus_coloriage.webp`. Ce n'etait PAS la seule cause du FAIL smoke (13 plantes sondees en plus, cf. L-125) et le smoke est desormais vert sans lui. BLOQUE sur Papa Yann : le Chromium dedie (port 9225, profil `c:/tmp/chromium-dino`) est connecte a un compte TIERS, verifie a nouveau le 2026-09-10
 - [ ] Verifier les 71 dinos x 4 langues un par un dans l'ecran de choix : jamais fait, seuls des echantillons ont ete vus
 
 ## Lane — Coloriage dino mj-32 : retours PY 2026-09-08 (HO-MJ-08)

@@ -232,6 +232,10 @@ est vide par construction), verifies image par image.
   au compte de Papa Yann (le profil est persistant : une seule fois), puis relancer
   `CDP_PORT=9225 node .claude/skills/dino-images-lunii/scripts/batch-dino-series.mjs scelidosaurus --only hero`.
   Le canal Grok est dans le meme etat (aucune session dans ce profil).
+  **Re-verifie le 2026-09-10** (le Chromium avait ete ferme entre-temps, relance sur le meme profil) :
+  `/api/auth/session` rend toujours `ccsevangelista@gmail.com`, plan Plus. Le compte n'a pas change,
+  donc rien n'a ete genere. Le blocage tient a la seule action que l'agent ne peut pas faire a la place
+  de Papa Yann : changer de compte.
 - [x] **Collision d'id : FAUSSE ALERTE** (verifie 2026-09-09) — l'entree Scelidosaurus porte bien
   `id: 'scelidosaurus'` ; la ligne 1008 citee appartenait a l'entree PRECEDENTE. Controle programmatique
   sur tout `dinos-data.js` : **76 entrees, 76 id uniques, aucun doublon**. Rien a corriger.
@@ -239,3 +243,15 @@ est vide par construction), verifies image par image.
   et `batch-dino-ombre.mjs` (armure a rangees d'osteodermes, tete basse, deux cornes emoussees, queue
   epaisse) ; la version coloriage exige chaque plaque comme forme OVALE FERMEE. Note : `batch-dino-series.mjs`
   possedait deja une description complete du Scelidosaurus — c'est elle qui sert pour le hero.
+
+## Refonte de la navigation en sous-univers (2026-09-09, idee Papa Yann)
+
+- [ ] **La decoupe Voyage / Epoques se recouvre** — les deux onglets parlent des memes periodes
+  geologiques avec deux traitements differents (le Voyage = parcours narratif audio en 8 episodes
+  avec avancement de session ; Les epoques = grille de tri des dinos par periode, qui porte aussi
+  la flore). Un enfant de 4 ans ne peut pas deviner lequel ouvrir. Papa Yann demande un ecran
+  d'accueil en 4-5 grandes portes facon musee / bibliotheque, chaque porte menant a un sous-menu,
+  avec eventuellement des icones generees. Contrainte : simple a coder, hyper clair sans lecture.
+- [ ] **Question ouverte** : les mini-jeux dino (mj-24, 28, 30, 31, 32, 40, 54, 55, 56, 57) vivent
+  aujourd'hui dans le catalogue des mini-jeux, hors encyclopedie. Faut-il une porte « on joue »
+  dans l'encyclopedie qui pointe vers eux, ou garder la separation actuelle ?

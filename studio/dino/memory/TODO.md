@@ -221,11 +221,21 @@ est vide par construction), verifies image par image.
   comme contour FERME (stries, barbes, meches, crete, plis). Bonne pratique retenue meme sans fuite avereee.
 - [ ] **Scelidosaurus : les TROIS assets manquent** (seul dino dans ce cas sur 70) —
   `paleoart/Scelidosaurus.jpg` (hero), `ombres/Scelidosaurus_ombre.png`, `paleoart/Scelidosaurus_coloriage.webp`.
-  L'ombre se derive du hero (`ombre_from_hero.py`), donc le hero est le prealable. **BLOQUE** : la generation
-  passe par le projet ChatGPT « Dinosaure » pilote en navigateur, et le seul navigateur de debug ouvert
-  (port 9222) est la session PERSONNELLE de Papa Yann (onglet bancaire/marchand a cote) — L-D36 interdit de
-  s'y brancher. A relancer quand un Chromium dedie est disponible (`launch-chromium.ps1`, port 9225).
-- [ ] **Collision d'id a verifier** — dans `site/js/dinos-data.js`, l'entree Scelidosaurus (ligne ~1008)
-  porte `id: 'ankylosaurus'`. A confirmer et corriger : deux dinos ne peuvent pas partager un id.
-- [ ] **Scelidosaurus n'a pas d'entree MORPHO** dans `batch-dino-coloriage.mjs` ni de fiche Grokipedia —
-  a ecrire avant toute generation, sinon le prompt part sans description morphologique.
+  L'ombre se derive du hero (`ombre_from_hero.py`), donc le hero est le prealable. **BLOQUE, cause precisee
+  le 2026-09-09** : le Chromium dedie (port 9225, profil `c:/tmp/chromium-dino`) a bien ete lance et
+  fonctionne — mais le compte ChatGPT connecte dans ce profil est **celui d'une tierce personne**
+  (Cláudia Evangelista), pas celui de Papa Yann. Generer sur le compte d'un tiers n'est pas une decision
+  d'agent. En prime, la page projet `g-p-6a2c67eb…/project` ne monte pas dans ce profil (page blanche,
+  bouton « Reessayer », composer absent apres 45 s -> exit 3), alors que l'accueil ChatGPT repond
+  normalement — le projet « Dinosaure » est pourtant visible dans les epingles.
+  **Pour debloquer** : ouvrir la fenetre « chromium-dino », se deconnecter du compte tiers, se connecter
+  au compte de Papa Yann (le profil est persistant : une seule fois), puis relancer
+  `CDP_PORT=9225 node .claude/skills/dino-images-lunii/scripts/batch-dino-series.mjs scelidosaurus --only hero`.
+  Le canal Grok est dans le meme etat (aucune session dans ce profil).
+- [x] **Collision d'id : FAUSSE ALERTE** (verifie 2026-09-09) — l'entree Scelidosaurus porte bien
+  `id: 'scelidosaurus'` ; la ligne 1008 citee appartenait a l'entree PRECEDENTE. Controle programmatique
+  sur tout `dinos-data.js` : **76 entrees, 76 id uniques, aucun doublon**. Rien a corriger.
+- [x] **Entree MORPHO du Scelidosaurus ecrite** (2026-09-09) — ajoutee dans `batch-dino-coloriage.mjs`
+  et `batch-dino-ombre.mjs` (armure a rangees d'osteodermes, tete basse, deux cornes emoussees, queue
+  epaisse) ; la version coloriage exige chaque plaque comme forme OVALE FERMEE. Note : `batch-dino-series.mjs`
+  possedait deja une description complete du Scelidosaurus — c'est elle qui sert pour le hero.

@@ -26,6 +26,8 @@ const fichesTxt = existsSync(FICHES) ? readFileSync(FICHES, 'utf8') : '';
 
 // Signatures morphologiques manuelles pour les dinos sans fiche.
 const MORPHO = {
+  scelidosaurus: "herbivore a ARMURE marchant a QUATRE pattes, dos arrondi, tete PETITE et BASSE portee pres du sol avec un museau etroit ; le dos et les flancs sont couverts de RANGEES REGULIERES de petites plaques d'os ovales, alignees du cou jusqu'au bout de la queue comme des rangees de boutons ; deux petites cornes emoussees derriere la tete ; pattes arriere plus robustes que les pattes avant, queue longue et epaisse qui s'affine",
+
   elasmosaurus: "cou immense d'environ 7 m, petite tete, corps en tonneau, 4 grandes nageoires en pagaie",
   ophthalmosaurus: "corps fuselé de dauphin, yeux enormes d'environ 23 cm, museau court et fin",
   liopleurodon: "pliosaure trapu, tete enorme avec machoires puissantes, 4 grandes nageoires",

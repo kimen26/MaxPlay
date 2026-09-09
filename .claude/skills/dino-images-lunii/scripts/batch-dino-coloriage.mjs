@@ -25,6 +25,8 @@ const fichesTxt = existsSync(FICHES) ? readFileSync(FICHES, 'utf8') : '';
 
 // Signatures morphologiques manuelles pour les dinos sans fiche.
 const MORPHO = {
+  scelidosaurus: "herbivore a ARMURE marchant a QUATRE pattes, dos arrondi, tete PETITE et BASSE portee pres du sol avec un museau etroit ; le dos et les flancs sont couverts de RANGEES REGULIERES de petites plaques d'os ovales, alignees du cou jusqu'au bout de la queue comme des rangees de boutons ; deux petites cornes emoussees derriere la tete ; pattes arriere plus robustes que les pattes avant, queue longue et epaisse qui s'affine ; chaque plaque du dos est dessinee comme une petite forme OVALE FERMEE, jamais comme un trait ou une hachure",
+
   saurolophus: "dinosaure a bec de canard, et surtout une CORNE d'os DROITE et COURTE plantee sur l'arriere du crane, qui pointe vers l'ARRIERE et vers le HAUT en prolongeant la ligne du museau (comme une petite pointe de fleche) ; museau plat de canard, longue queue epaisse",
   corythosaurus: "dinosaure a bec de canard, et surtout une GRANDE CRETE en forme de CASQUE ROND ET HAUT posee sur le dessus de la tete, aussi large que le crane, arrondie sur le dessus comme un casque de pompier vu de profil ; museau plat de canard, dos et flancs LISSES en grandes zones vides, longue queue epaisse",
   hatzegopteryx: "reptile volant, grandes ailes de PEAU tendues sur un long doigt, long bec pointu SANS dents, cou COURT et EPAIS, marche a quatre pattes en repliant ses ailes",

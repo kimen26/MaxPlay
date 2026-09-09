@@ -287,8 +287,20 @@ try {
   await page.waitForSelector('.v-bulle .vb-jeu', { timeout: 4000 });
   const bulleJeux = await page.locator('.v-bulle .vb-jeu').count();
   ok('bulle de l\'hôte dino : vignettes affichées', bulleJeux > 0, `count=${bulleJeux}`);
-  const tampons = await page.locator('.v-bulle .vb-jeu.fait').count();
-  ok('au moins 1 jeu tamponné ✓ (mj-24 joué 2 fois)', tampons > 0, `count=${tampons}`);
+  // Le tampon ✓ marque les jeux DE CETTE BULLE deja joues. Ne pas supposer que
+  // mj-24 en fait partie : la composition du repaire evolue (au 2026-09-09 la
+  // bulle dino propose mj-57 et mj-32, plus mj-24 — l'ancienne assertion
+  // echouait sur ce seul fait, sans que le tracker ait rien de casse).
+  // On verifie la REGLE : joue => tamponne, jamais joue => reco.
+  const etatBulle = await page.evaluate(() => [...document.querySelectorAll('.v-bulle .vb-jeu')].map(e => ({
+    url: e.getAttribute('data-url'),
+    fait: e.classList.contains('fait'),
+    reco: e.classList.contains('reco'),
+    plays: (function () { try { return window.MUR.playsOf((e.getAttribute('data-url') || '').replace('.html', '')); } catch (x) { return -1; } })()
+  })));
+  const coherent = etatBulle.every(j => (j.plays > 0 ? j.fait : j.reco));
+  ok('tampon ✓ coherent avec le nombre de parties (joue = fait, jamais joue = reco)',
+     etatBulle.length > 0 && coherent, JSON.stringify(etatBulle));
   const recos = await page.locator('.v-bulle .vb-jeu.reco').count();
   ok('les jamais-joués brillent (reco)', recos >= 1, `count=${recos}`);
 

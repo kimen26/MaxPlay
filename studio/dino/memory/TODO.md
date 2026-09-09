@@ -168,3 +168,64 @@ Outillage laisse en place : `launch-chromium.ps1` (Chromium de Playwright sur pr
 dedie, port 9225) pour les sessions ou Brave tourne deja sans port de debug — ses
 processus etant partages entre profils, on ne peut pas ouvrir une seconde instance en
 debug sans fermer les fenetres de l utilisateur (L-D36).
+
+## Retours Papa Yann 2026-09-08 — nid, oeufs, navigation fiche
+
+- [ ] Ouverture d oeuf : le dino qui sort est decale par rapport a la matrice des oeufs et
+  sombre sur sombre, on ne le voit pas. Recentrer sur l oeuf ouvert, eclaircir le fond
+  ou poser un halo derriere le dino. (miroir EP-121 pole JEU)
+- [ ] Fiche d un dino qu on vient de gagner : le bouton retour mene a une page vide avec un
+  seul bouton retour, puis a la page famille. Il doit ramener a la liste des dinos d ou
+  l oeuf a ete ouvert. (miroir EP-122)
+- [ ] Fin de jeu avec gain d oeuf ou d objet : proposer un bouton « Aller dans le nid ».
+  (miroir EP-120)
+- [ ] Audit des fonds des dessins dinos : remplir chaque fond d une couleur et verifier
+  qu elle n entre pas DANS le dino (trou dans le trait) ; combler en noir ou regenerer.
+- [ ] Trou d asset : Scelidosaurus (dinos-data.js:1008, png Scelidosaurus.jpg) n a AUCUN
+  fichier _ombre.png dans site/img/dinos/ombres/ : 404 console des qu il est tire au sort
+  dans mj-24 ou mj-31. Non fatal (fallback silencieux) mais a produire. Trouve en jouant
+  18 parties pour l enquete EP-123 le 2026-09-08.
+
+## Audit etancheite coloriages 2026-09-08 (70/70 dinos testes)
+
+Cinq coloriages fuient : la couleur du fond entre DANS le dino par une breche de trait.
+Confirme a l oeil, pas seulement au flood fill. A corriger (combler en noir) ou regenerer :
+
+- [ ] Cryolophosaurus_coloriage — trou ~(608,613), poches en U des stries de dos non refermees
+- [ ] Elasmosaurus_coloriage — trou ~(960,840), fente entre nageoire arriere-droite et corps
+- [ ] Microraptor_coloriage — trou ~(626,624), barbes de plume d aile en traits ouverts
+- [ ] Quetzalcoatlus_coloriage — trou ~(539,745), espace entre crete arriere de tete et cou
+- [ ] Therizinosaurus_coloriage — trou ~(605,630), meches de pelage filiformes ouvertes
+
+- [ ] PROMPT A DURCIR : les cinq fuites sont toutes des DETAILS FILIFORMES (stries, barbes,
+  meches, pointes) dessines en traits ouverts. Ajouter au bloc MORPHO des prompts de
+  coloriage l exigence que tout detail interieur soit un contour FERME, jamais un trait
+  libre — meme famille de correctif que L-D34 (meches a l encre de l Aenocyon).
+
+Les 5 decors (_new-fonds) et les 6 plantes sont SAINS. Les 4 decors signales par le premier
+passage etaient des faux positifs de methode (flood fill sur un paysage ouvert : le centre
+est vide par construction), verifies image par image.
+
+## Etancheite des coloriages et assets Scelidosaurus (2026-09-09)
+
+- [x] **Les 5 « fuites » de coloriage n'existent pas** — Cryolophosaurus, Elasmosaurus, Microraptor,
+  Quetzalcoatlus et Therizinosaurus sont ETANCHES. Le critere d'origine (« le fond atteint-il le centre
+  geometrique ? ») mesurait la posture, pas l'etancheite : chez un dino aux membres ecartes le centre EST
+  du fond. Verifie par etiquetage des composantes connexes + preuve visuelle sur l'Elasmosaurus. Voir L-D39.
+  Aucune image a regenerer de ce chef.
+- [x] **Outillage d'etancheite verse dans le repo** — `studio/dino/content/scripts/etancheite/` :
+  `audit-etancheite.mjs` (depistage large, faux positifs assumes), `verifie-fuite-reelle.mjs` (le verdict),
+  `preuve-remplissage.mjs` (la preuve a ouvrir). Sans dependance npm : decodage RGBA par ffmpeg/ffprobe.
+  Il vivait dans un scratchpad de session, donc perissable.
+- [x] **Prompt de coloriage durci** — `batch-dino-coloriage.mjs` exige desormais tout detail interieur
+  comme contour FERME (stries, barbes, meches, crete, plis). Bonne pratique retenue meme sans fuite avereee.
+- [ ] **Scelidosaurus : les TROIS assets manquent** (seul dino dans ce cas sur 70) —
+  `paleoart/Scelidosaurus.jpg` (hero), `ombres/Scelidosaurus_ombre.png`, `paleoart/Scelidosaurus_coloriage.webp`.
+  L'ombre se derive du hero (`ombre_from_hero.py`), donc le hero est le prealable. **BLOQUE** : la generation
+  passe par le projet ChatGPT « Dinosaure » pilote en navigateur, et le seul navigateur de debug ouvert
+  (port 9222) est la session PERSONNELLE de Papa Yann (onglet bancaire/marchand a cote) — L-D36 interdit de
+  s'y brancher. A relancer quand un Chromium dedie est disponible (`launch-chromium.ps1`, port 9225).
+- [ ] **Collision d'id a verifier** — dans `site/js/dinos-data.js`, l'entree Scelidosaurus (ligne ~1008)
+  porte `id: 'ankylosaurus'`. A confirmer et corriger : deux dinos ne peuvent pas partager un id.
+- [ ] **Scelidosaurus n'a pas d'entree MORPHO** dans `batch-dino-coloriage.mjs` ni de fiche Grokipedia —
+  a ecrire avant toute generation, sinon le prompt part sans description morphologique.

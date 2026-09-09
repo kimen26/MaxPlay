@@ -8,18 +8,27 @@
 - [x] Sons de victoire du 2026-09-05 (victoire-v1 a v4) ajoutes au pool `victory`. Au passage : le repli d'enchainement de la voix etait fixe a 4 s alors que victoire-v4 dure 5,3 s, la voix serait repartie PAR-DESSUS la fanfare — repli desormais cale sur la duree reelle du son
 - [x] Largeur telephone verifiee a 360 et 320 px : aucun debordement de page, aucun ascenseur. DEFAUT TROUVE ET CORRIGE : les boutons Decors et Zoomer ajoutes le meme jour portaient la barre a 409 px de large sur 360 — « Autre dino » sortait a gauche et surtout « Fini ! » sortait a droite, donc l'enfant ne pouvait plus terminer son dessin. La barre passe desormais a la ligne
 - [x] DECISION PY 2026-09-08 : la 2e langue a la victoire n'est PAS un defaut, « c'est style meme pour les dessins ». Ne PAS revenir a une seule langue. La regle « jamais deux voix EN MEME TEMPS » (L-111) reste entiere : c'est la simultaneite qui etait le probleme, pas le bilinguisme
-- [ ] Ajouter les PLANTES dans le dessin, en respectant les infos des fiches (`site/js/dinos-plantes.js`, 19 plantes, Araucaria confirme present)
-- [ ] Menu des FAMILLES dans l'ecran de choix : « 71 dinos en ligne c'est dur » (PY). Regrouper par famille avant la liste des dinos
+- [~] PLANTES : 6 coloriages au trait PRODUITS et commites (araucaria, fougere arborescente, prele geante, ginkgo, cycas, palmier) dans `site/img/dinos/plantes/*_coloriage.webp`, descriptions tirees du champ `feuille` des fiches, noir et blanc pur verifie. Script : `.claude/skills/dino-images-lunii/scripts/batch-plante-coloriage.mjs`. RESTE : le branchement dans mj-32 (sous-agent lance le 2026-09-08 en fin de session, rapport attendu `docs/handoffs/rapports/HO-MJ-12-rapport.md`) — a verifier et commiter
+- [x] Menu des FAMILLES livre 2026-09-08 : 11 cartes issues de `DINO_FAMILLES` (emoji, couleurs de l'encyclopedie), puis les dinos de la famille, bouton retour. Une famille sans coloriage chargeable est retiree. 33 assertions au vert
+
+### Reste ouvert apres la session du 2026-09-08
+
+- [ ] Brancher les 6 plantes dans mj-32 (voir ligne PLANTES ci-dessus) : verifier le rapport du sous-agent, rejouer les portes, commiter, pousser
+- [ ] STICKERS de plantes posables au tap dans le dessin (`{type:'sticker'}` dans l'historique) — idee PY du 2026-09-08, jamais commencee, distincte des plantes coloriables livrees
+- [ ] Recette sur le VRAI P30 Pro : rien de tout ce qui a ete livre aujourd'hui n'a ete vu sur l'appareil de Max, seulement en navigateur a 360 et 320 px
+- [ ] Bouton `#btn-regle` mesure a 46x46 px au lieu des 48x48 de la norme. Composant PARTAGE par les 36 mini-jeux (`site/js/regle-info.js`), donc hors perimetre d'un chantier mj-32 : a traiter comme un chantier transverse
+- [ ] `applyDinoStrings()` n'est appele nulle part dans mj-32 : les noms de dinos et de familles restent en francais quelle que soit la langue du site (etat pre-existant, signale par le sous-agent du menu des familles)
+- [ ] Asset toujours absent : `site/img/dinos/paleoart/Scelidosaurus_coloriage.webp` (seule cause du FAIL smoke console de mj-32, tolere dans toutes les portes de la journee)
+- [ ] Verifier les 71 dinos x 4 langues un par un dans l'ecran de choix : jamais fait, seuls des echantillons ont ete vus
 
 ## Lane — Coloriage dino mj-32 : retours PY 2026-09-08 (HO-MJ-08)
 
 - [x] Halo blanc de ~7 px autour de chaque trait : corrigé (passe d'extension dans la bande + garde `traitMask`), anti-fuite #6389 toujours vert → HO-MJ-08 (fait 2026-09-08)
 - [x] Fin « Fini ! » : une seule voix — fanfare puis phrase nominative après sa fin (`playEndSound(..., {voice:false, onFanfareEnd})`) → HO-MJ-08 (fait 2026-09-08)
-- [ ] Idée PY 2026-09-08 : nom du dino en lettres creuses (outline) sous le dessin, dans le canvas, chaque lettre coloriable au flood fill (même historique JSON, même galerie). Police grasse ≥ 56 px, trait ≥ 6 px, 2 lignes si nom long, langue du site. À lancer après HO-MJ-08 TRANCHE PY 2026-09-08 : MAJUSCULES uniquement, lettres creuses dans lesquelles Max peut ecrire au doigt / colorier.
+- [x] Idée PY 2026-09-08 : nom du dino en lettres creuses (outline) sous le dessin, dans le canvas, chaque lettre coloriable au flood fill (même historique JSON, même galerie). Police grasse ≥ 56 px, trait ≥ 6 px, 2 lignes si nom long, langue du site. À lancer après HO-MJ-08 TRANCHE PY 2026-09-08 : MAJUSCULES uniquement, lettres creuses dans lesquelles Max peut ecrire au doigt / colorier. FAIT 2026-09-08 : livre et pousse, mise en page sur 2 lignes calibree sur le plus long nom du catalogue, lettres coloriables une par une sans bavure, dilatation quasi nulle sur la bande du nom (sinon l'interieur des petites lettres etait mure).
 - [x] Idée PY 2026-09-08 : sous-menu « Décor » dans l'atelier coloriage : 5 fonds lineart (désert, forêt, montagne, neige, volcan) composés derrière le dino avant le masque de contour (même flood fill), puis stickers plantes (fougère, prêle, palmier, fleur) posés au tap, entrée `{type:'sticker'}` dans l'historique JSON. Réutiliser la flore du pôle dino (`dinos-plantes.js`, `img/dinos/_new-plantes/`). Fonds d'abord, stickers ensuite. TRANCHE PY 2026-09-08 : TOUS les fonds proposes pour TOUS les dinos, aucun filtre par biome. VOIE 3 retenue (PY 2026-09-08) : produire 5 VRAIS fonds au trait, pas les PNG couleur de site/img/decor/. Script pret : `node .claude/skills/dino-images-lunii/scripts/batch-fond-coloriage.mjs` (calque du batch coloriage dino, meme charte de style). FAIT 2026-09-08 : les 5 fonds sont generes, regardes un par un, verifies en noir et blanc pur (zero couleur, >92% de blanc) et convertis en webp dans site/img/dinos/paleoart/. Reste a brancher le sous-menu Decors dans mj-32 (chantier B de HO-MJ-09). FAIT 2026-09-08 : sous-menu Decors livre, canvas bascule en paysage quand un decor est actif, anti-fuite Cryolophosaure verifiee AVEC decor par l'orchestrateur. Stickers plantes toujours a faire (etape ulterieure, jamais commencee).
 - [x] Idee PY 2026-09-08 : ZOOM dans le coloriage pour les clics de precision (petites zones). Exigences PY : fluide et simple, plus un bouton pour revenir en vue "normale". Attention : mj-32 pose user-scalable=no, donc le zoom natif est bloque et le zoom maison doit tout couvrir. Piege connu : le flood fill travaille en pixels canvas, la conversion tap -> pixel (canvasPointFromEvent) doit tenir compte du facteur de zoom et du decalage, sinon la couleur tombe a cote. Voir HO-MJ-10 FAIT 2026-09-08 : zoom CSS x2,75, bouton loupe, deplacement au doigt avec capture du pointeur, bouton Vue normale. Deux defauts corriges par l'orchestrateur (borne calculee sur la fenetre au lieu du canvas, pan interrompu quand le doigt sort) qui rendaient la bande du nom inatteignable.
 - [ ] Cosmetique fonds de coloriage : sur les 5 fonds generes, le trait touche le bord de l'image (9 px a droite, 15 a gauche mesures sur le desert) — rayons de soleil et dunes legerement rognes. Sans effet sur le coloriage (formes fermees). A corriger si un jour on regenere : demander une marge blanche au bord dans le prompt de batch-fond-coloriage.mjs
-- [ ] Asset absent : `site/img/dinos/paleoart/Scelidosaurus_coloriage.webp` (70 coloriages présents, celui-là nulle part) → 2 `ERR_FILE_NOT_FOUND` au chargement de mj-32, seul FAIL restant du smoke console. À produire côté pôle dino
 - [ ] Dette perf pré-existante mj-32 : le remplissage du FOND ENTIER coûte ~400 ms (déjà avant HO-MJ-08, calcul JS pur, le canvas n'y est pour rien). À traiter si le 1er tap paraît lent sur P30 Pro
 - [ ] Après HO-MJ-08 : patcher les linearts à brèche côté pôle dino (Cryolophosaure #6389) pour pouvoir baisser R (durable)
 
@@ -146,3 +155,35 @@
 
 - **EP-005** [ ] — Système de progression (flotte + carte) — table statuts historique, jamais développé plus loin dans le fichier source
 - **EP-026** [ ] — TTS ElevenLabs pré-générés (MP3 statiques pour noms de jeux) — infra + agent voice-director + pipeline narration, jamais démarré (reporté, speechSynthesis natif en fallback)
+
+## Lane — Retours Papa Yann 2026-09-08 (nid, œufs, longueur des parties, MJ-28)
+
+- **EP-120** [!] — Fin de partie · quand un œuf ou un objet est gagné, la célébration doit offrir un bouton « Aller dans le nid » (accès direct depuis l'écran de fin, pas seulement via le menu).
+- **EP-121** [!] — Ouverture d'œuf · le dino qui sort est décalé par rapport à la matrice des œufs, et sombre sur sombre : invisible. Recentrer sur l'œuf ouvert + fond clair ou halo derrière le dino.
+- **EP-122** [!] — Fiche dino gagnée · le bouton retour mène à une page vide avec un seul bouton retour ; le second retour tombe sur la page famille. Le retour doit ramener à la liste des dinos d'où l'œuf a été ouvert.
+- **EP-123** [!] — Un mini-jeu terminé n'a déclenché ni célébration ni écran de fin (Troodon ou Spinosaure — à identifier : auditer tous les MJ à thème dino sur la présence d'un `finPartie`/célébration).
+- **EP-124** [x] (fait 2026-09-09) — Longueur des parties · le modèle 4/6/8 manches est épuisant sur les jeux longs : Max quitte en voyant l'écran. Augmenter la difficulté au lieu du nombre de manches, et raccourcir les parties longues.
+  - Fait : `Golden.setup(id, { questions:[a,b,c] })` + relais par `cfg.questions` dans `mj-shell.js`
+    (le shell rappelait setup et ecrasait la table du jeu — c'etait la vraie cause). Defaut [4,6,8]
+    inchange, mj-24 et mj-46 non regresses. MJ-28 passe a [3,4,5] avec cousins de meme famille des le
+    niveau 2 au lieu du 3 (moins de manches, pas plus facile). Table invalide = refus bruyant + defaut.
+  - ⚠️ TOUJOURS OUVERT, arbitrage Papa Yann : a 3 manches l'etoile sans-faute devient bien plus facile
+    qu'a 8. Soit on l'accepte, soit on reserve l'etoile au niveau max. RIEN n'a ete code sur l'etoile.
+  - **ARBITRAGE Papa Yann 2026-09-09 : option B retenue.** `QS_PER_LEVEL` devient paramétrable par jeu — `Golden.setup('mj-28', { questions: [3,4,5] })`, défaut `[4,6,8]` INCHANGÉ pour tout jeu qui ne déclare rien. Les jeux à manche longue passent à moins de manches AVEC une difficulté qui monte plus vite (demande littérale : « augmenter la difficulté sans faire 8 parties »).
+  - Portée réelle : seuls 3 jeux utilisent Golden — mj-24, mj-28, mj-46. `mj-golden.js:42` (`QS_PER_LEVEL = [4, 6, 8]`) est le point d'entrée ; la règle du 2026-06-11 documentée en tête de `mj-golden.js` doit être amendée (elle n'est plus la LOI universelle, elle devient le DÉFAUT).
+  - Cas d'usage n°1 = MJ-28 : manche à ~15-20 s de funfact audio → 8 manches ≈ 4 min dont la moitié en écoute passive. C'est là que Max sort.
+  - ⚠️ RESTE À TRANCHER (posé à Papa Yann, sans réponse à ce jour) : sur un jeu à 3/4/5 manches, l'étoile s'obtient-elle toujours SANS FAUTE ? À 3 manches elle devient bien plus facile qu'à 8. Deux voies : (a) accepter, le jeu est plus dur par ailleurs ; (b) garder le sans-faute mais n'accorder l'étoile qu'au niveau max. NE PAS implémenter l'étoile sans cet arbitrage.
+- **EP-125** [x] (fait 2026-09-09) — Jeux d'écriture · rien qu'aux icônes Max n'a pas envie d'y aller. Revoir les vignettes/icônes des MJ d'écriture (visuel plus attirant, moins scolaire).
+  - Fait : le defaut n'etait pas les icones du catalogue mais les 4 vignettes du repaire de Galli
+    (mj-50/51/52/53), qui partageaient le MEME fond vert-sombre et formaient un bloc uniforme de lettres.
+    Chacune a desormais son univers (jungle / terre / nuit / ciel) et mj-50 montre Galli qui chante.
+    Recette a 360px : capture des 4 cote a cote, bloc casse, aucune lettre ne chevauche le dino.
+  - Reste ouvert : les emojis du catalogue (`catalog.js:89-93`, notamment 🔠 pour mj-51) ne s'affichent
+    que dans l'ecran parental — impact nul sur Max, basse priorite. Renommage des titres non fait
+    (touche les 4 bundles i18n, a grouper avec un autre chantier de traduction).
+- **EP-126** [!] — MJ-28 (La lampe du dino) · beaucoup de noms de dinos débordent de leur case ; le tap sur l'icône « écouter » attrape souvent la case à la place (zone tactile à séparer, 48x48 minimum).
+- **EP-127** [ ] — MJ-28 · le nom du dino est dit par une voix différente (homme/femme) du reste du texte. Uniformiser la voix.
+- **EP-128** [ ] — MJ-32 (atelier coloriage) · seul MJ à n'appeler aucun `G.showEnd()` (mj-32.html:1375, `MaxFX.finalStar` brut). Choix assumé pour un atelier libre `maxStars:0`, mais à trancher : pas de Tracker, pas de capsule/œuf, pas d'écran replay. Trouvé en enquêtant sur EP-123, ce n'est PAS le bug rapporté.
+- **EP-129** [ ] — Chambre des œufs à 360px · sur la capture de recette EP-120 (`studio/minijeux/tests/.artifacts/ep120-2-chambre-ouverte-360.png`), un panneau clair occupe le tiers droit de l'écran et coupe la vue de la chambre. À trancher : tiroir en cours d'ouverture figé par le timing de la capture, ou vrai défaut de layout à 360px. Vérifier sur le vrai téléphone.
+- **EP-130** [ ] — Chambre des œufs · le titre « La chambre des œufs » et les vignettes de dinos du fond sont très sombres sur fond sombre (contraste < 4.5:1 probable). Même famille que EP-121. Mesurer et remonter le contraste.
+- **EP-131** [ ] — `nid-e2e.spec.mjs` · le check « au moins 1 jeu tamponne » (section 7, bulle copain dino) echoue avec count=0. Passe par `MUR.playsOf()` puis `Tracker.getStats()`, chemin disjoint de l eclosion — probablement pre-existant, mais NON PROUVE tel (impossible de comparer avec l arbre propre, working tree partage entre sessions). A investiguer : soit le tracker n enregistre plus les parties, soit le spec attend une cle obsolete.

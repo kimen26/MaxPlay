@@ -240,3 +240,56 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 
 ### L-117 – La page /project du GPTs ChatGPT plante ; le CHAT du projet, non
 2026-09-08, generation des fonds puis des plantes. L'URL de la page projet du GPTs (`chatgpt.com/g/<id>/project`) rend une page vide avec un seul bouton « Try again » et aucun champ de saisie. Le generateur remonte alors le code 3 (« composer introuvable »), qu'il ne faut pas confondre avec un quota. Papa Yann a du intervenir a la main une fois pour rouvrir `chatgpt.com`. Contournement fiable : ne jamais naviguer vers `/project`, rester dans le CHAT du projet (`/c/<id>`), ou recharger `chatgpt.com` avant de reprendre. Le mode `--preview` des scripts de batch permet de verifier tous les prompts sans consommer un seul credit avant de lancer une serie.
+
+### L-118 – Une animation WAAPI en fill:forwards ecrase tout style.left/top reassigne ensuite
+2026-09-08, theatre d'eclosion du nid (EP-121, « le dino qui sort est totalement decalle »).
+`moveCarry()` animait la couche de transport avec `Element.animate(..., {fill:'forwards'})`
+puis reassignait `carry.style.left/top` pour figer la position. Or `fill:'forwards'` garde la
+priorite sur le style inline : le transform anime restait applique par-dessus. A l'etape
+suivante, le nouveau `translate(dx,dy)` — calcule comme un delta relatif a la position
+supposee courante — s'empilait sur l'ancien transform fantome, cumulant le decalage. Mesure
+qui a tranche : `carry.style.left` a -4 px pendant que `getBoundingClientRect().x` valait
+-193 px sur un ecran de 360 — le dino sortait de l'ecran. Regle : apres une animation WAAPI
+en `fill:'forwards'`, figer la position ET appeler `anim.cancel()` ; `style.transform='none'`
+ne suffit pas. Et ne jamais faire coexister deux systemes de coordonnees (un `center()`
+relatif a un overlay, un `left/top` calcule a la main) sur le meme element.
+Corollaire : une geometrie lue avant un `await` de 1400 ms est perimee au moment de servir.
+
+### L-119 – Un ecran de fin manquant ne se prouve pas au grep, il se joue
+2026-09-08, EP-123 (« un minijeu fini n'a pas ouvert de celebration »). Un premier audit
+statique a conclu que seul mj-32 n'appelle pas `G.showEnd()` — vrai mais hors sujet, mj-32
+est un atelier libre sans manches. La question n'etait pas « qui n'appelle pas showEnd »
+mais « chez qui showEnd n'est jamais ATTEINT ». Il a fallu jouer 18 parties reelles
+(6 jeux x niveau 1 et 3 x collection vierge et avancee) en ecoutant `pageerror` pour
+trancher. Verdict : non reproduit. Regle : pour un bug de sequence, l'audit statique
+repond a cote ; il faut derouler la partie et ecouter les erreurs JS. Et un « non reproduit »
+honnete vaut mieux qu'un coupable invente — noter alors ce qui n'a PAS ete couvert
+(ici : throttling CPU du vrai P30 Pro, et le TTS reel absent en headless, donc le chemin
+`onend` naturel jamais teste, seulement le filet de secours ~12 s).
+
+### L-120 – Un element retire du DOM garde un rect fantome : toute animation ancree dessus part ailleurs
+2026-09-08, theatre d'eclosion (EP-121, deuxieme couche du meme bug). Apres avoir tue le
+transform fantome WAAPI (L-118), le dino sortait toujours au mauvais endroit. Cause reelle :
+`hatchTheatre` appelait `MaxFX.hatch(oeuf, ...)` en passant l'oeuf de la CHAMBRE, alors que
+la chambre entiere venait d'etre retiree du DOM une etape plus tot (`chambre-ov.remove()`).
+`MaxFX.hatch` positionne halo et sprite avec `p = center(el, ov)` : sur un element detache,
+`getBoundingClientRect()` ne leve aucune erreur, il rend des coordonnees orphelines. Halo et
+dino se posaient donc loin de la case cible, qui restait vide et sombre — exactement le
+symptome rapporte. Correctif : ancrer sur `cible || oeuf`, la case de l'album etant deja
+transmise de promesse en promesse. **Regle** : quand une sequence retire un conteneur puis
+anime quelque chose, verifier que l'ancre de l'animation vit encore dans le DOM ; un rect
+d'element detache est silencieux, jamais une exception. Corollaire : une meme plainte
+utilisateur peut cacher DEUX bugs empiles — corriger le premier et voir le symptome persister
+ne veut pas dire que le premier correctif etait faux.
+
+### L-121 – Mesurer a un instant et capturer a un autre produit une conclusion fausse
+2026-09-08, verification d'EP-121. Un agent a rendu un rect (`x≈194, y≈155`) « centre sur la
+tuile cible » alors que la capture jointe montrait le halo en bas a droite et la case cerclee
+VIDE : la mesure et l'image venaient d'instants differents, et la mascotte Triceratops fixe
+de l'ecran avait ete prise pour le dino revele. Sur une animation, un rect n'a de sens que
+lu dans le MEME tour d'evenement que le screenshot. **Regle** : pour prouver la position d'un
+element anime, echantillonner a chaque frame et rendre rect + capture du meme instant, puis
+OUVRIR l'image et la decrire. Un chiffre seul se trompe de cible, une capture seule ne se
+mesure pas — il faut les deux, solidaires. Parent : la regle projet « ouvrir la capture ».
+
+- **L-122** — **Quand deux couches appellent le meme initialiseur, c'est la DERNIERE qui gagne : parametrer le jeu ne suffit pas si le shell repasse derriere** (EP-124, 2026-09-09). Ajouter `Golden.setup(id, { questions:[3,4,5] })` dans `mj-28.html` n'a rien change : la piste affichait toujours 4 billes. Le code etait juste, la valeur lue etait `[4,6,8]`. Cause : `mj-shell.js` rappelle `Golden.setup(cfg.id)` **apres** le jeu, sans options, et ecrase la table declaree. Le reflexe « le cache du navigateur, un fichier deploye ailleurs » etait faux — un seul `mj-golden.js` existe dans le repo. **Regle** : quand une valeur parametree revient au defaut, chercher un **second appel** de l'initialiseur avant de soupconner le cache ou un doublon de fichier (`grep` du nom de la fonction sur tout `site/js/`). Corollaire de conception : un parametre de jeu doit transiter par la config que le shell connait (`cfg.questions`), sinon toute couche posterieure le perd. Ce qui a tranche en 30 secondes : lire l'etat reel dans la page (`Golden.qsPerLevel`) au lieu de relire le code — un log de succes prouve qu'un code s'est execute, jamais que la valeur attendue est arrivee.

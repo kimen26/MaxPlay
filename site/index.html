@@ -228,6 +228,22 @@
     paintProfil();
     wireHeaderShortcuts();
 
+    // ── EP-120 : deep-link depuis l'écran de fin d'un mini-jeu ─────────
+    // (mj-golden.js § bouton « Aller au nid », même convention que
+    // dev-dinos.html?open=<id> dans nid-ui.js). ?open=nid ouvre la
+    // chambre des œufs directement au retour à la Vallée, sans clic
+    // supplémentaire — le moteur Collection est chargé en tâche de fond par
+    // le Mur, donc on attend qu'il soit prêt (retente courte, jamais bloquant).
+    (function openDeepLink() {
+      if (new URLSearchParams(location.search).get('open') !== 'nid') return;
+      let tries = 0;
+      (function tryOpen() {
+        if (window.NidUI && NidUI.openChambre) { NidUI.openChambre(); return; }
+        if (++tries > 20) return; // ~3s : moteur absent, on abandonne en silence
+        setTimeout(tryOpen, 150);
+      })();
+    })();
+
     // ── Jingle au 1er clic (identité conservée) ───────────────────────
     const JINGLES = ['sounds/ratp-jingle.mp3', 'sounds/sncf-france-jingle.mp3'];
     const jingle = new Audio(JINGLES[Math.floor(Math.random() * JINGLES.length)]);

@@ -537,22 +537,46 @@
     carry.appendChild(oeuf);
     document.body.appendChild(carry);
 
-    function moveCarry(x, y, dur, easing) {
-      return carry.animate([
-        { transform: getComputedStyle(carry).transform === 'none' ? 'translate(0,0)' : getComputedStyle(carry).transform },
-        { transform: 'translate(' + x + 'px,' + y + 'px)' }
-      ], { duration: dur, easing: easing || 'ease-in-out', fill: 'forwards' }).finished.catch(function () {});
+    // UN SEUL système de coordonnées (fix EP-121) : moveCarry anime toujours
+    // depuis la position CSS RÉELLE courante (left/top, lus en live) vers une
+    // position CSS ABSOLUE cible — jamais de transform cumulé. Chaque appel
+    // FIGE la nouvelle position en left/top à la fin, pour que l'étape
+    // suivante reparte d'une géométrie vraie (plus de dérive additive).
+    function moveCarry(toLeft, toTop, dur, easing) {
+      var fromLeft = parseFloat(carry.style.left) || 0;
+      var fromTop = parseFloat(carry.style.top) || 0;
+      var dx = toLeft - fromLeft, dy = toTop - fromTop;
+      var animObj = carry.animate([
+        { transform: 'translate(0,0)' },
+        { transform: 'translate(' + dx + 'px,' + dy + 'px)' }
+      ], { duration: dur, easing: easing || 'ease-in-out', fill: 'forwards' });
+      return animObj.finished.catch(function () {})
+        .then(function () {
+          // on fige la vraie position atteinte en left/top PUIS on annule
+          // l'animation Web Animations API (cancel(), pas juste réassigner
+          // style.transform) — avec fill:'forwards' l'anim garde la main sur
+          // le transform et écraserait sinon le style inline qu'on pose ici,
+          // provoquant un saut au prochain moveCarry (cause racine EP-121).
+          carry.style.left = toLeft + 'px';
+          carry.style.top = toTop + 'px';
+          animObj.cancel();
+        });
     }
 
-    var r = visu.getBoundingClientRect();
-    var eggX = r.left + r.width / 2, eggY = r.top + r.height / 2;
-    // départ hors-champ gauche, à hauteur de l'œuf
-    carry.style.left = '-90px';
-    carry.style.top = (eggY - 40) + 'px';
+    // position de départ : hors-champ à gauche, dérivée de la largeur réelle
+    // de la fenêtre (jamais de -90px en dur) — à hauteur de l'œuf source,
+    // recalculée juste avant l'affichage (pas 1400 ms avant, cf. étape 2).
+    var r0 = visu.getBoundingClientRect();
+    var startLeft = -(porteur.offsetWidth || 64) - 26; // largeur avatar + marge, hors écran
+    carry.style.left = startLeft + 'px';
+    carry.style.top = (r0.top + r0.height / 2 - 40) + 'px';
 
     return wait_(1400).then(function () {
-      // 2. l'avatar arrive jusqu'à l'œuf
-      return moveCarry(eggX + 50, 0, 1100, 'ease-in-out');
+      // 2. l'avatar arrive jusqu'à l'œuf — géométrie RE-lue ici (pas celle
+      // capturée 1400 ms plus tôt : la chambre a pu re-layouter entretemps).
+      var r = visu.getBoundingClientRect();
+      var eggX = r.left + r.width / 2, eggY = r.top + r.height / 2;
+      return moveCarry(eggX + 50, eggY - 40, 1100, 'ease-in-out');
     }).then(function () {
       // l'œuf de la chambre « passe » dans les bras du transporteur
       visu.style.opacity = '0';
@@ -571,18 +595,32 @@
       if (!cible) return null; // Padidi indisponible → révélation sur place
       cible.scrollIntoView({ block: 'center', behavior: 'auto' });
       cible.classList.add('th-cible');
-      var cr = cible.getBoundingClientRect();
-      var base = carry.getBoundingClientRect();
-      var dx = (cr.left + cr.width / 2) - (base.left + base.width / 2);
-      var dy = (cr.top + cr.height + 34) - (base.top + base.height / 2);
-      return moveCarry(dx, dy, 1400, 'ease-in-out').then(function () { return cible; });
+      // position CIBLE absolue re-lue APRÈS le scrollIntoView, sur la frame
+      // suivante (le scroll instantané peut ne pas être repaint tant qu'on
+      // n'a pas laissé le navigateur produire une frame — lire le rect tout
+      // de suite après scrollIntoView donne parfois encore l'ancien scroll).
+      // Même repère que carry (fixed, donc viewport) ; moveCarry attend des
+      // coordonnées left/top absolues.
+      return new Promise(function (resolve) { requestAnimationFrame(function () { requestAnimationFrame(resolve); }); }).then(function () {
+        var cr = cible.getBoundingClientRect();
+        var base = carry.getBoundingClientRect();
+        var toLeft = cr.left + cr.width / 2 - base.width / 2;
+        var toTop = cr.top + cr.height + 34 - base.height / 2;
+        return moveCarry(toLeft, toTop, 1400, 'ease-in-out');
+      }).then(function () { return cible; });
     }).then(function (cible) {
       return wait_(700).then(function () { return cible; }); // le court instant face à la silhouette
     }).then(function (cible) {
       // 5. révélation : l'œuf s'ouvre, le sprite prend sa place
       var imgSrc = teteSrc(dino) || ombreSrc(dino);
       playBabyCry(dino);
-      return MaxFX.hatch(oeuf, { imgSrc: imgSrc, label: '' }).then(function (ov) {
+      // L'ancre de l'éclosion est la CASE CIBLE de l'album, pas `oeuf` : la
+      // chambre a été retirée du DOM à l'étape 4 (chambre-ov.remove()), donc
+      // le rect de `oeuf` est celui d'un élément détaché — MaxFX.hatch posait
+      // halo et sprite sur des coordonnées orphelines, loin de la case (le
+      // dino apparaissait décalé, et le halo n'éclairait pas la bonne zone).
+      // Repli sur `oeuf` seulement si Padidi est indisponible (cible null).
+      return MaxFX.hatch(cible || oeuf, { imgSrc: imgSrc, label: '' }).then(function (ov) {
         if (ov && ov.parentNode) ov.parentNode.removeChild(ov);
         if (cible) {
           cible.classList.remove('ombre-only', 'th-cible');
@@ -700,6 +738,13 @@
       var vig = ev.target.closest('.nid-vig');
       if (!vig) return;
       if (vig.classList.contains('possede') && vig.dataset.dino) {
+        // EP-122 : navigation depuis le mur d'ombres (page séparée de dev-dinos.html,
+        // pas de showGrid() possible en retour). Le deep-link ?open= renseigne
+        // maintenant currentMode/currentCatId côté dev-dinos.html (voir son handler
+        // de deep-link) sur la FAMILLE du dino tapé : au retour, on retombe sur la
+        // grille famille de l'encyclopédie, cohérent avec les 2 autres points d'appel
+        // (fin d'éclosion) — pas besoin d'uniformiser vers le Padidi ici, il vit hors
+        // de dev-dinos.html.
         location.href = 'dev-dinos.html?v=7&open=' + encodeURIComponent(vig.dataset.dino);
       } else {
         reactMystere(vig); // jamais de tap mort, jamais de spoiler

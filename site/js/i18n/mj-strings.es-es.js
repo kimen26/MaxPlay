@@ -18,6 +18,7 @@ window.MJ_STRINGS = {
   "placeholderAvis": "¿Un fallo? ¿Una idea? ¿Muy difícil, muy fácil?…",
   "titreDicter": "dictar en vez de escribir",
   "envoyer": "Enviar 📨",
+  "nidBoutonFin": "¡Al nido!",
   "zeroDonneeEnfant": "no se pide nada al niño — cero datos suyos 👍",
   "merciAvisEnvoye": "¡Gracias! Opinión enviada ✓",
   "oupsReessaie": "Vaya, inténtalo otra vez 🙏",
@@ -671,6 +672,7 @@ window.MJ_STRINGS = {
   "ui": {
    "consigne": "¿Qué dinosaurio se esconde en la oscuridad?",
    "essaieEncore": "¡Inténtalo otra vez!",
+   "bravo": "¡Bien hecho!",
    "bravoNom": "¡Bien hecho! ¡Es el {nom}!"
   },
   "voix": {
@@ -802,6 +804,7 @@ window.MJ_STRINGS = {
    "maGalerie": "Mi galería",
    "choisisUneFamille": "¡Elige una familia de dinosaurios!",
    "lesFamilles": "Las familias",
+   "lesPlantes": "Las plantas",
    "choisisUnDino": "¡Elige un dinosaurio para colorear!",
    "autreDino": "Otro dinosaurio",
    "modele": "Modelo",

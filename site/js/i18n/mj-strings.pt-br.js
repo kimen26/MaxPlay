@@ -18,6 +18,7 @@ window.MJ_STRINGS = {
   "placeholderAvis": "Um bug? Uma ideia? Muito difícil, muito fácil?…",
   "titreDicter": "ditar em vez de escrever",
   "envoyer": "Enviar 📨",
+  "nidBoutonFin": "Pro ninho!",
   "zeroDonneeEnfant": "nada é pedido à criança — zero dado sobre ela 👍",
   "merciAvisEnvoye": "Obrigado! Opinião enviada ✓",
   "oupsReessaie": "Ops, tenta de novo 🙏",
@@ -671,6 +672,7 @@ window.MJ_STRINGS = {
   "ui": {
    "consigne": "Qual dino está escondido no escuro?",
    "essaieEncore": "Tenta de novo!",
+   "bravo": "Parabéns!",
    "bravoNom": "Parabéns! É o {nom}!"
   },
   "voix": {
@@ -802,6 +804,7 @@ window.MJ_STRINGS = {
    "maGalerie": "Minha galeria",
    "choisisUneFamille": "Escolhe uma família de dinos!",
    "lesFamilles": "As famílias",
+   "lesPlantes": "As plantas",
    "choisisUnDino": "Escolhe um dino para colorir!",
    "autreDino": "Outro dino",
    "modele": "Modelo",

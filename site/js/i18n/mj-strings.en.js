@@ -18,6 +18,7 @@ window.MJ_STRINGS = {
   "placeholderAvis": "A bug? An idea? Too hard, too easy?…",
   "titreDicter": "speak instead of typing",
   "envoyer": "Send 📨",
+  "nidBoutonFin": "To the nest!",
   "zeroDonneeEnfant": "nothing is asked of your child — zero data about them 👍",
   "merciAvisEnvoye": "Thanks! Feedback sent ✓",
   "oupsReessaie": "Oops, try again 🙏",
@@ -671,6 +672,7 @@ window.MJ_STRINGS = {
   "ui": {
    "consigne": "Which dino is hiding in the dark?",
    "essaieEncore": "Try again!",
+   "bravo": "Well done!",
    "bravoNom": "Well done! It’s the {nom}!"
   },
   "voix": {
@@ -802,6 +804,7 @@ window.MJ_STRINGS = {
    "maGalerie": "My gallery",
    "choisisUneFamille": "Choose a dino family!",
    "lesFamilles": "Families",
+   "lesPlantes": "Plants",
    "choisisUnDino": "Choose a dino to color!",
    "autreDino": "Another dino",
    "modele": "Model",

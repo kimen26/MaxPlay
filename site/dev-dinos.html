@@ -1327,10 +1327,18 @@ function buildFichePlante(p) {
 
 /* ── GRID régime ── */
 function showGridRegime(catId) {
+  const cat = DINO_CATEGORIES.find(c => c.id === catId);
+  if (!cat) {
+    // Cause racine (EP-122) : catId introuvable (ex. currentCatId jamais renseigné
+    // après un deep-link ?open=) ne doit jamais laisser un écran grid vide. On le
+    // signale et on retombe sur le menu plutôt que de lever une exception muette.
+    console.error('[dev-dinos] showGridRegime: catégorie régime introuvable pour catId=', catId);
+    showMenu();
+    return;
+  }
   currentCatId = catId;
   showScreen('grid');
   buildGrid(catId);
-  const cat = DINO_CATEGORIES.find(c => c.id === catId);
   document.getElementById('grid-title').textContent = cat.emoji + ' ' + cat.label;
   // Accroche régime = vraie voix ElevenLabs (étymo + fun), fallback dame si MP3 absent.
   setTimeout(() => playRegimeVoice(catId, cat.label + ' ! ' + T('grid_accroche_suffixe')), 200);
@@ -1363,9 +1371,17 @@ function buildGrid(catId) {
 
 /* ── GRID famille ── */
 function showGridFamille(famId) {
+  const fam = DINO_FAMILLES.find(f => f.id === famId);
+  if (!fam) {
+    // Cause racine (EP-122) : famId introuvable (ex. currentCatId jamais renseigné
+    // après un deep-link ?open=) ne doit jamais laisser un écran grid vide. On le
+    // signale et on retombe sur le menu plutôt que de lever une exception muette.
+    console.error('[dev-dinos] showGridFamille: famille introuvable pour famId=', famId);
+    showMenu();
+    return;
+  }
   currentCatId = famId;
   showScreen('grid');
-  const fam = DINO_FAMILLES.find(f => f.id === famId);
   const title = fam.sci || fam.label;
   document.getElementById('grid-title').textContent = fam.emoji + ' ' + title;
   const el = document.getElementById('grid-scroll');
@@ -1405,9 +1421,17 @@ function showGridFamille(famId) {
 /* ── Grille ÉPOQUE (5e onglet, ajouté 2026-07-28 demande Papa Yann « trier par époque ») ──
    Réutilise le même gabarit de carte que showGridFamille (bandeau explicatif + grid dino-card). */
 function showGridEpoque(perId) {
+  const per = DINO_PERIODES.find(p => p.id === perId);
+  if (!per) {
+    // Cause racine (EP-122) : perId introuvable (ex. currentCatId jamais renseigné
+    // après un deep-link ?open=) ne doit jamais laisser un écran grid vide. On le
+    // signale et on retombe sur le menu plutôt que de lever une exception muette.
+    console.error('[dev-dinos] showGridEpoque: période introuvable pour perId=', perId);
+    showMenu();
+    return;
+  }
   currentCatId = perId;
   showScreen('grid');
-  const per = DINO_PERIODES.find(p => p.id === perId);
   document.getElementById('grid-title').textContent = per.emoji + ' ' + per.label;
   const el = document.getElementById('grid-scroll');
   el.innerHTML = '';
@@ -2492,13 +2516,30 @@ function playSpecial(which, btnEl) {
 /* ── Init ── */
 buildMenu();
 
-// Deep-link additif (nid-ui.js, bandeau collection Mur) : dev-dinos.html?open=<id>
-// ouvre directement la fiche du dino. Sans le param, comportement inchangé.
+// Deep-link additif (nid-ui.js, bandeau collection Mur + carte de gain d'éclosion) :
+// dev-dinos.html?open=<id> ouvre directement la fiche du dino. Sans le param,
+// comportement inchangé.
+// EP-122 (Papa Yann) : avant d'ouvrir la fiche, on doit renseigner l'état de
+// navigation (currentMode/currentCatId) comme si on venait de traverser la
+// grille, sinon le bouton retour de la fiche (showGrid(), sans argument)
+// retombe sur un currentCatId=null et un écran grid vide (cause racine
+// diagnostiquée : DINO_FAMILLES.find(...) === undefined levait une exception
+// muette dans showGridFamille). On déduit la famille du dino gagné depuis les
+// données (site/js/dinos-data.js) — le mode par défaut de l'appli est
+// 'famille', donc c'est bien "la liste où l'œuf s'est ouvert" pour Papa Yann.
 (function () {
   try {
     var p = new URLSearchParams(location.search);
     var openId = p.get('open');
-    if (openId) setTimeout(function () { showFiche2(openId); }, 0);
+    if (!openId) return;
+    setTimeout(function () {
+      var dino = DINOS.find(function (d) { return d.id === openId; });
+      if (dino && dino.famille) {
+        currentMode = 'famille';
+        currentCatId = dino.famille;
+      }
+      showFiche2(openId);
+    }, 0);
   } catch (e) {}
 })();
 </script>

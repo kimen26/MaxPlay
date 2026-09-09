@@ -1231,7 +1231,18 @@
         ], { duration: 700, easing: 'cubic-bezier(.3,0,.6,1)', fill: 'forwards' });
       }
       fxp.burst(p.x, p.y, 26, [C.gold, '#fff3d1', '#7fe7c4'], 3.6);
-      /* 3. le dino surprise apparaît à la place de l'œuf */
+      /* 3. halo clair OPAQUE derrière le dino révélé (fix EP-121 : un dino
+         sombre sur fond sombre était invisible — le flash seul est
+         semi-transparent et ne suffit pas). Disque clair qui pop juste
+         avant l'image, contraste garanti quelle que soit la couleur du
+         dino, et ne remplace ni le flash ni les éclats de coquille. */
+      var haloSize = size * 1.35;
+      var halo = mk(ov, at(p.x, p.y, haloSize) + 'border-radius:50%;background:radial-gradient(circle,#fff8e6 0%,#ffe9b0 60%,rgba(255,233,176,0) 100%);opacity:0;');
+      anim(halo, [
+        { opacity: 0, transform: 'scale(.4)' },
+        { opacity: 1, transform: 'scale(1)' }
+      ], { duration: 380, delay: 200, easing: 'cubic-bezier(.34,1.56,.64,1)', fill: 'both' });
+      /* 3bis. le dino surprise apparaît à la place de l'œuf */
       var reveal = mk(ov, at(p.x, p.y, size) + 'display:flex;align-items:center;justify-content:center;');
       if (opts.imgSrc) {
         var img = document.createElement('img');

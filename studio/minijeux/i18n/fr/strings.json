@@ -16,6 +16,7 @@
   "placeholderAvis": "Un bug ? Une idée ? Trop dur, trop facile ?…",
   "titreDicter": "dicter au lieu d'écrire",
   "envoyer": "Envoyer 📨",
+  "nidBoutonFin": "Au nid !",
   "zeroDonneeEnfant": "rien n'est demandé à l'enfant — zéro donnée le concernant 👍",
   "merciAvisEnvoye": "Merci ! Avis envoyé ✓",
   "oupsReessaie": "Oups, réessaie 🙏",
@@ -669,6 +670,7 @@
   "ui": {
    "consigne": "Quel dino se cache dans le noir ?",
    "essaieEncore": "Essaie encore !",
+   "bravo": "Bravo !",
    "bravoNom": "Bravo ! C’est le {nom} !"
   },
   "voix": {
@@ -800,6 +802,7 @@
    "maGalerie": "Ma galerie",
    "choisisUneFamille": "Choisis une famille de dinos !",
    "lesFamilles": "Les familles",
+   "lesPlantes": "Les plantes",
    "choisisUnDino": "Choisis un dino à colorier !",
    "autreDino": "Autre dino",
    "modele": "Modèle",

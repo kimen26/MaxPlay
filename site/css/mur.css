@@ -196,17 +196,24 @@
 .vig-constel i:nth-child(3){ top:68%; left:26%; width:12%; }
 .vig-constel i:nth-child(4){ top:38%; left:70%; }
 
-/* boîte à mots : syllabes pa | pa */
-.vig-boitemot { background:linear-gradient(150deg,#123c33,#0a1f1a); }
+/* boîte à mots : syllabes pa | pa
+   EP-125 (2026-09-09) : fond nuit-bleu. Les 4 vignettes du repaire de Galli
+   partageaient le MEME fond vert-sombre : cote a cote elles formaient un bloc
+   uniforme de lettres, lu comme "la case lecon" et evite en bloc. Chaque jeu a
+   desormais son fond, c'est ce qui casse le bloc. */
+.vig-boitemot { background:linear-gradient(150deg,#2b3f7a,#141d3a); }
 .vig-boitemot .boite { display:flex; align-items:center; gap:5px; padding:8px 10px;
   border:3px solid rgba(255,209,102,.55); border-radius:14px; background:rgba(0,0,0,.18); }
 .vig-boitemot span { font-family:'Cursif',cursive; font-size:24px; color:#fff;
   background:rgba(255,255,255,.12); border-radius:9px; padding:5px 7px; }
 .vig-boitemot .sep { width:3px; padding:0; height:36%; background:var(--gold); border-radius:2px; }
 
-/* trouve la lettre : lettre cursive + ondes sonores */
-.vig-son-lettre { background:linear-gradient(150deg,#123c33,#0a1f1a); gap:2px; }
-.vig-son-lettre .vig-lettre { width:44%; }
+/* trouve la lettre : le dino qui chante (EP-125 : fond jungle clair, et c'est
+   Galli qui emet le son — la lettre passe en second role) */
+.vig-son-lettre { background:linear-gradient(150deg,#3f7d4a,#8fbf5a); gap:2px; position:relative; }
+.vig-son-lettre .vsl-dino { position:absolute; left:1%; bottom:3%; width:56%; opacity:.9;
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,.35)); }
+.vig-son-lettre .vig-lettre { width:30%; margin-left:52%; margin-bottom:16%; }
 .vig-son-lettre i { display:block; border:3px solid var(--gold); border-left-color:transparent; border-top-color:transparent; border-bottom-color:transparent; border-radius:50%; }
 .vig-son-lettre .w1 { width:16%; height:34%; }
 .vig-son-lettre .w2 { width:16%; height:56%; margin-left:-9%; opacity:.6; }
@@ -214,7 +221,7 @@
 /* le tri des lettres : 2 casiers + flèche de tri (retour audit 2026-07-28 :
    avant = 2 lettres cote à cote indiscernables de "Trouve la lettre" — la
    flèche + les 2 cases séparées disent "tri", pas juste "lettre"). */
-.vig-tri { background:linear-gradient(150deg,#123c33,#0a1f1a); gap:6px; position:relative; }
+.vig-tri { background:linear-gradient(150deg,#7a4a1c,#3a2210); gap:6px; position:relative; } /* EP-125 : terre chaude */
 .tri-case { width:32%; aspect-ratio:.86; border-radius:12px; display:flex; align-items:center; justify-content:center;
   box-shadow:0 3px 8px rgba(0,0,0,.35); }
 .tri-case.c1 { background:rgba(255,255,255,.14); }
@@ -224,9 +231,10 @@
 
 /* lis et fais : syllabe → œuf (retour audit 2026-07-28 : "lis !" en toutes
    lettres ne disait rien du jeu — montrer l'action lire PUIS agir). */
-.vig-lisfais { background:linear-gradient(150deg,#123c33,#0a1f1a); gap:8px; }
-.vig-lisfais .lf-mot { position:static; width:auto; aspect-ratio:auto; font-size:24px; padding:5px 8px; }
-.lf-fleche { font-family:'Fredoka One'; font-size:18px; color:var(--gold); }
+.vig-lisfais { background:linear-gradient(160deg,#8ecae6,#e8f4fa); gap:8px; } /* EP-125 : ciel (le jeu contient de vrais bus) */
+.vig-lisfais .lf-mot { position:static; width:auto; aspect-ratio:auto; font-size:24px; padding:5px 8px;
+  background:rgba(0,0,0,.32); } /* fond clair : la syllabe blanche a besoin d'un socle sombre */
+.lf-fleche { font-family:'Fredoka One'; font-size:18px; color:#3a2a00; } /* EP-125 : or illisible sur ciel clair */
 .mjk-oeuf-mini { width:22%; aspect-ratio:.78; border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
   background:linear-gradient(160deg,#fff7e0,#f5e3c2); box-shadow:inset -3px -5px 0 rgba(0,0,0,.12), 0 3px 7px rgba(0,0,0,.4); }
 

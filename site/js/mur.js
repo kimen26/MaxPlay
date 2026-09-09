@@ -153,7 +153,7 @@
     'mj-47': '<div class="vig vig-constel"><i></i><i></i><i></i><i></i></div>',
     'mj-48': '<div class="vig vig-bus vig-monte" data-bus="162"></div>',
     'mj-49': '<div class="vig vig-barq"><span class="dix">10</span></div>',
-    'mj-50': '<div class="vig vig-son-lettre"><span class="vig-lettre">m</span><i class="w1"></i><i class="w2"></i></div>',
+    'mj-50': '<div class="vig vig-son-lettre"><img class="vsl-dino" src="' + OMBRE + 'Gallimimus_ombre.png" alt=""><span class="vig-lettre">m</span><i class="w1"></i><i class="w2"></i></div>',
     'mj-51': '<div class="vig vig-tri"><div class="tri-case c1"><span class="vig-lettre">a</span></div><div class="tri-case c2"><span class="vig-lettre script">a</span></div><span class="tri-fleche">→</span></div>',
     'mj-52': '<div class="vig vig-boitemot"><div class="boite"><span class="s1">pa</span><span class="sep"></span><span class="s2">pa</span></div></div>',
     'mj-53': '<div class="vig vig-lisfais"><span class="vig-lettre lf-mot">pa</span><span class="lf-fleche">→</span><div class="mjk-oeuf-mini"></div></div>',

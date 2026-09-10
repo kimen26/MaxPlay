@@ -219,33 +219,17 @@ est vide par construction), verifies image par image.
   Il vivait dans un scratchpad de session, donc perissable.
 - [x] **Prompt de coloriage durci** — `batch-dino-coloriage.mjs` exige desormais tout detail interieur
   comme contour FERME (stries, barbes, meches, crete, plis). Bonne pratique retenue meme sans fuite avereee.
-- [ ] **Scelidosaurus : les TROIS assets manquent** (seul dino dans ce cas sur 70) —
-  `paleoart/Scelidosaurus.jpg` (hero), `ombres/Scelidosaurus_ombre.png`, `paleoart/Scelidosaurus_coloriage.webp`.
-  L'ombre se derive du hero (`ombre_from_hero.py`), donc le hero est le prealable. **BLOQUE, cause precisee
-  le 2026-09-09** : le Chromium dedie (port 9225, profil `c:/tmp/chromium-dino`) a bien ete lance et
-  fonctionne — mais le compte ChatGPT connecte dans ce profil est **celui d'une tierce personne**
-  (Cláudia Evangelista), pas celui de Papa Yann. Generer sur le compte d'un tiers n'est pas une decision
-  d'agent. En prime, la page projet `g-p-6a2c67eb…/project` ne monte pas dans ce profil (page blanche,
-  bouton « Reessayer », composer absent apres 45 s -> exit 3), alors que l'accueil ChatGPT repond
-  normalement — le projet « Dinosaure » est pourtant visible dans les epingles.
-  **Pour debloquer** : ouvrir la fenetre « chromium-dino », se deconnecter du compte tiers, se connecter
-  au compte de Papa Yann (le profil est persistant : une seule fois), puis relancer
-  `CDP_PORT=9225 node .claude/skills/dino-images-lunii/scripts/batch-dino-series.mjs scelidosaurus --only hero`.
-  Le canal Grok est dans le meme etat (aucune session dans ce profil).
-  **Re-verifie le 2026-09-10** (le Chromium avait ete ferme entre-temps, relance sur le meme profil) :
-  `/api/auth/session` rend toujours `ccsevangelista@gmail.com`, plan Plus. Le compte n'a pas change,
-  donc rien n'a ete genere. Le blocage tient a la seule action que l'agent ne peut pas faire a la place
-  de Papa Yann : changer de compte.
-  **Consequence trouvee le 2026-09-10, plus grave que le trou d'asset lui-meme** : l'ombre absente etait tiree
-  au hasard par les jeux d'ombres (mj-19, mj-24, mj-46, mj-21, mj-55...), donc **l'enfant pouvait tomber sur une
-  carte VIDE en jouant**, et le harnais CI rougissait au hasard selon le tirage. Contourne cote JEU par la liste
-  `SANS_OMBRE` de `site/js/dinos-ombres.js` : le Scelidosaurus est exclu du tirage tant qu'il n'a pas son image.
-  **A la generation, retirer 'scelidosaurus' de cette liste** — la porte `node studio/minijeux/tools/_check-ombres-dino.mjs`
-  le rappelle en echouant si l'ombre existe alors que l'id y figure encore.
-  **Deuxieme consequence, corrigee le meme jour** : dans l'encyclopedie, la fiche du Scelidosaure affichait un
-  grand rectangle vert VIDE a la place de la bete — le repli portrait -> ombre s'arretait la, faute des deux.
-  La fiche affiche desormais l'emoji de la FAMILLE en dernier recours (un os pour les cuirasses), comme le
-  faisait deja la fiche d'une plante. A la generation des images, ce repli s'effacera tout seul.
+- [x] **SCELIDOSAURUS COMPLET le 2026-09-11** — le 71e et dernier dino sans images en a desormais 8/8.
+  Debloque par Papa Yann (« bah c'est bien le profil de claudia que j'utilise ! » : le compte du profil Chromium
+  dedie est bien le sien, pas celui d'un tiers — ce que j'avais suppose a tort en refusant de generer).
+  Produit : hero, 4 scenes paleoart (manger / ecosysteme / paris / funfact), headshot, coloriage et ombre chinoise.
+  **Piege rencontre** : `ombre_from_hero.py` a ECHOUE sur ce dino — sa peau tres texturee (osteodermes, sillons
+  sombres entre les plaques) piege la segmentation par proximite de couleur, qui rendait soit 17 px soit un
+  barbouillage du decor. L'ombre a ete generee directement par `batch-dino-ombre.mjs`, dont la sortie etait DEJA
+  au format canon (noir sur alpha) — mes conversions successives detruisaient une image correcte.
+  Verifie : coloriage ETANCHE (39 poches fermees), noir et blanc pur, fiche ouverte sans aucun asset manquant,
+  `_check-ombres-dino.mjs` au vert (71 dinos / 71 ombres / 0 exclusion), etat 71 complets / 0 incomplet,
+  mj-24, mj-28 et mj-32 au vert — mj-32 etait rouge depuis des jours a cause de ce coloriage manquant
 - [x] **Collision d'id : FAUSSE ALERTE** (verifie 2026-09-09) — l'entree Scelidosaurus porte bien
   `id: 'scelidosaurus'` ; la ligne 1008 citee appartenait a l'entree PRECEDENTE. Controle programmatique
   sur tout `dinos-data.js` : **76 entrees, 76 id uniques, aucun doublon**. Rien a corriger.
@@ -265,3 +249,54 @@ est vide par construction), verifies image par image.
 - [ ] **Question ouverte** : les mini-jeux dino (mj-24, 28, 30, 31, 32, 40, 54, 55, 56, 57) vivent
   aujourd'hui dans le catalogue des mini-jeux, hors encyclopedie. Faut-il une porte « on joue »
   dans l'encyclopedie qui pointe vers eux, ou garder la separation actuelle ?
+
+## Ce que la maquette de navigation a revele (2026-09-10)
+
+- [ ] **Le Voyage a 12 episodes, pas 8** — et SEPT n'ont aucun dino (naissance de la Terre, vie dans
+  l'eau, sortie de l'eau, la Grande Mort, les mammiferes, la glaciation, les paleontologues). Le
+  recouvrement Voyage / Epoques n'est donc PAS total : il porte sur les trois periodes du Mesozoique
+  seulement. Le Voyage raconte l'histoire de la TERRE, les Epoques rangent des DINOSAURES.
+- [ ] **Les cinq pills debordent a 360 px** — « Les epoques » et « Le dico » sont hors ecran au
+  chargement, atteignables seulement par un scroll horizontal qu'un enfant de 4 ans ne decouvre pas
+  seul. C'est un defaut d'acces reel, verifie a la capture, pas une hypothese.
+- [ ] **L'encyclopedie n'est pas un ecran d'entree** : on y arrive depuis le Mur, par la bulle du Roi
+  T-Rex (3 vignettes : encyclo / nid / Padidi). Toute refonte de la nav dino doit compter les taps
+  DEPUIS le Mur, pas depuis dev-dinos.html.
+- [ ] **Le langage visuel « parcours vs collection » existe deja** dans les explorations du Mur
+  (`studio/minijeux/docs/research/menus/pistes-v2.html`, piste C annotee « la fusion que tu
+  cherchais ») : une sente en pointilles qui relie les etapes + des empreintes de pas sous chacune
+  pour dire ce qui est fait. Ne pas reinventer un autre signal pour l'encyclopedie.
+- [ ] Maquettes des 4 pistes de nav : `studio/dino/docs/research/nav-encyclopedie/pistes.html`.
+
+## Ce que disent les concurrents (recherche sourcee 2026-09-10)
+
+- [ ] **Britannica Kids Dinosaurs = notre jumelle qui a rate** : encyclopedie dino enfant, classee 8+
+  par Common Sense Media. Defaut de nav releve : « uses a pop-up scroll-wheel to move between
+  sections, which can sometimes feel unwieldy ». Dinosaur Train A to Z : la partie train marche en
+  prescolaire, mais « the classifying dino section may be beyond most preschoolers » (filtre par
+  attribut : regime, morpho, periode). **Les deux echecs pointent le meme endroit : ce n'est pas la
+  richesse encyclopedique qui exclut le 4 ans, c'est le MECANISME DE SELECTION ABSTRAIT.** Or nos
+  onglets « Ce qu'il mange » et « Les epoques » SONT des filtres par attribut.
+- [ ] **Ce qui marche a la place (sourcé)** : Ultimate Dinopedia = « flip through page by page like a
+  book » + « a visual table of contents » (sommaire VISUEL, pas liste). Cards of Dinosaurs for Toddler
+  = QUATRE categories, toutes reconnaissables sur une silhouette (volants, predateurs, herbivores,
+  marins). Nos 11 familles ne sont pas toutes distinguables a l'oeil a 4 ans (Theropodes vs
+  Dromaeosaures = nuance de specialiste).
+- [ ] **1 a 2 taps chez tous les gagnants** : Pok Pok (Apple Design Award) a SUPPRIME le menu — « they
+  will never see a menu… kids just see the toys ». Sago Mini : 1 tap, navigation entierement par
+  icones, zero texte. Les apps a 3+ niveaux sont soit critiquees soit classees 8+. Nos 4 maquettes
+  sont a 3-4 taps depuis l'encyclopedie, donc 5-6 depuis le Mur : AUCUNE n'est dans les clous.
+- [ ] **Cible tactile 2 cm x 2 cm pour jeune enfant (NN/G)** — QUATRE fois la surface de la cible
+  adulte ; les boutons de 5 mm ont produit frustration et echecs en test. Sur P30 Pro, 2 cm vaut
+  environ 75-80 px CSS : sur 360 px de large, plafond de 3 colonnes confortables, 4 a l'etroit. Nos
+  pills a 11 px de police sont hors clous.
+- [ ] **Scroll horizontal : le geste est acquis a 4 ans, la DECOUVRABILITE ne l'est pas.** NN/G : les
+  enfants swipent « when the design gave sufficient cues that there was more to see ». Le probleme de
+  nos pills n'est donc pas le swipe, c'est l'absence d'indice qu'il y a autre chose derriere le bord.
+- [ ] **Khan Academy Kids = le cas d'ecole pour Voyage vs Epoques** : il porte les deux regimes et les
+  separe par la GEOGRAPHIE de l'ecran, sans un mot. Parcours = gros bouton vert central. Collection =
+  icone de LIVRE dans un coin. Un bouton d'action contre un objet qui se feuillette.
+- [ ] Limites assumees de la recherche : le rapport NN/G « UX Design for Children » (chapitre
+  Designing navigation for children) est PAYANT et n'a pas ete lu ; AUCUNE source publiee ne donne de
+  nombre maximum d'items de menu pour les 3-6 ans (ni NN/G, ni Apple HIG, ni Google Play Families,
+  qui ne traitent que la conformite). A trancher en recette reelle avec l'enfant, pas en litterature.

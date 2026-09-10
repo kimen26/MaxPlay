@@ -6,32 +6,30 @@
 
 ## Synthèse
 
-- **71 dinos** · **70 complets (8/8)** · **1 incomplets**
+- **71 dinos** · **71 complets (8/8)** · **0 incomplets**
 
 | Axe | Couverture |
 |-----|-----------|
-| hero | 70/71 |
-| paleoart | 70/71 |
-| coloriage | 70/71 |
+| hero | 71/71 |
+| paleoart | 71/71 |
+| coloriage | 71/71 |
 | audio | 71/71 |
-| silhouette | 70/71 |
+| silhouette | 71/71 |
 | fiche | 71/71 |
 | etymo | 71/71 |
 | mesures | 71/71 |
 
 ## Incomplets d'abord
 
-| Dino | id | Score | Manque |
-|------|----|-------|--------|
-| Scélidosaure | `scelidosaurus` | 4/8 | hero, paléoart(headshot/manger/paris/ecosysteme/funfact), coloriage, silhouette |
+_Aucun — les 71 dinos sont complets sur les 8 axes. 🎉_
 
-## Complets (70)
+## Complets (71)
 
-T-Rex · Spinosaure · Giganotosaure · Carcharodontosaure · Allosaure · Tarbosaure · Albertosaure · Cératosaure · Dilophosaure · Carnotaure · Cryolophosaure · Brachiosaure · Diplodocus · Apatosaure (Brontosaure) · Camarasaure · Amargasaure · Plateosaure · Ankylosaure · Euoplocéphale · Edmontonia · Minmi · Scutellosaure · Stégosaure · Kéntrosaure · Tricératops · Torosaure · Protocératops · Pentacératops · Parasaurolophus · Corythosaure · Maiasaura · Saurolophe · Edmontosaure · Iguanodon · Pachycéphalosaure · Vélociraptor · Deinonychus · Utahraptor · Microraptor · Troodon · Gallimimus · Oviraptor · Ptéranodon · Quetzalcoatlus · Hatzegopteryx · Archaeoptéryx · Mosasaure · Baryonyx · Therizinosaurus · Dimétrodon · Édaphosaure · Gorgonops · Lystrosaure · Moschops · Élasmosaure · Ophthalmosaure · Liopleurodon · Archélon · Shonisaure · Titanosaure · Centrosaure · Ichtyosaure · Mammouth · Smilodon · Mégathérium · Paracérathérium · Glyptodon · Loup terrible · Rhino laineux · Titanis
+T-Rex · Spinosaure · Giganotosaure · Carcharodontosaure · Allosaure · Tarbosaure · Albertosaure · Cératosaure · Dilophosaure · Carnotaure · Cryolophosaure · Brachiosaure · Diplodocus · Apatosaure (Brontosaure) · Camarasaure · Amargasaure · Plateosaure · Ankylosaure · Euoplocéphale · Edmontonia · Minmi · Scutellosaure · Scélidosaure · Stégosaure · Kéntrosaure · Tricératops · Torosaure · Protocératops · Pentacératops · Parasaurolophus · Corythosaure · Maiasaura · Saurolophe · Edmontosaure · Iguanodon · Pachycéphalosaure · Vélociraptor · Deinonychus · Utahraptor · Microraptor · Troodon · Gallimimus · Oviraptor · Ptéranodon · Quetzalcoatlus · Hatzegopteryx · Archaeoptéryx · Mosasaure · Baryonyx · Therizinosaurus · Dimétrodon · Édaphosaure · Gorgonops · Lystrosaure · Moschops · Élasmosaure · Ophthalmosaure · Liopleurodon · Archélon · Shonisaure · Titanosaure · Centrosaure · Ichtyosaure · Mammouth · Smilodon · Mégathérium · Paracérathérium · Glyptodon · Loup terrible · Rhino laineux · Titanis
 
 ## Orphelins / staging
 
-Images paléoart sans dino dans DINOS : Amargasaurus_hypo-epines, Amargasaurus_hypo-voile
+Images paléoart sans dino dans DINOS : Amargasaurus_hypo-epines, Amargasaurus_hypo-voile, fond_desert, fond_foret, fond_montagne, fond_neige, fond_volcan
 
 ---
 _Généré le run — relancer le script pour rafraîchir._

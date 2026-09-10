@@ -44,11 +44,11 @@
   // Dinos presents dans dinos-data.js mais dont l'ombre n'existe PAS sur disque.
   // Un dino declare un `png` des qu'il entre dans l'encyclopedie ; ses images
   // peuvent arriver plus tard. Sans ce garde-fou l'enfant tire une carte d'ombre
-  // VIDE, et le harnais rougit au hasard selon le tirage (constat 2026-09-10 :
-  // mj-19, mj-21, mj-24, mj-46, mj-55 tombaient a tour de role, tous verts
-  // relances seuls — ce n'etait pas de l'instabilite mais ce dino-ci).
-  // Retirer l'id d'ici le jour ou son ombre est generee.
-  const SANS_OMBRE = ['scelidosaurus'];
+  // VIDE. Actuellement vide : les 71 dinos ont leur ombre (le Scelidosaure, dernier
+  // manquant, a recu la sienne le 2026-09-11). Ajouter un id ici si un dino entre
+  // dans l'encyclopedie avant ses images, et l'en retirer des qu'elles arrivent —
+  // la porte `studio/minijeux/tools/_check-ombres-dino.mjs` verifie les deux sens.
+  const SANS_OMBRE = [];
 
   // Pool canon : tous les dinos avec un png top-level (pas de sous-dossier) +
   // un nom -> objet { id, name, famille, png, fait, src (ombre) }.

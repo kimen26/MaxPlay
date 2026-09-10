@@ -842,6 +842,21 @@ window.DINO_ASSETS = {
    "paris": "img/dinos/paleoart/Saurolophus_paris.jpg"
   }
  },
+ "Scelidosaurus": {
+  "ombre": "img/dinos/ombres/Scelidosaurus_ombre.png",
+  "sprite": null,
+  "tete": null,
+  "avatar": null,
+  "paleoart": {
+   "hero": "img/dinos/paleoart/Scelidosaurus.jpg",
+   "coloriage": "img/dinos/paleoart/Scelidosaurus_coloriage.webp",
+   "ecosysteme": "img/dinos/paleoart/Scelidosaurus_ecosysteme.jpg",
+   "funfact": "img/dinos/paleoart/Scelidosaurus_funfact.jpg",
+   "headshot": "img/dinos/paleoart/Scelidosaurus_headshot.jpg",
+   "manger": "img/dinos/paleoart/Scelidosaurus_manger.jpg",
+   "paris": "img/dinos/paleoart/Scelidosaurus_paris.jpg"
+  }
+ },
  "Scutellosaurus": {
   "ombre": "img/dinos/ombres/Scutellosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Scutellosaurus_sprite.png",

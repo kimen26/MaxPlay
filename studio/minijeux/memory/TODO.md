@@ -49,18 +49,33 @@
   `dinos-ombres.js` (retirer l'id le jour ou l'ombre est generee) + porte `node studio/minijeux/tools/_check-ombres-dino.mjs`
   qui garde la liste honnete dans les deux sens. 71 dinos, 70 ombres, 1 exclusion justifiee
 
-- [x] mj-46 : un oeuf penche pouvait en cacher un autre (corrige 2026-09-10, L-130). Le placement verifiait la
-  regle « au moins 1/3 visible » sur l'oeuf DROIT, alors que la rotation de +/-15 deg etait tiree juste APRES :
-  la boite reellement occupee vaut jusqu'a 1,52x celle de l'oeuf droit. Rotation tiree avant le placement,
-  chevauchement mesure sur la boite tournee. 3600 tirages simules sans depassement, 5 passages au vert, rendu
-  inchange (capture relue)
-
+- [x] mj-46 : le chevauchement des oeufs est une FOURCHETTE (2026-09-10, L-130 puis L-134). Deux defauts opposes
+  corriges dans la journee. D'abord un oeuf penche pouvait en CACHER un autre : la regle « au moins 1/3 visible »
+  etait verifiee sur l'oeuf droit alors que la rotation de +/-15 deg etait tiree APRES, or la boite reellement
+  occupee vaut jusqu'a 1,52x celle de l'oeuf droit. Puis, ce premier correctif cherchant le plus PETIT recouvrement
+  possible, il optimisait vers zero : les oeufs finissaient ranges cote a cote sans se toucher, l'inverse de la
+  demande PY. Le placement vise desormais la fourchette 0,06 - 2/3. 2800 placements simules sans un seul ecart,
+  de 2 a 20 oeufs ; 14 passages du test au vert, capture relue
 - [x] mj-21 : CAUSE RACINE TROUVEE ET CORRIGEE le 2026-09-10 (L-132). L'echec 1 fois sur 8 tombait toujours sur le
   defi « brun », dont la recette nominale demande 5 doses (2 rouge + 2 jaune + 1 bleu) alors que le tube est plafonne
   a `TUBE_CAP = 4` (verrou du jeu). Le 5e clic est refuse, donc la spec attendait une victoire structurellement
   impossible. **Le jeu est sain** : 3 combinaisons gagnent le brun en 4 doses ou moins, la plus simple etant
   1 rouge + 1 jaune + 1 bleu — c'est ce que fait l'enfant. Seul defi des 13 au-dessus de la capacite. Corrige cote
-  SPEC, 14 + 6 lancements au vert, capture relue. mj-55 etait sain depuis le debut (0 echec sur 8)
+  SPEC, 14 + 6 lancements au vert, capture relue.
+
+- [x] mj-55 : attente FIXE dans la boucle de resolution (2026-09-10, L-133). J'avais d'abord conclu « mj-55 est
+  sain » sur 8 lancements isoles : conclusion prematuree, il ne tombe QUE sous charge (0 echec sur 20 lance
+  seul, ~1 passage de suite complete sur 2). Cette spec ne tire rien au hasard — mode test, difficulte forcee,
+  chemin scripte — donc un echec intermittent ne pouvait venir que du temps. Sa boucle dormait 80 ms entre deux
+  puzzles ; sous charge le suivant n'etait pas pret et les 8 tours s'epuisaient sans atteindre l'ecran de fin.
+  Elle attend desormais le FAIT (`state.qCount` avance, ou `.end-wrap` existe)
+
+- [ ] DETTE identifiee le 2026-09-10, volontairement NON corrigee : le motif « `waitForTimeout` fixe dans une
+  boucle de progression » existe dans une douzaine de specs (mj-09, 30, 31, 48, 49, 50, 51, 52, 53, 54, 56...).
+  Il n'est fautif que si l'etape suivante DEPEND de ce delai — ce qui etait le cas de mj-55, pas forcement
+  ailleurs. Sur une journee entiere de passages repetes, seuls mj-21, mj-46 et mj-55 sont tombes. Reecrire les
+  douze sur une suspicion serait de l'intervention speculative sur des tests qui marchent : a traiter au cas par
+  cas, le jour ou l'un d'eux tombe, en appliquant L-133 (attendre le fait, pas la duree)
 - [ ] Dette perf pré-existante mj-32 : le remplissage du FOND ENTIER coûte ~400 ms (déjà avant HO-MJ-08, calcul JS pur, le canvas n'y est pour rien). À traiter si le 1er tap paraît lent sur P30 Pro
 - [ ] Après HO-MJ-08 : patcher les linearts à brèche côté pôle dino (Cryolophosaure #6389) pour pouvoir baisser R (durable)
 

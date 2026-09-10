@@ -41,12 +41,24 @@
   l'atelier compose le dino sur un decor. Corrige par `studio/dino/content/scripts/etancheite/blanchit-damier.py`,
   etancheite des six revalidee, anti-fuite de l'atelier au vert (L-127)
 
-- [ ] HARNAIS CI INSTABLE (constat 2026-09-10, L-128) : le job « Test mini-jeux » est rouge a chaque push depuis
-  plusieurs commits, avec des coupables DIFFERENTS a chaque passage (passe 1 aucun, passe 2 mj-21 + mj-55, un
-  autre passage mj-19 + mj-46) — tous verts lances seuls. `run-all.mjs` lance 36 Chromium a la suite et l'un
-  d'eux depasse ses delais sous charge. A traiter (relance automatique du jeu en echec avant de le declarer
-  casse, ou moins de parallelisme machine). Le deploiement GitHub Pages n'est PAS concerne : workflow separe
-  exprès, vert sur tous les commits du jour
+- [x] HARNAIS CI : DIAGNOSTIC CORRIGE le 2026-09-10 (L-129 corrige L-128). Ce n'etait PAS de l'instabilite.
+  Cause reelle : `img/dinos/ombres/Scelidosaurus_ombre.png` n'existe pas, et `DinoOmbres.pool()` supposait qu'un
+  dino declarant un `png` a forcement son ombre. Les jeux d'ombres tirant au hasard, les coupables changeaient a
+  chaque passage — mj-19, mj-21, mj-24, mj-46, mj-55 a tour de role. **Max pouvait tomber sur une carte d'ombre
+  VIDE en jouant**, ce qui etait le vrai enjeu, bien au-dela du rouge CI. Fix : liste `SANS_OMBRE` dans
+  `dinos-ombres.js` (retirer l'id le jour ou l'ombre est generee) + porte `node studio/minijeux/tools/_check-ombres-dino.mjs`
+  qui garde la liste honnete dans les deux sens. 71 dinos, 70 ombres, 1 exclusion justifiee
+
+- [x] mj-46 : un oeuf penche pouvait en cacher un autre (corrige 2026-09-10, L-130). Le placement verifiait la
+  regle « au moins 1/3 visible » sur l'oeuf DROIT, alors que la rotation de +/-15 deg etait tiree juste APRES :
+  la boite reellement occupee vaut jusqu'a 1,52x celle de l'oeuf droit. Rotation tiree avant le placement,
+  chevauchement mesure sur la boite tournee. 3600 tirages simules sans depassement, 5 passages au vert, rendu
+  inchange (capture relue)
+
+- [ ] Reste une fragilite du harnais SOUS CHARGE, distincte des deux defauts reels corriges ce jour : en suite
+  complete, mj-21 et mj-55 tombent parfois alors qu'ils passent 3/3 lances seuls. Contrairement au cas
+  Scelidosaurus (cause reelle, cf. L-129) aucune URL ni assertion stable ne ressort — a instrumenter le jour ou
+  ca gene. Depuis les corrections, `run-all.mjs` est passe 36/36
 - [ ] Dette perf pré-existante mj-32 : le remplissage du FOND ENTIER coûte ~400 ms (déjà avant HO-MJ-08, calcul JS pur, le canvas n'y est pour rien). À traiter si le 1er tap paraît lent sur P30 Pro
 - [ ] Après HO-MJ-08 : patcher les linearts à brèche côté pôle dino (Cryolophosaure #6389) pour pouvoir baisser R (durable)
 

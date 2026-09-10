@@ -307,3 +307,13 @@ mesure pas — il faut les deux, solidaires. Parent : la regle projet « ouvrir 
 ### L-126 – Une TODO vieille de deux jours se vérifie avant d'être exécutée
 **Constat** : ticket « `applyDinoStrings()` n'est appelé nulle part dans mj-32 : les noms restent en français ». Mesure sur la page en `?lang=en` : « T-Rex » → « T. rex », « Dicroïdium » → « Dicroidium », familles traduites. **Cause** : `dinos-i18n.js` s'auto-applique par `document.write` à la fin de son propre fichier — un grep de callers ne le voit pas, seule l'exécution le montre.
 **Règle** : un ticket écrit par un autre (sous-agent ou session passée) est une hypothèse, pas un fait. Le coût de la mesure est de deux minutes ; celui d'un correctif inutile sur un composant partagé est bien plus élevé.
+
+### L-127 – Le damier d'un coloriage n'était visible qu'une fois le décor derrière
+**Constat** : recette de l'atelier avec décor — le dino apparaît sur un rectangle de damier gris au milieu du désert. Premiers réflexes tous faux : canal alpha du WebP (aucun, `yuv420p`), motif dessiné par le jeu (aucun `createPattern`), élément superposé (le canvas est seul), transparence du canvas (mesurée : 0 %).
+**Cause** : le damier de transparence de l'éditeur a été APLATI dans le fichier source à la génération — des pixels gris 235-251 alternés avec du blanc sur 34 à 42 % de l'image, sur 6 coloriages. Sur fond blanc il est invisible ; c'est la composition sur décor qui l'a révélé, des mois après.
+**Fix** : `blanchit-damier.py` ramène les pixels clairs ET neutres au blanc pur, laisse le trait noir, vérifie l'étanchéité après coup. **Règle** : un défaut d'asset peut dormir jusqu'à ce qu'une nouvelle fonctionnalité change le contexte d'affichage — et une mesure qui dit « 0 % de transparence » ne contredit pas un damier VISIBLE, elle dit seulement qu'on mesure la mauvaise chose.
+
+### L-128 – Le harnais CI est rouge par instabilité, pas par régression
+**Constat** : le job « Test mini-jeux » échoue sur chaque push depuis plusieurs commits. Un rouge permanent finit par ne plus être lu, ce qui coûte plus cher que pas de CI du tout.
+**Cause** : `run-all.mjs` lance 36 Chromium à la suite ; sous charge, un jeu dépasse ses délais. Trois passages locaux donnent trois listes DIFFÉRENTES (passe 1 : aucun ; passe 2 : mj-21 et mj-55 ; un autre passage : mj-19 et mj-46) — et chacun de ces jeux passe au vert lancé seul. Ce n'est donc jamais le jeu qui casse.
+**Règle** : avant de « corriger » un jeu que la CI signale, le relancer SEUL (`npm run mj:test mj-XX`) et rejouer la suite complète deux fois. Des coupables qui changent à chaque passage = instabilité du harnais. Le déploiement, lui, n'est pas concerné : le workflow Pages est séparé exprès et reste vert.

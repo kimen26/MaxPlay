@@ -28,7 +28,25 @@
 - [x] Idée PY 2026-09-08 : nom du dino en lettres creuses (outline) sous le dessin, dans le canvas, chaque lettre coloriable au flood fill (même historique JSON, même galerie). Police grasse ≥ 56 px, trait ≥ 6 px, 2 lignes si nom long, langue du site. À lancer après HO-MJ-08 TRANCHE PY 2026-09-08 : MAJUSCULES uniquement, lettres creuses dans lesquelles Max peut ecrire au doigt / colorier. FAIT 2026-09-08 : livre et pousse, mise en page sur 2 lignes calibree sur le plus long nom du catalogue, lettres coloriables une par une sans bavure, dilatation quasi nulle sur la bande du nom (sinon l'interieur des petites lettres etait mure).
 - [x] Idée PY 2026-09-08 : sous-menu « Décor » dans l'atelier coloriage : 5 fonds lineart (désert, forêt, montagne, neige, volcan) composés derrière le dino avant le masque de contour (même flood fill), puis stickers plantes (fougère, prêle, palmier, fleur) posés au tap, entrée `{type:'sticker'}` dans l'historique JSON. Réutiliser la flore du pôle dino (`dinos-plantes.js`, `img/dinos/_new-plantes/`). Fonds d'abord, stickers ensuite. TRANCHE PY 2026-09-08 : TOUS les fonds proposes pour TOUS les dinos, aucun filtre par biome. VOIE 3 retenue (PY 2026-09-08) : produire 5 VRAIS fonds au trait, pas les PNG couleur de site/img/decor/. Script pret : `node .claude/skills/dino-images-lunii/scripts/batch-fond-coloriage.mjs` (calque du batch coloriage dino, meme charte de style). FAIT 2026-09-08 : les 5 fonds sont generes, regardes un par un, verifies en noir et blanc pur (zero couleur, >92% de blanc) et convertis en webp dans site/img/dinos/paleoart/. Reste a brancher le sous-menu Decors dans mj-32 (chantier B de HO-MJ-09). FAIT 2026-09-08 : sous-menu Decors livre, canvas bascule en paysage quand un decor est actif, anti-fuite Cryolophosaure verifiee AVEC decor par l'orchestrateur. Stickers plantes toujours a faire (etape ulterieure, jamais commencee).
 - [x] Idee PY 2026-09-08 : ZOOM dans le coloriage pour les clics de precision (petites zones). Exigences PY : fluide et simple, plus un bouton pour revenir en vue "normale". Attention : mj-32 pose user-scalable=no, donc le zoom natif est bloque et le zoom maison doit tout couvrir. Piege connu : le flood fill travaille en pixels canvas, la conversion tap -> pixel (canvasPointFromEvent) doit tenir compte du facteur de zoom et du decalage, sinon la couleur tombe a cote. Voir HO-MJ-10 FAIT 2026-09-08 : zoom CSS x2,75, bouton loupe, deplacement au doigt avec capture du pointeur, bouton Vue normale. Deux defauts corriges par l'orchestrateur (borne calculee sur la fenetre au lieu du canvas, pan interrompu quand le doigt sort) qui rendaient la bande du nom inatteignable.
-- [ ] Cosmetique fonds de coloriage : sur les 5 fonds generes, le trait touche le bord de l'image (9 px a droite, 15 a gauche mesures sur le desert) — rayons de soleil et dunes legerement rognes. Sans effet sur le coloriage (formes fermees). A corriger si un jour on regenere : demander une marge blanche au bord dans le prompt de batch-fond-coloriage.mjs
+- [~] Cosmetique fonds de coloriage : MESURE 2026-09-10, le constat d'origine etait sous-estime. Le trait touche
+  le bord GAUCHE ET DROIT sur les CINQ fonds (marge 0, pas 9 ou 15 px), et le desert perd 383 px de vide blanc en
+  bas, le volcan 188 px : c'est un probleme de CADRAGE, pas de marge. **Sans consequence sur le coloriage** :
+  simulation de remplissage depuis les 4 coins sur les 5 fonds, le pire remplissage fait 59% (le ciel de la
+  montagne, normal), aucune zone n'avale l'image, donc toutes les formes sont fermees. Reste cosmetique, a
+  corriger le jour ou on regenere (demander une marge blanche au bord dans le prompt de batch-fond-coloriage.mjs)
+
+- [x] DAMIER DE TRANSPARENCE trouve et corrige 2026-09-10, defaut voisin mais BIEN PLUS visible : six coloriages
+  (Tyrannosaurus, Albertosaurus, Ophthalmosaurus, Tarbosaurus, Torosaurus, Pentaceratops) portaient un damier gris
+  aplati dans le fichier sur 34 a 42% de leur surface. Invisible sur fond blanc, il sautait aux yeux depuis que
+  l'atelier compose le dino sur un decor. Corrige par `studio/dino/content/scripts/etancheite/blanchit-damier.py`,
+  etancheite des six revalidee, anti-fuite de l'atelier au vert (L-127)
+
+- [ ] HARNAIS CI INSTABLE (constat 2026-09-10, L-128) : le job « Test mini-jeux » est rouge a chaque push depuis
+  plusieurs commits, avec des coupables DIFFERENTS a chaque passage (passe 1 aucun, passe 2 mj-21 + mj-55, un
+  autre passage mj-19 + mj-46) — tous verts lances seuls. `run-all.mjs` lance 36 Chromium a la suite et l'un
+  d'eux depasse ses delais sous charge. A traiter (relance automatique du jeu en echec avant de le declarer
+  casse, ou moins de parallelisme machine). Le deploiement GitHub Pages n'est PAS concerne : workflow separe
+  exprès, vert sur tous les commits du jour
 - [ ] Dette perf pré-existante mj-32 : le remplissage du FOND ENTIER coûte ~400 ms (déjà avant HO-MJ-08, calcul JS pur, le canvas n'y est pour rien). À traiter si le 1er tap paraît lent sur P30 Pro
 - [ ] Après HO-MJ-08 : patcher les linearts à brèche côté pôle dino (Cryolophosaure #6389) pour pouvoir baisser R (durable)
 

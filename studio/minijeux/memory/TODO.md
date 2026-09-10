@@ -55,10 +55,12 @@
   chevauchement mesure sur la boite tournee. 3600 tirages simules sans depassement, 5 passages au vert, rendu
   inchange (capture relue)
 
-- [ ] Reste une fragilite du harnais SOUS CHARGE, distincte des deux defauts reels corriges ce jour : en suite
-  complete, mj-21 et mj-55 tombent parfois alors qu'ils passent 3/3 lances seuls. Contrairement au cas
-  Scelidosaurus (cause reelle, cf. L-129) aucune URL ni assertion stable ne ressort — a instrumenter le jour ou
-  ca gene. Depuis les corrections, `run-all.mjs` est passe 36/36
+- [~] mj-21 : echec REPRODUCTIBLE 1 fois sur 8, meme lance SEUL — ce n'est donc pas la charge. Toujours la meme
+  assertion, « Victoire atteinte (Mixer + chemin victoire OK) », suivie de « Scene de victoire (clone tube) rendue ».
+  Mesure du 2026-09-10 sur 8 lancements avec Chromium neuf a chaque fois. **mj-55 est SAIN : 0 echec sur 8** — la
+  note precedente qui les mettait dans le meme sac etait trop large. Piste : la couleur cible est tiree au hasard
+  parmi 13 recettes, l'echec suit probablement une recette precise (test par couleur en cours). Depuis les
+  corrections du jour, `run-all.mjs` est passe 36/36 et la CI GitHub est verte sur deux commits consecutifs
 - [ ] Dette perf pré-existante mj-32 : le remplissage du FOND ENTIER coûte ~400 ms (déjà avant HO-MJ-08, calcul JS pur, le canvas n'y est pour rien). À traiter si le 1er tap paraît lent sur P30 Pro
 - [ ] Après HO-MJ-08 : patcher les linearts à brèche côté pôle dino (Cryolophosaure #6389) pour pouvoir baisser R (durable)
 

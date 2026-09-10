@@ -236,6 +236,17 @@
     const MIN_VISIBLE = 1 / 3;   // fraction mini de la surface d'un œuf qui doit rester libre
     const MAX_TRIES = 20;
 
+    // Boîte englobante d'un œuf penché : c'est elle que voit l'enfant et que
+    // mesure getBoundingClientRect(). À ±15° elle vaut ~1,5× l'aire de l'œuf droit,
+    // donc ignorer la rotation sous-estime largement le chevauchement réel.
+    function boiteTournee(largeur, hauteur, degres) {
+      const r = Math.abs(degres) * Math.PI / 180;
+      return {
+        w: largeur * Math.cos(r) + hauteur * Math.sin(r),
+        h: largeur * Math.sin(r) + hauteur * Math.cos(r)
+      };
+    }
+
     function overlapFraction(ax, ay, aw, ah, bx, by, bw, bh) {
       const ix = Math.max(0, Math.min(ax + aw, bx + bw) - Math.max(ax, bx));
       const iy = Math.max(0, Math.min(ay + ah, by + bh) - Math.max(ay, by));
@@ -276,7 +287,15 @@
         const baseX = ox + c * cell + cell / 2 - egg / 2;
         const baseY = oy + r * cell + cell / 2 - eggH;
 
-        let best = { x: baseX, y: baseY }, bestWorst = Infinity;
+        // La rotation est tirée AVANT le placement : un œuf penché occupe une
+        // boîte plus large que l'œuf droit (jusqu'à 1,5× l'aire à ±15°), et c'est
+        // cette boîte-là que l'enfant voit se chevaucher. La calculer après le
+        // placement laissait un angle mort — deux œufs « assez visibles » sur le
+        // papier se recouvraient en réalité au-delà de la limite (2026-09-10).
+        const rot = (Math.random() - 0.5) * 30;   // rotation plus chaotique (±15° vs ±12°)
+        const bb = boiteTournee(egg, eggH, rot);
+
+        let best = { x: baseX, y: baseY, bb }, bestWorst = Infinity;
         for (let t = 0; t <= MAX_TRIES; t++) {
           // jitter chaotique : jusqu'à ±45% de la cellule (bien plus qu'avant ±15%)
           // t === MAX_TRIES : tentative finale = position de grille pure (jitter nul),
@@ -284,16 +303,19 @@
           const jx = t < MAX_TRIES ? (Math.random() - 0.5) * cell * 0.9 : 0;
           const jy = t < MAX_TRIES ? (Math.random() - 0.5) * cell * 0.9 : 0;
           const x = baseX + jx, y = baseY + jy;
+          // La boîte tournée reste centrée sur l'œuf : on compare des boîtes
+          // englobantes, exactement ce que mesure getBoundingClientRect().
+          const bx = x + egg / 2 - bb.w / 2, by = y + eggH / 2 - bb.h / 2;
           let worst = 0;
           for (const p of placed) {
-            worst = Math.max(worst, overlapFraction(x, y, egg, eggH, p.x, p.y, egg, eggH));
+            const px = p.x + egg / 2 - p.bb.w / 2, py = p.y + eggH / 2 - p.bb.h / 2;
+            worst = Math.max(worst, overlapFraction(bx, by, bb.w, bb.h, px, py, p.bb.w, p.bb.h));
           }
-          if (worst < bestWorst) { bestWorst = worst; best = { x, y }; }
+          if (worst < bestWorst) { bestWorst = worst; best = { x, y, bb }; }
           if (worst <= (1 - MIN_VISIBLE)) break;   // assez visible → on prend direct
         }
         placed.push(best);
 
-        const rot = (Math.random() - 0.5) * 30;   // rotation plus chaotique (±15° vs ±12°)
         const slot = document.createElement('div');
         slot.className = 'slot';
         // Conversion coordonnées œuf → coordonnées slot : l'œuf est centré en

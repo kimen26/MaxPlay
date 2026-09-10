@@ -68,7 +68,13 @@
   seul, ~1 passage de suite complete sur 2). Cette spec ne tire rien au hasard — mode test, difficulte forcee,
   chemin scripte — donc un echec intermittent ne pouvait venir que du temps. Sa boucle dormait 80 ms entre deux
   puzzles ; sous charge le suivant n'etait pas pret et les 8 tours s'epuisaient sans atteindre l'ecran de fin.
-  Elle attend desormais le FAIT (`state.qCount` avance, ou `.end-wrap` existe)
+  Elle attend desormais le FAIT (`state.qCount` avance, ou `.end-wrap` existe).
+  **CORRECTION du 2026-09-11 (L-135 corrige L-133)** : ce n'etait PAS la vraie cause. Le test tombait encore
+  1 passage sur 4 apres ce correctif. Cause reelle : `given[0].findIndex(v => v === 0)` cherchait une case vide
+  sur la PREMIERE LIGNE seulement ; quand le tirage la remplissait, findIndex rendait -1, l'assertion le
+  constatait mais le test CONTINUAIT et se bloquait 30 s sur `.eq-cell[data-c="-1"]`. Il y avait donc bien un
+  alea — la grille de depart — contrairement a ce que j'avais affirme. Corrige : recherche sur toute la grille,
+  sortie immediate si aucune case vide, ligne la plus libre pour le conflit trio. 10/10 sous charge
 
 - [ ] DETTE identifiee le 2026-09-10, volontairement NON corrigee : le motif « `waitForTimeout` fixe dans une
   boucle de progression » existe dans une douzaine de specs (mj-09, 30, 31, 48, 49, 50, 51, 52, 53, 54, 56...).

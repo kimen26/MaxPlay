@@ -19,9 +19,19 @@ export async function run({ page, ok }) {
   ok('N0 : 16 cases', await page.locator('.eq-cell').count() === 16);
 
   // ── Cycle tap 3 états sur une case vide ──
-  const emptyIdx = s0.given[0].findIndex(v => v === 0);
-  ok('au moins une case vide en N1', emptyIdx !== -1);
-  const cell = page.locator(`.eq-cell[data-r="0"][data-c="${emptyIdx}"]`);
+  // Chercher la case vide dans TOUTE la grille, pas seulement la 1re ligne : les
+  // cases pre-remplies sont tirees au hasard, et une 1re ligne pleine donnait
+  // findIndex = -1. L'assertion le constatait mais le test continuait quand meme
+  // et se bloquait 30 s sur `[data-c="-1"]`, un selecteur impossible — d'ou un
+  // echec ~1 passage sur 4, longtemps mis a tort sur le compte de la charge.
+  let videR = -1, videC = -1;
+  for (let r = 0; r < s0.given.length && videR === -1; r++) {
+    const c = s0.given[r].findIndex(v => v === 0);
+    if (c !== -1) { videR = r; videC = c; }
+  }
+  ok('au moins une case vide en N1', videR !== -1, `grille=${JSON.stringify(s0.given)}`);
+  if (videR === -1) return;   // sans case vide, la suite n'a aucun sens : on s'arrete net
+  const cell = page.locator(`.eq-cell[data-r="${videR}"][data-c="${videC}"]`);
   ok('case vide au départ (aucun texte)', (await cell.textContent()).trim() === '');
   await cell.click();
   ok('1er tap → 🦕', (await cell.textContent()).trim() === '🦕');
@@ -33,11 +43,18 @@ export async function run({ page, ok }) {
   // ── Conflit trio : force 3 pareils adjacents, vérifie le surlignage orange, jamais bloquant ──
   await page.evaluate(() => {
     const t = window.__mjTest;
-    // reset la ligne à vide sauf indices, puis pose 3 dinos adjacents sur les 3 premières cases libres
+    // Pose 3 dinos sur les premières cases libres. La ligne 0 n'est pas forcément
+    // celle qui en a : les indices sont tirés au hasard et elle peut être pleine.
+    // On prend la ligne LA PLUS libre, sinon le bloc ne testait rien en silence.
+    let ligne = 0, mieux = -1;
+    for (let r = 0; r < t.state.rows; r++) {
+      const libres = t.state.given[r].filter(v => v === 0).length;
+      if (libres > mieux) { mieux = libres; ligne = r; }
+    }
     let count = 0;
     for (let j = 0; j < t.state.cols && count < 3; j++) {
-      if (t.state.given[0][j] === 0) {
-        while (t.state.grid[0][j] !== 1) t.tap(0, j);
+      if (t.state.given[ligne][j] === 0) {
+        while (t.state.grid[ligne][j] !== 1) t.tap(ligne, j);
         count++;
       }
     }

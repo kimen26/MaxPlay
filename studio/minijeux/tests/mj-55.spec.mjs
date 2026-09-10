@@ -79,8 +79,17 @@ export async function run({ page, ok }) {
   for (let i = 0; i < 8; i++) {
     const done = await page.evaluate(() => !!document.querySelector('.end-wrap'));
     if (done) break;
+    const avant = await page.evaluate(() => window.__mjTest.state.qCount);
     await page.evaluate(() => window.__mjTest.solveCurrent());
-    await page.waitForTimeout(80);
+    // Attendre le FAIT (le puzzle a bien été validé, ou l'écran de fin est là)
+    // plutôt qu'une durée fixe : 80 ms était un pari sur la vitesse de la
+    // machine, et sous charge le puzzle suivant n'était pas encore prêt quand
+    // `solveCurrent()` repartait — la boucle épuisait ses 8 tours sans jamais
+    // atteindre la fin. Échec ~1 passage sur 2 en suite complète, jamais seul.
+    await page.waitForFunction(
+      (n) => window.__mjTest.state.qCount > n || !!document.querySelector('.end-wrap'),
+      avant, { timeout: 5000 }
+    ).catch(() => {});
   }
   await page.waitForSelector('.end-wrap', { timeout: 15000 });
   ok('Écran de fin golden atteint', (await page.locator('.end-wrap').count()) === 1);

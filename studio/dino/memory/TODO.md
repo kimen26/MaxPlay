@@ -236,6 +236,12 @@ est vide par construction), verifies image par image.
   `/api/auth/session` rend toujours `ccsevangelista@gmail.com`, plan Plus. Le compte n'a pas change,
   donc rien n'a ete genere. Le blocage tient a la seule action que l'agent ne peut pas faire a la place
   de Papa Yann : changer de compte.
+  **Consequence trouvee le 2026-09-10, plus grave que le trou d'asset lui-meme** : l'ombre absente etait tiree
+  au hasard par les jeux d'ombres (mj-19, mj-24, mj-46, mj-21, mj-55...), donc **l'enfant pouvait tomber sur une
+  carte VIDE en jouant**, et le harnais CI rougissait au hasard selon le tirage. Contourne cote JEU par la liste
+  `SANS_OMBRE` de `site/js/dinos-ombres.js` : le Scelidosaurus est exclu du tirage tant qu'il n'a pas son image.
+  **A la generation, retirer 'scelidosaurus' de cette liste** — la porte `node studio/minijeux/tools/_check-ombres-dino.mjs`
+  le rappelle en echouant si l'ombre existe alors que l'id y figure encore.
 - [x] **Collision d'id : FAUSSE ALERTE** (verifie 2026-09-09) — l'entree Scelidosaurus porte bien
   `id: 'scelidosaurus'` ; la ligne 1008 citee appartenait a l'entree PRECEDENTE. Controle programmatique
   sur tout `dinos-data.js` : **76 entrees, 76 id uniques, aucun doublon**. Rien a corriger.

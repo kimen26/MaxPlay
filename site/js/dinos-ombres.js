@@ -41,6 +41,15 @@
     return 'img/dinos/paleoart/' + png;
   }
 
+  // Dinos presents dans dinos-data.js mais dont l'ombre n'existe PAS sur disque.
+  // Un dino declare un `png` des qu'il entre dans l'encyclopedie ; ses images
+  // peuvent arriver plus tard. Sans ce garde-fou l'enfant tire une carte d'ombre
+  // VIDE, et le harnais rougit au hasard selon le tirage (constat 2026-09-10 :
+  // mj-19, mj-21, mj-24, mj-46, mj-55 tombaient a tour de role, tous verts
+  // relances seuls — ce n'etait pas de l'instabilite mais ce dino-ci).
+  // Retirer l'id d'ici le jour ou son ombre est generee.
+  const SANS_OMBRE = ['scelidosaurus'];
+
   // Pool canon : tous les dinos avec un png top-level (pas de sous-dossier) +
   // un nom -> objet { id, name, famille, png, fait, src (ombre) }.
   // requireFait=true filtre aux dinos ayant un champ `fait` (mj-28 en a besoin
@@ -50,6 +59,7 @@
     const src = (typeof DINOS !== 'undefined') ? DINOS : (window.DINOS || []);
     return src
       .filter(d => d.png && d.name && !d.png.includes('/') && (!opts.requireFait || d.fait))
+      .filter(d => SANS_OMBRE.indexOf(d.id) === -1)
       .map(d => ({ id: d.id, name: d.name, famille: d.famille, png: d.png, fait: d.fait, src: ombreSrc(d.png) }));
   }
 

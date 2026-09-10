@@ -1668,13 +1668,23 @@ function buildFiche(d) {
     .concat(extras.map(e => ({ src: e.src, fallback: null, label: e.label, video: /\.(mp4|webm|mov)(\?|$)/i.test(e.src) })));
   _ficheIdx = 0;
   const multi = _ficheSlides.length > 1;
+  // Emoji affiche si NI le portrait NI l'ombre n'existent (cf. le hero ci-dessous).
+  // Celui de la FAMILLE, pas de `cat` : `cat` est le regime alimentaire, donc un
+  // herbivore cuirasse s'afficherait sous une feuille de salade.
+  const _fam = DINO_FAMILLES.find(f => f.id === d.famille);
+  const emojiReplique = (_fam && _fam.emoji) || cat.emoji || '🦕';
 
   scroll.innerHTML = `
     <!-- HERO galerie (image principale + extras, swipe ‹ › si plusieurs) -->
     <div class="v1-hero" id="v1-hero" style="background:linear-gradient(135deg,${cat.color},${cat.color}55)">
       <img class="v1-hero-img" id="v1-hero-img" src="img/dinos/paleoart/${d.png}" alt="${d.name}"
            onclick="${multi ? `openCarousel(_ficheSlides.map(s=>({src:s.src,label:s.label})), _ficheIdx)` : ''}"
-           onerror="this.onerror=null;this.src='${ombreSrc(d.png)}';this.onerror=function(){this.style.display='none'}">
+           onerror="this.onerror=null;this.src='${ombreSrc(d.png)}';this.onerror=function(){this.style.display='none';this.nextElementSibling.style.display='flex'}">
+      <!-- Dernier repli quand NI le portrait NI l'ombre n'existent (un dino peut
+           entrer dans l'encyclopedie avant ses images), comme le fait deja la
+           fiche d'une plante : sans lui la fiche montre un grand aplat de
+           couleur vide, ce qui se lit comme une page cassee. -->
+      <span class="plante-hero-emoji" style="display:none">${emojiReplique}</span>
       <div class="v1-hero-nm">
         <b>${d.name}</b>
         ${d.alias ? `<span class="v1-alias">${T('fiche_aussi_appele', { alias: d.alias })}</span>` : ''}

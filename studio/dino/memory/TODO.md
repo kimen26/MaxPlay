@@ -242,6 +242,10 @@ est vide par construction), verifies image par image.
   `SANS_OMBRE` de `site/js/dinos-ombres.js` : le Scelidosaurus est exclu du tirage tant qu'il n'a pas son image.
   **A la generation, retirer 'scelidosaurus' de cette liste** — la porte `node studio/minijeux/tools/_check-ombres-dino.mjs`
   le rappelle en echouant si l'ombre existe alors que l'id y figure encore.
+  **Deuxieme consequence, corrigee le meme jour** : dans l'encyclopedie, la fiche du Scelidosaure affichait un
+  grand rectangle vert VIDE a la place de la bete — le repli portrait -> ombre s'arretait la, faute des deux.
+  La fiche affiche desormais l'emoji de la FAMILLE en dernier recours (un os pour les cuirasses), comme le
+  faisait deja la fiche d'une plante. A la generation des images, ce repli s'effacera tout seul.
 - [x] **Collision d'id : FAUSSE ALERTE** (verifie 2026-09-09) — l'entree Scelidosaurus porte bien
   `id: 'scelidosaurus'` ; la ligne 1008 citee appartenait a l'entree PRECEDENTE. Controle programmatique
   sur tout `dinos-data.js` : **76 entrees, 76 id uniques, aucun doublon**. Rien a corriger.

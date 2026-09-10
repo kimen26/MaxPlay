@@ -295,7 +295,20 @@
         const rot = (Math.random() - 0.5) * 30;   // rotation plus chaotique (±15° vs ±12°)
         const bb = boiteTournee(egg, eggH, rot);
 
-        let best = { x: baseX, y: baseY, bb }, bestWorst = Infinity;
+        // Le chevauchement voulu est une FOURCHETTE, pas un minimum : les œufs
+        // doivent se toucher (demande PY « encore plus les décaler et les faire
+        // se chevaucher ») SANS qu'aucun soit caché à plus de 2/3, sinon il n'est
+        // plus comptable. Chercher le plus petit recouvrement possible, comme le
+        // faisait la version précédente, optimise vers zéro — les œufs finissaient
+        // rangés côte à côte sans se toucher (2026-09-10).
+        const OVERLAP_MAX = 1 - MIN_VISIBLE;   // 2/3 : au-delà, un œuf disparaît
+        const OVERLAP_MIN = 0.06;              // en deçà, les œufs ne se touchent plus
+        // `ecart` mesure la distance à la fourchette : 0 = dedans. À défaut d'un
+        // tirage qui tombe dedans, on garde le moins mauvais (jamais un placement
+        // au hasard, jamais un œuf caché).
+        const ecartAcible = w => (w > OVERLAP_MAX ? w - OVERLAP_MAX : (w < OVERLAP_MIN ? OVERLAP_MIN - w : 0));
+
+        let best = { x: baseX, y: baseY, bb }, bestEcart = Infinity;
         for (let t = 0; t <= MAX_TRIES; t++) {
           // jitter chaotique : jusqu'à ±45% de la cellule (bien plus qu'avant ±15%)
           // t === MAX_TRIES : tentative finale = position de grille pure (jitter nul),
@@ -311,8 +324,11 @@
             const px = p.x + egg / 2 - p.bb.w / 2, py = p.y + eggH / 2 - p.bb.h / 2;
             worst = Math.max(worst, overlapFraction(bx, by, bb.w, bb.h, px, py, p.bb.w, p.bb.h));
           }
-          if (worst < bestWorst) { bestWorst = worst; best = { x, y, bb }; }
-          if (worst <= (1 - MIN_VISIBLE)) break;   // assez visible → on prend direct
+          // Le tout premier œuf n'a personne à chevaucher : sa fourchette est
+          // sans objet, il se pose sur sa case.
+          const ecart = placed.length === 0 ? 0 : ecartAcible(worst);
+          if (ecart < bestEcart) { bestEcart = ecart; best = { x, y, bb }; }
+          if (ecart === 0) break;   // dans la fourchette → on prend direct
         }
         placed.push(best);
 

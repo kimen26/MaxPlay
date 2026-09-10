@@ -55,12 +55,12 @@
   chevauchement mesure sur la boite tournee. 3600 tirages simules sans depassement, 5 passages au vert, rendu
   inchange (capture relue)
 
-- [~] mj-21 : echec REPRODUCTIBLE 1 fois sur 8, meme lance SEUL — ce n'est donc pas la charge. Toujours la meme
-  assertion, « Victoire atteinte (Mixer + chemin victoire OK) », suivie de « Scene de victoire (clone tube) rendue ».
-  Mesure du 2026-09-10 sur 8 lancements avec Chromium neuf a chaque fois. **mj-55 est SAIN : 0 echec sur 8** — la
-  note precedente qui les mettait dans le meme sac etait trop large. Piste : la couleur cible est tiree au hasard
-  parmi 13 recettes, l'echec suit probablement une recette precise (test par couleur en cours). Depuis les
-  corrections du jour, `run-all.mjs` est passe 36/36 et la CI GitHub est verte sur deux commits consecutifs
+- [x] mj-21 : CAUSE RACINE TROUVEE ET CORRIGEE le 2026-09-10 (L-132). L'echec 1 fois sur 8 tombait toujours sur le
+  defi « brun », dont la recette nominale demande 5 doses (2 rouge + 2 jaune + 1 bleu) alors que le tube est plafonne
+  a `TUBE_CAP = 4` (verrou du jeu). Le 5e clic est refuse, donc la spec attendait une victoire structurellement
+  impossible. **Le jeu est sain** : 3 combinaisons gagnent le brun en 4 doses ou moins, la plus simple etant
+  1 rouge + 1 jaune + 1 bleu — c'est ce que fait l'enfant. Seul defi des 13 au-dessus de la capacite. Corrige cote
+  SPEC, 14 + 6 lancements au vert, capture relue. mj-55 etait sain depuis le debut (0 echec sur 8)
 - [ ] Dette perf pré-existante mj-32 : le remplissage du FOND ENTIER coûte ~400 ms (déjà avant HO-MJ-08, calcul JS pur, le canvas n'y est pour rien). À traiter si le 1er tap paraît lent sur P30 Pro
 - [ ] Après HO-MJ-08 : patcher les linearts à brèche côté pôle dino (Cryolophosaure #6389) pour pouvoir baisser R (durable)
 

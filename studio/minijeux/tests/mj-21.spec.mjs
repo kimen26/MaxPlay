@@ -2,13 +2,26 @@
 // du REX : (1) crash Mixer, (2) "bus en haut" régression, (3) tube/clone vide
 // (clipPath id dupliqué). Vert sur HEAD, rouge sur les commits buggés.
 
-// Recettes IDFM (copie de DEFIS dans mj-21.html) — label → doses
+// Recettes IDFM (copie de DEFIS dans mj-21.html) — label → doses À VERSER.
+//
+// ⚠️ Ce ne sont PAS toujours les proportions nominales du défi : le tube est
+// plafonné à TUBE_CAP = 4 doses (🔒 dans mj-21.html) et la victoire se juge sur
+// la PROPORTION obtenue (`findBestDefi`, distance < 0,55), pas sur le compte
+// exact. Une recette nominale de plus de 4 doses est donc injouable telle
+// quelle : son 5e clic est refusé et le défi ne peut jamais être validé.
+//
+// Seul le `brun` est dans ce cas (2+2+1 = 5). On verse la combinaison la plus
+// simple qui tombe sur lui : 1 rouge + 1 jaune + 1 bleu (distance 0,267, la
+// meilleure des trois possibles à 4 doses ou moins). Ce n'est pas un
+// contournement du test — c'est ce que fait l'enfant, qui n'a lui non plus que
+// 4 doses. Cause d'un échec 1 fois sur 8 jusqu'au 2026-09-10, le temps que le
+// tirage aléatoire tombe sur ce défi-là.
 const RECIPES = {
   'rouge':{r:1,j:0,b:0,w:0}, 'jaune':{r:0,j:1,b:0,w:0}, 'bleu':{r:0,j:0,b:1,w:0},
   'vert':{r:0,j:1,b:1,w:0}, 'violet':{r:1,j:0,b:1,w:0}, 'rose':{r:1,j:0,b:0,w:1},
   'vert clair':{r:0,j:1,b:1,w:1}, 'bleu ciel':{r:0,j:0,b:3,w:1}, 'orange':{r:1,j:1,b:0,w:0},
   'or':{r:1,j:3,b:0,w:0}, 'rose pâle':{r:1,j:0,b:0,w:2}, 'lavande':{r:1,j:0,b:1,w:2},
-  'brun':{r:2,j:2,b:1,w:0},
+  'brun':{r:1,j:1,b:1,w:0},
 };
 const POT = { r:'.pot-rouge', j:'.pot-jaune', b:'.pot-bleu', w:'.pot-blanc' };
 

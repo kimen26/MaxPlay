@@ -9,6 +9,20 @@
 
 ---
 
+## 🔒 Audio tiers — règle après HO-R06 (2026-09-12)
+
+Aucun audio sous droits tiers n'est plus versionné dans ce repo. Les livres audio commerciaux
+(« Histoires pour dodo ») et l'enregistrement Gérard Philipe (« Pierre et le loup », Prokofiev
+étant DP mais l'interprétation et la production restant sous droits voisins) ont été supprimés
+de `assets/audio/` en vague 0 de la refonte GED — copie privée couvrait l'écoute familiale, pas
+la publication d'un repo public. Les deux packs déjà construits restent utilisables (zips figés
+dans `~/.studio/library/`, cf. `packs-manifest.json`), mais **ne sont plus reconstructibles** :
+leurs scripts de build ont été supprimés faute de source. **Règle pour la suite : jamais d'audio
+sous droits tiers dans `studio/lunii/assets/`** — Lunii n'emballe que du contenu canon produit
+par les pôles DINO/NARRATION (règle d'or n°1, CLAUDE.md).
+
+---
+
 ## Ce qui est installé sur la machine (2026-06-12)
 
 | Quoi | Où | Note |
@@ -77,12 +91,19 @@ et **bugs ouverts** (autoplay fiche qui reboucle + image figée, en investigatio
 
 ## Packs construits
 
-| Pack | Script | Contenu | Statut |
+> **Moteur unique depuis 2026-09-12 (HO-R06)** : `node scripts/build-pack.mjs <tritri|voyage|dinos>`.
+> Une config par pack dans [`packs/`](packs/) (données), la géométrie de navigation vit dans
+> [`scripts/build-pack.mjs`](scripts/build-pack.mjs), les helpers ffmpeg/jar/story.json communs
+> dans [`scripts/lib/pack-common.mjs`](scripts/lib/pack-common.mjs). `--help` sort immédiatement
+> sans lancer de build. Purge automatique de `.build-<nom>/` après dépôt du zip dans la bibliothèque.
+
+| Pack | Config | Contenu | Statut |
 |------|--------|---------|--------|
-| **Tritri le Tricératops** (2026-06-12) | [`scripts/build-tritri-pack.mjs`](scripts/build-tritri-pack.mjs) | Cover (image+nom) → récit 5 blocs concat+loudnorm (≈4 min) | En bibliothèque locale, à transférer |
-| **Les dinos de Max** (2026-06-16, maj 2026-08-02 : **70 dinos · 11 familles**) | [`scripts/build-dinos-pack.mjs`](scripts/build-dinos-pack.mjs) | Menu 2 niveaux famille → dino (navigation validée Papa Yann 2026-06-16), assets via [`prepare-dino-assets.mjs`](scripts/prepare-dino-assets.mjs) | Voir en-tête script |
-| **Pierre et le loup** | [`scripts/build-pierre-loup-pack.mjs`](scripts/build-pierre-loup-pack.mjs) | Emballage MP3+PNG fournis (Prokofiev / Gérard Philipe) — Lunii emballe, ne crée pas | Voir en-tête script |
-| **Le voyage** (2026-07-07) | [`scripts/build-voyage-pack.mjs`](scripts/build-voyage-pack.mjs) | Pack des 8 récits du Voyage dino | Voir en-tête script |
+| **Tritri le Tricératops** (2026-06-12) | [`packs/tritri.json`](packs/tritri.json) | Cover (image+nom) → récit 5 blocs concat+loudnorm | En bibliothèque locale |
+| **Les dinos de Max** (2026-06-16, maj 2026-08-02 : **70 dinos · 11 familles**) | [`packs/dinos.json`](packs/dinos.json) | Menu 2 niveaux famille → dino, assets via [`prepare-dino-assets.mjs`](scripts/prepare-dino-assets.mjs) (audio dérivé **régénéré et conservé** en assets, pas recalculé à chaque build — ~5 min pour 70 dinos, voir LESSONS-MOTEUR § Ops) | En bibliothèque locale |
+| **Le voyage** (2026-07-07) | [`packs/voyage.json`](packs/voyage.json) | Pack des 8 récits du Voyage dino | En bibliothèque locale |
+| **Pierre et le loup** | — (script de build supprimé HO-R06 : audio tiers, plus de source dans le repo) | Pack déjà construit, conservé tel quel dans `~/.studio/library/` | Figé, non rejouable |
+| **Histoires pour dodo** | — (script de build supprimé HO-R06 : audio tiers, plus de source dans le repo) | Pack déjà construit, conservé tel quel dans `~/.studio/library/` | Figé, non rejouable |
 
 La Lunii de Max est une **v2** (confirmé 2026-06-12) — terrain sûr.
 **2e boîte (bleue) = v3, firmware 3.1.5** (ajoutée 2026-08-02) : STUdio 0.4.2 la lit OK

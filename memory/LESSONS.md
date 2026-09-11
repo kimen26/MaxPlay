@@ -41,3 +41,7 @@ Comment appliquer : l'interdiction en prose ne suffit pas ; le hook `garde-git-a
 ## L-008 — Un « plan maître » à côté de la TODO, c'est une deuxième TODO (2026-09-12)
 Quoi : l'orchestrateur a créé `docs/handoffs/refonte-ged-2026-09/PLAN.md` (état des vagues + spec des lanes + journal) en parallèle de `memory/TODO.md`. Papa Yann : « PLAN.md ça n'existe pas, on respecte les règles ».
 Comment appliquer : la TODO et la definition of done vivent dans `memory/TODO.md` (une ligne par lane, statut, DoD) ; le détail d'exécution vit dans un handoff `docs/handoffs/HO-xxx.md` par lane, archivé dans `docs/handoffs/archives/<campagne>/` une fois fait ; les règles d'orchestration vivent dans `docs/handoffs/README.md`. Aucun troisième fichier d'état.
+
+## L-009 — Une suppression hors liste a cassé quatre jeux, et la porte du brief ne pouvait pas le voir (2026-09-12, HO-R07)
+Quoi : l'exécutant devait supprimer `site/design-shared/mockup.{css,js}` et a emporté tout `design-shared/` avec les polices `Cursif*.ttf`, chargées par `mj-50..53` et `mur.css`. Ses portes (grep sur des noms de rips, Playwright sur 4 jeux ciblés) étaient vertes ; seul le `run-all` transverse de l'orchestrateur a vu les 4 FAIL.
+Comment appliquer : avant toute suppression, l'exécutant grep le NOM DU DOSSIER parent, pas seulement les fichiers listés ; l'orchestrateur rejoue `run-all.mjs` complet avant chaque commit de vague, jamais un sous-ensemble. Un brief qui liste `mockup.*` n'autorise pas le dossier qui les contient.

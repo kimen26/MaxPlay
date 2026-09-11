@@ -2,14 +2,14 @@
 
 > **Ce fichier est la référence technique complète de l'équipe Game.**
 > **Pour la lecture quotidienne**, voir [`INDEX.md`](INDEX.md).
-> **Pour les chiffres clés**, voir [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md).
+> **Pour les chiffres clés**, voir [`memory/INVARIANTS.md`](memory/INVARIANTS.md).
 > Mis à jour 2026-07-19 (**fusion gouvernance** : game-archiviste + game-mj-pmo fondus dans `game-pmo` unifié Sonnet ; capture immédiate des idées par le main agent ; hook Stop `pmo-check` 3 pôles).
 >
 > Équivalent côté Narration : [`../studio/narration/equipe/ORGANIGRAMME.md`](../narration/equipe/ORGANIGRAMME.md).
 
 ---
 
-## Vue d'ensemble — 12 agents actifs (+ 3 Phase 2)
+## Vue d'ensemble — 6 agents actifs
 
 > MAJ 2026-07-15 : ajout `game-test-audio` + `game-test-secu` (batterie de test « vitesse complète », voir [`../../.claude/rules/mini-jeux.md`](../../.claude/rules/mini-jeux.md) § Batterie 2 vitesses). Menu = source `site/js/catalog.js` (plus `site/index.html` en dur).
 
@@ -66,14 +66,12 @@ game-dev → game-mj-reviewer   (après livraison code MJ)
 
 | Fichier | Owner | Contenu | MAJ après |
 |---------|-------|---------|-----------|
-| `pmo/INVARIANTS.md` | game-pmo | Source de vérité chiffres clés | Changement règle non-négociable |
-| `pmo/decisions.md` | game-pmo | Décisions figées + Q-ouvertes | Toute décision avec raison + impact |
-| `pmo/sprint-log.md` | game-pmo | Journal sessions | Chaque session datée (Fait/Décisions/État reboot) |
-| `pmo/backlog.md` | game-pmo | Tickets EP-xxx + Leçons L-xxx | Mouvement ticket, nouvelle leçon, changelog session |
-| `pmo/audit-trail.md` | game-pmo unifié | Traces audits + cause racine | Chaque audit (PMO ou Archiviste) |
-| `memory/state.md` | game-pmo | État déploiement statique | Ajout/retrait MJ, bug critique en cours |
-| `memory/rules.md` | game-pmo | Règles UX/péda + designs validés | Nouvelle règle non-négociable validée |
-| `memory/stack.md` | game-dev | Stack technique + archi déploiement | Refonte stack |
+| `memory/INVARIANTS.md` | game-pmo | Source de vérité chiffres clés | Changement règle non-négociable |
+| `memory/DECISIONS.md` | game-pmo | Décisions figées + Q-ouvertes | Toute décision avec raison + impact |
+| `memory/MEMORY.md` | game-pmo | Journal sessions + état courant | Chaque session datée (Fait/Décisions/État reboot) |
+| `memory/TODO.md` | game-pmo | Tickets EP-xxx ouverts | Mouvement ticket, changelog session |
+| `memory/LESSONS.md` | game-pmo | Leçons L-xxx | Chaque leçon gravée |
+| `memory/audits/` | game-pmo unifié | Traces audits + cause racine | Chaque audit (PMO ou Archiviste) |
 | `site/PIPELINE-MEMORY-MJ.md` | main agent / game-pmo | Leçons mini-jeux gravées | Chaque session MJ |
 
 ---
@@ -130,12 +128,12 @@ game-dev → game-mj-reviewer   (après livraison code MJ)
 - [x] **game-mj-reviewer** créé 2026-05-11 (Haiku, validateur)
 - [x] **game-tile-pmo** créé (Haiku, sous-spé), **abandonné le 2026-09-05** avec tout le sous-domaine tile (décision Papa Yann, cf. `_archive/INDEX.md` § `2026-09-05-max-adventure-tiles/`)
 
-**Fichiers PMO créés 2026-05-13** :
-- [x] `pmo/INVARIANTS.md` — chiffres clés
-- [x] `pmo/decisions.md` — décisions figées + Q-ouvertes
-- [x] `pmo/sprint-log.md` — journal sessions
-- [x] `pmo/backlog.md` — tickets actifs (déplacé depuis `tasks/`)
-- [x] `pmo/audit-trail.md` — traces audits
+**Fichiers PMO créés 2026-05-13** (migrés vers le quintette `memory/` le 2026-09-03, HO-MJ-01) :
+- [x] `memory/INVARIANTS.md` — chiffres clés
+- [x] `memory/DECISIONS.md` — décisions figées + Q-ouvertes
+- [x] `memory/MEMORY.md` — journal sessions
+- [x] `memory/TODO.md` — tickets actifs
+- [x] `memory/audits/` — traces audits
 - [x] `memory/state.md` réduit aux sources statiques uniquement
 
 **Commandes 2026-05-13** :

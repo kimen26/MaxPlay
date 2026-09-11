@@ -518,7 +518,7 @@
         if (perfect && justMastered) {
           // 3e étoile = LA grande fête (cinématique + Mario + « tu maîtrises »).
           if (global.MaxFX && global.MaxFX.finalStar) {
-            try { const a = new Audio('sounds/victory-mario-series-hq-super-smash-bros.mp3'); a.volume = 0.85; a.play().catch(() => {}); } catch (e) {}
+            try { const a = new Audio('sounds/ui/fanfare-victoire.mp3'); a.volume = 0.85; a.play().catch(() => {}); } catch (e) {}
             global.MaxFX.finalStar(app, {
               style: 'cinematic',
               belt: { earned: newStars, total: MAX_STARS, anchorEl: badgeAnchor },
@@ -574,7 +574,7 @@
       star.textContent = '★';
       document.body.appendChild(star);
 
-      try { const a = new Audio('sounds/victory-mario-series-hq-super-smash-bros.mp3'); a.volume = 0.85; a.play().catch(() => {}); } catch (e) {}
+      try { const a = new Audio('sounds/ui/fanfare-victoire.mp3'); a.volume = 0.85; a.play().catch(() => {}); } catch (e) {}
 
       const W = innerWidth, H = innerHeight;
       const slot = document.getElementById('slot' + slotIndex);
@@ -597,7 +597,7 @@
 
       // pop sonore au pic du bizou (l'etoile plein ecran)
       setTimeout(() => {
-        try { const k = new Audio('sounds/freesound_community-bus-pop-85054.mp3'); k.volume = 0.8; k.play().catch(() => {}); } catch (e) {}
+        try { const k = new Audio('sounds/fx/pop-apparition.mp3'); k.volume = 0.8; k.play().catch(() => {}); } catch (e) {}
       }, 2000);
 
       anim.onfinish = () => {

@@ -12,7 +12,7 @@
 - **Encyclopédie = VRAI** : on dit les vrais noms (Trias, Théropodes…) et les vraies dates/chiffres. Jamais de nian-nian.
 - **Échelle honnête** : aucune comparaison de taille qui ment > 10 %. Référentiel figé dans [`memory/INVARIANTS.md`](memory/INVARIANTS.md).
 - **Grokipedia = 1ʳᵉ source** de fact-check (avant Wikipedia).
-- **Tritri** = running gag de Wex (son dino préféré, un Tricératops). 🔒 JAMAIS « Max », « doudou », « peluche ». **1 mention max par fiche** (2 pour le Tricératops) : le dino de la fiche est le centre (L-D-75). Voir [`figees/encyclopedie.md`](figees/encyclopedie.md).
+- **Tritri** = surnom occasionnel du Tricératops (PAS un univers, PAS de quête, RE-FIGÉ 2026-09-11). Règle opérationnelle complète : [`.claude/rules/dino.md`](../../.claude/rules/dino.md) § Tritri & Wex. Verrou daté : [`figees/encyclopedie.md`](figees/encyclopedie.md).
 - **Zéro bus dans les récits narrés** (le bus reste OK en échelle de taille des fiches, validé).
 - **Audio = écouter** : « écoute » jamais « regarde ». Wex en FR standard, aucun tic écrit (la voix les ajoute).
 

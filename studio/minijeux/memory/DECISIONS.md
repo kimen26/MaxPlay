@@ -8,12 +8,12 @@
 - **maxStars catalog 5→3** (2026-07-14, commit 68284858) — système étoiles global recalibré à 3 paliers pour tous les jeux — voir `archive/decisions-2026-H1.md`
 - **Système figeage obligatoire** (origine 2026-05-11/2026-05-21, consolidé 2026-05-21 "Processus décisions figées") — `studio/minijeux/docs/jeux/figees/mj-XX.md` = LOI protection régression — voir `archive/decisions-2026-H1.md`
 - **`catalog.js` = source unique de vérité menu** (référencé en continu depuis EP-070/2026-07-07, ex. ligne 293 decisions.md « via champ `status` catalog.js ») — voir `archive/decisions-2026-H1.md`
-- **Vocab lieux Max** (2026-05-08, équivalent D-021 de l'ancien `pmo/backlog.md`) — dodo = Centre bus · garage = Réparation · terminus = Village des bus (réservé) — voir `archive/decisions-2026-H1.md`
+- **Vocab lieux Max** (2026-05-08, équivalent D-021 de l'ancien dossier pmo, fichier backlog) — dodo = Centre bus · garage = Réparation · terminus = Village des bus (réservé) — voir `archive/decisions-2026-H1.md`
 - **Mutualisation UI (composants partagés mp-theme.css)** (2026-07-13/07-18, EP-074) — composants UI communs (.mp-pill, .mp-dots, célébrations, frise) centralisés dans mp-theme.css, zéro variante locale — voir `archive/decisions-2026-H1.md`
 
 ---
 
-*Aucune entrée datée ≥ 2026-08-01 dans l'ancien `pmo/decisions.md` à la date de cette migration (2026-09-03) — toutes les décisions du fichier source sont antérieures et vivent dans `archive/decisions-2026-H1.md`.*
+*Aucune entrée datée ≥ 2026-08-01 dans l'ancien dossier pmo (fichier decisions.md) à la date de cette migration (2026-09-03) — toutes les décisions du fichier source sont antérieures et vivent dans `archive/decisions-2026-H1.md`.*
 
 ## Designs validés (déplacés verbatim depuis `memory/rules.md`, daté d'origine indéterminé — antérieur à 2026-07)
 

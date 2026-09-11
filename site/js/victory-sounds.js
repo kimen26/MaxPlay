@@ -24,9 +24,6 @@ const SOUND_POOLS = {
     'sounds/fx/applaudissements.mp3',
     'sounds/fx/trompette-fanfare.mp3',
     'sounds/ui/fanfare-victoire.mp3',
-    'sounds/ff7_victory.mp3',                                // classiques conservés
-    'sounds/victory-mario-series-hq-super-smash-bros.mp3',
-    'sounds/zelda-tresor.mp3',
   ],
   // Fin de partie < 50% — DOUX, jamais punitif (zéro son "perdu")
   'end-doux': [
@@ -47,9 +44,9 @@ const SOUND_POOLS = {
   error: [
     'sounds/fx/oups-doux.mp3',
     'sounds/fx/trombone-oups.mp3',
-    'sounds/perfect-fart.mp3',                               // culte, reste
-    'sounds/honk-sound.mp3',
-    'sounds/pew.mp3',
+    'sounds/fx/prout-long.mp3',
+    'sounds/ui/klaxon.mp3',
+    'sounds/fx/boing.mp3',
   ],
   // Apparition d'un élément à l'écran
   apparition: [
@@ -89,7 +86,7 @@ const VOICE_LINES = {
 // propres mots, ceux qu'un adulte de cette culture dit vraiment à un enfant.
 // Catalogue : studio/referentiel/catalogue/fr/humeur.mjs § HUMEUR_INVITEE.
 const LANGUES_INVITEES = [
-  { code: 'pt-BR', drapeau: '🇧🇷', mots: ['muito-bem', 'isso-ai', 'boa', 'arrasou', 'que-legal'] },
+  { code: 'pt-br', drapeau: '🇧🇷', mots: ['muito-bem', 'isso-ai', 'boa', 'arrasou', 'que-legal'] },
   { code: 'en', drapeau: '🇬🇧', mots: ['well-done', 'awesome', 'you-did-it', 'brilliant', 'way-to-go'] },
   { code: 'ja', drapeau: '🇯🇵', mots: ['sugoi', 'yatta-ne', 'jouzu', 'erai', 'dekita-ne'] },
   { code: 'zh', drapeau: '🇨🇳', mots: ['tai-bang-le', 'zhen-bang', 'zuo-de-hao', 'hao-lihai', 'ni-zhen-xing'] },

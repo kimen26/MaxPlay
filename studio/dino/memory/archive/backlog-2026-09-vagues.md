@@ -1,0 +1,315 @@
+# Archive — TODO.md pôle DINO, vagues 2026-09 (rotation 2026-09-12, HO-R03)
+
+> Contenu déplacé **verbatim** depuis `memory/TODO.md` le 2026-09-12. Aucune ligne réécrite,
+> aucune renumérotée. Couvre les lanes closes (ou dont la partie close a été condensée) des
+> vagues du 2026-09-05 au 2026-09-11 : retours PY nuit du 05, décisions quota/Voyage/silence,
+> vague « Fiches dino complètes » (HO-009..018), branchage audio orphelin, i18n audio, dette
+> GED/étymo, idées produit, audit échelle FR, questions PY 2026-09-03, audit images paléoart,
+> audit étanchéité coloriages, refonte navigation, recherche concurrents. Les tickets encore
+> ouverts au 2026-09-12 ont été recopiés en 1 ligne dans `memory/TODO.md` ; le détail complet
+> (historique, décisions, chiffres) ne vit plus qu'ici.
+
+---
+
+## Lane — Retours PY 2026-09-05 (nuit) : récit météorite à réécrire, priorités audio
+
+> PY : « le récit de la météorite… j'ai lu que ça s'appelait limite Crétacé-Paléogène ou K-Pg… j'aimerais ajouter Mésozoïque et les autres avant/après… le paléogène c'est un terme logique ?… Les volcans étaient déjà courants… et un jour la météorite… Yucatán… cratère de Chicxulub… tout ce qui est à 2 000 km meurt… tsunami… la chaîne alimentaire coupée… les mots et l'enchaînement sont importants ! » · « 50 51 52 53 on laisse le contenu FR pour le moment » · « le plus important : tout le jeu en FR niveau ElevenLabs, toutes les fiches prêtes et rédigées (beaucoup de tags), puis tout propre en FR, puis le maximum de fiches en anglais et on attend les crédits ».
+
+- **RECITS-CENOZOIQUE-POLISH** [x] — FAIT 2026-09-05 (nuit) : polis + MP3 FR régénérés (mammiferes 61 s, glace-mammouth 109 s, paleo 60 s). Historique : La nouvelle porte `_verif-recits.cjs` (2026-09-05) montre que les 3 récits Cénozoïque (mammiferes, glace-mammouth, paleo) et l'intro datent d'avant les règles : tags en fin de réplique, tags hors liste (awe, deadpan, reflective, lighthearted), « ! » chez Wex, et **« bus » dans glace-mammouth (violation de la figée « zéro bus dans les récits »)**. À polir (sans perdre de matière) puis régénérer leur MP3 FR au reset du 11/09 (≈ 3 k car.). Trias/Jurassique/Crétacé sont réécrits par le lot B (V2).
+- **VOYAGE-V2 / GO** [~] — AVANCEMENT 2026-09-05 (nuit) : lots A et B livrés et fusionnés dans le canon (12 récits, porte `_verif-recits.cjs` 12/12 OK FR + EN), JOURNEY 12 épisodes 4 langues (Playwright OK), JSON FR + EN régénérés, figée + INVARIANTS gravés. Audio FR : **12/12 récits régénérés et padés** (naissance-terre 77 s, vie-dans-eau 76 s, sortie-eau 86 s, reptiles-permien 78 s, grande-mort 75 s, trias 101 s, jurassique 105 s, cretace 114 s, extinction 212 s, mammiferes 61 s, glace-mammouth 109 s, paleo 60 s ≈ 19 min de Voyage). Solde EL après ≈ 3,7 k → les 35 fiches FR attendent le reset du 11/09. EN : 150 clips hors fiches prêts (JSON), au quota suivant. Détail initial : PY 2026-09-05 (nuit) : « vas-y, enchaîne tout le reste… note bien l'avancement et mets ce qu'on s'est dit dans la todo ». Arbitrages pris par l'orchestrateur (PY n'a pas répondu aux 4 questions, il a dit GO) : 12 épisodes selon `PROPOSITION-VOYAGE-V2.md` ; les 3 épisodes Cénozoïque restent tels quels ; « reptiles du Permien » = épisode séparé ; 3 mots savants max par épisode, chacun expliqué sur place (L-D09) ; Tritri = « pas encore » au plus une fois avant le Crétacé ; `recit-intro` retiré au profit des épisodes 1-3 (MP3 gardé sur disque, plus référencé). Exécution : agent A = récits 1-4 (naissance-terre, vie-dans-eau, sortie-eau, reptiles-permien) FR + EN ; agent B = Trias / Jurassique / Crétacé enrichis FR + EN ; fichiers séparés `RECITS-V2-lot-{A,B}.md` puis fusion dans le canon par l'orchestrateur (anti-écrasement L-D-73) ; JOURNEY + clés UI 4 langues + vignettes ; audio FR dans la limite du quota (≈ 12,9 k restants : l'API coupe au-delà de ≈ 3 000 car./appel, découper), le reste au reset du 11/09 ; EN au quota suivant. Figée « 9 récits » → 12 : défigeage à graver à la livraison.
+- **EPIC-VOYAGE-V2** [~] — Idée PY 2026-09-05 (nuit, verbatim condensé) : « expliquer rapidement la création de la Terre (boule de gaz et débris, gravité, noyau), la Terre volcans et lave (y a de l'eau ?), puis dans l'eau apparaît… bactéries, oxygène, micro-organismes, plantes, crustacés, poissons… la vie grandit, se complexifie, l'oxygène partout… poissons à pattes, amphibiens… Grande Mort… au Trias un animal sort de l'eau… y a déjà des arbres ? photosynthèse quand/comment/où… dire le nom de l'ère et des époques… puis Mésozoïque : par époque, les 3 types d'animaux, la forme des continents, la météo, la végétation (noms de plantes), ce qui se passe sur terre et sous la mer, les dinos les plus connus, en l'air, dans l'eau, herbivores/carnivores, tendances (les géants…) ». = refonte des 9 récits du Voyage en épisodes plus riches (intro découpée en 2-3 récits : naissance de la Terre / la vie dans l'eau / la sortie de l'eau). Cadrage par dino-conseiller → `content/sources/recits/PROPOSITION-VOYAGE-V2.md` (structure, faits vérifiés, durées, coût audio), validation PY, puis écriture. Question PY « 5 grandes extinctions ? » : oui (Ordovicien, Dévonien, Permien-Trias, Trias-Jurassique, Crétacé-Paléogène), déjà dit dans « La Grande Mort ».
+- **RECIT-EXTINCTION-V2** [x] — FAIT 2026-09-05 (nuit) avec les mots de PY : canon RECITS-EPOQUES.md ÉP. 4 (≈ 3 400 car.), MP3 FR généré en 2 moitiés (l API coupe au-delà de ≈ 3 000 car. : leçon, découper) puis concaténé + padé, 212 s. EN réécrit dans scripts-hors-fiche/recits.md (JSON prêt). À faire écouter à PY. Historique : Réécrire `recit-extinction.mp3` (K-Pg, météorite) selon l'enchaînement PY : volcans déjà actifs (trapps du Deccan, Inde) → météorite de 10 km, Yucatán (Mexique), mer peu profonde, cratère de Chicxulub mi-terre mi-mer → onde de chaleur et débris sur des centaines de km → séismes, tsunamis, cendres → nuit de plusieurs mois → chaîne alimentaire coupée (plantes → herbivores → carnivores) → survivants petits ; nommer « limite Crétacé-Paléogène » et « le Paléogène commence » (Mésozoïque → Cénozoïque). Brouillon proposé à PY dans la réponse du 2026-09-05, à valider AVANT porte + audio (≈ 1,5 k car., quota OK). Absorbe EP-D11.
+- **PRIORITE-AUDIO** [x] — Ordre PY : 1) tout le jeu propre en FR côté ElevenLabs (fiches 71/71 scripts prêts ✅, 35 MP3 FR au reset 11/09, récit extinction V2, zones FR sans voix ✅) ; 2) le maximum de fiches EN avec le reste du quota ; 3) hors fiches EN au quota suivant. HO-019 mis dans cet ordre.
+- **MJ-50-53-FR** [x] — Décision PY : mj-50/51/52/53 (lecture, phonèmes, syllabes) gardent leur contenu FR pour le moment (seule la règle est traduite par le lot 0).
+
+## Lane — Décisions PY 2026-09-05 (soir) : quota B, Voyage ères + extinctions, silence MP3
+
+> PY (verbatim condensé) : « B, on reste là-dessus, et l'anglais on garde la méthode testée et éprouvée (STS). Tous les mini-jeux devront être traduits (règles, menus, actions). Le Voyage est hyper important : ajouter les ères (Cénozoïque…) en macro-info, parler aussi des autres extinctions que celle de la fin du Crétacé. Pour le silence des MP3 il faut absolument suivre les règles. »
+
+- **QUOTA-B** [x] — Décision PY : rester Creator, étaler (11/09 : FR 35 fiches + ≈ 30 fiches EN ; 11/10 : reste EN fiches + 142 clips hors fiches). Méthode EN = STS voix maison (DEC-AUDIO-I18N-002 confirmée). Runbook `docs/handoffs/HO-019-reprise-audio-quota.md`.
+- **VOYAGE-ERES** [x] — FAIT 2026-09-05 : `DINO_ERES` (3) + champ `ere` sur périodes et épisodes, bandeaux d'ère dans le Voyage et l'onglet Époques (FR/EN/ES/PT), 3 accroches audio FR Narratrice (`ere-*.mp3`), figée + INVARIANTS gravés, Playwright FR/EN OK. Reste : audio EN des 3 ères (scripts dans `scripts-hors-fiche/menus.md`, au quota). Historique : Ajouter le niveau Ères (Paléozoïque · Mésozoïque = « l'âge des dinosaures » · Cénozoïque) en macro-info dans le Voyage et l'onglet Époques. ⚠️ Touche la figée « onglets / buildMenuEpoque » → défigée par décision PY explicite 2026-09-05 (alerte rouge donnée dans la réponse). Contenu : dino-conseiller.
+- **VOYAGE-AUTRES-EXTINCTIONS** [x] — FAIT 2026-09-05 : récit « La Grande Mort » (Permien-Trias, 5 extinctions nommées) = 9ᵉ épisode `grande-mort` entre intro et Trias, canon `RECITS-EPOQUES.md`, MP3 FR généré + padé, EN script prêt (`scripts-hors-fiche/recits.md`, audio au quota). Proposition/fact-check : `content/sources/recits/PROPOSITION-ERES-EXTINCTIONS.md`. Historique : Parler des autres grandes extinctions (Ordovicien, Dévonien, Permien-Trias « la Grande Mort », Trias-Jurassique) en plus de la fin du Crétacé : nouvel épisode / bloc du Voyage, texte FR d'abord (audio au quota suivant, EN ensuite).
+- **MP3-SILENCE-250** [x] — FAIT 2026-09-05 : 2 019 MP3 mesurés, 669 + 37 complétés à 250 ms en 2 passes, 0 KO, vérif STT/ffmpeg OK (T-Rex FR/EN, SFX, récit). Outil `content/scripts/audio/_pad-tete.mjs` (mesure ffmpeg silencedetect, complète à 250 ms, tolérance 10 ms) branché dans `_gen-audio-v3.sh`, `_gen-recaps.sh`, `_gen-audio-i18n-sts.mjs` ; passe complète sur `site/audio` + `site/sounds/{fx,nombres,phonemes,pieces,ui,voix}` lancée le 2026-09-05 (≈ 2 100 MP3), à committer à la fin. Règle 250 ms de silence de tête : appliquer à TOUS les MP3 voix (fiches, menus, dico, récits, spéciaux, périodes, noms, 4 langues) + SFX dino, via ffmpeg (0 crédit), et corriger les pipelines de génération pour que tout nouveau fichier sorte padé. Musiques bouclées exclues (le silence casserait la boucle).
+
+## Lane — Suite de vague 2026-09-05 (demande PY du matin : « prépare l'ensemble des fiches », EN intégral texte + audio, menu parental)
+
+> Demande PY (verbatim condensé) : « vérifie, rédige toutes les fiches (comme fait là) et lance les générations audio FR (si besoin) et EN. Pour l'anglais il faut que l'intégralité du site soit traduit et passé en audio (s'il manque des zones en FR ElevenLabs, les faire aussi). Ensuite livre-moi le moyen de changer de langue dans le menu parental (simplifie : un truc stat, un truc param, un truc compte, un truc commentaire/retour). » + « sur le T-Rex tu parles un peu trop de Tritri… c'est eux le centre ».
+
+- **TRITRI-RECADRAGE** [x] — FAIT 2026-09-05 : T-Rex (3→1 mention), Quetzalcoatlus (2→1), Mosasaure (2→1) × 4 langues ; porte durcie (compteur Tritri, L-D-75) 71 OK × 4 ; JSON régénérés ; MP3 refaits : FR T-Rex nom+regime, FR Quetzalcoatlus regime+funfact, T-Rex en/es-es/pt-br nom+regime (STS), recaps reconcaténés.
+- **PARENTS-4-TUILES** [x] — FAIT 2026-09-05 : `site/index.html` espace parents = Statistiques (suivi.html) · Paramètres (langue + jeux cachés) · Compte (compte.html) · Retours (suivi.html#sec-comments). Playwright OK (captures `docs/handoffs/rapports/captures/parents-*.png`).
+- **LANG-SELECTEUR** [x] — FAIT 2026-09-05 : Paramètres → boutons Français / English / Español / Português (`js/lang.js`, localStorage `maxplay_lang`, rechargement). Vérifié : dev-dinos.html passe en « The Dinosaurs ». Limite connue : seuls 8 mini-jeux sur 36 chargent `lang.js` (les autres restent FR) — ticket pôle JEU.
+- **MENU-ONGLETS-MP3** [x] — FAIT 2026-09-05 (MP3 + branchement `MENU_VOICE.epoque/dico`, Playwright 200 × 5 onglets FR ; textes gravés dans `_ACCROCHES-MENU-FAMILLES-REGIMES.md`). Historique : 2 accroches d'onglet FR sans MP3 (époques, dico) générées en `site/audio/dinos/fr/menu-epoques.mp3` + `menu-dico.mp3` (texte = `tts_fallback_epoque` / `tts_fallback_dico` tagués). Reste : brancher `MENU_VOICE.epoque/dico` dans `dev-dinos.html` APRÈS la fin de HO-017 (même fichier, éviter l'écrasement L-D-73) + graver les textes dans `_ACCROCHES-MENU-FAMILLES-REGIMES.md`.
+- **HO-017** [x] — FAIT 2026-09-05 : racines 101, périodes 5, régimes 4, Pangée, Extinction, 8 épisodes du Voyage (clés `journey_ep_*` × 3 langues) ; bug de merge des racines corrigé dans `dinos-i18n.js` ; captures zéro mot FR. Reste es-es / pt-br pour racines, périodes, Pangée, Extinction (ticket **I18N-ES-PT-RESTANTS** ci-dessous). Brief `docs/handoffs/HO-017-*.md`.
+- **I18N-ES-PT-RESTANTS** [x] — FAIT 2026-09-05 (nuit) : racines 101, périodes, Pangée, Extinction en es-es et pt-br, check 0 erreur × 2, captures zéro mot FR. Historique : es-es et pt-br : traduire racines (101), périodes (5), régimes (4), Pangée, Extinction dans leur `strings.json` (même méthode que HO-017, la plomberie est en place).
+- **RECIT-EXTINCTION-V3 / SUSPENSE** [~] — ÉCOUTE PY 2026-09-06 : « le texte est mieux » MAIS l audio est « mou, plat » malgré l escalier de tags (whispers → softly → serious → nervous → gasps → excited → shouts) : eleven_v3 n a PAS rendu la montée en pression. Décision PY : on laisse la V3 en ligne pour le moment, reprise EN MANUEL avec lui (session dédiée). DOC EL relue 2026-09-06 (demande PY) — 4 écarts avec ce qu on a envoyé : (a) text-to-dialogue recommande ≤ 2 000 caractères PAR REQUÊTE (« split longer text into chunks and concatenate »), on en a envoyé 3 753 ; (b) aucun voice_settings envoyé → stability 0,5 « Natural », or « pour une expressivité maximale avec les tags : Creative » (valeur basse) — Robust/haut = « moins réactif aux tags » ; (c) la voix doit avoir le registre demandé : « une voix naturellement douce à qui on demande plusieurs [shouts] » ignore le tag ou le lit — narrateur_f = Lumi « Tender » ; (d) les tags sont du langage naturel, pas un enum ([booming], [dramatic] existent), le crescendo mid-phrase est officiellement supporté (« bored → crescendo into enthusiasm »), et EL conseille de générer plusieurs prises et garder la meilleure (seed dispo). Pistes à tester, une par une, sur le seul passage météorite : stability plus basse (mode Creative v3, on est à 0,4), réplique coupée en plusieurs inputs courts (un par palier), majuscules sur toute la phrase-choc, [shouts] en tête de réplique et non au milieu, ou Studio EL à la main. Historique : texte V3 gravé dans le canon (porte 12/12 OK, 2 965 car. hors tags), règle crescendo FIGÉE (`figees/encyclopedie.md` § AUDIO). Audio : l'appel « coupé » (2 064 crédits) était en fait COMPLET dans l'historique ElevenLabs → récupéré sans crédit (`_recup-historique.mjs`), STT de la fin OK, 200 s, déployé `site/audio/dinos/fr/recit-extinction.mp3`. La part 1 générée entre-temps (≈ 1 180 crédits) est jetée. Reste PY : écouter la V3 déployée et dire si le crescendo passe. Retour PY initial : « c est bien, intéressant » MAIS (1) remettre « ou 100 terrains de foot » à côté de « aussi large que Paris » ; (2) « moitié sous la terre, moitié sous la mer » est ambigu → « moitié sur la terre, moitié sous la mer » ; (3) GROS problème d interprétation : savoir faire MONTER le suspense, annoncer ce qui arrive, crescendo de la voix sur plusieurs phrases (« QUAND TOUT À COUP, blabla et blabla ET BLABLA »). Règle d écriture à graver pour tous les récits : montée = chuchoté → doux → sérieux → cri, phrases courtes qui s accélèrent, répétition « il grossit… il grossit encore… », majuscules sur le mot-choc. Trias « trois couches de roches » = VRAI (von Alberti 1834, trois couches en Allemagne), on garde.
+- **PANGEE-EXTINCTION-INATTEIGNABLES** [x] — FAIT 2026-09-06 (GO PY « termine toutes ces tâches ») : rebranchés dans le Voyage — la Pangée juste après l'épisode Trias, la Grande Extinction (4 hypothèses) juste après l'épisode météorite ; carrousel relancé à l'ouverture ; `esc()` retiré de l'étiquette « il y a 250 millions d'années » (même piège que L-D-78, jamais vu car l'écran était inatteignable). Playwright fr + en : ordre vérifié, 0 erreur, captures `docs/handoffs/rapports/captures/voyage-periode-*.png` relues. Historique : constat HO-017 : `buildPangeeBloc()` / `buildExtinctionBloc()` ne sont câblées à aucun bouton de navigation du Voyage dans l'état actuel de `dev-dinos.html` (écrans traduits mais inatteignables en usage normal). Régression ou choix ? À trancher avec PY.
+- **HO-018** [x] — FAIT 2026-09-05 : 142 clips EN hors fiches (lot A : 20 menus + 5 périodes + 8 récits + 8 spéciaux ; lot B : 101 dico dont `scelido` ajouté aussi en FR), 26 814 caractères, convertis en JSON par `_md2json-hors-fiche.cjs` (porte intégrée 0 KO). Exclus faute de texte source FR : `menu-accueil.mp3` (orphelin, jamais appelé) et les 8 `menu-ep-*.mp3` (jamais branchés, cf. EP-D-Menu-EP-Branchage) — à écrire le jour où on les branche.
+- **AUDIO-EN-INTEGRAL** [!] — BLOQUÉ quota EL (solde ≈ 15 k après les régénérations du jour, reset 2026-09-11 03:15). Chiffrage : FR 35 fiches ≈ 53 k · EN 58 fiches ≈ 81 k × 2 (STS) ≈ 162 k · EN hors fiches 26,8 k × 2 ≈ 54 k → ≈ 270 k au total, pour 173 k / mois en palier Creator. Décision PY requise (voir `docs/handoffs/HO-019-reprise-audio-quota.md`) : passer Pro un mois (tout d'un coup) OU étaler sur 2 mois OU EN en voix native sans STS (÷ 2, mais pas la voix maison).
+
+## Lane — Vague 2026-09-05 « Fiches dino complètes » (demande Papa Yann, orchestrée par handoffs HO-009..016)
+
+> Registre : `docs/handoffs/README.md`. Demande PY 2026-09-05 (verbatim condensé) : valider TOUTES les fiches (hauteur, longueur, poids) · revérifier le ou LES lieux de vie · réécrire les infos/Texte fiche (« on est pas mal, y'avait juste des pb sur les tailles, mais challenge ») · réécrire les Scripts audio · tags v3 « pas 2-3, plein, au milieu des phrases, autour des mots-clés, rires, inquiétude… de la vie intelligemment. SI TU AS UN DOUTE NE VA PAS PLUS LOIN » · i18n des fiches si FR + tags OK · ElevenLabs sur tous les théropodes dans toutes les langues validées · 5 musiques de fond bouclables + génériques + victoires · banque de sons dinos.
+
+- **HO-009** [x] — FAIT 2026-09-05 : 71/71 audités (4 lots, rapports `rapports/HO-009-lot-*.{md,json}`), 28 CORRIGER. Audit data 71 dinos, 4 lots Sonnet en parallèle (rapports JSON + md).
+- **HO-010** [x] — FAIT 2026-09-05 (85 champs, `rapports/HO-010-champs-modifies.json` ; à recroiser en i18n dans HO-013 ; + patagotitan/Mapusaurus non contemporains corrigé, archaeopteryx « ancêtre de tous les oiseaux » corrigé). Application des corrections data + régénération bundles + `_verif-comppoids` (orchestrateur).
+- **HO-011** [x] — FAIT 2026-09-05 : 71/71 Scripts audio FR réécrits, 1 fichier par dino (`fr/V3/<id>.md`), 6 lots dino-fiche-writer, porte durcie (densité tags min, ponctuation Wex) 71 OK. Anciens lots archivés `fr/V3/_archive-2026-09-05-lots/`. JSON à régénérer après HO-012 (`node _md2json-v3.cjs`).
+- **HO-012** [~] — Relecture croisée FR : 71/71 PASS (moitié 1 = 43, moitié 2 = 28, rapports `rapports/HO-012-relecture-moitie-{1,2}.md`). Polish en cours sur le top 10 non bloquant (écho Wex identique en bloc A sur 13/13 théropodes, répétition « Allosaure/jeunes » ×4, « trop risqué » ×3, Allosaure ×2). Ensuite : régénérer les 284 JSON (`node studio/dino/content/scripts/audio/_md2json-v3.cjs`).
+- **HO-013** [x] — FAIT 2026-09-05 : 71 scripts × en / es-es / pt-br (portes 0 KO, JSON 284 × 3), lexiques en + es tranchés (0 flag), pt-br : 11 flags tranchés par agent de reprise (l'agent principal a été coupé par la limite de dépense Claude). Reste : `strings.json` des 3 langues à recroiser avec les 85 champs HO-010 (les scripts sont justes, l'UI texte peut encore dire l'ancien chiffre — ticket **I18N-STRINGS-RECROISER** ci-dessous).
+- **HO-014** [x] — FAIT 2026-09-05 : 13 théropodes × 4 langues (FR text-to-dialogue ; en/es-es/pt-br voix native → STS), 52 + 144 blocs, 52 recaps, STT spot-checks OK (écarts = chiffres en lettres, « Tritri » → « tri tri »), manifest régénéré, Playwright `?lang=` OK (13 fiches audio / langue, 0 erreur). Coût réel ≈ 87 k caractères EL (STS ≈ ×2) → solde ≈ 44 k.
+- **HO-015** [x] — FAIT 2026-09-05 : 10 musiques dans `site/sounds/music/` (jungle 45 s, calme 50 s, suspense 50 s, 3 génériques 4-5 s, 4 victoires 2-5 s), coût 2 160 crédits. À écouter par PY : jungle, calme, victoire-v4. Branchement = ticket futur.
+- **HO-016** [x] — FAIT 2026-09-05 : 41 SFX dans `site/sounds/fx/dino/` (le brief disait 47 par erreur d'addition, la liste détaillée fait 41), coût 1 368 crédits, prompts dans `_BANQUE-SONS.md` § 6-7. À écouter : gros-rugissement-attaque-1, oeuf-eclot-5. Branchement = ticket futur.
+- **VITESSE** [~] — Idée PY 2026-09-05 (« la vitesse des dinosaures ça m'intéresse bien, c'est souvent des chiffres bien différents dans les livres ») : HO-009 collecte pour les 71 une fourchette km/h sourcée + confiance ; ensuite décider avec PY : nouveau champ `vitesse_kmh` dans `dinos-data.js` + affichage fiche + comparaison honnête (enfant qui court ≈ 10 km/h · Papa ≈ 20 · vélo ≈ 25 · voiture en ville 50 · guépard 100) + bloc audio ? À trancher AVANT HO-011 pour que les scripts puissent le dire.
+- **AUDIO-FR-35** [!] — 36/71 fiches FR régénérées (13 théropodes + 23 cératopsiens/ornithopodes/raptors/ptérosaures, 2026-09-05). Restent 35 (sauropodes 7, thyréophores 8, marins 7, avant-dinos 5, mégafaune 8) ≈ 54 k caractères : BLOQUÉ solde EL ≈ 24 k, reset le 2026-09-11 (03:15). Commande : `bash studio/dino/content/scripts/audio/_gen-audio-v3.sh "<ids>"` puis manifest. Ensuite i18n audio des 58 non-théropodes (≈ 190 k/langue, à étaler sur plusieurs mois ou passer au palier Pro).
+- **I18N-STRINGS-RECROISER** [x] — FAIT 2026-09-05 : en/es-es/pt-br recroisés avec les 89 champs (`_check-traduction` 0 erreur × 3, bundles régénérés, corpus FR réextrait, check tolère les champs vides du FR).
+- **VITESSE-UI** [?] — afficher `vitesse_kmh` sur la fiche ? (DEC-VITESSE-001, question ouverte PY).
+- **ECOUTE-PY** [ ] — Papa Yann écoute : `site/sounds/music/` (jungle, calme, victoire-v4), `site/sounds/fx/dino/` (gros-rugissement-attaque-1, oeuf-eclot-5), fiches T-Rex fr/en/es-es/pt-br (`dev-dinos.html?lang=en`).
+- [ ] Après la vague : régénérer les 58 autres fiches FR (audio) + décider l'i18n audio des 58 restants ; brancher musiques/SFX dans Encyclopédie et Mini-jeux.
+
+## Lane — Alerte data
+
+- **GLOSSAIRE** [~] — Vocabulaire unique PARTOUT (`memory/GLOSSAIRE.md`, 2026-09-04) : Fiche dino = Texte fiche + Script audio + Audio ; « script V3 / dialogue / segments / fiche audio » à remplacer ; `dev-dinos.html` → `dinos.html` remonte en priorité.
+
+- **ALERTE-JP** [~] — 2026-09-05 : aucun script audio ne nomme la franchise (porte) ; `desc`/`fait` data de Deinonychus/Vélociraptor disent « des films » sans la nommer (conforme figée). Historique : `dinos-data.js` L1170-71 cite deux fois « Jurassic Park » pour Deinonychus (violation figée ref-adulte, découverte audit 2026-07-17) : réécrire `desc` sans nommer la franchise + vérifier Dilophosaurus même pattern.
+
+## Lane — Branchage audio orphelin (découvertes audit 2026-07-17)
+
+- **EP-D-Menu-EP-Branchage** [x] — FERMÉ 2026-09-06 sans branchement : les `menu-ep-*.mp3` ne sont PAS orphelins, ce sont les étiquettes de molette du pack Lunii « Le voyage des dinosaures » (`studio/lunii/scripts/build-voyage-pack.mjs`, commit bcec8c76). L'encyclopédie n'en a pas besoin : chaque épisode a son bouton récit et chaque ère son bandeau parlé (`ere-*.mp3`). Suite → LUNII-VOYAGE-12.
+- **LUNII-VOYAGE-12** [!] — Le pack Lunii Voyage est resté à 8 épisodes (intro → paléo) alors que le site en a 12 (intro retirée, +naissance-terre, vie-dans-eau, sortie-eau, reptiles-permien, grande-mort ; Trias/Jurassique/Crétacé/Extinction réécrits). Au reset EL du 11/09 : 5 étiquettes courtes NARRATRICE (`menu-ep-<id>.mp3`, ≈ 100 caractères en tout, à écrire dans `content/sources/recits/` avant), puis mettre `EPOQUES` de `build-voyage-pack.mjs` à 12 (UUID figés : en ajouter 5, garder les 7 existants, retirer intro), 5 images `ep-<id>.png`, rebuild + `lunii-sync`. Étape ajoutée au runbook HO-019.
+- **MENU-ACCUEIL-RETIRE** [x] — FAIT 2026-09-06 : `site/audio/dinos/fr/menu-accueil.mp3` supprimé (aucun mode `accueil`, aucun texte source, jamais joué) ; `MENU_VOICE.accueil` retiré ; bloc EN correspondant retiré de `scripts-hors-fiche/menus.md` (150 clips EN OK, 0 KO).
+- **EP-D-Periodes-Branchage** [ ] — Brancher les 5 MP3 `periodes/*.mp3` (icône 🔊 période en fiche dino), données prêtes (`periode` déjà dans dinos-data.js).
+- **EP-D-Audio-Carnotaurus-Baryonyx-Badge** [ ] — Badge `DINO_AUDIO_VERSION` affiche « V1 » à tort pour carnotaurus/baryonyx (audio V3 déjà produit) — vérif data + inspection `playDinoFunfact`.
+- **EP-D-GED-08 (nommage)** [ ] — Renommer `dev-dinos.html` → `dinos.html` (dette nommage) + MAJ catalog.js + redirect + grep refs. Priorité basse.
+- **EP-D-Image-FAM-EMBLEME-404** [ ] — 9 emblèmes familles référencent `.png` dans dinos-data.js mais fichiers déployés en `.jpg` → 18 404 masqués par fallback gracieux. Décision PY requise (renommer fichiers vs corriger refs).
+
+## Lane — i18n audio (respellings + génération par langue, prioritées par PY)
+
+- **EP-D-Audio-Noms-Respell** [!] — 60 noms vocaux FR à régénérer avec respellings syllabiques (post-reset quota EL) — bloqué historique, à revérifier si toujours pertinent vu la vague i18n 2026-09-03.
+- **EP-D-Audio-i18n-EN/PT-BR/ES/IT/AR/RU/ZH/JA** [ ] — respellings + 60 noms MP3 par langue restante (AR/RU/ZH/JA demandent validation native critique, décisions dialectales listées dans l'archive). Note : la vague texte 2026-09-03 a déjà livré EN/ES-ES/PT-BR en STRINGS — ces tickets audio noms sont un chantier distinct (voix), à recroiser avant relance.
+- **EP-D-Audio-Recap-Par-Dino** [ ] — Générer 60 MP3 « phrase d'époque » courte par dino pour mj-31 frise (bouton hover). Attente quota EL historique, à revérifier.
+
+## Lane — Dette GED / étymo / architecture référentiel
+
+- **EP-D-GED-03** [ ] — Basculer canon étymo `_ETYMO-RACINES-50.md` → `_ETYMO-COMPLET-60.md` (vérifier couverture mammifères Cénozoïque + Titanis + Edmontonia avant bascule).
+- **EP-D-GED-04** [ ] — Renommage assets produit par `id` stable (`site/img/dinos/{id}.jpg`) — pas urgent, déclencheur = futur mini-jeu qui le nécessite.
+- **EP-D-GED-05** [ ] — Statut `_BLOC-B-CANONIQUE.md` à trancher (régénérer vs geler explicitement) + archiver brouillon orphelin `scripts-audio/001-trex-brachiosaure-velociraptor.md`.
+- **EP-D-ATOMES-PRONONCIATION-i18n** [ ] — Le lexique de prononciation ne sert QUE ElevenLabs ; le TTS navigateur reçoit le nom brut et écorche les noms savants. Architecture à valider avant tout code (gabarits pré-générés par langue, pas de concat à l'exécution). Détail : `memory/ARCHI-REFERENTIEL-CONTENU.md` (racine référentiel).
+- **EP-D-AUDIO-DRIFT-COMPPOIDS** [x] — FERMÉ côté scripts 2026-09-05 (HO-011) ; côté MP3 : 13 théropodes régénérés, 58 restants = ticket AUDIO-FR-58. Historique : Dérive entre `dinos-data.js` (canon vivant, refonte poids 2026-08-03) et scripts/MP3 V3 déjà produits (ex T-Rex dit encore « 3 hippopotames »). Chiffrage de portée requis avant régénération (probablement tous les dinos touchés par les commits 5c5906ce/58971fbc/65a10394).
+- **EP-D-REFERENTIEL-CONTENU** [~] — Référentiel unique de contenu transverse (Lot 0 livré, Lots 1-4 non engagés). Plan : `memory/ARCHI-REFERENTIEL-CONTENU.md` (racine).
+- **EP-D-ENROLEMENT-AUDIO** [ ] — Enrôler l'audio dino au catalogue référentiel (mécanique d'abord : 466/563 fichiers déjà verbatim ailleurs) ; 27 fichiers (accroches époques, récits, extinction, périodes) sans texte source retrouvé = vraie dette à transcrire ou réécrire.
+- **EP-ARCH-01** [ ] — Archiver la session relecture V3 (8 fichiers `_RELECTURE-*` + `_FACTCHECK-paleo-grokipedia.md`) vers `_archive/sessions/2026-06-15-relecture-v3/`.
+- **EP-D16** [ ] — Créer `content/scripts-audio/INDEX.md` (catalogue 51 fichiers V3 par vague) + entrée « Fact-checks & audits » dans `content/INDEX.md`. Dépend d'EP-ARCH-01.
+
+## Lane — Idées produit (basse priorité, jamais démarrées)
+
+- **EP-D13** [x] — **FERMÉ 2026-09-07.** Flore du Mésozoïque dans l'encyclopédie (idée + arbitrage PY 2026-09-06 : sous chaque époque de l'onglet « Les époques », pas de 6ᵉ onglet). 19 plantes Trias/Jura/Crétacé, 6 axes par fiche, 38 images (19 échelle enfant 1 m + 19 gros plans feuille/graines), 4 langues. HO-020 contenu · HO-021 data+UI · HO-022 images · HO-023 i18n : tous FAITS. **Reste en dette** : audio ElevenLabs des fiches plantes (solde bloqué jusqu'au 2026-09-11) → ticket à ouvrir.
+
+- **EP-D02** [ ] — Audio des ~28 dinos sans recap (génération progressive vs TTS).
+- **EP-D03** [ ] — Visuels/illustrations des écrans d'époque du voyage (optionnel).
+- **EP-D07** [ ] — Mini-jeu tri/déplacement dinos par couleur (pont pôle JEU, manque silhouette/ombre SVG).
+- **EP-D08** [ ] — Page Duel dino X vs Y (comparaison narrative, data quasi prête).
+- **EP-D09** [ ] — Page Forces/faiblesses par famille (dépend EP-D08).
+- **EP-D10** [ ] — Quiz multi-choix par famille (ready to spec).
+- **EP-D11** [ ] — Refonte récit Crétacé/extinction du Voyage (brief PY 2026-06-08 : raccourcir, ajouter trapps du Deccan + tsunami/séismes, rendre l'extinction explicite).
+- **EP-D12** [ ] — Nouvelle section Voyage après la météorite (Cénozoïque/mégafaune) — réfs déjà rassemblées dans `content/inbox/`.
+
+## Lane — Audit échelle scripts audio FR réécrits (2026-09-03, BLOQUANT)
+
+- **AUDIT-ECHELLE-FR-32** [x] — FERMÉ 2026-09-05 par HO-011/012 (71 blocs B = sorties exactes des fonctions). Historique : 32 fiches audio FR hors tolérance sur l'échelle de poids (règle ≤10%) suite à la réécriture du 2026-09-03 par une autre session (ex. Parasaurolophus +60%, Amargasaurus +33%, T-Rex +13%). **Régénération des 68 scripts NON exécutée, bloquée sur cet audit.** 9 fiches ont la comparaison fausse répétée dans la réplique de Wex → réécriture du bloc entier requise, pas un simple `replace`. Le dialogue dynamique lui-même est validé PY et doit être préservé (phrasé allégé gardé, seule la comparaison chiffrée doit être corrigée). i18n (en/es-es/pt-br) non contaminée, ses valeurs sont justes.
+
+## Lane — Questions Papa Yann (2026-09-03, non tranchées)
+
+> Section préservée verbatim depuis `pmo/backlog.md` (écrite par une autre session le 2026-09-03 à 22:54, avant cette migration).
+
+- **Idée PY : ajouter le terme macro « Mésozoïque »** (et sa famille de termes) pour Max — les 5 `DINO_PERIODES` sont plates, sans niveau Ère. Proposition conseiller : 3 Ères (Paléozoïque → Permien / Mésozoïque = Trias+Jura+Crétacé = « l'âge des dinosaures » / Cénozoïque) en en-têtes de l'onglet « Les époques ». ⚠️ Touche une ligne FIGÉE (UI 5 onglets / `buildMenuEpoque`) → tranché par PY, alerte rouge si on passe à l'acte.
+- **Challenge taxo transmis à PY** — 2 points de friction réels : (1) Pachycéphalosaure rangé chez les Cératopsiens (vrai groupe = Marginocéphales, cousins) ; (2) Gallimimus + Oviraptor rangés chez les Dromæosaures (ce sont Ornithomimidé + Oviraptoridé, pas des dromæosauridés). Options : renommer libellé honnêtement vs déplacer vs statu quo assumé. Reste assumé OK : Énaliosaures (panier « reptiles marins » incl. Archelon tortue), Plateosaure prosauropode, Archaeoptéryx chez Dromæosaures (lien oiseaux assumé), Ptérosaures + synapsides libellés honnêtement.
+- **Drift count détecté** : `dinos-data.js` live = **71** entrées DINOS (zéro doublon id), INVARIANTS dit 70 et sa table familles est plus vieille encore (Thyréophores=8 live vs 7, `arme`=5). À réconcilier par `dino-pmo` au prochain audit (qui est le 71ᵉ ? vraisemblablement ajout post-Saurolophe non tracé).
+
+- 2026-09-03 (audit infra, HO-G08) : `audio-verif` (skill global) mesure ~80 ms de silence de tête sur les MP3 dino (règle 250 ms) et une dérive texte/audio sur `aenocyon-taille` (MP3 « kangourou » vs JSON « Papa »). Ticket : passer `audio-verif` sur les 70 fiches (voir `memory/TODO.md` racine).
+
+## Lane — Audit + régénération images paléoart (2026-09-06, demande PY)
+
+> Demande PY : « récupérer les caractéristiques de chaque dinosaure, parcourir toutes les images
+> sauvegardées, supprimer celles qui ne correspondent pas, régénérer et valider ». Objectif de fond :
+> **plus de cohérence** — le dino doit CHANGER de posture et d'action d'une image à l'autre
+> (pas un copié-collé du hero), tout en gardant ses caractéristiques et son environnement.
+
+- **HO-024** [x] — Socle d'audit. Extraction des caractéristiques depuis `site/js/dinos-data.js`
+  (70 sujets × 7 assets = 490 fichiers + 2 planches hypothèse Amargasaure = 492, zéro orphelin) vers
+  `content/sources/_audit-images-2026-09/` : `_dinos-base.json`, une fiche par sujet, `_PROTOCOLE.md`
+  (grille 6 motifs : MORPHO · IDENTITE · CLONE · ENVIRONNEMENT · CONTENU · TECHNIQUE, règle « doute = OK »).
+  Consolidateur généré : `content/scripts/export/_gen-audit-images.cjs` → `_TABLEAU-DE-BORD.md`.
+- **HO-025** [x] — Audit visuel des 492 images par lots de 7 sujets (10 lots, agents en parallèle).
+  Chaque image est réellement OUVERTE et décrite, jugée contre les caractéristiques du sujet.
+  Sortie : `verdicts/<id>.tsv` (1 ligne/image) + `prompts/<id>.md` (prompt de régénération par image recalée).
+  **FAIT 2026-09-06** : 70 sujets, 492 images vues, **396 OK - 96 RECALE**. 70 verdicts + 57 fichiers
+  de prompts = 96 blocs (1 par image recalee, couverture verifiee). Tableau : `_TABLEAU-DE-BORD.md`.
+  Motifs : CLONE 39 - CONTENU 33 - MORPHO 8 - IDENTITE 5 - ENVIRONNEMENT 2 - TECHNIQUE 0.
+  Par asset : `_manger` 42 - `_funfact` 31 - `_ecosysteme` 10 - `_paris` 6 - `_coloriage` 4 - `_headshot` 3.
+- **HO-026** [x] — Régénération des images recalées puis validation visuelle : CLOS le 2026-09-08, 96/96 en production.
+  ⚠️ La génération passe par ChatGPT/Grok pilotés par PY (pas d'API image côté agent) : les prompts
+  sont produits par l'audit, la génération reste manuelle, la validation revient à l'agent.
+
+**Défauts systémiques trouvés dès le 1er lot** (théropodes) : le `_funfact` est très souvent un clone
+du hero et n'illustre pas le champ `fait` de la fiche ; le `_manger` montre un carnivore qui boit ou
+se tient debout sans aucune proie dans le cadre. Modèles à imiter : `Allosaurus_funfact` (charnier d'os)
+et `Albertosaurus_funfact` (meute).
+
+### HO-026 — regeneration des images recalees : CLOS le 2026-09-08
+
+**96/96 images regenerees, jugees une par une et en production.** Les originales
+recalees ont ete supprimees a la substitution (demande PY). Controle final : 96 images
+lisibles, dimensions et poids conformes.
+
+Trois prompts ont du etre corriges a la racine apres echecs repetes, et la correction
+vit dans `sources/_audit-images-2026-09/prompts/` :
+
+- `aenocyon.md` — le coloriage sortait en spitz puis en husky. Les « meches a l encre »
+  du bloc MORPHO produisaient des hachures non coloriables ; le bloc interdit desormais
+  tout trait de poil a l interieur du corps et exige un trait epais constant (L-D34).
+- `liopleurodon.md` — le funfact a echoue six fois : les trois ichtyosaures alignes se
+  lisaient comme un banc qui nage, jamais comme une echelle. Concept remplace par une
+  coupe eau/air avec enfant de dos sur un ponton, plus un bloc INTERDITS qui manquait.
+- `titanis.md` — l ACTION disait « le bec tient un morceau bien visible » : le modele a
+  peint un lambeau de chair malgre les INTERDITS. Elle impose maintenant une proie
+  entiere et vivante tenue en travers du bec (L-D37).
+
+Outillage laisse en place : `launch-chromium.ps1` (Chromium de Playwright sur profil
+dedie, port 9225) pour les sessions ou Brave tourne deja sans port de debug — ses
+processus etant partages entre profils, on ne peut pas ouvrir une seconde instance en
+debug sans fermer les fenetres de l utilisateur (L-D36).
+
+## Retours Papa Yann 2026-09-08 — nid, oeufs, navigation fiche
+
+- [ ] Ouverture d oeuf : le dino qui sort est decale par rapport a la matrice des oeufs et
+  sombre sur sombre, on ne le voit pas. Recentrer sur l oeuf ouvert, eclaircir le fond
+  ou poser un halo derriere le dino. (miroir EP-121 pole JEU)
+- [ ] Fiche d un dino qu on vient de gagner : le bouton retour mene a une page vide avec un
+  seul bouton retour, puis a la page famille. Il doit ramener a la liste des dinos d ou
+  l oeuf a ete ouvert. (miroir EP-122)
+- [ ] Fin de jeu avec gain d oeuf ou d objet : proposer un bouton « Aller dans le nid ».
+  (miroir EP-120)
+- [ ] Audit des fonds des dessins dinos : remplir chaque fond d une couleur et verifier
+  qu elle n entre pas DANS le dino (trou dans le trait) ; combler en noir ou regenerer.
+- [ ] Trou d asset : Scelidosaurus (dinos-data.js:1008, png Scelidosaurus.jpg) n a AUCUN
+  fichier _ombre.png dans site/img/dinos/ombres/ : 404 console des qu il est tire au sort
+  dans mj-24 ou mj-31. Non fatal (fallback silencieux) mais a produire. Trouve en jouant
+  18 parties pour l enquete EP-123 le 2026-09-08.
+
+## Audit etancheite coloriages 2026-09-08 (70/70 dinos testes)
+
+Cinq coloriages fuient : la couleur du fond entre DANS le dino par une breche de trait.
+Confirme a l oeil, pas seulement au flood fill. A corriger (combler en noir) ou regenerer :
+
+- [ ] Cryolophosaurus_coloriage — trou ~(608,613), poches en U des stries de dos non refermees
+- [ ] Elasmosaurus_coloriage — trou ~(960,840), fente entre nageoire arriere-droite et corps
+- [ ] Microraptor_coloriage — trou ~(626,624), barbes de plume d aile en traits ouverts
+- [ ] Quetzalcoatlus_coloriage — trou ~(539,745), espace entre crete arriere de tete et cou
+- [ ] Therizinosaurus_coloriage — trou ~(605,630), meches de pelage filiformes ouvertes
+
+- [ ] PROMPT A DURCIR : les cinq fuites sont toutes des DETAILS FILIFORMES (stries, barbes,
+  meches, pointes) dessines en traits ouverts. Ajouter au bloc MORPHO des prompts de
+  coloriage l exigence que tout detail interieur soit un contour FERME, jamais un trait
+  libre — meme famille de correctif que L-D34 (meches a l encre de l Aenocyon).
+
+Les 5 decors (_new-fonds) et les 6 plantes sont SAINS. Les 4 decors signales par le premier
+passage etaient des faux positifs de methode (flood fill sur un paysage ouvert : le centre
+est vide par construction), verifies image par image.
+
+> ⚠️ Note rotation 2026-09-12 (HO-R03) : les 5 coloriages listés ci-dessus comme « fuyants »
+> ont été réévalués et jugés **étanches** — voir lane suivante (2026-09-09) et L-D39. Les items
+> `[ ]` de cette section sont **caducs**, non recopiés dans le TODO.md condensé.
+
+## Etancheite des coloriages et assets Scelidosaurus (2026-09-09)
+
+- [x] **Les 5 « fuites » de coloriage n'existent pas** — Cryolophosaurus, Elasmosaurus, Microraptor,
+  Quetzalcoatlus et Therizinosaurus sont ETANCHES. Le critere d'origine (« le fond atteint-il le centre
+  geometrique ? ») mesurait la posture, pas l'etancheite : chez un dino aux membres ecartes le centre EST
+  du fond. Verifie par etiquetage des composantes connexes + preuve visuelle sur l'Elasmosaurus. Voir L-D39.
+  Aucune image a regenerer de ce chef.
+- [x] **Outillage d'etancheite verse dans le repo** — `studio/dino/content/scripts/etancheite/` :
+  `audit-etancheite.mjs` (depistage large, faux positifs assumes), `verifie-fuite-reelle.mjs` (le verdict),
+  `preuve-remplissage.mjs` (la preuve a ouvrir). Sans dependance npm : decodage RGBA par ffmpeg/ffprobe.
+  Il vivait dans un scratchpad de session, donc perissable.
+- [x] **Prompt de coloriage durci** — `batch-dino-coloriage.mjs` exige desormais tout detail interieur
+  comme contour FERME (stries, barbes, meches, crete, plis). Bonne pratique retenue meme sans fuite avereee.
+- [x] **SCELIDOSAURUS COMPLET le 2026-09-11** — le 71e et dernier dino sans images en a desormais 8/8.
+  Debloque par Papa Yann (« bah c'est bien le profil de claudia que j'utilise ! » : le compte du profil Chromium
+  dedie est bien le sien, pas celui d'un tiers — ce que j'avais suppose a tort en refusant de generer).
+  Produit : hero, 4 scenes paleoart (manger / ecosysteme / paris / funfact), headshot, coloriage et ombre chinoise.
+  **Piege rencontre** : `ombre_from_hero.py` a ECHOUE sur ce dino — sa peau tres texturee (osteodermes, sillons
+  sombres entre les plaques) piege la segmentation par proximite de couleur, qui rendait soit 17 px soit un
+  barbouillage du decor. L'ombre a ete generee directement par `batch-dino-ombre.mjs`, dont la sortie etait DEJA
+  au format canon (noir sur alpha) — mes conversions successives detruisaient une image correcte.
+  Verifie : coloriage ETANCHE (39 poches fermees), noir et blanc pur, fiche ouverte sans aucun asset manquant,
+  `_check-ombres-dino.mjs` au vert (71 dinos / 71 ombres / 0 exclusion), etat 71 complets / 0 incomplet,
+  mj-24, mj-28 et mj-32 au vert — mj-32 etait rouge depuis des jours a cause de ce coloriage manquant
+- [x] **Collision d'id : FAUSSE ALERTE** (verifie 2026-09-09) — l'entree Scelidosaurus porte bien
+  `id: 'scelidosaurus'` ; la ligne 1008 citee appartenait a l'entree PRECEDENTE. Controle programmatique
+  sur tout `dinos-data.js` : **76 entrees, 76 id uniques, aucun doublon**. Rien a corriger.
+- [x] **Entree MORPHO du Scelidosaurus ecrite** (2026-09-09) — ajoutee dans `batch-dino-coloriage.mjs`
+  et `batch-dino-ombre.mjs` (armure a rangees d'osteodermes, tete basse, deux cornes emoussees, queue
+  epaisse) ; la version coloriage exige chaque plaque comme forme OVALE FERMEE. Note : `batch-dino-series.mjs`
+  possedait deja une description complete du Scelidosaurus — c'est elle qui sert pour le hero.
+
+## Refonte de la navigation en sous-univers (2026-09-09, idee Papa Yann)
+
+- [ ] **La decoupe Voyage / Epoques se recouvre** — les deux onglets parlent des memes periodes
+  geologiques avec deux traitements differents (le Voyage = parcours narratif audio en 8 episodes
+  avec avancement de session ; Les epoques = grille de tri des dinos par periode, qui porte aussi
+  la flore). Un enfant de 4 ans ne peut pas deviner lequel ouvrir. Papa Yann demande un ecran
+  d'accueil en 4-5 grandes portes facon musee / bibliotheque, chaque porte menant a un sous-menu,
+  avec eventuellement des icones generees. Contrainte : simple a coder, hyper clair sans lecture.
+- [ ] **Question ouverte** : les mini-jeux dino (mj-24, 28, 30, 31, 32, 40, 54, 55, 56, 57) vivent
+  aujourd'hui dans le catalogue des mini-jeux, hors encyclopedie. Faut-il une porte « on joue »
+  dans l'encyclopedie qui pointe vers eux, ou garder la separation actuelle ?
+
+## Ce que la maquette de navigation a revele (2026-09-10)
+
+- [ ] **Le Voyage a 12 episodes, pas 8** — et SEPT n'ont aucun dino (naissance de la Terre, vie dans
+  l'eau, sortie de l'eau, la Grande Mort, les mammiferes, la glaciation, les paleontologues). Le
+  recouvrement Voyage / Epoques n'est donc PAS total : il porte sur les trois periodes du Mesozoique
+  seulement. Le Voyage raconte l'histoire de la TERRE, les Epoques rangent des DINOSAURES.
+- [ ] **Les cinq pills debordent a 360 px** — « Les epoques » et « Le dico » sont hors ecran au
+  chargement, atteignables seulement par un scroll horizontal qu'un enfant de 4 ans ne decouvre pas
+  seul. C'est un defaut d'acces reel, verifie a la capture, pas une hypothese.
+- [ ] **L'encyclopedie n'est pas un ecran d'entree** : on y arrive depuis le Mur, par la bulle du Roi
+  T-Rex (3 vignettes : encyclo / nid / Padidi). Toute refonte de la nav dino doit compter les taps
+  DEPUIS le Mur, pas depuis dev-dinos.html.
+- [ ] **Le langage visuel « parcours vs collection » existe deja** dans les explorations du Mur
+  (`studio/minijeux/docs/research/menus/pistes-v2.html`, piste C annotee « la fusion que tu
+  cherchais ») : une sente en pointilles qui relie les etapes + des empreintes de pas sous chacune
+  pour dire ce qui est fait. Ne pas reinventer un autre signal pour l'encyclopedie.
+- [ ] Maquettes des 4 pistes de nav : `studio/dino/docs/research/nav-encyclopedie/pistes.html`.
+
+## Ce que disent les concurrents (recherche sourcee 2026-09-10)
+
+- [ ] **Britannica Kids Dinosaurs = notre jumelle qui a rate** : encyclopedie dino enfant, classee 8+
+  par Common Sense Media. Defaut de nav releve : « uses a pop-up scroll-wheel to move between
+  sections, which can sometimes feel unwieldy ». Dinosaur Train A to Z : la partie train marche en
+  prescolaire, mais « the classifying dino section may be beyond most preschoolers » (filtre par
+  attribut : regime, morpho, periode). **Les deux echecs pointent le meme endroit : ce n'est pas la
+  richesse encyclopedique qui exclut le 4 ans, c'est le MECANISME DE SELECTION ABSTRAIT.** Or nos
+  onglets « Ce qu'il mange » et « Les epoques » SONT des filtres par attribut.
+- [ ] **Ce qui marche a la place (sourcé)** : Ultimate Dinopedia = « flip through page by page like a
+  book » + « a visual table of contents » (sommaire VISUEL, pas liste). Cards of Dinosaurs for Toddler
+  = QUATRE categories, toutes reconnaissables sur une silhouette (volants, predateurs, herbivores,
+  marins). Nos 11 familles ne sont pas toutes distinguables a l'oeil a 4 ans (Theropodes vs
+  Dromaeosaures = nuance de specialiste).
+- [ ] **1 a 2 taps chez tous les gagnants** : Pok Pok (Apple Design Award) a SUPPRIME le menu — « they
+  will never see a menu… kids just see the toys ». Sago Mini : 1 tap, navigation entierement par
+  icones, zero texte. Les apps a 3+ niveaux sont soit critiquees soit classees 8+. Nos 4 maquettes
+  sont a 3-4 taps depuis l'encyclopedie, donc 5-6 depuis le Mur : AUCUNE n'est dans les clous.
+- [ ] **Cible tactile 2 cm x 2 cm pour jeune enfant (NN/G)** — QUATRE fois la surface de la cible
+  adulte ; les boutons de 5 mm ont produit frustration et echecs en test. Sur P30 Pro, 2 cm vaut
+  environ 75-80 px CSS : sur 360 px de large, plafond de 3 colonnes confortables, 4 a l'etroit. Nos
+  pills a 11 px de police sont hors clous.
+- [ ] **Scroll horizontal : le geste est acquis a 4 ans, la DECOUVRABILITE ne l'est pas.** NN/G : les
+  enfants swipent « when the design gave sufficient cues that there was more to see ». Le probleme de
+  nos pills n'est donc pas le swipe, c'est l'absence d'indice qu'il y a autre chose derriere le bord.
+- [ ] **Khan Academy Kids = le cas d'ecole pour Voyage vs Epoques** : il porte les deux regimes et les
+  separe par la GEOGRAPHIE de l'ecran, sans un mot. Parcours = gros bouton vert central. Collection =
+  icone de LIVRE dans un coin. Un bouton d'action contre un objet qui se feuillette.
+- [ ] Limites assumees de la recherche : le rapport NN/G « UX Design for Children » (chapitre
+  Designing navigation for children) est PAYANT et n'a pas ete lu ; AUCUNE source publiee ne donne de
+  nombre maximum d'items de menu pour les 3-6 ans (ni NN/G, ni Apple HIG, ni Google Play Families,
+  qui ne traitent que la conformite). A trancher en recette reelle avec l'enfant, pas en litterature.

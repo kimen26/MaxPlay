@@ -29,7 +29,7 @@ Plomberie calquée sur le dino : `site/js/lang.js` → `studio/minijeux/i18n/<la
 (source, généré depuis le FR par `_extract-mj-regles.mjs`) → pack `site/js/i18n/mj-strings.<lang>.js`
 (généré) → surcouche `site/js/mj-i18n.js` fusionnée dans `RegleInfo.init` (`regle-info.js`).
 FR reste le canon en dur dans les 36 `mj-XX.html` ; injection zéro-HTML via `mj-shell.js` (SCRIPTS).
-Outils : `studio/minijeux/tools/_extract-mj-regles.mjs` / `_check-mj-traduction.cjs` / `_gen-mj-strings-bundle.cjs`.
+Outils : `studio/minijeux/scripts/_extract-mj-regles.mjs` / `_check-mj-traduction.cjs` / `_gen-mj-strings-bundle.cjs`.
 
 ## Règle critique bus
 

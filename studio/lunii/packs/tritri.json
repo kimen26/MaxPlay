@@ -1,0 +1,17 @@
+{
+  "titre": "Tritri le Tricératops",
+  "description": "Fiche dino MaxPlay : nom, taille, régime, le savais-tu et récap. Audio ElevenLabs de l'encyclopédie dino de Max.",
+  "zipName": "maxplay-tritri-fiche-dino.zip",
+  "audioDir": "site/audio/dinos/fr",
+  "imageSrc": "site/img/dinos/paleoart/Triceratops.jpg",
+  "uuidCover": "7a3f1c9e-4b2d-4e8a-9c61-d5f08a72b3e4",
+  "uuidRecit": "b8e52d17-6a90-4f3c-8d24-1c7e9f50a6b2",
+  "coverAudio": "triceratops-nom.mp3",
+  "blocs": [
+    "triceratops-nom.mp3",
+    "triceratops-taille.mp3",
+    "triceratops-regime.mp3",
+    "triceratops-funfact.mp3",
+    "triceratops-recap.mp3"
+  ]
+}

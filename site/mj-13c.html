@@ -408,7 +408,7 @@ function onAnswer(isCorrect,btn){
     stopAll();
     setTimeout(()=>{
       qb.querySelectorAll('.btn-count').forEach(e=>e.remove());
-      const pika=new Audio('sounds/'+(['pikachu_mw38Ry2.mp3','pikachu_scream.mp3'][Math.floor(Math.random()*2)]));
+      const pika=new Audio('sounds/'+(['fx/tada.mp3','fx/applaudissements.mp3'][Math.floor(Math.random()*2)]));
       pika.volume=0.7; pika.play().catch(()=>{});
       qb.style.background='#1a4a1a';
       // Piège pluriel EN (bus/buses) : MJi18n.plural(n, singulier, pluriel) — le FR "bus"

@@ -224,7 +224,7 @@ const Tracker = (() => {
       const hasParentSession = Object.keys(localStorage).some(k => k.startsWith('sb-'));
       if (!hasChild && !hasParentSession) return;
       if (window.Cloud) return;
-      ['js/cloud.js', 'js/voices-manifest.js', 'js/voice.js'].forEach(src => {
+      ['js/cloud.js', 'js/voice.js'].forEach(src => {
         const s = document.createElement('script');
         s.src = src; s.async = false;
         document.head.appendChild(s);

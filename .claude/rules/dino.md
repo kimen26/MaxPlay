@@ -40,9 +40,23 @@ paths:
 - **JAMAIS le nom d'affichage FR** (`T-Rex`, `Tricératops` — accents/tirets = 404 garantis). Incident 2026-07-26 : bandeau collection cassé sur 51/69 dinos pour cette raison exacte.
 - Tout nouveau dino : `id` latin minuscule dans dinos-data.js, assets nommés par l'id capitalisé, puis **régénérer** `gen-dinos-assets.mjs`. Un dino sans entrée `DINO_ASSETS` est invisible des jeux/collection.
 
+## 🔒 TRITRI & WEX — surnom et prénom, PAS un univers (source unique, RE-FIGÉ 2026-09-11)
+
+> Règle opérationnelle complète — c'est ICI qu'elle vit en détail. `studio/dino/CLAUDE.md` et
+> `figees/encyclopedie.md` ne portent que le verrou daté et pointent ici. Défigeage explicite
+> Papa Yann du 2026-09-11 qui remplace la version du 2026-06-03 (celle-ci prescrivait un « fil
+> rouge » / une quête — **régression corrigée, ne doit jamais revenir**, voir L-D-83).
+
+- 🔒 **Tritri = un surnom du Tricératops**, qu'on peut employer de temps en temps. Rien de plus.
+- 🔒 **On peut dire UNE FOIS, dans l'audio, que c'est le dino préféré du garçon.** Une fois, pas davantage.
+- ❌ 🔒 **AUCUNE quête, AUCUN fil rouge, AUCUN univers Tritri.** Pas de « on cherche d'où vient Tritri », pas de relance « y'avait Tritri ? » d'époque en époque, pas de retrouvailles mises en scène.
+- 🔒 **Wex = le prénom du personnage enfant qui parle.** On ne le NOMME pas à voix haute : ni « Prêt, Wex ? », ni « Écoute, Wex », ni « c'est ton Tritri, Wex », ni « Wex l'a trouvé ». Il peut se glisser subtilement, jamais en apostrophe.
+- 🔒 **Dans une Fiche dino, Tritri = 1 mention max** (2 pour le Tricératops) — le dino de la fiche est le centre, ses voisins sont nommés par leur espèce (PY 2026-09-05, L-D-75, porte `_verif-scripts-audio.cjs`).
+- ❌ 🔒 **JAMAIS dire « Max »** dans un récit/audio. ❌ 🔒 **JAMAIS dire « doudou » ni « peluche » ni « nounours ».**
+- ❌ 🔒 Ne pas casser le 4e mur (« le doudou d'un petit garçon »). Tritri vit DANS l'histoire, point.
+
 ## Règles dures (résumé — détail dans figées)
 
-- 🔒 **Tritri** = running gag Wex (dino préféré). JAMAIS « Max », « doudou », « peluche ». **Dans une fiche : 1 mention max** (2 pour le Tricératops), le dino de la fiche reste le centre (L-D-75, mesuré par la porte des scripts).
 - 🔒 **Encyclopédie = vrai** : vrais noms + vraies dates. Terme savant nouveau → expliqué (« ptérosaure » → « reptile volant comme le Ptéranodon »).
 - 🔒 **Échelle honnête** : aucune comparaison qui ment > 10 %. **Bus interdit dans les récits narrés** (OK en échelle de taille des fiches).
 - 🔒 **5 onglets** : Familles (défaut, titres = noms scientifiques) · Ce qu'il mange (régimes alimentaires) · Le voyage (8 récits, avancement reset session) · **Les époques** (tri par période + la FLORE de l'époque, `DINO_PLANTES`) · **Le dico** (racines grec/latin, source `js/dinos-racines.js` généré). Liste faisant foi : `studio/dino/figees/encyclopedie.md` § 5 onglets.

@@ -245,7 +245,7 @@
     })();
 
     // ── Jingle au 1er clic (identité conservée) ───────────────────────
-    const JINGLES = ['sounds/ratp-jingle.mp3', 'sounds/sncf-france-jingle.mp3'];
+    const JINGLES = ['sounds/ui/moteur-bus.mp3', 'sounds/ui/klaxon.mp3'];
     const jingle = new Audio(JINGLES[Math.floor(Math.random() * JINGLES.length)]);
     jingle.volume = 0.5;
     document.addEventListener('click', function once() { jingle.play().catch(() => {}); document.removeEventListener('click', once); }, { once: true });

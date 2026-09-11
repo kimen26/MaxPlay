@@ -5,11 +5,11 @@
 
 | | |
 |---|---|
-| MP3 sur le disque | **1010** |
-| — enrôlés (catalogue, ou registre pour les blocs dino) | **990** |
-| — pas encore enrôlés | **20** |
-| — dont orphelins assumés (hors catalogue par nature) | 20 |
-| Entrées du catalogue sans fichier (à générer) | 49 |
+| MP3 sur le disque | **2029** |
+| — enrôlés (catalogue, ou registre pour les blocs dino) | **977** |
+| — pas encore enrôlés | **1052** |
+| — dont orphelins assumés (hors catalogue par nature) | 0 |
+| Entrées du catalogue sans fichier (à générer) | 27 |
 
 **Enrôlé** = son texte verbatim, sa voix, son modèle et ses réglages sont au catalogue
 (ou, pour les blocs de fiche dino, au registre tenu par `scan-dino.mjs` — type « bloc »
@@ -19,25 +19,24 @@ catalogué par référence), donc il est régénérable à l’identique, tradui
 
 | Famille | Pôle | Sur disque | Enrôlés | Reste | Le verbatim est… |
 |---|---|---|---|---|---|
-| Blocs de fiche dino *(via registre)* | DINO | 280 | 280 | ✅ | `studio/dino/content/scripts-audio/fr/V3/json/` |
-| Récaps dino (concaténés) *(via registre)* | DINO | 70 | 70 | ✅ | `dérivé des 4 blocs (aucun texte propre)` |
+| Bruitages | JEU | 108 | 67 | **41** | `prompt EN` |
+| Consignes de jeu | JEU | 98 | 80 | **18** | — introuvable |
+| Récits d’époque | DINO | 13 | 12 | **1** | — introuvable |
+| Blocs de fiche dino *(via registre)* | DINO | 284 | 284 | ✅ | `studio/dino/content/scripts-audio/fr/V3/json/` |
+| Récaps dino (concaténés) *(via registre)* | DINO | 71 | 71 | ✅ | `dérivé des 4 blocs (aucun texte propre)` |
 | Dico des racines | DINO | 100 | 100 | ✅ | `studio/dino/content/sources/etymo/_DICO-RACINES-AUDIO.md` |
 | Noms de dinos seuls | DINO | 70 | 70 | ✅ | `lexique i18n/lexiques-prononciation/fr.md (respellings)` |
 | Accroches familles / régimes | DINO | 15 | 15 | ✅ | `studio/dino/content/scripts-audio/_ACCROCHES-MENU-FAMILLES-REGIMES.md` |
-| Menus principaux dino | DINO | 4 | 4 | ✅ | `textes de repli relevés dans dev-dinos.html (MENU_VOICE)` |
+| Menus principaux dino | DINO | 3 | 3 | ✅ | `textes de repli relevés dans dev-dinos.html (MENU_VOICE)` |
 | Accroches époques | DINO | 8 | 8 | ✅ | — introuvable |
-| Récits d’époque | DINO | 8 | 8 | ✅ | — introuvable |
 | Extinction (mj-31) | DINO | 6 | 6 | ✅ | — introuvable |
 | Périodes | DINO | 5 | 5 | ✅ | — introuvable |
 | Réactions (f/h/wex) | JEU | 69 | 69 | ✅ | — introuvable |
-| Encouragements langues invitées | JEU | 90 | 90 | ✅ | `studio/referentiel/catalogue/fr/humeur.mjs § HUMEUR_INVITEE` |
-| Consignes de jeu | JEU | 74 | 74 | ✅ | — introuvable |
-| Noms de lieux | JEU | 12 | 12 | ✅ | — introuvable |
+| Encouragements langues invitées | JEU | 75 | 75 | ✅ | `studio/referentiel/catalogue/fr/humeur.mjs § HUMEUR_INVITEE` |
 | Nombres | JEU | 75 | 75 | ✅ | — introuvable |
 | Phonèmes | JEU | 21 | 21 | ✅ | — introuvable |
 | Pièces d’échecs (mj-37) | JEU | 6 | 6 | ✅ | — introuvable |
 | Identité sonore du hub | JEU | 10 | 10 | ✅ | `prompt EN` |
-| Bruitages | JEU | 67 | 67 | ✅ | `prompt EN` |
 
 ## Comment lire la dernière colonne
 
@@ -49,33 +48,42 @@ catalogué par référence), donc il est régénérable à l’identique, tradui
   contrats, lignée script → MP3), pas par des entrées de catalogue : le type « bloc » est
   catalogué par référence.
 
-## Orphelins assumés (20)
+## Non classés (992)
 
-Sons tiers « cultes » conservés tels quels (Mario, Zelda, Pokémon, jingles SNCF/RATP,
-freesound…) : ni régénérables via ElevenLabs, ni traduisibles, ni à réécrire. Le catalogue
-n’a rien à décider pour eux — **ils n’y entreront pas**, c’est voulu. Certains restent
-branchés (pools de `victory-sounds.js`), d’autres dorment.
+Fichiers qu’aucune famille ne décrit — famille à ajouter ci-dessus, ou fichiers orphelins.
 
-- `sounds/among-us-role-reveal-sound.mp3`
-- `sounds/ff7_victory.mp3`
-- `sounds/freesound_community-bus-doors-sound-effect-44034.mp3`
-- `sounds/freesound_community-bus-pop-85054.mp3`
-- `sounds/Gagné.mp3`
-- `sounds/honk-sound.mp3`
-- `sounds/mario coin hit.mp3`
-- `sounds/maro-jump-sound-effect_1.mp3`
-- `sounds/motus-boule-noire_cTY2JG4.mp3`
-- `sounds/perdu.mp3`
-- `sounds/perfect-fart.mp3`
-- `sounds/pew.mp3`
-- `sounds/pikachu_mw38Ry2.mp3`
-- `sounds/pikachu_scream.mp3`
-- `sounds/pokemon lvl up.mp3`
-- `sounds/ratp-jingle.mp3`
-- `sounds/sncf-france-jingle.mp3`
-- `sounds/super-mario-coin-sound.mp3`
-- `sounds/victory-mario-series-hq-super-smash-bros.mp3`
-- `sounds/zelda-tresor.mp3`
+- `sounds/music/calme-doux-loop.mp3`
+- `sounds/music/menu-jungle-loop.mp3`
+- `sounds/music/suspense-loop.mp3`
+- `sounds/music/victoire-v1.mp3`
+- `sounds/music/victoire-v2.mp3`
+- `sounds/music/victoire-v3.mp3`
+- `sounds/music/victoire-v4.mp3`
+- `sounds/voix/pt-br/f/arrasou.mp3`
+- `sounds/voix/pt-br/f/boa.mp3`
+- `sounds/voix/pt-br/f/isso-ai.mp3`
+- `sounds/voix/pt-br/f/muito-bem.mp3`
+- `sounds/voix/pt-br/f/que-legal.mp3`
+- `sounds/voix/pt-br/h/arrasou.mp3`
+- `sounds/voix/pt-br/h/boa.mp3`
+- `sounds/voix/pt-br/h/isso-ai.mp3`
+- `sounds/voix/pt-br/h/muito-bem.mp3`
+- `sounds/voix/pt-br/h/que-legal.mp3`
+- `sounds/voix/pt-br/wex/arrasou.mp3`
+- `sounds/voix/pt-br/wex/boa.mp3`
+- `sounds/voix/pt-br/wex/isso-ai.mp3`
+- `sounds/voix/pt-br/wex/muito-bem.mp3`
+- `sounds/voix/pt-br/wex/que-legal.mp3`
+- `audio/dinos/ar/noms/aenocyon.mp3`
+- `audio/dinos/ar/noms/albertosaurus.mp3`
+- `audio/dinos/ar/noms/allosaurus.mp3`
+- `audio/dinos/ar/noms/amargasaurus.mp3`
+- `audio/dinos/ar/noms/ankylosaurus.mp3`
+- `audio/dinos/ar/noms/apatosaurus.mp3`
+- `audio/dinos/ar/noms/archaeopteryx.mp3`
+- `audio/dinos/ar/noms/archelon.mp3`
+
+_… et 962 autres._
 
 ---
 

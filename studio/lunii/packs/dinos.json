@@ -1,0 +1,31 @@
+{
+  "titre": "Les dinos de Max",
+  "titreTest": "Les dinos de Max (TEST)",
+  "description": "Choisis une famille (la molette dit son nom), puis ton dino. Il te raconte tout : nom, taille, ce qu'il mange, un secret et un resume. Encyclopedie de Max.",
+  "zipName": "maxplay-dinos-de-max.zip",
+  "zipNameTest": "maxplay-dinos-de-max-TEST.zip",
+  "dinosJsonDefault": "c:/tmp/dinos70.json",
+  "audioMenus": "studio/lunii/assets/audio/menus",
+  "audioNoms": "studio/lunii/assets/audio/noms-dino",
+  "audioRecits": "studio/lunii/assets/audio/recits-dino",
+  "imgWeb": "site/img/dinos/paleoart",
+  "imgLuniiFamilles": "studio/dino/content/lunii/familles",
+  "imgLuniiDinos": "studio/lunii/assets/images/dinos",
+  "coverImage": "00-cover-toutes-familles.png",
+  "coverAudio": "menu-cover-dinos.mp3",
+  "uuidCover": "3f0a2b3c-4d5e-6f70-8a91-b2c3d4e5f603",
+  "uuidCoverTest": "3f0a2b3c-4d5e-6f70-8a91-b2c3d4e5f703",
+  "familles": [
+    { "key": "trex",         "menu": "menu-fam-theropodes.mp3",   "titre": "Theropodes",    "color": "0xc0392b", "emblem": "tyrannosaurus",   "img": "01-theropodes.png",   "uuid": "b2000000-0000-4000-8000-000000000001" },
+    { "key": "cou_long",     "menu": "menu-fam-sauropodes.mp3",   "titre": "Sauropodes",    "color": "0x27ae60", "emblem": "brachiosaurus",   "img": "02-sauropodes.png",   "uuid": "b2000000-0000-4000-8000-000000000002" },
+    { "key": "cornu",        "menu": "menu-fam-ceratopsiens.mp3", "titre": "Ceratopsiens",  "color": "0xf39c12", "emblem": "triceratops",     "img": "04-ceratopsiens.png", "uuid": "b2000000-0000-4000-8000-000000000003" },
+    { "key": "arme",         "menu": "menu-fam-thyreophores.mp3", "titre": "Thyreophores",  "color": "0x7f8c8d", "emblem": "stegosaurus",     "img": "03-thyreophores.png", "uuid": "b2000000-0000-4000-8000-000000000004" },
+    { "key": "bec",          "menu": "menu-fam-ornithopodes.mp3", "titre": "Ornithopodes",  "color": "0x8e44ad", "emblem": "parasaurolophus", "img": "05-ornithopodes.png", "uuid": "b2000000-0000-4000-8000-000000000005" },
+    { "key": "raptor",       "menu": "menu-fam-dromeosaures.mp3", "titre": "Dromeosaures",  "color": "0xe67e22", "emblem": "velociraptor",    "img": "06-dromaeosaures.png", "uuid": "b2000000-0000-4000-8000-000000000006" },
+    { "key": "pterosaures",  "menu": "menu-fam-pterosaures.mp3",  "titre": "Pterosaures",   "color": "0x2980b9", "emblem": "pteranodon",      "img": "07-pterosaures.png",  "uuid": "b2000000-0000-4000-8000-000000000007" },
+    { "key": "enaliosaures", "menu": "menu-fam-enaliosaures.mp3", "titre": "Enaliosaures",  "color": "0x16607a", "emblem": "mosasaurus",      "img": "08-enaliosaures.png", "uuid": "b2000000-0000-4000-8000-000000000008" },
+    { "key": "volant",       "menu": "menu-fam-avant-dinos.mp3",  "titre": "Avant les dinos","color": "0x8e6e3c", "emblem": "dimetrodon",      "img": "09-avant-les-dinos.png", "uuid": "b2000000-0000-4000-8000-000000000009" },
+    { "key": "mammiferes",   "menu": "menu-fam-mammiferes.mp3",   "titre": "Mammiferes",    "color": "0x8d6e63", "emblem": "mammuthus",       "img": "10-mammiferes.png",   "uuid": "b2000000-0000-4000-8000-000000000010" },
+    { "key": "oiseaux",      "menu": "menu-fam-oiseaux.mp3",      "titre": "Oiseaux",       "color": "0xd68910", "emblem": "titanis",         "img": "11-oiseaux.png",      "uuid": "b2000000-0000-4000-8000-000000000011" }
+  ]
+}

@@ -24,7 +24,7 @@ Papa Yann ne veut pas d'allers-retours (surtout sur mobile). Donc :
 Lire, dans cet ordre :
 1. [`studio/dino/CLAUDE.md`](../../../studio/dino/CLAUDE.md) — règles du pôle
 2. [`studio/dino/figees/encyclopedie.md`](../../../studio/dino/figees/encyclopedie.md) — décisions verrouillées
-3. [`studio/dino/content/sources/_PLAYBOOK-DINO-NOUVEAU.md`](../../../studio/dino/content/sources/_PLAYBOOK-DINO-NOUVEAU.md) — les 7 phases détaillées
+3. [`studio/dino/content/sources/_PLAYBOOK-DINO-NOUVEAU.md`](../../../studio/dino/content/sources/_PLAYBOOK-DINO-NOUVEAU.md) — pointeur vers ce skill (source unique) + suivi de complétude
 4. [`studio/dino/memory/INVARIANTS.md`](../../../studio/dino/memory/INVARIANTS.md) — chiffres clés (jamais de mémoire)
 
 Puis annoncer le plan en une phrase et **TodoWrite** les phases.

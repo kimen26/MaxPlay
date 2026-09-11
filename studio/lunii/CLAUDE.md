@@ -57,8 +57,10 @@ ASSEMBLER  scripts/build-<nom>-pack.mjs  (combine images + MP3 → pack .zip)
 ```
 
 - **Lancer STUdio** : `powershell -File scripts/studio-ctl.ps1 start` → http://localhost:8080 (⚠️ le `.bat` fourni échoue sur cette machine — `java` pas dans le PATH ; cf. LESSONS-MOTEUR § Ops). `stop`/`status`/`packs` aussi dispo.
-- **Nouveau pack** : copier `scripts/build-tritri-pack.mjs` comme modèle (cover + récit + UUIDs figés).
+- **Construire un pack** : `node scripts/build-pack.mjs <tritri|voyage|dinos>` (moteur unique depuis HO-R06, 2026-09-12 — `--help` pour l'usage). Purge `.build-<nom>/` automatiquement après dépôt.
+- **Nouveau pack** : ajouter une config dans `packs/<nom>.json` + une fonction `build<Nom>()` dans `scripts/build-pack.mjs` (les helpers ffmpeg/jar/story.json communs vivent dans `scripts/lib/pack-common.mjs`, à réutiliser).
 - Après transfert validé par Papa Yann → noter le pack dans le tableau du README + sprint-log du pôle source.
+- 🔒 **Jamais d'audio sous droits tiers dans `assets/`** — Lunii n'emballe que du contenu canon DINO/NARRATION (cf. README § Audio tiers).
 
 ---
 

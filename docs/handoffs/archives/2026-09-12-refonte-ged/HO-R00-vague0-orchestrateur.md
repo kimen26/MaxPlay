@@ -1,6 +1,6 @@
 # HO-R00 — Vague 0 : purge, suppressions, vault, gitignore, branches, migration 013
 
-**Statut :** pret
+**Statut :** fait
 **Depend de :** —
 **Vague :** 0 · **Exécutant :** orchestrateur (git et destructif : personne d'autre)
 

@@ -47,12 +47,9 @@ Faux bugs vérifiés : EP-022 MJ-04 "boucle infinie" (code conforme) · L-068 11
 
 ## Journal (3 dernières sessions)
 
-- **2026-09-06 — HO-MJ-07** : packs es-es et pt-br des 36 mini-jeux livrés (texte seul, 0 crédit EL), mj-30 en pieds/livres en EN, `plural` multilingue. Reste au quota EL : 81 consignes parlées EN (VOIX-MJ-EN-AUDIO), es/pt sans audio (repli TTS navigateur).
-- **2026-09-05 — Espace parents 4 tuiles + sélecteur de langue ; EPIC i18n mini-jeux ouvert** (session DINO/JEU) : `site/index.html` parents = Statistiques / Paramètres (langue, jeux cachés) / Compte / Retours ; audit i18n des 36 jeux (`docs/i18n/AUDIT-I18N-MJ-2026-09-05.md`, 6 lots) ; lots 0 à 4 livrés (HO-MJ-02/03/04) : plomberie `mj-i18n.js`, panneau règle des 36 jeux + chrome, chaînes de jeu de 33 jeux en anglais, 81 consignes parlées traduites (repli TTS, MP3 au quota). Reste : es-es/pt-br des mini-jeux ; mj-50-53 gardent leur contenu FR (décision PY). Détail `memory/TODO.md` § EPIC i18n.
-
-- 2026-09-03 — Refonte infra Claude : audit transverse, ouverture handoff « mémoire convergente » (pmo/ → memory/ quintette).
-- 2026-08-11 — Factorisation briques voix : `TTS.hasVoiceFor()` + `DinoOmbres.annoncer()` mutualisées (mj-24/19/20), YAGNI assumé sur 2 patterns mineurs, harnais verts.
-- 2026-08-10 (suite) — 7 annotations Papa Yann traitées (mj-57/28/30/31/32 réparations + mj-24/19/14/15 features), règle zéro ascenseur auditée 36/36 jeux OK.
+- **2026-09-12 — HO-R02** : rotation mémoire du pôle (campagne refonte GED). `LESSONS.md` 70 Ko → 20 Ko (74 leçons datées/dupliquées/superseded déplacées verbatim dans `archive/lessons-2026-H1.md`, 18 gardées) ; `TODO.md` 39 Ko → 9 Ko (fait/obsolète retiré — 28 mj fantômes purgés le 2026-08-10 identifiés, lanes fermées condensées dans `CHANGELOG.md`).
+- **2026-09-08/10 — Coloriage mj-32 (HO-MJ-08 à HO-MJ-12)** : décors, zoom, nom coloriable, damier/halo corrigés, harnais CI stabilisé (cause réelle : image d'ombre manquante, pas de l'instabilité). Détail `memory/TODO.md` § Coloriage mj-32.
+- **2026-09-05/06 — EPIC i18n mini-jeux** : espace parents 4 tuiles + sélecteur de langue ; 33/36 jeux en anglais, packs es-es/pt-br des chaînes de jeu. Reste : 81 consignes parlées EN en MP3 (quota EL), audio es/pt. Détail `memory/TODO.md` § EPIC i18n.
 
 ## Équipe agents (référence rapide)
 

@@ -11,7 +11,7 @@ disable-model-invocation: true
 
 ## ⭐ Direction artistique = prompt système du PROJET
 La charte (échelle = priorité absolue **chiffrée**, identité visuelle couleur par espèce, prédation safe, règle enfant images 1-2, 9 scènes) vit dans le **projet ChatGPT** et est sauvegardée ici :
-[`../dino-images-lunii/PALEOART-SYSTEM-PROMPT.md`](../dino-images-lunii/PALEOART-SYSTEM-PROMPT.md)
+[`PALEOART-SYSTEM-PROMPT.md`](PALEOART-SYSTEM-PROMPT.md) (déplacé ici depuis `dino-images-lunii` le 2026-09-12, HO-R03 — ce skill est la fiche couleur, `dino-images-lunii` ne garde que le 320×240 N&B).
 
 ## 🔌 LES 2 CANAUX (toujours viser le PROJET, jamais un chat lambda)
 | Canal | Cible (PROJET) | Script | Sélecteur image | DL image | Quota/session |

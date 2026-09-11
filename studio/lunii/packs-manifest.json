@@ -3,9 +3,9 @@
   "bibliotheque_maitre": "C:/Users/kimen/.studio/library",
   "packs": [
     { "id": "D4E5F603", "titre": "Les dinos de Max",          "type": "zip",     "src": "C:/Users/kimen/.studio/library/maxplay-dinos-de-max.zip" },
-    { "id": "D4E5F605", "titre": "Histoires pour dodo",       "type": "zip",     "src": "C:/Users/kimen/.studio/library/maxplay-histoires-dodo.zip" },
+    { "id": "D4E5F605", "titre": "Histoires pour dodo",       "type": "zip",     "src": "C:/Users/kimen/.studio/library/maxplay-histoires-dodo.zip", "note": "audio tiers, non rejouable — script de build supprimé HO-R06, pack conservé tel quel dans la bibliothèque" },
     { "id": "D4E5F601", "titre": "Le voyage des dinosaures",  "type": "zip",     "src": "C:/Users/kimen/.studio/library/maxplay-voyage-dinosaures.zip" },
-    { "id": "D4E5F6A1", "titre": "Pierre et le loup",         "type": "zip",     "src": "C:/Users/kimen/.studio/library/maxplay-pierre-et-le-loup.zip" },
+    { "id": "D4E5F6A1", "titre": "Pierre et le loup",         "type": "zip",     "src": "C:/Users/kimen/.studio/library/maxplay-pierre-et-le-loup.zip", "note": "audio tiers, non rejouable — script de build supprimé HO-R06, pack conservé tel quel dans la bibliothèque" },
     { "id": "8171A964", "titre": "Les Aventuriers des 6 royaumes - Zoé et Léo", "type": "library", "src": "8126c612-f668-4d89-bf46-7c888171a964" },
     { "id": "27A75F64", "titre": "Suzanne et Gaston découvrent la Préhistoire", "type": "library", "src": "f18407a6-eb9d-4223-9769-d63927a75f64" },
     { "id": "DEC391D0", "titre": "Suzanne et Gaston à Londres",                 "type": "library", "src": "e1b35776-064d-4201-80c9-0bf6dec391d0" },

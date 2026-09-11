@@ -49,7 +49,7 @@ Papa Yann dit « c'est figé / validé / ne change plus X » sur un MJ → tu é
 
 ### Process INBOX
 
-Item DINO (encyclopédie, voyage, Tritri, dev-dinos) → NE PAS traiter : ticket dans `studio/dino/pmo/backlog.md` (DINO pas encore migré), main à `dino-pmo`. Sinon : ticket EP-NNN → brainstorm `game-conseiller` si utile → distiller vers fichier cible → marquer `> ✅ Distillé → [cible]`.
+Item DINO (encyclopédie, voyage, Tritri, dev-dinos) → NE PAS traiter : ticket dans `studio/dino/memory/TODO.md`, main à `dino-pmo`. Sinon : ticket EP-NNN → brainstorm `game-conseiller` si utile → distiller vers fichier cible → marquer `> ✅ Distillé → [cible]`.
 
 ## DOMAINE — fichiers de vérité spécialisés (ex-sous-PMO, mêmes règles)
 

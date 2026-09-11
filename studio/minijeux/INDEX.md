@@ -1,7 +1,7 @@
 # PÔLE JEU — Index
 
 > Point d'entrée du pôle JEU. Lu en premier par tout agent qui touche au code/spec/asset des mini-jeux.
-> Refonte 2026-05-13 (harmonisation Game ↔ Narration). **MAJ 2026-06-04** : migration `game/` → `studio/minijeux/` (gouvernance) + `site/` (code déployé). Carte + chemins réalignés.
+> Refonte 2026-05-13 (harmonisation Game ↔ Narration). **MAJ 2026-06-04** : migration `game/` → `studio/minijeux/` (gouvernance) + `site/` (code déployé). Carte + chemins réalignés. **MAJ 2026-09-12** (HO-R01) : 6 liens morts corrigés (pipeline mémoire, design-explorations supprimé, atelier-couleurs), refs `pmo/` → `memory/`.
 >
 > Équivalent côté Narration : [`../narration/INDEX.md`](../narration/INDEX.md).
 
@@ -59,7 +59,7 @@ Détails complets : [`EQUIPE.md`](EQUIPE.md).
 
 ## Mémoires process (REX méta-pipeline)
 
-- **Pipeline mini-jeux** : [`site/PIPELINE-MEMORY-MJ.md`](../../site/PIPELINE-MEMORY-MJ.md) — frictions résolues, évolution agents MJ (créé 2026-05-11, leçons EP-021 + EP-022)
+- **Pipeline mini-jeux** : [`memory/archive/PIPELINE-MEMORY-MJ.md`](memory/archive/PIPELINE-MEMORY-MJ.md) — frictions résolues, évolution agents MJ (créé 2026-05-11, leçons EP-021 + EP-022)
 
 ---
 
@@ -76,11 +76,9 @@ Détails complets : [`EQUIPE.md`](EQUIPE.md).
 
 | Outil | Rôle |
 |-------|------|
-| [`site/tools/index.html`](../../site/tools/index.html) | **Hub Tools** — point d'entrée des outils de design |
-| [`site/design-lecture/`](../../site/design-lecture/) | **Chantier UI lecture** (mockups syllabique/phonique, Kimi) — voir `NOTES-DESIGN-LECTURE.md` interne · retours PY triés : [`memory/audits/2026-07-19-triage-poc-design.md`](memory/audits/2026-07-19-triage-poc-design.md) |
-| [`site/design-compte/`](../../site/design-compte/) | **Chantier UI compte** (mockups série 4 comptage) — voir `NOTES-DESIGN-COMPTE.md` interne · retours PY triés : même doc triage |
-| [`site/design-shared/`](../../site/design-shared/) | Assets partagés des chantiers design (mockup.css/js + fonts) — utilisé par design-lecture ET design-compte |
-| [`site/atelier-couleurs.html`](../../site/atelier-couleurs.html) | Atelier prototype recoloration avatars (algo repris dans `avatar-picker.js`) |
+| ~~`docs/design-explorations/`~~ | **SUPPRIMÉ 2026-09-12** (HO-R01) — 54 mockups design-lecture/design-compte, pages déjà en prod. Retours PY triés archivés : [`memory/audits/2026-07-19-triage-poc-design.md`](memory/audits/2026-07-19-triage-poc-design.md) |
+| [`site/design-shared/`](../../site/design-shared/) | Assets partagés des chantiers design (mockup.css/js + fonts) |
+| [`scripts/pages/atelier-couleurs.html`](scripts/pages/atelier-couleurs.html) | Atelier prototype recoloration avatars (algo repris dans `avatar-picker.js`) |
 | ~~index2/index3~~ | **ABANDONNÉS** (décision Papa Yann 2026-07-19) — `index.html` = LE menu unique. Audit menu + direction **« Mur + copains » VALIDÉE** (v2, from scratch) : [`memory/audits/2026-07-19-menu-parcours.md`](memory/audits/2026-07-19-menu-parcours.md) → spec **« Le Mur des Copains » v0** : [`docs/specs/2026-07-19-menu-mur-copains.md`](docs/specs/2026-07-19-menu-mur-copains.md) |
 
 ---

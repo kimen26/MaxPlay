@@ -10,3 +10,4 @@
 | `audit-trail-2026.md` | `pmo/audit-trail.md` | Traces d'audits + analyses cause racine |
 | `PIPELINE-MEMORY-MJ.md` | `site/PIPELINE-MEMORY-MJ.md` (déplacé le 2026-09-03, HO-G10) | Journal méta-process du pipeline mini-jeux HTML — jamais déployé, non référencé par le code servi |
 | `INBOX-2026.md` | `INBOX.md` (sections distillées) | Sections datées déjà distillées, retirées d'INBOX.md pour qu'il ne garde que son en-tête |
+| `lessons-2026-H1.md` | `../LESSONS.md` (rotation 2026-09-12, HO-R02) | Leçons L-NNN datées, dupliquées ou couvertes par une correction plus récente — 74 entrées déplacées verbatim, 18 gardées dans `../LESSONS.md` |

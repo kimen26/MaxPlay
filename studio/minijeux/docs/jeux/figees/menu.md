@@ -38,8 +38,10 @@ validée par Papa Yann 2026-07-16. Remplace les 10 tiroirs antérieurs.
 
 Les **IDs mj-XX ne changent JAMAIS**. Seul le champ `category` de regroupement change → passage d'un tiroir à un autre.
 
+> 🧹 **Purge refs jeux morts 2026-09-12** : ids retirés des listes ci-dessous car absents de `site/js/catalog.js` (source de vérité). Les 5 tiroirs et leur ordre restent figés.
+
 ### 🦕 Les dinos
-- mj-24, mj-25, mj-26, mj-31, mj-40, mj-41
+- mj-24, mj-31, mj-40
 - Encyclopédie dino (dev-dinos.html)
 - Status : live uniquement
 
@@ -51,14 +53,13 @@ Les **IDs mj-XX ne changent JAMAIS**. Seul le champ `category` de regroupement c
 - Status : live uniquement
 
 ### 🔢 Compter & lire
-- **Compter** : mj-04, mj-13c, mj-05, mj-35, mj-43, mj-45
-- **Lire** : mj-06, mj-23, mj-44
+- **Compter** : mj-13c, mj-35
+- **Lire** : mj-06
 - Status : live uniquement
 
 ### 🧩 Casse-têtes
-- **Logique** : mj-13a, mj-15, mj-16, mj-34, mj-37, mj-38, mj-39
-- **Observer** : mj-19, mj-36
-- **Bricoler** : mj-08, mj-17
+- **Logique** : mj-13a, mj-15, mj-34, mj-37, mj-38, mj-39
+- **Observer** : mj-19
 - **Terminologie figée** : « Casse-têtes » retenu.
   - ❌ 🔒 NE JAMAIS utiliser « Stratégie » (trop abstrait pour 4 ans).
   - ❌ 🔒 NE JAMAIS utiliser « Réfléchir » (trop long/polysyllabique).
@@ -66,8 +67,7 @@ Les **IDs mj-XX ne changent JAMAIS**. Seul le champ `category` de regroupement c
 - Status : live uniquement
 
 ### 🌍 Le monde & libre
-- **Monde** : mj-11 (Drapeaux), mj-22 (Animaux), mj-20 (Villes), mj-42 (Routes)
-- **Libre** : mj-12
+- **Monde** : mj-22 (Animaux), mj-20 (Villes), mj-42 (Routes)
 - Status : live uniquement
 
 ## 🔒 Comportement accordéon FIGÉ

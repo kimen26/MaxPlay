@@ -22,23 +22,17 @@ portes aient été rejouées par lui.
 | HO-004 | Traduction ES-ES natif | `studio/dino/content/i18n/es-es/**` | bloque par HO-002 |
 | HO-005 | Traduction PT-BR natif | `studio/dino/content/i18n/pt-br/**` | bloque par HO-002 |
 | HO-006 | Relecture native croisee (3 langues) | rapports dans `studio/dino/docs/handoffs/rapports/` | bloque par HO-003/4/5 |
-| HO-007 | Generation des bundles produit | `site/js/i18n/dinos-strings.*.js` | fait |
-| HO-008 | Memoire convergente (pmo/ → memory/) | `studio/dino/memory/**` | fait |
+
+> HO-007 à HO-018 : **fait**, archivés le 2026-09-12 (HO-R03) → [`archives/2026-09/`](archives/2026-09/INDEX.md).
+> ⚠️ HO-003 à HO-006 restent avec un statut interne divergent du registre (voir rapport HO-R03) :
+> non archivés, à re-trancher.
 
 ## Vague 2026-09-05 — Fiches dino completes (data → scripts audio FR tagues → i18n → audio EL) + musiques + SFX
 
+Briefs HO-009 à HO-018 : **fait**, archivés le 2026-09-12 (HO-R03) → [`archives/2026-09/`](archives/2026-09/INDEX.md).
+
 | ID | Titre | Fichiers possedes | Statut |
 |----|-------|-------------------|--------|
-| HO-009 | Audit data 71 dinos (mesures, lieux, Texte fiche), 4 lots | `docs/handoffs/rapports/HO-009-lot-*.{md,json}` | fait |
-| HO-010 | Application corrections data (orchestrateur) | `site/js/dinos-data.js`, strings.json touches, bundles | fait (strings.json : reste I18N-STRINGS-RECROISER) |
-| HO-011 | Reecriture 71 Scripts audio FR, tags v3 riches, 6 lots | `scripts-audio/fr/V3/<id>.md` | fait (71/71) |
-| HO-012 | Relecture croisee FR (porte + dino-conseiller) | `rapports/HO-012-*.md` | fait (71 PASS + polish) |
-| HO-013 | i18n Scripts audio en / es-es / pt-br + lexiques relus | `scripts-audio/<lang>/**`, `lexiques-prononciation/<lang>.md` | fait (71 × 3) |
-| HO-014 | Generation EL 13 theropodes × 4 langues | `site/audio/dinos/<lang>/<id>-*.mp3`, manifest | fait (13 × 4) |
-| HO-015 | Musiques de fond (Eleven Music) | `site/sounds/music/**` | fait |
-| HO-016 | Banque SFX dinos | `site/sounds/fx/dino/**` | fait |
-| HO-017 | i18n EN des textes restants du site dino (racines, periodes, regimes, voyage, Pangee, Extinction) | content/i18n/en/strings.json, ui.json x3, site/js/dinos-i18n.js, bloc JOURNEY de dev-dinos.html | fait |
-| HO-018 | Scripts audio EN hors fiches (lot A menus/periodes/recits/speciaux, lot B dico) | content/i18n/en/scripts-hors-fiche/*.md | fait (142 clips, JSON prets) |
 | HO-019 | Reprise audio au reset quota EL (FR 35 + EN integral, chiffrage 305 k, decision palier PY) | site/audio/dinos/{fr,en}/**, manifest | bloque (quota, reset 2026-09-11) |
 
 Porte commune des scripts audio : `node studio/dino/content/scripts/export/_verif-scripts-audio.cjs <lang> [ids]`.

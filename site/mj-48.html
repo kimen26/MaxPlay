@@ -294,7 +294,7 @@
         fillSeats(s0, false);
         buildFile(k, false);
         shell.setConsigne('' + k + ' ' + plural(k, T('passagerMonte', 'passager monte'), T('passagersMontent', 'passagers montent')) + ' !', qCount === 1 ? false : undefined);
-        sfx('sounds/bus-closing-door-sound.flac', 0.4);
+        sfx('sounds/ui/porte-bus.mp3', 0.4);
         // les k de la file montent un par un
         const persos = [...fileEl.children];
         persos.forEach((p, i) => {
@@ -318,7 +318,7 @@
         buildFile(0, false);
         shell.setConsigne('' + b + ' ' + plural(b, T('passagerDescend', 'passager descend'), T('passagersDescendent', 'passagers descendent')) + ' !');
         document.getElementById('bus-top').classList.add('roule');
-        sfx('sounds/bus-closing-door-sound.flac', 0.4);
+        sfx('sounds/ui/porte-bus.mp3', 0.4);
         const partants = sieges.slice(s0 - b, s0);
         partants.forEach((s, i) => {
           setTimeout(() => {

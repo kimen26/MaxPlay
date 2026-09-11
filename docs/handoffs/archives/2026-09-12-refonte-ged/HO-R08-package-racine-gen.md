@@ -1,6 +1,6 @@
 # HO-R08 — `package.json` racine, `site/js/gen/`, `npm run build / check / test`
 
-**Statut :** pret
+**Statut :** fait
 **Depend de :** HO-R01, HO-R07 (vague 1 commitée)
 **Vague :** 2 · **Exécutant :** sous-agent Sonnet · **seul sur `site/` pendant cette vague**
 

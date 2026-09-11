@@ -1,4 +1,4 @@
-// dinos-assets.js — GÉNÉRÉ par studio/minijeux/scripts/gen-dinos-assets.mjs — NE PAS ÉDITER À LA MAIN.
+// dinos-assets.js — GÉNÉRÉ par studio/dino/scripts/gen-dinos-assets.mjs — NE PAS ÉDITER À LA MAIN.
 // Manifeste des familles d'assets par dino (vocabulaire figé 2026-07-20 : ombre / sprite / tete / paleoart / avatar).
 // avatar = diminutif (fichiers via window.MAXPLAY_AVATARS de avatars.js). Régénérer après tout ajout d'image.
 window.DINO_ASSETS = {

@@ -144,7 +144,7 @@ function _pickRandom(arr, key) {
 }
 
 // ── Référentiel de contenu (Lot 3 allégé, 2026-08-10) ────────────────────────
-// js/textes-jeux.js (généré depuis studio/referentiel/) porte, par slug, le
+// js/gen/textes-jeux.js (généré depuis studio/referentiel/) porte, par slug, le
 // texte canonique FR. Un repli inline absent OU divergent est ignoré : la table
 // gagne (le MP3 dit ce qu'elle dit, pas ce que le point d'appel imaginait —
 // incident « Tu maîtrises ce jeu ! » du 2026-08-10). Divergence → log console,

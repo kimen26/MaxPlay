@@ -98,7 +98,7 @@
   }
 
   // voix(gameId, slug, frFallback) — HO-MJ-06 : texte de repli TTS d'une consigne
-  // PARLÉE (site/js/textes-jeux.js, slugs regle-mj-XX + phrases partagées). Cherche
+  // PARLÉE (site/js/gen/textes-jeux.js, slugs regle-mj-XX + phrases partagées). Cherche
   // MJ_STRINGS[gameId].voix[slug] (jeu, ex. regle-mj-14) puis MJ_STRINGS._commun.voix[slug]
   // (phrase partagée, ex. cest-parti) — même repli FR intégral que t()/regle() si absent
   // (langue non traduite ou slug hors pack), jamais de trou. gameId peut être omis

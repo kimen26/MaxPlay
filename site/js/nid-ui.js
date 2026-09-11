@@ -72,7 +72,7 @@
   // ── chargement paresseux des dépendances ────────────────────────────
   // Ordre figé : dinos-data.js (DINOS) → dinos-assets.js → collection.js
   // (window.Collection) → collection-dinos.js (configure le catalogue).
-  var DEPS = ['js/dinos-data.js', 'js/dinos-assets.js', 'js/collection.js', 'js/collection-dinos.js'];
+  var DEPS = ['js/dinos-data.js', 'js/gen/dinos-assets.js', 'js/collection.js', 'js/collection-dinos.js'];
   function hasScript(src) {
     var tags = document.querySelectorAll('script[src]');
     for (var i = 0; i < tags.length; i++) {

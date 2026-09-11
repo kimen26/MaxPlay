@@ -1,12 +1,12 @@
 // Genere le bundle FLORE consomme par le site :
-//   studio/dino/content/sources/flore/plantes.json -> site/js/dinos-plantes.js
+//   studio/dino/content/sources/flore/plantes.json -> site/js/gen/dinos-plantes.js
 // Frontiere DEC-GED-001 : le site ne lit jamais studio/, tout descend par ce generateur.
 // Usage : node _gen-plantes.cjs
 const fs = require('fs'), path = require('path');
 const ROOT = path.resolve(__dirname, '../../../../..');
 
 const src = path.join(ROOT, 'studio/dino/content/sources/flore/plantes.json');
-const out = path.join(ROOT, 'site/js/dinos-plantes.js');
+const out = path.join(ROOT, 'site/js/gen/dinos-plantes.js');
 
 if (!fs.existsSync(src)) {
   console.error(`ABSENT: ${src}`);

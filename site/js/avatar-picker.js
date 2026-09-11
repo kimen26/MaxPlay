@@ -5,7 +5,7 @@
 // La recoloration canvas préserve contour noir + blancs + ombrage (même algo que atelier-couleurs.html).
 // API publique : window.Avatar { get, set, file, getColors, setColors, paintInto, celebrate }
 // Événement : window.dispatchEvent(new CustomEvent('maxplay:win')) → célébration auto du badge.
-// Requiert : js/avatars.js (window.MAXPLAY_AVATARS).
+// Requiert : js/gen/avatars.js (window.MAXPLAY_AVATARS).
 (function () {
   'use strict';
   var BASE = window.MAXPLAY_AVATARS_BASE || 'img/avatars/';

@@ -91,11 +91,11 @@ Skills `storytelling-master`, `craft-fundamentals`, `youth-writing`, `enneagramm
 
 ### `kimi-hooks-2026-07-27/` — Sonde Stop Kimi remplacée
 
-`stop-probe.kimi.ps1` (loguait le payload Stop brut de Kimi Code) remplacée par `.kimi-code/hooks/pmo-check.kimi.ps1` le 2026-07-19, puis débranchée de `~/.kimi-code/config.toml`. Archivée le 2026-07-27 (audit cartographie narration) ; son log `stop-payload.jsonl` (gitignoré) supprimé. Détail : [`kimi-hooks-2026-07-27/README.md`](kimi-hooks-2026-07-27/README.md).
+`stop-probe.kimi.ps1` (loguait le payload Stop brut de Kimi Code) remplacée par `.kimi-code/hooks/pmo-check.kimi.ps1` le 2026-07-19, puis débranchée de `~/.kimi-code/config.toml`. Archivée le 2026-07-27 (audit cartographie narration) ; son log `stop-payload.jsonl` (gitignoré) supprimé. Détail : `kimi-hooks-2026-07-27/README.md` (dans le vault).
 
 ### `2026-08-02-dino-new-xxl-staging/` — Staging `_new-xxl` dino (variantes XXL)
 
-Ex-`site/img/dinos/_new-xxl/` (13 PNG + `_PROGRESS.tsv`), vidé lors du nettoyage GED post-audit fiches 2026-08-02. 11 variantes XXL de slots paleoart déjà pourvus (rechange HD) + 2 inédits `Giganotosaurus_meute_*` sans slot fiche. Détail : [`2026-08-02-dino-new-xxl-staging/INDEX.md`](2026-08-02-dino-new-xxl-staging/INDEX.md).
+Ex-`site/img/dinos/_new-xxl/` (13 PNG + `_PROGRESS.tsv`), vidé lors du nettoyage GED post-audit fiches 2026-08-02. 11 variantes XXL de slots paleoart déjà pourvus (rechange HD) + 2 inédits `Giganotosaurus_meute_*` sans slot fiche. Détail : `2026-08-02-dino-new-xxl-staging/INDEX.md` (dans le vault).
 
 ### `agents-2026-09-03/` — Agents et mémoires fusionnés/archivés (HO-G12)
 

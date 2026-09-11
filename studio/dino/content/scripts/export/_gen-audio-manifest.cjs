@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Régénère les Sets de site/js/dinos-audio-manifest.js en scannant les MP3 réels
+// Régénère les Sets de site/js/gen/dinos-audio-manifest.js en scannant les MP3 réels
 // de site/audio/dinos/<lang>/. Le fichier se disait « GENERE » sans qu'aucun script
 // ne le génère : la note disait « re-executer la commande du commit ». (2026-07-20)
 //
@@ -13,7 +13,7 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '../../../../..');
 const AUDIO_DIR = path.join(ROOT, 'site', 'audio', 'dinos');
-const MANIFEST = path.join(ROOT, 'site', 'js', 'dinos-audio-manifest.js');
+const MANIFEST = path.join(ROOT, 'site', 'js', 'gen', 'dinos-audio-manifest.js');
 
 // Un bloc = un suffixe de fichier ; chaque bloc a sa variable de Set dans le manifest.
 // `sousDossier` optionnel : scanne audio/dinos/<lang>/<sousDossier>/ au lieu du plat

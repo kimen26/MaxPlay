@@ -1,4 +1,4 @@
-// avatars.js — manifest (généré par c:/tmp/gen_avatars_manifest.py). Variant-aware.
+// GÉNÉRÉ par studio/minijeux/scripts/gen-avatars-manifest.mjs — ne pas éditer. Manifest avatars (Variant-aware).
 window.MAXPLAY_AVATARS_BASE = "img/avatars/";
 window.MAXPLAY_AVATARS = [
  {

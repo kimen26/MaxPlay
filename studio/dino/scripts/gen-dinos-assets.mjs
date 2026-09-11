@@ -1,11 +1,11 @@
-// gen-dinos-assets.mjs — génère site/js/dinos-assets.js (manifeste unique des
+// gen-dinos-assets.mjs — génère site/js/gen/dinos-assets.js (manifeste unique des
 // familles d'assets dino : ombre / sprite / tete / paleoart / avatar) + rapport
 // des trous. Vocabulaire figé 2026-07-20 (memory/stack.md § Vocabulaire ASSETS).
 //
 // Usage : node studio/dino/scripts/gen-dinos-assets.mjs
 // À relancer après tout ajout/suppression dans site/img/dinos/ ou img/avatars/.
 // Déplacé depuis studio/minijeux/scripts/ le 2026-09-12 (HO-R01, réception scripts dino).
-import { readdirSync, writeFileSync, existsSync } from 'node:fs';
+import { readdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -61,9 +61,21 @@ const fantaisie = [...avatarIds].filter(id => !AVATAR_ALIAS[id]);
 console.log(`  avatars fantaisie (sans dino) : ${fantaisie.join(', ')}`);
 
 // ── Écriture du manifeste (window.*, jamais de fetch — règle HTML local) ──
-const out = '// dinos-assets.js — GÉNÉRÉ par studio/minijeux/scripts/gen-dinos-assets.mjs — NE PAS ÉDITER À LA MAIN.\n'
+const out = '// dinos-assets.js — GÉNÉRÉ par studio/dino/scripts/gen-dinos-assets.mjs — NE PAS ÉDITER À LA MAIN.\n'
   + '// Manifeste des familles d\'assets par dino (vocabulaire figé 2026-07-20 : ombre / sprite / tete / paleoart / avatar).\n'
   + '// avatar = diminutif (fichiers via window.MAXPLAY_AVATARS de avatars.js). Régénérer après tout ajout d\'image.\n'
   + 'window.DINO_ASSETS = ' + JSON.stringify(assets, null, 1) + ';\n';
-writeFileSync(resolve(ROOT, 'js/dinos-assets.js'), out);
-console.log('→ site/js/dinos-assets.js écrit (' + noms.length + ' entrées).');
+
+const OUT_PATH = resolve(ROOT, 'js/gen/dinos-assets.js');
+const CHECK = process.argv.includes('--check');
+if (CHECK) {
+  const before = existsSync(OUT_PATH) ? readFileSync(OUT_PATH, 'utf8') : null;
+  if (before !== out) {
+    console.error('✗ dinos-assets.js : sortie différente du fichier commité — lancer `npm run build`.');
+    process.exit(1);
+  }
+  console.log('✓ dinos-assets.js à jour.');
+} else {
+  writeFileSync(OUT_PATH, out);
+  console.log('→ site/js/gen/dinos-assets.js écrit (' + noms.length + ' entrées).');
+}

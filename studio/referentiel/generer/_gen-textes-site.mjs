@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // ─────────────────────────────────────────────────────────────────────────────
-// _gen-textes-site.mjs — génère site/js/textes-jeux.js, la table des textes
+// _gen-textes-site.mjs — génère site/js/gen/textes-jeux.js, la table des textes
 // canoniques du domaine JEU consommée par les libs partagées du site.
 //
 //   node studio/referentiel/_gen-textes-site.mjs
@@ -28,7 +28,7 @@ import {
 import { REGLES } from '../catalogue/fr/regles.mjs';
 import { PERIODES } from '../catalogue/fr/dino-menu.mjs';
 
-const SORTIE = path.join(SITE, 'js', 'textes-jeux.js');
+const SORTIE = path.join(SITE, 'js', 'gen', 'textes-jeux.js');
 
 /** Débarrasse un texte des tags v3 éventuels — jamais prononcés ni affichés. */
 const sansTags = (t) => String(t || '').replace(/\[[^\]]{1,30}\]/g, ' ').replace(/\s+/g, ' ').trim();

@@ -6,7 +6,7 @@
 // img/dinos/ombres/<Basename>_ombre.png. JAMAIS de silhouettes LimeZu par-famille.
 //
 // Prerequis : charger AVANT ce script -> js/lang.js, js/dinos-data.js (assigne
-// window.DINOS), js/dinos-audio-manifest.js (playDinoNom/playDinoFunfact, sonar
+// window.DINOS), js/gen/dinos-audio-manifest.js (playDinoNom/playDinoFunfact, sonar
 // exclusif deja gere par ces helpers globaux). Ce fichier ne redefinit PAS
 // playDinoNom/playDinoFunfact : il expose playNom()/stopNom() comme wrapper
 // pratique par-dessus, avec exclusivite (un son coupe le precedent) pour les

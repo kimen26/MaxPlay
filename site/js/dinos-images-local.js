@@ -1,6 +1,6 @@
 // Images dino — rapatriées de Wikimedia Commons (CC BY / CC-BY-SA / PD)
 // Sources : Wikimedia Commons. Crédits conservés pour conformité.
-// Généré automatiquement — ne pas éditer à la main.
+// Entretenu à la main : aucun générateur trouvé pour ce fichier (audit HO-R08, 2026-09-12).
 
 const DINO_WIKIMEDIA = {
   "tyrannosaurus": [

@@ -1,6 +1,6 @@
-// dinos-audio-manifest.js — GENERE depuis les fichiers reels de audio/dinos/<lang>/.
-// Regenerer apres tout ajout audio : node -e "<voir studio/dino/content/scripts/export/>" ou re-executer la commande du commit.
-// Usage : <script src="js/lang.js"></script> puis <script src="js/dinos-audio-manifest.js"></script>
+// dinos-audio-manifest.js — GÉNÉRÉ par studio/dino/content/scripts/export/_gen-audio-manifest.cjs — ne pas éditer les lignes de Set à la main.
+// Regenerer apres tout ajout audio : node studio/dino/content/scripts/export/_gen-audio-manifest.cjs
+// Usage : <script src="js/lang.js"></script> puis <script src="js/gen/dinos-audio-manifest.js"></script>
 //   -> window.DINO_NOM_AUDIO (Set des ids ayant noms/<id>.mp3 dans le pack de la langue active)
 // Helper central : joue le NOM SEUL en voix reelle (noms/<id>.mp3, 1.5-2s), fallback TTS.
 // ⚠ Retour PY 2026-07-27 (mj-30) : les <id>-nom.mp3 a plat sont des SEGMENTS DE FICHE

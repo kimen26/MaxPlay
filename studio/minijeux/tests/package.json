@@ -2,13 +2,10 @@
   "name": "maxplay-mj-tests",
   "private": true,
   "type": "module",
-  "description": "Harnais de test headless mini-jeux MaxPlay (Playwright, Chromium reel). EP-038.",
+  "description": "Harnais de test headless mini-jeux MaxPlay (Playwright, Chromium reel). EP-038. Dépendance playwright fusionnée à la racine (HO-R08) : `npm ci` se lance depuis la racine du repo.",
   "scripts": {
     "mj:test": "node run.mjs",
     "mj:all": "node run-all.mjs",
     "mj:audit": "node audit-gabarit.mjs"
-  },
-  "devDependencies": {
-    "playwright": "^1.60.0"
   }
 }

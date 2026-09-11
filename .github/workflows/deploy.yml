@@ -27,12 +27,15 @@ jobs:
         with:
           node-version: '20'
 
-      # Portail gabarit BLOQUANT (2026-07-15) — audit statique pur node (zéro navigateur,
-      # zéro dépendance). Un mini-jeu du menu au cadre cassé (cloud.js manquant, thème
-      # absent, emoji bus, charset) arrête le déploiement. Portée = catalog.js (jeux au menu).
-      - name: Portail gabarit mini-jeux (bloquant)
-        run: node audit-gabarit.mjs
-        working-directory: studio/minijeux/tests
+      - name: Install
+        run: npm ci
+
+      # Portail check BLOQUANT (HO-R08) — build à jour (générateurs déterministes),
+      # audit gabarit statique (pur node, zéro navigateur), référentiel, liens md.
+      # Un mini-jeu du menu au cadre cassé (cloud.js manquant, thème absent, emoji
+      # bus, charset) ou un générateur désynchronisé arrête le déploiement.
+      - name: Portail check (bloquant)
+        run: npm run check
 
       - name: Assemble site
         run: |

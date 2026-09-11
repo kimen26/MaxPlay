@@ -1,4 +1,4 @@
-// GENERE par studio/minijeux/tools/_gen-mj-strings-bundle.cjs — ne pas editer a la main.
+// GENERE par studio/minijeux/scripts/_gen-mj-strings-bundle.cjs — ne pas editer a la main.
 // Source : studio/minijeux/i18n/en/strings.json
 window.MJ_STRINGS = {
  "_commun": {

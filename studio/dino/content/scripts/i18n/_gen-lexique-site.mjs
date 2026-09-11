@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Génère site/js/lexique-fr.js (window.LEXIQUE_FR) depuis le lexique de
+// Génère site/js/gen/lexique-fr.js (window.LEXIQUE_FR) depuis le lexique de
 // prononciation studio/dino/content/i18n/lexiques-prononciation/fr.md.
 //
 // Usage : node studio/dino/content/scripts/i18n/_gen-lexique-site.mjs
@@ -16,7 +16,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../../..');
 const SRC = path.join(ROOT, 'studio', 'dino', 'content', 'i18n', 'lexiques-prononciation', 'fr.md');
-const OUT = path.join(ROOT, 'site', 'js', 'lexique-fr.js');
+const OUT = path.join(ROOT, 'site', 'js', 'gen', 'lexique-fr.js');
 
 const md = fs.readFileSync(SRC, 'utf8');
 

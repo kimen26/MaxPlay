@@ -15,7 +15,7 @@ Audit : `memory/audits/2026-09-12-archi-ged-site-studio.md`. Décisions : D-007 
 | 1 | HO-R03 dino mémoire + dé-triplication | mêmes tailles, chaque règle dans un seul fichier, handoffs dino archivés, 45 Mo de refs supprimés | fait |
 | 1 | HO-R06 lunii moteur unique | 3 packs reconstruits identiques par `build-pack.mjs`, `.build-*` purgé après build | fait |
 | 1 | HO-R07 site assets morts | 0 rip sous droits, 0 asset non référencé listé, casse `pt-br` unique, Playwright vert | fait |
-| 2 | HO-R08 package racine + `site/js/gen/` | `npm run build` sans diff, `npm run check` et `npm test` verts, README du gen/ | à faire |
+| 2 | HO-R08 package racine + `site/js/gen/` | `npm run build` sans diff, `npm run check` et `npm test` verts, README du gen/ | fait |
 | 3 | HO-R09 Mur ← catalogue + check + gabarit | `mur.js` sans id en dur, 36 jeux visibles ou justifiés, `check-mj-coherence` bloquant en CI, `mj-template.html` | à faire |
 | 3 | HO-R10 dédoublonnage runtime mj | 0 `speechSynthesis` brut, 0 speak/confetti local, chaque mj touché vert | à faire |
 | 4 | HO-R12 fiche canon dino | `dinos-data.js` généré octet pour octet, check data ↔ narré produit sa liste | à faire |

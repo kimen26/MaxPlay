@@ -69,11 +69,11 @@
   if (LANG !== 'fr') SCRIPTS.push('js/i18n/mj-strings.' + LANG + '.js');
   SCRIPTS = SCRIPTS.concat([
     'js/sounds.js',
-    'js/lexique-fr.js',
+    'js/gen/lexique-fr.js',
     'js/tts.js',
     // Table des textes canoniques (référentiel) : avant victory-sounds, dont
     // les replis TTS la consultent (la table gagne sur tout repli divergent).
-    'js/textes-jeux.js',
+    'js/gen/textes-jeux.js',
     'js/victory-sounds.js',
     'js/feedback.js',
     'js/catalog.js',

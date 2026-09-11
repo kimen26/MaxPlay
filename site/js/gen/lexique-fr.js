@@ -44,6 +44,7 @@ window.LEXIQUE_FR = {
   "Psittacosaure": "P-si-ta-co-saure",
   "Ptéranodon": "Pté-ra-no-don",
   "Quetzalcoatlus": "Kèt-zal-ko-atluss",
+  "Rhomaleosaurus": "Ro-ma-lé-o-saure",
   "Saurolophe": "So-ro-lo-fuss",
   "Shastasaure": "Chas-ta-saure",
   "Shonisaure": "Cho-ni-saure",
@@ -52,5 +53,6 @@ window.LEXIQUE_FR = {
   "Therizinosaurus": "Thé-ri-zi-no-saure",
   "Titanis": "Ti-ta-niss",
   "Troodon": "Tro-o-don",
+  "Tylosaurus": "Ti-lo-saure",
   "Tyrannosaurus": "Ty-ran-no-saure",
 };

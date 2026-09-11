@@ -8,7 +8,7 @@ import path from 'node:path';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../../../'); // studio/minijeux/scripts -> racine repo
 const AV = path.join(ROOT, 'site/img/avatars');
-const OUT = path.join(ROOT, 'site/js/avatars.js');
+const OUT = path.join(ROOT, 'site/js/gen/avatars.js');
 
 // id -> [surnom, sous-titre] ; ordre = ordre d'affichage historique
 const NAMES = {
@@ -44,7 +44,7 @@ for (const [id, [name, sub]] of Object.entries(NAMES)) {
 const unknown = Object.keys(found).filter(id => !(id in NAMES));
 if (unknown.length) console.log('SANS NOM (a ajouter a NAMES):', unknown);
 
-const js = `// avatars.js — manifest (généré par studio/minijeux/scripts/gen-avatars-manifest.mjs). Variant-aware.\n`
+const js = `// GÉNÉRÉ par studio/minijeux/scripts/gen-avatars-manifest.mjs — ne pas éditer. Manifest avatars (Variant-aware).\n`
   + `window.MAXPLAY_AVATARS_BASE = "img/avatars/";\n`
   + `window.MAXPLAY_AVATARS = ${JSON.stringify(data, null, 1)};\n`;
 writeFileSync(OUT, js, 'utf8');

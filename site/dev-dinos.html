@@ -652,13 +652,13 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 </script>
 <script src="js/dino-ui.js"></script>
   <script src="js/dinos-data.js"></script>
-<script src="js/dinos-plantes.js"></script>
-<script src="js/dinos-racines.js"></script>
+<script src="js/gen/dinos-plantes.js"></script>
+<script src="js/gen/dinos-racines.js"></script>
 <script src="js/dinos-i18n.js"></script>
 <script src="js/dinos-world-map.js"></script>
-<script src="js/lexique-fr.js"></script>
+<script src="js/gen/lexique-fr.js"></script>
 <script src="js/tts.js"></script>
-<script src="js/dinos-audio-manifest.js"></script>
+<script src="js/gen/dinos-audio-manifest.js"></script>
 <script>
 
 /* ── i18n UI statique (dictionnaire dino-ui.js) ── */
@@ -915,7 +915,7 @@ function buildMenuEpoque(el) {
   });
 }
 
-/* ── MENU dico (racines grec/latin · source: js/dinos-racines.js, généré) ── */
+/* ── MENU dico (racines grec/latin · source: js/gen/dinos-racines.js, généré) ── */
 function buildMenuDico(el) {
   if (!document.getElementById('dico-style')) {
     const st = document.createElement('style'); st.id = 'dico-style';
@@ -2554,6 +2554,6 @@ buildMenu();
 })();
 </script>
 <script src="js/dinos-images-local.js"></script>
-<script src="js/dinos-images-grok.js"></script>
+<script src="js/gen/dinos-images-grok.js"></script>
 </body>
 </html>

@@ -101,7 +101,7 @@ l'état commité puisque `site/**` est hors périmètre de cette lane).
 2. **`docs/jeux/INDEX.md` mentionne encore `tasks/BACKLOG.md`** dans le schéma de carte du pôle
    (bloc de code, pas un lien markdown) — ce dossier `tasks/` n'existe plus (migré vers `memory/`
    avant cette lane). Ce n'est pas l'un des « 6 liens morts » comptés dans le brief (ce n'est pas un
-   lien `[texte](cible)`, juste du texte dans un bloc ``` ```), donc non touché pour respecter le
+   lien markdown texte-vers-cible, juste du texte dans un bloc ``` ```), donc non touché pour respecter le
    périmètre exact demandé — à corriger si quelqu'un retouche ce fichier.
 3. **Deux liens morts résiduels dans des archives** (`docs/_archive/2026-07/CLASSIFICATION-2026-07.md`
    → `catalog.js`, et `mj-34-35-36-specs.md` → `SYNTHESE-JEUX-ADDICTIFS.md`) : je ne les ai pas

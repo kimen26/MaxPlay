@@ -22,19 +22,16 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Audit gabarit (statique)
-        run: node audit-gabarit.mjs
-        working-directory: studio/minijeux/tests
-
-      - name: Install Playwright + Chromium
+      - name: Install (playwright à la racine, HO-R08)
         run: |
           npm ci
           npx playwright install --with-deps chromium
-        working-directory: studio/minijeux/tests
+
+      - name: Audit gabarit (statique)
+        run: npm run --prefix studio/minijeux/tests mj:audit
 
       - name: Harnais gameplay complet du menu
-        run: node run-all.mjs
-        working-directory: studio/minijeux/tests
+        run: npm test
 
       - uses: actions/upload-artifact@v4
         if: always()

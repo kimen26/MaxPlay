@@ -9,7 +9,7 @@ const path = require('path');
 const SRC = path.join(__dirname, '..', '..', 'sources', 'etymo', '_ETYMO-RACINES-50.md');
 const OUT = path.join(__dirname, '..', '..', 'data', 'racines.json');
 // Copie déployable pour la page (file:// ne peut pas fetch un .json → on émet un .js qui assigne une const).
-const SITE_OUT = path.join(__dirname, '..', '..', '..', '..', '..', 'site', 'js', 'dinos-racines.js');
+const SITE_OUT = path.join(__dirname, '..', '..', '..', '..', '..', 'site', 'js', 'gen', 'dinos-racines.js');
 
 const md = fs.readFileSync(SRC, 'utf8');
 
@@ -139,7 +139,7 @@ const js = '// Racines grec/latin des dinos — GÉNÉRÉ par studio/dino/conten
   + '// Source de vérité : studio/dino/content/sources/etymo/_ETYMO-RACINES-50.md. Ne pas éditer à la main.\n'
   + 'const DINO_RACINES = ' + JSON.stringify(out) + ';\n';
 fs.writeFileSync(SITE_OUT, js, 'utf8');
-console.log(`OK ${racinesArr.length} racines / ${Object.keys(dinos).length} dinos -> data/racines.json + site/js/dinos-racines.js`);
+console.log(`OK ${racinesArr.length} racines / ${Object.keys(dinos).length} dinos -> data/racines.json + site/js/gen/dinos-racines.js`);
 console.log('Top 8 racines récurrentes:');
 racinesArr.slice(0, 8).forEach(r => console.log(`  ${r.cle} (${r.langue||'?'}) = ${r.sens} -> ${r.n} dinos`));
 const aCorr = Object.entries(dinos).filter(([, d]) => d.nom_etym === 'a_corriger').map(([k]) => k);

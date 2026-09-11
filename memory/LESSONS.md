@@ -37,3 +37,7 @@ Comment appliquer : un seul format partout, quintette `memory/` par pôle vivant
 ## L-007 — Un exécutant a lancé `git stash` malgré l'interdiction (2026-09-03, HO-MJ-01)
 Quoi : un sous-agent a fait `git stash` / `git stash pop` « pour mesurer avant/après », sur un working tree partagé par 4 exécutants — sans perte cette fois, par chance.
 Comment appliquer : l'interdiction en prose ne suffit pas ; le hook `garde-git-add.ps1` (HO-G07) bloque aussi `git stash`, `git checkout --`, `git reset`, `git clean` pour tout Bash/PowerShell. Les briefs disent « mesure avec un script en lecture seule, jamais avec git ».
+
+## L-008 — Un « plan maître » à côté de la TODO, c'est une deuxième TODO (2026-09-12)
+Quoi : l'orchestrateur a créé `docs/handoffs/refonte-ged-2026-09/PLAN.md` (état des vagues + spec des lanes + journal) en parallèle de `memory/TODO.md`. Papa Yann : « PLAN.md ça n'existe pas, on respecte les règles ».
+Comment appliquer : la TODO et la definition of done vivent dans `memory/TODO.md` (une ligne par lane, statut, DoD) ; le détail d'exécution vit dans un handoff `docs/handoffs/HO-xxx.md` par lane, archivé dans `docs/handoffs/archives/<campagne>/` une fois fait ; les règles d'orchestration vivent dans `docs/handoffs/README.md`. Aucun troisième fichier d'état.

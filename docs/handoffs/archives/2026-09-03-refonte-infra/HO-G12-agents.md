@@ -1,6 +1,6 @@
 # HO-G12 — Agents : `memory: project`, archivage des inutilisés, README généré
 
-**Statut :** bloque par vague 2 (HO-NAR-01 : `equipe/` réorganisé) et HO-G07 (chemins `pmo/` dans les agents déjà corrigés)
+**Statut :** fait (2026-09-03, validé au registre ; statut interne corrigé le 2026-09-12)
 **Depend de :** HO-G07 fait
 
 ## Objectif

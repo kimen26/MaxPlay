@@ -2,7 +2,7 @@
   "inputs": [
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily] Écoute, Wex ! Aujourd'hui, [excited] on remonte au tout, tout début. Avant même la Terre."
+      "text": "[happily] Écoute ! Aujourd'hui, [excited] on remonte au tout, tout début. Avant même la Terre."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -54,7 +54,7 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[warmly] C'est comme ça que sont nés les tout premiers océans. [pauses] Et c'est dans cette eau, Wex, [amazed] que la plus grande aventure allait commencer."
+      "text": "[warmly] C'est comme ça que sont nés les tout premiers océans. [pauses] Et c'est dans cette eau, [amazed] que la plus grande aventure allait commencer."
     }
   ],
   "model_id": "eleven_v3",

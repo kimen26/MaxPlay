@@ -7,17 +7,27 @@ Fichiers concernés : [`site/dev-dinos.html`](../../../site/dev-dinos.html) · [
 
 ---
 
-## 🔒 TRITRI — le fil rouge du voyage (FIGÉ 2026-06-03)
+## 🔒 TRITRI & WEX — surnom et prénom, PAS un univers (RE-FIGÉ 2026-09-11)
 
-- 🔒 **Tritri = running gag de Wex.** Tout au long du voyage, Wex demande « y'avait Tritri ? et maintenant ? là y'avait Tritri ? ». On le trouve avec JOIE au **Crétacé** (c'est le Tricératops).
-- 🔒 **Tritri = juste son DINOSAURE PRÉFÉRÉ** (un Tricératops). Rien d'autre.
+> ⚠️ **Défigeage explicite Papa Yann du 2026-09-11**, qui remplace la version du 2026-06-03. L'ancienne
+> règle prescrivait un « fil rouge » / une quête (« tout au long du voyage, Wex demande y'avait Tritri ? »).
+> **Cette quête n'existe plus et ne doit jamais revenir.**
+
+- 🔒 **Tritri = un surnom du Tricératops**, qu'on peut employer de temps en temps. Rien de plus.
+- 🔒 **On peut dire UNE FOIS, dans l'audio, que c'est le dino préféré du garçon.** Une fois, pas davantage.
+- ❌ 🔒 **AUCUNE quête, AUCUN fil rouge, AUCUN univers Tritri.** Pas de « on cherche d'où vient Tritri »,
+  pas de relance « y'avait Tritri ? » d'époque en époque, pas de retrouvailles mises en scène.
+- 🔒 **Wex = le prénom du personnage enfant qui parle.** On ne le NOMME pas à voix haute : ni « Prêt,
+  Wex ? », ni « Écoute, Wex », ni « c'est ton Tritri, Wex », ni « Wex l'a trouvé ». Il peut se glisser
+  subtilement, jamais en apostrophe.
 - 🔒 **Dans une Fiche dino, Tritri = 1 mention max** (2 pour le Tricératops) — le dino de la fiche est le centre, ses voisins sont nommés par leur espèce (PY 2026-09-05, L-D-75, porte `_verif-scripts-audio.cjs`).
 - ❌ 🔒 **JAMAIS dire « Max »** dans un récit/audio.
 - ❌ 🔒 **JAMAIS dire « doudou »** ni « peluche » ni « nounours ».
 - ❌ 🔒 Ne pas casser le 4e mur (« le doudou d'un petit garçon »). Tritri vit DANS l'histoire, point.
-- 🔒 Après le Crétacé (où on le trouve), **plus de « pas encore de Tritri »**.
 
-> Régression commise 2026-06-03 (audio `recit-intro` disait « le doudou de Max ») → corrigée + gravée ici.
+> Régression commise 2026-06-03 (audio `recit-intro` disait « le doudou de Max ») → corrigée.
+> Régression commise 2026-06 → 2026-09 : toute une quête Tritri écrite dans les récits et gravée ici
+> comme LOI. Purgée le 2026-09-11 (sources + JSON) ; les MP3 concernés restent à régénérer.
 
 ## 🔒 ZÉRO BUS dans les RÉCITS narrés (FIGÉ)
 

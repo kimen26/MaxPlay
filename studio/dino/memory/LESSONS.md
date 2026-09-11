@@ -117,3 +117,27 @@
 **Cause** : le script segmente par proximite de couleur depuis un germe, en supposant un animal de teinte homogene face au decor. Ce dino est couvert d'osteodermes separes par des sillons sombres : chaque bosse est une ile de couleur, la propagation reste piegee entre deux plaques. En montant la tolerance, elle saute directement dans le vert du decor. C'est une limite de METHODE, pas un mauvais germe — les trois germes essayes etaient bien sur l'animal, verifie en les dessinant sur l'image.
 **Ce qui a fait perdre du temps ensuite** : `batch-dino-ombre.mjs` rendait une image DEJA au format canon (noir pur sur alpha transparent, comme les 70 autres). Je l'ai prise pour une image sur fond blanc et j'ai enchaine trois conversions — dont un `convert('L')` qui aplatit la transparence en noir et donnait 99 % de remplissage. Le bon geste etait `getbbox()` sur l'alpha, recadrage, redimension a 600 px, reseuillage.
 **Regle** : verifier le MODE et les pixels reels d'une image (`im.mode`, quelques `getpixel`) AVANT toute conversion — un apercu affiche le blanc et la transparence de la meme facon. Et quand un outil de segmentation rend un pourcentage « plausible » (22 %), ouvrir l'image : le chiffre ne dit rien de la forme. Pour un dino a peau tres texturee, aller directement au batch de generation.
+
+### L-D-83 – Une quete Tritri s'etait ecrite toute seule, puis gravee en LOI
+**Constat** (correction Papa Yann, 2026-09-11) : les recits du Voyage portaient un « fil rouge » complet —
+Wex relançait « Y'avait Tritri ? » a la Grande Mort, au Trias, au Cretace ; on le « trouvait » au Cretace
+(« Wex l'a trouve ») ; il mourait a l'Extinction (« Tritri aussi »). La Narratrice l'apostrophait par son
+prenom huit fois (« Prêt a remonter le temps, Wex ? », « Ecoute, Wex ! »). Rien de tout cela n'etait voulu.
+**La demande reelle, beaucoup plus etroite** : Tritri est un SURNOM du Triceratops qu'on peut employer de
+temps en temps ; on peut dire UNE FOIS dans l'audio que c'est le dino prefere du garcon ; Wex est le prenom
+du personnage enfant mais on ne le NOMME pas a voix haute (il se glisse, jamais en apostrophe). Aucun
+univers, aucune quete.
+**Cause racine** : la regle figee du 2026-06-03 PRESCRIVAIT la quete (« tout au long du voyage, Wex demande
+y'avait Tritri ? »). Une extrapolation ancienne s'est petrifiee en LOI dans `figees/encyclopedie.md`, et
+chaque session suivante l'a appliquee de bonne foi — puis etendue (l'apostrophe par prenom n'etait meme pas
+dans la regle). Un fichier de decisions figees se relit comme une contrainte, jamais comme une hypothese a
+questionner : c'est ce qui rend une derive silencieuse et durable.
+**Regle** : une figee qui PRESCRIT un procede narratif (« il demande », « on cherche ») et non une INTERDICTION
+est suspecte — la graver revient a inventer du contenu au nom de l'auteur. Une figee doit borner (« jamais
+Max, jamais doudou »), pas ecrire. Au moindre doute sur ce qu'une figee prescrit : demander, ne pas deployer.
+**Portee de la purge du jour** : sources `RECITS-EPOQUES.md` + les 12 JSON de segments + la figee elle-meme
+(defigeage explicite PY). **Les MP3 deployes disent encore la quete** : `recit-intro`, `recit-naissance-terre`,
+`recit-vie-dans-eau`, `recit-sortie-eau`, `recit-reptiles-permien`, `recit-grande-mort`, `recit-trias`,
+`recit-cretace`, `recit-extinction`, plus `menu-voyage.mp3` (« viens retrouver TriTri epoque par epoque »)
+— a regenerer, non fait ce jour. Les archives (`_archive/`, sprint-logs, logs MCP) sont laissees telles
+quelles : une archive raconte ce qu'on croyait a l'epoque, elle ne se reecrit pas.

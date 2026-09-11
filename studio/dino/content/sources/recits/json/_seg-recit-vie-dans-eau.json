@@ -2,7 +2,7 @@
   "inputs": [
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily] Écoute la suite, Wex : les tout premiers océans viennent de naître. [curious] Et devine ce qui apparaît dedans..."
+      "text": "[happily] Écoute la suite : les tout premiers océans viennent de naître. [curious] Et devine ce qui apparaît dedans..."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -50,7 +50,7 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[calm][softly] Des centaines de millions d'années, Wex. [pauses] La vie n'est jamais pressée. [warmly] Mais elle n'arrête jamais d'inventer."
+      "text": "[calm][softly] Des centaines de millions d'années. [pauses] La vie n'est jamais pressée. [warmly] Mais elle n'arrête jamais d'inventer."
     }
   ],
   "model_id": "eleven_v3",

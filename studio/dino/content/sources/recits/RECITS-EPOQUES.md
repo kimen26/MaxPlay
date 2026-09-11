@@ -2,7 +2,7 @@
 
 > Encyclopédie audio des époques pour Max (4 ans). Narration riche, Wex naturel, pas de contenu personnel Max/Mamãe.
 > Voix : NARRATRICE `narrateur_f` (tags v3 riches) · WEX `wex` (FR normal, tags testés). `eleven_v3`, stability 0,4.
-> Règles : vrais noms + respelling inline · « écoute » jamais « regarde » à l'auditeur · zéro bus · pas de coda personnel · pas de Tritri avant le Crétacé.
+> Règles : vrais noms + respelling inline · « écoute » jamais « regarde » à l'auditeur · zéro bus · pas de coda personnel.
 > Tags : max 2 collés au début, on peut en répartir plusieurs dans la phrase. On utilise TOUT le catalogue v3 validé + tags à tester.
 > 8 segments : intro · trias · jurassique · cretace · extinction · mammiferes · glace-mammouth · paleo.
 
@@ -15,7 +15,7 @@
 > Longueur FR (texte narré hors tags, hors libellés machine) : environ 1 030 caractères.
 
 ```
-**NARRATRICE** [happily] : Écoute, Wex ! Aujourd'hui, [excited] on remonte au tout, tout début. Avant même la Terre.
+**NARRATRICE** [happily] : Écoute ! Aujourd'hui, [excited] on remonte au tout, tout début. Avant même la Terre.
 
 **WEX** [curious] : Avant la Terre ? Mais alors il y avait quoi ?
 
@@ -41,7 +41,7 @@
 
 **NARRATRICE** [happily][excited] : Alors il s'est mis à pleuvoir ! [gasps] Une pluie immense, tombée pendant très très longtemps, a rempli les creux de la Terre.
 
-**NARRATRICE** [warmly] : C'est comme ça que sont nés les tout premiers océans. [pauses] Et c'est dans cette eau, Wex, [amazed] que la plus grande aventure allait commencer.
+**NARRATRICE** [warmly] : C'est comme ça que sont nés les tout premiers océans. [pauses] Et c'est dans cette eau, [amazed] que la plus grande aventure allait commencer.
 ```
 
 ---
@@ -53,7 +53,7 @@
 > Longueur FR : environ 1 080 caractères.
 
 ```
-**NARRATRICE** [happily] : Écoute la suite, Wex : les tout premiers océans viennent de naître. [curious] Et devine ce qui apparaît dedans...
+**NARRATRICE** [happily] : Écoute la suite : les tout premiers océans viennent de naître. [curious] Et devine ce qui apparaît dedans...
 
 **WEX** [curious] : Des poissons ?
 
@@ -77,7 +77,7 @@
 
 **WEX** [amazed] : Et ça prend longtemps, tout ça ?
 
-**NARRATRICE** [calm][softly] : Des centaines de millions d'années, Wex. [pauses] La vie n'est jamais pressée. [warmly] Mais elle n'arrête jamais d'inventer.
+**NARRATRICE** [calm][softly] : Des centaines de millions d'années. [pauses] La vie n'est jamais pressée. [warmly] Mais elle n'arrête jamais d'inventer.
 ```
 
 ---
@@ -89,7 +89,7 @@
 > Longueur FR : environ 1 150 caractères.
 
 ```
-**NARRATRICE** [happily] : Écoute bien, Wex : on avance encore dans le temps. [excited] La terre ferme, elle, est encore toute nue.
+**NARRATRICE** [happily] : Écoute bien : on avance encore dans le temps. [excited] La terre ferme, elle, est encore toute nue.
 
 **WEX** [curious] : Toute nue ? Il y a pas de plantes ?
 
@@ -117,7 +117,7 @@
 
 **WEX** [gasps] : Géants comment ?
 
-**NARRATRICE** [playful][calm] : Une libellule grande comme un plateau-repas, Wex. [pauses] La vie sur terre ne fait que commencer.
+**NARRATRICE** [playful][calm] : Une libellule grande comme un plateau-repas. [pauses] La vie sur terre ne fait que commencer.
 ```
 
 ---
@@ -130,7 +130,7 @@
 > Longueur FR : environ 1 060 caractères.
 
 ```
-**NARRATRICE** [happily] : Écoute, Wex : les amphibiens vivent maintenant sur terre. [curious] Mais il leur manque encore quelque chose.
+**NARRATRICE** [happily] : Écoute : les amphibiens vivent maintenant sur terre. [curious] Mais il leur manque encore quelque chose.
 
 **WEX** [curious] : Quoi donc ?
 
@@ -163,7 +163,7 @@
 
 > Ajouté 2026-09-05 (demande PY « parler aussi des autres extinctions que celle de la fin du Crétacé »).
 > Proposition et fact-check : `PROPOSITION-ERES-EXTINCTIONS.md` (Permien-Trias ≈ 252 Ma, trapps de Sibérie, > 90 % des espèces marines).
-> Se place entre l'INTRO et le TRIAS. Tritri : 1 mention (« pas encore »), conforme L-D-75 et à la règle « pas de Tritri avant le Crétacé ».
+> Se place entre l'INTRO et le TRIAS.
 
 **NARRATRICE** [serious] [softly] : Avant les dinosaures, [pauses] il y a deux cent cinquante-deux millions d'années, [gasps] la Terre a failli mourir.
 
@@ -187,9 +187,9 @@
 
 **NARRATRICE** [calm] : Cinq, en tout. [softly] Trois très anciennes, surtout dans les mers, [pauses] celle-ci, la plus grande, [serious] et celle des dinosaures, avec la météorite, bien plus tard. [softly] Mais à chaque fois, quelques animaux survivent, cachés, résistants.
 
-**WEX** [gasps] : Y'avait Tritri ?
+**WEX** [gasps] : Et les dinosaures ?
 
-**NARRATRICE** [chuckles] [softly] : Pas encore ! [playful] Les Tricératops n'existent pas encore. [happily] Il faudra attendre très, très longtemps. [pauses] Mais ces survivants vont donner naissance à quelque chose de nouveau…
+**NARRATRICE** [chuckles] [softly] : Pas encore ! [playful] Ils n'existent pas encore. [happily] Il faudra attendre très, très longtemps. [pauses] Mais ces survivants vont donner naissance à quelque chose de nouveau…
 
 **WEX** [excited] [curious] : Quoi ?
 
@@ -230,7 +230,7 @@
 
 **NARRATRICE** [chuckles] : Non ! [calm] Le Shonisaure nage dans la mer, [softly] les dinosaures, eux, restent sur la terre ferme.
 
-**WEX** [hesitant] : Dis, [pauses] y'avait Tritri ?
+**WEX** [hesitant] : Dis, [pauses] y'avait déjà des dinosaures à cornes ?
 
 **NARRATRICE** [gently] : Pas encore. [softly] Le Tricératops n'existe pas encore, [calm] il faudra attendre très, très longtemps.
 
@@ -336,9 +336,9 @@
 
 **NARRATRICE** [excited] : Le Ptéranodon planait haut, [calm] un reptile volant sans une seule plume, [softly] avec un bec sans dents. [pauses] Et dans l'océan, [amazed] le Mosasaure régnait, [softly] un reptile marin aussi long qu'un immeuble couché sur le flanc.
 
-**WEX** [gasps] : Y'avait Tritri ?
+**WEX** [gasps] : Et celui avec les cornes ?
 
-**NARRATRICE** [happily] : [pauses] Oui ! [excited] Enfin, Tritri est là : le Tricératops, [gently] avec ses trois cornes et sa grande collerette. [warmly] Wex l'a trouvé.
+**NARRATRICE** [happily] : [pauses] Oui ! [excited] Le voilà : le Tricératops, [gently] avec ses trois cornes et sa grande collerette.
 
 **WEX** [excited] : Il est là pour de vrai ?
 
@@ -357,7 +357,7 @@
 > limite Crétacé-Paléogène : fin du Mésozoïque, le Cénozoïque s'ouvre avec le Paléogène.
 > **V3 2026-09-06** — retours PY après écoute : « 100 terrains de foot » remis, cratère « moitié SUR la terre », et surtout des CRESCENDOS de suspense
 > (chuchoté → doux → sérieux → cri, phrases courtes qui s'accélèrent, « il grossit... il grossit encore... », majuscules sur le mot-choc, « QUAND TOUT À COUP »). Fact-check Wikipedia/Britannica/NASA
-> (Grokipedia 403 ce soir). Tritri : 2 mentions assumées ici (fil rouge du Voyage, pas une fiche). Durée visée ~80 s (PY : « le voyage est hyper important »).
+> (Grokipedia 403 ce soir). Durée visée ~80 s (PY : « le voyage est hyper important »).
 
 **NARRATRICE** [serious] : Il y a soixante-six millions d'années, [pauses] à la fin du Crétacé. Depuis longtemps déjà, la Terre gronde.
 
@@ -367,7 +367,7 @@
 
 **WEX** [nervous] : Et les dinosaures, ils vivent quand même ?
 
-**NARRATRICE** [warmly] : Ils vivent. [softly] Le soleil passe encore. [calm] Tritri broute, le T-Rex chasse, la vie continue.
+**NARRATRICE** [warmly] : Ils vivent. [softly] Le soleil passe encore. [calm] Le Tricératops broute, le T-Rex chasse, la vie continue.
 
 **WEX** [curious] : Et alors ?
 
@@ -397,9 +397,9 @@
 
 **NARRATRICE** [sad] : Les plantes. Sans soleil, les plantes meurent, [pauses] et la chaîne alimentaire est cassée. [softly] Les grands herbivores n'ont plus rien à manger, ils meurent de faim. [serious] Puis les carnivores, [pauses] meurent à leur tour.
 
-**WEX** [sad] : Tritri aussi ?
+**WEX** [sad] : Le Tricératops aussi ?
 
-**NARRATRICE** [softly] : Tritri aussi. [serious] Sur terre, tout ce qui est plus gros qu'un gros chien disparaît. [pauses] Tous les dinosaures meurent.
+**NARRATRICE** [softly] : Lui aussi. [serious] Sur terre, tout ce qui est plus gros qu'un gros chien disparaît. [pauses] Tous les dinosaures meurent.
 
 **WEX** [curious] : Il reste quelqu'un ?
 

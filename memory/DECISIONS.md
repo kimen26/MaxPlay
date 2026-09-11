@@ -68,3 +68,27 @@ Papa Yann : « ça ne marche pas du tout, on arrête ». Le jeu Phaser Max Adven
 ### D-006 — Un seul vocabulaire, partout (2026-09-05)
 
 `memory/GLOSSAIRE.md` est normatif : docs, agents, rules, commits, noms de fichiers et interface emploient les mêmes mots (Mini-jeux, Encyclopédie / Dino de Max, Histoires, WexWorld, Wex, Narrateur H/F, Fiche dino = Texte fiche + Script audio + Audio, Paléoart / Hero / Sprite / Silhouette / Coloriage / Trace / Avatar). Un autre mot pour la même chose est une dérive à corriger. Pourquoi : relevé du 2026-09-04 sur 71 docs — jusqu'à 5 noms pour le Script audio, 3 graphies pour les narrateurs, deux WexWorld.
+
+### D-007 — Le repo est un dépôt de code, pas un entrepôt (2026-09-12)
+
+Les binaires tiers sous droits (12 livres audio commerciaux, enregistrement Gérard Philipe, ~290 Mo) sont supprimés sans copie ; `_archive/` sort du repo vers `C:\ProjetsPerso\MaxPlay-vault\` (zip daté, index conservé dans `docs/ARCHIVES.md`) ; l'historique git est réécrit une fois par `git filter-repo` en fin de refonte (force-push, seul clone = machine de dev + runner CI). Papa Yann a tranché les trois points explicitement. Pourquoi : audit du jour — 3,82 Go de pack pour 2,2 Go de tree, `content/inbox/` versionné, `_archive` = 46 % des fichiers, risque juridique sur un repo dont une partie est publiée.
+
+### D-008 — Quatre natures de fichiers, quatre lieux (2026-09-12)
+
+Source (texte canon, JSON, md, scripts) dans `studio/<pôle>/content/` et `scripts/` ; généré dans `site/js/gen/` avec en-tête « GÉNÉRÉ par … » et régénéré par `npm run build` ; artefact déployé dans `site/` sans brouillon ni staging ; transit, brut et archive hors repo (vault). Un seul `package.json` racine expose `build · check · test · gc`. Pourquoi : 14 fichiers « générés » indiscernables du code écrit main, générateurs éparpillés dans 4 dossiers, staging livré en prod.
+
+### D-009 — Une fiche canon par dino (2026-09-12)
+
+`studio/dino/content/dinos/<id>.json` devient la source unique ; `dinos-data.js` est généré, l'en-tête chiffré des scripts audio est généré, un contrôle data ↔ narré échoue si un nombre du texte diverge de la fiche. Pourquoi : le même fait vivait en 4 copies (data, en-tête md, corps md, JSON segment) × 4 langues, sans propagation ni détection ; `dinos-data.js` était le seul maillon de la chaîne non outillé.
+
+### D-010 — Supabase gardé, réduit à ce qui sert (2026-09-12)
+
+On garde `pings`, `annotations`, `consents`, l'auth magic link et `cloud.js` tel quel ; `feedback` et `tile_refs` sont supprimées (migration 013) ; `child_state` et `game_sessions` restent câblées à coût nul. Pas de bascule tout-localStorage : elle casserait les deux seules boucles montantes qui servent (télémétrie, annotations tablette → atelier). Pourquoi : 4 tables sur 11 ont des données, `cloud.js` n'est chargé que par 5 pages, l'architecture est déjà local-first.
+
+### D-011 — Narration hors périmètre de la refonte GED (2026-09-12)
+
+Ni les 10 agents narration, ni `studio/narration/**`, ni `site/lecture*.{html,js}` ne sont touchés par la refonte. Papa Yann : « on laisse tranquille narration, c'est pas le sujet là ». Pourquoi : le pôle est propre sur la forme et bloqué sur un goulot humain (étape 5), pas sur sa structure.
+
+### D-012 — Livrer un mini-jeu est un process contrôlé, pas 13 gestes (2026-09-12)
+
+Un gabarit source `site/_template/mj-template.html`, un catalogue qui pilote le Mur (`mur.js` sans aucun id en dur), et un `check-mj-coherence` bloquant en CI qui vérifie html + figée + spec + i18n ×4 + référentiel pour chaque jeu du catalogue. Pourquoi : `mj-58` supprimé vivait encore dans `mur.js` un mois après, 9 jeux vivants étaient absents du Mur, les jeux de référence `mj-gold-*` avaient été détruits sans remplaçant.

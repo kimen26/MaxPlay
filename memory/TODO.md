@@ -9,7 +9,7 @@ Audit : `memory/audits/2026-09-12-archi-ged-site-studio.md`. Décisions : D-007 
 
 | Vague | Handoff | Résultat observable (DoD) | Statut |
 |---|---|---|---|
-| 0 | HO-R00 (orchestrateur) | plus de binaire tiers ni d'archive dans le tree, gitignore générique, branches mortes supprimées, migration 013 appliquée | à faire |
+| 0 | HO-R00 (orchestrateur) | plus de binaire tiers ni d'archive dans le tree, gitignore générique, branches mortes supprimées, migration 013 appliquée | fait |
 | 1 | HO-R01 minijeux docs GC | 0 ref `pmo/`, 0 lien md mort, 36/36 figées, scripts dino rendus, mockups supprimés | à faire |
 | 1 | HO-R02 minijeux mémoire | LESSONS ≤ 20 Ko, TODO ≤ 8 Ko, 0 L-NNN perdu | à faire |
 | 1 | HO-R03 dino mémoire + dé-triplication | mêmes tailles, chaque règle dans un seul fichier, handoffs dino archivés, 45 Mo de refs supprimés | à faire |

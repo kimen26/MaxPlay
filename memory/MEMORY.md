@@ -23,7 +23,7 @@ Vision produit : `memory/VISION.md`.
 
 ## Chantiers en cours
 
-- Refonte infra Claude (mémoire, hooks, skills, agents) : lanes détaillées dans `memory/TODO.md`.
+- Refonte GED site ↔ studio livrée le 2026-09-12 (audit de clôture : `memory/audits/2026-09-12-cloture-refonte-ged.md`). Reste : backlog post-refonte dans `memory/TODO.md` (i18n dino, scripts ElevenLabs, galerie grok/wiki, second tour de purge d'historique si le pack doit descendre sous 1,2 Go).
 - Multilingue dino (EN/ES/PT-BR) : avance fiche par fiche, voir commits `feat(dino-i18n)`.
 - Registre de contenu transverse (dette/dérive texte-audio) : `studio/referentiel/README.md`.
 

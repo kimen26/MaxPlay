@@ -31,3 +31,12 @@ Premiers pas multilingue (noms de dinos doublés en 12 langues, plomberie i18n d
 ## v0.9 — 2026-09 (en cours)
 
 Interface et menu de l'encyclopédie dino traduits (anglais, espagnol, portugais du Brésil), 71e dino (Scelidosaure).
+
+Refonte GED (2026-09-12, HO-R00 à HO-R99) — ce que le parent et Max voient de plus :
+- L'application s'ouvre **hors ligne** : le menu et les jeux déjà visités se chargent sans réseau (service worker, page de secours).
+- **9 jeux qui existaient mais n'apparaissaient pas au Mur** sont de retour (36 jeux visibles) ; un jeu supprimé ne peut plus y rester par oubli.
+- Les fiches dino se chargent **plus vite** : images en webp (−75 Mo), sons tiers sous droits retirés et remplacés par des sons libres.
+- Le repo se clone en 2,65 Go au lieu de 3,82 (historique réécrit, archives sorties dans un vault) ; une commande construit (`npm run build`), une vérifie (`npm run check`, bloquante en CI), une teste (`npm test`), une liste ce qui doit sortir (`npm run gc`).
+- Chaque dino a une **fiche canon** unique (`studio/dino/content/dinos/<id>.json`) dont tout le reste dérive ; un contrôle signale les chiffres du texte narré qui divergent.
+- Packs Lunii reconstruits par un seul moteur ; mémoire des pôles jeu et dino remise à plat (leçons archivées, rien de perdu).
+

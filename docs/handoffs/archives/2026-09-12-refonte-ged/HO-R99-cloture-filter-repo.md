@@ -1,6 +1,6 @@
 # HO-R99 — Clôture : `git filter-repo`, force-push, CHANGELOG, audit de clôture
 
-**Statut :** pret
+**Statut :** fait
 **Depend de :** toutes les lanes HO-R00 à HO-R14 `fait`
 **Vague :** 6 · **Exécutant :** orchestrateur
 

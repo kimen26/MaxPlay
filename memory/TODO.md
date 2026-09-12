@@ -3,7 +3,7 @@
 > Ouverture/fermeture de chantier. Les lanes livrées se vident dans `CHANGELOG.md`.
 > Détail d'exécution = dans le handoff (`docs/handoffs/HO-xxx.md`), jamais ici. Règles d'orchestration et registre : `docs/handoffs/README.md`. Remis à plat le 2026-09-12 : la refonte infra 2026-09-03 est livrée et archivée (`docs/handoffs/archives/2026-09-03-refonte-infra/`).
 
-## CHANTIER EN COURS — Refonte GED site ↔ studio (ouvert 2026-09-12)
+## CHANTIER CLOS — Refonte GED site ↔ studio (ouvert et livré le 2026-09-12, clôture : `memory/audits/2026-09-12-cloture-refonte-ged.md`)
 
 Audit : `memory/audits/2026-09-12-archi-ged-site-studio.md`. Décisions : D-007 à D-012. Un handoff par lane, exécuté par un sous-agent Sonnet sauf mention ; l'orchestrateur commite chaque vague avant d'ouvrir la suivante. **Definition of done d'une lane** : ses portes passent, son rapport est dans `docs/handoffs/rapports/`, l'orchestrateur a relu le `git status`, la vague est commitée, le handoff descend dans `docs/handoffs/archives/2026-09-12-refonte-ged/`.
 
@@ -23,7 +23,7 @@ Audit : `memory/audits/2026-09-12-archi-ged-site-studio.md`. Décisions : D-007 
 | 4 | HO-R04 hooks + agents | 1 processus par événement hook, tests hooks verts, agents JEU/DINO tranchés | fait |
 | 5 | HO-R13 WebP | −150 Mo sur `site/img/dinos`, 0 image cassée, règle poids dans `check` | fait |
 | 5 | HO-R14 routine `npm run gc` | premier rapport gc produit en < 60 s, 0 faux positif audio | fait |
-| 6 | HO-R99 (orchestrateur) | pack git < 1,2 Go, Pages vert après force-push, CHANGELOG + audit de clôture, crons supprimés | à faire |
+| 6 | HO-R99 (orchestrateur) | pack git < 1,2 Go, Pages vert après force-push, CHANGELOG + audit de clôture, crons supprimés | fait |
 
 Reliquats absorbés : INDEX minijeux (R01) · pages `speechSynthesis` brut (R10) · commentaires obsolètes `mj-46.html:40`, `mj-50.html:90`, `avatar-picker.js:5,16` (R10) · dérive `aenocyon-taille` (R12) · scripts dino dans minijeux (R01).
 
@@ -37,6 +37,10 @@ Reliquats absorbés : INDEX minijeux (R01) · pages `speechSynthesis` brut (R10)
 - [ ] Nom de domaine (~10 €/an). Resend SMTP + template `{{ .Token }}` bloqué par la config SMTP custom.
 
 ## Backlog post-refonte (à ouvrir après la vague 6)
+
+- [ ] GIT : second tour `git filter-repo` si le pack (2,65 Go) doit descendre sous 1,2 Go — purger les anciennes versions d'assets `site/audio/dinos`, `site/img/dinos/paleoart` (décision Papa Yann : on perd l'historique des régénérations).
+- [ ] DINO : 4 écarts data ↔ narré listés par `check-coherence-data-narre` (edmontonia, hatzegopteryx, titanis) : corriger le narré ou la fiche, puis passer le contrôle en bloquant.
+- [ ] JEU : `site/js/i18n/*.js` (9 bundles générés) à descendre dans `site/js/gen/`.
 
 - [ ] DINO : `i18n.config.json` + brancher `~/.claude/skills/i18n-contenu/scripts/check-i18n.mjs`.
 - [ ] DINO : migrer `dino-images-lunii/scripts/{gpt-gen,gpt-gen-dino,grok-gen-dino}.mjs` sur `browser-pilot` (bug qualité Grok, bouton Télécharger).

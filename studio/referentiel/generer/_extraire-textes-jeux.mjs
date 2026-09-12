@@ -20,6 +20,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { SITE } from '../lib/socle.mjs';
 
 /** Chaînes JS littérales d'un fragment, apostrophes échappées comprises. */
@@ -100,7 +101,7 @@ for (const fichier of fs.readdirSync(SITE).filter((f) => /^mj-.*\.html$/.test(f)
 }
 
 fs.writeFileSync(
-  path.join(path.dirname(new URL(import.meta.url).pathname.slice(1)), '..', 'textes-jeux.json'),
+  path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'textes-jeux.json'),
   `${JSON.stringify(resultat, null, 2)}\n`, 'utf8',
 );
 

@@ -3,7 +3,7 @@
 > Décisions verrouillées par Papa Yann. Le hook `figees-injector` réinjecte ce fichier dès qu'on touche `dev-dinos.html`, `dinos-data.js`, un audio `recit-*`/`menu-*`, ou un fichier de `dino/`.
 > Chaque ligne 🔒 est LOI. Chaque ligne ❌ 🔒 est une régression DÉJÀ commise — interdite. Seul Papa Yann défige (alerte rouge obligatoire avant tout changement d'une ligne 🔒).
 
-Fichiers concernés : [`site/dev-dinos.html`](../../../site/dev-dinos.html) · [`site/js/dinos-data.js`](../../../site/js/dinos-data.js) · [`site/audio/dinos/`](../../../site/audio/dinos/) · source dialogue **canon** [`RECITS-EPOQUES.md`](../content/sources/recits/RECITS-EPOQUES.md) (ex-V5, renommé canon-sans-numéro 2026-07-03 DEC-GED-001 ; anciennes versions dans `recits/_archive/`).
+Fichiers concernés : [`site/dev-dinos.html`](../../../site/dev-dinos.html) · [`site/js/gen/dinos-data.js`](../../../site/js/gen/dinos-data.js) · [`site/audio/dinos/`](../../../site/audio/dinos/) · source dialogue **canon** [`RECITS-EPOQUES.md`](../content/sources/recits/RECITS-EPOQUES.md) (ex-V5, renommé canon-sans-numéro 2026-07-03 DEC-GED-001 ; anciennes versions dans `recits/_archive/`).
 
 ---
 

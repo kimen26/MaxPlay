@@ -68,26 +68,7 @@ const FAMILLES = [
  * d'autres dormants : tous restent volontairement hors enrôlement.
  */
 const ORPHELINS_ASSUMES = [
-  'sounds/among-us-role-reveal-sound.mp3',
-  'sounds/ff7_victory.mp3',
-  'sounds/freesound_community-bus-doors-sound-effect-44034.mp3',
-  'sounds/freesound_community-bus-pop-85054.mp3',
-  'sounds/Gagné.mp3',
-  'sounds/honk-sound.mp3',
-  'sounds/mario coin hit.mp3',
-  'sounds/maro-jump-sound-effect_1.mp3',
-  'sounds/motus-boule-noire_cTY2JG4.mp3',
-  'sounds/perdu.mp3',
-  'sounds/perfect-fart.mp3',
-  'sounds/pew.mp3',
-  'sounds/pikachu_mw38Ry2.mp3',
-  'sounds/pikachu_scream.mp3',
-  'sounds/pokemon lvl up.mp3',
-  'sounds/ratp-jingle.mp3',
-  'sounds/sncf-france-jingle.mp3',
-  'sounds/super-mario-coin-sound.mp3',
-  'sounds/victory-mario-series-hq-super-smash-bros.mp3',
-  'sounds/zelda-tresor.mp3',
+  // Vidée le 2026-09-12 (HO-R07 / HO-R14) : les 20 rips sous droits ont été supprimés du site.
 ];
 
 function listerMp3(base, prefixe = '') {

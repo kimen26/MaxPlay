@@ -41,7 +41,7 @@
 | Quoi | Où |
 |------|-----|
 | **UI / code** (déployé GitHub Pages) | [`../site/dev-dinos.html`](../../site/dev-dinos.html) |
-| **Données dinos** (source de vérité) | [`../site/js/dinos-data.js`](../../site/js/dinos-data.js) |
+| **Données dinos** (source de vérité) | [`../site/js/gen/dinos-data.js`](../../site/js/gen/dinos-data.js) |
 | **Audio** (récits, menus, fiches) | [`../site/audio/dinos/`](../../site/audio/dinos/) |
 | **Images** (fiches déployées) | [`../site/img/dinos/`](../../site/img/dinos/) |
 | **Images paléoart APP couleur** | PROD = [`../site/img/dinos/paleoart/`](../../site/img/dinos/paleoart/). Complétude → [`memory/_ETAT-DINOS.md`](memory/_ETAT-DINOS.md) généré. |

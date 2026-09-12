@@ -57,3 +57,37 @@ Le nombre de liens cassés APRÈS doit être ≤ le nombre AVANT (mesurer les de
 ## Addendum 2026-09-03 (post HO-G02)
 - `memory/DOCTRINE.md` racine n'existe plus : son contenu est dans `memory/DECISIONS.md § Doctrine`. Tout pointeur vers `memory/DOCTRINE.md` dans un fichier VIVANT du pôle (INVARIANTS, INDEX, CLAUDE.md, TODO…) est corrigé ; dans une archive, non.
 - `memory/ARCHI-REFERENTIEL-CONTENU.md` est désormais `studio/referentiel/docs/ARCHI-REFERENTIEL-CONTENU.md` : même règle.
+
+## Rotation — `npm run gc` (HO-R14, 2026-09-12)
+
+`memory/DOCTRINE.md` a été recréé (campagne refonte GED 2026-09-12) : la note ci-dessus disant
+qu'il n'existe plus est désormais périmée mais reste verbatim (archive, on ne réécrit pas
+l'histoire). Cette section-ci est normative et vaut pour aujourd'hui.
+
+`node scripts/gc.mjs` (`npm run gc`) est la routine de garbage collection en lecture seule qui
+applique la règle « une correction humaine gravée doit rester visible, un oubli ne doit pas
+s'accumuler ». Elle liste, sans jamais rien supprimer :
+
+- handoffs marqués `fait` (registre et/ou statut interne) mais encore hors `archives/`,
+- `LESSONS.md` / `TODO.md` de pôle > 20 Ko (seuil de rotation, cf. `~/.claude/rules/memoire-projet.md`),
+- `tests/**/.artifacts/` de plus de 14 jours,
+- `inbox/` de plus de 48h (narration signalée mais hors périmètre tant que D-011 tient),
+- liens markdown cassés (réutilise `studio/minijeux/scripts/check-liens-md.mjs`),
+- images `site/img/**` dont le basename (ou le radical, pour les dossiers qui construisent le
+  nom par pattern comme `plantes/` et `paleoart/`) n'apparaît dans aucun `.js/.html/.json/.md`,
+- audio `site/audio/dinos/**` hors du produit cartésien fiche × suffixe (`-nom`, `-funfact`,
+  `-recap`, `-regime`, `-taille`) × langue — les familles transverses (`menu-`, `recit-`, `ere-`,
+  `dico-`, `special-`) sont comptées à part, elles ne sont pas des anomalies,
+  branches git mortes (information seule, aucune commande d'écriture).
+
+Sortie : `memory/audits/gc-<date>.md`, un rapport par jour d'exécution (pas de rotation dédiée à
+ces rapports pour l'instant — ils sont petits ; à revoir si leur nombre devient gênant). Le script
+s'exclut lui-même du corpus de recherche des sections images/liens pour ne jamais se lire en
+boucle.
+
+`--fix` ne fait que deux déplacements sûrs, jamais de suppression de contenu : handoffs `fait`
+(registre + statut interne) déplacés vers `docs/handoffs/archives/_gc-<date>/`, et purge des
+fichiers de `.artifacts/` de plus de 14 jours (captures de test jetables — seule exception
+explicite à « le script ne supprime jamais rien », parce que ce ne sont pas des données produit).
+Tout le reste (LESSONS/TODO trop gros, images/audio orphelins, liens cassés) reste à la décision
+humaine : le script les signale, ne les déplace pas.

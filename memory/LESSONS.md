@@ -45,3 +45,7 @@ Comment appliquer : la TODO et la definition of done vivent dans `memory/TODO.md
 ## L-009 — Une suppression hors liste a cassé quatre jeux, et la porte du brief ne pouvait pas le voir (2026-09-12, HO-R07)
 Quoi : l'exécutant devait supprimer `site/design-shared/mockup.{css,js}` et a emporté tout `design-shared/` avec les polices `Cursif*.ttf`, chargées par `mj-50..53` et `mur.css`. Ses portes (grep sur des noms de rips, Playwright sur 4 jeux ciblés) étaient vertes ; seul le `run-all` transverse de l'orchestrateur a vu les 4 FAIL.
 Comment appliquer : avant toute suppression, l'exécutant grep le NOM DU DOSSIER parent, pas seulement les fichiers listés ; l'orchestrateur rejoue `run-all.mjs` complet avant chaque commit de vague, jamais un sous-ensemble. Un brief qui liste `mockup.*` n'autorise pas le dossier qui les contient.
+
+## L-010 — Changer une extension d'image casse tout ce qui la dérive par regex (2026-09-12, HO-R13)
+Quoi : la conversion paléoart/sprites en webp était verte partout (fiches, dev-dinos, build-pack, check) mais 5 mini-jeux dino sont tombés : `dinos-ombres.js`, `mj-15`, `mj-30` dérivaient `Nom_ombre.png` depuis `d.png` avec `/\.(jpg|png)$/` — l'extension `.webp` n'était plus retirée, le chemin devenait `Nom.webp_ombre.png`.
+Comment appliquer : avant de changer un format de fichier, grep les regex d'extension (`(jpg|png)`, `.replace(/\.jpg`) dans `site/**` et `studio/**`, pas seulement les chemins en dur ; et la porte transverse reste `npm test` complet, jamais « dev-dinos 0 image cassée » seul.

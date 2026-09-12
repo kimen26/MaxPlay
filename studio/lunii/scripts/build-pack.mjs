@@ -241,9 +241,14 @@ function buildDinos(cfg, testMode) {
       const uuidFiche = idToUuid(`${salt}dino-fiche:${d.slug}`);
 
       const dinoImgProvided = join(IMG_LUNII_DINOS, `${d.slug}.png`);
+      const dinoImgFallbackBase = join(IMG_WEB, d.slug.charAt(0).toUpperCase() + d.slug.slice(1));
       const dinoImgSrc = existsSync(dinoImgProvided)
         ? dinoImgProvided
-        : join(IMG_WEB, d.slug.charAt(0).toUpperCase() + d.slug.slice(1) + ".jpg");
+        // paleoart/ est en webp depuis HO-R13 (2026-09-12) ; .jpg gardé en repli si jamais
+        // une source plus ancienne traîne encore (ne devrait plus arriver).
+        : existsSync(`${dinoImgFallbackBase}.webp`)
+          ? `${dinoImgFallbackBase}.webp`
+          : `${dinoImgFallbackBase}.jpg`;
       const dinoImgPath = buildImage(tmp, dinoImgSrc, `dino-${d.slug}.png`, { pad: "black" });
       const dinoImg = addAsset(tmp, dinoImgPath, ".png");
       const nomAudio = masterAudio(tmp, join(A_NOMS, `nom-${d.slug}.mp3`), `nom-${d.slug}.mp3`);

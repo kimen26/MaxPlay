@@ -182,7 +182,7 @@
       {id:'coelodonta',name:'Rhino laineux',taille_m:3.5,hauteur_m:1.9,poids_t:2.5,png:'Coelodonta.jpg'},
       {id:'titanis',name:'Titanis',taille_m:1.9,hauteur_m:1.9,poids_t:0.3,png:'Titanis.jpg'},
     ];
-    function shadowSrc(d){ return 'img/dinos/ombres/' + d.png.replace(/\.(jpg|png)$/i,'') + '_ombre.png'; }
+    function shadowSrc(d){ return 'img/dinos/ombres/' + d.png.replace(/\.(jpg|png|webp)$/i,'') + '_ombre.png'; }
 
     document.title = 'MJ-30 – ' + MJi18n.titre('mj-30', 'Range-les par taille');
 

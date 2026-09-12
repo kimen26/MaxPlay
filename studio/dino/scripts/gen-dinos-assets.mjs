@@ -29,9 +29,9 @@ for (const f of dir('img/dinos/ombres')) {
   if (m) A(m[1]).ombre = 'img/dinos/ombres/' + f;
 }
 for (const f of dir('img/dinos/sprites')) {
-  let m = f.match(/^([A-Z][A-Za-z]+)_sprite\.png$/);
+  let m = f.match(/^([A-Z][A-Za-z]+)_sprite\.(png|webp)$/);
   if (m) { A(m[1]).sprite = 'img/dinos/sprites/' + f; continue; }
-  m = f.match(/^([A-Z][A-Za-z]+)_tete\.png$/);
+  m = f.match(/^([A-Z][A-Za-z]+)_tete\.(png|webp)$/);
   if (m) A(m[1]).tete = 'img/dinos/sprites/' + f;
 }
 for (const f of dir('img/dinos/paleoart')) {

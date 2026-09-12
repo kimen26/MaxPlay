@@ -135,7 +135,7 @@ node .claude/skills/dino-images-lunii/scripts/batch-dino-series.mjs <id1> <id2> 
 
 **Déploiement** (format figé) :
 ```bash
-ffmpeg -y -i <png> -q:v 4 site/img/dinos/paleoart/<Nom>.jpg -loglevel error
+ffmpeg -y -i <png> -c:v libwebp -quality 80 site/img/dinos/paleoart/<Nom>.webp -loglevel error   # livrable = webp (HO-R13), jamais de png/jpg > 300 Ko dans site/
 ```
 Puis vider `_new-xxl/` **après avoir vérifié la contrepartie prod** (règle 2026-07-19 : staging = inbox, pas entrepôt).
 

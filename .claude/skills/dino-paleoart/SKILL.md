@@ -78,6 +78,12 @@ Les mesures génériques ne suffisent pas : il faut **marteler la silhouette rec
 ## 🎨 IDENTITÉ VISUELLE — OSER (leçon 2026-06-19)
 « Colorée plausible » est trop timide → le modèle fait du brun-gris fade. Demander une livrée **ORIGINALE et marquante**, plutôt colorée mais crédible (inspiration vivant réel : faisan, casoar, varan, okapi, oiseaux de paradis). Couleur principale affirmée + ventre clair + secondaire de contraste + motifs nets (bandes, taches, ocelles, marques faciales) + **couleurs de parade nuptiale / signal social** (gorge, contour des yeux, crête). Naturel, jamais fluo/néon cartoon. Ex. validé Diplodocus : dos bleu ardoise à ocelles dorées + masque oculaire rouge. Auto-injecté par `scaleSentence`→`livree` dans `batch-dino-series.mjs`, cohérent sur les 5 scènes.
 
+## 🔒 Règle de poids (HO-R13, 2026-09-12) — livrable = webp, jamais de PNG/JPG > 300 Ko dans `site/`
+- Tout PNG/JPG produit pour `site/img/dinos/` (sprites **et** paléoart) doit être converti en **webp** avant d'entrer dans le repo (`ffmpeg -c:v libwebp -quality 80`, `-lossless 1` pour les sprites à fond transparent). Outil : `studio/dino/scripts/images/webp-convert.mjs <dossier> [--alpha]`.
+- **`paleoart/` est en webp depuis HO-R13 (2026-09-12)** : les 428 JPG ont été convertis (159,5 Mo → 110,8 Mo), le champ `png:` des 71 fiches canon (`studio/dino/content/dinos/<id>.json`) mis à jour pour pointer vers `.webp` (autorisation explicite orchestrateur, portée strictement limitée à l'extension du nom de fichier), puis `npm run build` a régénéré `site/js/gen/dinos-data.js`. Toute image paléoart livrée désormais suit ce flux : générer → `webp-convert.mjs` → mettre à jour le champ `png:` de la fiche canon concernée → `npm run build`.
+- `npm run check` fait respecter la limite de poids sur `site/img/dinos/sprites/` **et** `site/img/dinos/paleoart/` (`studio/dino/scripts/images/check-poids-img.mjs`).
+- ⚠️ **`nouveau-dino` (skill)** prescrit encore une sortie `.jpg` pour le paléoart (`.claude/skills/nouveau-dino/SKILL.md`, hors périmètre HO-R13) — à mettre à jour en `.webp` pour ne pas réintroduire de JPG au prochain dino ajouté.
+
 ## Les 5 scènes (noyau MaxPlay) par dino
 | Fichier | Scène |
 |---|---|

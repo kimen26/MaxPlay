@@ -34,8 +34,8 @@ if (!dinoFiles.length) { console.error('Aucune fiche dino trouvée dans', DINOS_
 const dinos = dinoFiles.map((f) => {
   const doc = JSON.parse(fs.readFileSync(path.join(DINOS_DIR, f), 'utf8'));
   const id = doc.id;
-  const png = doc.png; // ex 'Tyrannosaurus.jpg'
-  const base = png ? png.replace(/\.jpg$/i, '') : id.charAt(0).toUpperCase() + id.slice(1);
+  const png = doc.png; // ex 'Tyrannosaurus.webp' (webp depuis HO-R13, 2026-09-12)
+  const base = png ? png.replace(/\.(jpg|webp)$/i, '') : id.charAt(0).toUpperCase() + id.slice(1);
   return {
     id, base,
     name: doc.name || id,
@@ -50,10 +50,10 @@ const SCENES = ['headshot', 'manger', 'paris', 'ecosysteme', 'funfact'];
 const SEGMENTS = ['nom', 'taille', 'regime', 'funfact', 'recap'];
 
 const rows = dinos.map((d) => {
-  const scenes = SCENES.filter((s) => has(paleoart(`${d.base}_${s}.jpg`)));
+  const scenes = SCENES.filter((s) => has(paleoart(`${d.base}_${s}.jpg`)) || has(paleoart(`${d.base}_${s}.webp`)));
   const segs = SEGMENTS.filter((s) => has(audio(`${d.id}-${s}.mp3`)));
   const axes = {
-    hero: has(paleoart(`${d.base}.jpg`)),
+    hero: has(paleoart(`${d.base}.jpg`)) || has(paleoart(`${d.base}.webp`)),
     paleoart: scenes.length === SCENES.length,
     coloriage: has(paleoart(`${d.base}_coloriage.webp`)),
     audio: segs.length === SEGMENTS.length,

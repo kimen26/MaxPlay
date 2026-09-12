@@ -5,10 +5,10 @@
   "description": "MaxPlay — jeu éducatif & univers narratif pour Max. Une commande régénère (build), une vérifie (check), une teste (test).",
   "scripts": {
     "build": "node studio/dino/content/scripts/export/_gen-dinos-data.cjs --with-header && node studio/minijeux/scripts/gen-avatars-manifest.mjs && node studio/dino/scripts/gen-dinos-assets.mjs && node studio/dino/content/scripts/export/_gen-audio-manifest.cjs && node studio/dino/content/scripts/images-grok/_gen-grok.cjs && node studio/dino/content/scripts/export/_gen-plantes.cjs && node studio/dino/content/scripts/export/_etymo2racines.cjs && node studio/dino/content/scripts/i18n/_gen-lexique-site.mjs && node studio/referentiel/generer/_gen-textes-site.mjs && node studio/minijeux/scripts/gen-sw-version.mjs",
-    "check": "node studio/dino/scripts/gen-dinos-assets.mjs --check && npm run --prefix studio/minijeux/tests mj:audit && node studio/minijeux/tests/check-mj-coherence.mjs && node studio/referentiel/build.mjs && node studio/minijeux/scripts/check-liens-md.mjs docs && (node studio/dino/content/scripts/export/check-coherence-data-narre.cjs || true)",
+    "check": "node studio/dino/scripts/gen-dinos-assets.mjs --check && node studio/dino/scripts/images/check-poids-img.mjs && npm run --prefix studio/minijeux/tests mj:audit && node studio/minijeux/tests/check-mj-coherence.mjs && node studio/referentiel/build.mjs && node studio/minijeux/scripts/check-liens-md.mjs docs && (node studio/dino/content/scripts/export/check-coherence-data-narre.cjs || true)",
     "test": "npm run --prefix studio/minijeux/tests mj:all",
     "test:mj": "npm run --prefix studio/minijeux/tests mj:test --",
-    "gc": "echo 'gc : réservé HO-R14, pas encore implémenté' && exit 1"
+    "gc": "node scripts/gc.mjs"
   },
   "devDependencies": {
     "playwright": "^1.60.0"

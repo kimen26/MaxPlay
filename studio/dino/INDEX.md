@@ -8,7 +8,7 @@
 | Quoi | Fichier |
 |------|---------|
 | UI encyclopédie (4 onglets) | [`../site/dev-dinos.html`](../../site/dev-dinos.html) |
-| Données dinos + familles + échelle (source de vérité) | [`../site/js/dinos-data.js`](../../site/js/dinos-data.js) |
+| Données dinos + familles + échelle (source de vérité) | [`../site/js/gen/dinos-data.js`](../../site/js/gen/dinos-data.js) |
 | Racines dico (généré, onglet Le dico) | [`../site/js/dinos-racines.js`](../../site/js/dinos-racines.js) |
 | Audio (récits + menus + spéciaux + fiches dino) | [`../site/audio/dinos/`](../../site/audio/dinos/) |
 | Images dino | [`../site/img/dinos/`](../../site/img/dinos/) |
@@ -64,7 +64,7 @@
 
 ## État
 
-> **DEC-GED-001** : cet INDEX ne cite aucun count en dur (un chiffre recopié ment). Chiffres → [`memory/INVARIANTS.md`](memory/INVARIANTS.md) (tracker) · source produit → [`../../site/js/dinos-data.js`](../../site/js/dinos-data.js). État de complétude par dino → outil [`memory/_ETAT-DINOS.md`](memory/_ETAT-DINOS.md) (généré, `/dino-pmo-audit`).
+> **DEC-GED-001** : cet INDEX ne cite aucun count en dur (un chiffre recopié ment). Chiffres → [`memory/INVARIANTS.md`](memory/INVARIANTS.md) (tracker) · source produit → [`../../site/js/gen/dinos-data.js`](../../site/js/gen/dinos-data.js). État de complétude par dino → outil [`memory/_ETAT-DINOS.md`](memory/_ETAT-DINOS.md) (généré, `/dino-pmo-audit`).
 
 - **Compte dinos · familles · régimes** → [`memory/INVARIANTS.md`](memory/INVARIANTS.md).
 - Familles : titres = noms scientifiques (table clé↔libellé dans INVARIANTS). 4 régimes alimentaires.

@@ -13,6 +13,11 @@
 
 `brouillon` → `pret` → `en cours` (agent lancé) → `rapport reçu` (dans `rapports/HO-xxx.md`) → `fait` (portes rejouées par l'orchestrateur, vague commitée) → déplacé dans `archives/<campagne>/`. La colonne Statut de `memory/TODO.md` est mise à jour à chaque transition ; le champ Statut du fichier aussi (les deux doivent toujours dire la même chose).
 
+`npm run gc` (HO-R14, `scripts/gc.mjs`) signale automatiquement les handoffs `fait` des deux côtés
+mais encore hors `archives/` : la dernière transition du cycle (le déplacement) est le seul
+oubli que la routine détecte pour ce fichier — elle ne remplace pas la relecture humaine des
+statuts intermédiaires. Détail de la routine complète : `memory/DOCTRINE.md § Rotation`.
+
 ## Campagne en cours — Refonte GED site ↔ studio (2026-09-12)
 
 Audit : `memory/audits/2026-09-12-archi-ged-site-studio.md`. Décisions : `memory/DECISIONS.md` D-007 à D-012. État : `memory/TODO.md`.

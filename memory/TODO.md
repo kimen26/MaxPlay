@@ -21,8 +21,8 @@ Audit : `memory/audits/2026-09-12-archi-ged-site-studio.md`. Décisions : D-007 
 | 4 | HO-R12 fiche canon dino | `dinos-data.js` généré octet pour octet, check data ↔ narré produit sa liste | fait |
 | 4 | HO-R11 service worker | menu et un jeu s'ouvrent hors ligne (captures), manifest sur 44 pages | fait |
 | 4 | HO-R04 hooks + agents | 1 processus par événement hook, tests hooks verts, agents JEU/DINO tranchés | fait |
-| 5 | HO-R13 WebP | −150 Mo sur `site/img/dinos`, 0 image cassée, règle poids dans `check` | à faire |
-| 5 | HO-R14 routine `npm run gc` | premier rapport gc produit en < 60 s, 0 faux positif audio | à faire |
+| 5 | HO-R13 WebP | −150 Mo sur `site/img/dinos`, 0 image cassée, règle poids dans `check` | fait |
+| 5 | HO-R14 routine `npm run gc` | premier rapport gc produit en < 60 s, 0 faux positif audio | fait |
 | 6 | HO-R99 (orchestrateur) | pack git < 1,2 Go, Pages vert après force-push, CHANGELOG + audit de clôture, crons supprimés | à faire |
 
 Reliquats absorbés : INDEX minijeux (R01) · pages `speechSynthesis` brut (R10) · commentaires obsolètes `mj-46.html:40`, `mj-50.html:90`, `avatar-picker.js:5,16` (R10) · dérive `aenocyon-taille` (R12) · scripts dino dans minijeux (R01).

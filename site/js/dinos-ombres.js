@@ -27,7 +27,7 @@
   }
 
   function basenameOf(png) {
-    return (png || '').replace(/\.(jpg|jpeg|png)$/i, '');
+    return (png || '').replace(/\.(jpg|jpeg|png|webp)$/i, '');
   }
 
   function ombreSrc(pngOrDino) {

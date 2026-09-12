@@ -6,13 +6,14 @@
 
 ---
 
-## 🔴 Dettes ouvertes — 94
+## 🔴 Dettes ouvertes — 96
 
 Une dette ne se résout **jamais toute seule** : un humain tranche entre
 `node studio/referentiel/acquitter.mjs <clé> <canal> --propage` (canal régénéré)
 et `… --sans-impact "raison"` (le changement de source ne remet pas le canal en cause).
 Base de référence : [`empreintes.json`](empreintes.json) (versionnée).
 
+- **dino.tyrannosaurus.regime** · canal `mp3` — script modifié le 2026-09-12, audio produit le 2026-09-05
 - **dino.spinosaurus.funfact** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
 - **dino.spinosaurus.funfact** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
 - **dino.spinosaurus.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
@@ -48,13 +49,12 @@ Base de référence : [`empreintes.json`](empreintes.json) (versionnée).
 - **dino.kentrosaurus.taille** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
 - **dino.kentrosaurus.taille** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
 - **dino.kentrosaurus.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.triceratops.regime** · canal `mp3` — script modifié le 2026-09-12, audio produit le 2026-09-05
 - **dino.triceratops.funfact** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
 - **dino.triceratops.funfact** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
 - **dino.triceratops.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
-- **dino.protoceratops.taille** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
-- **dino.protoceratops.taille** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
 
-_… et 54 autres — détail complet dans `registre.json`._
+_… et 56 autres — détail complet dans `registre.json`._
 
 ---
 
@@ -66,10 +66,10 @@ _… et 54 autres — détail complet dans `registre.json`._
 | — domaine DINO | 355 |
 | — domaine JEU | 569 |
 | Lignes suivies par le moteur de dette (clé × canal) | 639 |
-| 🔴 Dettes ouvertes | **94** |
+| 🔴 Dettes ouvertes | **96** |
 | Clés vérifiables automatiquement | 71 |
 | 🔴 Dérives de fait confirmées | **1** |
-| 🟠 Audio en retard sur son script | **0** |
+| 🟠 Audio en retard sur son script | **2** |
 | 🟡 Canaux manquants au contrat | 0 |
 | 🟡 Consignes lues sans voix réelle | 4 |
 | ⚪ Voix dont le texte verbatim n'est pas tracé | 167 |
@@ -88,7 +88,8 @@ Le MP3 a été produit avant la dernière modification réelle de son script.
 Comparaison sur les **dates de commit**, pas les dates de fichiers (un déplacement de dossier
 réécrit les secondes sans changer le contenu — s'y fier produirait des centaines de faux retards).
 
-_Aucun audio en retard._
+- **dino.tyrannosaurus.regime** — script 2026-09-12 · audio 2026-09-05
+- **dino.triceratops.regime** — script 2026-09-12 · audio 2026-09-05
 
 ## 🟡 Canaux manquants au contrat
 

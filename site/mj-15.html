@@ -278,7 +278,7 @@ function generatePuzzleF() {
 const SRC_DINOS = (typeof DINOS !== 'undefined') ? DINOS : [];
 const OMBRES_MJ15 = SRC_DINOS.filter(d => d.png && d.name && !d.png.includes('/'))
   .map(d => ({ id: d.id, name: d.name, regime: d.regime, epoque: d.epoque, famille: d.famille,
-               src: 'img/dinos/ombres/' + d.png.replace(/\.(jpg|png)$/i, '') + '_ombre.png' }));
+               src: 'img/dinos/ombres/' + d.png.replace(/\.(jpg|png|webp)$/i, '') + '_ombre.png' }));
 
 // Silhouettes = noir plein sur transparent : hue-rotate() n'a AUCUN effet sur du noir pur,
 // et mask-image est bloqué par CORS en local file:// (testé, cassé). Seule solution fiable :

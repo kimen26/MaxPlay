@@ -1,0 +1,562 @@
+{
+  "ere-ceno": {
+    "empreinte": "22187dbfcf47",
+    "repliques": 1,
+    "duree_s": 4.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:30:15.302Z"
+  },
+  "ere-meso": {
+    "empreinte": "48f138aedd8d",
+    "repliques": 1,
+    "duree_s": 7.2,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:30:26.305Z"
+  },
+  "ere-paleo": {
+    "empreinte": "66a341ec7dcc",
+    "repliques": 1,
+    "duree_s": 5.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:30:33.399Z"
+  },
+  "menu-dico": {
+    "empreinte": "8f3d8b73d3e9",
+    "repliques": 1,
+    "duree_s": 4.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:30:40.729Z"
+  },
+  "menu-epoques": {
+    "empreinte": "2b3240c3d765",
+    "repliques": 1,
+    "duree_s": 7.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:30:49.487Z"
+  },
+  "menu-fam-arme": {
+    "empreinte": "e2244383d53f",
+    "repliques": 1,
+    "duree_s": 9.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:30:59.267Z"
+  },
+  "menu-fam-bec": {
+    "empreinte": "0506cc0a25c1",
+    "repliques": 1,
+    "duree_s": 8.6,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:31:08.679Z"
+  },
+  "menu-fam-cornu": {
+    "empreinte": "ac1614e151e8",
+    "repliques": 1,
+    "duree_s": 10.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:31:19.051Z"
+  },
+  "menu-fam-cou_long": {
+    "empreinte": "2f97a6fd3130",
+    "repliques": 1,
+    "duree_s": 10.7,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:31:30.261Z"
+  },
+  "menu-fam-enaliosaures": {
+    "empreinte": "2380b5de7434",
+    "repliques": 1,
+    "duree_s": 11.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:31:41.529Z"
+  },
+  "menu-fam-mammiferes": {
+    "empreinte": "e3d6a2084088",
+    "repliques": 1,
+    "duree_s": 8.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:31:52.092Z"
+  },
+  "menu-fam-oiseaux": {
+    "empreinte": "9f5d56817375",
+    "repliques": 1,
+    "duree_s": 7.7,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:32:01.627Z"
+  },
+  "menu-fam-pterosaures": {
+    "empreinte": "9de5eebc667d",
+    "repliques": 1,
+    "duree_s": 12,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:32:12.855Z"
+  },
+  "menu-fam-raptor": {
+    "empreinte": "eb838eb648dc",
+    "repliques": 1,
+    "duree_s": 9.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:32:22.804Z"
+  },
+  "menu-fam-trex": {
+    "empreinte": "b4d5d79da0d9",
+    "repliques": 1,
+    "duree_s": 9.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:32:36.360Z"
+  },
+  "menu-fam-volant": {
+    "empreinte": "3e65fd0207d6",
+    "repliques": 1,
+    "duree_s": 9.2,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:32:47.036Z"
+  },
+  "menu-familles": {
+    "empreinte": "b7a6708b5725",
+    "repliques": 1,
+    "duree_s": 1.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:32:51.780Z"
+  },
+  "menu-regime-carnivores": {
+    "empreinte": "b664c9229005",
+    "repliques": 1,
+    "duree_s": 10.4,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:33:02.183Z"
+  },
+  "menu-regime-herbivores": {
+    "empreinte": "ad24ec83b8b8",
+    "repliques": 1,
+    "duree_s": 12.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:33:13.720Z"
+  },
+  "menu-regime-omnivores": {
+    "empreinte": "a2368f432dc1",
+    "repliques": 1,
+    "duree_s": 11.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:33:23.484Z"
+  },
+  "menu-regime-piscivores": {
+    "empreinte": "d12a541a4b6f",
+    "repliques": 1,
+    "duree_s": 8.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:33:31.420Z"
+  },
+  "menu-regime": {
+    "empreinte": "c9732326b58d",
+    "repliques": 1,
+    "duree_s": 7,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:33:38.731Z"
+  },
+  "menu-voyage": {
+    "empreinte": "93a77990ba8c",
+    "repliques": 1,
+    "duree_s": 9.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:33:47.618Z"
+  },
+  "dico-a": {
+    "empreinte": "387ccbf4f1f4",
+    "repliques": 2,
+    "duree_s": 12.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:34:16.390Z"
+  },
+  "dico-acro": {
+    "empreinte": "087b510a27cc",
+    "repliques": 2,
+    "duree_s": 10.2,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:34:28.091Z"
+  },
+  "dico-aeno": {
+    "empreinte": "3d4ac53346bc",
+    "repliques": 2,
+    "duree_s": 11.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:34:41.579Z"
+  },
+  "dico-alberto": {
+    "empreinte": "7596389ac5e5",
+    "repliques": 2,
+    "duree_s": 13.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:34:55.285Z"
+  },
+  "dico-allo": {
+    "empreinte": "a79feb1bd109",
+    "repliques": 2,
+    "duree_s": 9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:35:06.932Z"
+  },
+  "dico-amarga": {
+    "empreinte": "d0122680546b",
+    "repliques": 2,
+    "duree_s": 14.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:35:19.367Z"
+  },
+  "dico-an": {
+    "empreinte": "791a66e2109c",
+    "repliques": 2,
+    "duree_s": 10.2,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:35:30.855Z"
+  },
+  "dico-anky": {
+    "empreinte": "428e868296b2",
+    "repliques": 2,
+    "duree_s": 10.2,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:35:42.090Z"
+  },
+  "dico-apato": {
+    "empreinte": "9964d620ffc2",
+    "repliques": 2,
+    "duree_s": 11.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:35:53.944Z"
+  },
+  "dico-arch": {
+    "empreinte": "b9c340ec27dd",
+    "repliques": 2,
+    "duree_s": 8.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:36:05.296Z"
+  },
+  "dico-archaeo": {
+    "empreinte": "63a5c260d251",
+    "repliques": 2,
+    "duree_s": 9.4,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:36:16.882Z"
+  },
+  "dico-bary": {
+    "empreinte": "5d76bf0145d3",
+    "repliques": 2,
+    "duree_s": 8.2,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:36:28.354Z"
+  },
+  "dico-brachio": {
+    "empreinte": "832d846a640b",
+    "repliques": 2,
+    "duree_s": 9.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:36:40.168Z"
+  },
+  "dico-camara": {
+    "empreinte": "d9e7fff09a77",
+    "repliques": 2,
+    "duree_s": 10.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:36:52.939Z"
+  },
+  "dico-cantho": {
+    "empreinte": "00a82c611395",
+    "repliques": 2,
+    "duree_s": 9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:37:03.957Z"
+  },
+  "dico-carcharo": {
+    "empreinte": "3d864fa5f864",
+    "repliques": 2,
+    "duree_s": 9.7,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:37:15.686Z"
+  },
+  "dico-carno": {
+    "empreinte": "9cf32ef111e3",
+    "repliques": 2,
+    "duree_s": 10.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:37:27.273Z"
+  },
+  "dico-cephale": {
+    "empreinte": "1a329eeb7a08",
+    "repliques": 2,
+    "duree_s": 12,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:37:40.389Z"
+  },
+  "dico-ceras": {
+    "empreinte": "ae5b088612f4",
+    "repliques": 2,
+    "duree_s": 12.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:37:52.974Z"
+  },
+  "dico-cerat": {
+    "empreinte": "541b68d656a3",
+    "repliques": 2,
+    "duree_s": 9.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:38:04.454Z"
+  },
+  "dico-coelo": {
+    "empreinte": "5d7278e49c20",
+    "repliques": 2,
+    "duree_s": 8.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:38:14.820Z"
+  },
+  "dico-compso": {
+    "empreinte": "517f1bcdab23",
+    "repliques": 2,
+    "duree_s": 8.7,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:38:25.711Z"
+  },
+  "dico-corytho": {
+    "empreinte": "206b6ce6dfe6",
+    "repliques": 2,
+    "duree_s": 8.4,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:38:36.260Z"
+  },
+  "dico-cryo": {
+    "empreinte": "5cfbe3d8248b",
+    "repliques": 2,
+    "duree_s": 10.2,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:38:47.781Z"
+  },
+  "dico-cyon": {
+    "empreinte": "1d50f5292a9f",
+    "repliques": 2,
+    "duree_s": 9.7,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:38:59.062Z"
+  },
+  "dico-deino": {
+    "empreinte": "2a41102c91d5",
+    "repliques": 2,
+    "duree_s": 9.3,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:39:10.100Z"
+  },
+  "dico-di": {
+    "empreinte": "22ba7d71b2f1",
+    "repliques": 2,
+    "duree_s": 9.5,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:39:21.872Z"
+  },
+  "dico-diplo": {
+    "empreinte": "9239972c862d",
+    "repliques": 2,
+    "duree_s": 6.2,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:39:31.975Z"
+  },
+  "dico-docus": {
+    "empreinte": "66010984fbdb",
+    "repliques": 2,
+    "duree_s": 10.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:39:43.596Z"
+  },
+  "dico-edapho": {
+    "empreinte": "418251d8d5d1",
+    "repliques": 2,
+    "duree_s": 11.7,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:39:56.304Z"
+  },
+  "dico-edmonto": {
+    "empreinte": "a96232de2867",
+    "repliques": 2,
+    "duree_s": 11,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:40:08.848Z"
+  },
+  "dico-edmonton": {
+    "empreinte": "3dbaf9e8a2be",
+    "repliques": 2,
+    "duree_s": 12.4,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:40:21.663Z"
+  },
+  "dico-elasmo": {
+    "empreinte": "e6bad9ecb381",
+    "repliques": 2,
+    "duree_s": 11.9,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-09-12T15:40:34.496Z"
+  }
+}

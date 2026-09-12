@@ -10,7 +10,7 @@
 - **VOYAGE-V2 / GO** [~] — 12 récits Voyage fusionnés au canon, 12/12 audio FR régénérés et padés. Reste : EN (150 clips hors fiches, JSON prêt) au quota. Détail archive.
 - **EPIC-VOYAGE-V2** [~] — Refonte narrative du Voyage en épisodes enrichis, cadrage `PROPOSITION-VOYAGE-V2.md`. Détail archive.
 - **RECIT-EXTINCTION-V3 / SUSPENSE** [~] — Audio jugé « mou, plat » par PY malgré l'escalier de tags ; reprise EN MANUEL prévue (session dédiée PY). Pistes à tester listées en archive.
-- **AUDIO-EN-INTEGRAL** [~] — Fiches EN 71/71 generees le 2026-09-12 (lots A+B, 232 blocs, 0 echec, methode STS 2 passes validee PY). Reste : 150 clips hors-fiche EN (recits Voyage, menus, dico, periodes) — voir `memory/audits/2026-09-12-etat-audio-en-dino.md` § 8. Runbook `docs/handoffs/HO-019-reprise-audio-quota.md`.
+- **AUDIO-EN-INTEGRAL** [!] — Fiches EN 71/71 + 56 clips hors-fiche (20 menus, 3 eres, 33 dico) generes le 2026-09-12, methode STS 2 passes. QUOTA EPUISE au 12/09 (reset 11/10). Reste 94 clips ~48 400 credits : 13 recits Voyage, 68 dico, 8 speciaux, 5 periodes — voir `memory/audits/2026-09-12-etat-audio-en-dino.md` § 8. Runbook `docs/handoffs/HO-019-reprise-audio-quota.md`.
 - **HO-012** [~] — Relecture croisée FR 71/71 PASS, polish top 10 non bloquant en cours.
 - **VITESSE** [~] — Champ `vitesse_kmh` collecté (HO-009), décision d'affichage UI à trancher avec PY (**VITESSE-UI** `[?]`).
 - **AUDIO-FR-35** [!] — 35 fiches FR restantes (sauropodes/thyréophores/marins/avant-dinos/mégafaune) bloquées quota EL.

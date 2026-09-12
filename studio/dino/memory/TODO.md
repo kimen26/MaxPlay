@@ -10,7 +10,7 @@
 - **VOYAGE-V2 / GO** [~] — 12 récits Voyage fusionnés au canon, 12/12 audio FR régénérés et padés. Reste : EN (150 clips hors fiches, JSON prêt) au quota. Détail archive.
 - **EPIC-VOYAGE-V2** [~] — Refonte narrative du Voyage en épisodes enrichis, cadrage `PROPOSITION-VOYAGE-V2.md`. Détail archive.
 - **RECIT-EXTINCTION-V3 / SUSPENSE** [~] — Audio jugé « mou, plat » par PY malgré l'escalier de tags ; reprise EN MANUEL prévue (session dédiée PY). Pistes à tester listées en archive.
-- **AUDIO-EN-INTEGRAL** [!] — Reset 2026-09-11 passé, aucun MP3 EN daté après le 2026-09-10 : run étape 2 HO-019 (58 fiches EN) pas encore lancé, simulation d'abord. Runbook `docs/handoffs/HO-019-reprise-audio-quota.md`.
+- **AUDIO-EN-INTEGRAL** [~] — Fiches EN 71/71 generees le 2026-09-12 (lots A+B, 232 blocs, 0 echec, methode STS 2 passes validee PY). Reste : 150 clips hors-fiche EN (recits Voyage, menus, dico, periodes) — voir `memory/audits/2026-09-12-etat-audio-en-dino.md` § 8. Runbook `docs/handoffs/HO-019-reprise-audio-quota.md`.
 - **HO-012** [~] — Relecture croisée FR 71/71 PASS, polish top 10 non bloquant en cours.
 - **VITESSE** [~] — Champ `vitesse_kmh` collecté (HO-009), décision d'affichage UI à trancher avec PY (**VITESSE-UI** `[?]`).
 - **AUDIO-FR-35** [!] — 35 fiches FR restantes (sauropodes/thyréophores/marins/avant-dinos/mégafaune) bloquées quota EL.
@@ -18,6 +18,7 @@
 - **EP-D-Audio-Noms-Respell** [!] — 60 noms vocaux FR à régénérer avec respellings syllabiques (à revérifier si toujours pertinent).
 - **EP-D-Audio-i18n-EN/PT-BR/ES/IT/AR/RU/ZH/JA** [ ] — respellings + 60 noms MP3 par langue restante.
 - **EP-D-Audio-Recap-Par-Dino** [ ] — 60 MP3 « phrase d'époque » courte par dino pour mj-31 (à revérifier).
+- **NOMS-COURTS-SCELIDOSAURUS** [ ] — 70/71 noms courts (`site/audio/dinos/<lang>/noms/`) : le Scelidosaure, 71e dino ajoute le 2026-09-11, manque en FR ET EN (et dans les 10 autres langues). Generer avec le lot hors-fiche.
 - **LANGUES-NOM-SEUL** [?] — 8 langues (ar, de, hi, it, ja, ru, zh, es-mx) sélectionnables dans `site/js/lang.js` sans aucune fiche audio : retirer de `SUPPORTED` ou assumer un niveau « nom seul » documenté. Décision Papa Yann.
 - **LUNII-MENU-EP-5** [ ] — 5 étiquettes `menu-ep-{naissance-terre,vie-dans-eau,sortie-eau,reptiles-permien,grande-mort}.mp3` manquantes, à faire avec l'étape 6 de HO-019 (compléter LUNII-VOYAGE-12 si même sujet).
 - **LUNII-VOYAGE-12** [!] — Pack Lunii Voyage resté à 8 épisodes vs 12 sur le site ; étiquettes + rebuild au reset EL.

@@ -1,7 +1,7 @@
 # Ichtyosaure — Script audio (Narrateur H + Wex)
 
 > Énaliosaure (reptile marin en forme de dauphin, famille `enaliosaures`), Jurassique · 190 millions d'années · Europe (mers peu profondes).
-> Chiffres data (`site/js/dinos-data.js` id `ichthyosaurus`) : 2 m long · 0,5 m haut · 0,15 t (< 1 t → « 150 kilos »). Comparaisons = sortie EXACTE de `_compLong(2)` / `_compHaut(0.5)` / `_compPoids(0.15)`, exécutées node 2026-09-05 : `aussi long qu'une moto !` / `il t'arrivait aux fesses !` / `aussi lourd qu'un âne !`.
+> Chiffres data (`studio/dino/content/dinos/ichthyosaurus.json`) : 2 m long · 0.5 m haut · 0.15 t. Comparaisons = sortie EXACTE de _compLong(2) / _compHaut(0.5) / _compPoids(0.15), régénérées 2026-09-12 : `aussi long qu'une moto !` / `il t'arrivait aux fesses !` / `aussi lourd qu'un âne !`.
 > Étymologie conforme à `nom_etym` + `_ETYMO-RACINES-50.md` : grec *ikhthus* = poisson + *sauros* = lézard → « le lézard-poisson ».
 > Fact-check (Grokipedia, 2026-09-05) : Ichthyosaurus communis, mers peu profondes d'Europe au Jurassique (~190 Ma). Forme de dauphin (convergence évolutive). Naissait vivant dans l'eau, pas d'œufs. Nageoires = doigts palmés modifiés. **Point corrigé HO-009/010** : prédateurs = les grands pliosaures DE SON ÉPOQUE, comme le Rhomaleosaurus (Jurassique inférieur, contemporain plausible) — le Liopleurodon a été retiré : il vivait environ 30 à 40 millions d'années plus tard (Jurassique moyen, ~165 Ma), anachronisme.
 > Prononciation : « Ik-ti-o-saure » pour la forme latine dite dans l'étymologie (lexique §2, VALIDÉ Papa Yann à l'oreille 2026-07-28) ; le nom d'usage « Ichtyosaure » se lit bien tel quel (lexique §3). « Rhomaleosaurus » à respeller — pas encore au lexique, ajouté en append : « Ro-ma-lé-o-saure » (forme FR en -saure).

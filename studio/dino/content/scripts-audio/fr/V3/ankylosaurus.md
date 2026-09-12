@@ -1,7 +1,7 @@
 # Ankylosaure — Script audio (Narrateur H + Wex)
 
 > Thyréophore à armure (famille `arme`), Crétacé · 66 millions d'années · Amérique du Nord (Formation Hell Creek).
-> Chiffres data (`dinos-data.js` id `ankylosaurus`) : 7,5 m long · 1,8 m haut · 6 t · vitesse 7 km/h. Sorties EXACTES exécutées node : `_compLong(7.5)` = « comme deux voitures l'une derrière l'autre ! » · `_compHaut(1.8)` = « aussi grand que Papa debout ! » · `_compPoids(6)` = « aussi lourd que 3 rhinocéros ! » · `_compVitesse(7)` = « comme Papa qui marche vite ! ».
+> Chiffres data (`studio/dino/content/dinos/ankylosaurus.json`) : 7.5 m long · 1.8 m haut · 6 t · vitesse 7 km/h. Comparaisons = sortie EXACTE de _compLong(7.5) / _compHaut(1.8) / _compPoids(6) / _compVitesse(7), régénérées 2026-09-12 : `comme deux voitures l'une derrière l'autre !` / `aussi grand que Papa debout !` / `aussi lourd que 3 rhinocéros !` / `comme Papa qui marche vite !`.
 > Étymologie (`_ETYMO-RACINES-50.md`) : *anky-/ankylo-* (grec *ankulos*) = courbé, soudé, rigide + *-saurus/-saure* = lézard → « le lézard rigide, soudé » (dos couvert d'armure). Nom lu tel quel.
 > Fact-check Grokipedia (agent dino-conseiller, 2026-09-05) : Formation Hell Creek/Lance, ~68-66 Ma (Maastrichtien final) — **CONFIRMÉ contemporain du Tyrannosaurus rex et du Tricératops**, même écosystème final du Crétacé. Tritri (running gag, propriétaire = Tricératops) : touche légitime ici.
 > Vignette registre `_SCENES-VIGNETTES.md` : « massue = boule d'os qui casse la patte d'un carnivore ; le T-Rex n'ose pas » — PROPRIÉTAIRE Ankylosaure, réemployée telle quelle (fiche fait pour ça).

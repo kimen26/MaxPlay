@@ -15,7 +15,7 @@ séparément, sans lien déclaré entre elles. Cas mesuré sur un seul dino (Tyr
 
 | Canal | Où vit le texte | Nature |
 |---|---|---|
-| Écran | `site/js/dinos-data.js` (13 champs/dino) | Écrit à la main |
+| Écran | `site/js/gen/dinos-data.js` (13 champs/dino) | Écrit à la main |
 | TTS navigateur (fiche) | Recomposé **inline** dans `site/dev-dinos.html` | Assemblage à la volée de 2-4 champs + connecteurs codés en dur |
 | TTS navigateur (mini-jeu) | Recomposé **inline** dans `site/mj-31.html` | **Autre** assemblage, autres connecteurs, du même contenu |
 | MP3 ElevenLabs | `studio/dino/content/scripts-audio/fr/V3/` | Réécriture complète (dialogue Narrateur/Wex, tags v3) |
@@ -159,7 +159,7 @@ systeme.menu.accueil
 ```
 clé          : dino.tyrannosaurus.taille
 domaine      : dino
-source       : → site/js/dinos-data.js (champs taille_m, hauteur_m, poids_t, comp_*)
+source       : → site/js/gen/dinos-data.js (champs taille_m, hauteur_m, poids_t, comp_*)
 contrat      : ecran=requis · tts=dérivé · el=réécrit · mp3=requis · lunii=hérité
                langues=[fr]  (en=prévu, non requis)
 dépend de    : taille_m, hauteur_m, poids_t, comp_poids, comp_taille, comp_hauteur

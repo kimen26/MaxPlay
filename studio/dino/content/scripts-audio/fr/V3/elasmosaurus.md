@@ -1,7 +1,7 @@
 # Élasmosaure — Script audio (Narrateur H + Wex)
 
 > Énaliosaure (reptile marin, famille `enaliosaures`), Crétacé · 80 millions d'années · Amérique du Nord (mer intérieure).
-> Chiffres data (`site/js/dinos-data.js` id `elasmosaurus`) : 13 m long · 1 m haut · 2,5 t. Comparaisons = sortie EXACTE de `_compLong(13)` / `_compHaut(1)` / `_compPoids(2.5)`, exécutées node 2026-09-05 : `aussi long qu'un bus RATP !` / `aussi grand qu'un enfant de 4 ans !` / `aussi lourd que 5 chevaux !`.
+> Chiffres data (`studio/dino/content/dinos/elasmosaurus.json`) : 13 m long · 1 m haut · 2.5 t. Comparaisons = sortie EXACTE de _compLong(13) / _compHaut(1) / _compPoids(2.5), régénérées 2026-09-12 : `aussi long qu'un bus RATP !` / `aussi grand qu'un enfant de 4 ans !` / `aussi lourd que 5 chevaux !`.
 > Étymologie conforme à `nom_etym` + `_ETYMO-RACINES-50.md` : grec *elasmos* = plaque de métal fine (les os de ses épaules/bassin étaient plats comme des plaques) + *sauros* = lézard → « le lézard aux plaques fines ». PAS un dinosaure — c'est un plésiosaure.
 > Fact-check (Grokipedia, 2026-09-05) : Elasmosaurus platyurus, mer intérieure occidentale d'Amérique du Nord, Crétacé (~80 Ma). Cou le plus long de tous les reptiles connus : 72 vertèbres cervicales. Chassait poissons/calmars en petits groupes. Chassé par le Mosasaure, super-prédateur contemporain des mêmes mers. Bourde de 1868 (Edward Drinker Cope avait placé le crâne au bout de la queue au lieu du cou) fact-checkée, épisode célèbre et documenté de l'histoire de la paléontologie — formulé comme une VRAIE erreur d'un vrai savant, pas moquée.
 > Prononciation : « Élasmosaure » se lit bien tel quel (lexique §3).

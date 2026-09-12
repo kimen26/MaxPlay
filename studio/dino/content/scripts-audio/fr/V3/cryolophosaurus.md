@@ -1,7 +1,7 @@
 # Cryolophosaure — dialogue audio V3 (Narrateur H + Wex)
 
 > Théropode (famille `trex`), Jurassique · 190 millions d'années · Antarctique.
-> Chiffres data (`site/js/dinos-data.js` id `cryolophosaurus`) : 6,5 m long · 2,5 m haut · 0,4 t. Pas de `vitesse_kmh` → on n'en parle pas. Comparaisons = sortie EXACTE de `_compLong(6.5)` / `_compHaut(2.5)` / `_compPoids(0.4)`, exécutées node 2026-09-05 : `aussi long qu'une rue à deux voies est large — il barrait la route !` / `aussi haut qu'un but de foot !` / `aussi lourd que 2 lions !`.
+> Chiffres data (`studio/dino/content/dinos/cryolophosaurus.json`) : 6.5 m long · 2.5 m haut · 0.4 t. Comparaisons = sortie EXACTE de _compLong(6.5) / _compHaut(2.5) / _compPoids(0.4), régénérées 2026-09-12 : `aussi long qu'une rue à deux voies est large — il barrait la route !` / `aussi haut qu'un but de foot !` / `aussi lourd que 2 lions !`.
 > Étymologie conforme à `_ETYMO-RACINES-50.md` + `nom_etym` : *cryo* (grec) = la glace, le froid · *lopho* (grec) = crête · *saurus/saure* (grec) = lézard. En entier : le lézard à crête de glace (nom lié au lieu de découverte glacé, PAS à son climat de l'époque — précision faite dans le dialogue, l'Antarctique était alors chaud et vert).
 > Fact-check (Grokipedia + Wikipedia, 2026-09-05) : Formation Hanson, Antarctique, ~190 Ma. À l'époque, l'Antarctique faisait partie du Gondwana, climat tempéré à chaud, couvert de forêts — cohérent avec `PANGEE.pourquoi` déjà présent dans dinos-data.js.
 > Vignette « vague gelée » (crête en travers de la tête) — propriété du Cryolophosaure (registre `_SCENES-VIGNETTES.md`), conservée.

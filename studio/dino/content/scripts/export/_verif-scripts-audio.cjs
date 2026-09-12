@@ -32,7 +32,7 @@ const TAGS_OK = new Set([
 ]);
 
 // data canon
-const src = fs.readFileSync(path.join(ROOT, 'site/js/dinos-data.js'), 'utf8');
+const src = fs.readFileSync(path.join(ROOT, 'site/js/gen/dinos-data.js'), 'utf8');
 const m = { exports: {} };
 new Function('module', 'exports', 'require', src + '\n;module.exports = { DINOS, _compLong, _compHaut, _compPoids, _compVitesse: typeof _compVitesse === "function" ? _compVitesse : null };')(m, m.exports, require);
 const { DINOS, _compLong, _compHaut, _compPoids, _compVitesse } = m.exports;

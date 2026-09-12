@@ -1,7 +1,7 @@
 # Loup terrible — Script audio (Narrateur H + Wex)
 
 > Mammifère (famille `mammiferes`), PAS un dinosaure — il vit APRÈS la météorite. Cénozoïque · Âge de glace · il y a 50 000 ans · Amérique du Nord et du Sud.
-> Chiffres data (`site/js/dinos-data.js` id `aenocyon`) : 1,7 m long · 0,85 m haut · 0,07 t. Comparaisons = sortie EXACTE de `_compLong(1.7)` / `_compHaut(0.85)` / `_compPoids(0.07)`, exécutées node 2026-09-05 : `comme un grand Papa allongé par terre !` / `aussi grand qu'un enfant de 4 ans !` / `aussi lourd qu'un kangourou !`.
+> Chiffres data (`studio/dino/content/dinos/aenocyon.json`) : 1.7 m long · 0.85 m haut · 0.07 t. Comparaisons = sortie EXACTE de _compLong(1.7) / _compHaut(0.85) / _compPoids(0.07), régénérées 2026-09-12 : `comme un grand Papa allongé par terre !` / `aussi grand qu'un enfant de 4 ans !` / `aussi lourd qu'un kangourou !`.
 > Pas de `vitesse_kmh` dans la data → aucune vitesse chiffrée dite.
 > **Proies ≠ dangers** : le Loup terrible chasse chevaux sauvages/bisons/jeunes animaux (proies) ; son seul rival cité (`chasseurs` dans la data) est le Smilodon, pour la dispute d'une même proie — pas un « ennemi » qui le chasserait, formulé correctement en rivalité de territoire/nourriture.
 > Étymologie conforme `_ETYMO-RACINES-50.md` : grec *ainos* = terrible/redoutable + *kuôn* = chien → « le chien terrible », et *dirus* en latin = qui fait très peur.

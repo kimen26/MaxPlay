@@ -105,7 +105,7 @@ Deux rôles selon le domaine, volontairement asymétriques :
 
 | Domaine | Rôle | Pourquoi |
 |---|---|---|
-| **DINO** | *catalogue* — pointe vers `site/js/dinos-data.js` | Ces textes ont déjà un domicile, imposé par la frontière autoring/produit. Zéro migration. |
+| **DINO** | *catalogue* — pointe vers `site/js/gen/dinos-data.js` | Ces textes ont déjà un domicile, imposé par la frontière autoring/produit. Zéro migration. |
 | **JEU** | *entrepôt visé* — recense là où ils sont | Ces textes n'ont **aucun** domicile : ils vivent en dur dans chaque page. Le Lot 3 leur en donnera un. |
 
 ## Comment la dérive est détectée

@@ -1,7 +1,7 @@
 # Allosaure — dialogue audio V3 (Narrateur H + Wex)
 
 > Théropode (famille `trex`), Jurassique · 155 millions d'années · Amérique du Nord ET Europe.
-> Chiffres data (`site/js/dinos-data.js` id `allosaurus`) : 9,5 m long · **4 m haut** (corrigé HO-009, ancien 3,5 m) · 2 t · vitesse 34 km/h. Comparaisons = sortie EXACTE de `_compLong(9.5)` / `_compHaut(4)` / `_compPoids(2)` / `_compVitesse(34)`, exécutées node 2026-09-05 : `aussi long qu'un camion !` / `aussi haut qu'un bus anglais à deux étages !` / `aussi lourd qu'un rhinocéros !` / `aussi vite qu'un chien qui court !`.
+> Chiffres data (`studio/dino/content/dinos/allosaurus.json`) : 9.5 m long · 4 m haut · 2 t · vitesse 34 km/h. Comparaisons = sortie EXACTE de _compLong(9.5) / _compHaut(4) / _compPoids(2) / _compVitesse(34), régénérées 2026-09-12 : `aussi long qu'un camion !` / `aussi haut qu'un bus anglais à deux étages !` / `aussi lourd qu'un rhinocéros !` / `aussi vite qu'un chien qui court !`.
 > **Lieu(x) : les DEUX cités** (`region` data = « Amérique du Nord, Europe ») — fossiles confirmés sur les deux continents (Formation Morrison en Amérique, Portugal en Europe).
 > Étymologie conforme à `_ETYMO-RACINES-50.md` + `nom_etym` : *allo* (grec) = autre, différent · *saurus/saure* (grec) = lézard. En entier : le lézard différent.
 > Fact-check (Grokipedia + Wikipedia, 2026-09-05) : Formation Morrison (USA) + gisements portugais, ~155-150 Ma. Proies confirmées : Stegosaurus, Camarasaurus, jeunes sauropodes — attestés dans la Formation Morrison.

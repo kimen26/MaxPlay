@@ -1,6 +1,6 @@
 # HO-R12 — Dino : une fiche canon par dino, `dinos-data.js` généré, contrôle data ↔ narré
 
-**Statut :** pret
+**Statut :** fait
 **Depend de :** HO-R08, HO-R10 (vague 3 commitée)
 **Vague :** 4 · **Exécutant :** sous-agent Sonnet
 

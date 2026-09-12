@@ -2,7 +2,7 @@
 // Usage: node dino-fields.mjs <id>            -> imprime JSON {name,png,...}
 //        node dino-fields.mjs --list          -> liste tous les id\tname\tpng
 import { readFileSync } from 'node:fs';
-const SRC = readFileSync('c:/ProjetsPerso/Claude_Projects/MaxPlay/site/js/dinos-data.js', 'utf8');
+const SRC = readFileSync('c:/ProjetsPerso/Claude_Projects/MaxPlay/site/js/gen/dinos-data.js', 'utf8');
 
 // Bloc DINOS uniquement (après "const DINOS = [")
 const DBLOCK = SRC.slice(SRC.indexOf('const DINOS = ['));

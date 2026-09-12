@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>MaxPlay — Pas de réseau</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+    html, body {
+      min-height: 100%;
+      font-family: 'Nunito', sans-serif;
+      background: #0a1226;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .carte {
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      background: rgba(255,255,255,.06);
+      border-radius: 24px;
+      padding: 32px 24px;
+    }
+    .emoji { font-size: 56px; line-height: 1; margin-bottom: 12px; }
+    h1 {
+      font-size: clamp(1.2rem, 5vw, 1.6rem);
+      margin-bottom: 12px;
+    }
+    p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 24px;
+      color: rgba(255,255,255,.85);
+    }
+    button {
+      min-height: 56px;
+      min-width: 200px;
+      padding: 0 24px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      font-family: inherit;
+      color: #0a1226;
+      background: #ffd166;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+    button:active { transform: scale(0.97); }
+  </style>
+  <script src="js/sw-register.js"></script>
+</head>
+<body>
+  <main class="carte">
+    <div class="emoji" aria-hidden="true">🚌</div>
+    <h1>Pas de réseau pour l'instant</h1>
+    <p>Cette page n'a pas encore été visitée hors ligne. Le menu et les jeux déjà ouverts, eux, fonctionnent sans réseau.</p>
+    <button type="button" onclick="location.href = './index.html'">Retour au menu</button>
+  </main>
+</body>
+</html>

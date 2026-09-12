@@ -2,7 +2,7 @@
 
 > Classé chez les Cératopsiens par simplification de l'app (clé technique `cornu` dans dinos-data.js) — **PAS un vrai cératopsien** taxonomiquement, c'est un Pachycéphalosaure à part entière. Le script dit « cousin des dinos à cornes », jamais « c'est un cératopsien » (consigne HO-011 tenue).
 > Crétacé · 70 millions d'années · Amérique du Nord.
-> Chiffres data (`site/js/dinos-data.js` id `pachycephalosaurus`) : 4,5 m long · 1,5 m haut · 0,45 t (450 kg). Comparaisons = sortie EXACTE de `_compLong(4.5)` / `_compHaut(1.5)` / `_compPoids(0.45)`, exécutées node 2026-09-05 : `aussi long qu'un grand 4×4 !` / `aussi haut qu'une voiture — il fallait lever la tête !` / `aussi lourd qu'un cheval !`.
+> Chiffres data (`studio/dino/content/dinos/pachycephalosaurus.json`) : 4.5 m long · 1.5 m haut · 0.45 t. Comparaisons = sortie EXACTE de _compLong(4.5) / _compHaut(1.5) / _compPoids(0.45), régénérées 2026-09-12 : `aussi long qu'un grand 4×4 !` / `aussi haut qu'une voiture — il fallait lever la tête !` / `aussi lourd qu'un cheval !`.
 > Étymologie conforme `_ETYMO-COMPLET-60.md` : grec *pachy* = épais + *cephalo* = tête + *saurus* = lézard → « le lézard à tête épaisse ».
 > Fact-check Grokipedia 2026-09-05 : Pachycephalosaurus wyomingensis, Formation Hell Creek/Lance (Maastrichtien, ~70-66 Ma) — **contemporain du Tricératops** (Crétacé final, Amérique du Nord). Crâne de 20-25 cm d'épaisseur confirmé.
 > **Hypothèse tenue comme hypothèse** (consigne HO-011) : les coups de tête « comme les béliers » ne sont PAS un fait validé — débat scientifique réel (dômes crâniens pourraient aussi servir à l'identification visuelle plutôt qu'au combat frontal). Formulé « les scientifiques pensent que » / « on n'est pas sûr », jamais assené.

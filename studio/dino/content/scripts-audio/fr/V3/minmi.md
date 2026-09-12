@@ -1,7 +1,7 @@
 # Minmi — Script audio (Narrateur H + Wex)
 
 > Thyréophore à armure (famille `arme`), Crétacé · 120 millions d'années · Queensland, Australie.
-> Chiffres data (`dinos-data.js` id `minmi`) : 3 m long · 0,9 m haut · 0,3 t. Sorties EXACTES exécutées node : `_compLong(3)` = « comme trois enfants de 4 ans allongés ! » · `_compHaut(0.9)` = « aussi grand qu'un enfant de 4 ans ! » · `_compPoids(0.3)` = « aussi lourd que 2 ânes ! ».
+> Chiffres data (`studio/dino/content/dinos/minmi.json`) : 3 m long · 0.9 m haut · 0.3 t. Comparaisons = sortie EXACTE de _compLong(3) / _compHaut(0.9) / _compPoids(0.3), régénérées 2026-09-12 : `comme trois enfants de 4 ans allongés !` / `aussi grand qu'un enfant de 4 ans !` / `aussi lourd que 2 ânes !`.
 > Étymologie (`_ETYMO-RACINES-50.md`) : « Minmi » n'est ni grec ni latin — nom d'un lieu, Minmi Crossing (Queensland, Australie), où on a trouvé ses os. *para-* (à côté de) + *-vertebra* (latin, vertèbre) → « aux petits os à côté du dos ». Nom lu tel quel.
 > Fact-check Grokipedia (agent dino-conseiller, 2026-09-05) : contenu stomacal CONFIRMÉ (fragments végétaux fibreux, graines, spores de fougères, coupes nettes de mastication) — **PAS de gastrolithes** (Minmi mâchait, contrairement au Brachiosaure/aux sauropodes qui avalaient des pierres). Vitesse (pattes longues) = HYPOTHÈSE indirecte, formulée prudemment.
 > Vignette registre `_SCENES-VIGNETTES.md` : « retourner sur le dos pour contourner l'armure » — PROPRIÉTAIRE Minmi, conservée telle quelle (interdite de réemploi ailleurs, ex. Edmontonia/Ankylosaure).

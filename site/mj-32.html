@@ -237,6 +237,8 @@
     #confirmModal .no { background:linear-gradient(135deg,#43a047,#66bb6a); color:#fff; }
     #confirmModal button:active { transform:scale(.94); }
   </style>
+  <link rel="manifest" href="manifest.json">
+  <script src="js/sw-register.js"></script>
 </head>
 <body>
   <div id="app">
@@ -311,7 +313,7 @@
     </div>
   </div>
 
-  <script src="js/dinos-data.js"></script>
+  <script src="js/gen/dinos-data.js"></script>
   <script src="js/gen/dinos-plantes.js"></script>
   <script src="js/dinos-i18n.js"></script>
   <script src="js/mj-shell.js"></script>

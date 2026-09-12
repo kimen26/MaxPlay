@@ -1,7 +1,7 @@
 # Plateosaure — Script audio (Narrateur H + Wex)
 
 > Sauropodomorphe basal (famille `cou_long`), Trias · 210 millions d'années · Europe (Allemagne, France, Suisse).
-> Chiffres data (`dinos-data.js` id `plateosaurus`) : 8 m long · 2,8 m haut · 2 t. Sorties EXACTES exécutées node : `_compLong(8)` = « comme deux voitures l'une derrière l'autre ! » · `_compHaut(2.8)` = « aussi haut qu'un panier de basket ! » · `_compPoids(2)` = « aussi lourd qu'un rhinocéros ! ».
+> Chiffres data (`studio/dino/content/dinos/plateosaurus.json`) : 8 m long · 2.8 m haut · 2 t. Comparaisons = sortie EXACTE de _compLong(8) / _compHaut(2.8) / _compPoids(2), régénérées 2026-09-12 : `comme deux voitures l'une derrière l'autre !` / `aussi haut qu'un panier de basket !` / `aussi lourd qu'un rhinocéros !`.
 > Étymologie (`_ETYMO-RACINES-50.md`) : *plateo-* (grec *platus*) = large, plat + *-saurus/-saure* = lézard → « le lézard plat » (à cause du nom, pas de son corps). Nom lu tel quel.
 > Fact-check Grokipedia (agent dino-conseiller, 2026-09-05) : Trias tardif (~214-204 Ma), Europe (Allemagne, France, Suisse + 40 sites). Marchait surtout à 2 pattes, pouvait se tenir à 4. Un des tout premiers grands dinosaures herbivores. Prédateurs contemporains : le grand rauisuchien Fasolasuchus (pas encore de grand théropode) — présenté simplement comme « de grands chasseurs à quatre pattes », son nom savant étant hors-sujet pour 4 ans.
 > Grep-interdits OK. Wex FR standard, aucun tic écrit, jamais de `!` final.

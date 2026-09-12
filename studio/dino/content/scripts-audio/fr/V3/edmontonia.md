@@ -1,7 +1,7 @@
 # Edmontonia — dialogue audio V3 (Narrateur H + Wex)
 
 > Nodosauridé à armure (famille `arme`), Crétacé · 72 millions d'années · Amérique du Nord (Formation Dinosaur Park, Alberta). Format 4 blocs A/B/C/D.
-> Chiffres data (`dinos-data.js` id `edmontonia`) : 6,6 m long · 2 m haut · 3 t. Sorties EXACTES exécutées node (2026-09-05, HO-011) : `_compLong(6.6)` = « aussi long qu'une rue à deux voies est large — il barrait la route ! » · `_compHaut(2)` = « aussi haut qu'une porte ! » (corrigé — l'ancienne version disait à tort « 1,5 m / voiture ») · `_compPoids(3)` = « aussi lourd qu'un hippopotame ! ».
+> Chiffres data (`studio/dino/content/dinos/edmontonia.json`) : 6.6 m long · 2 m haut · 3 t. Comparaisons = sortie EXACTE de _compLong(6.6) / _compHaut(2) / _compPoids(3), régénérées 2026-09-12 : `aussi long qu'une rue à deux voies est large — il barrait la route !` / `aussi haut qu'une porte !` / `aussi lourd qu'un hippopotame !`.
 > Étymologie (`_ETYMO-RACINES-50.md`) : Edmonton (ville du Canada, formation géologique) + *-ia* latin = « celui de » → « celui de la formation d'Edmonton ». Respelling lexique : « Ed-mon-to-ni-a ».
 > Fact-check Grokipedia (agent dino-conseiller, 2026-09-05) : section supérieure Formation Dinosaur Park (~76,5-75 Ma) — **CONFIRMÉ contemporain de Gorgosaurus libratus et d'une espèce de Daspletosaurus**, cohabitation réelle et documentée.
 > Vignette registre `_SCENES-VIGNETTES.md` : « épines d'épaules, attaque de côté qui peut mal tourner pour le chasseur » — PROPRIÉTAIRE Edmontonia, conservée.

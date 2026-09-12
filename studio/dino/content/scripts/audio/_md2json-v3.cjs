@@ -31,9 +31,14 @@ const FILES = fs.readdirSync(V3DIR)
   .map(f => f.replace(/\.md$/, ''))
   .sort();
 
-// id réels dinos-data.js pour validation
-let s = fs.readFileSync(path.join(__dirname, '..', '..', '..', '..', '..', 'site', 'js', 'dinos-data.js'), 'utf8');
-const idSet = new Set([...s.matchAll(/^\s*id:\s*'([a-z0-9_]+)'/gm)].map(m => m[1]));
+// id réels pour validation — depuis les fiches canon JSON (D-009, HO-R12 :
+// dinos-data.js est généré, plus la source ; ne plus le regexer ici).
+const DINOS_DIR = path.join(__dirname, '..', '..', 'dinos');
+const idSet = new Set(
+  fs.readdirSync(DINOS_DIR)
+    .filter(f => f.endsWith('.json') && !f.startsWith('_'))
+    .map(f => f.replace(/\.json$/, ''))
+);
 
 function titleToId(latin) {
   return latin.split(/\s+/)[0].toLowerCase().replace(/[^a-z]/g, '');

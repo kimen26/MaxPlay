@@ -18,9 +18,9 @@ Audit : `memory/audits/2026-09-12-archi-ged-site-studio.md`. Décisions : D-007 
 | 2 | HO-R08 package racine + `site/js/gen/` | `npm run build` sans diff, `npm run check` et `npm test` verts, README du gen/ | fait |
 | 3 | HO-R09 Mur ← catalogue + check + gabarit | `mur.js` sans id en dur, 36 jeux visibles ou justifiés, `check-mj-coherence` bloquant en CI, `mj-template.html` | fait |
 | 3 | HO-R10 dédoublonnage runtime mj | 0 `speechSynthesis` brut, 0 speak/confetti local, chaque mj touché vert | fait |
-| 4 | HO-R12 fiche canon dino | `dinos-data.js` généré octet pour octet, check data ↔ narré produit sa liste | à faire |
-| 4 | HO-R11 service worker | menu et un jeu s'ouvrent hors ligne (captures), manifest sur 44 pages | à faire |
-| 4 | HO-R04 hooks + agents | 1 processus par événement hook, tests hooks verts, agents JEU/DINO tranchés | à faire |
+| 4 | HO-R12 fiche canon dino | `dinos-data.js` généré octet pour octet, check data ↔ narré produit sa liste | fait |
+| 4 | HO-R11 service worker | menu et un jeu s'ouvrent hors ligne (captures), manifest sur 44 pages | fait |
+| 4 | HO-R04 hooks + agents | 1 processus par événement hook, tests hooks verts, agents JEU/DINO tranchés | fait |
 | 5 | HO-R13 WebP | −150 Mo sur `site/img/dinos`, 0 image cassée, règle poids dans `check` | à faire |
 | 5 | HO-R14 routine `npm run gc` | premier rapport gc produit en < 60 s, 0 faux positif audio | à faire |
 | 6 | HO-R99 (orchestrateur) | pack git < 1,2 Go, Pages vert après force-push, CHANGELOG + audit de clôture, crons supprimés | à faire |

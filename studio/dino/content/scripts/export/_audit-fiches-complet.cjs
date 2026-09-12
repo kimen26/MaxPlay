@@ -4,7 +4,7 @@ const R = path.resolve(__dirname, '../../../../..'); // racine repo (script dans
 const rd = p => { try { return fs.readdirSync(path.join(R, p)); } catch { return []; } }; // tolère les dossiers absents (ex _new-* purgés)
 
 // 1. DINOS + familles
-const src = fs.readFileSync(path.join(R, 'site/js/dinos-data.js'), 'utf8');
+const src = fs.readFileSync(path.join(R, 'site/js/gen/dinos-data.js'), 'utf8');
 const mod = { exports: {} };
 new Function('module', 'exports', src + '; module.exports={DINOS, DINO_FAMILLES};')(mod, mod.exports);
 const DINOS = mod.exports.DINOS, FAMS = mod.exports.DINO_FAMILLES;
@@ -62,7 +62,7 @@ const rows = DINOS.map(d => {
 const ok = b => b ? '✅' : '❌';
 let md = [];
 md.push(`# Audit exhaustif des fiches dino — assets croisés`, ``);
-md.push(`**Date : ${new Date().toISOString().slice(0,10)}** · 70 dinos (DINOS de \`site/js/dinos-data.js\`) · croisement disque \`site/img/dinos/\`, \`site/audio/dinos/fr/\`, sources \`studio/dino/content/sources/\`.`, ``);
+md.push(`**Date : ${new Date().toISOString().slice(0,10)}** · 70 dinos (DINOS de \`site/js/gen/dinos-data.js\`) · croisement disque \`site/img/dinos/\`, \`site/audio/dinos/fr/\`, sources \`studio/dino/content/sources/\`.`, ``);
 md.push(`> Régénéré par \`node studio/dino/temp/audit-fiches.cjs\`. État PMO de référence : \`_ETAT-DINOS.md\` (régénéré le même jour : **70 dinos · 70 complets · 0 incomplets** sur ses 8 axes).`, ``);
 
 // Synthèse chiffrée

@@ -1,7 +1,7 @@
 # Microraptor — dialogue audio V3 (Narrateur H + Wex)
 
 > Dromæosaure (famille `raptor`, clé technique dinos-data.js), Crétacé · 120 millions d'années · Chine (Asie).
-> Chiffres data (`site/js/dinos-data.js` id `microraptor`) : 0,77 m long · 0,3 m haut · 1 kg. Comparaisons = sortie EXACTE de `_compLong(0.77)` / `_compHaut(0.3)` / `_compPoids(0.001)`, exécutées node 2026-09-05 : `comme un gros chat allongé !` / `il t'arrivait aux genoux !` / `léger comme un petit oiseau !`.
+> Chiffres data (`studio/dino/content/dinos/microraptor.json`) : 0.77 m long · 0.3 m haut · 0.001 t. Comparaisons = sortie EXACTE de _compLong(0.77) / _compHaut(0.3) / _compPoids(0.001), régénérées 2026-09-12 : `comme un gros chat allongé !` / `il t'arrivait aux genoux !` / `léger comme un petit oiseau !`.
 > Pas de `vitesse_kmh` en data → non mentionnée.
 > Étymologie conforme à `_ETYMO-RACINES-50.md` + `nom_etym` : grec *mikros* = petit + latin *raptor* = voleur → « le petit voleur ».
 > Fact-check Grokipedia + Wikipedia (2026-09-05) : Microraptor gui, formation Jiufotang (Liaoning, Chine), fossiles exceptionnellement bien conservés avec empreintes de plumes. **4 ailes** (bras ET jambes couvertes de longues plumes de vol) — fait solide et unique parmi les raptors connus, planeur entre les arbres plutôt que voleur battu. Régime varié attesté par contenu stomacal fossilisé (poissons, petits mammifères, lézards).

@@ -1,7 +1,7 @@
 # Camarasaure — Script audio (Narrateur H + Wex)
 
 > Sauropode (famille `cou_long`), Jurassique · 155 millions d'années · Amérique du Nord.
-> Chiffres data (`dinos-data.js` id `camarasaurus`) : 15 m long · 6 m haut · 18 t. Sorties EXACTES exécutées node : `_compLong(15)` = « aussi long qu'un bus RATP ! » · `_compHaut(6)` = « aussi haut qu'un lampadaire ! » · `_compPoids(18)` = « aussi lourd que 6 hippopotames ! ».
+> Chiffres data (`studio/dino/content/dinos/camarasaurus.json`) : 15 m long · 6 m haut · 18 t. Comparaisons = sortie EXACTE de _compLong(15) / _compHaut(6) / _compPoids(18), régénérées 2026-09-12 : `aussi long qu'un bus RATP !` / `aussi haut qu'un lampadaire !` / `aussi lourd que 6 hippopotames !`.
 > Étymologie (`_ETYMO-RACINES-50.md`) : *camara-* (grec *kamara*) = chambre, pièce voûtée + *-saurus/-saure* = lézard → « le lézard à chambres » (os creux comme de petites pièces). Nom lu tel quel.
 > Fact-check Grokipedia (agent dino-conseiller, 2026-09-05) : sauropode le plus abondant de la Formation Morrison (Jurassique, plus de 175 spécimens). Fun fact retenu : un squelette de bébé (CM 11338) presque complet — un des plus complets jamais trouvés pour un sauropode juvénile.
 > Prédateurs contemporains Formation Morrison : Allosaure (surtout les jeunes isolés du troupeau, l'adulte protégé par le groupe).

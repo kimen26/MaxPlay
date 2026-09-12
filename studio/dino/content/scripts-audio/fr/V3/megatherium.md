@@ -1,7 +1,7 @@
 # Mégathérium — Script audio (Narrateur H + Wex)
 
 > Mammifère (famille `mammiferes`), PAS un dinosaure — il vit APRÈS la météorite. Cénozoïque · Âge de glace · il y a 1 million d'années · Amérique du Sud.
-> Chiffres data (`site/js/dinos-data.js` id `megatherium`) : 6 m long · 3,5 m haut · 4 t. Comparaisons = sortie EXACTE de `_compLong(6)` / `_compHaut(3.5)` / `_compPoids(4)`, exécutées node 2026-09-05 : `aussi long qu'une rue à deux voies est large — il barrait la route !` / `comme deux Papas l'un sur l'autre !` / `aussi lourd que 2 rhinocéros !`.
+> Chiffres data (`studio/dino/content/dinos/megatherium.json`) : 6 m long · 3.5 m haut · 4 t. Comparaisons = sortie EXACTE de _compLong(6) / _compHaut(3.5) / _compPoids(4), régénérées 2026-09-12 : `aussi long qu'une rue à deux voies est large — il barrait la route !` / `comme deux Papas l'un sur l'autre !` / `aussi lourd que 2 rhinocéros !`.
 > Pas de `vitesse_kmh` dans la data → aucune vitesse chiffrée dite.
 > **Point important (consigne orchestrateur)** : le champ `hauteur_m` = 3,5 m est la hauteur DEBOUT sur les pattes arrière (dressé), pas la hauteur naturelle à 4 pattes. Le champ `fait` de la data précise même « 4 mètres » dressé contre un arbre — écart mineur avec `hauteur_m` (3,5) gardé tel quel côté data (hors périmètre, signalé dans le rapport), le script dit 3,5 m (`_compHaut` exécutée sur le chiffre data) et précise bien que c'est la posture dressée.
 > Étymologie conforme `_ETYMO-RACINES-50.md` : grec *megas* = grand + *thèrion* = bête → « la grande bête ».

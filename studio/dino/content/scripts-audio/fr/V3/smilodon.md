@@ -1,7 +1,7 @@
 # Smilodon — Script audio (Narrateur H + Wex)
 
 > Mammifère (famille `mammiferes`), PAS un dinosaure — il vit APRÈS la météorite. Cénozoïque · Âge de glace · il y a 1 million d'années · Amérique du Nord et du Sud.
-> Chiffres data (`site/js/dinos-data.js` id `smilodon`) : 1,75 m long · 1 m haut · 0,22 t. Comparaisons = sortie EXACTE de `_compLong(1.75)` / `_compHaut(1)` / `_compPoids(0.22)`, exécutées node 2026-09-05 : `comme un grand Papa allongé par terre !` / `aussi grand qu'un enfant de 4 ans !` / `aussi lourd qu'un lion !` (poids ré-audité HO-009/010 : 0,22 t, pas 0,25 t — le poids « tigre » de l'ancien script est faux, corrigé ici).
+> Chiffres data (`studio/dino/content/dinos/smilodon.json`) : 1.75 m long · 1 m haut · 0.22 t. Comparaisons = sortie EXACTE de _compLong(1.75) / _compHaut(1) / _compPoids(0.22), régénérées 2026-09-12 : `comme un grand Papa allongé par terre !` / `aussi grand qu'un enfant de 4 ans !` / `aussi lourd qu'un lion !`.
 > Pas de `vitesse_kmh` dans la data → aucune vitesse chiffrée dite.
 > Étymologie conforme `_ETYMO-RACINES-50.md` : grec *smilē* = couteau/lame + *odous* = dent → « la dent-couteau ».
 > Fact-check (Grokipedia, 2026-09-05) : Smilodon fatalis, âge de glace, Amériques, proies bisons/chevaux sauvages/jeunes paresseux géants (cohérent avec Mégathère/Glyptodon du même lot — cohabitation continentale correcte, pas de cohabitation directe affirmée). Chasse possiblement en groupe = hypothèse (data dit « peut-être »), formulée en hypothèse. Canines ~18-20 cm, vérifié. Piège de goudron (La Brea) où des milliers de Smilodons ont été retrouvés = fait fort, vérifié.

@@ -1,7 +1,7 @@
 # Gorgonops — Script audio (Narrateur H + Wex)
 
 > Avant les dinosaures (synapside carnivore, famille `volant`), Permien · 260 millions d'années · Afrique du Sud.
-> Chiffres data (`site/js/dinos-data.js` id `gorgonops`) : 1,8 m long · 0,8 m haut · 0,1 t (< 1 t → « 100 kilos »). Comparaisons = sortie EXACTE de `_compLong(1.8)` / `_compHaut(0.8)` / `_compPoids(0.1)`, exécutées node 2026-09-05 : `comme un grand Papa allongé par terre !` / `il t'arrivait au nombril !` / `aussi lourd qu'un cochon !`.
+> Chiffres data (`studio/dino/content/dinos/gorgonops.json`) : 1.8 m long · 0.8 m haut · 0.1 t. Comparaisons = sortie EXACTE de _compLong(1.8) / _compHaut(0.8) / _compPoids(0.1), régénérées 2026-09-12 : `comme un grand Papa allongé par terre !` / `il t'arrivait au nombril !` / `aussi lourd qu'un cochon !`.
 > Étymologie conforme à `nom_etym` + `_ETYMO-RACINES-50.md` : *Gorgone* = monstre terrifiant de la mythologie grecque (si effrayant qu'on avait peur rien qu'à le regarder) + grec *ops* = le visage → « le visage qui fait peur ».
 > Fact-check (Grokipedia, 2026-09-05) : Gorgonops torvus, Permien (~260 Ma), Afrique du Sud. **PAS un dinosaure** : synapside (gorgonopside), cousin encore plus proche des mammifères que le Dimétrodon — pattes déjà plus droites sous le corps (comme un chien) plutôt qu'écartées sur le côté (comme un lézard), fait fact-checké et distinctif. Plus grand chasseur connu de sa région et son époque (aucun prédateur cité dans la data). Deux longues canines en sabre, aussi longues qu'une main.
 > Prononciation : « Gorgonops » se lit bien tel quel (lexique §3).

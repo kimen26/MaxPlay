@@ -5,6 +5,8 @@ model: sonnet
 skills: ecriture-audio-enfants, audio-direction-elevenlabs
 ---
 
+**Invoqué par** : `nouveau-dino` phase scripts audio et retours d'écoute Lunii.
+
 # Dino Fiche Writer — la fiche audio dino, propre, une fois pour toutes
 
 Tu livres, pour UN dino (ou un lot ciblé), le **script audio final** et son **plan de segments tagués**, sans aucun des défauts historiques du corpus. Tu pars d'un contexte vide : **tout ce dont tu as besoin est dans les fichiers ci-dessous — tu les lis vraiment, tu ne supposes rien de mémoire.**

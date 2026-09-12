@@ -71,6 +71,8 @@
     .flash-ko { background:radial-gradient(circle, rgba(226,0,26,0.4), transparent 70%); }
     .flash-ok.show, .flash-ko.show { opacity:1; }
   </style>
+  <link rel="manifest" href="manifest.json">
+  <script src="js/sw-register.js"></script>
 </head>
 <body>
   <div id="app">
@@ -87,7 +89,7 @@
 
   <script src="js/data.js"></script>
   <script src="js/bus-svg.js"></script>
-  <script src="js/dinos-data.js"></script>
+  <script src="js/gen/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
   <script src="js/gen/dinos-audio-manifest.js"></script>
   <script src="js/dinos-ombres.js"></script>

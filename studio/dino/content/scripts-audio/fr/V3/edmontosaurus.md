@@ -1,7 +1,7 @@
 # Edmontosaure — Script audio (Narrateur H + Wex)
 
 > Ornithopode (famille `bec`, clé technique dinos-data.js), Crétacé · 68 millions d'années · Amérique du Nord.
-> Chiffres data (`site/js/dinos-data.js` id `edmontosaurus`) : 12 m long · 3,5 m haut · 4 t. Comparaisons = sortie EXACTE de `_compLong(12)` / `_compHaut(3.5)` / `_compPoids(4)`, exécutées node 2026-09-05 : `aussi long qu'un bus RATP !` / `comme deux Papas l'un sur l'autre !` / `aussi lourd que 2 rhinocéros !` (identique data — bus AUTORISÉ ici car exactement 12 m, écart 0 %, conforme référentiel).
+> Chiffres data (`studio/dino/content/dinos/edmontosaurus.json`) : 12 m long · 3.5 m haut · 4 t. Comparaisons = sortie EXACTE de _compLong(12) / _compHaut(3.5) / _compPoids(4), régénérées 2026-09-12 : `aussi long qu'un bus RATP !` / `comme deux Papas l'un sur l'autre !` / `aussi lourd que 2 rhinocéros !`.
 > Étymologie conforme `_ETYMO-COMPLET-60.md` : Edmonton (ville du Canada) + grec *saurus* = lézard → « le lézard d'Edmonton ».
 > Fact-check Grokipedia 2026-09-05 : Edmontosaurus regalis, Formation Horseshoe Canyon, Alberta (Maastrichtien, ~73-68 Ma) — **contemporain du Tricératops et de l'Albertosaure/T-Rex** (Crétacé final, Amérique du Nord). Grands troupeaux migrateurs documentés. Jusqu'à ~1000 dents en batteries dentaires, remplacement continu confirmé.
 > 🔒 Tritri : touche LÉGÈRE autorisée (contemporain confirmé, Crétacé final Amérique du Nord).

@@ -4,7 +4,7 @@
 > Référence visuelle figée : **Théropodes V3** (`reference/theropode-v3.png`).
 
 Chaque famille = **un élément signature fort** (+ indice de contexte) qui dit le concept, pas un dino identifiable.
-Titres = noms scientifiques (source `site/js/dinos-data.js`).
+Titres = noms scientifiques (source `site/js/gen/dinos-data.js`).
 
 | # | Famille | Emblème-concept | Griffure ? |
 |---|---------|-----------------|------------|

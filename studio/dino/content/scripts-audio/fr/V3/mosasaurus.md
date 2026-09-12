@@ -1,7 +1,7 @@
 # Mosasaure — Script audio (Narrateur H + Wex)
 
 > Énaliosaure (reptile marin, famille `enaliosaures`), Crétacé · 70 millions d'années · toutes les mers du monde.
-> Chiffres data (`site/js/dinos-data.js` id `mosasaurus`) : 17 m long · 2 m haut · 10 t. Comparaisons = sortie EXACTE de `_compLong(17)` / `_compHaut(2)` / `_compPoids(10)`, exécutées node 2026-09-05 : `aussi long qu'un bus accordéon !` / `aussi haut qu'une porte !` / `aussi lourd que 2 éléphants !`.
+> Chiffres data (`studio/dino/content/dinos/mosasaurus.json`) : 17 m long · 2 m haut · 10 t. Comparaisons = sortie EXACTE de _compLong(17) / _compHaut(2) / _compPoids(10), régénérées 2026-09-12 : `aussi long qu'un bus accordéon !` / `aussi haut qu'une porte !` / `aussi lourd que 2 éléphants !`.
 > Étymologie conforme à `nom_etym` + `_ETYMO-RACINES-50.md` : *Mosa* = la Meuse (rivière d'Europe où on a trouvé ses os) + grec *sauros* = lézard → « le lézard de la Meuse ».
 > Fact-check (Grokipedia, 2026-09-05) : Mosasaurus hoffmannii = super-prédateur marin de la fin du Crétacé (Maastrichtien, ~70 Ma), présent dans toutes les mers du monde (pas de région unique). Reptile marin (squamate), PAS un dinosaure. Proies attestées : requins, grands poissons, ammonites, et d'autres reptiles marins ; capture de ptérosaures en vol au-dessus de l'eau plausible et souvent citée (comportement documenté chez ce type de super-prédateur, formulé prudemment). Contemporain du Tricératops (fin Crétacé) → touche légère Tritri en bloc A (seul dino du lot dans ce cas).
 > Prononciation : « Mo-sa-saure » (lexique §2, -us avalé).

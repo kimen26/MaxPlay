@@ -1,6 +1,6 @@
 # HO-R04 — Gouvernance : hooks consolidés, agents JEU/DINO sans point d'entrée
 
-**Statut :** pret
+**Statut :** fait
 **Depend de :** vague 3 commitée (les hooks tournent pendant le travail des autres lanes : on les change tard)
 **Vague :** 4 · **Exécutant :** sous-agent Sonnet
 

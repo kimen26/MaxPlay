@@ -34,7 +34,11 @@ $poles = @(
 
 foreach ($p in $poles) { $p.touched = $false; $p.traced = $false; $p.invoked = $false }
 
-$lines = Get-Content -LiteralPath $transcript_path -Encoding UTF8
+# Lecture bornee (HO-R04) : seules les 2000 dernieres lignes du transcript sont
+# examinees -- le pmo-check porte sur "ce tour", jamais besoin de relire toute une
+# session longue pour ca, et un transcript volumineux ne doit pas faire trainer le
+# hook Stop.
+$lines = Get-Content -LiteralPath $transcript_path -Encoding UTF8 -Tail 2000
 foreach ($line in $lines) {
     if ([string]::IsNullOrWhiteSpace($line)) { continue }
     try { $entry = $line | ConvertFrom-Json } catch { continue }

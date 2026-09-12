@@ -1,7 +1,7 @@
 # Cératosaure — dialogue audio V3 (Narrateur H + Wex)
 
 > Théropode (famille `trex`), Jurassique · 150 millions d'années · Amérique du Nord (et peut-être l'Europe, au Portugal).
-> Chiffres data (`site/js/dinos-data.js` id `ceratosaurus`) : 6 m long · 2 m haut · **0,9 t** (corrigé HO-009) · vitesse 25 km/h. Comparaisons = sortie EXACTE de `_compLong(6)` / `_compHaut(2)` / `_compPoids(0.9)` / `_compVitesse(25)`, exécutées node 2026-09-05 : `aussi long qu'une rue à deux voies est large — il barrait la route !` / `aussi haut qu'une porte !` / `aussi lourd qu'une petite voiture !` / `aussi vite qu'un vélo qui roule bien !`.
+> Chiffres data (`studio/dino/content/dinos/ceratosaurus.json`) : 6 m long · 2 m haut · 0.9 t · vitesse 25 km/h. Comparaisons = sortie EXACTE de _compLong(6) / _compHaut(2) / _compPoids(0.9) / _compVitesse(25), régénérées 2026-09-12 : `aussi long qu'une rue à deux voies est large — il barrait la route !` / `aussi haut qu'une porte !` / `aussi lourd qu'une petite voiture !` / `aussi vite qu'un vélo qui roule bien !`.
 > Lieu(x) : les deux cités, avec l'incertitude du Portugal dite comme hypothèse (« peut-être »), fidèle au champ `region` data.
 > Étymologie conforme à `_ETYMO-RACINES-50.md` + `nom_etym` : *cérato* (grec) = corne · *saurus/saure* (grec) = lézard. En entier : le lézard à corne.
 > Fact-check (Grokipedia + Wikipedia, 2026-09-05) : Formation Morrison (USA), ~150 Ma ; fossiles portugais (Lourinhã) attribués avec prudence (« cf. Ceratosaurus », pas 100% certain — dit en hypothèse). Corne nasale unique parmi les grands théropodes de l'époque, confirmée.

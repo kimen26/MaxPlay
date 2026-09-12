@@ -1,7 +1,7 @@
 # Baryonyx — dialogue audio V3 (Narrateur H + Wex)
 
 > Théropode piscivore (famille `trex`), Crétacé · 125 millions d'années · Europe (Angleterre, Espagne, Portugal).
-> Chiffres data (`site/js/dinos-data.js` id `baryonyx`) : 9 m long · 2,5 m haut · 1,7 t · vitesse 22 km/h. Comparaisons = sortie EXACTE de `_compLong(9)` / `_compHaut(2.5)` / `_compPoids(1.7)` / `_compVitesse(22)`, exécutées node 2026-09-05 : `aussi long qu'un camion !` / `aussi haut qu'un but de foot !` / `aussi lourd qu'une petite voiture et une vache ensemble !` / `aussi vite que Papa qui court !`.
+> Chiffres data (`studio/dino/content/dinos/baryonyx.json`) : 9 m long · 2.5 m haut · 1.7 t · vitesse 22 km/h. Comparaisons = sortie EXACTE de _compLong(9) / _compHaut(2.5) / _compPoids(1.7) / _compVitesse(22), régénérées 2026-09-12 : `aussi long qu'un camion !` / `aussi haut qu'un but de foot !` / `aussi lourd qu'une petite voiture et une vache ensemble !` / `aussi vite que Papa qui court !`.
 > **Lieu(x) : les TROIS cités** (`region` data = « Europe (Angleterre, Espagne, Portugal) ») — fossiles confirmés dans les trois pays (holotype anglais, spécimens espagnols et portugais rapportés au genre).
 > Étymologie conforme à `_ETYMO-RACINES-50.md` + `nom_etym` : *bary* (grec) = lourd, pesant · *onyx* (grec) = la griffe. En entier : la griffe lourde.
 > Fact-check (Grokipedia + Wikipedia, 2026-09-05) : Formation Weald Clay (Angleterre) + gisements ibériques, ~125 Ma. Contenu stomacal fossilisé confirmé : écailles de poisson (Lepidotes) ET os d'un jeune Iguanodon — un des rares cas de régime mixte prouvé chez un théropode.

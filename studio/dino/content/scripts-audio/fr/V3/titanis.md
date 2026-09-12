@@ -1,7 +1,7 @@
 # Titanis — Script audio (Narrateur H + Wex)
 
 > Oiseau (famille `oiseaux`), PAS un dinosaure — il vit APRÈS la météorite. Cénozoïque · il y a 3 millions d'années · Amérique du Nord.
-> Chiffres data (`site/js/dinos-data.js` id `titanis`) : 1,9 m long · 1,9 m haut · 0,15 t · `vitesse_kmh: 45` (confiance haute, ajouté à la data par l'orchestrateur en cours de lot). Comparaisons = sortie EXACTE de `_compLong(1.9)` / `_compHaut(1.9)` / `_compPoids(0.15)` / `_compVitesse(45)`, exécutées node 2026-09-05 : `aussi long qu'une moto !` / `aussi haut qu'une porte !` / `aussi lourd qu'un âne !` / `aussi vite qu'un cheval au galop !`.
+> Chiffres data (`studio/dino/content/dinos/titanis.json`) : 1.9 m long · 1.9 m haut · 0.15 t · vitesse 45 km/h. Comparaisons = sortie EXACTE de _compLong(1.9) / _compHaut(1.9) / _compPoids(0.15) / _compVitesse(45), régénérées 2026-09-12 : `aussi long qu'une moto !` / `aussi haut qu'une porte !` / `aussi lourd qu'un âne !` / `aussi vite qu'un cheval au galop !`.
 > Vitesse dite en estimation, en bloc C (courir pour chasser) : « les savants pensent qu'il pouvait courir à 45 kilomètres à l'heure — aussi vite qu'un cheval au galop ».
 > Étymologie conforme `_ETYMO-RACINES-50.md` : nommé d'après les Titans, géants de la mythologie grecque → « l'oiseau Titan » (allusion à sa taille).
 > Fact-check (Grokipedia, 2026-09-05) : Titanis walleri, terror bird, oiseau incapable de voler, Amérique du Nord, il y a 3 millions d'années — seul terror bird connu à avoir migré depuis l'Amérique du Sud jusqu'en Amérique du Nord (Grand échange américain). C'est un OISEAU, pas un mammifère (décision taxo déjà gravée dans `INVARIANTS.md`, rappelée ici) : le script le dit explicitement.

@@ -2,7 +2,7 @@
 // Usage : node studio/dino/content/scripts/export/_verif-comppoids.cjs   (depuis la racine du repo)
 const fs = require('fs');
 const path = require('path');
-const src = fs.readFileSync(path.join(__dirname, '../../../../../site/js/dinos-data.js'), 'utf8');
+const src = fs.readFileSync(path.join(__dirname, '../../../../../site/js/gen/dinos-data.js'), 'utf8');
 // Expose DINOS + fonctions internes en évaluant le fichier dans une fonction.
 const expose = src + '\n;module.exports = { DINOS, _compPoids };';
 const m = { exports: {} };

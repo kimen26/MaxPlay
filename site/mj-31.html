@@ -50,6 +50,8 @@
     .band-cenozoique { background:linear-gradient(135deg,#0a3d6b,#2980b9); }
     .band-permien    { background:linear-gradient(135deg,#4a2a5a,#8e44ad); }
   </style>
+  <link rel="manifest" href="manifest.json">
+  <script src="js/sw-register.js"></script>
 </head>
 <body>
   <div id="app">
@@ -69,7 +71,7 @@
     <div class="frise" id="frise"></div>
   </div>
 
-  <script src="js/dinos-data.js"></script>
+  <script src="js/gen/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
   <script src="js/gen/dinos-audio-manifest.js"></script>
   <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->

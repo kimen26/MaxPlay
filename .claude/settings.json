@@ -99,20 +99,11 @@
     ],
     "PreToolUse": [
       {
-        "matcher": "Edit|Write",
+        "matcher": "Edit|Write|Bash|PowerShell",
         "hooks": [
           {
             "type": "command",
-            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude\\hooks\\figees-injector.ps1\""
-          }
-        ]
-      },
-      {
-        "matcher": "Bash|PowerShell",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude\\hooks\\garde-git-add.ps1\""
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude\\hooks\\pre-tool.ps1\""
           }
         ]
       }
@@ -123,19 +114,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python \"c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude\\hooks\\sync-agents-md.py\"",
-            "statusMessage": "Sync AGENTS.md (miroir Kimi)..."
-          }
-        ]
-      },
-      {
-        "matcher": "Edit|Write",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash -c 'INPUT=$(cat); if echo \"$INPUT\" | grep -q \"narration.*INBOX\"; then cd \"c:/ProjetsPerso/Claude_Projects/MaxPlay\" && git commit -m \"inbox: dump $(date +%Y-%m-%d)\" -- studio/narration/INBOX.md 2>/dev/null || true; fi'",
-            "statusMessage": "Sauvegarde INBOX narration...",
-            "async": true
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude\\hooks\\post-tool.ps1\"",
+            "statusMessage": "Sync AGENTS.md + sauvegarde INBOX narration..."
           }
         ]
       }

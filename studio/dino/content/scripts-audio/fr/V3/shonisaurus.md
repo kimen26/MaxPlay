@@ -1,7 +1,7 @@
 # Shonisaure — Script audio (Narrateur H + Wex)
 
 > Énaliosaure (ichtyosaure géant, famille `enaliosaures`), Trias · 230 millions d'années · Amérique du Nord (Nevada).
-> Chiffres data (`site/js/dinos-data.js` id `shonisaurus`) : 14 m long · 2 m haut · 25 t. Comparaisons = sortie EXACTE de `_compLong(14)` / `_compHaut(2)` / `_compPoids(25)`, exécutées node 2026-09-05 : `aussi long qu'un bus RATP !` / `aussi haut qu'une porte !` / `aussi lourd que 5 éléphants !`.
+> Chiffres data (`studio/dino/content/dinos/shonisaurus.json`) : 14 m long · 2 m haut · 25 t. Comparaisons = sortie EXACTE de _compLong(14) / _compHaut(2) / _compPoids(25), régénérées 2026-09-12 : `aussi long qu'un bus RATP !` / `aussi haut qu'une porte !` / `aussi lourd que 5 éléphants !`.
 > Étymologie conforme à `nom_etym` + `_ETYMO-RACINES-50.md` : monts Shoshone (Nevada, où on a trouvé ses os) + grec *sauros* = lézard → « le lézard des monts Shoshone ».
 > Fact-check (Grokipedia, 2026-09-05) : Shonisaurus popularis, ichtyosaure géant du Trias supérieur (~230 Ma), Nevada (à l'époque sous la mer). **Point corrigé HO-009/010** : à l'âge adulte, AUCUN prédateur connu — c'était l'un des plus gros animaux marins de son temps (Cymbospondylus, un autre ichtyosaure, a été retiré des prédateurs cités : c'est un anachronisme, il vivait plus tôt dans le Trias, pas contemporain). On dit donc « personne » sans inventer de rival. 37 squelettes trouvés ensemble au Nevada (Berlin-Ichthyosaur State Park) — hypothèse d'échouage collectif type baleines, formulée en hypothèse.
 > Prononciation : « Cho-ni-saure » (lexique §2, sh→ch).

@@ -1,7 +1,7 @@
 # Scutellosaure — Script audio (Narrateur H + Wex)
 
 > Thyréophore basal (famille `arme`), Jurassique · 196 millions d'années · Arizona, États-Unis (Formation Kayenta).
-> Chiffres data (`dinos-data.js` id `scutellosaurus`) : 1,2 m long · 0,4 m haut · 4 kg. Sorties EXACTES exécutées node : `_compLong(1.2)` = « comme un grand chien — un labrador ! » · `_compHaut(0.4)` = « il t'arrivait aux genoux ! » · `_compPoids(0.004)` = « aussi lourd qu'un gros chat ! ».
+> Chiffres data (`studio/dino/content/dinos/scutellosaurus.json`) : 1.2 m long · 0.4 m haut · 0.004 t. Comparaisons = sortie EXACTE de _compLong(1.2) / _compHaut(0.4) / _compPoids(0.004), régénérées 2026-09-12 : `comme un grand chien — un labrador !` / `il t'arrivait aux genoux !` / `aussi lourd qu'un gros chat !`.
 > Étymologie (`_ETYMO-RACINES-50.md`) : *scutello-/scutellum* (latin) = petit bouclier + *-saurus/-saure* (grec) = lézard → « le lézard au petit bouclier ». Nom lu tel quel.
 > Fact-check Grokipedia (agent dino-conseiller, 2026-09-05) : Formation Kayenta — **CONFIRMÉ seul thyréophore bipède connu** (plus de 70 spécimens) ; **CONFIRMÉ contemporain de Dilophosaurus wetherilli**, même formation, plus grand prédateur connu de cette faune.
 > Grep-interdits OK. Wex FR standard, aucun tic écrit, jamais de `!` final.

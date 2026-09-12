@@ -1,7 +1,7 @@
 # Moschops — Script audio (Narrateur H + Wex)
 
 > Avant les dinosaures (synapside herbivore, famille `volant`), Permien · 265 millions d'années · Afrique du Sud.
-> Chiffres data (`site/js/dinos-data.js` id `moschops`) : 2,7 m long · 1,1 m haut · 0,41 t (< 1 t → « 410 kilos »). Comparaisons = sortie EXACTE de `_compLong(2.7)` / `_compHaut(1.1)` / `_compPoids(0.41)`, exécutées node 2026-09-05 : `comme trois enfants de 4 ans allongés !` / `aussi grand qu'un enfant de 4 ans !` / `aussi lourd que 2 lions !`.
+> Chiffres data (`studio/dino/content/dinos/moschops.json`) : 2.7 m long · 1.1 m haut · 0.41 t. Comparaisons = sortie EXACTE de _compLong(2.7) / _compHaut(1.1) / _compPoids(0.41), régénérées 2026-09-12 : `comme trois enfants de 4 ans allongés !` / `aussi grand qu'un enfant de 4 ans !` / `aussi lourd que 2 lions !`.
 > Étymologie conforme à `nom_etym` + `_ETYMO-RACINES-50.md` : grec *moschos* = le veau (bébé de la vache) + *ops* = le visage → « le visage de veau » (grosse tête ressemblant à celle d'un veau).
 > Fact-check (Grokipedia, 2026-09-05) : Moschops capensis, Permien (~265 Ma), Afrique du Sud. **PAS un dinosaure** : synapside herbivore trapu, crâne très épais (jusqu'à 5 cm au sommet). Comportement de « head-butting » (coups de tête entre individus, comparable aux mouflons/béliers actuels) — hypothèse comportementale bien documentée pour ce type de crâne épais, formulée avec prudence. Chassé par les grands prédateurs de son époque, dont le Gorgonops (cohérent : même région, Afrique du Sud, période Permien qui se recoupe).
 > Prononciation : « Mos-kops » (lexique §2, ch→k).

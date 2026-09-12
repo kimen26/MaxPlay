@@ -1,7 +1,7 @@
 # Tarbosaure — dialogue audio V3 (Narrateur H + Wex)
 
 > Tyrannosauridé (famille `trex`), Crétacé · 70 millions d'années · Asie (Mongolie).
-> Chiffres data (`site/js/dinos-data.js` id `tarbosaurus`) : 12 m long · 4,5 m haut · 5 t. Pas de `vitesse_kmh` → on n'en parle pas. Comparaisons = sortie EXACTE de `_compLong(12)` / `_compHaut(4.5)` / `_compPoids(5)`, exécutées node 2026-09-05 : `aussi long qu'un bus RATP !` / `aussi haut qu'un bus anglais à deux étages !` / `aussi lourd qu'un éléphant !`.
+> Chiffres data (`studio/dino/content/dinos/tarbosaurus.json`) : 12 m long · 4.5 m haut · 5 t. Comparaisons = sortie EXACTE de _compLong(12) / _compHaut(4.5) / _compPoids(5), régénérées 2026-09-12 : `aussi long qu'un bus RATP !` / `aussi haut qu'un bus anglais à deux étages !` / `aussi lourd qu'un éléphant !`.
 > Étymologie conforme à `_ETYMO-RACINES-50.md` + `nom_etym` : *tarbo* (grec) = la peur, l'effroi · *saurus/saure* (grec) = lézard. En entier : le lézard qui fait peur.
 > Fact-check (Grokipedia + Wikipedia, 2026-09-05) : Formation Nemegt, désert de Gobi, Mongolie, ~70 Ma. Cousin proche du T-Rex (même sous-famille Tyrannosaurinae). Cohabitation confirmée avec le Therizinosaurus (Formation Nemegt, même période) — cohérent avec la fiche `therizinosaurus.md`.
 > Vignette « secoue sa proie comme un chien avec une corde » — propriété du Tarbosaure (registre `_SCENES-VIGNETTES.md`), conservée.

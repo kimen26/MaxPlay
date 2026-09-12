@@ -2,22 +2,23 @@
 /*
  * _gen-etat-dinos.cjs — OUTIL DE SUIVI GÉNÉRÉ (EP-D-GED-01, DEC-GED-001 §5)
  *
- * Lecture seule : lit site/js/dinos-data.js + sonde le disque sur les 8 axes de la
- * checklist « dino complet », écrit studio/dino/memory/_ETAT-DINOS.md (synthèse en tête,
- * « le plus incomplet d'abord », section orphelins/staging).
+ * Lecture seule : lit les fiches canon studio/dino/content/dinos/<id>.json (D-009,
+ * HO-R12 — dinos-data.js n'est plus la source, il est généré) + sonde le disque sur
+ * les 8 axes de la checklist « dino complet », écrit studio/dino/memory/_ETAT-DINOS.md
+ * (synthèse en tête, « le plus incomplet d'abord », section orphelins/staging).
  *
  *   node studio/dino/content/scripts/export/_gen-etat-dinos.cjs
  *
  * JAMAIS tenu à la main (décision figée). « Où en sont les dinos ? » → on régénère.
  * Casse : images = champ `png:` (Majuscule, ex Tyrannosaurus.jpg) · audio = `id` (minuscule).
- * Créé 2026-07-15.
+ * Créé 2026-07-15. Adapté HO-R12 (2026-09-12) : lit les JSON, plus de regex sur le JS.
  */
 const fs = require('node:fs');
 const path = require('node:path');
 
 const ROOT = path.resolve(__dirname, '..', '..', '..', '..', '..'); // → repo root (site/, studio/)
 const SITE = path.join(ROOT, 'site');
-const DATA = path.join(SITE, 'js', 'dinos-data.js');
+const DINOS_DIR = path.join(ROOT, 'studio', 'dino', 'content', 'dinos');
 const OUT = path.resolve(__dirname, '..', '..', '..', 'memory', '_ETAT-DINOS.md');
 
 const has = (p) => fs.existsSync(p);
@@ -25,33 +26,22 @@ const paleoart = (f) => path.join(SITE, 'img', 'dinos', 'paleoart', f);
 const ombre = (f) => path.join(SITE, 'img', 'dinos', 'ombres', f);
 const audio = (f) => path.join(SITE, 'audio', 'dinos', 'fr', f);
 
-// ── parse le tableau DINOS (regex, sans exécuter le JS navigateur) ──────────────
-const src = fs.readFileSync(DATA, 'utf8');
-const start = src.indexOf('const DINOS = [');
-if (start < 0) { console.error('DINOS introuvable dans dinos-data.js'); process.exit(2); }
-const slice = src.slice(start, src.indexOf('\n];', start));
+// ── lit les fiches canon JSON (source unique depuis HO-R12) ──────────────────────
+if (!fs.existsSync(DINOS_DIR)) { console.error('Dossier introuvable :', DINOS_DIR); process.exit(2); }
+const dinoFiles = fs.readdirSync(DINOS_DIR).filter((f) => f.endsWith('.json') && !f.startsWith('_'));
+if (!dinoFiles.length) { console.error('Aucune fiche dino trouvée dans', DINOS_DIR); process.exit(2); }
 
-const field = (block, name) => {
-  const m = block.match(new RegExp(`${name}:\\s*'((?:[^'\\\\]|\\\\.)*)'`)) ||
-            block.match(new RegExp(`${name}:\\s*([0-9.]+)`));
-  return m ? m[1] : null;
-};
-
-// découpe en entrées par `id:` de premier niveau
-const idPositions = [...slice.matchAll(/\n\s{4}id:\s*'([^']+)'/g)];
-const dinos = idPositions.map((m, i) => {
-  const from = m.index;
-  const to = i + 1 < idPositions.length ? idPositions[i + 1].index : slice.length;
-  const block = slice.slice(from, to);
-  const id = m[1];
-  const png = field(block, 'png');            // ex 'Tyrannosaurus.jpg'
+const dinos = dinoFiles.map((f) => {
+  const doc = JSON.parse(fs.readFileSync(path.join(DINOS_DIR, f), 'utf8'));
+  const id = doc.id;
+  const png = doc.png; // ex 'Tyrannosaurus.jpg'
   const base = png ? png.replace(/\.jpg$/i, '') : id.charAt(0).toUpperCase() + id.slice(1);
   return {
     id, base,
-    name: field(block, 'name') || id,
-    nom_etym: !!field(block, 'nom_etym'),
-    taille: !!field(block, 'taille_m'),
-    fiche: !!(field(block, 'desc') && field(block, 'fait')),
+    name: doc.name || id,
+    nom_etym: !!doc.nom_etym,
+    taille: doc.taille_m !== undefined,
+    fiche: !!(doc.desc && doc.fait),
   };
 });
 
@@ -106,7 +96,7 @@ const tally = Object.fromEntries(AXES.map((a) => [a, rows.filter((r) => r.axes[a
 const bar = (n) => `${n}/${N}`;
 let md = `# _ETAT-DINOS — suivi de complétude (GÉNÉRÉ, ne pas éditer à la main)\n\n`;
 md += `> Régénérer : \`node studio/dino/content/scripts/export/_gen-etat-dinos.cjs\`\n`;
-md += `> Source : \`site/js/dinos-data.js\` + sonde disque. Outil DEC-GED-001 §5 (EP-D-GED-01).\n`;
+md += `> Source : \`studio/dino/content/dinos/*.json\` + sonde disque. Outil DEC-GED-001 §5 (EP-D-GED-01).\n`;
 md += `> ⚠️ Chiffres ci-dessous = **générés**, ils ne violent pas « zéro chiffre en dur » (ce fichier EST le tracker).\n\n`;
 md += `## Synthèse\n\n`;
 md += `- **${N} dinos** · **${complete.length} complets (8/8)** · **${incomplete.length} incomplets**\n\n`;

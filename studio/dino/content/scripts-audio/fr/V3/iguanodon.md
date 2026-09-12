@@ -1,7 +1,7 @@
 # Iguanodon — Script audio (Narrateur H + Wex)
 
 > Ornithopode (famille `bec`, clé technique dinos-data.js), Crétacé · 125 millions d'années · Europe et Amérique du Nord.
-> Chiffres data (`site/js/dinos-data.js` id `iguanodon`) : 10 m long · 2,7 m haut · 3 t. Comparaisons = sortie EXACTE de `_compLong(10)` / `_compHaut(2.7)` / `_compPoids(3)`, exécutées node 2026-09-05 : `aussi long qu'un camion !` / `aussi haut qu'un but de foot !` / `aussi lourd qu'un hippopotame !` (identique data — **10 m = « camion », PAS « bus de Paris »**, correctif du finding 🟡 relecture 2026-06-15, 17 % d'écart hors tolérance).
+> Chiffres data (`studio/dino/content/dinos/iguanodon.json`) : 10 m long · 2.7 m haut · 3 t. Comparaisons = sortie EXACTE de _compLong(10) / _compHaut(2.7) / _compPoids(3), régénérées 2026-09-12 : `aussi long qu'un camion !` / `aussi haut qu'un but de foot !` / `aussi lourd qu'un hippopotame !`.
 > Étymologie conforme `_ETYMO-COMPLET-60.md` : *iguano* (mot caribéen, l'iguane) + grec *odon* = dent → « la dent d'iguane » (ses dents ressemblaient à celles d'un iguane).
 > Fact-check Grokipedia 2026-09-05 : Iguanodon bernissartensis, gisements de Bernissart (Belgique) et Angleterre, Europe + Amérique du Nord (Crétacé inférieur, ~125 Ma). Un des tout premiers dinosaures découverts et nommés (1825, Gideon Mantell). Chassé par des théropodes contemporains (Baryonyx en Europe).
 > **Registre `_SCENES-VIGNETTES.md` respecté** : « pique sur le pouce (crû être un nez) » = vignette PROPRIÉTÉ de l'Iguanodon, réemployée ici. **« Les savants se trompent » NE DOIT PLUS être ajouté** (motif épuisé ×5-6 occurrences) → bloc D reformulé sans cette phrase : le fait est raconté (erreur historique de reconstruction), la morale n'est plus assénée en formule toute faite.

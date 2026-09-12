@@ -44,6 +44,8 @@
 
 Résumé : `game-pmo` (Sonnet, clôture/audit/RECHERCHE) → `game-conseiller` (Opus, manuel) → sachants (`game-dev`, `game-mj-reviewer`). Détail : [`.claude/agents/README.md`](../../.claude/agents/README.md) et [`EQUIPE.md`](EQUIPE.md). Hiérarchie main → game-pmo → sous-spé, jamais cross-pôle direct.
 
+`game-test-audio` et `game-test-secu` — invoqués par : `game-mj-reviewer` avant livraison / `/game-pmo-audit`.
+
 ---
 
 ## Livraison d'un mini-jeu

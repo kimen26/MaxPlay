@@ -1,7 +1,7 @@
 # Brachiosaure — Script audio (Narrateur H + Wex)
 
 > Sauropode (famille `cou_long`), Jurassique · 150 millions d'années · Amérique du Nord (Colorado, Wyoming, Utah).
-> Chiffres data (`dinos-data.js` id `brachiosaurus`) : 22 m long · 13 m haut · 47 t. Sorties EXACTES exécutées node : `_compLong(22)` = « aussi long qu'un bus accordéon ! » · `_compHaut(13)` = « aussi haut qu'un immeuble de 4 étages ! » · `_compPoids(47)` = « aussi lourd que 9 éléphants ! ».
+> Chiffres data (`studio/dino/content/dinos/brachiosaurus.json`) : 22 m long · 13 m haut · 47 t. Comparaisons = sortie EXACTE de _compLong(22) / _compHaut(13) / _compPoids(47), régénérées 2026-09-12 : `aussi long qu'un bus accordéon !` / `aussi haut qu'un immeuble de 4 étages !` / `aussi lourd que 9 éléphants !`.
 > Étymologie (`_ETYMO-RACINES-50.md`) : *brachio-* (grec *brakhion*) = bras + *-saurus/-saure* = lézard → « le lézard aux bras » (pattes avant plus longues que les pattes arrière). Respelling lexique : « Bra-ki-o-saure » (ch→k).
 > Fact-check Grokipedia/Taylor 2009 (agent dino-conseiller, 2026-09-05) : *Brachiosaurus altithorax* est connu **UNIQUEMENT** d'Amérique du Nord (Formation Morrison). Le matériel africain de Tendaguru (Tanzanie), longtemps appelé « Brachiosaurus brancai », est aujourd'hui un genre à part entière, **Giraffatitan brancai** (séparation actée par Taylor 2009, 26 différences anatomiques). → Fiche corrigée : un seul continent cité, aucune mention d'Afrique.
 > Prédateurs contemporains Formation Morrison : Allosaurus (les jeunes étaient la cible ; un adulte de cette taille était hors de portée).

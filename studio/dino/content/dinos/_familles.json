@@ -1,0 +1,98 @@
+{
+  "generatedBy": "_split-dinos-data.cjs",
+  "parFamille": {
+    "trex": [
+      "tyrannosaurus",
+      "spinosaurus",
+      "giganotosaurus",
+      "carcharodontosaurus",
+      "allosaurus",
+      "tarbosaurus",
+      "albertosaurus",
+      "ceratosaurus",
+      "dilophosaurus",
+      "carnotaurus",
+      "cryolophosaurus",
+      "baryonyx",
+      "therizinosaurus"
+    ],
+    "cou_long": [
+      "brachiosaurus",
+      "diplodocus",
+      "apatosaurus",
+      "camarasaurus",
+      "amargasaurus",
+      "plateosaurus",
+      "patagotitan"
+    ],
+    "arme": [
+      "ankylosaurus",
+      "euoplocephalus",
+      "edmontonia",
+      "minmi",
+      "scutellosaurus",
+      "scelidosaurus",
+      "stegosaurus",
+      "kentrosaurus"
+    ],
+    "cornu": [
+      "triceratops",
+      "torosaurus",
+      "protoceratops",
+      "pentaceratops",
+      "pachycephalosaurus",
+      "centrosaurus"
+    ],
+    "bec": [
+      "parasaurolophus",
+      "corythosaurus",
+      "maiasaura",
+      "saurolophus",
+      "edmontosaurus",
+      "iguanodon"
+    ],
+    "raptor": [
+      "velociraptor",
+      "deinonychus",
+      "utahraptor",
+      "microraptor",
+      "troodon",
+      "gallimimus",
+      "oviraptor",
+      "archaeopteryx"
+    ],
+    "pterosaures": [
+      "pteranodon",
+      "quetzalcoatlus",
+      "hatzegopteryx"
+    ],
+    "enaliosaures": [
+      "mosasaurus",
+      "elasmosaurus",
+      "ophthalmosaurus",
+      "liopleurodon",
+      "archelon",
+      "shonisaurus",
+      "ichthyosaurus"
+    ],
+    "volant": [
+      "dimetrodon",
+      "edaphosaurus",
+      "gorgonops",
+      "lystrosaurus",
+      "moschops"
+    ],
+    "mammiferes": [
+      "mammuthus",
+      "smilodon",
+      "megatherium",
+      "paraceratherium",
+      "glyptodon",
+      "aenocyon",
+      "coelodonta"
+    ],
+    "oiseaux": [
+      "titanis"
+    ]
+  }
+}

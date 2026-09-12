@@ -1,7 +1,7 @@
 # _ETAT-DINOS — suivi de complétude (GÉNÉRÉ, ne pas éditer à la main)
 
 > Régénérer : `node studio/dino/content/scripts/export/_gen-etat-dinos.cjs`
-> Source : `site/js/dinos-data.js` + sonde disque. Outil DEC-GED-001 §5 (EP-D-GED-01).
+> Source : `studio/dino/content/dinos/*.json` + sonde disque. Outil DEC-GED-001 §5 (EP-D-GED-01).
 > ⚠️ Chiffres ci-dessous = **générés**, ils ne violent pas « zéro chiffre en dur » (ce fichier EST le tracker).
 
 ## Synthèse
@@ -25,7 +25,7 @@ _Aucun — les 71 dinos sont complets sur les 8 axes. 🎉_
 
 ## Complets (71)
 
-T-Rex · Spinosaure · Giganotosaure · Carcharodontosaure · Allosaure · Tarbosaure · Albertosaure · Cératosaure · Dilophosaure · Carnotaure · Cryolophosaure · Brachiosaure · Diplodocus · Apatosaure (Brontosaure) · Camarasaure · Amargasaure · Plateosaure · Ankylosaure · Euoplocéphale · Edmontonia · Minmi · Scutellosaure · Scélidosaure · Stégosaure · Kéntrosaure · Tricératops · Torosaure · Protocératops · Pentacératops · Parasaurolophus · Corythosaure · Maiasaura · Saurolophe · Edmontosaure · Iguanodon · Pachycéphalosaure · Vélociraptor · Deinonychus · Utahraptor · Microraptor · Troodon · Gallimimus · Oviraptor · Ptéranodon · Quetzalcoatlus · Hatzegopteryx · Archaeoptéryx · Mosasaure · Baryonyx · Therizinosaurus · Dimétrodon · Édaphosaure · Gorgonops · Lystrosaure · Moschops · Élasmosaure · Ophthalmosaure · Liopleurodon · Archélon · Shonisaure · Titanosaure · Centrosaure · Ichtyosaure · Mammouth · Smilodon · Mégathérium · Paracérathérium · Glyptodon · Loup terrible · Rhino laineux · Titanis
+Loup terrible · Albertosaure · Allosaure · Amargasaure · Ankylosaure · Apatosaure (Brontosaure) · Archaeoptéryx · Archélon · Baryonyx · Brachiosaure · Camarasaure · Carcharodontosaure · Carnotaure · Centrosaure · Cératosaure · Rhino laineux · Corythosaure · Cryolophosaure · Deinonychus · Dilophosaure · Dimétrodon · Diplodocus · Édaphosaure · Edmontonia · Edmontosaure · Élasmosaure · Euoplocéphale · Gallimimus · Giganotosaure · Glyptodon · Gorgonops · Hatzegopteryx · Ichtyosaure · Iguanodon · Kéntrosaure · Liopleurodon · Lystrosaure · Maiasaura · Mammouth · Mégathérium · Microraptor · Minmi · Mosasaure · Moschops · Ophthalmosaure · Oviraptor · Pachycéphalosaure · Paracérathérium · Parasaurolophus · Titanosaure · Pentacératops · Plateosaure · Protocératops · Ptéranodon · Quetzalcoatlus · Saurolophe · Scélidosaure · Scutellosaure · Shonisaure · Smilodon · Spinosaure · Stégosaure · Tarbosaure · Therizinosaurus · Titanis · Torosaure · Tricératops · Troodon · T-Rex · Utahraptor · Vélociraptor
 
 ## Orphelins / staging
 

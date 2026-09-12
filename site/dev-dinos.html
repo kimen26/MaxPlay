@@ -585,6 +585,8 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 .ere-bornes { font-size:.8rem; opacity:.85; margin-top:2px; }
 .ere-play { flex:0 0 auto; width:40px; height:40px; border-radius:50%; border:none; background:var(--ere); color:#fff; font-size:1.1rem; cursor:pointer; }
 </style>
+  <link rel="manifest" href="manifest.json">
+  <script src="js/sw-register.js"></script>
 </head>
 <body data-ambiance="nuit">
 
@@ -651,7 +653,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 })();
 </script>
 <script src="js/dino-ui.js"></script>
-  <script src="js/dinos-data.js"></script>
+  <script src="js/gen/dinos-data.js"></script>
 <script src="js/gen/dinos-plantes.js"></script>
 <script src="js/gen/dinos-racines.js"></script>
 <script src="js/dinos-i18n.js"></script>

@@ -23,6 +23,28 @@ GitHub Pages → kimen26.github.io/MaxPlay/
 - `studio/minijeux/docs/` = specs/audit/recherche (.md)
 - `_site/` dans `.gitignore`
 
+## Hors ligne — service worker (HO-R11, 2026-09-12)
+
+Le site est une PWA servie sous un sous-chemin GitHub Pages (`kimen26.github.io/MaxPlay/`) :
+`site/sw.js` a donc un scope et une liste de précache **toujours relatifs** (`./`, jamais `/…`).
+Stratégie par type d'asset (détail en tête de `sw.js`) :
+
+| Type | Stratégie | Pourquoi |
+|---|---|---|
+| Coquille (index, css, js runtime du menu, catalogue, manifest, icônes, `offline.html`) | **cache-first**, précachée à l'install | Doit s'afficher instantanément et hors ligne, même une version derrière le dernier déploiement |
+| `img/`, `audio/`, `sounds/` (un dino/jeu déjà vu) | **stale-while-revalidate**, plafonné (300 audios, 500 images, 100 sons) | Rapidité + fraîcheur : sert le cache tout de suite, revalide en tâche de fond, évince les plus vieilles entrées au-delà du plafond |
+| Supabase / API distante | **jamais interceptée** | Les scores/commentaires doivent refléter l'état réel réseau ; `cloud.js` gère déjà le local-first des données |
+| Reste (pages/jeux non précachés) | **network-first** avec repli cache, puis `offline.html` en dernier recours pour une navigation | Permet de rouvrir un jeu déjà visité hors ligne sans tout précacher |
+
+Version du SW **jamais en dur** : `studio/minijeux/scripts/gen-sw-version.mjs` (appelé par
+`npm run build`) hash le contenu de la coquille précachée et écrit `site/js/gen/sw-version.js`
+(`self.SW_VERSION`), chargé par `sw.js` via `importScripts` (service worker classique, pas de
+module). Changer un seul octet d'un fichier précaché change la version → le SW reconstruit son
+cache à la prochaine activation. `site/js/sw-register.js` est chargé en `<head>` des 44 pages
+(`site/*.html`) ; ne s'enregistre pas en `file://` (échec silencieux volontaire, testé uniquement
+via un serveur HTTP local). `audit-gabarit.mjs` vérifie (BLOQUANT) que `manifest.json` et
+`js/sw-register.js` sont bien liés sur chaque mini-jeu.
+
 ## i18n panneau règle (HO-MJ-02, 2026-09-05)
 
 Plomberie calquée sur le dino : `site/js/lang.js` → `studio/minijeux/i18n/<lang>/strings.json`

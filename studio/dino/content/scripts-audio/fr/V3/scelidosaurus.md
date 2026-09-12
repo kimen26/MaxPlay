@@ -1,7 +1,7 @@
 # Scélidosaure — dialogue audio V3 (Narrateur H + Wex)
 
 > Thyréophore basal (famille `arme`, clé technique dinos-data.js), Jurassique · 193 millions d'années · Dorset, Angleterre. Format 4 blocs A/B/C/D (5e MP3 `-recap` = concat automatique ffmpeg des 4 blocs, pas de texte à écrire).
-> Chiffres data (`site/js/dinos-data.js` id `scelidosaurus`) : 4 m long · 1,2 m haut · 270 kg · vitesse 15 km/h. Comparaisons = sortie EXACTE de `_compLong(4)` / `_compHaut(1.2)` / `_compPoids(0.27)` / `_compVitesse(15)` (exécutées node 2026-09-05, HO-011) : petite voiture · enfant de 4 ans · tigre · vélo qui roule tranquille.
+> Chiffres data (`studio/dino/content/dinos/scelidosaurus.json`) : 4 m long · 1.2 m haut · 0.27 t · vitesse 15 km/h. Comparaisons = sortie EXACTE de _compLong(4) / _compHaut(1.2) / _compPoids(0.27) / _compVitesse(15), régénérées 2026-09-12 : `comme une petite voiture !` / `aussi grand qu'un enfant de 4 ans !` / `aussi lourd qu'un tigre !` / `comme un vélo qui roule tranquille !`.
 > Étymologie conforme au fact-check (Grokipedia + Wikipedia, 2026-08-23) : saurus (grec, lézard) + skelis — Owen voulait dire « grosses pattes » mais a écrit le mot grec qui veut dire « côte de bœuf » (erreur documentée, Steyskal 1970). harrisonii = James Harrison, le découvreur.
 > Prononciation : aucun digramme piège (`th/ph/ch/y` grec) → lecture FR directe, respelling syllabé « Scé-li-do-saure » pour la TTS. Absent du lexique `i18n/lexiques-prononciation/fr.md` → à ajouter en §3 (signalé en fin de réponse).
 > Grep-interdits OK. Wex FR standard, aucun tic écrit, jamais de `!` final.

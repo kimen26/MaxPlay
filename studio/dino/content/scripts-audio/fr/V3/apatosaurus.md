@@ -1,7 +1,7 @@
 # Apatosaure — Script audio (Narrateur H + Wex)
 
 > Sauropode (famille `cou_long`), Jurassique · 150 millions d'années · Amérique du Nord.
-> Chiffres data (`dinos-data.js` id `apatosaurus`) : 22 m long · 4,5 m haut · 23 t. Sorties EXACTES exécutées node : `_compLong(22)` = « aussi long qu'un bus accordéon ! » · `_compHaut(4.5)` = « aussi haut qu'un bus anglais à deux étages ! » · `_compPoids(23)` = « aussi lourd que 8 hippopotames ! ».
+> Chiffres data (`studio/dino/content/dinos/apatosaurus.json`) : 22 m long · 4.5 m haut · 23 t. Comparaisons = sortie EXACTE de _compLong(22) / _compHaut(4.5) / _compPoids(23), régénérées 2026-09-12 : `aussi long qu'un bus accordéon !` / `aussi haut qu'un bus anglais à deux étages !` / `aussi lourd que 8 hippopotames !`.
 > Étymologie (`_ETYMO-RACINES-50.md`) : *apato-* (grec *apate*) = tromperie, illusion + *-saurus/-saure* = lézard → « le lézard trompeur » (ses os ont trompé les savants). Nom lu tel quel (pas de piège de prononciation).
 > Fact-check Grokipedia (agent dino-conseiller, 2026-09-05) : Tschopp et al. 2015 a réhabilité *Brontosaurus* comme genre distinct d'*Apatosaurus*. Présenté simplement : Apatosaure = son propre animal, très proche cousin du Brontosaure.
 > Prédateurs contemporains Formation Morrison : Allosaure (surtout les jeunes, un adulte trop lourd à faire tomber).

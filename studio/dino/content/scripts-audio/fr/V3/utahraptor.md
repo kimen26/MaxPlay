@@ -1,7 +1,7 @@
 # Utahraptor — dialogue audio V3 (Narrateur H + Wex)
 
 > Dromæosaure (famille `raptor`, clé technique dinos-data.js), Crétacé · 126 millions d'années · Amérique du Nord.
-> Chiffres data (`site/js/dinos-data.js` id `utahraptor`) : 6 m long · 2 m haut · 0,425 t (425 kg). Comparaisons = sortie EXACTE de `_compLong(6)` / `_compHaut(2)` / `_compPoids(0.425)`, exécutées node 2026-09-05 : `aussi long qu'une rue à deux voies est large — il barrait la route !` / `aussi haut qu'une porte !` / `aussi lourd que 2 lions !`. ⚠️ **Poids ré-audité HO-009/010 : 425 kg (pas les ~500 kg de plusieurs sources grand public)** — chiffre data pris tel quel, aucune réinvention.
+> Chiffres data (`studio/dino/content/dinos/utahraptor.json`) : 6 m long · 2 m haut · 0.425 t. Comparaisons = sortie EXACTE de _compLong(6) / _compHaut(2) / _compPoids(0.425), régénérées 2026-09-12 : `aussi long qu'une rue à deux voies est large — il barrait la route !` / `aussi haut qu'une porte !` / `aussi lourd que 2 lions !`.
 > Pas de `vitesse_kmh` en data → non mentionnée.
 > Étymologie conforme à `_ETYMO-RACINES-50.md` + `nom_etym` : Utah (État américain, lieu de découverte) + latin *raptor* = voleur → « le voleur de l'Utah ».
 > Fact-check Grokipedia + Wikipedia (2026-09-05) : Utahraptor ostrommaysorum, formation Cedar Mountain (Utah), le plus grand dromæosaure connu. Griffe de pied d'environ 22-24 cm (source data : 24 cm) — la plus grande de tous les raptors. Chasse en groupe débattue (pas de bonebed solide comme Albertosaurus ou Deinonychus) → toute idée de meute reste une hypothèse prudente, pas un fait affirmé.

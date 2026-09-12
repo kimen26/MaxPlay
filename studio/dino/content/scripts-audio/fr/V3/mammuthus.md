@@ -1,7 +1,7 @@
 # Mammouth — Script audio (Narrateur H + Wex)
 
 > Mammifère (famille `mammiferes`), PAS un dinosaure — il vit APRÈS la météorite. Cénozoïque · Âge de glace · il y a 100 000 ans · Europe, Asie et Amérique du Nord.
-> Chiffres data (`site/js/dinos-data.js` id `mammuthus`) : 5,5 m long · 3,3 m haut · 5 t. Comparaisons = sortie EXACTE de `_compLong(5.5)` / `_compHaut(3.3)` / `_compPoids(5)`, exécutées node 2026-09-05 : `aussi long qu'un grand 4×4 !` / `comme deux Papas l'un sur l'autre !` / `aussi lourd qu'un éléphant !`.
+> Chiffres data (`studio/dino/content/dinos/mammuthus.json`) : 5.5 m long · 3.3 m haut · 5 t. Comparaisons = sortie EXACTE de _compLong(5.5) / _compHaut(3.3) / _compPoids(5), régénérées 2026-09-12 : `aussi long qu'un grand 4×4 !` / `comme deux Papas l'un sur l'autre !` / `aussi lourd qu'un éléphant !`.
 > Pas de `vitesse_kmh` dans la data → aucune vitesse chiffrée dite.
 > Étymologie conforme à `_ETYMO-RACINES-50.md` : « Mammuth- » ne vient PAS du grec/latin mais du russe *mamont* (← mansi *mē̮ŋ-ońt*, « corne de la terre ») — les défenses trouvées gelées dans le sol étaient prises pour des cornes. Fait dit simplement (« un très vieux mot »), sans étaler le détail linguistique mansi (hors portée 4 ans).
 > Fact-check (Grokipedia, 2026-09-05) : Mammuthus primigenius, Âge de glace, troupeaux comme les éléphants. Chasseurs = les hommes préhistoriques SEULEMENT (aucune mention lion des cavernes dans la data, non sourcé → absent du script). Défenses > 4 m, vérifié. Derniers mammouths sur l'île Wrangel (Sibérie) il y a 4 000 ans : vrai (fact-check croisé), pyramides d'Égypte déjà debout à cette date (~2600 av. J.-C. = il y a ~4 600 ans) — comparaison retenue.

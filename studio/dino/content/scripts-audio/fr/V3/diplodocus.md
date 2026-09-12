@@ -1,7 +1,7 @@
 # Diplodocus — Script audio (Narrateur H + Wex)
 
 > Sauropode (famille `cou_long`), Jurassique · 150 millions d'années · Amérique du Nord.
-> Chiffres data (`dinos-data.js` id `diplodocus`) : 26 m long · 4,5 m haut · 12 t. Sorties EXACTES exécutées node : `_compLong(26)` = « comme deux bus l'un derrière l'autre ! » · `_compHaut(4.5)` = « aussi haut qu'un bus anglais à deux étages ! » · `_compPoids(12)` = « aussi lourd que 4 hippopotames ! ».
+> Chiffres data (`studio/dino/content/dinos/diplodocus.json`) : 26 m long · 4.5 m haut · 12 t. Comparaisons = sortie EXACTE de _compLong(26) / _compHaut(4.5) / _compPoids(12), régénérées 2026-09-12 : `comme deux bus l'un derrière l'autre !` / `aussi haut qu'un bus anglais à deux étages !` / `aussi lourd que 4 hippopotames !`.
 > Étymologie (`_ETYMO-RACINES-50.md`) : *diplo-* (grec *diploos*) = double + *-docus/dokos* (grec) = poutre → « la double poutre » (forme des os de la queue). Respelling lexique : « Di-plo-do-kuss ».
 > Fact-check Grokipedia (agent dino-conseiller, 2026-09-05) : le claquement de queue « supersonique » vient d'une **modélisation** (Myhrvold & Currie 1997, maquette métallique) contestée depuis (étude 2022 avec position de queue réaliste ne retrouve pas la vitesse supersonique). → Formulé en HYPOTHÈSE, jamais comme un fait établi : « disent les scientifiques ».
 > Prédateurs contemporains Formation Morrison : Allosaure, Ceratosaure (surtout les jeunes isolés, le troupeau protégeait les adultes).

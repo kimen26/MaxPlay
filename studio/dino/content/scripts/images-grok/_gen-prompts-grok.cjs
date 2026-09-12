@@ -6,7 +6,7 @@
 //   4. Têtes/mouvements VARIÉS dans les groupes (jamais le même dino copié-collé)
 const fs=require('fs');
 const ROOT='c:/ProjetsPerso/Claude_Projects/MaxPlay/';
-const D=new Function(fs.readFileSync(ROOT+'site/js/dinos-data.js','utf8')+'; return DINOS;')();
+const D=new Function(fs.readFileSync(ROOT+'site/js/gen/dinos-data.js','utf8')+'; return DINOS;')();
 const G=new Function(fs.readFileSync(ROOT+'site/js/dinos-images-grok.js','utf8')+'; return DINO_GROK;')();
 
 // Style de base imposé à TOUTES les images

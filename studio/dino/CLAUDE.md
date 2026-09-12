@@ -22,6 +22,8 @@
 
 **Capture immédiate (2026-07-19)** : toute idée/décision de Papa Yann dans le tour = 1 ligne dans `memory/TODO.md` DANS LE TOUR (main agent). `dino-pmo` (unifié FOND+FORME, Sonnet) sert en clôture, audit et mode RECHERCHE. `dino-conseiller` (créatif) : écriture/péda/taxo — le consulter d'office sur tout brainstorm contenu. Hook Stop `pmo-check` : trace attendue (voir HO-G07 pour son adaptation au quintette).
 
+`dino-fiche-writer` — invoqué par : `nouveau-dino` phase scripts audio et retours d'écoute Lunii.
+
 | Question | Fichier |
 |---|---|
 | Chiffres clés (count dinos/familles, échelle, casting voix, audio) | [`memory/INVARIANTS.md`](memory/INVARIANTS.md) |

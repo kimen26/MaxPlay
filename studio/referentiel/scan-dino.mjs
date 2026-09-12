@@ -116,7 +116,7 @@ export function scannerDino() {
         cle: `dino.${dino.id}.${bloc}`,
         domaine: 'dino',
         role: 'catalogue',
-        source: 'site/js/dinos-data.js',
+        source: 'site/js/gen/dinos-data.js',
         depend_de: champs,
         empreinte_source: empreinteChamps(dino, champs),
         contrat: {

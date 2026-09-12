@@ -1,3 +1,5 @@
+// GÉNÉRÉ par studio/dino/content/scripts/export/_gen-dinos-data.cjs — ne pas éditer à la main.
+// Source : studio/dino/content/dinos/*.json (une fiche canon par dino, D-009).
 // ─── Encyclopédie Dinosaures MaxPlay ───
 // Données riches · FR = canon inline (i18n : overlay js/dinos-i18n.js) · adapté 3-5 ans · count = length (jamais en dur)
 // Catégories : carnivores · herbivores · piscivores · omnivores

@@ -1,7 +1,7 @@
 # Archélon — Script audio (Narrateur H + Wex)
 
 > Énaliosaure (tortue de mer géante, famille `enaliosaures`), Crétacé · 75 millions d'années · Amérique du Nord (mer intérieure).
-> Chiffres data (`site/js/dinos-data.js` id `archelon`) : 4 m long · 1,2 m haut · 2,2 t (re-audité HO-009/010 — plus de « Brigitta », taille corrigée). Comparaisons = sortie EXACTE de `_compLong(4)` / `_compHaut(1.2)` / `_compPoids(2.2)`, exécutées node 2026-09-05 : `comme une petite voiture !` / `aussi grand qu'un enfant de 4 ans !` / `aussi lourd qu'un rhinocéros !`.
+> Chiffres data (`studio/dino/content/dinos/archelon.json`) : 4 m long · 1.2 m haut · 2.2 t. Comparaisons = sortie EXACTE de _compLong(4) / _compHaut(1.2) / _compPoids(2.2), régénérées 2026-09-12 : `comme une petite voiture !` / `aussi grand qu'un enfant de 4 ans !` / `aussi lourd qu'un rhinocéros !`.
 > Étymologie conforme à `nom_etym` + `_ETYMO-RACINES-50.md` : grec *arché* = chef, premier (comme dans « archéologie ») + *chelôn* = la tortue → « la tortue-chef », la plus grande tortue de tous les temps.
 > Fact-check (Grokipedia, 2026-09-05) : Archelon ischyros, plus grande tortue marine connue, mer intérieure d'Amérique du Nord au Crétacé (~75 Ma). C'est une TORTUE, pas un dinosaure ni un reptile marin de type ichtyosaure/plésiosaure — elle le dit clairement. Carapace non rigide comme une tortue actuelle : peau coriace type cuir (contrairement aux tortues à carapace osseuse dure), comme la tortue luth d'aujourd'hui. Prédateurs cités par la data : Tylosaurus (grand mosasaure) et requins préhistoriques.
 > Registre `_SCENES-VIGNETTES.md` : « carapace molle coriace » est la vignette signature de l'Archélon (déjà à lui, réemployée ici — pas un doublon puisqu'elle lui appartient).

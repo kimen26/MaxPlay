@@ -1,7 +1,7 @@
 # Dilophosaure — dialogue audio V3 (Narrateur H + Wex)
 
 > Théropode (famille `trex`), Jurassique · 193 millions d'années · Amérique du Nord.
-> Chiffres data (`site/js/dinos-data.js` id `dilophosaurus`) : 7 m long · 2,4 m haut · 0,35 t · vitesse 25 km/h. Comparaisons = sortie EXACTE de `_compLong(7)` / `_compHaut(2.4)` / `_compPoids(0.35)` / `_compVitesse(25)`, exécutées node 2026-09-05 : `comme deux voitures l'une derrière l'autre !` / `aussi haut qu'un but de foot !` / `aussi lourd que 2 ânes !` / `aussi vite qu'un vélo qui roule bien !`.
+> Chiffres data (`studio/dino/content/dinos/dilophosaurus.json`) : 7 m long · 2.4 m haut · 0.35 t · vitesse 25 km/h. Comparaisons = sortie EXACTE de _compLong(7) / _compHaut(2.4) / _compPoids(0.35) / _compVitesse(25), régénérées 2026-09-12 : `comme deux voitures l'une derrière l'autre !` / `aussi haut qu'un but de foot !` / `aussi lourd que 2 ânes !` / `aussi vite qu'un vélo qui roule bien !`.
 > Étymologie conforme à `_ETYMO-RACINES-50.md` + `nom_etym` : *di* (grec) = deux · *lopho* (grec) = crête · *saurus/saure* (grec) = lézard. En entier : le lézard à deux crêtes.
 > Fact-check (Grokipedia + Wikipedia, 2026-09-05) : Formation Kayenta, Arizona, ~193 Ma, l'un des premiers grands théropodes connus. Deux crêtes parallèles en arc de cercle confirmées, probablement colorées pour la parade (hypothèse, pas de trace de pigment fossile).
 > **Charte paléoart 2026-07-17 rappelée (hors périmètre de ce script, mais cohérence)** : le cliché « Jurassic Park » (collerette venimeuse) est un mythe à démystifier sans jamais nommer la franchise — non repris ici, aucune référence adulte.

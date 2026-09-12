@@ -1,7 +1,7 @@
 # Oviraptor — dialogue audio V3 (Narrateur H + Wex)
 
 > Oviraptoridé, rangé dans la famille app « Dromæosaures » par simplification (clé technique `raptor`, dinos-data.js) — **ne pas dire « c'est un dromæosaure »**, dire « cousin des raptors ». Crétacé · 75 millions d'années · Asie (Mongolie).
-> Chiffres data (`site/js/dinos-data.js` id `oviraptor`) : 2 m long · 0,9 m haut · 35 kg. Comparaisons = sortie EXACTE de `_compLong(2)` / `_compHaut(0.9)` / `_compPoids(0.035)`, exécutées node 2026-09-05 : `aussi long qu'une moto !` / `aussi grand qu'un enfant de 4 ans !` / `aussi lourd qu'un grand enfant de 10 ans !`.
+> Chiffres data (`studio/dino/content/dinos/oviraptor.json`) : 2 m long · 0.9 m haut · 0.035 t. Comparaisons = sortie EXACTE de _compLong(2) / _compHaut(0.9) / _compPoids(0.035), régénérées 2026-09-12 : `aussi long qu'une moto !` / `aussi grand qu'un enfant de 4 ans !` / `aussi lourd qu'un grand enfant de 10 ans !`.
 > Pas de `vitesse_kmh` en data → non mentionnée.
 > Étymologie conforme à `_ETYMO-RACINES-50.md` + `nom_etym` : latin *ovum* = œuf + latin *raptor* = voleur → « le voleur d'œufs ».
 > Fact-check Grokipedia + Wikipedia (2026-09-05) : Oviraptor philoceratops, désert de Gobi (formation Djadokhta), Mongolie. **Le fait fort du bloc D est vérifié** : le nom vient d'un premier fossile (1923) trouvé près d'un nid d'œufs, cru volés à un Protocératops — en réalité, des découvertes ultérieures (dont un spécimen fossilisé COUVANT ses propres œufs, position d'incubation type oiseau) ont montré que ces œufs étaient probablement les SIENS. Un des noms les plus injustes de la paléontologie — fait solide, largement documenté.

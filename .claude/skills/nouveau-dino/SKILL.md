@@ -57,15 +57,18 @@ Précédent qui fait jurisprudence : **L-D03, honnêteté taxo** (Titanis rangé
 
 Si l'ajout fait **grossir une famille** dont le texte `explic` ne cite qu'un membre → le réécrire (vécu : `volant` ne parlait que du Dimétrodon alors qu'ils étaient 5).
 
-## Phase 2 — Data `site/js/dinos-data.js`
+## Phase 2 — Fiche canon `studio/dino/content/dinos/<id>.json`
 
-Insérer chaque entrée **auprès de ses voisins de famille**. `id` minuscule stable, `png` en Majuscule exacte.
+🔒 **Depuis HO-R12 (D-009, 2026-09-12) : `studio/dino/content/dinos/<id>.json` est la SEULE source.** `site/js/gen/dinos-data.js` est GÉNÉRÉ — on ne l'édite plus jamais à la main, on ne crée plus jamais un dino en l'insérant directement dans du JS.
 
-**Les comparaisons de taille ne s'écrivent JAMAIS à la main** : `comp_taille: _compLong(x)`, `comp_hauteur: _compHaut(y)`, `comp_poids: _compPoids(z)`.
+Créer la fiche `<id>.json` (`id` minuscule stable, `png` en Majuscule exacte) avec les champs documentés dans `studio/dino/content/dinos/_schema.json`. Ajouter son `id` à `studio/dino/content/dinos/_ordre.json` (à l'endroit voulu, en général en fin de section famille) — sans cette entrée le générateur ne l'inclut pas dans le fichier produit.
 
-Puis **vérifier par exécution** (script jetable dans le scratchpad) :
-- `DINOS.length`, répartition par famille/régime
-- clés `famille`/`cat`/`periode` valides, ids uniques, aucun champ vide
+**Les comparaisons de taille ne s'écrivent JAMAIS à la main** : elles restent des appels `_compLong(x)` / `_compHaut(y)` / `_compPoids(z)` dans le texte source (`_raw`) de la fiche — le générateur les réémet comme appels de fonction, jamais comme chaînes figées.
+
+Puis régénérer et **vérifier par exécution** :
+- `node studio/dino/content/scripts/export/_gen-dinos-data.cjs --with-header` (régénère `site/js/gen/dinos-data.js`)
+- `node studio/dino/content/scripts/export/_gen-etat-dinos.cjs` (le nouveau dino doit apparaître, compte à jour)
+- clés `famille`/`cat`/`periode` valides, id unique, aucun champ vide
 - **la sortie réelle de chaque `_compXXX`** — et contrôler qu'elle ne ment pas de plus de 10 % (règle figée)
 
 ⚠️ **Auditer les paliers, pas seulement l'appel.** Vécu (L-D-52) : `_compPoids` avait un trou entre 200 kg et 1,2 t qui faisait dire « aussi lourd qu'un gros cochon » à 17 dinos déjà en ligne, jusqu'à +400 % d'écart. Une fonction canonique validée une fois n'est pas validée pour toujours : les nouveaux entrants révèlent des trous que personne ne mesurait.

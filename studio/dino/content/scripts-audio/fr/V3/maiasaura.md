@@ -1,7 +1,7 @@
 # Maiasaura — Script audio (Narrateur H + Wex)
 
 > Ornithopode (famille `bec`, clé technique dinos-data.js), Crétacé · 76 millions d'années · Montana (États-Unis).
-> Chiffres data (`site/js/dinos-data.js` id `maiasaura`) : 9 m long · 2,5 m haut · 2,5 t. Comparaisons = sortie EXACTE de `_compLong(9)` / `_compHaut(2.5)` / `_compPoids(2.5)`, exécutées node 2026-09-05 : `aussi long qu'un camion !` / `aussi haut qu'un but de foot !` / `aussi lourd que 5 chevaux !` (identique data).
+> Chiffres data (`studio/dino/content/dinos/maiasaura.json`) : 9 m long · 2.5 m haut · 2.5 t. Comparaisons = sortie EXACTE de _compLong(9) / _compHaut(2.5) / _compPoids(2.5), régénérées 2026-09-12 : `aussi long qu'un camion !` / `aussi haut qu'un but de foot !` / `aussi lourd que 5 chevaux !`.
 > Étymologie conforme `_ETYMO-COMPLET-60.md` : grec *maia* = bonne mère/nourrice + *saura* = lézard (féminin) → « la bonne mère lézarde ».
 > Fact-check Grokipedia 2026-09-05 : Maiasaura peeblesorum, Formation Two Medicine, Montana (Campanien, ~76,7-74,3 Ma). Découverte fondatrice (Jack Horner, 1978) : la « Montagne aux Œufs » (Egg Mountain), des dizaines de nids groupés avec œufs, embryons et petits — première preuve directe de soin parental chez un dinosaure. Chassé par le Daspletosaure (grand tyrannosauroïde de la même formation, contemporain confirmé) ; le Troodon (petit théropode intelligent, même formation) volait parfois des œufs dans les nids mal gardés.
 > Nids espacés d'environ 7 mètres (longueur d'une adulte, pour qu'elle puisse se retourner sans écraser le nid voisin) — fait fort, chiffre précis vérifié data.

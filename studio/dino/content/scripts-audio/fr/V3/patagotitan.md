@@ -1,7 +1,7 @@
 # Titanosaure — Script audio (Narrateur H + Wex)
 
 > Sauropode (famille `cou_long`), Crétacé · 100 millions d'années · Amérique du Sud (Argentine, Patagonie).
-> Chiffres data (`dinos-data.js` id `patagotitan`) : 31 m long · 12 m haut · 70 t. Sorties EXACTES exécutées node : `_compLong(31)` = « comme un bus accordéon et un bus, l'un derrière l'autre ! » · `_compHaut(12)` = « aussi haut qu'un immeuble de 4 étages ! » · `_compPoids(70)` = « aussi lourd que 14 éléphants ! ».
+> Chiffres data (`studio/dino/content/dinos/patagotitan.json`) : 31 m long · 12 m haut · 70 t. Comparaisons = sortie EXACTE de _compLong(31) / _compHaut(12) / _compPoids(70), régénérées 2026-09-12 : `comme un bus accordéon et un bus, l'un derrière l'autre !` / `aussi haut qu'un immeuble de 4 étages !` / `aussi lourd que 14 éléphants !`.
 > Étymologie (`_ETYMO-RACINES-50.md`) : *Titano-* (grec, de Titan) = le géant + *-saurus/-saure* = lézard → « le lézard géant ». Le nom d'usage FR est « Titanosaure » ; le nom scientifique complet, Patagotitan, est dit en D. Respelling lexique disponible : « Pa-ta-go-ti-tan ».
 > ⚠️ CORRECTION FACT-CHECK (agent dino-conseiller, 2026-09-05) : `dinos-data.js` cite « Giganotosaure et Mapusaurus qui l'attaquaient en meute » — **FAUX, cohabitation non confirmée**. Patagotitan (Formation Cerro Barcino, ~101,6 Ma) et Mapusaurus (Formation Huincul, ~96-94 Ma) sont séparés de 5 à 8 millions d'années, pas la même formation. → Fiche corrigée : aucun prédateur nommé, formulé par l'absence de traces de prédation (sa taille le protégeait). Signalé au rapport, chiffre data non modifié (hors périmètre).
 > Grep-interdits OK. Wex FR standard, aucun tic écrit, jamais de `!` final.

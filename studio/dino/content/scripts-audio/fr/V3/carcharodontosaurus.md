@@ -1,7 +1,7 @@
 # Carcharodontosaure — dialogue audio V3 (Narrateur H + Wex)
 
 > Théropode (famille `trex`), Crétacé · 95 millions d'années · Afrique du Nord.
-> Chiffres data (`site/js/dinos-data.js` id `carcharodontosaurus`) : 13 m long · 3,8 m haut · 7 t. Pas de `vitesse_kmh` → on n'en parle pas. Comparaisons = sortie EXACTE de `_compLong(13)` / `_compHaut(3.8)` / `_compPoids(7)`, exécutées node 2026-09-05 : `aussi long qu'un bus RATP !` / `comme deux Papas l'un sur l'autre !` / `aussi lourd qu'un éléphant et un rhinocéros ensemble !`.
+> Chiffres data (`studio/dino/content/dinos/carcharodontosaurus.json`) : 13 m long · 3.8 m haut · 7 t. Comparaisons = sortie EXACTE de _compLong(13) / _compHaut(3.8) / _compPoids(7), régénérées 2026-09-12 : `aussi long qu'un bus RATP !` / `comme deux Papas l'un sur l'autre !` / `aussi lourd qu'un éléphant et un rhinocéros ensemble !`.
 > Étymologie conforme à `_ETYMO-RACINES-50.md` + `nom_etym` : *carcharo* (grec) = pointu et déchiqueté, comme un requin · *odonto* (grec) = dent · *saurus/saure* (grec) = lézard. En entier : le lézard aux dents de requin.
 > Fact-check (Grokipedia + Wikipedia, 2026-09-05) : Formation Kem Kem, Afrique du Nord, ~95-98 Ma — même région et même époque que le Spinosaure (cohabitation confirmée : l'un chassait sur terre, l'autre dans l'eau, niches différentes).
 > **Motif « Personne ne l'attaquait » RETIRÉ** (registre `_SCENES-VIGNETTES.md` : motif épuisé, déjà chez Carnotaure/Liopleurodon/Paracérathérium/Hatzegopteryx). Remplacé par une formulation factuelle sur la dominance sans l'expression bannie.

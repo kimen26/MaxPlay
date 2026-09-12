@@ -1,7 +1,7 @@
 # Torosaure — Script audio (Narrateur H + Wex)
 
 > Cératopsien (famille `cornu`, clé technique dinos-data.js), Crétacé · 66 millions d'années · Amérique du Nord.
-> Chiffres data (`site/js/dinos-data.js` id `torosaurus`) : 8 m long · 3 m haut · 8 t. Comparaisons = sortie EXACTE de `_compLong(8)` / `_compHaut(3)` / `_compPoids(8)`, exécutées node 2026-09-05 : `comme deux voitures l'une derrière l'autre !` / `aussi haut qu'un panier de basket !` / `aussi lourd que 4 rhinocéros !` (identique data).
+> Chiffres data (`studio/dino/content/dinos/torosaurus.json`) : 8 m long · 3 m haut · 8 t. Comparaisons = sortie EXACTE de _compLong(8) / _compHaut(3) / _compPoids(8), régénérées 2026-09-12 : `comme deux voitures l'une derrière l'autre !` / `aussi haut qu'un panier de basket !` / `aussi lourd que 4 rhinocéros !`.
 > Étymologie conforme `_ETYMO-COMPLET-60.md` : grec *toro* = percé/troué (PAS « taureau », faux ami écarté explicitement dans la data) + *saurus* = lézard → « le lézard à la collerette percée ».
 > Fact-check Grokipedia 2026-09-05 : Torosaurus latus, Formation Hell Creek/Lance (Maastrichtien, ~68-66 Ma), contemporain du Tricératops et du T-Rex. **Torosaure reste un genre distinct** (débat de synonymie Scannella & Horner avec Triceratops NON retenu, conforme consigne HO-011).
 > 🔒 Tritri : touche LÉGÈRE (cousin de Tritri), pas la fiche du running gag principal — réservée au Tricératops.

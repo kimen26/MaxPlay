@@ -1,7 +1,7 @@
 # Amargasaure — Script audio (Narrateur H + Wex)
 
 > Sauropode (famille `cou_long`), Crétacé · 125 millions d'années · Amérique du Sud (Argentine).
-> Chiffres data (`dinos-data.js` id `amargasaurus`) : 10 m long · 2,5 m haut · 3 t. Sorties EXACTES exécutées node : `_compLong(10)` = « aussi long qu'un camion ! » · `_compHaut(2.5)` = « aussi haut qu'un but de foot ! » · `_compPoids(3)` = « aussi lourd qu'un hippopotame ! ».
+> Chiffres data (`studio/dino/content/dinos/amargasaurus.json`) : 10 m long · 2.5 m haut · 3 t. Comparaisons = sortie EXACTE de _compLong(10) / _compHaut(2.5) / _compPoids(3), régénérées 2026-09-12 : `aussi long qu'un camion !` / `aussi haut qu'un but de foot !` / `aussi lourd qu'un hippopotame !`.
 > Étymologie (`_ETYMO-RACINES-50.md`) : *Amarga-* = « La Amarga », lieu en Argentine où on l'a découvert + *-saurus/-saure* = lézard → « le lézard de La Amarga ». Nom lu tel quel.
 > Fact-check Grokipedia (agent dino-conseiller, 2026-09-05) : deux rangées d'épines confirmées sur le COU et le DOS (arrêt aux épaules), hauteur maximale ~60 cm (la plus haute connue chez un sauropode). Fonction = HYPOTHÈSE OUVERTE non tranchée (défense, affichage, support de voile de peau, thermorégulation) — leçon L-D-41 : formuler en hypothèse assumée.
 > Grep-interdits OK. Wex FR standard, aucun tic écrit, jamais de `!` final.

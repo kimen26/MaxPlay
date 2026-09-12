@@ -98,7 +98,7 @@ Les mesures génériques ne suffisent pas : il faut **marteler la silhouette rec
    node .claude/skills/dino-images-lunii/scripts/batch-dino-series.mjs <id1> <id2> ...
    node .claude/skills/dino-images-lunii/scripts/batch-dino-series.mjs --marin <id_marin> ...
    ```
-   - ids = ceux de `site/js/dinos-data.js` (cf. `dino-fields.mjs --list`).
+   - ids = ceux de `site/js/gen/dinos-data.js` (cf. `dino-fields.mjs --list`).
    - Sortie : `site/img/dinos/_new-xxl/`. Avancement : `_PROGRESS.tsv`. État reprise : `_REPRISE.md`.
 5. **Arrêt propre sur limite** : le script sort en **exit 5** quand ChatGPT signale la limite d'images → reprendre plus tard, ou basculer Grok (`grok-gen-dino.mjs`).
 6. **Valider visuellement** chaque lot (`Read` les PNG) — surtout l'échelle (#1) et l'anatomie.

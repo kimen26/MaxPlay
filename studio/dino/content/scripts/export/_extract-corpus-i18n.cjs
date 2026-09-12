@@ -1,9 +1,9 @@
-// Extrait le corpus TEXTE a traduire depuis le canon FR (site/js/dinos-data.js + dinos-racines.js).
+// Extrait le corpus TEXTE a traduire depuis le canon FR (site/js/gen/dinos-data.js + dinos-racines.js).
 // Sortie : studio/dino/content/i18n/_corpus/corpus-fr.json (+ un fichier par lot).
 // Les champs NEUTRES (mesures, ids, images, couleurs) ne sortent jamais : ils ne se traduisent pas.
 const fs = require('fs'), path = require('path');
 const ROOT = path.resolve(__dirname, '../../../../..');
-const src = fs.readFileSync(path.join(ROOT, 'site/js/dinos-data.js'), 'utf8');
+const src = fs.readFileSync(path.join(ROOT, 'site/js/gen/dinos-data.js'), 'utf8');
 eval(src.replace(/^const /gm, 'global.'));
 const plantesPath = path.join(ROOT, 'site/js/dinos-plantes.js');
 if (fs.existsSync(plantesPath)) eval(fs.readFileSync(plantesPath, 'utf8').replace(/^const /gm, 'global.'));
@@ -93,7 +93,7 @@ extinction.hypotheses = {};
   extinction.hypotheses[h.id] = o;
 });
 
-const out = { _meta: { source: 'site/js/dinos-data.js + site/js/dinos-racines.js', genere: new Date().toISOString().slice(0, 10),
+const out = { _meta: { source: 'site/js/gen/dinos-data.js + site/js/dinos-racines.js', genere: new Date().toISOString().slice(0, 10),
   nb_dinos: Object.keys(dinos).length, nb_plantes: Object.keys(plantes).length, nb_familles: Object.keys(familles).length, nb_racines: Object.keys(racines).length },
   familles, periodes, categories, eres, dinos, plantes, racines, pangee, extinction };
 

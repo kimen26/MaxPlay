@@ -1,7 +1,7 @@
 # Rhino laineux — Script audio (Narrateur H + Wex)
 
 > Mammifère (famille `mammiferes`), PAS un dinosaure — il vit APRÈS la météorite. Cénozoïque · Âge de glace · il y a 50 000 ans · Europe et Asie (froid).
-> Chiffres data (`site/js/dinos-data.js` id `coelodonta`) : 3,5 m long · 1,5 m haut · 1,75 t (ré-audité HO-009/010 : 1,5 m au garrot / 1,75 t — corrige l'ancien script qui disait « presque deux mètres » et « 2500 kilos »). Comparaisons = sortie EXACTE de `_compLong(3.5)` / `_compHaut(1.5)` / `_compPoids(1.75)`, exécutées node 2026-09-05 : `comme une petite voiture !` / `aussi haut qu'une voiture — il fallait lever la tête !` / `aussi lourd qu'une petite voiture et une vache ensemble !`.
+> Chiffres data (`studio/dino/content/dinos/coelodonta.json`) : 3.5 m long · 1.5 m haut · 1.75 t. Comparaisons = sortie EXACTE de _compLong(3.5) / _compHaut(1.5) / _compPoids(1.75), régénérées 2026-09-12 : `comme une petite voiture !` / `aussi haut qu'une voiture — il fallait lever la tête !` / `aussi lourd qu'une petite voiture et une vache ensemble !`.
 > Pas de `vitesse_kmh` dans la data → aucune vitesse chiffrée dite.
 > Étymologie conforme `_ETYMO-RACINES-50.md` : grec *koilos* = creux + *odous* = dent → « la dent creuse » (ses molaires ont de profonds creux).
 > Fact-check (Grokipedia, 2026-09-05) : Coelodonta antiquitatis, Europe et Asie, Âge de glace, il y a 50 000 ans — cohabite avec le Mammouth (même période, même type de milieu froid). Chasseurs = hommes préhistoriques (data), qui l'ont peint sur les parois des grottes (Chauvet, Lascaux et sites voisins) — fait vérifié.

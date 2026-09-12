@@ -1,7 +1,7 @@
 # Paracérathérium — Script audio (Narrateur H + Wex)
 
 > Mammifère (famille `mammiferes`), PAS un dinosaure — il vit APRÈS la météorite. Cénozoïque · il y a 30 millions d'années · Asie (Pakistan, Chine, Mongolie).
-> Chiffres data (`site/js/dinos-data.js` id `paraceratherium`) : 7,4 m long · 5 m haut · 17 t (ré-audité HO-009/010 : 7,4 m, pas l'ancien 8 m). Comparaisons = sortie EXACTE de `_compLong(7.4)` / `_compHaut(5)` / `_compPoids(17)`, exécutées node 2026-09-05 : `comme deux voitures l'une derrière l'autre !` / `presque trois Papas l'un sur l'autre !` / `aussi lourd que 6 hippopotames !`.
+> Chiffres data (`studio/dino/content/dinos/paraceratherium.json`) : 7.4 m long · 5 m haut · 17 t. Comparaisons = sortie EXACTE de _compLong(7.4) / _compHaut(5) / _compPoids(17), régénérées 2026-09-12 : `comme deux voitures l'une derrière l'autre !` / `presque trois Papas l'un sur l'autre !` / `aussi lourd que 6 hippopotames !`.
 > Pas de `vitesse_kmh` dans la data → aucune vitesse chiffrée dite.
 > **Registre anti-redite** : « Personne ne l'attaquait » est ÉPUISÉ et déjà attribué à ce dino dans l'ancienne version (`_SCENES-VIGNETTES.md`). Reformulé ici autrement : l'idée de sécurité par la taille est dite une seule fois, différemment (« aucun chasseur de son époque n'était assez costaud »), sans reprendre le motif figé.
 > Étymologie conforme `_ETYMO-RACINES-50.md` : grec *para-* = à côté de/proche + *a-* = sans + *keras* = corne + *thèrion* = bête → « proche de la bête sans corne » (les savants le croyaient cousin de l'Acérathérium, la bête sans corne).

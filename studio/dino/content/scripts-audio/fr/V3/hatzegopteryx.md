@@ -1,7 +1,7 @@
 # Hatzegopteryx — dialogue audio V3 (Narrateur H + Wex)
 
 > Ptérosaure géant (famille `pterosaures`, clé technique dinos-data.js — PAS un dinosaure), Crétacé · 66 millions d'années · île de Hațeg, Roumanie (Europe).
-> Chiffres data (`site/js/dinos-data.js` id `hatzegopteryx`) : envergure 10 m (`taille_vol: true`, comparaison déjà hardcodée dans la data) · 3 m debout · 220 kg. Comparaisons = sortie EXACTE : `comp_taille` = « ses ailes ouvertes étaient aussi larges que six Papas couchés bout à bout » · `_compHaut(3)` = `aussi haut qu'un panier de basket !` · `_compPoids(0.22)` = `aussi lourd qu'un lion !` (⚠️ corrigé vs version précédente qui disait « gros cochon » — sortie exacte exécutée node 2026-09-05 = lion, palier 0,18-0,225 t).
+> Chiffres data (`studio/dino/content/dinos/hatzegopteryx.json`) : 10 m long · 3 m haut · 0.22 t · vitesse 12 km/h. Comparaisons = sortie EXACTE de _compLong(10) / _compHaut(3) / _compPoids(0.22) / _compVitesse(12), régénérées 2026-09-12 : `aussi long qu'un camion !` / `aussi haut qu'un panier de basket !` / `aussi lourd qu'un lion !` / `aussi vite qu'un enfant qui court !`.
 > **Vitesse (ajout HO-011)** : `vitesse_kmh: 12` en data — vitesse **au sol** (marche/course, PAS de vol, il chassait à pied). `_compVitesse(12)` exécutée node 2026-09-05 : `aussi vite qu'un enfant qui court !`. Ajoutée en fin de bloc C (contexte chasse au sol), formulée en estimation.
 > Étymologie conforme au champ `nom_etym` de la data : Hatzego (lieu, Hațeg en Roumanie) + ptéryx (grec, l'aile) + thambema (grec, le monstre).
 > Fait distinctif Witton & Habib 2010 repris : cou COURT et épais (contrairement au Quetzalcoatlus, cou long et fin), chasseur terrestre quadrupède, île de dinosaures nains où il restait le géant.

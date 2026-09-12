@@ -24,7 +24,7 @@ export const STUDIO = path.join(RACINE, 'studio');
 const SYMBOLES = ['DINOS', 'DINO_FAMILLES', '_compLong', '_compHaut', '_compPoids', '_statsPhrase'];
 
 /**
- * Évalue site/js/dinos-data.js hors navigateur et rend ses symboles.
+ * Évalue site/js/gen/dinos-data.js hors navigateur et rend ses symboles.
  * Un `window` factice est fourni : le fichier s'y publie en fin de course.
  *
  * Sur l'évaluation dynamique : la seule entrée est un fichier versionné du dépôt,
@@ -33,7 +33,7 @@ const SYMBOLES = ['DINOS', 'DINO_FAMILLES', '_compLong', '_compHaut', '_compPoid
  * étendre cette fonction à un chemin reçu en argument.
  */
 export function chargerDinos() {
-  const fichier = path.join(SITE, 'js', 'dinos-data.js');
+  const fichier = path.join(SITE, 'js', 'gen', 'dinos-data.js');
   const source = fs.readFileSync(fichier, 'utf8');
   const code = `${source}\n;module.exports = { ${SYMBOLES.join(', ')} };`;
   const faux = { exports: {} };

@@ -1,7 +1,7 @@
 # Édaphosaure — Script audio (Narrateur H + Wex)
 
 > Avant les dinosaures (synapside, famille `volant`), Permien · 280 millions d'années · Texas, États-Unis.
-> Chiffres data (`site/js/dinos-data.js` id `edaphosaurus`) : 3 m long · 1,3 m haut · 0,12 t (< 1 t → « 120 kilos »). Comparaisons = sortie EXACTE de `_compLong(3)` / `_compHaut(1.3)` / `_compPoids(0.12)`, exécutées node 2026-09-05 : `comme trois enfants de 4 ans allongés !` / `aussi haut qu'une voiture — il fallait lever la tête !` / `aussi lourd qu'un cochon !`.
+> Chiffres data (`studio/dino/content/dinos/edaphosaurus.json`) : 3 m long · 1.3 m haut · 0.12 t. Comparaisons = sortie EXACTE de _compLong(3) / _compHaut(1.3) / _compPoids(0.12), régénérées 2026-09-12 : `comme trois enfants de 4 ans allongés !` / `aussi haut qu'une voiture — il fallait lever la tête !` / `aussi lourd qu'un cochon !`.
 > Étymologie conforme à `nom_etym` + `_ETYMO-RACINES-50.md` : grec *edaphos* = le sol, le pavé (la pierre plate) + *sauros* = lézard → « le lézard aux dents en pavés » (dizaines de petites dents serrées, comme des pavés, pour écraser les plantes).
 > Fact-check (Grokipedia, 2026-09-05) : Edaphosaurus pogonias, Permien (~280 Ma), Texas. **PAS un dinosaure** : synapside, cousin ancien des animaux à poils, contemporain et même région que le Dimétrodon (data `chasseurs` : « le Dimétrodon, qui vivait au même endroit »). Voile dorsale similaire à celle du Dimétrodon, mais l'Édaphosaure est herbivore (le Dimétrodon carnivore) — un cas classique de convergence de forme sans convergence de régime, fait fort honnête à souligner (« la forme ne dit pas tout », déjà dans la data).
 > Prononciation : « É-da-fo-saure » (lexique §2, ph→f).

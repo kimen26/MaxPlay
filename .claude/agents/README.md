@@ -68,7 +68,6 @@ Si match dans une ligne `description:` → cause probable. Ce script (`gen-agent
 | `narration-pmo` | sonnet | NARRATION | project | — | PMO unifie Narration MaxPlay (fusion PMO + archiviste 2026-07-19) - garant du FOND (INVARIANTS, decisions, backlog, sprint-log, lecons-vivantes, kanbans, SLA) ET de la FORME (gabarit stories, prefixes etapes, INDEX, lookup.yml, refs). Mode RECHERCHE obligatoire pour tout chiffre (casting writers, voice_ids). Relecture briefs writers (negations gratuites). Invoquer en cloture de session narration et via /narration-pmo-audit. Sonnet pour fiabilite d'ecriture. |
 | `narration-writer-claude-libre` | opus | NARRATION | — | — | Writer Claude MaxPlay libre. Recoit brief histoire et brief personnages en message. Produit histoire 350-550 mots et note d intention. Variance par modele et temperature uniquement. |
 | `narration-writer-kimi-guide` | sonnet | NARRATION | — | — | Writer Kimi GUIDE MaxPlay - orchestre le writer guide via MCP ask_kimi. Recoit brief-personnages + brief-histoire en message. Compose le prompt system+user, appelle ask_kimi avec les axes 1-6, enregistre la version et rend compte au Directeur. |
-| `quick` | haiku | TRANSVERSE | — | — | Agent léger MaxPlay pour questions rapides, status, recherches simples dans le projet. Utilise Haiku pour des réponses immédiates à faible coût. |
 
 ---
 

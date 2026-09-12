@@ -1,7 +1,7 @@
 # Dimétrodon — Script audio (Narrateur H + Wex)
 
 > Avant les dinosaures (synapside, famille `volant`), Permien · 280 millions d'années · Amérique du Nord.
-> Chiffres data (`site/js/dinos-data.js` id `dimetrodon`) : 3,5 m long · 1,8 m haut · 0,25 t (< 1 t → « 250 kilos »). Comparaisons = sortie EXACTE de `_compLong(3.5)` / `_compHaut(1.8)` / `_compPoids(0.25)`, exécutées node 2026-09-05 : `comme une petite voiture !` / `aussi grand que Papa debout !` / `aussi lourd qu'un tigre !`.
+> Chiffres data (`studio/dino/content/dinos/dimetrodon.json`) : 3.5 m long · 1.8 m haut · 0.25 t. Comparaisons = sortie EXACTE de _compLong(3.5) / _compHaut(1.8) / _compPoids(0.25), régénérées 2026-09-12 : `comme une petite voiture !` / `aussi grand que Papa debout !` / `aussi lourd qu'un tigre !`.
 > Étymologie conforme à `nom_etym` + `_ETYMO-RACINES-50.md` : grec *di* = deux + *metron* = la mesure + *odon* = la dent → « les dents de deux tailles » (deux tailles de dents différentes dans sa mâchoire).
 > Fact-check (Grokipedia, 2026-09-05) : Dimetrodon grandis, Permien (~280 Ma), Amérique du Nord — 50 millions d'années AVANT les premiers dinosaures. **PAS un dinosaure** : un synapside, un cousin ancien des mammifères (donc, en un sens, plus proche de nous que des dinos). Grande voile dorsale (peau tendue sur de longues épines osseuses), rôle probable de thermorégulation (se réchauffer/refroidir au soleil) — hypothèse dominante, formulée prudemment.
 > Prononciation : « Dimétrodon » se lit bien tel quel (lexique §3).

@@ -57,6 +57,15 @@
 - **Drift count** — `dinos-data.js` live = 71 entrées, INVARIANTS dit 70 : à réconcilier par `dino-pmo`.
 - **audio-verif sur 70 fiches** — dérive détectée `aenocyon-taille` (MP3 vs JSON) ; à généraliser.
 
+## HO-R12 livré (2026-09-12) — fiche canon dino
+
+- [x] `studio/dino/content/dinos/<id>.json` (71 fiches) = source unique ; `site/js/gen/dinos-data.js` généré, identique octet pour octet à l'ancien `site/js/dinos-data.js` au premier run.
+- [x] `_gen-etat-dinos.cjs`, `_md2json-v3.cjs` lisent les JSON (plus de regex sur le JS).
+- [x] En-têtes « Chiffres data » régénérés sur les 71 scripts audio V3 FR.
+- [x] `check-coherence-data-narre.cjs` ajouté à `npm run check` (avertissement, jamais bloquant) : 4 écarts restants après corrections du parseur — `edmontonia` (nombres en toutes lettres, hors portée V1 du parseur), `hatzegopteryx`/`titanis` (vitesse absente du BLOC B alors que la fiche a `vitesse_kmh`, à vérifier par un humain). Détail complet : `docs/handoffs/rapports/HO-R12.md`.
+- [ ] **`aenocyon-taille` reste un écart MP3 vs JSON** (audio-verif, pas texte vs JSON) : ce contrôle HO-R12 ne le détecte pas et ne peut pas le détecter (portée différente). Toujours à traiter via `audio-verif`.
+- [ ] Ancien `site/js/dinos-data.js` supprimé une fois la porte diff validée — si un script legacy le référence encore ailleurs que les 8 fichiers du brief, corriger le chemin.
+
 ## Retours Papa Yann 2026-09-08 — nid, œufs, navigation fiche
 
 - [ ] Ouverture d'œuf : dino décalé/sombre sur sombre, invisible. Recentrer + éclaircir fond ou halo. (miroir EP-121 pôle JEU)
@@ -74,3 +83,28 @@
 ## Scelidosaurus / étanchéité (clos, référence)
 
 - [x] 71/71 dinos complets (8/8 axes) depuis Scelidosaurus le 2026-09-11 — voir `memory/_ETAT-DINOS.md` (généré).
+
+## Plan de refonte nav encyclopedie — l'objet plutot que la categorie (2026-09-12)
+
+Idee Papa Yann : etagere / livre / bibliotheque d'objets, « globe terrestre = le grand voyage ».
+Elle coche ce que la recherche concurrents a valide (voir bloc du 2026-09-10) : l'objet EST le
+sommaire visuel, et sa forme dit sa fonction sans un mot. Maquettes des 3 declinaisons :
+`studio/dino/docs/research/nav-encyclopedie/etagere.html` (A etagere · B grand livre · C musee).
+
+- [ ] **Mesure faite : le chemin reel de Max est de 5 taps** — Mur, tap Roi T-Rex, tap vignette encyclo
+  (`MUR.openEncyclo()`, `site/js/mur.js:388`), pill, carte famille, vignette dino. Les apps primees
+  tiennent en 1 ou 2. **Consequence dure : tout nouvel ecran doit REMPLACER l'ecran de pills, jamais
+  s'ajouter devant.** C'est le critere qui elimine une maquette, pas le gout.
+- [ ] **Recommandation : piste B, le grand livre** (2 taps). Les dinos sont visibles des l'ouverture,
+  les intercalaires changent la PAGE sans ouvrir de menu. C'est le « visual table of contents »
+  d'Ultimate Dinopedia, et l'exact contraire de la molette de sections qui a fait classer Britannica 8+.
+  A (etagere) reste un menu de categories deguise : on prend un objet pour atterrir sur une liste,
+  soit le meme compte de taps qu'aujourd'hui. C (musee) porte la reserve deja connue (« on regarde,
+  on ne touche pas »).
+- [ ] **Le globe regle le probleme que 4 maquettes precedentes n'ont pas regle** : un globe TOURNE donc
+  il part, un livre se FEUILLETTE donc on y pioche. La frontiere Voyage (raconter) / Epoques (ranger)
+  n'a plus besoin d'un mot pour se dire. A garder quelle que soit la piste retenue.
+- [ ] **Decision attendue de Papa Yann** avant toute ligne de code : quelle piste, et est-ce que les
+  jeux dino entrent dans l'objet (A et C leur donnent une place, B non).
+- [ ] Si B est retenu, verifier d'abord que la grille de dinos en page tient la cible NN/G de 2 cm
+  (75-80 px CSS) a 360 px : 2 colonnes OK, 3 a mesurer.

@@ -35,3 +35,14 @@
 ## Doctrine GED (référence)
 
 Le texte plein de la doctrine (canon sans numéro, zéro chiffre en dur, frontière autoring/produit, checklist 8 axes) vit dans `.claude/rules/dino.md` § Doctrine GED (chargé automatiquement sur tout fichier dino) et dans `archive/decisions-2026-H1.md` § DEC-GED-001. Ce fichier ne le recopie pas (anti-recopie, L-D-45).
+
+- **DEC-TRITRI-002** (2026-09-12, Papa Yann) — **Le duel T-Rex / Tricératops n'a pas le même vainqueur selon la fiche.**
+  Sur la fiche du **T-Rex**, le roi reste dominant : quand il choisit sa proie, il l'emporte presque toujours.
+  Sur la fiche du **Tricératops**, il ne gagne pas d'office : devant un troupeau et trois cornes d'un mètre, il
+  réfléchit à deux fois. Les deux affirmations sont vraies (le T-Rex est un prédateur efficace ; un cératopsien
+  adulte en groupe est une cible coûteuse) — c'est le point de vue de la fiche qui change, pas le fait.
+  **Chaque dino est le héros de sa propre fiche**, jamais le faire-valoir du voisin. Quotas Tritri inchangés
+  (2 max sur la fiche du Tricératops, 1 ailleurs) et vérifiés sur le DIALOGUE NARRÉ seul, pas sur les
+  en-têtes de gouvernance. Voir `.claude/rules/dino.md` § Tritri & Wex, L-D-83.
+
+- **HO-R12 livré (2026-09-12)** — `studio/dino/content/dinos/<id>.json` (71 fiches) est désormais la seule source (D-009 transverse exécutée). `site/js/gen/dinos-data.js` est généré (`_gen-dinos-data.cjs`, identique octet pour octet à l'ancien `dinos-data.js` au premier run). `_gen-etat-dinos.cjs` et `_md2json-v3.cjs` lisent les JSON. En-têtes « Chiffres data » des scripts audio V3 régénérés. `check-coherence-data-narre.cjs` ajouté à `npm run check` (avertissement). Détail complet : `docs/handoffs/rapports/HO-R12.md`.

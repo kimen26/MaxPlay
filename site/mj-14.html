@@ -121,6 +121,8 @@ body { font-family:'Fredoka One',sans-serif; color:var(--ink); display:flex; fle
 /* ── Formes SVG (mode Formes) ── */
 .shape-svg { display:block; }
 </style>
+  <link rel="manifest" href="manifest.json">
+  <script src="js/sw-register.js"></script>
 </head>
 <body>
 <div id="app">
@@ -155,7 +157,7 @@ body { font-family:'Fredoka One',sans-serif; color:var(--ink); display:flex; fle
 <!-- libs SPÉCIFIQUES au jeu -->
 <script src="js/bus-svg.js"></script>
 <script src="js/data.js"></script>
-<script src="js/dinos-data.js"></script>
+<script src="js/gen/dinos-data.js"></script>
 <script src="js/dinos-i18n.js"></script>
 <script src="js/gen/dinos-audio-manifest.js"></script>
 <script src="js/dinos-ombres.js"></script>

@@ -1,7 +1,7 @@
 # Spinosaure — dialogue audio V3 (Narrateur H + Wex)
 
 > Théropode piscivore (famille `trex`), Crétacé · 95 millions d'années · Afrique du Nord.
-> Chiffres data (`site/js/dinos-data.js` id `spinosaurus`) : 15 m long · 4 m haut · 7 t. Pas de `vitesse_kmh` (aucune fourchette sérieuse retenue par l'audit HO-009) → **on n'en parle pas**. Comparaisons = sortie EXACTE de `_compLong(15)` / `_compHaut(4)` / `_compPoids(7)`, exécutées node 2026-09-05 : `aussi long qu'un bus RATP !` / `aussi haut qu'un bus anglais à deux étages !` / `aussi lourd qu'un éléphant et un rhinocéros ensemble !`.
+> Chiffres data (`studio/dino/content/dinos/spinosaurus.json`) : 15 m long · 4 m haut · 7 t. Comparaisons = sortie EXACTE de _compLong(15) / _compHaut(4) / _compPoids(7), régénérées 2026-09-12 : `aussi long qu'un bus RATP !` / `aussi haut qu'un bus anglais à deux étages !` / `aussi lourd qu'un éléphant et un rhinocéros ensemble !`.
 > Étymologie conforme à `_ETYMO-RACINES-50.md` + `nom_etym` : *spino* (latin) = épine · *saurus/saure* (grec) = lézard. En entier : le lézard à épines.
 > Fact-check (Grokipedia + Wikipedia, 2026-09-05) : Formation Bahariya/Kem Kem, Égypte/Maroc, ~95 Ma. Semi-aquatique, régime piscivore confirmé (analyses isotopiques + contenu stomacal de poissons géants type cœlacanthe/Onchopristis). Voile dorsale « près de 2 mètres » (donnée data mise à jour HO-009, ancienne fiche disait « comme une porte d'entrée » ~2 m — cohérent, gardé).
 > Vignette : nage comme un crocodile géant — inédite au registre (pas de motif épuisé repris).

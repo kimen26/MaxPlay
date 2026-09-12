@@ -1,7 +1,7 @@
 # Stégosaure — Script audio (Narrateur H + Wex)
 
 > Thyréophore à plaques (famille `arme`), Jurassique · 155 millions d'années · Amérique du Nord, Europe.
-> Chiffres data (`dinos-data.js` id `stegosaurus`) : 9 m long · 2,8 m haut · 4 t · vitesse 7 km/h. Sorties EXACTES exécutées node : `_compLong(9)` = « aussi long qu'un camion ! » · `_compHaut(2.8)` = « aussi haut qu'un panier de basket ! » · `_compPoids(4)` = « aussi lourd que 2 rhinocéros ! » · `_compVitesse(7)` = « comme Papa qui marche vite ! ».
+> Chiffres data (`studio/dino/content/dinos/stegosaurus.json`) : 9 m long · 2.8 m haut · 4 t · vitesse 7 km/h. Comparaisons = sortie EXACTE de _compLong(9) / _compHaut(2.8) / _compPoids(4) / _compVitesse(7), régénérées 2026-09-12 : `aussi long qu'un camion !` / `aussi haut qu'un panier de basket !` / `aussi lourd que 2 rhinocéros !` / `comme Papa qui marche vite !`.
 > Étymologie (`_ETYMO-RACINES-50.md`) : *stégo-/stegos* (grec) = toit + *-saurus/-saure* = lézard → « le lézard à toit » (le savant croyait ses plaques couchées à plat comme des tuiles ; on sait aujourd'hui qu'elles étaient dressées). Nom lu tel quel.
 > Fact-check Grokipedia (agent dino-conseiller, 2026-09-05) : Formation Morrison, prédateur principal Allosaure. Thagomizer confirmé à 4 piques caudales. *S. stenops* = espèce la mieux connue ; *S. ungulatus* (nom data) reste une espèce valide distincte, pas un synonyme obsolète.
 > Vignette registre `_SCENES-VIGNETTES.md` : motif « jamais attaquer par derrière » — **Kéntrosaure garde ce motif** (fiche kentrosaurus.md) ; Stégosaure trouve une autre image (queue = arme visée, pas motif « par derrière ») pour ne pas dupliquer.

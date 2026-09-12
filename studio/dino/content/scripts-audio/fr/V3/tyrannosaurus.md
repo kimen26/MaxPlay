@@ -1,7 +1,7 @@
 # T-Rex — dialogue audio V3 (Narrateur H + Wex)
 
 > Tyrannosauridé (famille `trex`), Crétacé · 66 millions d'années · Amérique du Nord.
-> Chiffres data (`site/js/dinos-data.js` id `tyrannosaurus`) : 13 m long · 4 m haut · 8 t · vitesse 20 km/h. Comparaisons = sortie EXACTE de `_compLong(13)` / `_compHaut(4)` / `_compPoids(8)` / `_compVitesse(20)`, exécutées node 2026-09-05 : `aussi long qu'un bus RATP !` / `aussi haut qu'un bus anglais à deux étages !` / `aussi lourd que 4 rhinocéros !` / `aussi vite que Papa qui court !`.
+> Chiffres data (`studio/dino/content/dinos/tyrannosaurus.json`) : 13 m long · 4 m haut · 8 t · vitesse 20 km/h. Comparaisons = sortie EXACTE de _compLong(13) / _compHaut(4) / _compPoids(8) / _compVitesse(20), régénérées 2026-09-12 : `aussi long qu'un bus RATP !` / `aussi haut qu'un bus anglais à deux étages !` / `aussi lourd que 4 rhinocéros !` / `aussi vite que Papa qui court !`.
 > ⚠️ Écart avec l'ancien fichier `trex-lot1.md` (archivé) qui disait « 3 hippopotames » : périmé — la fonction `_compPoids(8)` retourne aujourd'hui « 4 rhinocéros » (le multiplicateur choisit le plus honnête parmi éléphant/hippopotame/rhinocéros). Le script suit la sortie EXACTE recalculée, pas l'archive.
 > Étymologie conforme à `_ETYMO-RACINES-50.md` + `nom_etym` : *tyrannos* (grec) = le maître qui commande tout seul, personne ne dit non · *saurus/saure* (grec) = lézard · *rex* (latin) = roi. En entier : le lézard-roi tyran.
 > Fact-check cohabitations (Grokipedia + Wikipedia, 2026-09-05) : Formation Hell Creek/Lance, ~68-66 Ma, Amérique du Nord. Proies contemporaines confirmées : Triceratops, Edmontosaurus, Ankylosaurus — tous trois attestés dans les mêmes formations. **Vitesse** : le mythe « 80 km/h » est démenti par les études biomécaniques récentes (os des pattes trop fragiles pour courir vite) ; consensus actuel ≈ 20 km/h, une marche rapide/trot, jamais un sprint — dit comme un fait qui corrige le mythe, pas une déception.
@@ -29,7 +29,7 @@
 
 **NARRATEUR H** [serious] : C'était un carnivore. Il chassait le Tricératops, l'Edmontosaure et l'Ankylosaure. [calm] Plutôt solitaire.
 **WEX** [nervous] : Alors Tritri, il devait faire super attention ?
-**NARRATEUR H** [encouraging] : Oui, [confident] mais avec ses trois cornes, il savait se défendre. Le T-Rex ne l'attrapait jamais sans se battre.
+**NARRATEUR H** [confident] : Très attention. [serious] Quand le roi choisissait sa proie, [calm] il l'emportait presque toujours.
 
 ### BLOC D — Le truc fou
 

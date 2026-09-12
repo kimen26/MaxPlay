@@ -1,7 +1,7 @@
 # Saurolophe — dialogue audio V3 (Narrateur H + Wex)
 
 > Ornithopode à crête pleine (famille `bec`, clé technique dinos-data.js), Crétacé · 70 millions d'années · Amérique du Nord (Canada) et Asie (Mongolie).
-> Chiffres data (`site/js/dinos-data.js` id `saurolophus`) : 9 m long · 3 m haut · 3,5 t. Comparaisons = sortie EXACTE de `_compLong(9)` / `_compHaut(3)` / `_compPoids(3.5)`, vérifiées par exécution node : `aussi long qu'un camion !` / `aussi haut qu'un panier de basket !` / `aussi lourd que 2 rhinocéros !`.
+> Chiffres data (`studio/dino/content/dinos/saurolophus.json`) : 9 m long · 3 m haut · 3.5 t. Comparaisons = sortie EXACTE de _compLong(9) / _compHaut(3) / _compPoids(3.5), régénérées 2026-09-12 : `aussi long qu'un camion !` / `aussi haut qu'un panier de basket !` / `aussi lourd qu'un hippopotame et un cheval ensemble !`.
 > Étymologie conforme à `_ETYMO-RACINES-50.md` (sauro- = lézard, -lophus = crête) → « lézard à crête ».
 > ⚠️ Vérité critique tenue : la crête est un ÉPERON D'OS PLEIN, droit, pointant vers l'arrière-haut — jamais décrite comme creuse ni comme faisant de la musique (ça, c'est le Parasaurolophus, cité en contraste). Hypothèse du signal visuel formulée comme hypothèse (« on pense que »), jamais comme un fait. Aucune couleur mentionnée. 2 espèces seulement citées en creux (Amérique + Mongolie), jamais « 3 espèces ». Découverte des 100+ Saurolophes en Mongolie dite vraie (crue, groupe surpris) sans aucun détail de souffrance.
 > Prononciation « So-ro-lo-fuss » à graver dans `i18n/lexiques-prononciation/fr.md` (phase 4).

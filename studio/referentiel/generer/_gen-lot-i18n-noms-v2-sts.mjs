@@ -69,7 +69,7 @@ function voixNarrateurH() {
 }
 
 function idsCanon() {
-  const src = fs.readFileSync(path.join(RACINE, 'site', 'js', 'dinos-data.js'), 'utf8');
+  const src = fs.readFileSync(path.join(RACINE, 'site', 'js', 'gen', 'dinos-data.js'), 'utf8');
   return new Set([...src.matchAll(/^\s*id:\s*'([a-z0-9_]+)'/gm)].map((m) => m[1]));
 }
 

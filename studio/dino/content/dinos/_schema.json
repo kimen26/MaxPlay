@@ -1,0 +1,115 @@
+{
+  "generatedBy": "_split-dinos-data.cjs (one-shot) — édité à la main ensuite",
+  "source_unique": "studio/dino/content/dinos/<id>.json — dinos-data.js est GÉNÉRÉ, ne jamais éditer à la main",
+  "langue_canon": "FR inline dans chaque champ texte. i18n = overlay qui traduit le texte FR, ne duplique jamais un chiffre : taille_m/hauteur_m/poids_t/vitesse_kmh sont universels, seule la mise en phrase change par langue.",
+  "fields": {
+    "id": {
+      "type": "string",
+      "desc": "clé latine minuscule, unique, jamais renommée (norme assets 2026-07-27)"
+    },
+    "name": {
+      "type": "string",
+      "desc": "nom affiché court (FR)"
+    },
+    "full": {
+      "type": "string",
+      "desc": "nom scientifique complet"
+    },
+    "famille": {
+      "type": "string",
+      "desc": "clé vers DINO_FAMILLES (préambule), ex 'trex'"
+    },
+    "cat": {
+      "type": "string enum",
+      "desc": "carnivores | herbivores | piscivores | omnivores"
+    },
+    "epoque": {
+      "type": "string",
+      "desc": "texte affiché, ex \"Crétacé · il y a 66 millions d'ans\""
+    },
+    "region": {
+      "type": "string",
+      "desc": "texte région (peut être composite)"
+    },
+    "taille_m": {
+      "type": "number",
+      "unit": "mètres",
+      "desc": "longueur nez-queue (ou envergure si taille_vol=true)"
+    },
+    "hauteur_m": {
+      "type": "number",
+      "unit": "mètres",
+      "desc": "hauteur debout, optionnel"
+    },
+    "poids_t": {
+      "type": "number",
+      "unit": "tonnes"
+    },
+    "vitesse_kmh": {
+      "type": "number",
+      "unit": "km/h",
+      "desc": "optionnel, jamais inventée (audit HO-009)"
+    },
+    "taille_vol": {
+      "type": "boolean",
+      "desc": "true si taille_m = envergure (ptérosaures)"
+    },
+    "nom_etym": {
+      "type": "string",
+      "desc": "étymologie grecque/latine, lue à voix haute"
+    },
+    "regime": {
+      "type": "string",
+      "desc": "emoji + libellé régime"
+    },
+    "superpower": {
+      "type": "string"
+    },
+    "chasseurs": {
+      "type": "string"
+    },
+    "proies": {
+      "type": "string"
+    },
+    "amis": {
+      "type": "string"
+    },
+    "fait": {
+      "type": "string",
+      "desc": "anecdote"
+    },
+    "desc": {
+      "type": "string",
+      "desc": "description longue"
+    },
+    "png": {
+      "type": "string",
+      "desc": "nom de fichier asset, clé = id capitalisé (norme assets)"
+    },
+    "color": {
+      "type": "string",
+      "desc": "hex"
+    },
+    "continent": {
+      "type": "string"
+    },
+    "periode": {
+      "type": "string",
+      "desc": "clé vers DINO_PERIODES"
+    },
+    "_filler": {
+      "type": "string",
+      "desc": "texte source (commentaires/séparateurs) précédant l'entrée dans dinos-data.js — réémis tel quel par le générateur"
+    },
+    "_raw": {
+      "type": "string",
+      "desc": "texte source JS exact de l'entrée — vraie source pour la régénération octet-pour-octet"
+    }
+  },
+  "comp_fields_derives_pas_stockes": [
+    "comp_taille = _compLong(taille_m)",
+    "comp_hauteur = _compHaut(hauteur_m)",
+    "comp_poids = _compPoids(poids_t)",
+    "Restent des APPELS DE FONCTION dans le JS généré (fonctions du préambule), jamais des chaînes figées."
+  ]
+}

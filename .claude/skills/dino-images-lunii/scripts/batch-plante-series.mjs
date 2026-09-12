@@ -13,7 +13,7 @@ import { execFileSync } from 'node:child_process';
 const ROOT = 'c:/ProjetsPerso/Claude_Projects/MaxPlay';
 const SKILL = '.claude/skills/dino-images-lunii/scripts';
 const PLANTES = ROOT + '/studio/dino/content/sources/flore/plantes.json';
-const DINOS = ROOT + '/site/js/dinos-data.js';
+const DINOS = ROOT + '/site/js/gen/dinos-data.js';
 
 const USE_GROK = process.argv.includes('--grok');
 const GEN = USE_GROK ? SKILL + '/grok-gen-dino.mjs' : SKILL + '/gpt-gen-dino.mjs';

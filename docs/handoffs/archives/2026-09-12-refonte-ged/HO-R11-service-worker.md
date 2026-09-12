@@ -1,6 +1,6 @@
 # HO-R11 — Service worker et politique de cache
 
-**Statut :** pret
+**Statut :** fait
 **Depend de :** HO-R10 (vague 3 commitée)
 **Vague :** 4 · **Exécutant :** sous-agent Sonnet
 

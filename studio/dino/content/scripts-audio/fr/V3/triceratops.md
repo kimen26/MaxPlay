@@ -1,10 +1,10 @@
 # Tricératops — Script audio (Narrateur H + Wex)
 
 > Cératopsien (famille `cornu`, clé technique dinos-data.js), Crétacé · 66 millions d'années · Amérique du Nord.
-> Chiffres data (`site/js/dinos-data.js` id `triceratops`) : 9 m long · 3 m haut · 9 t. Comparaisons = sortie EXACTE de `_compLong(9)` / `_compHaut(3)` / `_compPoids(9)`, exécutées node 2026-09-05 : `aussi long qu'un camion !` / `aussi haut qu'un panier de basket !` / `aussi lourd que 3 hippopotames !` (identique à `dinos-data.js`, `_BLOC-B-CANONIQUE.md` confirmé).
+> Chiffres data (`studio/dino/content/dinos/triceratops.json`) : 9 m long · 3 m haut · 9 t. Comparaisons = sortie EXACTE de _compLong(9) / _compHaut(3) / _compPoids(9), régénérées 2026-09-12 : `aussi long qu'un camion !` / `aussi haut qu'un panier de basket !` / `aussi lourd que 3 hippopotames !`.
 > Étymologie conforme `_ETYMO-RACINES-50.md` + `_ETYMO-COMPLET-60.md` : grec *tri* = trois + *cerat* = corne + *ops* = face/œil → « la face à trois cornes ». Wex devine lui-même la traduction.
 > Fact-check Grokipedia 2026-09-05 : Triceratops horridus, Formation Hell Creek/Lance/Denver (Maastrichtien, ~68-66 Ma), contemporain de Tyrannosaurus rex, Edmontosaurus annectens, Torosaurus, Ankylosaurus, Pachycephalosaurus. **Correctif HO-009/010 tenu** : ce sont bien des marques de DENTS de T-Rex retrouvées sur des os de Tricératops (morsures, pas l'inverse) — jamais l'inverse. Cornes « plus d'un mètre » confirmées (les cornes sus-orbitaires atteignent ~1,15 m).
-> 🔒 **Tritri** : LA fiche où Wex retrouve son dino préféré avec joie (running gag, décision figée). Aucun mot « Max/doudou/peluche ». Touche portée par Wex lui-même, en 2 répliques courtes, jamais expliquée par le Narrateur (pas de méta-explication adulte).
+> 🔒 **Tritri** : surnom du Tricératops, **2 mentions max ici** (le plafond de sa propre fiche, ailleurs 1). Posé par Wex lui-même, jamais expliqué par le Narrateur. Aucun mot « Max/doudou/peluche ». **Ni quête ni fil rouge** (RE-FIGÉ 2026-09-11, L-D-83).
 > Vignette registre `_SCENES-VIGNETTES.md` : « se défend avec ses 3 cornes (Tritri tient bon) » — propriété du Tricératops, réemployée ici, pas ailleurs.
 > Prononciation « Tri-sé-ra-tops » cohérente avec le lexique fr (§3 : se lit bien tel quel, pas de piège ch/y/ph/x/-us).
 > Grep-interdits OK. Wex FR standard, aucun tic écrit, jamais de `!` final.
@@ -30,7 +30,7 @@
 
 **NARRATEUR H** [serious] : C'était un herbivore. Il broutait des plantes basses et des fougères, [confident] peut-être en troupeau, pour mieux protéger les petits.
 **WEX** [nervous] : Et le T-Rex, il l'attaquait ?
-**NARRATEUR H** [confident] : Il essayait. [warmly] Mais Tritri se défendait avec ses trois cornes. Le Tricératops ne reculait devant personne.
+**NARRATEUR H** [confident] : Il essayait. [calm] Mais devant un troupeau, [serious] trois cornes d'un mètre pointées sur lui, [warmly] le roi réfléchissait à deux fois.
 
 ### BLOC D — Le truc fou
 
@@ -45,7 +45,7 @@
 - [x] 1 dino couvert, 4 blocs A/B/C/D.
 - [x] Étymologie conforme : tri + cérat + ops = « face à trois cornes ». Wex devine avant le Narrateur (priorité PY : Wex participe).
 - [x] Chiffres = sortie exacte `_compLong(9)`/`_compHaut(3)`/`_compPoids(9)` — camion / panier de basket / 3 hippopotames.
-- [x] Tritri : running gag posé par Wex lui-même (« C'est Tritri »), joie explicite, aucune méta-explication.
+- [x] Tritri : 2 mentions (plafond de sa propre fiche), posées par Wex, aucune méta-explication, aucune quête.
 - [x] Marques de dents de T-Rex SUR les os de Tricératops (jamais l'inverse) — conforme HO-009/010.
 - [x] Vignette « 3 cornes, Tritri tient bon » conforme au registre, propriété du Tricératops.
 - [x] Wex jamais de `!`, aucun écho.

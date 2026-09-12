@@ -1,7 +1,7 @@
 # Corythosaure — dialogue audio V3 (Narrateur H + Wex)
 
 > Ornithopode à crête-casque (famille `bec`, clé technique dinos-data.js), Crétacé · 76 millions d'années · Amérique du Nord. Format 4 blocs A/B/C/D (5e MP3 `-recap` = concat automatique ffmpeg des 4 blocs, pas de texte à écrire).
-> Chiffres data (`site/js/dinos-data.js` id `corythosaurus`) : 9 m long · 2 m haut · 4 t. Comparaisons = sortie EXACTE de `_compLong(9)` / `_compHaut(2)` / `_compPoids(4)`, vérifiées par exécution node 2026-09-05 : `aussi long qu'un camion !` / `aussi haut qu'une porte !` / `aussi lourd que 2 rhinocéros !`. **Correctif HO-011** : le fichier disait auparavant « aussi lourd qu'un hippopotame » (stale, ne matchait plus `_compPoids(4)` réellement exécutée) → corrigé en « 2 rhinocéros », conforme au champ `comp_poids` de la data.
+> Chiffres data (`studio/dino/content/dinos/corythosaurus.json`) : 9 m long · 2 m haut · 4 t. Comparaisons = sortie EXACTE de _compLong(9) / _compHaut(2) / _compPoids(4), régénérées 2026-09-12 : `aussi long qu'un camion !` / `aussi haut qu'une porte !` / `aussi lourd que 2 rhinocéros !`.
 > Étymologie conforme à `_ETYMO-COMPLET-60.md` (corytho = casque, saurus = lézard) + `nom_etym` data (casuarius = casoar, détail non repris ici pour rester simple).
 > Prononciation « Co-ri-to-saure » déjà gravée dans `i18n/lexiques-prononciation/fr.md`.
 > Grep-interdits OK. Wex FR standard, aucun tic écrit, jamais de `!` final.

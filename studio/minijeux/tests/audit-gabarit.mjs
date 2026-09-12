@@ -193,6 +193,14 @@ function auditOne(file) {
     /charset\s*=\s*["']?utf-8/i.test(html),
     'EP-035 : <meta charset="utf-8"> obligatoire');
 
+  // 4. hors ligne (HO-R11, 2026-09-12) : manifest lié + SW enregistré, sur les 44 pages
+  add('block', 'manifest.json lié',
+    /rel\s*=\s*["']manifest["']\s+href\s*=\s*["']manifest\.json["']|href\s*=\s*["']manifest\.json["']\s+rel\s*=\s*["']manifest["']/.test(html),
+    'HO-R11 : <link rel="manifest" href="manifest.json"> obligatoire (PWA + hors ligne)');
+  add('block', 'sw-register.js chargé',
+    /js\/sw-register\.js/.test(html),
+    'HO-R11 : <script src="js/sw-register.js"> obligatoire (enregistrement du service worker)');
+
   // ── AVERTISSEMENTS (n'empêchent pas le push, signalent une dette) ───────────
   add('warn', 'utilise le gabarit js/mj-shell.js', usesShell,
     'migration recommandée 2026-07-14 — charge tout le cadre dans le bon ordre');

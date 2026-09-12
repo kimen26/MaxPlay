@@ -1,7 +1,7 @@
 # Glyptodon — Script audio (Narrateur H + Wex)
 
 > Mammifère (famille `mammiferes`), PAS un dinosaure — il vit APRÈS la météorite. Cénozoïque · Âge de glace · il y a 1 million d'années · Amérique du Sud.
-> Chiffres data (`site/js/dinos-data.js` id `glyptodon`) : 3 m long · 1,5 m haut · 1 t (ré-audité HO-009/010 : 3 m, pas l'ancien 3,3 m). Comparaisons = sortie EXACTE de `_compLong(3)` / `_compHaut(1.5)` / `_compPoids(1)`, exécutées node 2026-09-05 : `comme trois enfants de 4 ans allongés !` / `aussi haut qu'une voiture — il fallait lever la tête !` / `aussi lourd qu'une petite voiture !`.
+> Chiffres data (`studio/dino/content/dinos/glyptodon.json`) : 3 m long · 1.5 m haut · 1 t. Comparaisons = sortie EXACTE de _compLong(3) / _compHaut(1.5) / _compPoids(1), régénérées 2026-09-12 : `comme trois enfants de 4 ans allongés !` / `aussi haut qu'une voiture — il fallait lever la tête !` / `aussi lourd qu'une petite voiture !`.
 > Pas de `vitesse_kmh` dans la data → aucune vitesse chiffrée dite.
 > **Point important (consigne orchestrateur)** : la massue caudale n'est PAS celle du Glyptodon lui-même — c'est celle de son cousin le Doedicurus. Le script le dit correctement (« son cousin » a la massue), jamais attribuée au Glyptodon directement.
 > **Vignette registre** : « carapace-voiture retournée ; cousins à massue » appartient au Glyptodon (`_SCENES-VIGNETTES.md`) — utilisée en bloc D, conforme.

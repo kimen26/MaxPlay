@@ -1,7 +1,7 @@
 # Centrosaure — Script audio (Narrateur H + Wex)
 
 > Cératopsien (famille `cornu`, clé technique dinos-data.js), Crétacé · 75 millions d'années · Amérique du Nord (Canada).
-> Chiffres data (`site/js/dinos-data.js` id `centrosaurus`) : 5,5 m long · 1,8 m haut · 1,8 t · `vitesse_kmh: 25`. Comparaisons = sortie EXACTE de `_compLong(5.5)` / `_compHaut(1.8)` / `_compPoids(1.8)` / `_compVitesse(25)`, exécutées node 2026-09-05 : `aussi long qu'un grand 4×4 !` / `aussi grand que Papa debout !` / `aussi lourd qu'un rhinocéros !` / `aussi vite qu'un vélo qui roule bien !`.
+> Chiffres data (`studio/dino/content/dinos/centrosaurus.json`) : 5.5 m long · 1.8 m haut · 1.8 t · vitesse 25 km/h. Comparaisons = sortie EXACTE de _compLong(5.5) / _compHaut(1.8) / _compPoids(1.8) / _compVitesse(25), régénérées 2026-09-12 : `aussi long qu'un grand 4×4 !` / `aussi grand que Papa debout !` / `aussi lourd qu'un rhinocéros !` / `aussi vite qu'un vélo qui roule bien !`.
 > Étymologie conforme `_ETYMO-COMPLET-60.md` : grec *kentron* = pointe/aiguillon + *saurus* = lézard → « le lézard à pointes » (toute sa collerette bordée de petites pointes).
 > Fact-check Grokipedia 2026-09-05 : Centrosaurus apertus, Formation Dinosaur Park, Alberta, Canada (Campanien, ~76-75 Ma). Chassé par le Gorgosaure (Gorgosaurus libratus), tyrannosauridé confirmé contemporain de la même formation. Bonebeds géants documentés (des milliers d'individus au même endroit, mort de masse probable liée à une inondation).
 > Vignette registre : « troupeaux géants, boum boum boum » — nouvelle image (onomatopée à imiter, pas encore prise). Pas de vignette attaque/défense ajoutée (le fait du bonebed suffit, éviter la surcharge).

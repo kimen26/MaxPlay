@@ -6,6 +6,28 @@
 > Tout nouveau mini-jeu copie ce standard. le workflow MJ (`.claude/rules/mini-jeux.md` § Workflow) génère à partir de là.
 > Référence visuelle de propreté : voir les golden + le style `css/style.css` partagé.
 
+## 📦 Livrer un mini-jeu — process en une page (HO-R09, décision PY D-012)
+
+Un jeu se livre en 9 emplacements minimum : `.html`, entrée `catalog.js`, figée,
+spec Playwright, 4 `strings.json` i18n, entrée référentiel. **Copier le
+gabarit → coder → tester → livrer** :
+
+1. **Copier** [`site/_template/mj-template.html`](../../../site/_template/mj-template.html) → `site/mj-XX.html`. Remplacer `GAME_ID`/titre/emoji partout (le gabarit porte un commentaire de fin « COMMENT LIVRER » qui reprend ces mêmes étapes).
+2. **Coder** la mécanique dans `MJ.ready(...)` — zone `.stage` + gameplay. Rester sur les briques partagées (§ API briques partagées ci-dessous) : zéro animation/écran de fin maison.
+3. **Cataloguer** : ajouter l'entrée dans [`site/js/catalog.js`](../../../site/js/catalog.js) — champs obligatoires `id/category/titre/emoji/desc/maxStars/access/status`, et si le jeu doit apparaître dans le Mur (« La Vallée ») : `zone` (copain hôte), `murOrder` (rang unique dans sa chaîne 2★), `libelleMur`, `vignette`.
+4. **i18n + référentiel** : ajouter la clé `mj-XX` dans les 4 `studio/minijeux/i18n/{fr,en,es-es,pt-br}/strings.json`, puis régénérer `studio/referentiel/textes-jeux.json` (`node studio/referentiel/generer/_extraire-textes-jeux.mjs`).
+5. **Spec Playwright** : `studio/minijeux/tests/mj-XX.spec.mjs` (gameplay).
+6. **Graver la figée** : `studio/minijeux/docs/jeux/figees/mj-XX.md` (décisions verrouillées, format 🔒 = LOI).
+7. **Tester soi-même** avant tout push :
+   ```bash
+   cd studio/minijeux/tests && node audit-gabarit.mjs mj-XX && npm run mj:test mj-XX
+   node check-mj-coherence.mjs mj-XX
+   ```
+8. **Vérifier globalement** : `npm run check` (racine) doit rester vert — c'est le même check que `.github/workflows/deploy.yml` exécute avant tout déploiement (bloquant, D-012).
+9. **Commit**.
+
+`check-mj-coherence.mjs` est **bloquant** : un jeu incomplet (html/figée/spec/i18n/référentiel manquant, ou `murOrder` en conflit dans sa zone) arrête `npm run check` et le déploiement.
+
 ## 🔒 CONTRAT MJ v2 (décision Papa Yann 2026-07-19) — OBLIGATOIRE pour TOUT jeu
 
 > Fait foi sur les piliers v1 ci-dessous quand ils divergent (billes → piste golden, confetti maison → bibliothèque MaxFX). Enforcement : `tests/audit-gabarit.mjs` (bloquant pre-push + CI) · `game-mj-reviewer` Section 7 · figée par jeu.

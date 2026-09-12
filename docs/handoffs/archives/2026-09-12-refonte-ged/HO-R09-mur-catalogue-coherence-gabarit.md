@@ -1,6 +1,6 @@
 # HO-R09 — Mur piloté par le catalogue, `check-mj-coherence`, gabarit source de mini-jeu
 
-**Statut :** pret
+**Statut :** fait
 **Depend de :** HO-R08
 **Vague :** 3 · **Exécutant :** sous-agent Sonnet
 

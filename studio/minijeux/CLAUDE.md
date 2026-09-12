@@ -46,6 +46,10 @@ Résumé : `game-pmo` (Sonnet, clôture/audit/RECHERCHE) → `game-conseiller` (
 
 ---
 
+## Livraison d'un mini-jeu
+
+Process complet (gabarit → catalogue → i18n → tests → figée → check) : [`docs/STANDARD-MJ.md`](docs/STANDARD-MJ.md) § « Livrer un mini-jeu ». Gabarit source : [`site/_template/mj-template.html`](../../site/_template/mj-template.html). Contrôle bloquant de cohérence (html/figée/spec/i18n×4/référentiel/`murOrder`) : `node studio/minijeux/tests/check-mj-coherence.mjs`, intégré à `npm run check` et à `.github/workflows/deploy.yml` (D-012).
+
 ## Stack & déploiement
 
 Détail complet : [`docs/STACK.md`](docs/STACK.md). GitHub Pages → `kimen26.github.io/MaxPlay/`, source menu = [`site/js/catalog.js`](../../site/js/catalog.js). **Count / liste des mini-jeux : ne jamais recopier un chiffre ici** → source unique [`memory/INVARIANTS.md`](memory/INVARIANTS.md). Bugs critiques : [`memory/MEMORY.md`](memory/MEMORY.md).

@@ -30,10 +30,12 @@ jobs:
       - name: Install
         run: npm ci
 
-      # Portail check BLOQUANT (HO-R08) — build à jour (générateurs déterministes),
-      # audit gabarit statique (pur node, zéro navigateur), référentiel, liens md.
-      # Un mini-jeu du menu au cadre cassé (cloud.js manquant, thème absent, emoji
-      # bus, charset) ou un générateur désynchronisé arrête le déploiement.
+      # Portail check BLOQUANT (HO-R08, HO-R09) — build à jour (générateurs
+      # déterministes), audit gabarit statique (pur node, zéro navigateur),
+      # cohérence catalogue ↔ disque (check-mj-coherence : html, figée, spec,
+      # i18n ×4, référentiel), référentiel, liens md. Un mini-jeu du menu au
+      # cadre cassé (cloud.js manquant, thème absent, emoji bus, charset), un
+      # jeu incomplet (D-012) ou un générateur désynchronisé arrête le déploiement.
       - name: Portail check (bloquant)
         run: npm run check
 

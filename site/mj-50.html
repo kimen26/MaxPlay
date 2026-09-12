@@ -14,8 +14,7 @@
     body { font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
     #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
 
-    /* Cursive scolaire FR (Beaumale, avec attaches) — décision fontes v0.6 */
-    @font-face { font-family:'Cursif'; src:url('design-shared/fonts/Cursif.ttf') format('truetype'); font-display:swap; }
+    /* @font-face Cursif : déclarée une fois dans css/mp-theme.css (HO-R10) */
 
     .stage { position:relative; flex:1; display:flex; flex-direction:column; align-items:center; justify-content:space-evenly; overflow:hidden; padding:4px 10px 12px; gap:6px; }
 
@@ -87,7 +86,7 @@
     // Graphie phonétique du SON de chaque lettre (jamais le nom de la lettre).
     // Table SOURCE DE VÉRITÉ partagée : MJKit.PHONEMES (site/js/mj-kit.js),
     // migrée depuis ce fichier vers le kit 2026-07-25 (mj-50/51/52 harmonisés).
-    // Rate lent (0.6) — méthode validée par le POC design-lecture/mockup-01.
+    // Rate lent (0.6) — méthode de lecture phonétique validée par Papa Yann.
     const SONS = MJKit.PHONEMES;
     // Audio du son : MJKit.sayPhoneme = MP3 banque (sounds/phonemes/) puis repli TTS.
     // Plus AUCUNE table MP3 locale ici (factorisation 2026-07-28, retour PY « E accent grave f »).

@@ -4,9 +4,14 @@
 //
 //  Depuis 2026-07-30 ce fichier ne rend PLUS le menu : la scène vit dans
 //  js/mur-scene.js (la vallée). Ici : les DONNÉES et CONTRATS réutilisés —
-//  COPAINS (6, dont l'hôte des jeux dino résolu dynamiquement §4.3),
-//  repaireState (séquence 2★ inchangée), entry/TITRES/VIGNETTES, étoiles,
+//  COPAINS (6 identités, dont l'hôte des jeux dino résolu dynamiquement
+//  §4.3), repaireState (séquence 2★ inchangée), entry/vignetteHtml, étoiles,
 //  humeurs (délaissé/nouveau, ex-Découverte), et l'espace parents (gate).
+//
+//  HO-R09 (2026-09-12, D-012) : plus AUCUN id `mj-*` en dur ici. La liste des
+//  jeux de chaque copain, leur ordre de déblocage, leur libellé et leur
+//  vignette viennent de `site/js/catalog.js` (champs zone/murOrder/
+//  libelleMur/vignette/libre) — voir jeuxDeZone() plus bas.
 //
 //  Défigés par PY 2026-07-29 : la file verticale (POC v1-file 2026-07-22),
 //  le drag-to-enter (choix PY 2026-07-22) — le tap redevient le geste unique.
@@ -43,49 +48,56 @@
   // l'avatar du joueur, repli Tritri si l'avatar EST un copain fixe.
   var FIXED_AVATARS = { spino: 1, galli: 1, velo: 1, ptero: 1, trex: 1 };
 
+  // HO-R09 (décision PY, D-012) : ce fichier ne contient PLUS AUCUN id
+  // `mj-*` en dur. Chaque copain ne porte plus que son identité (nom, avatar,
+  // coin de la vallée, bulle) — la liste de ses jeux et leur ordre viennent
+  // du champ `zone`/`murOrder` de `site/js/catalog.js` (voir jeuxDeZone() et
+  // repaireState() plus bas). Ajouter un jeu au Mur = lui donner un `zone` +
+  // `murOrder` dans catalog.js, plus jamais toucher ce fichier.
   var COPAINS = [
     {
       id: 'spino', nom: 'Spino', domaine: 'compter', avatar: 'spino',
-      coin: 'mare', bulle: 'Ici, on compte !',
-      jeux: ['mj-46', 'mj-47', 'mj-48', 'mj-49']
+      coin: 'mare', bulle: 'Ici, on compte !'
     },
     {
       id: 'galli', nom: 'Galli', domaine: 'lire', avatar: 'galli',
-      coin: 'arbre', bulle: 'Ici, on lit !',
-      jeux: ['mj-50', 'mj-51', 'mj-52', 'mj-53']
+      coin: 'arbre', bulle: 'Ici, on lit !'
     },
     {
       id: 'troudi', nom: 'Troudi', domaine: 'casse-têtes', avatar: 'velo',
-      coin: 'grotte', bulle: 'Ici, on réfléchit !',
-      // Pack DinoJeux (spec 2026-07-31) : ordre de déblocage de la spec —
-      // sudoku/équilibre ouvrent la chaîne, enclos/territoires la terminent.
-      jeux: ['mj-54', 'mj-55', 'mj-15', 'mj-13a', 'mj-14', 'mj-19', 'mj-18', 'mj-34', 'mj-56', 'mj-59']
+      coin: 'grotte', bulle: 'Ici, on réfléchit !'
     },
     {
       id: 'volta', nom: 'Volta', domaine: 'couleurs & monde', avatar: 'ptero',
       // Volta plane au-dessus du PIC ROCHEUX (échange de coins avec l'hôte
       // dino, retour PY 2026-07-31) : un ptéranodon perche sur un promontoire,
       // il ne niche pas dans un volcan en éruption.
-      coin: 'pic', vole: true, bulle: 'Ici, on voyage !',
-      jeux: ['mj-21', 'mj-20', 'mj-22']
+      coin: 'pic', vole: true, bulle: 'Ici, on voyage !'
     },
     {
       // L'hôte des jeux dino — avatar/nom résolus au rendu (dinoHost()).
       id: 'dino', nom: 'Tritri', domaine: 'les jeux dino', avatar: 'tritri',
       // L'hôte dino (avatar du joueur) prend le VOLCAN (retour PY 2026-07-31) :
       // le coin le plus spectaculaire de la vallée revient au dino du joueur.
-      coin: 'volcan', bulle: 'Viens voir les dinos !',
-      // mj-57 ouvre (règle nulle, confiance) — mj-58 supprimé (décision PY 2026-08-10)
-      jeux: ['mj-57', 'mj-24', 'mj-28', 'mj-31', 'mj-30', 'mj-32']
+      coin: 'volcan', bulle: 'Viens voir les dinos !'
     },
     {
       // Roi T-Rex : IMMOBILE avec son livre — porte du MONDE DINO
       // (encyclo + nid + Padidi), bulle à 3 vignettes (spec §6).
       id: 'trex', nom: 'Roi T-Rex', domaine: 'le monde dino', avatar: 'trex',
-      coin: 'trone', monde: true, bulle: 'Je te raconte les dinos !',
-      jeux: []
+      coin: 'trone', monde: true, bulle: 'Je te raconte les dinos !'
     }
   ];
+
+  // Jeux d'une zone (copain), triés par murOrder croissant — source unique :
+  // catalog.js. `MAXPLAY_CATALOG` brut (pas catalogVisible()) : le filtrage
+  // retire:true se fait dans visibleIds(), appelé par repaireState().
+  function jeuxDeZone(zoneId) {
+    return (global.MAXPLAY_CATALOG || [])
+      .filter(function (e) { return e.zone === zoneId; })
+      .sort(function (a, b) { return (a.murOrder || 0) - (b.murOrder || 0); })
+      .map(function (e) { return e.id; });
+  }
 
   // Hôte des jeux dino (règle §4.3) : l'avatar choisi par l'enfant, SAUF si
   // c'est déjà un habitant fixe → repli Tritri (exception : Tritri lui-même).
@@ -106,79 +118,14 @@
     return c;
   }
 
-  // Jeux « libres » (toujours visibles, hors séquence 2★)
-  var LIBRES = { 'mj-32': 1 };
-
-  // Titres d'affichage (noms de la spec, pas ceux de catalog.js)
-  var TITRES = {
-    'mj-24': 'Le cache-cache des dinos',
-    'mj-28': 'La lampe magique',
-    'mj-31': 'La machine à voyager dans le temps',
-    'mj-30': 'Du plus petit au plus grand',
-    'mj-32': 'L\'atelier coloriage',
-    'mj-46': 'Les œufs surprises',
-    'mj-47': 'Les constellations',
-    'mj-48': 'Tout le monde monte !',
-    'mj-49': 'Les barquettes de 10',
-    'mj-50': 'Trouve la lettre',
-    'mj-51': 'Le tri des lettres',
-    'mj-52': 'La boîte à mots',
-    'mj-53': 'Lis et fais',
-    'mj-15': 'L\'intrus',
-    'mj-13a': 'La course des bus',
-    'mj-14': 'Les cases mystères',
-    'mj-19': 'Trouve-le !',
-    'mj-18': 'Les potions',
-    'mj-34': 'Le dépôt bloqué',
-    'mj-21': 'L\'atelier peinture',
-    'mj-20': 'Compte avec le monde',
-    'mj-22': 'Où est le pays ?',
-    'mj-54': 'Sudoku Dino',
-    'mj-55': 'Équilibre',
-    'mj-56': 'Les Enclos',
-    'mj-57': 'Œufs Surprise',
-    'mj-59': 'Territoires'
-  };
-
-  // ── Vignettes de jeux (CSS/SVG pur, zéro emoji) — réutilisées telles
-  //    quelles dans les bulles de la vallée (spec §5). ──────────────────
-  var OMBRE = 'img/dinos/ombres/';
-  var VIGNETTES = {
-    'mj-24': '<div class="vig vig-ombre"><img src="' + OMBRE + 'Triceratops_ombre.png" alt=""></div>',
-    'mj-28': '<div class="vig vig-lampe"><img class="vl-dino" src="' + OMBRE + 'Gallimimus_ombre.png" alt=""></div>',
-    'mj-31': '<div class="vig vig-temps"><span class="v-aiguille"></span><span class="v-aiguille a2"></span></div>',
-    'mj-30': '<div class="vig vig-tailles"><img src="' + OMBRE + 'Velociraptor_ombre.png" alt=""><img src="' + OMBRE + 'Triceratops_ombre.png" alt=""><img src="' + OMBRE + 'Diplodocus_ombre.png" alt=""></div>',
-    'mj-32': '<div class="vig"><img class="v-img" src="img/dinos/paleoart/Triceratops_coloriage.webp" alt=""></div>',
-    'mj-46': '<div class="vig vig-oeufs"><i></i><i></i><i></i></div>',
-    'mj-47': '<div class="vig vig-constel"><i></i><i></i><i></i><i></i></div>',
-    'mj-48': '<div class="vig vig-bus vig-monte" data-bus="162"></div>',
-    'mj-49': '<div class="vig vig-barq"><span class="dix">10</span></div>',
-    'mj-50': '<div class="vig vig-son-lettre"><img class="vsl-dino" src="' + OMBRE + 'Gallimimus_ombre.png" alt=""><span class="vig-lettre">m</span><i class="w1"></i><i class="w2"></i></div>',
-    'mj-51': '<div class="vig vig-tri"><div class="tri-case c1"><span class="vig-lettre">a</span></div><div class="tri-case c2"><span class="vig-lettre script">a</span></div><span class="tri-fleche">→</span></div>',
-    'mj-52': '<div class="vig vig-boitemot"><div class="boite"><span class="s1">pa</span><span class="sep"></span><span class="s2">pa</span></div></div>',
-    'mj-53': '<div class="vig vig-lisfais"><span class="vig-lettre lf-mot">pa</span><span class="lf-fleche">→</span><div class="mjk-oeuf-mini"></div></div>',
-    'mj-15': '<div class="vig vig-intrus"><i></i><i></i><i class="autre"></i><i></i></div>',
-    'mj-13a': '<div class="vig vig-bus" data-bus="162,185"></div>',
-    'mj-14': '<div class="vig vig-grille"><i></i><i class="rond"></i><i></i><i class="rond"></i><i></i><i class="rond"></i><i></i><i class="rond"></i><i class="vide"></i></div>',
-    'mj-19': '<div class="vig vig-cible"></div>',
-    'mj-18': '<div class="vig vig-tubes"><div class="vig-tube"><i style="background:#e0655a"></i><i style="background:#4d9de0"></i></div><div class="vig-tube"><i style="background:#ffd166"></i><i style="background:#e0655a"></i></div><div class="vig-tube"><i style="background:#4d9de0"></i><i style="background:#ffd166"></i></div></div>',
-    'mj-34': '<div class="vig vig-blocs"><i class="bus"></i><i class="b2"></i><i></i><i class="b3"></i><i></i><i></i><i class="b2"></i><i></i><i></i><i class="b3"></i><i></i><i></i></div>',
-    'mj-21': '<div class="vig vig-peinture"><i class="b-r"></i><i class="b-j"></i><i class="b-b"></i></div>',
-    'mj-20': '<div class="vig vig-drapeaux"><span class="f-flag france"></span><span class="f-flag bresil"></span><span class="f-flag espagne"></span></div>',
-    'mj-22': '<div class="vig vig-carte"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="#2fbf8f" d="M18 30c10-8 22-10 32-6 12 5 24 2 32-6v44c-8 8-20 11-32 6-10-4-22-2-32 6z" opacity=".9"/><path fill="#e0655a" d="M50 18c-8 0-14 6-14 13 0 10 14 25 14 25s14-15 14-25c0-7-6-13-14-13z"/><circle cx="50" cy="31" r="6" fill="#fff"/></svg></div>',
-    'mj-54': '<div class="vig vig-sudoku"><img src="' + OMBRE + 'Triceratops_ombre.png" alt=""><span class="mjk-oeuf-mini"></span><span class="mjk-oeuf-mini"></span><img src="' + OMBRE + 'Velociraptor_ombre.png" alt=""></div>',
-    'mj-55': '<div class="vig vig-equilibre"><img src="' + OMBRE + 'Diplodocus_ombre.png" alt=""><span class="mjk-oeuf-mini"></span><span class="eq-q">?</span></div>',
-    'mj-56': '<div class="vig vig-enclos"><i class="z1"></i><i class="z2"></i><i class="z3"></i><i class="z4"></i><img src="' + OMBRE + 'Stegosaurus_ombre.png" alt=""></div>',
-    'mj-57': '<div class="vig vig-oeufs-col"><i></i><i></i><i></i><i></i></div>',
-    'mj-59': '<div class="vig vig-terr"><i class="r1"></i><i class="r2"></i><i class="r3"></i></div>'
-  };
-
   // ── Entrées catalogue + locale ─────────────────────────────────────
+  // Titre/vignette : catalog.js fait foi (libelleMur/vignette), avec repli
+  // sur titre/vignette générique quand un jeu n'a pas encore les siens.
   function entry(id) {
     if (LOCAL_META[id]) return LOCAL_META[id];
     var e = (global.MAXPLAY_CATALOG || []).find(function (x) { return x.id === id; });
     if (!e) return null;
-    return { id: e.id, titre: TITRES[e.id] || e.titre, url: e.url, maxStars: e.maxStars || 0, retire: !!e.retire };
+    return { id: e.id, titre: e.libelleMur || e.titre, url: e.url, maxStars: e.maxStars || 0, retire: !!e.retire };
   }
 
   function maxStarsOf(id) { var e = entry(id); return e ? e.maxStars : 0; }
@@ -223,13 +170,20 @@
 
   function repaireState(copain) {
     var vis = visibleIds();
-    var chain = copain.jeux.filter(function (id) { return !LIBRES[id] && vis[id]; });
+    var zoneJeux = jeuxDeZone(copain.id);
+    // libre:true (catalog.js) = toujours visible, hors chaîne 2★ (ex. coloriage)
+    var isLibre = {};
+    zoneJeux.forEach(function (id) {
+      var e = (global.MAXPLAY_CATALOG || []).find(function (x) { return x.id === id; });
+      if (e && e.libre) isLibre[id] = 1;
+    });
+    var chain = zoneJeux.filter(function (id) { return !isLibre[id] && vis[id]; });
     var visibleChain = [];
     for (var i = 0; i < chain.length; i++) {
       if (adminUnlockAll() || i === 0 || starsOf(chain[i - 1]) >= unlockStars()) visibleChain.push(chain[i]);
       else break;
     }
-    var libres = copain.jeux.filter(function (id) { return LIBRES[id] && vis[id]; });
+    var libres = zoneJeux.filter(function (id) { return isLibre[id] && vis[id]; });
     var hasNext = visibleChain.length < chain.length;
     return {
       games: visibleChain.concat(libres).map(entry).filter(Boolean),
@@ -278,7 +232,8 @@
   }
 
   function vignetteHtml(id) {
-    return VIGNETTES[id] || '<div class="vig"></div>';
+    var e = (global.MAXPLAY_CATALOG || []).find(function (x) { return x.id === id; });
+    return (e && e.vignette) || '<div class="vig"></div>';
   }
 
   function fillBusVignettes() {

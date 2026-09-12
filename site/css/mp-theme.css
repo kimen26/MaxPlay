@@ -9,6 +9,15 @@
    4. --gold    : étoiles & récompenses (or FIXE, ne change JAMAIS)
    ──────────────────────────────────────────────────────────────────── */
 
+/* Cursive scolaire FR (Beaumale, avec attaches) — décision fontes v0.6.
+   Déclarée ici une seule fois (HO-R10) : les mj qui en ont besoin chargent
+   déjà mp-theme.css, plus de @font-face local dupliqué. */
+@font-face {
+  font-family: 'Cursif';
+  src: url('../design-shared/fonts/Cursif.ttf') format('truetype');
+  font-display: swap;
+}
+
 :root {
   /* teinte de l'avatar (0-360) — seule variable à changer quand
      l'enfant recolorie son dino. Prendre la teinte (hue) de la couleur

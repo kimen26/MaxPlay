@@ -2,7 +2,7 @@
 // Badge avatar (haut du menu) → modale grille (triée par nom) → panneau couleurs (3 nuances).
 // Choix stocké en localStorage : maxplay_avatar (id, compat) + maxplay_avatar_cfg ({id, targets}).
 // L'humeur affichée est piochée au hasard à chaque chargement = variété (voulu par Papa Yann).
-// La recoloration canvas préserve contour noir + blancs + ombrage (même algo que atelier-couleurs.html).
+// La recoloration canvas préserve contour noir + blancs + ombrage.
 // API publique : window.Avatar { get, set, file, getColors, setColors, paintInto, celebrate }
 // Événement : window.dispatchEvent(new CustomEvent('maxplay:win')) → célébration auto du badge.
 // Requiert : js/gen/avatars.js (window.MAXPLAY_AVATARS).
@@ -13,7 +13,7 @@
   var KEY = 'maxplay_avatar';
   var KEYC = 'maxplay_avatar_cfg';
 
-  // ── util couleur (même algo que atelier-couleurs.html) ───────────────────
+  // ── util couleur ──────────────────────────────────────────────────────
   function hex(r, g, b) { return '#' + [r, g, b].map(function (v) { return ('0' + Math.max(0, Math.min(255, v | 0)).toString(16)).slice(-2); }).join(''); }
   function fromHex(h) { return [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)]; }
   function dist(a, b) { var dr = a[0] - b[0], dg = a[1] - b[1], db = a[2] - b[2]; return dr * dr + dg * dg + db * db; }

@@ -2,7 +2,7 @@
 
 > **FICHIER GÉNÉRÉ — ne jamais éditer à la main.**
 > Régénérer : `node studio/referentiel/build.mjs`
-> Plan d'ensemble : [`memory/ARCHI-REFERENTIEL-CONTENU.md`](../../memory/ARCHI-REFERENTIEL-CONTENU.md) · généré le 2026-09-11
+> Plan d'ensemble : [`memory/ARCHI-REFERENTIEL-CONTENU.md`](../../memory/ARCHI-REFERENTIEL-CONTENU.md) · généré le 2026-09-12
 
 ---
 

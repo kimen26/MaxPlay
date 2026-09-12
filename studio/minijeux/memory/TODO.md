@@ -3,6 +3,13 @@
 > Tickets ouverts uniquement, 1 ligne + DoD par lane. Détail complet et tickets fermés : `archive/backlog-fermes-2026.md` (avant 2026-09-03) et `git log`. Rotation 2026-09-12 (HO-R02) : les tickets clos ont été condensés en capacités livrées dans `CHANGELOG.md`, le fait/l'obsolète (28 mj fantômes purgés le 2026-08-10) a été supprimé.
 > Statuts : `[ ]` à faire · `[~]` en cours · `[!]` bloqué · `[?]` question ouverte pour Papa Yann.
 
+## Lane — Mur piloté par le catalogue : validations Papa Yann (HO-R09, 2026-09-12)
+
+- [ ] Zonage des 9 jeux réapparus au Mur (mj-06, 09, 13c, 35, 37, 38, 39, 40, 42) : suivi la catégorie catalogue, en fin de chaîne de zone ; à challenger (ex. mj-42 chez Troudi plutôt que Volta ?).
+- [ ] Vignettes CSS/SVG des 9 jeux : dessinées a minima, non revues à l'œil au-delà d'une capture 360 px.
+- [ ] `check-mj-coherence` vérifie la présence d'une entrée référentiel par jeu, pas la complétude des clés : chantier séparé si voulu.
+- [ ] Bouton retour unifié : 23 mj gardent un `<a href="index.html">` en dur parce que `back-button.js` ne matche que `.back`/`#hdr` (HO-R10) ; brief à ouvrir pour poser `class="back"` sur ces 23 et retirer les liens.
+
 ## Lane — Coloriage mj-32 : reste ouvert
 
 **DoD** : stickers posables livrés et branchés, recette faite sur le vrai P30 Pro de Max, plus aucune spec instable connue.

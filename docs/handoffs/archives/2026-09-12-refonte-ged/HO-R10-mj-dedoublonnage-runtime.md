@@ -1,6 +1,6 @@
 # HO-R10 — Mini-jeux : dédoublonnage du runtime
 
-**Statut :** pret
+**Statut :** fait
 **Depend de :** HO-R08
 **Vague :** 3 · **Exécutant :** sous-agent Sonnet
 

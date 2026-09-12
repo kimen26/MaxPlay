@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-XX – Titre du jeu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mp-theme.css">
+  <!-- <link rel="stylesheet" href="css/mj-kit.css"> décommenter si billes/dés/vignettes mj-kit -->
+  <style>
+    /* ─── Styles SPÉCIFIQUES à ce jeu uniquement. ────────────────────────
+       Zéro couleur/thème ici : mp-theme.css fait autorité (Design System).
+       Zéro règle .hdr locale — le markup .hdr ci-dessous suffit tel quel. */
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+    body { font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
+    .stage { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:space-evenly; overflow:hidden; padding:4px 8px 10px; gap:8px; }
+  </style>
+</head>
+<body data-ambiance="jungle">
+<div id="app">
+
+  <!-- .hdr : flèche retour + 💬 + emoji + titre — markup canonique, ne JAMAIS
+       inventer .game-header/.header-text/.header-title/.header-sub -->
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle" id="htitle">🎯 Titre du jeu</span>
+  </div>
+
+  <div class="stage">
+    <!-- Zone de jeu : markup spécifique au jeu ici -->
+  </div>
+
+</div>
+
+  <!-- libs SPÉCIFIQUES au jeu (data.js, bus-svg.js, mj-dice.js…) — dans l'ordre canonique -->
+  <script src="js/data.js"></script>
+
+  <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau 🧑‍🔬, tracking, cloud, célébrations) dans le bon ordre -->
+  <script src="js/mj-shell.js"></script>
+  <script>
+  MJ.ready(function () {
+    'use strict';
+    // ─── MJ-XX : Titre du jeu — une ligne qui résume la mécanique ───
+    const GAME_ID = 'mj-XX';
+    document.title = 'MJ-XX – ' + MJi18n.titre(GAME_ID, 'Titre du jeu');
+    const htitleEl = document.getElementById('htitle');
+    if (htitleEl) htitleEl.textContent = '🎯 ' + MJi18n.titre(GAME_ID, 'Titre du jeu');
+
+    const shell = MJ.init({
+      id: GAME_ID, emoji: '🎯', titre: MJi18n.titre(GAME_ID, 'Titre du jeu'),
+      golden: true,              // piste 4/6/8 + étoiles (false si pas d'étoiles, ex. bac à sable)
+      consigne: true,            // barre consigne (texte centré, tap = réécouter, audio AUTO)
+      regle: {
+        picto: '🎯',
+        texte: 'Explique la règle en une phrase, dans les mots de Max.',
+        etapes: [
+          { t: 'Étape 1 en 4-5 mots 👆', d: 'Le détail qui aide à comprendre le geste.' },
+          { t: 'Étape 2 en 4-5 mots ✅', d: 'Ce qui se passe quand c\'est bon.' }
+        ]
+      }
+    });
+    const G = shell.G;
+    const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t(GAME_ID, cle, fr, params) : fr);
+
+    // ── Gameplay : construire les questions, gérer le tap, noter les billes ──
+    // shell.G.buildPips(n)       → piste 4/6/8 selon G.level
+    // shell.G.notePip(i, essais, fromEl) → colore la bille i (essais 1/2/3/4+)
+    // shell.G.showEnd({replayUrl}) → écran de fin BIBLIOTHÈQUE (jamais maison)
+    // MaxFX.randomPoint(fromEl, pipEl, {result}) → animation de point
+    // MaxFX.randomFinal(container, {belt}) → célébration sans-faute (18 styles)
+
+  });
+  </script>
+</body>
+</html>
+<!--
+  COMMENT LIVRER CE JEU (process complet : studio/minijeux/docs/STANDARD-MJ.md § livraison)
+  1. Copier ce gabarit → site/mj-XX.html, remplacer GAME_ID/titre/emoji partout.
+  2. Coder la mécanique dans le <script> MJ.ready(...) (zone .stage + gameplay).
+  3. Ajouter l'entrée dans site/js/catalog.js : id/category/titre/emoji/desc/
+     maxStars/access/status + zone/murOrder/libelleMur/vignette pour le Mur.
+  4. Ajouter les 4 clés i18n (studio/minijeux/i18n/{fr,en,es-es,pt-br}/strings.json)
+     et l'entrée référentiel (studio/referentiel/textes-jeux.json via son
+     générateur, voir studio/referentiel/generer/_extraire-textes-jeux.mjs).
+  5. Écrire la spec Playwright studio/minijeux/tests/mj-XX.spec.mjs.
+  6. Graver studio/minijeux/docs/jeux/figees/mj-XX.md (décisions verrouillées).
+  7. Vérifier :
+     cd studio/minijeux/tests && node audit-gabarit.mjs mj-XX && npm run mj:test mj-XX
+     node check-mj-coherence.mjs mj-XX
+  8. npm run check (racine) → doit rester vert.
+  9. Commit.
+-->

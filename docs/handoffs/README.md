@@ -65,6 +65,8 @@ git status --short | grep -v '^??'                            # rien d'imprévu
 
 ## Campagnes archivées
 
+- `archives/2026-09-12-nettoyage-assets/` — nettoyage assets images, audio, banque de sons (HO-N01 à HO-N03, 1 vague). Audits : `memory/audits/2026-09-12-nettoyage-assets-{images,audio,banque-sons}.md`. Rapports dans `rapports/HO-N0n.md`.
+
 - `archives/2026-09-12-refonte-ged/` — refonte GED site ↔ studio (HO-R00 à HO-R99, 15 lanes, 6 vagues, un commit par vague). Audit source : `memory/audits/2026-09-12-archi-ged-site-studio.md`, clôture : `memory/audits/2026-09-12-cloture-refonte-ged.md`. Rapports dans `rapports/HO-Rnn.md`.
 
 - `archives/2026-09-03-refonte-infra/` — refonte infra Claude (HO-G01 à HO-G13, HO-MJ-01, HO-NAR-01, HO-DINO-008 côté pôle). Audit source : `memory/audits/2026-09-03-archi-claude-infra.md`. Tous `fait` ; HO-G12 avait un statut interne « bloqué » périmé, corrigé le 2026-09-12. La doctrine commune de ce chantier est devenue `memory/DOCTRINE.md`.

@@ -68,6 +68,85 @@ const SOUND_POOLS = {
     'sounds/fx/roulement-tambour.mp3',
     'sounds/fx/waouh.mp3',
   ],
+  // Reconstruction HO-N01 (2026-09-12, décision Q1/Q4) — pools par événement,
+  // aucun mj ne les consomme encore, prêts pour un futur jeu/ambiance.
+  // Bruit de pas dino (8, fx/dino/pas-*)
+  pas: [
+    'sounds/fx/dino/pas-lourd-un.mp3',
+    'sounds/fx/dino/pas-lourd-marche.mp3',
+    'sounds/fx/dino/pas-lourd-course.mp3',
+    'sounds/fx/dino/pas-lourd-lointain.mp3',
+    'sounds/fx/dino/pas-course-petit.mp3',
+    'sounds/fx/dino/pas-course-moyen.mp3',
+    'sounds/fx/dino/pas-marche-lente-petit.mp3',
+    'sounds/fx/dino/pas-marche-lente-moyen.mp3',
+  ],
+  // Grognements/rugissements dino (8 fx/dino + 4 génériques legacy fx/)
+  grognement: [
+    'sounds/fx/dino/gros-rugissement-attaque-1.mp3',
+    'sounds/fx/dino/gros-rugissement-attaque-2.mp3',
+    'sounds/fx/dino/gros-rugissement-defense.mp3',
+    'sounds/fx/dino/gros-grognement-sourd.mp3',
+    'sounds/fx/dino/petit-cri-attaque.mp3',
+    'sounds/fx/dino/petit-cri-defense.mp3',
+    'sounds/fx/dino/petit-cri-curieux.mp3',
+    'sounds/fx/dino/petit-sifflement.mp3',
+    'sounds/fx/dino-raptor.mp3',
+    'sounds/fx/dino-sauropode.mp3',
+    'sounds/fx/dino-trex.mp3',
+    'sounds/fx/dino-tricera.mp3',
+  ],
+  // Ambiance nature/météo dino (Parasaurolophus + météo, 13 fx/dino)
+  'ambiance-nature': [
+    'sounds/fx/dino/para-grave-long.mp3',
+    'sounds/fx/dino/para-grave-court.mp3',
+    'sounds/fx/dino/para-aigu-long.mp3',
+    'sounds/fx/dino/para-aigu-court.mp3',
+    'sounds/fx/dino/para-alerte.mp3',
+    'sounds/fx/dino/para-fun.mp3',
+    'sounds/fx/dino/tonnerre-lointain.mp3',
+    'sounds/fx/dino/tonnerre-proche.mp3',
+    'sounds/fx/dino/eclair-craquement.mp3',
+    'sounds/fx/dino/pluie-loop.mp3',
+    'sounds/fx/dino/pluie-forte-loop.mp3',
+    'sounds/fx/dino/cascade-loop.mp3',
+    'sounds/fx/dino/vent-jungle-loop.mp3',
+  ],
+  // Rigolo (prout, éclaboussure)
+  rigolo: [
+    'sounds/fx/prout-long.mp3',
+    'sounds/fx/prout-petit.mp3',
+    'sounds/fx/splash.mp3',
+  ],
+  // Petit bruit discret (mastication, clic photo, tic-tac)
+  'petit-bruit': [
+    'sounds/fx/dino-mange.mp3',
+    'sounds/fx/photo.mp3',
+    'sounds/fx/tic-tac.mp3',
+  ],
+  // Identité bus (démarrage, frein, recul)
+  bus: [
+    'sounds/fx/demarrage-bus.mp3',
+    'sounds/fx/frein-bus.mp3',
+    'sounds/fx/bip-recul.mp3',
+  ],
+  // Indice (curiosité, coup de pouce)
+  indice: [
+    'sounds/fx/indice.mp3',
+  ],
+  // Œuf qui éclot (legacy — les 12 variantes doublons HO-016 ont été supprimées
+  // HO-N01, ce générique reste la seule source de ce pool)
+  oeuf: [
+    'sounds/fx/dino-oeuf-eclot.mp3',
+  ],
+  // Voix filler entre deux manches (4 phrases dormantes rattachées HO-N01,
+  // décision orchestrateur — gardées, pas de jeu ne les appelle encore)
+  blabla: [
+    'sounds/voix/phrases/a-toi-de-jouer.mp3',
+    'sounds/voix/phrases/cest-parti.mp3',
+    'sounds/voix/phrases/encore-une-fois.mp3',
+    'sounds/voix/phrases/ouvre-bien-les-yeux.mp3',
+  ],
 };
 
 // Réactions vocales — 3 voix du casting × phrases (voir sounds/voix/)
@@ -196,7 +275,8 @@ function _playFile(src, volume) {
 // ── API pools (pour les prochains jeux + réutilisable partout) ───────────────
 const SoundPool = {
   /** Joue un son au hasard du thème. Thèmes : victory, end-doux, success,
-   *  error, apparition, collecte, deblocage. */
+   *  error, apparition, collecte, deblocage, pas, grognement, ambiance-nature,
+   *  rigolo, petit-bruit, bus, indice, oeuf, blabla. */
   play(theme, volume = 0.8) {
     const pool = SOUND_POOLS[theme];
     if (!pool) return null;

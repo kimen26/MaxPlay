@@ -80,7 +80,7 @@ Fichier `studio/dino/content/scripts-audio/fr/V3/<lot>.md`, **format strict** (u
 - `### BLOC A — Présentation` · `B — Taille` · `C — Comment il vivait` · `D — Le truc fou`
 - `**NARRATEUR H** [tag] : texte` et `**WEX** [tag] : texte`
 
-Calquer [`corythosaurus.md`](../../../studio/dino/content/scripts-audio/fr/V3/corythosaurus.md) (en-tête `>` + checklist finale incluses). Consignes de style : [`CONSIGNES.md`](../../../studio/dino/content/scripts-audio/fr/V3/CONSIGNES.md).
+Calquer [`corythosaurus.md`](../../../studio/dino/content/scripts-audio/fr/V3/corythosaurus.md) (en-tête `>` + checklist finale incluses). Consignes de style : [`CONSIGNES.md`](../../../studio/dino/content/scripts-audio/_methode/CONSIGNES.md).
 
 Règles dures : **Wex 1 ligne, jamais de `!` final, jamais d'écho, aucun tic écrit** (la voix les ajoute) · boucle fermée (toute question de Wex trouve sa réponse dans le même bloc) · **vraies dates et vrais chiffres** (le « zéro chiffre en dur » est une règle de gouvernance, PAS de contenu narré) · prédation dite avec vérité mais jamais gore · termes savants expliqués, « synapside »/« thérapside » bannis à l'antenne.
 

@@ -27,6 +27,18 @@ Audit : `memory/audits/2026-09-12-archi-ged-site-studio.md`. Décisions : D-007 
 
 Reliquats absorbés : INDEX minijeux (R01) · pages `speechSynthesis` brut (R10) · commentaires obsolètes `mj-46.html:40`, `mj-50.html:90`, `avatar-picker.js:5,16` (R10) · dérive `aenocyon-taille` (R12) · scripts dino dans minijeux (R01).
 
+## CHANTIER CLOS — Nettoyage assets (images, audio, banque de sons) (ouvert et livré le 2026-09-12, briefs : `docs/handoffs/archives/2026-09-12-nettoyage-assets/`)
+
+Demande Papa Yann : « tout ce qui n'est plus utilisé peut être supprimé ». Hors périmètre : `studio/narration/**` (D-011) et le pack tiles LimeZu (déjà dans le vault `_archive-2026-09-12.zip`). On garde : images dino validées (paléoart, avatars, ombres, sprites, familles, plantes, fonds), 4 vidéos, tout ce que nous avons généré (Grok/ChatGPT/ElevenLabs), toutes les voix EL narrateur H/F et Wex. Sons tiers supprimés sec. Bibliothèque de sons reconstruite par ÉVÉNEMENT, bibliothèque de mots modulables (chiffres, dinos, périodes, familles, lettres, phonèmes…) cadrée. Audits en cours : `memory/audits/2026-09-12-nettoyage-assets-{images,audio,banque-sons}.md`. Audits relus le 2026-09-12 : 0 son tiers restant, 0 lien cassé, audio dino FR tracé 71/71. Le nettoyage porte sur la banque de sons (~9,6 Mo d'orphelins, 1 bug réel) et les dossiers de travail locaux.
+
+| Vague | Handoff | Résultat observable (DoD) | Statut |
+|---|---|---|---|
+| 1 | HO-N01 banque de sons par événement | 0 mp3 sans pool ni consommateur dans `site/sounds/`, `_BANQUE-SONS.md` par événement et par mot modulable, `quel-dino-manque.mp3` joué, Playwright vert | fait |
+| 1 | HO-N02 rangement audio dino (Haiku) | `fr/V3/` = 71 fiches exactement, 4 tickets gravés, `_grok-test` supprimé | fait |
+| 1 | HO-N03 orchestrateur | `_new-*` vidés (25 Mo), `.artifacts` purgé, vague commitée | fait |
+
+Questions Papa Yann (hors DoD) : 8 langues sans fiche audio sélectionnables au menu (LANGUES-NOM-SEUL, TODO dino) · run EN post-reset quota à lancer (AUDIO-EN-INTEGRAL).
+
 ## Décisions attendues de Papa Yann (hors refonte)
 
 - [ ] MCP `supabase-maxvoyage` : vit dans `~/.claude.json` (utilisateur), donc visible depuis MaxPlay. À déplacer dans le `.mcp.json` du projet MaxVoyage.

@@ -11,29 +11,88 @@
 
 ---
 
-## 1. Où c'est stocké (277 fichiers, tous MP3)
+## 1. Où c'est stocké (444 fichiers MP3 — reconstruit par événement HO-N01, 2026-09-12)
+
+> Après nettoyage HO-N01 : `site/sounds/` ne contient QUE des sons branchés à un
+> événement nommé ou explicitement réservés (aucun orphelin sans événement).
+> Les tableaux ci-dessous répondent à deux questions : « pour tel ÉVÉNEMENT, quel
+> pool/fichier ? » et « pour tel MOT MODULABLE, quelle API ? ».
+
+### 1.a Par ÉVÉNEMENT (`SoundPool.play(theme)` sauf mention contraire)
+
+| Événement | Pool/fichier | Fichiers | Jeux consommateurs |
+|---|---|---|---|
+| Victoire (≥50%) | `victory` | 10 (4 `music/victoire-v*`, `fx/victoire-grande`, `tada`, `trophee`, `applaudissements`, `trompette-fanfare`, `ui/fanfare-victoire`) | tous les mj-XX (`playEndSound`) |
+| Fin douce (<50%) | `end-doux` | 3 (`trombone-oups`, `oups-doux`, `sifflet-glissant`) | tous les mj-XX |
+| Bonne réponse en cours de partie | `success` | 6 (`bonne-reponse`, `victoire-petite`, `piece`, `clochette`, `xylophone-monte`, `magie`) | selon jeu |
+| Erreur | `error` | 5 (`oups-doux`, `trombone-oups`, `prout-long`, `ui/klaxon`, `boing`) | tous les mj-XX (`playErrorSound`) |
+| Apparition élément | `apparition` | 4 (`pop-apparition`, `bulle-pop`, `boing`, `whoosh`) | mini-étoile, etc. |
+| Collecte (étoile/pièce/badge) | `collecte` | 4 (`piece`, `pluie-pieces`, `ui/etoile`, `magie`) | — (défini, pas encore consommé) |
+| Déblocage (nouveau jeu/dino) | `deblocage` | 3 (`ui/deblocage`, `roulement-tambour`, `waouh`) | — (défini, hub ne le charge pas encore) |
+| Pas de dino | `pas` | 8 (`fx/dino/pas-*`) | — (pool prêt, aucun jeu ne le consomme) |
+| Grognement/rugissement dino | `grognement` | 12 (8 `fx/dino/gros-*`+`petit-*` + 4 génériques `fx/dino-{raptor,sauropode,trex,tricera}`) | — (pool prêt) |
+| Ambiance nature/météo dino | `ambiance-nature` | 13 (6 Parasaurolophus + 7 météo/nature `fx/dino/*`) | — (pool prêt) |
+| Rigolo (prout, éclaboussure) | `rigolo` | 3 (`prout-long`, `prout-petit`, `splash`) | — (pool prêt) |
+| Petit bruit discret | `petit-bruit` | 3 (`dino-mange`, `photo`, `tic-tac`) | — (pool prêt) |
+| Identité bus | `bus` | 3 (`demarrage-bus`, `frein-bus`, `bip-recul`) | — (pool prêt) |
+| Indice | `indice` | 1 (`fx/indice`) | — (pool prêt) |
+| Œuf casse/éclosion | `oeuf` | 1 (`fx/dino-oeuf-eclot`, legacy) | `nid-ui.js` + mj-46 |
+| Blabla / voix filler entre manches | `blabla` (`SoundPool.play('blabla')` ou `phrase(slug)`) | 4 (`a-toi-de-jouer`, `cest-parti`, `encore-une-fois`, `ouvre-bien-les-yeux`) | — (rattachées HO-N01, pas encore appelées) |
+| Étoile gagnée (voix) | `SoundPool.voiceLine('etoile-gagnee')` | 3 (f/h/wex) | `mj-golden.js` |
+| Cri bébé par famille | `nid-ui.js → playBabyCry` | 11 `fx/cri-bebe-<famille>` | nid (éclosion), repli sur 3 génériques `dino-bebe*` |
+| Musique de fond encyclopédie | direct `new Audio()` | 1 (`music/calme-doux-loop.mp3`) | `dev-dinos.html`, bouton 🎵, volume 0,25, jamais autoplay |
+| Ouverture jeu (identité hub) | direct | `ui/moteur-bus`, `ui/klaxon`, `ui/porte-bus` | identité sonore hub, branchement non ré-audité ici |
+| Ouverture dico/encyclopédie | direct | `ui/voyage-temps.mp3` | onglet Voyage dev-dinos.html |
+
+### 1.b Par MOT MODULABLE
+
+| Famille | Attendu/présent | API | Consommateurs | Manques assumés |
+|---|---|---|---|---|
+| Chiffres `n-<n>` 0-30+40/50/100/1000 | 35/35 | `SayNombres.say` | mj-46, mj-49 | aucun |
+| Chiffres fête `n-<n>-fete` 1-10 | 10/10 | `SayNombres.say({fete:true})` | idem | aucun |
+| Gabarits `il-en-manque-<n>`/`il-en-faut-<n>`/`<n>-oeufs` 1-10 | 30/30 | `SayNombres.manque/faut/oeufs` | mj-46, mj-49 | au-delà de 10 : repli TTS assumé |
+| Phonèmes (son de lettre) | 21/21 | `MJKit.sayPhoneme` | mj-50, mj-51, mj-52 | aucun |
+| Nom de lettre (pas le son) | 0 | — | — | à générer quand un jeu en a besoin |
+| Noms de dinos (nom seul) | 70/70 FR | `playDinoNom` | mj-28, mj-30 | aucun en FR |
+| Périodes | 5/5 | `playPeriodeVoice` / `PERIODE_MP3` | mj-31, dev-dinos.html | aucun |
+| Familles de dinos (nom parlé) | 0 | — | — | à générer quand un jeu en a besoin |
+| Régime alimentaire | 0 | — | — | à générer quand un jeu en a besoin |
+| Pièces d'échecs (intro) | 6/6 | appel direct fichier (mj-37, pas d'API partagée) | mj-37 | aucun |
+| Réactions positives voix H/F/Wex | 16×3=48/48 | `SoundPool.voice('positif')` | tous mj-XX | aucun |
+| Réactions douces voix H/F/Wex | 6×3=18/18 | `SoundPool.voice('doux')` | tous mj-XX | aucun |
+| Réactions i18n invitées (6 langues×5 mots×3 voix) | 90/90 | `_doublonInvite` (interne à victory-sounds.js) | tous mj-XX (~1 fois sur 2 après une réaction FR) | aucun |
+| Phrases-consignes fixes | 88 fichiers réels (`voix/phrases/`) | `SoundPool.phrase(slug, repli)` | selon slug | voir « Règle des deux familles » ci-dessous |
+| Voicelines `regle-mj-XX` (aide contextuelle ❓) | 46 fichiers pour 35 jeux existants | `RegleInfo.init({slug})` | tout mj avec panneau règles | les 11 orphelins (mj 04/05/08/11/17/23/25/26/27/29/33, jeux disparus) supprimés HO-N01 |
+
+**Règle des deux familles** (à ne jamais confondre — gravée dans `.claude/rules/sons.md`) :
+- `<id>-nom.mp3` (à plat, `site/audio/dinos/`) = segment de FICHE 20-35 s, lu par `playDinoNom` — **interdit** sur un tap en jeu court.
+- `noms/<id>.mp3` (`site/audio/dinos/fr/noms/`) = NOM SEUL 1,5-2 s, ton `[excited]`, seul format légitime pour un tap-play dans un mini-jeu.
+
+**Voix i18n** (2026-08-10, jamais documentées avant HO-N01) : `site/sounds/voix/{en,es,it,ja,pt-br,zh}/{f,h,wex}/` —
+90 fichiers = 6 langues × 3 voix × 5 mots d'encouragement propres à chaque culture (PAS des
+traductions mot à mot). Consommés par `_doublonInvite` dans `victory-sounds.js` (§ 2), affichage
+d'un drapeau ~1,15 s après la réaction FR, une fois sur deux (`CHANCE_DOUBLON`).
+
+### 1.c Dossiers restants (inchangés, propres)
 
 | Dossier | Contenu | Voix | Généré via |
 |---|---|---|---|
-| `site/sounds/music/` (10) | musiques de fond réutilisables (menu, calme, générique×3, suspense, victoire×4) — HO-015, § 6 | — | `compose_music` (+ `text_to_sound_effects` pour victoire-v1) |
-| `site/sounds/fx/dino/` (41) | banque de bruitages dinos (cris, Parasaurolophus, bébés, pas, météo/nature, œufs) — HO-016, § 7 | SFX | `text_to_sound_effects` |
 | `site/sounds/ui/` (10) | identité hub « Ligne de Max » : moteur-bus, klaxon, porte-bus, tap, fanfare-victoire, etoile, deblocage, ambiance-nuit (loop), voyage-temps, veilleuse | SFX | `text_to_sound_effects` |
-| `site/sounds/fx/` | catalogue général : victoires, rigolo (prout…), dinos (rugissements), **cris de bébés par famille `cri-bebe-*` (§ 4 bis)**, animaux, véhicules, instruments, pièces, espace, divers | SFX | `text_to_sound_effects` |
-| `site/sounds/voix/f/` (22) | réactions Narratrice — 16 positives + 6 douces (super, bravo, oups, presque…) | narrateur_f | `text_to_speech` |
-| `site/sounds/voix/h/` (22) | réactions Narrateur — idem | narrateur_h | `text_to_speech` |
-| `site/sounds/voix/wex/` (22) | réactions Wex — idem | wex | `text_to_speech` |
-| `site/sounds/voix/phrases/` (28) | instructions fixes des jeux : trouve-le-meme-dino, combien-de-dinos, compte-encore, regardons-ensemble, il-vivait-quand, cest-parti, a-toi-de-jouer, cherche-bien, encore-une-fois, ouvre-bien-les-yeux + banque consignes 2026-07-13 (quel-bus-arrive-en-premier, qu-est-ce-qui-vient-ensuite, lequel-ne-va-pas, quel-bus-manque, qu-est-ce-qui-manque, compte-les-un-par-un, remplis-chaque-caisse, range-dans-la-bonne-boite, ecoute-le-premier-son, fais-monter-les-passagers, range-les-des, regroupe-les-points, gros-niveau-regroupe, mode-libre-encore-une-caisse, premier-son-l-ou-r, le-son-quon-entend, il-en-faut-beaucoup, terminus-fais-les-descendre) | narrateur_h | `text_to_speech` |
-| `site/sounds/nombres/` (75) | **Banque C6 V1 (2026-07-29)** : `n-<n>.mp3` nombres 0-30 + 40/50/100/1000 (neutre chaleureux `[warmly]`) · `n-<n>-fete.mp3` 1-10 (`[cheerful]`, réussite/gros gain) · gabarits COMPLETS `il-en-manque-<n>` / `il-en-faut-<n>` / `<n>-oeufs` (1-10) — JAMAIS d'assemblage mot-à-mot (décision PY 2026-07-28, remplace l'assumé « restent en TTS » de 2026-07-13). API UNIQUE : `js/say-nombres.js` (`SayNombres.say/manque/faut/oeufs`, repli TTS), branché mj-46 + mj-49 | narrateur_h | script API (gen-banque.mjs) |
-| `site/sounds/phonemes/` (21) | LE SON de chaque lettre (jamais le nom) : voyelles + consonne+e muet (`son-se`, `son-fe`… c/k/q partagent `son-ke`). Consommé UNIQUEMENT via `MJKit.sayPhoneme` (MP3-first, repli TTS) — fix « E accent grave f » mj-50 (2026-07-29) | narrateur_h | script API |
-| `site/sounds/pieces/` (6) | voicelines intro pièces échecs mj-37 : fou/tour/cavalier/dame/roi/pion `-intro.mp3` | narrateur_h | `text_to_speech` |
-| `site/sounds/voix/{f,h,wex}/etoile-gagnee.mp3` (3) | félicitation d'étoile parlée (« Tu as gagné une étoile ! »), jouée par `SoundPool.voiceLine` à l'atterrissage de l'étoile Golden | 3 voix | `text_to_speech` |
-| `site/audio/dinos/fr/periodes/` (5) | trias, jurassique, cretace, cenozoique, pangee (« Le Jurassique ! » ton excité). Branchés : mj-31 (`PERIODE_MP3`, 2026-07-07) + grille époque dev-dinos (`playPeriodeVoice`, 2026-08-10). Set `DINO_PERIODE_AUDIO` du manifest = anti-404 | narrateur_h | `text_to_speech` |
-| `site/audio/dinos/fr/noms/` (70) | vocal du NOM SEUL de chaque dino, `<id>.mp3`, 1,5-2 s (ton `[excited]`, usage jeux — complété 70/70 le 2026-07-29). ⚠ Les `<id>-nom.mp3` à plat de `fr/` = segments de FICHE 20-35 s, interdits sur un tap en jeu | narrateur_h | `text_to_speech` |
-| `site/audio/dinos/<id>-nom.mp3` (60) | copies à plat consommées par les MJ via le manifest (voir § API dinos) | narrateur_h | copie de noms/ + segments fiche antérieurs |
+| `site/sounds/fx/` (33) | catalogue restant après nettoyage HO-N01 : pools victoire/erreur/succès/apparition/collecte/déblocage, rigolo, petit-bruit, bus, indice, dino générique, **cris de bébés par famille `cri-bebe-*` (§ 4 bis)** | SFX | `text_to_sound_effects` |
+| `site/sounds/fx/dino/` (29) | bruitages cinématiques dino (pas, grognements, Parasaurolophus, météo/nature) — HO-016 + branchement HO-N01, § 7 | SFX | `text_to_sound_effects` |
+| `site/sounds/music/` (5) | 4 `victoire-v*` (pool `victory`) + `calme-doux-loop` (fond encyclopédie) — HO-015 + branchement HO-N01, § 6 | — | `compose_music` (+ `text_to_sound_effects` pour victoire-v1) |
+| `site/sounds/voix/f/`, `/h/`, `/wex/` (23 chacun) | réactions — 16 positives + 6 douces + `etoile-gagnee` | narrateur_f / narrateur_h / wex | `text_to_speech` |
+| `site/sounds/voix/phrases/` (88) | instructions fixes des jeux + `regle-mj-XX` (voir § 1.b) | narrateur_h | `text_to_speech` |
+| `site/sounds/voix/{en,es,it,ja,pt-br,zh}/{f,h,wex}/` (90) | réactions i18n invitées, § 1.b | 3 voix × 6 langues | `text_to_speech` |
+| `site/sounds/nombres/` (75) | **Banque C6 V1 (2026-07-29)** : gabarits complets nombres/fête/manque/faut/oeufs — JAMAIS d'assemblage mot-à-mot | narrateur_h | script API (gen-banque.mjs) |
+| `site/sounds/phonemes/` (21) | LE SON de chaque lettre (jamais le nom) | narrateur_h | script API |
+| `site/sounds/pieces/` (6) | voicelines intro pièces échecs mj-37 | narrateur_h | `text_to_speech` |
+| `site/audio/dinos/fr/periodes/` (5) | trias, jurassique, cretace, cenozoique, pangee | narrateur_h | `text_to_speech` |
+| `site/audio/dinos/fr/noms/` (70) + `<id>-nom.mp3` (60) | vocal NOM SEUL des dinos — hors périmètre de ce nettoyage (audité par un autre HO) | narrateur_h | `text_to_speech` |
 
 Voix résolues via `studio/narration/personnages/voix-meta/voice-map.json` (jamais hardcoder un voice_id).
 
-**Page d'écoute** : `site/dev-sounds-ui.html` (toutes les catégories, tap = écoute).
+**Page d'écoute** : `site/dev-sounds-ui.html` (tous les pools + dossiers, tap = écoute).
 
 ---
 
@@ -41,13 +100,19 @@ Voix résolues via `studio/narration/personnages/voix-meta/voice-map.json` (jama
 
 ### `site/js/victory-sounds.js` — pools + voix + phrases (chargé par tous les mj-XX)
 ```js
-SoundPool.play(theme, volume)   // theme: victory | end-doux | success | error | apparition | collecte | deblocage
+SoundPool.play(theme, volume)   // theme: victory | end-doux | success | error | apparition |
+                                 //   collecte | deblocage | pas | grognement | ambiance-nature |
+                                 //   rigolo | petit-bruit | bus | indice | oeuf | blabla
 SoundPool.voice(ton, volume)    // ton: 'positif' | 'doux' — pioche voix (f/h/wex) × phrase AU HASARD, anti-répétition
 SoundPool.phrase(slug, fallbackText, volume)  // MP3 de sounds/voix/phrases/, fallback TTS si absent
 SoundPool.voiceLine(slug, fallbackText, vol)  // ligne nommée × 1 des 3 voix (sounds/voix/{f,h,wex}/<slug>.mp3), ex 'etoile-gagnee'
 playEndSound(score, maxScore)   // fanfare de fin + voix aléatoire ~1.4s après (API historique, inchangée)
 playErrorSound()                // pool 'error'
 ```
+`SayNombres` (`js/say-nombres.js`) et `MJKit.sayPhoneme` restent séparés (vrais sous-systèmes
+combinatoires) — ne PAS les fusionner dans `victory-sounds.js`. **Ne pas créer de 5e API** : tout
+nouveau son d'événement passe par un pool `SoundPool`, tout nouveau mot modulable a son propre
+petit module comme `say-nombres.js`.
 
 ### `site/js/dinos-audio-manifest.js` — nom parlé d'un dino
 ```js
@@ -121,9 +186,14 @@ Générés via `text_to_sound_effects` (1,5-2 s), **paddés 250 ms** (règle L-0
 **Branchement** : `site/js/nid-ui.js` → `playBabyCry(dino)` dans `runHatchSequence` — joue `CRI_FAMILLE[dino.famille]`, **fallback défensif** sur les génériques `dino-bebe{,-2,-3}.mp3` si la famille est inconnue ou le MP3 absent (pas de 404 bruyant, pas d'éclosion muette).
 **mj-46** (œufs) reste sur les 3 génériques — inchangé.
 
-## 5. Ce qui reste (TODO — MAJ 2026-07-13 session « vraie voix partout »)
+## 5. Ce qui reste (TODO — MAJ HO-N01 2026-09-12)
 
-- **4 phrases orphelines restantes** : cest-parti, a-toi-de-jouer, encore-une-fois, ouvre-bien-les-yeux — points d'usage = décision produit Papa Yann (cherche-bien branchée mj-22).
+- ~~4 phrases orphelines : cest-parti, a-toi-de-jouer, encore-une-fois, ouvre-bien-les-yeux~~ →
+  **FAIT HO-N01** : rattachées au pool `blabla` de `victory-sounds.js` (voix filler entre deux
+  manches). Gardées, aucun jeu ne les appelle encore explicitement.
+- ~~bug `quel-dino-manque.mp3` absent~~ → **CORRIGÉ HO-N01** : généré (narrateur_h, `eleven_v3`,
+  padding 250 ms), vérifié à l'oreille + STT (« Quel dino manque dans la grille » — texte exact du
+  point d'appel `mj-14.html`).
 - ~~**Périodes (5) pas encore branchées**~~ → **FAIT** : mj-31 les joue depuis 2026-07-07 (`PERIODE_MP3`, permien → `pangee.mp3` assumé) ; grille époque de dev-dinos branchée 2026-08-10 (`playPeriodeVoice`, anti-404 via le Set `DINO_PERIODE_AUDIO` du manifest). Le voyage (dev-dinos) garde ses récits longs `recit-*.mp3` — pas de double annonce « Le Trias ! » devant.
 - **Hétérogénéité de ton** : les 9 mégafaune `-nom.mp3` sont en `[excited]` (ton jeu), les 51 autres en ton fiche. Homogénéiser si gênant.
 - ~~Phrases à nombre variable : restent en TTS~~ → **CADUC 2026-07-29** : banque `sounds/nombres/` (gabarits complets par nombre, décision PY 2026-07-28). Le principe « pas de Frankenstein MP3+TTS mi-phrase » reste en vigueur : un gabarit = UN MP3 entier.
@@ -131,47 +201,43 @@ Générés via `text_to_sound_effects` (1,5-2 s), **paddés 250 ms** (règle L-0
 - **mj-29 dico** : mapping `racine.cle` → fichiers `dico-*.mp3` non fiable sans table dédiée (risque mauvais son dans un jeu phonétique).
 - **index.html hub** : ne charge pas victory-sounds.js — pool `deblocage` non branché au hub.
 
-## 6. Musiques de fond (HO-015, 2026-09-05)
+## 6. Musiques de fond (HO-015 2026-09-05, nettoyée HO-N01 2026-09-12)
 
-10 fichiers `site/sounds/music/*.mp3`, générés `compose_music` (sauf victoire-v1, `text_to_sound_effects` — le
-minimum `compose_music` est 3000 ms). Réutilisables Encyclopédie + Mini-jeux. **Aucun branchement fait** (hors
-périmètre du ticket). Boucles = padding 0, jingles/victoires = padding 250 ms tête.
+5 fichiers `site/sounds/music/*.mp3` (generique-v1/2/3 n'avaient jamais existé sur disque malgré la
+doc précédente — retirés du tableau ; `menu-jungle-loop` et `suspense-loop` supprimés HO-N01, décision
+Q2/Q6 : jamais branchés, poids récupéré). Boucles = padding 0, jingles/victoires = padding 250 ms tête.
 
-| Fichier | Usage prévu | Durée (ffprobe) | Prompt exact |
+| Fichier | Usage | Durée (ffprobe) | Prompt exact |
 |---|---|---|---|
-| `menu-jungle-loop.mp3` | ambiance menu/hub, jungle temps des dinos | 45,0 s, boucle | *Gentle prehistoric jungle ambience loop: distant insect chirping, faint exotic bird calls, soft rustling foliage in a light breeze, occasional subtle harp notes plucked sparsely in the background, warm and organic, no percussion, no melody lead, instrumental, no vocals, seamless loop, ends exactly as it begins* |
-| `calme-doux-loop.mp3` | fond calme type « Ghibli » (encyclopédie, écrans doux) | 50,0 s, boucle | *Calm, warm, gentle instrumental in a tender storybook animation style: soft piano and light flute melody with airy string pads, moderate tempo, sweet and heartfelt, cozy and soothing, instrumental, no vocals, seamless loop, ends exactly as it begins* |
-| `suspense-loop.mp3` | tension douce, jamais fort | 50,0 s, boucle | *Growing suspense, gentle and never loud, suitable for a young child: low sustained drone pad, slow soft heartbeat-like pulse, subtle gradual rise in tension, sparse minor tones, mysterious but not scary, instrumental, no vocals, seamless loop, ends exactly as it begins* |
-| `generique-v1.mp3` | générique variante 1, synth/perc énergique | 4,3 s | *Short upbeat cheerful game intro jingle, playful synth and light percussion, bright and catchy, energetic start, instrumental, no vocals* |
-| `generique-v2.mp3` | générique variante 2, guitare/glockenspiel doux | 4,3 s | *Short cheerful game intro jingle, warm acoustic guitar and glockenspiel, friendly and cute, gentle bounce, instrumental, no vocals* |
-| `generique-v3.mp3` | générique variante 3, fanfare cuivres | 5,0 s (généré 6,1 s, coupé à 5 s) | *Short punchy game intro jingle, orchestral brass fanfare hit with light strings, triumphant and fun, quick and memorable, instrumental, no vocals* |
-| `victoire-v1.mp3` | victoire courte, chiptune 8-bit | 2,25 s | *Short upbeat victory jingle, joyful 8-bit chiptune synth arpeggio rising up, classic video game win sound, bright and happy, instrumental, no vocals, no music production ambience, single musical phrase* (repli `text_to_sound_effects`, `compose_music` refuse < 3000 ms) |
-| `victoire-v2.mp3` | victoire, fanfare orchestrale + cymbale | 4,3 s | *Short victory jingle, triumphant orchestral brass fanfare with cymbal crash, heroic and joyful game win sound, instrumental, no vocals* |
-| `victoire-v3.mp3` | victoire, synth/marimba enjoué | 3,3 s | *Short victory jingle, playful synth arpeggio with a bouncy marimba melody, cheerful and cute game win sound, instrumental, no vocals* |
-| `victoire-v4.mp3` | victoire, fanfare orchestrale complète | 5,3 s | *Short victory jingle, full orchestral fanfare build with strings brass and light choir-like synth pad, grand and celebratory game win sound, instrumental, no vocals* |
+| `calme-doux-loop.mp3` | **Branché HO-N01** : fond calme type « Ghibli » de l'encyclopédie (`dev-dinos.html`, bouton 🎵, volume 0,25, jamais autoplay) | 50,0 s, boucle | *Calm, warm, gentle instrumental in a tender storybook animation style: soft piano and light flute melody with airy string pads, moderate tempo, sweet and heartfelt, cozy and soothing, instrumental, no vocals, seamless loop, ends exactly as it begins* |
+| `victoire-v1.mp3` | pool `victory` | 2,25 s | *Short upbeat victory jingle, joyful 8-bit chiptune synth arpeggio rising up, classic video game win sound, bright and happy, instrumental, no vocals, no music production ambience, single musical phrase* (repli `text_to_sound_effects`, `compose_music` refuse < 3000 ms) |
+| `victoire-v2.mp3` | pool `victory` | 4,3 s | *Short victory jingle, triumphant orchestral brass fanfare with cymbal crash, heroic and joyful game win sound, instrumental, no vocals* |
+| `victoire-v3.mp3` | pool `victory` | 3,3 s | *Short victory jingle, playful synth arpeggio with a bouncy marimba melody, cheerful and cute game win sound, instrumental, no vocals* |
+| `victoire-v4.mp3` | pool `victory` | 5,3 s | *Short victory jingle, full orchestral fanfare build with strings brass and light choir-like synth pad, grand and celebratory game win sound, instrumental, no vocals* |
 
-Coût mesuré : solde EL avant 38 325 caractères, après HO-015 40 485 (delta 2 160). Rien n'a échoué ; seul
-`generique-v3` a dépassé 5 s (6,1 s générés) et a été coupé en post-prod. `music_length_ms` refuse toute
-valeur < 3000 (erreur API `422 greater_than_equal 3000`), d'où le repli `text_to_sound_effects` pour victoire-v1.
+Coût mesuré (génération initiale HO-015) : solde EL avant 38 325 caractères, après 40 485 (delta 2 160).
 
-## 7. Bruitages dinos (HO-016, 2026-09-05)
+## 7. Bruitages dinos (HO-016 2026-09-05, branchés HO-N01 2026-09-12)
 
-41 fichiers `site/sounds/fx/dino/*.mp3` (le brief HO-016 chiffre son total à 47 mais la liste par groupe qu'il
-détaille additionne à 41 — générés strictement les 41 items nommés dans le tableau du brief, aucun ajout
-inventé). Padding 250 ms tête sauf les 4 boucles météo. Aucun branchement fait.
+29 fichiers `site/sounds/fx/dino/*.mp3` restants après suppression HO-N01 des 12 doublons purs
+(`oeuf-eclot-1..6`, `bebe-dino-1..6` — doublons du legacy `fx/dino-oeuf-eclot.mp3` et des
+`fx/cri-bebe-<famille>.mp3` déjà branchés, décision Q1). Padding 250 ms tête sauf les 4 boucles météo.
+**Branchés HO-N01** dans 3 pools nommés de `victory-sounds.js` : `pas` (8), `grognement` (8),
+`ambiance-nature` (13, Parasaurolophus + météo/nature). Aucun mj ne les consomme encore — le pool
+existe, prêt pour un futur jeu/ambiance (Papa Yann veut ces événements, décision Q1).
 
-| Groupe | Fichiers · durée (ffprobe) |
+| Groupe | Fichiers · durée (ffprobe) · pool |
 |---|---|
-| Cris gros/petits (8) | `gros-rugissement-attaque-1` 3,25s · `gros-rugissement-attaque-2` 3,25s · `gros-rugissement-defense` 3,25s · `gros-grognement-sourd` 3,25s · `petit-cri-attaque` 2,25s · `petit-cri-defense` 2,25s · `petit-cri-curieux` 2,25s · `petit-sifflement` 2,25s |
-| Parasaurolophus (6) | `para-grave-long` 4,73s · `para-grave-court` 1,73s · `para-aigu-long` 4,73s · `para-aigu-court` 1,73s · `para-alerte` 3,25s · `para-fun` 2,73s |
-| Bébés (6) | `bebe-dino-1` (curieux) 2,25s · `bebe-dino-2` (affamé) 2,25s · `bebe-dino-3` (content) 2,25s · `bebe-dino-4` (endormi) 2,25s · `bebe-dino-5` (surpris) 2,25s · `bebe-dino-6` (appel maman) 2,73s |
-| Pas lourds (4) | `pas-lourd-un` 1,25s · `pas-lourd-marche` 4,73s · `pas-lourd-course` 4,73s · `pas-lourd-lointain` 5,25s |
-| Pas courants/lents (4) | `pas-course-petit` 4,73s · `pas-course-moyen` 4,73s · `pas-marche-lente-petit` 4,73s · `pas-marche-lente-moyen` 4,73s |
-| Météo & nature (7) | `tonnerre-lointain` 4,25s · `tonnerre-proche` 4,25s · `eclair-craquement` 1,73s · `pluie-loop` 5,0s (boucle) · `pluie-forte-loop` 5,0s (boucle) · `cascade-loop` 5,0s (boucle) · `vent-jungle-loop` 5,0s (boucle) |
-| Œufs qui éclosent (6) | `oeuf-eclot-1` (lent) 3,25s · `oeuf-eclot-2` (rapide) 2,73s · `oeuf-eclot-3` (gros œuf) 3,25s · `oeuf-eclot-4` (petit œuf) 2,25s · `oeuf-eclot-5` (avec pépiement) 3,73s · `oeuf-eclot-6` (avec pop) 3,25s |
+| Cris gros/petits (8) | `gros-rugissement-attaque-1` 3,25s · `gros-rugissement-attaque-2` 3,25s · `gros-rugissement-defense` 3,25s · `gros-grognement-sourd` 3,25s · `petit-cri-attaque` 2,25s · `petit-cri-defense` 2,25s · `petit-cri-curieux` 2,25s · `petit-sifflement` 2,25s — pool `grognement` |
+| Parasaurolophus (6) | `para-grave-long` 4,73s · `para-grave-court` 1,73s · `para-aigu-long` 4,73s · `para-aigu-court` 1,73s · `para-alerte` 3,25s · `para-fun` 2,73s — pool `ambiance-nature` |
+| Pas lourds (4) | `pas-lourd-un` 1,25s · `pas-lourd-marche` 4,73s · `pas-lourd-course` 4,73s · `pas-lourd-lointain` 5,25s — pool `pas` |
+| Pas courants/lents (4) | `pas-course-petit` 4,73s · `pas-course-moyen` 4,73s · `pas-marche-lente-petit` 4,73s · `pas-marche-lente-moyen` 4,73s — pool `pas` |
+| Météo & nature (7) | `tonnerre-lointain` 4,25s · `tonnerre-proche` 4,25s · `eclair-craquement` 1,73s · `pluie-loop` 5,0s (boucle) · `pluie-forte-loop` 5,0s (boucle) · `cascade-loop` 5,0s (boucle) · `vent-jungle-loop` 5,0s (boucle) — pool `ambiance-nature` |
 
-Tous OK (41/41), aucun prompt refait. Prompts en anglais, structure « what, character/context, single sound,
-no music, no voice » comme demandé. Coût mesuré : solde EL avant HO-016 40 485, après 41 853 (delta 1 368,
+**SUPPRIMÉS HO-N01** (doublons, décision Q1) : `bebe-dino-1..6` (doublons de `fx/cri-bebe-<famille>.mp3`,
+§ 4 bis) et `oeuf-eclot-1..6` (doublons du legacy `fx/dino-oeuf-eclot.mp3`, pool `oeuf`).
+
+Coût mesuré (génération initiale HO-016) : solde EL avant 40 485, après 41 853 (delta 1 368,
 HO-015+016 cumulé 3 528 sur un budget théorique 173 048 — très loin des seuils de stop 35 000/15 000).
 
 ---

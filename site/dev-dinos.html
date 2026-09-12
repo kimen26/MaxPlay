@@ -596,6 +596,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
     <button class="mp-back" onclick="location.href='index.html'">←</button>
     <div class="mp-title"><span style="font-size:22px">🦕</span><span id="menu-titre">Les Dinosaures</span></div>
     <button class="mp-hbtn" id="menu-speak-btn" onclick="speakMenuIntro()">🔊</button>
+    <button class="mp-hbtn" id="menu-musique-btn" onclick="toggleMusiqueFond()" title="Musique douce">🎵</button>
   </div>
   <!-- Sélecteur de mode -->
   <div id="mode-selector">
@@ -770,6 +771,30 @@ function setMode(mode) {
 function speakMenuIntro() {
   // Le 🔊 du header joue l'explication du mode courant.
   playMenuVoice(currentMode, MENU_FALLBACK[currentMode] || T('tts_fallback_generique'));
+}
+
+/* ── Musique de fond douce (HO-N01, 2026-09-12, décision Q2) ──────────────────
+   sounds/music/calme-doux-loop.mp3, volume 0,25, JAMAIS en autoplay bloqué —
+   ne démarre qu'au premier tap explicite sur 🎵 (politique autoplay navigateur +
+   on ne joue jamais de son sans que l'enfant l'ait demandé). Toggle marche/arrêt. */
+let _musiqueFondAudio = null;
+function toggleMusiqueFond() {
+  const btn = document.getElementById('menu-musique-btn');
+  if (_musiqueFondAudio && !_musiqueFondAudio.paused) {
+    _musiqueFondAudio.pause();
+    if (btn) btn.textContent = '🎵';
+    return;
+  }
+  try {
+    if (!_musiqueFondAudio) {
+      _musiqueFondAudio = new Audio('sounds/music/calme-doux-loop.mp3');
+      _musiqueFondAudio.loop = true;
+      _musiqueFondAudio.volume = 0.25;
+    }
+    _musiqueFondAudio.play().then(() => {
+      if (btn) btn.textContent = '🔇';
+    }).catch((e) => { console.warn('musique de fond refusée', e); });
+  } catch (e) { console.warn('musique de fond indisponible', e); }
 }
 
 /* ── MENU principal ── */

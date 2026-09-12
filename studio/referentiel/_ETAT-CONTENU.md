@@ -62,9 +62,9 @@ _… et 56 autres — détail complet dans `registre.json`._
 
 | Indicateur | Nombre |
 |---|---|
-| Clés recensées | **924** |
+| Clés recensées | **914** |
 | — domaine DINO | 355 |
-| — domaine JEU | 569 |
+| — domaine JEU | 559 |
 | Lignes suivies par le moteur de dette (clé × canal) | 639 |
 | 🔴 Dettes ouvertes | **96** |
 | Clés vérifiables automatiquement | 71 |
@@ -72,7 +72,7 @@ _… et 56 autres — détail complet dans `registre.json`._
 | 🟠 Audio en retard sur son script | **2** |
 | 🟡 Canaux manquants au contrat | 0 |
 | 🟡 Consignes lues sans voix réelle | 4 |
-| ⚪ Voix dont le texte verbatim n'est pas tracé | 167 |
+| ⚪ Voix dont le texte verbatim n'est pas tracé | 157 |
 
 ## 🔴 Dérives de fait
 
@@ -103,10 +103,10 @@ Le Lot 0 les recense là où ils sont ; le Lot 3 leur en donnera un.
 | Famille | Clés |
 |---|---|
 | entrepot-vise | 402 |
-| voix-produite | 167 |
+| voix-produite | 157 |
 
 **4 consignes** sont lues à l'enfant par le moteur du navigateur, sans voix réelle enregistrée.
-**167 fichiers de voix** sont documentés dans [`site/sounds/_BANQUE-SONS.md`](../../site/sounds/_BANQUE-SONS.md)
+**157 fichiers de voix** sont documentés dans [`site/sounds/_BANQUE-SONS.md`](../../site/sounds/_BANQUE-SONS.md)
 (rôle, voix, méthode de génération), mais le **texte verbatim** envoyé à ElevenLabs — avec ses tags v3 —
 n'est stocké nulle part. On ne peut donc ni les régénérer à l'identique, ni les traduire, ni vérifier
 ce que l'enfant entend sans les écouter un par un.
@@ -115,7 +115,7 @@ Répartition :
 
 | Dossier | Fichiers |
 |---|---|
-| `site/sounds/voix/phrases/` | 98 |
+| `site/sounds/voix/phrases/` | 88 |
 | `site/sounds/voix/f/` | 23 |
 | `site/sounds/voix/h/` | 23 |
 | `site/sounds/voix/wex/` | 23 |

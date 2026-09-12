@@ -36,6 +36,10 @@ export const REPLIQUES = [
   consigne('lequel-ne-va-pas', 'Lequel ne va pas avec les autres ?', 'repli', ['mj-15']),
   consigne('quel-bus-manque', 'Quel bus manque dans la grille ?', 'repli', ['mj-14']),
   consigne('qu-est-ce-qui-manque', "Qu'est-ce qui manque dans la grille ?", 'repli', ['mj-14']),
+  // Généré HO-N01 (2026-09-12) DEPUIS ce texte exact (bug réel corrigé, cf. banque
+  // § « Sons générés » — le MP3 sort de ce texte, vérifié à l'oreille + STT).
+  { ...consigne('quel-dino-manque', 'Quel dino manque dans la grille ?', 'repli', ['mj-14']),
+    texte_verifie: true },
   consigne('regardons-ensemble', 'Regardons ensemble !', 'repli', ['mj-30']),
   consigne('compte-encore', 'Compte encore !', 'repli', ['mj-26']),
 

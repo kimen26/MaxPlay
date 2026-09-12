@@ -63,7 +63,7 @@ Les agents vivent dans `.claude/agents/*.md`. Tu les invoques un par un, séquen
 - **Ne PAS réécrire** — produire des pistes d'amélioration
 
 **Data pull** :
-1. `studio/dino/content/scripts-audio/V3/CONSIGNES.md` — style V3 canonique
+1. `studio/dino/content/scripts-audio/_methode/CONSIGNES.md` — style V3 canonique
 2. `studio/dino/content/scripts-audio/_TEMPLATE-4blocs-dialogue.md` — template
 3. Les 8 fichiers V3
 
@@ -164,7 +164,7 @@ Note sur la fin : [...]
 5. `studio/dino/content/scripts-audio/V3/volants-marins.md` — 10 dinos (Ptéranodon, Quetzalcoatlus, Archéoptéryx, Mosasaure, Élasmosaure, Ophthalmosaure, Liopleurodon, Archélon, Shonisaure, Ichtyosaure)
 6. `studio/dino/content/scripts-audio/V3/armes-bizarres.md` — 6 dinos (Ankylosaure, Euoplocéphale, Stégosaure, Kéntrosaure, Thérizinosaure, Dimétrodon)
 7. `studio/dino/content/scripts-audio/V3/ornithopodes-raptors.md` — 11 dinos (Parasaurolophus, Edmontosaure, Iguanodon, Pachycéphalosaure + Vélociraptor, Deinonychus, Utahraptor, Microraptor, Troodon, Gallimimus, Oviraptor)
-8. `studio/dino/content/scripts-audio/V3/CONSIGNES.md` — style V3 canonique
+8. `studio/dino/content/scripts-audio/_methode/CONSIGNES.md` — style V3 canonique
 
 ### Références obligatoires :
 - `site/js/dinos-data.js` — source de vérité chiffres

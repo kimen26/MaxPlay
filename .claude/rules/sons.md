@@ -36,6 +36,10 @@ Ne jamais répondre « ce son n'existe pas » ou « ce fichier n'a pas de source
 
 ## Règles dures
 
+- 🔒 **`<id>-nom.mp3` ≠ `noms/<id>.mp3`** (HO-N01, 2026-09-12) : `site/audio/dinos/<id>-nom.mp3`
+  (à plat) est un segment de FICHE 20-35 s, jamais un tap-play jeu. `site/audio/dinos/fr/noms/<id>.mp3`
+  est le NOM SEUL 1,5-2 s, le SEUL format légitime pour un tap en mini-jeu. Ne jamais brancher le
+  premier là où le second est attendu.
 - 🔒 **Padding 250 ms en tête de tout MP3 court** (`ffmpeg -af "adelay=250:all=1"`) — sinon l'attaque est coupée sur mobile et en Bluetooth. Portée : répliques et SFX. Les fiches/récits dino narrés gardent ~80 ms (voulu, décision 2026-09-04 dans `studio/dino/memory/DECISIONS.md`).
 - 🔒 **Voix résolue par rôle** via [`voice-map.json`](../../studio/narration/personnages/voix-meta/voice-map.json). Jamais de `voice_id` en dur.
 - 🔒 **Repli TTS systématique** : tout appel voix garde un repli navigateur, pour que le jeu parle même si le MP3 manque. ⚠️ Le texte de repli **n'est pas** le texte du MP3 — il ne se déclenche que si le MP3 échoue. Ne jamais s'y fier pour savoir ce que l'enfant entend réellement (incident 2026-08-10 : la 3e étoile passait `'Tu maîtrises ce jeu !'` en repli alors que le MP3 joué dit « Tu as gagné une étoile ! »).

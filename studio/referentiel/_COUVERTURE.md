@@ -5,9 +5,9 @@
 
 | | |
 |---|---|
-| MP3 sur le disque | **2029** |
-| — enrôlés (catalogue, ou registre pour les blocs dino) | **977** |
-| — pas encore enrôlés | **1052** |
+| MP3 sur le disque | **1989** |
+| — enrôlés (catalogue, ou registre pour les blocs dino) | **991** |
+| — pas encore enrôlés | **998** |
 | — dont orphelins assumés (hors catalogue par nature) | 0 |
 | Entrées du catalogue sans fichier (à générer) | 27 |
 
@@ -19,8 +19,7 @@ catalogué par référence), donc il est régénérable à l’identique, tradui
 
 | Famille | Pôle | Sur disque | Enrôlés | Reste | Le verbatim est… |
 |---|---|---|---|---|---|
-| Bruitages | JEU | 108 | 67 | **41** | `prompt EN` |
-| Consignes de jeu | JEU | 98 | 80 | **18** | — introuvable |
+| Consignes de jeu | JEU | 88 | 81 | **7** | — introuvable |
 | Récits d’époque | DINO | 13 | 12 | **1** | — introuvable |
 | Blocs de fiche dino *(via registre)* | DINO | 284 | 284 | ✅ | `studio/dino/content/scripts-audio/fr/V3/json/` |
 | Récaps dino (concaténés) *(via registre)* | DINO | 71 | 71 | ✅ | `dérivé des 4 blocs (aucun texte propre)` |
@@ -37,6 +36,7 @@ catalogué par référence), donc il est régénérable à l’identique, tradui
 | Phonèmes | JEU | 21 | 21 | ✅ | — introuvable |
 | Pièces d’échecs (mj-37) | JEU | 6 | 6 | ✅ | — introuvable |
 | Identité sonore du hub | JEU | 10 | 10 | ✅ | `prompt EN` |
+| Bruitages | JEU | 80 | 80 | ✅ | `prompt EN` |
 
 ## Comment lire la dernière colonne
 
@@ -48,13 +48,11 @@ catalogué par référence), donc il est régénérable à l’identique, tradui
   contrats, lignée script → MP3), pas par des entrées de catalogue : le type « bloc » est
   catalogué par référence.
 
-## Non classés (992)
+## Non classés (990)
 
 Fichiers qu’aucune famille ne décrit — famille à ajouter ci-dessus, ou fichiers orphelins.
 
 - `sounds/music/calme-doux-loop.mp3`
-- `sounds/music/menu-jungle-loop.mp3`
-- `sounds/music/suspense-loop.mp3`
 - `sounds/music/victoire-v1.mp3`
 - `sounds/music/victoire-v2.mp3`
 - `sounds/music/victoire-v3.mp3`
@@ -82,8 +80,10 @@ Fichiers qu’aucune famille ne décrit — famille à ajouter ci-dessus, ou fic
 - `audio/dinos/ar/noms/apatosaurus.mp3`
 - `audio/dinos/ar/noms/archaeopteryx.mp3`
 - `audio/dinos/ar/noms/archelon.mp3`
+- `audio/dinos/ar/noms/baryonyx.mp3`
+- `audio/dinos/ar/noms/brachiosaurus.mp3`
 
-_… et 962 autres._
+_… et 960 autres._
 
 ---
 

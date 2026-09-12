@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<title>Écoute sons — dev</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { margin:0; padding:16px; font-family:system-ui,sans-serif; background:#111; color:#eee; }
+  h1 { font-size:1.2rem; margin:24px 0 4px; border-bottom:2px solid #444; padding-bottom:4px; }
+  h1:first-child { margin-top:0; }
+  h2 { font-size:0.95rem; margin:14px 0 4px; opacity:.85; }
+  .note { font-size:0.8rem; opacity:.65; margin:0 0 6px; }
+  section { margin-bottom:10px; }
+  .grid { display:flex; flex-wrap:wrap; gap:6px; }
+  button.tap {
+    min-height:48px; min-width:48px; padding:10px 14px;
+    border-radius:10px; border:1px solid #555; background:#222; color:#eee;
+    font-size:0.85rem; cursor:pointer;
+  }
+  button.tap:active { background:#3a3; }
+  button.pool { background:#334; border-color:#66c; font-weight:700; }
+  #now { position:sticky; top:0; background:#000c; padding:8px; margin:-16px -16px 16px; font-size:0.85rem; }
+</style>
+</head>
+<body>
+<div id="now">Tap un bouton pour écouter. — <span id="now-playing">rien</span></div>
+  <h1>🔊 Pools d'événements</h1>
+  <p class="note">Un tap joue un son au hasard du pool. Source : <code>site/js/victory-sounds.js SOUND_POOLS</code>.</p>
+  <section>
+    <h2>victory</h2>
+    <div class="grid">
+      <button class="tap pool" data-pool="[&quot;sounds/music/victoire-v1.mp3&quot;,&quot;sounds/music/victoire-v2.mp3&quot;,&quot;sounds/music/victoire-v3.mp3&quot;,&quot;sounds/music/victoire-v4.mp3&quot;,&quot;sounds/fx/victoire-grande.mp3&quot;,&quot;sounds/fx/tada.mp3&quot;,&quot;sounds/fx/trophee.mp3&quot;,&quot;sounds/fx/applaudissements.mp3&quot;,&quot;sounds/fx/trompette-fanfare.mp3&quot;,&quot;sounds/ui/fanfare-victoire.mp3&quot;]">▶ piocher dans « victory » (10)</button>
+    </div>
+  </section>
+  <section>
+    <h2>end-doux</h2>
+    <div class="grid">
+      <button class="tap pool" data-pool="[&quot;sounds/fx/trombone-oups.mp3&quot;,&quot;sounds/fx/oups-doux.mp3&quot;,&quot;sounds/fx/sifflet-glissant.mp3&quot;]">▶ piocher dans « end-doux » (3)</button>
+    </div>
+  </section>
+  <section>
+    <h2>success</h2>
+    <div class="grid">
+      <button class="tap pool" data-pool="[&quot;sounds/fx/bonne-reponse.mp3&quot;,&quot;sounds/fx/victoire-petite.mp3&quot;,&quot;sounds/fx/piece.mp3&quot;,&quot;sounds/fx/clochette.mp3&quot;,&quot;sounds/fx/xylophone-monte.mp3&quot;,&quot;sounds/fx/magie.mp3&quot;]">▶ piocher dans « success » (6)</button>
+    </div>
+  </section>
+  <section>
+    <h2>error</h2>
+    <div class="grid">
+      <button class="tap pool" data-pool="[&quot;sounds/fx/oups-doux.mp3&quot;,&quot;sounds/fx/trombone-oups.mp3&quot;,&quot;sounds/fx/prout-long.mp3&quot;,&quot;sounds/ui/klaxon.mp3&quot;,&quot;sounds/fx/boing.mp3&quot;]">▶ piocher dans « error » (5)</button>
+    </div>
+  </section>
+  <section>
+    <h2>apparition</h2>
+    <div class="grid">
+      <button class="tap pool" data-pool="[&quot;sounds/fx/pop-apparition.mp3&quot;,&quot;sounds/fx/bulle-pop.mp3&quot;,&quot;sounds/fx/boing.mp3&quot;,&quot;sounds/fx/whoosh.mp3&quot;]">▶ piocher dans « apparition » (4)</button>
+    </div>
+  </section>
+  <section>
+    <h2>collecte</h2>
+    <div class="grid">
+      <button class="tap pool" data-pool="[&quot;sounds/fx/piece.mp3&quot;,&quot;sounds/fx/pluie-pieces.mp3&quot;,&quot;sounds/ui/etoile.mp3&quot;,&quot;sounds/fx/magie.mp3&quot;]">▶ piocher dans « collecte » (4)</button>
+    </div>
+  </section>
+  <section>
+    <h2>deblocage</h2>
+    <div class="grid">
+      <button class="tap pool" data-pool="[&quot;sounds/ui/deblocage.mp3&quot;,&quot;sounds/fx/roulement-tambour.mp3&quot;,&quot;sounds/fx/waouh.mp3&quot;]">▶ piocher dans « deblocage » (3)</button>
+    </div>
+  </section>
+  <section>
+    <h2>pas</h2>
+    <div class="grid">
+      <button class="tap pool" data-pool="[&quot;sounds/fx/dino/pas-lourd-un.mp3&quot;,&quot;sounds/fx/dino/pas-lourd-marche.mp3&quot;,&quot;sounds/fx/dino/pas-lourd-course.mp3&quot;,&quot;sounds/fx/dino/pas-lourd-lointain.mp3&quot;,&quot;sounds/fx/dino/pas-course-petit.mp3&quot;,&quot;sounds/fx/dino/pas-course-moyen.mp3&quot;,&quot;sounds/fx/dino/pas-marche-lente-petit.mp3&quot;,&quot;sounds/fx/dino/pas-marche-lente-moyen.mp3&quot;]">▶ piocher dans « pas » (8)</button>
+    </div>
+  </section>
+  <section>
+    <h2>grognement</h2>
+    <div class="grid">
+      <button class="tap pool" data-pool="[&quot;sounds/fx/dino/gros-rugissement-attaque-1.mp3&quot;,&quot;sounds/fx/dino/gros-rugissement-attaque-2.mp3&quot;,&quot;sounds/fx/dino/gros-rugissement-defense.mp3&quot;,&quot;sounds/fx/dino/gros-grognement-sourd.mp3&quot;,&quot;sounds/fx/dino/petit-cri-attaque.mp3&quot;,&quot;sounds/fx/dino/petit-cri-defense.mp3&quot;,&quot;sounds/fx/dino/petit-cri-curieux.mp3&quot;,&quot;sounds/fx/dino/petit-sifflement.mp3&quot;,&quot;sounds/fx/dino-raptor.mp3&quot;,&quot;sounds/fx/dino-sauropode.mp3&quot;,&quot;sounds/fx/dino-trex.mp3&quot;,&quot;sounds/fx/dino-tricera.mp3&quot;]">▶ piocher dans « grognement » (12)</button>
+    </div>
+  </section>
+  <section>
+    <h2>ambiance-nature</h2>
+    <div class="grid">
+      <button class="tap pool" data-pool="[&quot;sounds/fx/dino/para-grave-long.mp3&quot;,&quot;sounds/fx/dino/para-grave-court.mp3&quot;,&quot;sounds/fx/dino/para-aigu-long.mp3&quot;,&quot;sounds/fx/dino/para-aigu-court.mp3&quot;,&quot;sounds/fx/dino/para-alerte.mp3&quot;,&quot;sounds/fx/dino/para-fun.mp3&quot;,&quot;sounds/fx/dino/tonnerre-lointain.mp3&quot;,&quot;sounds/fx/dino/tonnerre-proche.mp3&quot;,&quot;sounds/fx/dino/eclair-craquement.mp3&quot;,&quot;sounds/fx/dino/pluie-loop.mp3&quot;,&quot;sounds/fx/dino/pluie-forte-loop.mp3&quot;,&quot;sounds/fx/dino/cascade-loop.mp3&quot;,&quot;sounds/fx/dino/vent-jungle-loop.mp3&quot;]">▶ piocher dans « ambiance-nature » (13)</button>
+    </div>
+  </section>
+  <section>
+    <h2>rigolo</h2>
+    <div class="grid">
+      <button class="tap pool" data-pool="[&quot;sounds/fx/prout-long.mp3&quot;,&quot;sounds/fx/prout-petit.mp3&quot;,&quot;sounds/fx/splash.mp3&quot;]">▶ piocher dans « rigolo » (3)</button>
+    </div>
+  </section>
+  <section>
+    <h2>petit-bruit</h2>
+    <div class="grid">
+      <button class="tap pool" data-pool="[&quot;sounds/fx/dino-mange.mp3&quot;,&quot;sounds/fx/photo.mp3&quot;,&quot;sounds/fx/tic-tac.mp3&quot;]">▶ piocher dans « petit-bruit » (3)</button>
+    </div>
+  </section>
+  <section>
+    <h2>bus</h2>
+    <div class="grid">
+      <button class="tap pool" data-pool="[&quot;sounds/fx/demarrage-bus.mp3&quot;,&quot;sounds/fx/frein-bus.mp3&quot;,&quot;sounds/fx/bip-recul.mp3&quot;]">▶ piocher dans « bus » (3)</button>
+    </div>
+  </section>
+  <section>
+    <h2>indice</h2>
+    <div class="grid">
+      <button class="tap pool" data-pool="[&quot;sounds/fx/indice.mp3&quot;]">▶ piocher dans « indice » (1)</button>
+    </div>
+  </section>
+  <section>
+    <h2>oeuf</h2>
+    <div class="grid">
+      <button class="tap pool" data-pool="[&quot;sounds/fx/dino-oeuf-eclot.mp3&quot;]">▶ piocher dans « oeuf » (1)</button>
+    </div>
+  </section>
+  <section>
+    <h2>blabla</h2>
+    <div class="grid">
+      <button class="tap pool" data-pool="[&quot;sounds/voix/phrases/a-toi-de-jouer.mp3&quot;,&quot;sounds/voix/phrases/cest-parti.mp3&quot;,&quot;sounds/voix/phrases/encore-une-fois.mp3&quot;,&quot;sounds/voix/phrases/ouvre-bien-les-yeux.mp3&quot;]">▶ piocher dans « blabla » (4)</button>
+    </div>
+  </section>
+  <h1>📁 Dossiers</h1>
+  <section>
+    <h2>ui/ — identité hub</h2>
+    <div class="grid">
+      <button class="tap" data-src="sounds/ui/ambiance-nuit.mp3">ambiance-nuit</button>
+      <button class="tap" data-src="sounds/ui/deblocage.mp3">deblocage</button>
+      <button class="tap" data-src="sounds/ui/etoile.mp3">etoile</button>
+      <button class="tap" data-src="sounds/ui/fanfare-victoire.mp3">fanfare-victoire</button>
+      <button class="tap" data-src="sounds/ui/klaxon.mp3">klaxon</button>
+      <button class="tap" data-src="sounds/ui/moteur-bus.mp3">moteur-bus</button>
+      <button class="tap" data-src="sounds/ui/porte-bus.mp3">porte-bus</button>
+      <button class="tap" data-src="sounds/ui/tap.mp3">tap</button>
+      <button class="tap" data-src="sounds/ui/veilleuse.mp3">veilleuse</button>
+      <button class="tap" data-src="sounds/ui/voyage-temps.mp3">voyage-temps</button>
+    </div>
+  </section>
+  <section>
+    <h2>fx/ — bruitages généraux restants</h2>
+    <p class="note">Après nettoyage HO-N01 : plus que les fichiers rattachés à un pool ou en réserve utile.</p>
+    <div class="grid">
+      <button class="tap" data-src="sounds/fx/applaudissements.mp3">applaudissements</button>
+      <button class="tap" data-src="sounds/fx/bip-recul.mp3">bip-recul</button>
+      <button class="tap" data-src="sounds/fx/boing.mp3">boing</button>
+      <button class="tap" data-src="sounds/fx/bonne-reponse.mp3">bonne-reponse</button>
+      <button class="tap" data-src="sounds/fx/bulle-pop.mp3">bulle-pop</button>
+      <button class="tap" data-src="sounds/fx/clochette.mp3">clochette</button>
+      <button class="tap" data-src="sounds/fx/cri-bebe-arme.mp3">cri-bebe-arme</button>
+      <button class="tap" data-src="sounds/fx/cri-bebe-bec.mp3">cri-bebe-bec</button>
+      <button class="tap" data-src="sounds/fx/cri-bebe-cornu.mp3">cri-bebe-cornu</button>
+      <button class="tap" data-src="sounds/fx/cri-bebe-cou_long.mp3">cri-bebe-cou_long</button>
+      <button class="tap" data-src="sounds/fx/cri-bebe-enaliosaures.mp3">cri-bebe-enaliosaures</button>
+      <button class="tap" data-src="sounds/fx/cri-bebe-mammiferes.mp3">cri-bebe-mammiferes</button>
+      <button class="tap" data-src="sounds/fx/cri-bebe-oiseaux.mp3">cri-bebe-oiseaux</button>
+      <button class="tap" data-src="sounds/fx/cri-bebe-pterosaures.mp3">cri-bebe-pterosaures</button>
+      <button class="tap" data-src="sounds/fx/cri-bebe-raptor.mp3">cri-bebe-raptor</button>
+      <button class="tap" data-src="sounds/fx/cri-bebe-trex.mp3">cri-bebe-trex</button>
+      <button class="tap" data-src="sounds/fx/cri-bebe-volant.mp3">cri-bebe-volant</button>
+      <button class="tap" data-src="sounds/fx/demarrage-bus.mp3">demarrage-bus</button>
+      <button class="tap" data-src="sounds/fx/dino-bebe-2.mp3">dino-bebe-2</button>
+      <button class="tap" data-src="sounds/fx/dino-bebe-3.mp3">dino-bebe-3</button>
+      <button class="tap" data-src="sounds/fx/dino-bebe.mp3">dino-bebe</button>
+      <button class="tap" data-src="sounds/fx/dino-mange.mp3">dino-mange</button>
+      <button class="tap" data-src="sounds/fx/dino-oeuf-eclot.mp3">dino-oeuf-eclot</button>
+      <button class="tap" data-src="sounds/fx/dino-pas.mp3">dino-pas</button>
+      <button class="tap" data-src="sounds/fx/dino-raptor.mp3">dino-raptor</button>
+      <button class="tap" data-src="sounds/fx/dino-sauropode.mp3">dino-sauropode</button>
+      <button class="tap" data-src="sounds/fx/dino-trex.mp3">dino-trex</button>
+      <button class="tap" data-src="sounds/fx/dino-tricera.mp3">dino-tricera</button>
+      <button class="tap" data-src="sounds/fx/frein-bus.mp3">frein-bus</button>
+      <button class="tap" data-src="sounds/fx/indice.mp3">indice</button>
+      <button class="tap" data-src="sounds/fx/magie.mp3">magie</button>
+      <button class="tap" data-src="sounds/fx/oups-doux.mp3">oups-doux</button>
+      <button class="tap" data-src="sounds/fx/photo.mp3">photo</button>
+      <button class="tap" data-src="sounds/fx/piece.mp3">piece</button>
+      <button class="tap" data-src="sounds/fx/pluie-pieces.mp3">pluie-pieces</button>
+      <button class="tap" data-src="sounds/fx/pop-apparition.mp3">pop-apparition</button>
+      <button class="tap" data-src="sounds/fx/prout-long.mp3">prout-long</button>
+      <button class="tap" data-src="sounds/fx/prout-petit.mp3">prout-petit</button>
+      <button class="tap" data-src="sounds/fx/roulement-tambour.mp3">roulement-tambour</button>
+      <button class="tap" data-src="sounds/fx/sifflet-glissant.mp3">sifflet-glissant</button>
+      <button class="tap" data-src="sounds/fx/splash.mp3">splash</button>
+      <button class="tap" data-src="sounds/fx/tada.mp3">tada</button>
+      <button class="tap" data-src="sounds/fx/tic-tac.mp3">tic-tac</button>
+      <button class="tap" data-src="sounds/fx/trombone-oups.mp3">trombone-oups</button>
+      <button class="tap" data-src="sounds/fx/trompette-fanfare.mp3">trompette-fanfare</button>
+      <button class="tap" data-src="sounds/fx/trophee.mp3">trophee</button>
+      <button class="tap" data-src="sounds/fx/victoire-grande.mp3">victoire-grande</button>
+      <button class="tap" data-src="sounds/fx/victoire-petite.mp3">victoire-petite</button>
+      <button class="tap" data-src="sounds/fx/waouh.mp3">waouh</button>
+      <button class="tap" data-src="sounds/fx/whoosh.mp3">whoosh</button>
+      <button class="tap" data-src="sounds/fx/xylophone-monte.mp3">xylophone-monte</button>
+    </div>
+  </section>
+  <section>
+    <h2>fx/dino/ — bruitages cinématiques dino</h2>
+    <p class="note">Branchés HO-N01 dans les pools pas / grognement / ambiance-nature (aucun jeu ne les consomme encore).</p>
+    <div class="grid">
+      <button class="tap" data-src="sounds/fx/dino/cascade-loop.mp3">cascade-loop</button>
+      <button class="tap" data-src="sounds/fx/dino/eclair-craquement.mp3">eclair-craquement</button>
+      <button class="tap" data-src="sounds/fx/dino/gros-grognement-sourd.mp3">gros-grognement-sourd</button>
+      <button class="tap" data-src="sounds/fx/dino/gros-rugissement-attaque-1.mp3">gros-rugissement-attaque-1</button>
+      <button class="tap" data-src="sounds/fx/dino/gros-rugissement-attaque-2.mp3">gros-rugissement-attaque-2</button>
+      <button class="tap" data-src="sounds/fx/dino/gros-rugissement-defense.mp3">gros-rugissement-defense</button>
+      <button class="tap" data-src="sounds/fx/dino/para-aigu-court.mp3">para-aigu-court</button>
+      <button class="tap" data-src="sounds/fx/dino/para-aigu-long.mp3">para-aigu-long</button>
+      <button class="tap" data-src="sounds/fx/dino/para-alerte.mp3">para-alerte</button>
+      <button class="tap" data-src="sounds/fx/dino/para-fun.mp3">para-fun</button>
+      <button class="tap" data-src="sounds/fx/dino/para-grave-court.mp3">para-grave-court</button>
+      <button class="tap" data-src="sounds/fx/dino/para-grave-long.mp3">para-grave-long</button>
+      <button class="tap" data-src="sounds/fx/dino/pas-course-moyen.mp3">pas-course-moyen</button>
+      <button class="tap" data-src="sounds/fx/dino/pas-course-petit.mp3">pas-course-petit</button>
+      <button class="tap" data-src="sounds/fx/dino/pas-lourd-course.mp3">pas-lourd-course</button>
+      <button class="tap" data-src="sounds/fx/dino/pas-lourd-lointain.mp3">pas-lourd-lointain</button>
+      <button class="tap" data-src="sounds/fx/dino/pas-lourd-marche.mp3">pas-lourd-marche</button>
+      <button class="tap" data-src="sounds/fx/dino/pas-lourd-un.mp3">pas-lourd-un</button>
+      <button class="tap" data-src="sounds/fx/dino/pas-marche-lente-moyen.mp3">pas-marche-lente-moyen</button>
+      <button class="tap" data-src="sounds/fx/dino/pas-marche-lente-petit.mp3">pas-marche-lente-petit</button>
+      <button class="tap" data-src="sounds/fx/dino/petit-cri-attaque.mp3">petit-cri-attaque</button>
+      <button class="tap" data-src="sounds/fx/dino/petit-cri-curieux.mp3">petit-cri-curieux</button>
+      <button class="tap" data-src="sounds/fx/dino/petit-cri-defense.mp3">petit-cri-defense</button>
+      <button class="tap" data-src="sounds/fx/dino/petit-sifflement.mp3">petit-sifflement</button>
+      <button class="tap" data-src="sounds/fx/dino/pluie-forte-loop.mp3">pluie-forte-loop</button>
+      <button class="tap" data-src="sounds/fx/dino/pluie-loop.mp3">pluie-loop</button>
+      <button class="tap" data-src="sounds/fx/dino/tonnerre-lointain.mp3">tonnerre-lointain</button>
+      <button class="tap" data-src="sounds/fx/dino/tonnerre-proche.mp3">tonnerre-proche</button>
+      <button class="tap" data-src="sounds/fx/dino/vent-jungle-loop.mp3">vent-jungle-loop</button>
+    </div>
+  </section>
+  <section>
+    <h2>music/ — musiques de fond</h2>
+    <p class="note">calme-doux-loop est branché en fond de dev-dinos.html (volume 0,25).</p>
+    <div class="grid">
+      <button class="tap" data-src="sounds/music/calme-doux-loop.mp3">calme-doux-loop</button>
+      <button class="tap" data-src="sounds/music/victoire-v1.mp3">victoire-v1</button>
+      <button class="tap" data-src="sounds/music/victoire-v2.mp3">victoire-v2</button>
+      <button class="tap" data-src="sounds/music/victoire-v3.mp3">victoire-v3</button>
+      <button class="tap" data-src="sounds/music/victoire-v4.mp3">victoire-v4</button>
+    </div>
+  </section>
+  <section>
+    <h2>voix/f/ — réactions Narratrice</h2>
+    <div class="grid">
+      <button class="tap" data-src="sounds/voix/f/bien-joue.mp3">bien-joue</button>
+      <button class="tap" data-src="sounds/voix/f/bravo.mp3">bravo</button>
+      <button class="tap" data-src="sounds/voix/f/champion.mp3">champion</button>
+      <button class="tap" data-src="sounds/voix/f/encore.mp3">encore</button>
+      <button class="tap" data-src="sounds/voix/f/essaie-encore.mp3">essaie-encore</button>
+      <button class="tap" data-src="sounds/voix/f/etoile-gagnee.mp3">etoile-gagnee</button>
+      <button class="tap" data-src="sounds/voix/f/genial.mp3">genial</button>
+      <button class="tap" data-src="sounds/voix/f/hmm-non.mp3">hmm-non</button>
+      <button class="tap" data-src="sounds/voix/f/hourra.mp3">hourra</button>
+      <button class="tap" data-src="sounds/voix/f/incroyable.mp3">incroyable</button>
+      <button class="tap" data-src="sounds/voix/f/joli.mp3">joli</button>
+      <button class="tap" data-src="sounds/voix/f/oh-la-la.mp3">oh-la-la</button>
+      <button class="tap" data-src="sounds/voix/f/ouiii.mp3">ouiii</button>
+      <button class="tap" data-src="sounds/voix/f/oups.mp3">oups</button>
+      <button class="tap" data-src="sounds/voix/f/parfait.mp3">parfait</button>
+      <button class="tap" data-src="sounds/voix/f/pas-tout-a-fait.mp3">pas-tout-a-fait</button>
+      <button class="tap" data-src="sounds/voix/f/presque.mp3">presque</button>
+      <button class="tap" data-src="sounds/voix/f/quel-talent.mp3">quel-talent</button>
+      <button class="tap" data-src="sounds/voix/f/super.mp3">super</button>
+      <button class="tap" data-src="sounds/voix/f/trop-fort.mp3">trop-fort</button>
+      <button class="tap" data-src="sounds/voix/f/tu-y-es-presque.mp3">tu-y-es-presque</button>
+      <button class="tap" data-src="sounds/voix/f/waouh.mp3">waouh</button>
+      <button class="tap" data-src="sounds/voix/f/yes.mp3">yes</button>
+    </div>
+  </section>
+  <section>
+    <h2>voix/h/ — réactions Narrateur</h2>
+    <div class="grid">
+      <button class="tap" data-src="sounds/voix/h/bien-joue.mp3">bien-joue</button>
+      <button class="tap" data-src="sounds/voix/h/bravo.mp3">bravo</button>
+      <button class="tap" data-src="sounds/voix/h/champion.mp3">champion</button>
+      <button class="tap" data-src="sounds/voix/h/encore.mp3">encore</button>
+      <button class="tap" data-src="sounds/voix/h/essaie-encore.mp3">essaie-encore</button>
+      <button class="tap" data-src="sounds/voix/h/etoile-gagnee.mp3">etoile-gagnee</button>
+      <button class="tap" data-src="sounds/voix/h/genial.mp3">genial</button>
+      <button class="tap" data-src="sounds/voix/h/hmm-non.mp3">hmm-non</button>
+      <button class="tap" data-src="sounds/voix/h/hourra.mp3">hourra</button>
+      <button class="tap" data-src="sounds/voix/h/incroyable.mp3">incroyable</button>
+      <button class="tap" data-src="sounds/voix/h/joli.mp3">joli</button>
+      <button class="tap" data-src="sounds/voix/h/oh-la-la.mp3">oh-la-la</button>
+      <button class="tap" data-src="sounds/voix/h/ouiii.mp3">ouiii</button>
+      <button class="tap" data-src="sounds/voix/h/oups.mp3">oups</button>
+      <button class="tap" data-src="sounds/voix/h/parfait.mp3">parfait</button>
+      <button class="tap" data-src="sounds/voix/h/pas-tout-a-fait.mp3">pas-tout-a-fait</button>
+      <button class="tap" data-src="sounds/voix/h/presque.mp3">presque</button>
+      <button class="tap" data-src="sounds/voix/h/quel-talent.mp3">quel-talent</button>
+      <button class="tap" data-src="sounds/voix/h/super.mp3">super</button>
+      <button class="tap" data-src="sounds/voix/h/trop-fort.mp3">trop-fort</button>
+      <button class="tap" data-src="sounds/voix/h/tu-y-es-presque.mp3">tu-y-es-presque</button>
+      <button class="tap" data-src="sounds/voix/h/waouh.mp3">waouh</button>
+      <button class="tap" data-src="sounds/voix/h/yes.mp3">yes</button>
+    </div>
+  </section>
+  <section>
+    <h2>voix/wex/ — réactions Wex</h2>
+    <div class="grid">
+      <button class="tap" data-src="sounds/voix/wex/bien-joue.mp3">bien-joue</button>
+      <button class="tap" data-src="sounds/voix/wex/bravo.mp3">bravo</button>
+      <button class="tap" data-src="sounds/voix/wex/champion.mp3">champion</button>
+      <button class="tap" data-src="sounds/voix/wex/encore.mp3">encore</button>
+      <button class="tap" data-src="sounds/voix/wex/essaie-encore.mp3">essaie-encore</button>
+      <button class="tap" data-src="sounds/voix/wex/etoile-gagnee.mp3">etoile-gagnee</button>
+      <button class="tap" data-src="sounds/voix/wex/genial.mp3">genial</button>
+      <button class="tap" data-src="sounds/voix/wex/hmm-non.mp3">hmm-non</button>
+      <button class="tap" data-src="sounds/voix/wex/hourra.mp3">hourra</button>
+      <button class="tap" data-src="sounds/voix/wex/incroyable.mp3">incroyable</button>
+      <button class="tap" data-src="sounds/voix/wex/joli.mp3">joli</button>
+      <button class="tap" data-src="sounds/voix/wex/oh-la-la.mp3">oh-la-la</button>
+      <button class="tap" data-src="sounds/voix/wex/ouiii.mp3">ouiii</button>
+      <button class="tap" data-src="sounds/voix/wex/oups.mp3">oups</button>
+      <button class="tap" data-src="sounds/voix/wex/parfait.mp3">parfait</button>
+      <button class="tap" data-src="sounds/voix/wex/pas-tout-a-fait.mp3">pas-tout-a-fait</button>
+      <button class="tap" data-src="sounds/voix/wex/presque.mp3">presque</button>
+      <button class="tap" data-src="sounds/voix/wex/quel-talent.mp3">quel-talent</button>
+      <button class="tap" data-src="sounds/voix/wex/super.mp3">super</button>
+      <button class="tap" data-src="sounds/voix/wex/trop-fort.mp3">trop-fort</button>
+      <button class="tap" data-src="sounds/voix/wex/tu-y-es-presque.mp3">tu-y-es-presque</button>
+      <button class="tap" data-src="sounds/voix/wex/waouh.mp3">waouh</button>
+      <button class="tap" data-src="sounds/voix/wex/yes.mp3">yes</button>
+    </div>
+  </section>
+  <section>
+    <h2>voix/phrases/ — consignes de jeu</h2>
+    <div class="grid">
+      <button class="tap" data-src="sounds/voix/phrases/a-toi-de-jouer.mp3">a-toi-de-jouer</button>
+      <button class="tap" data-src="sounds/voix/phrases/cest-parti.mp3">cest-parti</button>
+      <button class="tap" data-src="sounds/voix/phrases/cherche-bien.mp3">cherche-bien</button>
+      <button class="tap" data-src="sounds/voix/phrases/combien-d-oeufs-en-tout.mp3">combien-d-oeufs-en-tout</button>
+      <button class="tap" data-src="sounds/voix/phrases/combien-d-oeufs.mp3">combien-d-oeufs</button>
+      <button class="tap" data-src="sounds/voix/phrases/combien-de-dinos-compte-les.mp3">combien-de-dinos-compte-les</button>
+      <button class="tap" data-src="sounds/voix/phrases/combien-de-dinos.mp3">combien-de-dinos</button>
+      <button class="tap" data-src="sounds/voix/phrases/combien-en-tout.mp3">combien-en-tout</button>
+      <button class="tap" data-src="sounds/voix/phrases/complete-la-grille-les-4-symboles-partout.mp3">complete-la-grille-les-4-symboles-partout</button>
+      <button class="tap" data-src="sounds/voix/phrases/compte-encore.mp3">compte-encore</button>
+      <button class="tap" data-src="sounds/voix/phrases/compte-les-un-par-un.mp3">compte-les-un-par-un</button>
+      <button class="tap" data-src="sounds/voix/phrases/construis-le-mot.mp3">construis-le-mot</button>
+      <button class="tap" data-src="sounds/voix/phrases/continue-a-faire-eclore-les-oeufs.mp3">continue-a-faire-eclore-les-oeufs</button>
+      <button class="tap" data-src="sounds/voix/phrases/deux-boites-pleines-combien-en-tout.mp3">deux-boites-pleines-combien-en-tout</button>
+      <button class="tap" data-src="sounds/voix/phrases/ecoute-le-premier-son.mp3">ecoute-le-premier-son</button>
+      <button class="tap" data-src="sounds/voix/phrases/encore-une-fois.mp3">encore-une-fois</button>
+      <button class="tap" data-src="sounds/voix/phrases/fais-monter-les-passagers.mp3">fais-monter-les-passagers</button>
+      <button class="tap" data-src="sounds/voix/phrases/fais-un-territoire-pour-chaque-pierre.mp3">fais-un-territoire-pour-chaque-pierre</button>
+      <button class="tap" data-src="sounds/voix/phrases/gros-niveau-regroupe.mp3">gros-niveau-regroupe</button>
+      <button class="tap" data-src="sounds/voix/phrases/il-en-faut-beaucoup.mp3">il-en-faut-beaucoup</button>
+      <button class="tap" data-src="sounds/voix/phrases/il-en-faut-combien-pour-faire-10.mp3">il-en-faut-combien-pour-faire-10</button>
+      <button class="tap" data-src="sounds/voix/phrases/il-en-manque-combien-pour-remplir-la-boite.mp3">il-en-manque-combien-pour-remplir-la-boite</button>
+      <button class="tap" data-src="sounds/voix/phrases/il-vivait-quand.mp3">il-vivait-quand</button>
+      <button class="tap" data-src="sounds/voix/phrases/la-boite-est-pleine-il-faut-encore-combien-d-oeufs.mp3">la-boite-est-pleine-il-faut-encore-combien-d-oeufs</button>
+      <button class="tap" data-src="sounds/voix/phrases/le-son-quon-entend.mp3">le-son-quon-entend</button>
+      <button class="tap" data-src="sounds/voix/phrases/lequel-ne-va-pas.mp3">lequel-ne-va-pas</button>
+      <button class="tap" data-src="sounds/voix/phrases/mode-libre-encore-une-caisse.mp3">mode-libre-encore-une-caisse</button>
+      <button class="tap" data-src="sounds/voix/phrases/ouvre-bien-les-yeux.mp3">ouvre-bien-les-yeux</button>
+      <button class="tap" data-src="sounds/voix/phrases/premier-son-l-ou-r.mp3">premier-son-l-ou-r</button>
+      <button class="tap" data-src="sounds/voix/phrases/qu-est-ce-qui-manque.mp3">qu-est-ce-qui-manque</button>
+      <button class="tap" data-src="sounds/voix/phrases/qu-est-ce-qui-vient-ensuite.mp3">qu-est-ce-qui-vient-ensuite</button>
+      <button class="tap" data-src="sounds/voix/phrases/quel-bus-arrive-en-premier.mp3">quel-bus-arrive-en-premier</button>
+      <button class="tap" data-src="sounds/voix/phrases/quel-bus-manque.mp3">quel-bus-manque</button>
+      <button class="tap" data-src="sounds/voix/phrases/quel-dino-manque.mp3">quel-dino-manque</button>
+      <button class="tap" data-src="sounds/voix/phrases/quel-dino-se-cache-dans-le-noir.mp3">quel-dino-se-cache-dans-le-noir</button>
+      <button class="tap" data-src="sounds/voix/phrases/quel-mot-manque-dans-la-phrase.mp3">quel-mot-manque-dans-la-phrase</button>
+      <button class="tap" data-src="sounds/voix/phrases/range-dans-la-bonne-boite.mp3">range-dans-la-bonne-boite</button>
+      <button class="tap" data-src="sounds/voix/phrases/range-les-des.mp3">range-les-des</button>
+      <button class="tap" data-src="sounds/voix/phrases/range-les-du-plus-leger-au-plus-lourd.mp3">range-les-du-plus-leger-au-plus-lourd</button>
+      <button class="tap" data-src="sounds/voix/phrases/range-les-du-plus-petit-au-plus-grand.mp3">range-les-du-plus-petit-au-plus-grand</button>
+      <button class="tap" data-src="sounds/voix/phrases/regardons-ensemble.mp3">regardons-ensemble</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-06.mp3">regle-mj-06</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-09.mp3">regle-mj-09</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-13a.mp3">regle-mj-13a</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-13c.mp3">regle-mj-13c</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-14.mp3">regle-mj-14</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-15.mp3">regle-mj-15</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-16.mp3">regle-mj-16</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-18.mp3">regle-mj-18</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-19.mp3">regle-mj-19</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-20.mp3">regle-mj-20</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-21.mp3">regle-mj-21</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-22.mp3">regle-mj-22</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-24.mp3">regle-mj-24</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-28.mp3">regle-mj-28</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-30.mp3">regle-mj-30</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-31.mp3">regle-mj-31</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-32.mp3">regle-mj-32</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-34.mp3">regle-mj-34</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-35.mp3">regle-mj-35</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-37.mp3">regle-mj-37</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-38.mp3">regle-mj-38</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-39.mp3">regle-mj-39</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-40.mp3">regle-mj-40</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-42.mp3">regle-mj-42</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-46.mp3">regle-mj-46</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-47.mp3">regle-mj-47</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-48.mp3">regle-mj-48</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-49.mp3">regle-mj-49</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-50.mp3">regle-mj-50</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-51.mp3">regle-mj-51</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-52.mp3">regle-mj-52</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-53.mp3">regle-mj-53</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-54.mp3">regle-mj-54</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-55.mp3">regle-mj-55</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-56.mp3">regle-mj-56</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-57.mp3">regle-mj-57</button>
+      <button class="tap" data-src="sounds/voix/phrases/regle-mj-59.mp3">regle-mj-59</button>
+      <button class="tap" data-src="sounds/voix/phrases/regroupe-les-points.mp3">regroupe-les-points</button>
+      <button class="tap" data-src="sounds/voix/phrases/remplis-chaque-caisse.mp3">remplis-chaque-caisse</button>
+      <button class="tap" data-src="sounds/voix/phrases/tape-pour-sauter-par-dessus-les-cactus.mp3">tape-pour-sauter-par-dessus-les-cactus</button>
+      <button class="tap" data-src="sounds/voix/phrases/terminus-fais-les-descendre.mp3">terminus-fais-les-descendre</button>
+      <button class="tap" data-src="sounds/voix/phrases/touche-la-lettre-qui-fait-ce-son.mp3">touche-la-lettre-qui-fait-ce-son</button>
+      <button class="tap" data-src="sounds/voix/phrases/tous-les-oeufs-ont-eclos.mp3">tous-les-oeufs-ont-eclos</button>
+      <button class="tap" data-src="sounds/voix/phrases/trouve-2-tuiles-avec-le-meme-dino.mp3">trouve-2-tuiles-avec-le-meme-dino</button>
+      <button class="tap" data-src="sounds/voix/phrases/trouve-l-ombre-et-son-dino.mp3">trouve-l-ombre-et-son-dino</button>
+      <button class="tap" data-src="sounds/voix/phrases/trouve-le-meme-dino.mp3">trouve-le-meme-dino</button>
+      <button class="tap" data-src="sounds/voix/phrases/un-dino-par-ligne-colonne-et-enclos-jamais-colles.mp3">un-dino-par-ligne-colonne-et-enclos-jamais-colles</button>
+    </div>
+  </section>
+  <section>
+    <h2>nombres/ — gabarits chiffres</h2>
+    <div class="grid">
+      <button class="tap" data-src="sounds/nombres/1-oeufs.mp3">1-oeufs</button>
+      <button class="tap" data-src="sounds/nombres/10-oeufs.mp3">10-oeufs</button>
+      <button class="tap" data-src="sounds/nombres/2-oeufs.mp3">2-oeufs</button>
+      <button class="tap" data-src="sounds/nombres/3-oeufs.mp3">3-oeufs</button>
+      <button class="tap" data-src="sounds/nombres/4-oeufs.mp3">4-oeufs</button>
+      <button class="tap" data-src="sounds/nombres/5-oeufs.mp3">5-oeufs</button>
+      <button class="tap" data-src="sounds/nombres/6-oeufs.mp3">6-oeufs</button>
+      <button class="tap" data-src="sounds/nombres/7-oeufs.mp3">7-oeufs</button>
+      <button class="tap" data-src="sounds/nombres/8-oeufs.mp3">8-oeufs</button>
+      <button class="tap" data-src="sounds/nombres/9-oeufs.mp3">9-oeufs</button>
+      <button class="tap" data-src="sounds/nombres/il-en-faut-1.mp3">il-en-faut-1</button>
+      <button class="tap" data-src="sounds/nombres/il-en-faut-10.mp3">il-en-faut-10</button>
+      <button class="tap" data-src="sounds/nombres/il-en-faut-2.mp3">il-en-faut-2</button>
+      <button class="tap" data-src="sounds/nombres/il-en-faut-3.mp3">il-en-faut-3</button>
+      <button class="tap" data-src="sounds/nombres/il-en-faut-4.mp3">il-en-faut-4</button>
+      <button class="tap" data-src="sounds/nombres/il-en-faut-5.mp3">il-en-faut-5</button>
+      <button class="tap" data-src="sounds/nombres/il-en-faut-6.mp3">il-en-faut-6</button>
+      <button class="tap" data-src="sounds/nombres/il-en-faut-7.mp3">il-en-faut-7</button>
+      <button class="tap" data-src="sounds/nombres/il-en-faut-8.mp3">il-en-faut-8</button>
+      <button class="tap" data-src="sounds/nombres/il-en-faut-9.mp3">il-en-faut-9</button>
+      <button class="tap" data-src="sounds/nombres/il-en-manque-1.mp3">il-en-manque-1</button>
+      <button class="tap" data-src="sounds/nombres/il-en-manque-10.mp3">il-en-manque-10</button>
+      <button class="tap" data-src="sounds/nombres/il-en-manque-2.mp3">il-en-manque-2</button>
+      <button class="tap" data-src="sounds/nombres/il-en-manque-3.mp3">il-en-manque-3</button>
+      <button class="tap" data-src="sounds/nombres/il-en-manque-4.mp3">il-en-manque-4</button>
+      <button class="tap" data-src="sounds/nombres/il-en-manque-5.mp3">il-en-manque-5</button>
+      <button class="tap" data-src="sounds/nombres/il-en-manque-6.mp3">il-en-manque-6</button>
+      <button class="tap" data-src="sounds/nombres/il-en-manque-7.mp3">il-en-manque-7</button>
+      <button class="tap" data-src="sounds/nombres/il-en-manque-8.mp3">il-en-manque-8</button>
+      <button class="tap" data-src="sounds/nombres/il-en-manque-9.mp3">il-en-manque-9</button>
+      <button class="tap" data-src="sounds/nombres/n-0.mp3">n-0</button>
+      <button class="tap" data-src="sounds/nombres/n-1-fete.mp3">n-1-fete</button>
+      <button class="tap" data-src="sounds/nombres/n-1.mp3">n-1</button>
+      <button class="tap" data-src="sounds/nombres/n-10-fete.mp3">n-10-fete</button>
+      <button class="tap" data-src="sounds/nombres/n-10.mp3">n-10</button>
+      <button class="tap" data-src="sounds/nombres/n-100.mp3">n-100</button>
+      <button class="tap" data-src="sounds/nombres/n-1000.mp3">n-1000</button>
+      <button class="tap" data-src="sounds/nombres/n-11.mp3">n-11</button>
+      <button class="tap" data-src="sounds/nombres/n-12.mp3">n-12</button>
+      <button class="tap" data-src="sounds/nombres/n-13.mp3">n-13</button>
+      <button class="tap" data-src="sounds/nombres/n-14.mp3">n-14</button>
+      <button class="tap" data-src="sounds/nombres/n-15.mp3">n-15</button>
+      <button class="tap" data-src="sounds/nombres/n-16.mp3">n-16</button>
+      <button class="tap" data-src="sounds/nombres/n-17.mp3">n-17</button>
+      <button class="tap" data-src="sounds/nombres/n-18.mp3">n-18</button>
+      <button class="tap" data-src="sounds/nombres/n-19.mp3">n-19</button>
+      <button class="tap" data-src="sounds/nombres/n-2-fete.mp3">n-2-fete</button>
+      <button class="tap" data-src="sounds/nombres/n-2.mp3">n-2</button>
+      <button class="tap" data-src="sounds/nombres/n-20.mp3">n-20</button>
+      <button class="tap" data-src="sounds/nombres/n-21.mp3">n-21</button>
+      <button class="tap" data-src="sounds/nombres/n-22.mp3">n-22</button>
+      <button class="tap" data-src="sounds/nombres/n-23.mp3">n-23</button>
+      <button class="tap" data-src="sounds/nombres/n-24.mp3">n-24</button>
+      <button class="tap" data-src="sounds/nombres/n-25.mp3">n-25</button>
+      <button class="tap" data-src="sounds/nombres/n-26.mp3">n-26</button>
+      <button class="tap" data-src="sounds/nombres/n-27.mp3">n-27</button>
+      <button class="tap" data-src="sounds/nombres/n-28.mp3">n-28</button>
+      <button class="tap" data-src="sounds/nombres/n-29.mp3">n-29</button>
+      <button class="tap" data-src="sounds/nombres/n-3-fete.mp3">n-3-fete</button>
+      <button class="tap" data-src="sounds/nombres/n-3.mp3">n-3</button>
+      <button class="tap" data-src="sounds/nombres/n-30.mp3">n-30</button>
+      <button class="tap" data-src="sounds/nombres/n-4-fete.mp3">n-4-fete</button>
+      <button class="tap" data-src="sounds/nombres/n-4.mp3">n-4</button>
+      <button class="tap" data-src="sounds/nombres/n-40.mp3">n-40</button>
+      <button class="tap" data-src="sounds/nombres/n-5-fete.mp3">n-5-fete</button>
+      <button class="tap" data-src="sounds/nombres/n-5.mp3">n-5</button>
+      <button class="tap" data-src="sounds/nombres/n-50.mp3">n-50</button>
+      <button class="tap" data-src="sounds/nombres/n-6-fete.mp3">n-6-fete</button>
+      <button class="tap" data-src="sounds/nombres/n-6.mp3">n-6</button>
+      <button class="tap" data-src="sounds/nombres/n-7-fete.mp3">n-7-fete</button>
+      <button class="tap" data-src="sounds/nombres/n-7.mp3">n-7</button>
+      <button class="tap" data-src="sounds/nombres/n-8-fete.mp3">n-8-fete</button>
+      <button class="tap" data-src="sounds/nombres/n-8.mp3">n-8</button>
+      <button class="tap" data-src="sounds/nombres/n-9-fete.mp3">n-9-fete</button>
+      <button class="tap" data-src="sounds/nombres/n-9.mp3">n-9</button>
+    </div>
+  </section>
+  <section>
+    <h2>phonemes/ — sons de lettres</h2>
+    <div class="grid">
+      <button class="tap" data-src="sounds/phonemes/son-a.mp3">son-a</button>
+      <button class="tap" data-src="sounds/phonemes/son-be.mp3">son-be</button>
+      <button class="tap" data-src="sounds/phonemes/son-de.mp3">son-de</button>
+      <button class="tap" data-src="sounds/phonemes/son-eu.mp3">son-eu</button>
+      <button class="tap" data-src="sounds/phonemes/son-fe.mp3">son-fe</button>
+      <button class="tap" data-src="sounds/phonemes/son-gue.mp3">son-gue</button>
+      <button class="tap" data-src="sounds/phonemes/son-i.mp3">son-i</button>
+      <button class="tap" data-src="sounds/phonemes/son-je.mp3">son-je</button>
+      <button class="tap" data-src="sounds/phonemes/son-ke.mp3">son-ke</button>
+      <button class="tap" data-src="sounds/phonemes/son-le.mp3">son-le</button>
+      <button class="tap" data-src="sounds/phonemes/son-me.mp3">son-me</button>
+      <button class="tap" data-src="sounds/phonemes/son-ne.mp3">son-ne</button>
+      <button class="tap" data-src="sounds/phonemes/son-o.mp3">son-o</button>
+      <button class="tap" data-src="sounds/phonemes/son-ou.mp3">son-ou</button>
+      <button class="tap" data-src="sounds/phonemes/son-pe.mp3">son-pe</button>
+      <button class="tap" data-src="sounds/phonemes/son-re.mp3">son-re</button>
+      <button class="tap" data-src="sounds/phonemes/son-se.mp3">son-se</button>
+      <button class="tap" data-src="sounds/phonemes/son-te.mp3">son-te</button>
+      <button class="tap" data-src="sounds/phonemes/son-u.mp3">son-u</button>
+      <button class="tap" data-src="sounds/phonemes/son-ve.mp3">son-ve</button>
+      <button class="tap" data-src="sounds/phonemes/son-ze.mp3">son-ze</button>
+    </div>
+  </section>
+  <section>
+    <h2>pieces/ — intro pièces échecs (mj-37)</h2>
+    <div class="grid">
+      <button class="tap" data-src="sounds/pieces/cavalier-intro.mp3">cavalier-intro</button>
+      <button class="tap" data-src="sounds/pieces/dame-intro.mp3">dame-intro</button>
+      <button class="tap" data-src="sounds/pieces/fou-intro.mp3">fou-intro</button>
+      <button class="tap" data-src="sounds/pieces/pion-intro.mp3">pion-intro</button>
+      <button class="tap" data-src="sounds/pieces/roi-intro.mp3">roi-intro</button>
+      <button class="tap" data-src="sounds/pieces/tour-intro.mp3">tour-intro</button>
+    </div>
+  </section>
+
+<script>
+let current = null;
+function play(src) {
+  try {
+    if (current) { current.pause(); }
+    current = new Audio(src);
+    document.getElementById('now-playing').textContent = src;
+    current.play().catch(() => { document.getElementById('now-playing').textContent = '404 ? ' + src; });
+  } catch (e) {}
+}
+document.querySelectorAll('button.tap:not(.pool)').forEach(btn => {
+  btn.addEventListener('click', () => play(btn.dataset.src));
+});
+document.querySelectorAll('button.pool').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const pool = JSON.parse(btn.dataset.pool);
+    if (!pool.length) return;
+    play(pool[Math.floor(Math.random() * pool.length)]);
+  });
+});
+</script>
+</body>
+</html>

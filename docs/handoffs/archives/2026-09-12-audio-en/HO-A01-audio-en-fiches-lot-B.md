@@ -1,7 +1,12 @@
 # HO-A01 — Audio EN : lot B, les 28 fiches dino restantes
 
-**Statut :** pret (BLOQUÉ quota jusqu'au reset du 2026-10-11)
+**Statut :** fait (sans objet — livre le 2026-09-12 en meme temps que le lot A)
 **Depend de :** lot A (30 fiches, généré le 2026-09-12)
+
+> **Clos le 2026-09-13 sans execution.** Le ratio STS reel mesure sur le lot A est de 1,29x
+> et non 2x comme l'audit le supposait : les 58 fiches sont donc tenues dans un seul quota
+> mensuel, et le lot B est passe le 2026-09-12 avec le lot A (commit `16aeecd5`, 71/71 fiches).
+> La suite du chantier est le hors-fiche : `HO-A02-audio-en-hors-fiche.md`.
 
 ## Objectif
 Les 71 fiches dino ont leur audio anglais complet dans `site/audio/dinos/en/`, blocs `nom`, `taille`, `regime`, `funfact` et `recap`.

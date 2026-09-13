@@ -18,29 +18,18 @@ mais encore hors `archives/` : la dernière transition du cycle (le déplacement
 oubli que la routine détecte pour ce fichier — elle ne remplace pas la relecture humaine des
 statuts intermédiaires. Détail de la routine complète : `memory/DOCTRINE.md § Rotation`.
 
-## Campagne en cours — Refonte GED site ↔ studio (2026-09-12)
+## Campagne en cours — Audio anglais du pôle dino (ouverte 2026-09-12)
 
-Audit : `memory/audits/2026-09-12-archi-ged-site-studio.md`. Décisions : `memory/DECISIONS.md` D-007 à D-012. État : `memory/TODO.md`.
+Audit : `memory/audits/2026-09-12-etat-audio-en-dino.md`. État : `studio/dino/memory/TODO.md`
+(tickets `AUDIO-EN-INTEGRAL`, `NOMS-COURTS-SCELIDOSAURUS`).
 
-| ID | Titre | Vague | Fichiers possédés (résumé, liste exhaustive dans le brief) |
-|----|-------|-------|-------------------|
-| HO-R00 | Vague 0 orchestrateur : purge, suppressions, vault, gitignore, branches, migration 013 | 0 | `_archive/**`, `studio/lunii/.build-*`, `studio/dino/content/inbox/**`, `studio/lunii/assets/audio/{histoires-dodo,pierre-loup}/**`, `.gitignore`, `infra/supabase/**`, branches |
-| HO-R01 | Minijeux : docs GC | 1 | `studio/minijeux/{docs,tools,scripts,inbox}/**` + fichiers racine du pôle, `studio/dino/scripts/**`, `.claude/agents/game-pmo.md` (1 ligne) |
-| HO-R02 | Minijeux : rotation mémoire | 1 | `studio/minijeux/memory/**` |
-| HO-R03 | Dino : mémoire, docs, dé-triplication | 1 | `studio/dino/{memory,docs,figees,temp}/**` + fichiers racine du pôle, `.claude/rules/dino.md`, 3 skills dino, `content/sources/{_PLAYBOOK,megafaune,video,images/variantes-non-retenues}` |
-| HO-R06 | Lunii : moteur unique | 1 | `studio/lunii/**` |
-| HO-R07 | Site : assets morts et rips sous droits | 1 | `site/sounds/**`, `site/design-shared/mockup.*`, `site/img/dinos/traces/**`, 2 png decor, `site/js/{decor,pins,voices-manifest,tracker,victory-sounds,sounds,mj-golden}.js`, 4 html (lignes sons), `studio/referentiel/catalogue/**` |
-| HO-R08 | `package.json` racine + `site/js/gen/` | 2 | `package.json`, `site/js/**`, `site/*.html` (script src), générateurs (chemin de sortie), `.github/workflows/*`, `studio/minijeux/tests/{package.json,run*,audit-gabarit}.mjs` |
-| HO-R09 | Mur ← catalogue, `check-mj-coherence`, gabarit | 3 | `site/js/{mur,catalog}.js`, `site/css/mur.css`, `site/_template/**`, `tests/check-mj-coherence.mjs`, `tests/{index,mur-nid}.spec.mjs`, `deploy.yml`, `STANDARD-MJ.md`, `minijeux/CLAUDE.md` |
-| HO-R10 | Dédoublonnage runtime mj | 3 | `site/mj-*.html`, `site/dev-dinos.html` (speechSynthesis), `site/css/mp-theme.css`, `site/js/avatar-picker.js` (commentaires) |
-| HO-R12 | Dino : fiche canon | 4 | `studio/dino/content/dinos/**`, `content/scripts/export/**`, `_md2json-v3.cjs`, en-têtes des `.md` audio, `site/js/gen/dinos-data.js`, 8 html (chemin), `nouveau-dino`, `rules/dino.md` |
-| HO-R11 | Service worker | 4 | `site/sw.js`, `site/js/sw-register.js`, `site/offline.html`, `site/*.html` (head), `site/manifest.json`, `audit-gabarit.mjs`, `STACK.md` |
-| HO-R04 | Hooks consolidés + agents JEU/DINO | 4 | `.claude/hooks/**`, `.claude/settings.json` (hooks), `.kimi-code/**`, `.claude/agents/{README,game-*,dino-*,quick}.md`, sections agents des CLAUDE.md JEU/DINO |
-| HO-R13 | WebP | 5 | `site/img/dinos/{sprites,paleoart}/**`, `site/js/gen/dinos-assets.js`, `studio/dino/scripts/images/**`, `gen-dinos-assets.mjs`, `studio/lunii/scripts/**`, `dino-paleoart` |
-| HO-R14 | Routine `npm run gc` | 5 | `scripts/gc.mjs`, `package.json` (gc), `memory/DOCTRINE.md`, ce README |
-| HO-R99 | Clôture : `git filter-repo`, force-push, CHANGELOG, audit | 6 | historique git, `memory/{CHANGELOG,MEMORY}.md`, `memory/audits/`, `archives/2026-09-12-refonte-ged/` |
+| ID | Titre | Statut |
+|----|-------|--------|
+| HO-A01 | Fiches dino EN, lot B | fait sans objet — les 71 fiches sont passées en un seul quota le 2026-09-12 (ratio STS réel 1,29 et non 2) |
+| HO-A02 | Les 94 clips hors fiche + nom court du Scelidosaure (12 langues) | prêt, BLOQUÉ quota jusqu'au 2026-10-11 |
 
-Vagues 0 → 6. Dans une vague, aucun fichier partagé entre lanes. Vague 2 : HO-R08 seul sur `site/`. Les hooks (HO-R04) se changent en vague 4 parce qu'ils tournent pendant le travail des autres lanes.
+**Qualité maximale, deux passes** (figé par Papa Yann le 2026-09-12) : TTS voix native puis
+speech-to-speech vers la voix maison. Ne jamais proposer le TTS direct pour économiser.
 
 ## Règles non négociables
 
@@ -64,6 +53,8 @@ git status --short | grep -v '^??'                            # rien d'imprévu
 ```
 
 ## Campagnes archivées
+
+- `archives/2026-09-12-audio-en/` — audio anglais, lot des fiches dino (HO-A01, clos sans exécution : livré avec le lot A). La suite vit dans `HO-A02-audio-en-hors-fiche.md`.
 
 - `archives/2026-09-12-nettoyage-assets/` — nettoyage assets images, audio, banque de sons (HO-N01 à HO-N03, 1 vague). Audits : `memory/audits/2026-09-12-nettoyage-assets-{images,audio,banque-sons}.md`. Rapports dans `rapports/HO-N0n.md`.
 

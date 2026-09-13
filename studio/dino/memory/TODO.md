@@ -10,7 +10,7 @@
 - **VOYAGE-V2 / GO** [~] — 12 récits Voyage fusionnés au canon, 12/12 audio FR régénérés et padés. Reste : EN (150 clips hors fiches, JSON prêt) au quota. Détail archive.
 - **EPIC-VOYAGE-V2** [~] — Refonte narrative du Voyage en épisodes enrichis, cadrage `PROPOSITION-VOYAGE-V2.md`. Détail archive.
 - **RECIT-EXTINCTION-V3 / SUSPENSE** [~] — Audio jugé « mou, plat » par PY malgré l'escalier de tags ; reprise EN MANUEL prévue (session dédiée PY). Pistes à tester listées en archive.
-- **AUDIO-EN-INTEGRAL** [!] — Fiches EN 71/71 + 56 clips hors-fiche (20 menus, 3 eres, 33 dico) generes le 2026-09-12, methode STS 2 passes. QUOTA EPUISE au 12/09 (reset 11/10). Reste 94 clips ~48 400 credits : 13 recits Voyage, 68 dico, 8 speciaux, 5 periodes — voir `memory/audits/2026-09-12-etat-audio-en-dino.md` § 8. Runbook `docs/handoffs/HO-019-reprise-audio-quota.md`.
+- **AUDIO-EN-INTEGRAL** [!] — Fiches EN 71/71 + 56 clips hors-fiche (20 menus, 3 eres, 33 dico) generes le 2026-09-12, methode STS 2 passes. QUOTA EPUISE au 12/09 (reset 11/10, verifie le 13/09 : 121391/121391 consommes). Reste 94 clips / 37 492 caracteres / ~48 365 credits (13 recits Voyage, 68 dico, 8 speciaux, 5 periodes) : tout tient dans un seul quota mensuel. Brief pret : `docs/handoffs/HO-A02-audio-en-hors-fiche.md`.
 - **HO-012** [~] — Relecture croisée FR 71/71 PASS, polish top 10 non bloquant en cours.
 - **VITESSE** [~] — Champ `vitesse_kmh` collecté (HO-009), décision d'affichage UI à trancher avec PY (**VITESSE-UI** `[?]`).
 - **AUDIO-FR-35** [!] — 35 fiches FR restantes (sauropodes/thyréophores/marins/avant-dinos/mégafaune) bloquées quota EL.
@@ -18,7 +18,7 @@
 - **EP-D-Audio-Noms-Respell** [!] — 60 noms vocaux FR à régénérer avec respellings syllabiques (à revérifier si toujours pertinent).
 - **EP-D-Audio-i18n-EN/PT-BR/ES/IT/AR/RU/ZH/JA** [ ] — respellings + 60 noms MP3 par langue restante.
 - **EP-D-Audio-Recap-Par-Dino** [ ] — 60 MP3 « phrase d'époque » courte par dino pour mj-31 (à revérifier).
-- **NOMS-COURTS-SCELIDOSAURUS** [ ] — 70/71 noms courts (`site/audio/dinos/<lang>/noms/`) : le Scelidosaure, 71e dino ajoute le 2026-09-11, manque en FR ET EN (et dans les 10 autres langues). Generer avec le lot hors-fiche.
+- **NOMS-COURTS-SCELIDOSAURUS** [ ] — 70/71 noms courts dans `site/audio/dinos/<lang>/noms/` : le Scelidosaure (71e dino, ajoute le 2026-09-11) manque dans les 12 langues, verifie le 13/09. A generer avec HO-A02.
 - **LANGUES-NOM-SEUL** [?] — 8 langues (ar, de, hi, it, ja, ru, zh, es-mx) sélectionnables dans `site/js/lang.js` sans aucune fiche audio : retirer de `SUPPORTED` ou assumer un niveau « nom seul » documenté. Décision Papa Yann.
 - **LUNII-MENU-EP-5** [ ] — 5 étiquettes `menu-ep-{naissance-terre,vie-dans-eau,sortie-eau,reptiles-permien,grande-mort}.mp3` manquantes, à faire avec l'étape 6 de HO-019 (compléter LUNII-VOYAGE-12 si même sujet).
 - **LUNII-VOYAGE-12** [!] — Pack Lunii Voyage resté à 8 épisodes vs 12 sur le site ; étiquettes + rebuild au reset EL.

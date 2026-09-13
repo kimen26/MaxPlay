@@ -44,7 +44,7 @@
   // lang.js (plus bas dans SCRIPTS) refait exactement ce calcul et pose window.Lang — les
   // deux ne peuvent pas diverger, ce sont la même whitelist et la même résolution qs/storage.
   function langActive() {
-    var SUPPORTED = ['fr', 'en', 'pt-br', 'es-es', 'es-mx', 'it', 'ar', 'ru', 'zh', 'ja', 'de', 'hi'];
+    var SUPPORTED = ['fr', 'en'];
     var qs = null;
     try { qs = new URLSearchParams(location.search).get('lang'); } catch (e) {}
     var stored = null;

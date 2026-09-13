@@ -276,11 +276,11 @@
       '<span class="g-title grow">' + e.titre + '</span>' + foot + '</div>';
   }
 
-  // Langues proposées aux parents = celles qui ont du contenu dino traduit (strings + UI).
+  // Langues proposées aux parents = celles dont TOUT le contenu dino est traduit et narré.
+  // Réduit à fr/en le 2026-09-13 (PY) : es-es et pt-br n'ont que 13 fiches sur 71.
   // Source de vérité de la langue active : js/lang.js (localStorage maxplay_lang, ?lang=).
   var LANGUES = [
-    { code: 'fr', label: 'Français' }, { code: 'en', label: 'English' },
-    { code: 'es-es', label: 'Español' }, { code: 'pt-br', label: 'Português' }
+    { code: 'fr', label: 'Français' }, { code: 'en', label: 'English' }
   ];
   function renderLangs() {
     var row = $('lang-row');

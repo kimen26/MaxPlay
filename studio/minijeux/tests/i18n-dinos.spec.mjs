@@ -20,10 +20,13 @@ const CAS = [
     ui: /^Les familles$/, uiTitre: /^Les Dinosaures$/ },
   { lang: 'en', attendu: /\b(the|hunter|lizard|plant-eaters|king)\b/i, interdit: /dinosaure\b/i,
     ui: /famil/i, uiInterdit: /^Les familles$/ },
-  { lang: 'es-es', attendu: /\b(lagarto|el rey|dinosaurios|cuernos)\b/i, interdit: /dinosaure\b/i,
-    ui: /famili/i, uiInterdit: /^Les familles$/ },
-  { lang: 'pt-br', attendu: /\b(lagarto|o rei|dinossauros|chifres)\b/i, interdit: /dinosaure\b/i,
-    ui: /famíli|famil/i, uiInterdit: /^Les familles$/ },
+  // es-es et pt-br retires du service le 2026-09-13 (PY) : 13 fiches sur 71, une langue a
+  // moitie vide se lit comme un bug. Leurs bundles restent sur le disque ; pour les rouvrir,
+  // remettre le code dans SUPPORTED (js/lang.js + js/mj-shell.js), dans LANGUES (js/mur.js),
+  // et le cas correspondant ici.
+  // Cas inverse : une langue NON servie doit retomber proprement sur le FR.
+  { lang: 'de', attendu: /dinosaure|Familles/i, interdit: null,
+    ui: /^Les familles$/, uiTitre: /^Les Dinosaures$/ },
 ];
 
 const url = pathToFileURL(path.join(ROOT, 'site/dev-dinos.html')).href;

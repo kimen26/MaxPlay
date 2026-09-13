@@ -13,13 +13,13 @@
 - **AUDIO-EN-INTEGRAL** [!] — Fiches EN 71/71 + 56 clips hors-fiche (20 menus, 3 eres, 33 dico) generes le 2026-09-12, methode STS 2 passes. QUOTA EPUISE au 12/09 (reset 11/10, verifie le 13/09 : 121391/121391 consommes). Reste 94 clips / 37 492 caracteres / ~48 365 credits (13 recits Voyage, 68 dico, 8 speciaux, 5 periodes) : tout tient dans un seul quota mensuel. Brief pret : `docs/handoffs/HO-A02-audio-en-hors-fiche.md`.
 - **HO-012** [~] — Relecture croisée FR 71/71 PASS, polish top 10 non bloquant en cours.
 - **VITESSE** [~] — Champ `vitesse_kmh` collecté (HO-009), décision d'affichage UI à trancher avec PY (**VITESSE-UI** `[?]`).
-- **AUDIO-FR-35** [!] — 35 fiches FR restantes (sauropodes/thyréophores/marins/avant-dinos/mégafaune) bloquées quota EL.
+- **AUDIO-FR-35** [x] — Perime, verifie le 2026-09-13 : les 71 fiches FR ont leurs 5 blocs (nom, taille, regime, funfact, recap), 0 incomplet. Le ticket datait d'un blocage quota leve depuis.
 - **ECOUTE-PY** [ ] — Papa Yann doit écouter : musiques, SFX, fiches T-Rex 4 langues.
 - **EP-D-Audio-Noms-Respell** [!] — 60 noms vocaux FR à régénérer avec respellings syllabiques (à revérifier si toujours pertinent).
 - **EP-D-Audio-i18n-EN/PT-BR/ES/IT/AR/RU/ZH/JA** [ ] — respellings + 60 noms MP3 par langue restante.
 - **EP-D-Audio-Recap-Par-Dino** [ ] — 60 MP3 « phrase d'époque » courte par dino pour mj-31 (à revérifier).
 - **NOMS-COURTS-SCELIDOSAURUS** [ ] — 70/71 noms courts dans `site/audio/dinos/<lang>/noms/` : le Scelidosaure (71e dino, ajoute le 2026-09-11) manque dans les 12 langues, verifie le 13/09. A generer avec HO-A02.
-- **LANGUES-NOM-SEUL** [?] — 8 langues (ar, de, hi, it, ja, ru, zh, es-mx) sélectionnables dans `site/js/lang.js` sans aucune fiche audio : retirer de `SUPPORTED` ou assumer un niveau « nom seul » documenté. Décision Papa Yann.
+- **LANGUES-NOM-SEUL** [x] — Tranche le 2026-09-13 (PY, D-013) : seules `fr` et `en` sont proposees. `es-es`/`pt-br` (13 fiches sur 71) et les 8 langues sans fiche sont retirees de `SUPPORTED` (`site/js/lang.js`, `site/js/mj-shell.js`) et de `LANGUES` (`site/js/mur.js`). Rien n'est supprime du disque, seule la porte se ferme.
 - **LUNII-MENU-EP-5** [ ] — 5 étiquettes `menu-ep-{naissance-terre,vie-dans-eau,sortie-eau,reptiles-permien,grande-mort}.mp3` manquantes, à faire avec l'étape 6 de HO-019 (compléter LUNII-VOYAGE-12 si même sujet).
 - **LUNII-VOYAGE-12** [!] — Pack Lunii Voyage resté à 8 épisodes vs 12 sur le site ; étiquettes + rebuild au reset EL.
 - **REFERENTIEL-96-DETTES** [ ] — 96 dettes « script modifié après le dernier MP3 » dans `studio/referentiel/_ETAT-CONTENU.md` : à acquitter ou régénérer par lot.

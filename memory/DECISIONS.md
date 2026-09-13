@@ -92,3 +92,11 @@ Ni les 10 agents narration, ni `studio/narration/**`, ni `site/lecture*.{html,js
 ### D-012 — Livrer un mini-jeu est un process contrôlé, pas 13 gestes (2026-09-12)
 
 Un gabarit source `site/_template/mj-template.html`, un catalogue qui pilote le Mur (`mur.js` sans aucun id en dur), et un `check-mj-coherence` bloquant en CI qui vérifie html + figée + spec + i18n ×4 + référentiel pour chaque jeu du catalogue. Pourquoi : `mj-58` supprimé vivait encore dans `mur.js` un mois après, 9 jeux vivants étaient absents du Mur, les jeux de référence `mj-gold-*` avaient été détruits sans remplaçant.
+
+### D-013 — Deux langues servies, pas douze (2026-09-13)
+
+Le sélecteur et la whitelist `SUPPORTED` ne proposent plus que `fr` et `en`. Papa Yann : « on ne garde que FR et Anglais, les autres ne sont pas prêts, ne pas les afficher ». Sont retirées `es-es` et `pt-br` (13 fiches sur 71, interface traduite) et les 8 langues qui n'avaient jamais eu que les 70 noms courts (`de`, `es-mx`, `it`, `ru`, `zh`, `ja`, `ar`, `hi`). Rien n'est supprimé du disque : les bundles `site/js/i18n/*.{es-es,pt-br}.js` et les MP3 restent, seule la porte d'entrée se ferme. Une langue demandée mais non servie retombe sur le français et purge `maxplay_lang`, sinon le rattrapage rejoue à chaque chargement sur une valeur morte.
+
+Rouvrir une langue = remettre son code à trois endroits (`site/js/lang.js`, `site/js/mj-shell.js`, `LANGUES` dans `site/js/mur.js`) plus son cas dans `i18n-dinos.spec.mjs`. Le jeu `mj-20` garde ses 8 langues : il fait compter jusqu'à 20 avec ses propres mots en dur, il ne dépend pas du contenu dino.
+
+Pourquoi : une langue à moitié vide se lit comme un bug, pas comme un chantier en cours. Un enfant qui choisissait l'allemand entendait les noms de dinosaures et plus rien d'autre.

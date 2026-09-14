@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'étagère — 3 déclinaisons</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+body { font-family:'Nunito',sans-serif; background:#0a1226; color:#eaf0ff; padding:18px; }
+h1 { font-family:'Fredoka One'; font-size:22px; margin-bottom:4px; }
+.sub { opacity:.65; font-size:12.5px; margin-bottom:6px; line-height:1.5; max-width:980px; }
+.sub b { color:#ffd166; }
+
+.legende { background:rgba(255,255,255,.05); border-left:3px solid #ffd166; padding:11px 15px;
+           border-radius:0 10px 10px 0; font-size:12px; line-height:1.6; margin:14px 0 22px; max-width:980px; }
+.legende b { color:#ffd166; }
+
+.grid { display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start; }
+.piste { width:360px; }
+.pnom { font-family:'Fredoka One'; font-size:16px; margin-bottom:3px; }
+.ptaps { display:inline-block; font-size:10.5px; font-weight:900; background:#ffd166; color:#2a2005;
+         border-radius:999px; padding:2px 9px; margin-left:6px; vertical-align:2px; }
+.pdesc { font-size:11.5px; opacity:.7; margin-bottom:10px; line-height:1.45; min-height:74px; }
+
+.screen { width:360px; height:640px; border-radius:20px; overflow:hidden; position:relative;
+          box-shadow:0 10px 34px rgba(0,0,0,.5); display:flex; flex-direction:column; }
+.hdr { display:flex; align-items:center; gap:9px; padding:9px 12px; flex-shrink:0; position:relative; z-index:4; }
+.hback { width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.14);
+         display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0; }
+.htitle { font-family:'Fredoka One'; font-size:15px; text-shadow:0 2px 6px rgba(0,0,0,.6); }
+.hsound { margin-left:auto; width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.14);
+          display:flex; align-items:center; justify-content:center; font-size:15px; }
+.body { flex:1; overflow:hidden; position:relative; }
+
+/* ══════════ A · L'ÉTAGÈRE ══════════ */
+.a .body { background:linear-gradient(#2a1c12,#3d2a1a); padding:6px 12px 12px; }
+.shelf { position:relative; margin-bottom:13px; }
+.shelf-items { display:flex; align-items:flex-end; justify-content:space-around; gap:6px;
+               padding:0 4px 5px; min-height:96px; }
+.shelf-plank { height:9px; border-radius:3px;
+               background:linear-gradient(#8a5f37,#5e3f22);
+               box-shadow:0 4px 10px rgba(0,0,0,.55); }
+.obj { display:flex; flex-direction:column; align-items:center; width:82px; }
+.obj-visu { width:78px; height:78px; display:flex; align-items:center; justify-content:center;
+            font-size:52px; filter:drop-shadow(0 5px 9px rgba(0,0,0,.55)); }
+.obj-nom { font-family:'Fredoka One'; font-size:11.5px; text-align:center; line-height:1.15;
+           margin-top:1px; text-shadow:0 2px 4px rgba(0,0,0,.8); }
+/* le globe : un objet qui TOURNE, seul mobile de l'étagère */
+.globe { position:relative; }
+.globe::after { content:''; position:absolute; inset:-5px; border-radius:50%;
+                border:2px dashed rgba(255,209,102,.55); animation:spin 9s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+/* les livres : tranches alignées, ça se feuillette */
+.books { display:flex; align-items:flex-end; gap:3px; height:78px; }
+.book { width:13px; border-radius:2px 2px 0 0; box-shadow:0 3px 7px rgba(0,0,0,.5); }
+
+/* ══════════ B · LE GRAND LIVRE ══════════ */
+.b .body { background:linear-gradient(#3a2415,#241609); padding:10px; }
+.bk { height:100%; border-radius:6px 12px 12px 6px; background:linear-gradient(100deg,#f5e6c8,#e8d3a9);
+      position:relative; box-shadow:0 8px 24px rgba(0,0,0,.6); overflow:hidden;
+      display:flex; flex-direction:column; padding:12px 10px 10px 16px; }
+.bk::before { content:''; position:absolute; left:0; top:0; bottom:0; width:9px;
+              background:linear-gradient(90deg,#8a5f37,#6b4526); }
+.bk-titre { font-family:'Fredoka One'; font-size:16px; color:#4a3520; text-align:center; margin-bottom:9px; }
+/* les intercalaires : onglets qui DÉPASSENT sur le bord droit */
+.tabs { position:absolute; right:0; top:52px; display:flex; flex-direction:column; gap:7px; }
+.tab { width:52px; padding:9px 4px; border-radius:9px 0 0 9px; text-align:center;
+       font-size:9.5px; font-weight:900; color:#3a2a12; line-height:1.15;
+       box-shadow:-2px 3px 7px rgba(0,0,0,.3); }
+.tab-emo { font-size:22px; display:block; }
+.page { flex:1; padding-right:56px; }
+.page-row { display:flex; gap:7px; margin-bottom:7px; }
+.dcard { flex:1; background:rgba(255,255,255,.72); border:2px solid rgba(120,90,50,.35);
+         border-radius:9px; padding:6px 4px; text-align:center; }
+.dcard-emo { font-size:28px; line-height:1; }
+.dcard-nom { font-size:9.5px; font-weight:900; color:#4a3520; margin-top:2px; line-height:1.1; }
+
+/* ══════════ C · LE MUSÉE ══════════ */
+.c .body { background:linear-gradient(#16213e,#1e2b4d); padding:10px 12px; }
+.hall { font-size:11px; opacity:.6; text-align:center; margin-bottom:9px; }
+.vitrine { border-radius:14px; padding:11px 12px; margin-bottom:9px; display:flex; align-items:center;
+           gap:12px; border:2px solid; position:relative; overflow:hidden; min-height:82px; }
+.vitrine-emo { font-size:42px; flex-shrink:0; filter:drop-shadow(0 4px 8px rgba(0,0,0,.5)); }
+.vitrine-txt { flex:1; }
+.vitrine-nom { font-family:'Fredoka One'; font-size:15px; line-height:1.15; }
+.vitrine-sub { font-size:10.5px; opacity:.7; margin-top:2px; line-height:1.3; }
+.pas { display:flex; gap:3px; margin-top:5px; }
+.pas i { font-size:11px; opacity:.35; }
+.pas i.on { opacity:1; }
+
+.note { font-size:10px; opacity:.55; font-style:italic; line-height:1.45; margin-top:9px; }
+.flow { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:10px; }
+.flow-step { font-size:10.5px; background:rgba(255,255,255,.07); border-radius:8px; padding:6px 9px; line-height:1.35; }
+.flow-arrow { color:#ffd166; font-weight:900; }
+
+.verdict { max-width:980px; margin-top:26px; background:rgba(255,255,255,.05); border-radius:12px;
+           padding:16px 18px; font-size:12.5px; line-height:1.65; }
+.verdict h2 { font-family:'Fredoka One'; font-size:16px; margin-bottom:8px; }
+.verdict b { color:#ffd166; }
+.verdict ul { margin:8px 0 0 18px; }
+.verdict li { margin-bottom:6px; }
+</style>
+</head>
+<body>
+
+<h1>L'étagère, le livre, le musée — 3 déclinaisons de l'objet</h1>
+<p class="sub">
+  Écrans à <b>360 px</b>. L'idée commune : <b>on ne choisit plus une catégorie, on prend un objet</b>.
+  Chaque objet dit sa fonction par sa forme — le globe tourne, le livre se feuillette, la loupe cherche.
+</p>
+
+<div class="legende">
+  <b>Pourquoi l'objet, et pas une tuile.</b> C'est le pattern que la recherche a validé, pas une préférence de goût :<br>
+  · <b>Ultimate Dinopedia</b> est jugée facile pour les petits grâce à son « visual table of contents » — un sommaire d'objets, pas une liste.<br>
+  · <b>Dinosaur Train</b> fait choisir un dino en tapant <b>un wagon de train</b> : l'objet absorbe la fonction documentaire.<br>
+  · <b>Britannica Kids Dinosaurs</b>, elle, navigue par <b>molette de sections</b> — et se retrouve classée 8+.<br>
+  · <b>Khan Academy Kids</b> sépare « ça avance » de « on pioche » par la <b>forme</b> : bouton d'action contre icône de livre. Aucun texte.<br>
+  <b>Le chemin réel de Max aujourd'hui : 5 taps.</b> Mur → Roi T-Rex → vignette encyclo → pill → carte famille → fiche.
+  Les apps primées tiennent en 1 ou 2. L'objet doit donc <b>remplacer</b> l'écran de pills, jamais s'ajouter devant.
+</div>
+
+<div class="grid">
+
+<!-- ══════════ A · L'ÉTAGÈRE ══════════ -->
+<div class="piste a">
+  <div class="pnom">A · L'étagère <span class="ptaps">3 taps</span></div>
+  <div class="pdesc">Trois planches, six objets posés dessus. Le <b>globe tourne</b> (le voyage), les <b>livres</b> s'alignent par tranches (les familles), la <b>loupe</b> cherche un mot. On prend l'objet, on est dedans — l'écran de pills disparaît.</div>
+  <div class="screen">
+    <div class="hdr" style="background:rgba(0,0,0,.3)"><div class="hback">←</div><div class="htitle">L'étagère des dinos</div><div class="hsound">🔊</div></div>
+    <div class="body">
+      <div class="shelf">
+        <div class="shelf-items">
+          <div class="obj">
+            <div class="obj-visu globe">🌍</div>
+            <div class="obj-nom">Le grand voyage</div>
+          </div>
+          <div class="obj">
+            <div class="obj-visu"><div class="books">
+              <span class="book" style="height:64px;background:#c0392b"></span>
+              <span class="book" style="height:72px;background:#27ae60"></span>
+              <span class="book" style="height:58px;background:#f39c12"></span>
+              <span class="book" style="height:68px;background:#8e44ad"></span>
+            </div></div>
+            <div class="obj-nom">Les familles</div>
+          </div>
+        </div>
+        <div class="shelf-plank"></div>
+      </div>
+      <div class="shelf">
+        <div class="shelf-items">
+          <div class="obj"><div class="obj-visu">🦴</div><div class="obj-nom">Qui mange quoi</div></div>
+          <div class="obj"><div class="obj-visu">⏳</div><div class="obj-nom">Les époques</div></div>
+        </div>
+        <div class="shelf-plank"></div>
+      </div>
+      <div class="shelf">
+        <div class="shelf-items">
+          <div class="obj"><div class="obj-visu">🔍</div><div class="obj-nom">Les mots</div></div>
+          <div class="obj"><div class="obj-visu">🧩</div><div class="obj-nom">Les jeux</div></div>
+        </div>
+        <div class="shelf-plank"></div>
+      </div>
+      <div class="note" style="padding:0 2px">Le globe est le seul objet qui bouge : c'est lui qui « part ». Les autres attendent qu'on les prenne. Aucune tuile, aucun onglet — six objets, six cibles de 78 px.</div>
+    </div>
+  </div>
+  <div class="flow">
+    <div class="flow-step">objet <b>📚 familles</b></div><span class="flow-arrow">→</span>
+    <div class="flow-step">Cératopsiens</div><span class="flow-arrow">→</span>
+    <div class="flow-step">🦕</div>
+  </div>
+</div>
+
+<!-- ══════════ B · LE GRAND LIVRE ══════════ -->
+<div class="piste b">
+  <div class="pnom">B · Le grand livre <span class="ptaps">2 taps</span></div>
+  <div class="pdesc">L'encyclopédie <b>est</b> un livre ouvert. Les dinos sont là, tout de suite, sur la page. Les <b>intercalaires colorés</b> dépassent sur le bord droit : on tape un onglet, la page change. C'est le « visual table of contents » d'Ultimate Dinopedia.</div>
+  <div class="screen">
+    <div class="hdr" style="background:rgba(0,0,0,.35)"><div class="hback">←</div><div class="htitle">Le livre des dinos</div><div class="hsound">🔊</div></div>
+    <div class="body">
+      <div class="bk">
+        <div class="bk-titre">Les cornus</div>
+        <div class="tabs">
+          <div class="tab" style="background:#e8b84b"><span class="tab-emo">🌍</span>voyage</div>
+          <div class="tab" style="background:#d98b5f"><span class="tab-emo">🦖</span>familles</div>
+          <div class="tab" style="background:#8fae6b"><span class="tab-emo">🦴</span>mange</div>
+          <div class="tab" style="background:#7fa8c9"><span class="tab-emo">⏳</span>époques</div>
+          <div class="tab" style="background:#b89ac4"><span class="tab-emo">🔍</span>mots</div>
+        </div>
+        <div class="page">
+          <div class="page-row">
+            <div class="dcard"><div class="dcard-emo">🦕</div><div class="dcard-nom">Tricératops</div></div>
+            <div class="dcard"><div class="dcard-emo">🦕</div><div class="dcard-nom">Torosaure</div></div>
+          </div>
+          <div class="page-row">
+            <div class="dcard"><div class="dcard-emo">🦕</div><div class="dcard-nom">Styracosaure</div></div>
+            <div class="dcard"><div class="dcard-emo">🦕</div><div class="dcard-nom">Protocératops</div></div>
+          </div>
+          <div class="page-row">
+            <div class="dcard"><div class="dcard-emo">🦕</div><div class="dcard-nom">Pachyrhino&shy;saure</div></div>
+            <div class="dcard"><div class="dcard-emo">🦕</div><div class="dcard-nom">Centrosaure</div></div>
+          </div>
+          <div class="note" style="color:#6b5533;opacity:.8">Les dinos sont visibles DÈS l'ouverture. L'intercalaire change la page, il n'ouvre pas un menu.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flow">
+    <div class="flow-step">onglet <b>familles</b> (déjà ouvert)</div><span class="flow-arrow">→</span>
+    <div class="flow-step">🦕 <b>Tricératops</b></div>
+  </div>
+</div>
+
+<!-- ══════════ C · LE MUSÉE ══════════ -->
+<div class="piste c">
+  <div class="pnom">C · Le musée <span class="ptaps">3 taps</span></div>
+  <div class="pdesc">Un hall, des <b>salles</b> en vitrines pleine largeur. Ta métaphore d'origine, corrigée : la salle du voyage porte des <b>empreintes de pas</b> (le langage du Mur, piste C) pour dire « ici ça avance ». Les autres n'en ont pas.</div>
+  <div class="screen">
+    <div class="hdr" style="background:rgba(0,0,0,.3)"><div class="hback">←</div><div class="htitle">Le musée des dinos</div><div class="hsound">🔊</div></div>
+    <div class="body">
+      <div class="hall">Choisis ta salle</div>
+      <div class="vitrine" style="background:linear-gradient(120deg,#1a3a6b,#2d6fa8);border-color:rgba(93,173,226,.55)">
+        <div class="vitrine-emo">🌍</div>
+        <div class="vitrine-txt">
+          <div class="vitrine-nom">Le grand voyage</div>
+          <div class="vitrine-sub">Du début de la Terre jusqu'à toi</div>
+          <div class="pas"><i class="on">🐾</i><i class="on">🐾</i><i class="on">🐾</i><i>🐾</i><i>🐾</i><i>🐾</i><i>🐾</i><i>🐾</i></div>
+        </div>
+      </div>
+      <div class="vitrine" style="background:rgba(192,57,43,.16);border-color:rgba(192,57,43,.5)">
+        <div class="vitrine-emo">🦖</div>
+        <div class="vitrine-txt"><div class="vitrine-nom">Les familles</div><div class="vitrine-sub">11 familles de bêtes</div></div>
+      </div>
+      <div class="vitrine" style="background:rgba(39,174,96,.16);border-color:rgba(39,174,96,.5)">
+        <div class="vitrine-emo">🦴</div>
+        <div class="vitrine-txt"><div class="vitrine-nom">Qui mange quoi</div><div class="vitrine-sub">Croc pointu ou dent plate</div></div>
+      </div>
+      <div class="vitrine" style="background:rgba(161,136,127,.16);border-color:rgba(161,136,127,.5)">
+        <div class="vitrine-emo">⏳</div>
+        <div class="vitrine-txt"><div class="vitrine-nom">Les époques</div><div class="vitrine-sub">5 époques et leurs plantes</div></div>
+      </div>
+      <div class="vitrine" style="background:rgba(255,209,102,.14);border-color:rgba(255,209,102,.5);min-height:62px">
+        <div class="vitrine-emo" style="font-size:32px">🧩</div>
+        <div class="vitrine-txt"><div class="vitrine-nom" style="font-size:13px">Les jeux dino</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="flow">
+    <div class="flow-step">vitrine <b>familles</b></div><span class="flow-arrow">→</span>
+    <div class="flow-step">Cératopsiens</div><span class="flow-arrow">→</span>
+    <div class="flow-step">🦕</div>
+  </div>
+</div>
+
+</div>
+
+<div class="verdict">
+  <h2>Ce que je recommande, et pourquoi</h2>
+  <p>
+    <b>B, le grand livre</b> — c'est la seule des trois qui fasse baisser le nombre de taps au lieu de le
+    maintenir. Les dinos sont visibles dès l'ouverture ; les intercalaires changent la page sans ouvrir de
+    menu. C'est exactement le « visual table of contents » qui rend Ultimate Dinopedia accessible aux petits,
+    et c'est le contraire de la molette de sections qui a fait classer Britannica 8+.
+  </p>
+  <ul>
+    <li><b>A, l'étagère</b> — la plus jolie, la plus fidèle à ton idée d'objets. Mais elle reste un <b>menu de catégories déguisé</b> : on prend un objet pour arriver… sur une liste. Même compte de taps qu'aujourd'hui.</li>
+    <li><b>C, le musée</b> — ta métaphore d'origine, avec les empreintes du Mur pour marquer le parcours. Réserve déjà signalée : « musée » dit à un enfant <i>on regarde, on ne touche pas</i>, exactement l'inverse de ce qu'on veut.</li>
+  </ul>
+  <p style="margin-top:10px">
+    <b>Les trois gardent le globe</b> pour le voyage — c'est l'idée qui règle le problème que quatre maquettes
+    précédentes n'ont pas réglé : un globe tourne, donc il part ; un livre se feuillette, donc on y pioche.
+    La différence entre « raconter » et « ranger » n'a plus besoin d'un mot.
+  </p>
+</div>
+
+</body>
+</html>

@@ -3,6 +3,19 @@
 > Tickets ouverts uniquement, 1 ligne + DoD par lane. Détail complet et tickets fermés : `archive/backlog-fermes-2026.md` (avant 2026-09-03) et `git log`. Rotation 2026-09-12 (HO-R02) : les tickets clos ont été condensés en capacités livrées dans `CHANGELOG.md`, le fait/l'obsolète (28 mj fantômes purgés le 2026-08-10) a été supprimé.
 > Statuts : `[ ]` à faire · `[~]` en cours · `[!]` bloqué · `[?]` question ouverte pour Papa Yann.
 
+## Lane — L'Armoire : nouvel accueil enfant (HO-MJ-12 assets + HO-MJ-13 page, 2026-09-15)
+
+**Décision Papa Yann 2026-09-15** : « VIRE le menu actuel avec les perso qui bougent, ça a toujours été un échec, je ne veux plus le voir. » L'accueil devient une armoire en bois (fronton / grille de casiers / socle à tiroirs), structure en HTML/CSS, images GPT découpées en pièces répétables (`studio/minijeux/inbox/decoupe/`). Contrainte : **jamais d'ascenseur** sur ce menu, quel que soit le téléphone ; poids et perfs maximaux (tuiles/pattern qui se répètent).
+**DoD** : `index.html` = armoire plein écran sans scroll de 320×568 à 1280×720, objets reliés aux jeux (mapping simple, aléatoire assumé), portes vertes, recette Papa Yann sur GitHub Pages.
+
+- [~] HO-MJ-12 — découpe des pièces (`site/img/armoire/*.webp` ≤ 350 Ko, script `tools/armoire-decoupe.py`, planche-contact)
+- [ ] HO-MJ-13 — page armoire (`armoire.js` / `armoire.css`, suppression `mur-scene.js`, élagage `mur.js`/`mur.css`, spec 7 viewports « jamais d'ascenseur », SW precache)
+- [ ] Après recette : brancher la chaîne 2★ (`repaireState`) sur les casiers ou l'abandonner explicitement ; décider si les objets tournent au hasard à chaque chargement (v1) ou restent fixes
+- [ ] Objets non placés en v1 (dino mascotte, livres-jeux) : à réserver pour l'écran dino (étagère encyclo, voir `studio/dino/memory/TODO.md`)
+- [ ] Portes ouvertes (`porte-ouverte.webp`) et cône lumière : décoratifs sur écran large ≥ 900 px, à poser après recette mobile
+- [ ] Spec Mur v2 (`docs/specs/2026-07-29-mur-v2-la-vallee.md`) : à marquer REMPLACÉE par l'armoire (pas supprimée, archive), §9 notes techniques périmées
+- [ ] inbox : les 20 PNG racine + `decoupe/` sont consommés par HO-MJ-12 ; PMO les archive une fois le handoff `fait` (règle 48 h)
+
 ## Lane — Mur piloté par le catalogue : validations Papa Yann (HO-R09, 2026-09-12)
 
 - [ ] Zonage des 9 jeux réapparus au Mur (mj-06, 09, 13c, 35, 37, 38, 39, 40, 42) : suivi la catégorie catalogue, en fin de chaîne de zone ; à challenger (ex. mj-42 chez Troudi plutôt que Volta ?).

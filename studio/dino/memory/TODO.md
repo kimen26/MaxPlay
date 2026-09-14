@@ -112,3 +112,8 @@ sommaire visuel, et sa forme dit sa fonction sans un mot. Maquettes des 3 declin
   jeux dino entrent dans l'objet (A et C leur donnent une place, B non).
 - [ ] Si B est retenu, verifier d'abord que la grille de dinos en page tient la cible NN/G de 2 cm
   (75-80 px CSS) a 360 px : 2 colonnes OK, 3 a mesurer.
+
+## Accueil du site = armoire (décision PY 2026-09-15, chantier pôle JEU HO-MJ-12/13)
+
+- [ ] Sur l'armoire d'accueil, le livre « Les dinos » et le globe ouvrent tous deux `MUR.openEncyclo()` en v1. Quand le mode étagère de l'encyclopédie sera codé (piste A retenue par PY), le globe doit atterrir DIRECTEMENT sur le Grand Voyage (deep-link à définir, ex. `dev-dinos.html?v=7&mode=voyage`), le livre sur l'étagère des familles.
+- [ ] Objets GPT réservés pour l'étagère dino (non utilisés par l'accueil) : bébé dino mascotte, pile livres+cartes+puzzle — voir `site/img/armoire/obj-dino.webp`, `obj-livres-jeux.webp`.

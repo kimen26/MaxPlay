@@ -47,9 +47,9 @@ Faux bugs vérifiés : EP-022 MJ-04 "boucle infinie" (code conforme) · L-068 11
 
 ## Journal (3 dernières sessions)
 
+- **2026-09-15 — L'Armoire (HO-MJ-12 + HO-MJ-13, D-025)** : la Vallée animée est remplacée par une armoire en bois immobile (`site/js/armoire.js`, `css/armoire.css`, `img/armoire/` 27 pièces webp découpées par `tools/armoire-decoupe.py`). `mur-scene.js` supprimé, `mur.js`/`mur.css` élagués. Portes vertes : armoire.spec 7 viewports sans ascenseur, index, mur-nid, `npm run check`. Reste : recette PY sur GitHub Pages, globe/volcan animés déposés dans l'inbox (HO-MJ-14 à ouvrir), `nid-e2e.spec.mjs` à réécrire (bâti sur `.v-copain`).
 - **2026-09-12 — HO-R02** : rotation mémoire du pôle (campagne refonte GED). `LESSONS.md` 70 Ko → 20 Ko (74 leçons datées/dupliquées/superseded déplacées verbatim dans `archive/lessons-2026-H1.md`, 18 gardées) ; `TODO.md` 39 Ko → 9 Ko (fait/obsolète retiré — 28 mj fantômes purgés le 2026-08-10 identifiés, lanes fermées condensées dans `CHANGELOG.md`).
 - **2026-09-08/10 — Coloriage mj-32 (HO-MJ-08 à HO-MJ-12)** : décors, zoom, nom coloriable, damier/halo corrigés, harnais CI stabilisé (cause réelle : image d'ombre manquante, pas de l'instabilité). Détail `memory/TODO.md` § Coloriage mj-32.
-- **2026-09-05/06 — EPIC i18n mini-jeux** : espace parents 4 tuiles + sélecteur de langue ; 33/36 jeux en anglais, packs es-es/pt-br des chaînes de jeu. Reste : 81 consignes parlées EN en MP3 (quota EL), audio es/pt. Détail `memory/TODO.md` § EPIC i18n.
 
 ## Équipe agents (référence rapide)
 

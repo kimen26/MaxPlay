@@ -14,6 +14,8 @@
 - [ ] Objets non placés en v1 (dino mascotte, livres-jeux) : à réserver pour l'écran dino (étagère encyclo, voir `studio/dino/memory/TODO.md`)
 - [ ] Portes ouvertes (`porte-ouverte.webp`) et cône lumière : décoratifs sur écran large ≥ 900 px, à poser après recette mobile
 - [ ] Spec Mur v2 (`docs/specs/2026-07-29-mur-v2-la-vallee.md`) : à marquer REMPLACÉE par l'armoire (pas supprimée, archive), §9 notes techniques périmées
+- [ ] HO-MJ-14 (à ouvrir après recette HO-MJ-13) — Globe animé déposé par PY (`inbox/globe-webapp-animation/`, web component `<animated-globe>`, 12 frames webp 640 px = 740 Ko, trop lourd tel quel) : réduire les frames à 256 px (~150 Ko), au tap sur le globe de l'armoire = 1 tour (11 frames, 9 fps) PUIS navigation vers le Voyage. Idle : léger flottement seulement, jamais de tour automatique (le README de PY le dit lui-même : « évite que l'armoire entière bouge »).
+- [ ] Volcan animé déposé par PY (`inbox/tSg9A.webp`, webp animé 256 px, 710 Ko) : même traitement que le globe si retenu (ré-encoder, moins de frames), sinon garder le volcan statique `obj-volcan.webp`.
 - [ ] inbox : les 20 PNG racine + `decoupe/` sont consommés par HO-MJ-12 ; PMO les archive une fois le handoff `fait` (règle 48 h)
 
 ## Lane — Mur piloté par le catalogue : validations Papa Yann (HO-R09, 2026-09-12)

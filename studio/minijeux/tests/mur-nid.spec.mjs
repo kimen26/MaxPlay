@@ -1,9 +1,13 @@
-// mur-nid.spec.mjs — Mur v2 « La Vallée » + monde dino (spec 2026-07-29).
+// mur-nid.spec.mjs — Monde dino (chambre des œufs, Padidi, théâtre d'éclosion)
+// derrière l'accueil « L'Armoire » (HO-MJ-13, remplace La Vallée / Mur v2).
 // Playwright + Chromium réel. Injecte un FAUX window.Collection (contrat v2
-// validé par collection.spec.mjs) pour isoler l'UI du moteur : vallée (6
-// copains, bulles, T-Rex porte du monde dino), chambre des œufs, Padidi.
-// Le théâtre du 1er œuf est neutralisé via le flag maxplay_nid_intro
-// (testé en conditions réelles dans nid-e2e.spec.mjs).
+// validé par collection.spec.mjs) pour isoler l'UI du moteur. Depuis HO-MJ-13
+// il n'y a plus de scène de personnages (.v-copain/.vb-porte disparus) : la
+// chambre et le Padidi ne sont plus atteignables QUE depuis les 2 tiroirs de
+// l'armoire (#hdr-oeufs / #hdr-padidi). Le théâtre du 1er œuf est neutralisé
+// via le flag maxplay_nid_intro (testé en conditions réelles dans
+// nid-e2e.spec.mjs — HORS PÉRIMÈTRE HO-MJ-13, encore bâti sur .v-copain,
+// à mettre à jour dans un futur handoff).
 //
 // Usage : node studio/minijeux/tests/mur-nid.spec.mjs
 import { chromium } from 'playwright';
@@ -84,51 +88,15 @@ try {
   await page.addInitScript(FAKE_COLLECTION);
   await page.goto(pathToFileURL(INDEX).href, { waitUntil: 'networkidle' });
 
-  // ── 1. La vallée charge : 6 copains, décor, header 1 ligne ────────────
-  await page.waitForSelector('.v-copain', { timeout: 5000 }).catch(() => {});
-  const copains = await page.locator('.v-copain').count();
-  ok('6 copains présents dans la vallée', copains === 6, `count=${copains}`);
-  const noms = await page.locator('.v-copain .v-nom').allInnerTexts();
-  ok('casting v0.5 : Spino/Galli/Troudi/Volta/hôte dino/Roi T-Rex',
-     ['Spino', 'Galli', 'Troudi', 'Volta', 'Roi T-Rex'].every(n => noms.includes(n)) && noms.length === 6,
-     JSON.stringify(noms));
-  ok('le Roi T-Rex porte son livre (immobile, porte du monde dino)',
-     (await page.locator('.v-roi .v-livre').count()) === 1);
-  ok('décor posé (volcan, mare, fougères…)', (await page.locator('.v-decor').count()) >= 5);
-  ok('zones tap ≥ 80px (largeur .v-copain)', await page.evaluate(() =>
-    [...document.querySelectorAll('.v-copain')].every(e => e.getBoundingClientRect().width >= 80)));
+  // ── 0. La coque (armoire) charge, jamais d'ascenseur ──────────────────
+  await page.waitForSelector('.casier', { timeout: 5000 }).catch(() => {});
+  ok('l\'armoire charge (casiers présents)', (await page.locator('.casier').count()) > 0);
+  await page.screenshot({ path: resolve(artifacts, 'armoire.png') });
 
-  await page.screenshot({ path: resolve(artifacts, 'vallee.png') });
-
-  // ── 2. Tap un copain → bulle : phrase + vignettes + tampons/reco ──────
-  await page.click('.v-copain[data-copain="spino"]', { force: true });
-  const bulle = await page.waitForSelector('.v-bulle', { timeout: 3000 }).then(() => true).catch(() => false);
-  ok('tap Spino → bulle ouverte', bulle);
-  if (bulle) {
-    const phrase = await page.locator('.vb-phrase').innerText();
-    ok('phrase courte ≤ 5 mots (« Ici, on compte ! »)', phrase.split(/\s+/).length <= 5, phrase);
-    const vjeux = await page.locator('.v-bulle .vb-jeu').count();
-    ok('vignettes de jeux dans la bulle (repaireState inchangé)', vjeux >= 1, `count=${vjeux}`);
-    const reco = await page.locator('.v-bulle .vb-jeu.reco').count();
-    ok('« prochain qui brille » présent (fonction de la frise conservée)', reco >= 1, `count=${reco}`);
-    ok('vignettes tapables (data-url posé)', await page.evaluate(() =>
-      [...document.querySelectorAll('.v-bulle .vb-jeu')].every(e => !!e.dataset.url)));
-    await page.screenshot({ path: resolve(artifacts, 'vallee-bulle-spino.png') });
-    await page.click('.vb-close');
-    ok('croix ferme la bulle', await page.waitForFunction(() => !document.querySelector('.v-bulle'), null, { timeout: 2000 }).then(() => true).catch(() => false));
-  }
-
-  // ── 3. Roi T-Rex → bulle MONDE DINO à 3 portes ────────────────────────
-  await page.click('.v-copain[data-copain="trex"]', { force: true });
-  await page.waitForSelector('.v-bulle .vb-monde', { timeout: 3000 });
-  const portes = await page.locator('.vb-porte').count();
-  ok('bulle du Roi = 3 grandes portes (encyclo / nid / Padidi)', portes === 3, `count=${portes}`);
-  await page.screenshot({ path: resolve(artifacts, 'vallee-monde-dino.png') });
-
-  // porte NID → chambre des œufs (NID v4)
-  await page.click('.vb-porte[data-porte="nid"]');
+  // ── 1. Tiroir 🥚 → la chambre des œufs (NID v4) ───────────────────────
+  await page.click('#hdr-oeufs');
   const chambreOpen = await page.waitForSelector('#chambre-ov', { timeout: 3000 }).then(() => true).catch(() => false);
-  ok('porte 🥚 → la chambre des œufs s\'ouvre', chambreOpen);
+  ok('tiroir 🥚 d\'entête → la chambre des œufs s\'ouvre', chambreOpen);
   if (chambreOpen) {
     const chOeufs = await page.locator('#chambre-ov .ch-oeuf').count();
     ok('2 œufs en grand dans la chambre', chOeufs === 2, `count=${chOeufs}`);
@@ -145,16 +113,16 @@ try {
     await page.waitForTimeout(200);
     ok('caresse → craquement visuel', (await page.locator('#chambre-ov .nid-crack').count()) >= 1);
     await page.screenshot({ path: resolve(artifacts, 'chambre-oeufs.png') });
+    const badge = await page.locator('#hdr-oeufs-n').innerText().catch(() => '');
+    ok('badge d\'entête = nb d\'œufs au nid', badge === '2', `badge=${badge}`);
     await page.click('#chambre-ov .ch-back');
     ok('retour ← ferme la chambre', await page.waitForFunction(() => !document.getElementById('chambre-ov'), null, { timeout: 3000 }).then(() => true).catch(() => false));
   }
 
-  // porte PADIDI → grille d'ombres par famille, anti-spoiler
-  await page.click('.v-copain[data-copain="trex"]', { force: true });
-  await page.waitForSelector('.vb-porte[data-porte="padidi"]', { timeout: 3000 });
-  await page.click('.vb-porte[data-porte="padidi"]');
+  // ── 2. Tiroir 📷 → Padidi, mur d'ombres anti-spoiler ──────────────────
+  await page.click('#hdr-padidi');
   const padidi = await page.waitForSelector('#padidi-ov', { timeout: 4000 }).then(() => true).catch(() => false);
-  ok('porte 🏞 → Padidi s\'ouvre', padidi);
+  ok('tiroir 📷 d\'entête → Padidi s\'ouvre', padidi);
   if (padidi) {
     const possede = await page.locator('#padidi-ov .nid-vig.possede').count();
     ok('au moins 1 dino possédé affiché en couleur', possede >= 1, `count=${possede}`);
@@ -171,28 +139,7 @@ try {
     await page.click('#padidi-ov .ch-back');
   }
 
-  // ── 3ter. Raccourcis d'entête + mini-menu avatar (retour PY 2026-07-30) ──
-  await page.click('#hdr-oeufs');
-  ok('🥚 d\'entête → chambre des œufs', await page.waitForSelector('#chambre-ov', { timeout: 3000 }).then(() => true).catch(() => false));
-  const badge = await page.locator('#hdr-oeufs-n').innerText().catch(() => '');
-  ok('badge d\'entête = nb d\'œufs au nid', badge === '2', `badge=${badge}`);
-  await page.click('#chambre-ov .ch-back');
-  await page.click('#hdr-padidi');
-  ok('🦕 d\'entête → album Padidi', await page.waitForSelector('#padidi-ov', { timeout: 4000 }).then(() => true).catch(() => false));
-  await page.click('#padidi-ov .ch-back');
-  await page.click('#profil-avatar');
-  const amVisible = await page.locator('#avatar-menu').isVisible().catch(() => false);
-  ok('tap avatar → mini-menu (habiller / espace parents)', amVisible);
-  ok('l\'espace parents vit dans le menu avatar', (await page.locator('#avatar-menu #parents-btn').count()) === 1);
-  await page.click('.vallee', { force: true }); // referme le menu
-
-  // ── 4. Humeur & pulse : le Roi pulse quand un gain n'a pas été vu ─────
-  // (le mock a 2 œufs + 1 paille et rien n'a jamais été "vu" → pulse attendu
-  //  au chargement ; après ouverture de la chambre (markGainSeen), plus de pulse)
-  const pulseAfterSeen = await page.locator('.v-copain.pulse').count();
-  ok('après visite du nid, le Roi ne pulse plus (gain vu)', pulseAfterSeen === 0, `count=${pulseAfterSeen}`);
-
-  // ── 5. Éclosion : œuf prêt à l'ouverture de la chambre → théâtre sur
+  // ── 3. Éclosion : œuf prêt à l'ouverture de la chambre → théâtre sur
   //       place, avec pause perceptible (le doré doit se VOIR) ───────────
   const page2 = await browser.newPage({ viewport: { width: 480, height: 900 } });
   const errors2 = [];
@@ -204,10 +151,8 @@ try {
   );
   await page2.addInitScript(FAKE_GOLDEN_READY);
   await page2.goto(pathToFileURL(INDEX).href, { waitUntil: 'networkidle' });
-  await page2.waitForSelector('.v-copain[data-copain="trex"]', { timeout: 5000 });
-  await page2.click('.v-copain[data-copain="trex"]', { force: true });
-  await page2.waitForSelector('.vb-porte[data-porte="nid"]', { timeout: 3000 });
-  await page2.click('.vb-porte[data-porte="nid"]');
+  await page2.waitForSelector('#hdr-oeufs', { timeout: 5000 });
+  await page2.click('#hdr-oeufs');
   await page2.waitForSelector('#chambre-ov', { timeout: 3000 });
   await page2.waitForTimeout(700);
   const earlyHatch = await page2.evaluate(() =>
@@ -244,7 +189,7 @@ try {
 
 await browser.close();
 
-console.log('\n── mur-nid.spec.mjs (La Vallée + monde dino) ──');
+console.log('\n── mur-nid.spec.mjs (monde dino derrière L\'Armoire) ──');
 for (const [cond, name, detail] of checks)
   console.log(`  ${cond ? PASS : FAIL}  ${name}${!cond && detail ? `\n        → ${detail}` : ''}`);
 console.log(fail === 0 ? `\n\x1b[32m✓ mur-nid OK\x1b[0m\n` : `\n\x1b[31m✗ ${fail} échec(s)\x1b[0m\n`);

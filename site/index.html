@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>MaxPlay — La Vallée</title>
+  <title>MaxPlay — L'Armoire</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚌</text></svg>">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" sizes="180x180" href="img/maxplay-icon-180.png">
@@ -16,53 +16,41 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/mp-theme.css">
   <link rel="stylesheet" href="css/mur.css">
+  <link rel="stylesheet" href="css/armoire.css">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
     body { font-family:'Nunito',sans-serif; } /* safe-area : géré par mp-theme.css */
-
-    /* ── header 1 ligne : identité SEULE (spec §3) ── */
-    .profil { display:flex; align-items:center; gap:12px; padding:10px 16px; flex-shrink:0; }
-    .avatar {
-      width:52px; height:52px; border-radius:50%; cursor:pointer; flex-shrink:0;
-      background:radial-gradient(circle at 35% 30%, var(--accent), oklch(0.45 0.1 var(--h-avatar)));
-      border:3px solid var(--gold); display:flex; align-items:center; justify-content:center;
-      font-size:26px; overflow:hidden;
-    }
-    .avatar img { width:44px; height:44px; object-fit:contain; }
-    .pseudo { font-family:'Fredoka One'; font-size:19px; }
   </style>
   <script src="js/sw-register.js"></script>
 </head>
 <body data-av-nobadge>
 
-<!-- ══════════════ LA VALLÉE (menu enfant, spec Mur v2) ══════════════ -->
-<div class="mur-page vallee-page" id="mur-view">
-
-  <div class="profil">
+<!-- ══════════════ L'ARMOIRE (menu enfant, HO-MJ-13) ══════════════ -->
+<div class="armoire" id="mur-view">
+  <header class="ar-fronton">
     <div class="avatar" id="profil-avatar" role="button" aria-label="Mon dino">🦕</div>
     <div class="pseudo" id="profil-pseudo">Champion</div>
     <div class="mp-stars-total" id="stars-total">⭐ 0</div>
-    <!-- raccourcis d'entête (retour PY 2026-07-30, défige spec §3 "aucune
-         icone") : accès direct aux œufs et à l'album — le Roi T-Rex reste
-         l'entrée narrative dans la vallée. -->
-    <button class="hdr-btn" id="hdr-oeufs" aria-label="Mes œufs">🥚<span class="hdr-badge" id="hdr-oeufs-n" style="display:none"></span></button>
-    <button class="hdr-btn" id="hdr-padidi" aria-label="Album Padidi">🦕</button>
-  </div>
+  </header>
+
+  <div class="ar-casiers" id="casiers"></div>
+
+  <footer class="ar-socle">
+    <button class="tiroir" id="hdr-oeufs" aria-label="Mes œufs"><img src="img/armoire/obj-oeuf.webp" alt=""><span class="hdr-badge" id="hdr-oeufs-n" style="display:none"></span></button>
+    <button class="tiroir" id="hdr-padidi" aria-label="Album Padidi"><img src="img/armoire/obj-carnet.webp" alt=""></button>
+  </footer>
 
   <!-- mini-menu de l'avatar : habiller / espace parents (retour PY 2026-07-30) -->
   <div class="avatar-menu" id="avatar-menu" style="display:none">
     <button type="button" id="am-atelier">🎨 Habiller mon dino</button>
     <button type="button" id="parents-btn">👨‍👩‍👦 Espace parents</button>
   </div>
-
-  <!-- la vallée : rendue entièrement par js/mur-scene.js -->
-  <div class="vallee" id="vallee"></div>
 </div>
 
 <!-- ══════════════ VUE PARENTS (derrière le gate) ══════════════ -->
 <div class="mur-page" id="parents-view" style="display:none">
   <div class="rep-head">
-    <button class="rep-back" aria-label="Retour à la vallée">‹</button>
+    <button class="rep-back" aria-label="Retour à l'armoire">‹</button>
     <div class="grow"><b style="font-family:'Fredoka One';font-weight:400;font-size:20px">Espace parents</b>
       <span>Statistiques · Paramètres · Compte · Retours</span></div>
   </div>
@@ -145,7 +133,7 @@
   <script src="js/mp-theme.js"></script>
   <script src="js/celebrations.js"></script>
   <script src="js/mur.js"></script>
-  <script src="js/mur-scene.js"></script>
+  <script src="js/armoire.js"></script>
   <script>
   (function () {
     const modal = document.getElementById('code-modal');

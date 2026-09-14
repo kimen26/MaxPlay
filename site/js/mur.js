@@ -1,26 +1,22 @@
 // ─────────────────────────────────────────────────────────────────────────
-//  mur.js — MODULE LOGIQUE du menu enfant (Mur v2 « La Vallée », spec
-//  studio/minijeux/docs/specs/2026-07-29-mur-v2-la-vallee.md, VALIDÉE PY).
+//  mur.js — MODULE LOGIQUE du menu enfant (accueil « L'Armoire », HO-MJ-13,
+//  remplace La Vallée / Mur v2 le 2026-09-15).
 //
-//  Depuis 2026-07-30 ce fichier ne rend PLUS le menu : la scène vit dans
-//  js/mur-scene.js (la vallée). Ici : les DONNÉES et CONTRATS réutilisés —
-//  COPAINS (6 identités, dont l'hôte des jeux dino résolu dynamiquement
-//  §4.3), repaireState (séquence 2★ inchangée), entry/vignetteHtml, étoiles,
-//  humeurs (délaissé/nouveau, ex-Découverte), et l'espace parents (gate).
+//  Depuis HO-MJ-13 ce fichier ne rend PLUS aucune scène (l'armoire vit dans
+//  js/armoire.js, immobile). Ici : les DONNÉES et CONTRATS réutilisés —
+//  repaireState (séquence 2★, réutilisée plus tard pour une éventuelle chaîne
+//  de déblocage sur l'armoire), jeuxDeZone, étoiles, et l'espace parents
+//  (gate + catalogue complet). avatarMood reste : nid-ui.js l'utilise en
+//  repli quand aucun avatar n'est choisi.
 //
 //  HO-R09 (2026-09-12, D-012) : plus AUCUN id `mj-*` en dur ici. La liste des
-//  jeux de chaque copain, leur ordre de déblocage, leur libellé et leur
-//  vignette viennent de `site/js/catalog.js` (champs zone/murOrder/
-//  libelleMur/vignette/libre) — voir jeuxDeZone() plus bas.
-//
-//  Défigés par PY 2026-07-29 : la file verticale (POC v1-file 2026-07-22),
-//  le drag-to-enter (choix PY 2026-07-22) — le tap redevient le geste unique.
-//  #repaire-view et le bloc Découverte disparaissent : leurs fonctions
-//  survivent dans la bulle du copain (vignettes + tampons) et la bulle-pensée.
+//  jeux d'une zone, leur ordre de déblocage, leur libellé et leur vignette
+//  viennent de `site/js/catalog.js` (champs zone/murOrder/libelleMur/
+//  vignette/libre) — voir jeuxDeZone() plus bas.
 //
 //  API : window.MUR = { init, refresh, showParents, showMur, entry, starsOf,
-//    vignetteHtml, starsHtml, copains, repaireState, playsOf,
-//    lastPlayedOf, unlockStars, _fillBus }
+//    repaireState, playsOf, lastPlayedOf, unlockStars, avatarMood,
+//    openEncyclo }
 // ─────────────────────────────────────────────────────────────────────────
 (function (global) {
   'use strict';
@@ -28,66 +24,13 @@
   var LOCAL_META = {};
 
   // ── Résolution avatars (assets low-poly, décision PY 2026-07-21) ────
-  function avatarTete(id) {
-    var a = (global.MAXPLAY_AVATARS || []).find(function (x) { return x.id === id; });
-    var f = a && a.moods && a.moods.joyeux && a.moods.joyeux[0];
-    return f ? (global.MAXPLAY_AVATARS_BASE || 'img/avatars/') + f : '';
-  }
+  // Repli : humeur demandée absente → mood 'joyeux' → chaîne vide.
   function avatarMood(id, mood) {
     var a = (global.MAXPLAY_AVATARS || []).find(function (x) { return x.id === id; });
-    var f = a && a.moods && a.moods[mood] && a.moods[mood][0];
-    return f ? (global.MAXPLAY_AVATARS_BASE || 'img/avatars/') + f : avatarTete(id);
+    var f = (a && a.moods && a.moods[mood] && a.moods[mood][0]) ||
+            (a && a.moods && a.moods.joyeux && a.moods.joyeux[0]);
+    return f ? (global.MAXPLAY_AVATARS_BASE || 'img/avatars/') + f : '';
   }
-
-  // ── Les 6 habitants de la vallée (casting VALIDÉ v0.5, spec §4.3) ───
-  // Troudi (ex-Vélo) = Troodon : AUCUN asset troodon n'existe → il porte
-  // l'asset ex-velo (petit raptor, silhouette compatible), principe 5 de la
-  // spec : zéro nouvelle génération d'images pour le menu.
-  // Volta (ex-Para) = Ptéranodon : asset `ptero` existant.
-  // L'hôte des jeux dino est RÉSOLU DYNAMIQUEMENT (dinoHost() ci-dessous) :
-  // l'avatar du joueur, repli Tritri si l'avatar EST un copain fixe.
-  var FIXED_AVATARS = { spino: 1, galli: 1, velo: 1, ptero: 1, trex: 1 };
-
-  // HO-R09 (décision PY, D-012) : ce fichier ne contient PLUS AUCUN id
-  // `mj-*` en dur. Chaque copain ne porte plus que son identité (nom, avatar,
-  // coin de la vallée, bulle) — la liste de ses jeux et leur ordre viennent
-  // du champ `zone`/`murOrder` de `site/js/catalog.js` (voir jeuxDeZone() et
-  // repaireState() plus bas). Ajouter un jeu au Mur = lui donner un `zone` +
-  // `murOrder` dans catalog.js, plus jamais toucher ce fichier.
-  var COPAINS = [
-    {
-      id: 'spino', nom: 'Spino', domaine: 'compter', avatar: 'spino',
-      coin: 'mare', bulle: 'Ici, on compte !'
-    },
-    {
-      id: 'galli', nom: 'Galli', domaine: 'lire', avatar: 'galli',
-      coin: 'arbre', bulle: 'Ici, on lit !'
-    },
-    {
-      id: 'troudi', nom: 'Troudi', domaine: 'casse-têtes', avatar: 'velo',
-      coin: 'grotte', bulle: 'Ici, on réfléchit !'
-    },
-    {
-      id: 'volta', nom: 'Volta', domaine: 'couleurs & monde', avatar: 'ptero',
-      // Volta plane au-dessus du PIC ROCHEUX (échange de coins avec l'hôte
-      // dino, retour PY 2026-07-31) : un ptéranodon perche sur un promontoire,
-      // il ne niche pas dans un volcan en éruption.
-      coin: 'pic', vole: true, bulle: 'Ici, on voyage !'
-    },
-    {
-      // L'hôte des jeux dino — avatar/nom résolus au rendu (dinoHost()).
-      id: 'dino', nom: 'Tritri', domaine: 'les jeux dino', avatar: 'tritri',
-      // L'hôte dino (avatar du joueur) prend le VOLCAN (retour PY 2026-07-31) :
-      // le coin le plus spectaculaire de la vallée revient au dino du joueur.
-      coin: 'volcan', bulle: 'Viens voir les dinos !'
-    },
-    {
-      // Roi T-Rex : IMMOBILE avec son livre — porte du MONDE DINO
-      // (encyclo + nid + Padidi), bulle à 3 vignettes (spec §6).
-      id: 'trex', nom: 'Roi T-Rex', domaine: 'le monde dino', avatar: 'trex',
-      coin: 'trone', monde: true, bulle: 'Je te raconte les dinos !'
-    }
-  ];
 
   // Jeux d'une zone (copain), triés par murOrder croissant — source unique :
   // catalog.js. `MAXPLAY_CATALOG` brut (pas catalogVisible()) : le filtrage
@@ -97,25 +40,6 @@
       .filter(function (e) { return e.zone === zoneId; })
       .sort(function (a, b) { return (a.murOrder || 0) - (b.murOrder || 0); })
       .map(function (e) { return e.id; });
-  }
-
-  // Hôte des jeux dino (règle §4.3) : l'avatar choisi par l'enfant, SAUF si
-  // c'est déjà un habitant fixe → repli Tritri (exception : Tritri lui-même).
-  function dinoHost() {
-    var c = COPAINS.find(function (x) { return x.id === 'dino'; });
-    var av = null;
-    try { av = global.Avatar && Avatar.get(); } catch (e) {}
-    if (av && !FIXED_AVATARS[av]) {
-      var meta = (global.MAXPLAY_AVATARS || []).find(function (x) { return x.id === av; });
-      c.avatar = av;
-      c.nom = (meta && meta.name) || 'Mon dino';
-      c.isPlayerAvatar = true;
-    } else {
-      c.avatar = 'tritri';
-      c.nom = 'Tritri';
-      c.isPlayerAvatar = false;
-    }
-    return c;
   }
 
   // ── Entrées catalogue + locale ─────────────────────────────────────
@@ -192,63 +116,10 @@
     };
   }
 
-  // ── Humeurs (ex-Découverte, spec §4.4) : données pour la scène ──────
-  // délaissé = le copain dont le jeu le moins récemment joué est le plus
-  // ancien (au moins 1 jeu joué dans la vallée, sinon personne ne boude un
-  // enfant qui n'a encore rien fait) · nouveau = copain avec un jeu visible
-  // jamais joué (sparkle).
-  function humeurs() {
-    var anyPlay = false;
-    var out = {};
-    COPAINS.forEach(function (c) {
-      if (c.monde) return; // le Roi ne boude jamais, il lit
-      var st = repaireState(c);
-      var last = 0, hasNew = false, mostLeft = null;
-      st.games.forEach(function (g) {
-        if (!g.maxStars) return;
-        var p = playsOf(g.id);
-        if (p > 0) { anyPlay = true; last = Math.max(last, lastPlayedOf(g.id)); }
-        if (p === 0) { hasNew = true; if (!mostLeft) mostLeft = g; }
-        if (!mostLeft && starsOf(g.id) < g.maxStars) mostLeft = g;
-      });
-      out[c.id] = { last: last, hasNew: hasNew, pense: mostLeft || st.games[0] || null };
-    });
-    var delaisse = null, oldest = Infinity;
-    Object.keys(out).forEach(function (id) {
-      if (out[id].last > 0 && out[id].last < oldest) { oldest = out[id].last; delaisse = id; }
-    });
-    return { parCopain: out, delaisse: anyPlay ? delaisse : null };
-  }
-
   // ── Rendu helpers partagés ──────────────────────────────────────────
   function $(id) { return document.getElementById(id); }
 
-  function starsHtml(id) {
-    var max = maxStarsOf(id);
-    if (!max) return '';
-    var got = starsOf(id), s = '';
-    for (var i = 0; i < max; i++) s += i < got ? '★' : '<span class="off">★</span>';
-    return s;
-  }
-
-  function vignetteHtml(id) {
-    var e = (global.MAXPLAY_CATALOG || []).find(function (x) { return x.id === id; });
-    return (e && e.vignette) || '<div class="vig"></div>';
-  }
-
-  function fillBusVignettes() {
-    if (typeof global.busSVG !== 'function') return;
-    document.querySelectorAll('.vig-bus').forEach(function (el) {
-      if (el.dataset.done) return;
-      el.dataset.done = '1';
-      var nums = (el.dataset.bus || '162').split(',');
-      el.innerHTML = nums.slice(0, 2).map(function (n) {
-        return global.busSVG('#E2001A', '#fff', n.trim(), 120);
-      }).join('');
-    });
-  }
-
-  // ── Navigation vallée ↔ parents ─────────────────────────────────────
+  // ── Navigation armoire ↔ parents ─────────────────────────────────────
   function show(view) {
     var mur = $('mur-view'), par = $('parents-view');
     if (mur) mur.style.display = view === 'mur' ? '' : 'none';
@@ -331,17 +202,18 @@
   }
 
   // ── Init ───────────────────────────────────────────────────────────
+  // L'armoire (js/armoire.js) se rend et se recalcule elle-même (DOMContentLoaded
+  // + resize) : mur.js n'a plus besoin de la piloter, il se contente de la
+  // rafraîchir (déverrouillage encyclo, retour de jeu) via window.Armoire.
   var _hooks = null;
   function refresh() {
-    if (global.MurScene && typeof global.MurScene.refresh === 'function') global.MurScene.refresh();
-    fillBusVignettes();
+    if (global.Armoire && typeof global.Armoire.refresh === 'function') global.Armoire.refresh();
     if (global.NidUI && typeof global.NidUI.refresh === 'function') global.NidUI.refresh();
   }
 
   function init(hooks) {
     _hooks = hooks || null;
     injectParentStyles();
-    if (global.MurScene && typeof global.MurScene.init === 'function') global.MurScene.init();
     loadNidUi();
     show('mur');
 
@@ -414,11 +286,8 @@
     init: init, refresh: refresh,
     showMur: showMur, showParents: showParents,
     entry: entry, starsOf: starsOf,
-    vignetteHtml: vignetteHtml, starsHtml: starsHtml,
-    copains: COPAINS, dinoHost: dinoHost, repaireState: repaireState,
-    humeurs: humeurs, playsOf: playsOf, lastPlayedOf: lastPlayedOf,
+    repaireState: repaireState, playsOf: playsOf, lastPlayedOf: lastPlayedOf,
     unlockStars: unlockStars, avatarMood: avatarMood,
-    openEncyclo: openEncyclo,
-    _fillBus: fillBusVignettes
+    openEncyclo: openEncyclo
   };
 })(window);

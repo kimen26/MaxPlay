@@ -1,6 +1,6 @@
 # HO-MJ-13 — L'Armoire : nouvel accueil enfant, remplace La Vallée
 
-> Statut : pret · Ouvert le 2026-09-15 · Exécutant : 1 sous-agent Sonnet · Orchestrateur : session principale.
+> Statut : **fait** (2026-09-15) · Rapport : [`rapports/HO-MJ-13-rapport.md`](rapports/HO-MJ-13-rapport.md) · Exécutant : 1 sous-agent Sonnet · Orchestrateur : session principale.
 > Origine : décision Papa Yann 2026-09-15 — « VIRE le menu actuel avec les perso qui bougent, ça a toujours été un échec, je ne veux plus le voir ». Le nouvel accueil est une **armoire en bois** : fronton, grille de casiers avec un objet par casier, socle à tiroirs. Le visuel d'abord ; les objets sont reliés aux jeux de façon simple, on affinera ensuite.
 > Dépend de : HO-MJ-12 (pièces dans `site/img/armoire/`, dimensions dans `MANIFEST.json`). Si le dossier n'existe pas encore : coder contre les noms du brief HO-MJ-12, et attendre les fichiers avant les captures.
 

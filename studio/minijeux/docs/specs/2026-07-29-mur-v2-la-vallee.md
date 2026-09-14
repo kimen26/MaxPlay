@@ -1,5 +1,7 @@
 # Spec — Mur v2 « La Vallée » (v0.7, 2026-07-30)
 
+> ⚠️ **REMPLACÉE le 2026-09-15** (D-025, décision PY) : la scène animée est abandonnée, l'accueil est une armoire immobile — voir `docs/handoffs/HO-MJ-13-armoire-accueil.md`. Ce document est conservé comme archive : ses §2.2 (vivant mais calme), §4.2 (anti-collision) et §9 (découpage `mur-scene.js`) ne décrivent plus le code. Les moteurs (nid, Padidi, chaîne 2★, porte parents) restent valables.
+
 > **Statut : VALIDÉE par Papa Yann (2026-07-29, « VAZI on fait ça »), amendée v0.6 le
 > 2026-07-30 (défigement PY : raccourcis 🥚/🦕 dans le header, scène toujours pure) et
 > v0.7 le 2026-07-30 (décisions PY : théâtre d'éclosion complet, pas de cap au sac —

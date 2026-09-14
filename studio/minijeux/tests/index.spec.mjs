@@ -1,40 +1,34 @@
-// index.spec.mjs — Smoke de la COQUE « La Vallée » (Mur v2, spec 2026-07-29).
-// Réécrit 2026-07-30 (l'ancien testait le menu accordéon v2, mort 2 refontes
-// avant — dette tracée depuis le Mur). Piloté par run.mjs :
+// index.spec.mjs — Smoke de la COQUE « L'Armoire » (HO-MJ-13, remplace La
+// Vallée / Mur v2). Piloté par run.mjs :
 //   npm run mj:test index
-// Le détail vallée/monde dino vit dans mur-nid.spec.mjs (mock) et
-// nid-e2e.spec.mjs (réel) — ici : la coque saine, header, gate parents, code.
+// Le détail multi-viewport/poids/casiers vit dans armoire.spec.mjs (lancé
+// séparément, node studio/minijeux/tests/armoire.spec.mjs) — ici : la coque
+// saine, header, gate parents, porte encyclo verrouillée → code TRITRI.
 export async function run({ page, ok }) {
   await page.evaluate(() => localStorage.clear());
   await page.reload({ waitUntil: 'networkidle' });
 
-  // ── header 1 ligne : identité + raccourcis collection ─────────────────
+  // ── fronton : identité + raccourcis œufs/album ─────────────────────────
   ok('profil : avatar présent', (await page.locator('#profil-avatar').count()) === 1);
   ok('profil : compteur ⭐ global', /⭐ \d+/.test((await page.locator('#stars-total').textContent()) || ''));
   ok('raccourci 🥚 (chambre) présent', (await page.locator('#hdr-oeufs').count()) === 1);
-  ok('raccourci 🦕 (Padidi) présent', (await page.locator('#hdr-padidi').count()) === 1);
+  ok('raccourci 📷 (Padidi) présent', (await page.locator('#hdr-padidi').count()) === 1);
 
-  // ── la vallée : 6 copains, décor ──────────────────────────────────────
-  await page.waitForSelector('.v-copain', { timeout: 5000 });
-  ok('6 copains dans la vallée', (await page.locator('.v-copain').count()) === 6);
-  ok('décor posé (≥5 éléments)', (await page.locator('.v-decor').count()) >= 5);
-  ok('le Roi T-Rex lit son livre', (await page.locator('.v-roi .v-livre').count()) === 1);
-  // Roi remonté (retour PY 2026-07-30) : jamais collé au bord bas
-  const roiOk = await page.evaluate(() => {
-    const r = document.querySelector('.v-roi').getBoundingClientRect();
-    return r.bottom < innerHeight - 60;
+  // ── l'armoire : grille de casiers, jamais d'ascenseur ──────────────────
+  await page.waitForSelector('.casier', { timeout: 5000 });
+  const nCasiers = await page.locator('.casier').count();
+  ok('au moins 6 casiers dans l\'armoire', nCasiers >= 6, `count=${nCasiers}`);
+  const noScroll = await page.evaluate(() => {
+    const de = document.documentElement;
+    return de.scrollHeight <= innerHeight + 1 && de.scrollWidth <= innerWidth + 1;
   });
-  ok('le Roi n\'est pas collé au bord bas de l\'écran', roiOk);
-
-  // ── bulle copain : TOUT visible en lignes (wrap), pas d'ascenseur ─────
-  await page.click('.v-copain[data-copain="troudi"]', { force: true });
-  await page.waitForSelector('.v-bulle .vb-jeu', { timeout: 3000 });
-  const noHScroll = await page.evaluate(() => {
-    const el = document.querySelector('.vb-jeux');
-    return el.scrollWidth <= el.clientWidth + 1;
-  });
-  ok('bulle : aucun défilement horizontal (tout en 2-3 lignes)', noHScroll);
-  await page.click('.vb-close');
+  ok('jamais d\'ascenseur sur la coque', noScroll);
+  const tapOk = await page.evaluate(() =>
+    [...document.querySelectorAll('.casier')].every(c => {
+      const r = c.getBoundingClientRect();
+      return r.width >= 96 && r.height >= 96;
+    }));
+  ok('zones tap des casiers ≥ 96×96 (au-delà des 80px règle mobile)', tapOk);
 
   // ── gate parents : dans le mini-menu de l'avatar, appui 3 s + question ─
   await page.click('#profil-avatar');
@@ -44,13 +38,13 @@ export async function run({ page, ok }) {
   ok('étape 1 = bouton à maintenir (pas d\'entrée directe)', await page.locator('#gate-hold').isVisible());
   await page.click('#gate-modal', { position: { x: 10, y: 10 } }); // referme (tap dehors)
 
-  // ── modale code TRITRI : porte 📖 du Roi quand l'encyclo est verrouillée ─
-  await page.click('.v-copain[data-copain="trex"]', { force: true });
-  await page.waitForSelector('.vb-porte[data-porte="encyclo"]', { timeout: 3000 });
-  await page.click('.vb-porte[data-porte="encyclo"]');
-  ok('encyclo verrouillée → modale code ouverte (flux TRITRI inchangé)',
+  // ── porte verrouillée (encyclo) : le 1er casier « Les dinos » ──────────
+  const locked = page.locator('.casier.locked').first();
+  ok('au moins 1 casier verrouillé (encyclo tant que TRITRI non saisi)', (await page.locator('.casier.locked').count()) >= 1);
+  await locked.click();
+  ok('porte encyclo verrouillée → modale code ouverte (flux TRITRI inchangé)',
      (await page.locator('#code-modal.show').count()) === 1);
-  // mauvais code → message, bon code → modale fermée (flux unlock.js complet)
+  // mauvais code → message, bon code → modale fermée + casier déverrouillé
   await page.fill('#code-input', 'NON');
   await page.click('#code-go');
   await page.waitForTimeout(200);
@@ -59,4 +53,11 @@ export async function run({ page, ok }) {
   await page.click('#code-go');
   await page.waitForTimeout(300);
   ok('bon code → modale fermée (dinos débloqués)', (await page.locator('#code-modal.show').count()) === 0);
+  ok('après déblocage, plus aucun casier « encyclo » verrouillé',
+     (await page.locator('.casier.locked').count()) === 0);
+
+  // ── deep-link ?open=nid (retour de mini-jeu, EP-120) ───────────────────
+  await page.goto(page.url().split('?')[0] + '?open=nid', { waitUntil: 'networkidle' });
+  const chambreOpen = await page.waitForSelector('#chambre-ov', { timeout: 5000 }).then(() => true).catch(() => false);
+  ok('?open=nid ouvre la chambre des œufs au chargement', chambreOpen);
 }

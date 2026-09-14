@@ -54,6 +54,10 @@ const CACHE_LIMITS = {
 // nouveau fichier partagé. gen-sw-version.mjs relit ce bloc pour calculer le
 // hash : ne pas renommer PRECACHE_LIST, ne pas y mettre de commentaire entre
 // les guillemets.
+//
+// Pièces STRUCTURELLES de l'armoire (fronton/casiers/socle) précachées
+// ci-dessous (HO-MJ-13) : les 16 objets (img/armoire/obj-*.webp) restent en
+// runtime img/ stale-while-revalidate, pas précachés.
 const PRECACHE_LIST = [
   './',
   'index.html',
@@ -61,6 +65,7 @@ const PRECACHE_LIST = [
   'manifest.json',
   'css/mp-theme.css',
   'css/mur.css',
+  'css/armoire.css',
   'js/lang.js',
   'js/ping.js',
   'js/tracker.js',
@@ -75,13 +80,22 @@ const PRECACHE_LIST = [
   'js/mp-theme.js',
   'js/celebrations.js',
   'js/mur.js',
-  'js/mur-scene.js',
+  'js/armoire.js',
   'js/sw-register.js',
   'img/maxplay-icon-192.png',
   'img/maxplay-icon-512.png',
   'img/maxplay-icon-maskable-192.png',
   'img/maxplay-icon-maskable-512.png',
   'img/maxplay-icon-180.png',
+  'img/armoire/fronton.webp',
+  'img/armoire/fond-bois.webp',
+  'img/armoire/montant.webp',
+  'img/armoire/planche.webp',
+  'img/armoire/socle.webp',
+  'img/armoire/tiroir.webp',
+  'img/armoire/spot.webp',
+  'img/armoire/lumiere.webp',
+  'img/armoire/porte.webp',
 ];
 
 self.addEventListener('install', (event) => {

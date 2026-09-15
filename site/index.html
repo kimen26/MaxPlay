@@ -25,26 +25,69 @@
 </head>
 <body data-av-nobadge>
 
-<!-- ══════════════ L'ARMOIRE (menu enfant, HO-MJ-13) ══════════════ -->
+<!-- ══════════════ L'ARMOIRE (menu enfant, HO-MJ-14 : 3 zones) ══════════════ -->
+<div class="piece">
 <div class="armoire" id="mur-view">
+  <div class="ar-avatar-wrap" id="profil-avatar" role="button" aria-label="Mon dino">
+    <div class="avatar">🦕</div>
+  </div>
+
   <header class="ar-fronton">
-    <div class="avatar" id="profil-avatar" role="button" aria-label="Mon dino">🦕</div>
     <div class="pseudo" id="profil-pseudo">Champion</div>
     <div class="mp-stars-total" id="stars-total">⭐ 0</div>
   </header>
 
+  <section class="ar-vitrine">
+    <span class="ar-porte ar-porte-l" aria-hidden="true"></span>
+    <span class="ar-porte ar-porte-r" aria-hidden="true"></span>
+    <div class="ar-etagere">
+      <button type="button" class="objet" id="vit-dinos" aria-label="Dinos">
+        <span class="spot" aria-hidden="true"></span>
+        <img class="obj" src="img/armoire/obj-livres-dinos.webp" alt="">
+        <span class="porte" aria-hidden="true"></span>
+        <span class="etiquette">Dinos</span>
+      </button>
+      <button type="button" class="objet" id="vit-monde" aria-label="Monde">
+        <span class="spot" aria-hidden="true"></span>
+        <img class="obj" src="img/armoire/obj-globe.webp" alt="">
+        <span class="etiquette">Monde</span>
+      </button>
+    </div>
+    <div class="ar-shelf-mid" aria-hidden="true"></div>
+    <div class="ar-etagere">
+      <button type="button" class="objet" id="hdr-oeufs" aria-label="Mes œufs">
+        <span class="spot" aria-hidden="true"></span>
+        <img class="obj" src="img/armoire/obj-oeuf.webp" alt="">
+        <span class="hdr-badge" id="hdr-oeufs-n" style="display:none"></span>
+        <span class="etiquette">Œufs</span>
+      </button>
+      <button type="button" class="objet" id="hdr-padidi" aria-label="Album Padidi">
+        <span class="spot" aria-hidden="true"></span>
+        <img class="obj" src="img/armoire/obj-carnet.webp" alt="">
+        <span class="etiquette">Album</span>
+      </button>
+    </div>
+  </section>
+
+  <div class="ar-traverse" aria-hidden="true"></div>
+
   <div class="ar-casiers" id="casiers"></div>
 
-  <footer class="ar-socle">
-    <button class="tiroir" id="hdr-oeufs" aria-label="Mes œufs"><img src="img/armoire/obj-oeuf.webp" alt=""><span class="hdr-badge" id="hdr-oeufs-n" style="display:none"></span></button>
-    <button class="tiroir" id="hdr-padidi" aria-label="Album Padidi"><img src="img/armoire/obj-carnet.webp" alt=""></button>
-  </footer>
+  <div class="ar-traverse" aria-hidden="true"></div>
 
-  <!-- mini-menu de l'avatar : habiller / espace parents (retour PY 2026-07-30) -->
-  <div class="avatar-menu" id="avatar-menu" style="display:none">
-    <button type="button" id="am-atelier">🎨 Habiller mon dino</button>
-    <button type="button" id="parents-btn">👨‍👩‍👦 Espace parents</button>
-  </div>
+  <footer class="ar-bas" aria-hidden="true">
+    <span class="ar-porte ar-porte-l" aria-hidden="true"></span>
+    <span class="ar-porte ar-porte-r" aria-hidden="true"></span>
+    <span class="tiroir-deco"></span>
+    <span class="tiroir-deco"></span>
+  </footer>
+</div>
+</div>
+
+<!-- mini-menu de l'avatar : habiller / espace parents (retour PY 2026-07-30) -->
+<div class="avatar-menu" id="avatar-menu" style="display:none">
+  <button type="button" id="am-atelier">🎨 Habiller mon dino</button>
+  <button type="button" id="parents-btn">👨‍👩‍👦 Espace parents</button>
 </div>
 
 <!-- ══════════════ VUE PARENTS (derrière le gate) ══════════════ -->
@@ -157,11 +200,12 @@
     // Tap = mini-menu (habiller / espace parents — retour PY 2026-07-30).
     function paintProfil() {
       const el = document.getElementById('profil-avatar');
+      const inner = el.querySelector('.avatar');
       const menu = document.getElementById('avatar-menu');
       try {
         const id = window.Avatar && Avatar.get();
         const f = id ? Avatar.file(id, 'joyeux') : null;
-        if (f) { el.innerHTML = '<img alt="Mon dino">'; Avatar.paintInto(el.firstChild, f); }
+        if (f) { inner.innerHTML = '<img alt="Mon dino">'; Avatar.paintInto(inner.firstChild, f); }
       } catch (e) {}
       el.addEventListener('click', (ev) => {
         ev.stopPropagation();

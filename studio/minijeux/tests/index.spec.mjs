@@ -38,9 +38,11 @@ export async function run({ page, ok }) {
   ok('étape 1 = bouton à maintenir (pas d\'entrée directe)', await page.locator('#gate-hold').isVisible());
   await page.click('#gate-modal', { position: { x: 10, y: 10 } }); // referme (tap dehors)
 
-  // ── porte verrouillée (encyclo) : le 1er casier « Les dinos » ──────────
-  const locked = page.locator('.casier.locked').first();
-  ok('au moins 1 casier verrouillé (encyclo tant que TRITRI non saisi)', (await page.locator('.casier.locked').count()) >= 1);
+  // ── porte verrouillée (encyclo) : le bouton « Dinos » de la vitrine
+  // (HO-MJ-14 : Dinos/Monde vivent dans .objet de la vitrine, plus dans les
+  // .casier de la grille de jeux tirée au hasard) ────────────────────────
+  const locked = page.locator('#vit-dinos.locked');
+  ok('Dinos (vitrine) verrouillé (encyclo tant que TRITRI non saisi)', (await locked.count()) === 1);
   await locked.click();
   ok('porte encyclo verrouillée → modale code ouverte (flux TRITRI inchangé)',
      (await page.locator('#code-modal.show').count()) === 1);
@@ -53,8 +55,8 @@ export async function run({ page, ok }) {
   await page.click('#code-go');
   await page.waitForTimeout(300);
   ok('bon code → modale fermée (dinos débloqués)', (await page.locator('#code-modal.show').count()) === 0);
-  ok('après déblocage, plus aucun casier « encyclo » verrouillé',
-     (await page.locator('.casier.locked').count()) === 0);
+  ok('après déblocage, Dinos (vitrine) n\'est plus verrouillé',
+     (await page.locator('#vit-dinos.locked').count()) === 0);
 
   // ── deep-link ?open=nid (retour de mini-jeu, EP-120) ───────────────────
   await page.goto(page.url().split('?')[0] + '?open=nid', { waitUntil: 'networkidle' });

@@ -7,8 +7,9 @@
 |----|-------|-------------------|--------|
 | HO-MJ-05 | EPIC i18n mini-jeux · lot 6 (mj-20, mj-22, mj-42) + titre mj-14 | 4 mj-XX.html, i18n/** | fait (pas de fichier brief séparé, voir `rapports/HO-MJ-05-rapport.md`) |
 | HO-MJ-06 | EPIC i18n mini-jeux · 81 consignes parlees en anglais (voix() + repli TTS + scripts STS) | site/js/mj-i18n.js, victory-sounds.js, i18n/**, tools/ | fait (MP3 EN au quota, pas de fichier brief séparé, voir `rapports/HO-MJ-06-rapport.md`) |
-| HO-MJ-12 | L'Armoire · découpe des pièces GPT en tuiles/objets webp | site/img/armoire/**, tools/armoire-decoupe.py | en cours |
-| HO-MJ-13 | L'Armoire · nouvel accueil enfant, remplace La Vallée | site/index.html, js/armoire.js, css/armoire.css, js/mur.js, css/mur.css, js/mur-scene.js (suppr.), sw.js, tests index/mur-nid/armoire | pret |
+| HO-MJ-12 | L'Armoire · découpe des pièces GPT en tuiles/objets webp | site/img/armoire/**, tools/armoire-decoupe.py | fait |
+| HO-MJ-13 | L'Armoire · nouvel accueil enfant, remplace La Vallée | site/index.html, js/armoire.js, css/armoire.css, js/mur.js, css/mur.css, js/mur-scene.js (suppr.), sw.js, tests index/mur-nid/armoire | fait |
+| HO-MJ-14 | L'Armoire v2 · trois zones, portes ouvertes, marges de pièce | site/index.html, js/armoire.js, css/armoire.css, sw.js, tests armoire | fait |
 
 ## Archivés (`archives/2026-09-03/`)
 

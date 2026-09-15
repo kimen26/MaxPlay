@@ -41,9 +41,11 @@
   }
 
   // Table de départ (brief HO-MJ-13, étiquettes raccourcies en revue : un mot
-  // qu'un lecteur phonétique de 4 ans déchiffre) : ordre FIXE, 2 premiers =
-  // dinos/monde, toujours visibles. Le tirage aléatoire retire du pool au fur
-  // et à mesure (`used`) pour qu'un jeu n'apparaisse jamais 2 fois.
+  // qu'un lecteur phonétique de 4 ans déchiffre) : le tirage aléatoire retire
+  // du pool au fur et à mesure (`used`) pour qu'un jeu n'apparaisse jamais 2
+  // fois. Dinos/Monde/Œufs/Album ne sont PLUS ici (HO-MJ-14) : ils vivent en
+  // fixe dans la VITRINE (2 étagères, voir index.html + renderVitrine ici),
+  // les casiers ne contiennent que le tirage aléatoire de jeux.
   function buildSlots() {
     var used = {};
     function pick(list) {
@@ -57,10 +59,6 @@
       return function () { var e = pick(list); return e ? { url: e.url } : null; };
     }
     return [
-      // Œufs et album vivent dans les 2 TIROIRS du socle (revue 2026-09-15 :
-      // pas de doublon œuf/album entre la grille et les tiroirs).
-      { obj: 'obj-livres-dinos', label: 'Dinos', action: 'encyclo' },
-      { obj: 'obj-globe', label: 'Monde', action: 'encyclo' },
       { obj: 'obj-bus', label: 'Bus', pick: fromPick(byBusMot()) },
       { obj: 'obj-lettres', label: 'Lettres', pick: fromPick(byCategory('compter', { tag: 'tts' })) },
       { obj: 'obj-chiffres', label: 'Chiffres', pick: fromPick(byCategory('compter', { noTag: true })) },
@@ -86,13 +84,15 @@
     try { return !!(global.Unlock && Unlock.isUnlocked('dinos')); } catch (e) { return false; }
   }
 
-  // ── Layout : cols/rows tels que chaque casier fait ≥ 96px, JAMAIS d'ascenseur ──
+  // ── Layout : cols/rows tels que chaque casier fait ≥ 80px, JAMAIS d'ascenseur ──
+  // HO-MJ-14 : au plus 3 rangées (la vitrine et le bas ont pris leur part de
+  // hauteur), au moins 1 si l'écran est court (paysage bas).
   function computeLayout(total) {
     var w = global.innerWidth;
     var cols = w >= 1200 ? 6 : w >= 900 ? 5 : w >= 600 ? 4 : 3;
     var casiers = $('casiers');
     var h = (casiers && casiers.clientHeight) || 0;
-    var rows = Math.min(4, Math.max(2, Math.floor(h / 96) || 2));
+    var rows = Math.min(3, Math.max(1, Math.floor(h / 80) || 1));
     var raw = Math.min(cols * rows, total);
     // grille toujours PLEINE (jamais de dernière rangée à moitié vide) :
     // on tronque au multiple de cols le plus proche par en dessous.
@@ -104,7 +104,6 @@
     var locked = slot.action === 'encyclo' && !isEncycloUnlocked();
     return '<button type="button" class="casier' + (locked ? ' locked' : '') + '" data-idx="' + i + '" aria-label="' + esc(slot.label) + '">' +
       '<span class="spot" aria-hidden="true"></span>' +
-      '<span class="lumiere" aria-hidden="true"></span>' +
       '<img class="obj" src="img/armoire/' + slot.obj + '.webp" alt="">' +
       (locked ? '<span class="porte" aria-hidden="true"></span>' : '') +
       '<span class="etiquette">' + esc(slot.label) + '</span>' +
@@ -118,12 +117,32 @@
     if (slot.url) location.href = slot.url;
   }
 
+  // ── Vitrine (HO-MJ-14) : Dinos/Monde/Œufs/Album sont fixes, en dur dans
+  // index.html (pas de tirage). Seul Dinos reste verrouillé tant que TRITRI
+  // n'est pas saisi (brief : « Monde, encyclo pour l'instant » = pas de porte).
+  var _vitrineWired = false;
+  function renderVitrine() {
+    var dinos = $('vit-dinos');
+    if (!dinos) return;
+    dinos.classList.toggle('locked', !isEncycloUnlocked());
+    if (_vitrineWired) return;
+    _vitrineWired = true;
+    dinos.addEventListener('click', function () {
+      if (global.MUR && MUR.openEncyclo) MUR.openEncyclo();
+    });
+    var monde = $('vit-monde');
+    if (monde) monde.addEventListener('click', function () {
+      if (global.MUR && MUR.openEncyclo) MUR.openEncyclo();
+    });
+  }
+
   var _resolved = null;
   var _wired = false;
 
   function render() {
     var casiers = $('casiers');
     if (!casiers) return;
+    renderVitrine();
     if (!_resolved) _resolved = buildSlots();
     var layout = computeLayout(_resolved.length);
     casiers.style.setProperty('--cols', layout.cols);

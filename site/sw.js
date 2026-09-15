@@ -94,8 +94,8 @@ const PRECACHE_LIST = [
   'img/armoire/socle.webp',
   'img/armoire/tiroir.webp',
   'img/armoire/spot.webp',
-  'img/armoire/lumiere.webp',
   'img/armoire/porte.webp',
+  'img/armoire/porte-ouverte.webp',
 ];
 
 self.addEventListener('install', (event) => {

@@ -9,12 +9,13 @@
 **DoD** : `index.html` = armoire plein écran sans scroll de 320×568 à 1280×720, objets reliés aux jeux (mapping simple, aléatoire assumé), portes vertes, recette Papa Yann sur GitHub Pages.
 
 - [~] HO-MJ-12 — découpe des pièces (`site/img/armoire/*.webp` ≤ 350 Ko, script `tools/armoire-decoupe.py`, planche-contact)
-- [ ] HO-MJ-13 — page armoire (`armoire.js` / `armoire.css`, suppression `mur-scene.js`, élagage `mur.js`/`mur.css`, spec 7 viewports « jamais d'ascenseur », SW precache)
+- [x] HO-MJ-13 — page armoire (v1 en ligne 2026-09-15, commit b17b525e) (`armoire.js` / `armoire.css`, suppression `mur-scene.js`, élagage `mur.js`/`mur.css`, spec 7 viewports « jamais d'ascenseur », SW precache)
 - [ ] Après recette : brancher la chaîne 2★ (`repaireState`) sur les casiers ou l'abandonner explicitement ; décider si les objets tournent au hasard à chaque chargement (v1) ou restent fixes
 - [ ] Objets non placés en v1 (dino mascotte, livres-jeux) : à réserver pour l'écran dino (étagère encyclo, voir `studio/dino/memory/TODO.md`)
 - [ ] Portes ouvertes (`porte-ouverte.webp`) et cône lumière : décoratifs sur écran large ≥ 900 px, à poser après recette mobile
 - [ ] Spec Mur v2 (`docs/specs/2026-07-29-mur-v2-la-vallee.md`) : à marquer REMPLACÉE par l'armoire (pas supprimée, archive), §9 notes techniques périmées
-- [ ] HO-MJ-14 (à ouvrir après recette HO-MJ-13) — Globe animé déposé par PY (`inbox/globe-webapp-animation/`, web component `<animated-globe>`, 12 frames webp 640 px = 740 Ko, trop lourd tel quel) : réduire les frames à 256 px (~150 Ko), au tap sur le globe de l'armoire = 1 tour (11 frames, 9 fps) PUIS navigation vers le Voyage. Idle : léger flottement seulement, jamais de tour automatique (le README de PY le dit lui-même : « évite que l'armoire entière bouge »).
+- [x] HO-MJ-14 — Armoire v2 « trois zones » (livrée 2026-09-15, recette PY à faire sur le P30 Pro) sur le modèle de `inbox/decoupe/…00_25_01.png` (décision PY 2026-09-15 après la v1) : vitrine haute à 2 étagères (Dinos, Monde, Œufs, Album) avec portes ouvertes, casiers de jeux au milieu, compartiment bas à portes avec 2 tiroirs décoratifs. Marges de pièce 3-5 % (mur + tapis CSS), safe-area, avatar derrière le fronton mordu à 15 %, juste le prénom en haut. « L'important c'est le visuel de l'armoire : propre, modulable, modulaire, léger. »
+- [ ] HO-MJ-15 (à ouvrir après recette HO-MJ-14) — Globe animé déposé par PY (`inbox/globe-webapp-animation/`, web component `<animated-globe>`, 12 frames webp 640 px = 740 Ko, trop lourd tel quel) : réduire les frames à 256 px (~150 Ko), au tap sur le globe de l'armoire = 1 tour (11 frames, 9 fps) PUIS navigation vers le Voyage. Idle : léger flottement seulement, jamais de tour automatique (le README de PY le dit lui-même : « évite que l'armoire entière bouge »).
 - [ ] Volcan animé déposé par PY (`inbox/tSg9A.webp`, webp animé 256 px, 710 Ko) : même traitement que le globe si retenu (ré-encoder, moins de frames), sinon garder le volcan statique `obj-volcan.webp`.
 - [ ] inbox : les 20 PNG racine + `decoupe/` sont consommés par HO-MJ-12 ; PMO les archive une fois le handoff `fait` (règle 48 h)
 

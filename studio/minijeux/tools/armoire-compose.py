@@ -19,14 +19,15 @@ FONT = 'C:/Windows/Fonts/arialbd.ttf'
 
 # ── unités = pixels de la référence ────────────────────────────────────
 DOOR_L, DOOR_R = (36, 175), (850, 988)   # portes ouvertes (calque)
-PANEL = (175, 200, 300, 380)             # panneau latéral : x0,x1,y0,y1 — un bout de montant uniforme (sans charnière)
-PANEL_W = PANEL[1] - PANEL[0]
+PANEL = (136, 152, 720, 860)             # panneau latéral : la face claire du cadre des casiers (uni), répétée en miroir
+PANEL_W = 22                             # largeur affichée (unités), un peu plus que la source
 DOOR_W = DOOR_L[1] - DOOR_L[0]
 BODY = (200, 830)                        # corps derrière les portes (souple)
 INNER = (185, 860)                       # corps entre les panneaux (souple)
 CUBBY, DIV = (185, 362), (362, 398)      # un casier, un séparateur
 SHOULDER_L, SHOULDER_R = (133, 200), (830, 890)   # épaules du fronton / pieds
 LEAF, LEAF_PATCH = (450, 65, 578, 152), (322, 65, 450, 152)
+FOOT_TOP = 1332                          # sous cette ligne les tuiles de porte contiendraient les pieds
 MAX_SOFT, MARGIN_X = 1.45, 0.02
 
 # (y0, y1, souple, genre, nom) — genre : door (corps + portes), shoulder
@@ -44,7 +45,7 @@ def rows(cubby_rows=1):
         r.append((685, 880, True, 'cubby', 'casiers'))
     r += [(905, 935, False, 'inner', 'traverse-bas'),
           (935, 1122, True, 'door', 'bas-etagere'),
-          (1122, 1310, False, 'door', 'bas-tiroirs'),
+          (1122, 1310, False, 'inner-door', 'bas-tiroirs'),
           (1310, 1385, False, 'feet', 'pieds')]
     return r
 
@@ -52,6 +53,18 @@ def rows(cubby_rows=1):
 def tile(ref, box, w, h):
     x0, y0, x1, y1 = box
     return ref.crop((x0, y0, min(x1 + 1, 1024), min(y1 + 1, 1536))).resize((max(1, round(w)) + 1, max(1, round(h)) + 1), Image.LANCZOS)
+
+
+def panel_tile(ref, w, h):
+    """Planche verticale unie : le carré PANEL répété en miroir jusqu'à h."""
+    sq = ref.crop(PANEL)
+    sq = sq.resize((max(1, round(w)) + 1, max(1, round(sq.size[1] * (w / PANEL_W))) + 1), Image.LANCZOS)
+    strip = Image.new('RGBA', (sq.size[0], sq.size[1] * 2))
+    strip.paste(sq, (0, 0)); strip.paste(sq.transpose(Image.FLIP_TOP_BOTTOM), (0, sq.size[1]))
+    out = Image.new('RGBA', (sq.size[0], max(1, round(h)) + 1))
+    for y in range(0, out.size[1], strip.size[1]):
+        out.paste(strip, (0, y))
+    return out
 
 
 def sans_feuille(ref):
@@ -82,13 +95,15 @@ def compose(ref, W, H, R, cubby_cols=3):
         Y = round(y)
         if kind in ('door', 'shoulder', 'feet'):
             body.alpha_composite(tile(ref, (BODY[0], y0, BODY[1], y1), bw, h), (round(bx), Y))
+        if kind == 'inner-door':   # tiroirs à fleur des panneaux : on garde leurs deux bords
+            body.alpha_composite(tile(ref, (INNER[0], y0, INNER[1], y1), bw, h), (round(bx), Y))
             boxes.setdefault(name, []).append((round(bx), Y, round(bx + bw), round(y + h)))
         if kind in ('shoulder', 'feet'):
             lw, rw = (SHOULDER_L[1] - SHOULDER_L[0]) * s, (SHOULDER_R[1] - SHOULDER_R[0]) * s
             body.alpha_composite(tile(ref, (SHOULDER_L[0], y0, SHOULDER_L[1], y1), lw, h), (round(px), Y))
             body.alpha_composite(tile(ref, (SHOULDER_R[0], y0, SHOULDER_R[1], y1), rw, h), (round(W - px - rw), Y))
         else:
-            pan = tile(ref, PANEL, pw, h)
+            pan = panel_tile(ref, pw, h)
             body.alpha_composite(pan, (round(px), Y))
             body.alpha_composite(pan.transpose(Image.FLIP_LEFT_RIGHT), (round(W - px - pw), Y))
         if kind == 'inner':
@@ -104,9 +119,11 @@ def compose(ref, W, H, R, cubby_cols=3):
                 if i < cubby_cols - 1:
                     body.alpha_composite(tile(ref, (DIV[0], y0, DIV[1], y1), dw, h), (round(x), Y))
                     x += dw
-        if kind in ('door', 'shoulder'):
-            doors.alpha_composite(tile(ref, (DOOR_L[0], y0, DOOR_L[1], y1), DOOR_W * s, h), (0, Y))
-            doors.alpha_composite(tile(ref, (DOOR_R[0], y0, DOOR_R[1], y1), (DOOR_R[1] - DOOR_R[0]) * s, h), (round(W - (DOOR_R[1] - DOOR_R[0]) * s), Y))
+        if kind != 'cubby':        # calque portes sur toutes les bandes (bas de porte jamais coupé)
+            dy1 = min(y1, FOOT_TOP) if kind == 'feet' else y1
+            dh = h * (dy1 - y0) / (y1 - y0)
+            doors.alpha_composite(tile(ref, (DOOR_L[0], y0, DOOR_L[1], dy1), DOOR_W * s, dh), (0, Y))
+            doors.alpha_composite(tile(ref, (DOOR_R[0], y0, DOOR_R[1], dy1), (DOOR_R[1] - DOOR_R[0]) * s, dh), (round(W - (DOOR_R[1] - DOOR_R[0]) * s), Y))
         y += h
     body.alpha_composite(doors)
     return body, boxes
@@ -131,15 +148,10 @@ def maquette(W, H, cubby_rows=1, cubby_cols=3):
     tapis = Image.new('RGBA', (W, H), (0, 0, 0, 0))
     ImageDraw.Draw(tapis).ellipse([ax - aw * 0.05, ay + ah * 0.97, ax + aw * 1.05, ay + ah * 1.03], fill=(60, 30, 10, 110))
     bg.alpha_composite(tapis.filter(ImageFilter.GaussianBlur(8)))
-    # avatar derrière l'arche
-    r = int(aw * 0.09)
-    d.ellipse([ax + aw * 0.14, ay - r * 0.7, ax + aw * 0.14 + 2 * r, ay - r * 0.7 + 2 * r], fill=(90, 160, 90, 255), outline=(230, 190, 80, 255), width=3)
     bg.alpha_composite(arm, (ax, ay))
     f2 = ImageFont.truetype(FONT, max(13, int(aw * 0.05)))
     f1 = ImageFont.truetype(FONT, max(11, int(aw * 0.036)))
     d.text((ax + aw / 2 - d.textlength('Champion', font=f2) / 2, ay + int(aw * 0.085)), 'Champion', font=f2, fill=(59, 36, 18, 255))
-    d.rounded_rectangle([ax + aw - int(aw * 0.22), ay + int(aw * 0.03), ax + aw - int(aw * 0.06), ay + int(aw * 0.09)], radius=6, fill=(122, 74, 28, 255))
-    d.text((ax + aw - int(aw * 0.2), ay + int(aw * 0.04)), '* 19', font=f1, fill=(255, 209, 102, 255))
     return bg.convert('RGB')
 
 

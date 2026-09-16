@@ -1,46 +1,108 @@
 /* ════════════════════════════════════════════════════════════════════
-   armoire.css — Accueil enfant « L'Armoire » v2 (HO-MJ-14 : trois zones,
-   portes ouvertes, marges de pièce). Remplace le meuble à 1 zone de
-   HO-MJ-13. Référence : studio/minijeux/inbox/decoupe/ChatGPT Image 15
-   sept. 2026, 00_25_01.png. Structure HTML/CSS pure ; les .webp de
-   site/img/armoire/ ne posent QUE la texture (bois, portes, lumière).
+   armoire.css — Accueil enfant « L'Armoire » v3 (HO-MJ-15 : carcasse en
+   tuiles fidèle à la maquette statique, remplace le HTML/CSS pur de v2
+   HO-MJ-14). Spec : studio/minijeux/tools/armoire-compose.py (compose(),
+   panel_tile(), rows()) + ses rendus HO-MJ-15-maquette-*.png. Les tuiles
+   viennent de site/img/armoire/carcasse/ (19 webp, ~64 Ko), posées par
+   armoire.js via une seule variable --u (pixel par unité) sur #armoire.
    Zéro ascenseur, à AUCUN viewport (règle absolue).
    ════════════════════════════════════════════════════════════════════ */
 
 html, body { height:100%; overflow:hidden; }
-/* la pièce : mur CSS chaud (aucune image), remplace le dégradé sombre de
-   mp-theme.css pour cette seule page (même sélecteur, chargé après). */
-body { background:linear-gradient(180deg, #f3dcae 0%, #dba869 40%, #8c5629 78%, #4a2c14 100%); }
+/* la pièce : mur dégradé chaud de la maquette (226/184/126 haut → 136/94/56 bas) */
+body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, #886038 100%); }
 
-/* ── PIÈCE : boîte safe-area, marges visibles 3-5 % (sauf le haut, dédié
-   au débord de l'avatar — non contraint par le brief). ────────────── */
 .piece {
   position:relative; height:100%; width:100%; box-sizing:border-box;
-  padding: max(env(safe-area-inset-top), clamp(20px, 8%, 60px))
-           max(4%, env(safe-area-inset-right))
-           max(4%, env(safe-area-inset-bottom))
-           max(4%, env(safe-area-inset-left));
+  /* PAS de padding-top custom : le positionnement vertical de #armoire doit
+     reproduire EXACTEMENT maquette() (ay posé par armoire.js en
+     style.marginTop, seule source de marge en haut). Un padding-top ici
+     s'ajouterait à ay et décalerait le rendu par rapport à la maquette
+     (mesuré : fidélité HO-MJ-15 § 5.2). L'avatar (position:absolute, hors
+     flux) déborde librement dans cette marge sans l'agrandir. */
+  padding: env(safe-area-inset-top)
+           max(2%, env(safe-area-inset-right))
+           max(2%, env(safe-area-inset-bottom))
+           max(2%, env(safe-area-inset-left));
+  display:flex; align-items:flex-start; justify-content:center;
 }
 /* tapis : ellipse sombre floue sous les pieds */
 .piece::before {
-  content:''; position:absolute; left:50%; bottom:1%; width:70%; max-width:640px; aspect-ratio:5/1;
-  background:radial-gradient(ellipse at center, rgba(0,0,0,.45), rgba(0,0,0,0) 72%);
-  filter:blur(2px); transform:translateX(-50%); z-index:0; pointer-events:none;
+  content:''; position:absolute; left:50%; bottom:2%; width:60%; max-width:520px; aspect-ratio:6/1;
+  background:radial-gradient(ellipse at center, rgba(0,0,0,.4), rgba(0,0,0,0) 72%);
+  filter:blur(3px); transform:translateX(-50%); z-index:0; pointer-events:none;
 }
 
-.armoire {
-  position:relative; z-index:1; height:100%; width:100%; max-width:1100px; margin:0 auto;
-  display:grid; grid-template-rows:auto auto auto 1fr auto auto; overflow:visible;
+/* ── #armoire : grille posée par armoire.js (--u en pixel/unité) ──────
+   Colonnes : porte-g(139u) panneau-g(22u) corps(1fr) panneau-d(22u) porte-d(139u).
+   Rangées : `grid-auto-rows` implicite — armoire.js pose la hauteur EXACTE
+   (px) de chaque rangée en style inline (nombre de rangées de casiers
+   variable, 1 à 3, cf. computeGeometry() qui reproduit compose()). */
+#armoire {
+  position:relative; z-index:1;
+  width:calc(952 * var(--u, 1px));
+  display:grid;
+  grid-template-columns:
+    calc(139 * var(--u, 1px))
+    calc(22  * var(--u, 1px))
+    1fr
+    calc(22  * var(--u, 1px))
+    calc(139 * var(--u, 1px));
+  grid-auto-flow:row;
+}
+#armoire > * { min-height:0; min-width:0; }
+#armoire .ar-row { grid-column:3 / 4; }
+
+/* ── panneaux latéraux : un seul élément par côté, colonnes 2 et 4, du
+   haut en bas (grid-row 1/-1), motif bois uni répété en Y ────────────── */
+.ar-panneau {
+  /* grid-row posé en JS : de la vitrine haute (ligne 2) aux tiroirs (avant-
+     dernière) — le fronton et les pieds ont leurs propres épaules, un panneau
+     qui monte au-dessus de l'arche fait deux poteaux au-dessus du meuble
+     (revue 2026-09-17). */
+  z-index:1;
+  background:url('../img/armoire/carcasse/panneau.webp') repeat-y left top / 100% auto;
+}
+.ar-panneau-g { grid-column:2 / 3; }
+.ar-panneau-d { grid-column:4 / 5; transform:scaleX(-1); }
+
+/* ── fronton : corps + épaules qui débordent sur la colonne panneau ──── */
+/* grid-row posé en JS (armoire.js) : le nombre de lignes varie (1-3 rangées
+   de casiers), -1 seul n'est pas fiable en grille à lignes auto-générées. */
+.ar-fronton { grid-column:1 / 6; position:relative; z-index:1;
+}
+/* La carcasse est un décor : le tap la traverse (avatar posé derrière l'arche,
+   revue 2026-09-17). Seuls les boutons du calque objets reprennent la main. */
+#armoire, #armoire .ar-fronton { pointer-events:none; }
+#armoire button { pointer-events:auto; }
+.ar-fronton-corps {
+  position:absolute; left:calc(139 * var(--u, 1px)); right:calc(139 * var(--u, 1px)); top:0; bottom:0;
+  background:url('../img/armoire/carcasse/fronton.webp') 100% 100% / 100% 100% no-repeat;
+}
+.ar-fronton-epaule {
+  position:absolute; top:0; bottom:0; width:calc(67 * var(--u, 1px)); z-index:2;
+}
+/* l'épaule commence exactement où finit la porte (139u) et déborde vers la
+   droite sur la colonne panneau+corps (67u de large, spec compose() : les
+   épaules sont posées à x=px, jamais chevauchées par la porte). */
+.ar-fronton-epaule-g { left:calc(139 * var(--u, 1px)); background:url('../img/armoire/carcasse/fronton-g.webp') 100% 100% / 100% 100% no-repeat; }
+.ar-fronton-epaule-d { right:calc(139 * var(--u, 1px)); background:url('../img/armoire/carcasse/fronton-d.webp') 100% 100% / 100% 100% no-repeat; }
+.ar-fronton .pseudo {
+  position:absolute; left:50%; top:56%; transform:translate(-50%, -50%); width:100%;
+  font-family:'Fredoka One'; font-weight:400; color:#3b2412; text-shadow:0 1px 0 rgba(255,255,255,.35);
+  font-size:clamp(.85rem, calc(6 * var(--u, 1px)), 1.4rem); white-space:nowrap; text-align:center;
+  overflow:hidden; text-overflow:ellipsis; pointer-events:none; z-index:1;
 }
 
-/* ── AVATAR : derrière le fronton (z-index inférieur), mordu ~15 % par
-   le haut sculpté. Débord volontaire au-dessus de l'armoire. ───────── */
+/* ── AVATAR : derrière l'arche (z-index inférieur), mordu ~15 % ────────
+   Positionné en JS (armoire.js § positionAvatar), PAS en % de .piece :
+   #profil-avatar est un FRÈRE de #armoire (jamais un enfant — sinon détruit
+   par root.innerHTML='' à chaque resize, cf. incident index.spec.mjs), donc
+   son ancrage doit suivre le rectangle réel de l'armoire, qui varie avec
+   --u et geo.ay. left/top posés en style inline (px), pas ici. */
 .ar-avatar-wrap {
-  /* revue 2026-09-15 : ≥ 56 px (cible tactile), et 30 % du disque descend
-     sous le bord haut du fronton — l'épaule gauche de l'arche étant plus
-     basse que son sommet, le bois en cache ~15 % à l'œil. */
-  position:absolute; left:3%; top:0; width:clamp(56px, 16%, 110px); aspect-ratio:1;
-  transform:translateY(-70%); z-index:1; cursor:pointer;
+  position:absolute; width:clamp(56px, 16%, 110px); aspect-ratio:1;
+  z-index:0; cursor:pointer;
 }
 .avatar {
   width:100%; height:100%; border-radius:50%; overflow:hidden;
@@ -50,72 +112,117 @@ body { background:linear-gradient(180deg, #f3dcae 0%, #dba869 40%, #8c5629 78%, 
 }
 .avatar img { width:82%; height:82%; object-fit:contain; }
 
-/* ── FRONTON : prénom seul, gravé au centre ────────────────────────── */
-.ar-fronton {
-  position:relative; width:100%; aspect-ratio:720/138; max-height:9dvh; min-height:34px;
-  background:url('../img/armoire/fronton.webp') center bottom / 100% 100% no-repeat;
-  z-index:2; flex-shrink:0;
-}
-.ar-fronton .pseudo {
-  position:absolute; left:50%; top:54%; transform:translate(-50%, -50%);
-  font-family:'Fredoka One'; font-weight:400; color:#3b2412; text-shadow:0 1px 0 rgba(255,255,255,.35);
-  font-size:clamp(.85rem, 3.2vw, 1.3rem); white-space:nowrap; max-width:56%;
-  overflow:hidden; text-overflow:ellipsis; pointer-events:none;
-}
-.mp-stars-total {
-  position:absolute; right:4%; top:14%; cursor:default;
-  background:#7a4a1c; border:2px solid #5a3512; border-radius:6px; color:var(--gold);
-  font-family:'Fredoka One'; font-weight:400; font-size:clamp(.65rem, 2.2vw, .9rem);
-  padding:3px 8px; box-shadow:0 3px 6px rgba(0,0,0,.35); white-space:nowrap;
-}
+/* ── rangées fixes/souples du corps intérieur (colonne 3) ────────────── */
+.ar-planche { grid-column:3 / 4; background:url('../img/armoire/carcasse/planche.webp') center / 100% 100% no-repeat; }
+.ar-traverse-haut { grid-column:3 / 4; background:url('../img/armoire/carcasse/traverse-haut.webp') center / 100% 100% no-repeat; }
+.ar-traverse-bas { grid-column:3 / 4; background:url('../img/armoire/carcasse/traverse-bas.webp') center / 100% 100% no-repeat; }
+.ar-planche-casiers { grid-column:3 / 4; background:url('../img/armoire/carcasse/planche-casiers.webp') center / 100% 100% no-repeat; }
 
-/* ── TRAVERSES : planche étirée entre les 3 zones, déborde un peu ──── */
-.ar-traverse {
-  height:clamp(8px, 1.6dvh, 16px); width:104%; margin:0 -2%;
-  background:url('../img/armoire/planche.webp') center / 100% 100% no-repeat; z-index:1;
-}
-
-/* ── PORTES OUVERTES : hors flux, mordent la marge de la pièce ─────── */
-.ar-porte {
-  position:absolute; top:0; bottom:0; width:7%; pointer-events:none; z-index:3;
-  background:url('../img/armoire/porte-ouverte.webp') center / 100% 100% no-repeat;
-}
-.ar-porte-l { left:-3.5%; }
-.ar-porte-r { right:-3.5%; transform:scaleX(-1); }
-@media (min-width:600px) { .ar-porte { width:12%; } }
-
-/* ── VITRINE : 2 étagères pleine largeur, 2 objets chacune ─────────── */
 .ar-vitrine {
-  position:relative; max-height:clamp(150px, 32dvh, 260px);
-  background:url('../img/armoire/fond-bois.webp') repeat; background-size:96px 96px;
-  display:flex; flex-direction:column; z-index:1;
+  position:relative; display:flex; z-index:1;
+  background:url('../img/armoire/carcasse/vitrine-haut.webp') center / 100% 100% no-repeat;
 }
-.ar-etagere { flex:1; display:flex; min-height:0; }
-.ar-shelf-mid {
-  height:clamp(6px, 1.2dvh, 10px); flex-shrink:0;
-  background:url('../img/armoire/planche.webp') center / 100% 100% no-repeat;
+.ar-vitrine.ar-vitrine-bas { background-image:url('../img/armoire/carcasse/vitrine-bas.webp'); }
+.ar-bas-etagere {
+  position:relative; display:flex; z-index:1;
+  background:url('../img/armoire/carcasse/bas-etagere.webp') center / 100% 100% no-repeat;
+}
+/* pas de séparateur visuel entre les 3 places (contrairement aux casiers) :
+   le bouton peut déborder librement sur son voisin sans rien changer au
+   rendu (aucune image entre eux) — garantit ≥80px même quand la case brute
+   est plus étroite (petit écran). --bas-bleed posé en JS. */
+.ar-bas-etagere .casier {
+  position:relative; flex:1; min-width:0; width:auto;
+  margin-left:calc(-1 * var(--bas-bleed, 0) * var(--u, 1px));
+  margin-right:calc(-1 * var(--bas-bleed, 0) * var(--u, 1px));
+  padding-left:calc(2px + var(--bas-bleed, 0) * var(--u, 1px));
+  padding-right:calc(2px + var(--bas-bleed, 0) * var(--u, 1px));
+}
+.ar-bas-etagere .casier:first-child { margin-left:0; }
+.ar-bas-etagere .casier:last-child { margin-right:0; }
+
+/* ── casiers : rangée de N cases + séparateurs, souple ────────────────── */
+.ar-casiers-row { display:flex; position:relative; z-index:1; }
+.ar-casiers-row .ar-casier-bg {
+  flex:1; min-width:0; background:url('../img/armoire/carcasse/casier.webp') center / 100% 100% no-repeat;
+  display:flex; position:relative;
+}
+.ar-casiers-row .ar-separateur {
+  width:calc(36 * var(--u, 1px)); flex-shrink:0; position:relative;
+  background:url('../img/armoire/carcasse/separateur.webp') center / 100% 100% no-repeat;
+  pointer-events:none; /* le clic traverse jusqu'au bouton .casier voisin, étendu par-dessus (zone tap ≥ 80px) */
+}
+/* zone tap élargie sous le séparateur voisin (getBoundingClientRect() du
+   bouton LUI-MÊME doit mesurer ≥96px, cf. index.spec.mjs — un ::after
+   invisible ne suffit pas, Playwright mesure le bouton). Le bouton déborde
+   de la moitié du séparateur adjacent, des DEUX côtés s'il en a deux (case
+   du milieu) ; son CONTENU (image/étiquette) reste centré sur la case
+   d'origine via un padding compensatoire égal aux deux débords — un
+   séparateur 36u (~13-17px selon --u) mordait sinon la largeur utile des
+   cases sous les revues à petit écran (480px : 90px de case < 96px
+   attendu). Le séparateur reste peint PAR-DESSUS (z-index), rendu visuel
+   inchangé au pixel : seule la zone cliquable grandit. */
+.ar-casiers-row .casier {
+  position:absolute; top:0; bottom:0; z-index:1; width:auto; /* laisse left/right déterminer la largeur (écrase le width:100% générique) */
+  left:calc(-1 * var(--casier-bleed-l, 0) * var(--u, 1px));
+  right:calc(-1 * var(--casier-bleed-r, 0) * var(--u, 1px));
+  padding-left:calc(2px + var(--casier-bleed-l, 0) * var(--u, 1px));
+  padding-right:calc(2px + var(--casier-bleed-r, 0) * var(--u, 1px));
+}
+/* --casier-bleed posé en JS (armoire.js) sur .ar-casiers-row, calculé pour
+   garantir ≥80px de zone tap quel que soit le nombre de colonnes/l'écran —
+   remplace un forfait fixe qui ne suffisait plus sur petit écran. */
+.ar-casiers-row .ar-casier-bg:not(:first-child) .casier { --casier-bleed-l: var(--casier-bleed, 0); }
+.ar-casiers-row .ar-casier-bg:not(:last-child) .casier { --casier-bleed-r: var(--casier-bleed, 0); }
+.ar-casiers-row .ar-separateur { z-index:2; }
+
+/* ── bloc tiroirs : à fleur des panneaux, deux bords visibles ─────────── */
+.ar-tiroirs {
+  grid-column:3 / 4; position:relative; z-index:1;
+  background:url('../img/armoire/carcasse/tiroirs.webp') center / 100% 100% no-repeat;
 }
 
-/* ── boutons partagés vitrine + casiers ────────────────────────────── */
+/* ── pieds : corps + colonnes qui débordent (comme le fronton) ───────── */
+.ar-pieds { grid-column:1 / 6; position:relative; z-index:1; }
+.ar-pieds-corps {
+  position:absolute; left:calc(139 * var(--u, 1px)); right:calc(139 * var(--u, 1px)); top:0; bottom:0;
+  background:url('../img/armoire/carcasse/pieds.webp') center / 100% 100% no-repeat;
+}
+/* même règle que les épaules du fronton : débute exactement où finit la
+   porte (139u), déborde vers la droite sur 67u (jamais chevauchée par la
+   porte, spec compose() § shoulder/feet). */
+.ar-pieds-col { position:absolute; top:0; bottom:0; width:calc(67 * var(--u, 1px)); z-index:2; }
+.ar-pieds-col-g { left:calc(139 * var(--u, 1px)); background:url('../img/armoire/carcasse/pieds-g.webp') center / 100% 100% no-repeat; }
+.ar-pieds-col-d { right:calc(139 * var(--u, 1px)); background:url('../img/armoire/carcasse/pieds-d.webp') center / 100% 100% no-repeat; }
+
+/* ── PORTES OUVERTES : calque au-dessus, jamais dans la grille ────────── */
+.ar-porte { position:absolute; pointer-events:none; z-index:3; width:calc(139 * var(--u, 1px)); }
+.ar-porte-haut { background:url('../img/armoire/carcasse/porte-haut.webp') top / 100% 100% no-repeat; }
+.ar-porte-bas { background:url('../img/armoire/carcasse/porte-bas.webp') top / 100% 100% no-repeat; }
+.ar-porte-l { left:0; }
+.ar-porte-r { right:0; transform:scaleX(-1); }
+
+/* ── boutons objets/casiers (calque objets, au-dessus de la carcasse) ── */
 .objet, .casier {
-  position:relative; min-height:80px; min-width:0; flex:1; display:flex; flex-direction:column;
-  align-items:center; justify-content:flex-end; border:none; background:none; cursor:pointer;
-  padding:0 2px 6px; font-family:inherit; -webkit-tap-highlight-color:transparent; transition:transform .12s;
+  position:relative; width:100%; height:100%; min-height:80px; min-width:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:flex-end;
+  border:none; background:none; cursor:pointer; padding:0 2px 8%; font-family:inherit;
+  -webkit-tap-highlight-color:transparent; transition:transform .12s; z-index:1;
 }
 .objet:active, .casier:active { transform:scale(.94); }
-.objet .spot, .casier .spot {
-  position:absolute; top:0; left:50%; transform:translateX(-50%); width:34%; max-width:96px;
-  aspect-ratio:96/44; background:url('../img/armoire/spot.webp') center / contain no-repeat;
-  pointer-events:none; opacity:.85;
-}
 .objet .obj, .casier .obj {
   position:relative; max-width:78%; max-height:74%; object-fit:contain; z-index:1;
   filter:drop-shadow(0 4px 6px rgba(0,0,0,.35));
 }
 .objet .etiquette, .casier .etiquette {
   position:relative; z-index:1; margin-top:4px; font-family:'Fredoka One'; font-weight:400;
-  font-size:clamp(.72rem, 2.6vw, .95rem); color:#fff8ec; text-shadow:0 2px 4px rgba(0,0,0,.6);
-  line-height:1.15; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:96%;
+  /* clamp() en unité de CASE (var(--u)) plutôt qu'en vw : sur grand écran, un
+     mot comme « Drapeaux » ne doit pas être coupé en "…" (revue 1280×720) —
+     un retour à la ligne (2 mots max) lit mieux qu'une ellipse à 4 ans. */
+  /* revue 2026-09-17 : un mot, une ligne — « Drapeaux » coupé en « Drapeau / x »
+     à 360 px se lit plus mal qu'un mot un peu plus petit. */
+  font-size:clamp(.62rem, calc(3.6 * var(--u, 1px)), .95rem); color:#fff8ec; text-shadow:0 2px 4px rgba(0,0,0,.6);
+  line-height:1.15; text-align:center; white-space:nowrap; max-width:96%;
 }
 .objet .hdr-badge {
   position:absolute; right:10%; top:2%; min-width:18px; height:18px; border-radius:999px; z-index:2;
@@ -126,35 +233,9 @@ body { background:linear-gradient(180deg, #f3dcae 0%, #dba869 40%, #8c5629 78%, 
 .objet .porte, .casier .porte { display:none; }
 .objet.locked .porte, .casier.locked .porte {
   display:block; position:absolute; inset:0; z-index:2;
-  /* la porte garde ses proportions (auto 100 %) : sur une étagère large de
-     vitrine, l'étirer à 100 %/100 % donnait un panneau difforme (revue). */
   background:url('../img/armoire/porte.webp') center / auto 100% no-repeat;
 }
-.objet.locked .obj, .objet.locked .spot, .casier.locked .obj, .casier.locked .spot { visibility:hidden; }
+.objet.locked .obj, .casier.locked .obj { visibility:hidden; }
 .objet.locked .etiquette, .casier.locked .etiquette { z-index:3; }
-
-/* ── CASIERS : grille de jeux tirés au hasard ──────────────────────── */
-.ar-casiers {
-  --cols:3; position:relative; display:grid; grid-template-columns:repeat(var(--cols), 1fr);
-  grid-auto-rows:1fr; min-height:0;
-  background:url('../img/armoire/fond-bois.webp') repeat; background-size:96px 96px;
-}
-.ar-casiers .casier { border-left:6px solid transparent; border-image:url('../img/armoire/montant.webp') 0 6 0 6 repeat; }
-.ar-casiers .casier:nth-child(3n+1) { border-left-width:6px; }
-.ar-casiers .casier::after {
-  content:''; position:absolute; left:0; right:0; bottom:0; height:6%; min-height:8px;
-  background:url('../img/armoire/planche.webp') center / 100% 100% no-repeat;
-}
-
-/* ── BAS : compartiment fermé, 2 tiroirs décoratifs, pieds ─────────── */
-.ar-bas {
-  position:relative; width:100%; aspect-ratio:720/202; max-height:16dvh; min-height:56px;
-  background:url('../img/armoire/socle.webp') center top / 100% 100% no-repeat;
-  display:flex; align-items:center; justify-content:center; gap:4%; flex-shrink:0; z-index:1;
-}
-.tiroir-deco {
-  width:36%; height:52%; max-width:180px;
-  background:url('../img/armoire/tiroir.webp') center / 100% 100% no-repeat;
-}
 
 @media (prefers-reduced-motion: reduce) { .objet, .casier { transition:none; } }

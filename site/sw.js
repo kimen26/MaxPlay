@@ -87,15 +87,31 @@ const PRECACHE_LIST = [
   'img/maxplay-icon-maskable-192.png',
   'img/maxplay-icon-maskable-512.png',
   'img/maxplay-icon-180.png',
-  'img/armoire/fronton.webp',
-  'img/armoire/fond-bois.webp',
-  'img/armoire/montant.webp',
-  'img/armoire/planche.webp',
-  'img/armoire/socle.webp',
-  'img/armoire/tiroir.webp',
-  'img/armoire/spot.webp',
+  // Carcasse v3 (HO-MJ-15) : 19 tuiles ~64 Ko, remplace les tuiles v1
+  // fronton/fond-bois/montant/planche/socle/tiroir/spot/porte-ouverte
+  // ci-dessus (retirees du precache, fichiers conserves sur disque le
+  // temps de la recette, brief section 4). porte.webp reste : encore
+  // utilisee pour la porte verrouillee de l encyclopedie (objet.locked .porte).
   'img/armoire/porte.webp',
-  'img/armoire/porte-ouverte.webp',
+  'img/armoire/carcasse/fronton.webp',
+  'img/armoire/carcasse/fronton-g.webp',
+  'img/armoire/carcasse/fronton-d.webp',
+  'img/armoire/carcasse/vitrine-haut.webp',
+  'img/armoire/carcasse/planche.webp',
+  'img/armoire/carcasse/vitrine-bas.webp',
+  'img/armoire/carcasse/traverse-haut.webp',
+  'img/armoire/carcasse/casier.webp',
+  'img/armoire/carcasse/separateur.webp',
+  'img/armoire/carcasse/planche-casiers.webp',
+  'img/armoire/carcasse/traverse-bas.webp',
+  'img/armoire/carcasse/bas-etagere.webp',
+  'img/armoire/carcasse/tiroirs.webp',
+  'img/armoire/carcasse/pieds.webp',
+  'img/armoire/carcasse/pieds-g.webp',
+  'img/armoire/carcasse/pieds-d.webp',
+  'img/armoire/carcasse/panneau.webp',
+  'img/armoire/carcasse/porte-haut.webp',
+  'img/armoire/carcasse/porte-bas.webp',
 ];
 
 self.addEventListener('install', (event) => {

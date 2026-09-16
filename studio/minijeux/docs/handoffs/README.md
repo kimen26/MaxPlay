@@ -10,7 +10,7 @@
 | HO-MJ-12 | L'Armoire · découpe des pièces GPT en tuiles/objets webp | site/img/armoire/**, tools/armoire-decoupe.py | fait |
 | HO-MJ-13 | L'Armoire · nouvel accueil enfant, remplace La Vallée | site/index.html, js/armoire.js, css/armoire.css, js/mur.js, css/mur.css, js/mur-scene.js (suppr.), sw.js, tests index/mur-nid/armoire | fait |
 | HO-MJ-14 | L'Armoire v2 · trois zones, portes ouvertes, marges de pièce | site/index.html, js/armoire.js, css/armoire.css, sw.js, tests armoire | fait (rejetée visuellement par PY, remplacée par HO-MJ-15) |
-| HO-MJ-15 | L'Armoire v3 · carcasse en tuiles fidèle à la maquette validée | site/index.html, js/armoire.js, css/armoire.css, sw.js, img/armoire/carcasse/**, tools/armoire-tuiles.py, tests armoire/index | en cours |
+| HO-MJ-15 | L'Armoire v3 · carcasse en tuiles fidèle à la maquette validée | site/index.html, js/armoire.js, css/armoire.css, sw.js, img/armoire/carcasse/**, tools/armoire-tuiles.py, tests armoire/index | fait |
 
 ## Archivés (`archives/2026-09-03/`)
 

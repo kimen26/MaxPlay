@@ -25,67 +25,26 @@
 </head>
 <body data-av-nobadge>
 
-<!-- ══════════════ L'ARMOIRE (menu enfant, HO-MJ-14 : 3 zones) ══════════════ -->
-<div class="piece">
-<div class="armoire" id="mur-view">
-  <div class="ar-avatar-wrap" id="profil-avatar" role="button" aria-label="Mon dino">
-    <div class="avatar">🦕</div>
-  </div>
-
-  <header class="ar-fronton">
-    <div class="pseudo" id="profil-pseudo">Champion</div>
-    <div class="mp-stars-total" id="stars-total">⭐ 0</div>
-  </header>
-
-  <section class="ar-vitrine">
-    <span class="ar-porte ar-porte-l" aria-hidden="true"></span>
-    <span class="ar-porte ar-porte-r" aria-hidden="true"></span>
-    <div class="ar-etagere">
-      <button type="button" class="objet" id="vit-dinos" aria-label="Dinos">
-        <span class="spot" aria-hidden="true"></span>
-        <img class="obj" src="img/armoire/obj-livres-dinos.webp" alt="">
-        <span class="porte" aria-hidden="true"></span>
-        <span class="etiquette">Dinos</span>
-      </button>
-      <button type="button" class="objet" id="vit-monde" aria-label="Monde">
-        <span class="spot" aria-hidden="true"></span>
-        <img class="obj" src="img/armoire/obj-globe.webp" alt="">
-        <span class="etiquette">Monde</span>
-      </button>
-    </div>
-    <div class="ar-shelf-mid" aria-hidden="true"></div>
-    <div class="ar-etagere">
-      <button type="button" class="objet" id="hdr-oeufs" aria-label="Mes œufs">
-        <span class="spot" aria-hidden="true"></span>
-        <img class="obj" src="img/armoire/obj-oeuf.webp" alt="">
-        <span class="hdr-badge" id="hdr-oeufs-n" style="display:none"></span>
-        <span class="etiquette">Œufs</span>
-      </button>
-      <button type="button" class="objet" id="hdr-padidi" aria-label="Album Padidi">
-        <span class="spot" aria-hidden="true"></span>
-        <img class="obj" src="img/armoire/obj-carnet.webp" alt="">
-        <span class="etiquette">Album</span>
-      </button>
-    </div>
-  </section>
-
-  <div class="ar-traverse" aria-hidden="true"></div>
-
-  <div class="ar-casiers" id="casiers"></div>
-
-  <div class="ar-traverse" aria-hidden="true"></div>
-
-  <footer class="ar-bas" aria-hidden="true">
-    <span class="ar-porte ar-porte-l" aria-hidden="true"></span>
-    <span class="ar-porte ar-porte-r" aria-hidden="true"></span>
-    <span class="tiroir-deco"></span>
-    <span class="tiroir-deco"></span>
-  </footer>
+<!-- ══════════════ L'ARMOIRE (menu enfant, HO-MJ-15 : carcasse en tuiles) ══════
+     #mur-view = bascule armoire/parents inchangée (mur.js § show()).
+     Le contenu de #armoire (fronton, panneaux, vitrines, casiers, tiroirs,
+     pieds, portes) est généré par js/armoire.js à chaque resize (--u calculé
+     comme compose() de armoire-compose.py) via root.innerHTML='' : #profil-
+     avatar DOIT rester HORS de #armoire (frère, pas enfant), sinon il est
+     détruit à chaque resize. Positionné en absolu par rapport à .piece,
+     aligné sur #armoire via --ay/--u (postMessage-free : armoire.js pose
+     ces variables sur .piece aussi). -->
+<div class="piece" id="mur-view">
+<div class="ar-avatar-wrap" id="profil-avatar" role="button" aria-label="Mon dino">
+  <div class="avatar">🦕</div>
 </div>
+<div class="armoire" id="armoire" role="group" aria-label="Mon armoire"></div>
 </div>
 
-<!-- mini-menu de l'avatar : habiller / espace parents (retour PY 2026-07-30) -->
+<!-- mini-menu de l'avatar : étoiles (HO-MJ-15 : plus sur l'arche) + habiller
+     + espace parents (retour PY 2026-07-30) -->
 <div class="avatar-menu" id="avatar-menu" style="display:none">
+  <div class="mp-stars-total" id="stars-total">⭐ 0</div>
   <button type="button" id="am-atelier">🎨 Habiller mon dino</button>
   <button type="button" id="parents-btn">👨‍👩‍👦 Espace parents</button>
 </div>
@@ -217,26 +176,10 @@
       });
     }
 
-    // ── raccourcis d'entête : œufs (chambre) + album Padidi ──────────
-    function wireHeaderShortcuts() {
-      document.getElementById('hdr-oeufs').addEventListener('click', () => {
-        if (window.NidUI && NidUI.openChambre) NidUI.openChambre();
-      });
-      document.getElementById('hdr-padidi').addEventListener('click', () => {
-        if (window.NidUI && NidUI.openPadidi) NidUI.openPadidi();
-      });
-      // badge : nb d'œufs au nid (moteur chargé paresseusement → on re-tente)
-      function paintBadge() {
-        try {
-          const n = window.Collection ? Collection.eggs().length : 0;
-          const b = document.getElementById('hdr-oeufs-n');
-          b.textContent = n;
-          b.style.display = n > 0 ? '' : 'none';
-        } catch (e) {}
-      }
-      setTimeout(paintBadge, 1500);
-      window.addEventListener('pageshow', paintBadge);
-    }
+    // Raccourcis d'entête (œufs/album) : gérés par armoire.js (le DOM de la
+    // vitrine est recréé à chaque resize, wireVitrine() s'y refait — brief
+    // HO-MJ-15). Ne pas re-wirer ici : #hdr-oeufs n'existe qu'après le
+    // premier render() de armoire.js, doublon garanti d'échouer en race.
 
     // ── Modale code TRITRI (encyclopédie) ────────────────────────────
     function openModal() { msg.textContent = ''; input.value = ''; modal.classList.add('show'); setTimeout(() => input.focus(), 50); }
@@ -259,7 +202,6 @@
     });
     paintProfilMeta();
     paintProfil();
-    wireHeaderShortcuts();
 
     // ── EP-120 : deep-link depuis l'écran de fin d'un mini-jeu ─────────
     // (mj-golden.js § bouton « Aller au nid », même convention que

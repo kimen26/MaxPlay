@@ -23,20 +23,27 @@ FONT = 'C:/Windows/Fonts/arialbd.ttf'
 # Tranches horizontales par défaut : porte+montant gauche | fond souple | porte+montant droit
 COLS_DOORS = [(0, 200, False), (200, 830, True), (830, 1024, False)]
 # Rangée des casiers : cadre | casier | séparateur | casier | séparateur | casier | cadre
-COLS_CUBBY = [(0, 185, False), (185, 362, True), (362, 398, False),
-              (398, 627, True), (627, 660, False), (660, 860, True), (860, 1024, False)]
+# Dans la référence, le corps des casiers (133→890) est plus large que le corps
+# derrière les portes (175→850). Papa Yann veut les montants alignés : on
+# élargit le corps des étages à portes de 82 unités (les portes s'écartent),
+# et la rangée de casiers se cale entre les mêmes montants.
+BODY_L, BODY_R = 175, 850          # bords du corps derrière les portes
+EXTRA = (890 - 133) - (BODY_R - BODY_L)   # 82 unités de corps en plus
+REF_W_TOTAL = 1024 + EXTRA
+COLS_CUBBY = [(133, 185, False), (185, 362, True), (362, 398, False),
+              (398, 627, True), (627, 660, False), (660, 860, True), (860, 890, False)]
 LEAF = (450, 65, 578, 152)          # le logo feuille du fronton, remplacé par du bois
 LEAF_PATCH = (322, 65, 450, 152)    # bois voisin qui le recouvre
 
 
 def cols_cubby(n):
     """Rangée de n casiers : cadre | (casier | séparateur)×(n-1) | casier | cadre."""
-    cols = [(0, 185, False)]
+    cols = [(133, 185, False)]
     for i in range(n):
         cols.append((185, 362, True))
         if i < n - 1:
             cols.append((362, 398, False))
-    cols.append((860, 1024, False))
+    cols.append((860, 890, False))
     return cols
 
 
@@ -84,12 +91,12 @@ def stretch(ref, W, H, ROWS=ROWS):
     # échelle : tenir la largeur, ET garder aux bandes souples au moins 85 %
     # de leur hauteur naturelle (sinon, en paysage, les étagères s'écrasent
     # et l'armoire devient un buffet difforme : on la rétrécit, le mur reste).
-    s = min(W / REF_W, H / (fixed_u + 0.85 * soft_u))
+    s = min(W / REF_W_TOTAL, H / (fixed_u + 0.85 * soft_u))
     fixed_h = fixed_u * s
     soft_nat = soft_u * s
     ratio = min(MAX_SOFT, (H - fixed_h) / soft_nat)   # facteur commun des bandes souples
     H = int(fixed_h + soft_nat * ratio)
-    W = int(REF_W * s)
+    W = int(REF_W_TOTAL * s)
     out = Image.new('RGBA', (W, H), (0, 0, 0, 0))
     y = 0.0
     boxes = {}
@@ -97,8 +104,10 @@ def stretch(ref, W, H, ROWS=ROWS):
         h = (y1 - y0) * s * (ratio if soft else 1)
         fixed_w = sum((x1 - x0) for x0, x1, sf in cols if not sf) * s
         soft_w = sum((x1 - x0) for x0, x1, sf in cols if sf) * s
-        xr = (W - fixed_w) / soft_w
-        x = 0.0
+        cubby = cols[0][0] == 133          # rangée sans porte : entre les montants
+        x = BODY_L * s if cubby else 0.0
+        avail = (W - (BODY_L + 1024 - BODY_R) * s) if cubby else W
+        xr = (avail - fixed_w) / soft_w
         cells = []
         for x0, x1, sf in cols:
             w = (x1 - x0) * s * (xr if sf else 1)
@@ -167,7 +176,7 @@ def maquette(W, H, objets=False, cubby_rows=1, cubby_cols=3):
     arm, boxes = stretch(ref, aw, ah, R)
     # modularité : si l'écran est haut, on AJOUTE une rangée de casiers au
     # lieu d'étirer les étagères (l'armoire grandit par étages, pas en chewing-gum)
-    while arm.size[1] < ah - (880 - 685 + 25) * (arm.size[0] / REF_W) and cubby_rows < 3:
+    while arm.size[1] < ah - (880 - 685 + 25) * (arm.size[0] / REF_W_TOTAL) and cubby_rows < 3:
         cubby_rows += 1
         R = rows(cubby_rows, cubby_cols)
         arm, boxes = stretch(ref, aw, ah, R)

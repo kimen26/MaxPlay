@@ -25,21 +25,42 @@ COLS_DOORS = [(0, 200, False), (200, 830, True), (830, 1024, False)]
 # Rangée des casiers : cadre | casier | séparateur | casier | séparateur | casier | cadre
 COLS_CUBBY = [(0, 185, False), (185, 362, True), (362, 398, False),
               (398, 627, True), (627, 660, False), (660, 860, True), (860, 1024, False)]
+LEAF = (450, 65, 578, 152)          # le logo feuille du fronton, remplacé par du bois
+LEAF_PATCH = (322, 65, 450, 152)    # bois voisin qui le recouvre
 
-# Bandes verticales (y0, y1, souple ?, tranches, nom)
-ROWS = [
-    (0, 165, False, COLS_DOORS, 'fronton'),
-    (165, 392, True, COLS_DOORS, 'vitrine-1'),
-    (392, 418, False, COLS_DOORS, 'planche-vitrine'),
-    (418, 653, True, COLS_DOORS, 'vitrine-2'),
-    (653, 685, False, COLS_DOORS, 'traverse-haut'),
-    (685, 905, True, COLS_CUBBY, 'casiers'),
-    (905, 935, False, COLS_DOORS, 'traverse-bas'),
-    (935, 1122, True, COLS_DOORS, 'bas-etagere'),
-    (1122, 1310, False, COLS_DOORS, 'bas-tiroirs'),
-    (1310, 1385, False, COLS_DOORS, 'pieds'),
-]
+
+def cols_cubby(n):
+    """Rangée de n casiers : cadre | (casier | séparateur)×(n-1) | casier | cadre."""
+    cols = [(0, 185, False)]
+    for i in range(n):
+        cols.append((185, 362, True))
+        if i < n - 1:
+            cols.append((362, 398, False))
+    cols.append((860, 1024, False))
+    return cols
+
+
+def rows(cubby_rows=1, cubby_cols=3):
+    """Bandes verticales ; la rangée de casiers se répète cubby_rows fois."""
+    r = [(0, 165, False, COLS_DOORS, 'fronton'),
+         (165, 392, True, COLS_DOORS, 'vitrine-1'),
+         (392, 418, False, COLS_DOORS, 'planche-vitrine'),
+         (418, 653, True, COLS_DOORS, 'vitrine-2'),
+         (653, 685, False, COLS_DOORS, 'traverse-haut')]
+    for i in range(cubby_rows):
+        if i:
+            r.append((880, 905, False, cols_cubby(cubby_cols), 'planche-casiers'))
+        r.append((685, 880, True, cols_cubby(cubby_cols), 'casiers'))
+    r += [(905, 935, False, COLS_DOORS, 'traverse-bas'),
+          (935, 1122, True, COLS_DOORS, 'bas-etagere'),
+          (1122, 1310, False, COLS_DOORS, 'bas-tiroirs'),
+          (1310, 1385, False, COLS_DOORS, 'pieds')]
+    return r
+
+ROWS = rows()
 REF_W, REF_H = 1024, 1385
+MAX_SOFT = 1.45   # une étagère ne s'étire jamais plus de ×1,45 (sinon armoire « allongée »)
+MARGIN_X = 0.02   # 2 % de mur de chaque côté
 
 # Objets posés : (nom de bande, index de tranche souple dans la bande, fichier, étiquette)
 OBJETS = [
@@ -56,7 +77,7 @@ OBJETS = [
 ]
 
 
-def stretch(ref, W, H):
+def stretch(ref, W, H, ROWS=ROWS):
     """Rend la référence dans W×H : fixes à l'échelle s, souples étirés."""
     fixed_u = sum((y1 - y0) for y0, y1, soft, *_ in ROWS if not soft)
     soft_u = sum((y1 - y0) for y0, y1, soft, *_ in ROWS if soft)
@@ -66,7 +87,8 @@ def stretch(ref, W, H):
     s = min(W / REF_W, H / (fixed_u + 0.85 * soft_u))
     fixed_h = fixed_u * s
     soft_nat = soft_u * s
-    ratio = (H - fixed_h) / soft_nat   # facteur commun des bandes souples
+    ratio = min(MAX_SOFT, (H - fixed_h) / soft_nat)   # facteur commun des bandes souples
+    H = int(fixed_h + soft_nat * ratio)
     W = int(REF_W * s)
     out = Image.new('RGBA', (W, H), (0, 0, 0, 0))
     y = 0.0
@@ -80,7 +102,11 @@ def stretch(ref, W, H):
         cells = []
         for x0, x1, sf in cols:
             w = (x1 - x0) * s * (xr if sf else 1)
-            tile = ref.crop((x0, y0, x1, y1)).resize((max(1, round(w)), max(1, round(h))), Image.LANCZOS)
+            # +1 px de recouvrement à droite et en bas : sans lui, chaque tuile
+            # redimensionnée séparément laisse une couture d'un pixel.
+            tile = ref.crop((x0, y0, min(x1 + 1, REF_W), min(y1 + 1, REF_H))).resize((max(1, round(w)) + 1, max(1, round(h)) + 1), Image.LANCZOS)
+            if name == 'fronton' and x0 == 200:
+                _sans_feuille(tile, s, x0, y0)
             out.alpha_composite(tile, (round(x), round(y)))
             if sf:
                 cells.append((round(x), round(y), round(x + w), round(y + h)))
@@ -88,6 +114,20 @@ def stretch(ref, W, H):
         boxes[name] = cells
         y += h
     return out, boxes
+
+
+def _sans_feuille(tile, s, x0, y0):
+    """Recouvre la feuille par du bois voisin (bords fondus)."""
+    global _REF
+    patch = _REF.crop(LEAF_PATCH)
+    lw, lh = LEAF[2] - LEAF[0], LEAF[3] - LEAF[1]
+    patch = patch.resize((lw, lh), Image.LANCZOS)
+    mask = Image.new('L', (lw, lh), 0)
+    ImageDraw.Draw(mask).rounded_rectangle([6, 6, lw - 6, lh - 6], radius=14, fill=255)
+    mask = mask.filter(ImageFilter.GaussianBlur(5))
+    full = _REF.crop((200, 0, 831, 166)).copy()
+    full.paste(patch, (LEAF[0] - 200, LEAF[1]), mask)
+    tile.paste(full.resize(tile.size, Image.LANCZOS))
 
 
 def pose(canvas, boxes, W_scale, font):
@@ -110,9 +150,12 @@ def pose(canvas, boxes, W_scale, font):
         d.text((cx - tw / 2, ty), label, font=font, fill=(255, 248, 236, 255))
 
 
-def maquette(W, H):
+def maquette(W, H, objets=False, cubby_rows=1, cubby_cols=3):
+    global _REF
     ref = Image.open(REF).convert('RGBA').crop((0, 0, 1024, 1385))
-    margin_x, margin_y = int(W * 0.04), int(H * 0.03)
+    _REF = ref
+    R = rows(cubby_rows, cubby_cols)
+    margin_x, margin_y = int(W * MARGIN_X), int(H * 0.03)
     # le mur
     bg = Image.new('RGBA', (W, H), (214, 170, 110, 255))
     d = ImageDraw.Draw(bg)
@@ -121,9 +164,16 @@ def maquette(W, H):
         d.line([(0, i), (W, i)], fill=(int(226 - 90 * t), int(184 - 90 * t), int(126 - 70 * t), 255))
     aw = W - 2 * margin_x
     ah = H - 2 * margin_y
-    arm, boxes = stretch(ref, aw, ah)
-    aw = arm.size[0]
+    arm, boxes = stretch(ref, aw, ah, R)
+    # modularité : si l'écran est haut, on AJOUTE une rangée de casiers au
+    # lieu d'étirer les étagères (l'armoire grandit par étages, pas en chewing-gum)
+    while arm.size[1] < ah - (880 - 685 + 25) * (arm.size[0] / REF_W) and cubby_rows < 3:
+        cubby_rows += 1
+        R = rows(cubby_rows, cubby_cols)
+        arm, boxes = stretch(ref, aw, ah, R)
+    aw, ah = arm.size
     ax = (W - aw) // 2
+    margin_y = (H - ah) // 2 if H - ah < H * 0.12 else int(H * 0.03)
     # tapis
     tapis = Image.new('RGBA', (W, H), (0, 0, 0, 0))
     ImageDraw.Draw(tapis).ellipse([ax - aw * 0.05, H - margin_y - ah * 0.03, ax + aw * 1.05, H + ah * 0.03], fill=(60, 30, 10, 110))
@@ -133,7 +183,8 @@ def maquette(W, H):
     for k, v in boxes.items():
         boxes[k] = [(x0 + ax, y0 + margin_y, x1 + ax, y1 + margin_y) for x0, y0, x1, y1 in v]
     font = ImageFont.truetype(FONT, max(11, int(aw * 0.036)))
-    pose(bg, boxes, aw, font)
+    if objets:
+        pose(bg, boxes, aw, font)
     # avatar mordu par l'arche : disque derrière le fronton
     r = int(aw * 0.09)
     av = Image.new('RGBA', (W, H), (0, 0, 0, 0))
@@ -143,7 +194,7 @@ def maquette(W, H):
     # prénom + étoiles
     d = ImageDraw.Draw(bg)
     f2 = ImageFont.truetype(FONT, max(13, int(aw * 0.05)))
-    d.text((ax + aw / 2 - d.textlength('Champion', font=f2) / 2, margin_y + int(aw * 0.06)), 'Champion', font=f2, fill=(59, 36, 18, 255))
+    d.text((ax + aw / 2 - d.textlength('Champion', font=f2) / 2, margin_y + int(aw * 0.085)), 'Champion', font=f2, fill=(59, 36, 18, 255))
     d.rounded_rectangle([ax + aw - int(aw * 0.2), margin_y + int(aw * 0.05), ax + aw - int(aw * 0.04), margin_y + int(aw * 0.11)], radius=6, fill=(122, 74, 28, 255))
     d.text((ax + aw - int(aw * 0.18), margin_y + int(aw * 0.06)), '* 19', font=font, fill=(255, 209, 102, 255))
     return bg.convert('RGB')
@@ -155,3 +206,6 @@ if __name__ == '__main__':
         p = OUT / f'HO-MJ-15-maquette-{W}x{H}.png'
         maquette(W, H).save(p)
         print(p)
+    # preuve de modularité : 2 rangées de casiers, puis 4 casiers par rangée
+    maquette(360, 740, cubby_rows=2).save(OUT / 'HO-MJ-15-maquette-360x740-2-rangees.png')
+    maquette(1280, 720, cubby_rows=2, cubby_cols=4).save(OUT / 'HO-MJ-15-maquette-1280x720-4-casiers.png')

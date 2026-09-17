@@ -1,0 +1,82 @@
+{
+  "fronton": {
+    "w": 757,
+    "h": 143,
+    "bytes": 9808,
+    "crop": [
+      133,
+      0,
+      890,
+      165
+    ],
+    "source": "reference"
+  },
+  "montant": {
+    "w": 40,
+    "h": 320,
+    "bytes": 1522,
+    "crop": [
+      133,
+      700,
+      173,
+      860
+    ],
+    "source": "reference"
+  },
+  "planche": {
+    "w": 250,
+    "h": 32,
+    "bytes": 636,
+    "crop": [
+      435,
+      653,
+      685,
+      685
+    ],
+    "source": "reference"
+  },
+  "fond": {
+    "w": 320,
+    "h": 320,
+    "bytes": 2326,
+    "crop": [
+      300,
+      450,
+      460,
+      610
+    ],
+    "source": "reference"
+  },
+  "tiroir": {
+    "w": 310,
+    "h": 158,
+    "bytes": 2882,
+    "crop": [
+      205,
+      1140,
+      515,
+      1298
+    ],
+    "source": "reference"
+  },
+  "pied": {
+    "w": 68,
+    "h": 52,
+    "bytes": 1364,
+    "crop": [
+      140,
+      1333,
+      215,
+      1385
+    ],
+    "source": "reference"
+  },
+  "porte": {
+    "w": 233,
+    "h": 320,
+    "bytes": 6802,
+    "crop": "site/img/armoire/porte.webp (v1, harmonisée)",
+    "source": "porte v1 + harmonise()"
+  },
+  "_total_bytes": 25340
+}

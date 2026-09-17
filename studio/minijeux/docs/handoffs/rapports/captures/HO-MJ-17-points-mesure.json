@@ -1,0 +1,170 @@
+[
+  {
+    "w": 360,
+    "h": 740,
+    "vitrine2Point": {
+      "x": 180,
+      "y": 223
+    },
+    "montantPoint": {
+      "x": 40,
+      "y": 223
+    },
+    "casierPoint": {
+      "x": 180,
+      "y": 474
+    },
+    "sousLeSocleScan": {
+      "y": 680,
+      "xStart": 70,
+      "xEnd": 290
+    }
+  },
+  {
+    "w": 360,
+    "h": 640,
+    "vitrine2Point": {
+      "x": 180,
+      "y": 251
+    },
+    "montantPoint": {
+      "x": 40,
+      "y": 251
+    },
+    "casierPoint": {
+      "x": 180,
+      "y": 359
+    },
+    "sousLeSocleScan": {
+      "y": 583,
+      "xStart": 70,
+      "xEnd": 290
+    }
+  },
+  {
+    "w": 320,
+    "h": 568,
+    "vitrine2Point": {
+      "x": 160,
+      "y": 223
+    },
+    "montantPoint": {
+      "x": 35,
+      "y": 223
+    },
+    "casierPoint": {
+      "x": 160,
+      "y": 319
+    },
+    "sousLeSocleScan": {
+      "y": 518,
+      "xStart": 63,
+      "xEnd": 257
+    }
+  },
+  {
+    "w": 390,
+    "h": 844,
+    "vitrine2Point": {
+      "x": 195,
+      "y": 254
+    },
+    "montantPoint": {
+      "x": 43,
+      "y": 254
+    },
+    "casierPoint": {
+      "x": 195,
+      "y": 545
+    },
+    "sousLeSocleScan": {
+      "y": 776,
+      "xStart": 76,
+      "xEnd": 314
+    }
+  },
+  {
+    "w": 412,
+    "h": 915,
+    "vitrine2Point": {
+      "x": 206,
+      "y": 275
+    },
+    "montantPoint": {
+      "x": 46,
+      "y": 275
+    },
+    "casierPoint": {
+      "x": 206,
+      "y": 593
+    },
+    "sousLeSocleScan": {
+      "y": 841,
+      "xStart": 80,
+      "xEnd": 332
+    }
+  },
+  {
+    "w": 800,
+    "h": 600,
+    "vitrine2Point": {
+      "x": 400,
+      "y": 232
+    },
+    "montantPoint": {
+      "x": 240,
+      "y": 232
+    },
+    "casierPoint": {
+      "x": 444,
+      "y": 323
+    },
+    "sousLeSocleScan": {
+      "y": 543,
+      "xStart": 274,
+      "xEnd": 526
+    }
+  },
+  {
+    "w": 1024,
+    "h": 768,
+    "vitrine2Point": {
+      "x": 512,
+      "y": 296
+    },
+    "montantPoint": {
+      "x": 308,
+      "y": 296
+    },
+    "casierPoint": {
+      "x": 512,
+      "y": 413
+    },
+    "sousLeSocleScan": {
+      "y": 693,
+      "xStart": 350,
+      "xEnd": 674
+    }
+  },
+  {
+    "w": 1280,
+    "h": 720,
+    "vitrine2Point": {
+      "x": 640,
+      "y": 278
+    },
+    "montantPoint": {
+      "x": 449,
+      "y": 278
+    },
+    "casierPoint": {
+      "x": 640,
+      "y": 388
+    },
+    "sousLeSocleScan": {
+      "y": 650,
+      "xStart": 489,
+      "xEnd": 791
+    }
+  }
+]

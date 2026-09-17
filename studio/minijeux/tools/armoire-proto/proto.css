@@ -1,0 +1,271 @@
+/* ════════════════════════════════════════════════════════════════════
+   proto.css — HO-MJ-17 : prototype statique « L'Armoire v4 ».
+   Kit de 8 sprites (site/img/armoire/kit/), reste en CSS (lumière, ombres,
+   3D des portes). Mur/tapis/safe-area repris de site/css/armoire.css (non
+   modifié) : même vocabulaire visuel, fichier indépendant.
+   Zéro animation. Zéro ascenseur, à AUCUN viewport (body overflow hidden).
+   ════════════════════════════════════════════════════════════════════ */
+
+html, body { height:100%; margin:0; overflow:hidden; }
+body {
+  background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, #886038 100%);
+  font-family:'Fredoka One', 'Arial Rounded MT Bold', Arial, sans-serif;
+}
+
+.piece {
+  position:relative; height:100%; width:100%; box-sizing:border-box;
+  padding: env(safe-area-inset-top)
+           max(2%, env(safe-area-inset-right))
+           max(3%, env(safe-area-inset-bottom))
+           max(2%, env(safe-area-inset-left));
+  display:flex; align-items:flex-start; justify-content:center;
+  overflow:hidden;
+}
+/* tapis : ellipse sombre floue sous les pieds */
+.piece::before {
+  content:''; position:absolute; left:50%; bottom:2%; width:60%; max-width:520px; aspect-ratio:6/1;
+  background:radial-gradient(ellipse at center, rgba(0,0,0,.4), rgba(0,0,0,0) 72%);
+  filter:blur(3px); transform:translateX(-50%); z-index:0; pointer-events:none;
+}
+
+/* ── #armoire : le CORPS seulement (700u = montant 35 + interieur 630 +
+   montant 35). Les portes sont en position:absolute par-dessus, hors
+   largeur, overflow visible (brief § 2). ────────────────────────────── */
+#armoire {
+  position:relative; z-index:1;
+  width:calc(700 * var(--u, 1px));
+  overflow:visible;
+}
+
+.ar-rangee { position:relative; width:100%; }
+
+/* fond des cases : sous tout (z le plus bas). HO-MJ-17 passe 2 : le sprite
+   (320×320, flou 4 avant miroir) est presque uni ; l'assombrissement et le
+   modelé viennent du CSS par-dessus (radial-gradient + inset shadows
+   imposés par l'orchestrateur), pas du sprite. */
+.ar-fond {
+  position:absolute; inset:0; z-index:0;
+  background-image:url('../../../../site/img/armoire/kit/fond.webp');
+  background-repeat:repeat; background-size:calc(320 * var(--u, 1px)) calc(320 * var(--u, 1px));
+}
+.ar-fond::after {
+  content:''; position:absolute; inset:0;
+  /* HO-MJ-17 passe 4 pt.2 : le radial-gradient précédent (halo clair au
+     centre, rgba(0,0,0,.35) au bord) est proportionnel à la BOÎTE, donc un
+     rectangle très allongé (vitrine 630×200u) garde son centre clair sur
+     une bien plus grande distance qu'une case presque carrée (casier
+     ~150×150u) — même écriture, résultat très différent selon la forme.
+     Fix : un voile sombre UNIFORME (indépendant de la forme) + un halo
+     léger qui ne descend plus qu'à 20% d'opacité (au lieu de 35%), pour
+     que vitrine/casier/bas-étagère retombent tous dans la même fourchette
+     30-40% mesurée. */
+  background:
+    radial-gradient(ellipse at 50% 35%, rgba(255,220,160,.08), transparent 55%),
+    rgba(0,0,0,.36);
+  box-shadow:
+    inset 0 calc(14 * var(--u, 1px)) calc(22 * var(--u, 1px)) rgba(0,0,0,.35),
+    inset 0 calc(-8 * var(--u, 1px)) calc(12 * var(--u, 1px)) rgba(0,0,0,.2),
+    inset calc(10 * var(--u, 1px)) 0 calc(16 * var(--u, 1px)) rgba(0,0,0,.2),
+    inset calc(-10 * var(--u, 1px)) 0 calc(16 * var(--u, 1px)) rgba(0,0,0,.2);
+}
+
+/* montants latéraux : UN élément par côté, repeat-y, continus du bas du
+   fronton au socle (brief § 3). Placés en position:absolute sur #armoire
+   entier (pas par rangée) pour qu'ils ne soient JAMAIS interrompus.
+   HO-MJ-17 passe 3 pt.2 : le montant s'arrête au BAS DU SOCLE (socle 50u +
+   pieds 60u = 110u depuis le bas), le socle le recouvre ensuite ; avant ce
+   correctif bottom:60u laissait le montant traverser le socle et dépasser
+   entre socle et pieds. */
+.ar-montant {
+  position:absolute; top:calc(190 * var(--u, 1px)); bottom:calc(110 * var(--u, 1px));
+  width:calc(35 * var(--u, 1px)); z-index:2;
+  background-image:url('../../../../site/img/armoire/kit/montant.webp');
+  background-repeat:repeat-y; background-size:100% calc(280 * var(--u, 1px));
+  box-shadow:inset 1px 0 2px rgba(255,235,200,.12), inset -3px 0 6px rgba(0,0,0,.4);
+}
+.ar-montant-g { left:0; }
+.ar-montant-d { right:0; transform:scaleX(-1); }
+
+/* séparateurs de casiers : même sprite/vocabulaire (brief pt.9). HO-MJ-17
+   passe 2 (pt.4) : chevauchent de 3u la planche du DESSOUS (margin-bottom
+   négatif + z au-dessus d'elle) et passent SOUS la planche du dessus
+   (z-index inférieur à .ar-planche). */
+.ar-separateur {
+  position:relative; flex:0 0 auto; width:calc(36 * var(--u, 1px)); z-index:2;
+  margin-top:calc(-3 * var(--u, 1px)); margin-bottom:calc(-3 * var(--u, 1px));
+  background-image:url('../../../../site/img/armoire/kit/montant.webp');
+  background-repeat:repeat-y; background-size:100% calc(280 * var(--u, 1px));
+  box-shadow:inset 3px 0 4px rgba(255,235,200,.45), inset -3px 0 7px rgba(0,0,0,.4);
+}
+
+/* planches/traverses : chevauchent les montants ET les séparateurs de 4u
+   (brief § 3, pt.4). z-index le plus haut du corps (hors portes/prénom)
+   pour passer AU-DESSUS des séparateurs. */
+.ar-planche {
+  position:relative; z-index:4;
+  margin:0 calc(-4 * var(--u, 1px));
+  background-image:url('../../../../site/img/armoire/kit/planche.webp');
+  background-size:100% 100%; background-repeat:no-repeat;
+  box-shadow:0 calc(5 * var(--u, 1px)) calc(9 * var(--u, 1px)) rgba(0,0,0,.45);
+  border-top:calc(2 * var(--u, 1px)) solid rgba(255,238,205,.55);
+}
+
+/* fronton : image + prénom HTML par-dessus (jamais dans l'image) */
+.ar-fronton {
+  position:relative; z-index:4; height:calc(190 * var(--u, 1px));
+  background-image:url('../../../../site/img/armoire/kit/fronton.webp');
+  background-size:100% 100%; background-repeat:no-repeat;
+  filter:drop-shadow(0 6px 10px rgba(0,0,0,.45));
+}
+.ar-prenom {
+  position:absolute; left:50%; top:45%; transform:translate(-50%, -50%);
+  font-family:'Fredoka One', 'Arial Rounded MT Bold', Arial, sans-serif;
+  font-weight:400; white-space:nowrap;
+  font-size:clamp(.9rem, calc(7 * var(--u, 1px)), 1.6rem);
+  color:#3b2412; text-shadow:0 2px 0 rgba(255,224,170,.65), 0 -1px 1px rgba(0,0,0,.25);
+}
+
+/* vitrines : rangées souples, MÊME fond+vignette que casiers/bas-étagère
+   (.ar-fond::after, UN SEUL jeu de règles — HO-MJ-17 passe 4 pt.2 : la
+   couche .ar-vitrine::before ajoutée en passe 3 rendait la vitrine bien
+   plus sombre que les casiers (56-62% contre 33,9%), ce n'était plus le
+   même intérieur. Supprimée : voir plus bas le rééquilibrage direct de
+   .ar-fond::after pour qu'il fonctionne pareil quelle que soit la largeur
+   de la surface, sans surcouche par type de rangée. */
+.ar-vitrine { position:relative; z-index:1; overflow:hidden; }
+
+/* spot : CSS pur (HO-MJ-17 passe 2, plus de sprite). Vitrine-1 SEULEMENT,
+   à 6u sous la planche du fronton, à 27%/73% de la largeur intérieure. */
+.spot {
+  position:absolute; top:calc(6 * var(--u, 1px));
+  width:calc(56 * var(--u, 1px)); height:calc(14 * var(--u, 1px));
+  transform:translateX(-50%); z-index:2; border-radius:50%;
+  background:radial-gradient(ellipse at center, #fff6d6 0 25%, #f0c060 45%, #8a5a20 70%, transparent 72%);
+}
+.spot.g { left:27%; } .spot.d { left:73%; }
+.spot::after {
+  content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%);
+  width:calc(240 * var(--u, 1px)); height:calc(160 * var(--u, 1px));
+  background:radial-gradient(ellipse at top, rgba(255,205,120,.55), rgba(255,205,120,0) 65%);
+  filter:blur(6px); pointer-events:none;
+}
+
+/* casiers : rangée flex, chaque case a son fond (.ar-fond::after gère
+   l'assombrissement + la vignette, brief point 1) */
+.ar-casiers { position:relative; z-index:1; display:flex; }
+.ar-casier { position:relative; flex:1 1 0; overflow:hidden; }
+.ar-casier .ar-fond { position:absolute; inset:0; }
+
+/* bas-étagère : rangée souple compacte, même traitement qu'une vitrine sans spot */
+.ar-bas-etagere { position:relative; z-index:1; overflow:hidden; }
+
+/* tiroirs : 2 tiroirs à ~47% chacun, cadre en relief */
+.ar-tiroirs { position:relative; z-index:5; display:flex; justify-content:center; gap:2%; align-items:flex-end; }
+.ar-tiroir {
+  position:relative; width:48%; height:100%;
+  background-image:url('../../../../site/img/armoire/kit/tiroir.webp');
+  background-size:100% 100%; background-repeat:no-repeat;
+  filter:drop-shadow(0 3px 5px rgba(0,0,0,.4));
+}
+.ar-tiroir::after {
+  content:''; position:absolute; inset:0;
+  box-shadow:inset 0 2px 3px rgba(255,240,210,.4), inset 0 -4px 6px rgba(0,0,0,.35);
+  border-radius:calc(3 * var(--u, 1px));
+}
+
+/* pieds : collés sous le socle, larges */
+.ar-pieds { position:relative; z-index:2; display:flex; justify-content:space-between; }
+.ar-pied {
+  width:calc(80 * var(--u, 1px)); height:100%;
+  background-image:url('../../../../site/img/armoire/kit/pied.webp');
+  background-size:100% 100%; background-repeat:no-repeat;
+}
+.ar-pied-d { transform:scaleX(-1); }
+
+/* socle : traverse basse massive (planche générique, plus foncée/épaisse) */
+.ar-socle {
+  position:relative; z-index:3;
+  margin:0 calc(-4 * var(--u, 1px));
+  background-image:url('../../../../site/img/armoire/kit/planche.webp');
+  background-size:100% 100%; background-repeat:no-repeat;
+  filter:brightness(.9);
+  box-shadow:0 5px 10px rgba(0,0,0,.5);
+  border-top:calc(2 * var(--u, 1px)) solid rgba(255,238,205,.4);
+}
+
+/* ── portes : sprite flat unique + perspective 3D, débordent du corps
+   (overflow visible), position absolute, z au-dessus de tout sauf le
+   prénom (brief § 3, checklist pt.4/5/19/20).
+   HO-MJ-17 passe 2 (pt.3) : le bord charnière chevauche le montant de 4u
+   (pas de vide entre corps et porte) ; le pivot est sur CE bord ; la porte
+   s'ouvre VERS LE SPECTATEUR (le bord extérieur, non-charnière, doit
+   paraître plus proche/plus grand que le bord charnière). ───────────── */
+.ar-porte-hote { position:absolute; top:0; height:100%; z-index:6; pointer-events:none;
+  width:calc(315 * var(--u, 1px)); overflow:visible; }
+/* le bord charnière (droit pour .g, gauche pour .d) chevauche le montant de
+   4u. HO-MJ-17 passe 4 pt.1 : le hôte .d est mirroré EN BLOC
+   (scaleX(-1) sur le hôte lui-même, pas sur chaque enfant) — dans son
+   référentiel local mirroré, "right:0 / transform-origin:100%" redevient
+   visuellement le bord GAUCHE à l'écran, donc TOUT le contenu interne
+   (porte, épaisseur, charnières) réutilise EXACTEMENT les mêmes règles que
+   .g, sans dupliquer un jeu de transforms séparé qui avait fini par sortir
+   la porte hors de son hôte (bug passe 4 : scaleX+rotateY combinés sur
+   l'élément .ar-porte lui-même déplaçaient son rendu dans le corps). */
+.ar-porte-hote.g { right:calc(100% - 4 * var(--u, 1px)); }
+.ar-porte-hote.d {
+  left:calc(100% - 4 * var(--u, 1px));
+  transform:scaleX(-1);
+}
+
+.ar-porte {
+  position:absolute; top:0; width:100%; height:100%;
+  background-image:url('../../../../site/img/armoire/kit/porte.webp');
+  background-size:100% 100%; background-repeat:no-repeat;
+  border-radius:calc(10 * var(--u, 1px));
+  backface-visibility:hidden;
+}
+/* bord charnière = bord DROIT du hôte (côté corps, avant mirroir pour .d)
+   -> pivot à droite. Signe vérifié à l'œil (HO-MJ-17 passe 2) : rotateY
+   négatif ici fait paraître le bord EXTÉRIEUR (gauche, poignée) plus
+   grand/proche que le bord charnière, conforme à la référence. Règle
+   UNIQUE réutilisée pour .g ET .d (voir note ci-dessus). */
+.ar-porte-hote .ar-porte {
+  right:0; transform-origin:100% 50%;
+  transform:perspective(calc(900 * var(--u, 1px))) rotateY(-65deg);
+  filter:drop-shadow(calc(6 * var(--u, 1px)) calc(8 * var(--u, 1px)) calc(10 * var(--u, 1px)) rgba(0,0,0,.45));
+}
+
+/* épaisseur de la porte : <b> frère, même hauteur, 9u de large, plié à 90°
+   depuis le bord charnière (pas un pseudo-élément à plat — un vrai pan de
+   bois qui suit la même perspective que la porte). Règle unique (voir note
+   ci-dessus sur le hôte .d mirroré en bloc). */
+.ar-porte-epaisseur {
+  position:absolute; top:0; height:100%; width:calc(9 * var(--u, 1px));
+  background:#5a3d1f; filter:brightness(.75);
+}
+.ar-porte-hote .ar-porte-epaisseur {
+  right:0; transform-origin:100% 50%;
+  transform:perspective(calc(900 * var(--u, 1px))) rotateY(-155deg);
+}
+
+/* charnières : 2 par porte, identiques (taille/retrait/axe), pseudo-éléments.
+   Règle UNIQUE réutilisée pour .g ET .d (hôte .d mirroré en bloc, voir note
+   plus haut) : "right" reste le bord charnière dans le référentiel local. */
+.ar-charniere {
+  position:absolute; width:calc(7 * var(--u, 1px)); height:calc(22 * var(--u, 1px));
+  background:linear-gradient(90deg, #5b5049, #8a7c6d 45%, #4a4038);
+  border-radius:calc(3 * var(--u, 1px));
+  box-shadow:0 1px 2px rgba(0,0,0,.5);
+  z-index:7;
+  right:calc(-3.5 * var(--u, 1px));
+}
+.ar-charniere.haut { top:12%; }
+.ar-charniere.bas { bottom:12%; }
+
+/* Cohérence bois : un seul filter éventuel, global (brief § 3) — non utilisé
+   par défaut ici (le kit harmonisé suffit), point d'ancrage laissé en place. */
+/* seul filter global autorisé (brief pt.6) : léger resserrement contraste/
+   saturation pour rapprocher le rendu (compression du navigateur sur les
+   sprites très réduits en largeur) de la teinte plus dense de la
+   référence, sans reteinter pièce par pièce. */
+#armoire { filter:saturate(1.12) contrast(1.05); }

@@ -78,45 +78,71 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, 
 }
 
 /* ── Les cases : boutons posés en % du repère ────────────────────────
-   --cx/--cy = CENTRE de la case, --cw/--ch = sa taille. Le bouton est
-   centré sur la case et peut la déborder : min-width/min-height garantit
-   la zone tactile (96 px, au-delà du plancher mobile de 48) sans changer
-   la taille de l'objet dessiné dedans. */
+   --cx/--cy = CENTRE de la case, --cw/--ch = sa taille. Le bouton FAIT la
+   case, rien de plus : un `min-width/min-height` en pixels dessus (96 px en
+   passe 1) écrasait le repère proportionnel — à 360 px une colonne fait 72 px
+   et une case de niche 54 px, toutes les cases se chevauchaient et tout
+   paraissait entassé. La zone tactile s'élargit par `.tap`, qui ne touche
+   pas à la géométrie visuelle. */
 .casier, .objet {
   position:absolute; z-index:40;
   left:var(--cx); top:var(--cy);
   width:var(--cw); height:var(--ch);
-  min-width:96px; min-height:96px;
   transform:translate(-50%, -50%);
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  /* flex-end et pas center : l'objet est POSÉ sur la planche, il ne flotte
+     pas au milieu de la case. Le bas de chaque case est calé sur le dessus
+     de sa planche (voir ROWS dans armoire.js), donc le libellé tombe sur le
+     chant de l'étagère, comme une petite plaque. */
+  display:flex; flex-direction:column; align-items:center; justify-content:flex-end;
   gap:0;
-  background:none; border:0; padding:0; margin:0;
+  background:none; border:0; margin:0;
+  padding:0 0 calc(var(--cab-w) * .004);
   font-family:inherit; color:inherit; cursor:pointer;
   -webkit-tap-highlight-color:transparent;
 }
-/* taille de l'objet et du libelle : en unites de --cab-w, jamais en % de la
-   case. Les cases n'ont pas toutes la meme hauteur (la niche centrale est la
-   plus basse) ; un objet en % de sa case serait plus gros en haut qu'au
-   milieu, exactement le genre d'incoherence que ce repere fixe supprime. */
+/* zone tactile : un calque invisible, enfant du bouton, donc un appui dessus
+   déclenche bien le bouton. Sa hauteur (19,5 % de --cab-w ≈ 70 px à 360)
+   reste SOUS le plus petit pas entre deux rangées, pour qu'aucune case ne
+   vole l'appui de sa voisine. */
+.tap {
+  position:absolute; left:50%; top:50%; transform:translate(-50%, -50%);
+  width:100%; min-width:48px;
+  height:calc(var(--cab-w) * .195); min-height:48px;
+}
+/* L'objet vit dans une case CARRÉE en object-fit:contain : son plus grand
+   côté fait toujours la même taille, qu'il soit large (le bus) ou haut (le
+   volcan). Le facteur --obj-scale corrige ce qui reste — un objet ajouré
+   peint moins de surface dans ce carré qu'un objet trapu. Il est MESURÉ, pas
+   choisi : voir tools/armoire-objets.py et js/gen/armoire-objets.js. */
 .casier .obj, .objet .obj {
-  display:block; height:calc(var(--cab-w) * .112); width:auto;
-  max-width:88%; object-fit:contain;
-  filter:drop-shadow(0 calc(var(--cab-w) * .008) calc(var(--cab-w) * .012) rgba(0,0,0,.45));
+  display:block;
+  width:calc(var(--cab-w) * .118); height:calc(var(--cab-w) * .118);
+  object-fit:contain;
+  transform:scale(var(--obj-scale, 1));
+  filter:drop-shadow(0 calc(var(--cab-w) * .007) calc(var(--cab-w) * .011) rgba(0,0,0,.4));
   transition:transform 180ms ease;
   pointer-events:none;
 }
-.casier:active .obj, .objet:active .obj { transform:scale(.92); }
+.casier:active .obj, .objet:active .obj { transform:scale(calc(var(--obj-scale, 1) * .9)); }
 
+/* Le libellé est du bois, pas un badge d'appli : dégradé chaud, encre brune,
+   un liseré clair en haut comme une petite plaque vissée sur l'étagère. La
+   capsule noire de la passe 1 faisait « launcher Android » sur un meuble
+   chaud. */
 .etiquette {
   font-family:'Fredoka One', 'Nunito', sans-serif; font-weight:400;
-  font-size:calc(var(--cab-w) * .032); line-height:1.12;
-  /* le libelle chevauche le bas de l'objet, comme une etiquette posee
-     dessus : sans ce recouvrement la pile objet + libelle depasse la case
+  font-size:calc(var(--cab-w) * .031); line-height:1.12;
+  /* le libellé chevauche le bas de l'objet, comme une étiquette posée
+     dessus : sans ce recouvrement la pile objet + libellé dépasse la case
      la plus basse (la niche centrale) et vient mordre la planche. */
-  margin-top:calc(var(--cab-w) * -.026); z-index:1;
-  color:#fff8ea; text-align:center;
-  padding:calc(var(--cab-w) * .003) calc(var(--cab-w) * .016);
-  border-radius:999px; background:rgba(48, 26, 8, .78);
+  margin-top:calc(var(--cab-w) * -.022); z-index:1;
+  color:#4a2a0a; text-align:center;
+  padding:calc(var(--cab-w) * .002) calc(var(--cab-w) * .015);
+  border-radius:calc(var(--cab-w) * .012);
+  background:linear-gradient(#efc684, #ce8c45);
+  border:1px solid rgba(92, 50, 15, .35);
+  box-shadow:0 1px 0 rgba(255, 255, 255, .35) inset,
+             0 2px 4px rgba(55, 25, 5, .3);
   max-width:100%; pointer-events:none;
 }
 /* un jeu encore verrouillé : grisé + cadenas, jamais la couleur seule */
@@ -150,8 +176,13 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, 
   transition:transform 620ms cubic-bezier(.22, .8, .25, 1);
   -webkit-tap-highlight-color:transparent;
 }
-.porte-g { transform-origin:left center; }
-.porte-d { transform-origin:right center; }
+/* Les charnières sont sur le MONTANT EXTÉRIEUR du meuble, pas sur le bord du
+   vantail : c'est ainsi qu'est monté le meuble de la référence, et c'est ce
+   qui permet au vantail de dégager l'ouverture à un angle raisonnable. Le
+   montant est à 23,19 % de la largeur du vantail au-delà de son bord (mesuré :
+   (18,558 − 11,306) / 31,277), d'où l'origine hors de la boîte. */
+.porte-g { transform-origin:-23.19% center; }
+.porte-d { transform-origin:123.19% center; }
 /* l'URL des vantaux vit ICI et pas en JS : une url() posée dans une
    propriete personnalisee est resolue par rapport a la FEUILLE DE STYLE qui
    la declare, pas par rapport au document — en la passant depuis le JS on
@@ -162,17 +193,40 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, 
   display:block; width:100%; height:100%;
   background-position:center; background-size:100% 100%; background-repeat:no-repeat;
   filter:drop-shadow(0 calc(var(--cab-w) * .004) calc(var(--cab-w) * .01) rgba(0,0,0,.35));
+  transition:filter 620ms cubic-bezier(.22, .8, .25, 1);
 }
+/* vantail ouvert : vu presque de chant, sa face ne prend plus la lumière de
+   face. Sans cet assombrissement il reste aussi clair qu'à plat et se lit
+   comme un montant de plus, pas comme une porte ouverte. */
+.armoire.ouvert-haut .porte-haut .porte-feuille,
+.armoire.ouvert-bas  .porte-bas  .porte-feuille { filter:brightness(.8); }
 .porte-d .porte-feuille { transform:scaleX(-1); }
 
-/* 116° : l'angle mesuré sur la référence (le vantail ouvert y fait 43,5 %
-   de sa largeur fermée, donc |cos| = 0,435). Au-delà de 90° le vantail
-   passe hors du corps et dégage entièrement l'ouverture — c'est le geste
-   de découverte, et ça laisse les trois colonnes libres. */
-.armoire.ouvert-haut .porte-haut.porte-g { transform:perspective(1300px) rotateY(-116deg); }
-.armoire.ouvert-haut .porte-haut.porte-d { transform:perspective(1300px) rotateY(116deg); }
-.armoire.ouvert-bas  .porte-bas.porte-g  { transform:perspective(1300px) rotateY(-116deg); }
-.armoire.ouvert-bas  .porte-bas.porte-d  { transform:perspective(1300px) rotateY(116deg); }
+/* Sous 90°, jamais au-delà. |cos θ| = 0,435 (la largeur apparente du vantail
+   ouvert sur la référence) a DEUX solutions, 64° et 116° ; la passe 1 avait
+   pris la mauvaise et on regardait le DOS de la texture, d'où le rendu
+   inversé. Reste à choisir l'angle : à 74° le vantail retombe encore sur la
+   colonne de bord et masque un jeu sur trois (mesuré). À 80° il est presque
+   de chant contre le montant, l'ouverture est entièrement dégagée, et c'est
+   exactement ce que montre une photo de vaisselier grand ouvert.
+   La perspective est en unités de --cab-w, pas en px : sinon elle est forte
+   sur téléphone et inexistante sur grand écran. */
+.armoire.ouvert-haut .porte-haut.porte-g { transform:perspective(calc(var(--cab-w) * 3.6)) rotateY(-80deg); }
+.armoire.ouvert-haut .porte-haut.porte-d { transform:perspective(calc(var(--cab-w) * 3.6)) rotateY(80deg); }
+.armoire.ouvert-bas  .porte-bas.porte-g  { transform:perspective(calc(var(--cab-w) * 3.6)) rotateY(-80deg); }
+.armoire.ouvert-bas  .porte-bas.porte-d  { transform:perspective(calc(var(--cab-w) * 3.6)) rotateY(80deg); }
+
+/* Les tiroirs SONT les boutons : la poignée dessinée dans la carcasse dit
+   déjà « ouvre-moi ». Pas d'icône flottante par-dessus — c'est ce qui
+   alourdissait le bas du meuble en passe 1. */
+.tiroir {
+  position:absolute; z-index:40;
+  left:var(--cx); top:var(--cy); width:var(--cw); height:var(--ch);
+  transform:translate(-50%, -50%);
+  background:none; border:0; padding:0; margin:0; cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+.tiroir:active { filter:brightness(1.12); }
 
 /* les cases d'une zone fermée ne sont ni cliquables ni lisibles par un
    lecteur d'écran — la porte est devant, on ne triche pas. */
@@ -197,21 +251,21 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, 
   pointer-events:none;
 }
 
-/* ── L'avatar : mordu par l'arche ────────────────────────────────────
-   z-index sous la carcasse : l'épaule gauche de l'arche passe DEVANT le
-   disque, le dino a l'air de sortir du meuble au lieu d'y être collé. */
+/* ── L'avatar : il sort de DERRIÈRE le meuble ────────────────────────
+   z-index sous la carcasse : l'épaule gauche de l'arche passe DEVANT lui, le
+   dino a l'air de sortir du meuble au lieu d'y être collé. Plus de médaillon
+   rond ni de cerne doré — un disque posé à côté de l'arche, c'est une pastille
+   d'appli, pas un personnage. Le dino détouré et son ombre suffisent. */
 .ar-avatar-wrap {
   position:absolute; z-index:20;
-  left:2.5%; top:0.4%;
-  width:17%; aspect-ratio:1;
+  left:0.5%; top:3%;
+  width:18%; aspect-ratio:1;
   cursor:pointer;
 }
 .avatar {
-  width:100%; height:100%; border-radius:50%; overflow:hidden;
-  background:radial-gradient(circle at 35% 30%, var(--accent), oklch(0.45 0.1 var(--h-avatar)));
-  border:calc(var(--cab-w) * .008) solid var(--gold);
-  display:flex; align-items:center; justify-content:center;
-  font-size:calc(var(--cab-w) * .07);
-  box-shadow:0 4px 10px rgba(0, 0, 0, .35);
+  width:100%; height:100%; overflow:visible;
+  display:flex; align-items:flex-end; justify-content:center;
+  font-size:calc(var(--cab-w) * .115); line-height:1;
+  filter:drop-shadow(0 calc(var(--cab-w) * .008) calc(var(--cab-w) * .014) rgba(40, 18, 2, .45));
 }
-.avatar img { width:82%; height:82%; object-fit:contain; }
+.avatar img { width:100%; height:100%; object-fit:contain; }

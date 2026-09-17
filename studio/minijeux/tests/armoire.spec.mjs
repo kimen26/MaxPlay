@@ -5,7 +5,9 @@
 //
 // Ce que ce spec garde, viewport par viewport :
 //   · jamais d'ascenseur, et rien de rogné par le bord de l'écran ;
-//   · les 17 cases présentes, chacune ≥ 96 × 96 de zone tactile ;
+//   · l'armoire arrive FERMÉE, et ses cases avec ;
+//   · les 15 cases + 2 tiroirs présents, zone tactile ≥ 48 × 48 ;
+//   · aucun vantail ouvert ne retombe sur un objet ;
 //   · toutes les images chargées, portes comprises (une url() de fond qui
 //     tombe en 404 est invisible à l'œil — c'est arrivé) ;
 //   · les 4 vantaux s'ouvrent et se referment ;
@@ -36,7 +38,8 @@ const VIEWPORTS = [
   { w: 360, h: 740 }, { w: 360, h: 640 }, { w: 320, h: 568 }, { w: 390, h: 844 },
   { w: 412, h: 915 }, { w: 800, h: 600 }, { w: 1024, h: 768 }, { w: 1280, h: 720 }
 ];
-const CASES_ATTENDUES = 17; // 12 jeux derrière les portes + 3 en niche + album + 13e jeu en tiroir
+const CASES_ATTENDUES = 15; // 12 jeux derrière les portes + 3 fonctions en niche
+const TIROIRS_ATTENDUS = 2;  // album + « encore » — les tiroirs SONT les boutons, sans icône
 
 // empreinte de proportions : { label → [cx, cy, cw, ch] en fraction de la
 // boîte de l'armoire }, relevée au premier viewport et comparée aux suivants.
@@ -59,8 +62,23 @@ for (const vp of VIEWPORTS) {
   try {
     await page.addInitScript(() => { try { localStorage.clear(); } catch (e) {} });
     await page.goto(pathToFileURL(INDEX).href, { waitUntil: 'networkidle' });
-    await page.waitForSelector('.casier', { timeout: 5000 });
-    await page.waitForTimeout(1400); // ouverture automatique des deux zones
+    // state:'attached' : les cases arrivent MASQUÉES (portes fermées), donc
+    // attendre qu'elles soient visibles bloquerait pour toujours.
+    await page.waitForSelector('.casier', { state: 'attached', timeout: 5000 });
+    // l'armoire arrive FERMÉE : c'est l'enfant qui ouvre. On capture cet état
+    // puis on ouvre les deux zones à la main, comme lui.
+    const ferme = await page.evaluate(() => {
+      const cab = document.getElementById('armoire');
+      return !cab.classList.contains('ouvert-haut') && !cab.classList.contains('ouvert-bas') &&
+        [...document.querySelectorAll('.casier')].every(c => c.classList.contains('zone-cachee'));
+    });
+    ok(`[${tag}] arrive portes fermées, cases masquées`, ferme);
+    if (vp.w === 360 && vp.h === 740) {
+      await page.screenshot({ path: resolve(CAPTURES, 'HO-MJ-19-armoire-360x740-ferme.png') });
+    }
+    await page.click('.porte-haut.porte-g');
+    await page.click('.porte-bas.porte-g');
+    await page.waitForTimeout(900);
 
     const m = await page.evaluate(() => {
       const de = document.documentElement;
@@ -68,6 +86,10 @@ for (const vp of VIEWPORTS) {
       const cabR = cab.getBoundingClientRect();
       const cases = [...document.querySelectorAll('.casier, .objet')];
       const rects = cases.map(c => c.getBoundingClientRect());
+      // zone tactile réelle : le calque .tap, pas la boîte du bouton. Le
+      // bouton fait la CASE (repère proportionnel) ; lui imposer un plancher
+      // en pixels écraserait la géométrie du meuble.
+      const taps = cases.map(c => c.querySelector('.tap').getBoundingClientRect());
 
       // tout le contenu de l'armoire, vantaux ouverts compris
       const all = [...cab.querySelectorAll('*')].map(e => e.getBoundingClientRect());
@@ -97,10 +119,24 @@ for (const vp of VIEWPORTS) {
         scrollW: de.scrollWidth, innerW: innerWidth,
         cab: { w: cabR.width, h: cabR.height },
         n: cases.length,
-        minW: Math.min(...rects.map(r => r.width)), minH: Math.min(...rects.map(r => r.height)),
+        nTiroirs: document.querySelectorAll('.tiroir').length,
+        minW: Math.min(...taps.map(r => r.width)), minH: Math.min(...taps.map(r => r.height)),
+        // aucune icône flottante posée sur les tiroirs : leur poignée suffit
+        tiroirsNus: [...document.querySelectorAll('.tiroir')].every(t => t.children.length === 0),
         bornes, imgsOk, fonds, empreinte,
         nPortes: document.querySelectorAll('.porte').length,
-        ouvert: cab.classList.contains('ouvert-haut') && cab.classList.contains('ouvert-bas')
+        ouvert: cab.classList.contains('ouvert-haut') && cab.classList.contains('ouvert-bas'),
+        porteLibre: (() => {
+          const portes = [...document.querySelectorAll('.porte')].map(p => p.getBoundingClientRect());
+          return cases.every((c, i) => {
+            const o = c.querySelector('.obj').getBoundingClientRect();
+            return portes.every(p => p.right <= o.left + 0.5 || p.left >= o.right - 0.5);
+          });
+        })(),
+        recouvrement: [...document.querySelectorAll('.porte')].map(p => {
+          const r = p.getBoundingClientRect();
+          return { l: +r.left.toFixed(1), r: +r.right.toFixed(1) };
+        })
       };
     });
 
@@ -110,11 +146,18 @@ for (const vp of VIEWPORTS) {
       m.bornes.l >= -0.5 && m.bornes.t >= -0.5 && m.bornes.r <= vp.w + 0.5 && m.bornes.b <= vp.h + 0.5,
       `L${m.bornes.l.toFixed(1)} R${m.bornes.r.toFixed(1)} T${m.bornes.t.toFixed(1)} B${m.bornes.b.toFixed(1)}`);
     ok(`[${tag}] les ${CASES_ATTENDUES} cases sont là`, m.n === CASES_ATTENDUES, `n=${m.n}`);
-    ok(`[${tag}] chaque case ≥ 96 × 96 de zone tactile`, m.minW >= 96 && m.minH >= 96,
+    ok(`[${tag}] les ${TIROIRS_ATTENDUS} tiroirs sont là`, m.nTiroirs === TIROIRS_ATTENDUS, `n=${m.nTiroirs}`);
+    ok(`[${tag}] les tiroirs n'ont aucune icône posée dessus`, m.tiroirsNus);
+    ok(`[${tag}] chaque case ≥ 48 × 48 de zone tactile`, m.minW >= 48 && m.minH >= 48,
       `min=${m.minW.toFixed(1)}×${m.minH.toFixed(1)}`);
     ok(`[${tag}] toutes les images de l'armoire chargées`, m.imgsOk);
-    ok(`[${tag}] 4 vantaux présents, ouverts au chargement`, m.nPortes === 4 && m.ouvert,
+    ok(`[${tag}] 4 vantaux présents, ouverts après appui`, m.nPortes === 4 && m.ouvert,
       `n=${m.nPortes} ouvert=${m.ouvert}`);
+    // un vantail ouvert ne doit plus retomber sur la colonne de bord : c'est
+    // tout l'intérêt d'ouvrir. Mesuré, parce que l'angle et la charnière se
+    // compensent et qu'on ne peut pas le deviner.
+    ok(`[${tag}] les vantaux ouverts ne masquent aucune case`, m.porteLibre,
+      JSON.stringify(m.recouvrement));
 
     // les fonds de porte existent vraiment (rechargés depuis la page)
     const fondsOk = await page.evaluate(async (urls) => {
@@ -143,16 +186,13 @@ for (const vp of VIEWPORTS) {
         `écart max ${(pire * 100).toFixed(2)} % (${quoi})`);
     }
 
-    // ouverture / fermeture réelle d'une zone
+    // fermeture / réouverture d'une zone
     await page.click('.porte-haut.porte-g');
     await page.waitForTimeout(800);
-    const ferme = await page.evaluate(() =>
+    const referme = await page.evaluate(() =>
       !document.getElementById('armoire').classList.contains('ouvert-haut') &&
       [...document.querySelectorAll('.casier[data-zone="haut"]')].every(c => c.classList.contains('zone-cachee')));
-    ok(`[${tag}] cliquer un vantail referme la zone et masque ses cases`, ferme);
-    if (vp.w === 360 && vp.h === 740) {
-      await page.screenshot({ path: resolve(CAPTURES, 'HO-MJ-19-armoire-360x740-ferme.png') });
-    }
+    ok(`[${tag}] cliquer un vantail referme la zone et masque ses cases`, referme);
     await page.click('.porte-haut.porte-g');
     await page.waitForTimeout(800);
     const rouvert = await page.evaluate(() =>

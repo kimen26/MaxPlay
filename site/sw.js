@@ -80,6 +80,7 @@ const PRECACHE_LIST = [
   'js/mp-theme.js',
   'js/celebrations.js',
   'js/mur.js',
+  'js/gen/armoire-objets.js',
   'js/armoire.js',
   'js/sw-register.js',
   'img/maxplay-icon-192.png',

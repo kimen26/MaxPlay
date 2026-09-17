@@ -37,10 +37,14 @@
   // Les 5 niveaux du meuble, du haut vers le bas. `zone` dit derrière quelle
   // porte le niveau se trouve — la niche centrale n'en a pas, elle est
   // toujours ouverte.
+  // cy/ch sont calés pour que le BAS de chaque case tombe sur le DESSUS de sa
+  // planche (23,3 · 38,3 · 50,1 · 65,3 · 79,3 % du repère, relevés sur la
+  // carcasse) : le CSS pose le contenu en flex-end, donc l'objet repose sur
+  // l'étagère au lieu de flotter au milieu de la case.
   var ROWS = [
-    { zone: 'haut',  cy: 16.4, ch: 13.6 },
-    { zone: 'haut',  cy: 30.7, ch: 12.6 },
-    { zone: 'niche', cy: 44.6, ch: 9.8 },
+    { zone: 'haut',  cy: 16.5, ch: 13.6 },
+    { zone: 'haut',  cy: 32.0, ch: 12.6 },
+    { zone: 'niche', cy: 45.2, ch: 9.8 },
     { zone: 'bas',   cy: 60.1, ch: 10.3 },
     { zone: 'bas',   cy: 72.8, ch: 13.0 }
   ];
@@ -77,8 +81,11 @@
     });
   }
 
-  // 13 jeux tirés : 12 derrière les deux paires de portes (2 niveaux × 3
-  // colonnes en haut, autant en bas), le 13e dans le tiroir de droite.
+  // EXACTEMENT 12 jeux : 2 niveaux × 3 colonnes derrière les portes hautes,
+  // autant derrière les basses. Pas un de plus — au-delà, l'armoire vire au
+  // launcher d'icônes et cesse d'être un meuble. Dinos, Monde et Œufs ne sont
+  // pas des jeux tirés : ce sont les trois fonctions permanentes du meuble,
+  // posées dans la niche centrale toujours ouverte.
   // Étiquettes d'un mot, déchiffrables par un lecteur phonétique de 4 ans.
   function buildSlots() {
     var used = {};
@@ -104,8 +111,7 @@
       { obj: 'obj-reveil', label: 'Vite !', pick: fromPick(byCategory('casse')) },
       { obj: 'obj-radio', label: 'Radio', url: 'lecture.html' },
       { obj: 'obj-puzzle', label: 'Puzzle', url: 'mj-40.html' },
-      { obj: 'obj-livre-ouvert', label: 'Lis', url: 'mj-53.html' },
-      { obj: 'obj-livres-jeux', label: 'Encore', pick: fromPick(pool().filter(function (e) { return e.id !== 'dinos'; })) }
+      { obj: 'obj-livre-ouvert', label: 'Lis', url: 'mj-53.html' }
     ].map(function (slot) {
       if (slot.url) return slot;
       var picked = slot.pick();
@@ -136,8 +142,18 @@
     el.style.setProperty('--ch', ch + '%');
   }
 
-  function slotHtml(slot, i) {
-    return '<img class="obj" src="' + IMG + slot.obj + '.webp" alt="">' +
+  // Facteur de taille par objet : MESURÉ par tools/armoire-objets.py, servi
+  // par js/gen/armoire-objets.js. Sans lui, à taille de case égale, un objet
+  // ajouré (drapeaux, volcan) paraît maigre à côté d'un objet trapu (livres).
+  function objHtml(nom) {
+    var s = (global.ARMOIRE_OBJ_SCALE || {})[nom];
+    return '<img class="obj" src="' + IMG + nom + '.webp" alt=""' +
+      (s ? ' style="--obj-scale:' + s + '"' : '') + '>';
+  }
+
+  function slotHtml(slot) {
+    return '<span class="tap" aria-hidden="true"></span>' +
+           objHtml(slot.obj) +
            '<span class="etiquette">' + esc(slot.label) + '</span>';
   }
 
@@ -182,7 +198,8 @@
         if (row.zone === 'niche') {
           var f = fixes[col];
           btn = makeSlot('objet', f.id, f.label);
-          btn.innerHTML = '<img class="obj" src="' + IMG + f.obj + '.webp" alt="">' +
+          btn.innerHTML = '<span class="tap" aria-hidden="true"></span>' +
+            objHtml(f.obj) +
             (f.badge ? '<span class="hdr-badge" id="' + f.badge + '" style="display:none"></span>' : '') +
             '<span class="etiquette">' + esc(f.label) + '</span>';
         } else {
@@ -190,7 +207,7 @@
           if (!slot) return;
           btn = makeSlot('casier', null, slot.label);
           btn.dataset.idx = iTirage;
-          btn.innerHTML = slotHtml(slot, iTirage);
+          btn.innerHTML = slotHtml(slot);
           iTirage++;
         }
         btn.dataset.zone = row.zone;
@@ -199,23 +216,18 @@
       });
     });
 
-    // 4. les deux tiroirs : l'album à gauche, un 13e jeu à droite
-    var album = makeSlot('objet', 'hdr-padidi', 'Album');
-    album.innerHTML = '<img class="obj" src="' + IMG + 'obj-carnet.webp" alt="">' +
-      '<span class="etiquette">Album</span>';
-    album.dataset.zone = TIROIRS[0].zone;
-    place(album, TIROIRS[0].cx, TIROIRS[0].cy, TIROIRS[0].cw, TIROIRS[0].ch);
-    root.appendChild(album);
-
-    var dernier = slots[iTirage];
-    if (dernier) {
-      var b = makeSlot('casier', null, dernier.label);
-      b.dataset.idx = iTirage;
-      b.dataset.zone = TIROIRS[1].zone;
-      b.innerHTML = slotHtml(dernier, iTirage);
-      place(b, TIROIRS[1].cx, TIROIRS[1].cy, TIROIRS[1].cw, TIROIRS[1].ch);
-      root.appendChild(b);
-    }
+    // 4. les deux tiroirs. Ils SONT les boutons : la poignée dessinée dans la
+    //    carcasse dit déjà « ouvre-moi ». Aucune icône flottante par-dessus —
+    //    c'est ce qui alourdissait le bas du meuble.
+    [
+      { id: 'hdr-padidi', label: 'Mon album de photos' },
+      { id: 'tiroir-encore', label: 'Encore d\'autres jeux' }
+    ].forEach(function (t, i) {
+      var btn = makeSlot('tiroir', t.id, t.label);
+      btn.dataset.zone = TIROIRS[i].zone;
+      place(btn, TIROIRS[i].cx, TIROIRS[i].cy, TIROIRS[i].cw, TIROIRS[i].ch);
+      root.appendChild(btn);
+    });
 
     // 5. les quatre vantaux. Le sprite de droite est celui de gauche en
     //    miroir : c'est le WRAPPER qui tourne, jamais le sprite miroité.
@@ -247,7 +259,7 @@
   // ni cliquables ni annoncées : la porte est devant, on ne triche pas.
   var _closeT = {};
 
-  function setZone(root, zone, open) {
+  function setZone(root, zone, open, immediat) {
     var cls = 'ouvert-' + zone;
     root.classList.toggle(cls, open);
     root.querySelectorAll('.porte[data-zone="' + zone + '"]').forEach(function (p) {
@@ -255,10 +267,13 @@
       p.setAttribute('aria-label', (open ? 'Fermer' : 'Ouvrir') +
         (zone === 'haut' ? ' le haut de l\'armoire' : ' le bas de l\'armoire'));
     });
-    var cases = root.querySelectorAll('.casier[data-zone="' + zone + '"], .objet[data-zone="' + zone + '"]');
+    var cases = root.querySelectorAll(
+      '.casier[data-zone="' + zone + '"], .objet[data-zone="' + zone + '"], .tiroir[data-zone="' + zone + '"]');
     clearTimeout(_closeT[zone]);
     if (open) {
       cases.forEach(function (c) { c.classList.remove('zone-cachee'); });
+    } else if (immediat) {
+      cases.forEach(function (c) { c.classList.add('zone-cachee'); });
     } else {
       // on ne masque qu'une fois le vantail revenu devant
       _closeT[zone] = setTimeout(function () {
@@ -286,6 +301,24 @@
     if (oeufs) oeufs.addEventListener('click', function () { if (global.NidUI && NidUI.openChambre) NidUI.openChambre(); });
     var padidi = $('hdr-padidi');
     if (padidi) padidi.addEventListener('click', function () { if (global.NidUI && NidUI.openPadidi) NidUI.openPadidi(); });
+    var encore = $('tiroir-encore');
+    if (encore) encore.addEventListener('click', function () { retirerLesJeux(root); });
+  }
+
+  // Tiroir de droite : « encore ». On retire au sort douze nouveaux jeux et
+  // on les repose dans les cases, sans quitter l'armoire. C'est le geste
+  // naturel du tiroir — on l'ouvre, il y a autre chose dedans.
+  function retirerLesJeux(root) {
+    _slots = buildSlots();
+    var i = 0;
+    root.querySelectorAll('.casier').forEach(function (btn) {
+      var slot = _slots[i];
+      if (!slot) return;
+      btn.dataset.idx = i;
+      btn.setAttribute('aria-label', slot.label);
+      btn.innerHTML = slotHtml(slot);
+      i++;
+    });
   }
 
   var _slots = null;
@@ -333,19 +366,12 @@
       wireFixes(root);
       wireCasiers(root);
 
-      // Portes fermées au chargement, puis elles s'ouvrent toutes seules :
-      // l'armoire accueille l'enfant une fois par visite, sans lui demander
-      // deux gestes à chaque retour. Mouvement réduit : ouvert d'emblée.
-      var sobre = global.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-      setZone(root, 'haut', false);
-      setZone(root, 'bas', false);
-      if (sobre) {
-        setZone(root, 'haut', true);
-        setZone(root, 'bas', true);
-      } else {
-        setTimeout(function () { setZone(root, 'haut', true); }, 420);
-        setTimeout(function () { setZone(root, 'bas', true); }, 640);
-      }
+      // Portes FERMÉES à l'arrivée, et elles le restent : c'est l'enfant qui
+      // ouvre. Les ouvrir tout seul après une demi-seconde (passe 1) tuait
+      // l'idée même du meuble — on découvre ce qu'il y a dedans en le
+      // touchant, on ne regarde pas une armoire se déballer.
+      setZone(root, 'haut', false, true);
+      setZone(root, 'bas', false, true);
     }
     refresh();
   }

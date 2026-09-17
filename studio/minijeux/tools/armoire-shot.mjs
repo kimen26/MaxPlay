@@ -27,10 +27,11 @@ for (const vp of VIEWPORTS) {
   await page.goto(pathToFileURL(INDEX).href, { waitUntil: 'networkidle' });
   const tag = `${vp.w}x${vp.h}`;
 
-  if (vp.w === 360 && vp.h === 740) {
-    await page.screenshot({ path: resolve(OUT, `armoire-v6-${tag}-ferme.png`) });
-  }
-  await page.waitForTimeout(1500); // ouverture automatique + transitions
+  // l'armoire arrive FERMÉE : c'est l'enfant qui ouvre.
+  await page.screenshot({ path: resolve(OUT, `armoire-v6-${tag}-ferme.png`) });
+  await page.click('.porte-haut.porte-g');
+  await page.click('.porte-bas.porte-g');
+  await page.waitForTimeout(900);
   await page.screenshot({ path: resolve(OUT, `armoire-v6-${tag}.png`) });
 
   const m = await page.evaluate(() => {

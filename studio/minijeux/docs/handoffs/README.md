@@ -2,6 +2,7 @@
 
 > Usine du pôle (protocole : `~/.claude/skills/nouveau-projet/references/protocole-handoffs.md`). Registre global : `docs/handoffs/README.md` (racine).
 > **MAJ 2026-09-12** (HO-R01) : 8 briefs `fait` déplacés vers [`archives/2026-09-03/`](archives/2026-09-03/) (HO-MJ-01 avait un statut interne périmé `pret`, corrigé en `fait` avant archivage). HO-MJ-05 et HO-MJ-06 n'ont jamais eu de fichier brief séparé (seulement un rapport) — rien à archiver pour eux. HO-MJ-11 a un rapport (`rapports/HO-MJ-11-rapport.md`) sans entrée de registre ni brief — question ouverte, non touché ici.
+> **MAJ 2026-09-18** (HO-MJ-19) : les briefs HO-MJ-13, 14, 15 et 17 sont descendus dans [`archives/2026-09-18/`](archives/2026-09-18/) — quatre itérations mortes de la même armoire, gardées pour l'histoire, plus pour le travail courant. Seuls HO-MJ-12 (assets, encore ouvert) et HO-MJ-19 (v6, livrée) restent ici.
 
 | ID | Titre | Fichiers possédés | Statut |
 |----|-------|-------------------|--------|
@@ -11,7 +12,9 @@
 | HO-MJ-13 | L'Armoire · nouvel accueil enfant, remplace La Vallée | site/index.html, js/armoire.js, css/armoire.css, js/mur.js, css/mur.css, js/mur-scene.js (suppr.), sw.js, tests index/mur-nid/armoire | fait |
 | HO-MJ-14 | L'Armoire v2 · trois zones, portes ouvertes, marges de pièce | site/index.html, js/armoire.js, css/armoire.css, sw.js, tests armoire | fait (rejetée visuellement par PY, remplacée par HO-MJ-15) |
 | HO-MJ-15 | L'Armoire v3 · carcasse en tuiles fidèle à la maquette validée | site/index.html, js/armoire.js, css/armoire.css, sw.js, img/armoire/carcasse/**, tools/armoire-tuiles.py, tests armoire/index | fait (recettée par PY 2026-09-17 : vingt points, remplacée par HO-MJ-17) |
-| HO-MJ-17 | L'Armoire v4 · kit de 7 sprites + lumière CSS, prototype statique | site/img/armoire/kit/**, tools/armoire-kit.py, tools/armoire-proto/**, tools/armoire-proto-shot.mjs | fait (validation visuelle PY en attente) |
+| HO-MJ-17 | L'Armoire v4 · kit de 7 sprites + lumière CSS, prototype statique | site/img/armoire/kit/**, tools/armoire-kit.py, tools/armoire-proto/** | abandonné 2026-09-18 (prototype jamais validé, fichiers supprimés par HO-MJ-19) |
+| HO-MJ-18 | L'Armoire v5 · kit de 10 images GPT + états | — | abandonné 2026-09-18 (jamais commité, résultat cassé ; brief, rapport et captures supprimés par HO-MJ-19) |
+| HO-MJ-19 | L'Armoire v6 · repère de design fixe 911 × 1480, mise à l'échelle d'un bloc | site/index.html, css/armoire.css, js/armoire.js, sw.js, img/armoire/v6/**, tools/armoire-sprites.py, tools/armoire-shot.mjs, tests armoire | fait 2026-09-18 (recette PY sur P30 Pro à faire) |
 
 ## Archivés (`archives/2026-09-03/`)
 

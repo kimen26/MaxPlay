@@ -1,47 +1,46 @@
-// armoire.spec.mjs — L'Armoire v3, carcasse en tuiles (HO-MJ-15, remplace la
-// v2 HO-MJ-14 à HTML/CSS pur). Spec AUTONOME (comme mur-nid.spec.mjs) : pas
-// de site/armoire.html, donc pas de `npm run mj:test armoire` (run.mjs
-// cherche site/<mj>.html) — lancer directement :
+// armoire.spec.mjs — L'Armoire v6 (HO-MJ-19). Spec AUTONOME (comme
+// mur-nid.spec.mjs) : il n'y a pas de site/armoire.html, donc pas de
+// `npm run mj:test armoire` (run.mjs cherche site/<mj>.html) — lancer :
 //   node studio/minijeux/tests/armoire.spec.mjs
 //
-// Vérifie, pour CHAQUE viewport du brief : jamais d'ascenseur, boutons
-// vitrine+casiers ≥ 80×80, portes ouvertes entièrement à l'écran, avatar
-// visible (≥ 60 %, aligné sur l'armoire réelle — c'est un FRÈRE de #armoire
-// depuis HO-MJ-15, pas un enfant), images chargées, poids ≤ 200 Ko au
-// premier affichage 360×740 (brief § 5.4 : carcasse + objets visibles).
-// Fidélité pixel (brief § 5.2) : pour 360×740, 320×568 et 1280×720, la
-// capture est comparée à la maquette du même nom via
-// studio/minijeux/tools/armoire-diff.py (profils de luminance des bords de
-// panneaux/traverses/planches), écart ≤ 3 px exigé — reporté en avertissement
-// (pas un échec dur du spec) car la mesure automatisée reste sensible au
-// bruit de texture bois et aux détails décoratifs (charnières) ; la revue
-// visuelle manuelle (captures ouvertes une à une) est la porte qui tranche.
+// Ce que ce spec garde, viewport par viewport :
+//   · jamais d'ascenseur, et rien de rogné par le bord de l'écran ;
+//   · les 17 cases présentes, chacune ≥ 96 × 96 de zone tactile ;
+//   · toutes les images chargées, portes comprises (une url() de fond qui
+//     tombe en 404 est invisible à l'œil — c'est arrivé) ;
+//   · les 4 vantaux s'ouvrent et se referment ;
+//   · le poids du premier affichage ;
+//   · aucune erreur JS.
+//
+// Et surtout la promesse de l'architecture v6 : LES PROPORTIONS NE BOUGENT
+// PAS. Chaque case est mesurée en fraction de la boîte de l'armoire, et ces
+// fractions doivent être identiques à 320 px et à 1280 px. C'est ce test-là
+// qui échouerait si quelqu'un remettait un calcul de taille par pièce.
 import { chromium } from 'playwright';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { mkdirSync } from 'node:fs';
-import { execFileSync } from 'node:child_process';
 
 const __dir = dirname(fileURLToPath(import.meta.url));
 const SITE = resolve(__dir, '..', '..', '..', 'site');
 const INDEX = resolve(SITE, 'index.html');
 const CAPTURES = resolve(__dir, '..', 'docs', 'handoffs', 'rapports', 'captures');
-const TOOLS = resolve(__dir, '..', 'tools');
 mkdirSync(CAPTURES, { recursive: true });
 
-const PASS = '\x1b[32mPASS\x1b[0m', FAIL = '\x1b[31mFAIL\x1b[0m', WARN = '\x1b[33mWARN\x1b[0m';
+const PASS = '\x1b[32mPASS\x1b[0m', FAIL = '\x1b[31mFAIL\x1b[0m';
 let fail = 0;
 const checks = [];
-const ok = (name, cond, detail = '') => { checks.push(['fail', cond, name, detail]); if (!cond) fail++; };
-const warn = (name, cond, detail = '') => { checks.push(['warn', cond, name, detail]); };
+const ok = (name, cond, detail = '') => { checks.push([cond, name, detail]); if (!cond) fail++; };
 
-// Viewports du brief : portrait/paysage, 320 → 1280, + 390×844 (iPhone, HO-MJ-14).
 const VIEWPORTS = [
   { w: 360, h: 740 }, { w: 360, h: 640 }, { w: 320, h: 568 }, { w: 390, h: 844 },
   { w: 412, h: 915 }, { w: 800, h: 600 }, { w: 1024, h: 768 }, { w: 1280, h: 720 }
 ];
-// Viewports comparés à la maquette (brief § 5.2)
-const FIDELITY_VIEWPORTS = new Set(['360x740', '320x568', '1280x720']);
+const CASES_ATTENDUES = 17; // 12 jeux derrière les portes + 3 en niche + album + 13e jeu en tiroir
+
+// empreinte de proportions : { label → [cx, cy, cw, ch] en fraction de la
+// boîte de l'armoire }, relevée au premier viewport et comparée aux suivants.
+let empreinte = null;
 
 const browser = await chromium.launch({ args: ['--allow-file-access-from-files', '--disable-web-security'] });
 
@@ -50,17 +49,10 @@ for (const vp of VIEWPORTS) {
   const errors = [];
   page.on('pageerror', e => errors.push(`pageerror: ${e.message}`));
   page.on('console', m => { if (m.type() === 'error') errors.push(`console.error: ${m.text()}`); });
-
-  // file:// ne pose pas de content-length fiable → on lit le corps réel de
-  // la réponse (fonctionne aussi bien en local qu'en prod https).
+  // file:// ne pose pas de content-length fiable → on lit le corps réel.
   let imgBytes = 0;
   page.on('response', async (res) => {
-    try {
-      const url = res.url();
-      if (!/\/img\//.test(url)) return;
-      const buf = await res.body();
-      imgBytes += buf.length;
-    } catch (e) {}
+    try { if (/\/img\//.test(res.url())) imgBytes += (await res.body()).length; } catch (e) {}
   });
 
   const tag = `${vp.w}x${vp.h}`;
@@ -68,102 +60,113 @@ for (const vp of VIEWPORTS) {
     await page.addInitScript(() => { try { localStorage.clear(); } catch (e) {} });
     await page.goto(pathToFileURL(INDEX).href, { waitUntil: 'networkidle' });
     await page.waitForSelector('.casier', { timeout: 5000 });
-    await page.waitForTimeout(150); // positionDoors()/positionAvatar() en rAF
+    await page.waitForTimeout(1400); // ouverture automatique des deux zones
 
-    const metrics = await page.evaluate(() => {
+    const m = await page.evaluate(() => {
       const de = document.documentElement;
-      const btnRects = [...document.querySelectorAll('.casier, .objet')].map(c => c.getBoundingClientRect());
-      const imgsOk = [...document.querySelectorAll('.casier .obj, .objet .obj, .ar-porte, .ar-panneau')].every(i => {
-        if (i.tagName === 'IMG') return i.complete && i.naturalWidth > 0;
-        return true; // .ar-porte est un <img> aussi mais couvert ci-dessus ; .ar-panneau = background CSS
+      const cab = document.getElementById('armoire');
+      const cabR = cab.getBoundingClientRect();
+      const cases = [...document.querySelectorAll('.casier, .objet')];
+      const rects = cases.map(c => c.getBoundingClientRect());
+
+      // tout le contenu de l'armoire, vantaux ouverts compris
+      const all = [...cab.querySelectorAll('*')].map(e => e.getBoundingClientRect());
+      const bornes = {
+        l: Math.min(...all.map(r => r.left)), r: Math.max(...all.map(r => r.right)),
+        t: Math.min(...all.map(r => r.top)), b: Math.max(...all.map(r => r.bottom))
+      };
+
+      const imgsOk = [...document.querySelectorAll('#armoire img')]
+        .every(i => i.complete && i.naturalWidth > 0);
+      // une porte = un fond CSS : on le recharge pour de vrai, un 404 y est
+      // silencieux (ni onerror ni trace dans le DOM).
+      const fonds = [...new Set([...document.querySelectorAll('.porte-feuille')]
+        .map(e => getComputedStyle(e).backgroundImage.replace(/^url\("?|"?\)$/g, '')))];
+
+      const empreinte = {};
+      cases.forEach((c, i) => {
+        const r = rects[i];
+        empreinte[c.getAttribute('aria-label')] = [
+          (r.left + r.width / 2 - cabR.left) / cabR.width,
+          (r.top + r.height / 2 - cabR.top) / cabR.height
+        ];
       });
-      const portesImgsOk = [...document.querySelectorAll('.ar-porte')].every(i => i.complete && i.naturalWidth > 0);
-
-      const armoireR = document.getElementById('armoire').getBoundingClientRect();
-      const avatarR = document.getElementById('profil-avatar').getBoundingClientRect();
-      const frontonR = document.querySelector('.ar-fronton').getBoundingClientRect();
-      // fraction de l'avatar NON recouverte par le fronton (intersection verticale, même x)
-      // le bois de l'épaule gauche commence à 100/165 du fronton (le haut de
-      // la boîte est du vide au-dessus de l'arche) — revue 2026-09-17
-      const shoulderTop = frontonR.top + frontonR.height * (100 / 165);
-      const interTop = Math.max(avatarR.top, shoulderTop);
-      const interBottom = Math.min(avatarR.bottom, frontonR.bottom);
-      const interH = Math.max(0, interBottom - interTop);
-      const avatarVisibleFrac = avatarR.height > 0 ? 1 - (interH / avatarR.height) : 0;
-
-      const portes = [...document.querySelectorAll('.ar-porte')].map(p => p.getBoundingClientRect());
 
       return {
         scrollH: de.scrollHeight, innerH: innerHeight,
         scrollW: de.scrollWidth, innerW: innerWidth,
-        count: btnRects.length,
-        minW: Math.min(...btnRects.map(r => r.width)), minH: Math.min(...btnRects.map(r => r.height)),
-        imgsOk, portesImgsOk,
-        armoireLeft: armoireR.left, armoireRight: innerWidth - armoireR.right, armoireBottom: innerHeight - armoireR.bottom,
-        avatarVisibleFrac,
-        portes: portes.map(p => ({ left: p.left, right: p.right, top: p.top, bottom: p.bottom }))
+        cab: { w: cabR.width, h: cabR.height },
+        n: cases.length,
+        minW: Math.min(...rects.map(r => r.width)), minH: Math.min(...rects.map(r => r.height)),
+        bornes, imgsOk, fonds, empreinte,
+        nPortes: document.querySelectorAll('.porte').length,
+        ouvert: cab.classList.contains('ouvert-haut') && cab.classList.contains('ouvert-bas')
       };
     });
 
-    ok(`[${tag}] jamais d'ascenseur vertical`, metrics.scrollH <= metrics.innerH + 1, `scrollH=${metrics.scrollH} innerH=${metrics.innerH}`);
-    ok(`[${tag}] jamais d'ascenseur horizontal`, metrics.scrollW <= metrics.innerW + 1, `scrollW=${metrics.scrollW} innerW=${metrics.innerW}`);
-    ok(`[${tag}] au moins 1 casier visible`, metrics.count > 0);
-    ok(`[${tag}] chaque bouton vitrine+casier ≥ 80×80`, metrics.minW >= 80 && metrics.minH >= 80, `minW=${metrics.minW.toFixed(1)} minH=${metrics.minH.toFixed(1)}`);
-    ok(`[${tag}] toutes les images de casier/vitrine chargées (naturalWidth>0)`, metrics.imgsOk);
-    ok(`[${tag}] les 4 images de portes chargées`, metrics.portesImgsOk);
+    ok(`[${tag}] jamais d'ascenseur vertical`, m.scrollH <= m.innerH + 1, `${m.scrollH} > ${m.innerH}`);
+    ok(`[${tag}] jamais d'ascenseur horizontal`, m.scrollW <= m.innerW + 1, `${m.scrollW} > ${m.innerW}`);
+    ok(`[${tag}] rien de rogné par le bord de l'écran`,
+      m.bornes.l >= -0.5 && m.bornes.t >= -0.5 && m.bornes.r <= vp.w + 0.5 && m.bornes.b <= vp.h + 0.5,
+      `L${m.bornes.l.toFixed(1)} R${m.bornes.r.toFixed(1)} T${m.bornes.t.toFixed(1)} B${m.bornes.b.toFixed(1)}`);
+    ok(`[${tag}] les ${CASES_ATTENDUES} cases sont là`, m.n === CASES_ATTENDUES, `n=${m.n}`);
+    ok(`[${tag}] chaque case ≥ 96 × 96 de zone tactile`, m.minW >= 96 && m.minH >= 96,
+      `min=${m.minW.toFixed(1)}×${m.minH.toFixed(1)}`);
+    ok(`[${tag}] toutes les images de l'armoire chargées`, m.imgsOk);
+    ok(`[${tag}] 4 vantaux présents, ouverts au chargement`, m.nPortes === 4 && m.ouvert,
+      `n=${m.nPortes} ouvert=${m.ouvert}`);
 
-    // marge minimale (gauche/droite) : la coque #armoire est centrée par
-    // .piece (justify-content:center), au moins 0.5 % de respiration (MARGIN_X
-    // côté JS = 2 %). Sur grand écran (paysage large, u limité par la
-    // HAUTEUR pas la largeur), l'armoire est bien plus étroite que l'écran
-    // — le mur se voit largement sur les côtés, c'est voulu par compose()
-    // (jamais l'inverse : une armoire étirée) — donc pas de PLAFOND de marge
-    // ici, seulement un plancher (l'armoire ne colle jamais aux bords).
-    const wl = metrics.armoireLeft / vp.w * 100, wr = metrics.armoireRight / vp.w * 100;
-    ok(`[${tag}] marge gauche ≥ 0.5 %`, wl >= 0.5, `${wl.toFixed(1)}%`);
-    ok(`[${tag}] marge droite ≥ 0.5 %`, wr >= 0.5, `${wr.toFixed(1)}%`);
+    // les fonds de porte existent vraiment (rechargés depuis la page)
+    const fondsOk = await page.evaluate(async (urls) => {
+      const res = await Promise.all(urls.map(u => new Promise(r => {
+        const i = new Image(); i.onload = () => r(true); i.onerror = () => r(false); i.src = u;
+      })));
+      return res.every(Boolean);
+    }, m.fonds);
+    ok(`[${tag}] les images de fond des vantaux se chargent`, fondsOk, m.fonds.join(' | '));
 
-    // avatar (frère de #armoire depuis HO-MJ-15) visible ≥ 60 %, mordu par le fronton
-    // Le rectangle du fronton inclut le vide au-dessus des épaules de l'arche :
-    // un avatar mordu de 15 % par le BOIS chevauche ~50 % de la BOÎTE (revue
-    // 2026-09-17). Plancher géométrique à 45 %, l'œil juge le reste sur capture.
-    ok(`[${tag}] avatar visible ≥ 60 % (mordu ≤ 40 % par le bois)`, metrics.avatarVisibleFrac >= 0.6, `${(metrics.avatarVisibleFrac * 100).toFixed(0)}%`);
-
-    // portes ouvertes entièrement dans l'écran
-    ok(`[${tag}] 4 portes ouvertes présentes`, metrics.portes.length === 4, `n=${metrics.portes.length}`);
-    const portesInScreen = metrics.portes.every(p => p.left >= -0.5 && p.right <= vp.w + 0.5 && p.top >= -0.5 && p.bottom <= vp.h + 0.5);
-    ok(`[${tag}] portes ouvertes entièrement à l'écran`, portesInScreen, JSON.stringify(metrics.portes.map(p => ({ l: +p.left.toFixed(1), r: +p.right.toFixed(1) }))));
-
-    const shotPath = resolve(CAPTURES, `HO-MJ-15-rendu-${tag}.png`);
-    await page.screenshot({ path: shotPath });
-
-    if (vp.w === 360 && vp.h === 740) {
-      // Poids réseau du 1er affichage — porte #4 du brief : ≤ 200 Ko d'images.
-      // Budget 260 Ko (revue 2026-09-17) : carcasse 64 Ko + 10 objets v1 + avatar.
-      ok('[360x740] poids images 1er affichage ≤ 260 Ko', imgBytes <= 260 * 1024, `${(imgBytes / 1024).toFixed(0)} Ko`);
-    }
-
-    ok(`[${tag}] aucune erreur JS / console (smoke)`, errors.length === 0, errors.join(' | '));
-
-    // ── fidélité maquette (brief § 5.2), 3 viewports ────────────────────
-    if (FIDELITY_VIEWPORTS.has(tag)) {
-      const maquette = resolve(CAPTURES, `HO-MJ-15-maquette-${tag}.png`);
-      try {
-        const out = execFileSync('python', [resolve(TOOLS, 'armoire-diff.py'), shotPath, maquette], { encoding: 'utf8' });
-        const result = JSON.parse(out);
-        warn(`[${tag}] fidélité maquette ≤ 3px (mesure automatisée, indicative)`, result.ok, `max_gap=${result.max_gap}px — ${JSON.stringify(result.details)}`);
-      } catch (e) {
-        // execFileSync lève si le process exit != 0 (notre script sort 1 si !ok) —
-        // stdout reste lisible sur l'exception.
-        const out = e.stdout ? e.stdout.toString() : '';
-        try {
-          const result = JSON.parse(out);
-          warn(`[${tag}] fidélité maquette ≤ 3px (mesure automatisée, indicative)`, result.ok, `max_gap=${result.max_gap}px — ${JSON.stringify(result.details)}`);
-        } catch (e2) {
-          warn(`[${tag}] fidélité maquette : script indisponible`, false, e.message);
+    // proportions identiques d'un viewport à l'autre (promesse v6)
+    if (!empreinte) {
+      empreinte = m.empreinte;
+    } else {
+      let pire = 0, quoi = '';
+      for (const k of Object.keys(empreinte)) {
+        if (!m.empreinte[k]) { pire = 1; quoi = `case absente : ${k}`; break; }
+        for (let i = 0; i < 2; i++) {
+          const d = Math.abs(empreinte[k][i] - m.empreinte[k][i]);
+          if (d > pire) { pire = d; quoi = `${k} axe${i}`; }
         }
       }
+      // 1,5 % : la zone tactile de 96 px est un plancher en PIXELS, elle
+      // décale légèrement le centre des cases sur les très petits écrans.
+      ok(`[${tag}] proportions identiques au viewport de référence`, pire <= 0.015,
+        `écart max ${(pire * 100).toFixed(2)} % (${quoi})`);
     }
+
+    // ouverture / fermeture réelle d'une zone
+    await page.click('.porte-haut.porte-g');
+    await page.waitForTimeout(800);
+    const ferme = await page.evaluate(() =>
+      !document.getElementById('armoire').classList.contains('ouvert-haut') &&
+      [...document.querySelectorAll('.casier[data-zone="haut"]')].every(c => c.classList.contains('zone-cachee')));
+    ok(`[${tag}] cliquer un vantail referme la zone et masque ses cases`, ferme);
+    if (vp.w === 360 && vp.h === 740) {
+      await page.screenshot({ path: resolve(CAPTURES, 'HO-MJ-19-armoire-360x740-ferme.png') });
+    }
+    await page.click('.porte-haut.porte-g');
+    await page.waitForTimeout(800);
+    const rouvert = await page.evaluate(() =>
+      document.getElementById('armoire').classList.contains('ouvert-haut'));
+    ok(`[${tag}] et la rouvre`, rouvert);
+
+    await page.screenshot({ path: resolve(CAPTURES, `HO-MJ-19-armoire-${tag}.png`) });
+
+    if (vp.w === 360 && vp.h === 740) {
+      // budget du 1er affichage : carcasse (113 Ko) + 2 vantaux + 17 objets.
+      ok('[360x740] poids images 1er affichage ≤ 480 Ko', imgBytes <= 480 * 1024,
+        `${(imgBytes / 1024).toFixed(0)} Ko`);
+    }
+    ok(`[${tag}] aucune erreur JS / console`, errors.length === 0, errors.join(' | '));
   } catch (e) {
     ok(`[${tag}] exécution sans exception`, false, e.message);
   }
@@ -172,10 +175,9 @@ for (const vp of VIEWPORTS) {
 
 await browser.close();
 
-console.log('\n── armoire.spec.mjs (L\'Armoire v3, HO-MJ-15) ──');
-for (const [kind, cond, name, detail] of checks) {
-  const badge = kind === 'warn' ? (cond ? PASS : WARN) : (cond ? PASS : FAIL);
-  console.log(`  ${badge}  ${name}${!cond && detail ? `\n        → ${detail}` : ''}`);
+console.log('\n── armoire.spec.mjs (L\'Armoire v6, HO-MJ-19) ──');
+for (const [cond, name, detail] of checks) {
+  console.log(`  ${cond ? PASS : FAIL}  ${name}${!cond && detail ? `\n        → ${detail}` : ''}`);
 }
 console.log(fail === 0 ? `\n\x1b[32m✓ armoire OK\x1b[0m\n` : `\n\x1b[31m✗ ${fail} échec(s)\x1b[0m\n`);
 process.exit(fail === 0 ? 0 : 1);

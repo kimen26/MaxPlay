@@ -25,20 +25,20 @@
 </head>
 <body data-av-nobadge>
 
-<!-- ══════════════ L'ARMOIRE (menu enfant, HO-MJ-15 : carcasse en tuiles) ══════
+<!-- ══════════════ L'ARMOIRE (menu enfant, HO-MJ-19) ══════════════════
      #mur-view = bascule armoire/parents inchangée (mur.js § show()).
-     Le contenu de #armoire (fronton, panneaux, vitrines, casiers, tiroirs,
-     pieds, portes) est généré par js/armoire.js à chaque resize (--u calculé
-     comme compose() de armoire-compose.py) via root.innerHTML='' : #profil-
-     avatar DOIT rester HORS de #armoire (frère, pas enfant), sinon il est
-     détruit à chaque resize. Positionné en absolu par rapport à .piece,
-     aligné sur #armoire via --ay/--u (postMessage-free : armoire.js pose
-     ces variables sur .piece aussi). -->
+     Le décor de #armoire (carcasse, cases, portes, prénom) est posé UNE
+     fois par js/armoire.js, puis jamais reconstruit : l'armoire vit dans un
+     repère de design fixe de 911 × 1480 et c'est le CSS qui met la scène à
+     l'échelle d'un bloc (--cab-w). Il n'y a donc plus de handler de resize,
+     et #profil-avatar peut vivre DANS #armoire — c'est même nécessaire, son
+     ancrage est en % du repère et l'arche doit le mordre. -->
 <div class="piece" id="mur-view">
-<div class="ar-avatar-wrap" id="profil-avatar" role="button" aria-label="Mon dino">
-  <div class="avatar">🦕</div>
-</div>
-<div class="armoire" id="armoire" role="group" aria-label="Mon armoire"></div>
+  <div class="armoire" id="armoire" role="group" aria-label="Mon armoire">
+    <div class="ar-avatar-wrap" id="profil-avatar" role="button" aria-label="Mon dino">
+      <div class="avatar">🦕</div>
+    </div>
+  </div>
 </div>
 
 <!-- mini-menu de l'avatar : étoiles (HO-MJ-15 : plus sur l'arche) + habiller
@@ -273,6 +273,5 @@
     })();
   })();
   </script>
-<script>try{var _mpk=JSON.parse(localStorage.getItem('maxplay_active_child'));if(_mpk&&_mpk.nickname)document.getElementById('profil-pseudo').textContent=_mpk.nickname;}catch(e){}</script>
 </body>
 </html>

@@ -3,4 +3,4 @@
 // (voir PRECACHE_LIST dans site/sw.js) : change dès qu'un seul octet change.
 // Chargé par sw.js via importScripts (service worker classique, pas de module) :
 // une simple affectation globale, pas d'export ESM.
-self.SW_VERSION = '75ae50213d2b';
+self.SW_VERSION = '7bfea2dc4f17';

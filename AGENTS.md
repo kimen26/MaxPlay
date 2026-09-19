@@ -44,7 +44,7 @@ MaxPlay/
 │   └── referentiel/      ← TRANSVERSE : registre des textes/sons + détection de dérive (lecture seule)
 ├── infra/                ← bot Telegram + serveur MCP llm-copains
 ├── memory/               ← transverse : MEMORY, MAX_PROFILE, VISION
-├── _archive/             ← cadavres préservés (avec INDEX expliquant chaque entrée)
+├── docs/ARCHIVES.md      ← index des cadavres sortis du repo (vault MaxPlay-vault hors repo, D-007)
 ├── .claude/
 │   ├── agents/           ← sous-agents (PMO, sachants, reviewers, conseillers — count : `ls .claude/agents/`)
 │   ├── hooks/            ← scripts hooks déterministes
@@ -78,7 +78,7 @@ Plan → TodoWrite → Dev (subagents) → Verify → Commit → Docs
 | [`memory/MEMORY.md`](memory/MEMORY.md) / [`TODO.md`](memory/TODO.md) / [`DECISIONS.md`](memory/DECISIONS.md) / [`LESSONS.md`](memory/LESSONS.md) / [`CHANGELOG.md`](memory/CHANGELOG.md) | Quintette transverse : où on en est / quoi ensuite / pourquoi (D-NNN) / erreur à ne pas refaire (L-NNN) / ce qui est sorti |
 | [`memory/MAX_PROFILE.md`](memory/MAX_PROFILE.md) / [`VISION.md`](memory/VISION.md) / [`audits/`](memory/audits/) | Profil Max / vision produit / audits datés |
 | [`infra/supabase/README.md`](infra/supabase/README.md) / [`infra/bot/index.ts`](infra/bot/index.ts) / [`infra/mcp/server.ts`](infra/mcp/server.ts) | Supabase Phase 1 / bot Telegram / MCP llm-copains |
-| [`_archive/INDEX.md`](_archive/INDEX.md) | Cadavres préservés (avec date + raison) |
+| [`docs/ARCHIVES.md`](docs/ARCHIVES.md) | Index des archives sorties du repo vers le vault (date + raison, D-007) |
 
 ## Portes de vérification (rappel)
 

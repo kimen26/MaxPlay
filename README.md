@@ -27,7 +27,7 @@ MaxPlay/
 │   └── lunii/              ← distribution boîte à histoires Lunii (STUdio)
 ├── infra/                  ← bot Telegram + serveur MCP llm-copains + Supabase
 ├── memory/                 ← transverse : MEMORY · MAX_PROFILE · VISION · audits/
-└── _archive/               ← cadavres préservés (cf. _archive/INDEX.md)
+└── docs/ARCHIVES.md        ← index des archives sorties du repo (vault, D-007)
 ```
 
 **Déploiement** : GitHub Actions assemble `site/` dans `_site/` + deploy Pages. `node_modules/`, `dist/`, `_site/`, `temp/` sont dans `.gitignore`.

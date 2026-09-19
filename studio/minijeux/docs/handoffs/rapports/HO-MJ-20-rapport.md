@@ -544,3 +544,13 @@ Recette Papa Yann sur la v7 : six défauts (lumière, portes ouvertes, charnièr
 
 Ce qui diffère encore de la référence, à l'œil : rien que je voie sur les planches. À vérifier par Papa Yann sur le P30 Pro : le ressenti de la transition (620 ms) et le tap sur un vantail ouvert pour refermer.
 
+## 12. Passe 5 (Fable, 2026-09-19 nuit) — vantaux ouverts tronqués, coins de carcasse
+
+Recette Papa Yann sur la v8 : « le haut des portes hautes et le bas des portes basses sont tronqués ». Exact : dans `ref-ouverte.png` les vantaux ouverts, vus en perspective, montent DEVANT la corniche (y=64) et descendent devant le socle (y=1426) ; mes crops s'arrêtaient à l'ouverture (140 / 1392). Crops étendus à 58..600 et 796..1432.
+
+Conséquence cachée : sous ces vantaux, la carcasse de `ref-ouverte` n'a pas de coins de corniche ni de socle (ils sont recouverts). Patch depuis `ref-fermee` essayé : marche visible, les deux rendus n'ont pas les mêmes hauteurs de corniche (80 px contre 88) ni de socle (48 contre 33). Retenu : miroir périodique (8 px) de la bande plate visible juste à côté, dans `ref-ouverte` elle-même, plus arrondi d'alpha du bout. Zoom contrôlé aux quatre coins, ouvert et fermé.
+
+Charnières des vantaux fermés : dans `ref-fermee` le canon est au bord extérieur de chaque vantail, sur la jointure vantail/montant ; c'est ce que rend le sprite (crop depuis x=146, axe à 2,51 %). Zoom ref/rendu joint à la réponse.
+
+Spec vert, captures et planches régénérées, 173 Ko.
+

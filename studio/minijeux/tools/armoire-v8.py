@@ -44,14 +44,33 @@ PLANCHES = [  # bande planche + ombre portee dessous
 MONTANTS = [(346, 378, 600, 766), (592, 624, 600, 766)]     # niche
 TIROIRS = [(176, 470, 1222, 1382), (476, 770, 1222, 1382)]  # gauche, droit (meme largeur : un seul sprite)
 DRAWER_BAND = (172, 792)   # bande inpaintee derriere les deux tiroirs
-LEAVES = {  # vantaux ouverts gauches ; x = du bord image au stile inclus
-    'porte-ouverte-haut': (30, 192, 140, 590),
-    'porte-ouverte-bas': (30, 192, 796, 1392),
+LEAVES = {  # vantaux ouverts gauches ; x = du bord image au stile inclus.
+    # En y ils DEPASSENT l ouverture : vus en perspective, plus pres de l oeil,
+    # le haut monte devant la corniche (y=64) et le bas descend devant le
+    # socle (y=1426). Les couper a l ouverture les tronquait (recette PY).
+    'porte-ouverte-haut': (30, 192, 58, 600),
+    'porte-ouverte-bas': (30, 192, 796, 1432),
 }
 STILE_ROW = 690      # ligne de montant sain (niche), recopiee dans les bandes a portes
 LEAF_XL, LEAF_XR = 190, 778
 SOCLE_XL, SOCLE_XR = 126, 842
 CORPS_X0, CORPS_X1 = 133, 835
+
+
+# Affine corps ref-fermee <-> ref-ouverte (les deux rendus GPT n ont pas les
+# memes proportions ; on fait coincider les boites de corps).
+F = {'x0': 128, 'x1': 840, 'y0': 9, 'y1': 1546}      # corps sur ref-fermee
+O = {'x0': CORPS_X0, 'x1': CORPS_X1, 'y0': 22, 'y1': 1476}
+SX = (O['x1'] - O['x0']) / float(F['x1'] - F['x0'])
+SY = (O['y1'] - O['y0']) / float(F['y1'] - F['y0'])
+
+
+def f2o(x, y):
+    return O['x0'] + (x - F['x0']) * SX, O['y0'] + (y - F['y0']) * SY
+
+
+def o2f(x, y):
+    return F['x0'] + (x - O['x0']) / SX, F['y0'] + (y - O['y0']) / SY
 
 
 def crop(box):
@@ -108,6 +127,51 @@ def build_shell():
             a[y0:y1, INT_X1:CORPS_X1 + 1] = src[STILE_ROW, INT_X1:CORPS_X1 + 1]
     # 5. tiroirs
     fill_band(a, DRAWER_BAND[0], DRAWER_BAND[1], TIROIRS[0][2], TIROIRS[0][3])
+    # 6. coins de la corniche et du socle : dans ref-ouverte ils sont SOUS les
+    #    vantaux ouverts (qui les recouvrent en perspective). ref-fermee n a pas
+    #    les memes hauteurs de corniche ni de socle (patch essaye : marche
+    #    visible). On reconstruit donc avec la MATIERE de ref-ouverte : miroir
+    #    periodique de la bande visible juste a cote (meme rendu, meme lumiere),
+    #    et un arrondi d alpha pour le bout.
+    def mirror_tile(y0, y1, x0, x1, xs, period):
+        # remplit [x0,x1) sur [y0,y1) depuis la bande [xs, xs+period) reflechie
+        for x in range(x0, x1):
+            d = (xs - x) % (2 * period)
+            sx = xs + (d if d < period else 2 * period - d)
+            a[y0:y1, x] = a[y0:y1, sx]
+    CORN = (60, 152)     # corniche (y), SOC = socle jusqu au haut des pieds
+    SOC = (1376, 1424)   # jusqu au haut des pieds, exclus
+    for (x0, x1, xs) in ((SOCLE_XL, LEAF_XL + 6, LEAF_XL + 6), (LEAF_XR - 6, SOCLE_XR + 1, LEAF_XR - 6 - 1)):
+        if xs > x0:
+            mirror_tile(CORN[0], CORN[1], x0, x1, xs, 8)
+            mirror_tile(SOC[0], SOC[1], x0, x1, xs, 8)
+        else:
+            # cote droit : source a gauche de la zone
+            for x in range(x0, x1):
+                d = (x - xs) % 16
+                sx = xs - (d if d < 8 else 16 - d)
+                a[CORN[0]:CORN[1], x] = a[CORN[0]:CORN[1], sx]
+                a[SOC[0]:SOC[1], x] = a[SOC[0]:SOC[1], sx]
+    # bouts arrondis (rayon 9 px) sur les 4 coins reconstruits
+    R = 9
+    yy, xx = np.mgrid[0:R, 0:R]
+    quart = ((R - 1 - xx) ** 2 + (R - 1 - yy) ** 2) > (R - 1) ** 2   # hors du disque
+    for (cy, top) in ((CORN[0] + 9, True), (CORN[1] - 1, False), (SOC[0], True), (SOC[1] - 1, False)):
+        pass
+    def round_corner(x_edge, y_edge, left, top):
+        for dy in range(R):
+            for dx in range(R):
+                if quart[dy, dx]:
+                    x = x_edge + dx if left else x_edge - dx
+                    y = y_edge + dy if top else y_edge - dy
+                    a[y, x, 3] = 0
+    for (xe, left) in ((SOCLE_XL, True), (SOCLE_XR, False)):
+        round_corner(xe, 69, left, True)        # haut de corniche
+        round_corner(xe, CORN[1] - 1, left, False)
+    a[146:1388, :CORPS_X0, 3] = 0
+    a[146:1388, CORPS_X1 + 1:, 3] = 0
+    a[1388:, :SOCLE_XL, 3] = 0
+    a[1388:, SOCLE_XR + 1:, 3] = 0
     return Image.fromarray(a)
 
 
@@ -139,17 +203,9 @@ for name, b in LEAVES.items():
 # qui fait coincider les deux boites de corps (comme v6, armoire-sprites.py).
 # v6 coupait a x=195 : porte trop etroite, sans charniere, montant a nu.
 FER = np.array(Image.open('studio/minijeux/docs/refs/armoire/ref-fermee.png').convert('RGBA'))
-F = {'x0': 128, 'x1': 840, 'y0': 9, 'y1': 1546}      # corps sur ref-fermee
-O = {'x0': CORPS_X0, 'x1': CORPS_X1, 'y0': 22, 'y1': 1476}
-SX = (O['x1'] - O['x0']) / float(F['x1'] - F['x0'])
-SY = (O['y1'] - O['y0']) / float(F['y1'] - F['y0'])
 DOOR_X0, DOOR_MID = 146, 484
 DOORS_F = {'porte-haut': (140, 580), 'porte-bas': (852, 1452)}
 HINGE_AXIS_F = 154.5   # axe des charnieres (milieu de 146..163) sur ref-fermee
-
-
-def f2o(x, y):
-    return O['x0'] + (x - F['x0']) * SX, O['y0'] + (y - F['y0']) * SY
 
 
 for name, (fy0, fy1) in DOORS_F.items():

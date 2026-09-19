@@ -1,0 +1,190 @@
+/* ════════════════════════════════════════════════════════════════════
+   armoire-meuble.css — Le MEUBLE vide de l'armoire (HO-MJ-20, v7).
+
+   Meme principe que v6 (armoire.css, D-027/D-028/L-138) : un repere de
+   design fixe 911 x 1480, tout en pourcentage, mis a l'echelle d'un bloc
+   par --cab-w porte par le conteneur `.piece`/`.armoire` de la page hote
+   (ici : celui recopie dans dev-armoire.html, pas importe de v6 — L-136).
+
+   Ce qui change : un KIT de pieces (une par NATURE : carcasse, planche,
+   montant, porte fermee/ouverte, tiroir, spot), pas un shell monolithique
+   (D-029, L-137). Chaque piece se repete telle quelle ; toute la lumiere
+   (halos) reste en CSS.
+
+   Ordre z (brief HO-MJ-20 § 4) : carcasse 10 < planches 20 < montants 25 <
+   tiroirs 30 < spots+halo 35 < portes 60. Futures cases/objets : 40.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* .am-root vit DANS un conteneur qui porte deja les dimensions de la scene
+   (`.armoire` en v6/dev-armoire.html : width:var(--cab-w); aspect-ratio:911/
+   1480) — on ne lui impose PAS width/height:100% ici : sur le meme element
+   que le conteneur (build() est appele sur l'element .armoire lui-meme),
+   un width:100% relatif a .piece ecraserait width:var(--cab-w) (constate en
+   recette HO-MJ-20 : l'armoire prenait 100vw au lieu de --cab-w). */
+.am-root { position:relative; }
+
+/* Le crop de carcasse-vide.webp NE remplit PAS tout le frame 911x1480 (marge
+   autour de l'arche et sous les pieds apres crop sur la boite alpha totale) :
+   sa position/taille exactes viennent de kit.json "pose_pct", posees ici en
+   --gx/--gy/--gw/--gh par armoire-meuble.js. `inset:0` etirait le sprite sur
+   tout le cadre et desalignait tout le meuble (constate en recette). */
+.am-carcasse {
+  position:absolute;
+  left:var(--gx); top:var(--gy); width:var(--gw); height:var(--gh);
+  z-index:10; pointer-events:none; user-select:none;
+}
+
+/* ── Les 5 planches : meme sprite repete, chevauche les cotes ──────────
+   Ombre allegee (iteration 2, point 5) : chaque planche flottait comme une
+   dalle avec l'ombre precedente (.006/.01/.35). */
+.am-planche {
+  position:absolute; z-index:20; pointer-events:none; user-select:none;
+  left:var(--cx); top:var(--cy); width:var(--cw); height:var(--ch);
+  transform:translate(-50%, -50%);
+  filter:drop-shadow(0 calc(var(--cab-w) * .004) calc(var(--cab-w) * .008) rgba(0,0,0,.25));
+}
+
+/* ── Les 2 montants de niche : largeur deduite du ratio du sprite ──────
+   --mw-ratio = largeur/hauteur du sprite montant.webp (mesure lot A).
+   La hauteur (--ch) est en % du repere (base hauteur, 1480) ; la largeur
+   doit etre en % du repere AUSSI mais base largeur (911) pour que le
+   pourcentage CSS `width:%` (relatif a la largeur du parent) tombe juste.
+   On calcule donc la largeur reelle en unites --cab-w (largeur affichee de
+   la scene), convertie depuis la hauteur reelle de la piece :
+     hauteur_px = (--ch/100) * --cab-w * (1480/911)   [le parent .armoire a
+     width:--cab-w, height:--cab-w*1480/911 par aspect-ratio]
+     largeur_px = hauteur_px * --mw-ratio
+     --cw (en % de --cab-w) = largeur_px / --cab-w * 100
+   Simplifie : --cw% = --ch% * (1480/911) * --mw-ratio                     */
+.am-montant {
+  position:absolute; z-index:25; pointer-events:none; user-select:none;
+  left:var(--cx); top:var(--cy); height:var(--ch);
+  /* --ch porte deja l'unite % (ex "5.152%") : la multiplier par un nombre
+     pur reste un %, il ne faut PAS remultiplier par 1% (donnerait %², une
+     unite CSS invalide que le navigateur ignore en silence). */
+  width:calc(var(--ch) * (1480 / 911) * var(--mw-ratio));
+  transform:translate(-50%, -50%);
+  filter:drop-shadow(0 0 calc(var(--cab-w) * .006) rgba(0,0,0,.3));
+}
+
+/* ── Les 2 tiroirs (facade seule) : sous la planche 5 ──────────────────
+   z-index 30, SOUS les portes fermees (z 60) en permanence — brief
+   iteration 2 point 1 : « une fois les feuilles dehors, retire le z-index
+   65 : les tiroirs restent a 30, sous les portes ». Le sprite ouvert vit
+   maintenant dans sa PROPRE boite (--ox/--oy/--ow/--oh), hors du corps,
+   donc il ne recouvre plus le tiroir comme avant (l'ancien souci venait de
+   la boite FERMEE, --dx/--dy, gardee pour le sprite ouvert par erreur en
+   iteration 1). Ombre allegee (point 5) : .012/.4 -> .3. */
+.am-tiroir {
+  position:absolute; z-index:30; pointer-events:none; user-select:none;
+  left:var(--cx); top:var(--cy); width:var(--cw); height:var(--ch);
+  transform:translate(-50%, -50%);
+  filter:drop-shadow(0 calc(var(--cab-w) * .007) calc(var(--cab-w) * .012) rgba(0,0,0,.3));
+}
+
+/* ── Les 2 spots + halo CSS (jamais une image pour la lumière) ─────────
+   iteration 2, point 3 : w/h en % du repere (comme le reste de la scene),
+   plus en fraction fixe de --cab-w (10%, trop gros — débordait au-dessus
+   des portes fermées, mesuré). */
+.am-spot {
+  position:absolute; z-index:35; pointer-events:none; user-select:none;
+  left:var(--sx); top:var(--sy); width:var(--sw); height:var(--sh);
+  transform:translate(-50%, -50%);
+}
+.am-halo {
+  position:absolute; z-index:35; pointer-events:none;
+  left:0; top:0; width:0; height:0;
+}
+.am-halo::after {
+  content:''; position:absolute; left:0; top:0;
+  width:calc(var(--cab-w) * 0.34); height:calc(var(--cab-w) * 0.40);
+  transform:translate(-50%, -6%);
+  background:radial-gradient(ellipse at top,
+    rgb(255 202 95 / .30), rgb(255 190 70 / .12) 38%, transparent 72%);
+  filter:blur(4px);
+}
+
+/* ── Le vantail FERME : bouton, z-index 60 ─────────────────────────────
+   Position/taille = boite fermee (--dx/--dy/--dw/--dh), dans l'ouverture.
+   Vantail droit = vantail gauche en miroir (sprite pose tel quel a gauche,
+   miroir a droite — inchange, v6 L-141). */
+.am-porte {
+  position:absolute; z-index:60;
+  left:var(--dx); top:var(--dy); width:var(--dw); height:var(--dh);
+  border:0; padding:0; margin:0; background:none; cursor:pointer;
+  transform-style:preserve-3d;
+  -webkit-tap-highlight-color:transparent;
+}
+/* charnieres sur le MONTANT EXTERIEUR (v6 L-141) : -23.19% mesure comme en
+   v6 ((18.558-11.306)/31.277), memes proportions ici (portes.haut). */
+.am-porte-g { transform-origin:-23.19% center; }
+.am-porte-d { transform-origin:123.19% center; }
+
+.am-tap {
+  position:absolute; left:50%; top:50%; transform:translate(-50%, -50%);
+  width:100%; min-width:48px;
+  height:100%; min-height:48px;
+}
+
+.am-porte-fermee {
+  position:absolute; inset:0; width:100%; height:100%;
+  background-position:center; background-size:100% 100%; background-repeat:no-repeat;
+  transition:opacity 620ms cubic-bezier(.22, .8, .25, 1), transform 620ms cubic-bezier(.22, .8, .25, 1);
+  filter:drop-shadow(0 calc(var(--cab-w) * .004) calc(var(--cab-w) * .01) rgba(0,0,0,.35));
+  background-image:url('../img/armoire/v7/porte-fermee.webp'); opacity:1; transform:rotateY(0deg);
+}
+.am-porte-d .am-porte-fermee { transform:scaleX(-1); }
+
+/* ── Le vantail OUVERT : sibling de .am-root (iteration 2, point 1) ─────
+   PAS un enfant du bouton : sa boite (--ox/--oy/--ow/--oh) est une position
+   ABSOLUE du repere, differente de la boite fermee du bouton — un enfant
+   `position:absolute` se serait positionne relativement a CETTE boite, pas
+   au repere (constate : le sprite ouvert restait colle a la position du
+   vantail ferme). z-index 60 comme le bouton : au repos ouvert, seule cette
+   image est visible (opacity 1), le bouton reste dessous a opacity 0.
+   Correction du miroir (voir commentaire JS buildPortes) : porte-ouverte.webp
+   a ses pentures a GAUCHE = pose du vantail DROIT (tel quel) ; le vantail
+   GAUCHE est son miroir. */
+.am-porte-ouverte {
+  position:absolute; z-index:60; pointer-events:none;
+  left:var(--ox); top:var(--oy); width:var(--ow); height:var(--oh);
+  background-position:center; background-size:100% 100%; background-repeat:no-repeat;
+  background-image:url('../img/armoire/v7/porte-ouverte.webp');
+  transition:opacity 620ms cubic-bezier(.22, .8, .25, 1), transform 620ms cubic-bezier(.22, .8, .25, 1);
+  filter:drop-shadow(0 calc(var(--cab-w) * .004) calc(var(--cab-w) * .01) rgba(0,0,0,.35));
+  opacity:0; transform-origin:100% center; transform:scaleX(.6);
+}
+/* scaleX(-1) doit reflechir le CONTENU sans deplacer la BOITE : seule une
+   origine a 50% (le centre de la boite) garde la boite sur place — 0% ou
+   100% la font glisser de sa propre largeur d'un cote ou de l'autre
+   (constate : origin 0% donnait [-13.6,0], origin 100% (herite de la regle
+   de base) donnait [13.6,27.2], les deux hors de [0,13.5%]). */
+.am-porte-ouverte.am-porte-g { transform:scaleX(-1) scaleX(.6); transform-origin:50% center; }
+
+/* Vantail OUVERT : le sprite ferme tourne vers l'exterieur jusqu'a -70°,
+   en fondant a 0 sur la seconde moitie ; le sprite ouvert apparait en
+   fondu, en scaleX(.6 -> 1) depuis sa charniere. Au repos, une seule image
+   nette (brief § 4) : la fermee a angle 0/opacite 1 quand fermee, l'ouverte
+   a opacite 1/scale 1 quand ouverte — jamais les deux a la fois hors
+   transition. */
+.am-root.am-ouvert-haut .am-porte-haut.am-porte { }
+.am-root.am-ouvert-haut .am-porte-haut .am-porte-fermee,
+.am-root.am-ouvert-bas  .am-porte-bas  .am-porte-fermee {
+  opacity:0; transform:rotateY(-70deg);
+}
+.am-root.am-ouvert-haut .am-porte-haut.am-porte-d .am-porte-fermee,
+.am-root.am-ouvert-bas  .am-porte-bas.am-porte-d  .am-porte-fermee {
+  transform:scaleX(-1) rotateY(-70deg);
+}
+.am-root.am-ouvert-haut .am-porte-ouverte.am-porte-haut,
+.am-root.am-ouvert-bas  .am-porte-ouverte.am-porte-bas {
+  opacity:1; transform:scaleX(1);
+}
+.am-root.am-ouvert-haut .am-porte-ouverte.am-porte-haut.am-porte-g,
+.am-root.am-ouvert-bas  .am-porte-ouverte.am-porte-bas.am-porte-g {
+  transform:scaleX(-1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .am-porte-fermee, .am-porte-ouverte { transition-duration:1ms; }
+}

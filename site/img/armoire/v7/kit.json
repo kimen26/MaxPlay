@@ -1,0 +1,134 @@
+{
+  "frame": {
+    "w": 911,
+    "h": 1480
+  },
+  "corps_pct": {
+    "left": 11.306,
+    "right": 88.364,
+    "top": 0.811,
+    "bottom": 99.054
+  },
+  "sprites": {
+    "carcasse-vide.webp": {
+      "size": [
+        719,
+        1455
+      ],
+      "alpha_box_source": [
+        40,
+        929,
+        35,
+        1540
+      ],
+      "corps_box_source": [
+        50,
+        919,
+        35,
+        1540
+      ],
+      "scale_affine": {
+        "sx": 0.80782,
+        "sy": 0.96611
+      },
+      "pose_pct": {
+        "left": 10.419,
+        "top": 0.811,
+        "width": 78.924,
+        "height": 98.311
+      },
+      "note": "etiree (sx,sy) pour que sa boite corps coincide avec corps_pct du repere v6 911x1480 ; pose_pct = position/taille du sprite ENTIER (crop alpha total, marge autour du corps comprise) dans le repere, PAS inset:0 — le crop ne remplit pas tout le frame."
+    },
+    "planche.webp": {
+      "size": [
+        1400,
+        138
+      ],
+      "alpha_box_source": [
+        52,
+        2115,
+        248,
+        451
+      ]
+    },
+    "montant.webp": {
+      "size": [
+        120,
+        1188
+      ],
+      "alpha_box_source": [
+        258,
+        465,
+        61,
+        2120
+      ]
+    },
+    "porte-fermee.webp": {
+      "size": [
+        480,
+        764
+      ],
+      "alpha_box_source": [
+        97,
+        925,
+        103,
+        1421
+      ]
+    },
+    "porte-ouverte.webp": {
+      "size": [
+        480,
+        924
+      ],
+      "alpha_box_source": [
+        160,
+        873,
+        77,
+        1451
+      ]
+    },
+    "tiroir.webp": {
+      "size": [
+        480,
+        260
+      ],
+      "alpha_box_source": [
+        40,
+        1407,
+        171,
+        912
+      ]
+    },
+    "spot.webp": {
+      "size": [
+        160,
+        96
+      ],
+      "alpha_box_source": [
+        112,
+        1138,
+        298,
+        911
+      ]
+    },
+    "tiroir-face.webp": {
+      "size": [
+        480,
+        154
+      ],
+      "alpha_box_source": [
+        42,
+        1406,
+        476,
+        912
+      ],
+      "note": "facade seule (panneau avant + anneau), bord haut mesure par transition de luminance sur tiroir.png source (y=476), pas la boite alpha totale (qui inclut l'interieur vu de dessus)"
+    }
+  },
+  "ouverture": {
+    "left": 14.414,
+    "right": 87.834,
+    "top": 11.132,
+    "bottom": 90.63
+  }
+}

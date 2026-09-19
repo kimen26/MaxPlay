@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<title>Dev — L'Armoire (v7, HO-MJ-20)</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+/* ── La pièce : recopiée de armoire.css v6 (pas importée — v6 reste
+   intouchée, brief HO-MJ-20 § « dev-armoire.html »). ── */
+* { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+html, body { height:100%; overflow:hidden; }
+body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, #886038 100%); }
+
+/* iteration 2, point 6 : la barre de dev en position:fixed recouvrait les
+   pieds du meuble (mesure en recette : la carcasse etait bien posee dans le
+   repere, mais la barre par-dessus masquait son bas). Sa hauteur est
+   reservee dans la mise en page : .piece ne prend plus toute la fenetre,
+   --cab-w tient compte de --bar-h. Rien du meuble ne doit plus passer sous
+   la barre. */
+:root { --bar-h: 64px; }
+.piece {
+  position:relative; width:100%; height:calc(100% - var(--bar-h)); box-sizing:border-box;
+  display:grid; place-items:center; overflow:hidden;
+  --safe-x: calc(env(safe-area-inset-left, 0px) + env(safe-area-inset-right, 0px));
+  --safe-y: calc(env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px));
+  --cab-w: min(
+    calc(100vw - var(--safe-x)),
+    calc((100svh - var(--bar-h) - var(--safe-y) - 18px) * 0.61554)
+  );
+}
+@supports not (height: 100svh) {
+  .piece { --cab-w: min(calc(100vw - var(--safe-x)), calc((100vh - var(--bar-h) - var(--safe-y) - 18px) * 0.61554)); }
+}
+.piece::before {
+  content:''; position:absolute; left:50%; bottom:1%;
+  width:calc(var(--cab-w) * 0.78); aspect-ratio:6/1;
+  background:radial-gradient(ellipse at center, rgba(0,0,0,.4), rgba(0,0,0,0) 72%);
+  filter:blur(3px); transform:translateX(-50%); z-index:0; pointer-events:none;
+}
+
+.armoire {
+  position:relative; flex:none; overflow:visible;
+  width:var(--cab-w); aspect-ratio:911 / 1480;
+}
+
+/* ── Barre de dev : 4 boutons texte en bas de page ──
+   height:var(--bar-h) (pas de padding qui grandirait sa hauteur au-dela de
+   ce que .piece a reserve — sinon elle recouvre a nouveau le meuble). */
+.dev-bar {
+  position:fixed; left:0; right:0; bottom:0; z-index:100;
+  height:var(--bar-h); box-sizing:border-box;
+  display:flex; gap:8px; align-items:center; justify-content:center; flex-wrap:wrap;
+  padding:6px 10px; background:rgba(0,0,0,.55);
+}
+.dev-bar button {
+  font-family:'Fredoka One', sans-serif; font-size:15px;
+  padding:10px 16px; min-height:48px;
+  border:0; border-radius:10px; cursor:pointer;
+  background:#efc684; color:#4a2a0a;
+}
+.dev-bar button:active { background:#ce8c45; }
+</style>
+</head>
+<body>
+<div class="piece">
+  <div class="armoire" id="armoire"></div>
+</div>
+
+<div class="dev-bar">
+  <button type="button" data-action="fermer">Fermer tout</button>
+  <button type="button" data-action="haut">Haut</button>
+  <button type="button" data-action="bas">Bas</button>
+  <button type="button" data-action="ouvrir">Tout ouvrir</button>
+</div>
+
+<link rel="stylesheet" href="css/armoire-meuble.css">
+<script src="js/armoire-meuble.js"></script>
+<script>
+(function () {
+  var root = document.getElementById('armoire');
+  ArmoireMeuble.build(root);
+
+  function appliquer(etat) {
+    if (etat === 'ferme') { ArmoireMeuble.setZone(root, 'haut', false); ArmoireMeuble.setZone(root, 'bas', false); }
+    else if (etat === 'haut') { ArmoireMeuble.setZone(root, 'haut', true); ArmoireMeuble.setZone(root, 'bas', false); }
+    else if (etat === 'bas') { ArmoireMeuble.setZone(root, 'haut', false); ArmoireMeuble.setZone(root, 'bas', true); }
+    else if (etat === 'ouvert') { ArmoireMeuble.setZone(root, 'haut', true); ArmoireMeuble.setZone(root, 'bas', true); }
+  }
+
+  document.querySelector('.dev-bar').addEventListener('click', function (ev) {
+    var btn = ev.target.closest('button');
+    if (!btn) return;
+    var action = btn.dataset.action;
+    if (action === 'fermer') appliquer('ferme');
+    else if (action === 'haut') appliquer('haut');
+    else if (action === 'bas') appliquer('bas');
+    else if (action === 'ouvrir') appliquer('ouvert');
+  });
+
+  // ?etat=ferme|haut|bas|ouvert pour les captures
+  var params = new URLSearchParams(location.search);
+  var etat = params.get('etat');
+  if (etat) appliquer(etat);
+})();
+</script>
+</body>
+</html>

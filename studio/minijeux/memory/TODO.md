@@ -22,6 +22,7 @@
 - [x] HO-MJ-17 (v4) et HO-MJ-18 (v5) ABANDONNÉS 2026-09-18 : le prototype v4 n'a jamais été validé, la v5 (kit de 10 images GPT) est sortie cassée. Briefs, rapports, captures, sprites et outils supprimés — pas archivés, ils ne documentaient qu'une impasse.
 - [x] HO-MJ-19 — **Armoire v6, livrée 2026-09-18** : repère de design fixe 911 × 1480, scène mise à l'échelle d'un bloc par une ligne de CSS, zéro handler de resize (D-027, L-138). 3 sprites (`img/armoire/v6/`), halo des spots en CSS, portes en `rotateY` 3D à 116°, 17 cases (12 jeux derrière les portes + Dinos/Monde/Œufs en niche + Album et un 13e jeu dans les tiroirs). `armoire.spec.mjs` vert sur 8 viewports, dont un test de proportions identiques entre 320 px et 1280 px. **Recette PY sur le P30 Pro à faire.**
 - [x] HO-MJ-19 passe 2 (2026-09-18, recette du designer) : plancher tactile sorti de la géométrie (calque `.tap`, L-140), vantaux ramenés sous 90° avec charnière sur le montant extérieur (L-141), plus d'ouverture automatique, 12 jeux, tiroirs nus qui sont leurs propres boutons, masse visuelle des objets égalisée par la mesure (`tools/armoire-objets.py`), étiquettes en bois, objets posés sur les planches, avatar sans médaillon (D-028).
+- [x] HO-MJ-20 — **Armoire v7, kit modulaire, livrée 2026-09-19** (recette PY sur `site/dev-armoire.html` à faire ; reliquats : le spec a échoué 1 fois sur 5 relances sur un toggle, à cerner si ça se reproduit ; halo CSS faible ; vantail ouvert compressé horizontalement 2,8×) (ouvert 2026-09-19, demande PY « fabrique cette armoire, déjà juste vide, ouvert/fermé, logique et modulable » à partir des 8 pièces GPT du 17/09 : carcasse vide, planche, montant, porte fermée, porte ouverte, tiroir, spot, halo). Meuble vide sur `site/dev-armoire.html`, composant `ArmoireMeuble` (config = données), repère 911 × 1480 conservé, `index.html` reste en v6 jusqu'à validation. Brief : `docs/handoffs/HO-MJ-20-armoire-v7-kit-modulaire.md`. Suite : HO-MJ-22 = y remettre les 15 cases + 2 tiroirs.
 - [ ] HO-MJ-16 (après recette HO-MJ-15) — Globe animé déposé par PY (`inbox/globe-webapp-animation/`, web component `<animated-globe>`, 12 frames webp 640 px = 740 Ko, trop lourd tel quel) : réduire les frames à 256 px (~150 Ko), au tap sur le globe de l'armoire = 1 tour (11 frames, 9 fps) PUIS navigation vers le Voyage. Idle : léger flottement seulement, jamais de tour automatique (le README de PY le dit lui-même : « évite que l'armoire entière bouge »).
 - [!] Volcan animé : **le fichier `inbox/tSg9A.webp` a été supprimé par erreur le 2026-09-18** pendant le ménage HO-MJ-19 (pris pour un reliquat de test). Papa Yann doit le redéposer s'il veut la piste ; sinon on garde le volcan statique `obj-volcan.webp`.
 - [x] inbox : les 20 PNG racine et `decoupe/` supprimés le 2026-09-18 (consommés par HO-MJ-12, plus rien à en tirer). Les trois seules images qui comptaient sont promues en références stables : `docs/refs/armoire/ref-ouverte.png`, `ref-fermee.png`, `ref-casiers-12.png`.
@@ -140,6 +141,17 @@
 **DoD** : au moins 1 clip produit et validé.
 
 - [ ] EP-050 — Production premiers clips voix (`voices-manifest.js` vide) — jamais démarré
+
+## Lane — Récompenses : le nid perd les gains (retour Papa Yann 2026-09-19) → HO-MJ-21
+
+**DoD** : sur un jeu de calcul, un œuf gagné a une famille et son éclosion donne un dino ; recette Papa Yann avec Max.
+
+- [x] EP-130 — **CAUSE RACINE** : `mj-shell.js` ne charge pas `dinos-data.js`, donc sur 29 jeux sur 36 le nid tourne sans catalogue. Œufs gris (`famille:"_sans"`) ET éclosion qui DÉTRUIT l'œuf sans rien donner (`doublon`). C'est ce qui a vidé le nid et le sac de Max — L-143. Brief HO-MJ-21.
+- [x] EP-133 — Pertes silencieuses : `load()`/`save()` avalent tout ; profil enfant activé ou resynchronisé après des gains = nid orphelin (clé `__<childId>`), quota plein = écran qui célèbre un gain non écrit. Dans HO-MJ-21.
+- [ ] EP-134 — `nid-e2e.spec.mjs` est MORT : 16 sélecteurs `.v-copain`/`.vb-porte` de l'ancienne Vallée, remplacée par l'armoire (b17b525e). Rouge depuis, personne ne l'a vu parce que `run-all.mjs` ne le lance pas. À réécrire contre l'armoire ou à archiver — découvert par HO-MJ-21.
+- [?] EP-129 — Anti-farm 3 étoiles : Papa Yann a tranché le principe (« il a le droit de farm, c'est s'entraîner », 2026-09-19) mais pas la règle de remplacement. N'était PAS la cause de l'incident. À arbitrer : supprimer, ou seulement freiner la répétition du MÊME jeu 3× de suite.
+- [ ] EP-131 — Nid plein à 3 œufs (`MAX_EGGS = 3`) : au-delà, tout gain devient accessoire. Pas la cause ici, mais à remonter (5-6 ?). Hors HO-MJ-21.
+- [ ] EP-132 — Message « déjà toutes les étoiles ici » en trois phrases cursives : illisible à 4 ans. Signal visuel à la place. Hors HO-MJ-21.
 
 ## Lane — Retours Papa Yann 2026-09-08 (nid, œufs, MJ-28) : reste ouvert
 

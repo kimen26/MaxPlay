@@ -15,6 +15,8 @@
 | HO-MJ-17 | L'Armoire v4 · kit de 7 sprites + lumière CSS, prototype statique | site/img/armoire/kit/**, tools/armoire-kit.py, tools/armoire-proto/** | abandonné 2026-09-18 (prototype jamais validé, fichiers supprimés par HO-MJ-19) |
 | HO-MJ-18 | L'Armoire v5 · kit de 10 images GPT + états | — | abandonné 2026-09-18 (jamais commité, résultat cassé ; brief, rapport et captures supprimés par HO-MJ-19) |
 | HO-MJ-19 | L'Armoire v6 · repère de design fixe 911 × 1480, mise à l'échelle d'un bloc | site/index.html, css/armoire.css, js/armoire.js, sw.js, img/armoire/v6/**, tools/armoire-sprites.py, tools/armoire-shot.mjs, tests armoire | fait 2026-09-18 (recette PY sur P30 Pro à faire) |
+| HO-MJ-20 | L'Armoire v7 · meuble VIDE recomposé depuis le kit de 8 pièces GPT (carcasse, planche, montant, 2 portes, tiroir, spot), ouvert/fermé, config = données | site/dev-armoire.html, js/armoire-meuble.js, css/armoire-meuble.css, img/armoire/v7/**, tools/armoire-kit.py, armoire-meuble-shot.mjs, armoire-meuble-cmp.py, tests/armoire-meuble.spec.mjs, docs/refs/armoire/kit/** | livré 2026-09-19 (3 itérations Fable↔Sonnet, spec vert 6 viewports, recette PY à faire ; suite HO-MJ-22 = y remettre les cases) |
+| HO-MJ-21 | Le nid perd les gains · catalogue dino absent sur 29/36 jeux, œufs détruits à l'éclosion, pertes silencieuses | site/js/mj-shell.js, collection.js, collection-dinos.js, nid-ui.js, sw.js, tests collection/nid-e2e/mj-golden-nid | à faire (délégué Sonnet 2026-09-19) |
 
 ## Archivés (`archives/2026-09-03/`)
 

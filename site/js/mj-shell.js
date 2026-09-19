@@ -88,9 +88,17 @@
     'js/regle-info.js',
     'js/mp-theme.js',
     'js/celebrations.js',
-    // Chantier NID (2026-07-26) : collection.js (moteur pur) puis son skin dino.
-    // Chargés APRÈS celebrations.js (l'anim d'éclosion vit dans MaxFX.hatch, déjà
-    // dispo). Défensifs : si absents (404), le shell continue sans capsule.
+    // Chantier NID (2026-07-26) : catalogue DINOS, puis collection.js (moteur pur),
+    // puis son skin dino. HO-MJ-21 (2026-09-19) : dinos-data.js manquait ici — sur
+    // 29 jeux/36, collection-dinos.js sortait en silence (DINOS jamais défini), le
+    // moteur tournait sans catalogue, et hatchEgg() détruisait l'œuf sans rien
+    // donner (famille "_sans" → doublon systématique). Ordre figé (documenté dans
+    // nid-ui.js DEPS) : DINOS → moteur → skin. Pas de dinos-assets.js ici (c'est le
+    // manifeste d'illustration du Mur/Padidi, pas du gain en mini-jeu) —
+    // collection-dinos.js reste défensif : sans DINO_ASSETS il ne filtre pas.
+    // hasScript() déduplique déjà pour les 7 jeux qui chargent dinos-data.js à la
+    // main (mj-14/24/28/etc). Défensifs : si absent (404), le shell continue sans capsule.
+    'js/gen/dinos-data.js',
     'js/collection.js',
     'js/collection-dinos.js',
   ]);

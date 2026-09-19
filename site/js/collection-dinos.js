@@ -5,9 +5,20 @@
 //  Charger APRÈS dinos-data.js et collection.js : <script src="js/collection-dinos.js">
 // ─────────────────────────────────────────────────────────────────────────
 (function (global) {
-  if (typeof global.DINOS === 'undefined' && typeof DINOS === 'undefined') return;
+  // HO-MJ-21 (2026-09-19), L-143 : ce return sortait en silence — DINOS absent
+  // (dinos-data.js pas chargé) laissait le moteur collection.js tourner à vide,
+  // et le symptôme (nid gris, œufs détruits sans rien donner) n'apparaissait
+  // que des mois plus tard côté Papa Yann. Une dépendance manquante doit
+  // laisser une trace.
+  if (typeof global.DINOS === 'undefined' && typeof DINOS === 'undefined') {
+    console.warn('[collection-dinos] DINOS introuvable — catalogue non configuré, le nid restera vide.');
+    return;
+  }
   var list = typeof DINOS !== 'undefined' ? DINOS : global.DINOS;
-  if (!global.Collection || !Array.isArray(list)) return;
+  if (!global.Collection || !Array.isArray(list)) {
+    console.warn('[collection-dinos] Collection ou DINOS invalide — catalogue non configuré.', { hasCollection: !!global.Collection, isArray: Array.isArray(list) });
+    return;
+  }
 
   // Seuls les dinos ILLUSTRÉS sont collectionnables : une éclosion doit toujours
   // pouvoir montrer sa bête. Clé manifeste = id capitalisé (nom latin).
@@ -23,7 +34,10 @@
   } else {
     list = list.filter(function (d) { return d && d.id && d.name; });
   }
-  if (!list.length) return;
+  if (!list.length) {
+    console.warn('[collection-dinos] catalogue vide après filtrage (aucun dino avec id+name illustré) — le nid restera vide.');
+    return;
+  }
 
   var counts = {};
   list.forEach(function (d) { var f = d.famille || '_sans'; counts[f] = (counts[f] || 0) + 1; });

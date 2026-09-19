@@ -75,6 +75,13 @@ const PRECACHE_LIST = [
   'js/unlock.js',
   'js/gen/avatars.js',
   'js/gen/sw-version.js',
+  // HO-MJ-21 (2026-09-19) : mj-shell.js charge maintenant ce catalogue dans
+  // TOUS les mini-jeux golden (sans lui, collection-dinos.js sortait en
+  // silence et le nid restait vide) — il doit être précaché comme le reste
+  // de la coquille, sinon un jeu ouvert hors-ligne perd le gain.
+  'js/gen/dinos-data.js',
+  'js/collection.js',
+  'js/collection-dinos.js',
   'js/avatar-picker.js',
   'js/bus-svg.js',
   'js/mp-theme.js',

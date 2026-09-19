@@ -351,7 +351,15 @@
       const rewardGranted = !!(grant && grant.granted !== false);
       const eggGranted = rewardGranted && grant.type !== 'accessoire';
       const accGranted = rewardGranted && grant.type === 'accessoire';
-      const noMoreEggsHere = !!(grant && grant.granted === false);
+      // HO-MJ-21 (2026-09-19), §3+4.3 du brief : granted:false recouvre DEUX
+      // causes distinctes — anti-farm (3 étoiles, message "déjà toutes les
+      // étoiles ici" correct) et échec d'écriture (quota localStorage saturé,
+      // saveFailed:true) — jamais le même message pour les deux, sinon on ment
+      // à l'enfant sur la raison. saveFailed ne joue AUCUN théâtre (rewardGranted
+      // reste false) et ne dit pas non plus "il n'y a plus rien à gagner ici".
+      const noMoreEggsHere = !!(grant && grant.granted === false && !grant.saveFailed);
+      const saveFailed = !!(grant && grant.saveFailed);
+      if (saveFailed) console.warn('[mj-golden] Collection.grantReward : échec de sauvegarde, gain non annoncé (quota localStorage ou profil indisponible).');
       const readyToHatch = !!(global.Collection && global.Collection.readyToHatch && (function () {
         try { return global.Collection.readyToHatch(); } catch (e) { return false; }
       })());

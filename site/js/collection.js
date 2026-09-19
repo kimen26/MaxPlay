@@ -116,9 +116,37 @@
     };
   }
 
+  // HO-MJ-21 (2026-09-19), §3+4.4 du brief : la collection est rangée sous
+  // BASE_KEY__<childId>, mais la progression (étoiles) reste sur une clé
+  // globale — créer ou resynchroniser un profil déplaçait donc le nid SANS
+  // le migrer, l'ancien restant orphelin en localStorage (nid vu par
+  // Papa Yann qui repasse à 0 dès qu'un profil enfant devient actif). Ici :
+  // au premier load() sous une clé profilée VIDE, si BASE_KEY contient un
+  // nid non vide, on le REPREND (déplacement — BASE_KEY est supprimée après
+  // lecture, pas une copie qui laisserait deux nids divergents).
+  function _migrateFromBaseKey(profiledKey) {
+    if (profiledKey === BASE_KEY) return null; // pas de profil actif : rien à migrer
+    try {
+      var baseRaw = localStorage.getItem(BASE_KEY);
+      if (!baseRaw) return null;
+      var baseData = JSON.parse(baseRaw);
+      if (!baseData || typeof baseData !== 'object') return null;
+      var hasNid = (Array.isArray(baseData.eggs) && baseData.eggs.length) ||
+        (Array.isArray(baseData.pending) && baseData.pending.length) ||
+        (Array.isArray(baseData.owned) && baseData.owned.length) ||
+        (Array.isArray(baseData.sac) && baseData.sac.length);
+      if (!hasNid) return null;
+      localStorage.setItem(profiledKey, baseRaw);
+      localStorage.removeItem(BASE_KEY); // déplacement, jamais une copie
+      return baseRaw;
+    } catch (e) { return null; }
+  }
+
   function load() {
     try {
-      var raw = localStorage.getItem(storageKey());
+      var key = storageKey();
+      var raw = localStorage.getItem(key);
+      if (!raw) raw = _migrateFromBaseKey(key);
       if (!raw) return _emptyState();
       var d = JSON.parse(raw);
       if (!d || typeof d !== 'object') return _emptyState();
@@ -151,8 +179,15 @@
     } catch (e) { return _emptyState(); }
   }
 
+  // HO-MJ-21 (2026-09-19) : save() rend maintenant un booléen. Ça ne rajoute
+  // aucun try/catch (il y en avait déjà un, jamais de crash) — ça arrête
+  // seulement d'AVALER l'échec : quand localStorage est plein ou indisponible,
+  // l'appelant (grantReward, hatchEgg via warmEgg/caress) doit pouvoir refuser
+  // d'annoncer un gain qui n'a pas été écrit, au lieu de jouer le théâtre pour
+  // rien (§3 du brief : écran de fin qui célèbre un gain que rien ne conserve).
   function save(state) {
-    try { localStorage.setItem(storageKey(), JSON.stringify(state)); } catch (e) { /* plein/absent : silencieux, jamais de crash */ }
+    try { localStorage.setItem(storageKey(), JSON.stringify(state)); return true; }
+    catch (e) { return false; } // plein/absent : pas de crash, mais l'appelant est prévenu
   }
 
   // ── Config catalogue (thème-neutre) ─────────────────────────────────────
@@ -257,9 +292,14 @@
     s.streakCount = withinWindow ? (s.streakCount + 1) : 1;
     s.lastGrantAt = now;
 
+    // HO-MJ-21 (2026-09-19), §3 du brief : trois scénarios mesurés où l'écran
+    // de fin célébrait un gain que rien ne conservait (clé de profil qui
+    // change, quota localStorage saturé…). save() rend maintenant un booléen ;
+    // si l'écriture échoue, on ne rend PAS granted:true — mj-golden.js ne doit
+    // jamais jouer le théâtre d'un gain qui n'a pas survécu.
     if (opts.mastered) {
       s.sac.push(ACC_ETOILE);
-      save(s);
+      if (!save(s)) { var lm = load(); return { granted: false, type: null, saveFailed: true, count: lm.eggs.length, golden: _goldenCount(lm), justGolden: false }; }
       return {
         granted: true, type: 'accessoire', accessoire: accessoireInfo(ACC_ETOILE),
         special: true, golden: _goldenCount(s), justGolden: false,
@@ -277,7 +317,7 @@
       var golden = (typeof opts.golden === 'boolean') ? opts.golden : autoGolden;
       var famille = _pickFamille(s.owned, golden);
       s.eggs.push({ famille: famille, golden: !!golden, at: now, acc: [], caresses: 0, loveWarm: false });
-      save(s);
+      if (!save(s)) { var lg = load(); return { granted: false, type: null, saveFailed: true, count: lg.eggs.length, golden: _goldenCount(lg), justGolden: false }; }
       return {
         granted: true, type: 'oeuf', famille: famille,
         familleMeta: familleInfo(famille),
@@ -290,7 +330,7 @@
     var pool = _accessoires.filter(function (a) { return !a.special; });
     var acc = pool[Math.floor(Math.random() * pool.length)];
     s.sac.push(acc.id);
-    save(s);
+    if (!save(s)) { var la = load(); return { granted: false, type: null, saveFailed: true, count: la.eggs.length, golden: _goldenCount(la), justGolden: false }; }
     return {
       granted: true, type: 'accessoire', accessoire: acc,
       golden: _goldenCount(s), justGolden: false,
@@ -394,6 +434,12 @@
     var egg = s.eggs[eggIndex];
     if (!egg) return null;
     if (egg.acc.length < _thresholdOf(s) && !egg.loveWarm) return null; // pas assez au chaud
+    // HO-MJ-21 (2026-09-19) : catalogue absent (_items vide, ex. collection-dinos.js
+    // n'a jamais pu charger DINOS) → aucun item n'existe, même pas pour un doublon.
+    // Avant ce garde-fou, le splice ci-dessous détruisait l'œuf quand même et
+    // renvoyait {type:'doublon', item:null} — l'œuf disparaissait pour rien.
+    // Ici : ne RIEN consommer, l'œuf reste intact dans le nid.
+    if (!_items.length) return null;
 
     s.eggs.splice(eggIndex, 1);
     s.hatchCount += 1;
@@ -408,7 +454,7 @@
 
     if (!notOwned.length) {
       save(s);
-      var anyItem = _items.length ? _items[Math.floor(Math.random() * _items.length)] : null;
+      var anyItem = _items[Math.floor(Math.random() * _items.length)];
       return { type: 'doublon', item: anyItem };
     }
 

@@ -1,4 +1,4 @@
-// armoire-meuble-shot.mjs — captures de recette du MEUBLE v7 (HO-MJ-20).
+// armoire-meuble-shot.mjs — captures de recette du MEUBLE v8 (HO-MJ-20).
 //   node studio/minijeux/tools/armoire-meuble-shot.mjs [dossier-de-sortie]
 // Pour chaque viewport : capture ferme + ouvert dans
 // docs/handoffs/rapports/captures/HO-MJ-20-<tag>-<etat>.png.

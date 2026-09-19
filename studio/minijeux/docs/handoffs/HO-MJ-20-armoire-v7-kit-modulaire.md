@@ -1,5 +1,6 @@
 # HO-MJ-20 — L'Armoire v7 : meuble VIDE recomposé depuis le kit de pièces GPT
 
+> **Passe 4, même jour (v8, D-030)** : la v7 recomposée depuis les pièces GPT a été rejetée par Papa Yann (six défauts, tous fondés). Le kit est désormais DÉCOUPÉ dans `ref-ouverte.png` par `tools/armoire-v8.py` (carcasse inpaintée, planches, montants, tiroir, vantaux ouverts ; vantaux fermés dans `ref-fermee.png` avec charnières), boîtes générées dans `js/gen/armoire-kit.js`. Les § 2-4 ci-dessous décrivent la v7 et restent pour l'histoire ; l'état vrai est le rapport § 11.
 > Statut : **livré 2026-09-19** en trois itérations (Fable rédige et juge les planches de comparaison, Sonnet exécute), spec vert sur 6 viewports. Recette Papa Yann sur `site/dev-armoire.html` à faire. Ce qui a changé en cours de route par rapport aux § 3-4 ci-dessous : la géométrie ne vient plus de `v6/repere.json` mais de l'OUVERTURE AVANT de la carcasse du kit, en fractions (voir rapport § 10 et L-144) ; l'épaisseur de planche est une donnée de config (3 %), pas le ratio du sprite ; les tiroirs fermés utilisent `tiroir-face.webp` (façade seule).
 > Demande Papa Yann : « fabrique cette armoire pour le petit jeu de Max, déjà juste
 > vide, ouvert / fermé, logique et modulable ». Le kit de 8 images est celui que

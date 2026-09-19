@@ -530,3 +530,17 @@ Différences résiduelles, mineures :
 Aucun défaut structurel résiduel identifié cette itération : les 3 questions posées par
 le coordinateur (vantaux/montants, tiroirs visibles, planches en étagères) répondent
 toutes OUI.
+
+## 11. Passe 4 (Fable, 2026-09-19 soir) — v8 : le kit découpé dans la référence
+
+Recette Papa Yann sur la v7 : six défauts (lumière, portes ouvertes, charnières, profondeur/géométrie, croisements planche/montant, tiroirs), tous vrais, tous dus au fait que les pièces GPT n'ont ni le même point de vue ni la même lumière (D-030, L-145). Refait sans Sonnet :
+
+- `tools/armoire-v8.py` découpe TOUT dans `ref-ouverte.png` : carcasse inpaintée (bandes des planches et des tiroirs remplies par miroir de la bande du dessus, colonnes des montants par miroir de la colonne voisine, vantaux ouverts effacés et montants recopiés depuis la ligne saine y=690 comme en v6), 5 planches (les intérieures rognées à x 186..782, bord intérieur des montants : au-delà c'est la zone de charnière que le vantail ouvert cache dans la référence et qui débordait du montant porte fermée), 2 montants, 1 tiroir (posé deux fois), 2 vantaux ouverts gauches (droite = miroir), 2 vantaux fermés découpés dans `ref-fermee.png` de x=146 (charnières comprises, axe mesuré à 2,51 % de la largeur) et remis à l'échelle par l'affine des corps.
+- Maquette PIL de contrôle (`_maquette.png` dans le dossier passé en argument) : shell + pièces = référence ; le diff pixel ne montre que les vantaux droits (miroirs) et le tiroir droit (dupliqué).
+- `js/gen/armoire-kit.js` GÉNÉRÉ (boîtes en % du repère) ; `armoire-meuble.js` réécrit : un élément par pièce, `build(root, kit?)`, aucun chiffre en dur. `armoire-meuble.css` : plus de halo, plus d'épaisseur de config, vantail fermé qui pivote sur `--charniere`, vantail ouvert (image) qui apparaît en fondu, et qu'on tape pour refermer.
+- Spec réécrit : chaque pièce rendue dans sa boîte du kit à ±0,3 % du repère, arrivée fermée, ouverture/fermeture par tap, ?etat=ouvert, proportions entre viewports, poids ≤ 250 Ko (v8 = 170 Ko en 12 webp), zéro erreur. Vert 3/3 sur 6 viewports.
+- Planches `captures/HO-MJ-20-cmp-ferme.png` / `-ouvert.png` relues : fermé = `ref-fermee` (charnières, largeur de porte, corniche, socle, pieds ; seule différence : la niche a ses deux montants, absents de `ref-fermee` mais présents dans `ref-ouverte`, la référence retenue), ouvert = `ref-ouverte` au pixel près (vantaux droits miroirs). Mi-transition vérifiée en capture : vantail fermé qui pivote vers l'extérieur et s'efface, vantail ouvert qui apparaît.
+- Supprimés : `site/img/armoire/v7/`, `docs/refs/armoire/kit/`, `tools/armoire-kit.py`.
+
+Ce qui diffère encore de la référence, à l'œil : rien que je voie sur les planches. À vérifier par Papa Yann sur le P30 Pro : le ressenti de la transition (620 ms) et le tap sur un vantail ouvert pour refermer.
+

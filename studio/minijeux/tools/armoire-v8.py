@@ -49,7 +49,7 @@ LEAVES = {  # vantaux ouverts gauches ; x = du bord image au stile inclus.
     # le haut monte devant la corniche (y=64) et le bas descend devant le
     # socle (y=1426). Les couper a l ouverture les tronquait (recette PY).
     'porte-ouverte-haut': (30, 192, 58, 600),
-    'porte-ouverte-bas': (30, 192, 796, 1432),
+    'porte-ouverte-bas': (30, 192, 796, 1470),   # bord exterieur bas a y=1466 (perspective)
 }
 STILE_ROW = 690      # ligne de montant sain (niche), recopiee dans les bandes a portes
 LEAF_XL, LEAF_XR = 190, 778
@@ -195,7 +195,14 @@ save('tiroir', crop(TIROIRS[0]), TIROIRS[0])
 kit['pieces']['tiroir']['box_droite'] = pct(TIROIRS[1])
 CX = (CORPS_X0 + CORPS_X1) / 2.0
 for name, b in LEAVES.items():
-    save(name, crop(b), b)
+    lf = crop(b)
+    if name == 'porte-ouverte-bas':
+        # le pied gauche (x>=130, y>=1424) entre dans la boite : il appartient
+        # a la carcasse, pas au vantail -> alpha 0 dans le sprite
+        la = np.array(lf)
+        la[1424 - b[2]:, 130 - b[0]:, 3] = 0
+        lf = Image.fromarray(la)
+    save(name, lf, b)
     x0, x1, y0, y1 = b
     kit['pieces'][name]['box_droite'] = pct((int(round(2 * CX - x1)), int(round(2 * CX - x0)), y0, y1))
 # vantaux fermes : decoupes dans ref-fermee AVEC leurs charnieres (x 146..163,
@@ -208,17 +215,55 @@ DOORS_F = {'porte-haut': (140, 580), 'porte-bas': (852, 1452)}
 HINGE_AXIS_F = 154.5   # axe des charnieres (milieu de 146..163) sur ref-fermee
 
 
+# Les charnieres du vantail FERME (ref-fermee) ne sont pas a la meme hauteur
+# que celles du vantail OUVERT (ref-ouverte) : 7 a 31 px d ecart une fois a
+# l echelle, d ou un saut visible a l ouverture (recette PY). Le vantail ferme
+# est remappe verticalement par bandes (lineaire par morceaux) pour que ses
+# centres de charnieres tombent sur ceux du vantail ouvert, bords conserves.
+# Mesures (pixels, colonnes de metal gris) : voir rapport § 13.
+HINGES = {  # (y source fermee, y cible ouverte) des centres de charnieres
+    'porte-haut': [(225.5, 216.0), (499.0, 514.0)],
+    'porte-bas': [(949.0, 873.0), (1358.5, 1318.0)],
+}
+
+
+def remap_rows(im, src_pts, dst_pts):
+    """im : bande source [y0,y1) ; src_pts/dst_pts : y croissants, bornes
+    comprises, meme longueur. Chaque intervalle est redimensionne a part."""
+    w = im.size[0]
+    out = Image.new('RGBA', (w, int(round(dst_pts[-1] - dst_pts[0]))))
+    y = 0
+    for i in range(len(src_pts) - 1):
+        sa, sb = src_pts[i] - src_pts[0], src_pts[i + 1] - src_pts[0]
+        da, db = dst_pts[i] - dst_pts[0], dst_pts[i + 1] - dst_pts[0]
+        h = int(round(db)) - int(round(da))
+        if h <= 0:
+            continue
+        band = im.crop((0, int(round(sa)), w, int(round(sb)))).resize((w, h), Image.LANCZOS)
+        out.paste(band, (0, int(round(da))))
+    return out
+
+
 for name, (fy0, fy1) in DOORS_F.items():
     leaf = Image.fromarray(FER[fy0:fy1, DOOR_X0:DOOR_MID])
     ox0, oy0 = f2o(DOOR_X0, fy0)
     ox1, oy1 = f2o(DOOR_MID, fy1)
     leaf = leaf.resize((int(round(ox1 - ox0)), int(round(oy1 - oy0))), Image.LANCZOS)
+    src_pts = [0.0] + [f2o(0, hy)[1] - oy0 for hy, _ in HINGES[name]] + [oy1 - oy0]
+    dst_pts = [0.0] + [ty - oy0 for _, ty in HINGES[name]] + [oy1 - oy0]
+    leaf = remap_rows(leaf, src_pts, dst_pts)
     leaf.save(os.path.join(OUT, name + '.webp'), 'WEBP', quality=Q, method=6)
     b = (int(round(ox0)), int(round(ox1)), int(round(oy0)), int(round(oy1)))
     kit['pieces'][name] = {'size': list(leaf.size), 'box': pct(b),
                            'box_droite': pct((int(round(2 * CX - b[1])), int(round(2 * CX - b[0])), b[2], b[3])),
                            # axe de rotation, en fraction de la largeur du vantail
                            'charniere': round((f2o(HINGE_AXIS_F, 0)[0] - ox0) / (ox1 - ox0), 4)}
+import hashlib
+h = hashlib.sha1()
+for fn in sorted(os.listdir(OUT)):
+    if fn.endswith('.webp'):
+        h.update(open(os.path.join(OUT, fn), 'rb').read())
+kit['version'] = h.hexdigest()[:8]   # cache-busting : ?v= sur chaque sprite
 with open(os.path.join(OUT, 'kit.json'), 'w') as f:
     json.dump(kit, f, indent=1)
 # la meme table, servie au navigateur (HTML local : pas de fetch, cf. rules)

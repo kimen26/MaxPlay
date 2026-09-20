@@ -554,3 +554,13 @@ Charnières des vantaux fermés : dans `ref-fermee` le canon est au bord extéri
 
 Spec vert, captures et planches régénérées, 173 Ko.
 
+## 13. Passe 6 (Fable, 2026-09-20) — bas du vantail, charnières alignées, cache
+
+Recette Papa Yann (captures Brave) : (1) charnières invisibles portes fermées dans le navigateur de Claude, visibles dans Brave/Chrome ; (2) vantail bas ouvert encore tronqué en bas ; (3) charnières pas à la même hauteur entre vantail fermé et vantail ouvert, ça saute à la transition.
+
+1. **Cache.** Le sprite `porte-haut.webp` a changé de contenu sans changer de nom ; un navigateur (et le service worker de l'accueil, même origine) servait l'ancien. Désormais chaque `<img>` porte `?v=<empreinte sha1 des webp>` (`kit.version`, généré), et les faces de boutons (vantaux fermés, tiroirs) sont des `<img>` versionnées au lieu de fonds CSS. Le spec exige `?v=` sur toutes les images.
+2. **Tronqué.** Mesuré par colonne dans `ref-ouverte.png` : le bord extérieur bas du vantail bas descend à y=1466 (perspective), mon crop coupait à 1432. Crop étendu à 1470 ; le pied gauche, qui entre dans cette boîte, est masqué (alpha 0) dans le sprite parce qu'il appartient à la carcasse.
+3. **Charnières.** Centres mesurés (pixels gris métal), à l'échelle du repère : fermé 227 / 485 et 911 / 1298, ouvert 219 / 508 et 880 / 1320 — 7 à 31 px d'écart, les deux rendus GPT ne sont pas d'accord. Le vantail fermé est remappé verticalement par bandes (linéaire par morceaux : bord, charnière 1, charnière 2, bord) pour que ses charnières tombent sur celles du vantail ouvert. Résultat mesuré sur les sprites : haut 211/495 contre 210/498, bas 871/1303 contre 870/1302 (≤ 3 px).
+
+Spec vert, captures régénérées, zooms relus : bas du vantail entier, charnières fermées visibles et à la même hauteur qu'ouvertes.
+

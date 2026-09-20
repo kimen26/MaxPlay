@@ -18,8 +18,12 @@
 (function (global) {
   'use strict';
 
-  var IMG = 'img/armoire/v8/';
   var KIT = global.ARMOIRE_KIT;
+  var IMG = 'img/armoire/v8/';
+  // ?v=<empreinte des webp> : un sprite regenere n'est jamais servi depuis
+  // un cache (navigateur ou service worker) — constate en recette : un
+  // navigateur montrait encore les vantaux sans charnieres.
+  function src(name) { return IMG + name + '.webp?v=' + (KIT ? KIT.version : '0'); }
 
   // Ce qui est DERRIÈRE quelle porte : ce n'est pas mesurable sur l'image,
   // c'est la logique du meuble.
@@ -38,12 +42,23 @@
   function img(name, cls, b) {
     var el = document.createElement('img');
     el.className = 'am ' + cls;
-    el.src = IMG + name + '.webp';
+    el.src = src(name);
     el.alt = '';
     el.draggable = false;
     el.dataset.piece = name;
     if (ZONE[name]) el.dataset.zone = ZONE[name];
     box(el, b);
+    return el;
+  }
+
+  // la face d'un bouton : une <img> (URL versionnee), jamais un fond CSS
+  function feuille(name) {
+    var el = document.createElement('img');
+    el.className = 'am-feuille';
+    el.src = src(name);
+    el.alt = '';
+    el.draggable = false;
+    el.setAttribute('aria-hidden', 'true');
     return el;
   }
 
@@ -78,7 +93,7 @@
       .forEach(function (t) {
         var b = button('am-tiroir ' + t[0], t[2]);
         b.dataset.zone = 'bas';
-        b.style.backgroundImage = 'url(' + IMG + 'tiroir.webp)';
+        b.appendChild(feuille('tiroir'));
         box(b, t[1]);
         root.appendChild(b);
       });
@@ -103,7 +118,7 @@
         b.dataset.zone = zone;
         // axe des charnieres, mesure dans la reference (fraction de la largeur)
         b.style.setProperty('--charniere', (p.charniere * 100) + '%');
-        b.insertAdjacentHTML('beforeend', '<span class="am-feuille" aria-hidden="true"></span>');
+        b.appendChild(feuille('porte-' + zone));
         box(b, side[1]);
         root.appendChild(b);
       });

@@ -3,7 +3,7 @@
 //
 // Ce qu'il garde, viewport par viewport :
 //   · jamais d'ascenseur, rien de rogné par la zone .piece ;
-//   · toutes les images chargées (<img> ET fonds CSS rechargés, L-139) ;
+//   · toutes les images chargées et versionnées (?v=empreinte, anti-cache) ;
 //   · les pièces : 1 carcasse, 5 planches, 2 montants, 2 tiroirs, 4 vantaux
 //     fermés (boutons), 4 vantaux ouverts ;
 //   · FIDÉLITÉ : chaque pièce est rendue dans la boîte que le kit lui donne
@@ -84,8 +84,8 @@ for (const vp of VIEWPORTS) {
         t: Math.min(...all.map(r => r.top)), b: Math.max(...all.map(r => r.bottom))
       };
       const taps = [...cab.querySelectorAll('button.am .am-tap')].map(t => t.getBoundingClientRect());
-      const fonds = [...new Set([...cab.querySelectorAll('.am-feuille, .am-tiroir')]
-        .map(e => getComputedStyle(e).backgroundImage.replace(/^url\("?|"?\)$/g, '')))];
+      const fonds = [];
+      const versionnees = [...cab.querySelectorAll('img')].every(i => /\?v=[0-9a-f]{8}$/.test(i.getAttribute('src')));
       const emp = {};
       ecarts.forEach(([label]) => { });
       cab.querySelectorAll('.am').forEach((e, i) => {
@@ -102,7 +102,7 @@ for (const vp of VIEWPORTS) {
           portes: cab.querySelectorAll('.am-porte').length, ouvertes: cab.querySelectorAll('.am-ouverte').length
         },
         imgsOk: [...cab.querySelectorAll('img')].every(i => i.complete && i.naturalWidth > 0),
-        fonds, pire, emp,
+        fonds, versionnees, pire, emp,
         minTap: Math.min(...taps.map(r => Math.min(r.width, r.height))),
         ferme: [...cab.querySelectorAll('.am-ouverte')].every(e => +getComputedStyle(e).opacity === 0) &&
                [...cab.querySelectorAll('.am-porte')].every(e => +getComputedStyle(e).opacity === 1)
@@ -121,13 +121,7 @@ for (const vp of VIEWPORTS) {
     ok(`[${tag}] arrive fermé`, m.ferme);
     ok(`[${tag}] zone tactile ≥ 48 px sur chaque bouton`, m.minTap >= 48, `min ${m.minTap.toFixed(1)}`);
 
-    const fondsOk = await page.evaluate(async (urls) => {
-      const res = await Promise.all(urls.map(u => new Promise(r => {
-        const i = new Image(); i.onload = () => r(true); i.onerror = () => r(false); i.src = u;
-      })));
-      return res.every(Boolean);
-    }, m.fonds);
-    ok(`[${tag}] les fonds CSS (vantaux, tiroirs) se chargent`, fondsOk, m.fonds.join(' | '));
+    ok(`[${tag}] toutes les images portent ?v=<empreinte> (anti-cache)`, m.versionnees);
 
     if (!empreinte) {
       empreinte = m.emp;

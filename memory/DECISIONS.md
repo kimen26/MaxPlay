@@ -100,3 +100,5 @@ Le sélecteur et la whitelist `SUPPORTED` ne proposent plus que `fr` et `en`. Pa
 Rouvrir une langue = remettre son code à trois endroits (`site/js/lang.js`, `site/js/mj-shell.js`, `LANGUES` dans `site/js/mur.js`) plus son cas dans `i18n-dinos.spec.mjs`. Le jeu `mj-20` garde ses 8 langues : il fait compter jusqu'à 20 avec ses propres mots en dur, il ne dépend pas du contenu dino.
 
 Pourquoi : une langue à moitié vide se lit comme un bug, pas comme un chantier en cours. Un enfant qui choisissait l'allemand entendait les noms de dinosaures et plus rien d'autre.
+
+_Réaffirmé 2026-09-20 (audit « inutile ») : les 111 Mo d'audio/bundles des langues retirées restent dans le repo, Papa Yann prévoit de les rouvrir plus tard. Ne pas les proposer au nettoyage._

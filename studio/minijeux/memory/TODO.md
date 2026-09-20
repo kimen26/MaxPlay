@@ -3,6 +3,24 @@
 > Tickets ouverts uniquement, 1 ligne + DoD par lane. Détail complet et tickets fermés : `archive/backlog-fermes-2026.md` (avant 2026-09-03) et `git log`. Rotation 2026-09-12 (HO-R02) : les tickets clos ont été condensés en capacités livrées dans `CHANGELOG.md`, le fait/l'obsolète (28 mj fantômes purgés le 2026-08-10) a été supprimé.
 > Statuts : `[ ]` à faire · `[~]` en cours · `[!]` bloqué · `[?]` question ouverte pour Papa Yann.
 
+## Lane — Recette complète FR/EN 2026-09-19 (rapport `memory/audits/2026-09-19-recette-complete.md`)
+
+**DoD** : les 3 crashs corrigés + specs étendues jusqu'à la fin de partie ; l'EN ne montre plus de français à l'écran (victoire, menu, pages, 7 titres).
+
+- [ ] **REC-C1** — mj-13a + mj-13c : pas de `<div id="app">` → `mj-golden.js:325/446` plante à la 8ᵉ manche (pas d'étoile/œuf/suite). Ajouter le conteneur + garde dans golden + étendre les 2 specs jusqu'à l'écran de fin.
+- [?] **REC-C2** — mj-40 tangram : la recette transverse a vu la figure 2 ne jamais charger (seul FAIL `run-all`), le lot 1 ne reproduit pas via `__mjTest`. À confirmer à la main (vrai drag).
+- [ ] **REC-C7** — mj-24/28/31 : `dinos-i18n.js` chargé avant que `mj-shell` injecte `lang.js` → `window.Lang` undefined → contenu dino (funfact, noms, époques) jamais traduit en EN. Corriger l'ordre ou faire injecter `lang.js` par le shell avant `dinos-i18n`.
+- [ ] **REC-H4** — mj-31 : titre tronqué à 360/320 (FR+EN) ; `audio/dinos/en/periodes/` inexistant (13 × 404, figée « période en vraie voix » non tenue en EN).
+- [ ] **REC-C3** — mj-22 : `fetch()` Wikimedia sans repli (`mj-22.html:267`) → drapeau de victoire absent hors ligne (FAIL baseline). Drapeaux en local.
+- [ ] **REC-C4** — Écran de victoire jamais traduit (`mj-golden.js:316-321,377-389,437,442,479`, `celebrations.js:1311`) : touche les 34 jeux golden en EN.
+- [ ] **REC-C5** — `index.html` (armoire/mur) + compte/suivi/confidentialité/offline/auteur/avatar-atelier : aucune chaîne traduite en EN.
+- [ ] **REC-H1** — 7 titres passés en dur à `MJ.init` au lieu de `MJi18n.titre()` : mj-20/22/42/50/51/52/53 (traductions déjà dans le pack EN, code mort) + mj-53 l.194 sans `T()`, mj-42 overlay FR statique l.147-149, mj-32 familles dino FR + clés `zoomer`/`vueNormale`.
+- [ ] **REC-H2** — `_commun.voix` EN inutilisable : `slugConsigne()` slugifie le texte affiché (`how-many-eggs`) mais la table EN est clée par slugs FR → 12 jeux, ~40 phrases jamais servies.
+- [ ] **REC-H3** — mj-20 : UI (modes, boutons, badges) en dur en FR, mélange FR/EN en mode EN.
+- [ ] **REC-M1** — Mobile : `suivi.html` déborde (455 px pour 360) ; mj-38 plateau hors cadre à 320 (`cellSize()` plancher 70) ; titres tronqués à 320 sur mj-48/49.
+- [ ] **REC-M2** — mj-55 MP3 consigne FR manquant ; mj-18 `Stars.get`=0 après 2ᵉ victoire (à confirmer à la main) ; mj-39 progression non sauvée avant grille pleine ; `mur-nid.spec` 2ᵉ scénario n'ouvre pas le vantail.
+- [ ] **REC-D1** — Fiche dino `oviraptor.chasseurs` EN identique au FR ; 4 écarts data↔récit (`check-coherence-data-narre` : edmontonia, hatzegopteryx, titanis) → pôle DINO.
+
 ## Lane — L'Armoire : nouvel accueil enfant (HO-MJ-12 assets + HO-MJ-13 page, 2026-09-15)
 
 **Décision Papa Yann 2026-09-15** : « VIRE le menu actuel avec les perso qui bougent, ça a toujours été un échec, je ne veux plus le voir. » L'accueil devient une armoire en bois (fronton / grille de casiers / socle à tiroirs), structure en HTML/CSS, images GPT découpées en pièces répétables (`studio/minijeux/inbox/decoupe/`). Contrainte : **jamais d'ascenseur** sur ce menu, quel que soit le téléphone ; poids et perfs maximaux (tuiles/pattern qui se répètent).

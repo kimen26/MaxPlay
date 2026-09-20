@@ -27,6 +27,8 @@
 
 ## Data / branchage / dette GED
 
+- [ ] **REC-2026-09-19** — Recette FR/EN (rapport `studio/minijeux/memory/audits/2026-09-19-recette-complete.md`) : `oviraptor.chasseurs` EN identique au FR (« Velociraptor, carnivores ») ; 4 écarts data↔récit remontés par `check-coherence-data-narre` (edmontonia hauteur/poids, hatzegopteryx et titanis vitesse absents du texte narré). Tout le reste (71 fiches, 710 audios, 665 images) est propre.
+
 - **EP-D-Periodes-Branchage** [ ] — Brancher les 5 MP3 `periodes/*.mp3` en fiche dino.
 - **EP-D-Audio-Carnotaurus-Baryonyx-Badge** [ ] — Badge `DINO_AUDIO_VERSION` affiche « V1 » à tort pour carnotaurus/baryonyx.
 - **EP-D-GED-08** [ ] — Renommer `dev-dinos.html` → `dinos.html` (dette nommage, priorité basse).

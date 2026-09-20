@@ -74,9 +74,22 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, 
   <button type="button" data-action="ouvrir">Tout ouvrir</button>
 </div>
 
-<link rel="stylesheet" href="css/armoire-meuble.css">
-<script src="js/gen/armoire-kit.js"></script>
-<script src="js/armoire-meuble.js"></script>
+<script>
+// idem pour la feuille de style (un CSS perime rendait le tiroir a sa taille native)
+document.write('<link rel="stylesheet" href="css/armoire-meuble.css?t=' + Date.now() + '">');
+</script>
+<script>
+// Page de DEV : les deux scripts sont charges avec un horodatage, jamais depuis
+// un cache — un armoire-kit.js perime (boites d'avant) avec des sprites a jour
+// ecrasait le vantail bas dans une boite trop courte (recette PY). Sur
+// l'accueil reel, c'est le service worker qui versionne.
+(function () {
+  var t = Date.now();
+  ['js/gen/armoire-kit.js', 'js/armoire-meuble.js'].forEach(function (src) {
+    document.write('<script src="' + src + '?t=' + t + '"><\/script>');
+  });
+})();
+</script>
 <script>
 (function () {
   var root = document.getElementById('armoire');

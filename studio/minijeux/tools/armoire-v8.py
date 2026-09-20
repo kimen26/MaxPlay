@@ -221,9 +221,10 @@ HINGE_AXIS_F = 154.5   # axe des charnieres (milieu de 146..163) sur ref-fermee
 # est remappe verticalement par bandes (lineaire par morceaux) pour que ses
 # centres de charnieres tombent sur ceux du vantail ouvert, bords conserves.
 # Mesures (pixels, colonnes de metal gris) : voir rapport § 13.
-HINGES = {  # (y source fermee, y cible ouverte) des centres de charnieres
-    'porte-haut': [(225.5, 216.0), (499.0, 514.0)],
-    'porte-bas': [(949.0, 873.0), (1358.5, 1318.0)],
+HINGES = {  # (y0, y1) de CHAQUE charniere : source ref-fermee -> cible ref-ouverte
+    # (bords haut et bas du canon, pixels gris metal) : position ET taille
+    'porte-haut': [((194, 257), (196, 243)), ((468, 530), (485, 531))],
+    'porte-bas': [((917, 981), (856, 903)), ((1326, 1391), (1287, 1336))],
 }
 
 
@@ -249,8 +250,13 @@ for name, (fy0, fy1) in DOORS_F.items():
     ox0, oy0 = f2o(DOOR_X0, fy0)
     ox1, oy1 = f2o(DOOR_MID, fy1)
     leaf = leaf.resize((int(round(ox1 - ox0)), int(round(oy1 - oy0))), Image.LANCZOS)
-    src_pts = [0.0] + [f2o(0, hy)[1] - oy0 for hy, _ in HINGES[name]] + [oy1 - oy0]
-    dst_pts = [0.0] + [ty - oy0 for _, ty in HINGES[name]] + [oy1 - oy0]
+    src_pts = [0.0]
+    dst_pts = [0.0]
+    for (sa, sb), (ta, tb) in HINGES[name]:
+        src_pts += [f2o(0, sa)[1] - oy0, f2o(0, sb)[1] - oy0]
+        dst_pts += [ta - oy0, tb - oy0]
+    src_pts.append(oy1 - oy0)
+    dst_pts.append(oy1 - oy0)
     leaf = remap_rows(leaf, src_pts, dst_pts)
     leaf.save(os.path.join(OUT, name + '.webp'), 'WEBP', quality=Q, method=6)
     b = (int(round(ox0)), int(round(ox1)), int(round(oy0)), int(round(oy1)))

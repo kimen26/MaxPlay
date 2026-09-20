@@ -564,3 +564,10 @@ Recette Papa Yann (captures Brave) : (1) charnières invisibles portes fermées 
 
 Spec vert, captures régénérées, zooms relus : bas du vantail entier, charnières fermées visibles et à la même hauteur qu'ouvertes.
 
+## 14. Passe 7 (Fable, 2026-09-20) — gonds identiques, scripts de dev sans cache
+
+Recette Papa Yann : bas des vantaux « toujours tronqué », gonds ni de la même taille ni à la même place.
+
+- **Tronqué** : pas le sprite — le navigateur gardait l'ancien `js/gen/armoire-kit.js` (boîte du vantail bas de 42,97 % de haut) et chargeait le nouveau sprite (versionné) dedans : écrasé, il finissait pile au socle. `dev-armoire.html` charge maintenant ses deux scripts ET son CSS avec un horodatage (`?t=`), jamais depuis un cache. Le CSS aussi : un CSS périmé rendait le tiroir à sa taille native dans le navigateur de Claude.
+- **Gonds** : le remappage n'alignait que les centres. Il aligne désormais les quatre bords (haut et bas de chaque canon) : le vantail fermé prend la position ET la taille des gonds du vantail ouvert. Mesuré sur les sprites finaux (pixels gris métal, repère 911 × 1480) : haut 187–233 / 476–520 des deux côtés ; bas 847–894 / 1279–1327 contre 846–894 / 1278–1327.
+

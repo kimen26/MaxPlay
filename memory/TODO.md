@@ -60,3 +60,10 @@ Questions Papa Yann (hors DoD) : 8 langues sans fiche audio sélectionnables au 
 - [ ] AUDIO : migrer les 17 scripts ElevenLabs vers `~/.claude/skills/tts-pipeline`, loudnorm unique I=-16/TP=-1.5/LRA=11.
 - [ ] AUDIO : `audio-verif` bascule `--stt-model scribe_v2` quand `scribe_v1` sera déprécié.
 - [ ] NARRATION (hors périmètre refonte, D-011) : skill `name-sonority-check` (8 axes, verdict /16), agent dédié ou skill seule.
+
+## Jev / TypeSafe AI (veille 2026-09-19, dossier `docs/research/2026-09-19-jev-typesafe.md`)
+
+- [ ] Papa Yann : compte `console.typesafe.ai`, clé `TYPESAFE_API_KEY` dans settings.json env (jamais dans le repo), dire si liste d'attente.
+- [ ] Banc de mesure 50 textes connus × 4 portes de contenu (interdits, échelle, violence, âge) — mesurer le français AVANT d'adopter.
+- [ ] Porte 1 : grep interdits audio → Jev noul + repli regex. Puis bot Telegram (pôle/nature/figée/doublon), Edge Function `jev-proxy`, suggestion « La suite ».
+- [ ] Skill officiel copié dans `.claude/skills/typesafe-ai/SKILL.md` (lit les docs live ; WebFetch bloqué ici → curl).

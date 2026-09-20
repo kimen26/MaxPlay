@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test capteurs</title>
+<style>
+  :root { --bg:#12131a; --card:#1e2030; --fg:#f4f4f8; --ok:#00c47a; --ko:#ff6b6b; --warn:#ffd166; --blue:#4d9de0; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:16px; background:var(--bg); color:var(--fg); font:18px/1.4 system-ui, sans-serif; }
+  h1 { font-size:1.3rem; margin:0 0 8px; }
+  p.note { opacity:.8; margin:0 0 16px; font-size:.95rem; }
+  .card { background:var(--card); border-radius:16px; padding:16px; margin-bottom:12px; }
+  .card h2 { font-size:1.1rem; margin:0 0 8px; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:8px; }
+  .badge { font-size:.8rem; padding:4px 10px; border-radius:999px; background:#444; max-width:100%; }
+  .badge.ok { background:var(--ok); color:#03301d; }
+  .badge.ko { background:var(--ko); color:#3a0000; }
+  .badge.warn { background:var(--warn); color:#3a2a00; }
+  button { min-height:56px; min-width:48px; width:100%; border:0; border-radius:14px; background:var(--blue); color:#0b2a4a; font-size:1.05rem; font-weight:700; padding:12px 16px; margin-top:8px; }
+  button:active { transform:scale(.97); }
+  .val { font-variant-numeric:tabular-nums; opacity:.9; margin-top:6px; min-height:1.4em; }
+  .bar { height:18px; background:#333; border-radius:9px; overflow:hidden; margin-top:8px; }
+  .bar > i { display:block; height:100%; width:0; background:var(--ok); transition:width .1s; }
+  #log { font-size:.85rem; opacity:.7; white-space:pre-wrap; }
+</style>
+</head>
+<body>
+<h1>Test capteurs (page de dev)</h1>
+<p class="note">Page de mesure pour le P30 Pro. Rien n'est enregistré, rien n'est envoyé. Chaque carte dit si le capteur répond sur cet appareil.</p>
+
+<div class="card" id="c-vib">
+  <h2>Vibration <span class="badge" data-st>?</span></h2>
+  <button type="button" id="b-vib">Vibrer (court, moyen, long)</button>
+  <div class="val" data-val></div>
+</div>
+
+<div class="card" id="c-motion">
+  <h2>Secouer (devicemotion) <span class="badge" data-st>?</span></h2>
+  <div class="val" data-val>Secoue la tablette.</div>
+  <div class="bar"><i data-bar></i></div>
+</div>
+
+<div class="card" id="c-orient">
+  <h2>Incliner / retourner (deviceorientation) <span class="badge" data-st>?</span></h2>
+  <div class="val" data-val>Penche, puis retourne l'écran vers le tapis.</div>
+</div>
+
+<div class="card" id="c-mic">
+  <h2>Souffler (micro) <span class="badge" data-st>?</span></h2>
+  <button type="button" id="b-mic">Activer le micro puis souffler</button>
+  <div class="val" data-val></div>
+  <div class="bar"><i data-bar></i></div>
+</div>
+
+<div class="card" id="c-light">
+  <h2>Noir (AmbientLightSensor) <span class="badge" data-st>?</span></h2>
+  <div class="val" data-val></div>
+</div>
+
+<div class="card" id="c-sr">
+  <h2>Reconnaissance vocale (SpeechRecognition) <span class="badge" data-st>?</span></h2>
+  <button type="button" id="b-sr">Dire « Tricératops »</button>
+  <div class="val" data-val></div>
+</div>
+
+<div class="card"><div id="log"></div></div>
+
+<script>
+(function () {
+  'use strict';
+  const $ = (id) => document.getElementById(id);
+  const log = (m) => { $('log').textContent = new Date().toLocaleTimeString() + ' ' + m + '\n' + $('log').textContent; };
+  function setSt(card, cls, txt) { const b = $(card).querySelector('[data-st]'); b.className = 'badge ' + cls; b.textContent = txt; }
+  function setVal(card, txt) { $(card).querySelector('[data-val]').textContent = txt; }
+  function setBar(card, pct) { $(card).querySelector('[data-bar]').style.width = Math.max(0, Math.min(100, pct)) + '%'; }
+
+  // 1. Vibration : sortie, aucune permission, exige un geste utilisateur.
+  if ('vibrate' in navigator) { setSt('c-vib', 'warn', 'API présente, à tester'); } else { setSt('c-vib', 'ko', 'absente'); }
+  $('b-vib').addEventListener('click', () => {
+    const ok = navigator.vibrate && navigator.vibrate([60, 80, 150, 80, 400]);
+    setSt('c-vib', ok ? 'ok' : 'ko', ok ? 'a répondu' : 'refusée');
+    setVal('c-vib', ok ? 'Tu as senti trois secousses ? Si non : mode silencieux ou vibreur coupé dans les réglages.' : 'navigator.vibrate a renvoyé false.');
+    log('vibrate ' + ok);
+  });
+
+  // 2. Secouer : même seuil que mj-21 (magnitude > 25, anti-rebond 800 ms).
+  let shakes = 0, lastShake = 0, gotMotion = false;
+  if ('DeviceMotionEvent' in window) {
+    setSt('c-motion', 'warn', 'en attente d’événements');
+    window.addEventListener('devicemotion', (e) => {
+      const a = e.acceleration; if (!a || a.x === null) return;
+      if (!gotMotion) { gotMotion = true; setSt('c-motion', 'ok', 'événements reçus'); }
+      const m = Math.sqrt(a.x * a.x + a.y * a.y + a.z * a.z);
+      setBar('c-motion', m * 3);
+      if (m > 25 && Date.now() - lastShake > 800) { lastShake = Date.now(); shakes++; setVal('c-motion', 'Secousses détectées : ' + shakes + ' (magnitude ' + m.toFixed(1) + ')'); log('shake ' + m.toFixed(1)); }
+    }, true);
+  } else { setSt('c-motion', 'ko', 'absente'); }
+
+  // 3. Inclinaison et retournement : beta (avant/arrière), gamma (gauche/droite).
+  // Écran vers le sol : |beta| > 150 ou gamma proche de ±180 selon l'orientation.
+  if ('DeviceOrientationEvent' in window) {
+    setSt('c-orient', 'warn', 'en attente d’événements');
+    let got = false, sleeping = false;
+    window.addEventListener('deviceorientation', (e) => {
+      if (e.beta === null) return;
+      if (!got) { got = true; setSt('c-orient', 'ok', 'événements reçus'); }
+      const faceDown = Math.abs(e.beta) > 150 || Math.abs(e.gamma) > 150;
+      const tilt = Math.abs(e.gamma) > 25 ? (e.gamma > 0 ? 'penché à droite' : 'penché à gauche') : 'à plat';
+      if (faceDown !== sleeping) { sleeping = faceDown; log(faceDown ? 'écran vers le sol' : 'écran vers le haut'); }
+      setVal('c-orient', (faceDown ? 'Le dino dort (écran retourné). ' : tilt + '. ') + 'beta ' + e.beta.toFixed(0) + '° gamma ' + e.gamma.toFixed(0) + '°');
+    }, true);
+  } else { setSt('c-orient', 'ko', 'absente'); }
+
+  // 4. Souffler : énergie basse fréquence (< 500 Hz) via AnalyserNode.
+  // Un souffle sur le micro sature les basses ; une voix a plus d'énergie au-dessus.
+  const hasMic = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+  setSt('c-mic', hasMic ? 'warn' : 'ko', hasMic ? 'API présente, permission à demander' : 'absente');
+  let micStarted = false;
+  $('b-mic').addEventListener('click', async () => {
+    if (micStarted || !hasMic) return;
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false } });
+      micStarted = true;
+      const ac = new (window.AudioContext || window.webkitAudioContext)();
+      const src = ac.createMediaStreamSource(stream);
+      const an = ac.createAnalyser(); an.fftSize = 1024; an.smoothingTimeConstant = 0.4;
+      src.connect(an);
+      const data = new Uint8Array(an.frequencyBinCount);
+      const binHz = ac.sampleRate / an.fftSize;
+      const lowBins = Math.round(500 / binHz);
+      let blows = 0, lastBlow = 0;
+      setSt('c-mic', 'ok', 'micro ouvert');
+      (function tick() {
+        an.getByteFrequencyData(data);
+        let low = 0, high = 0;
+        for (let i = 1; i < data.length; i++) { if (i <= lowBins) low += data[i]; else high += data[i]; }
+        low /= lowBins; high /= (data.length - lowBins);
+        const ratio = high > 0 ? low / high : low;
+        setBar('c-mic', low / 2.55);
+        const isBlow = low > 120 && ratio > 2.2;
+        if (isBlow && Date.now() - lastBlow > 700) { lastBlow = Date.now(); blows++; log('souffle low=' + low.toFixed(0) + ' ratio=' + ratio.toFixed(1)); }
+        setVal('c-mic', 'Souffles : ' + blows + ' · basses ' + low.toFixed(0) + ' · aiguës ' + high.toFixed(0) + ' · ratio ' + ratio.toFixed(1) + (isBlow ? ' ← SOUFFLE' : ''));
+        requestAnimationFrame(tick);
+      })();
+    } catch (err) {
+      setSt('c-mic', 'ko', 'refusée'); setVal('c-mic', String(err && err.name || err)); log('mic ' + err);
+    }
+  });
+
+  // 5. Lumière ambiante : derrière un flag Chrome, on s'attend à « absente ».
+  if ('AmbientLightSensor' in window) {
+    try {
+      const s = new AmbientLightSensor();
+      s.addEventListener('reading', () => { setSt('c-light', 'ok', 'lit'); setVal('c-light', s.illuminance.toFixed(0) + ' lux'); });
+      s.addEventListener('error', (e) => { setSt('c-light', 'ko', e.error.name); });
+      s.start();
+    } catch (e) { setSt('c-light', 'ko', String(e.name || e)); }
+  } else { setSt('c-light', 'ko', 'absente (flag Chrome)'); setVal('c-light', 'Attendu : mj-28 simule déjà le noir à l’écran, on n’a pas besoin de ce capteur.'); }
+
+  // 6. Reconnaissance vocale : service réseau, mesurer latence et texte rendu.
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  setSt('c-sr', SR ? 'warn' : 'ko', SR ? 'API présente' : 'absente');
+  $('b-sr').addEventListener('click', () => {
+    if (!SR) return;
+    const r = new SR(); r.lang = 'fr-FR'; r.interimResults = false; r.maxAlternatives = 5;
+    const t0 = Date.now();
+    setVal('c-sr', 'J’écoute…');
+    r.onresult = (e) => {
+      const alts = Array.from(e.results[0]).map((a) => a.transcript + ' (' + (a.confidence * 100).toFixed(0) + '%)');
+      setSt('c-sr', 'ok', (Date.now() - t0) + ' ms'); setVal('c-sr', alts.join(' · ')); log('SR ' + alts[0]);
+    };
+    r.onerror = (e) => { setSt('c-sr', 'ko', e.error); setVal('c-sr', 'Erreur : ' + e.error + (e.error === 'network' ? ' (service réseau, pas hors ligne)' : '')); };
+    r.onend = () => { if ($('c-sr').querySelector('[data-val]').textContent === 'J’écoute…') setVal('c-sr', 'Rien entendu.'); };
+    try { r.start(); } catch (err) { setSt('c-sr', 'ko', String(err.name || err)); }
+  });
+})();
+</script>
+</body>
+</html>

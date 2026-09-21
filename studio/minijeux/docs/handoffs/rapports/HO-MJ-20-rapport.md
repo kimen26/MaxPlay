@@ -571,3 +571,6 @@ Recette Papa Yann : bas des vantaux « toujours tronqué », gonds ni de la mêm
 - **Tronqué** : pas le sprite — le navigateur gardait l'ancien `js/gen/armoire-kit.js` (boîte du vantail bas de 42,97 % de haut) et chargeait le nouveau sprite (versionné) dedans : écrasé, il finissait pile au socle. `dev-armoire.html` charge maintenant ses deux scripts ET son CSS avec un horodatage (`?t=`), jamais depuis un cache. Le CSS aussi : un CSS périmé rendait le tiroir à sa taille native dans le navigateur de Claude.
 - **Gonds** : le remappage n'alignait que les centres. Il aligne désormais les quatre bords (haut et bas de chaque canon) : le vantail fermé prend la position ET la taille des gonds du vantail ouvert. Mesuré sur les sprites finaux (pixels gris métal, repère 911 × 1480) : haut 187–233 / 476–520 des deux côtés ; bas 847–894 / 1279–1327 contre 846–894 / 1278–1327.
 
+## 15. Validation
+
+Papa Yann, 2026-09-21, sur `kimen26.github.io/MaxPlay/dev-armoire.html` : « c'est bon ! et les étages sont bons aussi ». Meuble vide v8 validé. Suite : HO-MJ-22 (cases dans le meuble).

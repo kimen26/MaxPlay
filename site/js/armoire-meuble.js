@@ -85,7 +85,9 @@
       if (/^planche-/.test(name)) root.appendChild(img(name, 'am-planche', P[name].box));
     });
     Object.keys(P).forEach(function (name) {
-      if (/^montant-/.test(name)) root.appendChild(img(name, 'am-montant', P[name].box));
+      if (!/^montant-/.test(name)) return;
+      // montant-3 : entre les tiroirs, DEVANT eux (le cadre est en facade)
+      root.appendChild(img(name, 'am-montant' + (name === 'montant-3' ? ' am-montant-tiroirs' : ''), P[name].box));
     });
 
     // 3. deux tiroirs : le même sprite, chacun est un bouton
@@ -126,7 +128,9 @@
 
     root.addEventListener('click', function (ev) {
       var porte = ev.target.closest('.am-porte, .am-ouverte');
-      if (porte) toggle(root, porte.dataset.zone);
+      if (porte) { toggle(root, porte.dataset.zone); return; }
+      var tiroir = ev.target.closest('.am-tiroir');
+      if (tiroir) setTiroir(tiroir, !tiroir.classList.contains('am-tire'));
     });
     setZone(root, 'haut', false);
     setZone(root, 'bas', false);
@@ -154,9 +158,16 @@
     }
   }
 
+  // Fausse ouverture d'un tiroir : la facade avance vers l'oeil (plus grande,
+  // plus basse), l'interieur sombre apparait au-dessus (CSS), ombre portee.
+  function setTiroir(el, open) {
+    el.classList.toggle('am-tire', !!open);
+    el.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
   function toggle(root, zone) {
     setZone(root, zone, !root.classList.contains('am-ouvert-' + zone));
   }
 
-  global.ArmoireMeuble = { build: build, setZone: setZone, toggle: toggle, KIT: KIT };
+  global.ArmoireMeuble = { build: build, setZone: setZone, toggle: toggle, setTiroir: setTiroir, KIT: KIT };
 })(window);

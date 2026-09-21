@@ -574,3 +574,11 @@ Recette Papa Yann : bas des vantaux « toujours tronqué », gonds ni de la mêm
 ## 15. Validation
 
 Papa Yann, 2026-09-21, sur `kimen26.github.io/MaxPlay/dev-armoire.html` : « c'est bon ! et les étages sont bons aussi ». Meuble vide v8 validé. Suite : HO-MJ-22 (cases dans le meuble).
+
+## 16. Passe 8 (2026-09-21) — montant entre les tiroirs, tiroirs qui se tirent
+
+Demande Papa Yann après validation : « une mini fausse animation pour les tiroirs, qu'ils s'ouvrent ; et entre les tiroirs la même planche verticale que pour les autres endroits ».
+
+- **Montant** : `montant-3`, même sprite que les montants de niche, posé entre les deux tiroirs (x 457..489 du repère source, de la planche 5 au socle), z-index 32 : cadre en façade, devant les tiroirs fermés. Les boîtes des deux tiroirs reculent de 10 px pour lui laisser la place (un seul sprite, écrasé de 3 %, invisible). Pas dans la référence, donc pas d'inpaint.
+- **Tiroir tiré** : tap = classe `am-tire` (API `ArmoireMeuble.setTiroir(el, open)`), second tap = rentré. La façade descend de 22 % et grandit de 8 % (origine en bas : son bord haut descend de 14 %), passe devant le montant (z 36), ombre portée plus large ; dans l'espace libéré au-dessus apparaît le caisson (pseudo-élément CSS : plancher clair au fond, ombre près de la façade, deux côtés en bordure). Première version (scale 1.09 + translate 9 %) ne bougeait pas le bord haut et le caisson débordait sur la planche : corrigé par le calcul ci-dessus. 380 ms, `prefers-reduced-motion` respecté. Spec : tap tire (plus grand, plus bas), second tap rentre.
+

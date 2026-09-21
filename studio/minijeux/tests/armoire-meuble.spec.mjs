@@ -4,8 +4,9 @@
 // Ce qu'il garde, viewport par viewport :
 //   · jamais d'ascenseur, rien de rogné par la zone .piece ;
 //   · toutes les images chargées et versionnées (?v=empreinte, anti-cache) ;
-//   · les pièces : 1 carcasse, 5 planches, 2 montants, 2 tiroirs, 4 vantaux
-//     fermés (boutons), 4 vantaux ouverts ;
+//   · les pièces : 1 carcasse, 5 planches, 3 montants, 2 tiroirs, 4 vantaux
+//     fermés (boutons), 4 vantaux ouverts ; un tap sur un tiroir le tire, un
+//     second le rentre ;
 //   · FIDÉLITÉ : chaque pièce est rendue dans la boîte que le kit lui donne
 //     (js/gen/armoire-kit.js, mesurée sur la référence), à 0,3 % du repère ;
 //   · arrive fermé (ouverts à opacité 0, fermés à 1) ; ?etat=ouvert inverse ;
@@ -113,8 +114,8 @@ for (const vp of VIEWPORTS) {
     ok(`[${tag}] rien de rogné par .piece`,
       m.bornes.l >= m.piece.l - 0.5 && m.bornes.t >= m.piece.t - 0.5 && m.bornes.r <= m.piece.r + 0.5 && m.bornes.b <= m.piece.b + 0.5,
       `L${m.bornes.l.toFixed(1)} R${m.bornes.r.toFixed(1)} T${m.bornes.t.toFixed(1)} B${m.bornes.b.toFixed(1)} / piece ${JSON.stringify(m.piece)}`);
-    ok(`[${tag}] pièces : 1 carcasse, 5 planches, 2 montants, 2 tiroirs, 4 vantaux fermés, 4 ouverts`,
-      m.n.shell === 1 && m.n.planches === 5 && m.n.montants === 2 && m.n.tiroirs === 2 && m.n.portes === 4 && m.n.ouvertes === 4, JSON.stringify(m.n));
+    ok(`[${tag}] pièces : 1 carcasse, 5 planches, 3 montants, 2 tiroirs, 4 vantaux fermés, 4 ouverts`,
+      m.n.shell === 1 && m.n.planches === 5 && m.n.montants === 3 && m.n.tiroirs === 2 && m.n.portes === 4 && m.n.ouvertes === 4, JSON.stringify(m.n));
     ok(`[${tag}] toutes les <img> chargées`, m.imgsOk);
     ok(`[${tag}] chaque pièce rendue dans sa boîte du kit (± 0,3 % du repère)`, m.pire[1] <= 0.3,
       `pire : ${m.pire[0]} écart ${m.pire[1].toFixed(3)} %`);
@@ -157,6 +158,21 @@ for (const vp of VIEWPORTS) {
         [...cab.querySelectorAll('.am-ouverte[data-zone="haut"]')].every(e => +getComputedStyle(e).opacity === 0);
     });
     ok(`[${tag}] tap sur le vantail ouvert referme sa zone (l'autre reste ouverte)`, referme);
+
+    // tiroir : tap = tiré (façade plus grande et plus basse), tap = rentré
+    const avant = await page.evaluate(() => document.querySelector('.am-tiroir.tiroir-g').getBoundingClientRect().toJSON());
+    await page.click('.am-tiroir.tiroir-g');
+    await page.waitForTimeout(500);
+    const tire = await page.evaluate(() => {
+      const t = document.querySelector('.am-tiroir.tiroir-g');
+      return { cls: t.classList.contains('am-tire'), r: t.getBoundingClientRect().toJSON() };
+    });
+    ok(`[${tag}] tap sur un tiroir le tire (plus grand, plus bas)`, tire.cls && tire.r.width > avant.width * 1.05 && tire.r.bottom > avant.bottom + 2,
+      `avant ${avant.width.toFixed(1)}/${avant.bottom.toFixed(1)} après ${tire.r.width.toFixed(1)}/${tire.r.bottom.toFixed(1)}`);
+    await page.click('.am-tiroir.tiroir-g');
+    await page.waitForTimeout(500);
+    const rentre = await page.evaluate(() => !document.querySelector('.am-tiroir.tiroir-g').classList.contains('am-tire'));
+    ok(`[${tag}] second tap le rentre`, rentre);
 
     await page.goto(pathToFileURL(DEV).href + '?etat=ouvert', { waitUntil: 'networkidle' });
     await page.waitForTimeout(900);

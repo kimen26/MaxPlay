@@ -42,7 +42,10 @@ PLANCHES = [  # bande planche + ombre portee dessous
     (SH_X0, SH_X1, 1186, 1224),
 ]
 MONTANTS = [(346, 378, 600, 766), (592, 624, 600, 766)]     # niche
-TIROIRS = [(176, 470, 1222, 1382), (476, 770, 1222, 1382)]  # gauche, droit (meme largeur : un seul sprite)
+# montant entre les deux tiroirs (demande PY 2026-09-21) : meme sprite que la
+# niche, pose de la planche 5 au socle. Pas dans la reference -> pas d inpaint.
+MONTANT_TIROIRS = (457, 489, 1224, 1388)
+TIROIRS = [(176, 460, 1222, 1382), (486, 770, 1222, 1382)]  # gauche, droit (meme largeur : un seul sprite)
 DRAWER_BAND = (172, 792)   # bande inpaintee derriere les deux tiroirs
 LEAVES = {  # vantaux ouverts gauches ; x = du bord image au stile inclus.
     # En y ils DEPASSENT l ouverture : vus en perspective, plus pres de l oeil,
@@ -191,6 +194,7 @@ for i, b in enumerate(PLANCHES, 1):
     save('planche-%d' % i, crop(b), b)
 for i, b in enumerate(MONTANTS, 1):
     save('montant-%d' % i, crop(b), b)
+save('montant-3', crop(MONTANTS[0]), MONTANT_TIROIRS)   # meme matiere, autre boite
 save('tiroir', crop(TIROIRS[0]), TIROIRS[0])
 kit['pieces']['tiroir']['box_droite'] = pct(TIROIRS[1])
 CX = (CORPS_X0 + CORPS_X1) / 2.0

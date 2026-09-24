@@ -1,5 +1,5 @@
 // gen-dinos-assets.mjs — génère site/js/gen/dinos-assets.js (manifeste unique des
-// familles d'assets dino : ombre / sprite / tete / paleoart / avatar) + rapport
+// familles d'assets dino : ombre / sprite / tete / bebe / paleoart / avatar) + rapport
 // des trous. Vocabulaire figé 2026-07-20 (memory/stack.md § Vocabulaire ASSETS).
 //
 // Usage : node studio/dino/scripts/gen-dinos-assets.mjs
@@ -22,7 +22,7 @@ const AVATAR_ALIAS = {
 };
 
 const assets = {}; // Nom latin → { ombre, sprite, tete, avatar, paleoart:{...} }
-const A = n => (assets[n] ||= { ombre: null, sprite: null, tete: null, avatar: null, paleoart: {} });
+const A = n => (assets[n] ||= { ombre: null, sprite: null, tete: null, bebe: null, avatar: null, paleoart: {} });
 
 for (const f of dir('img/dinos/ombres')) {
   const m = f.match(/^([A-Z][A-Za-z]+)_ombre\.png$/);
@@ -33,6 +33,11 @@ for (const f of dir('img/dinos/sprites')) {
   if (m) { A(m[1]).sprite = 'img/dinos/sprites/' + f; continue; }
   m = f.match(/^([A-Z][A-Za-z]+)_tete\.(png|webp)$/);
   if (m) A(m[1]).tete = 'img/dinos/sprites/' + f;
+}
+// Bébé dans sa coquille, montré à l'éclosion du Nid (collection ajoutée 2026-09-25)
+for (const f of dir('img/dinos/bebes')) {
+  const m = f.match(/^([A-Z][A-Za-z]+)_bebe\.webp$/);
+  if (m) A(m[1]).bebe = 'img/dinos/bebes/' + f;
 }
 for (const f of dir('img/dinos/paleoart')) {
   const m = f.match(/^([A-Z][A-Za-z]+?)(?:_([a-z]+))?\.(jpg|webp|png)$/);
@@ -49,7 +54,7 @@ for (const [id, nom] of Object.entries(AVATAR_ALIAS)) {
 const noms = Object.keys(assets).sort();
 const manque = k => noms.filter(n => !assets[n][k]);
 console.log(`${noms.length} dinos référencés.`);
-for (const k of ['ombre', 'sprite', 'tete', 'avatar']) {
+for (const k of ['ombre', 'sprite', 'tete', 'bebe', 'avatar']) {
   const m = manque(k);
   console.log(`  sans ${k} : ${m.length}${m.length ? ' → ' + m.join(', ') : ''}`);
 }
@@ -62,7 +67,7 @@ console.log(`  avatars fantaisie (sans dino) : ${fantaisie.join(', ')}`);
 
 // ── Écriture du manifeste (window.*, jamais de fetch — règle HTML local) ──
 const out = '// dinos-assets.js — GÉNÉRÉ par studio/dino/scripts/gen-dinos-assets.mjs — NE PAS ÉDITER À LA MAIN.\n'
-  + '// Manifeste des familles d\'assets par dino (vocabulaire figé 2026-07-20 : ombre / sprite / tete / paleoart / avatar).\n'
+  + '// Manifeste des familles d\'assets par dino (vocabulaire figé 2026-07-20 : ombre / sprite / tete / paleoart / avatar ; + bebe 2026-09-25).\n'
   + '// avatar = diminutif (fichiers via window.MAXPLAY_AVATARS de avatars.js). Régénérer après tout ajout d\'image.\n'
   + 'window.DINO_ASSETS = ' + JSON.stringify(assets, null, 1) + ';\n';
 

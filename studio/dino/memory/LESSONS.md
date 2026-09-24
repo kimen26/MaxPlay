@@ -79,3 +79,16 @@ sinon on l'annote « forme seule, fond incomplet ». Et une exigence de contenu 
 latin/grec + leur sens, quoi que dise le panel », auto-memory `feedback_dino_noms_latin_grec`) se vérifie par
 une porte, pas par une phrase d'agent : le bloc A doit contenir chaque racine de `_ETYMO-RACINES-50.md` et
 au moins un nom de langue.
+
+## L-D-85 — 2026-09-25 — ChatGPT génère bien l'image, c'est le script qui ne la voit plus (images en `blob:`)
+
+`gpt-gen.mjs` a tourné 200 s en « timeout » sur le bébé Tricératops alors que l'image était déjà dans le
+chat, parfaite : la nouvelle UI de ChatGPT sert les images générées en `blob:https://chatgpt.com/...`, plus
+en `backend-api/estuary/content`. Même piège que 2026-07-09 (l'image sortie de la bulle assistant) : un
+« timeout » ou un « refus » apparent se vérifie d'abord par une capture de l'onglet, avant d'accuser le quota.
+Au passage, les trois scripts pointaient vers un Playwright `studio/minijeux/tests/node_modules` qui n'existe
+plus (import en dur) : désormais `import 'playwright'` (racine du repo).
+
+**Règle** : sur un timeout de génération, capture de l'onglet avant tout diagnostic. Détecter une image
+neuve par son `src` (ensemble des src avant envoi) et sa pleine résolution, pas par un sélecteur d'URL
+figé. `gpt-gen.mjs` prend les deux formats + `--grab` pour récupérer la dernière image du chat courant.

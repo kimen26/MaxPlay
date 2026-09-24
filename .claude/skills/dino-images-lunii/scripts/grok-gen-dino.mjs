@@ -4,7 +4,7 @@
 //   --new = ouvre un nouveau chat dans le projet (sinon reste dans le chat courant Grok).
 //
 // Détecte : pas logué (exit 2), limite/crédits (exit 5), timeout (exit 3).
-import pw from 'file:///C:/ProjetsPerso/Claude_Projects/MaxPlay/studio/minijeux/tests/node_modules/playwright/index.js';
+import pw from 'playwright';
 import { writeFileSync } from 'node:fs';
 const { chromium } = pw;
 

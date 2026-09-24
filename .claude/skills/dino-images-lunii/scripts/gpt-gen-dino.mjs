@@ -13,7 +13,7 @@
 //    seule une image de référence corrige la forme).
 //
 // Usage: node gpt-gen-dino.mjs "<prompt>" <out.png> [--url <gpts-url>] [--new] [--ref <image>]
-import pw from 'file:///C:/ProjetsPerso/Claude_Projects/MaxPlay/studio/minijeux/tests/node_modules/playwright/index.js';
+import pw from 'playwright';
 import { writeFileSync, existsSync, readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 const { chromium } = pw;

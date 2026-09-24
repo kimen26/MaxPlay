@@ -71,6 +71,10 @@
 
 - [ ] Fiche d'un dino gagné : bouton retour casse le fil (page vide → famille) au lieu de revenir au nid d'origine. (miroir EP-122)
 - [ ] Audit des fonds des dessins dinos : vérifier qu'aucune couleur de fond n'entre dans le dino.
+- **BEBES-OEUF** [~] — Demande PY 2026-09-25 : à l'éclosion, montrer le BÉBÉ de l'espèce dans sa coquille (chibi mais réaliste, signature juvénile reconnaissable) au lieu de la tête adulte. Collection `site/img/dinos/bebes/<Nom>_bebe.webp`, branchée dans `nid-ui.js` (repli sur la tête si absent ; l'album garde la tête). Batch `batch-dino-bebe.mjs` (table `BEBE` des signatures) + détourage `bebe_detoure.py` (rembg). Reste : les espèces non générées.
+- **BEBES-VIVIPARES** [?] — Question PY : 13 espèces ne sortent pas d'un œuf (7 mammifères + Mosasaure, Élasmosaure, Liopleurodon, Ichtyosaure, Ophtalmosaure, Shonisaure — vivipares). Bébé dans un œuf quand même (logique du jeu) ou bébé sans œuf (encyclopédie = vrai) ? En attendant : tête adulte.
+- **NID-INTRO-DOUBLE-CHAMBRE** [ ] — Vu en test 2026-09-25 : 1er œuf d'un profil neuf + arrivée par `?open=nid` → l'intro « Un œuf ! Garde-le au chaud » rouvre une chambre au bout de 6 s (`nid-ui.js` `finish()` → `openChambre()`) PENDANT le théâtre d'éclosion lancé par le deep-link : la nouvelle chambre recouvre la révélation. Pas lié aux bébés.
+- **BEBES-TAILLE-REVELATION** [?] — La révélation se fait à la taille de la case d'album (~80 px à 360 px) : le bébé se voit mais petit. Proposer à PY une révélation agrandie (le bébé au centre, puis il rejoint sa case).
 
 ## Refonte navigation (idée Papa Yann 2026-09-09, recherche 2026-09-10)
 

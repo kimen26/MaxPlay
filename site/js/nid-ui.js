@@ -126,6 +126,12 @@
     if (a && (a.tete || a.sprite)) return a.tete || a.sprite;
     return ombreSrc(dino);
   }
+  // Bébé dans sa coquille (collection BÉBÉ, demande PY 2026-09-25) : c'est
+  // LUI qu'on voit sortir de l'œuf. L'album garde la tête (teteSrc).
+  function bebeSrc(dino) {
+    var a = assetsFor(dino);
+    return (a && a.bebe) || teteSrc(dino);
+  }
   function ombreSrc(dino) {
     var a = assetsFor(dino);
     if (a && a.ombre) return a.ombre;
@@ -175,7 +181,7 @@
       );
     }
     var dino = dinoById(result.id);
-    var imgSrc = teteSrc(dino) || ombreSrc(dino);
+    var imgSrc = bebeSrc(dino) || ombreSrc(dino);
     playBabyCry(dino);
     // Retour playtest PY : après la fête, une carte claire (NOM en grand + 2
     // actions ≥80px) — le gain doit se comprendre sans lire.
@@ -612,7 +618,8 @@
       return wait_(700).then(function () { return cible; }); // le court instant face à la silhouette
     }).then(function (cible) {
       // 5. révélation : l'œuf s'ouvre, le sprite prend sa place
-      var imgSrc = teteSrc(dino) || ombreSrc(dino);
+      var imgSrc = bebeSrc(dino) || ombreSrc(dino);
+      var albumSrc = teteSrc(dino) || ombreSrc(dino);
       playBabyCry(dino);
       // L'ancre de l'éclosion est la CASE CIBLE de l'album, pas `oeuf` : la
       // chambre a été retirée du DOM à l'étape 4 (chambre-ov.remove()), donc
@@ -627,7 +634,7 @@
           cible.classList.add('possede', 'th-revele');
           cible.dataset.owned = '1';
           var im = cible.querySelector('img');
-          if (im) im.src = imgSrc;
+          if (im) im.src = albumSrc;
         }
         oeuf.style.display = 'none';
         // 6. applaudissements + « Voir sa fiche » proposée, jamais forcée

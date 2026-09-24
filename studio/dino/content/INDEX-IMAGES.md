@@ -46,6 +46,12 @@
 - **Consommé par** : rien encore — réserve pour un jeu « à qui est cette trace ? ».
 - **Régénérer** : Grok fond uni (prompt pied par type) → `detoure_sprite.py` → optimiser (64c). Remplace l'ancien `paws/` (photos scrapées, purgé).
 
+### bebes/ — bébé dans sa coquille (2026-09-25)
+- **Contenu** : `<Nom>_bebe.webp`, le bébé de l'espèce qui vient d'éclore, chibi mais réaliste, signature juvénile reconnaissable (collerette + cornes naissantes du Tricératops…). Détouré, côté max 512 px.
+- **Consommé par** : `site/js/nid-ui.js` (révélation d'éclosion + carte de gain ; repli sur `_tete` si absent). L'album garde la tête.
+- **Régénérer** : `node .claude/skills/dino-images-lunii/scripts/batch-dino-bebe.mjs <ids>` (chat ChatGPT libre, table `BEBE` des signatures ; `--preview` pour voir le prompt) → brut dans `_new-bebes/`, livrable détouré par `studio/dino/content/scripts/images-grok/bebe_detoure.py` (rembg : le color-key trouait la coquille grise). Puis `npm run build`.
+- **Hors table** : mammifères et reptiles marins vivipares (pas d'œuf) — arbitrage PY en attente (TODO `BEBES-VIVIPARES`).
+
 ### grok/ + wiki/ — galeries fiche
 - **Contenu** : grok/ = images IA filtrées (revue agents) · wiki/ = Wikimedia CC (crédits conservés).
 - **Consommé par** : `dinos-images-grok.js` / `dinos-images-local.js` (**générés** par `content/scripts/export/`, ne jamais éditer à la main).

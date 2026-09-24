@@ -1,12 +1,12 @@
 // Génère une image dans ChatGPT (Brave debug 9222) et récupère SEULEMENT la nouvelle image.
-// Usage: node gpt-gen.mjs "<prompt>" <out.png> [--new] [--url <chatgpt-url>]
+// Usage: node gpt-gen.mjs "<prompt>" <out.png> [--new] [--url <chatgpt-url>] [--grab]
 //   --new       = ouvre un nouveau chat (sinon reste dans le chat courant → série cohérente)
 //   --url <u>   = navigue d'abord vers cette URL (ex. un GPTs custom) puis envoie le prompt.
 //                 Démarre une conversation fraîche avec ce GPTs. Supplante --new.
 //                 GPTs « Dinosaure XXL » (pour les fiches app) :
 //                 https://chatgpt.com/g/g-6a2f05b2de7881919e856111c53cece2-dinosaure-xxl-encyclopedie-illustree
 // Prérequis: Brave lancé via launch-brave.ps1, et logué à ChatGPT.
-import pw from 'file:///C:/ProjetsPerso/Claude_Projects/MaxPlay/studio/minijeux/tests/node_modules/playwright/index.js';
+import pw from 'playwright';
 import { writeFileSync } from 'node:fs';
 const { chromium } = pw;
 
@@ -21,7 +21,11 @@ if (!PROMPT || !OUT) {
 }
 
 const CDP = 'http://127.0.0.1:9222';
-const ESTUARY = 'img[src*="backend-api/estuary/content"]';
+// Images générées : anciennement servies en backend-api/estuary, désormais en blob:
+// (UI 2026-09). On repère une image NEUVE par son src, pleine résolution, stable.
+const GEN_SEL = 'img[src*="backend-api/estuary/content"], img[src^="blob:https://chatgpt.com"]';
+const genSrcs = () => page.$$eval(GEN_SEL, a => a.filter(i => i.naturalWidth >= 700).map(i => i.src));
+const GRAB = process.argv.includes('--grab'); // récupère la dernière image du chat courant sans rien envoyer
 
 const browser = await chromium.connectOverCDP(CDP);
 const ctx = browser.contexts()[0];
@@ -47,29 +51,32 @@ if (URL) {
   console.log('✓ nouveau chat');
 }
 
-const before = await page.locator(ESTUARY).count();
+const before = new Set(GRAB ? [] : await genSrcs());
 
-const box = page.locator('#prompt-textarea, div[contenteditable="true"]').first();
-await box.click();
-await box.fill(PROMPT);
-await page.waitForTimeout(400);
-await page.keyboard.press('Enter');
-console.log('✓ prompt envoyé, attente image…');
+if (!GRAB) {
+  const box = page.locator('#prompt-textarea, div[contenteditable="true"]').first();
+  await box.click();
+  await box.fill(PROMPT);
+  await page.waitForTimeout(400);
+  await page.keyboard.press('Enter');
+  console.log('✓ prompt envoyé, attente image…');
+}
 
 const start = Date.now();
 let url = null;
-while (Date.now() - start < 200000) {
-  if (await page.locator(ESTUARY).count() > before) {
-    await page.waitForTimeout(3000); // laisser finir le rendu HD
-    url = await page.locator(ESTUARY).last().getAttribute('src');
-    if (url) break;
-  }
+let candidate = null;
+while (Date.now() - start < 300000) {
+  const fresh = (await genSrcs()).filter(u => !before.has(u));
+  const last = fresh[fresh.length - 1] || null;
+  // src identique sur 2 sondages = rendu terminé (évite le grab d'un rendu progressif)
+  if (last && last === candidate) { url = last; break; }
+  candidate = last;
   await page.waitForTimeout(2000);
   process.stdout.write('.');
 }
 console.log('');
 if (!url) {
-  console.log('✗ timeout (200s sans nouvelle image)');
+  console.log('✗ timeout (300s sans nouvelle image)');
   await page.screenshot({ path: OUT.replace(/\.png$/, '-timeout.png') });
   await browser.close(); process.exit(3);
 }

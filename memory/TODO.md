@@ -51,11 +51,11 @@ Questions Papa Yann (hors DoD) : 8 langues sans fiche audio sélectionnables au 
 ## Backlog post-refonte (à ouvrir après la vague 6)
 
 - [ ] GIT : second tour `git filter-repo` si le pack (2,65 Go) doit descendre sous 1,2 Go — purger les anciennes versions d'assets `site/audio/dinos`, `site/img/dinos/paleoart` (décision Papa Yann : on perd l'historique des régénérations).
-- [ ] DINO : 4 écarts data ↔ narré listés par `check-coherence-data-narre` (edmontonia, hatzegopteryx, titanis) : corriger le narré ou la fiche, puis passer le contrôle en bloquant.
+- [ ] DINO : 4 écarts data ↔ narré — suivi unique dans `studio/dino/memory/TODO.md` (REC-2026-09-19) ; une fois soldés, passer `check-coherence-data-narre` en bloquant.
 - [ ] JEU : `site/js/i18n/*.js` (9 bundles générés) à descendre dans `site/js/gen/`.
 
 - [ ] DINO : `i18n.config.json` + brancher `~/.claude/skills/i18n-contenu/scripts/check-i18n.mjs`.
-- [ ] DINO : migrer `dino-images-lunii/scripts/{gpt-gen,gpt-gen-dino,grok-gen-dino}.mjs` sur `browser-pilot` (bug qualité Grok, bouton Télécharger).
+- [ ] DINO : migrer `dino-images-lunii/scripts/{gpt-gen,gpt-gen-dino,grok-gen-dino}.mjs` sur `browser-pilot` (bug qualité Grok, bouton Télécharger). Revue 2026-09-25 : toujours vrai, les 3 scripts (`.claude/skills/dino-images-lunii/scripts/`) font encore leur propre `connectOverCDP` sans bouton Télécharger.
 - [ ] DINO : `site/img/dinos/{grok,wiki}` (63 Mo de galerie secondaire) : garder, réduire ou supprimer.
 - [ ] AUDIO : migrer les 17 scripts ElevenLabs vers `~/.claude/skills/tts-pipeline`, loudnorm unique I=-16/TP=-1.5/LRA=11.
 - [ ] AUDIO : `audio-verif` bascule `--stt-model scribe_v2` quand `scribe_v1` sera déprécié.
@@ -66,4 +66,3 @@ Questions Papa Yann (hors DoD) : 8 langues sans fiche audio sélectionnables au 
 - [ ] Papa Yann : compte `console.typesafe.ai`, clé `TYPESAFE_API_KEY` dans settings.json env (jamais dans le repo), dire si liste d'attente.
 - [ ] Banc de mesure 50 textes connus × 4 portes de contenu (interdits, échelle, violence, âge) — mesurer le français AVANT d'adopter.
 - [ ] Porte 1 : grep interdits audio → Jev noul + repli regex. Puis bot Telegram (pôle/nature/figée/doublon), Edge Function `jev-proxy`, suggestion « La suite ».
-- [ ] Skill officiel copié dans `.claude/skills/typesafe-ai/SKILL.md` (lit les docs live ; WebFetch bloqué ici → curl).

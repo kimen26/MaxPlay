@@ -1,6 +1,7 @@
 # TODO — Pôle JEU
 
 > Tickets ouverts uniquement, 1 ligne + DoD par lane. Détail complet et tickets fermés : `archive/backlog-fermes-2026.md` (avant 2026-09-03) et `git log`. Rotation 2026-09-12 (HO-R02) : les tickets clos ont été condensés en capacités livrées dans `CHANGELOG.md`, le fait/l'obsolète (28 mj fantômes purgés le 2026-08-10) a été supprimé.
+> Revue 2026-09-25 (chaque ticket confronté au code) : fermés car faits — EP-109 (36/36 figées), EP-073 (`regle-info` via `mj-shell`), EP-072 (88 avatars), EP-042 (check 404 dans `run.mjs`), EP-038 (36/36 specs), EP-035/036/037 (0 mojibake), asset `Scelidosaurus_coloriage.webp`, bandeau REMPLACÉE de la spec Mur v2. Retirés car caducs — EP-079/080 (mj-01/08 supprimés), EP-078 (mj-43/44/45 supprimés), EP-050 (`voices-manifest.js` supprimé), EP-005 (remplacé par armoire + nid), EP-143 (écarts actés dans le dossier brainstorm), REC-D1 (doublon, suivi côté DINO).
 > Statuts : `[ ]` à faire · `[~]` en cours · `[!]` bloqué · `[?]` question ouverte pour Papa Yann.
 
 ## Lane — Recette complète FR/EN 2026-09-19 (rapport `memory/audits/2026-09-19-recette-complete.md`)
@@ -19,7 +20,6 @@
 - [ ] **REC-H3** — mj-20 : UI (modes, boutons, badges) en dur en FR, mélange FR/EN en mode EN.
 - [ ] **REC-M1** — Mobile : `suivi.html` déborde (455 px pour 360) ; mj-38 plateau hors cadre à 320 (`cellSize()` plancher 70) ; titres tronqués à 320 sur mj-48/49.
 - [ ] **REC-M2** — mj-55 MP3 consigne FR manquant ; mj-18 `Stars.get`=0 après 2ᵉ victoire (à confirmer à la main) ; mj-39 progression non sauvée avant grille pleine ; `mur-nid.spec` 2ᵉ scénario n'ouvre pas le vantail.
-- [ ] **REC-D1** — Fiche dino `oviraptor.chasseurs` EN identique au FR ; 4 écarts data↔récit (`check-coherence-data-narre` : edmontonia, hatzegopteryx, titanis) → pôle DINO.
 
 ## Lane — L'Armoire : nouvel accueil enfant (HO-MJ-12 assets + HO-MJ-13 page, 2026-09-15)
 
@@ -32,7 +32,6 @@
 - [ ] Après recette : brancher la chaîne 2★ (`repaireState`) sur les casiers ou l'abandonner explicitement ; décider si les objets tournent au hasard à chaque chargement (v1) ou restent fixes
 - [ ] Objet non placé : `obj-dino.webp` (mascotte) — à réserver pour l'écran dino (étagère encyclo, voir `studio/dino/memory/TODO.md`). `obj-livres-jeux.webp` est posé depuis HO-MJ-19 (tiroir droit).
 - [x] Portes et lumière : réglés par HO-MJ-19 (portes en rotation 3D CSS à tous les écrans, halo en `radial-gradient`).
-- [ ] Spec Mur v2 (`docs/specs/2026-07-29-mur-v2-la-vallee.md`) : à marquer REMPLACÉE par l'armoire (pas supprimée, archive), §9 notes techniques périmées
 - [x] HO-MJ-14 — Armoire v2 « trois zones » (livrée 2026-09-15, recette PY à faire sur le P30 Pro) sur le modèle de `inbox/decoupe/…00_25_01.png` (décision PY 2026-09-15 après la v1) : vitrine haute à 2 étagères (Dinos, Monde, Œufs, Album) avec portes ouvertes, casiers de jeux au milieu, compartiment bas à portes avec 2 tiroirs décoratifs. Marges de pièce 3-5 % (mur + tapis CSS), safe-area, avatar derrière le fronton mordu à 15 %, juste le prénom en haut. « L'important c'est le visuel de l'armoire : propre, modulable, modulaire, léger. »
 - [!] HO-MJ-14 REJETÉE visuellement par PY 2026-09-16 (« t'en es très loin, pas fluide ») : cause = tuiles venues d'images différentes + proportions de la v1. Leçon : maquette statique validée AVANT le code (L-à graver en clôture).
 - [x] HO-MJ-15 — Carcasse v3 en tuiles (livrée 2026-09-17, recette PY sur P30 Pro à faire ; reliquats : avatar posé au-dessus de l'arche plutôt que mordu, tiroirs décoratifs, ménage des tuiles v1 inutilisées) découpées dans LA référence (`tools/armoire-compose.py` = spec, maquettes validées par PY le 2026-09-17 : panneaux latéraux continus, étagères DANS l'armoire, portes entières en calque, tiroirs à fleur, sans feuille, prénom seul, étoiles hors de l'arche). Objets = calque au-dessus. ~65 Ko de tuiles.
@@ -59,17 +58,16 @@
 
 - [ ] STICKERS de plantes posables au tap dans le dessin (`{type:'sticker'}` dans l'historique) — idée PY 2026-09-08, jamais commencée
 - [ ] Recette sur le VRAI P30 Pro : tout le chantier coloriage n'a été vu qu'en navigateur (360/320 px), jamais sur l'appareil de Max
-- [ ] Asset manquant : `site/img/dinos/paleoart/Scelidosaurus_coloriage.webp` — bloqué sur Papa Yann (Chromium dédié port 9225 connecté à un compte tiers)
 - [ ] Dette perf : remplissage du fond entier ~400 ms (calcul JS pur) — à traiter si le 1er tap paraît lent sur P30 Pro
 - [ ] Patcher les linearts à brèche côté pôle dino (Cryolophosaure #6389) pour pouvoir baisser le rayon anti-fuite
-- [ ] Dette assumée (pas de correction spéculative) : `waitForTimeout` fixe dans une boucle de progression, présent dans ~12 specs (mj-09, 30, 31, 48-54, 56) — à corriger au cas par cas si l'un tombe (méthode : L-133 dans LESSONS.md, attendre le fait pas la durée)
+- [ ] Dette assumée (pas de correction spéculative) : `waitForTimeout` fixe dans une boucle de progression, présent dans 47 fichiers de `studio/minijeux/tests/` (recompté 2026-09-25, dont mj-09, 30, 31, 48-54, 56) — à corriger au cas par cas si l'un tombe (méthode : L-133 dans LESSONS.md, attendre le fait pas la durée)
 
 ## Lane — EPIC i18n mini-jeux (décision PY 2026-09-05 : tout traduire — règles, menus, actions)
 
 **DoD** : 36/36 jeux jouables en fr/en/es-es/pt-br, consignes parlées EN en MP3 (pas seulement repli TTS).
 
-- [!] **VOIX-MJ-EN-AUDIO** — Générer les 81 MP3 anglais des consignes (voix maison STS) dans `site/sounds/voix/en/…`, ≈ 23k crédits EL. Outillage prêt : `node studio/dino/content/scripts/audio/_md2json-hors-fiche.cjs en studio/minijeux/i18n/en/scripts-voix.md --out=studio/minijeux/i18n/en/json`
-- [~] **LANG-MINI-JEUX** — Sélecteur de langue global mais seuls 8/36 jeux chargeaient `js/lang.js` à l'origine ; absorbé par l'EPIC i18n (33/36 en anglais aujourd'hui), reste es-es/pt-br des chaînes de jeu (hors panneau règle, déjà livré) et audio es/pt (repli TTS navigateur pour l'instant)
+- [!] **VOIX-MJ-EN-AUDIO** — Générer les 81 MP3 anglais des consignes (voix maison STS) dans `site/sounds/voix/en/…`, ≈ 23k crédits EL (3/81 présents au 2026-09-25, bloqué crédits). Outillage prêt : `node studio/dino/content/scripts/audio/_md2json-hors-fiche.cjs en studio/minijeux/i18n/en/scripts-voix.md --out=studio/minijeux/i18n/en/json`
+- [~] **LANG-MINI-JEUX** — `lang.js` est désormais injecté par `mj-shell.js` (plus aucun `mj-*.html` ne le charge en dur, cf. REC-C7 pour l'ordre de chargement) ; reste es-es/pt-br des chaînes de jeu (hors panneau règle, déjà livré) et audio es/pt (repli TTS navigateur pour l'instant)
 - [ ] Contenu FR conservé par décision PY 2026-09-05 : mj-50/51/52/53 (lecture/phonétique, refonte péda par langue trop lourde pour l'instant)
 - [ ] Données FR résiduelles signalées mais non traitées : `PALETTE[].name`, `getLineDisplayName()` de `data.js`
 
@@ -78,22 +76,20 @@
 **DoD** : les 13 figées restantes propagées OU explicitement abandonnées après ressenti Max sur le pilote mj-04.
 
 - [~] Pilote mj-04 livré (2026-07-29), propagation aux 13 autres figées attend validation ressenti Max
-- [?] SPEC montée de niveau (défigeage `niveau = Stars+1`) attend 7 décisions Papa Yann (D1..D7) — détail `../docs/2026-07-28-spec-montee-niveau.md`
+- [?] SPEC montée de niveau (défigeage `niveau = Stars+1`) attend 7 décisions Papa Yann (D1..D7) — détail `../docs/_archive/2026-07/2026-07-28-spec-montee-niveau.md` (archivée par HO-R01 alors que les décisions restent ouvertes)
 
 ## Lane — Design System v1 : validations en attente Papa Yann (EP-079..083)
 
 **DoD** : chaque question tranchée par Papa Yann, ticket fermé ou converti en chantier.
 
-- [?] EP-079/080 — Specs mj-14 rouge préexistant (Stars.get=0) et exception design mj-08 — mj-01/mj-08 supprimés depuis (purge 2026-08-10), probablement caducs, à confirmer
-- [?] EP-081/082/083 — finalStar cinematic mj-34/36/38/39, ambiances hardcodées (arbitrage L-094, à confirmer clos), bus-défilé header index — jamais explicitement clos
+- [?] EP-081/082/083 — finalStar cinematic mj-34/38/39 (mj-36 supprimé), ambiances hardcodées (arbitrage L-094, à confirmer clos), bus-défilé header index — jamais explicitement clos
 
 ## Lane — Gouvernance figées / dette (EP-109/110/074/076)
 
 **DoD** : chaque figée sourcée (phrase Papa Yann ou code), zéro figée inventée.
 
-- [ ] EP-109 — 18 jeux du menu sans figée — à revérifier après la purge du 2026-08-10 (liste d'origine à recompter sur `site/js/catalog.js`)
-- [ ] EP-110 — Famille « quiz legacy » (mj-13a/14/15/16 — mj-01 supprimé) : victoire score-% vs standard 3★, modernisation non urgente
-- [!] EP-074 — Harnais Playwright mj-01/index obsolète : mj-01 supprimé depuis (purge 2026-08-10), ticket probablement caduc — à confirmer et clore
+- [ ] EP-110 — Famille « quiz legacy » (mj-13a/14/15 — mj-01 et mj-16 supprimés) : victoire score-% vs standard 3★, modernisation non urgente
+- [ ] EP-074 — mj-01 supprimé mais encore cité dans `tests/cloud-merge.test.mjs` et `tests/collection.spec.mjs` : vérifier si simple fixture de données ou reliquat à retirer
 - [!] EP-076 — Revoir le process PMO figeage (checklist mini-audit) + appliquer aux figées ouvertes restantes, suite à l'incident L-072/L-073/L-074 (figées inventées 2026-07-05, déjà corrigées)
 
 ## Lane — Fusion bibliothèque savoir-faire (EP-101)
@@ -102,43 +98,17 @@
 
 - [?] EP-101 — Fusion F1 (mj-13a+mj-13c) remise à décision Papa Yann — friction refonte menu vs gains maintenance x2 long-terme
 
-## Lane — MJ-45 dominos (EP-078)
+## Lane — Gouvernance process/qualité (EP-043)
 
-**DoD** : brainstorm/design validé avant tout code.
+**DoD** : zéro figée non sourcée, vérifié par script.
 
-- [ ] EP-078 — Chaîne de dominos (bout-à-bout même valeur) — priorité basse, pas de code avant retours terrain MJ-43/44/45
-
-## Lane — Norme bouton règles + avatars (EP-072/073)
-
-**DoD** : bouton (i) sur tous les MJ vivants, avatars chibi livrés ou abandonnés.
-
-- [~] EP-073 — Composant bouton règles (i) `regle-info.js` — reste roll-out sur les MJ restants (vérifier lesquels après la purge 2026-08-10, plusieurs cibles d'origine ont été supprimées)
-- [ ] EP-072 — Avatars chibi dinos × 3 humeurs (30 images) — pipeline ChatGPT Dinosaure XXL, jamais démarré
-
-## Lane — Gouvernance process/qualité (EP-042/043)
-
-**DoD** : script d'audit qui tourne en CI, zéro figée non sourcée.
-
-- [ ] EP-042 — Check auto assets dans `run.mjs` (404 prévention prod, asset gitignoré mais référencé)
-- [ ] EP-043 — Audit automatisé figées : chaque ligne 🔒 sourcée Papa Yann ou code (`check-figees.mjs`)
+- [ ] EP-043 — Audit automatisé figées : chaque ligne 🔒 sourcée Papa Yann ou code. `check-mj-coherence.mjs` contrôle déjà la présence d'une figée par jeu, pas le sourçage ligne à ligne : étendre ce script plutôt que créer `check-figees.mjs`
 
 ## Lane — Narration audio dinos (EP-039)
 
 **DoD** : les 5 fiches phares en ping-pong Wex livrées, ou décision explicite de rester en TTS live.
 
 - [~] Pilote Parasaurolophus V2 clôturé (2026-05-30), 22/60 dinos en audio EL premium — reste généraliser à 5 fiches phares + option compléter le reste (TTS live navigateur en attendant, non bloquant)
-
-## Lane — Harnais de test (EP-038)
-
-**DoD** : 1 spec Playwright par MJ actif.
-
-- [~] Pilote livré 2026-05-16 validé Papa Yann — reste généraliser aux MJ actifs restants (vérifier la liste après purge 2026-08-10)
-
-## Lane — Gabarit/encodage rétro-fit (EP-035/036/037)
-
-**DoD** : les MJ concernés encore vivants sont conformes ; ceux purgés le 2026-08-10 sont retirés du ticket.
-
-- [ ] EP-035/036/037 — Fix encoding UTF-8, gabarit header compact, figeage — cibles d'origine à recompter contre `site/js/catalog.js` (plusieurs jeux visés ont été supprimés depuis)
 
 ## Lane — Renouvellement thématique (EP-041/047)
 
@@ -153,13 +123,7 @@
 
 - [ ] EP-048 — Recette réelle parcours compte→sync (login → partie → sync → récup profil autre appareil) — BLOQUANTE avant usage réel enfants
 - [ ] EP-049 — Resend SMTP + `{{ .Token }}` dans template Magic Link (domaine custom)
-- [~] EP-069/075 — Phase 1 cloud déployée, reste test e2e réel puis Phase 2 (codes cadeaux, voix premium, RGPD) + dettes Supabase (storage `mj32_galerie`, RLS tables 001, validation client)
-
-## Lane — Voix/audio production (EP-050)
-
-**DoD** : au moins 1 clip produit et validé.
-
-- [ ] EP-050 — Production premiers clips voix (`voices-manifest.js` vide) — jamais démarré
+- [~] EP-069/075 — Phase 1 cloud déployée (`compte.html` + `cloud.js`), reste test e2e réel puis Phase 2 (codes cadeaux, voix premium, RGPD) + dettes Supabase (storage `mj32_galerie`, RLS tables 001, validation client)
 
 ## Lane — Récompenses : le nid perd les gains (retour Papa Yann 2026-09-19) → HO-MJ-21
 
@@ -170,7 +134,7 @@
 - [ ] EP-134 — `nid-e2e.spec.mjs` est MORT : 16 sélecteurs `.v-copain`/`.vb-porte` de l'ancienne Vallée, remplacée par l'armoire (b17b525e). Rouge depuis, personne ne l'a vu parce que `run-all.mjs` ne le lance pas. À réécrire contre l'armoire ou à archiver — découvert par HO-MJ-21.
 - [?] EP-129 — Anti-farm 3 étoiles : Papa Yann a tranché le principe (« il a le droit de farm, c'est s'entraîner », 2026-09-19) mais pas la règle de remplacement. N'était PAS la cause de l'incident. À arbitrer : supprimer, ou seulement freiner la répétition du MÊME jeu 3× de suite.
 - [ ] EP-131 — Nid plein à 3 œufs (`MAX_EGGS = 3`) : au-delà, tout gain devient accessoire. Pas la cause ici, mais à remonter (5-6 ?). Hors HO-MJ-21.
-- [ ] EP-132 — Message « déjà toutes les étoiles ici » en trois phrases cursives : illisible à 4 ans. Signal visuel à la place. Hors HO-MJ-21.
+- [ ] EP-132 — Message « déjà toutes les étoiles ici » (`mj-golden.js:395`) : plus en cursive, mais toujours deux phrases de texte, illisible à 4 ans. Signal visuel à la place. Hors HO-MJ-21.
 
 ## Lane — Retours Papa Yann 2026-09-08 (nid, œufs, MJ-28) : reste ouvert
 
@@ -181,20 +145,18 @@
 
 ## Autres tickets isolés anciens (jamais avancés, statut à confirmer avec Papa Yann)
 
-- [ ] EP-005 — Système de progression (flotte + carte) — jamais développé
 - [ ] EP-026 — TTS ElevenLabs pré-générés (MP3 statiques noms de jeux) — reporté, speechSynthesis natif en fallback
 
 ## Lane — Brainstorm 2026-09-19 : péage, récompenses, capteurs, écran de fin (dossier `docs/research/2026-09-19-brainstorm-mj-dino.md`)
 
 **DoD** : Papa Yann a tranché les 3 décisions du dossier ; les tickets retenus passent en briefs HO.
 
-- [ ] EP-135 — Écran de fin normé : 4 emplacements FIXES `[Encore vert] [Au nid] [La suite BLEU #4d9de0] [Armoire]`, un bouton absent laisse un trou ; pictogramme armoire à la place de la maison ; audio au tap-down par bouton (pas de consigne lue). 1 fichier `mj-golden.js showEnd()`, 36 jeux d'un coup. À graver STANDARD-MJ Pilier 5.
+- [ ] EP-135 — Écran de fin normé (les 4 boutons existent déjà dans `showEnd()`, leurs positions varient) : 4 emplacements FIXES `[Encore vert] [Au nid] [La suite BLEU #4d9de0] [Armoire]`, un bouton absent laisse un trou ; pictogramme armoire à la place de la maison ; audio au tap-down par bouton (pas de consigne lue). 1 fichier `mj-golden.js showEnd()`, 36 jeux d'un coup. À graver STANDARD-MJ Pilier 5.
 - [ ] EP-136 — Micro-jeu « tourniquet » avant fiche dino : question 6-10 s, 2 réponses, la fiche s'ouvre QUOI QU'IL ARRIVE (bonne = tout de suite, mauvaise = on montre la bonne puis ouverture 1 s après, silence 8 s = ouverture seule). Jamais sur une fiche jamais vue, 1 fiche sur 3, jamais 2 de suite, exemption 60 premières s. Interrupteur parent dans compte.html. Formats : son initial du nom (son, jamais nom de lettre) > compter le concret (cornes) > addition dessinée. Arbitrage DINO requis (code dans dev-dinos.html).
-- [ ] EP-137 — MJ « L'appel des noms » : 3 ombres dino, voix dit le son initial, taper la bonne ; assets ombres + MP3 `*-nom` existent. MÊME moteur que EP-136 → faire en premier.
+- [ ] EP-137 — MJ « L'appel des noms » : 3 ombres dino, voix dit le son initial, taper la bonne ; assets ombres + MP3 `*-nom` existent. MÊME moteur que EP-136 → faire en premier. Brief prêt : `docs/handoffs/HO-MJ-24-appel-des-noms.md`, attend le feu vert Papa Yann.
 - [ ] EP-138 — Capsules attachées au dino (vidéo/berceuse/histoire) : UNE seule monnaie = l'œuf, la capsule arrive AVEC le dino qui éclot, jamais tirée au sort, jamais promise (D-003), rejouable depuis l'album (tiroir gauche armoire, D-028). Bloqué par recette HO-MJ-21 avec Max. Ordre prod : berceuses par famille (6-8, EL compose) > 4 vidéos existantes (câblage) > histoire (pilote narration).
 - [ ] EP-139 — Règle capteurs à graver : « un capteur est un raccourci joyeux, jamais une condition de réussite » (toute action capteur reste déclenchable au tap, cf. mj-21 shake + bouton). Interrupteur vibration/capteurs dans compte.html.
 - [ ] EP-140 — Vibration `navigator.vibrate` comme indice « tu chauffes » dans mj-28 (lampe du dino), liée au doigt, jamais surprise. Coût S.
 - [ ] EP-141 — Easter egg « retourner la tablette = le dino dort » (deviceorientation, écran noir + berceuse, on retourne = réveil). Coût S.
 - [ ] EP-142 — Prototype « souffler sur la poussière du fossile » (getUserMedia + AnalyserNode, filtre énergie < 500 Hz, permission micro donnée 1 fois par le parent) : révèle plus ou moins vite, ne peut pas rater. Prototype AVANT engagement.
-- [ ] EP-143 — Écartés avec raison : AmbientLightSensor (derrière flag Chrome, mj-28 simule déjà le noir) ; prononciation NOTÉE via SpeechRecognition (réseau, adultes, pénalité invisible) — seul un mode miroir sans jugement resterait, pas avant 5 ans.
 - [ ] EP-144 — Idées MJ neuves : Depann2000 bus en panne (appariement pièce/trou, S) · compteur de la ligne 185 (passage 9→10, 99→100, 999→1000, S-M) · le terminus (garer le bus sur la place numérotée, S) · le loup compte les moutons (SOUSTRACTION, seul trou du catalogue, M) · drapeau à finir (S) · ligne de bus à reconstituer (ordinal, tap-tap pas drag, M) · nid qui chante (répond à Simon EP-047, S-M).

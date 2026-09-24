@@ -59,3 +59,23 @@ Max, jamais doudou »), pas ecrire. Au moindre doute sur ce qu'une figee prescri
 `recit-cretace`, `recit-extinction`, plus `menu-voyage.mp3` (« viens retrouver TriTri epoque par epoque »)
 — a regenerer, non fait ce jour. Les archives (`_archive/`, sprint-logs, logs MCP) sont laissees telles
 quelles : une archive raconte ce qu'on croyait a l'epoque, elle ne se reecrit pas.
+
+## L-D-84 — 2026-09-24 — L'étymologie du T-Rex a disparu de l'audio parce que l'exemple du brief l'avait déjà perdue
+
+**Constat** : Papa Yann écoute la fiche T-Rex et n'entend plus la décomposition du nom (« tyrannos = roi qui
+commande, en grec · saure = lézard · rex = roi, en latin »). Le texte canon `nom_etym` l'a toujours. Le script
+audio V3 de juin (`_archive-2026-09-05-lots/trex-lot1.md`) l'avait. Le script réécrit le 2026-09-05 (HO-011,
+6 sous-agents `dino-fiche-writer`, tags v3 denses) ne garde que « tyrannos ». Mesure sur les 71 dialogues V3 :
+9 ne nomment jamais la langue (grec/latin), et parmi les 36 noms en -saurus, le seul qui ne dit pas « lézard »
+est le T-Rex — la fiche vedette, la première écoutée.
+**Cause racine** : le brief HO-011 donnait comme « exemple validé de densité » un bloc A du T-Rex qui avait
+déjà perdu saure et rex. L'exemple servait à montrer le placement des tags, mais un sous-agent copie le fond
+avec la forme. La règle « le cœur de la fiche = le NOM, étymologie grec/latin expliquée » était bien dans
+l'agent, mais une règle perd contre un exemple qui la contredit. Deuxième cause : la porte
+`_verif-scripts-audio.cjs` vérifie la structure et les tags, jamais que le bloc A contient les racines de
+`nom_etym` et le nom de leur langue — donc rien ne pouvait sonner.
+**Règle** : un exemple dans un brief doit être conforme sur le FOND, pas seulement sur la forme qu'il illustre ;
+sinon on l'annote « forme seule, fond incomplet ». Et une exigence de contenu répétée par Papa Yann (« les noms
+latin/grec + leur sens, quoi que dise le panel », auto-memory `feedback_dino_noms_latin_grec`) se vérifie par
+une porte, pas par une phrase d'agent : le bloc A doit contenir chaque racine de `_ETYMO-RACINES-50.md` et
+au moins un nom de langue.

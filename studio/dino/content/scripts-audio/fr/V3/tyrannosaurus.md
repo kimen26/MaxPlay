@@ -13,11 +13,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Ty-ran-no-saure Rex. [curious] Tu sais ce que ça veut dire, « tyrannos » ? [pauses] Le roi qui commande tout seul, à qui personne ne dit non.
+**NARRATEUR H** [excited] : Ty-ran-no-saure Rex. [curious] Il y a trois morceaux dans ce nom. [pauses] « Tyrannos », en grec, c'est le roi qui commande tout seul, à qui personne ne dit non.
 **WEX** [gasps] : Personne ? [nervous] Même pas sa maman ?
-**NARRATEUR H** [chuckles] : Sa maman, si, quand il était petit. [warmly] Mais une fois grand, c'était lui le roi. Il vivait en Amérique du Nord, [amazed] il y a 66 millions d'années.
-**WEX** [curious] : Et il commandait à qui, ce roi ?
-**NARRATEUR H** [happily] : À tout son royaume ! [confident] Autour de lui vivaient le Tricératops, l'Edmontosaure et l'Ankylosaure, [pauses] et tous le surveillaient du coin de l'œil.
+**NARRATEUR H** [chuckles] : Sa maman, si, quand il était petit. [warmly] Mais une fois grand, c'était lui le roi. [curious] Ensuite « saure », on dit aussi « saurus » : en grec, c'est le lézard. Et « rex », en latin, [proud] c'est le roi.
+**WEX** [amazed] : Le lézard-roi qui commande tout seul.
+**NARRATEUR H** [happily] : En entier, oui : le lézard-roi, le maître de tous. Il vivait en Amérique du Nord, [amazed] il y a 66 millions d'années, [pauses] et autour de lui vivaient le Tricératops, l'Edmontosaure et l'Ankylosaure.
 
 ### BLOC B — Taille
 

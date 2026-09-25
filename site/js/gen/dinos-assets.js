@@ -22,7 +22,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Albertosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Albertosaurus_sprite.webp",
   "tete": "img/dinos/sprites/Albertosaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Albertosaurus_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Albertosaurus.webp",
@@ -38,7 +38,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Allosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Allosaurus_sprite.webp",
   "tete": "img/dinos/sprites/Allosaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Allosaurus_bebe.webp",
   "avatar": "allo",
   "paleoart": {
    "hero": "img/dinos/paleoart/Allosaurus.webp",
@@ -54,7 +54,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Amargasaurus_ombre.png",
   "sprite": "img/dinos/sprites/Amargasaurus_sprite.webp",
   "tete": "img/dinos/sprites/Amargasaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Amargasaurus_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Amargasaurus.webp",
@@ -86,7 +86,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Apatosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Apatosaurus_sprite.webp",
   "tete": "img/dinos/sprites/Apatosaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Apatosaurus_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Apatosaurus.webp",
@@ -102,7 +102,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Archaeopteryx_ombre.png",
   "sprite": "img/dinos/sprites/Archaeopteryx_sprite.webp",
   "tete": "img/dinos/sprites/Archaeopteryx_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Archaeopteryx_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Archaeopteryx.webp",
@@ -118,7 +118,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Archelon_ombre.png",
   "sprite": "img/dinos/sprites/Archelon_sprite.webp",
   "tete": "img/dinos/sprites/Archelon_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Archelon_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Archelon.webp",
@@ -134,7 +134,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Baryonyx_ombre.png",
   "sprite": "img/dinos/sprites/Baryonyx_sprite.webp",
   "tete": "img/dinos/sprites/Baryonyx_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Baryonyx_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Baryonyx.webp",
@@ -166,7 +166,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Camarasaurus_ombre.png",
   "sprite": "img/dinos/sprites/Camarasaurus_sprite.webp",
   "tete": "img/dinos/sprites/Camarasaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Camarasaurus_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Camarasaurus.webp",
@@ -182,7 +182,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Carcharodontosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Carcharodontosaurus_sprite.webp",
   "tete": "img/dinos/sprites/Carcharodontosaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Carcharodontosaurus_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Carcharodontosaurus.webp",
@@ -198,7 +198,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Carnotaurus_ombre.png",
   "sprite": "img/dinos/sprites/Carnotaurus_sprite.webp",
   "tete": "img/dinos/sprites/Carnotaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Carnotaurus_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Carnotaurus.webp",
@@ -214,7 +214,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Centrosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Centrosaurus_sprite.webp",
   "tete": "img/dinos/sprites/Centrosaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Centrosaurus_bebe.webp",
   "avatar": "centro",
   "paleoart": {
    "hero": "img/dinos/paleoart/Centrosaurus.webp",
@@ -230,7 +230,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Ceratosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Ceratosaurus_sprite.webp",
   "tete": "img/dinos/sprites/Ceratosaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Ceratosaurus_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Ceratosaurus.webp",
@@ -262,7 +262,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Corythosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Corythosaurus_sprite.webp",
   "tete": "img/dinos/sprites/Corythosaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Corythosaurus_bebe.webp",
   "avatar": "cory",
   "paleoart": {
    "hero": "img/dinos/paleoart/Corythosaurus.webp",
@@ -278,7 +278,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Cryolophosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Cryolophosaurus_sprite.webp",
   "tete": "img/dinos/sprites/Cryolophosaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Cryolophosaurus_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Cryolophosaurus.webp",
@@ -294,7 +294,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Deinonychus_ombre.png",
   "sprite": "img/dinos/sprites/Deinonychus_sprite.webp",
   "tete": "img/dinos/sprites/Deinonychus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Deinonychus_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Deinonychus.webp",
@@ -310,7 +310,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Dilophosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Dilophosaurus_sprite.webp",
   "tete": "img/dinos/sprites/Dilophosaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Dilophosaurus_bebe.webp",
   "avatar": "dilo",
   "paleoart": {
    "hero": "img/dinos/paleoart/Dilophosaurus.webp",
@@ -326,7 +326,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Dimetrodon_ombre.png",
   "sprite": "img/dinos/sprites/Dimetrodon_sprite.webp",
   "tete": "img/dinos/sprites/Dimetrodon_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Dimetrodon_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Dimetrodon.webp",
@@ -358,7 +358,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Edaphosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Edaphosaurus_sprite.webp",
   "tete": "img/dinos/sprites/Edaphosaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Edaphosaurus_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Edaphosaurus.webp",
@@ -374,7 +374,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Edmontonia_ombre.png",
   "sprite": "img/dinos/sprites/Edmontonia_sprite.webp",
   "tete": "img/dinos/sprites/Edmontonia_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Edmontonia_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Edmontonia.webp",
@@ -390,7 +390,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Edmontosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Edmontosaurus_sprite.webp",
   "tete": "img/dinos/sprites/Edmontosaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Edmontosaurus_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Edmontosaurus.webp",
@@ -422,7 +422,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Euoplocephalus_ombre.png",
   "sprite": "img/dinos/sprites/Euoplocephalus_sprite.webp",
   "tete": "img/dinos/sprites/Euoplocephalus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Euoplocephalus_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Euoplocephalus.webp",
@@ -438,7 +438,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Gallimimus_ombre.png",
   "sprite": "img/dinos/sprites/Gallimimus_sprite.webp",
   "tete": "img/dinos/sprites/Gallimimus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Gallimimus_bebe.webp",
   "avatar": "galli",
   "paleoart": {
    "hero": "img/dinos/paleoart/Gallimimus.webp",
@@ -454,7 +454,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Giganotosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Giganotosaurus_sprite.webp",
   "tete": "img/dinos/sprites/Giganotosaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Giganotosaurus_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Giganotosaurus.webp",
@@ -486,7 +486,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Gorgonops_ombre.png",
   "sprite": "img/dinos/sprites/Gorgonops_sprite.webp",
   "tete": "img/dinos/sprites/Gorgonops_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Gorgonops_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Gorgonops.webp",
@@ -502,7 +502,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Hatzegopteryx_ombre.png",
   "sprite": "img/dinos/sprites/Hatzegopteryx_sprite.webp",
   "tete": "img/dinos/sprites/Hatzegopteryx_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Hatzegopteryx_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Hatzegopteryx.webp",
@@ -534,7 +534,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Iguanodon_ombre.png",
   "sprite": "img/dinos/sprites/Iguanodon_sprite.webp",
   "tete": "img/dinos/sprites/Iguanodon_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Iguanodon_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Iguanodon.webp",
@@ -550,7 +550,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Kentrosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Kentrosaurus_sprite.webp",
   "tete": "img/dinos/sprites/Kentrosaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Kentrosaurus_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Kentrosaurus.webp",
@@ -582,7 +582,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Lystrosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Lystrosaurus_sprite.webp",
   "tete": "img/dinos/sprites/Lystrosaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Lystrosaurus_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Lystrosaurus.webp",
@@ -598,7 +598,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Maiasaura_ombre.png",
   "sprite": "img/dinos/sprites/Maiasaura_sprite.webp",
   "tete": "img/dinos/sprites/Maiasaura_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Maiasaura_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Maiasaura.webp",
@@ -646,7 +646,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Microraptor_ombre.png",
   "sprite": "img/dinos/sprites/Microraptor_sprite.webp",
   "tete": "img/dinos/sprites/Microraptor_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Microraptor_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Microraptor.webp",
@@ -662,7 +662,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Minmi_ombre.png",
   "sprite": "img/dinos/sprites/Minmi_sprite.webp",
   "tete": "img/dinos/sprites/Minmi_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Minmi_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Minmi.webp",
@@ -694,7 +694,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Moschops_ombre.png",
   "sprite": "img/dinos/sprites/Moschops_sprite.webp",
   "tete": "img/dinos/sprites/Moschops_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Moschops_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Moschops.webp",
@@ -726,7 +726,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Oviraptor_ombre.png",
   "sprite": "img/dinos/sprites/Oviraptor_sprite.webp",
   "tete": "img/dinos/sprites/Oviraptor_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Oviraptor_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Oviraptor.webp",
@@ -742,7 +742,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Pachycephalosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Pachycephalosaurus_sprite.webp",
   "tete": "img/dinos/sprites/Pachycephalosaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Pachycephalosaurus_bebe.webp",
   "avatar": "pachy",
   "paleoart": {
    "hero": "img/dinos/paleoart/Pachycephalosaurus.webp",
@@ -790,7 +790,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Patagotitan_ombre.png",
   "sprite": "img/dinos/sprites/Patagotitan_sprite.webp",
   "tete": "img/dinos/sprites/Patagotitan_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Patagotitan_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Patagotitan.webp",
@@ -806,7 +806,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Pentaceratops_ombre.png",
   "sprite": "img/dinos/sprites/Pentaceratops_sprite.webp",
   "tete": "img/dinos/sprites/Pentaceratops_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Pentaceratops_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Pentaceratops.webp",
@@ -822,7 +822,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Plateosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Plateosaurus_sprite.webp",
   "tete": "img/dinos/sprites/Plateosaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Plateosaurus_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Plateosaurus.webp",
@@ -838,7 +838,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Protoceratops_ombre.png",
   "sprite": "img/dinos/sprites/Protoceratops_sprite.webp",
   "tete": "img/dinos/sprites/Protoceratops_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Protoceratops_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Protoceratops.webp",
@@ -854,7 +854,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Pteranodon_ombre.png",
   "sprite": "img/dinos/sprites/Pteranodon_sprite.webp",
   "tete": "img/dinos/sprites/Pteranodon_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Pteranodon_bebe.webp",
   "avatar": "ptero",
   "paleoart": {
    "hero": "img/dinos/paleoart/Pteranodon.webp",
@@ -870,7 +870,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Quetzalcoatlus_ombre.png",
   "sprite": "img/dinos/sprites/Quetzalcoatlus_sprite.webp",
   "tete": "img/dinos/sprites/Quetzalcoatlus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Quetzalcoatlus_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Quetzalcoatlus.webp",
@@ -886,7 +886,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Saurolophus_ombre.png",
   "sprite": "img/dinos/sprites/Saurolophus_sprite.webp",
   "tete": "img/dinos/sprites/Saurolophus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Saurolophus_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Saurolophus.webp",
@@ -902,7 +902,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Scelidosaurus_ombre.png",
   "sprite": null,
   "tete": null,
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Scelidosaurus_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Scelidosaurus.webp",
@@ -918,7 +918,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Scutellosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Scutellosaurus_sprite.webp",
   "tete": "img/dinos/sprites/Scutellosaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Scutellosaurus_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Scutellosaurus.webp",
@@ -998,7 +998,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Tarbosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Tarbosaurus_sprite.webp",
   "tete": "img/dinos/sprites/Tarbosaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Tarbosaurus_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Tarbosaurus.webp",
@@ -1014,7 +1014,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Therizinosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Therizinosaurus_sprite.webp",
   "tete": "img/dinos/sprites/Therizinosaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Therizinosaurus_bebe.webp",
   "avatar": "theri",
   "paleoart": {
    "hero": "img/dinos/paleoart/Therizinosaurus.webp",
@@ -1030,7 +1030,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Titanis_ombre.png",
   "sprite": "img/dinos/sprites/Titanis_sprite.webp",
   "tete": "img/dinos/sprites/Titanis_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Titanis_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Titanis.webp",
@@ -1046,7 +1046,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Torosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Torosaurus_sprite.webp",
   "tete": "img/dinos/sprites/Torosaurus_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Torosaurus_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Torosaurus.webp",
@@ -1078,7 +1078,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Troodon_ombre.png",
   "sprite": "img/dinos/sprites/Troodon_sprite.webp",
   "tete": "img/dinos/sprites/Troodon_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Troodon_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Troodon.webp",
@@ -1110,7 +1110,7 @@ window.DINO_ASSETS = {
   "ombre": "img/dinos/ombres/Utahraptor_ombre.png",
   "sprite": "img/dinos/sprites/Utahraptor_sprite.webp",
   "tete": "img/dinos/sprites/Utahraptor_tete.webp",
-  "bebe": null,
+  "bebe": "img/dinos/bebes/Utahraptor_bebe.webp",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Utahraptor.webp",

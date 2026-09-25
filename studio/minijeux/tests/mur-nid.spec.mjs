@@ -120,6 +120,16 @@ try {
   }
 
   // ── 2. Tiroir 📷 → Padidi, mur d'ombres anti-spoiler ──────────────────
+  // REC-M2 (recette 2026-09-19) : #hdr-padidi est un des 2 tiroirs du bas de
+  // l'ARMOIRE actuelle (HO-MJ-13, remplace le Mur/vantail v2 dont ce spec
+  // gardait le réflexe) — sa zone ("bas") est masquée (.zone-cachee, non
+  // cliquable/invisible) tant que le vantail bas n'a pas été ouvert. Le
+  // sélecteur ancien tapait directement #hdr-padidi sans jamais ouvrir la
+  // porte d'abord (timeout Playwright "element is not visible"). Armoire
+  // actuelle : ouvrir .porte[data-zone="bas"] révèle les tiroirs, comme un
+  // enfant qui ouvre vraiment la porte du meuble avant d'attraper l'album.
+  await page.click('.porte[data-zone="bas"]');
+  await page.waitForSelector('#hdr-padidi:not(.zone-cachee)', { timeout: 3000 }).catch(() => {});
   await page.click('#hdr-padidi');
   const padidi = await page.waitForSelector('#padidi-ov', { timeout: 4000 }).then(() => true).catch(() => false);
   ok('tiroir 📷 d\'entête → Padidi s\'ouvre', padidi);

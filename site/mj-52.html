@@ -87,7 +87,7 @@
 
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">📮 La boîte à mots</span>
+    <span class="htitle" id="htitle">📮 La boîte à mots</span>
   </div>
 
   <div class="stage">
@@ -114,6 +114,12 @@
     // ⚠ Écart spec assumé : « mot libre » (3★ : son prénom) différé — golden n'a que 3 niveaux.
     const GAME_ID = 'mj-52';
 
+    // Titre traduit (H1, recette 2026-09-19) — le CONTENU pédagogique (mots,
+    // syllabes) reste FR (décision PY 2026-09-05, phonétique).
+    document.title = 'MJ-52 – ' + MJi18n.titre(GAME_ID, 'La boîte à mots');
+    const htitleEl52 = document.getElementById('htitle');
+    if (htitleEl52) htitleEl52.textContent = '📮 ' + MJi18n.titre(GAME_ID, 'La boîte à mots');
+
     // [mot, syllabes] — pas d'accents ni de graphèmes complexes (ils arrivent avec G4)
     const MOTS_N0 = [
       ['papa', ['pa', 'pa']], ['maman', ['ma', 'man']], ['papi', ['pa', 'pi']],
@@ -130,7 +136,7 @@
     const DISTRACTEURS = ['s', 'r', 'l', 'v', 'o', 'e', 'n', 'b'];
 
     const shell = MJ.init({
-      id: GAME_ID, emoji: '📮', titre: 'La boîte à mots',
+      id: GAME_ID, emoji: '📮', titre: MJi18n.titre(GAME_ID, 'La boîte à mots'),
       golden: true, consigne: true,
       onRepeat: () => sayWord(),
       regle: {

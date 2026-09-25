@@ -281,7 +281,7 @@
 
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">🌍 Compte en 8 langues</span>
+    <span class="htitle" id="htitle">🌍 Compte en 8 langues</span>
   </div>
 
   <div class="game-area">
@@ -323,7 +323,7 @@
         <div class="quiz-tier-badge" id="quizTierBadge">palier 1 · chiffres 1-3</div>
         <button class="quiz-speak-btn" onclick="speakQuiz()">
           <span>&#128266;</span>
-          <span>Réécouter</span>
+          <span id="quizSpeakLabel">Réécouter</span>
         </button>
       </div>
       <div class="choices" id="choices"></div>
@@ -331,7 +331,7 @@
 
     <!-- ===== PROGRESSION ===== -->
     <div id="progressPanel" class="hidden">
-      <div class="prog-title">Ta progression par langue</div>
+      <div class="prog-title" id="progTitle">Ta progression par langue</div>
       <div id="progCards"></div>
     </div>
 
@@ -351,8 +351,12 @@
     const GAME_ID = 'mj-20';
     const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t(GAME_ID, cle, fr, params) : fr);
 
+    document.title = 'MJ-20 – ' + MJi18n.titre(GAME_ID, 'Compte en 8 langues');
+    const htitleEl20 = document.getElementById('htitle');
+    if (htitleEl20) htitleEl20.textContent = '🌍 ' + MJi18n.titre(GAME_ID, 'Compte en 8 langues');
+
     const shell = MJ.init({
-      id: GAME_ID, emoji: '🌍', titre: 'Compte en 8 langues',
+      id: GAME_ID, emoji: '🌍', titre: MJi18n.titre(GAME_ID, 'Compte en 8 langues'),
       golden: true,
       consigne: false, // pas de consigne unique : 3 modes (Apprendre / Quiz / Progression)
       regle: {
@@ -581,7 +585,7 @@
       document.getElementById(r === 'low' ? 'rangeLow' : r === 'high' ? 'rangeHigh' : 'rangeAll')
         .classList.add('active');
       const [a, b] = rangeBounds();
-      document.getElementById('learnAllLabel').textContent = `Tout écouter (${a} à ${b})`;
+      document.getElementById('learnAllLabel').textContent = T('toutEcouter', `Tout écouter (${a} à ${b})`, { a, b });
       renderLearn();
     }
 
@@ -609,11 +613,12 @@
       if (reading) {
         TTS.cancel();
         reading = false;
-        document.getElementById('learnAllLabel').textContent = `Tout écouter (${rangeBounds()[0]} à ${rangeBounds()[1]})`;
+        const [a0, b0] = rangeBounds();
+        document.getElementById('learnAllLabel').textContent = T('toutEcouter', `Tout écouter (${a0} à ${b0})`, { a: a0, b: b0 });
         return;
       }
       reading = true;
-      document.getElementById('learnAllLabel').textContent = 'Stop';
+      document.getElementById('learnAllLabel').textContent = T('stop', 'Stop');
       const [a, b] = rangeBounds();
       for (let n = a; n <= b; n++) {
         if (!reading) break;
@@ -626,7 +631,7 @@
         await wait(150);
       }
       reading = false;
-      document.getElementById('learnAllLabel').textContent = `Tout écouter (${a} à ${b})`;
+      document.getElementById('learnAllLabel').textContent = T('toutEcouter', `Tout écouter (${a} à ${b})`, { a, b });
     }
 
     // Version Promise de TTS.speak (brique partagée, voix par langue intégrée
@@ -678,8 +683,8 @@
       document.getElementById('quizLangName').textContent = quizLang.nom;
       document.getElementById('quizTierBadge').textContent =
         tierId < 4
-          ? `palier ${tierId} · chiffres ${tierLabel} · ${consec}/${UNLOCK_THRESHOLD} pour niveau suivant`
-          : `palier ${tierId} · chiffres ${tierLabel}`;
+          ? T('palierBadgeSuite', `palier ${tierId} · chiffres ${tierLabel} · ${consec}/${UNLOCK_THRESHOLD} pour niveau suivant`, { tier: tierId, label: tierLabel, consec, seuil: UNLOCK_THRESHOLD })
+          : T('palierBadgeMax', `palier ${tierId} · chiffres ${tierLabel}`, { tier: tierId, label: tierLabel });
 
       renderQuizChoices(maxNum);
       setTimeout(speakQuiz, 500);
@@ -803,13 +808,13 @@
         let subText = '';
         let nextText = '';
         if (isLocked) {
-          subText = 'Verrouillé';
+          subText = T('verrouille', 'Verrouillé');
         } else {
-          subText = `Palier ${tier}/4 · chiffres ${TIERS[tier-1].label}`;
+          subText = T('palierSub', `Palier ${tier}/4 · chiffres ${TIERS[tier-1].label}`, { tier, label: TIERS[tier-1].label });
           if (tier < 4) {
-            nextText = `${consec}/${UNLOCK_THRESHOLD} pour débloquer le palier ${tier+1}`;
+            nextText = T('palierNext', `${consec}/${UNLOCK_THRESHOLD} pour débloquer le palier ${tier+1}`, { consec, seuil: UNLOCK_THRESHOLD, next: tier + 1 });
           } else {
-            nextText = 'Maîtrisé !';
+            nextText = T('maitrise', 'Maîtrisé !');
           }
         }
 
@@ -845,6 +850,15 @@
     window.speakQuiz    = speakQuiz;
 
     // ─── Init ──────────────────────────────────────────────────────────────────
+    // Chrome statique (boutons mode, bouton réécouter, titre progression) : posé
+    // en dur en FR dans le HTML, jamais retraduit (H3, recette 2026-09-19) — même
+    // motif que le htitle plus haut, ces éléments ne sont pas régénérés par mode.
+    document.getElementById('modeLearn').textContent    = T('modeLearn', 'Apprendre');
+    document.getElementById('modeQuiz').textContent     = T('modeQuiz', 'Quiz');
+    document.getElementById('modeProgress').textContent = T('modeProgress', 'Progression');
+    document.getElementById('quizSpeakLabel').textContent = T('reecouter', 'Réécouter');
+    document.getElementById('progTitle').textContent = T('progTitle', 'Ta progression par langue');
+
     renderLangScroll();
     setRange('low');
     renderLearn();

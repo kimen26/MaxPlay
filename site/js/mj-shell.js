@@ -138,9 +138,43 @@
     else fn();
   }
 
+  // REC-H2 (recette 2026-09-19) : mémorise, pour chaque texte traduit rendu par
+  // MJi18n.t(), le texte FR (frFallback) qui l'a produit. slugConsigne() (plus
+  // bas) DOIT toujours slugifier le FR canonique, jamais le texte affiché : la
+  // banque de voix (sounds/voix/<lang>/phrases/<slug>.mp3) range tous les MP3
+  // — quelle que soit la langue jouée — sous le SLUG FR, et la table
+  // _commun.voix/<jeu>.voix du pack i18n est elle aussi clée par ce même slug
+  // FR (studio/minijeux/i18n/<lang>/strings.json). Avant ce correctif, un jeu
+  // qui appelait shell.setConsigne(MJi18n.t('mj-28','consigne', frText)) en EN
+  // recevait le texte ANGLAIS et le slugifiait tel quel (« how-many-eggs »),
+  // qui ne matche ni un MP3 ni une entrée de la table : ~40 phrases traduites
+  // ne jouaient jamais. Fait ici (pas dans mj-i18n.js, hors périmètre de ce
+  // correctif) par un simple enrobage de MJi18n.t : aucune traduction dupliquée,
+  // juste une mémoire {texte affiché -> texte FR}.
+  var _frOfTexte = {};
+  function _applyParamsLite(txt, params) {
+    if (!params) return txt;
+    return String(txt).replace(/\{([a-zA-Z0-9_]+)\}/g, function (m, k) {
+      return Object.prototype.hasOwnProperty.call(params, k) ? params[k] : m;
+    });
+  }
+  function wrapMJi18nT() {
+    if (!window.MJi18n || !MJi18n.t || MJi18n.__mjShellFrOfWrapped) return;
+    var origT = MJi18n.t;
+    MJi18n.t = function (id, cle, frFallback, params) {
+      var out = origT(id, cle, frFallback, params);
+      if (typeof out === 'string' && typeof frFallback === 'string') {
+        _frOfTexte[out] = _applyParamsLite(frFallback, params);
+      }
+      return out;
+    };
+    MJi18n.__mjShellFrOfWrapped = true;
+  }
+
   loadSeq(SCRIPTS, function () {
     whenDom(function () {
       loaded = true;
+      wrapMJi18nT();
       readyFns.forEach(function (fn) { try { fn(); } catch (e) { console.error('[mj-shell]', e); } });
       readyFns = [];
     });
@@ -219,9 +253,16 @@
     // évidemment aucun fichier : elles restent en TTS, c'est le comportement juste.
     // Repli TTS : le texte canonique de la table textes-jeux gagne sur le texte
     // inline quand les deux divergent (référentiel, Lot 3 — log console).
+    // REC-H2 : le SLUG se calcule TOUJOURS sur le texte FR canonique (via
+    // _frOfTexte, alimenté par wrapMJi18nT ci-dessus), jamais sur `txt` tel
+    // qu'affiché — sinon en langue non-FR le slug ne matche ni un MP3 ni la
+    // table _commun.voix/<jeu>.voix (toutes deux clées par le slug FR).
+    // `txt` lui-même reste utilisé pour le repli TTS (il doit parler la
+    // langue affichée, jamais du français en ?lang=en).
     var direConsigne = function (txt) {
       if (!txt) return;
-      var slug = slugConsigne(txt);
+      var frTxt = _frOfTexte[txt] || txt;
+      var slug = slugConsigne(frTxt);
       var repli = (slug && window.SoundPool && SoundPool.repliCanonique)
         ? SoundPool.repliCanonique(slug, txt) : txt;
       if (slug && window.SoundPool && SoundPool.phrase) {

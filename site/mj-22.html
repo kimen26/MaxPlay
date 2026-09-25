@@ -50,7 +50,7 @@
 <div id="app">
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">🗺️ Trouve le pays !</span>
+    <span class="htitle" id="htitle">🗺️ Trouve le pays !</span>
   </div>
   <div class="consigne-zone">
     <span id="drapeau-cible"></span>
@@ -65,14 +65,19 @@
   <div class="pips" id="pips"></div>
 </div>
 
+<script src="js/mj-22-map.js"></script>
 <script src="js/mj-shell.js"></script>
 <script>
 MJ.ready(function () {
   const GAME_ID = 'mj-22';
   const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t(GAME_ID, cle, fr, params) : fr);
 
+  document.title = 'MJ-22 — ' + MJi18n.titre(GAME_ID, 'Trouve le pays !');
+  const htitleEl22 = document.getElementById('htitle');
+  if (htitleEl22) htitleEl22.textContent = '🗺️ ' + MJi18n.titre(GAME_ID, 'Trouve le pays !');
+
   const shell = MJ.init({
-    id: GAME_ID, emoji: '🗺️', titre: 'Trouve le pays !',
+    id: GAME_ID, emoji: '🗺️', titre: MJi18n.titre(GAME_ID, 'Trouve le pays !'),
     golden: true,
     consigne: false,
     regle: {
@@ -90,7 +95,7 @@ MJ.ready(function () {
       ]
     }
   });
-// Carte Europe réelle depuis Wikimedia Commons
+// Carte Europe réelle, tracés vendored en local (js/mj-22-map.js, cf. loadSvgMap)
 // IDs ISO mappés aux données des pays
 const PAYS = {
   // Niveaux facile (5)
@@ -264,14 +269,22 @@ function finGame() {
 
 async function loadSvgMap() {
   try {
-    const response = await fetch('https://upload.wikimedia.org/wikipedia/commons/a/a7/Blank_map_of_Europe_%28with_disputed_regions%29.svg');
-    if (!response.ok) throw new Error('SVG load failed');
-    const svgText = await response.text();
+    // C3 (recette 2026-09-19) : la carte venait d'un fetch() live vers
+    // upload.wikimedia.org — hors ligne (PWA sans réseau), la requête échouait
+    // et le jeu restait bloqué sur "Erreur carte..." (aucun pays cliquable,
+    // victoire jamais atteinte). Règle transverse (HTML local jamais fetch()) :
+    // la carte est maintenant vendored en local, posée par <script src> comme
+    // toute autre donnée du site (js/mj-22-map.js -> window.MJ22_MAP_INNER).
+    if (!window.MJ22_MAP_INNER) throw new Error('MJ22_MAP_INNER manquant (js/mj-22-map.js non chargé)');
     const parser = new DOMParser();
-    const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
+    const svgDoc = parser.parseFromString(
+      `<svg xmlns="http://www.w3.org/2000/svg">${window.MJ22_MAP_INNER}</svg>`,
+      'image/svg+xml'
+    );
     const svg = document.getElementById('mapSvg');
+    if (window.MJ22_MAP_VIEWBOX) svg.setAttribute('viewBox', window.MJ22_MAP_VIEWBOX);
 
-    // Copie les formes Wikimedia dans notre conteneur.
+    // Copie les formes vendored dans notre conteneur.
     // Certains pays sont un <g> multi-îles (gb = Grande-Bretagne + Irlande du Nord)
     // et pas un simple <path> : sans ce cas, le Royaume-Uni était demandé mais absent
     // de la carte (niveau facile injouable).

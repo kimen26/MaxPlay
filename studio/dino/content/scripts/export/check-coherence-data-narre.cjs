@@ -6,17 +6,22 @@
  * à voix haute divergerait silencieusement de la donnée casserait la promesse
  * "l'enfant entend le vrai chiffre".
  *
- * Extrait du BLOC B (taille) : longueur, hauteur, poids, vitesse — sous leurs
- * formes narrées usuelles (entier, "X virgule Y", "X mètre YY" façon "1m70",
- * "et demi(e)", "X mille kilos", "X XXX kilos" avec espace-milliers, "X virgule
- * Y tonnes"). Compare à taille_m/hauteur_m/poids_t/vitesse_kmh de la fiche JSON
- * canon (tolérance d'arrondi 5 % ou 0,05 unité).
+ * Extrait du BLOC B (taille) : longueur, hauteur, poids — sous leurs formes
+ * narrées usuelles (entier, "X virgule Y", "X mètre YY" façon "1m70", "et
+ * demi(e)", "X mille kilos", "X XXX kilos" avec espace-milliers, "X virgule
+ * Y tonnes", et les cardinaux français en toutes lettres jusqu'à vingt —
+ * "deux mètres", "trois mille kilos"). Vitesse : cherchée sur le TEXTE ENTIER
+ * du script (pas seulement BLOC B), car la consigne HO-011 la place en
+ * BLOC C ("estimation, en contexte de chasse") sur plusieurs fiches
+ * (hatzegopteryx, titanis) — la limiter à BLOC B produisait de faux écarts.
+ * Compare à taille_m/hauteur_m/poids_t/vitesse_kmh de la fiche JSON canon
+ * (tolérance d'arrondi 5 % ou 0,05 unité).
  *
- * LIMITE CONNUE : les nombres écrits tout en lettres ("deux mètres", "trois
- * mille kilos") ne sont pas reconnus — seuls les écarts détectables par cette
- * V1 mécanique sont remontés. Une fiche "non trouvé dans le texte narré" peut
- * donc être un vrai trou de fact-check OU une limite du parseur : à vérifier
- * à la main avant d'agir (liste complète dans le rapport HO-R12).
+ * LIMITE CONNUE : seuls les cardinaux français simples (zéro à vingt) sont
+ * reconnus en toutes lettres ; un nombre plus complexe écrit en lettres
+ * resterait invisible. Une fiche "non trouvé dans le texte narré" peut donc
+ * rester un vrai trou de fact-check OU une limite du parseur : à vérifier à
+ * la main avant d'agir (liste complète dans le rapport HO-R12).
  *
  * Sortie : "dino · bloc · attendu · trouvé" pour chaque écart. Toujours en
  * AVERTISSEMENT dans `npm run check` — jamais bloquant (l'orchestrateur décide
@@ -33,6 +38,29 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '../../../../..');
 const DINOS_DIR = path.join(ROOT, 'studio/dino/content/dinos');
 const MD_DIR = path.join(ROOT, 'studio/dino/content/scripts-audio/fr/V3');
+
+// Cardinaux français simples, en toutes lettres, pour les nombres narrés
+// non chiffrés ("deux mètres de haut", "trois mille kilos"). Portée limitée
+// à 0-20 : suffisant pour un contenu enfant (hauteurs/poids restent petits),
+// pas une conversion lettres->nombre générale.
+const NUM_WORDS_FR = {
+  'zéro': 0, 'un': 1, 'une': 1, 'deux': 2, 'trois': 3, 'quatre': 4, 'cinq': 5,
+  'six': 6, 'sept': 7, 'huit': 8, 'neuf': 9, 'dix': 10, 'onze': 11, 'douze': 12,
+  'treize': 13, 'quatorze': 14, 'quinze': 15, 'seize': 16, 'dix-sept': 17,
+  'dix-huit': 18, 'dix-neuf': 19, 'vingt': 20,
+};
+
+// Remplace les cardinaux en toutes lettres par leur chiffre, uniquement pour
+// activer les regex numériques existantes — ne touche jamais le texte narré
+// réel (ce script ne fait que LIRE le .md, jamais l'écrire). Restreint aux
+// cardinaux directement suivis d'une unité (mètre/kilo/mille) : "un" et "une"
+// sont sinon des articles omniprésents ("d'un bout à l'autre") qu'une
+// conversion non bornée corromprait.
+function spellOutCardinals(text) {
+  const words = Object.keys(NUM_WORDS_FR).sort((a, b) => b.length - a.length);
+  const re = new RegExp('\\b(' + words.join('|') + ')\\b(?=\\s*(?:mètres?\\b|kilos?\\b|mille\\b))', 'gi');
+  return text.replace(re, (m) => String(NUM_WORDS_FR[m.toLowerCase()]));
+}
 
 // Un nombre dit à voix haute peut s'écrire de plusieurs façons dans le texte narré :
 //   "13 mètres de long"        -> entier
@@ -62,7 +90,8 @@ function parseDistance(match) {
 
 const SUFFIX_LONGUEUR = "(?:de long|d['’]un bout (?:de l['’]aile )?à l['’]autre)";
 
-function parseNarratedNumbers(text) {
+function parseNarratedNumbers(rawText) {
+  const text = spellOutCardinals(rawText);
   const out = {};
 
   // Longueur : "de long" ou "d'un bout (de l'aile) à l'autre" (envergure ptérosaures)
@@ -129,6 +158,12 @@ function main() {
     checked++;
 
     const narrated = parseNarratedNumbers(blocMatch[1]);
+    // Vitesse : cherchée sur le texte ENTIER (pas seulement BLOC B) — HO-011
+    // la place parfois en BLOC C ("estimation, en contexte de chasse").
+    if (narrated.vitesse_kmh === undefined) {
+      const wholeDoc = parseNarratedNumbers(content);
+      narrated.vitesse_kmh = wholeDoc.vitesse_kmh;
+    }
 
     const fields = [
       ['taille_m', d.taille_m],

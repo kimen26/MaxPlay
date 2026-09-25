@@ -492,11 +492,14 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 /* Speech pulse supprimé (inutilisé) — mj-20 a son .speaking local (EP-074) */
 
 /* ══════════════ MODE SELECTOR (pills, cf. modèle .tabs/.tab) ══════════════ */
+/* Débordement à 360px corrigé (retour Papa Yann, refonte nav en attente) :
+   flex-wrap remplace le scroll horizontal caché (scrollbar display:none)
+   qui masquait "Le dico" hors champ sans indice visuel. Wrap = rien de
+   perdu, rien à découvrir en scrollant à l'aveugle. */
 #mode-selector {
-  flex-shrink:0; display:flex; gap:8px; padding:8px 16px;
-  overflow-x:auto; -webkit-overflow-scrolling:touch;
+  flex-shrink:0; display:flex; flex-wrap:wrap; justify-content:center;
+  gap:8px; padding:8px 12px;
 }
-#mode-selector::-webkit-scrollbar { display:none; }
 /* .mp-pill → css/mp-theme.css §composants partagés (EP-074) */
 
 /* ══════════════ CHRONOMAP ══════════════ */

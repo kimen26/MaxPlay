@@ -26,7 +26,7 @@
 |---------|------|
 | [`mesures/_DINOS-MESURES-CONSOLIDE.md`](mesures/_DINOS-MESURES-CONSOLIDE.md) | Tailles / poids cross-checkés |
 | [`mesures/_ECHELLE-REFERENTIEL.md`](mesures/_ECHELLE-REFERENTIEL.md) | Échelle de comparaison honnête (référentiel) |
-| [`mesures/_BLOC-B-CANONIQUE.md`](mesures/_BLOC-B-CANONIQUE.md) | Bloc Taille verbatim (anti-dérive) — ⚠️ **périmé** vs `dinos-data.js`, régénérer via `../scripts/export/_blocB-canonique-50.cjs` |
+| [`mesures/_BLOC-B-CANONIQUE.md`](mesures/_BLOC-B-CANONIQUE.md) | 🧊 **Gelé volontairement** (EP-D-GED-05) — artefact pré-V3, superseded par le Bloc B dialogué de `scripts-audio/fr/V3/<id>.md` (canon depuis HO-R12). Gardé pour l'historique, ne pas régénérer. |
 
 ## 🏛️ etymo/
 

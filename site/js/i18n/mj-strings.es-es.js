@@ -19,6 +19,23 @@ window.MJ_STRINGS = {
   "titreDicter": "dictar en vez de escribir",
   "envoyer": "Enviar 📨",
   "nidBoutonFin": "¡Al nido!",
+  "finTuAsTrouve": "¡Has encontrado los más difíciles!",
+  "finBienJoueCherche": "Muy bien, has buscado con ganas!",
+  "finTuProgresses": "¡Mejoras en cada partida!",
+  "finBeauTravail": "¡Buen trabajo hoy!",
+  "finTuMaitrises": "¡Dominas este juego!",
+  "finEtoileNiveau": "¡Has ganado la estrella de nivel {n}!",
+  "finNiveauMax": "¡Nivel MÁXIMO! ¡Campeón!",
+  "finRecommenceEtoile": "Vuelve a jugar e intenta ganar la {ord} estrella!",
+  "finBienJoue": "¡Muy bien!",
+  "finBienJoueNom": "¡Muy bien {nom}!",
+  "finDejaToutesEtoiles": "¡Ya tienes todas las estrellas aquí! Prueba otro juego para ganar un huevo.",
+  "finEncoreBtn": "¡Otra vez!",
+  "finLaSuiteBtn": "Siguiente",
+  "ariaMaison": "Inicio",
+  "finEtoileChampion": "¡Una super estrella de campeón!",
+  "finAccessoirePourOeufs": "¡{nom} para tus huevos!",
+  "oeufPourLeNid": "¡Un huevo para el nido!",
   "zeroDonneeEnfant": "no se pide nada al niño — cero datos suyos 👍",
   "merciAvisEnvoye": "¡Gracias! Opinión enviada ✓",
   "oupsReessaie": "Vaya, inténtalo otra vez 🙏",
@@ -474,7 +491,20 @@ window.MJ_STRINGS = {
    },
    "confirmNumero": "¡{n}!",
    "cEtait": "Era {n}",
-   "nouveauNiveauDebloque": "¡Nuevo nivel desbloqueado: {lang} números {tier}!"
+   "nouveauNiveauDebloque": "¡Nuevo nivel desbloqueado: {lang} números {tier}!",
+   "modeLearn": "Aprender",
+   "modeQuiz": "Cuestionario",
+   "modeProgress": "Progreso",
+   "toutEcouter": "Escuchar todo (de {a} a {b})",
+   "stop": "Parar",
+   "reecouter": "Escuchar de nuevo",
+   "palierBadgeSuite": "nivel {tier} · números {label} · {consec}/{seuil} para el siguiente nivel",
+   "palierBadgeMax": "nivel {tier} · números {label}",
+   "progTitle": "Tu progreso por idioma",
+   "verrouille": "Bloqueado",
+   "palierSub": "Nivel {tier}/4 · números {label}",
+   "palierNext": "{consec}/{seuil} para desbloquear el nivel {next}",
+   "maitrise": "¡Dominado!"
   },
   "voix": {
    "regle-mj-20": "¡Aprende a contar hasta 20 en muchos idiomas diferentes!. Elijo «Aprender» para escuchar . Elijo un idioma (bandera) y toco un número: ¡una voz lo dice en ese idioma!. Elijo «Quiz» para jugar . Una voz dice un número en un idioma desbloqueado. Toco el número correcto entre las opciones.. Gano 3 respuestas correctas seguidas para desbloquear más . Cada idioma empieza pequeño (1 a 3), y avanzo hasta 1-20 si sigo haciéndolo bien.. Miro «Progreso» para ver cómo voy . Cada idioma tiene sus pastillas: ¡cuantas más completo, más números e idiomas domino!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
@@ -828,7 +858,9 @@ window.MJ_STRINGS = {
     "montagne": "Montaña",
     "neige": "Nieve",
     "volcan": "Volcán"
-   }
+   },
+   "zoomer": "Ampliar",
+   "vueNormale": "Vista normal"
   },
   "voix": {
    "regle-mj-32": "¡Colorea tu dinosaurio como quieras, no hay ningún error!. Elijo un dinosaurio para colorear . Toco el dinosaurio que prefiero de la lista.. Elijo un color y toco en el dibujo . El color rellena toda la zona que toco. ¡Puedo cambiar de color tantas veces como quiera!. Miro el modelo si lo necesito . El botón «Modelo» muestra el dinosaurio en color durante 2 segundos, para ayudarme si quiero.. Toco «¡Terminado!» para guardar mi dibujo . Mi obra va a «Mi galería»: puedo verla, retomarla para continuar, o borrarla. Sin estrellas, sin errores: ¡hago lo que quiero!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
@@ -1282,6 +1314,9 @@ window.MJ_STRINGS = {
    ],
    "etoiles": ""
   },
+  "ui": {
+   "touchePourReecouter": "Toca para escuchar de nuevo"
+  },
   "voix": {
    "regle-mj-50": "¡Escucha el sonido, y toca la letra que lo hace!. Escucho el sonido . La voz hace el SONIDO de la letra: «mmm», «sss»… nunca su nombre de colegio.. Toco la letra correcta . Las letras están escritas en cursiva. El altavoz repite el sonido si la toco.. Las letras cambian de disfraz . Cuantas más estrellas gano, más se disfrazan las letras: cursiva, imprenta, ¡MAYÚSCULAS!. Y hasta el sonido de las palabras . En el último nivel: «¿qué sonido hay al principio de mamá?» — ¡y letras que se parecen!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
   }
@@ -1365,6 +1400,9 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "touchePourAide": "Toca la palabra si quieres ayuda"
   },
   "voix": {
    "regle-mj-53": "¡Aquí, solo sabes qué hacer SI lees!. Leo la palabra . La palabra está escrita en cursiva. Si es difícil, toco la palabra: la voz me ayuda (¡solo al principio!).. Toco la imagen correcta . Luego llegan los nombres de dinosaurios, divididos en trozos: tri-cé-ra-tops!. Leo… y HAGO . En el último nivel, la consigna me dice qué hacer: «¡Toca 3 huevos rojos»!. ¡Sin leer, imposible! . Ese es el secreto: leer sirve para descubrir qué hay que hacer.. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"

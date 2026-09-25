@@ -13,6 +13,11 @@ html, body {
   font-family:'Nunito',sans-serif;
   display:flex; flex-direction:column;
 }
+/* REC-C1 (recette 2026-09-19) : mj-golden.js#showEnd() cible TOUJOURS #app
+   (getElementById('app').innerHTML) — sans ce conteneur la fin de partie plante
+   à la 8e manche. #app hérite du flex column du body pour ne rien changer au
+   rendu (mêmes enfants directs, juste un niveau d'imbrication en plus). */
+#app { display:flex; flex-direction:column; flex:1; min-height:0; width:100%; }
 #score { display:none !important; margin-left:auto; font-weight:900; font-size:1rem; color:#ffe066;
   background:#2a2a4a; border-radius:10px; padding:4px 14px; }
 #panel-zone {
@@ -65,6 +70,7 @@ html, body {
 </head>
 <body data-mp-intro-emoji="🚏" data-mp-intro-title="Quel bus arrive ?" data-mp-intro-hint="Touche le premier qui arrive" id="mjBody">
 
+<div id="app">
 <div class="hdr">
   <a href="index.html">&#8592;</a>
   <span class="htitle" id="htitle">🚏 Le premier bus</span>
@@ -80,6 +86,7 @@ html, body {
 
 <div id="q-bar">
   <div class="q-text" id="q-text">Chargement…</div>
+</div>
 </div>
 
 <script>
@@ -451,6 +458,12 @@ function showVictory(){
 
 // Exposées pour les onclick="" inline (fiches générées dynamiquement)
 window.onFicheTap = onFicheTap;
+
+// Harnais Playwright (REC-C1, 2026-09-19) : targetNum est un `let` top-level,
+// invisible depuis page.evaluate() (contexte d'exécution séparé de Playwright) —
+// convention __mjTest déjà utilisée par d'autres MJ (mj-09, mj-18…) pour exposer
+// un état de jeu sans dépendre d'un DOM difficile à lire (LED en SVG ici).
+window.__mjTest = { get targetNum() { return targetNum; } };
 
 initRound();
 });

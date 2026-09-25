@@ -37,6 +37,13 @@
 
 
   <!-- libs SPÉCIFIQUES au jeu -->
+  <!-- REC-C7 (recette 2026-09-19) : js/lang.js AVANT dinos-i18n.js — celui-ci lit
+       window.Lang de façon SYNCHRONE (document.write) pour choisir sa langue ; sans
+       lang.js posé ici, il tombait toujours en FR (dinos-i18n.js:8), et la fusion EN
+       n'avait jamais lieu. mj-shell.js charge aussi lang.js mais de façon ASYNCHRONE
+       et bien après ce bloc — trop tard pour dinos-i18n.js. hasScript() dans
+       mj-shell.js déduplique : pas de double chargement. -->
+  <script src="js/lang.js"></script>
   <script src="js/gen/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
   <script src="js/gen/dinos-audio-manifest.js"></script>

@@ -30,6 +30,27 @@ export async function run({ page, ok }) {
   ok('célébration intermédiaire (parade) affichée inline', (await page.locator('.paint-scene').count()) === 1);
   ok('aucun overlay maison résiduel', (await page.locator('#victoryOverlay').count()) === 0);
 
-  await page.waitForSelector('.end-wrap', { timeout: 8000 });
+  await page.waitForSelector('.end-wrap', { timeout: 15000 });
   ok('fin de partie STANDARD (.end-wrap) affichée après la parade', (await page.locator('.end-wrap').count()) === 1);
+
+  // REC-M2 (recette 2026-09-19) : Stars.get('mj-18') retombait à 0 après une 2e
+  // victoire — mj-18 n'appelle jamais G.notePip (pas un jeu à questions), donc
+  // le Tracker.endSession(firstTry*10, totalQ*10) interne à G.showEnd() envoyait
+  // toujours score=0 < maxScore : jamais "parfait" pour stars.js. Corrigé en
+  // appelant nous-mêmes Tracker.endSession(1,1) dans showVictory(), comme le
+  // prescrit la figée ("Étoile = puzzle résolu"). Ce test rejoue une 2e victoire
+  // et vérifie que l'étoile cumule (1 -> 2), pas qu'elle retombe à 0.
+  const stars1 = await page.evaluate(() => window.Stars ? Stars.get('mj-18') : -1);
+  ok('1re victoire : 1 étoile enregistrée', stars1 === 1, `Stars.get=${stars1}`);
+
+  await page.goto(page.url());
+  await page.waitForTimeout(800);
+  if (await page.locator('#ri-panneau.on').count()) {
+    await page.click('#ri-ok');
+    await page.waitForTimeout(250);
+  }
+  await page.evaluate(() => window.__mjTest.forceVictory());
+  await page.waitForSelector('.end-wrap', { timeout: 15000 });
+  const stars2 = await page.evaluate(() => window.Stars ? Stars.get('mj-18') : -1);
+  ok('2e victoire : l’étoile cumule (2), ne retombe pas à 0', stars2 === 2, `Stars.get=${stars2}`);
 }

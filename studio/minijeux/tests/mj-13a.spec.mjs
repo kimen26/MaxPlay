@@ -21,14 +21,27 @@ export async function run({ page, ok }) {
   const fiches = await page.locator('.fiche').count();
   ok('Niveau 1 = 2 bus', fiches === 2, `fiches=${fiches}`);
 
-  // Win path : on tape les fiches jusqu'à la bonne (la plus tôt) → "Bravo"
-  const ids = await page.locator('.fiche').evaluateAll(els => els.map(e => e.id));
-  let bravo = false;
-  for (const id of ids) {
-    await page.click('#' + id).catch(() => {});
+  // REC-C1 (recette 2026-09-19) : mj-13a n'avait pas de <div id="app"> → écran de
+  // fin plantait à la 8e manche (mj-golden.js#showEnd fait getElementById('app')).
+  // On joue les 8 manches EN PARFAIT (targetNum = la vraie bonne réponse, exposée
+  // par le jeu en variable globale) pour vérifier que l'étoile ET l'écran de fin
+  // apparaissent bien, pas juste le 1er "Bravo".
+  for (let m = 0; m < 8; m++) {
+    await page.waitForSelector('.fiche', { timeout: 6000 });
+    const targetId = await page.evaluate(() => 'fiche-' + window.__mjTest.targetNum);
+    await page.click('#' + targetId);
     await page.waitForTimeout(450);
     const qt = (await page.locator('#q-text').textContent()) || '';
-    if (/bravo/i.test(qt)) { bravo = true; break; }
+    ok(`manche ${m + 1}/8 : tap correct → Bravo`, /bravo/i.test(qt), `q="${qt.slice(0, 40)}"`);
+    await page.waitForTimeout(1700); // laisse initRound() de la manche suivante se poser
   }
-  ok('un tap correct → Bravo', bravo);
+
+  await page.waitForSelector('.end-wrap', { timeout: 6000 });
+  ok('écran de fin golden affiché (REC-C1)', (await page.locator('.end-wrap').count()) === 1);
+  const stars = await page.evaluate(() => (window.Stars ? Stars.get('mj-13a') : -1));
+  ok('étoile gagnée : Stars.get(mj-13a) === 1 après 8/8 parfait', stars === 1, `stars=${stars}`);
+  // L'étoile vole vers le badge (anim MaxFX/_discreetStar, quelques secondes) avant
+  // que .filled soit posé — attendre l'animation plutôt que la course.
+  await page.waitForSelector('.badge-slot.filled', { timeout: 8000 }).catch(() => {});
+  ok('badge étoile visible sur l\'écran de fin', (await page.locator('.badge-slot.filled').count()) >= 1);
 }

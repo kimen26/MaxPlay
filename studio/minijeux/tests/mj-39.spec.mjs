@@ -70,4 +70,91 @@ export async function run({ page, ok }) {
   ok('Texte de règle correspond', regleTexte === 'Pose les blocs pour remplir des lignes entières !', regleTexte);
   await page.click('#ri-close'); // v3 : fermeture explicite ✕ (panneau bottom-sheet)
   ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
+
+  // ── REC-M2 (recette 2026-09-19) : progression non sauvée quand le coup qui
+  // remplit la grille (game over) est AUSSI celui qui efface une ligne. Cause
+  // racine : checkGameOver() tournait en synchrone juste après placePiece(),
+  // avant le setTimeout(320ms) de checkLines() qui efface la ligne ET notifie
+  // le palier (G.notePip -> Tracker.logAnswer). G.showEnd() fermait la session
+  // Tracker AVANT que ce palier soit noté -> jamais persisté.
+  //
+  // Repro : plateau presque plein avec UN trou par ligne (jamais toute une
+  // colonne trouée en même temps, sinon checkLines() la compterait aussi et
+  // fausserait le scénario) — ligne 7 n'a qu'UN SEUL trou en (7,0), colonne 0
+  // en a un DEUXIÈME en (0,0) pour ne jamais être complète elle non plus. Le
+  // dernier coup pose un 1x1 en (7,0) : ça complète UNIQUEMENT la ligne 7
+  // (colonne 0 garde son trou en (0,0)). Après effacement, ligne 7 et les
+  // trous isolés des autres lignes ne forment jamais un bloc 2x2 libre — les
+  // 2 pièces restantes du rack (carrés 2x2) ne rentrent donc plus nulle part :
+  // vrai game over au même coup que le palier de 5 lignes.
+  //
+  // Piège de spec découvert en écrivant ce test (2-strikes, cause racine avant
+  // pansement) : `page.reload()` déclenche `pagehide` -> tracker.js a un
+  // "Auto-end" (ligne ~239) qui clôt toute session encore ouverte pour les jeux
+  // sans fin explicite. La partie 1 de ce spec (plus haut) avait laissé la
+  // session mj-39 ouverte avec 1 palier déjà noté (correct=questions=1) ->
+  // l'auto-end l'écrit comme "parfaite" AU RELOAD, avant même le scénario
+  // ci-dessous. `localStorage.clear()` avant le reload n'y change rien (le
+  // pagehide écrit APRÈS le clear, pendant la navigation). Un `Stars.get() > 0`
+  // brut se voyait donc pollué par cette entrée SANS RAPPORT — vert même sur le
+  // code buggé. Fix de spec : mesurer le nombre d'entrées d'historique juste
+  // APRÈS le reload (englobe l'auto-end de la partie 1 s'il a eu lieu) puis
+  // vérifier qu'il grandit d'EXACTEMENT 1 après le scénario — ça isole bien
+  // CETTE victoire-là, quoi qu'il se soit passé avant.
+  await page.reload({ waitUntil: 'networkidle' });
+  if (await page.locator('#ri-panneau.on').count()) {
+    await page.click('#ri-ok');
+    await page.waitForTimeout(250);
+  }
+  // Le reload peut avoir ajouté l'entrée auto-end de la partie 1 (cf. ci-dessus) :
+  // on re-mesure APRÈS reload, juste avant le scénario, pour un point de départ net.
+  const historyLenBaseline = await page.evaluate(() => {
+    try {
+      const d = JSON.parse(localStorage.getItem('maxplay_progress') || '{}');
+      return ((d.games && d.games['mj-39'] && d.games['mj-39'].history) || []).length;
+    } catch (e) { return -1; }
+  });
+  await page.evaluate(() => window.__mjTest.forceLignesEffacees(4));
+  await page.evaluate(() => window.__mjTest.forceBoardWithGaps([
+    [0, 0], [0, 7], [1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 0],
+  ]));
+  await page.evaluate(() => window.__mjTest.forceNextPieces([0, 7, 7])); // 1x1 + 2 carrés 2x2
+  const placedFinal = await page.evaluate(() => window.__mjTest.place(0, 7, 0));
+  ok('REC-M2 : dernier coup (1x1 en 7,0) posé', placedFinal);
+
+  const palierFranchi = await page.waitForFunction(
+    () => window.__mjTest.getState().lignesEffacees >= 5,
+    null, { timeout: 2000 }
+  ).then(() => true).catch(() => false);
+  ok('REC-M2 : la ligne se complète et efface (palier 5 franchi : 4 -> 5)', palierFranchi);
+
+  const gameOverReel = await page.waitForFunction(
+    () => window.__mjTest.getState().gameOverShown === true,
+    null, { timeout: 3000 }
+  ).then(() => true).catch(() => false);
+  ok('REC-M2 : vrai Game Over (2 carrés 2x2 ne rentrent plus nulle part)', gameOverReel);
+
+  // Le cœur du bug : G.showEnd() doit avoir persisté CETTE victoire (palier de
+  // la dernière ligne) dans tracker.js — avant fix, ce coup de dernière seconde
+  // ne laissait aucune trace (session Tracker déjà close par un showEnd trop
+  // précoce) malgré 5 lignes effacées et un vrai Game Over affiché à l'écran.
+  const historyLenAfter = await page.evaluate(() => {
+    try {
+      const d = JSON.parse(localStorage.getItem('maxplay_progress') || '{}');
+      return ((d.games && d.games['mj-39'] && d.games['mj-39'].history) || []).length;
+    } catch (e) { return -1; }
+  });
+  ok('REC-M2 : une entrée d’historique de plus après le Game Over (cette victoire est enregistrée)',
+     historyLenAfter === historyLenBaseline + 1,
+     `avant=${historyLenBaseline} après=${historyLenAfter}`);
+
+  const lastEntryPerfect = await page.evaluate(() => {
+    try {
+      const d = JSON.parse(localStorage.getItem('maxplay_progress') || '{}');
+      const h = (d.games && d.games['mj-39'] && d.games['mj-39'].history) || [];
+      const last = h[h.length - 1];
+      return !!last && ((last.questions > 0 && last.correct >= last.questions) || (last.maxScore > 0 && last.score >= last.maxScore));
+    } catch (e) { return false; }
+  });
+  ok('REC-M2 : cette entrée compte comme palier franchi (parfaite pour Stars.get)', lastEntryPerfect);
 }

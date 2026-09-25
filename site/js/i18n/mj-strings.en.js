@@ -19,6 +19,23 @@ window.MJ_STRINGS = {
   "titreDicter": "speak instead of typing",
   "envoyer": "Send 📨",
   "nidBoutonFin": "To the nest!",
+  "finTuAsTrouve": "You found the hardest ones!",
+  "finBienJoueCherche": "Well done, you searched hard!",
+  "finTuProgresses": "You're getting better every time!",
+  "finBeauTravail": "Great work today!",
+  "finTuMaitrises": "You've mastered this game!",
+  "finEtoileNiveau": "You earned the level {n} star!",
+  "finNiveauMax": "MAXIMUM level! Champion!",
+  "finRecommenceEtoile": "Play again and try to win the {ord} star!",
+  "finBienJoue": "Well done!",
+  "finBienJoueNom": "Well done {nom}!",
+  "finDejaToutesEtoiles": "You already have all the stars here! Try another game to win an egg.",
+  "finEncoreBtn": "Again!",
+  "finLaSuiteBtn": "Next up",
+  "ariaMaison": "Home",
+  "finEtoileChampion": "A super champion star!",
+  "finAccessoirePourOeufs": "{nom} for your eggs!",
+  "oeufPourLeNid": "An egg for the nest!",
   "zeroDonneeEnfant": "nothing is asked of your child — zero data about them 👍",
   "merciAvisEnvoye": "Thanks! Feedback sent ✓",
   "oupsReessaie": "Oops, try again 🙏",
@@ -474,7 +491,20 @@ window.MJ_STRINGS = {
    },
    "confirmNumero": "{n}!",
    "cEtait": "It was {n}",
-   "nouveauNiveauDebloque": "New level unlocked: {lang} numbers {tier}!"
+   "nouveauNiveauDebloque": "New level unlocked: {lang} numbers {tier}!",
+   "modeLearn": "Learn",
+   "modeQuiz": "Quiz",
+   "modeProgress": "Progress",
+   "toutEcouter": "Listen to all ({a} to {b})",
+   "stop": "Stop",
+   "reecouter": "Listen again",
+   "palierBadgeSuite": "tier {tier} · numbers {label} · {consec}/{seuil} to next level",
+   "palierBadgeMax": "tier {tier} · numbers {label}",
+   "progTitle": "Your progress by language",
+   "verrouille": "Locked",
+   "palierSub": "Tier {tier}/4 · numbers {label}",
+   "palierNext": "{consec}/{seuil} to unlock tier {next}",
+   "maitrise": "Mastered!"
   },
   "voix": {
    "regle-mj-20": "Learn to count to 20 in lots of different languages!. I pick \"Learn\" to listen . I pick a language (flag) and tap a number: a voice says it in that language!. I pick \"Quiz\" to play . A voice says a number in an unlocked language. I tap the right number among the choices.. I get 3 right answers in a row to unlock more . Every language starts small (1 to 3), then I move up to 1-20 if I keep it up.. I check \"Progress\" to see where I stand . Each language has its own dots: the more I fill in, the more numbers and languages I know!. Answer right on the first try for every question to win the champion star!"
@@ -828,7 +858,9 @@ window.MJ_STRINGS = {
     "montagne": "Mountain",
     "neige": "Snow",
     "volcan": "Volcano"
-   }
+   },
+   "zoomer": "Zoom",
+   "vueNormale": "Normal view"
   },
   "voix": {
    "regle-mj-32": "Color your dino however you like, there's no wrong way!. I pick a dino to color . I tap the dino I like best from the list.. I pick a color and tap the drawing . The color fills the whole area I touch. I can switch colors as many times as I want!. I check the model if I need to . The \"Model\" button shows the dino in color for 2 seconds, to help me if I want.. I tap \"Done!\" to save my drawing . My artwork goes into \"My Gallery\": I can look at it, pick it back up, or delete it. No stars, no mistakes: I do it my way!. Answer right on the first try for every question to win the champion star!"
@@ -1282,6 +1314,9 @@ window.MJ_STRINGS = {
    ],
    "etoiles": ""
   },
+  "ui": {
+   "touchePourReecouter": "Tap to listen again"
+  },
   "voix": {
    "regle-mj-50": "Listen to the sound, and touch the letter that makes it!. I listen to the sound . The voice makes the SOUND of the letter: \"mmm\", \"sss\"… never its school name.. I touch the right letter . The letters are written in cursive. The speaker repeats the sound if I touch it.. The letters change costume . The more stars I earn, the more the letters dress up: cursive, print, CAPITALS!. And even the sound inside words . At the last level: \"what sound do you hear at the start of mom?\" — with letters that look alike!. Answer right on the first try for every question to win the champion star!"
   }
@@ -1365,6 +1400,9 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "touchePourAide": "Tap the word if you want help"
   },
   "voix": {
    "regle-mj-53": "Here, the only way to know what to do is to read!. I read the word . The word is written in cursive. If it's tricky, I touch the word: the voice helps me (only at the start!).. I touch the right picture . Then dino names come up, broken into chunks: tri-cer-a-tops!. I read… and I DO . At the last level, the instruction tells me what to do: \"Touch 3 red eggs\"!. Without reading, no way! . That's the secret: reading is how you find out what to do.. Answer right on the first try for every question to win the champion star!"

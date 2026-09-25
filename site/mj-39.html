@@ -348,16 +348,28 @@
       }
       pieces[idx] = null;
       renderRack();
-      checkLines();
+      const clearing = checkLines();
 
       if (pieces.every(p => p === null)) {
         pieces = [newPiece(), newPiece(), newPiece()];
         renderRack();
       }
 
-      checkGameOver();
+      // REC-M2 (recette 2026-09-19) : checkGameOver() tournait ICI, en synchrone,
+      // alors que checkLines() efface les lignes/déclenche updateProgressUI()
+      // (paliers, G.notePip, donc Tracker) 320ms plus tard dans un setTimeout.
+      // Si le coup qui remplit la grille est AUSSI celui qui efface une ligne et
+      // fait franchir un palier, G.showEnd() partait sur un board pas encore
+      // nettoyé (checkGameOver pouvait conclure à tort "plus de place") ET avant
+      // que le palier tout juste gagné soit noté — sa progression n'était jamais
+      // enregistrée (Tracker.logAnswer/endSession arrivaient après coup, sur une
+      // session déjà close par G.showEnd). Le check attend maintenant la fin de
+      // l'effacement quand une ligne vient de sauter.
+      if (!clearing) checkGameOver();
     }
 
+    // Retourne true si un effacement de ligne est en cours (callback asynchrone,
+    // cf. REC-M2 ci-dessus) — le board et la progression ne sont fiables qu'après.
     function checkLines() {
       const fullRows = [];
       const fullCols = [];
@@ -365,7 +377,7 @@
       for (let c = 0; c < N; c++) if (board.every(row => row[c])) fullCols.push(c);
 
       const total = fullRows.length + fullCols.length;
-      if (total === 0) return;
+      if (total === 0) return false;
 
       // Animation pop
       fullRows.forEach(r => for_range(N, c => cellsEls[r][c].classList.add('pop')));
@@ -384,7 +396,9 @@
         });
         lignesEffacees += total;
         updateProgressUI();
+        checkGameOver();
       }, 320);
+      return true;
     }
 
     function for_range(n, fn) { for (let i = 0; i < n; i++) fn(i); }
@@ -452,6 +466,29 @@
         // idxShapes: [shapeIndex, shapeIndex, shapeIndex] pour un scénario déterministe
         pieces = idxShapes.map(i => ({ shape: SHAPES[i], color: randColor() }));
         renderRack();
+      },
+      // Test-only (REC-M2) : remplit tout le plateau SAUF les cases données dans
+      // `gaps` ([r,c][]) — chaque ligne/colonne doit garder au moins un trou pour
+      // ne pas être déjà "pleine" avant même le coup réel qui suit (sinon
+      // checkLines() la compterait aussi au moment du dernier coup, faussant le
+      // scénario). Sert à fabriquer un plateau presque plein où un seul coup
+      // termine la partie sans effet de bord.
+      forceBoardWithGaps(gaps) {
+        const gapSet = new Set(gaps.map(([r, c]) => r + ',' + c));
+        for (let r = 0; r < N; r++) {
+          for (let c = 0; c < N; c++) {
+            const empty = gapSet.has(r + ',' + c);
+            board[r][c] = empty ? null : '#888888';
+            if (empty) resetCell(r, c);
+            else { cellsEls[r][c].classList.add('filled'); cellsEls[r][c].style.background = '#888888'; }
+          }
+        }
+      },
+      // Test-only (REC-M2) : impose lignesEffacees pour tester le franchissement
+      // d'un palier sans rejouer des dizaines de coups réels au préalable.
+      forceLignesEffacees(n) {
+        lignesEffacees = n;
+        updateProgressUI();
       },
     };
   });

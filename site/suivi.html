@@ -10,14 +10,18 @@
 html,body { font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; min-height:100vh; }
 
 /* ── Header ── */
+/* REC-M1 (recette 2026-09-19) : Menu/Suivi/Compte/Export/Import/Reset tenaient sur UNE
+   seule ligne sans retour (scrollWidth 455px pour un viewport 360px, pire à 320). Les
+   6 éléments passent maintenant en flex-wrap : le bloc actions retombe sur sa propre
+   ligne sous le titre quand la largeur manque, jamais de scroll horizontal. */
 #hdr {
-  display:flex; align-items:center; gap:12px;
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
   padding:14px 20px; background:rgba(0,0,0,0.4);
   border-bottom:2px solid rgba(255,255,255,0.08); position:sticky; top:0; z-index:10;
 }
 #hdr a { color:#fff; text-decoration:none; background:rgba(255,255,255,0.1); border-radius:10px; padding:6px 14px; font-weight:900; }
-#hdr h1 { flex:1; font-size:1.15rem; font-weight:900; }
-#hdr-actions { display:flex; gap:8px; }
+#hdr h1 { flex:1; font-size:1.15rem; font-weight:900; min-width:max-content; }
+#hdr-actions { display:flex; gap:8px; flex-wrap:wrap; }
 .hdr-btn {
   background:rgba(255,255,255,0.1); border:none; color:#fff;
   font-family:'Nunito',sans-serif; font-weight:700; font-size:0.8rem;

@@ -240,9 +240,13 @@ body:not([data-ambiance]) { --bg0:#0a1226; --bg1:#0c1730; --card:#0e1a34; --card
 }
 .hdr a:active { background:rgba(255,255,255,.16); }
 .hdr .htitle {
+  /* REC-M1/H4 (recette 2026-09-19) : l'ellipsis coupait les titres longs à 360/320px
+     (mj-31, mj-48, mj-49…) — règle transverse mobile "jamais de texte tronqué, jamais
+     d'overflow:hidden sur du texte". Le titre passe sur 2 lignes au lieu d'être coupé ;
+     le header grandit avec lui (pas de hauteur fixe ici, il n'en a jamais eu). */
   font-family:'Fredoka One', cursive; font-size:17px; font-weight:400; color:var(--ink);
   flex:1; min-width:0; display:flex; align-items:center; gap:8px;
-  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  white-space:normal; overflow-wrap:break-word; line-height:1.15;
 }
 
 /* Légende piste (sous .mp-track) */
@@ -354,6 +358,7 @@ body:not([data-ambiance]) { --bg0:#0a1226; --bg1:#0c1730; --card:#0e1a34; --card
   border:0; border-radius:var(--r-pill);
   color:var(--ink-2); font-family:'Nunito',sans-serif;
   font-weight:800; font-size:0.82rem; padding:8px 14px;
+  min-height:48px; display:inline-flex; align-items:center; justify-content:center;
   cursor:pointer; touch-action:manipulation; white-space:nowrap;
   transition:background 0.15s, color 0.15s;
 }

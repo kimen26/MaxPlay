@@ -2,17 +2,18 @@
 
 > **FICHIER GÉNÉRÉ — ne jamais éditer à la main.**
 > Régénérer : `node studio/referentiel/build.mjs`
-> Plan d'ensemble : [`memory/ARCHI-REFERENTIEL-CONTENU.md`](../../memory/ARCHI-REFERENTIEL-CONTENU.md) · généré le 2026-09-19
+> Plan d'ensemble : [`memory/ARCHI-REFERENTIEL-CONTENU.md`](../../memory/ARCHI-REFERENTIEL-CONTENU.md) · généré le 2026-09-25
 
 ---
 
-## 🔴 Dettes ouvertes — 96
+## 🔴 Dettes ouvertes — 97
 
 Une dette ne se résout **jamais toute seule** : un humain tranche entre
 `node studio/referentiel/acquitter.mjs <clé> <canal> --propage` (canal régénéré)
 et `… --sans-impact "raison"` (le changement de source ne remet pas le canal en cause).
 Base de référence : [`empreintes.json`](empreintes.json) (versionnée).
 
+- **dino.tyrannosaurus.nom** · canal `mp3` — script modifié le 2026-09-24, audio produit le 2026-09-05
 - **dino.tyrannosaurus.regime** · canal `mp3` — script modifié le 2026-09-12, audio produit le 2026-09-05
 - **dino.spinosaurus.funfact** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
 - **dino.spinosaurus.funfact** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
@@ -52,9 +53,8 @@ Base de référence : [`empreintes.json`](empreintes.json) (versionnée).
 - **dino.triceratops.regime** · canal `mp3` — script modifié le 2026-09-12, audio produit le 2026-09-05
 - **dino.triceratops.funfact** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
 - **dino.triceratops.funfact** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
-- **dino.triceratops.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
 
-_… et 56 autres — détail complet dans `registre.json`._
+_… et 57 autres — détail complet dans `registre.json`._
 
 ---
 
@@ -66,10 +66,10 @@ _… et 56 autres — détail complet dans `registre.json`._
 | — domaine DINO | 355 |
 | — domaine JEU | 559 |
 | Lignes suivies par le moteur de dette (clé × canal) | 639 |
-| 🔴 Dettes ouvertes | **96** |
+| 🔴 Dettes ouvertes | **97** |
 | Clés vérifiables automatiquement | 71 |
 | 🔴 Dérives de fait confirmées | **1** |
-| 🟠 Audio en retard sur son script | **2** |
+| 🟠 Audio en retard sur son script | **3** |
 | 🟡 Canaux manquants au contrat | 0 |
 | 🟡 Consignes lues sans voix réelle | 4 |
 | ⚪ Voix dont le texte verbatim n'est pas tracé | 157 |
@@ -88,8 +88,9 @@ Le MP3 a été produit avant la dernière modification réelle de son script.
 Comparaison sur les **dates de commit**, pas les dates de fichiers (un déplacement de dossier
 réécrit les secondes sans changer le contenu — s'y fier produirait des centaines de faux retards).
 
-- **dino.tyrannosaurus.regime** — script 2026-09-12 · audio 2026-09-05
-- **dino.triceratops.regime** — script 2026-09-12 · audio 2026-09-05
+- **dino.tyrannosaurus.nom** — script 2026-09-24 · audio 2026-09-05
+- **dino.tyrannosaurus.regime** — script 2026-09-24 · audio 2026-09-05
+- **dino.triceratops.regime** — script 2026-09-24 · audio 2026-09-05
 
 ## 🟡 Canaux manquants au contrat
 

@@ -386,6 +386,17 @@
     }
 
     function showVictory() {
+      // REC-M2 (recette 2026-09-19) : la figée dit "Étoile = puzzle résolu
+      // (endSession(1,1) -> complétion = palier validé)" mais ce call manquait.
+      // G.showEnd() plus bas fait bien son propre Tracker.endSession(...), mais
+      // avec this._firstTry/this.totalQ de la piste golden — jamais alimentés
+      // ici (mj-18 n'appelle jamais G.notePip, ce n'est pas un jeu à questions).
+      // Ça envoyait toujours endSession(0, totalQ*10) : score < maxScore, jamais
+      // "parfait" pour stars.js -> Stars.get('mj-18') restait à 0 même après une
+      // partie gagnée. On grave l'intention de la figée nous-mêmes, AVANT
+      // G.showEnd() (son propre endSession() derrière devient un no-op sur une
+      // session déjà close, cf. tracker.js `if (!_session) return`).
+      try { if (typeof Tracker !== 'undefined') Tracker.endSession(1, 1); } catch (e) {}
       try { playEndSound(1, 1); } catch(e) {}
       runPaintParade();
     }

@@ -73,7 +73,7 @@
 <div id="app">
   <div class="hdr">
     <a href="index.html" class="back">←</a>
-    <span class="htitle">🔠 Le tri des lettres</span>
+    <span class="htitle" id="htitle">🔠 Le tri des lettres</span>
   </div>
   <div class="game-area">
     <div id="chaosZone"><div class="zone-label">← Glisse chaque lettre dans sa boîte</div></div>
@@ -95,6 +95,12 @@
 
   const GAME_ID = 'mj-51';
 
+  // Titre traduit (H1, recette 2026-09-19) — le CONTENU pédagogique (lettres,
+  // sons) reste FR (décision PY 2026-09-05, phonétique).
+  document.title = 'MJ-51 – ' + MJi18n.titre(GAME_ID, 'Le tri des lettres');
+  const htitleEl51 = document.getElementById('htitle');
+  if (htitleEl51) htitleEl51.textContent = '🔠 ' + MJi18n.titre(GAME_ID, 'Le tri des lettres');
+
   // Le SON de chaque lettre (dit au rangement — jamais le nom d'école).
   // Table SOURCE DE VÉRITÉ partagée : MJKit.PHONEMES (site/js/mj-kit.js,
   // harmonisée avec mj-50/mj-52 — migration 2026-07-25).
@@ -108,7 +114,7 @@
   ];
 
   const shell = MJ.init({
-    id: GAME_ID, emoji: '🔠', titre: 'Le tri des lettres',
+    id: GAME_ID, emoji: '🔠', titre: MJi18n.titre(GAME_ID, 'Le tri des lettres'),
     golden: true,
     consigne: false,
     regle: {

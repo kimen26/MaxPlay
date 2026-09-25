@@ -237,9 +237,14 @@ function loadLevel(idx) {
 }
 
 function cellSize() {
+  // REC-M1 (recette 2026-09-19) : le plancher 70px forçait un plateau 5 cases
+  // large d'au moins 350px, qui débordait horizontalement à 320px de viewport
+  // (règle transverse : ça ne casse pas à 320px). Plancher baissé à 48px — la
+  // cible tactile minimale (règle UX transverse), jamais en dessous — le plateau
+  // se réduit maintenant pour tenir sur un petit écran au lieu de déborder.
   const wrap = document.querySelector('.board-wrap');
   const avail = Math.min(wrap.clientWidth - 24, wrap.clientHeight - 24);
-  return Math.max(70, Math.min(120, Math.floor(avail / 5) - 4));
+  return Math.max(48, Math.min(120, Math.floor(avail / 5) - 4));
 }
 
 function renderBoard() {

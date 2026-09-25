@@ -80,7 +80,7 @@
 
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">📖 Lis et fais</span>
+    <span class="htitle" id="htitle">📖 Lis et fais</span>
   </div>
 
   <div class="stage">
@@ -109,6 +109,13 @@
     // N2 : consigne action + quantité (« Touche 3 oeufs rouges ») — on ne sait quoi
     //      faire QUE si on lit. ⚠ Écart spec : « phrase rigolote » 3★ différée.
     const GAME_ID = 'mj-53';
+    const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t(GAME_ID, cle, fr, params) : fr);
+
+    // Titre traduit (H1, recette 2026-09-19) — le CONTENU pédagogique (mots,
+    // syllabes dino, consignes) reste FR (décision PY 2026-09-05, phonétique).
+    document.title = 'MJ-53 – ' + MJi18n.titre(GAME_ID, 'Lis et fais');
+    const htitleEl53 = document.getElementById('htitle');
+    if (htitleEl53) htitleEl53.textContent = '📖 ' + MJi18n.titre(GAME_ID, 'Lis et fais');
 
     // N0 : mots simples → images réelles du site (jamais d'emoji en visuel principal)
     const IMG = p => '<img src="' + p + '" alt="">';
@@ -141,7 +148,7 @@
     ];
 
     const shell = MJ.init({
-      id: GAME_ID, emoji: '📖', titre: 'Lis et fais',
+      id: GAME_ID, emoji: '📖', titre: MJi18n.titre(GAME_ID, 'Lis et fais'),
       golden: true, consigne: false,
       regle: {
         picto: '📖👆',
@@ -191,7 +198,7 @@
         const pick = rnd(cand);
         lastKey = target = pick.mot;
         motEl.textContent = pick.mot;
-        subEl.textContent = 'Touche le mot si tu veux de l’aide';
+        subEl.textContent = T('touchePourAide', 'Touche le mot si tu veux de l’aide');
         const others = shuffleA(MOTS_N0.filter(m => m.mot !== pick.mot)).slice(0, 3);
         renderImgs(shuffleA([pick, ...others]), m => m.mot, m => m.html());
       } else if (lv === 1) {

@@ -13,6 +13,11 @@ html, body {
   font-family:'Nunito',sans-serif;
   display:flex; flex-direction:column;
 }
+/* REC-C1 (recette 2026-09-19) : mj-golden.js#showEnd() cible TOUJOURS #app
+   (getElementById('app').innerHTML) — sans ce conteneur la fin de partie plante
+   à la 8e manche. #app hérite du flex column du body pour ne rien changer au
+   rendu (mêmes enfants directs, juste un niveau d'imbrication en plus). */
+#app { display:flex; flex-direction:column; flex:1; min-height:0; width:100%; }
 #score { display:none !important; margin-left:auto; font-weight:900; font-size:1rem; color:#ffe066;
   background:#2a2a4a; border-radius:10px; padding:4px 14px; }
 #panel-zone {
@@ -66,6 +71,7 @@ html, body {
 </head>
 <body data-mp-intro-emoji="🚌" data-mp-intro-title="Combien avant le bus ?" data-mp-intro-hint="Compte les bus avant" id="mjBody">
 
+<div id="app">
 <div class="hdr">
   <a href="index.html">&#8592;</a>
   <span class="htitle" id="htitle">🔢 Combien avant ?</span>
@@ -81,6 +87,7 @@ html, body {
 
 <div id="q-bar">
   <div class="q-text" id="q-text">Chargement…</div>
+</div>
 </div>
 
 <script>

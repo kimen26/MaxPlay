@@ -313,6 +313,12 @@
     </div>
   </div>
 
+  <!-- H4 (recette 2026-09-19) : js/lang.js posé ICI, AVANT dinos-i18n.js. Sans lui,
+       dinos-i18n.js lit window.Lang avant que mj-shell.js ne l'injecte (asynchrone,
+       plus bas dans sa propre file de scripts) -> Lang absent -> repli 'fr' silencieux
+       -> les familles de dinos (DINO_FAMILLES) ne se traduisent jamais en EN. Motif
+       sanctionné (mj-shell.js hasScript() déduplique un js/lang.js déjà posé à la main). -->
+  <script src="js/lang.js"></script>
   <script src="js/gen/dinos-data.js"></script>
   <script src="js/gen/dinos-plantes.js"></script>
   <script src="js/dinos-i18n.js"></script>

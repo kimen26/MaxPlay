@@ -28,19 +28,19 @@
 
 ## Data / branchage / dette GED
 
-- [ ] **REC-2026-09-19** — Recette FR/EN (rapport `studio/minijeux/memory/audits/2026-09-19-recette-complete.md`) : `oviraptor.chasseurs` EN identique au FR (« Velociraptor, carnivores ») ; 4 écarts data↔récit remontés par `check-coherence-data-narre` (edmontonia hauteur/poids, hatzegopteryx et titanis vitesse absents du texte narré). Tout le reste (71 fiches, 710 audios, 665 images) est propre.
+- [x] **REC-2026-09-19** — Soldé 2026-09-25 : `oviraptor.chasseurs` EN corrigé (« Velociraptor, other carnivores », `studio/dino/content/i18n/en/strings.json` + régénéré). Les 4 écarts `check-coherence-data-narre` étaient tous une limite du parseur (edmontonia : nombres en toutes lettres non reconnus ; hatzegopteryx/titanis : vitesse dite en BLOC C, hors de la zone scannée) — script corrigé (cardinaux FR 0-20 + vitesse cherchée sur tout le document), 0 vrai écart de fond. `npm run check`/coherence-data-narre : 71 fiches, 0 écart.
 
 - **EP-D-GED-08** [ ] — Renommer `dev-dinos.html` → `dinos.html` (dette nommage, priorité basse).
 - **GLOSSAIRE** [~] — Vocabulaire unique (Fiche dino / Texte fiche / Script audio / Audio) à propager partout.
-- **ALERTE-JP** [~] — Vérifier Dilophosaurus même pattern que l'ancien incident Deinonychus (franchise nommée).
-- **EP-D-GED-03** [ ] — Basculer canon étymo `_ETYMO-RACINES-50.md` → `_ETYMO-COMPLET-60.md`.
+- [x] **ALERTE-JP** — Vérifié 2026-09-25 : data (`dinos-data.js`/JSON), script audio V3 et les 6 images paléoart (hero/headshot/manger/coloriage/écosystème/paris) de Dilophosaurus ne reprennent aucun élément Jurassic Park (pas de collerette, pas de crachat de venin, taille réelle 7 m respectée, deux crêtes anatomiquement correctes). Le script audio rappelle même explicitement la charte en commentaire. Rien à corriger.
+- **EP-D-GED-03** [ ] — Basculer canon étymo `_ETYMO-RACINES-50.md` → `_ETYMO-COMPLET-60.md` : **NON basculé 2026-09-25**, formats incompatibles — `_ETYMO-RACINES-50.md` est structuré par `id` avec bullets racine/langue/sens (ce que lit `_etymo2racines.cjs`), `_ETYMO-COMPLET-60.md` est un texte narratif par famille de régime avec noms d'affichage FR en en-tête, sans structure exploitable par le parseur actuel. Basculer casserait la génération de `dinos-racines.js` (onglet Le dico). Décision Papa Yann nécessaire : écrire un nouveau parseur pour le format COMPLET-60, ou l'abandonner comme brouillon et garder RACINES-50 comme canon (à graver explicitement si tranché).
 - **EP-D-GED-04** [ ] — Renommage assets produit par `id` stable (pas urgent).
-- **EP-D-GED-05** [ ] — Statut `_BLOC-B-CANONIQUE.md` à trancher + archiver brouillon orphelin.
+- [x] **EP-D-GED-05** — Statut `_BLOC-B-CANONIQUE.md` tranché 2026-09-25 : **gelé volontairement**, artefact pré-V3 superseded par le Bloc B dialogué de `scripts-audio/fr/V3/<id>.md` (canon depuis HO-R12). Ni lu par un script en prod, ni régénéré. Gardé pour l'historique (canon-sans-numéro), noté dans `content/INDEX.md` + `content/sources/INDEX.md` + `sources/mesures/_ECHELLE-REFERENTIEL.md` (référence corrigée vers le vrai canon).
 - **EP-D-ATOMES-PRONONCIATION-i18n** [ ] — Architecture lexique prononciation multi-langue à valider avant code.
 - **EP-D-REFERENTIEL-CONTENU** [~] — Référentiel unique de contenu transverse, Lots 1-4 non engagés.
 - **EP-D-ENROLEMENT-AUDIO** [ ] — Enrôler l'audio dino au catalogue référentiel ; 27 fichiers sans texte source = dette à transcrire.
-- **EP-ARCH-01** [ ] — Archiver la session relecture V3 (8 fichiers) vers `_archive/sessions/2026-06-15-relecture-v3/`.
-- **EP-D16** [ ] — Créer `content/scripts-audio/INDEX.md` (dépend EP-ARCH-01).
+- [x] **EP-ARCH-01** — Fait 2026-09-25 : 8 fichiers (`_RELECTURE-*` + `_PROMPT-RELECTURE-EXTERNE.md`) déplacés par `git mv` vers `_archive/sessions/2026-06-15-relecture-v3/` (aucun script ne les lisait, `_md2json-v3.cjs` les exclut déjà par préfixe).
+- [x] **EP-D16** — Fait 2026-09-25 : `content/scripts-audio/INDEX.md` créé (zéro chiffre en dur, pointe vers INVARIANTS.md).
 
 ## Idées produit (basse priorité)
 
@@ -69,7 +69,7 @@
 
 ## Retours Papa Yann 2026-09-08 — nid, œufs, navigation fiche
 
-- [ ] Fiche d'un dino gagné : bouton retour casse le fil (page vide → famille) au lieu de revenir au nid d'origine. (miroir EP-122)
+- [x] Fiche d'un dino gagné : bouton retour casse le fil → **non reproduit 2026-09-25** (déjà corrigé par le commit `3b53f1ac` « le dino sort au bon endroit »). Méthode : Playwright, `dev-dinos.html?open=<id>` (mécanisme réel du nid via `nid-ui.js`) puis clic sur le bouton retour de la fiche — retombe bien sur la grille de la famille du dino, jamais une grille vide. Le bloc `EP-122` en fin de `dev-dinos.html` pose `currentMode`/`currentCatId` avant `showFiche2()`, exactement la cause racine visée par ce ticket.
 - [ ] Audit des fonds des dessins dinos : vérifier qu'aucune couleur de fond n'entre dans le dino.
 - **BEBES-OEUF** [~] — Demande PY 2026-09-25 : à l'éclosion, montrer le BÉBÉ de l'espèce dans sa coquille (chibi mais réaliste, signature juvénile reconnaissable) au lieu de la tête adulte. Collection `site/img/dinos/bebes/<Nom>_bebe.webp`, branchée dans `nid-ui.js` (repli sur la tête si absent ; l'album garde la tête). Batch `batch-dino-bebe.mjs` (table `BEBE` des signatures) + détourage `bebe_detoure.py` (rembg). Reste : les espèces non générées.
 - **BEBES-VIVIPARES** [?] — Question PY : 13 espèces ne sortent pas d'un œuf (7 mammifères + Mosasaure, Élasmosaure, Liopleurodon, Ichtyosaure, Ophtalmosaure, Shonisaure — vivipares). Bébé dans un œuf quand même (logique du jeu) ou bébé sans œuf (encyclopédie = vrai) ? En attendant : tête adulte.
@@ -80,7 +80,7 @@
 
 - [ ] Décision d'écran d'accueil en 4-5 portes musée/bibliothèque (Voyage vs Époques se recouvrent, illisible à 4 ans). Maquettes : `studio/dino/docs/research/nav-encyclopedie/pistes.html`.
 - [ ] Question ouverte : les mini-jeux dino doivent-ils avoir une porte dédiée depuis l'encyclopédie ?
-- [ ] Pills de navigation débordent à 360 px (defaut d'accès réel, vérifié capture).
+- [x] Pills de navigation débordent à 360 px → **corrigé 2026-09-25** (structure de nav inchangée, juste la mise en page) : `#mode-selector` passe de scroll horizontal caché (`overflow-x:auto` + scrollbar `display:none`, "Le dico" hors champ sans indice visuel) à `flex-wrap:wrap` centré, `.mp-pill` passe à `min-height:48px` (cible tactile). Vérifié Playwright 360 et 320 px : 5 pills sur 3 lignes, aucune ne déborde, `scrollWidth === innerWidth` aux deux largeurs.
 - [ ] Synthèse concurrents (Britannica Kids, Dinopedia, Pok Pok, Khan Academy Kids) : mécanisme de sélection abstrait = le vrai obstacle 4 ans, cible tactile hors clous, scroll horizontal non découvrable. Détail complet en archive.
 
 ## Scelidosaurus / étanchéité (clos, référence)

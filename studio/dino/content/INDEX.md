@@ -34,4 +34,4 @@ site/img/dinos/grok/ ─(_gen-grok.cjs)─▶ site/js/dinos-images-grok.js (gale
 - **Compte dinos · familles · régimes** → voir [`../memory/INVARIANTS.md`](../memory/INVARIANTS.md) (jamais recopié ici).
 - **Récits d'époque** : canon = `sources/recits/RECITS-EPOQUES.md` (ex-V5, anciennes versions dans `recits/_archive/`).
 - **Étymo** : source active `sources/etymo/_ETYMO-RACINES-50.md` (⚠️ périmé, ne couvre pas les Cénozoïque) → bascule vers `_ETYMO-COMPLET-60.md` = ticket EP-D-GED.
-- ⚠️ `sources/mesures/_BLOC-B-CANONIQUE.md` **périmé** vs `dinos-data.js`. À régénérer OU à graver « gelé volontairement » (ticket EP-D-GED).
+- 🧊 `sources/mesures/_BLOC-B-CANONIQUE.md` **gelé volontairement** (EP-D-GED-05, tranché 2026-09-25) : artefact pré-V3 (une phrase plate par dino, 50 dinos), superseded par le Bloc B dialogué de `scripts-audio/fr/V3/<id>.md` qui est le vrai canon depuis HO-R12. Ni lu par un script en prod, ni régénéré — gardé pour l'historique (canon-sans-numéro : on ne supprime jamais), pas à re-régénérer dans son ancien format.

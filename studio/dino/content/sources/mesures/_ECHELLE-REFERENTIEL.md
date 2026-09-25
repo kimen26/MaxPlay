@@ -1,7 +1,8 @@
 # Échelle de référence — comparaisons taille/poids (encyclopédie dino, 3.5-4 ans)
 
 > Source de vérité des comparaisons. Les fonctions `_compHaut` / `_compLong` / `_compPoids` de `dinos-data.js`
-> et les dialogues audio (`_BLOC-B-CANONIQUE.md` + `_seg-*.json`) DOIVENT suivre ce tableau.
+> et les dialogues audio (Bloc B de `scripts-audio/fr/V3/<id>.md` + `_seg-*.json`) DOIVENT suivre ce tableau.
+> (`_BLOC-B-CANONIQUE.md` est gelé/périmé depuis HO-R12, EP-D-GED-05 — ne plus le citer comme cible.)
 > Règle d'or : **jamais d'arrondi qui ment de plus de ~10 %**. Si le chiffre tombe entre deux repères → « un peu plus de », « presque ».
 > Repères mesurés (vérifiés) : Papa = **1,80 m** · Max (3,5 ans) = **1,00 m** · voiture = **1,5 m de haut** (sert UNIQUEMENT en hauteur) ·
 > porte = **2 m** · but de foot = **2,44 m** · panier de basket = **3,05 m** · bus anglais 2 étages = **4,4 m** · lampadaire = **~6 m** ·

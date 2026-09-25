@@ -1308,7 +1308,10 @@
     // Label texte (pas labelEl : sa boîte 240px fixe centre mal un texte
     // court/variable). Ligne pleine largeur, texte centré — toujours bien
     // positionné quel que soit le nombre de caractères.
-    var labelTxt = opts.label != null ? opts.label : 'Un œuf pour le nid !';
+    // REC-C4 (recette 2026-09-19) : repli i18n (_commun, transverse au gabarit,
+    // pas un jeu) — restait en dur en français quel que soit le label appelant.
+    var labelTxt = opts.label != null ? opts.label
+      : ((window.MJi18n && window.MJi18n.t) ? window.MJi18n.t('_commun', 'oeufPourLeNid', 'Un œuf pour le nid !') : 'Un œuf pour le nid !');
     var label = null;
     if (labelTxt) {
       label = mk(ov, 'left:0;right:0;top:' + (cy + eggSize * 0.5 + 34) + 'px;width:auto;' +

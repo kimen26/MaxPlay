@@ -157,6 +157,28 @@
     try { localStorage.removeItem(resumeKey(id)); } catch (e) {}
   }
 
+  // REC-C4 (recette 2026-09-19) : l'écran de fin était intégralement en dur en
+  // français — golden.js est un gabarit TRANSVERSE (pas un jeu), donc gameId
+  // '_commun' comme le fait déjà nidLabel plus bas dans showEnd(). Repli FR
+  // intégral si MJi18n/le pack sont absents, jamais de trou (même principe que
+  // partout ailleurs dans l'i18n MJ).
+  function T(cle, fr, params) {
+    return (global.MJi18n && global.MJi18n.t) ? global.MJi18n.t('_commun', cle, fr, params) : fr;
+  }
+  // Ordinal localisé (« 2ᵉ » / « 2nd » / « 2ª ») pour « gagner la Nᵉ étoile » —
+  // un simple {n} ne suffit pas, le suffixe change de langue (et l'anglais
+  // change même de suffixe selon le nombre : 1st/2nd/3rd/4th).
+  function _ordinal(n) {
+    const lang = (global.Lang && global.Lang.current()) || 'fr';
+    if (lang === 'en') {
+      const v = n % 100;
+      const suf = (v >= 11 && v <= 13) ? 'th' : ({ 1: 'st', 2: 'nd', 3: 'rd' }[n % 10] || 'th');
+      return n + suf;
+    }
+    if (lang === 'es-es' || lang === 'pt-br') return n + 'ª'; // étoile est féminin dans les deux
+    return n + 'ᵉ';
+  }
+
   const Golden = {
     gameId: null, stars: 0, level: 0, totalQ: 4, qsPerLevel: QS_PER_LEVEL_DEFAUT, _firstTry: 0, _answered: 0,
     _pipResults: [], resumed: false,
@@ -314,15 +336,29 @@
     // promise (anti-pattern gravé, Papa Yann 2026-07-21 : "j'afficherais pas
     // d'étoile" quand ce n'en est pas une gagnée). Variantes courtes.
     _PROCESS_COMPLIMENTS: [
-      'Tu as trouvé les plus durs&nbsp;!',
-      'Bien joué, tu as bien cherché&nbsp;!',
-      'Tu progresses à chaque partie&nbsp;!',
-      'Beau travail aujourd’hui&nbsp;!',
+      T('finTuAsTrouve', 'Tu as trouvé les plus durs&nbsp;!'),
+      T('finBienJoueCherche', 'Bien joué, tu as bien cherché&nbsp;!'),
+      T('finTuProgresses', 'Tu progresses à chaque partie&nbsp;!'),
+      T('finBeauTravail', 'Beau travail aujourd’hui&nbsp;!'),
     ],
 
     showEnd(opts) {
       opts = opts || {};
       const app = document.getElementById('app');
+      // REC-C1 (recette 2026-09-19) : mj-13a et mj-13c n'avaient pas de <div id="app">
+      // (gabarit STANDARD-MJ.md § livraison exige #app comme conteneur unique du body) —
+      // showEnd() plantait en silence-ish (TypeError sur innerHTML) APRÈS avoir déjà
+      // décompté la manche (Tracker/Collection), donc sans étoile ni œuf pour l'enfant.
+      // Garde explicite : on log clairement la cause et on sort AVANT tout effet de
+      // bord (pas de partie comptée pour rien), plutôt qu'un try/catch muet qui
+      // masquerait l'absence du conteneur.
+      if (!app) {
+        console.error('[Golden.showEnd] pas de <div id="app"> dans la page ('
+          + (this.gameId || 'jeu inconnu') + ') — impossible d\'afficher l\'écran de fin. '
+          + 'Tout jeu golden:true doit avoir <div id="app"> comme unique enfant direct du <body> '
+          + '(voir studio/minijeux/docs/STANDARD-MJ.md § gabarit mj-shell.js).');
+        return;
+      }
       const perfect = this.isPerfect();
       try { if (typeof Tracker !== 'undefined') Tracker.endSession(this._firstTry * 10, this.totalQ * 10); } catch (e) {}
       clearResume(this.gameId); // A2 : partie terminée → plus rien à reprendre
@@ -377,14 +413,14 @@
       let title, sub;
       if (perfect) {
         title = justMastered
-          ? 'Tu maîtrises ce jeu&nbsp;!'
-          : 'Tu as gagné l’étoile niveau ' + (this.stars + 1) + '&nbsp;!';
+          ? T('finTuMaitrises', 'Tu maîtrises ce jeu&nbsp;!')
+          : T('finEtoileNiveau', 'Tu as gagné l’étoile niveau {n}&nbsp;!', { n: this.stars + 1 });
         sub = (newStars >= MAX_STARS)
-          ? 'Niveau MAXIMUM&nbsp;! Champion&nbsp;!'
-          : 'Recommence et essaie de gagner la ' + (newStars + 1) + 'ᵉ étoile&nbsp;!';
+          ? T('finNiveauMax', 'Niveau MAXIMUM&nbsp;! Champion&nbsp;!')
+          : T('finRecommenceEtoile', 'Recommence et essaie de gagner la {ord} étoile&nbsp;!', { ord: _ordinal(newStars + 1) });
       } else {
         // Surnom échappé : donnée saisie (compte parent, demain sync serveur) → jamais en HTML brut
-        title = (function(){try{var k=(JSON.parse(localStorage.getItem('maxplay_active_child'))||{}).nickname;if(!k)return 'Bien joué&nbsp;!';var d=document.createElement('div');d.textContent=k;return 'Bien joué '+d.innerHTML+'&nbsp;!';}catch(e){return 'Bien joué&nbsp;!';}})();
+        title = (function(){try{var k=(JSON.parse(localStorage.getItem('maxplay_active_child'))||{}).nickname;if(!k)return T('finBienJoue','Bien joué&nbsp;!');var d=document.createElement('div');d.textContent=k;return T('finBienJoueNom','Bien joué {nom}&nbsp;!',{nom:d.innerHTML});}catch(e){return T('finBienJoue','Bien joué&nbsp;!');}})();
         sub = Golden._PROCESS_COMPLIMENTS[(Math.random() * Golden._PROCESS_COMPLIMENTS.length) | 0];
       }
       // Bug 3 (lisibilité, exigence PY 2026-07-28) : jamais mélanger œuf et
@@ -392,7 +428,7 @@
       // n'y en a pas), PUIS l'étoile sans-faute s'il y en a une. Jamais les
       // deux en même temps, jamais d'ambiguïté sur ce qui a été gagné.
       if (noMoreEggsHere) {
-        sub = (sub ? sub + ' ' : '') + 'Tu as déjà toutes les étoiles ici&nbsp;! Essaie un autre jeu pour gagner un œuf.';
+        sub = (sub ? sub + ' ' : '') + T('finDejaToutesEtoiles', 'Tu as déjà toutes les étoiles ici&nbsp;! Essaie un autre jeu pour gagner un œuf.');
       }
       // Séquencement (retour playtest Papa Yann 2026-07-26) : l'œuf doit se voir
       // et se jouer AVANT titre/sous-titre/boutons — plus de délai CSS fixe qui
@@ -432,16 +468,16 @@
       // reproduit pas ici). Paramètre lu par index.html, cf. commentaire
       // homologue là-bas.
       const nidUrl = 'index.html?open=nid';
-      const nidLabel = (global.MJi18n ? MJi18n.t('_commun', 'nidBoutonFin', 'Au nid&nbsp;!') : 'Au nid&nbsp;!');
+      const nidLabel = T('nidBoutonFin', 'Au nid&nbsp;!');
 
-      let btns = '<a href="' + replayUrl + '" data-act="replay" style="background:#00c47a;">🔄 Encore&nbsp;!</a>';
+      let btns = '<a href="' + replayUrl + '" data-act="replay" style="background:#00c47a;">🔄 ' + T('finEncoreBtn', 'Encore&nbsp;!') + '</a>';
       if (rewardGranted) {
         btns += '<a href="' + nidUrl + '" data-act="nid" style="background:#ff8fb8;color:#3a0f22;">🥚 ' + nidLabel + '</a>';
       }
       if (nextUrl) {
-        btns += '<a href="' + nextUrl + '" data-act="next" class="btn-next-big" style="background:#ffd166;color:#3a2a00;">La suite →' + nestBadge + '</a>';
+        btns += '<a href="' + nextUrl + '" data-act="next" class="btn-next-big" style="background:#ffd166;color:#3a2a00;">' + T('finLaSuiteBtn', 'La suite') + ' →' + nestBadge + '</a>';
       }
-      btns += '<a href="index.html" data-act="home" aria-label="Maison" style="background:#ffffff22;">🏠' + nestBadge + '</a>';
+      btns += '<a href="index.html" data-act="home" aria-label="' + T('ariaMaison', 'Maison') + '" style="background:#ffffff22;">🏠' + nestBadge + '</a>';
 
       app.innerHTML =
         '<div class="end-wrap">'
@@ -473,10 +509,13 @@
             if (accGranted) {
               const acc = grant.accessoire || {};
               fxOpts.emoji = acc.emoji || '🎁';
+              // acc.nom vient de Collection (studio hors périmètre i18n) : reste en FR
+              // tant que les noms d'accessoires n'ont pas leur propre traduction.
               const nom = acc.nom || 'un cadeau';
+              const nomCap = nom.charAt(0).toUpperCase() + nom.slice(1);
               fxOpts.label = grant.special
-                ? 'Une super étoile de champion !'
-                : nom.charAt(0).toUpperCase() + nom.slice(1) + ' pour tes œufs !';
+                ? T('finEtoileChampion', 'Une super étoile de champion !')
+                : T('finAccessoirePourOeufs', '{nom} pour tes œufs&nbsp;!', { nom: nomCap });
               if (grant.special) fxOpts.golden = true; // l'étoile de maîtrise brille or
             } else if (grant.familleMeta && grant.familleMeta.color && !grant.justGolden) {
               fxOpts.color = grant.familleMeta.color; // œuf teinté = famille (surprise l'espèce)

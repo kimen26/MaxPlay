@@ -22,9 +22,24 @@ export async function run({ page, ok }) {
   const fiches = await page.locator('.fiche').count();
   ok('Niveau 1 = file de 3 bus', fiches === 3, `fiches=${fiches}`);
 
-  await page.waitForSelector('.btn-count[data-correct="1"]', { timeout: 5000 });
-  await page.click('.btn-count[data-correct="1"]');
-  await page.waitForTimeout(500);
-  const qt = (await page.locator('#q-text').textContent()) || '';
-  ok('réponse correcte → Bravo', /bravo/i.test(qt), `q="${qt.slice(0, 40)}"`);
+  // REC-C1 (recette 2026-09-19) : mj-13c n'avait pas de <div id="app"> → écran de
+  // fin plantait à la 8e manche. On joue les 8 manches EN PARFAIT (bouton
+  // data-correct="1" du 1er coup, à chaque manche) pour vérifier étoile + fin.
+  for (let m = 0; m < 8; m++) {
+    await page.waitForSelector('.btn-count[data-correct="1"]', { timeout: 6000 });
+    await page.click('.btn-count[data-correct="1"]');
+    await page.waitForTimeout(500);
+    const qt = (await page.locator('#q-text').textContent()) || '';
+    ok(`manche ${m + 1}/8 : réponse correcte → Bravo`, /bravo/i.test(qt), `q="${qt.slice(0, 40)}"`);
+    await page.waitForTimeout(1900); // laisse initRound() de la manche suivante se poser
+  }
+
+  await page.waitForSelector('.end-wrap', { timeout: 6000 });
+  ok('écran de fin golden affiché (REC-C1)', (await page.locator('.end-wrap').count()) === 1);
+  const stars = await page.evaluate(() => (window.Stars ? Stars.get('mj-13c') : -1));
+  ok('étoile gagnée : Stars.get(mj-13c) === 1 après 8/8 parfait', stars === 1, `stars=${stars}`);
+  // L'étoile vole vers le badge (anim MaxFX/_discreetStar, quelques secondes) avant
+  // que .filled soit posé — attendre l'animation plutôt que la course.
+  await page.waitForSelector('.badge-slot.filled', { timeout: 8000 }).catch(() => {});
+  ok('badge étoile visible sur l\'écran de fin', (await page.locator('.badge-slot.filled').count()) >= 1);
 }

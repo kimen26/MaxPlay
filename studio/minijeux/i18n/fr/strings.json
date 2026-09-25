@@ -17,6 +17,23 @@
   "titreDicter": "dicter au lieu d'écrire",
   "envoyer": "Envoyer 📨",
   "nidBoutonFin": "Au nid !",
+  "finTuAsTrouve": "Tu as trouvé les plus durs&nbsp;!",
+  "finBienJoueCherche": "Bien joué, tu as bien cherché&nbsp;!",
+  "finTuProgresses": "Tu progresses à chaque partie&nbsp;!",
+  "finBeauTravail": "Beau travail aujourd’hui&nbsp;!",
+  "finTuMaitrises": "Tu maîtrises ce jeu&nbsp;!",
+  "finEtoileNiveau": "Tu as gagné l’étoile niveau {n}&nbsp;!",
+  "finNiveauMax": "Niveau MAXIMUM&nbsp;! Champion&nbsp;!",
+  "finRecommenceEtoile": "Recommence et essaie de gagner la {ord} étoile&nbsp;!",
+  "finBienJoue": "Bien joué&nbsp;!",
+  "finBienJoueNom": "Bien joué {nom}&nbsp;!",
+  "finDejaToutesEtoiles": "Tu as déjà toutes les étoiles ici&nbsp;! Essaie un autre jeu pour gagner un œuf.",
+  "finEncoreBtn": "Encore&nbsp;!",
+  "finLaSuiteBtn": "La suite",
+  "ariaMaison": "Maison",
+  "finEtoileChampion": "Une super étoile de champion !",
+  "finAccessoirePourOeufs": "{nom} pour tes œufs&nbsp;!",
+  "oeufPourLeNid": "Un œuf pour le nid !",
   "zeroDonneeEnfant": "rien n'est demandé à l'enfant — zéro donnée le concernant 👍",
   "merciAvisEnvoye": "Merci ! Avis envoyé ✓",
   "oupsReessaie": "Oups, réessaie 🙏",
@@ -472,7 +489,20 @@
    },
    "confirmNumero": "{n} !",
    "cEtait": "C’était {n}",
-   "nouveauNiveauDebloque": "Nouveau niveau débloqué : {lang} chiffres {tier} !"
+   "nouveauNiveauDebloque": "Nouveau niveau débloqué : {lang} chiffres {tier} !",
+   "modeLearn": "Apprendre",
+   "modeQuiz": "Quiz",
+   "modeProgress": "Progression",
+   "toutEcouter": "Tout écouter ({a} à {b})",
+   "stop": "Stop",
+   "reecouter": "Réécouter",
+   "palierBadgeSuite": "palier {tier} · chiffres {label} · {consec}/{seuil} pour niveau suivant",
+   "palierBadgeMax": "palier {tier} · chiffres {label}",
+   "progTitle": "Ta progression par langue",
+   "verrouille": "Verrouillé",
+   "palierSub": "Palier {tier}/4 · chiffres {label}",
+   "palierNext": "{consec}/{seuil} pour débloquer le palier {next}",
+   "maitrise": "Maîtrisé !"
   },
   "voix": {
    "regle-mj-20": "Apprends à compter jusqu’à 20 dans plein de langues différentes !. Je choisis « Apprendre » pour écouter . Je choisis une langue (drapeau) et je tape un chiffre : une voix le dit dans cette langue !. Je choisis « Quiz » pour jouer . Une voix dit un chiffre dans une langue débloquée. Je tape le bon chiffre parmi les choix.. Je gagne 3 bonnes réponses de suite pour débloquer la suite . Chaque langue commence petit (1 à 3), puis j’avance jusqu’à 1-20 si je continue bien.. Je regarde « Progression » pour voir où j’en suis . Chaque langue a ses pastilles : plus j’en remplis, plus je maîtrise de chiffres et de langues !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
@@ -1282,6 +1312,9 @@
    ],
    "etoiles": ""
   },
+  "ui": {
+   "touchePourReecouter": "Touche pour réécouter"
+  },
   "voix": {
    "regle-mj-50": "Écoute le son, et touche la lettre qui le fait !. J’écoute le son . La voix fait le SON de la lettre : « mmm », « sss »… jamais son nom d’école.. Je touche la bonne lettre . Les lettres sont écrites en attaché. Le haut-parleur répète le son si je le touche.. Les lettres changent de costume . Plus j’ai d’étoiles, plus les lettres s’habillent : attaché, détaché, MAJUSCULES !. Et même le son des mots . Au dernier niveau : « quel son au début de maman ? » — et des lettres qui se ressemblent !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
@@ -1365,6 +1398,9 @@
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "touchePourAide": "Touche le mot si tu veux de l'aide"
   },
   "voix": {
    "regle-mj-53": "Ici, on ne sait quoi faire QUE si on lit !. Je lis le mot . Le mot est écrit en attaché. Si c’est dur, je touche le mot : la voix m’aide (au début seulement !).. Je touche la bonne image . Puis les noms de dinos arrivent, découpés en morceaux : tri-cé-ra-tops !. Je lis… et je FAIS . Au dernier niveau, la consigne me dit quoi faire : « Touche 3 oeufs rouges » !. Sans lire, impossible ! . C’est ça le secret : lire, ça sert à découvrir ce qu’il faut faire.. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"

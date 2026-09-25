@@ -71,6 +71,10 @@
     <div class="frise" id="frise"></div>
   </div>
 
+  <!-- REC-C7 (recette 2026-09-19) : js/lang.js AVANT dinos-i18n.js — voir mj-24.html
+       pour l'explication complète (dinos-i18n.js lit window.Lang de façon SYNCHRONE,
+       mj-shell.js le charge trop tard pour ce cas). hasScript() déduplique. -->
+  <script src="js/lang.js"></script>
   <script src="js/gen/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
   <script src="js/gen/dinos-audio-manifest.js"></script>

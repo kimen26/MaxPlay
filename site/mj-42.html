@@ -116,7 +116,7 @@
   <!-- HEADER — copier tel quel, changer uniquement l'emoji et le titre -->
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">🦎 Shisima !</span>
+    <span class="htitle" id="htitle">🦎 Shisima !</span>
   </div>
 
   <div id="kenya-badge">Un jeu du Kenya 🇰🇪</div>
@@ -163,8 +163,19 @@
     const GAME_ID = 'mj-42';
     const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t(GAME_ID, cle, fr, params) : fr);
 
+    document.title = 'MJ-42 — ' + MJi18n.titre(GAME_ID, 'Shisima !');
+    const htitleEl42 = document.getElementById('htitle');
+    if (htitleEl42) htitleEl42.textContent = '🦎 ' + MJi18n.titre(GAME_ID, 'Shisima !');
+    // Overlay de victoire posé en dur en FR dans le HTML (H3, recette 2026-09-19) :
+    // showOverlay() le retraduit déjà à chaque victoire, mais le markup initial
+    // restait FR — retraduit ici aussi pour ne jamais dépendre de l'ordre d'appel.
+    const overlayTitleInit = document.getElementById('overlay-title');
+    const overlayTextInit = document.getElementById('overlay-text');
+    if (overlayTitleInit) overlayTitleInit.textContent = '🎉 ' + T('bravo', 'Bravo !') + ' 🎉';
+    if (overlayTextInit) overlayTextInit.textContent = T('alignePionsShisima', 'Tu as aligné tes 3 pions sur le shisima !');
+
     const shell = MJ.init({
-      id: GAME_ID, emoji: '🦎', titre: 'Shisima !',
+      id: GAME_ID, emoji: '🦎', titre: MJi18n.titre(GAME_ID, 'Shisima !'),
       golden: true,
       consigne: false,
       regle: {

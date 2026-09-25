@@ -61,7 +61,7 @@
 
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">🔤 Trouve la lettre</span>
+    <span class="htitle" id="htitle">🔤 Trouve la lettre</span>
   </div>
 
   <div class="stage">
@@ -84,6 +84,15 @@
     // N0 : sons simples, cursives · N1 : + allures (script, majuscules)
     // N2 : confusables (b/d/p/q, m/n/u…) + « quel son au début de "maman" ? ».
     const GAME_ID = 'mj-50';
+    const T = (cle, fr, params) => (window.MJi18n ? MJi18n.t(GAME_ID, cle, fr, params) : fr);
+
+    // Chrome (titre + sous-consigne réécoute) traduit — le CONTENU pédagogique
+    // (sons/lettres/mots) reste FR (décision PY 2026-09-05, phonétique).
+    document.title = 'MJ-50 – ' + MJi18n.titre(GAME_ID, 'Trouve la lettre');
+    const htitleEl50 = document.getElementById('htitle');
+    if (htitleEl50) htitleEl50.textContent = '🔤 ' + MJi18n.titre(GAME_ID, 'Trouve la lettre');
+    const sonSubInit = document.getElementById('son-sub');
+    if (sonSubInit) sonSubInit.textContent = T('touchePourReecouter', 'Touche pour réécouter');
 
     // Graphie phonétique du SON de chaque lettre (jamais le nom de la lettre).
     // Table SOURCE DE VÉRITÉ partagée : MJKit.PHONEMES (site/js/mj-kit.js),
@@ -105,7 +114,7 @@
     ];
 
     const shell = MJ.init({
-      id: GAME_ID, emoji: '🔤', titre: 'Trouve la lettre',
+      id: GAME_ID, emoji: '🔤', titre: MJi18n.titre(GAME_ID, 'Trouve la lettre'),
       golden: true, consigne: true,
       onRepeat: () => playTarget(),
       regle: {
@@ -215,7 +224,7 @@
         shell.setConsigne('Quel son au début de « ' + curMot + ' » ?', false);
       } else {
         badgeEl.innerHTML = HP_SVG;
-        motSub.textContent = 'Touche pour réécouter';
+        motSub.textContent = T('touchePourReecouter', 'Touche pour réécouter');
         shell.setConsigne('Touche la lettre qui fait ce son !', false);
       }
       if (!testMode) setTimeout(playTarget, 350);

@@ -19,6 +19,23 @@ window.MJ_STRINGS = {
   "titreDicter": "ditar em vez de escrever",
   "envoyer": "Enviar 📨",
   "nidBoutonFin": "Pro ninho!",
+  "finTuAsTrouve": "Você encontrou os mais difíceis!",
+  "finBienJoueCherche": "Muito bem, você procurou direitinho!",
+  "finTuProgresses": "Você melhora a cada partida!",
+  "finBeauTravail": "Ótimo trabalho hoje!",
+  "finTuMaitrises": "Você dominou este jogo!",
+  "finEtoileNiveau": "Você ganhou a estrela do nível {n}!",
+  "finNiveauMax": "Nível MÁXIMO! Campeão!",
+  "finRecommenceEtoile": "Jogue de novo e tente ganhar a {ord} estrela!",
+  "finBienJoue": "Muito bem!",
+  "finBienJoueNom": "Muito bem {nom}!",
+  "finDejaToutesEtoiles": "Você já tem todas as estrelas aqui! Tente outro jogo para ganhar um ovo.",
+  "finEncoreBtn": "De novo!",
+  "finLaSuiteBtn": "A seguir",
+  "ariaMaison": "Início",
+  "finEtoileChampion": "Uma superestrela de campeão!",
+  "finAccessoirePourOeufs": "{nom} para seus ovos!",
+  "oeufPourLeNid": "Um ovo para o ninho!",
   "zeroDonneeEnfant": "nada é pedido à criança — zero dado sobre ela 👍",
   "merciAvisEnvoye": "Obrigado! Opinião enviada ✓",
   "oupsReessaie": "Ops, tenta de novo 🙏",
@@ -474,7 +491,20 @@ window.MJ_STRINGS = {
    },
    "confirmNumero": "{n}!",
    "cEtait": "Era {n}",
-   "nouveauNiveauDebloque": "Novo nível desbloqueado: {lang} números {tier}!"
+   "nouveauNiveauDebloque": "Novo nível desbloqueado: {lang} números {tier}!",
+   "modeLearn": "Aprender",
+   "modeQuiz": "Quiz",
+   "modeProgress": "Progresso",
+   "toutEcouter": "Ouvir tudo (de {a} a {b})",
+   "stop": "Parar",
+   "reecouter": "Ouvir de novo",
+   "palierBadgeSuite": "nível {tier} · números {label} · {consec}/{seuil} para o próximo nível",
+   "palierBadgeMax": "nível {tier} · números {label}",
+   "progTitle": "Seu progresso por idioma",
+   "verrouille": "Bloqueado",
+   "palierSub": "Nível {tier}/4 · números {label}",
+   "palierNext": "{consec}/{seuil} para desbloquear o nível {next}",
+   "maitrise": "Dominado!"
   },
   "voix": {
    "regle-mj-20": "Aprende a contar até 20 em várias línguas diferentes!. Eu escolho « Aprender » para escutar . Eu escolho uma língua (bandeira) e toco num número: uma voz diz ele nessa língua!. Eu escolho « Quiz » para jogar . Uma voz diz um número numa língua desbloqueada. Eu toco no número certo entre as opções.. Eu acerto 3 vezes seguidas para desbloquear o resto . Cada língua começa pequena (1 a 3), depois eu avanço até 1-20 se eu for bem.. Eu olho « Progresso » para ver como estou indo . Cada língua tem suas bolinhas: quanto mais eu preencho, mais números e línguas eu domino!. Responda certo na primeira tentativa em todas as perguntas para ganhar a estrela de campeão!"
@@ -828,7 +858,9 @@ window.MJ_STRINGS = {
     "montagne": "Montanha",
     "neige": "Neve",
     "volcan": "Vulcão"
-   }
+   },
+   "zoomer": "Ampliar",
+   "vueNormale": "Vista normal"
   },
   "voix": {
    "regle-mj-32": "Colore seu dino do jeito que você quiser, não tem erro!. Eu escolho um dino para colorir . Eu toco no dino que eu preferir na lista.. Eu escolho uma cor e toco no desenho . A cor preenche toda a área que eu tocar. Eu posso trocar de cor quantas vezes eu quiser!. Eu olho o modelo se eu precisar . O botão « Modelo » mostra o dino colorido por 2 segundos, para me ajudar se eu quiser.. Eu toco em « Pronto! » para guardar meu desenho . Minha obra vai para « Minha galeria »: eu posso olhar ela, continuar de onde parei, ou apagar. Sem estrelas, sem erro: eu faço do jeito que eu quiser!. Responda certo na primeira tentativa em todas as perguntas para ganhar a estrela de campeão!"
@@ -1282,6 +1314,9 @@ window.MJ_STRINGS = {
    ],
    "etoiles": ""
   },
+  "ui": {
+   "touchePourReecouter": "Toque para ouvir de novo"
+  },
   "voix": {
    "regle-mj-50": "Escuta o som, e toca na letra que faz esse som!. Eu escuto o som . A voz faz o SOM da letra : « mmm », « sss »… nunca o nome dela na escola.. Eu toco na letra certa . As letras estão escritas em cursiva. O alto-falante repete o som se eu tocar nele.. As letras trocam de fantasia . Quanto mais estrelas eu tenho, mais as letras se vestem : cursiva, de forma, MAIÚSCULAS !. E até o som das palavras . No último nível : « qual som no começo de mamãe ? » — e letras bem parecidas !. Responda certo na primeira tentativa em todas as perguntas para ganhar a estrela de campeão!"
   }
@@ -1365,6 +1400,9 @@ window.MJ_STRINGS = {
     }
    ],
    "etoiles": ""
+  },
+  "ui": {
+   "touchePourAide": "Toque na palavra se quiser ajuda"
   },
   "voix": {
    "regle-mj-53": "Aqui, só dá para saber o que fazer SE a gente ler !. Eu leio a palavra . A palavra está escrita em cursiva. Se for difícil, eu toco na palavra : a voz me ajuda (só no começo !).. Eu toco na imagem certa . Depois os nomes dos dinos chegam, separados em pedaços : tri-ce-ra-tops !. Eu leio… e eu FAÇO . No último nível, a consigna me diz o que fazer : « Toca em 3 ovos vermelhos » !. Sem ler, impossível ! . É esse o segredo : ler serve para descobrir o que fazer.. Responda certo na primeira tentativa em todas as perguntas para ganhar a estrela de campeão!"

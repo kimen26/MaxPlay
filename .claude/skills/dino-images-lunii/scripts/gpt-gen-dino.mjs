@@ -45,7 +45,8 @@ const REF_SUM = REF ? createHash('md5').update(readFileSync(REF)).digest('hex') 
 const ESTUARY = 'img[src*="backend-api/estuary/content"], img[src^="blob:https://chatgpt.com"]';
 const srcsHD = () => page.locator(ESTUARY).evaluateAll(els => els.filter(e => e.naturalWidth >= 700).map(e => e.getAttribute('src')));
 const BLOCK_RE = /enfreindre nos règles|illustrations acceptables|violate our|content policy|n'avons pas pu générer|impossible de générer cette image/i;
-const LIMIT_RE = /limite de génération|limite de créations d'images|plus de crédit|réessayez plus tard|try again later|usage cap|rate limit|vous avez atteint|image generation limit|reached your limit|hit the Plus plan limit|limit resets in|passez à une offre supérieure|passer à chatgpt pro/i;
+// Apostrophe droite OU typographique : l'UI écrit « limite de créations d’images » (L-D-86).
+const LIMIT_RE = /limite de génération|limite de créations d['’]images|limite d['’]images atteinte|plus de crédit|réessayez plus tard|try again later|usage cap|rate limit|vous avez atteint|image generation limit|reached your limit|hit the Plus plan limit|limit resets in|passez à une offre supérieure|passer à chatgpt pro/i;
 
 const browser = await chromium.connectOverCDP(CDP);
 const ctx = browser.contexts()[0];

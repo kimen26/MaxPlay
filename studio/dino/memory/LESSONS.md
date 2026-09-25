@@ -92,3 +92,13 @@ plus (import en dur) : désormais `import 'playwright'` (racine du repo).
 **Règle** : sur un timeout de génération, capture de l'onglet avant tout diagnostic. Détecter une image
 neuve par son `src` (ensemble des src avant envoi) et sa pleine résolution, pas par un sélecteur d'URL
 figé. `gpt-gen.mjs` prend les deux formats + `--grab` pour récupérer la dernière image du chat courant.
+
+## L-D-86 — La limite d'images ChatGPT s'écrit avec une apostrophe typographique (2026-09-26)
+
+**Contexte** : batch des scènes de combat, projet Dinosaure. Après ~45 images, ChatGPT répond
+« Limite d’images atteinte… Réessayez à 07:51 ». Le détecteur cherchait `limite de créations d'images`
+avec l'apostrophe droite : aucun match, chaque image partait en timeout (4 min) et la file continuait
+à vide au lieu de s'arrêter en code 5.
+
+**Règle** : dans toute regex sur du texte d'interface, accepter `['’]` pour l'apostrophe. Un timeout qui
+se répète sur plusieurs images d'affilée = regarder la capture `-timeout.png` avant de relancer.

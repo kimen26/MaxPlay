@@ -1,14 +1,18 @@
 // ─────────────────────────────────────────────────────────────────────────
-//  armoire.js — Accueil enfant « L'Armoire » v6 (HO-MJ-19).
+//  armoire.js — Accueil enfant « L'Armoire » (HO-MJ-22, meuble v8).
 //
-//  Ce fichier ne calcule AUCUNE dimension. L'armoire vit dans un repère de
-//  design fixe de 911 × 1480 (le cadrage de ref-ouverte.png) et c'est le CSS
-//  qui met la scène entière à l'échelle, d'un bloc, via --cab-w. Le JS ne
-//  fait que trois choses : poser le décor une fois, y ranger les jeux, et
-//  ouvrir ou fermer les portes.
+//  Le MEUBLE (carcasse, planches, montants, tiroirs, vantaux) est construit
+//  par js/armoire-meuble.js (ArmoireMeuble.build), à partir du kit généré
+//  js/gen/armoire-kit.js (boîtes en % du repère 911 × 1480, mesurées sur
+//  docs/refs/armoire/ref-ouverte.png). Ce fichier-ci ne pose plus AUCUNE
+//  pièce de meuble : il range par-dessus les CASES DE JEUX, les 3 fonctions
+//  fixes (Dinos/Monde/Œufs), le prénom et l'avatar — z-index 40 (cases) et
+//  50 (prénom) d'armoire.css, le meuble occupant les z-index 10 à 60
+//  d'armoire-meuble.css.
 //
-//  Il n'y a donc plus de handler de resize, plus de --u, plus de hauteur de
-//  planche recalculée par écran : c'est exactement ce qui tordait les v3/v4.
+//  Les 2 tiroirs du meuble sont RÉUTILISÉS tels quels (ArmoireMeuble gère
+//  déjà leur effet visuel « tiré » au tap) : on leur donne juste un id et
+//  un comportement de navigation, jamais une icône flottante par-dessus.
 //
 //  API : window.Armoire = { render, refresh }
 //  Compat : window.MurScene = { markGainSeen, refresh } — contrat inchangé
@@ -18,7 +22,6 @@
   'use strict';
 
   var IMG = 'img/armoire/';
-  var KIT = IMG + 'v6/';
 
   function $(id) { return document.getElementById(id); }
   function esc(s) {
@@ -27,37 +30,59 @@
     });
   }
 
-  // ── Repère de design ────────────────────────────────────────────────
-  // Tout est en % du cadre 911 × 1480, mesuré sur la carcasse elle-même
-  // (studio/minijeux/tools/armoire-sprites.py écrit les mêmes chiffres dans
-  // site/img/armoire/v6/repere.json — c'est la source, ne pas diverger).
+  // ── Grille des cases : 3 colonnes (mise en page du plateau de jeu — sans
+  // rapport avec les montants du meuble, qui ne courent pas sur toute la
+  // hauteur) × 5 rangées calées sur les 5 planches du kit. ────────────────
   var COLS = [28.58, 49.75, 70.92];   // centres des 3 colonnes
   var COL_W = 21.17;                  // largeur d'une colonne
+  var ROWS_ZONE = ['haut', 'haut', 'niche', 'bas', 'bas'];
+  var ROWS_H = [13.6, 12.6, 9.8, 10.3, 13.0]; // hauteur de case par rangée (tunée à la main)
 
-  // Les 5 niveaux du meuble, du haut vers le bas. `zone` dit derrière quelle
-  // porte le niveau se trouve — la niche centrale n'en a pas, elle est
-  // toujours ouverte.
-  // cy/ch sont calés pour que le BAS de chaque case tombe sur le DESSUS de sa
-  // planche (23,3 · 38,3 · 50,1 · 65,3 · 79,3 % du repère, relevés sur la
-  // carcasse) : le CSS pose le contenu en flex-end, donc l'objet repose sur
-  // l'étagère au lieu de flotter au milieu de la case.
-  var ROWS = [
-    { zone: 'haut',  cy: 16.5, ch: 13.6 },
-    { zone: 'haut',  cy: 32.0, ch: 12.6 },
-    { zone: 'niche', cy: 45.2, ch: 9.8 },
-    { zone: 'bas',   cy: 60.1, ch: 10.3 },
-    { zone: 'bas',   cy: 72.8, ch: 13.0 }
-  ];
-  var TIROIRS = [
-    { zone: 'bas', cx: 33.6, cy: 86.7, cw: 29.0, ch: 11.0 },
-    { zone: 'bas', cx: 65.8, cy: 86.7, cw: 29.0, ch: 11.0 }
-  ];
-  var PORTES = [
-    { zone: 'haut', dy: 9.184,  dh: 28.124 },
-    { zone: 'bas',  dy: 54.694, dh: 38.352 }
-  ];
-  var PORTE_X_G = 18.558, PORTE_W = 31.277, PORTE_X_D = 49.835;
+  // Le BAS de chaque case tombe sur le DESSUS de sa planche — planche-N.box.y
+  // du kit, JAMAIS un y recopié à la main : sinon case et étagère divergent
+  // au moindre ajustement du kit (L-138).
+  function buildRows(kit) {
+    var P = kit.pieces;
+    return ROWS_ZONE.map(function (zone, i) {
+      var planche = P['planche-' + (i + 1)];
+      var ch = ROWS_H[i];
+      return { zone: zone, cy: planche.box.y - ch / 2, ch: ch };
+    });
+  }
+
   var SPOTS = [{ x: 31.0, y: 10.5 }, { x: 63.5, y: 10.5 }];
+
+  // ── Le globe tourne au tap : 11 frames (256 px, ~150 Ko), UN SEUL tour,
+  // jamais en boucle. Servies par le service worker (précache, HO-MJ-16) :
+  // pas de préchargement JS ici, ça alourdirait le premier affichage pour un
+  // objet qu'on ne touche pas forcément. Idle : léger flottement CSS
+  // (#vit-monde .obj dans armoire.css) — jamais un tour automatique (le
+  // dépôt de Papa Yann le dit lui-même : « évite que l'armoire entière
+  // bouge »). prefers-reduced-motion : le tour est sauté, la navigation
+  // suit tout de suite.
+  var GLOBE_N = 11;
+  var GLOBE_FRAMES = [];
+  for (var _gi = 1; _gi <= GLOBE_N; _gi++) {
+    GLOBE_FRAMES.push(IMG + 'globe-' + (_gi < 10 ? '0' + _gi : _gi) + '.webp');
+  }
+  function reducedMotion() {
+    try { return !!(global.matchMedia && global.matchMedia('(prefers-reduced-motion: reduce)').matches); }
+    catch (e) { return false; }
+  }
+  function playGlobeTour(imgEl, done) {
+    if (reducedMotion() || !imgEl) { done(); return; }
+    var original = imgEl.getAttribute('src'), i = 0;
+    var iv = setInterval(function () {
+      if (i >= GLOBE_FRAMES.length) {
+        clearInterval(iv);
+        imgEl.setAttribute('src', original);
+        done();
+        return;
+      }
+      imgEl.setAttribute('src', GLOBE_FRAMES[i]);
+      i++;
+    }, 1000 / 9);
+  }
 
   // ── Pool de tirage : TOUJOURS catalogVisible(), jamais le brut ──────
   function pool() { return (global.catalogVisible ? global.catalogVisible() : []) || []; }
@@ -166,13 +191,18 @@
     return b;
   }
 
+  // ── Décor : le MEUBLE vient du kit (ArmoireMeuble), les CASES de jeu
+  // sont posées par-dessus, calées sur ses planches. ─────────────────────
   function buildDecor(root, slots) {
-    // 1. la carcasse
-    var shell = document.createElement('img');
-    shell.className = 'cab-shell';
-    shell.src = KIT + 'shell.webp';
-    shell.alt = '';
-    root.appendChild(shell);
+    var kit = global.ARMOIRE_KIT;
+    if (!global.ArmoireMeuble || !kit) {
+      throw new Error('armoire.js : ArmoireMeuble / ARMOIRE_KIT non chargés (vérifier l\'ordre des <script> dans index.html)');
+    }
+    var ROWS = buildRows(kit);
+
+    // 1. le meuble : carcasse, planches, montants, 2 tiroirs, 4 vantaux —
+    //    posés fermés (ArmoireMeuble.build ferme les deux zones lui-même).
+    global.ArmoireMeuble.build(root);
 
     // 2. le halo des deux spots (dégradé CSS, pas d'image)
     SPOTS.forEach(function (s) {
@@ -216,37 +246,15 @@
       });
     });
 
-    // 4. les deux tiroirs. Ils SONT les boutons : la poignée dessinée dans la
-    //    carcasse dit déjà « ouvre-moi ». Aucune icône flottante par-dessus —
-    //    c'est ce qui alourdissait le bas du meuble.
-    [
-      { id: 'hdr-padidi', label: 'Mon album de photos' },
-      { id: 'tiroir-encore', label: 'Encore d\'autres jeux' }
-    ].forEach(function (t, i) {
-      var btn = makeSlot('tiroir', t.id, t.label);
-      btn.dataset.zone = TIROIRS[i].zone;
-      place(btn, TIROIRS[i].cx, TIROIRS[i].cy, TIROIRS[i].cw, TIROIRS[i].ch);
-      root.appendChild(btn);
-    });
+    // 4. les deux tiroirs du kit sont RÉUTILISÉS (poignée + façade déjà
+    //    posées par ArmoireMeuble.build) : on leur donne un id et un
+    //    comportement, jamais une icône flottante en plus.
+    var tiroirG = root.querySelector('.am-tiroir.tiroir-g');
+    var tiroirD = root.querySelector('.am-tiroir.tiroir-d');
+    if (tiroirG) { tiroirG.id = 'hdr-padidi'; tiroirG.setAttribute('aria-label', 'Mon album de photos'); }
+    if (tiroirD) { tiroirD.id = 'tiroir-encore'; tiroirD.setAttribute('aria-label', 'Encore d\'autres jeux'); }
 
-    // 5. les quatre vantaux. Le sprite de droite est celui de gauche en
-    //    miroir : c'est le WRAPPER qui tourne, jamais le sprite miroité.
-    PORTES.forEach(function (p) {
-      [['porte-g', PORTE_X_G, 'Ouvrir'], ['porte-d', PORTE_X_D, 'Ouvrir']].forEach(function (side) {
-        var btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'porte porte-' + p.zone + ' ' + side[0];
-        btn.dataset.zone = p.zone;
-        btn.style.setProperty('--dx', side[1] + '%');
-        btn.style.setProperty('--dy', p.dy + '%');
-        btn.style.setProperty('--dw', PORTE_W + '%');
-        btn.style.setProperty('--dh', p.dh + '%');
-        btn.innerHTML = '<span class="porte-feuille" aria-hidden="true"></span>';
-        root.appendChild(btn);
-      });
-    });
-
-    // 6. le prénom, gravé sur l'arche
+    // 5. le prénom, gravé sur l'arche
     var nom = document.createElement('div');
     nom.className = 'player-name';
     nom.id = 'profil-pseudo';
@@ -254,21 +262,14 @@
     root.appendChild(nom);
   }
 
-  // ── Ouverture / fermeture d'une zone ────────────────────────────────
-  // Les cases d'une zone fermée sont réellement masquées (visibility), donc
-  // ni cliquables ni annoncées : la porte est devant, on ne triche pas.
+  // ── Ouverture / fermeture des CASES d'une zone. Le meuble lui-même
+  // (vantaux, tiroirs) est géré par ArmoireMeuble.setZone/toggle — on ne le
+  // refait pas ici, on synchronise juste ce qu'on a posé par-dessus. ──────
   var _closeT = {};
 
-  function setZone(root, zone, open, immediat) {
-    var cls = 'ouvert-' + zone;
-    root.classList.toggle(cls, open);
-    root.querySelectorAll('.porte[data-zone="' + zone + '"]').forEach(function (p) {
-      p.setAttribute('aria-expanded', open ? 'true' : 'false');
-      p.setAttribute('aria-label', (open ? 'Fermer' : 'Ouvrir') +
-        (zone === 'haut' ? ' le haut de l\'armoire' : ' le bas de l\'armoire'));
-    });
+  function setCasesVisible(root, zone, open, immediat) {
     var cases = root.querySelectorAll(
-      '.casier[data-zone="' + zone + '"], .objet[data-zone="' + zone + '"], .tiroir[data-zone="' + zone + '"]');
+      '.casier[data-zone="' + zone + '"], .objet[data-zone="' + zone + '"]');
     clearTimeout(_closeT[zone]);
     if (open) {
       cases.forEach(function (c) { c.classList.remove('zone-cachee'); });
@@ -282,27 +283,50 @@
     }
   }
 
+  // ArmoireMeuble pose son propre listener délégué sur `root` PENDANT
+  // build() (plus tôt), donc quand ce listener-ci s'exécute (même cible,
+  // même phase de bulle), la porte a déjà tourné et root.classList reflète
+  // le NOUVEL état — on n'a plus qu'à synchroniser les cases dessus.
   function wireDoors(root) {
     root.addEventListener('click', function (ev) {
-      var porte = ev.target.closest('.porte');
+      var porte = ev.target.closest('.am-porte, .am-ouverte');
       if (!porte) return;
       var zone = porte.dataset.zone;
-      setZone(root, zone, !root.classList.contains('ouvert-' + zone));
+      setCasesVisible(root, zone, root.classList.contains('am-ouvert-' + zone));
     });
   }
 
-  // ── Câblage des cases ───────────────────────────────────────────────
+  // ── Câblage des cases fixes (Dinos/Monde/Œufs) ──────────────────────
   function wireFixes(root) {
     var dinos = $('vit-dinos');
     if (dinos) dinos.addEventListener('click', function () { if (global.MUR && MUR.openEncyclo) MUR.openEncyclo(); });
     var monde = $('vit-monde');
-    if (monde) monde.addEventListener('click', function () { if (global.MUR && MUR.openEncyclo) MUR.openEncyclo(); });
+    if (monde) {
+      var globeBusy = false;
+      monde.addEventListener('click', function () {
+        if (globeBusy) return;
+        globeBusy = true;
+        playGlobeTour(monde.querySelector('.obj'), function () {
+          globeBusy = false;
+          if (global.MUR && MUR.openEncyclo) MUR.openEncyclo();
+        });
+      });
+    }
     var oeufs = $('hdr-oeufs');
     if (oeufs) oeufs.addEventListener('click', function () { if (global.NidUI && NidUI.openChambre) NidUI.openChambre(); });
-    var padidi = $('hdr-padidi');
-    if (padidi) padidi.addEventListener('click', function () { if (global.NidUI && NidUI.openPadidi) NidUI.openPadidi(); });
-    var encore = $('tiroir-encore');
-    if (encore) encore.addEventListener('click', function () { retirerLesJeux(root); });
+  }
+
+  // Les 2 tiroirs du kit : leur poignée gère déjà l'effet visuel « tiré »
+  // (listener délégué posé par ArmoireMeuble PENDANT build(), donc plus tôt
+  // que celui-ci). Ce listener-ci s'exécute ensuite et ajoute juste la
+  // navigation par-dessus l'animation.
+  function wireTiroirs(root) {
+    root.addEventListener('click', function (ev) {
+      var t = ev.target.closest('.am-tiroir');
+      if (!t) return;
+      if (t.id === 'hdr-padidi') { if (global.NidUI && NidUI.openPadidi) NidUI.openPadidi(); }
+      else if (t.id === 'tiroir-encore') { retirerLesJeux(root); }
+    });
   }
 
   // Tiroir de droite : « encore ». On retire au sort douze nouveaux jeux et
@@ -364,14 +388,16 @@
       buildDecor(root, _slots);
       wireDoors(root);
       wireFixes(root);
+      wireTiroirs(root);
       wireCasiers(root);
 
-      // Portes FERMÉES à l'arrivée, et elles le restent : c'est l'enfant qui
-      // ouvre. Les ouvrir tout seul après une demi-seconde (passe 1) tuait
-      // l'idée même du meuble — on découvre ce qu'il y a dedans en le
-      // touchant, on ne regarde pas une armoire se déballer.
-      setZone(root, 'haut', false, true);
-      setZone(root, 'bas', false, true);
+      // Cases FERMÉES à l'arrivée, comme les vantaux (déjà fermés par
+      // ArmoireMeuble.build) : c'est l'enfant qui ouvre. Les ouvrir tout
+      // seul après une demi-seconde tuait l'idée même du meuble — on
+      // découvre ce qu'il y a dedans en le touchant, on ne regarde pas une
+      // armoire se déballer.
+      setCasesVisible(root, 'haut', false, true);
+      setCasesVisible(root, 'bas', false, true);
     }
     refresh();
   }

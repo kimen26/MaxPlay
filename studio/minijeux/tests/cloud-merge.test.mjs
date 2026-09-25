@@ -73,9 +73,9 @@ console.log('\n── FIX #4 : _merge somme les compteurs (plus de max-pick dest
 console.log('\n── FIX #4b : _merge ne double-compte pas les sessions communes ──');
 {
   const shared = { date: '2026-07-01T10:00:00.000Z', correct: 3, questions: 3, score: 10, maxScore: 10 };
-  const A = { version: 1, games: { 'mj-01': { plays: 1, totalQuestions: 3, correctAnswers: 3, totalScore: 10, maxScore: 10, history: [shared] } }, sessions: [] };
-  const B = { version: 1, games: { 'mj-01': { plays: 1, totalQuestions: 3, correctAnswers: 3, totalScore: 10, maxScore: 10, history: [{ ...shared }] } }, sessions: [] };
-  const m = Cloud._merge(A, B).games['mj-01'];
+  const A = { version: 1, games: { 'mj-09': { plays: 1, totalQuestions: 3, correctAnswers: 3, totalScore: 10, maxScore: 10, history: [shared] } }, sessions: [] };
+  const B = { version: 1, games: { 'mj-09': { plays: 1, totalQuestions: 3, correctAnswers: 3, totalScore: 10, maxScore: 10, history: [{ ...shared }] } }, sessions: [] };
+  const m = Cloud._merge(A, B).games['mj-09'];
   check('session partagée comptée une seule fois', m.correctAnswers === 3 && m.plays === 1, 'correct=' + m.correctAnswers + ' plays=' + m.plays);
 }
 

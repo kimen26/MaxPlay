@@ -1566,5 +1566,225 @@
   "voix": {
    "regle-mj-59": "¡Divide el valle: cada piedra debe tener su terreno, justo a su medida!. Miro el número . Cada piedra lleva un número: es el tamaño de su terreno.. Deslizo mi dedo . Parto de una casilla y deslizo hasta otra: aparece un rectángulo.. Apunto a la cuenta correcta . El número de casillas se muestra en grande mientras deslizo.. Suelto . ¡Si es correcto, un pequeño dinosaurio se instala! Si no, se borra suavemente.. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
   }
+ },
+ "compte": {
+  "regle": {
+   "texte": "",
+   "etapes": []
+  },
+  "ui": {
+   "pageTitle": "MaxPlay — Cuenta de padres",
+   "headerTitle": "👨‍👩‍👦 Cuenta de padres",
+   "loginH2": "Crear una cuenta gratis te da:",
+   "benefit1": "<b>Voces reales</b> de los personajes — en vez de la voz robótica",
+   "benefit2": "<b>Progreso guardado</b> — estrellas y desbloqueos en todos tus dispositivos (¡en iPhone, la memoria local puede borrarse!)",
+   "benefit3": "<b>Varios niños</b> — un perfil por niño, cada uno con su progreso",
+   "passwordlessP": "Sin contraseña: te enviamos un enlace mágico por email.",
+   "emailPlaceholder": "tu.email@ejemplo.com",
+   "btnLogin": "Enviarme mi enlace mágico ✉️",
+   "codeZoneP": "¿El enlace no funciona? Escribe el código de 6 cifras del email:",
+   "otpPlaceholder": "123456",
+   "btnCode": "Validar el código",
+   "privacyP": "🔒 Privacidad: los perfiles de niños son solo un apodo, cero datos personales del niño. Medición de audiencia anónima (un identificador aleatorio local, nunca vinculado a la cuenta) — nada se comparte con terceros. <a href=\"confidentialite.html\" style=\"color:#8fb6ff\">Todo lo que registramos, en detalle →</a>",
+   "accountH2": "✅ Conectado",
+   "btnSync": "🔄 Sincronizar ahora",
+   "btnLogout": "Cerrar sesión",
+   "childrenH2": "Perfiles de niños",
+   "childrenP": "Elige el perfil activo — su progreso se sincronizará en este dispositivo.",
+   "newNickPlaceholder": "Apodo del nuevo niño (ej: Lou)",
+   "btnAddChild": "➕ Añadir un perfil",
+   "loadingText": "Cargando…",
+   "legalP": "Cuenta reservada para padres. No recopilamos <b>ningún dato personal del niño</b>: el perfil es solo un apodo elegido por ti, asociado al progreso del juego. Sin publicidad, sin compartir con terceros. Eliminación de la cuenta y los datos a simple solicitud.",
+   "js": {
+    "errNoProfile": "Aún no hay ningún perfil.",
+    "errLoadPrefix": "Error al cargar: ",
+    "errUnknown": "desconocido",
+    "badgeActive": "activo",
+    "errPrefix": "Error: ",
+    "fmtSyncNone": "Aún no sincronizado en este dispositivo.",
+    "fmtSyncPrefix": "Última sincronización: ",
+    "emailInvalid": "Email no válido.",
+    "magicSent": "✉️ ¡Listo! Abre el email y haz clic en el enlace (revisa el spam).",
+    "sendFail": "no se pudo enviar",
+    "codeInvalid": "Código no válido o caducado.",
+    "nickRequired": "Elige un apodo."
+   }
+  }
+ },
+ "suivi": {
+  "regle": {
+   "texte": "",
+   "etapes": []
+  },
+  "ui": {
+   "backMenu": "← Menú",
+   "title": "📊 Progreso",
+   "compteLink": "👨‍👩‍👦 Cuenta",
+   "exportBtn": "⬇ Exportar",
+   "importLabel": "⬆ Importar",
+   "resetBtn": "🗑 Reiniciar",
+   "lectureLink": "📖 Lectura anotada",
+   "vieprivLink": "🔒 Privacidad",
+   "auteurLink": "✍️ Autor",
+   "adminTitle": "🔧 Consola de padres",
+   "adminSub": "Desbloqueo de juegos: ",
+   "adminOn": "🔓 Todo abierto",
+   "adminOff": "🔒 Progresión (estrellas)",
+   "btnUnlockAll": "🔓 Desbloquear todo",
+   "btnProgression": "🔒 Restaurar progresión",
+   "btnResetAll": "♻️ Reiniciar todo",
+   "adminNote": "«Desbloquear todo» abre todos los juegos y dinosaurios de este perfil. «Progresión» reactiva el desbloqueo por estrellas.",
+   "confirmResetAll": "¿Reiniciar todo?\n\nBorra: progreso, estrellas, desbloqueos, idiomas y las rachas mj-20, mj-37.\nSe conserva: los dibujos (galería) y los comentarios.",
+   "alertCloudFail": "Error al borrar en la nube (¿problema de red?). Vuelve a intentarlo conectado.",
+   "emptyTitle": "Todavía no se ha jugado ninguna partida.",
+   "emptySub": "¡Las estadísticas aparecerán aquí después de la primera partida!",
+   "statSessions": "Partidas jugadas",
+   "statGames": "Juegos distintos",
+   "statRate": "Tasa de acierto",
+   "statMastered": "Juegos dominados ⭐",
+   "statTime": "Tiempo de juego",
+   "secGames": "Juegos",
+   "secActivity": "Actividad reciente",
+   "secComments": "💬 Comentarios",
+   "btnCopyComments": "📋 Copiar todo",
+   "btnExportComments": "⬇ Exportar",
+   "js": {
+    "dateJustNow": "hace unos segundos",
+    "dateMinAgo": "hace {n} min",
+    "dateToday": "hoy",
+    "dateYesterday": "ayer",
+    "badgeMastered": "⭐ Dominado",
+    "badgeEnCours": "📈 En curso",
+    "badgeNouveau": "○ Nuevo",
+    "partieSing": "partida",
+    "partiePlur": "partidas",
+    "reussitePct": "{n}% de acierto",
+    "dernierFois": "Última vez ",
+    "pasEncoreJoue": "Aún no jugado",
+    "aucuneActivite": "No hay actividad registrada.",
+    "confirmResetProgress": "¿Borrar todos los datos de progreso de este perfil?",
+    "fileInvalid": "Archivo no válido.",
+    "confirmResetComments": "¿Borrar todos los comentarios?",
+    "copiedClipboard": "Comentarios copiados al portapapeles.",
+    "copiedFallback": "Comentarios copiados."
+   }
+  }
+ },
+ "confidentialite": {
+  "regle": {
+   "texte": "",
+   "etapes": []
+  },
+  "ui": {
+   "headerTitle": "🔒 Privacidad — con total transparencia",
+   "h2Principle": "El principio",
+   "pPrinciple": "MaxPlay es un juego hecho por un papá para su hijo. Sin anuncios, sin venta de datos, sin rastreadores externos. Todo funciona <b>sin cuenta</b> — la cuenta es opcional y solo añade comodidad (copia en varios dispositivos, voces reales).",
+   "h2NoAccount": "Sin cuenta (por defecto)",
+   "liLocal": "<span class=\"ok\">Solo en la tablet</span>: progreso de los juegos, estrellas, dibujos, ajustes. Nada sale del dispositivo.",
+   "liAudience": "<span class=\"ok\">Medición de audiencia anónima</span>: un identificador aleatorio (generado en el dispositivo, nunca vinculado a una persona) nos dice cada día «un dispositivo abrió el juego». Eso es todo. Nos sirve para saber si 5 o 5.000 familias usan MaxPlay.",
+   "h2WithAccount": "Con una cuenta de padres",
+   "liEmail": "<b>Tu email</b> (padre/madre) — solo para el inicio de sesión con enlace mágico. Sin contraseña.",
+   "liNick": "<b>Un apodo por niño</b> — nunca su nombre real, ni edad, ni foto: <span class=\"no\">cero datos personales del niño</span>.",
+   "liProgress": "<b>El progreso de los juegos</b> — guardado para encontrarlo en todos tus dispositivos.",
+   "liComments": "<b>Tus comentarios</b> — puedes valorar cada juego (botón 💬) o dejar una opinión general: fallos, ideas, lo que le gusta a tu hijo. Solo los vemos tú y nosotros.",
+   "h2Rights": "Tus derechos",
+   "liDelete": "Eliminar la cuenta borra todo (perfiles, progreso, comentarios), al instante.",
+   "liEurope": "Los datos permanecen en Europa (servidores en Irlanda, Unión Europea).",
+   "liQuestion": "¿Alguna pregunta? El botón 💬 nos llega directamente.",
+   "muted": "Última actualización: 12 de julio de 2026."
+  }
+ },
+ "offline": {
+  "regle": {
+   "texte": "",
+   "etapes": []
+  },
+  "ui": {
+   "pageTitle": "MaxPlay — Sin conexión",
+   "title": "Sin conexión por ahora",
+   "desc": "Esta página aún no se ha visitado sin conexión. El menú y los juegos ya abiertos sí funcionan sin red.",
+   "btnBack": "Volver al menú"
+  }
+ },
+ "auteur": {
+  "regle": {
+   "texte": "",
+   "etapes": []
+  },
+  "ui": {
+   "headerTitle": "✍️ Espacio del autor",
+   "lockedMsg": "Reservado para el autor. Inicia sesión con la cuenta de autor desde <a href=\"compte.html\" style=\"color:#8fb6ff\">Cuenta</a>.",
+   "h2Audience": "📈 Audiencia (dispositivos únicos)",
+   "lblToday": "hoy",
+   "lblMonth": "30 días",
+   "lblLogged": "conectados (30 d)",
+   "h2Annotations": "📝 Anotaciones y comentarios",
+   "filterAll": "Todo",
+   "filterLecture": "📖 Lectura",
+   "filterComment": "💬 Juegos",
+   "filterReview": "🆕 Revisión",
+   "loadingMsg": "Cargando…",
+   "js": {
+    "noneHere": "Nada por aquí todavía.",
+    "srcLecture": "📖 lectura",
+    "srcDuel": "⚔️ duelo",
+    "srcComment": "💬 juego",
+    "srcReview": "🆕 revisión",
+    "badgeTraite": "✅ resuelto",
+    "badgeEcarte": "⏸ descartado",
+    "badgeNouveau": "🕐 nuevo"
+   }
+  }
+ },
+ "avatar-atelier": {
+  "regle": {
+   "texte": "",
+   "etapes": []
+  },
+  "ui": {
+   "pageTitle": "MaxPlay — Taller de avatar",
+   "headerTitle": "¡Viste a tu dinosaurio!",
+   "ariaChangeDino": "Cambiar de dinosaurio",
+   "hintChangeDino": "👆 toca tu dinosaurio para elegir otro",
+   "tabDino": "🦕 Mi dinosaurio",
+   "tabAmbiance": "🌈 Mi ambiente",
+   "nuancierTitle": "¿Tu color?",
+   "retoucheTitle": "Cambia ESTE color:",
+   "closeBtn": "✕ cerrar",
+   "flowerCaption": "la flor: vivo en el borde, suave en el centro · marrones/grises abajo",
+   "validateBtn": "¡Es él! ✓",
+   "ambNuit": "Noche",
+   "ambJungle": "Selva",
+   "ambVille": "Ciudad",
+   "ambEspace": "Espacio",
+   "ambArcade": "Arcade",
+   "ambMusee": "Museo"
+  }
+ },
+ "_cloud": {
+  "regle": {
+   "texte": "",
+   "etapes": []
+  },
+  "ui": {
+   "sdkUnavailable": "SDK de Supabase no disponible (¿sin conexión?)",
+   "unknownProfile": "Perfil desconocido"
+  }
+ },
+ "_collection": {
+  "regle": {
+   "texte": "",
+   "etapes": []
+  },
+  "ui": {
+   "acc": {
+    "paille": "un poco de paja",
+    "couverture": "una manta",
+    "bonnet": "un gorro",
+    "echarpe": "una bufanda",
+    "etoile": "una superestrella",
+    "etoile2": "una estrella"
+   }
+  }
  }
 }

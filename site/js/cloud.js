@@ -47,6 +47,14 @@
   let _listeners = [];
   let _lastSync = null;
 
+  // REC-C5 (recette 2026-09-19) : ces 2 messages remontent tels quels dans
+  // compte.html via e.message — traduits ici (page transverse) via MJi18n si
+  // présent. cloud.js est chargé sur des pages sans mj-i18n.js (mj-shell le
+  // charge déjà pour les MJ) : repli FR silencieux si absent.
+  function _tr(key, fr) {
+    try { return (global.MJi18n) ? global.MJi18n.t('_cloud', key, fr) : fr; } catch (e) { return fr; }
+  }
+
   // ── SDK chargé à la demande (pas de dépendance CDN en mode dégradé) ────
   function _loadSdk() {
     return new Promise((resolve, reject) => {
@@ -54,7 +62,7 @@
       const s = document.createElement('script');
       s.src = SDK_URL;
       s.onload = () => resolve();
-      s.onerror = () => reject(new Error('SDK Supabase inaccessible (offline ?)'));
+      s.onerror = () => reject(new Error(_tr('sdkUnavailable', 'SDK Supabase inaccessible (offline ?)')));
       document.head.appendChild(s);
     });
   }
@@ -189,7 +197,7 @@
   async function setActiveChild(id) {
     const children = await listChildren();
     const child = children.find(ch => ch.id === id);
-    if (!child) throw new Error('Profil inconnu');
+    if (!child) throw new Error(_tr('unknownProfile', 'Profil inconnu'));
     localStorage.setItem(CHILD_KEY, JSON.stringify({ id: child.id, nickname: child.nickname }));
     await syncNow();
     _emit();

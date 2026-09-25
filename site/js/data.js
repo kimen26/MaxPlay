@@ -138,10 +138,15 @@ const PERSONNAGES = ['🧑', '👦', '👧', '👴', '👵', '🧙', '🏴‍☠
 // ─── TTS : nom lisible d'une ligne ───
 // Règles : M7 → "Métro 7", T9 → "Tram 9", N15 → "Noctilien 15",
 //          V6/V7 → "Valouette V6/V7", TVM → "TVM", bus → "Bus 162"
+// REC-C5 (recette 2026-09-19) : seul "Métro" est un mot commun traduisible
+// (→ "Metro" en EN, sans accent). "Bus"/"Tram"/"RER"/"TVM" sont identiques
+// en anglais. "Noctilien" (marque RATP) et "Valouette" (marque Villejuif)
+// sont des noms propres, jamais traduits.
 function getLineDisplayName(num) {
+  var motMetro = (window.Lang && Lang.current() === 'en') ? 'Metro' : 'Métro';
   if (num === 'TVM') return 'TVM';
   if (num.startsWith('RER ')) return 'RER ' + num.substring(4);
-  if (num.startsWith('M') && /^\d/.test(num.substring(1))) return 'Métro ' + num.substring(1);
+  if (num.startsWith('M') && /^\d/.test(num.substring(1))) return motMetro + ' ' + num.substring(1);
   if (num.startsWith('T') && /^\d/.test(num.substring(1))) return 'Tram ' + num.substring(1);
   if (num.startsWith('N') && /^\d/.test(num.substring(1))) return 'Noctilien ' + num.substring(1);
   if (num.startsWith('V')) return 'Valouette ' + num;

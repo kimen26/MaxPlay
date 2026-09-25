@@ -206,8 +206,18 @@
     for (var i = 0; i < _familles.length; i++) if (_familles[i].id === id) return _familles[i];
     return null;
   }
+  // REC-C5 (recette 2026-09-19) : le nom de l'accessoire gagné restait en FR
+  // à l'écran de fin en EN (grant.accessoire.nom). Traduit ici, à la LECTURE
+  // (jamais à la définition de _accessoires) — les ids stockés en sauvegarde
+  // ne bougent pas, seule la copie renvoyée porte le nom traduit.
+  function _trAcc(item) {
+    if (!item) return item;
+    var nom = item.nom;
+    try { if (global.MJi18n) nom = global.MJi18n.t('_collection', 'acc.' + item.id, item.nom); } catch (e) {}
+    return (nom === item.nom) ? item : Object.assign({}, item, { nom: nom });
+  }
   function accessoireInfo(id) {
-    for (var i = 0; i < _accessoires.length; i++) if (_accessoires[i].id === id) return _accessoires[i];
+    for (var i = 0; i < _accessoires.length; i++) if (_accessoires[i].id === id) return _trAcc(_accessoires[i]);
     return null;
   }
 
@@ -332,7 +342,7 @@
     s.sac.push(acc.id);
     if (!save(s)) { var la = load(); return { granted: false, type: null, saveFailed: true, count: la.eggs.length, golden: _goldenCount(la), justGolden: false }; }
     return {
-      granted: true, type: 'accessoire', accessoire: acc,
+      granted: true, type: 'accessoire', accessoire: _trAcc(acc),
       golden: _goldenCount(s), justGolden: false,
       count: s.eggs.length, sacCount: s.sac.length,
     };

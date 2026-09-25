@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>MaxPlay — Vie privée</title>
+  <script src="js/lang.js"></script>
+  <script src="js/mj-i18n.js"></script>
+  <script>
+    // REC-C5 (recette 2026-09-19) : page transverse jamais traduite en EN.
+    if (window.Lang && Lang.current() !== 'fr') {
+      document.write('<scr' + 'ipt src="js/i18n/mj-strings.' + Lang.current() + '.js"></scr' + 'ipt>');
+    }
+  </script>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
     body { background:#1a1a2e; font-family:'Nunito',system-ui,sans-serif; color:#fff; min-height:100dvh; }
@@ -40,22 +48,22 @@
 
   <div class="hdr">
     <a href="suivi.html">&#8592;</a>
-    <span class="htitle">🔒 Vie privée — en toute transparence</span>
+    <span class="htitle" id="t-headerTitle">🔒 Vie privée — en toute transparence</span>
   </div>
 
   <div class="card">
-    <h2>Le principe</h2>
-    MaxPlay est un jeu fait par un papa pour son fils. Pas de pub, pas de vente de données,
+    <h2 id="t-h2Principle">Le principe</h2>
+    <span id="t-pPrinciple">MaxPlay est un jeu fait par un papa pour son fils. Pas de pub, pas de vente de données,
     pas de traqueurs tiers. Tout fonctionne <b>sans compte</b> — le compte est optionnel et
-    n'apporte que du confort (sauvegarde multi-appareils, vraies voix).
+    n'apporte que du confort (sauvegarde multi-appareils, vraies voix).</span>
   </div>
 
   <div class="card">
-    <h2>Sans compte (par défaut)</h2>
+    <h2 id="t-h2NoAccount">Sans compte (par défaut)</h2>
     <ul>
-      <li><span class="ok">Sur la tablette uniquement</span> : progression des jeux, étoiles,
+      <li id="t-liLocal"><span class="ok">Sur la tablette uniquement</span> : progression des jeux, étoiles,
         dessins, réglages. Rien ne quitte l'appareil.</li>
-      <li><span class="ok">Mesure d'audience anonyme</span> : un identifiant aléatoire
+      <li id="t-liAudience"><span class="ok">Mesure d'audience anonyme</span> : un identifiant aléatoire
         (généré sur l'appareil, jamais relié à une personne) nous dit chaque jour
         « un appareil a ouvert le jeu ». C'est tout. Ça nous sert à savoir si 5 ou
         5&nbsp;000 familles utilisent MaxPlay.</li>
@@ -63,28 +71,42 @@
   </div>
 
   <div class="card">
-    <h2>Avec un compte parent</h2>
+    <h2 id="t-h2WithAccount">Avec un compte parent</h2>
     <ul>
-      <li><b>Votre email</b> (parent) — uniquement pour la connexion par lien magique. Pas de mot de passe.</li>
-      <li><b>Un surnom par enfant</b> — jamais son vrai nom, ni âge, ni photo :
+      <li id="t-liEmail"><b>Votre email</b> (parent) — uniquement pour la connexion par lien magique. Pas de mot de passe.</li>
+      <li id="t-liNick"><b>Un surnom par enfant</b> — jamais son vrai nom, ni âge, ni photo :
         <span class="no">zéro donnée personnelle enfant</span>.</li>
-      <li><b>La progression des jeux</b> — sauvegardée pour la retrouver sur tous vos appareils.</li>
-      <li><b>Vos commentaires</b> — vous pouvez noter un avis sur chaque jeu (bouton 💬)
+      <li id="t-liProgress"><b>La progression des jeux</b> — sauvegardée pour la retrouver sur tous vos appareils.</li>
+      <li id="t-liComments"><b>Vos commentaires</b> — vous pouvez noter un avis sur chaque jeu (bouton 💬)
         ou un retour général : bugs, idées, ce qui plaît à votre enfant. Ils ne sont
         visibles que par vous et par nous.</li>
     </ul>
   </div>
 
   <div class="card">
-    <h2>Vos droits</h2>
+    <h2 id="t-h2Rights">Vos droits</h2>
     <ul>
-      <li>Supprimer le compte = tout s'efface (profils, progression, commentaires), immédiatement.</li>
-      <li>Les données restent en Europe (serveurs en Irlande, Union européenne).</li>
-      <li>Une question ? Le bouton 💬 nous parvient directement.</li>
+      <li id="t-liDelete">Supprimer le compte = tout s'efface (profils, progression, commentaires), immédiatement.</li>
+      <li id="t-liEurope">Les données restent en Europe (serveurs en Irlande, Union européenne).</li>
+      <li id="t-liQuestion">Une question ? Le bouton 💬 nous parvient directement.</li>
     </ul>
-    <div class="muted">Dernière mise à jour : 12 juillet 2026.</div>
+    <div class="muted" id="t-muted">Dernière mise à jour : 12 juillet 2026.</div>
   </div>
 
 </div>
+<script>
+(function () {
+  // REC-C5 : traduction des textes statiques (FR canon dans le HTML).
+  if (!window.Lang || Lang.current() === 'fr') return;
+  function T(key, fr) { return (window.MJi18n) ? MJi18n.t('confidentialite', key, fr) : fr; }
+  ['t-headerTitle','t-h2Principle','t-pPrinciple','t-h2NoAccount','t-liLocal','t-liAudience',
+   't-h2WithAccount','t-liEmail','t-liNick','t-liProgress','t-liComments','t-h2Rights',
+   't-liDelete','t-liEurope','t-liQuestion','t-muted'
+  ].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.innerHTML = T(id.slice(2), el.innerHTML);
+  });
+})();
+</script>
 </body>
 </html>

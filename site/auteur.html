@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>MaxPlay — Espace auteur</title>
+  <script src="js/lang.js"></script>
+  <script src="js/mj-i18n.js"></script>
+  <script>
+    // REC-C5 (recette 2026-09-19) : page transverse jamais traduite en EN.
+    if (window.Lang && Lang.current() !== 'fr') {
+      document.write('<scr' + 'ipt src="js/i18n/mj-strings.' + Lang.current() + '.js"></scr' + 'ipt>');
+    }
+  </script>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
     body { background:#1a1a2e; font-family:'Nunito',system-ui,sans-serif; color:#fff; min-height:100dvh; }
@@ -49,7 +57,7 @@
 
   <div class="hdr">
     <a href="suivi.html">&#8592;</a>
-    <span class="htitle">✍️ Espace auteur</span>
+    <span class="htitle" id="t-headerTitle">✍️ Espace auteur</span>
   </div>
 
   <div id="locked" class="msg">Réservé à l'auteur. Connecte-toi avec le compte auteur via
@@ -57,28 +65,42 @@
 
   <div id="content" style="display:none">
     <div class="card">
-      <h2>📈 Audience (appareils uniques)</h2>
+      <h2 id="t-h2Audience">📈 Audience (appareils uniques)</h2>
       <div class="stats">
-        <div class="stat"><div class="val" id="st-today">–</div><div class="lbl">aujourd'hui</div></div>
-        <div class="stat"><div class="val" id="st-month">–</div><div class="lbl">30 jours</div></div>
-        <div class="stat"><div class="val" id="st-logged">–</div><div class="lbl">dont connectés (30 j)</div></div>
+        <div class="stat"><div class="val" id="st-today">–</div><div class="lbl" id="t-lblToday">aujourd'hui</div></div>
+        <div class="stat"><div class="val" id="st-month">–</div><div class="lbl" id="t-lblMonth">30 jours</div></div>
+        <div class="stat"><div class="val" id="st-logged">–</div><div class="lbl" id="t-lblLogged">dont connectés (30 j)</div></div>
       </div>
     </div>
 
     <div class="card">
-      <h2>📝 Annotations &amp; retours</h2>
+      <h2 id="t-h2Annotations">📝 Annotations &amp; retours</h2>
       <div class="filters" id="filters">
-        <button data-src="" class="on">Tout</button>
-        <button data-src="lecture">📖 Lecture</button>
-        <button data-src="comment">💬 Jeux</button>
-        <button data-src="review">🆕 Revue</button>
+        <button data-src="" class="on" id="t-filterAll">Tout</button>
+        <button data-src="lecture" id="t-filterLecture">📖 Lecture</button>
+        <button data-src="comment" id="t-filterComment">💬 Jeux</button>
+        <button data-src="review" id="t-filterReview">🆕 Revue</button>
       </div>
-      <div id="list"><div class="msg">Chargement…</div></div>
+      <div id="list"><div class="msg" id="t-loadingMsg">Chargement…</div></div>
     </div>
   </div>
 
 </div>
 
+<script>
+(function () {
+  // REC-C5 : traduction des textes statiques (FR canon dans le HTML).
+  if (!window.Lang || Lang.current() === 'fr') return;
+  function T(key, fr) { return (window.MJi18n) ? MJi18n.t('auteur', key, fr) : fr; }
+  ['t-headerTitle','t-h2Audience','t-lblToday','t-lblMonth','t-lblLogged','t-h2Annotations',
+   't-filterAll','t-filterLecture','t-filterComment','t-filterReview','t-loadingMsg'
+  ].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.innerHTML = T(id.slice(2), el.innerHTML);
+  });
+  document.getElementById('locked').innerHTML = T('lockedMsg', document.getElementById('locked').innerHTML);
+})();
+</script>
 <script>
 (async function () {
   const SUPABASE_URL = 'https://bfrugwrzpefsaehsvypt.supabase.co';
@@ -131,23 +153,28 @@
     all = rows || [];
   } catch (e) {}
 
-  const SRC_LABEL = { lecture: '📖 lecture', duel: '⚔️ duel', comment: '💬 jeu', review: '🆕 revue' };
+  function T(key, fr) { return (window.MJi18n) ? MJi18n.t('auteur', key, fr) : fr; }
+  const SRC_LABEL = {
+    lecture: T('js.srcLecture', '📖 lecture'), duel: T('js.srcDuel', '⚔️ duel'),
+    comment: T('js.srcComment', '💬 jeu'), review: T('js.srcReview', '🆕 revue'),
+  };
   function esc(s) { return String(s).replace(/[&<>]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[ch])); }
 
   function renderList(src) {
     const list = document.getElementById('list');
     const items = src ? all.filter(a => a.source === src) : all;
-    if (!items.length) { list.innerHTML = '<div class="msg">Rien ici pour l\'instant.</div>'; return; }
+    if (!items.length) { list.innerHTML = '<div class="msg">' + T('js.noneHere', 'Rien ici pour l\'instant.') + '</div>'; return; }
+    const locale = window.Lang ? Lang.bcp47() : 'fr-FR';
     list.innerHTML = items.map(a => {
       const d = new Date(a.created_at);
-      const dateStr = d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' }) + ' ' +
-                      d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+      const dateStr = d.toLocaleDateString(locale, { day: 'numeric', month: 'short' }) + ' ' +
+                      d.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' });
       let body = a.text;
       // Payloads duel/lecture = JSON → affichage indenté lisible
       if (a.source === 'duel' || a.source === 'lecture') {
         try { body = JSON.stringify(JSON.parse(a.text), null, 1); } catch (e) {}
       }
-      const badge = a.status === 'traite' ? '✅ traité' : a.status === 'ecarte' ? '⏸ écarté' : '🕐 nouveau';
+      const badge = a.status === 'traite' ? T('js.badgeTraite', '✅ traité') : a.status === 'ecarte' ? T('js.badgeEcarte', '⏸ écarté') : T('js.badgeNouveau', '🕐 nouveau');
       const reso = (a.status !== 'nouveau' && a.resolution)
         ? '<div style="font-size:0.8rem;color:#7ee2a8;margin-top:4px;">↳ ' + esc(a.resolution) + '</div>' : '';
       return '<div class="ann"><div class="top"><span class="src">' + (SRC_LABEL[a.source] || a.source) +

@@ -4,6 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>MaxPlay — Compte parent</title>
+  <script src="js/lang.js"></script>
+  <script src="js/mj-i18n.js"></script>
+  <script>
+    // REC-C5 (recette 2026-09-19) : page transverse jamais traduite en EN.
+    // Même chargement que mj-shell.js (js/lang.js -> js/mj-i18n.js -> pack) mais
+    // en document.write direct : cette page n'utilise pas mj-shell.
+    if (window.Lang && Lang.current() !== 'fr') {
+      document.write('<scr' + 'ipt src="js/i18n/mj-strings.' + Lang.current() + '.js"></scr' + 'ipt>');
+    }
+  </script>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
     body { background:#1a1a2e; font-family:'Fredoka One','Segoe UI',sans-serif; color:#fff; min-height:100dvh; }
@@ -60,29 +70,29 @@
 
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">👨‍👩‍👦 Compte parent</span>
+    <span class="htitle" id="t-headerTitle">👨‍👩‍👦 Compte parent</span>
   </div>
 
   <!-- ── Vue déconnectée ─────────────────────────────────────────────── -->
   <div id="view-login" class="hidden">
     <div class="card">
-      <h2>Créer un compte gratuit, c'est :</h2>
-      <div class="benefit">🎙️ <span><b>Les vraies voix</b> des personnages — au lieu de la voix robot de synthèse</span></div>
-      <div class="benefit">⭐ <span><b>La progression sauvegardée</b> — étoiles et déblocages gardés sur tous les appareils (sur iPhone, la mémoire locale peut s'effacer !)</span></div>
-      <div class="benefit">👧👦 <span><b>Plusieurs enfants</b> — un profil par enfant, chacun sa progression</span></div>
-      <p style="margin-top:10px">Pas de mot de passe : on t'envoie un lien magique par email.</p>
+      <h2 id="t-loginH2">Créer un compte gratuit, c'est :</h2>
+      <div class="benefit">🎙️ <span id="t-benefit1"><b>Les vraies voix</b> des personnages — au lieu de la voix robot de synthèse</span></div>
+      <div class="benefit">⭐ <span id="t-benefit2"><b>La progression sauvegardée</b> — étoiles et déblocages gardés sur tous les appareils (sur iPhone, la mémoire locale peut s'effacer !)</span></div>
+      <div class="benefit">👧👦 <span id="t-benefit3"><b>Plusieurs enfants</b> — un profil par enfant, chacun sa progression</span></div>
+      <p id="t-passwordlessP" style="margin-top:10px">Pas de mot de passe : on t'envoie un lien magique par email.</p>
       <input type="email" id="email" placeholder="ton.email@exemple.fr" autocomplete="email">
       <button id="btn-login">Recevoir mon lien magique ✉️</button>
       <div id="login-msg" class="msg"></div>
       <!-- Saisie du code : indispensable quand le lien s'ouvre dans un autre
            navigateur que l'app (PWA installée sur iPhone notamment) -->
       <div id="code-zone" class="hidden" style="margin-top:14px">
-        <p>Le lien ne marche pas ? Tape le code à 6 chiffres de l'email :</p>
+        <p id="t-codeZoneP">Le lien ne marche pas ? Tape le code à 6 chiffres de l'email :</p>
         <input type="text" id="otp-code" inputmode="numeric" maxlength="6" placeholder="123456" autocomplete="one-time-code">
         <button class="secondary" id="btn-code">Valider le code</button>
       </div>
     </div>
-    <p style="font-size:0.72rem;opacity:0.45;margin-top:10px;">
+    <p id="t-privacyP" style="font-size:0.72rem;opacity:0.45;margin-top:10px;">
       🔒 Vie privée : profils enfants = surnom uniquement, zéro donnée personnelle enfant.
       Mesure d'audience anonyme (un identifiant aléatoire local, jamais relié au compte) — aucune donnée partagée à des tiers.
       <a href="confidentialite.html" style="color:#8fb6ff">Tout ce qu'on enregistre, en détail →</a>
@@ -92,7 +102,7 @@
   <!-- ── Vue connectée ───────────────────────────────────────────────── -->
   <div id="view-account" class="hidden">
     <div class="card">
-      <h2>✅ Connecté</h2>
+      <h2 id="t-accountH2">✅ Connecté</h2>
       <p id="account-email"></p>
       <div class="sync-line" id="sync-status"></div>
       <button class="secondary" id="btn-sync" style="margin-top:12px">🔄 Synchroniser maintenant</button>
@@ -100,8 +110,8 @@
     </div>
 
     <div class="card">
-      <h2>Profils enfants</h2>
-      <p>Choisis le profil actif — sa progression sera synchronisée sur cet appareil.</p>
+      <h2 id="t-childrenH2">Profils enfants</h2>
+      <p id="t-childrenP">Choisis le profil actif — sa progression sera synchronisée sur cet appareil.</p>
       <div id="children"></div>
       <input type="text" id="new-nick" placeholder="Surnom du nouvel enfant (ex : Lou)" maxlength="30">
       <button class="secondary" id="btn-add-child">➕ Ajouter un profil</button>
@@ -109,9 +119,9 @@
     </div>
   </div>
 
-  <div id="view-loading"><div class="card"><p>Chargement…</p></div></div>
+  <div id="view-loading"><div class="card"><p id="t-loadingText">Chargement…</p></div></div>
 
-  <p class="legal">
+  <p class="legal" id="t-legalP">
     Compte réservé aux parents. Nous ne collectons <b>aucune donnée personnelle sur l'enfant</b> :
     le profil est un simple surnom choisi par toi, associé à la progression de jeu.
     Pas de publicité, pas de partage à des tiers. Suppression du compte et des données sur simple demande.
@@ -123,6 +133,28 @@
 <script src="js/cloud.js"></script>
 <script>
 (function () {
+  // REC-C5 : traduction des textes statiques (FR reste le canon dans le HTML,
+  // MJi18n.t retombe dessus si le pack ne couvre pas la clé — HO-MJ-02).
+  var PAGE = 'compte';
+  function T(key, fr) { return (window.MJi18n) ? MJi18n.t(PAGE, key, fr) : fr; }
+  if (window.Lang && Lang.current() !== 'fr') {
+    document.title = T('pageTitle', document.title);
+    ['t-headerTitle','t-loginH2','t-benefit1','t-benefit2','t-benefit3','t-passwordlessP',
+     't-codeZoneP','t-privacyP','t-accountH2','t-childrenH2','t-childrenP','t-loadingText','t-legalP'
+    ].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.innerHTML = T(id.slice(2), el.innerHTML);
+    });
+    document.getElementById('btn-login').textContent = T('btnLogin', document.getElementById('btn-login').textContent);
+    document.getElementById('btn-code').textContent = T('btnCode', document.getElementById('btn-code').textContent);
+    document.getElementById('btn-sync').textContent = T('btnSync', document.getElementById('btn-sync').textContent);
+    document.getElementById('btn-logout').textContent = T('btnLogout', document.getElementById('btn-logout').textContent);
+    document.getElementById('btn-add-child').textContent = T('btnAddChild', document.getElementById('btn-add-child').textContent);
+    document.getElementById('email').placeholder = T('emailPlaceholder', document.getElementById('email').placeholder);
+    document.getElementById('otp-code').placeholder = T('otpPlaceholder', document.getElementById('otp-code').placeholder);
+    document.getElementById('new-nick').placeholder = T('newNickPlaceholder', document.getElementById('new-nick').placeholder);
+  }
+
   const $ = id => document.getElementById(id);
   const show = (id) => {
     ['view-login', 'view-account', 'view-loading'].forEach(v => $(v).classList.add('hidden'));
@@ -130,17 +162,17 @@
   };
 
   function fmtSync(iso) {
-    if (!iso) return 'Pas encore synchronisé sur cet appareil.';
-    return 'Dernière synchro : ' + new Date(iso).toLocaleString('fr-FR');
+    if (!iso) return T('js.fmtSyncNone', 'Pas encore synchronisé sur cet appareil.');
+    return T('js.fmtSyncPrefix', 'Dernière synchro : ') + new Date(iso).toLocaleString(window.Lang ? Lang.bcp47() : 'fr-FR');
   }
 
   async function renderChildren() {
     const box = $('children');
-    box.innerHTML = '<p>Chargement…</p>';
+    box.innerHTML = '<p>' + T('loadingText', 'Chargement…') + '</p>';
     try {
       const kids = await Cloud.listChildren();
       const active = Cloud.activeChild();
-      box.innerHTML = kids.length ? '' : '<p>Aucun profil pour l\'instant.</p>';
+      box.innerHTML = kids.length ? '' : '<p>' + T('js.errNoProfile', 'Aucun profil pour l\'instant.') + '</p>';
       kids.forEach(k => {
         const row = document.createElement('div');
         row.className = 'child-row' + (active && active.id === k.id ? ' active' : '');
@@ -151,19 +183,19 @@
         if (active && active.id === k.id) {
           const badge = document.createElement('span');
           badge.className = 'badge';
-          badge.textContent = 'actif';
+          badge.textContent = T('js.badgeActive', 'actif');
           row.appendChild(badge);
         }
         row.onclick = async () => {
           row.style.opacity = 0.5;
           try { await Cloud.setActiveChild(k.id); render(); }
-          catch (e) { $('child-msg').textContent = 'Erreur : ' + e.message; $('child-msg').className = 'msg err'; }
+          catch (e) { $('child-msg').textContent = T('js.errPrefix', 'Erreur : ') + e.message; $('child-msg').className = 'msg err'; }
         };
         box.appendChild(row);
       });
     } catch (e) {
       var errP = document.createElement('p');
-      errP.textContent = 'Erreur de chargement : ' + (e && e.message || 'inconnue');
+      errP.textContent = T('js.errLoadPrefix', 'Erreur de chargement : ') + (e && e.message || T('js.errUnknown', 'inconnue'));
       box.replaceChildren(errP);
     }
   }
@@ -184,16 +216,16 @@
     const email = $('email').value.trim();
     const msg = $('login-msg');
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-      msg.textContent = 'Email invalide.'; msg.className = 'msg err'; return;
+      msg.textContent = T('js.emailInvalid', 'Email invalide.'); msg.className = 'msg err'; return;
     }
     $('btn-login').disabled = true;
     try {
       await Cloud.signIn(email);
-      msg.textContent = '✉️ C\'est parti ! Ouvre l\'email et clique sur le lien (regarde les spams).';
+      msg.textContent = T('js.magicSent', '✉️ C\'est parti ! Ouvre l\'email et clique sur le lien (regarde les spams).');
       msg.className = 'msg ok';
       document.getElementById('code-zone').classList.remove('hidden');
     } catch (e) {
-      msg.textContent = 'Erreur : ' + (e.message || 'envoi impossible');
+      msg.textContent = T('js.errPrefix', 'Erreur : ') + (e.message || T('js.sendFail', 'envoi impossible'));
       msg.className = 'msg err';
       $('btn-login').disabled = false;
     }
@@ -205,7 +237,7 @@
       await Cloud.verifyCode($('email').value, $('otp-code').value);
       render();
     } catch (e) {
-      msg.textContent = 'Code invalide ou expiré.'; msg.className = 'msg err';
+      msg.textContent = T('js.codeInvalid', 'Code invalide ou expiré.'); msg.className = 'msg err';
     }
   };
 
@@ -221,13 +253,13 @@
   $('btn-add-child').onclick = async () => {
     const nick = $('new-nick').value.trim();
     const msg = $('child-msg');
-    if (!nick) { msg.textContent = 'Choisis un surnom.'; msg.className = 'msg err'; return; }
+    if (!nick) { msg.textContent = T('js.nickRequired', 'Choisis un surnom.'); msg.className = 'msg err'; return; }
     try {
       const kid = await Cloud.createChild(nick);
       $('new-nick').value = '';
       await Cloud.setActiveChild(kid.id);
       msg.textContent = ''; render();
-    } catch (e) { msg.textContent = 'Erreur : ' + e.message; msg.className = 'msg err'; }
+    } catch (e) { msg.textContent = T('js.errPrefix', 'Erreur : ') + e.message; msg.className = 'msg err'; }
   };
 
   Cloud.onChange(render);

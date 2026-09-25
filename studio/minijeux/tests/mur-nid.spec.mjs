@@ -126,10 +126,12 @@ try {
   // cliquable/invisible) tant que le vantail bas n'a pas été ouvert. Le
   // sélecteur ancien tapait directement #hdr-padidi sans jamais ouvrir la
   // porte d'abord (timeout Playwright "element is not visible"). Armoire
-  // actuelle : ouvrir .porte[data-zone="bas"] révèle les tiroirs, comme un
+  // actuelle (meuble v8, HO-MJ-22) : ouvrir .am-porte[data-zone="bas"]
+  // révèle les tiroirs (classe .am-cache, gérée par ArmoireMeuble — pas
+  // .zone-cachee, réservée aux cases posées par armoire.js), comme un
   // enfant qui ouvre vraiment la porte du meuble avant d'attraper l'album.
-  await page.click('.porte[data-zone="bas"]');
-  await page.waitForSelector('#hdr-padidi:not(.zone-cachee)', { timeout: 3000 }).catch(() => {});
+  await page.click('.am-porte[data-zone="bas"]');
+  await page.waitForSelector('#hdr-padidi:not(.am-cache)', { timeout: 3000 }).catch(() => {});
   await page.click('#hdr-padidi');
   const padidi = await page.waitForSelector('#padidi-ov', { timeout: 4000 }).then(() => true).catch(() => false);
   ok('tiroir 📷 d\'entête → Padidi s\'ouvre', padidi);

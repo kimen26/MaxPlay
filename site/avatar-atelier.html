@@ -6,6 +6,14 @@
 <title>MaxPlay — Atelier avatar</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/mp-theme.css">
+<script src="js/lang.js"></script>
+<script src="js/mj-i18n.js"></script>
+<script>
+  // REC-C5 (recette 2026-09-19) : page transverse jamais traduite en EN.
+  if (window.Lang && Lang.current() !== 'fr') {
+    document.write('<scr' + 'ipt src="js/i18n/mj-strings.' + Lang.current() + '.js"></scr' + 'ipt>');
+  }
+</script>
 <style>
   .page { max-width:480px; margin:0 auto; min-height:100vh; display:flex; flex-direction:column; }
 
@@ -93,7 +101,7 @@
 
   <div class="mp-header">
     <button class="mp-back" onclick="location.href='index.html'">←</button>
-    <div class="mp-title">Habille ton dino !</div>
+    <div class="mp-title" id="t-headerTitle">Habille ton dino !</div>
     <div class="vestiaire" id="vestiaire"></div>
   </div>
 
@@ -108,7 +116,7 @@
     <div class="big-avatar" id="bigAvatarWrap" role="button" aria-label="Changer de dino"><img id="bigAvatar" alt="ton dino"></div>
     <div class="pastilles" id="pastilles"></div>
   </div>
-  <div class="muted" style="text-align:center; font-size:10.5px; padding-top:4px">👆 tape ton dino pour en choisir un autre</div>
+  <div class="muted" id="t-hintChangeDino" style="text-align:center; font-size:10.5px; padding-top:4px">👆 tape ton dino pour en choisir un autre</div>
 
   <div class="dino-grid" id="dinoStrip"></div>
 
@@ -116,7 +124,7 @@
   <div id="normal" class="show">
     <div class="triplets" id="triplets"></div>
     <div class="nuancier">
-      <div class="t">Ta couleur ?</div>
+      <div class="t" id="t-nuancierTitle">Ta couleur ?</div>
       <div class="g" id="nuancierGrid"></div>
     </div>
   </div>
@@ -125,14 +133,14 @@
   <div class="nuancier retouche" id="retouche">
     <div class="row">
       <span id="retoucheDot" style="width:18px;height:18px;border-radius:50%;border:2px solid #fff"></span>
-      <span class="t grow" style="color:#fff">Change CETTE couleur :</span>
+      <span class="t grow" id="t-retoucheTitle" style="color:#fff">Change CETTE couleur :</span>
       <span class="muted" style="cursor:pointer" id="annulerRetouche">✕ fermer</span>
     </div>
     <div style="display:flex;justify-content:center">
       <svg width="196" height="176" viewBox="-95 -85 190 170" id="fleur"></svg>
     </div>
     <div class="neutres" id="neutres"></div>
-    <div class="muted" style="text-align:center; font-size:10.5px">la fleur : vif au bord, doux au centre · bruns/gris en bas</div>
+    <div class="muted" id="t-flowerCaption" style="text-align:center; font-size:10.5px">la fleur : vif au bord, doux au centre · bruns/gris en bas</div>
   </div>
 
   <!-- ONGLET AMBIANCE -->
@@ -143,6 +151,24 @@
   <div class="footer">
     <button class="mp-btn-primary" id="btnValider">C'est lui ! ✓</button>
   </div>
+  <script>
+  (function () {
+    // REC-C5 : traduction des textes statiques (FR canon dans le HTML).
+    if (!window.Lang || Lang.current() === 'fr') return;
+    function T(key, fr) { return (window.MJi18n) ? MJi18n.t('avatar-atelier', key, fr) : fr; }
+    document.title = T('pageTitle', document.title);
+    document.getElementById('bigAvatarWrap').setAttribute('aria-label', T('ariaChangeDino', document.getElementById('bigAvatarWrap').getAttribute('aria-label')));
+    ['t-headerTitle','t-hintChangeDino','t-nuancierTitle','t-retoucheTitle','t-flowerCaption'
+    ].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = T(id.slice(2), el.textContent);
+    });
+    document.getElementById('tab-dino').textContent = T('tabDino', document.getElementById('tab-dino').textContent);
+    document.getElementById('tab-ambiance').textContent = T('tabAmbiance', document.getElementById('tab-ambiance').textContent);
+    document.getElementById('annulerRetouche').textContent = T('closeBtn', document.getElementById('annulerRetouche').textContent);
+    document.getElementById('btnValider').textContent = T('validateBtn', document.getElementById('btnValider').textContent);
+  })();
+  </script>
 </div>
 
 <script src="js/gen/avatars.js"></script>
@@ -164,13 +190,16 @@
   // et luminosité de chaque base conservées → rendu nuancé, jamais plat).
   // ═════════════════════════════════════════════════════════════════════
   // deco = petite scène dans la tuile (pas juste un dégradé)
+  // REC-C5 (recette 2026-09-19) : noms d'ambiance traduits via MJi18n si
+  // dispo (FR reste le tableau canon ci-dessous).
+  function _trAmb(key, fr) { return (window.MJi18n) ? MJi18n.t('avatar-atelier', key, fr) : fr; }
   var AMBIANCES = [
-    { id: 'nuit',   name: 'Nuit',   bg0: '#0a1226', bg1: '#0c1730', deco: ['🌙', '⭐', '✨'] },
-    { id: 'jungle', name: 'Jungle', bg0: '#0a1f16', bg1: '#0d2b1d', deco: ['🌴', '🦜', '🌿'] },
-    { id: 'ville',  name: 'Ville',  bg0: '#0b1c30', bg1: '#16304a', deco: ['🏙️', '🚌', '🚦'] },
-    { id: 'espace', name: 'Espace', bg0: '#0d0a20', bg1: '#1a1245', deco: ['🪐', '🚀', '💫'] },
-    { id: 'arcade', name: 'Arcade', bg0: '#12101f', bg1: '#171331', deco: ['👾', '🕹️', '🎯'] },
-    { id: 'musee',  name: 'Musée',  bg0: '#14110d', bg1: '#211b12', deco: ['🏛️', '🦴', '🖼️'] }
+    { id: 'nuit',   name: _trAmb('ambNuit', 'Nuit'),     bg0: '#0a1226', bg1: '#0c1730', deco: ['🌙', '⭐', '✨'] },
+    { id: 'jungle', name: _trAmb('ambJungle', 'Jungle'), bg0: '#0a1f16', bg1: '#0d2b1d', deco: ['🌴', '🦜', '🌿'] },
+    { id: 'ville',  name: _trAmb('ambVille', 'Ville'),   bg0: '#0b1c30', bg1: '#16304a', deco: ['🏙️', '🚌', '🚦'] },
+    { id: 'espace', name: _trAmb('ambEspace', 'Espace'), bg0: '#0d0a20', bg1: '#1a1245', deco: ['🪐', '🚀', '💫'] },
+    { id: 'arcade', name: _trAmb('ambArcade', 'Arcade'), bg0: '#12101f', bg1: '#171331', deco: ['👾', '🕹️', '🎯'] },
+    { id: 'musee',  name: _trAmb('ambMusee', 'Musée'),   bg0: '#14110d', bg1: '#211b12', deco: ['🏛️', '🦴', '🖼️'] }
   ];
   var VKEY = 'maxplay_avatar_vestiaire';
   var C = window.Avatar && Avatar.color; // helpers couleur d'origine

@@ -2,24 +2,16 @@
 
 > Tickets ouverts uniquement, 1 ligne + DoD par lane. Détail complet et tickets fermés : `archive/backlog-fermes-2026.md` (avant 2026-09-03) et `git log`. Rotation 2026-09-12 (HO-R02) : les tickets clos ont été condensés en capacités livrées dans `CHANGELOG.md`, le fait/l'obsolète (28 mj fantômes purgés le 2026-08-10) a été supprimé.
 > Revue 2026-09-25 (chaque ticket confronté au code) : fermés car faits — EP-109 (36/36 figées), EP-073 (`regle-info` via `mj-shell`), EP-072 (88 avatars), EP-042 (check 404 dans `run.mjs`), EP-038 (36/36 specs), EP-035/036/037 (0 mojibake), asset `Scelidosaurus_coloriage.webp`, bandeau REMPLACÉE de la spec Mur v2. Retirés car caducs — EP-079/080 (mj-01/08 supprimés), EP-078 (mj-43/44/45 supprimés), EP-050 (`voices-manifest.js` supprimé), EP-005 (remplacé par armoire + nid), EP-143 (écarts actés dans le dossier brainstorm), REC-D1 (doublon, suivi côté DINO).
+> Vagues de correction 2026-09-25 (commits `970ec8b8` + suivant) : soldés REC-C1/C3/C4/C5/C7, REC-H1/H2/H3, REC-M1, HO-MJ-22 (cases dans l'armoire v8), HO-MJ-16 (globe animé), bouton retour unifié (23 jeux), EP-134 (`nid-e2e.spec` réécrit), EP-074, noms de lignes/accessoires traduits.
 > Statuts : `[ ]` à faire · `[~]` en cours · `[!]` bloqué · `[?]` question ouverte pour Papa Yann.
 
 ## Lane — Recette complète FR/EN 2026-09-19 (rapport `memory/audits/2026-09-19-recette-complete.md`)
 
 **DoD** : les 3 crashs corrigés + specs étendues jusqu'à la fin de partie ; l'EN ne montre plus de français à l'écran (victoire, menu, pages, 7 titres).
 
-- [ ] **REC-C1** — mj-13a + mj-13c : pas de `<div id="app">` → `mj-golden.js:325/446` plante à la 8ᵉ manche (pas d'étoile/œuf/suite). Ajouter le conteneur + garde dans golden + étendre les 2 specs jusqu'à l'écran de fin.
-- [?] **REC-C2** — mj-40 tangram : la recette transverse a vu la figure 2 ne jamais charger (seul FAIL `run-all`), le lot 1 ne reproduit pas via `__mjTest`. À confirmer à la main (vrai drag).
-- [ ] **REC-C7** — mj-24/28/31 : `dinos-i18n.js` chargé avant que `mj-shell` injecte `lang.js` → `window.Lang` undefined → contenu dino (funfact, noms, époques) jamais traduit en EN. Corriger l'ordre ou faire injecter `lang.js` par le shell avant `dinos-i18n`.
-- [ ] **REC-H4** — mj-31 : titre tronqué à 360/320 (FR+EN) ; `audio/dinos/en/periodes/` inexistant (13 × 404, figée « période en vraie voix » non tenue en EN).
-- [ ] **REC-C3** — mj-22 : `fetch()` Wikimedia sans repli (`mj-22.html:267`) → drapeau de victoire absent hors ligne (FAIL baseline). Drapeaux en local.
-- [ ] **REC-C4** — Écran de victoire jamais traduit (`mj-golden.js:316-321,377-389,437,442,479`, `celebrations.js:1311`) : touche les 34 jeux golden en EN.
-- [ ] **REC-C5** — `index.html` (armoire/mur) + compte/suivi/confidentialité/offline/auteur/avatar-atelier : aucune chaîne traduite en EN.
-- [ ] **REC-H1** — 7 titres passés en dur à `MJ.init` au lieu de `MJi18n.titre()` : mj-20/22/42/50/51/52/53 (traductions déjà dans le pack EN, code mort) + mj-53 l.194 sans `T()`, mj-42 overlay FR statique l.147-149, mj-32 familles dino FR + clés `zoomer`/`vueNormale`.
-- [ ] **REC-H2** — `_commun.voix` EN inutilisable : `slugConsigne()` slugifie le texte affiché (`how-many-eggs`) mais la table EN est clée par slugs FR → 12 jeux, ~40 phrases jamais servies.
-- [ ] **REC-H3** — mj-20 : UI (modes, boutons, badges) en dur en FR, mélange FR/EN en mode EN.
-- [ ] **REC-M1** — Mobile : `suivi.html` déborde (455 px pour 360) ; mj-38 plateau hors cadre à 320 (`cellSize()` plancher 70) ; titres tronqués à 320 sur mj-48/49.
-- [ ] **REC-M2** — mj-55 MP3 consigne FR manquant ; mj-18 `Stars.get`=0 après 2ᵉ victoire (à confirmer à la main) ; mj-39 progression non sauvée avant grille pleine ; `mur-nid.spec` 2ᵉ scénario n'ouvre pas le vantail.
+- [?] **REC-C2** — mj-40 tangram : figure 2 non chargée en recette transverse ; NON reproduit le 2026-09-25 avec un vrai drag Playwright (figures 1 et 2 jouées). À rejouer sur le P30 Pro si Papa Yann le revoit.
+- [!] **REC-H4** — mj-31 : titre corrigé (retour à la ligne, `mp-theme.css`) ; reste `audio/dinos/en/periodes/` inexistant (13 × 404) — bloqué crédits ElevenLabs.
+- [!] **REC-M2** — reste mj-55 MP3 consigne FR manquant — bloqué crédits ElevenLabs (mj-18, mj-39 et `mur-nid.spec` corrigés le 2026-09-25).
 
 ## Lane — L'Armoire : nouvel accueil enfant (HO-MJ-12 assets + HO-MJ-13 page, 2026-09-15)
 
@@ -29,6 +21,8 @@
 
 - [~] HO-MJ-12 — découpe des pièces (`site/img/armoire/*.webp` ≤ 350 Ko, script `tools/armoire-decoupe.py`, planche-contact)
 - [x] HO-MJ-13 — page armoire (v1 en ligne 2026-09-15, commit b17b525e) (`armoire.js` / `armoire.css`, suppression `mur-scene.js`, élagage `mur.js`/`mur.css`, spec 7 viewports « jamais d'ascenseur », SW precache)
+- [ ] Recette Papa Yann sur P30 Pro de l'accueil en v8 (HO-MJ-22 livré 2026-09-25 : 15 cases + 2 tiroirs posés sur les planches du kit, globe qui fait un tour au tap puis ouvre l'encyclo).
+- [ ] Specs autonomes (`armoire`, `mur-nid`, `nid-e2e`, `index`, `collection`, `armoire-meuble`, `i18n-dinos`) hors `run-all.mjs` : aucune n'est lancée automatiquement, c'est comme ça que `nid-e2e` est resté rouge sans alerte. Les brancher dans `npm run check` ou un `run-autonomes.mjs`.
 - [ ] Après recette : brancher la chaîne 2★ (`repaireState`) sur les casiers ou l'abandonner explicitement ; décider si les objets tournent au hasard à chaque chargement (v1) ou restent fixes
 - [ ] Objet non placé : `obj-dino.webp` (mascotte) — à réserver pour l'écran dino (étagère encyclo, voir `studio/dino/memory/TODO.md`). `obj-livres-jeux.webp` est posé depuis HO-MJ-19 (tiroir droit).
 - [x] Portes et lumière : réglés par HO-MJ-19 (portes en rotation 3D CSS à tous les écrans, halo en `radial-gradient`).
@@ -40,8 +34,6 @@
 - [x] HO-MJ-19 — **Armoire v6, livrée 2026-09-18** : repère de design fixe 911 × 1480, scène mise à l'échelle d'un bloc par une ligne de CSS, zéro handler de resize (D-027, L-138). 3 sprites (`img/armoire/v6/`), halo des spots en CSS, portes en `rotateY` 3D à 116°, 17 cases (12 jeux derrière les portes + Dinos/Monde/Œufs en niche + Album et un 13e jeu dans les tiroirs). `armoire.spec.mjs` vert sur 8 viewports, dont un test de proportions identiques entre 320 px et 1280 px. **Recette PY sur le P30 Pro à faire.**
 - [x] HO-MJ-19 passe 2 (2026-09-18, recette du designer) : plancher tactile sorti de la géométrie (calque `.tap`, L-140), vantaux ramenés sous 90° avec charnière sur le montant extérieur (L-141), plus d'ouverture automatique, 12 jeux, tiroirs nus qui sont leurs propres boutons, masse visuelle des objets égalisée par la mesure (`tools/armoire-objets.py`), étiquettes en bois, objets posés sur les planches, avatar sans médaillon (D-028).
 - [x] HO-MJ-20 — **Armoire v8, kit découpé dans la référence, livrée 2026-09-19** (la v7 assemblée depuis les pièces GPT a été rejetée par PY le soir même : six défauts fondés, D-030/L-145 ; v8 = `ref-ouverte.png` au pixel, fermé = `ref-fermee.png` avec charnières ; passes 5-6 : vantaux ouverts entiers (bord extérieur mesuré sur toutes les colonnes), coins de carcasse reconstruits, charnières fermé/ouvert alignées par remappage, images versionnées `?v=` contre le cache (L-146) ; **VALIDÉE par PY le 2026-09-21** (« c'est bon ! et les étages sont bons aussi ») sur `dev-armoire.html` en ligne, passe 7 = gonds identiques fermé/ouvert ; passe 8 = montant entre les tiroirs + tiroirs qui se tirent au tap, demande PY 2026-09-21) (ouvert 2026-09-19, demande PY « fabrique cette armoire, déjà juste vide, ouvert/fermé, logique et modulable » à partir des 8 pièces GPT du 17/09 : carcasse vide, planche, montant, porte fermée, porte ouverte, tiroir, spot, halo). Meuble vide sur `site/dev-armoire.html`, composant `ArmoireMeuble` (config = données), repère 911 × 1480 conservé, `index.html` reste en v6 jusqu'à validation. Brief : `docs/handoffs/HO-MJ-20-armoire-v7-kit-modulaire.md`. Suite : HO-MJ-22 = y remettre les 15 cases + 2 tiroirs.
-- [ ] HO-MJ-22 — **Remettre les cases dans l'armoire v8** (à ouvrir, suite directe de la validation PY du 2026-09-21) : `armoire.js` v6 bascule de `shell.webp` sur `ArmoireMeuble.build` (kit v8, `js/gen/armoire-kit.js`), garde ses 15 cases + 2 tiroirs + prénom + avatar aux z-index 40/50, `sw.js` passe de `v6/` à `v8/` + `armoire-kit.js`, `armoire.spec.mjs` repasse vert, `v6/` et `armoire-sprites.py` supprimés. Les cases se posent sur les planches du kit (boîtes `planche-N` de `ARMOIRE_KIT`), plus sur des y recopiés.
-- [ ] HO-MJ-16 (après recette HO-MJ-15) — Globe animé déposé par PY (`inbox/globe-webapp-animation/`, web component `<animated-globe>`, 12 frames webp 640 px = 740 Ko, trop lourd tel quel) : réduire les frames à 256 px (~150 Ko), au tap sur le globe de l'armoire = 1 tour (11 frames, 9 fps) PUIS navigation vers le Voyage. Idle : léger flottement seulement, jamais de tour automatique (le README de PY le dit lui-même : « évite que l'armoire entière bouge »).
 - [!] Volcan animé : **le fichier `inbox/tSg9A.webp` a été supprimé par erreur le 2026-09-18** pendant le ménage HO-MJ-19 (pris pour un reliquat de test). Papa Yann doit le redéposer s'il veut la piste ; sinon on garde le volcan statique `obj-volcan.webp`.
 - [x] inbox : les 20 PNG racine et `decoupe/` supprimés le 2026-09-18 (consommés par HO-MJ-12, plus rien à en tirer). Les trois seules images qui comptaient sont promues en références stables : `docs/refs/armoire/ref-ouverte.png`, `ref-fermee.png`, `ref-casiers-12.png`.
 
@@ -50,7 +42,6 @@
 - [ ] Zonage des 9 jeux réapparus au Mur (mj-06, 09, 13c, 35, 37, 38, 39, 40, 42) : suivi la catégorie catalogue, en fin de chaîne de zone ; à challenger (ex. mj-42 chez Troudi plutôt que Volta ?).
 - [ ] Vignettes CSS/SVG des 9 jeux : dessinées a minima, non revues à l'œil au-delà d'une capture 360 px.
 - [ ] `check-mj-coherence` vérifie la présence d'une entrée référentiel par jeu, pas la complétude des clés : chantier séparé si voulu.
-- [ ] Bouton retour unifié : 23 mj gardent un `<a href="index.html">` en dur parce que `back-button.js` ne matche que `.back`/`#hdr` (HO-R10) ; brief à ouvrir pour poser `class="back"` sur ces 23 et retirer les liens.
 
 ## Lane — Coloriage mj-32 : reste ouvert
 
@@ -60,7 +51,7 @@
 - [ ] Recette sur le VRAI P30 Pro : tout le chantier coloriage n'a été vu qu'en navigateur (360/320 px), jamais sur l'appareil de Max
 - [ ] Dette perf : remplissage du fond entier ~400 ms (calcul JS pur) — à traiter si le 1er tap paraît lent sur P30 Pro
 - [ ] Patcher les linearts à brèche côté pôle dino (Cryolophosaure #6389) pour pouvoir baisser le rayon anti-fuite
-- [ ] Dette assumée (pas de correction spéculative) : `waitForTimeout` fixe dans une boucle de progression, présent dans 47 fichiers de `studio/minijeux/tests/` (recompté 2026-09-25, dont mj-09, 30, 31, 48-54, 56) — à corriger au cas par cas si l'un tombe (méthode : L-133 dans LESSONS.md, attendre le fait pas la durée)
+- [ ] Dette assumée (pas de correction spéculative ; `run-all` 36/36 vert deux fois de suite le 2026-09-25) : `waitForTimeout` fixe dans une boucle de progression, présent dans 47 fichiers de `studio/minijeux/tests/` (recompté 2026-09-25, dont mj-09, 30, 31, 48-54, 56) — à corriger au cas par cas si l'un tombe (méthode : L-133 dans LESSONS.md, attendre le fait pas la durée)
 
 ## Lane — EPIC i18n mini-jeux (décision PY 2026-09-05 : tout traduire — règles, menus, actions)
 
@@ -69,7 +60,6 @@
 - [!] **VOIX-MJ-EN-AUDIO** — Générer les 81 MP3 anglais des consignes (voix maison STS) dans `site/sounds/voix/en/…`, ≈ 23k crédits EL (3/81 présents au 2026-09-25, bloqué crédits). Outillage prêt : `node studio/dino/content/scripts/audio/_md2json-hors-fiche.cjs en studio/minijeux/i18n/en/scripts-voix.md --out=studio/minijeux/i18n/en/json`
 - [~] **LANG-MINI-JEUX** — `lang.js` est désormais injecté par `mj-shell.js` (plus aucun `mj-*.html` ne le charge en dur, cf. REC-C7 pour l'ordre de chargement) ; reste es-es/pt-br des chaînes de jeu (hors panneau règle, déjà livré) et audio es/pt (repli TTS navigateur pour l'instant)
 - [ ] Contenu FR conservé par décision PY 2026-09-05 : mj-50/51/52/53 (lecture/phonétique, refonte péda par langue trop lourde pour l'instant)
-- [ ] Données FR résiduelles signalées mais non traitées : `PALETTE[].name`, `getLineDisplayName()` de `data.js`
 
 ## Lane — Montée de niveau par compétence (EP-112)
 
@@ -89,7 +79,6 @@
 **DoD** : chaque figée sourcée (phrase Papa Yann ou code), zéro figée inventée.
 
 - [ ] EP-110 — Famille « quiz legacy » (mj-13a/14/15 — mj-01 et mj-16 supprimés) : victoire score-% vs standard 3★, modernisation non urgente
-- [ ] EP-074 — mj-01 supprimé mais encore cité dans `tests/cloud-merge.test.mjs` et `tests/collection.spec.mjs` : vérifier si simple fixture de données ou reliquat à retirer
 - [!] EP-076 — Revoir le process PMO figeage (checklist mini-audit) + appliquer aux figées ouvertes restantes, suite à l'incident L-072/L-073/L-074 (figées inventées 2026-07-05, déjà corrigées)
 
 ## Lane — Fusion bibliothèque savoir-faire (EP-101)
@@ -102,7 +91,7 @@
 
 **DoD** : zéro figée non sourcée, vérifié par script.
 
-- [ ] EP-043 — Audit automatisé figées : chaque ligne 🔒 sourcée Papa Yann ou code. `check-mj-coherence.mjs` contrôle déjà la présence d'une figée par jeu, pas le sourçage ligne à ligne : étendre ce script plutôt que créer `check-figees.mjs`
+- [~] EP-043 — `check-mj-coherence.mjs` signale (avertissement) les lignes 🔒 sans source : 319/620 au 2026-09-25. Reste : sourcer ou retirer ces lignes figée par figée (Papa Yann), puis passer le contrôle en bloquant.
 
 ## Lane — Narration audio dinos (EP-039)
 
@@ -131,7 +120,6 @@
 
 - [x] EP-130 — **CAUSE RACINE** : `mj-shell.js` ne charge pas `dinos-data.js`, donc sur 29 jeux sur 36 le nid tourne sans catalogue. Œufs gris (`famille:"_sans"`) ET éclosion qui DÉTRUIT l'œuf sans rien donner (`doublon`). C'est ce qui a vidé le nid et le sac de Max — L-143. Brief HO-MJ-21.
 - [x] EP-133 — Pertes silencieuses : `load()`/`save()` avalent tout ; profil enfant activé ou resynchronisé après des gains = nid orphelin (clé `__<childId>`), quota plein = écran qui célèbre un gain non écrit. Dans HO-MJ-21.
-- [ ] EP-134 — `nid-e2e.spec.mjs` est MORT : 16 sélecteurs `.v-copain`/`.vb-porte` de l'ancienne Vallée, remplacée par l'armoire (b17b525e). Rouge depuis, personne ne l'a vu parce que `run-all.mjs` ne le lance pas. À réécrire contre l'armoire ou à archiver — découvert par HO-MJ-21.
 - [?] EP-129 — Anti-farm 3 étoiles : Papa Yann a tranché le principe (« il a le droit de farm, c'est s'entraîner », 2026-09-19) mais pas la règle de remplacement. N'était PAS la cause de l'incident. À arbitrer : supprimer, ou seulement freiner la répétition du MÊME jeu 3× de suite.
 - [ ] EP-131 — Nid plein à 3 œufs (`MAX_EGGS = 3`) : au-delà, tout gain devient accessoire. Pas la cause ici, mais à remonter (5-6 ?). Hors HO-MJ-21.
 - [ ] EP-132 — Message « déjà toutes les étoiles ici » (`mj-golden.js:395`) : plus en cursive, mais toujours deux phrases de texte, illisible à 4 ans. Signal visuel à la place. Hors HO-MJ-21.

@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>MaxPlay — Pas de réseau</title>
   <link rel="manifest" href="manifest.json">
+  <script src="js/lang.js"></script>
+  <script src="js/mj-i18n.js"></script>
+  <script>
+    // REC-C5 (recette 2026-09-19) : page transverse jamais traduite en EN.
+    // Cette page sert AUSSI en offline pur (service worker) : Lang.current()
+    // lit localStorage (déjà posé lors d'une visite en ligne précédente),
+    // le pack mj-strings.<lang>.js est mis en cache par sw.js comme les
+    // autres assets js/ — pas de dépendance réseau ici.
+    if (window.Lang && Lang.current() !== 'fr') {
+      document.write('<scr' + 'ipt src="js/i18n/mj-strings.' + Lang.current() + '.js"></scr' + 'ipt>');
+    }
+  </script>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
     html, body {
@@ -56,9 +68,19 @@
 <body>
   <main class="carte">
     <div class="emoji" aria-hidden="true">🚌</div>
-    <h1>Pas de réseau pour l'instant</h1>
-    <p>Cette page n'a pas encore été visitée hors ligne. Le menu et les jeux déjà ouverts, eux, fonctionnent sans réseau.</p>
-    <button type="button" onclick="location.href = './index.html'">Retour au menu</button>
+    <h1 id="t-title">Pas de réseau pour l'instant</h1>
+    <p id="t-desc">Cette page n'a pas encore été visitée hors ligne. Le menu et les jeux déjà ouverts, eux, fonctionnent sans réseau.</p>
+    <button type="button" onclick="location.href = './index.html'" id="t-btnBack">Retour au menu</button>
   </main>
+  <script>
+  (function () {
+    if (!window.Lang || Lang.current() === 'fr') return;
+    function T(key, fr) { return (window.MJi18n) ? MJi18n.t('offline', key, fr) : fr; }
+    document.title = T('pageTitle', document.title);
+    document.getElementById('t-title').textContent = T('title', document.getElementById('t-title').textContent);
+    document.getElementById('t-desc').textContent = T('desc', document.getElementById('t-desc').textContent);
+    document.getElementById('t-btnBack').textContent = T('btnBack', document.getElementById('t-btnBack').textContent);
+  })();
+  </script>
 </body>
 </html>

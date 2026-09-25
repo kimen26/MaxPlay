@@ -253,7 +253,7 @@ try {
     const capped = Collection.grantReward({ gameId: 'mj-99' });
     const stateAfterCapped = Collection.state();
     Math.random = () => 0.1;
-    const normal = Collection.grantReward({ gameId: 'mj-01' });
+    const normal = Collection.grantReward({ gameId: 'mj-09' });
     delete window.Stars;
     return { capped, stateAfterCapped, normal };
   });

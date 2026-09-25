@@ -89,6 +89,29 @@ const murOrderConflicts = [];
   });
 }
 
+// ── EP-043 (AVERTISSEMENT, non bloquant) : chaque ligne 🔒 d'une figée doit
+// porter une source — une date (AAAA-MM-JJ), "Papa Yann"/"PY", un commit, une
+// référence D-NNN/L-NNN, ou un numéro d'annotation (#NNNN). Le format réel
+// des figées montre que la source est parfois sur la ligne 🔒 elle-même,
+// parfois sur une ligne juste au-dessus (note de décision précédant un bloc
+// de puces) — d'où une fenêtre de 2 lignes avant. Non bloquant : on liste,
+// on ne fait pas échouer `npm run check` (décision : ne pas casser 37 figées
+// existantes d'un coup, juste donner le décompte pour prioriser le gravage).
+const SOURCE_RE = /(20\d{2}-\d{2}-\d{2})|Papa Yann|(?:^|[^A-Za-z])PY(?:[^A-Za-z]|$)|\bD-\d{3}\b|\bL-\d{3}\b|commit\s+[0-9a-f]{6,}|#\d{3,}/;
+
+function findUnsourcedLockLines(figeePath) {
+  if (!existsSync(figeePath)) return [];
+  const lines = readFileSync(figeePath, 'utf8').split('\n');
+  const unsourced = [];
+  lines.forEach((line, i) => {
+    if (!line.includes('🔒')) return;
+    const window = [line, lines[i - 1] || '', lines[i - 2] || ''];
+    const sourced = window.some((l) => SOURCE_RE.test(l));
+    if (!sourced) unsourced.push({ n: i + 1, text: line.trim().slice(0, 140) });
+  });
+  return unsourced;
+}
+
 function auditGame(id) {
   const checks = [];
   const add = (name, cond, detail = '') => checks.push({ name, cond, detail });
@@ -98,7 +121,8 @@ function auditGame(id) {
 
   add('site/mj-XX.html existe', existsSync(resolve(SITE, `${id}.html`)));
 
-  add('figée docs/jeux/figees/mj-XX.md existe', existsSync(resolve(FIGEES, `${id}.md`)));
+  const figeePath = resolve(FIGEES, `${id}.md`);
+  add('figée docs/jeux/figees/mj-XX.md existe', existsSync(figeePath));
 
   const specPath = resolve(__dir, `${id}.spec.mjs`);
   add('spec Playwright tests/mj-XX.spec.mjs existe', existsSync(specPath));
@@ -129,6 +153,22 @@ for (const id of targets) {
   results.push({ id, checks, fails });
 }
 
+// EP-043 : balaie TOUTES les figées présentes sur disque (pas seulement les
+// `targets` demandés en CLI) — l'avertissement doit couvrir tout le dossier,
+// y compris menu.md et les figées de jeux retirés du catalogue.
+let totalUnsourced = 0;
+const unsourcedByGame = [];
+if (existsSync(FIGEES)) {
+  const figeeFiles = readdirSync(FIGEES).filter((f) => f.endsWith('.md'));
+  for (const f of figeeFiles) {
+    const unsourced = findUnsourcedLockLines(resolve(FIGEES, f));
+    if (unsourced.length) {
+      totalUnsourced += unsourced.length;
+      unsourcedByGame.push({ id: f.replace(/\.md$/, ''), unsourced });
+    }
+  }
+}
+
 // ── orphelins disque : un mj-XX.html sans entrée catalogue ──────────────────
 const orphans = [...diskIds].filter((id) => !catalogIds.has(id));
 if (orphans.length) totalFail += orphans.length;
@@ -137,7 +177,7 @@ if (orphans.length) totalFail += orphans.length;
 if (murOrderConflicts.length) totalFail += murOrderConflicts.length;
 
 if (asJson) {
-  console.log(JSON.stringify({ results, orphans, murOrderConflicts, totalFail }, null, 2));
+  console.log(JSON.stringify({ results, orphans, murOrderConflicts, totalFail, unsourcedByGame, totalUnsourced }, null, 2));
 } else {
   console.log(`\n── check-mj-coherence.mjs — ${targets.length} jeu(x) audité(s) ──\n`);
   for (const r of results) {
@@ -154,6 +194,13 @@ if (asJson) {
   if (murOrderConflicts.length) {
     console.log(`\n${RED}Conflits murOrder (deux jeux au même rang dans la même zone) :${RST}`);
     murOrderConflicts.forEach((c) => console.log(`  ${RED}✗${RST} ${c}`));
+  }
+  if (totalUnsourced) {
+    console.log(`\n${YEL}⚠ AVERTISSEMENT (non bloquant, EP-043) — lignes 🔒 sans source (date/Papa Yann/PY/commit/D-NNN/L-NNN/#annotation) :${RST}`);
+    unsourcedByGame.forEach(({ id, unsourced }) => {
+      console.log(`  ${YEL}${id}${RST} — ${unsourced.length} ligne(s) non sourcée(s)`);
+    });
+    console.log(`  ${YEL}Total : ${totalUnsourced} ligne(s) 🔒 non sourcée(s) sur ${unsourcedByGame.length} figée(s)${RST}`);
   }
   console.log(totalFail === 0
     ? `\n${GREEN}✓ ${targets.length} jeu(x), 0 manque${RST}\n`

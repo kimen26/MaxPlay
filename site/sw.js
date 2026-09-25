@@ -65,8 +65,20 @@ const PRECACHE_LIST = [
   'manifest.json',
   'css/mp-theme.css',
   'css/mur.css',
+  'css/armoire-meuble.css',
   'css/armoire.css',
   'js/lang.js',
+  'js/mj-i18n.js',
+  // Pages transverses (offline.html, compte, suivi) chargent js/lang.js puis
+  // js/mj-i18n.js puis le pack de la langue courante : les 3 bundles sont
+  // precaches pour que offline.html reste traduit hors ligne, quelle que
+  // soit la langue choisie avant la coupure reseau. Zero apostrophe dans ce
+  // commentaire : gen-sw-version.mjs extrait les entrees par une regex
+  // naive sur les guillemets simples, une apostrophe ici casse le calcul
+  // (deja le cas plus haut, cf. avertissement en tete de PRECACHE_LIST).
+  'js/i18n/mj-strings.en.js',
+  'js/i18n/mj-strings.es-es.js',
+  'js/i18n/mj-strings.pt-br.js',
   'js/ping.js',
   'js/tracker.js',
   'js/cloud.js',
@@ -88,6 +100,8 @@ const PRECACHE_LIST = [
   'js/celebrations.js',
   'js/mur.js',
   'js/gen/armoire-objets.js',
+  'js/gen/armoire-kit.js',
+  'js/armoire-meuble.js',
   'js/armoire.js',
   'js/sw-register.js',
   'img/maxplay-icon-192.png',
@@ -95,12 +109,38 @@ const PRECACHE_LIST = [
   'img/maxplay-icon-maskable-192.png',
   'img/maxplay-icon-maskable-512.png',
   'img/maxplay-icon-180.png',
-  // Armoire v6 (HO-MJ-19) : trois sprites suffisent — la carcasse entiere,
-  // un vantail haut, un vantail bas. Les portes de droite sont le meme
-  // sprite en miroir, le halo des spots est un degrade CSS.
-  'img/armoire/v6/shell.webp',
-  'img/armoire/v6/porte-haut.webp',
-  'img/armoire/v6/porte-bas.webp',
+  // Armoire v8 (HO-MJ-20/22) : le meuble est un kit de pieces decoupees dans
+  // UNE reference (carcasse, 5 planches, 3 montants, 1 tiroir pose 2 fois,
+  // 2 vantaux ouverts, 2 vantaux fermes) — toutes precachees, le halo des
+  // spots reste un degrade CSS.
+  'img/armoire/v8/shell.webp',
+  'img/armoire/v8/planche-1.webp',
+  'img/armoire/v8/planche-2.webp',
+  'img/armoire/v8/planche-3.webp',
+  'img/armoire/v8/planche-4.webp',
+  'img/armoire/v8/planche-5.webp',
+  'img/armoire/v8/montant-1.webp',
+  'img/armoire/v8/montant-2.webp',
+  'img/armoire/v8/montant-3.webp',
+  'img/armoire/v8/tiroir.webp',
+  'img/armoire/v8/porte-haut.webp',
+  'img/armoire/v8/porte-bas.webp',
+  'img/armoire/v8/porte-ouverte-haut.webp',
+  'img/armoire/v8/porte-ouverte-bas.webp',
+  // Globe animé (HO-MJ-16) : 11 frames 256 px, un seul tour au tap sur la
+  // case « Monde ». Précachées pour que le tour soit fluide dès le 1er tap,
+  // hors ligne comprise.
+  'img/armoire/globe-01.webp',
+  'img/armoire/globe-02.webp',
+  'img/armoire/globe-03.webp',
+  'img/armoire/globe-04.webp',
+  'img/armoire/globe-05.webp',
+  'img/armoire/globe-06.webp',
+  'img/armoire/globe-07.webp',
+  'img/armoire/globe-08.webp',
+  'img/armoire/globe-09.webp',
+  'img/armoire/globe-10.webp',
+  'img/armoire/globe-11.webp',
 ];
 
 self.addEventListener('install', (event) => {

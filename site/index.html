@@ -16,6 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/mp-theme.css">
   <link rel="stylesheet" href="css/mur.css">
+  <link rel="stylesheet" href="css/armoire-meuble.css">
   <link rel="stylesheet" href="css/armoire.css">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
@@ -25,14 +26,16 @@
 </head>
 <body data-av-nobadge>
 
-<!-- ══════════════ L'ARMOIRE (menu enfant, HO-MJ-19) ══════════════════
+<!-- ══════════════ L'ARMOIRE (menu enfant, HO-MJ-22, meuble v8) ═══════
      #mur-view = bascule armoire/parents inchangée (mur.js § show()).
-     Le décor de #armoire (carcasse, cases, portes, prénom) est posé UNE
-     fois par js/armoire.js, puis jamais reconstruit : l'armoire vit dans un
-     repère de design fixe de 911 × 1480 et c'est le CSS qui met la scène à
-     l'échelle d'un bloc (--cab-w). Il n'y a donc plus de handler de resize,
-     et #profil-avatar peut vivre DANS #armoire — c'est même nécessaire, son
-     ancrage est en % du repère et l'arche doit le mordre. -->
+     Le MEUBLE (carcasse, planches, montants, tiroirs, vantaux) est posé par
+     js/armoire-meuble.js (kit js/gen/armoire-kit.js) ; js/armoire.js pose
+     par-dessus les cases de jeu, le prénom et l'avatar. Décor construit UNE
+     fois, jamais reconstruit : l'armoire vit dans un repère de design fixe
+     de 911 × 1480 et c'est le CSS qui met la scène à l'échelle d'un bloc
+     (--cab-w). Il n'y a donc pas de handler de resize, et #profil-avatar
+     peut vivre DANS #armoire — c'est même nécessaire, son ancrage est en %
+     du repère et l'arche doit le mordre. -->
 <div class="piece" id="mur-view">
   <div class="armoire" id="armoire" role="group" aria-label="Mon armoire">
     <div class="ar-avatar-wrap" id="profil-avatar" role="button" aria-label="Mon dino">
@@ -136,6 +139,8 @@
   <script src="js/celebrations.js"></script>
   <script src="js/mur.js"></script>
   <script src="js/gen/armoire-objets.js"></script>
+  <script src="js/gen/armoire-kit.js"></script>
+  <script src="js/armoire-meuble.js"></script>
   <script src="js/armoire.js"></script>
   <script>
   (function () {

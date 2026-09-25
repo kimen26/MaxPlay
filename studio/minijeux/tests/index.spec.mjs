@@ -21,8 +21,8 @@ export async function run({ page, ok }) {
   await page.waitForSelector('.casier', { state: 'attached', timeout: 5000 });
   const nCasiers = await page.locator('.casier').count();
   ok('les 12 jeux sont rangés dans l\'armoire', nCasiers === 12, `count=${nCasiers}`);
-  await page.click('.porte-haut.porte-g');
-  await page.click('.porte-bas.porte-g');
+  await page.click('.am-porte-haut.am-g');
+  await page.click('.am-porte-bas.am-g');
   await page.waitForTimeout(800);
   ok('les deux zones s\'ouvrent à l\'appui sur un vantail',
      await page.locator('.casier').first().isVisible());

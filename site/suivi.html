@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MaxPlay – Suivi</title>
+<script src="js/lang.js"></script>
+<script src="js/mj-i18n.js"></script>
+<script>
+  // REC-C5 (recette 2026-09-19) : page transverse jamais traduite en EN.
+  if (window.Lang && Lang.current() !== 'fr') {
+    document.write('<scr' + 'ipt src="js/i18n/mj-strings.' + Lang.current() + '.js"></scr' + 'ipt>');
+  }
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 * { box-sizing:border-box; margin:0; padding:0; }
@@ -145,16 +153,16 @@ html,body { font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; min
 <body>
 
 <div id="hdr">
-  <a href="index.html">← Menu</a>
-  <h1>📊 Suivi</h1>
+  <a href="index.html" id="t-backMenu">← Menu</a>
+  <h1 id="t-title">📊 Suivi</h1>
   <div id="hdr-actions">
-    <a class="hdr-btn" href="compte.html" style="text-decoration:none">👨‍👩‍👦 Compte</a>
-    <button class="hdr-btn" onclick="doExport()">⬇ Export</button>
+    <a class="hdr-btn" href="compte.html" id="t-compteLink" style="text-decoration:none">👨‍👩‍👦 Compte</a>
+    <button class="hdr-btn" id="t-exportBtn" onclick="doExport()">⬇ Export</button>
     <label class="hdr-btn" style="cursor:pointer">
-      ⬆ Import
+      <span id="t-importLabel">⬆ Import</span>
       <input type="file" accept=".json" style="display:none" onchange="doImport(this)">
     </label>
-    <button class="hdr-btn danger" onclick="doReset()">🗑 Reset</button>
+    <button class="hdr-btn danger" id="t-resetBtn" onclick="doReset()">🗑 Reset</button>
   </div>
 </div>
 
@@ -162,9 +170,9 @@ html,body { font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; min
 
   <!-- Hub parent : outils & infos (regroupés ici derrière la porte parents) -->
   <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
-    <a class="hdr-btn" href="lecture.html" style="text-decoration:none">📖 Lecture annotée</a>
-    <a class="hdr-btn" href="confidentialite.html" style="text-decoration:none">🔒 Vie privée</a>
-    <a class="hdr-btn" href="auteur.html" id="lnk-auteur" style="text-decoration:none;display:none">✍️ Auteur</a>
+    <a class="hdr-btn" href="lecture.html" id="t-lectureLink" style="text-decoration:none">📖 Lecture annotée</a>
+    <a class="hdr-btn" href="confidentialite.html" id="t-vieprivLink" style="text-decoration:none">🔒 Vie privée</a>
+    <a class="hdr-btn" href="auteur.html" id="lnk-auteur" style="text-decoration:none;display:none"><span id="t-auteurLink">✍️ Auteur</span></a>
   </div>
   <script>
   // Lien Auteur affiché seulement pour le compte auteur (RLS protège de toute façon)
@@ -182,22 +190,24 @@ html,body { font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; min
 
   <!-- Console parent : déblocage des jeux -->
   <div id="admin-console" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:16px;margin-bottom:22px;">
-    <div style="font-weight:900;font-size:0.95rem;margin-bottom:4px;">🔧 Console parent</div>
-    <div style="font-size:0.82rem;opacity:0.65;margin-bottom:12px;">Déblocage des jeux : <strong id="admin-state">…</strong></div>
+    <div id="t-adminTitle" style="font-weight:900;font-size:0.95rem;margin-bottom:4px;">🔧 Console parent</div>
+    <div style="font-size:0.82rem;opacity:0.65;margin-bottom:12px;"><span id="t-adminSub">Déblocage des jeux : </span><strong id="admin-state">…</strong></div>
     <div style="display:flex;gap:10px;flex-wrap:wrap;">
       <button class="hdr-btn" id="btn-unlock-all" style="background:#00c47a;color:#fff;">🔓 Tout débloquer</button>
       <button class="hdr-btn" id="btn-progression">🔒 Remettre la progression</button>
       <button class="hdr-btn danger" id="btn-reset-all">♻️ Tout réinitialiser</button>
     </div>
-    <div style="font-size:0.72rem;opacity:0.45;margin-top:8px;">« Tout débloquer » ouvre tous les jeux et les dinos pour ce profil. « Progression » réactive le déblocage par étoiles.</div>
+    <div id="t-adminNote" style="font-size:0.72rem;opacity:0.45;margin-top:8px;">« Tout débloquer » ouvre tous les jeux et les dinos pour ce profil. « Progression » réactive le déblocage par étoiles.</div>
   </div>
   <script>
   (function () {
+    var PAGE = 'suivi';
+    function T(key, fr) { return (window.MJi18n) ? MJi18n.t(PAGE, key, fr) : fr; }
     const ADMIN_KEY = 'maxplay_admin';
     const st = () => { try { return JSON.parse(localStorage.getItem(ADMIN_KEY)) || {}; } catch (e) { return {}; } };
     function paint() {
       const on = !!st().unlockAll;
-      document.getElementById('admin-state').textContent = on ? '🔓 Tout ouvert' : '🔒 Progression (étoiles)';
+      document.getElementById('admin-state').textContent = on ? T('adminOn', '🔓 Tout ouvert') : T('adminOff', '🔒 Progression (étoiles)');
       document.getElementById('btn-unlock-all').style.opacity = on ? '0.5' : '1';
       document.getElementById('btn-progression').style.opacity = on ? '1' : '0.5';
     }
@@ -205,14 +215,14 @@ html,body { font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; min
     document.getElementById('btn-unlock-all').onclick = () => setAll(true);
     document.getElementById('btn-progression').onclick = () => setAll(false);
     document.getElementById('btn-reset-all').onclick = async () => {
-      if (!confirm('Tout réinitialiser ?\n\nEfface : progression, étoiles, déblocages, langues et série mj-20, mj-37.\nConservé : les dessins (galerie coloriage) et les commentaires.')) return;
+      if (!confirm(T('confirmResetAll', 'Tout réinitialiser ?\n\nEfface : progression, étoiles, déblocages, langues et série mj-20, mj-37.\nConservé : les dessins (galerie coloriage) et les commentaires.'))) return;
       // Mode 2 (connecté) : vider AUSSI le cloud, sinon la sync ré-hydrate tout.
       // resetChild() no-op en Mode 1 → le reset local seul suffit (fix audit).
       try {
         if (window.Cloud && Cloud.hasActiveChild && Cloud.hasActiveChild()) {
           await Cloud.resetChild();
         }
-      } catch (e) { alert('Effacement cloud échoué (réseau ?). Réessaie connecté.'); return; }
+      } catch (e) { alert(T('alertCloudFail', 'Effacement cloud échoué (réseau ?). Réessaie connecté.')); return; }
       // maxplay_stars retirée (clé morte — étoiles dérivées par stars.js depuis toujours)
       ['maxplay_progress', 'maxplay_unlocks', 'mj20_progress', 'mj20_streak',
        'mj37_progress', 'maxplay_sync_meta'].forEach(k => localStorage.removeItem(k));
@@ -225,31 +235,31 @@ html,body { font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; min
   <!-- État vide -->
   <div id="empty-state">
     <div class="big">🚌</div>
-    <p>Pas encore de partie jouée.</p>
-    <p style="font-size:0.9rem;">Les stats apparaîtront ici après la première partie !</p>
+    <p id="t-emptyTitle">Pas encore de partie jouée.</p>
+    <p id="t-emptySub" style="font-size:0.9rem;">Les stats apparaîtront ici après la première partie !</p>
   </div>
 
   <!-- Résumé global -->
   <div id="summary" style="display:none">
     <div class="stat-card">
       <div class="val" id="stat-sessions">0</div>
-      <div class="lbl">Parties jouées</div>
+      <div class="lbl" id="t-statSessions">Parties jouées</div>
     </div>
     <div class="stat-card">
       <div class="val" id="stat-games">0</div>
-      <div class="lbl">Jeux différents</div>
+      <div class="lbl" id="t-statGames">Jeux différents</div>
     </div>
     <div class="stat-card">
       <div class="val" id="stat-rate">–</div>
-      <div class="lbl">Taux de réussite</div>
+      <div class="lbl" id="t-statRate">Taux de réussite</div>
     </div>
     <div class="stat-card">
       <div class="val" id="stat-mastered">0</div>
-      <div class="lbl">Jeux maîtrisés ⭐</div>
+      <div class="lbl" id="t-statMastered">Jeux maîtrisés ⭐</div>
     </div>
     <div class="stat-card">
       <div class="val" id="stat-time">0 min</div>
-      <div class="lbl">Temps de jeu</div>
+      <div class="lbl" id="t-statTime">Temps de jeu</div>
     </div>
   </div>
 
@@ -263,9 +273,9 @@ html,body { font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; min
 
   <!-- Commentaires -->
   <div class="section-title" id="sec-comments" style="display:flex;align-items:center;gap:10px;">
-    <span style="flex:1">💬 Commentaires</span>
-    <button class="hdr-btn" onclick="doCopyComments()" style="font-size:0.72rem;">📋 Copier tout</button>
-    <button class="hdr-btn" onclick="doExportComments()" style="font-size:0.72rem;">⬇ Export</button>
+    <span style="flex:1" id="t-secComments">💬 Commentaires</span>
+    <button class="hdr-btn" onclick="doCopyComments()" id="t-btnCopyComments" style="font-size:0.72rem;">📋 Copier tout</button>
+    <button class="hdr-btn" onclick="doExportComments()" id="t-btnExportComments" style="font-size:0.72rem;">⬇ Export</button>
     <button class="hdr-btn danger" onclick="doResetComments()" style="font-size:0.72rem;">🗑</button>
   </div>
   <div id="comments-list"></div>
@@ -277,16 +287,38 @@ html,body { font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; min
 <script>
 // ─── suivi.html ───────────────────────────────────────────────────────────
 
+// REC-C5 (recette 2026-09-19) : traduction des textes statiques (FR reste
+// le canon dans le HTML, MJi18n.t retombe dessus si le pack n'a pas la clé).
+var PAGE = 'suivi';
+function T(key, fr) { return (window.MJi18n) ? MJi18n.t(PAGE, key, fr) : fr; }
+if (window.Lang && Lang.current() !== 'fr') {
+  ['t-backMenu','t-title','t-compteLink','t-exportBtn','t-importLabel','t-resetBtn',
+   't-lectureLink','t-vieprivLink','t-auteurLink','t-adminTitle','t-adminSub','t-adminNote',
+   't-emptyTitle','t-emptySub','t-statSessions','t-statGames','t-statRate','t-statMastered',
+   't-statTime','t-secComments','t-btnCopyComments','t-btnExportComments'
+  ].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.innerHTML = T(id.slice(2), el.innerHTML);
+  });
+  ['sec-games', 'sec-activity'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = T(id === 'sec-games' ? 'secGames' : 'secActivity', el.textContent);
+  });
+  document.getElementById('btn-unlock-all').textContent = T('btnUnlockAll', document.getElementById('btn-unlock-all').textContent);
+  document.getElementById('btn-progression').textContent = T('btnProgression', document.getElementById('btn-progression').textContent);
+  document.getElementById('btn-reset-all').textContent = T('btnResetAll', document.getElementById('btn-reset-all').textContent);
+}
+
 function formatDate(iso) {
   if (!iso) return '–';
   const d = new Date(iso);
   const now = new Date();
   const diff = Math.floor((now - d) / 1000);
-  if (diff < 60)   return 'il y a quelques secondes';
-  if (diff < 3600) return `il y a ${Math.floor(diff/60)} min`;
-  if (diff < 86400)return `aujourd'hui`;
-  if (diff < 172800) return 'hier';
-  return d.toLocaleDateString('fr-FR', { day:'numeric', month:'short' });
+  if (diff < 60)   return T('js.dateJustNow', 'il y a quelques secondes');
+  if (diff < 3600) return T('js.dateMinAgo', 'il y a {n} min').replace('{n}', Math.floor(diff/60));
+  if (diff < 86400)return T('js.dateToday', `aujourd'hui`);
+  if (diff < 172800) return T('js.dateYesterday', 'hier');
+  return d.toLocaleDateString(window.Lang ? Lang.bcp47() : 'fr-FR', { day:'numeric', month:'short' });
 }
 
 function formatDuration(totalSec) {
@@ -387,9 +419,9 @@ function render() {
           <div class="gc-skill">${m.skill}</div>
         </div>
         <div class="mastery-badge ${mastery}">${
-          mastery === 'maîtrisé' ? '⭐ Maîtrisé'
-          : mastery === 'en-cours' ? '📈 En cours'
-          : '○ Nouveau'
+          mastery === 'maîtrisé' ? T('js.badgeMastered', '⭐ Maîtrisé')
+          : mastery === 'en-cours' ? T('js.badgeEnCours', '📈 En cours')
+          : T('js.badgeNouveau', '○ Nouveau')
         }</div>
       </div>
       ${g ? `
@@ -397,12 +429,12 @@ function render() {
           <div class="success-bar" style="width:${rate ?? 0}%"></div>
         </div>
         <div class="gc-stats">
-          <div class="gc-stat"><strong>${g.plays}</strong> partie${g.plays>1?'s':''}</div>
-          ${rate !== null ? `<div class="gc-stat"><strong>${rate}%</strong> réussite</div>` : ''}
-          <div class="gc-stat">Dernière fois <strong>${formatDate(g.lastPlayed)}</strong></div>
+          <div class="gc-stat"><strong>${g.plays}</strong> ${g.plays>1?T('js.partiePlur','parties'):T('js.partieSing','partie')}</div>
+          ${rate !== null ? `<div class="gc-stat">${T('js.reussitePct', '{n}% réussite').replace('{n}', `<strong>${rate}</strong>`)}</div>` : ''}
+          <div class="gc-stat">${T('js.dernierFois', 'Dernière fois ')}<strong>${formatDate(g.lastPlayed)}</strong></div>
         </div>
         ${sparkHTML ? `<div class="sparkline">${sparkHTML}</div>` : ''}
-      ` : `<div class="no-data">Pas encore joué</div>`}
+      ` : `<div class="no-data">${T('js.pasEncoreJoue', 'Pas encore joué')}</div>`}
     `;
     grid.appendChild(card);
   });
@@ -417,7 +449,7 @@ function render() {
     .slice(0, 15);
 
   if (recent.length === 0) {
-    actEl.innerHTML = '<div class="no-data" style="padding:12px">Aucune activité enregistrée.</div>';
+    actEl.innerHTML = `<div class="no-data" style="padding:12px">${T('js.aucuneActivite', 'Aucune activité enregistrée.')}</div>`;
     return;
   }
 
@@ -453,11 +485,11 @@ function doImport(input) {
   if (!file) return;
   Tracker.importJSON(file)
     .then(() => { location.reload(); })
-    .catch(() => alert('Fichier invalide.'));
+    .catch(() => alert(T('js.fileInvalid', 'Fichier invalide.')));
 }
 
 async function doReset() {
-  if (!confirm('Supprimer toutes les données de progression de ce profil ?')) return;
+  if (!confirm(T('js.confirmResetProgress', 'Supprimer toutes les données de progression de ce profil ?'))) return;
   // Mode 2 (connecté) : vider AUSSI le cloud, sinon la sync suivante
   // ré-hydrate la progression depuis la base (fix sécurité/COPPA — même
   // garde que btn-reset-all, ce bouton l'avait oubliée).
@@ -465,7 +497,7 @@ async function doReset() {
     if (window.Cloud && Cloud.hasActiveChild && Cloud.hasActiveChild()) {
       await Cloud.resetChild();
     }
-  } catch (e) { alert('Effacement cloud échoué (réseau ?). Réessaie connecté.'); return; }
+  } catch (e) { alert(T('alertCloudFail', 'Effacement cloud échoué (réseau ?). Réessaie connecté.')); return; }
   localStorage.removeItem('maxplay_progress');
   location.reload();
 }
@@ -491,8 +523,9 @@ function renderComments() {
   container.innerHTML = sorted.map(c => {
     const m = meta[c.gameId] || { emoji:'❓', name: c.gameId };
     const d = new Date(c.date);
-    const dateStr = d.toLocaleDateString('fr-FR', { day:'numeric', month:'short' }) + ' ' +
-                    d.toLocaleTimeString('fr-FR', { hour:'2-digit', minute:'2-digit' });
+    const locale = window.Lang ? Lang.bcp47() : 'fr-FR';
+    const dateStr = d.toLocaleDateString(locale, { day:'numeric', month:'short' }) + ' ' +
+                    d.toLocaleTimeString(locale, { hour:'2-digit', minute:'2-digit' });
     const safe = (c.text || '').replace(/[&<>]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]));
     return `
       <div class="game-card" style="margin-bottom:8px;">
@@ -516,16 +549,16 @@ function doCopyComments() {
   const txt = sorted.map(c => {
     const m = meta[c.gameId] || { name: c.gameId };
     const d = new Date(c.date);
-    const dateStr = d.toLocaleString('fr-FR');
+    const dateStr = d.toLocaleString(window.Lang ? Lang.bcp47() : 'fr-FR');
     return `[${dateStr}] ${c.gameId} — ${m.name}\n${c.text}\n`;
   }).join('\n');
   navigator.clipboard.writeText(txt)
-    .then(() => alert('Commentaires copiés dans le presse-papier.'))
+    .then(() => alert(T('js.copiedClipboard', 'Commentaires copiés dans le presse-papier.')))
     .catch(() => {
       const ta = document.createElement('textarea');
       ta.value = txt; document.body.appendChild(ta);
       ta.select(); document.execCommand('copy'); ta.remove();
-      alert('Commentaires copiés.');
+      alert(T('js.copiedFallback', 'Commentaires copiés.'));
     });
 }
 
@@ -541,7 +574,7 @@ function doExportComments() {
 }
 
 function doResetComments() {
-  if (!confirm('Supprimer tous les commentaires ?')) return;
+  if (!confirm(T('js.confirmResetComments', 'Supprimer tous les commentaires ?'))) return;
   localStorage.removeItem('maxplay_comments');
   renderComments();
 }

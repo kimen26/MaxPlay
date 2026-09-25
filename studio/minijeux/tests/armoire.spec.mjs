@@ -1,23 +1,29 @@
-// armoire.spec.mjs — L'Armoire v6 (HO-MJ-19). Spec AUTONOME (comme
+// armoire.spec.mjs — L'Armoire, meuble v8 (HO-MJ-22). Spec AUTONOME (comme
 // mur-nid.spec.mjs) : il n'y a pas de site/armoire.html, donc pas de
 // `npm run mj:test armoire` (run.mjs cherche site/<mj>.html) — lancer :
 //   node studio/minijeux/tests/armoire.spec.mjs
+//
+// Le MEUBLE (carcasse/planches/montants/tiroirs/vantaux, classes .am-*) est
+// posé par js/armoire-meuble.js (kit v8) — sa fidélité aux boîtes du kit est
+// couverte par armoire-meuble.spec.mjs (contre site/dev-armoire.html). Ici :
+// l'intégration réelle sur index.html, CE QUE js/armoire.js ajoute PAR-DESSUS
+// (cases .casier/.objet, prénom, avatar) et le cadrage global.
 //
 // Ce que ce spec garde, viewport par viewport :
 //   · jamais d'ascenseur, et rien de rogné par le bord de l'écran ;
 //   · l'armoire arrive FERMÉE, et ses cases avec ;
 //   · les 15 cases + 2 tiroirs présents, zone tactile ≥ 48 × 48 ;
 //   · aucun vantail ouvert ne retombe sur un objet ;
-//   · toutes les images chargées, portes comprises (une url() de fond qui
-//     tombe en 404 est invisible à l'œil — c'est arrivé) ;
-//   · les 4 vantaux s'ouvrent et se referment ;
+//   · toutes les images chargées ;
+//   · les 4 vantaux s'ouvrent et se referment (via ArmoireMeuble) ;
 //   · le poids du premier affichage ;
 //   · aucune erreur JS.
 //
-// Et surtout la promesse de l'architecture v6 : LES PROPORTIONS NE BOUGENT
-// PAS. Chaque case est mesurée en fraction de la boîte de l'armoire, et ces
-// fractions doivent être identiques à 320 px et à 1280 px. C'est ce test-là
-// qui échouerait si quelqu'un remettait un calcul de taille par pièce.
+// Et surtout la promesse de l'architecture en repère fixe : LES PROPORTIONS
+// NE BOUGENT PAS. Chaque case est mesurée en fraction de la boîte de
+// l'armoire, et ces fractions doivent être identiques à 320 px et à 1280 px.
+// C'est ce test-là qui échouerait si quelqu'un remettait un calcul de taille
+// par pièce.
 import { chromium } from 'playwright';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, resolve } from 'node:path';
@@ -69,15 +75,15 @@ for (const vp of VIEWPORTS) {
     // puis on ouvre les deux zones à la main, comme lui.
     const ferme = await page.evaluate(() => {
       const cab = document.getElementById('armoire');
-      return !cab.classList.contains('ouvert-haut') && !cab.classList.contains('ouvert-bas') &&
+      return !cab.classList.contains('am-ouvert-haut') && !cab.classList.contains('am-ouvert-bas') &&
         [...document.querySelectorAll('.casier')].every(c => c.classList.contains('zone-cachee'));
     });
     ok(`[${tag}] arrive portes fermées, cases masquées`, ferme);
     if (vp.w === 360 && vp.h === 740) {
-      await page.screenshot({ path: resolve(CAPTURES, 'HO-MJ-19-armoire-360x740-ferme.png') });
+      await page.screenshot({ path: resolve(CAPTURES, 'HO-MJ-22-armoire-360x740-ferme.png') });
     }
-    await page.click('.porte-haut.porte-g');
-    await page.click('.porte-bas.porte-g');
+    await page.click('.am-porte-haut.am-g');
+    await page.click('.am-porte-bas.am-g');
     await page.waitForTimeout(900);
 
     const m = await page.evaluate(() => {
@@ -100,10 +106,6 @@ for (const vp of VIEWPORTS) {
 
       const imgsOk = [...document.querySelectorAll('#armoire img')]
         .every(i => i.complete && i.naturalWidth > 0);
-      // une porte = un fond CSS : on le recharge pour de vrai, un 404 y est
-      // silencieux (ni onerror ni trace dans le DOM).
-      const fonds = [...new Set([...document.querySelectorAll('.porte-feuille')]
-        .map(e => getComputedStyle(e).backgroundImage.replace(/^url\("?|"?\)$/g, '')))];
 
       const empreinte = {};
       cases.forEach((c, i) => {
@@ -119,23 +121,29 @@ for (const vp of VIEWPORTS) {
         scrollW: de.scrollWidth, innerW: innerWidth,
         cab: { w: cabR.width, h: cabR.height },
         n: cases.length,
-        nTiroirs: document.querySelectorAll('.tiroir').length,
+        nTiroirs: document.querySelectorAll('.am-tiroir').length,
         minW: Math.min(...taps.map(r => r.width)), minH: Math.min(...taps.map(r => r.height)),
-        // aucune icône flottante posée sur les tiroirs : leur poignée suffit
-        tiroirsNus: [...document.querySelectorAll('.tiroir')].every(t => t.children.length === 0),
-        bornes, imgsOk, fonds, empreinte,
-        nPortes: document.querySelectorAll('.porte').length,
-        ouvert: cab.classList.contains('ouvert-haut') && cab.classList.contains('ouvert-bas'),
+        // aucun objet flottant posé sur les tiroirs par armoire.js — la
+        // poignée + la façade du kit (am-feuille/am-tap) suffisent.
+        tiroirsNus: [...document.querySelectorAll('.am-tiroir')].every(t => t.querySelectorAll('.obj').length === 0),
+        bornes, imgsOk, empreinte,
+        nPortes: document.querySelectorAll('.am-porte').length,
+        ouvert: cab.classList.contains('am-ouvert-haut') && cab.classList.contains('am-ouvert-bas'),
+        // seuls les vantaux OUVERTS (opacité > 0) comptent : le vantail fermé
+        // correspondant tourne hors champ (opacité 0), sa boîte ne doit rien
+        // masquer.
         porteLibre: (() => {
-          const portes = [...document.querySelectorAll('.porte')].map(p => p.getBoundingClientRect());
-          return cases.every((c, i) => {
+          const ouvertes = [...document.querySelectorAll('.am-ouverte')]
+            .filter(p => +getComputedStyle(p).opacity > 0)
+            .map(p => p.getBoundingClientRect());
+          return cases.every((c) => {
             const o = c.querySelector('.obj').getBoundingClientRect();
-            return portes.every(p => p.right <= o.left + 0.5 || p.left >= o.right - 0.5);
+            return ouvertes.every(p => p.right <= o.left + 0.5 || p.left >= o.right - 0.5);
           });
         })(),
-        recouvrement: [...document.querySelectorAll('.porte')].map(p => {
+        recouvrement: [...document.querySelectorAll('.am-ouverte')].map(p => {
           const r = p.getBoundingClientRect();
-          return { l: +r.left.toFixed(1), r: +r.right.toFixed(1) };
+          return { l: +r.left.toFixed(1), r: +r.right.toFixed(1), opacity: +getComputedStyle(p).opacity };
         })
       };
     });
@@ -159,16 +167,7 @@ for (const vp of VIEWPORTS) {
     ok(`[${tag}] les vantaux ouverts ne masquent aucune case`, m.porteLibre,
       JSON.stringify(m.recouvrement));
 
-    // les fonds de porte existent vraiment (rechargés depuis la page)
-    const fondsOk = await page.evaluate(async (urls) => {
-      const res = await Promise.all(urls.map(u => new Promise(r => {
-        const i = new Image(); i.onload = () => r(true); i.onerror = () => r(false); i.src = u;
-      })));
-      return res.every(Boolean);
-    }, m.fonds);
-    ok(`[${tag}] les images de fond des vantaux se chargent`, fondsOk, m.fonds.join(' | '));
-
-    // proportions identiques d'un viewport à l'autre (promesse v6)
+    // proportions identiques d'un viewport à l'autre (promesse du repère fixe)
     if (!empreinte) {
       empreinte = m.empreinte;
     } else {
@@ -186,24 +185,28 @@ for (const vp of VIEWPORTS) {
         `écart max ${(pire * 100).toFixed(2)} % (${quoi})`);
     }
 
-    // fermeture / réouverture d'une zone
-    await page.click('.porte-haut.porte-g');
+    // fermeture / réouverture d'une zone — on referme via le vantail OUVERT
+    // (c'est lui qui reste cliquable une fois la zone ouverte, cf. am-ouverte
+    // pointer-events:auto dans armoire-meuble.css), on rouvre via le fermé.
+    await page.click('.am-ouverte.am-g[data-zone="haut"]');
     await page.waitForTimeout(800);
     const referme = await page.evaluate(() =>
-      !document.getElementById('armoire').classList.contains('ouvert-haut') &&
+      !document.getElementById('armoire').classList.contains('am-ouvert-haut') &&
       [...document.querySelectorAll('.casier[data-zone="haut"]')].every(c => c.classList.contains('zone-cachee')));
     ok(`[${tag}] cliquer un vantail referme la zone et masque ses cases`, referme);
-    await page.click('.porte-haut.porte-g');
+    await page.click('.am-porte-haut.am-g');
     await page.waitForTimeout(800);
     const rouvert = await page.evaluate(() =>
-      document.getElementById('armoire').classList.contains('ouvert-haut'));
+      document.getElementById('armoire').classList.contains('am-ouvert-haut'));
     ok(`[${tag}] et la rouvre`, rouvert);
 
-    await page.screenshot({ path: resolve(CAPTURES, `HO-MJ-19-armoire-${tag}.png`) });
+    await page.screenshot({ path: resolve(CAPTURES, `HO-MJ-22-armoire-${tag}.png`) });
 
     if (vp.w === 360 && vp.h === 740) {
-      // budget du 1er affichage : carcasse (113 Ko) + 2 vantaux + 17 objets.
-      ok('[360x740] poids images 1er affichage ≤ 480 Ko', imgBytes <= 480 * 1024,
+      // budget du 1er affichage : carcasse+planches+montants+tiroir+4 vantaux
+      // (kit v8, ~175 Ko) + 15 objets (~250 Ko) ≈ 425 Ko mesurés — le globe
+      // animé (HO-MJ-16) n'est chargé qu'au tap, jamais au 1er affichage.
+      ok('[360x740] poids images 1er affichage ≤ 460 Ko', imgBytes <= 460 * 1024,
         `${(imgBytes / 1024).toFixed(0)} Ko`);
     }
     ok(`[${tag}] aucune erreur JS / console`, errors.length === 0, errors.join(' | '));
@@ -215,7 +218,7 @@ for (const vp of VIEWPORTS) {
 
 await browser.close();
 
-console.log('\n── armoire.spec.mjs (L\'Armoire v6, HO-MJ-19) ──');
+console.log('\n── armoire.spec.mjs (L\'Armoire, meuble v8, HO-MJ-22) ──');
 for (const [cond, name, detail] of checks) {
   console.log(`  ${cond ? PASS : FAIL}  ${name}${!cond && detail ? `\n        → ${detail}` : ''}`);
 }

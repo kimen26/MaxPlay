@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════════════
-   armoire.css — Accueil enfant « L'Armoire » v6 (HO-MJ-19).
+   armoire.css — Accueil enfant « L'Armoire » (HO-MJ-22, meuble v8).
 
    PRINCIPE, et il n'y en a qu'un : l'armoire est dessinée UNE fois dans un
    repère de design fixe de 911 × 1480 (le cadrage de la référence
@@ -12,11 +12,10 @@
    qui manquait aux v3/v4/v5, où chaque planche avait sa propre hauteur
    calculée en JS — d'où les épaisseurs incohérentes et les raccords tordus.
 
-   Trois sprites seulement (site/img/armoire/v6/) : la carcasse entière
-   (arche, côtés, fond, planches, montants, tiroirs, socle, pieds, spots),
-   plus un vantail haut et un vantail bas. Les portes de droite sont le même
-   sprite en miroir ; l'ouverture est une rotation 3D CSS, pas une image.
-   Le halo des spots est un dégradé CSS, jamais un PNG.
+   Le MEUBLE (carcasse, planches, montants, tiroirs, vantaux) vit dans
+   css/armoire-meuble.css + js/armoire-meuble.js (kit v8, HO-MJ-20/22) : ce
+   fichier-ci ne pose plus que ce qui vient PAR-DESSUS — cases de jeu,
+   étiquettes, halo des spots, prénom, avatar.
    ════════════════════════════════════════════════════════════════════ */
 
 html, body { height:100%; overflow:hidden; }
@@ -58,10 +57,6 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, 
   width:var(--cab-w); aspect-ratio:911 / 1480;
   /* les vantaux ouverts débordent du corps : la marge est déjà comprise
      dans le repère 911 × 1480, ils ne sortent donc jamais de la scène. */
-}
-.cab-shell {
-  position:absolute; inset:0; width:100%; height:100%;
-  z-index:30; pointer-events:none; user-select:none;
 }
 
 /* ── Halo des spots : CSS, jamais une image ──────────────────────────
@@ -149,6 +144,20 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, 
 .objet.locked .obj { filter:grayscale(1) brightness(.72); }
 .objet.locked .etiquette::after { content:' 🔒'; }
 
+/* Le globe (case « Monde ») : léger flottement en idle, jamais un tour
+   automatique (HO-MJ-16 — le dépôt de Papa Yann le dit lui-même : « évite
+   que l'armoire entière bouge »). Le tour au tap est fait en JS (armoire.js
+   playGlobeTour), en changeant le src de cette même <img> : l'animation
+   CSS continue pendant le tour, ce n'est pas gênant. Suspendue au tap pour
+   un retour immédiat (sinon la scale d'appui de .casier:active/.objet:active
+   est écrasée à chaque frame de l'animation). */
+#vit-monde .obj { animation:globe-float 3.6s ease-in-out infinite; }
+#vit-monde:active .obj { animation-play-state:paused; }
+@keyframes globe-float {
+  0%, 100% { transform:translateY(0) scale(var(--obj-scale, 1)); }
+  50%      { transform:translateY(calc(var(--cab-w) * -.006)) scale(var(--obj-scale, 1)); }
+}
+
 /* badge « nombre d'œufs » */
 .hdr-badge {
   position:absolute; top:2%; right:6%;
@@ -161,80 +170,16 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, 
   box-shadow:0 2px 6px rgba(0,0,0,.4); pointer-events:none;
 }
 
-/* ── Les portes : un seul sprite, miroir + rotation 3D ───────────────
-   Le wrapper .porte tourne ; le sprite miroir vit DANS le wrapper. Faire
-   l'inverse (tourner un sprite déjà en scaleX(-1)) inverse aussi le sens
-   de la rotation — c'est ce qui donnait des charnières du mauvais côté.
-
-   gauche : charnières à gauche, anneau à droite
-   droite : charnières à droite, anneau à gauche */
-.porte {
-  position:absolute; z-index:60;
-  left:var(--dx); top:var(--dy); width:var(--dw); height:var(--dh);
-  border:0; padding:0; margin:0; background:none; cursor:pointer;
-  transform-style:preserve-3d;
-  transition:transform 620ms cubic-bezier(.22, .8, .25, 1);
-  -webkit-tap-highlight-color:transparent;
-}
-/* Les charnières sont sur le MONTANT EXTÉRIEUR du meuble, pas sur le bord du
-   vantail : c'est ainsi qu'est monté le meuble de la référence, et c'est ce
-   qui permet au vantail de dégager l'ouverture à un angle raisonnable. Le
-   montant est à 23,19 % de la largeur du vantail au-delà de son bord (mesuré :
-   (18,558 − 11,306) / 31,277), d'où l'origine hors de la boîte. */
-.porte-g { transform-origin:-23.19% center; }
-.porte-d { transform-origin:123.19% center; }
-/* l'URL des vantaux vit ICI et pas en JS : une url() posée dans une
-   propriete personnalisee est resolue par rapport a la FEUILLE DE STYLE qui
-   la declare, pas par rapport au document — en la passant depuis le JS on
-   obtenait css/img/... et un 404 silencieux (passe 1). */
-.porte-haut .porte-feuille { background-image:url('../img/armoire/v6/porte-haut.webp'); }
-.porte-bas  .porte-feuille { background-image:url('../img/armoire/v6/porte-bas.webp'); }
-.porte-feuille {
-  display:block; width:100%; height:100%;
-  background-position:center; background-size:100% 100%; background-repeat:no-repeat;
-  filter:drop-shadow(0 calc(var(--cab-w) * .004) calc(var(--cab-w) * .01) rgba(0,0,0,.35));
-  transition:filter 620ms cubic-bezier(.22, .8, .25, 1);
-}
-/* vantail ouvert : vu presque de chant, sa face ne prend plus la lumière de
-   face. Sans cet assombrissement il reste aussi clair qu'à plat et se lit
-   comme un montant de plus, pas comme une porte ouverte. */
-.armoire.ouvert-haut .porte-haut .porte-feuille,
-.armoire.ouvert-bas  .porte-bas  .porte-feuille { filter:brightness(.8); }
-.porte-d .porte-feuille { transform:scaleX(-1); }
-
-/* Sous 90°, jamais au-delà. |cos θ| = 0,435 (la largeur apparente du vantail
-   ouvert sur la référence) a DEUX solutions, 64° et 116° ; la passe 1 avait
-   pris la mauvaise et on regardait le DOS de la texture, d'où le rendu
-   inversé. Reste à choisir l'angle : à 74° le vantail retombe encore sur la
-   colonne de bord et masque un jeu sur trois (mesuré). À 80° il est presque
-   de chant contre le montant, l'ouverture est entièrement dégagée, et c'est
-   exactement ce que montre une photo de vaisselier grand ouvert.
-   La perspective est en unités de --cab-w, pas en px : sinon elle est forte
-   sur téléphone et inexistante sur grand écran. */
-.armoire.ouvert-haut .porte-haut.porte-g { transform:perspective(calc(var(--cab-w) * 3.6)) rotateY(-80deg); }
-.armoire.ouvert-haut .porte-haut.porte-d { transform:perspective(calc(var(--cab-w) * 3.6)) rotateY(80deg); }
-.armoire.ouvert-bas  .porte-bas.porte-g  { transform:perspective(calc(var(--cab-w) * 3.6)) rotateY(-80deg); }
-.armoire.ouvert-bas  .porte-bas.porte-d  { transform:perspective(calc(var(--cab-w) * 3.6)) rotateY(80deg); }
-
-/* Les tiroirs SONT les boutons : la poignée dessinée dans la carcasse dit
-   déjà « ouvre-moi ». Pas d'icône flottante par-dessus — c'est ce qui
-   alourdissait le bas du meuble en passe 1. */
-.tiroir {
-  position:absolute; z-index:40;
-  left:var(--cx); top:var(--cy); width:var(--cw); height:var(--ch);
-  transform:translate(-50%, -50%);
-  background:none; border:0; padding:0; margin:0; cursor:pointer;
-  -webkit-tap-highlight-color:transparent;
-}
-.tiroir:active { filter:brightness(1.12); }
+/* Les vantaux et les tiroirs (sprite, rotation 3D, effet « tiré ») vivent
+   dans css/armoire-meuble.css (kit v8, HO-MJ-20/22) — plus rien ici. */
 
 /* les cases d'une zone fermée ne sont ni cliquables ni lisibles par un
    lecteur d'écran — la porte est devant, on ne triche pas. */
 .zone-cachee { visibility:hidden; }
 
 @media (prefers-reduced-motion: reduce) {
-  .porte { transition-duration:1ms; }
   .casier .obj, .objet .obj { transition:none; }
+  #vit-monde .obj { animation:none; }
 }
 
 /* ── Le prénom, gravé sur l'arche ────────────────────────────────────
@@ -251,13 +196,20 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, 
   pointer-events:none;
 }
 
-/* ── L'avatar : il sort de DERRIÈRE le meuble ────────────────────────
-   z-index sous la carcasse : l'épaule gauche de l'arche passe DEVANT lui, le
-   dino a l'air de sortir du meuble au lieu d'y être collé. Plus de médaillon
-   rond ni de cerne doré — un disque posé à côté de l'arche, c'est une pastille
-   d'appli, pas un personnage. Le dino détouré et son ombre suffisent. */
+/* ── L'avatar : posé près de l'arche, toujours au-dessus du meuble ───
+   Plus de médaillon rond ni de cerne doré — un disque posé à côté de
+   l'arche, c'est une pastille d'appli, pas un personnage. Le dino détouré
+   et son ombre suffisent.
+   z-index 56, au-dessus du vantail haut OUVERT (.am-ouverte, z-index 55,
+   armoire-meuble.css) : le kit v8 dessine ce vantail ouvert comme une image
+   plane qui vient buter contre le montant, pile dans le coin où vit
+   l'avatar (y = 3-40 % du repère) — sans ce z-index l'avatar disparaît
+   sous la porte, ni vu ni cliquable, dès que le haut de l'armoire s'ouvre
+   (constaté HO-MJ-22, en intégrant le meuble v8 : le kit v6 n'avait pas ce
+   problème, ses vantaux ouverts étaient une simple rotation 3D du vantail
+   fermé, réduite à un fil sur cette zone). */
 .ar-avatar-wrap {
-  position:absolute; z-index:20;
+  position:absolute; z-index:56;
   left:0.5%; top:3%;
   width:18%; aspect-ratio:1;
   cursor:pointer;

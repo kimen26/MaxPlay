@@ -47,6 +47,7 @@ window.TEXTES_JEUX = {
   "qu-est-ce-qui-vient-ensuite": {"ecran":"Qu'est-ce qui vient ensuite ?","tts":"Qu'est-ce qui vient ensuite ?","mp3":"sounds/voix/phrases/qu-est-ce-qui-vient-ensuite.mp3"},
   "quel-bus-arrive-en-premier": {"ecran":"Quel bus arrive en premier ?","tts":"Quel bus arrive en premier ?","mp3":"sounds/voix/phrases/quel-bus-arrive-en-premier.mp3"},
   "quel-bus-manque": {"ecran":"Quel bus manque dans la grille ?","tts":"Quel bus manque dans la grille ?","mp3":"sounds/voix/phrases/quel-bus-manque.mp3"},
+  "quel-dino-manque": {"ecran":"Quel dino manque dans la grille ?","tts":"Quel dino manque dans la grille ?","mp3":"sounds/voix/phrases/quel-dino-manque.mp3"},
   "quel-dino-se-cache-dans-le-noir": {"ecran":"Quel dino se cache dans le noir ?","tts":"Quel dino se cache dans le noir ?","mp3":"sounds/voix/phrases/quel-dino-se-cache-dans-le-noir.mp3"},
   "quel-mot-manque-dans-la-phrase": {"ecran":"Quel mot manque dans la phrase ?","tts":"Quel mot manque dans la phrase ?","mp3":"sounds/voix/phrases/quel-mot-manque-dans-la-phrase.mp3"},
   "range-dans-la-bonne-boite": {"ecran":"Range dans la bonne boîte.","tts":"Range dans la bonne boîte.","mp3":"sounds/voix/phrases/range-dans-la-bonne-boite.mp3"},

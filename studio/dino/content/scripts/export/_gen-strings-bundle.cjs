@@ -1,5 +1,5 @@
 // Genere le bundle produit d'une langue : studio/dino/content/i18n/<lang>/strings.json
-// -> site/js/i18n/dinos-strings.<lang>.js (consomme par site/js/dinos-i18n.js).
+// -> site/js/gen/i18n/dinos-strings.<lang>.js (consomme par site/js/dinos-i18n.js).
 // Frontiere DEC-GED-001 : le site ne lit jamais studio/, tout descend par ce generateur.
 // Usage : node _gen-strings-bundle.cjs <lang>
 const fs = require('fs'), path = require('path');
@@ -15,7 +15,7 @@ const payload = {
   periodes: data.periodes || {}, categories: data.categories || {},
   pangee: data.pangee || {}, extinction: data.extinction || {}, eres: data.eres || {}
 };
-const outDir = path.join(ROOT, 'site/js/i18n');
+const outDir = path.join(ROOT, 'site/js/gen/i18n');
 fs.mkdirSync(outDir, { recursive: true });
 const out = path.join(outDir, `dinos-strings.${lang}.js`);
 fs.writeFileSync(out,

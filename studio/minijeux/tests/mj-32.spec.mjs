@@ -413,4 +413,78 @@ export async function run({ page, ok }) {
   ok('reprise en copie d\'une plante reste sur img/dinos/plantes/ (pas de bascule vers paleoart/)',
      plantResumedModelSrc.includes('/img/dinos/plantes/') && !plantResumedModelSrc.includes('/img/dinos/paleoart/'),
      plantResumedModelSrc);
+
+  // ─── Stickers de plantes (idée PY 2026-09-08, geste unique : choisir un
+  // autocollant puis TAP sur le dessin) — on est déjà dans l'atelier (reprise de la
+  // plante ci-dessus), fillHistory contient déjà >= 1 remplissage couleur : le test
+  // vérifie que les stickers s'ajoutent au MÊME historique sans perturber l'existant. ───
+  const historyBeforeStickers = await page.evaluate(() => window.__mjTest.fillHistory.length);
+
+  await page.click('#stickerBtn');
+  await page.waitForSelector('#stickerModal:not(.hidden)', { timeout: 3000 });
+  const nStickerCards = await page.locator('#stickerGrid .decor-card').count();
+  ok('au moins quelques autocollants distincts proposés (dédupliqués par emoji)', nStickerCards >= 5, `cartes=${nStickerCards}`);
+  // Cible tactile >= 64px (demande explicite : "cible >= 48 px, idéalement 64+")
+  const stickerCardBox = await page.locator('#stickerGrid .decor-card').first().boundingBox();
+  ok('carte autocollant >= 64px de haut (cible tactile 4 ans)', stickerCardBox.height >= 64, `h=${stickerCardBox.height}`);
+
+  await page.click('#stickerGrid .decor-card >> nth=0');
+  await page.waitForSelector('#stickerModal', { state: 'hidden', timeout: 2000 });
+  ok('choisir un autocollant arme le mode (bouton en surbrillance)',
+     await page.locator('#stickerBtn.sticker-armed').count() === 1);
+  ok('mode autocollant armé (état interne)', await page.evaluate(() => window.__mjTest.stickerMode === true));
+
+  // Geste UNIQUE : un tap sur le dessin pose l'autocollant, pas de drag. Deux points
+  // distincts du canvas pour poser 2 autocollants.
+  const stickerBox = await page.locator('#paintCanvas').boundingBox();
+  await page.mouse.click(stickerBox.x + stickerBox.width * 0.75, stickerBox.y + stickerBox.height * 0.2);
+  await page.waitForTimeout(150);
+  await page.mouse.click(stickerBox.x + stickerBox.width * 0.75, stickerBox.y + stickerBox.height * 0.4);
+  await page.waitForTimeout(150);
+
+  const historyAfter2Stickers = await page.evaluate(() => window.__mjTest.fillHistory);
+  ok('2 autocollants posés au-dessus de l\'historique existant',
+     historyAfter2Stickers.length === historyBeforeStickers + 2,
+     `avant=${historyBeforeStickers} après=${historyAfter2Stickers.length}`);
+  ok('les 2 dernières entrées sont bien des stickers {type,nx,ny,emoji}',
+     historyAfter2Stickers.slice(-2).every(f => f.type === 'sticker' && typeof f.nx === 'number' && typeof f.ny === 'number' && typeof f.emoji === 'string'));
+
+  // Choisir une couleur désarme le mode autocollant (un seul mode actif à la fois)
+  await page.click('.palette .swatch >> nth=1');
+  ok('choisir une couleur désarme le mode autocollant',
+     await page.evaluate(() => window.__mjTest.stickerMode === false)
+     && (await page.locator('#stickerBtn.sticker-armed').count()) === 0);
+
+  // ─── Annuler : retire UNIQUEMENT le dernier sticker, jamais tout l'historique ───
+  await page.click('#undoBtn');
+  await page.waitForFunction((expected) => {
+    const c = document.getElementById('paintCanvas');
+    return c && c.width > 0 && window.__mjTest && window.__mjTest.fillHistory.length === expected;
+  }, historyBeforeStickers + 1, { timeout: 4000 });
+  const historyAfterUndo = await page.evaluate(() => window.__mjTest.fillHistory);
+  ok('Annuler retire le dernier sticker (1 sticker restant, reste de l\'historique intact)',
+     historyAfterUndo.length === historyBeforeStickers + 1 && historyAfterUndo[historyAfterUndo.length - 1].type === 'sticker',
+     JSON.stringify(historyAfterUndo.slice(-1)));
+
+  // ─── Le dessin sauvegardé ("Fini !") contient le sticker restant ───
+  await page.click('#finBtn');
+  await page.waitForSelector('#screenGallery:not(.hidden)', { timeout: 4000 });
+  const pieceWithSticker = await page.evaluate(() => {
+    const list = JSON.parse(localStorage.getItem('mj32_galerie') || '[]');
+    return list[list.length - 1];
+  });
+  ok('œuvre sauvegardée : fills contient le sticker restant',
+     Array.isArray(pieceWithSticker.fills) && pieceWithSticker.fills.some(f => f.type === 'sticker'),
+     JSON.stringify(pieceWithSticker.fills));
+
+  // ─── Le sticker survit à "Reprendre en copie" (rejoué depuis le lineart original) ───
+  await page.click('#galleryView .thumb-card >> nth=0');
+  await page.waitForSelector('#bigView:not(.hidden)', { timeout: 3000 });
+  await page.click('#resumeBtn');
+  await page.waitForSelector('#screenAtelier:not(.hidden)', { timeout: 4000 });
+  await page.waitForFunction(() => {
+    const c = document.getElementById('paintCanvas');
+    return c && c.width > 0 && window.__mjTest && window.__mjTest.fillHistory.some(f => f.type === 'sticker');
+  }, { timeout: 5000 });
+  ok('Reprendre en copie rejoue le sticker (pas seulement les couleurs)', true);
 }

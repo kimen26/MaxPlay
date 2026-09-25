@@ -76,9 +76,9 @@ const PRECACHE_LIST = [
   // commentaire : gen-sw-version.mjs extrait les entrees par une regex
   // naive sur les guillemets simples, une apostrophe ici casse le calcul
   // (deja le cas plus haut, cf. avertissement en tete de PRECACHE_LIST).
-  'js/i18n/mj-strings.en.js',
-  'js/i18n/mj-strings.es-es.js',
-  'js/i18n/mj-strings.pt-br.js',
+  'js/gen/i18n/mj-strings.en.js',
+  'js/gen/i18n/mj-strings.es-es.js',
+  'js/gen/i18n/mj-strings.pt-br.js',
   'js/ping.js',
   'js/tracker.js',
   'js/cloud.js',

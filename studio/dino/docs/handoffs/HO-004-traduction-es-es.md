@@ -16,7 +16,7 @@ Produire `studio/dino/content/i18n/es-es/strings.json` : les 71 fiches dino et l
 ## Hors perimetre (gele)
 
 - `site/js/dinos-data.js` — le FR est le canon, on n'y touche pas.
-- `site/js/i18n/` — la generation des bundles produit est HO-007.
+- `site/js/gen/i18n/` — la generation des bundles produit est HO-007.
 - Tout dossier d'une autre langue.
 - Toute generation audio (invariant DEC-I18N-INVARIANT-001 : lexique AVANT audio).
 

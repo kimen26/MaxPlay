@@ -14,7 +14,7 @@
     // le pack mj-strings.<lang>.js est mis en cache par sw.js comme les
     // autres assets js/ — pas de dépendance réseau ici.
     if (window.Lang && Lang.current() !== 'fr') {
-      document.write('<scr' + 'ipt src="js/i18n/mj-strings.' + Lang.current() + '.js"></scr' + 'ipt>');
+      document.write('<scr' + 'ipt src="js/gen/i18n/mj-strings.' + Lang.current() + '.js"></scr' + 'ipt>');
     }
   </script>
   <style>

@@ -6,6 +6,8 @@
   "scripts": {
     "mj:test": "node run.mjs",
     "mj:all": "node run-all.mjs",
+    "mj:autonomes": "node run-autonomes.mjs",
+    "mj:full": "node run-full.mjs",
     "mj:audit": "node audit-gabarit.mjs"
   }
 }

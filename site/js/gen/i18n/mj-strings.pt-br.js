@@ -860,7 +860,12 @@ window.MJ_STRINGS = {
     "volcan": "Vulcão"
    },
    "zoomer": "Ampliar",
-   "vueNormale": "Vista normal"
+   "vueNormale": "Vista normal",
+   "stickers": {
+    "bouton": "Adesivos",
+    "titreMenu": "Escolha um adesivo!"
+   },
+   "annuler": "Desfazer"
   },
   "voix": {
    "regle-mj-32": "Colore seu dino do jeito que você quiser, não tem erro!. Eu escolho um dino para colorir . Eu toco no dino que eu preferir na lista.. Eu escolho uma cor e toco no desenho . A cor preenche toda a área que eu tocar. Eu posso trocar de cor quantas vezes eu quiser!. Eu olho o modelo se eu precisar . O botão « Modelo » mostra o dino colorido por 2 segundos, para me ajudar se eu quiser.. Eu toco em « Pronto! » para guardar meu desenho . Minha obra vai para « Minha galeria »: eu posso olhar ela, continuar de onde parei, ou apagar. Sem estrelas, sem erro: eu faço do jeito que eu quiser!. Responda certo na primeira tentativa em todas as perguntas para ganhar a estrela de campeão!"
@@ -1596,7 +1601,7 @@ window.MJ_STRINGS = {
    "newNickPlaceholder": "Apelido da nova criança (ex: Lou)",
    "btnAddChild": "➕ Adicionar um perfil",
    "loadingText": "Carregando…",
-   "legalP": "Conta reservada aos pais. Não coletamos nenhum dado pessoal da criança: o perfil é apenas um apelido escolhido por você, associado ao progresso do jogo. Sem anúncios, sem compartilhamento com terceiros. Exclusão da conta e dos dados mediante simples pedido.",
+   "legalP": "Conta reservada aos pais. Não coletamos <b>nenhum dado pessoal da criança</b>: o perfil é apenas um apelido escolhido por você, associado ao progresso do jogo. Sem anúncios, sem compartilhamento com terceiros. Exclusão da conta e dos dados mediante simples pedido.",
    "js": {
     "errNoProfile": "Ainda não há nenhum perfil.",
     "errLoadPrefix": "Erro ao carregar: ",

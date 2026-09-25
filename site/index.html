@@ -215,11 +215,23 @@
     // chambre des œufs directement au retour à la Vallée, sans clic
     // supplémentaire — le moteur Collection est chargé en tâche de fond par
     // le Mur, donc on attend qu'il soit prêt (retente courte, jamais bloquant).
+    //
+    // BUG corrigé (audit 2026-09-25) : `window.NidUI.openChambre` existe dès
+    // que nid-ui.js a fini de charger (l'objet est posé en tête de fichier),
+    // mais `init()` charge `Collection` etc. en ASYNCHRONE juste après — un
+    // appel trop tôt trouve `chambreSupported()` faux et retourne en silence
+    // (aucune erreur, `#chambre-ov` jamais créé). Tester la PRÉSENCE de la
+    // fonction ne prouve donc rien : on doit retenter tant que l'appel n'a
+    // pas réellement produit l'overlay (L-133 : attendre le fait, pas une
+    // durée).
     (function openDeepLink() {
       if (new URLSearchParams(location.search).get('open') !== 'nid') return;
       let tries = 0;
       (function tryOpen() {
-        if (window.NidUI && NidUI.openChambre) { NidUI.openChambre(); return; }
+        if (window.NidUI && NidUI.openChambre) {
+          NidUI.openChambre();
+          if (document.getElementById('chambre-ov')) return; // succès confirmé
+        }
         if (++tries > 20) return; // ~3s : moteur absent, on abandonne en silence
         setTimeout(tryOpen, 150);
       })();

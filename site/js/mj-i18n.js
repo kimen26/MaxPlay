@@ -1,6 +1,6 @@
 // mj-i18n.js — surcouche multilingue du panneau règle (RegleInfo) des mini-jeux.
 // Principe (HO-MJ-02, miroir dinos-i18n.js) : le FR reste le CANON, en dur dans chaque
-// mj-XX.html (cfg.regle passé à MJ.init). Un fichier GÉNÉRÉ js/i18n/mj-strings.<lang>.js
+// mj-XX.html (cfg.regle passé à MJ.init). Un fichier GÉNÉRÉ js/gen/i18n/mj-strings.<lang>.js
 // pose window.MJ_STRINGS = { "mj-14": { titre, regle:{texte, etapes:[{t,d}], etoiles} }, ... }
 // et MJi18n.regle(gameId, cfgRegle) rend une COPIE fusionnée par-dessus cfgRegle (jamais
 // de mutation de l'objet d'origine — le jeu peut le réutiliser).

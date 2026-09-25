@@ -1,5 +1,5 @@
 // Genere le bundle UI d'une langue :
-//   studio/dino/content/i18n/<lang>/ui.json -> site/js/i18n/dino-ui-strings.<lang>.js
+//   studio/dino/content/i18n/<lang>/ui.json -> site/js/gen/i18n/dino-ui-strings.<lang>.js
 // Frontiere DEC-GED-001 : le site ne lit jamais studio/, tout descend par ce generateur.
 // Une cle absente de ui.json n'est PAS ecrite : dino-ui.js retombe alors sur le FR.
 // Usage : node _gen-ui-bundle.cjs <lang>
@@ -9,7 +9,7 @@ const lang = process.argv[2];
 if (!lang) { console.error('usage: node _gen-ui-bundle.cjs <lang>'); process.exit(2); }
 
 const src = path.join(ROOT, 'studio/dino/content/i18n', lang, 'ui.json');
-const outDir = path.join(ROOT, 'site/js/i18n');
+const outDir = path.join(ROOT, 'site/js/gen/i18n');
 fs.mkdirSync(outDir, { recursive: true });
 const out = path.join(outDir, `dino-ui-strings.${lang}.js`);
 

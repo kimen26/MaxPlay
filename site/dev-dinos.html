@@ -652,7 +652,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 (function () {
   var lang = (window.Lang && window.Lang.current()) || 'fr';
   if (lang !== 'fr' && /^[a-z]{2}(-[a-z]{2})?$/.test(lang)) {
-    document.write('<script src="js/i18n/dino-ui-strings.' + lang + '.js"><\/script>');
+    document.write('<script src="js/gen/i18n/dino-ui-strings.' + lang + '.js"><\/script>');
   }
 })();
 </script>

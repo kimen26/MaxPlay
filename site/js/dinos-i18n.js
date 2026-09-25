@@ -1,6 +1,6 @@
 // dinos-i18n.js — surcouche multilingue des données dino.
 // Principe : dinos-data.js (FR) = base canon inline. Pour une autre langue, un fichier
-// GÉNÉRÉ js/i18n/dinos-strings.<lang>.js pose window.DINO_STRINGS = { dinos:{id:{...}}, familles:{id:{...}}, racines:{cle:{...}} }
+// GÉNÉRÉ js/gen/i18n/dinos-strings.<lang>.js pose window.DINO_STRINGS = { dinos:{id:{...}}, familles:{id:{...}}, racines:{cle:{...}} }
 // et ce script fusionne les champs TEXTE par-dessus (les champs neutres — mesures, couleurs, ids, images — ne bougent jamais).
 // Ordre de chargement : lang.js → dinos-data.js [→ dinos-racines.js] → dinos-i18n.js.
 // Langue sans fichier strings → 404 silencieux, l'app reste en FR (fallback assumé).
@@ -70,6 +70,6 @@
   };
 
   /* eslint-disable no-useless-escape */
-  document.write('<script src="js/i18n/dinos-strings.' + lang + '.js"><\/script>');
+  document.write('<script src="js/gen/i18n/dinos-strings.' + lang + '.js"><\/script>');
   document.write('<script>window.applyDinoStrings && window.applyDinoStrings()<\/script>');
 })();

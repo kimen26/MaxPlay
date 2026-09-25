@@ -860,7 +860,12 @@ window.MJ_STRINGS = {
     "volcan": "Volcano"
    },
    "zoomer": "Zoom",
-   "vueNormale": "Normal view"
+   "vueNormale": "Normal view",
+   "stickers": {
+    "bouton": "Stickers",
+    "titreMenu": "Choose a sticker!"
+   },
+   "annuler": "Undo"
   },
   "voix": {
    "regle-mj-32": "Color your dino however you like, there's no wrong way!. I pick a dino to color . I tap the dino I like best from the list.. I pick a color and tap the drawing . The color fills the whole area I touch. I can switch colors as many times as I want!. I check the model if I need to . The \"Model\" button shows the dino in color for 2 seconds, to help me if I want.. I tap \"Done!\" to save my drawing . My artwork goes into \"My Gallery\": I can look at it, pick it back up, or delete it. No stars, no mistakes: I do it my way!. Answer right on the first try for every question to win the champion star!"
@@ -1596,7 +1601,7 @@ window.MJ_STRINGS = {
    "newNickPlaceholder": "New child’s nickname (e.g. Lou)",
    "btnAddChild": "➕ Add a profile",
    "loadingText": "Loading…",
-   "legalP": "Account reserved for parents. We collect no personal data about your child: the profile is just a nickname you choose, linked to game progress. No ads, no sharing with third parties. Account and data deleted on request.",
+   "legalP": "Account reserved for parents. We collect <b>no personal data about your child</b>: the profile is just a nickname you choose, linked to game progress. No ads, no sharing with third parties. Account and data deleted on request.",
    "js": {
     "errNoProfile": "No profile yet.",
     "errLoadPrefix": "Loading error: ",

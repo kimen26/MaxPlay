@@ -22,7 +22,7 @@
 - [~] HO-MJ-12 — découpe des pièces (`site/img/armoire/*.webp` ≤ 350 Ko, script `tools/armoire-decoupe.py`, planche-contact)
 - [x] HO-MJ-13 — page armoire (v1 en ligne 2026-09-15, commit b17b525e) (`armoire.js` / `armoire.css`, suppression `mur-scene.js`, élagage `mur.js`/`mur.css`, spec 7 viewports « jamais d'ascenseur », SW precache)
 - [ ] Recette Papa Yann sur P30 Pro de l'accueil en v8 (HO-MJ-22 livré 2026-09-25 : 15 cases + 2 tiroirs posés sur les planches du kit, globe qui fait un tour au tap puis ouvre l'encyclo).
-- [ ] Specs autonomes (`armoire`, `mur-nid`, `nid-e2e`, `index`, `collection`, `armoire-meuble`, `i18n-dinos`) hors `run-all.mjs` : aucune n'est lancée automatiquement, c'est comme ça que `nid-e2e` est resté rouge sans alerte. Les brancher dans `npm run check` ou un `run-autonomes.mjs`.
+- [ ] CI : `npm test` lance maintenant `run-full.mjs` (36 jeux + 12 specs autonomes, 2026-09-25) mais `.github/workflows/deploy.yml` ne lance que `npm run check`. Ajouter `npm test` à la CI si le temps d'exécution le permet.
 - [ ] Après recette : brancher la chaîne 2★ (`repaireState`) sur les casiers ou l'abandonner explicitement ; décider si les objets tournent au hasard à chaque chargement (v1) ou restent fixes
 - [ ] Objet non placé : `obj-dino.webp` (mascotte) — à réserver pour l'écran dino (étagère encyclo, voir `studio/dino/memory/TODO.md`). `obj-livres-jeux.webp` est posé depuis HO-MJ-19 (tiroir droit).
 - [x] Portes et lumière : réglés par HO-MJ-19 (portes en rotation 3D CSS à tous les écrans, halo en `radial-gradient`).
@@ -47,7 +47,7 @@
 
 **DoD** : stickers posables livrés et branchés, recette faite sur le vrai P30 Pro de Max, plus aucune spec instable connue.
 
-- [ ] STICKERS de plantes posables au tap dans le dessin (`{type:'sticker'}` dans l'historique) — idée PY 2026-09-08, jamais commencée
+- [x] STICKERS de plantes posables au tap dans le dessin (`{type:'sticker'}` dans l'historique) — livré 2026-09-25 (geste unique choisir→taper, bouton Annuler ajouté, glyphes emoji `DINO_PLANTES` dédupliqués, zéro image générée), spec étendue verte ; NON figé, recette P30 Pro restant à faire (cf. figée mj-32.md § Stickers)
 - [ ] Recette sur le VRAI P30 Pro : tout le chantier coloriage n'a été vu qu'en navigateur (360/320 px), jamais sur l'appareil de Max
 - [ ] Dette perf : remplissage du fond entier ~400 ms (calcul JS pur) — à traiter si le 1er tap paraît lent sur P30 Pro
 - [ ] Patcher les linearts à brèche côté pôle dino (Cryolophosaure #6389) pour pouvoir baisser le rayon anti-fuite

@@ -66,7 +66,7 @@
   // pack) — un pack absent (langue sans traduction encore prête, ex. es-mx/it) donne un
   // 404 silencieux : loadSeq() ignore l'erreur (onerror -> continue), MJi18n reste sans
   // MJ_STRINGS et RegleInfo retombe sur le FR (repli assumé, jamais de trou).
-  if (LANG !== 'fr') SCRIPTS.push('js/i18n/mj-strings.' + LANG + '.js');
+  if (LANG !== 'fr') SCRIPTS.push('js/gen/i18n/mj-strings.' + LANG + '.js');
   SCRIPTS = SCRIPTS.concat([
     'js/sounds.js',
     'js/gen/lexique-fr.js',

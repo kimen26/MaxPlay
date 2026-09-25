@@ -22,7 +22,7 @@ Exécuter depuis la racine du repo (`node studio/minijeux/scripts/<script>`) :
   `RegleInfo.init(cfg.regle)` et écrit `studio/minijeux/i18n/fr/strings.json` (référence FR).
 - `_check-mj-traduction.cjs <lang>` — vérifie `studio/minijeux/i18n/<lang>/strings.json` contre
   le FR (clés identiques, nombre d'étapes, chiffres conservés, pas de chaîne vide).
-- `_gen-mj-strings-bundle.cjs <lang>` — génère `site/js/i18n/mj-strings.<lang>.js` (`window.MJ_STRINGS`)
+- `_gen-mj-strings-bundle.cjs <lang>` — génère `site/js/gen/i18n/mj-strings.<lang>.js` (`window.MJ_STRINGS`)
   depuis `studio/minijeux/i18n/<lang>/strings.json`. Ne pas éditer le fichier généré à la main.
 
 ## Pages de dev/design (hors prod)

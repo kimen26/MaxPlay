@@ -102,6 +102,12 @@
     #finBtn { background:linear-gradient(135deg,#43a047,#66bb6a); color:#fff; }
     #zoomBtn { background:linear-gradient(135deg,#7e57c2,#9575cd); color:#fff; }
     #decorBtn { background:linear-gradient(135deg,#8d6e63,#a1887f); color:#fff; }
+    #stickerBtn { background:linear-gradient(135deg,#2e7d32,#66bb6a); color:#fff; }
+    /* Indicateur "mode autocollant armé" (choisi un autocollant, prochain tap sur le
+       dessin le pose) — même principe que .swatch.sel : un contour clair, pas de texte
+       à lire, visible d'un coup d'œil pendant qu'on regarde le dessin, pas le bouton. */
+    #stickerBtn.sticker-armed { outline:3px solid #ffe066; outline-offset:2px; }
+    #undoBtn { background:linear-gradient(135deg,#5c6bc0,#7986cb); color:#fff; }
     .atelier-btn:active { transform:scale(.94); }
     /* Boutons masqués pendant l'écran atelier quand ils ne s'appliquent pas (HO-MJ-10) :
        zoomBtn disparaît une fois zoomé (le zoom loupe n'a qu'un seul niveau, cf. figée),
@@ -217,6 +223,17 @@
       background:linear-gradient(135deg,#43a047,#66bb6a); color:#fff; box-shadow:0 3px 8px #0005;
     }
     #decorModal .closeDecor:active { transform:scale(.96); }
+    /* Stickers (idée PY 2026-09-08) : MÊME gabarit visuel que #decorModal, ID différent
+       car modal distinct — les règles ci-dessus sont scopées à #decorModal, donc un
+       simple markup partagé (.box/.msg/.decor-grid/.closeDecor) ne suffit pas à hériter
+       le style sans cette extension explicite des sélecteurs. */
+    #stickerModal { position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:60; display:flex; align-items:center; justify-content:center; padding:20px; }
+    #stickerModal .box { background:#2d1f3d; border-radius:20px; padding:20px; max-width:360px; width:100%; text-align:center; box-shadow:0 8px 30px #000a; border:2px solid rgba(255,255,255,0.1); max-height:90vh; overflow-y:auto; }
+    #stickerModal .msg { font-size:1.05rem; font-weight:900; margin-bottom:14px; color:#fff; }
+    #stickerModal .decor-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; }
+    #stickerModal .decor-card .demoji { font-size:2.4rem; }
+    #stickerModal .closeDecor { margin-top:16px; min-height:48px; width:100%; border:none; border-radius:16px; font-size:1rem; font-weight:900; cursor:pointer; font-family:inherit; background:linear-gradient(135deg,#43a047,#66bb6a); color:#fff; box-shadow:0 3px 8px #0005; }
+    #stickerModal .closeDecor:active { transform:scale(.96); }
 
     /* ── Modal confirmation suppression ── */
     #confirmModal {
@@ -268,6 +285,8 @@
           <button class="atelier-btn" id="backChoiceBtn">🔙 Autre dino</button>
           <button class="atelier-btn" id="modelBtn">🦕 Modèle</button>
           <button class="atelier-btn" id="decorBtn">🏞️ Décors</button>
+          <button class="atelier-btn" id="stickerBtn">🌿 Autocollants</button>
+          <button class="atelier-btn" id="undoBtn">↩️ Annuler</button>
           <button class="atelier-btn" id="zoomBtn">🔍 Zoomer</button>
           <button class="atelier-btn" id="finBtn">✅ Fini !</button>
         </div>
@@ -300,6 +319,17 @@
       <div class="msg" id="decorMsg">Choisis un décor</div>
       <div class="decor-grid" id="decorGrid"></div>
       <button class="closeDecor" id="closeDecor">👍 Fermer</button>
+    </div>
+  </div>
+
+  <!-- Stickers de plantes (idée PY 2026-09-08, cf. figée mj-32.md § Stickers) : réutilise
+       exactement le même gabarit visuel que #decorModal (.box/.msg/.decor-grid/.decor-card/
+       .closeDecor) — aucune règle CSS nouvelle nécessaire, un seul modal à maintenir visuellement. -->
+  <div id="stickerModal" class="hidden">
+    <div class="box">
+      <div class="msg" id="stickerMsg">Choisis un autocollant</div>
+      <div class="decor-grid" id="stickerGrid"></div>
+      <button class="closeDecor" id="closeSticker">👍 Fermer</button>
     </div>
   </div>
 
@@ -387,6 +417,48 @@
     ];
 
     function baseName(png) { return png.replace(/\.(jpg|jpeg|png|webp)$/i, ''); }
+
+    // ─── Stickers de plantes (idée PY 2026-09-08, cf. figée mj-32.md § Stickers) ───
+    // Zéro nouvelle image : le champ `emoji` de DINO_PLANTES (déjà écrit/validé côté pôle
+    // DINO pour l'encyclopédie, déjà chargé par ce fichier — cf. carte "Les plantes" plus
+    // haut qui l'utilise déjà en dur pour 🌿) est réutilisé comme glyphe de sticker. Les
+    // jpg de DINO_PLANTES (photos/illustrations) n'ont pas de fond transparent : posés
+    // tels quels par-dessus un dessin colorié, ils feraient un rectangle blanc opaque —
+    // inutilisable comme autocollant. Un emoji est transparent par construction, ne
+    // dépend d'aucun fetch (jamais de 404), et est déjà le vocabulaire visuel de ce jeu
+    // (decorCard, plantCard). Dédoublonné par glyphe (plusieurs plantes partagent le même
+    // emoji, ex. dicroidium/cycas/fougère/williamsonia = 🌿) pour offrir des autocollants
+    // VISUELLEMENT distincts plutôt que 20 cartes dont la moitié se ressemblent.
+    const STICKERS = (function () {
+      const plantes = (typeof DINO_PLANTES !== 'undefined' ? DINO_PLANTES : []);
+      const seen = new Set();
+      const out = [];
+      plantes.forEach(p => {
+        if (!p.emoji || seen.has(p.emoji)) return;
+        seen.add(p.emoji);
+        out.push(p.emoji);
+      });
+      return out;
+    })();
+    // Taille du sticker posé, en fraction de la largeur du canvas — assez grand pour
+    // qu'un doigt de 4 ans le voie et le reconnaisse, assez petit pour poser plusieurs
+    // stickers sans recouvrir tout le dessin.
+    const STICKER_SIZE_RATIO = 0.24;
+
+    // Dessine UN sticker (glyphe emoji) centré sur (x,y), directement dans les pixels
+    // du canvas — même principe que floodFill : un raster définitif, rejouable à
+    // l'identique depuis fillHistory (cf. composeAndFinish). N'interagit jamais avec
+    // contourMask (calculé AVANT tout sticker, cf. composeAndFinish) : un sticker ne
+    // peut donc jamais transformer un trait de contour en mur ou en trou.
+    function drawStickerGlyph(ctx2d, x, y, emoji, canvasW) {
+      const size = Math.max(24, Math.round(canvasW * STICKER_SIZE_RATIO));
+      ctx2d.save();
+      ctx2d.font = size + 'px "Noto Color Emoji","Segoe UI Emoji","Apple Color Emoji",sans-serif';
+      ctx2d.textAlign = 'center';
+      ctx2d.textBaseline = 'middle';
+      ctx2d.fillText(emoji, x, y);
+      ctx2d.restore();
+    }
 
     // ─── HO-MJ-09 chantier B : sous-menu Décors ───
     // Décision figée Papa Yann 2026-09-08 : TOUS les fonds proposés pour TOUS les
@@ -587,6 +659,13 @@
     let selectedColor = PALETTE[0].hex;
     let canvas, ctx;
     let filling = false;
+
+    // Mode autocollant (idée PY 2026-09-08) : armé par chooseSticker (tap sur une
+    // carte du modal #stickerModal), désarmé par le choix d'une couleur/gomme
+    // (buildPalette) — les deux modes sont exclusifs, jamais actifs ensemble, pour
+    // qu'un seul geste (tap sur le dessin) fasse toujours une seule chose prévisible.
+    let stickerMode = false;
+    let selectedStickerEmoji = null;
 
     // ─── Zoom de précision (HO-MJ-10, demande Papa Yann 2026-09-08) ───
     // Zoome en CSS (transform:scale), JAMAIS en changeant canvas.width : le lineart,
@@ -962,6 +1041,10 @@
       // un nouveau dino / une nouvelle réédition — sans ce reset la transformation CSS
       // et panX/panY de l'ancien dino resteraient collés au nouveau canvas.
       zoomed = false; panX = 0; panY = 0;
+      // Toute (ré)ouverture d'atelier repart aussi en mode coloriage (jamais un mode
+      // autocollant resté armé d'une session/dino précédent) — même logique que le
+      // reset du zoom juste au-dessus.
+      disarmStickerMode();
       canvas = document.getElementById('paintCanvas');
       canvas.classList.remove('panning');
       canvas.style.transform = '';
@@ -1088,7 +1171,17 @@
         resumeFills.forEach(f => {
           const x = Math.max(0, Math.min(w - 1, Math.round(f.nx * w)));
           const y = Math.max(0, Math.min(h + bandH - 1, Math.round(f.ny * (h + bandH))));
-          if (floodFill(x, y, f.hex)) fillHistory.push({ nx: f.nx, ny: f.ny, hex: f.hex });
+          // Deux natures d'entrée dans fillHistory, distinguées par `type` (absent =
+          // remplissage couleur historique, jamais renommé pour ne pas casser les
+          // œuvres déjà sauvegardées avant les stickers) : un sticker se redessine
+          // tel quel (pas de flood fill, pas de canFill/contourMask), un remplissage
+          // rejoue floodFill comme avant ce chantier.
+          if (f.type === 'sticker') {
+            drawStickerGlyph(ctx, x, y, f.emoji, w);
+            fillHistory.push({ type: 'sticker', nx: f.nx, ny: f.ny, emoji: f.emoji });
+          } else if (floodFill(x, y, f.hex)) {
+            fillHistory.push({ nx: f.nx, ny: f.ny, hex: f.hex });
+          }
         });
       }
     }
@@ -1287,6 +1380,14 @@
       if (filling || !canvas) return;
       e.preventDefault();
       const [x, y] = canvasPointFromEvent(e);
+      // Geste unique (règle game-design-enfant, idée PY 2026-09-08) : un sticker choisi
+      // arme le mode pour TOUT tap suivant sur le dessin — pas de drag, pas de 2e geste
+      // à comprendre. Exclusif du coloriage : tant qu'un sticker est armé, le tap ne
+      // colorie pas (symétrique de la sélection d'une couleur qui désarme le sticker).
+      if (stickerMode && selectedStickerEmoji) {
+        placeStickerAt(x, y, selectedStickerEmoji);
+        return;
+      }
       filling = true;
       const changed = floodFill(x, y, selectedColor);
       if (changed) {
@@ -1296,6 +1397,29 @@
         if (typeof sndDing === 'function') sndDing();
       }
       filling = false;
+    }
+
+    // Pose UN sticker au point tapé et l'enregistre dans le même historique que les
+    // remplissages couleur (fillHistory) — un seul historique, un seul "Annuler",
+    // jamais deux mécaniques d'annulation à maintenir. Coordonnées normalisées comme
+    // pour un fill (indépendantes de la résolution du canvas, cf. modèle de données 🔒).
+    function placeStickerAt(x, y, emoji) {
+      drawStickerGlyph(ctx, x, y, emoji, canvas.width);
+      fillHistory.push({ type: 'sticker', nx: x / canvas.width, ny: y / canvas.height, emoji });
+      if (typeof sndDing === 'function') sndDing();
+    }
+
+    // ─── Annuler (idée PY 2026-09-08, exigé pour que le mode autocollant reste sans
+    // risque : "jamais de perte accidentelle du dessin") ───
+    // Retire la DERNIÈRE action de fillHistory (sticker OU remplissage couleur, peu
+    // importe sa nature) en repartant du lineart ORIGINAL et en rejouant tout le reste —
+    // exactement le mécanisme déjà éprouvé de "Reprendre en copie" (composeAndFinish),
+    // jamais une seconde logique de retrait de pixels qui pourrait diverger du rejeu.
+    // Silencieux si rien à annuler (zéro pénalité, pas de bouton désactivé à gérer).
+    function undoLast() {
+      if (!fillHistory.length || !canvas || !currentDino) return;
+      const prev = fillHistory.slice(0, -1);
+      loadLineart(currentDino, prev, currentDecorId);
     }
 
     function buildPalette() {
@@ -1310,6 +1434,7 @@
           selectedColor = c.hex;
           document.querySelectorAll('.swatch').forEach(s => s.classList.remove('sel'));
           sw.classList.add('sel');
+          disarmStickerMode();
         };
         pal.appendChild(sw);
       });
@@ -1320,8 +1445,19 @@
         selectedColor = '#ffffff';
         document.querySelectorAll('.swatch').forEach(s => s.classList.remove('sel'));
         eraser.classList.add('sel');
+        disarmStickerMode();
       };
       pal.appendChild(eraser);
+    }
+
+    // Choisir une couleur (ou la gomme) redonne la priorité au coloriage — un seul
+    // mode actif à la fois (cf. handleTap). Séparée en fonction nommée pour ne pas
+    // dupliquer ces 2 lignes dans chaque callback swatch/eraser.
+    function disarmStickerMode() {
+      stickerMode = false;
+      selectedStickerEmoji = null;
+      const btn = document.getElementById('stickerBtn');
+      if (btn) btn.classList.remove('sticker-armed');
     }
 
     // ═══════════════ Modèle (aperçu couleur 2s) ═══════════════
@@ -1607,6 +1743,43 @@
     // que le reste du fichier : le FR est le canon, jamais de trou visible pour l'enfant).
     const DECOR_FR_NAMES = { desert: 'Désert', foret: 'Forêt', montagne: 'Montagne', neige: 'Neige', volcan: 'Volcan' };
 
+    // ═══════════════ Stickers de plantes (idée PY 2026-09-08) ═══════════════
+    // Réutilise le gabarit visuel #decorModal/.decor-card à l'identique (même classe
+    // CSS) : cible tactile déjà >= 88px (min-height .decor-card), aucune règle
+    // nouvelle. Pas de nom sous l'emoji (contrairement aux décors) : Max ne lit pas,
+    // et 11 noms de plantes à traduire pour un choix purement visuel n'apportent rien.
+    function buildStickerGrid() {
+      const grid = document.getElementById('stickerGrid');
+      grid.innerHTML = '';
+      STICKERS.forEach(emoji => {
+        const card = document.createElement('div');
+        card.className = 'decor-card' + (stickerMode && selectedStickerEmoji === emoji ? ' sel' : '');
+        card.innerHTML = '<span class="demoji">' + emoji + '</span>';
+        card.onclick = () => chooseSticker(emoji);
+        grid.appendChild(card);
+      });
+    }
+
+    function openStickerMenu() {
+      buildStickerGrid();
+      document.getElementById('stickerModal').classList.remove('hidden');
+    }
+    function closeStickerMenu() {
+      document.getElementById('stickerModal').classList.add('hidden');
+    }
+
+    // Choisir un autocollant ARME le mode (cf. handleTap) et referme le modal : le
+    // geste suivant de l'enfant est directement le tap sur le dessin, jamais un 2e
+    // choix à faire dans le modal. Le mode reste armé après la pose (comme une
+    // couleur reste sélectionnée après un remplissage) : poser plusieurs fois le
+    // même autocollant ne demande pas de rouvrir le modal à chaque fois.
+    function chooseSticker(emoji) {
+      stickerMode = true;
+      selectedStickerEmoji = emoji;
+      closeStickerMenu();
+      document.getElementById('stickerBtn').classList.add('sticker-armed');
+    }
+
     // ═══════════════ Init ═══════════════
     // HO-MJ-11 : "Autre dino" (atelier) et "Colorier un autre dino !" (galerie) ramènent
     // à la grille de la MÊME famille si une famille était active (cas courant : l'enfant
@@ -1637,6 +1810,12 @@
       document.getElementById('decorBtn').textContent = '🏞️ ' + MJi18n.t('mj-32', 'decors.bouton', 'Décors');
       document.getElementById('decorMsg').textContent = MJi18n.t('mj-32', 'decors.titreMenu', 'Choisis un décor');
       document.getElementById('closeDecor').textContent = '👍 ' + MJi18n.t('mj-32', 'decors.fermer', 'Fermer');
+      document.getElementById('stickerBtn').textContent = '🌿 ' + MJi18n.t('mj-32', 'stickers.bouton', 'Autocollants');
+      document.getElementById('stickerMsg').textContent = MJi18n.t('mj-32', 'stickers.titreMenu', 'Choisis un autocollant !');
+      // Réutilise sciemment la clé decors.fermer (même texte "Fermer", déjà traduit dans
+      // les 4 packs) plutôt que d'en créer une 2e identique pour un 2e modal.
+      document.getElementById('closeSticker').textContent = '👍 ' + MJi18n.t('mj-32', 'decors.fermer', 'Fermer');
+      document.getElementById('undoBtn').textContent = '↩️ ' + MJi18n.t('mj-32', 'annuler', 'Annuler');
       document.getElementById('zoomBtn').textContent = '🔍 ' + MJi18n.t('mj-32', 'zoomer', 'Zoomer');
       document.getElementById('zoomOutBtn').textContent = '↩️ ' + MJi18n.t('mj-32', 'vueNormale', 'Vue normale');
       document.getElementById('finBtn').textContent = '✅ ' + MJi18n.t('mj-32', 'fini', 'Fini !');
@@ -1701,8 +1880,21 @@
       document.getElementById('decorBtn').onclick = openDecorMenu;
       document.getElementById('closeDecor').onclick = closeDecorMenu;
       document.getElementById('decorModal').onclick = (e) => { if (e.target.id === 'decorModal') closeDecorMenu(); };
+      document.getElementById('stickerBtn').onclick = openStickerMenu;
+      document.getElementById('closeSticker').onclick = closeStickerMenu;
+      document.getElementById('stickerModal').onclick = (e) => { if (e.target.id === 'stickerModal') closeStickerMenu(); };
+      document.getElementById('undoBtn').onclick = undoLast;
 
       if (Tracker && Tracker.startSession) Tracker.startSession('mj-32');
+
+      // Harnais Playwright (idée PY 2026-09-08, stickers) : fillHistory est une
+      // fermeture locale, invisible depuis la page — même convention __mjTest que
+      // les autres MJ (cf. mj-09/34/…) pour vérifier l'état sans dépendre du rendu
+      // pixel d'un emoji (police système variable selon l'environnement de test).
+      window.__mjTest = {
+        get fillHistory() { return fillHistory.slice(); },
+        get stickerMode() { return stickerMode; },
+      };
     }
 
     init();

@@ -860,7 +860,12 @@ window.MJ_STRINGS = {
     "volcan": "Volcán"
    },
    "zoomer": "Ampliar",
-   "vueNormale": "Vista normal"
+   "vueNormale": "Vista normal",
+   "stickers": {
+    "bouton": "Pegatinas",
+    "titreMenu": "¡Elige una pegatina!"
+   },
+   "annuler": "Deshacer"
   },
   "voix": {
    "regle-mj-32": "¡Colorea tu dinosaurio como quieras, no hay ningún error!. Elijo un dinosaurio para colorear . Toco el dinosaurio que prefiero de la lista.. Elijo un color y toco en el dibujo . El color rellena toda la zona que toco. ¡Puedo cambiar de color tantas veces como quiera!. Miro el modelo si lo necesito . El botón «Modelo» muestra el dinosaurio en color durante 2 segundos, para ayudarme si quiero.. Toco «¡Terminado!» para guardar mi dibujo . Mi obra va a «Mi galería»: puedo verla, retomarla para continuar, o borrarla. Sin estrellas, sin errores: ¡hago lo que quiero!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"

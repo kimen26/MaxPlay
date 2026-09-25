@@ -1,7 +1,7 @@
 # 🌍 i18n DINO — autoring multilingue
 
 > Créé 2026-07-10 (restructuration i18n). **FR = canon** (vit dans [`../sources/`](../sources/) et [`../scripts-audio/fr/`](../scripts-audio/)) ; les autres langues = **dérivés** rangés ici.
-> Frontière produit (DEC-GED-001) : le site ne lit JAMAIS ce dossier — tout descend via fichiers générés (`site/js/i18n/dinos-strings.<lang>.js`, packs `site/audio/dinos/<lang>/`).
+> Frontière produit (DEC-GED-001) : le site ne lit JAMAIS ce dossier — tout descend via fichiers générés (`site/js/gen/i18n/dinos-strings.<lang>.js`, packs `site/audio/dinos/<lang>/`).
 
 ## Carte
 
@@ -14,7 +14,7 @@
 ## Mécanique produit (rappel)
 
 - `site/js/lang.js` = langue active (`?lang=` → localStorage → fr) + `AUDIO_DINOS` (préfixe pack).
-- `site/js/dinos-i18n.js` = merger : charge `site/js/i18n/dinos-strings.<lang>.js` (généré) et surcharge les champs TEXTE de `DINOS` / `DINO_FAMILLES` / `DINO_RACINES`. FR = zéro surcharge.
+- `site/js/dinos-i18n.js` = merger : charge `site/js/gen/i18n/dinos-strings.<lang>.js` (généré) et surcharge les champs TEXTE de `DINOS` / `DINO_FAMILLES` / `DINO_RACINES`. FR = zéro surcharge.
 - `site/js/dinos-audio-manifest.js` = Sets par langue (`DINO_NOM_AUDIO_BY_LANG`) — consulté AVANT tout fetch (anti-404) ; langue sans pack → TTS natif (`TTS.speak` suit `Lang.bcp47()`).
 
 ## Matrice langue × contenu (statut)
@@ -37,7 +37,7 @@
 ## Ajouter une langue (playbook court)
 
 1. Lexique déjà là (sinon : gabarit `lexiques-prononciation/fr.md`).
-2. Créer `<lang>/strings.md` (menus + labels + textes fiches traduits) → générer `site/js/i18n/dinos-strings.<lang>.js`.
+2. Créer `<lang>/strings.md` (menus + labels + textes fiches traduits) → générer `site/js/gen/i18n/dinos-strings.<lang>.js`.
 3. Tester `?lang=<lang>` : tout parle en TTS natif (fallback), textes traduits.
 4. Prod audio par vagues (preview groupé → validation native → clips dans `site/audio/dinos/<lang>/`, mêmes noms de fichiers que fr/).
 5. Régénérer le manifest (`DINO_NOM_AUDIO_BY_LANG.<lang>`).

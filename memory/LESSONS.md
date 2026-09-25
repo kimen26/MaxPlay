@@ -49,3 +49,7 @@ Comment appliquer : avant toute suppression, l'exécutant grep le NOM DU DOSSIER
 ## L-010 — Changer une extension d'image casse tout ce qui la dérive par regex (2026-09-12, HO-R13)
 Quoi : la conversion paléoart/sprites en webp était verte partout (fiches, dev-dinos, build-pack, check) mais 5 mini-jeux dino sont tombés : `dinos-ombres.js`, `mj-15`, `mj-30` dérivaient `Nom_ombre.png` depuis `d.png` avec `/\.(jpg|png)$/` — l'extension `.webp` n'était plus retirée, le chemin devenait `Nom.webp_ombre.png`.
 Comment appliquer : avant de changer un format de fichier, grep les regex d'extension (`(jpg|png)`, `.replace(/\.jpg`) dans `site/**` et `studio/**`, pas seulement les chemins en dur ; et la porte transverse reste `npm test` complet, jamais « dev-dinos 0 image cassée » seul.
+
+## L-011 — Un fichier stocké en CRLF dans git ressort réécrit en entier au `git add` (2026-09-25)
+Quoi : `site/css/mur.css` est stocké en CRLF dans le dépôt, alors que `core.autocrlf` normalise en LF à l'indexation. Ajouter une seule ligne affichait 679 lignes modifiées : un `git add` normal aurait committé une réécriture complète du fichier, illisible en revue et source de conflits avec les sessions parallèles.
+Comment appliquer : si `git diff --stat` annonce bien plus de lignes que l'édition, comparer avec `git diff -w --ignore-cr-at-eol --stat`. Si l'écart vient des fins de ligne, indexer le fichier octet pour octet : `git update-index --cacheinfo 100644,$(git hash-object -w --no-filters <f>),<f>`.

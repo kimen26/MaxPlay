@@ -629,7 +629,12 @@
       // Repli sur `oeuf` seulement si Padidi est indisponible (cible null).
       return MaxFX.hatch(cible || oeuf, { imgSrc: imgSrc, label: '' }).then(function (ov) {
         if (ov && ov.parentNode) ov.parentNode.removeChild(ov);
+        return cible ? presenterBebe(imgSrc, cible, dino) : null;
+      }).then(function () {
         if (cible) {
+          // MaxFX.hatch masque son ancre (pensée pour un œuf qui disparaît) :
+          // ici l'ancre est la case d'album, qui doit réapparaître avec sa tête.
+          cible.style.opacity = '';
           cible.classList.remove('ombre-only', 'th-cible');
           cible.classList.add('possede', 'th-revele');
           cible.dataset.owned = '1';
@@ -667,6 +672,51 @@
       ], { duration: 500, fill: 'forwards' }).finished.catch(function () {});
     }).then(function () {
       if (carry.parentNode) carry.parentNode.removeChild(carry);
+    });
+  }
+
+  // 5bis. Le bébé en GRAND au centre avec son nom (la case d'album ne fait
+  // que ~80 px à 360 px : trop petit pour le moment de la naissance, demande
+  // PY 2026-09-25), puis il s'envole se ranger dans sa case. Tap = on abrège.
+  var PRESENTATION_MS = 2600;
+  var ENVOL_MS = 750;
+  function presenterBebe(src, cible, dino) {
+    var ov = document.createElement('div');
+    ov.className = 'th-presente';
+    var img = document.createElement('img');
+    img.className = 'th-presente-img';
+    img.src = src;
+    img.alt = '';
+    var nom = document.createElement('div');
+    nom.className = 'th-presente-nom';
+    nom.textContent = dino ? dino.name : '';
+    ov.appendChild(img);
+    ov.appendChild(nom);
+    document.body.appendChild(ov);
+    var calme = global.matchMedia && global.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!calme) {
+      img.animate([{ transform: 'scale(.3)', opacity: 0 }, { transform: 'scale(1)', opacity: 1 }],
+        { duration: 550, easing: 'cubic-bezier(.34,1.56,.64,1)' });
+    }
+    return new Promise(function (resolve) {
+      var t = setTimeout(resolve, PRESENTATION_MS);
+      ov.addEventListener('click', function () { clearTimeout(t); resolve(); }, { once: true });
+    }).then(function () {
+      var fin = [{ opacity: 1 }, { opacity: 0 }];
+      nom.animate(fin, { duration: 250, fill: 'forwards' });
+      ov.animate([{ backgroundColor: getComputedStyle(ov).backgroundColor }, { backgroundColor: 'rgba(0,0,0,0)' }],
+        { duration: ENVOL_MS, fill: 'forwards' });
+      var a = img.getBoundingClientRect();
+      var c = cible.getBoundingClientRect();
+      var envol = calme ? fin : [
+        { transform: 'translate(0,0) scale(1)' },
+        { transform: 'translate(' + (c.left + c.width / 2 - (a.left + a.width / 2)) + 'px,'
+          + (c.top + c.height / 2 - (a.top + a.height / 2)) + 'px) scale(' + (c.width / a.width) + ')' }
+      ];
+      return img.animate(envol, { duration: ENVOL_MS, easing: 'ease-in', fill: 'forwards' })
+        .finished.catch(function () {});
+    }).then(function () {
+      if (ov.parentNode) ov.parentNode.removeChild(ov);
     });
   }
 

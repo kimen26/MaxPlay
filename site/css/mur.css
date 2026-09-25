@@ -302,6 +302,7 @@
   border:2px solid rgba(255,255,255,.5); box-shadow:0 4px 8px rgba(0,0,0,.4);
 }
 .th-oeuf.dore { background:linear-gradient(160deg,#fff3c4,#ffd166); border-color:var(--gold,#ffd166); }
+.th-oeuf { position:relative; } /* ancre des ::after d'un contenant aquarium/tanière (MaxFX.contenant) */
 .th-oeuf.porte { opacity:1; animation:th-rebond .7s ease-in-out infinite; } /* il suit en petit rebond */
 @keyframes th-rebond { 0%,100% { translate:0 0; } 50% { translate:0 -5px; } }
 /* glissement latéral chambre → Padidi (pas de popup, spec §6.1) */
@@ -336,4 +337,4 @@
 @media (prefers-reduced-motion: reduce) {
   .ch-oeuf-visu.frisson, .ch-oeuf-visu.va-eclore, .th-oeuf.porte, .ch-oeuf-spark { animation:none !important; }
 }
-
+

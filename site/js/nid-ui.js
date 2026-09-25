@@ -149,6 +149,34 @@
     return null;
   }
 
+  // ── contenant de naissance (GO PY 2026-09-25) : œuf / aquarium / tanière.
+  // Le look vit dans MaxFX (celebrations.js), source unique partagée avec
+  // l'écran de fin de jeu.
+  function naisClasse(mode) {
+    return (global.MaxFX && global.MaxFX.contenantClasse) ? global.MaxFX.contenantClasse(mode) : '';
+  }
+  var INTRO_TXT = {
+    oeuf: 'Un œuf ! Garde-le au chaud dans le nid.',
+    aquarium: 'Un petit aquarium ! Garde-le au chaud dans le nid.',
+    taniere: 'Une petite tanière ! Garde-la au chaud dans le nid.'
+  };
+  // Phrase vraie dite à la naissance d'un bébé qui ne sort pas d'un œuf.
+  var PHRASE_NAISSANCE = {
+    fr: "Lui, il ne sort pas d'un œuf : il a grandi dans le ventre de sa maman !",
+    en: "This one doesn't come from an egg: it grew inside its mummy's tummy!"
+  };
+  function direNaissance(mode) {
+    if (mode !== 'aquarium' && mode !== 'taniere') return;
+    try {
+      var lang = global.Lang ? global.Lang.current() : 'fr';
+      var u = new SpeechSynthesisUtterance(PHRASE_NAISSANCE[lang] || PHRASE_NAISSANCE.fr);
+      u.lang = global.Lang ? global.Lang.bcp47() : 'fr-FR';
+      u.rate = 0.9;
+      global.speechSynthesis.cancel();
+      global.speechSynthesis.speak(u);
+    } catch (e) { /* pas de synthèse vocale sur ce navigateur : l'image suffit */ }
+  }
+
   // ── helpers œufs (chambre) ──────────────────────────────────────────
   var ACC_EMOJI = { paille: '🌾', couverture: '🧶', bonnet: '🧢', echarpe: '🧣', etoile: '🌟', etoile2: '⭐' };
   function accEmoji(id) { return ACC_EMOJI[id] || '🎁'; }
@@ -170,7 +198,7 @@
   // ── séquence d'éclosion (fête MaxFX + carte de gain) ────────────────
   var hatchInProgress = false;
 
-  function runHatchSequence(eggEl, result) {
+  function runHatchSequence(eggEl, result, mode) {
     if (result.type === 'doublon') {
       var d = result.item && dinoById(result.item.id ? result.item.id : result.item);
       return showTapToContinue(
@@ -185,7 +213,7 @@
     playBabyCry(dino);
     // Retour playtest PY : après la fête, une carte claire (NOM en grand + 2
     // actions ≥80px) — le gain doit se comprendre sans lire.
-    return MaxFX.hatch(eggEl, { imgSrc: imgSrc, label: '' })
+    return MaxFX.hatch(eggEl, { imgSrc: imgSrc, label: '', naissance: mode })
       .then(function (ov) {
         if (ov && ov.parentNode) ov.parentNode.removeChild(ov);
         return showHatchGainCard(dino, imgSrc);
@@ -307,7 +335,7 @@
     // suggestion fait le travail.
     var frisson = sacGarni && egg.acc.length === 0 && !egg.ready;
     return '<div class="ch-oeuf" data-egg="' + egg.index + '">' +
-      '<div class="ch-oeuf-visu' + (egg.golden ? ' dore' : '') + (egg.ready ? ' pret' : '') +
+      '<div class="ch-oeuf-visu' + naisClasse(egg.naissance) + (egg.golden ? ' dore' : '') + (egg.ready ? ' pret' : '') +
         (frisson ? ' frisson' : '') +
         (egg.stage ? ' stage-' + egg.stage : '') + '"' +
         (col && !egg.golden ? ' style="--oeuf-c:' + col + ';"' : '') + '>' +
@@ -504,7 +532,7 @@
     var dino = result.id ? dinoById(result.id) : null;
     if (result.type === 'doublon' || !dino) {
       // fallback : fête historique sur place (doublon-cadeau, données absentes)
-      runHatchSequence(visu, result).then(function () {
+      runHatchSequence(visu, result, eggMeta && eggMeta.naissance).then(function () {
         hatchInProgress = false;
         renderChambre();
         refresh();
@@ -539,6 +567,8 @@
     var oeuf = document.createElement('div');
     oeuf.className = 'th-oeuf' + (golden ? ' dore' : '');
     oeuf.style.setProperty('--oeuf-c', col);
+    var mode = eggMeta && eggMeta.naissance;
+    if (global.MaxFX && global.MaxFX.contenant) global.MaxFX.contenant(oeuf, mode);
     carry.appendChild(porteur);
     carry.appendChild(oeuf);
     document.body.appendChild(carry);
@@ -627,9 +657,10 @@
       // halo et sprite sur des coordonnées orphelines, loin de la case (le
       // dino apparaissait décalé, et le halo n'éclairait pas la bonne zone).
       // Repli sur `oeuf` seulement si Padidi est indisponible (cible null).
-      return MaxFX.hatch(cible || oeuf, { imgSrc: imgSrc, label: '' }).then(function (ov) {
+      return MaxFX.hatch(cible || oeuf, { imgSrc: imgSrc, label: '', naissance: mode }).then(function (ov) {
         if (ov && ov.parentNode) ov.parentNode.removeChild(ov);
-        return cible ? presenterBebe(imgSrc, cible, dino) : null;
+        oeuf.style.display = 'none'; // ouvert : il ne reste plus dans les bras du porteur
+        return cible ? presenterBebe(imgSrc, cible, dino, mode) : null;
       }).then(function () {
         if (cible) {
           // MaxFX.hatch masque son ancre (pensée pour un œuf qui disparaît) :
@@ -680,7 +711,7 @@
   // PY 2026-09-25), puis il s'envole se ranger dans sa case. Tap = on abrège.
   var PRESENTATION_MS = 2600;
   var ENVOL_MS = 750;
-  function presenterBebe(src, cible, dino) {
+  function presenterBebe(src, cible, dino, mode) {
     var ov = document.createElement('div');
     ov.className = 'th-presente';
     var img = document.createElement('img');
@@ -693,6 +724,8 @@
     ov.appendChild(img);
     ov.appendChild(nom);
     document.body.appendChild(ov);
+    // après le cri de bébé (une seule voix à la fois)
+    setTimeout(function () { direNaissance(mode); }, 700);
     var calme = global.matchMedia && global.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!calme) {
       img.animate([{ transform: 'scale(.3)', opacity: 0 }, { transform: 'scale(1)', opacity: 1 }],
@@ -828,10 +861,10 @@
     ov.innerHTML =
       '<div class="ni-scene">' +
         '<div class="ni-nid">🪺</div>' +
-        '<div class="ni-oeuf" style="--oeuf-c:' + col + ';"></div>' +
+        '<div class="ni-oeuf' + naisClasse(egg.naissance) + '" style="--oeuf-c:' + col + ';"></div>' +
         '<div class="ni-acc">🧶</div>' +
         '<div class="ni-coeur">💛</div>' +
-        '<div class="ni-txt">Un œuf ! Garde-le au chaud dans le nid.</div>' +
+        '<div class="ni-txt">' + (INTRO_TXT[egg.naissance] || INTRO_TXT.oeuf) + '</div>' +
       '</div>';
     document.body.appendChild(ov);
     var done = false;

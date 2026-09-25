@@ -22,8 +22,8 @@ mkdirSync(STAGING, { recursive: true });
 mkdirSync(PROD, { recursive: true });
 
 // Signature JUVÉNILE : ce qui fait reconnaître l'espèce au premier coup d'œil, en petit.
-// Formulé en POSITIF (zéro Streisand). Les vivipares et mammifères n'ont PAS d'entrée :
-// ils ne sortent pas d'un œuf (encyclopédie = VRAI) — arbitrage Papa Yann en attente.
+// Formulé en POSITIF (zéro Streisand). Les vivipares sont dans VIVIPARE plus bas :
+// ils ne sortent pas d'un œuf (encyclopédie = VRAI).
 const BEBE = {
   tyrannosaurus: "énorme tête massive pour son petit corps, minuscules bras à deux doigts, fin duvet de plumes sur le dos, grandes pattes arrière puissantes",
   spinosaurus: "petite voile dorsale déjà dressée sur le dos, long museau étroit de crocodile, petites pattes avant griffues",
@@ -85,6 +85,36 @@ const BEBE = {
   titanis: "oiseau terreur : grand bec crochu énorme, plumes, longues pattes, petites ailes",
 };
 
+// Vivipares (GO PY 2026-09-25) : pas d'œuf. Les marins naissent dans l'eau (aquarium du
+// Nid), on les dessine en train de nager ; les mammifères naissent dans une tanière de
+// paille, on les dessine couchés dans leur petit nid de paille.
+const VIVIPARE = {
+  mosasaurus: ['eau', "tête de varan au long museau garni de petites dents, corps allongé, quatre nageoires en pagaie, queue terminée par une petite nageoire en croissant"],
+  elasmosaurus: ['eau', "cou très long, plus long que le corps, toute petite tête, corps en tonneau, quatre grandes nageoires en pagaie"],
+  ophthalmosaurus: ['eau', "yeux ÉNORMES, corps de petit dauphin, museau fin, nageoire dorsale triangulaire, queue verticale en croissant"],
+  liopleurodon: ['eau', "grosse tête aux longues mâchoires, cou court, corps trapu, quatre grandes nageoires"],
+  shonisaurus: ['eau', "long corps de petite baleine, long museau étroit, quatre longues nageoires fines"],
+  ichthyosaurus: ['eau', "corps de petit dauphin, long museau fin garni de petites dents, grands yeux, nageoire dorsale triangulaire, queue en croissant"],
+  mammuthus: ['paille', "fourrure brun-roux hirsute, petite trompe, toutes petites défenses naissantes, petites oreilles rondes"],
+  smilodon: ['paille', "bébé félin au pelage tacheté de lionceau, deux petites canines en sabre qui commencent à dépasser de la lèvre, grosses pattes"],
+  megatherium: ['paille', "bébé paresseux géant aux poils rêches, grandes griffes recourbées aux mains, museau allongé"],
+  paraceratherium: ['paille', "bébé rhinocéros sans corne, très long cou, longues pattes fines, tête allongée"],
+  glyptodon: ['paille', "petite carapace ronde en dôme faite de plaques hexagonales, petit casque osseux sur le dessus de la tête, queue annelée"],
+  aenocyon: ['paille', "louveteau au pelage gris-brun, grosse tête aux mâchoires puissantes, oreilles dressées"],
+  coelodonta: ['paille', "bébé rhinocéros laineux à la fourrure épaisse, petite corne naissante sur le nez"],
+};
+
+function promptVivipare(name, lieu, sig) {
+  const scene = lieu === 'eau'
+    ? `un bébé ${name} qui vient de naître, en train de nager, vu de profil trois quarts, l'animal entier dans le cadre`
+    : `un bébé ${name} qui vient de naître, couché dans un petit nid de paille tout rond, l'animal entier et le nid dans le cadre`;
+  return `Illustration : ${scene}. `
+    + "Style réaliste et mignon, façon film d'animation haut de gamme : vraie texture de peau ou de fourrure, lumière douce. "
+    + "Proportions de nouveau-né : grosse tête, grands yeux brillants, corps dodu. "
+    + `On le reconnaît au premier coup d'œil : ${sig}. `
+    + "Couleurs naturelles. Centré, fond gris clair uni. Pas de texte.";
+}
+
 function nomFichier(id) {
   const line = execFileSync('node', [SKILL + '/dino-fields.mjs', id], { encoding: 'utf8' });
   const d = JSON.parse(line);
@@ -110,10 +140,11 @@ const ids = process.argv.slice(2).filter(a => !a.startsWith('--'));
 if (!ids.length) { console.log('usage: node batch-dino-bebe.mjs [--preview] <id1> [id2] ...'); process.exit(1); }
 
 for (const id of ids) {
+  const viv = VIVIPARE[id];
   const sig = BEBE[id];
-  if (!sig) { console.log(`⏭  ${id} : pas de signature bébé (vivipare/mammifère ou id inconnu) — ignoré`); continue; }
+  if (!sig && !viv) { console.log(`⏭  ${id} : id sans signature bébé — ignoré`); continue; }
   const { nom, name } = nomFichier(id);
-  const p = prompt(name, sig);
+  const p = viv ? promptVivipare(name, viv[0], viv[1]) : prompt(name, sig);
   if (PREVIEW) { console.log(p); continue; }
   const out = nextFree(nom);
   console.log(`\n🥚 ${name} → ${out}`);

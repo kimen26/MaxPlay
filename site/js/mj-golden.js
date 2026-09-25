@@ -520,6 +520,14 @@
             } else if (grant.familleMeta && grant.familleMeta.color && !grant.justGolden) {
               fxOpts.color = grant.familleMeta.color; // œuf teinté = famille (surprise l'espèce)
             }
+            // aquarium (marins vivipares) / tanière (mammifères) au lieu d'un œuf
+            if (!accGranted && grant.naissance === 'aquarium') {
+              fxOpts.naissance = 'aquarium';
+              fxOpts.label = T('finAquariumPourLeNid', 'Un petit aquarium pour le nid&nbsp;!');
+            } else if (!accGranted && grant.naissance === 'taniere') {
+              fxOpts.naissance = 'taniere';
+              fxOpts.label = T('finTanierePourLeNid', 'Une petite tanière pour le nid&nbsp;!');
+            }
             try {
               return global.MaxFX.eggEarned(egg, fxOpts)
                 .then(function () { egg.remove(); });

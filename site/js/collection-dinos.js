@@ -51,6 +51,16 @@
     'dilophosaurus', 'brachiosaurus', 'diplodocus', 'ankylosaurus', 'stegosaurus',
     'triceratops', 'parasaurolophus', 'iguanodon', 'velociraptor', 'pteranodon', 'mosasaurus'];
 
+  // Naissance (GO PY 2026-09-25, encyclopédie = vrai) : ces espèces ne sortent
+  // pas d'un œuf. Reptiles marins vivipares → aquarium ; mammifères → tanière.
+  // L'Archélon (tortue, famille marine) pond sur la plage : il reste 'oeuf'.
+  var NAISSANCE = {
+    mosasaurus: 'aquarium', elasmosaurus: 'aquarium', ophthalmosaurus: 'aquarium',
+    liopleurodon: 'aquarium', shonisaurus: 'aquarium', ichthyosaurus: 'aquarium',
+    mammuthus: 'taniere', smilodon: 'taniere', megatherium: 'taniere', paraceratherium: 'taniere',
+    glyptodon: 'taniere', aenocyon: 'taniere', coelodonta: 'taniere',
+  };
+
   var items = list.map(function (d) {
     return {
       id: d.id,
@@ -58,6 +68,7 @@
       famille: d.famille || '_sans',
       rare: rareFamilies.indexOf(d.famille || '_sans') !== -1,
       star: STARS_CONNUS.indexOf(d.id) !== -1,
+      naissance: NAISSANCE[d.id] || 'oeuf',
     };
   });
 

@@ -1193,14 +1193,76 @@
     ], { duration: opts.duration || 1100, iterations: opts.iterations || 3, easing: 'ease-in-out' });
   }
 
+  /* ── Contenants de naissance (GO PY 2026-09-25) ────────────────────────
+     Tout ne sort pas d'un œuf (encyclopédie = vrai) : reptiles marins
+     vivipares → petit AQUARIUM (cylindre d'eau à bulles), mammifères →
+     TANIÈRE de paille sous une couverture qui remue. Même gabarit que l'œuf
+     (l'élément garde sa taille), teinte famille via --oeuf-c. Source UNIQUE
+     du look : le Nid (nid-ui.js) et l'écran de fin (eggEarned) posent les
+     classes « nais nais-<mode> », ce bloc injecte le CSS une fois.
+     L'élément doit être positionné (relative/absolute) : bulles et couverture
+     sont des ::after absolus. ────────────────────────────────────────── */
+  var NAIS_CSS =
+    '.nais.nais-aquarium{border-radius:22%/13%;overflow:hidden;border:3px solid var(--oeuf-c,#8fdcff);' +
+      'background:linear-gradient(180deg,rgba(255,255,255,.2) 0 15%,#8fdcff 15%,#3f98d8 68%,#1f5f9e 100%);' +
+      'box-shadow:inset 7px 0 0 rgba(255,255,255,.28),0 8px 18px rgba(0,0,0,.4)}' +
+    '.nais.nais-aquarium::after{content:"";position:absolute;left:18%;right:18%;bottom:6%;height:72%;' +
+      'background:radial-gradient(circle at 20% 85%,rgba(255,255,255,.85) 0 6%,transparent 7%),' +
+      'radial-gradient(circle at 60% 60%,rgba(255,255,255,.75) 0 5%,transparent 6%),' +
+      'radial-gradient(circle at 35% 30%,rgba(255,255,255,.7) 0 7%,transparent 8%);animation:nais-bulles 2.4s linear infinite}' +
+    '.nais.nais-taniere{border-radius:50% 50% 46% 46%/58% 58% 42% 42%;border:3px solid #a8782c;' +
+      'background:radial-gradient(ellipse at 50% 100%,rgba(90,55,10,.35),transparent 60%),' +
+      'repeating-linear-gradient(62deg,#f3d67f 0 4px,#d9a94a 4px 7px),repeating-linear-gradient(-58deg,rgba(255,240,190,.5) 0 3px,transparent 3px 8px);' +
+      'box-shadow:0 8px 18px rgba(0,0,0,.4)}' +
+    '.nais.nais-taniere::after{content:"";position:absolute;left:4%;right:4%;top:6%;height:52%;' +
+      'border-radius:50% 50% 30% 30%/80% 80% 20% 20%;transform-origin:50% 100%;' +
+      'background:repeating-linear-gradient(90deg,rgba(255,255,255,.18) 0 6px,transparent 6px 14px),var(--oeuf-c,#c98bdb);' +
+      'box-shadow:inset 0 -5px 0 rgba(0,0,0,.18),0 3px 6px rgba(0,0,0,.25);animation:nais-couverture 2.8s ease-in-out infinite}' +
+    '.nais.dore{border-color:#ffd166;box-shadow:0 0 22px rgba(255,209,102,.6)}' +
+    '.nais.nais-taniere.dore::after{background:linear-gradient(160deg,#fff3c4,#ffd166)}' +
+    '.nais .nid-crack{display:none}' +
+    '@keyframes nais-bulles{from{transform:translateY(22%);opacity:0}25%{opacity:1}to{transform:translateY(-28%);opacity:0}}' +
+    '@keyframes nais-couverture{0%,100%{transform:scaleY(1) rotate(0)}50%{transform:scaleY(1.07) rotate(-1.5deg)}}' +
+    '@media (prefers-reduced-motion:reduce){.nais::after{animation:none!important}}';
+  var NAIS_MODES = { aquarium: 1, taniere: 1 };
+  function injectNaisCss() {
+    if (document.getElementById('maxfx-nais')) return;
+    var st = document.createElement('style');
+    st.id = 'maxfx-nais';
+    st.textContent = NAIS_CSS;
+    document.head.appendChild(st);
+  }
+  /* pose le contenant sur un élément-œuf existant ; 'oeuf' (ou inconnu) = rien */
+  function contenant(el, naissance) {
+    if (!el || !NAIS_MODES[naissance]) return el;
+    injectNaisCss();
+    el.classList.add('nais', 'nais-' + naissance);
+    return el;
+  }
+  /* même chose en chaîne de classes, pour un rendu en HTML string */
+  function contenantClasse(naissance) {
+    if (!NAIS_MODES[naissance]) return '';
+    injectNaisCss();
+    return ' nais nais-' + naissance;
+  }
+  /* éclats de l'ouverture : coquille, gouttes d'eau ou brins de paille */
+  var ECLATS = {
+    oeuf: 'background:#f5e3c2;clip-path:polygon(50% 0,100% 40%,70% 100%,20% 80%,0 30%);',
+    aquarium: 'background:radial-gradient(circle at 35% 30%,#e8f8ff,#5fb6ea 70%);border-radius:50% 50% 50% 50%/60% 60% 40% 40%;',
+    taniere: 'background:#e8bd5e;clip-path:polygon(45% 0,55% 0,58% 100%,42% 100%);'
+  };
+  var SON_OUVERTURE = { aquarium: 'sounds/fx/bulle-pop.mp3', taniere: 'sounds/fx/pop-apparition.mp3' };
+
   /* ── MaxFX.hatch — éclosion réutilisable (NID, CONTRAT-MJ : bibliothèque
      enrichie plutôt qu'anim maison par jeu). tremble → craque → révèle une
      image (le dino surprise) à la place de l'œuf → petite fête.
      opts.imgSrc : image du dino révélé (obligatoire pour l'effet complet)
      opts.container : overlay (déf. : ancêtre commun / body)
-     opts.label : texte sous la révélation ('' = aucun) ──────────────── */
+     opts.label : texte sous la révélation ('' = aucun)
+     opts.naissance : 'oeuf' (déf.) | 'aquarium' | 'taniere' → éclats + « poc » ── */
   function hatch(el, opts) {
     opts = opts || {};
+    var eclat = ECLATS[opts.naissance] || ECLATS.oeuf;
     var C = themeColors();
     var container = opts.container || (function () {
       var n = el.parentElement;
@@ -1220,11 +1282,14 @@
     return shakeAnim.finished.catch(function () {}).then(function () {
       /* 2. craque : flash + éclats de coquille qui s'écartent */
       el.style.opacity = '0';
+      if (SON_OUVERTURE[opts.naissance]) {
+        try { var poc = new Audio(SON_OUVERTURE[opts.naissance]); poc.volume = 0.8; poc.play().catch(function () {}); } catch (e) {}
+      }
       var flash = mk(ov, 'inset:0;background:radial-gradient(circle at ' + p.x + 'px ' + p.y + 'px, rgba(255,246,220,.9), transparent 55%);');
       anim(flash, [{ opacity: 0.7 }, { opacity: 0 }], { duration: 450, easing: 'ease-out', fill: 'forwards' });
       for (var i = 0; i < 6; i++) {
         var a = Math.PI * 2 * i / 6;
-        var shard = mk(ov, at(p.x, p.y, size * 0.32) + 'background:#f5e3c2;clip-path:polygon(50% 0,100% 40%,70% 100%,20% 80%,0 30%);box-shadow:0 3px 8px rgba(0,0,0,.35);');
+        var shard = mk(ov, at(p.x, p.y, size * 0.32) + eclat + 'box-shadow:0 3px 8px rgba(0,0,0,.35);');
         anim(shard, [
           { transform: 'translate(0,0) rotate(0) scale(1)', opacity: 1 },
           { transform: 'translate(' + (Math.cos(a) * size * 0.9) + 'px,' + (Math.sin(a) * size * 0.9 - 20) + 'px) rotate(' + (i % 2 ? 220 : -220) + 'deg) scale(.4)', opacity: 0 }
@@ -1302,7 +1367,16 @@
     anim(flash, [{ opacity: 1 }, { opacity: 0 }], { duration: 500, easing: 'ease-out', fill: 'forwards' });
 
     // le gros œuf (emoji, cohérent avec le nid sur le Mur)
-    var egg = mk(ov, at(cx, cy, eggSize) + 'font-size:' + eggSize + 'px;line-height:1;filter:drop-shadow(0 10px 24px rgba(0,0,0,.5)) drop-shadow(0 0 26px ' + col + ');', opts.emoji || '🥚');
+    var egg;
+    if (!opts.emoji && NAIS_MODES[opts.naissance]) {
+      // aquarium / tanière : même gabarit qu'un œuf (largeur 0,8 × hauteur)
+      egg = mk(ov, at(cx, cy, eggSize) + 'width:' + (eggSize * 0.8) + 'px;margin-left:' + (eggSize * 0.1) + 'px;' +
+        '--oeuf-c:' + col + ';filter:drop-shadow(0 0 26px ' + col + ');');
+      contenant(egg, opts.naissance);
+      if (gold) egg.classList.add('dore');
+    } else {
+      egg = mk(ov, at(cx, cy, eggSize) + 'font-size:' + eggSize + 'px;line-height:1;filter:drop-shadow(0 10px 24px rgba(0,0,0,.5)) drop-shadow(0 0 26px ' + col + ');', opts.emoji || '🥚');
+    }
     fxp.burst(cx, cy, gold ? 30 : 18, gold ? [C.gold, '#fff3d1'] : [C.accent, '#ffffff'], 3);
 
     // Label texte (pas labelEl : sa boîte 240px fixe centre mal un texte
@@ -1381,6 +1455,8 @@
     glow: glow,
     hatch: hatch,
     eggEarned: eggEarned,
+    contenant: contenant,
+    contenantClasse: contenantClasse,
     markStyles: Object.keys(MARKS),
     starStyles: Object.keys(STARS)
   };

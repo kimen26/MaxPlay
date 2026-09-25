@@ -113,6 +113,7 @@
       acc: Array.isArray(e.acc) ? e.acc.slice(0, WARMTH_COST) : [],
       caresses: typeof e.caresses === 'number' ? e.caresses : 0,
       loveWarm: !!e.loveWarm, // l'amour a fini le travail (2 acc + caresses, random)
+      naissance: typeof e.naissance === 'string' ? e.naissance : null,
     };
   }
 
@@ -247,6 +248,41 @@
     });
     return Object.keys(open);
   }
+  // ── Mode de NAISSANCE (GO PY 2026-09-25) ────────────────────────────────
+  // Un item peut porter `naissance` (défaut 'oeuf') : le contenant montré dans
+  // le nid dépend de la façon dont l'espèce vient au monde (thème-neutre : le
+  // moteur ne connaît que des chaînes). Tiré au gain AVEC la famille, pondéré
+  // par le nombre d'espèces candidates — l'éclosion tire ensuite une espèce
+  // du même mode, jamais une autre (un œuf marin = forcément une espèce qui pond).
+  function _naissanceOf(it) { return (it && it.naissance) || 'oeuf'; }
+  function _candidatsNaissance(famille, owned, golden) {
+    var inFam = _items.filter(function (it) { return (it.famille || '_sans') === famille; });
+    var libres = inFam.filter(function (it) { return owned.indexOf(it.id) === -1; });
+    var pool = libres.length ? libres : inFam;
+    if (golden) {
+      var stars = pool.filter(function (it) { return it.star === true; });
+      if (stars.length) pool = stars;
+    }
+    return pool;
+  }
+  function _pickNaissance(famille, owned, golden) {
+    var pool = _candidatsNaissance(famille, owned, golden);
+    if (!pool.length) return 'oeuf';
+    return _naissanceOf(pool[Math.floor(Math.random() * pool.length)]);
+  }
+  // Œufs d'avant ce champ : mode majoritaire de leur famille (déterministe,
+  // un œuf déjà dans le nid ne change pas d'aspect d'une ouverture à l'autre).
+  function _naissanceParDefaut(famille) {
+    var n = {};
+    _items.forEach(function (it) {
+      if ((it.famille || '_sans') === famille) { var k = _naissanceOf(it); n[k] = (n[k] || 0) + 1; }
+    });
+    var best = 'oeuf', max = 0;
+    Object.keys(n).forEach(function (k) { if (n[k] > max) { max = n[k]; best = k; } });
+    return best;
+  }
+  function _naissanceEgg(e) { return e.naissance || _naissanceParDefaut(e.famille); }
+
   function _pickFamille(owned, golden) {
     var open = _famillesOuvertes(owned);
     if (!open.length) {
@@ -326,10 +362,11 @@
       var autoGolden = s.streakCount > 0 && s.streakCount % 3 === 0;
       var golden = (typeof opts.golden === 'boolean') ? opts.golden : autoGolden;
       var famille = _pickFamille(s.owned, golden);
-      s.eggs.push({ famille: famille, golden: !!golden, at: now, acc: [], caresses: 0, loveWarm: false });
+      var naissance = _pickNaissance(famille, s.owned, golden);
+      s.eggs.push({ famille: famille, golden: !!golden, at: now, acc: [], caresses: 0, loveWarm: false, naissance: naissance });
       if (!save(s)) { var lg = load(); return { granted: false, type: null, saveFailed: true, count: lg.eggs.length, golden: _goldenCount(lg), justGolden: false }; }
       return {
-        granted: true, type: 'oeuf', famille: famille,
+        granted: true, type: 'oeuf', famille: famille, naissance: naissance,
         familleMeta: familleInfo(famille),
         golden: _goldenCount(s), justGolden: !!golden,
         count: s.eggs.length,
@@ -361,6 +398,7 @@
         index: i,
         famille: e.famille,
         familleMeta: familleInfo(e.famille),
+        naissance: _naissanceEgg(e),
         golden: e.golden,
         acc: e.acc.slice(),
         caresses: e.caresses,
@@ -468,16 +506,19 @@
       return { type: 'doublon', item: anyItem };
     }
 
-    var inFamille = notOwned.filter(function (it) { return (it.famille || '_sans') === egg.famille; });
+    // l'espèce doit naître comme le contenant l'annonce (œuf / aquarium / tanière)
+    var mode = _naissanceEgg(egg);
+    var memeMode = notOwned.filter(function (it) { return _naissanceOf(it) === mode; });
+    var inFamille = memeMode.filter(function (it) { return (it.famille || '_sans') === egg.famille; });
     if (egg.golden) {
       var starsInFamille = inFamille.filter(function (it) { return it.star === true; });
       if (starsInFamille.length) inFamille = starsInFamille;
       else {
-        var starsAnywhere = notOwned.filter(function (it) { return it.star === true; });
+        var starsAnywhere = memeMode.filter(function (it) { return it.star === true; });
         if (starsAnywhere.length) inFamille = starsAnywhere; // doré = très connu avant tout
       }
     }
-    var candidates = inFamille.length ? inFamille : notOwned;
+    var candidates = inFamille.length ? inFamille : (memeMode.length ? memeMode : notOwned);
     var picked = candidates[Math.floor(Math.random() * candidates.length)];
     s.owned.push(picked.id);
     save(s);

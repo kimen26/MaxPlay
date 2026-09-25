@@ -58,6 +58,10 @@
   "extra_label_paris": "Dans Paris !",
   "extra_label_ecosysteme": "Son monde",
   "extra_label_funfact": "Le savais-tu ?",
+  "extra_label_combat_ennemi": "Son ennemi :",
+  "extra_label_combat_proie": "Sa proie :",
+  "extra_label_combat_rival": "Son rival :",
+  "extra_label_combat_duel": "Le duel !",
 
   "journey_intro": "Le voyage dans le temps, raconté. Appuie sur ▶ pour écouter chaque époque, de la première vie jusqu'à aujourd'hui. La flèche 👉 montre où continuer.",
   "journey_bouton_ecoute": "Écoute {episode}",

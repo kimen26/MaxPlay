@@ -76,6 +76,8 @@
 - **NID-INTRO-DOUBLE-CHAMBRE** [ ] — Vu en test 2026-09-25 : 1er œuf d'un profil neuf + arrivée par `?open=nid` → l'intro « Un œuf ! Garde-le au chaud » rouvre une chambre au bout de 6 s (`nid-ui.js` `finish()` → `openChambre()`) PENDANT le théâtre d'éclosion lancé par le deep-link : la nouvelle chambre recouvre la révélation. Pas lié aux bébés.
 - [x] **BEBES-TAILLE-REVELATION** — Livré 2026-09-25 (GO PY) : après l'éclosion, le bébé s'affiche en grand au centre avec son nom (2,6 s ou un tap), puis s'envole dans sa case (`nid-ui.js` `presenterBebe`). Corrigé au passage : la case d'album restait invisible après l'éclosion (`MaxFX.hatch` masque son ancre).
 
+- [ ] **PALEO-COMBATS** — Demande PY 2026-09-25 : 2 scènes de combat par animal (pire ennemi + meilleure proie, ou rival pour un herbivore), ChatGPT projet Dinosaure, plan très large (animaux ≤ 40 % du cadre), habitat et proportions vrais, livrées originales colorées, jamais de sang. Vérifiées par agent avant rangement, branchées à la galerie de la fiche.
+
 ## Refonte navigation (idée Papa Yann 2026-09-09, recherche 2026-09-10)
 
 - [ ] Décision d'écran d'accueil en 4-5 portes musée/bibliothèque (Voyage vs Époques se recouvrent, illisible à 4 ans). Maquettes : `studio/dino/docs/research/nav-encyclopedie/pistes.html`.

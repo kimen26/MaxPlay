@@ -1,0 +1,2132 @@
+{
+ "tyrannosaurus": {
+  "livree": "brun terreux sur le dos, bandes fauve doré obliques sur les flancs, gorge crème tachetée de gris, un masque plus sombre autour des yeux",
+  "habitat": "La plaine côtière de la formation Hell Creek, à la toute fin du Crétacé : forêts de séquoias et de magnolias, rivières boueuses et méandres, climat chaud et humide, lumière d'orage à l'horizon.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "un autre Tyrannosaurus (rival)",
+    "adversaire_latin": "Tyrannosaurus rex",
+    "adversaire_id": "tyrannosaurus",
+    "adversaire_morpho": "même silhouette massive à tête énorme et bras minuscules, mais des cicatrices anciennes sur le museau et une mâchoire légèrement de travers, signe de combats passés",
+    "adversaire_mesures": "12m/3.8m/7.5t",
+    "adversaire_livree": "gris ardoise avec des traînées rouille sur le dos et la queue, gorge blanche, pas de masque doré autour des yeux",
+    "rapport_taille": "deux adultes presque égaux, 13 m contre 12 m : ce n'est pas une question de taille mais de territoire.",
+    "action": "Deux T-Rex se font face au bord d'une rivière boueuse qu'ils revendiquent tous deux comme territoire de chasse, cous tendus, gueules entrouvertes ; l'un penche la tête et referme ses mâchoires vers le museau de l'autre, qui esquive en reculant d'un pas.",
+    "preuve": "Des crânes de T-Rex fossilisés (dont le spécimen « Sue ») portent des traces de morsures cicatrisées qui correspondent exactement à des dents de Tyrannosaurus — preuve de combats entre individus de la même espèce, pour un territoire ou une proie."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Tricératops",
+    "adversaire_latin": "Triceratops horridus",
+    "adversaire_id": "triceratops",
+    "adversaire_morpho": "trois cornes (une sur le nez, deux au-dessus des yeux) et une immense collerette osseuse autour du cou, quatre pattes trapues",
+    "adversaire_mesures": "9m/3m/9t",
+    "adversaire_livree": "vert mousse sombre avec la collerette bordée de rouge orangé et des taches brunes en losange sur les flancs",
+    "rapport_taille": "13 m de long pour le T-Rex contre 9 m pour le Tricératops : le prédateur est presque une fois et demie plus long, mais la proie pèse autant que lui.",
+    "action": "Le Tricératops baisse la tête et charge cornes en avant ; le T-Rex esquive de côté puis tente de mordre la collerette, pendant que l'herbivore pivote pour garder ses cornes face à lui.",
+    "preuve": "Un bassin et des vertèbres de Tricératops de la formation Hell Creek portent des traces de morsures de T-Rex, et un crâne de Tricératops montre une corne cassée puis recicatrisée — signe d'un combat qu'il a survécu."
+   }
+  ]
+ },
+ "spinosaurus": {
+  "livree": "dos vert bouteille sombre, voile bleu nuit striée de bandes turquoise translucides, flancs sable tachetés de brun",
+  "habitat": "Les deltas et rivières tressées des Kem Kem, en Afrique du Nord au Crétacé moyen : eaux boueuses peu profondes, poissons géants, berges couvertes de fougères et de conifères, chaleur humide toute l'année.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Carcharodontosaure",
+    "adversaire_latin": "Carcharodontosaurus saharicus",
+    "adversaire_id": "carcharodontosaurus",
+    "adversaire_morpho": "tête énorme aux dents dentelées comme des dents de requin, silhouette bipède massive, bras courts mais puissants, pas de voile sur le dos",
+    "adversaire_mesures": "13m/3.8m/7t",
+    "adversaire_livree": "brun rouille sombre, dos zébré de bandes noires obliques, tête plus claire crème, cercles noirs autour des yeux",
+    "rapport_taille": "le Spinosaure est plus long (15 m contre 13 m) mais le Carcharodontosaure est plus haut sur pattes et mieux armé pour le combat au sol : deux géants presque à égalité.",
+    "action": "Sur la berge où le Spinosaure pêchait, le Carcharodontosaure fonce en ouvrant grand la gueule pour lui disputer ce territoire de chasse ; le Spinosaure recule vers l'eau, sa voile dressée, et frappe latéralement de son museau allongé pour le tenir à distance.",
+    "preuve": "Les deux prédateurs partagent exactement la même formation géologique (Kem Kem, Maroc/Algérie) et la même époque : les paléontologues pensent qu'ils se disputaient carcasses et territoire, chacun évitant le corps-à-corps direct avec l'autre."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Onchopristis, un poisson-scie géant",
+    "adversaire_latin": "Onchopristis numidus",
+    "adversaire_id": null,
+    "adversaire_morpho": "un long rostre plat hérissé de grandes dents pointues de chaque côté, comme une scie, corps de poisson cartilagineux argenté",
+    "adversaire_mesures": "8m/-/0.3t",
+    "adversaire_livree": "gris argenté avec le rostre plus sombre, presque noir",
+    "rapport_taille": "15 m pour le Spinosaure contre environ 8 m pour le poisson-scie, dont 2 m de rostre denté : une proie presque deux fois plus courte, mais qui peut blesser en se débattant.",
+    "action": "Le Spinosaure plonge le museau dans l'eau trouble et referme ses mâchoires coniques sur le poisson-scie, qui se débat en fouettant son rostre denté de droite à gauche.",
+    "preuve": "Des dents de Spinosaure ont été retrouvées mêlées à des rostres et des dents d'Onchopristis dans les mêmes couches des Kem Kem — l'une des rares preuves directes de ce que mangeait vraiment le Spinosaure."
+   }
+  ]
+ },
+ "giganotosaurus": {
+  "livree": "peau brun-rouge sombre, marbrée de taches ocre en dégradé sur les flancs, gorge plus pâle",
+  "habitat": "La plaine semi-aride de la formation Candeleros, en Argentine au Crétacé moyen : dunes et rivières saisonnières, végétation clairsemée de conifères, chaleur sèche, ciel très dégagé.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "un autre Giganotosaure (rival)",
+    "adversaire_latin": "Giganotosaurus carolinii",
+    "adversaire_id": "giganotosaurus",
+    "adversaire_morpho": "même tête allongée et basse, même corps immense, mais une entaille ancienne sur le flanc",
+    "adversaire_mesures": "12m/3.2m/6.5t",
+    "adversaire_livree": "brun plus terne, presque gris, sans le dégradé ocre",
+    "rapport_taille": "deux individus presque de la même taille (13 m et 12 m) : ni l'un ni l'autre n'a d'avantage évident.",
+    "action": "Sur le même territoire de chasse au bord de la rivière, les deux Giganotosaures se tournent autour en grondant, mâchoires ouvertes, avant que le plus gros ne pousse l'autre de l'épaule pour le faire reculer.",
+    "preuve": "Plusieurs Giganotosaures de tailles différentes ont été retrouvés dans la même région (formation Candeleros) : les paléontologues pensent que ces géants se disputaient parfois carcasses et territoire entre eux."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Andesaurus, un dinosaure au très long cou",
+    "adversaire_latin": "Andesaurus delgadoi",
+    "adversaire_id": null,
+    "adversaire_morpho": "un cou et une queue immenses, quatre pattes en colonnes comme celles d'un éléphant, minuscule tête au bout du long cou",
+    "adversaire_mesures": "18m/6m/15t",
+    "adversaire_livree": "gris-vert uniforme avec de légères taches plus claires sur le dos",
+    "rapport_taille": "le Giganotosaure ne fait que 13 m contre 18 m pour l'Andesaurus : le chasseur est plus petit que sa proie, il doit viser un jeune ou un individu isolé.",
+    "action": "Le Giganotosaure s'approche à pas comptés d'un jeune Andesaurus isolé du troupeau ; l'adulte à long cou se retourne et fouette l'air de sa queue pour protéger son petit qui s'éloigne au pas de course.",
+    "preuve": "L'Andesaurus est le grand sauropode connu dans la même formation géologique (Candeleros) que le Giganotosaure — les scientifiques pensent que ce dernier chassait peut-être en groupe pour s'attaquer à des proies aussi grandes."
+   }
+  ]
+ },
+ "carcharodontosaurus": {
+  "livree": "brun rouille sombre, dos zébré de bandes noires obliques, tête plus claire crème, cercles noirs autour des yeux",
+  "habitat": "Les deltas des Kem Kem en Afrique du Nord, au Crétacé moyen : mêmes rivières boueuses et bancs de sable que le Spinosaure, chaleur humide, poissons géants et rives couvertes de fougères.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Spinosaure",
+    "adversaire_latin": "Spinosaurus aegyptiacus",
+    "adversaire_id": "spinosaurus",
+    "adversaire_morpho": "un museau long et étroit comme celui d'un crocodile, une immense voile dressée sur le dos, des pattes bien adaptées à la nage",
+    "adversaire_mesures": "15m/4m/7t",
+    "adversaire_livree": "dos vert bouteille sombre, voile bleu nuit striée de turquoise, flancs sable tachetés de brun",
+    "rapport_taille": "le Spinosaure est un peu plus long (15 m contre 13 m), mais le Carcharodontosaure a des mâchoires bien plus adaptées au combat au sol : deux rivaux à peu près à égalité.",
+    "action": "Le Carcharodontosaure surprend le Spinosaure loin de l'eau, sur une berge sèche ; il fonce mâchoires ouvertes tandis que le Spinosaure recule vers la rivière en gardant sa voile dressée pour paraître plus grand.",
+    "preuve": "Les deux espèces coexistaient exactement dans les mêmes couches des Kem Kem : les paléontologues pensent qu'elles occupaient des niches différentes (terre pour l'un, eau pour l'autre) mais se croisaient et se disputaient parfois."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Rebbachisaure, un dinosaure au long cou",
+    "adversaire_latin": "Rebbachisaurus garasbae",
+    "adversaire_id": null,
+    "adversaire_morpho": "un cou moyen surmonté d'une petite tête, une rangée de fines épines le long du dos, quatre pattes solides",
+    "adversaire_mesures": "20m/4m/10t",
+    "adversaire_livree": "vert olive avec des taches beige clair en réseau sur les flancs",
+    "rapport_taille": "13 m pour le Carcharodontosaure contre 20 m pour le Rebbachisaure : la proie est presque deux fois plus longue, seul un jeune ou un individu isolé du troupeau peut être attaqué.",
+    "action": "Le Carcharodontosaure fonce sur un jeune Rebbachisaure resté en arrière du troupeau ; l'adulte le plus proche fait volte-face et donne un grand coup de queue pour le tenir éloigné pendant que le petit rejoint le groupe.",
+    "preuve": "Le Rebbachisaure est le grand sauropode le mieux documenté des mêmes couches des Kem Kem que le Carcharodontosaure — une association de terrain solide, même si aucune trace de morsure directe n'a encore été trouvée."
+   }
+  ]
+ },
+ "allosaurus": {
+  "livree": "kaki olive tacheté de brun clair, bandes plus foncées sur la queue, arêtes au-dessus des yeux rouge terne",
+  "habitat": "La plaine semi-aride de la formation Morrison, à la fin du Jurassique : rivières saisonnières, fougères et conifères clairsemés, quelques ginkgos, chaleur sèche l'été et pluies l'hiver.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Cératosaure",
+    "adversaire_latin": "Ceratosaurus nasicornis",
+    "adversaire_id": "ceratosaurus",
+    "adversaire_morpho": "une corne dressée sur le nez, de petites cornes au-dessus des yeux, une rangée de petites plaques osseuses le long du dos",
+    "adversaire_mesures": "6m/2m/0.9t",
+    "adversaire_livree": "vert sombre moucheté de taches noires façon crocodile, corne nasale rouge sombre",
+    "rapport_taille": "l'Allosaure fait 9,5 m contre 6 m pour le Cératosaure : plus grand et plus lourd, il domine en général la dispute.",
+    "action": "Sur la même zone de chasse au bord de la rivière, l'Allosaure grogne et avance en ouvrant grand sa mâchoire comme une hache ; le Cératosaure baisse la tête, corne en avant, plante ses pattes bien à plat et penche le front, prêt à donner un coup de tête si l'autre s'approche trop.",
+    "preuve": "Les deux prédateurs ont été retrouvés ensemble dans plusieurs carrières de la formation Morrison (comme Cleveland-Lloyd) : ils se partageaient le même territoire et les mêmes proies."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Stégosaure",
+    "adversaire_latin": "Stegosaurus ungulatus",
+    "adversaire_id": "stegosaurus",
+    "adversaire_morpho": "de grandes plaques dressées le long du dos et quatre longues piques au bout de la queue",
+    "adversaire_mesures": "9m/2.8m/4t",
+    "adversaire_livree": "vert-gris avec les plaques dorsales rouge-orangé vif striées de jaune",
+    "rapport_taille": "l'Allosaure (9,5 m) et le Stégosaure (9 m) sont presque de la même longueur, mais le Stégosaure pèse deux fois plus lourd.",
+    "action": "L'Allosaure s'approche par le flanc pour éviter la tête ; le Stégosaure pivote sur place et balance sa queue à piques vers ses pattes, l'obligeant à sauter en arrière.",
+    "preuve": "Une vertèbre de queue d'Allosaurus retrouvée dans la formation Morrison porte un trou qui correspond exactement à la forme d'une pique de queue de Stégosaure — la preuve d'un vrai combat, que l'Allosaure a visiblement perdu ce jour-là."
+   }
+  ]
+ },
+ "tarbosaurus": {
+  "livree": "brun sombre presque noir sur le dos, flancs striés de bandes fauve pâle verticales, gorge blanchâtre",
+  "habitat": "Le désert du Gobi de la formation Nemegt, en Mongolie à la fin du Crétacé : dunes et oasis, rivières qui serpentent entre des bosquets, climat chaud et sec la majeure partie de l'année.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "un autre Tarbosaure (rival)",
+    "adversaire_latin": "Tarbosaurus bataar",
+    "adversaire_id": "tarbosaurus",
+    "adversaire_morpho": "même silhouette de cousin du T-Rex, mais une cicatrice profonde sur le museau",
+    "adversaire_mesures": "11m/4m/4.5t",
+    "adversaire_livree": "brun plus roux, flancs moins rayés",
+    "rapport_taille": "deux adultes proches en taille (12 m et 11 m), un combat de face à face plutôt qu'une poursuite.",
+    "action": "Les deux Tarbosaures se font face au bord d'une oasis, museaux tendus l'un vers l'autre, et l'un referme brusquement ses mâchoires sur le côté du visage de l'autre, qui recule en secouant la tête.",
+    "preuve": "Plusieurs crânes de Tarbosaure retrouvés dans la formation Nemegt portent des cicatrices de morsures qui correspondent à des dents de Tarbosaure — comme chez son cousin le T-Rex, ces combats entre individus de la même espèce sont bien documentés."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Saurolophe",
+    "adversaire_latin": "Saurolophus angustirostris",
+    "adversaire_id": "saurolophus",
+    "adversaire_morpho": "un bec plat sans dents à l'avant de la bouche et une longue crête osseuse pointant vers l'arrière sur la tête",
+    "adversaire_mesures": "9m/3m/3.5t",
+    "adversaire_livree": "vert tendre avec la crête et le bec jaune pâle",
+    "rapport_taille": "12 m pour le Tarbosaure contre 9 m pour le Saurolophe : le prédateur est un tiers plus long que sa proie.",
+    "action": "Le Tarbosaure surgit d'entre les arbres et fonce vers le troupeau ; le Saurolophe le plus proche pousse un grand cri par sa crête creuse pour prévenir les autres avant de s'enfuir au galop.",
+    "preuve": "Des ossements de Saurolophe portant des traces de dents de Tarbosaure ont été retrouvés dans la formation Nemegt, en Mongolie — les deux espèces vivaient exactement au même endroit et à la même époque."
+   }
+  ]
+ },
+ "albertosaurus": {
+  "livree": "gris-brun avec un dégradé roux sur la tête et le cou, ventre crème",
+  "habitat": "La plaine côtière marécageuse de la formation Horseshoe Canyon, au Canada à la fin du Crétacé : forêts de conifères et de plantes à fleurs naissantes, climat tempéré humide, brume matinale sur les rivières.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "un autre Albertosaure de sa propre meute (rival)",
+    "adversaire_latin": "Albertosaurus sarcophagus",
+    "adversaire_id": "albertosaurus",
+    "adversaire_morpho": "même silhouette élancée, mais plus âgé, avec des marques de morsures cicatrisées sur le museau",
+    "adversaire_mesures": "8.5m/2.8m/1.8t",
+    "adversaire_livree": "gris plus terne, sans le dégradé roux",
+    "rapport_taille": "deux individus de la même meute, à peine différents en taille (9,5 m et 8,5 m) — le rang dans le groupe compte plus que la taille.",
+    "action": "Au sein de la meute, les deux Albertosaures se disputent la première place au retour d'une chasse réussie : ils se poussent en ouvrant la gueule vers le visage l'un de l'autre, chacun retenant la force de sa mâchoire.",
+    "preuve": "Un site du Canada (Dry Island) a livré 26 squelettes d'Albertosaure ensemble ; plusieurs crânes portent des cicatrices de morsures faites par d'autres Albertosaures, signe de disputes de rang à l'intérieur du groupe."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Pachyrhinosaure",
+    "adversaire_latin": "Pachyrhinosaurus canadensis",
+    "adversaire_id": null,
+    "adversaire_morpho": "au lieu de cornes, une grosse bosse osseuse épaisse sur le nez, et une collerette bordée de petites pointes",
+    "adversaire_mesures": "7m/2m/3t",
+    "adversaire_livree": "brun-vert avec la bosse nasale gris pâle et la collerette bordée de rouge sombre",
+    "rapport_taille": "9,5 m pour l'Albertosaure contre 7 m pour le Pachyrhinosaure : le prédateur est un tiers plus long.",
+    "action": "Un Pachyrhinosaure isolé du troupeau baisse la tête, bosse nasale en avant, face à l'Albertosaure qui tourne autour de lui en cherchant un flanc dégagé pour attaquer.",
+    "preuve": "Le Pachyrhinosaure est l'un des grands herbivores documentés de la même formation géologique (Horseshoe Canyon) que l'Albertosaure, au Canada."
+   }
+  ]
+ },
+ "ceratosaurus": {
+  "livree": "vert sombre moucheté de taches noires façon crocodile, corne nasale rouge sombre, petites cornes crâniennes jaune pâle",
+  "habitat": "Les rives des rivières de la formation Morrison, à la fin du Jurassique : bancs de sable, fougères et prêles au bord de l'eau, climat semi-aride avec saison des pluies.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Allosaure",
+    "adversaire_latin": "Allosaurus fragilis",
+    "adversaire_id": "allosaurus",
+    "adversaire_morpho": "une tête plus grande armée d'arêtes au-dessus des yeux, une mâchoire qui s'ouvre presque à angle droit",
+    "adversaire_mesures": "9.5m/4m/2t",
+    "adversaire_livree": "kaki olive tacheté de brun clair, bandes plus foncées sur la queue, arêtes oculaires rouge terne",
+    "rapport_taille": "l'Allosaure (9,5 m) est un tiers plus long que le Cératosaure (6 m) : ce dernier doit se défendre plutôt qu'attaquer.",
+    "action": "Sur un même territoire de chasse, l'Allosaure avance mâchoire ouverte ; le Cératosaure baisse sa corne nasale, plante ses pattes et tient bon, prêt à donner un coup de tête si l'autre s'approche trop.",
+    "preuve": "Les deux prédateurs ont été retrouvés ensemble dans plusieurs carrières de la formation Morrison : ils se disputaient carcasses et territoire."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Othnielosaure, un petit herbivore rapide",
+    "adversaire_latin": "Othnielosaurus consolensis",
+    "adversaire_id": null,
+    "adversaire_morpho": "un petit corps bipède léger, de longues pattes fines faites pour courir vite, pas d'armure ni de cornes",
+    "adversaire_mesures": "2m/0.5m/0.015t",
+    "adversaire_livree": "brun sable rayé de bandes plus sombres, parfait pour se fondre dans les herbes sèches",
+    "rapport_taille": "le Cératosaure (6 m) est trois fois plus long que l'Othnielosaure (2 m) : une proie petite mais très rapide, difficile à rattraper.",
+    "action": "L'Othnielosaure détale à travers les fougères ; le Cératosaure se lance à sa poursuite en zigzag, la tête basse, essayant de couper sa trajectoire avant qu'il n'atteigne les buissons.",
+    "preuve": "Othnielosaurus est l'un des petits herbivores les plus communs de la formation Morrison, là où vivait le Cératosaure — une proie logique pour un chasseur solitaire de taille moyenne."
+   }
+  ]
+ },
+ "dilophosaurus": {
+  "livree": "jaune moutarde et bleu-gris, les deux crêtes rouge vif rayées de jaune, flancs tachetés de brun",
+  "habitat": "La plaine semi-aride de la formation Kayenta, au tout début du Jurassique en Arizona : dunes fossilisées, rivières saisonnières, fougères et conifères clairsemés, climat chaud et sec.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "un autre Dilophosaure (rival)",
+    "adversaire_latin": "Dilophosaurus wetherilli",
+    "adversaire_id": "dilophosaurus",
+    "adversaire_morpho": "même silhouette élancée à double crête, mais les crêtes teintées d'orange plutôt que de rouge",
+    "adversaire_mesures": "6.5m/2.2m/0.3t",
+    "adversaire_livree": "bleu-gris plus terne, crêtes orange rayées de jaune pâle",
+    "rapport_taille": "deux individus de taille presque égale (7 m et 6,5 m) : la dispute se joue au territoire, pas à la force.",
+    "action": "Les deux Dilophosaures se font face en dressant leurs crêtes colorées et en poussant des cris, avant que l'un ne charge en petits bonds pour faire reculer l'autre hors de son territoire.",
+    "preuve": "Le site type du Dilophosaure, dans la formation Kayenta, a livré plusieurs individus retrouvés ensemble — un indice que ces animaux se croisaient et défendaient peut-être un territoire entre eux."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Scutellosaure",
+    "adversaire_latin": "Scutellosaurus lawleri",
+    "adversaire_id": "scutellosaurus",
+    "adversaire_morpho": "un petit corps bipède couvert de centaines de plaques osseuses en mosaïque sur le dos et la queue",
+    "adversaire_mesures": "1.2m/0.4m/0.004t",
+    "adversaire_livree": "vert clair tacheté de brun, plaques dorsales gris pâle",
+    "rapport_taille": "le Dilophosaure (7 m) est presque six fois plus long que le minuscule Scutellosaure (1,2 m) : une proie facile à attraper mais difficile à repérer, tapie dans les fougères.",
+    "action": "Le Dilophosaure baisse la tête entre les fougères et repère le Scutellosaure immobile ; celui-ci détale sur ses deux pattes arrière vers un enchevêtrement de racines trop étroit pour le grand chasseur.",
+    "preuve": "Le Scutellosaure vient exactement de la même formation géologique (Kayenta) que le Dilophosaure, qui était alors le plus grand prédateur de la région."
+   }
+  ]
+ },
+ "carnotaurus": {
+  "livree": "rouge brique avec de petites écailles coniques en rangées le long des flancs, cornes noires au-dessus des yeux",
+  "habitat": "La plaine côtière semi-aride de la formation La Colonia, en Patagonie à la fin du Crétacé : végétation clairsemée, quelques rivières, climat chaud et sec, ciel dégagé presque toute l'année.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "un autre Carnotaure (rival)",
+    "adversaire_latin": "Carnotaurus sastrei",
+    "adversaire_id": "carnotaurus",
+    "adversaire_morpho": "mêmes cornes au-dessus des yeux et bras minuscules, teinte légèrement plus orangée",
+    "adversaire_mesures": "7.5m/2.4m/1.4t",
+    "adversaire_livree": "orange sombre avec les mêmes écailles coniques mais plus pâles",
+    "rapport_taille": "deux adultes de taille très proche (8 m et 7,5 m) : le combat se joue tête contre tête, pas à la course.",
+    "action": "Les deux Carnotaures baissent la tête et poussent front contre front, cornes qui s'entrechoquent, chacun essayant de faire reculer l'autre sans mordre.",
+    "preuve": "Les cornes du Carnotaure, trop courtes pour blesser gravement, ressemblent à des structures de parade et de combat frontal observées chez d'autres animaux cornus — les paléontologues pensent qu'elles servaient surtout à s'affronter entre mâles, pas à chasser."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Bonatitan, un petit dinosaure à long cou",
+    "adversaire_latin": "Bonatitan reigi",
+    "adversaire_id": null,
+    "adversaire_morpho": "un cou moyen, une petite tête, quatre pattes robustes en colonnes, plus petit que les géants à long cou habituels",
+    "adversaire_mesures": "8m/2.5m/3t",
+    "adversaire_livree": "gris-vert avec de petites plaques osseuses en pointillés sur le dos",
+    "rapport_taille": "le Carnotaure (8 m) et le Bonatitan (8 m) sont presque de la même longueur, mais le Bonatitan pèse presque deux fois plus lourd : la vitesse du Carnotaure fait la différence.",
+    "action": "Le Carnotaure, qui court très vite, fonce en ligne droite sur un Bonatitan isolé ; celui-ci se retourne et balance sa queue pour tenir le prédateur à distance pendant qu'il recule vers le troupeau.",
+    "preuve": "Bonatitan est le petit dinosaure à long cou retrouvé dans la même formation géologique (La Colonia) que le Carnotaure, en Patagonie."
+   }
+  ]
+ },
+ "cryolophosaurus": {
+  "livree": "bleu-gris sombre avec la crête en éventail orange vif dressée sur la tête, flancs striés de blanc",
+  "habitat": "Les forêts de conifères du mont Kirkpatrick, en Antarctique au début du Jurassique : à cette époque le continent était plus chaud, couvert de fougères et d'arbres, avec un climat tempéré et des saisons marquées.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "un grand théropode encore sans nom",
+    "adversaire_latin": "espèce non décrite",
+    "adversaire_id": null,
+    "adversaire_morpho": "connu seulement par une dent isolée, plus grande que celles du Cryolophosaure — sans doute un chasseur encore plus imposant",
+    "adversaire_mesures": "?m/?m/?t",
+    "adversaire_livree": "silhouette sombre, détails inconnus",
+    "rapport_taille": "taille exacte inconnue, mais la dent retrouvée suggère un animal plus grand que le Cryolophosaure (6,5 m).",
+    "action": "Le Cryolophosaure défend sa zone de chasse quand une ombre plus grande approche entre les conifères ; il dresse sa crête en éventail et gronde, prêt à céder du terrain plutôt qu'à se battre pour de bon.",
+    "preuve": "Une dent d'un théropode plus grand, jamais nommé, a été retrouvée mêlée aux restes du Cryolophosaure sur le site du mont Kirkpatrick — peut-être la trace d'une charogne disputée entre deux prédateurs."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Glacialisaurus, un cousin des sauropodes",
+    "adversaire_latin": "Glacialisaurus hammeri",
+    "adversaire_id": null,
+    "adversaire_morpho": "un cou et une queue assez longs, un corps trapu proche des tout premiers dinosaures à long cou, quatre pattes robustes",
+    "adversaire_mesures": "7m/2m/2.5t",
+    "adversaire_livree": "brun-vert sombre uniforme",
+    "rapport_taille": "le Cryolophosaure (6,5 m) et le Glacialisaurus (7 m) sont de taille très proche : une proie presque aussi grande que le chasseur.",
+    "action": "Le Cryolophosaure s'approche à couvert des fougères et bondit sur le flanc du Glacialisaurus, qui se cabre sur ses pattes arrière pour se défendre.",
+    "preuve": "Les restes de Glacialisaurus ont été découverts presque dans la même carrière que le Cryolophosaure, au mont Kirkpatrick, en Antarctique — les deux espèces vivaient côte à côte."
+   }
+  ]
+ },
+ "brachiosaurus": {
+  "livree": "vert olive avec un motif de larges taches beiges façon girafe sur le cou et les flancs",
+  "habitat": "Les forêts clairsemées de conifères géants (araucarias) et de fougères le long des rivières de la formation Morrison, à la fin du Jurassique : climat semi-aride avec une saison des pluies marquée.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Allosaure",
+    "adversaire_latin": "Allosaurus fragilis",
+    "adversaire_id": "allosaurus",
+    "adversaire_morpho": "une tête large armée d'arêtes au-dessus des yeux, une mâchoire capable de s'ouvrir très grand comme une hache",
+    "adversaire_mesures": "9.5m/4m/2t",
+    "adversaire_livree": "kaki olive tacheté de brun clair, bandes plus foncées sur la queue, arêtes oculaires rouge terne",
+    "rapport_taille": "un Brachiosaure adulte (22 m, 47 t) est bien trop immense pour l'Allosaure : seul un jeune Brachiosaure, encore petit, peut être attaqué.",
+    "action": "L'Allosaure isole un jeune Brachiosaure resté un peu en arrière du troupeau ; l'adulte le plus proche fait volte-face et abaisse son long cou en grondant pour rappeler le petit auprès de lui.",
+    "preuve": "Aucun adulte de sauropode aussi géant n'a de prédateur documenté : les paléontologues estiment que seuls les jeunes, bien plus petits, pouvaient être la cible des grands théropodes du Morrison comme l'Allosaure."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Torvosaure",
+    "adversaire_latin": "Torvosaurus tanneri",
+    "adversaire_id": null,
+    "adversaire_morpho": "l'un des plus grands théropodes du Morrison, corps massif, tête épaisse, bras courts mais très puissants",
+    "adversaire_mesures": "9.5m/3m/3.5t",
+    "adversaire_livree": "brun très sombre presque noir, quelques taches gris ardoise sur le dos",
+    "rapport_taille": "le Torvosaure (9,5 m) reste bien plus petit qu'un Brachiosaure adulte (22 m) : lui aussi ne peut viser qu'un jeune isolé.",
+    "action": "Le Torvosaure rôde en lisière de la forêt de conifères pendant que le troupeau de Brachiosaures broute ; un adulte tourne la tête vers lui et pousse un grondement grave qui le fait reculer sous les arbres.",
+    "preuve": "Torvosaurus tanneri est l'un des plus grands prédateurs documentés de la formation Morrison, où vivait aussi le Brachiosaure — un rival potentiel de l'Allosaure pour les mêmes proies."
+   }
+  ]
+ },
+ "diplodocus": {
+  "livree": "gris-vert pâle avec de fines rayures plus sombres le long du cou et de la queue",
+  "habitat": "Les grandes plaines traversées de rivières de la formation Morrison, à la fin du Jurassique : végétation basse de fougères et de prêles, quelques conifères, climat semi-aride.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Allosaure",
+    "adversaire_latin": "Allosaurus fragilis",
+    "adversaire_id": "allosaurus",
+    "adversaire_morpho": "une tête large armée d'arêtes au-dessus des yeux, une mâchoire capable de s'ouvrir très grand comme une hache",
+    "adversaire_mesures": "9.5m/4m/2t",
+    "adversaire_livree": "kaki olive tacheté de brun clair, bandes plus foncées sur la queue, arêtes oculaires rouge terne",
+    "rapport_taille": "le Diplodocus (26 m, dont la moitié en queue) est presque trois fois plus long que l'Allosaure (9,5 m), mais un jeune isolé reste vulnérable.",
+    "action": "L'Allosaure s'approche à couvert d'un jeune Diplodocus ; l'adulte le plus proche fait claquer sa longue queue en fouet dans sa direction, un bruit sec qui le fait sursauter et reculer.",
+    "preuve": "La queue en fouet du Diplodocus, capable selon certains chercheurs de claquer plus vite que le son, est interprétée comme une défense contre les grands théropodes du Morrison comme l'Allosaure."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Cératosaure",
+    "adversaire_latin": "Ceratosaurus nasicornis",
+    "adversaire_id": "ceratosaurus",
+    "adversaire_morpho": "une corne dressée sur le nez, de petites cornes au-dessus des yeux, une rangée de petites plaques osseuses le long du dos",
+    "adversaire_mesures": "6m/2m/0.9t",
+    "adversaire_livree": "vert sombre moucheté de taches noires façon crocodile, corne nasale rouge sombre",
+    "rapport_taille": "le Diplodocus (26 m) est plus de quatre fois plus long que le Cératosaure (6 m) : un second prédateur, plus petit que l'Allosaure, qui doit lui aussi viser les plus jeunes.",
+    "action": "Le Cératosaure suit à distance un petit groupe de jeunes Diplodocus près d'un point d'eau ; un adulte se place entre lui et les petits et balance sa queue en avertissement.",
+    "preuve": "Ceratosaurus est documenté dans les mêmes gisements de la formation Morrison que le Diplodocus, un second prédateur partageant le même territoire que l'Allosaure."
+   }
+  ]
+ },
+ "apatosaurus": {
+  "livree": "brun-vert sombre uniforme, dessous du cou plus clair, presque crème",
+  "habitat": "Les plaines herbeuses de fougères traversées de rivières de la formation Morrison, à la fin du Jurassique : climat semi-aride, saisons sèches marquées.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Allosaure",
+    "adversaire_latin": "Allosaurus fragilis",
+    "adversaire_id": "allosaurus",
+    "adversaire_morpho": "une tête large armée d'arêtes au-dessus des yeux, une mâchoire capable de s'ouvrir très grand comme une hache",
+    "adversaire_mesures": "9.5m/4m/2t",
+    "adversaire_livree": "kaki olive tacheté de brun clair, bandes plus foncées sur la queue, arêtes oculaires rouge terne",
+    "rapport_taille": "un Apatosaure adulte (22 m, 23 t) écrase l'Allosaure (9,5 m, 2 t) par le poids : seul un jeune reste une cible possible.",
+    "action": "L'Allosaure rôde autour du troupeau au repos ; un Apatosaure adulte se redresse légèrement et frappe le sol de sa lourde patte avant, assez fort pour le faire réfléchir avant d'approcher les petits.",
+    "preuve": "Les traces de morsures d'Allosaure retrouvées sur des os d'Apatosaure de la formation Morrison montrent qu'il s'attaquait surtout aux jeunes ou aux individus déjà affaiblis."
+   },
+   {
+    "type": "rival",
+    "adversaire": "un autre Apatosaure (rival)",
+    "adversaire_latin": "Apatosaurus louisae",
+    "adversaire_id": "apatosaurus",
+    "adversaire_morpho": "même cou massif et épais, même corps immense",
+    "adversaire_mesures": "20m/4.2m/20t",
+    "adversaire_livree": "brun-vert plus sombre, sans la gorge claire",
+    "rapport_taille": "deux mâles presque de la même taille (22 m et 20 m) : le combat se joue au cou, pas à la course.",
+    "action": "Les deux Apatosaures dressent leur cou l'un contre l'autre et le rabattent violemment sur le flanc de l'adversaire, cherchant à le faire vaciller plutôt qu'à mordre.",
+    "preuve": "Plusieurs paléontologues (dont une étude de 2015 sur les cous de sauropodes) proposent que le cou très épais et robuste de l'Apatosaure, plus massif que celui de ses cousins, ait pu servir aux mâles à s'affronter entre eux, un peu comme les girafes."
+   }
+  ]
+ },
+ "camarasaurus": {
+  "livree": "beige doré avec des taches brun rougeâtre en losange sur le dos",
+  "habitat": "Les plaines boisées de conifères et de fougères longeant les rivières de la formation Morrison, à la fin du Jurassique.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Allosaure",
+    "adversaire_latin": "Allosaurus fragilis",
+    "adversaire_id": "allosaurus",
+    "adversaire_morpho": "une tête large armée d'arêtes au-dessus des yeux, une mâchoire capable de s'ouvrir très grand comme une hache",
+    "adversaire_mesures": "9.5m/4m/2t",
+    "adversaire_livree": "kaki olive tacheté de brun clair, bandes plus foncées sur la queue, arêtes oculaires rouge terne",
+    "rapport_taille": "le Camarasaure (15 m, 18 t) reste bien plus lourd que l'Allosaure (9,5 m, 2 t) : seuls les jeunes sont vraiment en danger.",
+    "action": "L'Allosaure approche un jeune Camarasaure isolé près d'un point d'eau ; l'adulte le plus proche baisse la tête et pousse un grondement sourd en s'avançant entre le prédateur et le petit.",
+    "preuve": "Camarasaurus est le sauropode le plus commun de la formation Morrison, où vivait aussi l'Allosaure — leur coexistence est parmi les mieux documentées de tout le Jurassique."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Cératosaure",
+    "adversaire_latin": "Ceratosaurus nasicornis",
+    "adversaire_id": "ceratosaurus",
+    "adversaire_morpho": "une corne dressée sur le nez, de petites cornes au-dessus des yeux, une rangée de petites plaques osseuses le long du dos",
+    "adversaire_mesures": "6m/2m/0.9t",
+    "adversaire_livree": "vert sombre moucheté de taches noires façon crocodile, corne nasale rouge sombre",
+    "rapport_taille": "le Camarasaure (15 m) est deux fois et demie plus long que le Cératosaure (6 m) : un second prédateur, plus petit, qui rôde en profitant des occasions.",
+    "action": "Le Cératosaure suit à distance le troupeau de Camarasaures ; quand un jeune s'écarte pour brouter des fougères basses, il s'approche à pas feutrés avant qu'un adulte ne se place entre eux.",
+    "preuve": "Ceratosaurus partage les mêmes gisements de la formation Morrison que le Camarasaure, un second prédateur régulièrement retrouvé aux côtés de l'Allosaure."
+   }
+  ]
+ },
+ "amargasaurus": {
+  "livree": "jaune ocre avec les épines du cou rouge vif annelées de noir",
+  "habitat": "La vallée semi-aride de la formation La Amarga, en Patagonie au début du Crétacé : rivières bordées de conifères et de fougères, climat chaud avec une saison sèche marquée.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "un grand théropode encore mal connu",
+    "adversaire_latin": "espèce non déterminée",
+    "adversaire_id": null,
+    "adversaire_morpho": "connu seulement par quelques dents retrouvées dans la même formation, sans doute un chasseur bipède robuste à la mâchoire puissante",
+    "adversaire_mesures": "?m/?m/?t",
+    "adversaire_livree": "silhouette brune sombre, détails inconnus",
+    "rapport_taille": "taille exacte inconnue faute d'un squelette complet, mais assez grand pour représenter une menace réelle pour un Amargasaure adulte (10 m).",
+    "action": "L'Amargasaure fait face au prédateur en dressant ses deux rangées d'épines le long du cou, qui se hérissent comme une haie, pendant que le chasseur hésite à s'approcher de trop près.",
+    "preuve": "Seules quelques dents isolées d'un grand théropode ont été retrouvées dans la formation La Amarga, aux côtés des restes de l'Amargasaure — un prédateur réel mais encore trop mal connu pour être nommé."
+   },
+   {
+    "type": "rival",
+    "adversaire": "un autre Amargasaure (rival)",
+    "adversaire_latin": "Amargasaurus cazaui",
+    "adversaire_id": "amargasaurus",
+    "adversaire_morpho": "mêmes deux rangées d'épines sur le cou, mais teintées d'orange plutôt que de rouge",
+    "adversaire_mesures": "9.5m/2.5m/2.8t",
+    "adversaire_livree": "jaune plus pâle, épines orange annelées de noir",
+    "rapport_taille": "deux individus de taille presque égale (10 m et 9,5 m) : le duel se joue au cou, pas à la force brute.",
+    "action": "Les deux Amargasaures dressent leurs épines et balancent leur cou l'un contre l'autre, cherchant à faire ployer l'adversaire sans jamais vraiment mordre.",
+    "preuve": "Les paléontologues qui ont décrit l'Amargasaure pensent que ses spectaculaires rangées d'épines servaient surtout à impressionner ou à s'affronter entre individus de la même espèce, plutôt qu'à se défendre contre les prédateurs."
+   }
+  ]
+ },
+ "plateosaurus": {
+  "livree": "brun rougeâtre avec des bandes verticales plus claires façon tapir, gorge pâle",
+  "habitat": "La plaine semi-aride du bassin germanique à la fin du Trias : végétation de conifères et de prêles, rivières temporaires qui s'assèchent en été, climat aux saisons très marquées.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Liliensternus, un chasseur bipède",
+    "adversaire_latin": "Liliensternus liliensterni",
+    "adversaire_id": null,
+    "adversaire_morpho": "un corps fin et bipède, une tête allongée aux dents tranchantes, des bras griffus",
+    "adversaire_mesures": "5.5m/1.8m/0.2t",
+    "adversaire_livree": "vert-gris sombre avec des taches noires irrégulières",
+    "rapport_taille": "le Plateosaure (8 m) est presque une fois et demie plus long que Liliensternus (5,5 m) : ce dernier doit viser un jeune ou un individu isolé.",
+    "action": "Liliensternus rôde autour d'un troupeau de Plateosaures au repos ; l'un des adultes se dresse sur ses pattes arrière, bien plus haut que le prédateur, qui recule prudemment.",
+    "preuve": "Liliensternus est le grand théropode documenté dans les mêmes gisements du Trias supérieur d'Allemagne que le Plateosaure."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Teratosaurus, un grand reptile prédateur",
+    "adversaire_latin": "Teratosaurus suevicus",
+    "adversaire_id": null,
+    "adversaire_morpho": "un cousin éloigné des crocodiles plutôt qu'un vrai dinosaure, corps massif, mâchoires puissantes",
+    "adversaire_mesures": "5.5m/1.8m/1t",
+    "adversaire_livree": "gris-brun avec de petites écailles rugueuses visibles",
+    "rapport_taille": "le Plateosaure (8 m) reste plus long que Teratosaurus (5,5 m), mais celui-ci est bien plus massif pour sa taille.",
+    "action": "Teratosaurus surgit d'un bosquet de conifères et fonce vers un jeune Plateosaure ; le troupeau se resserre et les adultes forment un mur de corps entre le prédateur et les petits.",
+    "preuve": "Teratosaurus suevicus est un grand prédateur non-dinosaure (un parent des crocodiles) documenté dans les mêmes couches du Trias supérieur d'Allemagne que le Plateosaure — un second danger, différent de Liliensternus."
+   }
+  ]
+ },
+ "ankylosaurus": {
+  "livree": "brun-vert olive avec des plaques dorsales bordées de jaune pâle",
+  "habitat": "La plaine côtière de la formation Hell Creek, à la toute fin du Crétacé : forêts de séquoias et de magnolias, rivières boueuses, climat chaud et humide.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Tyrannosaure",
+    "adversaire_latin": "Tyrannosaurus rex",
+    "adversaire_id": "tyrannosaurus",
+    "adversaire_morpho": "une tête énorme aux dents géantes, des bras minuscules, des pattes arrière puissantes",
+    "adversaire_mesures": "13m/4m/8t",
+    "adversaire_livree": "brun terreux, bandes fauve doré obliques sur les flancs, masque sombre autour des yeux",
+    "rapport_taille": "le T-Rex (13 m) est presque deux fois plus long que l'Ankylosaure (7,5 m), mais celui-ci pèse presque autant grâce à son armure.",
+    "action": "Le T-Rex tourne autour de l'Ankylosaure en cherchant un angle pour mordre le ventre ; l'Ankylosaure pivote sans cesse pour garder sa queue-massue face à lui, prêt à frapper la patte du prédateur.",
+    "preuve": "Les seuls points faibles de l'Ankylosaure (ventre, pattes, yeux) étaient bien protégés par sa posture basse et rasée au sol ; un coup de sa queue-massue pouvait briser l'os d'une patte de T-Rex, ce qui rendait l'attaque très risquée."
+   },
+   {
+    "type": "rival",
+    "adversaire": "un autre Ankylosaure (rival)",
+    "adversaire_latin": "Ankylosaurus magniventris",
+    "adversaire_id": "ankylosaurus",
+    "adversaire_morpho": "même carapace de plaques osseuses et même queue-massue, teinte légèrement plus sombre",
+    "adversaire_mesures": "7m/1.7m/5.5t",
+    "adversaire_livree": "brun-vert plus foncé, plaques dorsales bordées de gris",
+    "rapport_taille": "deux individus de taille très proche (7,5 m et 7 m) : le duel se joue à la queue, pas à la course.",
+    "action": "Les deux Ankylosaures se placent flanc contre flanc et balancent leur queue-massue l'un vers les pattes de l'autre, cherchant à le faire vaciller sans jamais viser la tête.",
+    "preuve": "Certains paléontologues pensent que la queue-massue de l'Ankylosaure, en plus de servir contre les prédateurs, pouvait aussi être utilisée dans des combats entre mâles de la même espèce, comme chez d'autres animaux à massue ou à cornes."
+   }
+  ]
+ },
+ "euoplocephalus": {
+  "livree": "gris-brun avec des mouchetures blanches sur les plaques dorsales",
+  "habitat": "Le delta côtier subtropical de la formation Dinosaur Park, en Alberta à la fin du Crétacé : forêts denses de conifères et de fougères, climat chaud et humide.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Gorgosaure",
+    "adversaire_latin": "Gorgosaurus libratus",
+    "adversaire_id": null,
+    "adversaire_morpho": "cousin plus svelte du T-Rex, tête allongée, dents tranchantes, pattes arrière longues et rapides",
+    "adversaire_mesures": "9m/3.5m/2.5t",
+    "adversaire_livree": "brun-orangé avec des bandes plus sombres sur le dos",
+    "rapport_taille": "le Gorgosaure (9 m) est une fois et demie plus long que l'Euoplocéphale (6 m), mais celui-ci est presque aussi lourd grâce à son armure complète.",
+    "action": "Le Gorgosaure tente une approche par le côté ; l'Euoplocéphale, dont même les paupières sont blindées, ferme les yeux au bon moment et fait pivoter sa queue-massue vers les pattes du prédateur.",
+    "preuve": "Gorgosaurus libratus est le grand prédateur documenté de la formation Dinosaur Park, où vivait aussi l'Euoplocéphale — l'un des ankylosaures les mieux blindés jamais découverts."
+   },
+   {
+    "type": "rival",
+    "adversaire": "un autre Euoplocéphale (rival)",
+    "adversaire_latin": "Euoplocephalus tutus",
+    "adversaire_id": "euoplocephalus",
+    "adversaire_morpho": "même carapace complète, même queue-massue, teinte plus bleutée",
+    "adversaire_mesures": "5.7m/1.4m/2t",
+    "adversaire_livree": "gris-bleu avec des mouchetures plus claires",
+    "rapport_taille": "deux individus de taille très proche (6 m et 5,7 m) : un duel de massues plutôt qu'une course.",
+    "action": "Les deux Euoplocéphales se tournent le dos et balancent leur queue-massue l'un vers l'autre, chacun essayant de déséquilibrer son rival sans l'attaquer de face.",
+    "preuve": "Comme chez l'Ankylosaure, certains paléontologues pensent que la queue-massue de l'Euoplocéphale pouvait aussi servir à des combats entre individus de la même espèce, en plus de sa fonction défensive."
+   }
+  ]
+ },
+ "edmontonia": {
+  "livree": "brun rouge sombre avec des épines d'épaule jaune pâle à la pointe noire",
+  "habitat": "Les plaines côtières boisées de la formation Horseshoe Canyon, en Alberta à la fin du Crétacé : forêts de conifères et rivières lentes, climat tempéré humide.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Daspletosaure",
+    "adversaire_latin": "Daspletosaurus torosus",
+    "adversaire_id": null,
+    "adversaire_morpho": "cousin robuste du T-Rex, tête massive et épaisse, museau court, petits bras à deux doigts",
+    "adversaire_mesures": "9m/3.5m/3.8t",
+    "adversaire_livree": "brun rouge sombre avec des bandes noires irrégulières sur le dos",
+    "rapport_taille": "le Daspletosaure (9 m) est presque une fois et demie plus long que l'Edmontonia (6,6 m).",
+    "action": "Le Daspletosaure cherche à attaquer par le flanc ; l'Edmontonia baisse la tête et présente ses grandes épines d'épaule, forçant le prédateur à reculer pour ne pas se blesser lui-même.",
+    "preuve": "Daspletosaurus torosus est l'un des grands prédateurs documentés des mêmes formations de l'Alberta que l'Edmontonia — ses puissantes mâchoires en faisaient une menace sérieuse pour les herbivores blindés."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Gorgosaure",
+    "adversaire_latin": "Gorgosaurus libratus",
+    "adversaire_id": null,
+    "adversaire_morpho": "cousin plus svelte du T-Rex, tête allongée, dents tranchantes, pattes arrière longues et rapides",
+    "adversaire_mesures": "9m/3.5m/2.5t",
+    "adversaire_livree": "brun-orangé avec des bandes plus sombres sur le dos",
+    "rapport_taille": "le Gorgosaure (9 m) reste lui aussi bien plus long que l'Edmontonia (6,6 m), un second chasseur différent du Daspletosaure.",
+    "action": "Le Gorgosaure suit à distance l'Edmontonia qui broute des plantes basses ; dès qu'il s'approche trop, l'herbivore pivote pour garder ses épines pointées vers lui.",
+    "preuve": "Gorgosaurus et Daspletosaurus coexistaient tous les deux dans la même région à la même époque que l'Edmontonia — deux prédateurs différents partageant le même territoire."
+   }
+  ]
+ },
+ "minmi": {
+  "livree": "brun clair tacheté d'ocre, petites plaques dorsales bordées de crème",
+  "habitat": "Les plaines humides et fraîches du Queensland, en Australie au début du Crétacé : l'Australie était alors plus proche du pôle sud, avec des forêts de conifères et de fougères et un climat frais malgré l'absence de vraie glace.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "un théropode moyen encore sans nom",
+    "adversaire_latin": "espèce non déterminée",
+    "adversaire_id": null,
+    "adversaire_morpho": "connu seulement par quelques dents isolées retrouvées dans la même région, sans doute un chasseur bipède de taille moyenne",
+    "adversaire_mesures": "?m/?m/?t",
+    "adversaire_livree": "silhouette brun terne, détails inconnus",
+    "rapport_taille": "taille exacte inconnue faute de squelette complet, mais probablement plus grand que le petit Minmi (3 m).",
+    "action": "Le prédateur tente de retourner le Minmi sur le dos, là où il n'a pas d'armure ; grâce à ses pattes plus longues que ses cousins blindés, le Minmi détale avant d'y parvenir.",
+    "preuve": "Seules quelques dents isolées de théropode ont été retrouvées dans les mêmes couches australiennes que le Minmi, sans qu'on puisse encore leur donner un nom précis."
+   },
+   {
+    "type": "rival",
+    "adversaire": "un petit théropode rapide",
+    "adversaire_latin": "espèce non déterminée",
+    "adversaire_id": null,
+    "adversaire_morpho": "connu seulement par des empreintes retrouvées dans les mêmes couches, un corps léger et véloce, de la taille d'un grand chien",
+    "adversaire_mesures": "2.5m/0.6m/0.02t",
+    "adversaire_livree": "gris-vert, détails inconnus",
+    "rapport_taille": "le Minmi (3 m) reste plus long que ce petit chasseur (2,5 m environ), mais celui-ci est bien plus rapide.",
+    "action": "Le petit théropode tourne autour du Minmi immobile, cherchant une ouverture sous le ventre ; le Minmi se recroqueville et présente ses plaques dorsales de tous les côtés.",
+    "preuve": "Des empreintes d'un petit théropode rapide ont été retrouvées dans les mêmes formations du Queensland que le Minmi, preuve d'un second type de chasseur, plus petit et plus vif que le premier."
+   }
+  ]
+ },
+ "scutellosaurus": {
+  "livree": "vert clair tacheté de brun, plaques dorsales gris pâle",
+  "habitat": "La plaine semi-aride de la formation Kayenta, au tout début du Jurassique en Arizona : dunes fossilisées, fougères basses, climat chaud et sec.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Dilophosaure",
+    "adversaire_latin": "Dilophosaurus wetherilli",
+    "adversaire_id": "dilophosaurus",
+    "adversaire_morpho": "deux crêtes colorées dressées sur la tête, un corps bipède élancé, des dents fines et nombreuses",
+    "adversaire_mesures": "7m/2.4m/0.35t",
+    "adversaire_livree": "jaune moutarde et bleu-gris, crêtes rouge vif rayées de jaune",
+    "rapport_taille": "le Dilophosaure (7 m) est presque six fois plus long que le minuscule Scutellosaure (1,2 m).",
+    "action": "Le Dilophosaure baisse la tête entre les fougères et repère le Scutellosaure immobile ; celui-ci détale sur ses deux pattes arrière vers un enchevêtrement de racines trop étroit pour le grand chasseur.",
+    "preuve": "Le Scutellosaure vient de la même formation géologique (Kayenta) que le Dilophosaure, alors le plus grand prédateur de la région."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Megapnosaurus, un petit chasseur agile",
+    "adversaire_latin": "Megapnosaurus kayentakatae",
+    "adversaire_id": null,
+    "adversaire_morpho": "un petit corps bipède fin, une tête étroite garnie de petites dents pointues, des pattes rapides",
+    "adversaire_mesures": "2.2m/0.6m/0.015t",
+    "adversaire_livree": "brun rayé de bandes plus sombres",
+    "rapport_taille": "presque de la même taille (1,2 m et 2,2 m), mais ce petit prédateur reste bien plus rapide que le Scutellosaure.",
+    "action": "Megapnosaurus surprend le Scutellosaure à découvert et fonce vers lui ; celui-ci se fige et présente ses centaines de petites plaques dorsales, assez dures pour décourager une première tentative.",
+    "preuve": "Megapnosaurus kayentakatae est le petit prédateur documenté dans la même formation Kayenta que le Scutellosaure, un second chasseur plus petit que le Dilophosaure."
+   }
+  ]
+ },
+ "scelidosaurus": {
+  "livree": "gris-vert avec des plaques dorsales alignées bordées de blanc, deux petites cornes crâniennes noires",
+  "habitat": "La côte anglaise du Lias, au tout début du Jurassique dans le Dorset : plaine littorale couverte de fougères et de conifères, juste à côté d'une mer peu profonde, climat tempéré chaud.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Sarcosaurus, un chasseur bipède",
+    "adversaire_latin": "Sarcosaurus woodi",
+    "adversaire_id": null,
+    "adversaire_morpho": "un corps fin et bipède, une tête allongée aux dents recourbées, des pattes robustes",
+    "adversaire_mesures": "3.5m/1.3m/0.15t",
+    "adversaire_livree": "brun-vert sombre avec des taches noires irrégulières",
+    "rapport_taille": "le Scélidosaure (4 m) et Sarcosaurus (3,5 m) sont de taille très proche : un combat à peu près à égalité.",
+    "action": "Sarcosaurus tente d'approcher par l'avant ; le Scélidosaure baisse la tête, présentant ses deux petites cornes crâniennes et la rangée de plaques sur son dos, et ne bouge plus d'un pas.",
+    "preuve": "Sarcosaurus woodi est le théropode documenté dans les mêmes couches du Lias anglais que le Scélidosaure, à la même époque."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Dimorphodon",
+    "adversaire_latin": "Dimorphodon macronyx",
+    "adversaire_id": null,
+    "adversaire_morpho": "petit reptile volant (ptérosaure) à la tête très haute et courte comme celle d'un macareux, bec garni de dents, longue queue raide, ailes de peau tendues sur un 4e doigt allongé, au sol il marche à quatre pattes",
+    "adversaire_mesures": "1,45 m d'envergure, 1 m de long",
+    "adversaire_livree": "noir charbon, tête et bec jaune soufre, bord des ailes rouge brique",
+    "rapport_taille": "Le Scélidosaure adulte (4 m de long, 1,2 m de haut) est quatre fois plus long que le Dimorphodon (1 m de long, 1,45 m d'envergure) : le petit ptérosaure vise un bébé Scélidosaure d'environ 40 cm.",
+    "action": "Deux Dimorphodons fondent du ciel sur un bébé Scélidosaure ; l'adulte s'interpose, se campe de côté pour offrir son dos clouté et fouette l'air de sa queue.",
+    "preuve": "Dimorphodon et Scelidosaurus viennent tous deux du Lias de Charmouth (Dorset, Jurassique inférieur, ~190 Ma)."
+   }
+  ]
+ },
+ "stegosaurus": {
+  "livree": "vert-gris avec les plaques dorsales rouge-orangé vif striées de jaune",
+  "habitat": "La plaine semi-aride de la formation Morrison, à la fin du Jurassique : rivières saisonnières, fougères et conifères clairsemés, climat sec l'été.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Allosaure",
+    "adversaire_latin": "Allosaurus fragilis",
+    "adversaire_id": "allosaurus",
+    "adversaire_morpho": "une tête large armée d'arêtes au-dessus des yeux, une mâchoire capable de s'ouvrir très grand comme une hache",
+    "adversaire_mesures": "9.5m/4m/2t",
+    "adversaire_livree": "kaki olive tacheté de brun clair, bandes plus foncées sur la queue, arêtes oculaires rouge terne",
+    "rapport_taille": "l'Allosaure (9,5 m) et le Stégosaure (9 m) sont presque de la même longueur, mais le Stégosaure pèse deux fois plus lourd.",
+    "action": "L'Allosaure approche par le flanc pour éviter la queue ; le Stégosaure pivote sur place et balance ses quatre piques vers ses pattes, l'obligeant à sauter en arrière.",
+    "preuve": "Une vertèbre de queue d'Allosaurus retrouvée dans la formation Morrison porte un trou qui correspond exactement à la forme d'une pique de queue de Stégosaure — la preuve d'un vrai combat entre les deux espèces."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Torvosaure",
+    "adversaire_latin": "Torvosaurus tanneri",
+    "adversaire_id": null,
+    "adversaire_morpho": "l'un des plus grands théropodes du Morrison, corps massif, tête épaisse, bras courts mais très puissants",
+    "adversaire_mesures": "9.5m/3m/3.5t",
+    "adversaire_livree": "brun très sombre presque noir, quelques taches gris ardoise sur le dos",
+    "rapport_taille": "le Torvosaure (9,5 m) reste à peu près de la même taille que le Stégosaure (9 m), un second prédateur tout aussi dangereux que l'Allosaure.",
+    "action": "Le Torvosaure surprend le Stégosaure de face ; celui-ci recule d'un pas et fait pivoter sa queue à piques sur le côté, prêt à frapper si le prédateur avance encore.",
+    "preuve": "Torvosaurus tanneri est documenté dans les mêmes gisements de la formation Morrison que le Stégosaure et l'Allosaure, un second grand prédateur partageant le même territoire."
+   }
+  ]
+ },
+ "kentrosaurus": {
+  "livree": "Corps gris-olive sombre, grandes plaques et piques du dos peintes en orangé rouille bordé de noir, ventre crème pâle, anneaux sombres discrets sur la queue.",
+  "habitat": "Plaine côtière semi-aride de Tendaguru (Tanzanie actuelle), forêt claire de conifères, cycas et fougères, saison sèche marquée, lumière rasante de fin de journée sur la savane arborée.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Veterupristisaurus",
+    "adversaire_latin": "Veterupristisaurus milneri",
+    "adversaire_id": null,
+    "adversaire_morpho": "Grand théropode carcharodontosaurien à crâne long et bas armé de dents en lame de couteau dentelées, corps massif porté par deux pattes puissantes, bras courts à trois doigts griffus.",
+    "adversaire_mesures": "environ 8 m de long, 2,5 m au garrot, 1,5 t (estimation d'après une vertèbre caudale isolée)",
+    "adversaire_livree": "Gris ardoise avec de larges bandes verticales brun foncé le long des flancs, gorge pâle.",
+    "rapport_taille": "Le prédateur mesure environ 8 m contre 4,5 m pour le Kéntrosaure : presque le double en longueur, et environ 1,4 fois plus lourd (1,5 t contre 1,1 t).",
+    "action": "Le Kéntrosaure fait volte-face et présente sa queue hérissée de piques, prête à fouetter, pendant que le grand théropode s'arrête net, tête basse, jaugeant la distance avant de charger ou de renoncer.",
+    "preuve": "Formation de Tendaguru (Tanzanie), Jurassique supérieur ; Veterupristisaurus décrit en 2011 d'après une vertèbre caudale de grand carcharodontosaurien, seul grand prédateur documenté du site."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Un autre Kéntrosaure (mâle rival)",
+    "adversaire_latin": "Kentrosaurus aethiopicus",
+    "adversaire_id": "kentrosaurus",
+    "adversaire_morpho": "Même espèce : dos couvert de plaques puis d'épines osseuses jusqu'aux hanches, deux longues piques doubles sur les épaules, queue armée de piques en thagomizer.",
+    "adversaire_mesures": "4,5 m / 1,8 m / 1,1 t (identique à l'espèce)",
+    "adversaire_livree": "Même livrée de base, mais motif de bandes plus contrasté sur les épaules.",
+    "rapport_taille": "Deux individus de taille égale, 4,5 m chacun.",
+    "action": "Deux Kéntrosaures se présentent flanc contre flanc, les piques d'épaule menaçantes, tournant lentement l'un autour de l'autre pour s'impressionner sans se toucher.",
+    "preuve": "Hypothèse prudente : les épines d'épaule sont surtout interprétées comme une défense anti-prédateur, mais une parade ou un affrontement entre mâles reste plausible par analogie avec d'autres stégosaures à piques (non confirmé par fossile direct)."
+   }
+  ]
+ },
+ "triceratops": {
+  "livree": "Corps brun roux profond, grande collerette crème bordée de brun foncé, deux gros ocelles sombres cerclés de clair sur le haut de la collerette, cornes ivoire à pointe sombre.",
+  "habitat": "Plaine boisée de la fin du Crétacé en Amérique du Nord (formation de Hell Creek/Lance), forêts de séquoias et d'angiospermes à fleurs près de rivières boueuses, climat chaud et humide, lumière dorée de fin d'après-midi.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Tyrannosaurus rex",
+    "adversaire_latin": "Tyrannosaurus rex",
+    "adversaire_id": "tyrannosaurus",
+    "adversaire_morpho": "Immense théropode à tête énorme, mâchoires garnies de dents épaisses comme des bananes, bras minuscules à deux doigts, corps porté par deux pattes massives.",
+    "adversaire_mesures": "13 m / 4 m / 8 t",
+    "adversaire_livree": "Peau brun sombre tachetée de gris, gorge et ventre plus clairs, fines rayures verticales sur la queue.",
+    "rapport_taille": "Le T-Rex est presque une fois et demie plus long (13 m contre 9 m), mais le Tricératops reste presque aussi lourd malgré sa taille plus modeste (9 t contre 8 t).",
+    "action": "Le Tricératops baisse la tête, cornes pointées en avant, collerette dressée comme un bouclier, et avance de quelques pas vers le T-Rex qui recule d'un bond, gueule entrouverte, pour évaluer une autre approche.",
+    "preuve": "Formation de Hell Creek, Crétacé final ; des os de Tricératops portant des marques de dents de T-Rex guéries confirment des affrontements réels (Happ 2008)."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Un autre Tricératops (rival de troupeau)",
+    "adversaire_latin": "Triceratops horridus",
+    "adversaire_id": "triceratops",
+    "adversaire_morpho": "Même espèce, collerette au motif d'ocelles légèrement différent, cornes frontales un peu plus longues.",
+    "adversaire_mesures": "9 m / 3 m / 9 t",
+    "adversaire_livree": "Même palette brun roux, mais ocelles de la collerette plus étirés et pâles.",
+    "rapport_taille": "Deux adultes de taille comparable, 9 m chacun.",
+    "action": "Cornes contre cornes, les deux Tricératops poussent front contre front comme dans un bras de fer, pattes arrière ancrées dans la boue, sans lâcher prise.",
+    "preuve": "Des crânes de Tricératops montrent des lésions et cicatrices de collerette compatibles avec des joutes cornes contre cornes entre individus (Farke et al. 2009)."
+   }
+  ]
+ },
+ "torosaurus": {
+  "livree": "Corps gris-vert mat, immense collerette ocre pâle mouchetée de points bruns foncés façon dalmatien, cornes claires à base sombre.",
+  "habitat": "Mêmes plaines boisées de la fin du Crétacé nord-américain (Hell Creek/Lance), végétation d'angiospermes et de fougères en sous-bois, climat chaud, lumière de milieu de journée.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Tyrannosaurus rex",
+    "adversaire_latin": "Tyrannosaurus rex",
+    "adversaire_id": "tyrannosaurus",
+    "adversaire_morpho": "Immense théropode à tête énorme, mâchoires garnies de dents épaisses, bras minuscules à deux doigts, corps porté par deux pattes massives.",
+    "adversaire_mesures": "13 m / 4 m / 8 t",
+    "adversaire_livree": "Peau brun sombre tachetée de gris, gorge et ventre plus clairs, fines rayures verticales sur la queue.",
+    "rapport_taille": "Le T-Rex fait 13 m contre 8 m pour le Torosaure (environ 1,6 fois plus long), mais les deux sont presque aussi lourds (8 t chacun).",
+    "action": "Le Torosaure recule d'un pas en balançant sa tête immense, ses cornes frontales barrant le passage, pendant que le T-Rex teste une feinte sur le côté pour contourner le bouclier de collerette.",
+    "preuve": "Même contexte que Triceratops : formation de Hell Creek, morsures de T-Rex documentées sur des cératopsidés contemporains."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Un autre Torosaure",
+    "adversaire_latin": "Torosaurus latus",
+    "adversaire_id": "torosaurus",
+    "adversaire_morpho": "Même espèce, collerette percée des deux mêmes grandes fenêtres osseuses mais motif de mouchetures différent.",
+    "adversaire_mesures": "8 m / 3 m / 8 t",
+    "adversaire_livree": "Même fond gris-vert, mouchetures plus denses sur le pourtour de la collerette.",
+    "rapport_taille": "Deux adultes égaux, 8 m chacun.",
+    "action": "Les deux Torosaures inclinent la tête de biais pour engager leurs collerettes ajourées comme deux boucliers percés, poussant doucement.",
+    "preuve": "Par analogie directe avec les combats documentés chez Triceratops (cératopsidé très proche) ; aucune lésion spécifique encore publiée pour Torosaurus — extrapolation raisonnable."
+   }
+  ]
+ },
+ "protoceratops": {
+  "livree": "Robe fauve sable, grande tache brune en selle sur le dos, masque sombre autour des yeux, collerette bordée d'un fin liseré clair.",
+  "habitat": "Désert de dunes et d'oasis temporaires de la formation de Djadokhta (Mongolie, Crétacé), climat aride, tempêtes de sable fréquentes, végétation clairsemée de conifères nains, lumière crue de milieu de journée.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Vélociraptor",
+    "adversaire_latin": "Velociraptor mongoliensis",
+    "adversaire_id": "velociraptor",
+    "adversaire_morpho": "Petit théropode aux plumes brun-roux, masque sombre autour des yeux, longue griffe rétractable en faucille au deuxième orteil, queue raide empennée.",
+    "adversaire_mesures": "2 m / 0,5 m / 15 kg",
+    "adversaire_livree": "Plumage brun-roux, masque sombre autour des yeux, ventre crème, bandes sombres sur la queue empennée.",
+    "rapport_taille": "Le Protocératops est plus lourd (80 kg contre 15 kg) mais à peine plus long (2,2 m contre 2 m) : un combat entre poids inégaux mais tailles proches.",
+    "action": "Le Protocératops mord le bras du Vélociraptor pendant que celui-ci plante sa griffe en faucille dans son flanc, les deux figés dans un même mouvement de lutte.",
+    "preuve": "Fossile emblématique des « dinosaures combattants » (Djadokhta, Mongolie) : un Vélociraptor et un Protocératops ensevelis vivants en pleine lutte par une dune effondrée."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Un autre Protocératops (rival de collerette)",
+    "adversaire_latin": "Protoceratops andrewsi",
+    "adversaire_id": "protoceratops",
+    "adversaire_morpho": "Même espèce, individu à collerette un peu plus large et plus haute que la moyenne.",
+    "adversaire_mesures": "2,2 m / 0,75 m / 80 kg",
+    "adversaire_livree": "Même robe sable, tache en selle plus foncée.",
+    "rapport_taille": "Deux individus de taille égale, 2,2 m chacun.",
+    "action": "Front baissé, les deux Protocératops poussent bec contre bec et collerette contre collerette, comme pour se mesurer sans mordre.",
+    "preuve": "La grande variabilité de taille des collerettes selon les individus (souvent attribuée au sexe ou à l'âge) suggère un rôle dans la parade ou la rivalité, hypothèse discutée depuis Dodson (1976)."
+   }
+  ]
+ },
+ "pentaceratops": {
+  "livree": "Corps brun doré, immense collerette ocre à reflets cuivrés, deux grandes taches sombres symétriques près du bord de la collerette, cornes claires.",
+  "habitat": "Forêt marécageuse du Nouveau-Mexique à la fin du Crétacé (formation de Kirtland), cyprès chauves et fougères en sous-bois, climat chaud et humide, lumière filtrée par la canopée.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Bistahieversor",
+    "adversaire_latin": "Bistahieversor sealeyi",
+    "adversaire_id": null,
+    "adversaire_morpho": "Tyrannosauroïde archaïque à crâne long et étroit, museau plus fin que celui d'un T-Rex, dents nombreuses en lame, deux petits bras.",
+    "adversaire_mesures": "environ 9 m / 3 m / 2 t",
+    "adversaire_livree": "Peau gris-brun sombre avec des marbrures plus claires sur les flancs, gorge pâle.",
+    "rapport_taille": "Bistahieversor mesure 9 m contre 6 m pour le Pentacératops (un tiers plus long), mais bien plus léger (2 t contre 5 t) — le Pentacératops garde l'avantage du poids.",
+    "action": "Le Pentacératops charge de côté, cornes hautes tournées vers le prédateur, tandis que Bistahieversor esquive en bondissant sur le flanc, cherchant une ouverture.",
+    "preuve": "Formation de Kirtland (Nouveau-Mexique), Crétacé supérieur ; Bistahieversor est le grand prédateur documenté de cet écosystème à cératopsidés (Carr & Williamson 2010)."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Un autre Pentacératops",
+    "adversaire_latin": "Pentaceratops sternbergii",
+    "adversaire_id": "pentaceratops",
+    "adversaire_morpho": "Même espèce, motif de taches de collerette légèrement asymétrique.",
+    "adversaire_mesures": "6 m / 2 m / 5 t",
+    "adversaire_livree": "Même fond doré, taches plus étirées.",
+    "rapport_taille": "Deux individus égaux, 6 m chacun.",
+    "action": "Les deux Pentacératops entrecroisent leurs cornes latérales et poussent, pattes arrière plantées dans la boue du marécage.",
+    "preuve": "Par analogie avec les combats documentés chez les cératopsidés proches (Triceratops) ; pas de lésion spécifique encore publiée pour Pentaceratops."
+   }
+  ]
+ },
+ "parasaurolophus": {
+  "livree": "Corps violet-prune sur le dos s'éclaircissant en lilas pâle sur les flancs, crête tubulaire striée de bandes sombres, ventre crème.",
+  "habitat": "Plaine fluviale boisée de l'Alberta au Crétacé (formation de Dinosaur Park), conifères et angiospermes à fleurs en sous-bois, climat tempéré humide, lumière de fin de matinée près d'un cours d'eau.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Gorgosaure",
+    "adversaire_latin": "Gorgosaurus libratus",
+    "adversaire_id": null,
+    "adversaire_morpho": "Tyrannosauridé svelte au museau plus fin qu'un T-Rex, petites crêtes osseuses basses devant les yeux, deux petits bras à deux doigts.",
+    "adversaire_mesures": "environ 9 m / 2,7 m / 2,4 t",
+    "adversaire_livree": "Peau brun sombre à reflets verdâtres, rayures obliques plus claires sur les flancs.",
+    "rapport_taille": "Le Gorgosaure mesure 9 m contre 10 m pour le Parasaurolophus (longueurs proches), mais reste bien plus léger (2,4 t contre 2,5 t — presque à égalité).",
+    "action": "Le Parasaurolophus souffle un long appel grave dans sa crête tubulaire pour alerter le troupeau, puis s'élance en fuite pendant que le Gorgosaure s'élance à sa poursuite entre les troncs.",
+    "preuve": "Formation de Dinosaur Park (Alberta), Crétacé supérieur ; Gorgosaurus libratus est le grand prédateur documenté partageant cet écosystème avec Parasaurolophus walkeri."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Daspletosaure",
+    "adversaire_latin": "Daspletosaurus torosum",
+    "adversaire_id": null,
+    "adversaire_morpho": "Tyrannosauridé plus trapu que le Gorgosaure, museau plus large, crâne couvert de petites bosses osseuses rugueuses.",
+    "adversaire_mesures": "environ 9 m / 2,8 m / 3 t",
+    "adversaire_livree": "Peau brun rougeâtre sombre, museau plus clair, petites taches sombres sur le cou.",
+    "rapport_taille": "Le Daspletosaure est un peu plus lourd que le Gorgosaure (3 t) et de longueur comparable au Parasaurolophus (9 m contre 10 m).",
+    "action": "Alors que le troupeau s'égaille, un Daspletosaure surgit d'un autre côté et coupe la retraite d'un jeune Parasaurolophus, qui pivote et recule vers le groupe en soufflant l'alarme.",
+    "preuve": "Daspletosaurus torosum est également documenté dans la formation de Dinosaur Park, en concurrence directe avec Gorgosaurus pour les mêmes proies hadrosaures."
+   }
+  ]
+ },
+ "corythosaurus": {
+  "livree": "Corps bleu-violet doux, crête en casque arrondi bordée d'un liseré crème, motif de petites taches sombres en chapelet le long du dos.",
+  "habitat": "Même plaine fluviale boisée de l'Alberta (formation de Dinosaur Park), forêt dense de conifères et fougères en sous-bois, climat humide tempéré, brume matinale.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Daspletosaure",
+    "adversaire_latin": "Daspletosaurus torosum",
+    "adversaire_id": null,
+    "adversaire_morpho": "Tyrannosauridé trapu au museau large, petites bosses osseuses sur le crâne, deux petits bras robustes.",
+    "adversaire_mesures": "environ 9 m / 2,8 m / 3 t",
+    "adversaire_livree": "Peau brun rougeâtre sombre, museau plus clair, petites taches sombres sur le cou.",
+    "rapport_taille": "9 m pour les deux, mais le Daspletosaure pèse 3 t contre 4 t pour le Corythosaure — l'herbivore est en réalité le plus lourd des deux.",
+    "action": "Le Corythosaure fait résonner un appel grave dans sa crête creuse et s'écarte vers la rivière pendant que le Daspletosaure coupe l'angle en longeant la berge.",
+    "preuve": "Formation de Dinosaur Park ; Daspletosaurus torosum documenté comme prédateur des hadrosaures crêtés de cet écosystème."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Gorgosaure",
+    "adversaire_latin": "Gorgosaurus libratus",
+    "adversaire_id": null,
+    "adversaire_morpho": "Tyrannosauridé svelte au museau plus fin, petites crêtes osseuses basses devant les yeux, deux petits bras à deux doigts.",
+    "adversaire_mesures": "environ 9 m / 2,7 m / 2,4 t",
+    "adversaire_livree": "Peau brun sombre à reflets verdâtres, rayures obliques plus claires sur les flancs.",
+    "rapport_taille": "Le Gorgosaure (9 m, 2,4 t) est un peu plus léger que le Corythosaure (9 m, 4 t).",
+    "action": "Un deuxième prédateur, plus svelte, surgit de l'autre côté du troupeau et isole un jeune Corythosaure resté en retrait, qui détale en zigzag vers les adultes.",
+    "preuve": "Gorgosaurus et Daspletosaurus coexistaient dans la même formation, se partageant les mêmes proies hadrosaures (Currie 2003)."
+   }
+  ]
+ },
+ "maiasaura": {
+  "livree": "Corps vert olive tendre, dos plus foncé, ventre crème, petite crête faciale carrée jaune pâle.",
+  "habitat": "Colonie de nids à ciel ouvert du Montana au Crétacé (formation de Two Medicine, « Montagne aux Œufs »), plaine volcanique cendreuse, végétation basse et fougères, climat saisonnier, lumière de fin de journée.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Daspletosaure",
+    "adversaire_latin": "Daspletosaurus torosum",
+    "adversaire_id": null,
+    "adversaire_morpho": "Tyrannosauridé trapu au museau large, petites bosses osseuses sur le crâne, deux petits bras robustes.",
+    "adversaire_mesures": "environ 9 m / 2,8 m / 3 t",
+    "adversaire_livree": "Peau brun rougeâtre sombre, museau plus clair, petites taches sombres sur le cou.",
+    "rapport_taille": "Le Daspletosaure (9 m, 3 t) est plus long mais à peine plus lourd que la Maiasaura adulte (9 m, 2,5 t) — les deux sont étonnamment proches en taille.",
+    "action": "La Maiasaura se place entre le prédateur et son nid, tête basse et flancs gonflés, pendant que le Daspletosaure s'arrête en lisière de la colonie, jaugeant la masse de mères rassemblées.",
+    "preuve": "Formation de Two Medicine (Montana) ; Daspletosaurus torosum est le grand prédateur documenté de cet écosystème à nids de Maiasaura (Horner & Makela 1979)."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Troodon",
+    "adversaire_latin": "Troodon formosus",
+    "adversaire_id": "troodon",
+    "adversaire_morpho": "Petit théropode svelte aux grands yeux tournés vers l'avant, longs bras fins à mains préhensiles, corps couvert de plumes courtes.",
+    "adversaire_mesures": "2,2 m / 0,9 m / 50 kg",
+    "adversaire_livree": "Plumage brun doré tacheté de sombre, grands yeux cerclés de noir.",
+    "rapport_taille": "Le Troodon (2,2 m, 50 kg) est minuscule face à la Maiasaura adulte (9 m, 2,5 t) — il ne vise pas l'adulte : il rôde près des nids.",
+    "action": "Profitant d'un instant d'inattention, un Troodon se faufile entre deux nids pour happer un œuf pendant qu'une Maiasaura, alertée par le bruit, tourne la tête et pousse un cri pour le faire fuir.",
+    "preuve": "Des dents de Troodon retrouvées mêlées à des coquilles d'œufs sur le site de la Montagne aux Œufs suggèrent une prédation occasionnelle sur les nids de Maiasaura (Horner 1984)."
+   }
+  ]
+ },
+ "saurolophus": {
+  "livree": "Corps vert sauge sombre sur le dos, flancs plus clairs, long éperon osseux de la crête peint de bandes noires et crème.",
+  "habitat": "Plaine alluviale mongole de la formation de Nemegt, Crétacé, climat semi-aride avec rivières saisonnières, végétation clairsemée de conifères, lumière de fin d'après-midi sur les dunes lointaines.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Tarbosaure",
+    "adversaire_latin": "Tarbosaurus bataar",
+    "adversaire_id": "tarbosaurus",
+    "adversaire_morpho": "Immense tyrannosauridé asiatique au crâne étroit et haut, mâchoire à charnière articulée, minuscules bras à deux doigts.",
+    "adversaire_mesures": "12 m / 4,5 m / 5 t",
+    "adversaire_livree": "Peau brun sombre presque noire, gorge et museau plus clairs, fines marbrures grises sur le corps.",
+    "rapport_taille": "Le Tarbosaure (12 m, 5 t) est bien plus long et lourd que le Saurolophe (9 m, 3,5 t) — presque le double en poids.",
+    "action": "Le troupeau de Saurolophes se disperse en soufflant l'alarme par leurs longs éperons osseux, pendant que le Tarbosaure s'élance vers les traînards, gueule entrouverte.",
+    "preuve": "Formation de Nemegt (Mongolie), Crétacé supérieur ; Tarbosaurus bataar est le grand prédateur documenté de cet écosystème à hadrosaures (Hurum & Sabath 2003)."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Alioramus",
+    "adversaire_latin": "Alioramus remotus",
+    "adversaire_id": null,
+    "adversaire_morpho": "Tyrannosauroïde plus petit et gracile que le Tarbosaure, museau très allongé et étroit hérissé de petites crêtes osseuses en rangée.",
+    "adversaire_mesures": "environ 6 m / 1,8 m / 0,4 t",
+    "adversaire_livree": "Peau brun-roux clair mouchetée de gris, museau plus pâle.",
+    "rapport_taille": "Alioramus (6 m, 0,4 t) est bien plus petit que le Saurolophe adulte (9 m, 3,5 t) — il vise plutôt les jeunes ou les malades du troupeau.",
+    "action": "Alors que le gros du troupeau s'éloigne, un Alioramus plus véloce coupe la route d'un jeune Saurolophe resté isolé, qui rejoint ses congénères au pas de course.",
+    "preuve": "Alioramus remotus est documenté dans la même formation de Nemegt que Tarbosaurus, occupant une niche de prédateur plus léger et rapide (Kurzanov 1976)."
+   }
+  ]
+ },
+ "edmontosaurus": {
+  "livree": "Corps violet ardoise sur le dos, flancs mauve clair, bec large crème, motif de fines rayures verticales sombres sur la queue.",
+  "habitat": "Vaste plaine côtière nord-américaine de la toute fin du Crétacé (formation de Hell Creek/Lance), forêts d'angiospermes et de conifères le long des rivières, climat chaud, lumière de milieu de journée.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Tyrannosaurus rex",
+    "adversaire_latin": "Tyrannosaurus rex",
+    "adversaire_id": "tyrannosaurus",
+    "adversaire_morpho": "Immense théropode à tête énorme, mâchoires garnies de dents épaisses, bras minuscules à deux doigts, corps porté par deux pattes massives.",
+    "adversaire_mesures": "13 m / 4 m / 8 t",
+    "adversaire_livree": "Peau brun sombre tachetée de gris, gorge et ventre plus clairs, fines rayures verticales sur la queue.",
+    "rapport_taille": "Le T-Rex (13 m, 8 t) est plus court que l'Edmontosaure (12 m) mais deux fois plus lourd (8 t contre 4 t).",
+    "action": "L'Edmontosaure détale à travers la plaine en poussant des cris d'alarme au troupeau, pendant que le T-Rex se lance dans une course courte pour couper sa trajectoire.",
+    "preuve": "Une vertèbre caudale d'Edmontosaure porte une morsure de T-Rex partiellement guérie (spécimen étudié par le Black Hills Institute) : preuve directe d'une attaque à laquelle la proie a survécu."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Dakotaraptor",
+    "adversaire_latin": "Dakotaraptor steini",
+    "adversaire_id": null,
+    "adversaire_morpho": "Grand dromæosauridé emplumé aux longs bras porteurs de plumes, énorme griffe recourbée au deuxième orteil, queue raide et fine.",
+    "adversaire_mesures": "environ 5,5 m / 1,2 m / 0,35 t",
+    "adversaire_livree": "Plumage gris-brun strié de bandes plus sombres, calotte rousse.",
+    "rapport_taille": "Dakotaraptor (5,5 m, 0,35 t) est bien plus petit que l'Edmontosaure adulte (12 m, 4 t) — il chasse plutôt les jeunes isolés du troupeau.",
+    "action": "Une petite bande de Dakotaraptor encercle un jeune Edmontosaure séparé du groupe ; celui-ci recule vers l'eau en soufflant fort, le bord de son bec claquant en avertissement.",
+    "preuve": "Dakotaraptor steini est documenté dans la formation de Hell Creek, contemporain de l'Edmontosaure (DePalma et al. 2015)."
+   }
+  ]
+ },
+ "iguanodon": {
+  "livree": "Corps mauve doux, flancs plus clairs, pique du pouce ivoire, motif de petites taches sombres sur le dos.",
+  "habitat": "Plaine humide à conifères et fougères du Wealden (Angleterre/Belgique), Crétacé inférieur, rivières tressées, climat subtropical, lumière voilée par la brume matinale.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Baryonyx",
+    "adversaire_latin": "Baryonyx walkeri",
+    "adversaire_id": "baryonyx",
+    "adversaire_morpho": "Grand théropode au museau allongé façon crocodile, garni de nombreuses petites dents coniques, grande griffe recourbée au pouce.",
+    "adversaire_mesures": "9 m / 2,5 m / 1,7 t",
+    "adversaire_livree": "Peau brun-vert marbrée, dos plus sombre, gorge claire.",
+    "rapport_taille": "Baryonyx (9 m, 1,7 t) est plus petit et bien plus léger que l'Iguanodon adulte (10 m, 3 t) — presque deux fois moins lourd.",
+    "action": "L'Iguanodon brandit sa pique de pouce en direction du museau du Baryonyx, qui recule d'un pas, tête de côté, plus habitué à pêcher qu'à affronter un herbivore armé.",
+    "preuve": "Formation du Wealden (Angleterre), Crétacé inférieur ; Baryonyx walkeri est documenté dans le même ensemble géologique qu'Iguanodon bernissartensis."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Neovenator",
+    "adversaire_latin": "Neovenator salerii",
+    "adversaire_id": null,
+    "adversaire_morpho": "Grand allosauroïde svelte au crâne orné de petites crêtes au-dessus des yeux, dents en lame dentelée, bras robustes à trois doigts griffus.",
+    "adversaire_mesures": "environ 7,5 m / 2,2 m / 1,2 t",
+    "adversaire_livree": "Peau brun sable tachetée de vert olive, crêtes oculaires plus sombres.",
+    "rapport_taille": "Neovenator (7,5 m, 1,2 t) est plus petit que l'Iguanodon (10 m, 3 t), mais bien plus rapide et agile.",
+    "action": "Le Neovenator charge par surprise depuis un fourré tandis que l'Iguanodon se cabre brièvement sur ses pattes arrière pour prendre appui avant de riposter de sa pique.",
+    "preuve": "Neovenator salerii est le grand prédateur documenté du Wealden anglais, contemporain d'Iguanodon (Hutt et al. 1996)."
+   }
+  ]
+ },
+ "pachycephalosaurus": {
+  "livree": "Corps violet foncé, dôme crânien ivoire lisse, petites pointes osseuses en couronne autour du dôme peintes en roux.",
+  "habitat": "Plaine boisée de la toute fin du Crétacé nord-américain (Hell Creek/Lance), sous-bois d'angiospermes à fleurs et fougères, climat chaud, lumière tamisée de sous-bois.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Tyrannosaurus rex",
+    "adversaire_latin": "Tyrannosaurus rex",
+    "adversaire_id": "tyrannosaurus",
+    "adversaire_morpho": "Immense théropode à tête énorme, mâchoires garnies de dents épaisses, bras minuscules à deux doigts, corps porté par deux pattes massives.",
+    "adversaire_mesures": "13 m / 4 m / 8 t",
+    "adversaire_livree": "Peau brun sombre tachetée de gris, gorge et ventre plus clairs, fines rayures verticales sur la queue.",
+    "rapport_taille": "Le T-Rex (13 m, 8 t) est presque trois fois plus long et près de dix-huit fois plus lourd que le Pachycéphalosaure (4,5 m, 0,45 t).",
+    "action": "Le Pachycéphalosaure détale entre les fourrés bas où le T-Rex, trop massif, ne peut le suivre, et se retourne un instant, dôme baissé, avant de replonger dans les broussailles.",
+    "preuve": "Formation de Hell Creek/Lance ; Tyrannosaurus rex est le grand prédateur documenté de cet écosystème, capable de menacer tous les herbivores moyens."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Un autre Pachycéphalosaure (rival de dôme)",
+    "adversaire_latin": "Pachycephalosaurus wyomingensis",
+    "adversaire_id": "pachycephalosaurus",
+    "adversaire_morpho": "Même espèce, dôme un peu plus large et couronne de pointes plus marquée (individu dominant supposé).",
+    "adversaire_mesures": "4,5 m / 1,5 m / 0,45 t",
+    "adversaire_livree": "Même violet foncé, couronne de pointes plus rousse.",
+    "rapport_taille": "Deux individus égaux, 4,5 m chacun.",
+    "action": "Les deux Pachycéphalosaures reculent puis s'élancent l'un vers l'autre, dômes en avant, et se percutent front contre front dans un bruit sourd.",
+    "preuve": "L'épaisseur extrême du dôme (jusqu'à 25 cm) est classiquement interprétée comme une adaptation aux coups de tête entre rivaux, par analogie avec les béliers actuels (débat toujours en cours entre choc frontal et coups latéraux, Goodwin & Horner)."
+   }
+  ]
+ },
+ "velociraptor": {
+  "livree": "Plumage brun-roux, masque sombre autour des yeux, ventre crème, bandes sombres sur la queue empennée.",
+  "habitat": "Dunes et oasis temporaires du désert de Djadokhta (Mongolie, Crétacé), climat aride, tempêtes de sable, végétation clairsemée, lumière crue de milieu de journée.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Un autre Vélociraptor (rival)",
+    "adversaire_latin": "Velociraptor mongoliensis",
+    "adversaire_id": "velociraptor",
+    "adversaire_morpho": "Même espèce, plumage un peu plus terne, cicatrices visibles sur le museau d'un affrontement antérieur.",
+    "adversaire_mesures": "2 m / 0,5 m / 15 kg",
+    "adversaire_livree": "Même plumage brun-roux mais motif de bandes caudales plus effacé.",
+    "rapport_taille": "Deux individus de taille égale, 2 m chacun.",
+    "action": "Deux Vélociraptors se font face sur le même territoire de chasse, griffes en faucille levées, plumes du bras hérissées, sifflant et jaugeant la distance avant de bondir.",
+    "preuve": "Des ossements de Vélociraptor portant des traces de dents attribuables à d'autres Vélociraptors suggèrent du charognage, voire du cannibalisme opportuniste entre individus (Hone, Choiniere et al. 2010)."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Protocératops",
+    "adversaire_latin": "Protoceratops andrewsi",
+    "adversaire_id": "protoceratops",
+    "adversaire_morpho": "Petit cératopsien trapu à bec crochu, collerette osseuse courte, corps massif sur quatre pattes courtes.",
+    "adversaire_mesures": "2,2 m / 0,75 m / 80 kg",
+    "adversaire_livree": "Robe fauve sable, tache brune en selle sur le dos, masque sombre autour des yeux.",
+    "rapport_taille": "Le Protocératops (2,2 m, 80 kg) est plus lourd que le Vélociraptor (2 m, 15 kg) — plus de cinq fois plus lourd, ce qui rend la chasse risquée.",
+    "action": "Le Vélociraptor bondit sur le flanc du Protocératops et referme sa griffe en faucille sur son cou pendant que celui-ci mord son bras pour se dégager.",
+    "preuve": "Même fossile des « dinosaures combattants » de Djadokhta, preuve directe de cette interaction prédateur-proie."
+   }
+  ]
+ },
+ "deinonychus": {
+  "livree": "Plumage gris-bleu sombre sur le dos, flancs plus clairs, calotte rousse, longues plumes de bras barrées de noir.",
+  "habitat": "Plaine fluviale boisée du Crétacé inférieur (formation de Cloverly, Montana/Wyoming), conifères et fougères en sous-bois, climat tempéré chaud, lumière de matin brumeux.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Acrocanthosaurus",
+    "adversaire_latin": "Acrocanthosaurus atokensis",
+    "adversaire_id": null,
+    "adversaire_morpho": "Immense théropode allosauroïde à basse crête épineuse le long du dos, crâne massif, bras robustes à trois doigts griffus.",
+    "adversaire_mesures": "environ 11,5 m / 3,5 m / 5 t",
+    "adversaire_livree": "Peau brun-rouille sombre, crête dorsale plus foncée, marbrures pâles sur les flancs.",
+    "rapport_taille": "Acrocanthosaurus (11,5 m, 5 t) est plus de trois fois plus long et plus de soixante fois plus lourd que le Deinonychus (3,4 m, 80 kg).",
+    "action": "Une petite bande de Deinonychus, repoussée par l'arrivée du géant sur leur zone de chasse au bord de la rivière, recule en sifflant, griffes en faucille levées, pendant qu'Acrocanthosaurus s'installe et prend possession du territoire.",
+    "preuve": "Acrocanthosaurus atokensis est documenté dans les formations contemporaines (Antlers/Cloverly) du sud des États-Unis, partageant l'écosystème avec Deinonychus et Tenontosaurus (Brinkman, Cifelli & Czaplewski 1998)."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Tenontosaure",
+    "adversaire_latin": "Tenontosaurus tilletti",
+    "adversaire_id": null,
+    "adversaire_morpho": "Herbivore ornithopode de taille moyenne à longue queue épaisse, tête petite, corps trapu sur quatre pattes.",
+    "adversaire_mesures": "environ 7 m / 2 m / 1 t",
+    "adversaire_livree": "Robe brun-vert terne, ventre crème, quelques taches sombres diffuses sur le dos.",
+    "rapport_taille": "Le Tenontosaure (7 m, 1 t) est deux fois plus long qu'un Deinonychus et douze fois plus lourd, d'où l'intérêt de chasser à plusieurs.",
+    "action": "Plusieurs Deinonychus encerclent un Tenontosaure isolé, bondissant à tour de rôle sur ses flancs pendant qu'il se cabre en balançant sa lourde queue pour les tenir à distance.",
+    "preuve": "Des dizaines de dents de Deinonychus retrouvées associées à des squelettes de Tenontosaurus dans le Montana constituent la preuve fossile la plus citée de chasse en groupe chez les dromæosauridés (Maxwell & Ostrom 1995)."
+   }
+  ]
+ },
+ "utahraptor": {
+  "livree": "Plumage brun-roux profond, calotte et dos plus sombres, ventre crème, grande griffe du pied peinte en ivoire sombre à la pointe.",
+  "habitat": "Plaine à cours d'eau saisonniers du Crétacé inférieur (formation de Cedar Mountain, Utah), végétation clairsemée de conifères et fougères, climat semi-aride, lumière chaude de fin de matinée.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Un autre Utahraptor (concurrent au piège)",
+    "adversaire_latin": "Utahraptor ostrommaysorum",
+    "adversaire_id": "utahraptor",
+    "adversaire_morpho": "Même espèce, cicatrices sur le museau, plumage un peu plus terne.",
+    "adversaire_mesures": "6 m / 2 m / 0,425 t",
+    "adversaire_livree": "Même brun-roux, bandes caudales plus marquées.",
+    "rapport_taille": "Deux individus égaux, 6 m chacun.",
+    "action": "Pris tous deux au bord d'un piège de sable où un herbivore s'est déjà enlisé, les deux Utahraptors se font face, énormes griffes levées, se disputant l'accès à la proie prisonnière.",
+    "preuve": "Un site fossile de l'Utah a livré plusieurs Utahraptors ensevelis ensemble près d'un iguanodontien piégé, interprété comme un piège naturel ayant attiré des prédateurs opportunistes concurrents (site à Utahraptor multiples, Cedar Mountain Fm)."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Cedrorestes",
+    "adversaire_latin": "Cedrorestes crichtoni",
+    "adversaire_id": null,
+    "adversaire_morpho": "Iguanodontien de taille moyenne au bec large, corps trapu marchant à quatre pattes, pique osseuse au pouce.",
+    "adversaire_mesures": "environ 4,5 m / 1,5 m / 0,5 t",
+    "adversaire_livree": "Robe vert-brun terne, ventre pâle, quelques marbrures sombres sur le dos.",
+    "rapport_taille": "Cedrorestes (4,5 m, 500 kg) est presque aussi long que l'Utahraptor (6 m) mais bien plus léger — une proie de belle taille pour un si grand raptor.",
+    "action": "L'Utahraptor bondit sur le dos du Cedrorestes et plante sa grande griffe recourbée dans son flanc, pendant que celui-ci se cabre en tentant de le faire tomber.",
+    "preuve": "Cedrorestes crichtoni est documenté dans le Yellow Cat Member (formation de Cedar Mountain), la même unité géologique qu'Utahraptor ostrommaysorum (Gilpin, DiCroce & Carpenter 2007)."
+   }
+  ]
+ },
+ "microraptor": {
+  "livree": "Plumage noir irisé aux reflets bleu-vert comme un corbeau, longues plumes en éventail sur les quatre membres, petite touffe de plumes en bout de queue.",
+  "habitat": "Forêt lacustre humide du Crétacé inférieur (formation de Jiufotang, Chine), lac de Jehol entouré de conifères et de fougères arborescentes, climat tempéré, lumière filtrée par la canopée.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Sinocalliopteryx",
+    "adversaire_latin": "Sinocalliopteryx gigas",
+    "adversaire_id": null,
+    "adversaire_morpho": "Compsognathidé de taille moyenne, corps allongé et bas, museau fin garni de petites dents pointues, pattes longues et fines.",
+    "adversaire_mesures": "environ 2,4 m / 0,6 m / 30 kg",
+    "adversaire_livree": "Peau brun sombre, fines écailles pâles sur le ventre, queue longue rayée.",
+    "rapport_taille": "Sinocalliopteryx (2,4 m, 30 kg) est trois fois plus long et trente fois plus lourd que le Microraptor (0,77 m, 1 kg).",
+    "action": "Le Microraptor s'envole en planant d'une branche basse pour échapper au Sinocalliopteryx qui bondit juste sous lui, gueule ouverte, refermée sur du vide.",
+    "preuve": "Un fossile de Sinocalliopteryx gigas conservait des restes de Microraptor dans sa cavité stomacale, preuve directe de cette prédation (Xing et al. 2012)."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Un poisson du lac de Jehol",
+    "adversaire_latin": "Lycoptera sp.",
+    "adversaire_id": null,
+    "adversaire_morpho": "Petit poisson téléostéen argenté à écailles losangiques, corps fuselé, nageoires courtes.",
+    "adversaire_mesures": "environ 0,15 m / quelques grammes",
+    "adversaire_livree": "Écailles argentées à reflets bleutés, dos plus sombre.",
+    "rapport_taille": "Le poisson (15 cm) est minuscule comparé au Microraptor (77 cm) — une proie facile à happer en un instant.",
+    "action": "Le Microraptor plane au ras de l'eau et referme son bec sur un petit poisson qui nageait près de la surface, avant de remonter se poser sur une branche.",
+    "preuve": "Un spécimen de Microraptor gui conservait les restes d'un poisson dans son estomac, preuve directe d'un régime incluant la pêche en surface (Xing et al. 2013)."
+   }
+  ]
+ },
+ "troodon": {
+  "livree": "Plumage brun doré tacheté de sombre, grands yeux cerclés de noir, ventre crème, longues plumes fines sur les bras.",
+  "habitat": "Plaine boisée du Montana au Crétacé (formation de Two Medicine / Judith River), sous-bois de fougères et conifères, climat tempéré, lumière de crépuscule.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Daspletosaure",
+    "adversaire_latin": "Daspletosaurus torosum",
+    "adversaire_id": null,
+    "adversaire_morpho": "Tyrannosauridé trapu au museau large, petites bosses osseuses sur le crâne, deux petits bras robustes.",
+    "adversaire_mesures": "environ 9 m / 2,8 m / 3 t",
+    "adversaire_livree": "Peau brun rougeâtre sombre, museau plus clair, petites taches sombres sur le cou.",
+    "rapport_taille": "Le Daspletosaure (9 m, 3 t) est plus de quatre fois plus long et soixante fois plus lourd que le Troodon (2,2 m, 50 kg).",
+    "action": "Le Troodon se fige dans les hautes herbes, ses grands yeux fixés sur le Daspletosaure qui passe à quelques mètres sans le remarquer, puis détale silencieusement dans l'autre sens.",
+    "preuve": "Formation de Two Medicine (Montana), où Troodon formosus et Daspletosaurus torosum coexistaient dans le même écosystème à hadrosaures."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Un petit mammifère multituberculé",
+    "adversaire_latin": "Cimolomys sp.",
+    "adversaire_id": null,
+    "adversaire_morpho": "Petit mammifère nocturne à incisives longues façon rongeur, corps trapu couvert de fourrure brune, longue queue fine.",
+    "adversaire_mesures": "environ 0,15 m / 100 g",
+    "adversaire_livree": "Fourrure brun-gris, ventre plus clair.",
+    "rapport_taille": "Le mammifère (15 cm) est minuscule face au Troodon (2,2 m) — une proie facile pour ses grands yeux nocturnes et ses mains agiles.",
+    "action": "Le Troodon repère au clair de lune un petit mammifère qui détale entre les racines, et referme prestement ses longs doigts dessus en une seule prise.",
+    "preuve": "La forme des dents de Troodon (denticules asymétriques) et ses grands yeux orientés vers l'avant sont interprétés comme des adaptations à la chasse de petites proies en faible lumière (Currie 1985)."
+   }
+  ]
+ },
+ "gallimimus": {
+  "livree": "Corps jaune sable, dos plus foncé, cou et tête gris-bleu pâle, motif de fines rayures sombres sur les cuisses.",
+  "habitat": "Plaine semi-aride autour des lacs saisonniers de la formation de Nemegt (Mongolie, Crétacé), végétation clairsemée, dunes lointaines, lumière crue de milieu de journée.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Tarbosaure",
+    "adversaire_latin": "Tarbosaurus bataar",
+    "adversaire_id": "tarbosaurus",
+    "adversaire_morpho": "Immense tyrannosauridé asiatique au crâne étroit et haut, mâchoire à charnière articulée, minuscules bras à deux doigts.",
+    "adversaire_mesures": "12 m / 4,5 m / 5 t",
+    "adversaire_livree": "Peau brun sombre presque noire, gorge et museau plus clairs, fines marbrures grises sur le corps.",
+    "rapport_taille": "Le Tarbosaure (12 m, 5 t) est deux fois plus long et plus de dix fois plus lourd que le Gallimimus (6 m, 440 kg) — mais bien moins rapide.",
+    "action": "Le troupeau de Gallimimus s'égaille en éventail à pleine vitesse pendant que le Tarbosaure, distancé après quelques foulées, renonce et ralentit sa course.",
+    "preuve": "Formation de Nemegt (Mongolie) ; Tarbosaurus bataar est le grand prédateur documenté partageant cet écosystème avec Gallimimus bullatus."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Un petit lézard des rives du lac",
+    "adversaire_latin": "lézard indéterminé (Formation de Nemegt)",
+    "adversaire_id": null,
+    "adversaire_morpho": "Minuscule reptile aux écailles fines, courant vif sur quatre pattes grêles.",
+    "adversaire_mesures": "environ 0,2 m / quelques grammes",
+    "adversaire_livree": "Écailles brun sable tachetées de gris.",
+    "rapport_taille": "Le lézard (20 cm) est trente fois plus court que le Gallimimus (6 m) : une proie happée en un instant, parmi bien d'autres petits animaux et graines de son régime généraliste.",
+    "action": "Le Gallimimus baisse son long cou vers les herbes basses et referme son bec édenté sur un petit lézard qui détalait entre les pierres, avant de reprendre sa course avec le troupeau.",
+    "preuve": "Le régime alimentaire de Gallimimus bullatus est reconstitué comme généraliste (petits animaux, œufs, graines, plantes) d'après l'anatomie de son bec édenté et la présence de gastrolithes (Norell, Makovicky & Currie 2001)."
+   }
+  ]
+ },
+ "oviraptor": {
+  "livree": "Plumage gris ardoise, crête crânienne haute peinte en rouge-orangé vif façon perroquet, ventre crème, longues plumes de queue en éventail.",
+  "habitat": "Désert de dunes de la formation de Djadokhta (Mongolie, Crétacé), oasis temporaires, climat aride, tempêtes de sable, lumière crue de milieu de journée.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Vélociraptor",
+    "adversaire_latin": "Velociraptor mongoliensis",
+    "adversaire_id": "velociraptor",
+    "adversaire_morpho": "Petit théropode aux plumes brun-roux, masque sombre autour des yeux, longue griffe rétractable en faucille au deuxième orteil.",
+    "adversaire_mesures": "2 m / 0,5 m / 15 kg",
+    "adversaire_livree": "Plumage brun-roux, masque sombre autour des yeux, ventre crème, bandes sombres sur la queue empennée.",
+    "rapport_taille": "Le Vélociraptor (2 m, 15 kg) est un peu plus petit que l'Oviraptor (2 m, 35 kg) mais deux fois plus léger — un adversaire agile plutôt qu'un colosse.",
+    "action": "L'Oviraptor se dresse au-dessus de son nid, crête dressée et bec claquant, tandis que le Vélociraptor rôde à distance, hésitant devant cette posture de défense déterminée.",
+    "preuve": "Djadokhta (Mongolie) ; Velociraptor mongoliensis est le principal petit prédateur documenté de cet écosystème, menaçant potentiellement les nids d'Oviraptor."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Un petit lézard fouisseur du désert",
+    "adversaire_latin": "lézard indéterminé (Djadokhta)",
+    "adversaire_id": null,
+    "adversaire_morpho": "Petit reptile aux écailles fines adapté à creuser dans le sable, pattes courtes et robustes.",
+    "adversaire_mesures": "environ 0,2 m / quelques grammes",
+    "adversaire_livree": "Écailles beige clair tachetées de brun.",
+    "rapport_taille": "Le lézard (20 cm) est dix fois plus court que l'Oviraptor (2 m) : une proie occasionnelle parmi les œufs et les plantes de son régime varié.",
+    "action": "L'Oviraptor déterre d'un coup de bec un petit lézard caché sous le sable, avant de retourner couver ses propres œufs quelques mètres plus loin.",
+    "preuve": "Le régime de l'Oviraptor, longtemps mal compris (son nom signifie « voleur d'œufs »), est aujourd'hui reconstitué comme omnivore incluant plantes, petits animaux et parfois œufs — jamais les siens, qu'il couvait comme un oiseau (Norell et al. 1995)."
+   }
+  ]
+ },
+ "pteranodon": {
+  "livree": "Corps blanc-gris, crête osseuse orangée à la pointe, ailes membraneuses gris foncé bordées d'un fin liseré blanc.",
+  "habitat": "Mer intérieure de l'Ouest américain (Western Interior Seaway), falaises calcaires du Kansas (craie de Smoky Hill, formation de Niobrara), eaux chaudes peu profondes, lumière éclatante de plein soleil sur l'océan.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Tylosaure",
+    "adversaire_latin": "Tylosaurus proriger",
+    "adversaire_id": null,
+    "adversaire_morpho": "Immense mosasaure au museau allongé en forme de battoir, mâchoires garnies de dents coniques, corps fuselé propulsé par une queue puissante.",
+    "adversaire_mesures": "environ 13 m / 6 t",
+    "adversaire_livree": "Peau gris-vert sombre sur le dos, ventre pâle, marbrures plus foncées sur les flancs.",
+    "rapport_taille": "Le Tylosaure (13 m, 6 t) est plus de deux fois plus long et environ 240 fois plus lourd que le Ptéranodon (6 m d'envergure, 25 kg) — un géant surgissant de sous l'eau.",
+    "action": "Le Ptéranodon plonge en piqué pour attraper un poisson en surface quand le Tylosaure jaillit brusquement de l'eau, gueule ouverte, manquant de peu l'envol du reptile volant qui reprend l'air à la dernière seconde.",
+    "preuve": "Un fossile de Tylosaurus proriger (Western Interior Seaway) conservait des restes de Pteranodon dans sa cavité stomacale, preuve directe de cette prédation (Everhart 2004). Le Tylosaure, contemporain du Ptéranodon vers 85 Ma, remplace ici le Mosasaurus, apparu plus tardivement (~80-66 Ma) et donc anachronique à cette date."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Enchodus",
+    "adversaire_latin": "Enchodus petrosus",
+    "adversaire_id": null,
+    "adversaire_morpho": "Poisson prédateur au corps allongé argenté, longues canines proéminentes à la mâchoire inférieure, surnommé « poisson-vipère ».",
+    "adversaire_mesures": "environ 1 m / quelques kg",
+    "adversaire_livree": "Écailles argentées, dos bleu-gris sombre.",
+    "rapport_taille": "Enchodus (1 m) est environ six fois plus court que l'envergure du Ptéranodon (6 m) — une proie de choix, happée en un plongeon.",
+    "action": "Le Ptéranodon replie ses ailes et plonge tête la première dans la mer, refermant son long bec sans dents sur un Enchodus qui nageait près de la surface.",
+    "preuve": "Enchodus petrosus est l'un des poissons prédateurs les plus abondants de la mer intérieure de l'Ouest au Crétacé, et un aliment documenté pour les reptiles et oiseaux marins piscivores de cette mer (Shimada & Fielitz 2006)."
+   }
+  ]
+ },
+ "quetzalcoatlus": {
+  "livree": "Corps gris-beige clair, crête crânienne allongée orangée, longues pattes fines gris foncé, membrane alaire brun clair.",
+  "habitat": "Plaine côtière boisée du Texas à la toute fin du Crétacé (formation de Javelina), rivières et forêts clairsemées de conifères, climat chaud, lumière de fin d'après-midi au sol.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Tyrannosaurus rex",
+    "adversaire_latin": "Tyrannosaurus rex",
+    "adversaire_id": "tyrannosaurus",
+    "adversaire_morpho": "Immense théropode à tête énorme, mâchoires garnies de dents épaisses, bras minuscules à deux doigts, corps porté par deux pattes massives.",
+    "adversaire_mesures": "13 m / 4 m / 8 t",
+    "adversaire_livree": "Peau brun sombre tachetée de gris, gorge et ventre plus clairs, fines rayures verticales sur la queue.",
+    "rapport_taille": "Le T-Rex (13 m, 8 t) est plus court que l'envergure du Quetzalcoatlus (11 m) mais environ 40 fois plus lourd (8 t contre 200 kg).",
+    "action": "Le Quetzalcoatlus, en train de marcher au sol sur ses quatre membres à la recherche de petites proies, déploie ses ailes et s'élance en courant pour décoller juste avant que le T-Rex ne referme ses mâchoires.",
+    "preuve": "Tyrannosaurus rex est documenté dans la formation de Javelina (région de Big Bend, Texas), la même unité géologique que Quetzalcoatlus northropi (Lehman 1997)."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Un petit lézard des berges",
+    "adversaire_latin": "lézard indéterminé (Formation de Javelina)",
+    "adversaire_id": null,
+    "adversaire_morpho": "Petit reptile aux pattes fines, courant vite sur le sol meuble des rives.",
+    "adversaire_mesures": "environ 0,25 m / quelques grammes",
+    "adversaire_livree": "Écailles brun clair mouchetées.",
+    "rapport_taille": "Le lézard (25 cm) est minuscule comparé au Quetzalcoatlus (5 m debout) — happé au sol d'un coup de bec précis.",
+    "action": "Le Quetzalcoatlus marche au sol sur ses quatre membres repliés en aile, puis abat son long bec pour saisir un petit lézard filant entre les racines.",
+    "preuve": "L'anatomie des membres et du bec du Quetzalcoatlus suggère une chasse terrestre de petits animaux, comme le fait aujourd'hui le calao terrestre, plutôt qu'une pêche en vol (Witton & Naish 2008)."
+   }
+  ]
+ },
+ "hatzegopteryx": {
+  "livree": "Corps beige-roux clair, tête énorme gris pâle, membrane alaire brun sombre bordée d'un fin liseré clair.",
+  "habitat": "Île isolée de Hațeg en pleine mer Téthys (Europe, Crétacé final), végétation basse et clairsemée, climat chaud insulaire, lumière de fin de journée sur la côte rocheuse.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Un autre Hatzegopteryx (rival territorial)",
+    "adversaire_latin": "Hatzegopteryx thambema",
+    "adversaire_id": "hatzegopteryx",
+    "adversaire_morpho": "Même espèce : tête énorme presque aussi longue que le corps, long bec robuste, membrane alaire soutenue par un doigt démesuré.",
+    "adversaire_mesures": "10 m / 3 m / 0,22 t",
+    "adversaire_livree": "Même beige-roux, tête légèrement plus pâle.",
+    "rapport_taille": "Deux individus égaux, 10 m d'envergure chacun.",
+    "action": "Deux Hatzegopteryx se font face sur la plage rocheuse, ailes à demi déployées et long bec pointé vers l'avant, se disputant le même territoire de chasse sur l'île.",
+    "preuve": "Hypothèse prudente : sur une île où il est le seul grand prédateur, la compétition la plus probable pour un Hatzegopteryx est un autre individu de son espèce, pour un territoire ou des proies limitées (aucune preuve fossile directe de combat — extrapolation raisonnable liée au nanisme insulaire de Hațeg)."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Zalmoxes",
+    "adversaire_latin": "Zalmoxes robustus",
+    "adversaire_id": null,
+    "adversaire_morpho": "Petit dinosaure à bec nain de l'île de Hațeg, corps trapu, pattes robustes courtes, marchant surtout sur deux pattes.",
+    "adversaire_mesures": "environ 3 m / 1 m / 0,2 t",
+    "adversaire_livree": "Robe brun-vert terne, ventre plus clair.",
+    "rapport_taille": "Zalmoxes (3 m, 200 kg) est trois fois plus court que l'Hatzegopteryx (10 m d'envergure) — une proie à sa taille sur l'île, bien plus imposante que le petit gibier des autres ptérosaures.",
+    "action": "L'Hatzegopteryx marche au sol sur ses quatre membres et abat son long bec sur un jeune Zalmoxes isolé du groupe, qui tente de s'échapper en courant vers les fourrés.",
+    "preuve": "Zalmoxes robustus est l'un des dinosaures nains les plus abondants de l'île de Hațeg, documenté dans les mêmes couches que Hatzegopteryx thambema (Csiki-Sava et al. 2010)."
+   }
+  ]
+ },
+ "archaeopteryx": {
+  "livree": "Plumage brun-noir irisé, quelques plumes de couverture blanches sur les ailes, longue queue emplumée.",
+  "habitat": "Lagon tropical de Solnhofen (Bavière, Allemagne, Jurassique final), îlots coralliens et lagunes calmes bordés de conifères et cycas, climat chaud, lumière éclatante de milieu de journée.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Compsognathus",
+    "adversaire_latin": "Compsognathus longipes",
+    "adversaire_id": null,
+    "adversaire_morpho": "Petit théropode svelte à longues pattes fines, cou allongé, mâchoire garnie de petites dents pointues, mains à deux doigts griffus.",
+    "adversaire_mesures": "environ 1,1 m / 3 kg",
+    "adversaire_livree": "Peau gris-vert clair, fines marbrures plus sombres sur le dos.",
+    "rapport_taille": "Compsognathus (1,1 m, 3 kg) est un peu plus grand et trois fois plus lourd que l'Archaeoptéryx (0,5 m, 1 kg).",
+    "action": "L'Archaeoptéryx s'envole en battant maladroitement des ailes vers un rocher plus haut pendant que le Compsognathus, resté au sol, se dresse sur ses pattes en le suivant du regard.",
+    "preuve": "Compsognathus longipes est documenté dans les mêmes lagunes de Solnhofen (Bavière) qu'Archaeopteryx lithographica, partageant le même écosystème insulaire."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Un petit lézard de Solnhofen",
+    "adversaire_latin": "Bavarisaurus macrodactylus",
+    "adversaire_id": null,
+    "adversaire_morpho": "Minuscule lézard aux longues pattes arrière adaptées à la course rapide, corps fin et allongé.",
+    "adversaire_mesures": "environ 0,15 m / quelques grammes",
+    "adversaire_livree": "Écailles brun clair tachetées.",
+    "rapport_taille": "Bavarisaurus (15 cm) est trois fois plus court que l'Archaeoptéryx (0,5 m) — une proie facile à happer au sol.",
+    "action": "L'Archaeoptéryx bondit depuis une branche basse et referme son bec denté sur un petit lézard filant entre les cailloux du rivage.",
+    "preuve": "Bavarisaurus macrodactylus est un lézard bien documenté des lagunes de Solnhofen, contemporain d'Archaeopteryx lithographica (faune de Solnhofen, Evans & Barbadillo 1998)."
+   }
+  ]
+ },
+ "mosasaurus": {
+  "livree": "dos gris ardoise sombre marbré de taches plus foncées façon varan, ventre crème pâle en contre-ombrage, nageoires-palettes bordées d'un liseré gris clair",
+  "habitat": "Pleine mer chaude et peu profonde du Crétacé supérieur, eaux bleu-vert traversées de bancs de lumière, ammonites et bancs de poissons alentour.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "un autre Mosasaurus",
+    "adversaire_latin": "Mosasaurus sp.",
+    "adversaire_id": "mosasaurus",
+    "adversaire_morpho": "même silhouette serpentiforme à nageoires-palettes et queue en croissant, mâchoires longues à double rangée de dents",
+    "adversaire_mesures": "environ 15 m de long, un peu plus petit que le premier",
+    "adversaire_livree": "dos gris-vert plus terne, marbrures brunes, une marque pâle ancienne sur le museau, trace d'un précédent duel",
+    "rapport_taille": "les deux mosasaures font une taille proche, 17 m contre environ 15 m, comme deux requins géants presque jumeaux",
+    "action": "Deux Mosasaurus se font face en pleine eau, gueules entrouvertes, pour le même territoire de chasse ; l'un pousse l'autre de tout son poids, museau contre museau.",
+    "preuve": "Des crânes fossiles de Mosasaurus portent des traces de morsures d'autres mosasaures, preuve de rivalité entre individus de la même espèce."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Élasmosaure",
+    "adversaire_latin": "Elasmosaurus platyurus",
+    "adversaire_id": "elasmosaurus",
+    "adversaire_morpho": "plésiosaure au cou extra-long (7 m sur 13 m au total), quatre grandes nageoires, toute petite tête",
+    "adversaire_mesures": "13 m de long, environ 2,5 tonnes",
+    "adversaire_livree": "bleu-gris dessus, ventre blanc-crème, petites taches sombres le long du cou",
+    "rapport_taille": "le Mosasaurus (17 m, 10 t) est un peu plus long et bien plus lourd que l'Élasmosaure (13 m, 2,5 t)",
+    "action": "Le Mosasaurus fond depuis les profondeurs vers l'Élasmosaure qui remonte respirer ; l'Élasmosaure replie son long cou et vire brusquement pour s'échapper.",
+    "preuve": "Même mer intérieure d'Amérique du Nord, Crétacé supérieur ; les paléontologues considèrent les grands mosasaures comme prédateurs plausibles des plésiosaures de cette mer."
+   }
+  ]
+ },
+ "baryonyx": {
+  "livree": "brun-vert sombre sur le dos façon crocodile de rivière, ventre jaune paille, bandes verticales plus foncées sur la queue",
+  "habitat": "Berge d'un fleuve tropical du Crétacé inférieur, végétation dense et basse, eau brune peu profonde, lumière filtrée par la canopée.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Neovenator",
+    "adversaire_latin": "Neovenator salerii",
+    "adversaire_id": null,
+    "adversaire_morpho": "grand théropode carcharodontosaure élancé, museau bas et long, petites crêtes osseuses au-dessus des yeux, bras courts à trois doigts griffus",
+    "adversaire_mesures": "environ 7,5 m de long, 2,5 m aux hanches, 1 à 2 tonnes",
+    "adversaire_livree": "fauve-brun tacheté d'ocre, arêtes sourcilières plus rouges",
+    "rapport_taille": "Baryonyx (9 m, 1,7 t) et Neovenator (7,5 m, jusqu'à 2 t) sont proches en taille mais Neovenator est bâti plus massif",
+    "action": "Neovenator surgit du couvert végétal alors que Baryonyx tient un gros poisson au bord de l'eau ; les deux dressent la tête, immobiles, museau contre museau, avant que Neovenator recule.",
+    "preuve": "Neovenator vient de la Formation de Wessex (île de Wight), même étage Barrémien que le Baryonyx anglais du Weald Clay ; grand théropode terrestre plausible en concurrence sur les mêmes berges."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Iguanodon",
+    "adversaire_latin": "Iguanodon bernissartensis",
+    "adversaire_id": "iguanodon",
+    "adversaire_morpho": "grand ornithopode bipède-quadrupède, pouce en pointe osseuse, bec corné, dos massif",
+    "adversaire_mesures": "environ 10 m de long, 2,7 t",
+    "adversaire_livree": "vert olive sur le dos, ventre plus clair, pouce en pointe grise",
+    "rapport_taille": "un jeune Iguanodon est visé, bien plus petit qu'un adulte de 10 m — Baryonyx (9 m) s'attaque à un individu immature",
+    "action": "Baryonyx harponne un jeune Iguanodon isolé près de l'eau avec sa griffe au pouce de 31 cm, mâchoires ouvertes.",
+    "preuve": "Des os de jeune Iguanodon ont été retrouvés digérés dans l'estomac fossile du Baryonyx type — preuve directe de cette prédation ou de ce charognage."
+   }
+  ]
+ },
+ "therizinosaurus": {
+  "livree": "plumage sombre gris-brun sur le dos, duvet plus clair gris-crème sous le ventre et le long cou, griffes claires cornées",
+  "habitat": "Plaine boisée et fluviale du Crétacé supérieur mongol, fougères et conifères bas, ciel dégagé de milieu de journée.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Tarbosaure",
+    "adversaire_latin": "Tarbosaurus bataar",
+    "adversaire_id": "tarbosaurus",
+    "adversaire_morpho": "grand tyrannosauridé bipède, crâne massif, dents épaisses, minuscules bras à deux doigts",
+    "adversaire_mesures": "12 m de long, 4,5 m de haut, 5 tonnes",
+    "adversaire_livree": "écailles brun-rouille, bandes plus sombres sur la queue façon tigre",
+    "rapport_taille": "Tarbosaurus (12 m, 5 t) est plus long et bien plus lourd que Therizinosaurus (9-10 m, 5-6 t), mais Therizinosaurus est presque aussi haut grâce à ses pattes",
+    "action": "Tarbosaurus approche en position basse ; Therizinosaurus se dresse et lève ses deux bras aux griffes de 50 cm en position défensive, sans contact.",
+    "preuve": "Les deux dinosaures viennent de la Formation de Nemegt, Mongolie, Crétacé supérieur — mêmes plaines, même époque."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Deinocheirus",
+    "adversaire_latin": "Deinocheirus mirificus",
+    "adversaire_id": null,
+    "adversaire_morpho": "immense ornithomimosaure au bec de canard, bosse charnue sur le dos, longs bras (mais moins griffus que Therizinosaurus)",
+    "adversaire_mesures": "environ 11 m de long, 3,5 m aux hanches, 6,4 tonnes",
+    "adversaire_livree": "peau grise tachetée de brun, bosse dorsale plus foncée, bec jaune corné",
+    "rapport_taille": "Deinocheirus (11 m, 6,4 t) est un peu plus long et plus lourd que Therizinosaurus (9-10 m, 5-6 t)",
+    "action": "Les deux géants herbivores se disputent le même bosquet feuillu ; ils se poussent flanc contre flanc, cou tendu, sans morsure ni griffure.",
+    "preuve": "Deinocheirus et Therizinosaurus proviennent tous deux de la Formation de Nemegt, Mongolie, Crétacé supérieur — deux théropodes herbivores géants contemporains partageant le même territoire."
+   }
+  ]
+ },
+ "dimetrodon": {
+  "livree": "brun-rouge terreux, voile dorsale orangée bordée de sombre",
+  "habitat": "Marécage subtropical du Permien inférieur au Texas, fougères primitives et eaux stagnantes sombres, chaleur lourde.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "un autre Dimetrodon",
+    "adversaire_latin": "Dimetrodon sp.",
+    "adversaire_id": "dimetrodon",
+    "adversaire_morpho": "même synapside à voile dorsale, démarche rampante pattes écartées, dents différenciées",
+    "adversaire_mesures": "environ 3 m de long, un peu plus petit",
+    "adversaire_livree": "brun plus foncé, voile tirant sur le violet",
+    "rapport_taille": "tailles proches, 3,5 m contre environ 3 m, deux individus de la même espèce",
+    "action": "Deux Dimetrodon se font face pour le même point d'eau du marécage, voiles dorsales dressées bien visibles, gueules entrouvertes, museau contre museau.",
+    "preuve": "Des ossements fossiles de Dimetrodon portent des marques de dents d'autres Dimetrodon, signe de rivalité ou de charognage entre individus de la même espèce."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Édaphosaure",
+    "adversaire_latin": "Edaphosaurus sp.",
+    "adversaire_id": "edaphosaurus",
+    "adversaire_morpho": "synapside herbivore à voile dorsale ronde, petite tête, corps trapu bas sur pattes",
+    "adversaire_mesures": "3 m de long, environ 120 kg",
+    "adversaire_livree": "brun-vert olive, voile dorsale plus claire ponctuée de taches sombres en losange",
+    "rapport_taille": "Dimetrodon (3,5 m, jusqu'à 250 kg) est un peu plus long et plus lourd que l'Édaphosaure (3 m, 120 kg)",
+    "action": "Dimetrodon surgit des herbes basses vers un Édaphosaure isolé près de l'eau, gueule ouverte ; l'Édaphosaure se détourne d'un bond, voile dressée.",
+    "preuve": "Dimetrodon et Edaphosaurus sont tous deux connus des mêmes gisements du Permien inférieur du Texas — cohabitation confirmée par la Grokipédia."
+   }
+  ]
+ },
+ "edaphosaurus": {
+  "livree": "brun-vert olive, voile dorsale plus claire ponctuée de taches sombres en losange sur les barres transversales",
+  "habitat": "Marécage subtropical du Permien inférieur au Texas, fougères primitives et eaux calmes, végétation basse à brouter.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Dimétrodon",
+    "adversaire_latin": "Dimetrodon sp.",
+    "adversaire_id": "dimetrodon",
+    "adversaire_morpho": "synapside carnivore à voile dorsale haute, dents différenciées, démarche rampante",
+    "adversaire_mesures": "3,5 m de long, jusqu'à 250 kg",
+    "adversaire_livree": "brun-rouge terreux, voile dorsale orangée bordée de sombre",
+    "rapport_taille": "Dimetrodon (3,5 m) est plus long et plus lourd que l'Édaphosaure (3 m, 120 kg)",
+    "action": "Dimetrodon s'approche à pas lourds ; l'Édaphosaure dresse sa voile ronde et recule vers une zone de fougères denses, sans contact.",
+    "preuve": "Les deux synapsides partagent les mêmes gisements permiens du Texas, formation de Wichita — cohabitation attestée."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Eryops",
+    "adversaire_latin": "Eryops megacephalus",
+    "adversaire_id": null,
+    "adversaire_morpho": "grand amphibien à tête massive, corps trapu semi-aquatique, mâchoires larges garnies de petites dents pointues",
+    "adversaire_mesures": "environ 2 m de long, 90 kg",
+    "adversaire_livree": "peau grise-verte grumeleuse façon crapaud géant, taches brunes",
+    "rapport_taille": "Édaphosaure (3 m, 120 kg) est un peu plus grand que l'Eryops (2 m, 90 kg), mais l'Eryops est un chasseur en embuscade redoutable",
+    "action": "Eryops jaillit de l'eau boueuse près de la berge où l'Édaphosaure broute des fougères ; l'Édaphosaure bondit en arrière, voile dressée, hors de portée.",
+    "preuve": "Eryops et Edaphosaurus proviennent des mêmes red beds du Permien inférieur au Texas — un second prédateur du même marécage, différent de Dimetrodon."
+   }
+  ]
+ },
+ "gorgonops": {
+  "livree": "brun-sable, museau et pattes plus sombres, une raie plus foncée le long de l'échine",
+  "habitat": "Paysage sec du Karoo, Permien supérieur, Afrique du Sud, végétation basse clairsemée, lumière crue de milieu de journée.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "un autre Gorgonops",
+    "adversaire_latin": "Gorgonops sp.",
+    "adversaire_id": "gorgonops",
+    "adversaire_morpho": "même thérapside prédateur à longues canines en sabre, corps musclé de fauve",
+    "adversaire_mesures": "environ 1,6 m de long, un peu plus petit",
+    "adversaire_livree": "sable plus clair, poitrail zébré de fines rayures grises",
+    "rapport_taille": "tailles proches, 1,8 m contre environ 1,6 m",
+    "action": "Deux Gorgonops se font face, gueule ouverte, canines de sabre bien visibles, pour le même territoire de chasse ; aucun contact, posture d'intimidation.",
+    "preuve": "Les thérapsides gorgonopsiens du Karoo montrent des comportements territoriaux probables entre individus de la même espèce, déduits de leur anatomie de combat (canines, mâchoire puissante)."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Pareiasaure",
+    "adversaire_latin": "Pareiasaurus serridens",
+    "adversaire_id": null,
+    "adversaire_morpho": "grand parareptile herbivore trapu, peau cloutée de tubercules osseux, tête large aux dents en feuille",
+    "adversaire_mesures": "environ 2,5 m de long, 300 à 600 kg",
+    "adversaire_livree": "gris-vert, peau cloutée de petits tubercules osseux plus clairs",
+    "rapport_taille": "le Pareiasaure (2,5 m) est plus long que le Gorgonops (1,8 m) mais bien plus lent et moins vif",
+    "action": "Gorgonops charge de côté un Pareiasaure isolé du troupeau ; le Pareiasaure se plante sur ses pattes trapues, tête baissée, tubercules osseux face au prédateur.",
+    "preuve": "Gorgonops et Pareiasaurus sont tous deux connus de la même zone d'assemblage du Karoo, Permien supérieur, Afrique du Sud — proie documentée par la Grokipédia."
+   }
+  ]
+ },
+ "lystrosaurus": {
+  "livree": "gris-taupe uni, bec plus clair, cernes sombres autour des grands yeux",
+  "habitat": "Plaine du tout début du Trias, juste après la grande extinction, végétation clairsemée qui repousse, sol meuble propice au terrier.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Proterosuchus",
+    "adversaire_latin": "Proterosuchus fergusi",
+    "adversaire_id": null,
+    "adversaire_morpho": "archosauriforme trapu façon petit crocodile, museau long au bout recourbé vers le bas, pattes courtes écartées",
+    "adversaire_mesures": "1,5 à 2,5 m de long, 30 à 60 kg",
+    "adversaire_livree": "vert-brun moucheté, museau crochu plus sombre",
+    "rapport_taille": "Proterosuchus (jusqu'à 2,5 m) est plus long que le Lystrosaurus (0,7 m), environ 3 à 4 fois",
+    "action": "Proterosuchus surgit d'un point d'eau boueux vers un Lystrosaurus qui broutait ; le Lystrosaurus détale en zigzag vers l'entrée de son terrier.",
+    "preuve": "Lystrosaurus et Proterosuchus proviennent tous deux de la zone d'assemblage à Lystrosaurus, Karoo, tout début du Trias — cohabitation confirmée."
+   },
+   {
+    "type": "rival",
+    "adversaire": "un autre Lystrosaurus",
+    "adversaire_latin": "Lystrosaurus sp.",
+    "adversaire_id": "lystrosaurus",
+    "adversaire_morpho": "même dicynodonte à bec de tortue et deux défenses, corps rond fouisseur",
+    "adversaire_mesures": "environ 0,7 m de long, taille identique",
+    "adversaire_livree": "gris-taupe plus roux, même bec",
+    "rapport_taille": "deux individus de taille identique",
+    "action": "Deux Lystrosaurus se poussent museau contre museau à l'entrée d'un même terrier, défenses pointées l'une vers l'autre.",
+    "preuve": "Des fossiles montrent plusieurs Lystrosaurus regroupés dans un même terrier — une compétition pour l'abri est plausible chez cette espèce très abondante."
+   }
+  ]
+ },
+ "moschops": {
+  "livree": "gris-brun, crâne bombé plus clair presque blanc-os, pattes plus foncées",
+  "habitat": "Plaine du Karoo au Permien moyen, Afrique du Sud, végétation basse et sèche, lumière de fin d'après-midi.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Gorgonops",
+    "adversaire_latin": "Gorgonops torvus",
+    "adversaire_id": "gorgonops",
+    "adversaire_morpho": "thérapside prédateur à longues canines en sabre, corps musclé de fauve",
+    "adversaire_mesures": "1,8 m de long, environ 100 kg",
+    "adversaire_livree": "brun-sable, museau et pattes plus sombres",
+    "rapport_taille": "Moschops (2,7 m, 410 kg) est plus grand et plus lourd que le Gorgonops (1,8 m, 100 kg), mais le Gorgonops chasse en embuscade rapide",
+    "action": "Gorgonops se rue de côté vers un Moschops isolé ; le Moschops se retourne face à lui, tête baissée présentant son crâne épais, sans contact.",
+    "preuve": "Gorgonops et Moschops proviennent des mêmes gisements du Karoo, Permien moyen à supérieur, Afrique du Sud."
+   },
+   {
+    "type": "rival",
+    "adversaire": "un autre Moschops",
+    "adversaire_latin": "Moschops capensis",
+    "adversaire_id": "moschops",
+    "adversaire_morpho": "même thérapside herbivore au crâne extra-épais, corps en tonneau",
+    "adversaire_mesures": "environ 2,7 m de long, taille identique",
+    "adversaire_livree": "brun plus roux, même crâne bombé",
+    "rapport_taille": "deux individus de taille identique",
+    "action": "Deux Moschops se font face, tête baissée, et se donnent un coup de crâne contre crâne, comme des mouflons.",
+    "preuve": "Le crâne de Moschops a un os frontal épais de 15 cm, une adaptation qui suggère fortement des combats de tête entre mâles."
+   }
+  ]
+ },
+ "elasmosaurus": {
+  "livree": "bleu-gris dessus, ventre blanc-crème, petites taches sombres le long du cou",
+  "habitat": "Mer intérieure d'Amérique du Nord, Crétacé supérieur, eaux calmes et claires, bancs de poissons argentés en surface.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Mosasaure",
+    "adversaire_latin": "Mosasaurus sp.",
+    "adversaire_id": "mosasaurus",
+    "adversaire_morpho": "reptile marin serpentiforme à nageoires-palettes, mâchoires longues à double rangée de dents, queue en croissant",
+    "adversaire_mesures": "17 m de long, 10 tonnes",
+    "adversaire_livree": "dos gris ardoise sombre marbré de taches plus foncées, ventre crème pâle",
+    "rapport_taille": "le Mosasaure (17 m, 10 t) est plus long et bien plus lourd que l'Élasmosaure (13 m, 2,5 t)",
+    "action": "Le Mosasaure remonte des profondeurs vers l'Élasmosaure ; l'Élasmosaure replie son cou de 7 m en un éclair et vire pour fuir vers les hauts-fonds.",
+    "preuve": "Même mer intérieure du Crétacé supérieur ; les grands mosasaures sont considérés comme des prédateurs plausibles des plésiosaures de cette mer."
+   },
+   {
+    "type": "proie",
+    "adversaire": "banc d'Enchodus",
+    "adversaire_latin": "Enchodus petrosus",
+    "adversaire_id": null,
+    "adversaire_morpho": "poisson argenté aux dents saillantes en crocs, corps fuselé",
+    "adversaire_mesures": "environ 1 m de long chacun",
+    "adversaire_livree": "argenté brillant, dos bleu-vert, dents saillantes comme des petits sabres",
+    "rapport_taille": "l'Élasmosaure (13 m) est 13 fois plus long qu'un Enchodus (1 m)",
+    "action": "L'Élasmosaure plonge son cou au milieu d'un banc d'Enchodus, tête minuscule happant les poissons d'un coup sec, sans autre proie visible blessée.",
+    "preuve": "Enchodus est l'un des poissons les plus communs de la mer intérieure occidentale au Crétacé supérieur, proie classique des plésiosaures piscivores."
+   }
+  ]
+ },
+ "ophthalmosaurus": {
+  "livree": "bleu nuit sur le dos, ventre argenté clair, anneau osseux autour de l'œil gris pâle",
+  "habitat": "Mer jurassique profonde d'Europe, lumière bleutée qui décline en profondeur, obscurité propice à la chasse aux gros yeux.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Liopleurodon",
+    "adversaire_latin": "Liopleurodon ferox",
+    "adversaire_id": "liopleurodon",
+    "adversaire_morpho": "pliosaure massif façon crocodile marin, quatre grandes nageoires, crâne énorme aux dents croisées",
+    "adversaire_mesures": "7 m de long, 5 tonnes",
+    "adversaire_livree": "gris-bleu sombre sur le dos, ventre clair",
+    "rapport_taille": "Liopleurodon (7 m, 5 t) est presque deux fois plus long et bien plus lourd que l'Ophthalmosaure (4 m, 0,95 t)",
+    "action": "Liopleurodon surgit de l'ombre vers l'Ophthalmosaure en pleine plongée ; l'Ophthalmosaure vire à angle serré grâce à ses grands yeux qui l'ont repéré à temps.",
+    "preuve": "Les deux reptiles marins partagent les mêmes mers du Jurassique moyen d'Europe ; les grands pliosaures sont considérés comme prédateurs plausibles des ichtyosaures de cette époque."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Belemnotheutis",
+    "adversaire_latin": "Belemnotheutis antiquus",
+    "adversaire_id": null,
+    "adversaire_morpho": "céphalopode proche du calmar actuel, corps allongé, dix bras à ventouses, coquille interne pointue",
+    "adversaire_mesures": "environ 30 à 40 cm de long",
+    "adversaire_livree": "translucide gris-rosé, tentacules zébrés de bandes plus sombres",
+    "rapport_taille": "l'Ophthalmosaure (4 m) est environ dix fois plus long qu'un Belemnotheutis",
+    "action": "Dans la pénombre des profondeurs, l'Ophthalmosaure repère un groupe de Belemnotheutis grâce à ses immenses yeux et fond dessus, museau en avant.",
+    "preuve": "Des crochets de belemnites fossilisés dans l'estomac d'ichtyosaures apparentés à l'Ophthalmosaure sont une preuve directe de ce régime."
+   }
+  ]
+ },
+ "liopleurodon": {
+  "livree": "gris-bleu sombre sur le dos, ventre clair, museau strié de canaux sensoriels plus foncés",
+  "habitat": "Mer jurassique d'Europe, eaux vertes de profondeur moyenne, visibilité réduite propice à l'embuscade.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "un autre Liopleurodon",
+    "adversaire_latin": "Liopleurodon ferox",
+    "adversaire_id": "liopleurodon",
+    "adversaire_morpho": "même pliosaure massif à quatre nageoires et mâchoire-piège",
+    "adversaire_mesures": "environ 6 m de long, un peu plus petit",
+    "adversaire_livree": "gris-vert plus terne, une marque cicatrisée pâle sur une nageoire",
+    "rapport_taille": "tailles proches, 7 m contre environ 6 m",
+    "action": "Deux Liopleurodon se font face en pleine eau pour le même territoire de chasse, gueules entrouvertes, museau contre museau.",
+    "preuve": "Comme super-prédateur solitaire de sa mer, la rivalité entre individus de Liopleurodon pour les carcasses est le scénario le plus plausible en l'absence d'autre grand prédateur contemporain."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Ophthalmosaure",
+    "adversaire_latin": "Ophthalmosaurus icenicus",
+    "adversaire_id": "ophthalmosaurus",
+    "adversaire_morpho": "ichtyosaure fuselé façon dauphin, yeux immenses cerclés d'un anneau osseux",
+    "adversaire_mesures": "4 m de long, 950 kg",
+    "adversaire_livree": "bleu nuit sur le dos, ventre argenté clair, anneau osseux gris pâle autour de l'œil",
+    "rapport_taille": "Liopleurodon (7 m, 5 t) est presque deux fois plus long et bien plus lourd que l'Ophthalmosaure (4 m, 0,95 t)",
+    "action": "Liopleurodon jaillit de l'ombre vers l'Ophthalmosaure en pleine plongée ; l'Ophthalmosaure vire à angle serré, ses grands yeux l'ayant repéré juste à temps.",
+    "preuve": "Mêmes mers du Jurassique moyen d'Europe ; les grands pliosaures sont considérés comme prédateurs plausibles des ichtyosaures de cette époque."
+   }
+  ]
+ },
+ "archelon": {
+  "livree": "carapace brun-olive tachetée de crème, tête et nageoires brun plus sombre",
+  "habitat": "Mer intérieure d'Amérique du Nord, Crétacé supérieur, eaux de surface ensoleillées, méduses dérivant en surface.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Mosasaure",
+    "adversaire_latin": "Mosasaurus sp.",
+    "adversaire_id": "mosasaurus",
+    "adversaire_morpho": "reptile marin serpentiforme à nageoires-palettes, mâchoires longues à double rangée de dents",
+    "adversaire_mesures": "17 m de long, 10 tonnes",
+    "adversaire_livree": "dos gris ardoise sombre marbré de taches plus foncées, ventre crème pâle",
+    "rapport_taille": "le Mosasaure (17 m) est presque quatre fois plus long que l'Archélon (4,6 m)",
+    "action": "Le Mosasaure fonce vers l'Archélon en surface ; l'Archélon rentre la tête et rame de toutes ses grandes nageoires vers les hauts-fonds.",
+    "preuve": "Des carapaces fossiles de tortues marines géantes de cette mer portent des traces de morsures de mosasaures — preuve directe de cette prédation."
+   },
+   {
+    "type": "proie",
+    "adversaire": "ammonite Placenticeras",
+    "adversaire_latin": "Placenticeras meeki",
+    "adversaire_id": null,
+    "adversaire_morpho": "céphalopode à coquille plate enroulée en spirale, tentacules courts",
+    "adversaire_mesures": "environ 30 à 45 cm de diamètre de coquille",
+    "adversaire_livree": "coquille brun-orangé nacré à côtes spiralées plus claires",
+    "rapport_taille": "l'Archélon (4,6 m) est environ dix fois plus grand que la coquille d'une Placenticeras",
+    "action": "L'Archélon repère une Placenticeras posée sur le fond et la saisit de son bec crochu puissant, sans autre détail montré.",
+    "preuve": "Des coquilles de Placenticeras fossiles portent des marques de morsures de prédateurs de la mer intérieure ; leur bec puissant fait de l'Archélon un croqueur de coquilles plausible."
+   }
+  ]
+ },
+ "shonisaurus": {
+  "livree": "gris-bleu uni, ventre plus clair, museau fin gris-argent",
+  "habitat": "Mer du Trias supérieur au Nevada, eaux profondes et sombres, aucun autre géant marin à l'horizon.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "un autre Shonisaurus",
+    "adversaire_latin": "Shonisaurus popularis",
+    "adversaire_id": "shonisaurus",
+    "adversaire_morpho": "même ichtyosaure géant façon baleine-dauphin, long museau fin sans dents à l'âge adulte",
+    "adversaire_mesures": "environ 12 m de long, un peu plus petit",
+    "adversaire_livree": "gris plus foncé, quelques marbrures blanches sur le flanc",
+    "rapport_taille": "tailles proches, 14 m contre environ 12 m",
+    "action": "Deux Shonisaurus se croisent flanc contre flanc dans les eaux profondes, museau levé, sans contact ni morsure — ils n'ont plus de dents pour se battre.",
+    "preuve": "Des dizaines de squelettes de Shonisaurus ont été retrouvés ensemble au Nevada, suggérant une vie en groupe où des rencontres entre individus étaient fréquentes."
+   },
+   {
+    "type": "proie",
+    "adversaire": "nautiloïde du Trias",
+    "adversaire_latin": "Cenoceras sp.",
+    "adversaire_id": null,
+    "adversaire_morpho": "céphalopode à coquille enroulée lisse, tentacules courts autour de la bouche",
+    "adversaire_mesures": "environ 15 à 20 cm de diamètre de coquille",
+    "adversaire_livree": "coquille brun-clair rayée de bandes plus sombres",
+    "rapport_taille": "le Shonisaurus (14 m) est près de 70 fois plus long qu'un nautiloïde",
+    "action": "Le Shonisaurus glisse au ras d'un groupe de nautiloïdes et les aspire un à un avec son long museau, sans dents visibles ni proie déchirée.",
+    "preuve": "Les céphalopodes à coquille comme les nautiloïdes sont abondants dans la Formation de Luning, Nevada, même gisement que Shonisaurus, et considérés comme sa proie principale."
+   }
+  ]
+ },
+ "patagotitan": {
+  "livree": "gris-vert éléphant, dos plus clair, petites plaques osseuses dispersées le long de l'échine",
+  "habitat": "Plaine boisée de Patagonie au Crétacé supérieur, conifères épars, lumière chaude d'après-midi, horizon très ouvert.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Mapusaurus",
+    "adversaire_latin": "Mapusaurus roseae",
+    "adversaire_id": null,
+    "adversaire_morpho": "immense théropode carcharodontosauridé, crêtes osseuses au-dessus des yeux, dents en lame de scie, connu pour chasser peut-être en groupe",
+    "adversaire_mesures": "12,5 m de long, environ 4 m aux hanches, 6 tonnes",
+    "adversaire_livree": "brun-rouille, crêtes osseuses au-dessus des yeux plus sombres, flancs striés",
+    "rapport_taille": "le jeune Patagotitan visé est bien plus petit que l'adulte (31 m, 70 t) ; Mapusaurus (12,5 m, 6 t) est deux à trois fois plus long qu'un jeune sauropode, l'adulte n'ayant presque aucun prédateur",
+    "action": "Un groupe de Mapusaurus encercle un jeune Patagotitan resté à l'écart du troupeau ; un adulte Patagotitan s'interpose, longue queue balayant l'air, forçant les Mapusaurus à reculer.",
+    "preuve": "Mapusaurus vient de la Formation de Huincul, Patagotitan de la Formation de Cerro Barcino, toutes deux argentines et proches en âge (Crétacé supérieur, à quelques millions d'années près) ; un bonebed de Mapusaurus suggère une chasse en groupe sur de grands sauropodes."
+   },
+   {
+    "type": "rival",
+    "adversaire": "un autre Patagotitan",
+    "adversaire_latin": "Patagotitan mayorum",
+    "adversaire_id": "patagotitan",
+    "adversaire_morpho": "même sauropode colossal à long cou et longue queue",
+    "adversaire_mesures": "environ 29 m de long, un peu plus petit",
+    "adversaire_livree": "gris-vert plus terne, mêmes plaques osseuses",
+    "rapport_taille": "tailles proches, 31 m contre environ 29 m",
+    "action": "Deux Patagotitan mâles entrelacent leurs longs cous et poussent flanc contre flanc pour la dominance.",
+    "preuve": "Plusieurs squelettes de Patagotitan ont été retrouvés au même endroit, suggérant une vie en groupe où des rencontres entre mâles étaient possibles, comme chez les girafes actuelles."
+   }
+  ]
+ },
+ "centrosaurus": {
+  "livree": "rouille-brun, collerette bordée de crème, crochets osseux de la collerette plus sombres",
+  "habitat": "Plaine inondable côtière d'Alberta au Crétacé supérieur, végétation basse dense, troupeau à perte de vue.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Albertosaure",
+    "adversaire_latin": "Albertosaurus sarcophagus",
+    "adversaire_id": "albertosaurus",
+    "adversaire_morpho": "tyrannosauridé bipède élancé, crâne allongé, petits bras à deux doigts",
+    "adversaire_mesures": "9,5 m de long, 3 m de haut, 2 tonnes",
+    "adversaire_livree": "brun-vert sombre, gorge plus claire",
+    "rapport_taille": "l'Albertosaure (9,5 m) est presque deux fois plus long que le Centrosaure (5,5 m)",
+    "action": "Albertosaurus fonce sur un Centrosaurus isolé du troupeau ; le Centrosaurus baisse la tête, corne nasale pointée droit devant, prêt à charger.",
+    "preuve": "Albertosaurus et Centrosaurus proviennent tous deux du parc provincial Dinosaur, Alberta, mêmes couches du Crétacé supérieur."
+   },
+   {
+    "type": "rival",
+    "adversaire": "un autre Centrosaure",
+    "adversaire_latin": "Centrosaurus apertus",
+    "adversaire_id": "centrosaurus",
+    "adversaire_morpho": "même cératopsien à une grande corne nasale et collerette courte à crochets",
+    "adversaire_mesures": "environ 5,5 m de long, taille identique",
+    "adversaire_livree": "brun plus roux, collerette bordée de gris",
+    "rapport_taille": "deux individus de taille identique",
+    "action": "Deux Centrosaurus mâles se font face, cornes nasales entrecroisées, et poussent front contre front pour la dominance.",
+    "preuve": "Des bonebeds de milliers de Centrosaurus à Alberta montrent une vie en troupeau ; la corne nasale unique est une arme de combat entre mâles bien documentée chez les cératopsiens."
+   }
+  ]
+ },
+ "ichthyosaurus": {
+  "livree": "gris-bleu, ventre crème, grands yeux cerclés de gris pâle",
+  "habitat": "Mer peu profonde du Jurassique inférieur en Angleterre (Lyme Regis), eaux claires et lumineuses, falaises de calcaire au loin.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Temnodontosaure",
+    "adversaire_latin": "Temnodontosaurus platyodon",
+    "adversaire_id": null,
+    "adversaire_morpho": "immense ichtyosaure façon cachalot-dauphin, très grands yeux, mâchoires puissantes à grandes dents coniques",
+    "adversaire_mesures": "9 à 10 m de long, environ 2 tonnes",
+    "adversaire_livree": "gris-anthracite, museau plus clair, yeux immenses cerclés d'os sombre",
+    "rapport_taille": "le Temnodontosaure (9-10 m) est environ 5 fois plus long que l'Ichthyosaurus (2 m)",
+    "action": "Le Temnodontosaure fend l'eau vers un Ichthyosaurus isolé ; l'Ichthyosaurus détale d'un puissant coup de queue en croissant vers la surface.",
+    "preuve": "Les deux ichtyosaures viennent des mêmes couches du Lias anglais (Lyme Regis, Jurassique inférieur) ; un fossile de Temnodontosaurus contenait des restes d'un plus petit ichtyosaure dans son estomac — preuve directe."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Dapedium",
+    "adversaire_latin": "Dapedium politum",
+    "adversaire_id": null,
+    "adversaire_morpho": "poisson à corps haut et écailles losangiques épaisses et brillantes, petite bouche",
+    "adversaire_mesures": "environ 30 à 40 cm de long",
+    "adversaire_livree": "écailles dorées losangiques, nageoires orangées",
+    "rapport_taille": "l'Ichthyosaurus (2 m) est environ 5 à 6 fois plus long qu'un Dapedium",
+    "action": "L'Ichthyosaurus poursuit un Dapedium en pleine eau et l'attrape d'un coup de bec fin, sans autre détail montré.",
+    "preuve": "Dapedium est un poisson très commun du Lias de Lyme Regis, mêmes couches où Mary Anning a trouvé le premier Ichthyosaurus complet ; ses restes fossilisés confirment un régime à base de poissons et calmars."
+   }
+  ]
+ },
+ "mammuthus": {
+  "livree": "brun-roux laineux, défenses ivoire clair recourbées en spirale, front plus sombre",
+  "habitat": "Steppe froide et enneigée de l'âge de glace, ciel gris pâle, quelques touffes d'herbe dépassant de la neige.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Loup terrible",
+    "adversaire_latin": "Aenocyon dirus",
+    "adversaire_id": "aenocyon",
+    "adversaire_morpho": "loup préhistorique costaud, mâchoires plus puissantes qu'un loup actuel, pattes courtes et corps dense",
+    "adversaire_mesures": "1,7 m de long, 70 kg",
+    "adversaire_livree": "fauve-gris, masque facial plus sombre, pattes plus claires",
+    "rapport_taille": "un jeune mammouth est visé, bien plus petit que l'adulte (5,5 m, 5 t) ; une meute de loups terribles (1,7 m, 70 kg chacun) encercle le petit, l'adulte n'ayant presque aucun prédateur",
+    "action": "Une meute de loups terribles encercle un mammouthon resté en retrait du troupeau ; la matriarche du troupeau charge en balançant ses défenses, forçant la meute à reculer.",
+    "preuve": "Les loups terribles et les mammouths cohabitaient dans les steppes froides d'Amérique du Nord ; les meutes de prédateurs de l'âge de glace ciblaient surtout les jeunes des grands herbivores."
+   },
+   {
+    "type": "rival",
+    "adversaire": "un autre Mammouth",
+    "adversaire_latin": "Mammuthus primigenius",
+    "adversaire_id": "mammuthus",
+    "adversaire_morpho": "même éléphant laineux à défenses en spirale et double manteau de laine",
+    "adversaire_mesures": "environ 5,3 m de long, taille proche",
+    "adversaire_livree": "brun-roux plus clair, défenses un peu plus longues",
+    "rapport_taille": "tailles proches, deux mâles adultes de gabarit comparable",
+    "action": "Deux mammouths mâles entrecroisent leurs défenses en spirale et poussent front contre front pour la dominance, trompes relevées.",
+    "preuve": "Comme chez les éléphants actuels, les mâles mammouths en période de rut se livraient probablement à des joutes de défenses pour la dominance."
+   }
+  ]
+ },
+ "smilodon": {
+  "livree": "fauve doré uni, chanfrein et pattes plus sombres, courtes rayures floues sur les flancs",
+  "habitat": "Plaine chaude d'Amérique du Nord de l'âge de glace, herbes hautes dorées, points d'eau où l'asphalte affleure parfois du sol.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Loup terrible",
+    "adversaire_latin": "Aenocyon dirus",
+    "adversaire_id": "aenocyon",
+    "adversaire_morpho": "loup préhistorique costaud en meute, mâchoires puissantes, pattes courtes et corps dense",
+    "adversaire_mesures": "1,7 m de long, 70 kg chacun",
+    "adversaire_livree": "fauve-gris, masque facial plus sombre, pattes plus claires",
+    "rapport_taille": "un Smilodon (1,75 m, 250 kg) est plus lourd qu'un seul loup terrible, mais une meute entière l'égale en force totale",
+    "action": "Une meute de loups terribles encercle un Smilodon sur son territoire de chasse près d'un point d'eau ; le Smilodon ouvre grand la gueule, montrant ses sabres, la meute recule à bonne distance.",
+    "preuve": "Au site d'asphalte de La Brea, les os de loups terribles sont dix fois plus nombreux que ceux des Smilodon, preuve d'une intense compétition entre les deux espèces pour les mêmes carcasses."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Bison des steppes",
+    "adversaire_latin": "Bison antiquus",
+    "adversaire_id": null,
+    "adversaire_morpho": "grand bovidé massif, bosse d'épaule musclée, cornes courtes et épaisses",
+    "adversaire_mesures": "environ 2,1 m de long, 900 kg",
+    "adversaire_livree": "brun-noir, bosse d'épaule plus claire, cornes gris-clair",
+    "rapport_taille": "le Bison (900 kg) est presque quatre fois plus lourd que le Smilodon (250 kg), qui compense par l'embuscade",
+    "action": "Smilodon plaque un Bison isolé du troupeau avec ses bras puissants, gueule ouverte à 120°, sans morsure montrée.",
+    "preuve": "Des ossements de bisons sont parmi les plus nombreux retrouvés aux côtés des Smilodon dans les asphaltes de La Brea, preuve directe de cette proie."
+   }
+  ]
+ },
+ "megatherium": {
+  "livree": "brun-gris épais, griffes crème, museau plus clair",
+  "habitat": "Forêt claire d'Amérique du Sud à l'âge de glace, grands arbres feuillus, sous-bois ouvert.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Smilodon populator",
+    "adversaire_latin": "Smilodon populator",
+    "adversaire_id": null,
+    "adversaire_morpho": "grand félin à dents de sabre, variante sud-américaine plus massive que son cousin nord-américain, canines en sabre, avant-corps très puissant",
+    "adversaire_mesures": "environ 2,2 m de long, 350 kg",
+    "adversaire_livree": "fauve doré uni, chanfrein et pattes plus sombres",
+    "rapport_taille": "un jeune Mégathérium est visé, bien plus petit que l'adulte (6 m, 4 t) ; un Smilodon populator (2,2 m, 350 kg) est proche en taille d'un jeune, l'adulte étant presque invulnérable grâce à sa carrure blindée",
+    "action": "Un Smilodon populator approche à pas feutrés d'un jeune Mégathérium ; la mère se dresse sur ses pattes arrière en trépied avec sa queue, griffes énormes brandies, forçant le prédateur à reculer.",
+    "preuve": "Smilodon populator, la plus grande espèce du genre, vivait en Amérique du Sud aux mêmes époques que Megatherium ; les adultes de Megatherium, trop gros et couverts de petits os sous la peau, étaient presque invulnérables."
+   },
+   {
+    "type": "rival",
+    "adversaire": "un autre Megatherium",
+    "adversaire_latin": "Megatherium americanum",
+    "adversaire_id": "megatherium",
+    "adversaire_morpho": "même paresseux terrestre géant aux griffes immenses",
+    "adversaire_mesures": "environ 5,8 m de long, taille proche",
+    "adversaire_livree": "gris plus foncé, mêmes griffes crème",
+    "rapport_taille": "tailles proches, deux adultes de gabarit comparable",
+    "action": "Deux Mégathérium se dressent debout face à face pour le même arbre feuillu, se poussent des avant-bras, griffes rentrées.",
+    "preuve": "Megatherium se dressait régulièrement sur ses pattes arrière pour atteindre les hautes branches, une posture qui rendait des disputes territoriales debout plausibles entre individus."
+   }
+  ]
+ },
+ "paraceratherium": {
+  "livree": "gris-éléphant clair, cou plus foncé, lèvre mobile rosée",
+  "habitat": "Forêt chaude d'Asie centrale, il y a 30 millions d'années, grands arbres feuillus, clairières ouvertes.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Hyaenodon gigas",
+    "adversaire_latin": "Hyaenodon gigas",
+    "adversaire_id": null,
+    "adversaire_morpho": "plus grand carnivore connu de son groupe (les hyaenodontes), mâchoires robustes capables de broyer les os, corps massif façon grande hyène",
+    "adversaire_mesures": "environ 3 m de long, 1,2 m au garrot, 500 kg",
+    "adversaire_livree": "fauve-brun, mâchoires puissantes plus sombres, queue épaisse",
+    "rapport_taille": "un jeune Paracérathérium est visé, bien plus petit que l'adulte (8 m, 17 t) ; Hyaenodon gigas (3 m, 500 kg) est proche en taille d'un jeune, l'adulte n'ayant presque aucun prédateur",
+    "action": "Un Hyaenodon gigas s'approche d'un jeune Paracérathérium isolé ; la mère abaisse son long cou et pousse violemment l'air de son museau, forçant le prédateur à reculer sans contact.",
+    "preuve": "Hyaenodon gigas est le plus grand carnivore terrestre connu d'Asie centrale à l'Oligocène, même région et même époque que Paraceratherium."
+   },
+   {
+    "type": "rival",
+    "adversaire": "un autre Paracérathérium",
+    "adversaire_latin": "Paraceratherium sp.",
+    "adversaire_id": "paraceratherium",
+    "adversaire_morpho": "même rhinocéros géant sans corne, au long cou",
+    "adversaire_mesures": "environ 7,8 m de long, taille proche",
+    "adversaire_livree": "gris plus foncé, même silhouette",
+    "rapport_taille": "tailles proches, deux mâles adultes de gabarit comparable",
+    "action": "Deux Paracérathérium entrecroisent leurs longs cous et se poussent flanc contre flanc pour la dominance, comme des girafes.",
+    "preuve": "Le long cou du Paraceratherium, comparable à celui d'une girafe, rend plausible un comportement de joute cervicale entre mâles pour la dominance, par analogie avec les girafes actuelles."
+   }
+  ]
+ },
+ "glyptodon": {
+  "livree": "carapace brun miel tachetée de crème, peau grise, casque frontal plus sombre",
+  "habitat": "Plaine humide d'Amérique du Sud à l'âge de glace, herbes hautes, sol détrempé par endroits.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Smilodon populator",
+    "adversaire_latin": "Smilodon populator",
+    "adversaire_id": null,
+    "adversaire_morpho": "grand félin sud-américain à dents de sabre, avant-corps très puissant",
+    "adversaire_mesures": "environ 2,2 m de long, 350 kg",
+    "adversaire_livree": "fauve doré uni, chanfrein et pattes plus sombres",
+    "rapport_taille": "le Glyptodon (3,3 m, 1 t) est plus lourd que le Smilodon (350 kg), mais bien moins vif",
+    "action": "Smilodon populator rôde autour d'un Glyptodon isolé ; le Glyptodon se plaque au sol sous son dôme osseux, complètement à l'abri, forçant le prédateur à abandonner.",
+    "preuve": "Smilodon populator et Glyptodon partageaient les mêmes plaines d'Amérique du Sud à l'âge de glace ; le dôme du Glyptodon en faisait une proie très difficile."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Arctotherium",
+    "adversaire_latin": "Arctotherium angustidens",
+    "adversaire_id": null,
+    "adversaire_morpho": "immense ours à face courte, museau court et large, capable de se dresser très haut sur ses pattes arrière",
+    "adversaire_mesures": "1,8 m au garrot à quatre pattes, 3,5 m dressé debout, jusqu'à 1,6 tonne",
+    "adversaire_livree": "brun sombre, museau court plus clair, poitrail marqué d'une tache crème en V",
+    "rapport_taille": "l'Arctotherium dressé debout (3,5 m) est plus du double de la hauteur du Glyptodon (1,5 m), mais bien plus léger tonne pour tonne face au dôme blindé",
+    "action": "Un Arctotherium se dresse sur ses pattes arrière au-dessus d'un Glyptodon et abat ses pattes avant sur le dôme osseux ; le Glyptodon reste immobile, parfaitement protégé.",
+    "preuve": "Arctotherium angustidens, le plus grand ours connu, partageait les plaines d'Amérique du Sud avec Glyptodon à l'âge de glace — un second prédateur documenté, différent du Smilodon."
+   }
+  ]
+ },
+ "aenocyon": {
+  "livree": "fauve-gris, masque facial plus sombre, pattes plus claires",
+  "habitat": "Plaine ouverte d'Amérique du Nord à l'âge de glace, herbes sèches dorées, troupeaux de chevaux au loin.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Smilodon",
+    "adversaire_latin": "Smilodon fatalis",
+    "adversaire_id": "smilodon",
+    "adversaire_morpho": "grand félin à dents de sabre, avant-corps très puissant, canines en sabre de 28 cm",
+    "adversaire_mesures": "1,75 m de long, 250 kg",
+    "adversaire_livree": "fauve doré uni, chanfrein et pattes plus sombres",
+    "rapport_taille": "un Smilodon seul (250 kg) est plus lourd qu'un loup terrible (70 kg), mais une meute entière l'emporte en nombre",
+    "action": "Une meute de loups terribles s'approche d'un Smilodon posté sur un point d'eau très fréquenté ; le Smilodon ouvre grand la gueule, montrant ses sabres, la meute garde ses distances.",
+    "preuve": "Au site d'asphalte de La Brea, loups terribles et Smilodon se disputaient les mêmes carcasses ; les os de loups y sont dix fois plus nombreux, preuve d'une forte pression de compétition."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Cheval sauvage",
+    "adversaire_latin": "Equus scotti",
+    "adversaire_id": null,
+    "adversaire_morpho": "cheval trapu, crinière courte dressée, sabot unique",
+    "adversaire_mesures": "environ 1,4 m au garrot, 350 kg",
+    "adversaire_livree": "gris-souris, crinière noire courte, museau plus clair",
+    "rapport_taille": "un loup terrible (70 kg) est bien plus léger qu'un cheval (350 kg) ; toute la meute est nécessaire pour l'abattre",
+    "action": "La meute de loups terribles poursuit un cheval sauvage isolé du troupeau à travers la plaine, en éventail.",
+    "preuve": "Des restes de chevaux sont parmi les proies les plus fréquentes retrouvées associées aux loups terribles dans les gisements de l'âge de glace."
+   }
+  ]
+ },
+ "coelodonta": {
+  "livree": "brun-roux laineux, cornes gris-corne, petites oreilles bordées de noir",
+  "habitat": "Steppe froide d'Eurasie à l'âge de glace, herbe rase couverte de givre, ciel bas et gris.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Hyène des cavernes",
+    "adversaire_latin": "Crocuta crocuta spelaea",
+    "adversaire_id": null,
+    "adversaire_morpho": "grande hyène robuste à mâchoires broyeuses d'os, avant-corps plus haut que l'arrière-train, crinière courte sur la nuque",
+    "adversaire_mesures": "environ 1,2 m de long, 0,9 m au garrot, 100 kg",
+    "adversaire_livree": "fauve tacheté de brun sombre, crinière courte sur la nuque",
+    "rapport_taille": "un jeune rhino laineux est visé, bien plus petit que l'adulte (3,5 m, 2,5 t) ; un clan de hyènes des cavernes (100 kg chacune) encercle le petit, l'adulte étant trop dangereux pour être attaqué seul",
+    "action": "Un clan de hyènes des cavernes encercle un jeune rhino laineux isolé du troupeau ; la mère charge en balayant l'air de sa longue corne plate, forçant le clan à reculer.",
+    "preuve": "Des ossements de rhinos laineux, jeunes surtout, ont été retrouvés dans des tanières de hyènes des cavernes en Eurasie — preuve directe de cette prédation ciblée."
+   },
+   {
+    "type": "rival",
+    "adversaire": "un autre Rhino laineux",
+    "adversaire_latin": "Coelodonta antiquitatis",
+    "adversaire_id": "coelodonta",
+    "adversaire_morpho": "même rhinocéros laineux à deux cornes, la frontale longue et plate comme un sabre",
+    "adversaire_mesures": "environ 3,3 m de long, taille proche",
+    "adversaire_livree": "brun plus clair, cornes légèrement plus courtes",
+    "rapport_taille": "tailles proches, deux mâles adultes de gabarit comparable",
+    "action": "Deux rhinos laineux mâles entrecroisent leurs longues cornes frontales et poussent front contre front pour la dominance.",
+    "preuve": "L'usure caractéristique observée sur les cornes frontales fossiles de Coelodonta suggère des frottements répétés compatibles avec des combats entre mâles, comme chez les rhinocéros actuels."
+   }
+  ]
+ },
+ "titanis": {
+  "livree": "brun-gris, bec corné jaune-orangé, plumes de la nuque hérissées plus sombres",
+  "habitat": "Savane chaude de Floride, Pliocène, herbes hautes dorées, quelques palmiers épars, chaleur de milieu de journée.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Smilodon gracilis",
+    "adversaire_latin": "Smilodon gracilis",
+    "adversaire_id": null,
+    "adversaire_morpho": "premier et plus petit des Smilodon, ancêtre du Smilodon fatalis plus tardif, canines en sabre déjà présentes mais plus courtes",
+    "adversaire_mesures": "environ 1 m de long, 55 à 70 kg",
+    "adversaire_livree": "fauve pâle, chanfrein sombre, canines plus courtes que son descendant plus tardif",
+    "rapport_taille": "Titanis (1,9 m debout, 150 kg) est plus haut et plus lourd que ce premier Smilodon (1 m, 70 kg)",
+    "action": "Smilodon gracilis et Titanis se font face sur la même zone de chasse en bordure de savane ; Titanis ouvre son grand bec-hachoir, ailes minuscules écartées, le félin recule d'un pas.",
+    "preuve": "Titanis et Smilodon gracilis sont tous deux connus des mêmes gisements de Floride (sites de la rivière Santa Fe), Pliocène — deux prédateurs contemporains disputant les mêmes proies."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Nannippus",
+    "adversaire_latin": "Nannippus peninsulatus",
+    "adversaire_id": null,
+    "adversaire_morpho": "petit cheval trapu à trois doigts par patte, crinière courte",
+    "adversaire_mesures": "environ 1 m au garrot, 100 kg",
+    "adversaire_livree": "robe fauve clair, crinière brune courte, trois petits sabots visibles",
+    "rapport_taille": "Titanis (1,9 m) est presque deux fois plus haut que le petit cheval Nannippus (1 m au garrot)",
+    "action": "Titanis poursuit un jeune Nannippus à travers la savane à toute vitesse et l'abat d'un coup de son bec-hachoir, sans autre détail montré.",
+    "preuve": "Nannippus, petit cheval à trois doigts, est un fossile commun des mêmes gisements pliocènes de Floride où Titanis a été trouvé — proie plausible pour ce grand coureur."
+   }
+  ]
+ }
+}

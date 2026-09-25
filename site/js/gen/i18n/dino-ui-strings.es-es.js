@@ -119,5 +119,9 @@ window.DINO_UI_STRINGS = {
  "journey_ep_sortie-eau_label": "Los peces salen del agua",
  "journey_ep_sortie-eau_date": "hace 375 millones de años",
  "journey_ep_reptiles-permien_label": "Los primeros reptiles de verdad",
- "journey_ep_reptiles-permien_date": "hace 300 millones de años"
+ "journey_ep_reptiles-permien_date": "hace 300 millones de años",
+ "extra_label_combat_ennemi": "Su enemigo:",
+ "extra_label_combat_proie": "Su presa:",
+ "extra_label_combat_rival": "Su rival:",
+ "extra_label_combat_duel": "¡El duelo!"
 };

@@ -665,6 +665,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 <script src="js/gen/lexique-fr.js"></script>
 <script src="js/tts.js"></script>
 <script src="js/gen/dinos-audio-manifest.js"></script>
+<script src="js/gen/dinos-combats.js"></script>
 <script>
 
 /* ── i18n UI statique (dictionnaire dino-ui.js) ── */
@@ -1688,7 +1689,15 @@ function buildFiche(d) {
     label: e.label || d.name,
     type: 'grok'
   }));
-  const extras = [...grokExtras, ...localExtras, ...wikiExtras];
+  // Scènes de combat validées (pire ennemi, proie ou rival) : manifeste généré dinos-combats.js.
+  // En français on nomme l'adversaire ; ailleurs son nom latin, compris dans toutes les langues.
+  const fr = !(window.Lang && window.Lang.current() !== 'fr');
+  const combatExtras = (typeof DINO_COMBATS !== 'undefined' ? (DINO_COMBATS[d.id] || []) : []).map(c => ({
+    src: `img/dinos/paleoart/${c.file}`,
+    label: c.meme_espece ? T('extra_label_combat_duel') : `${T('extra_label_combat_' + c.type)} ${fr ? c.adversaire : c.adversaire_latin}`,
+    type: 'paleoart'
+  }));
+  const extras = [...grokExtras, ...localExtras, ...combatExtras, ...wikiExtras];
 
   const regEmoji = regimeIcon(d.cat);
   const perLabel = (DINO_PERIODES.find(p => p.id === d.periode) || {}).label || '';

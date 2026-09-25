@@ -44,10 +44,12 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Allosaurus.webp",
    "coloriage": "img/dinos/paleoart/Allosaurus_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Allosaurus_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Allosaurus_ennemi.webp",
    "funfact": "img/dinos/paleoart/Allosaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Allosaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Allosaurus_manger.webp",
-   "paris": "img/dinos/paleoart/Allosaurus_paris.webp"
+   "paris": "img/dinos/paleoart/Allosaurus_paris.webp",
+   "proie": "img/dinos/paleoart/Allosaurus_proie.webp"
   }
  },
  "Amargasaurus": {
@@ -188,6 +190,7 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Carcharodontosaurus.webp",
    "coloriage": "img/dinos/paleoart/Carcharodontosaurus_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Carcharodontosaurus_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Carcharodontosaurus_ennemi.webp",
    "funfact": "img/dinos/paleoart/Carcharodontosaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Carcharodontosaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Carcharodontosaurus_manger.webp",
@@ -988,6 +991,7 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Stegosaurus.webp",
    "coloriage": "img/dinos/paleoart/Stegosaurus_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Stegosaurus_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Stegosaurus_ennemi.webp",
    "funfact": "img/dinos/paleoart/Stegosaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Stegosaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Stegosaurus_manger.webp",
@@ -1007,7 +1011,8 @@ window.DINO_ASSETS = {
    "funfact": "img/dinos/paleoart/Tarbosaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Tarbosaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Tarbosaurus_manger.webp",
-   "paris": "img/dinos/paleoart/Tarbosaurus_paris.webp"
+   "paris": "img/dinos/paleoart/Tarbosaurus_paris.webp",
+   "proie": "img/dinos/paleoart/Tarbosaurus_proie.webp"
   }
  },
  "Therizinosaurus": {
@@ -1068,10 +1073,12 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Triceratops.webp",
    "coloriage": "img/dinos/paleoart/Triceratops_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Triceratops_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Triceratops_ennemi.webp",
    "funfact": "img/dinos/paleoart/Triceratops_funfact.webp",
    "headshot": "img/dinos/paleoart/Triceratops_headshot.webp",
    "manger": "img/dinos/paleoart/Triceratops_manger.webp",
-   "paris": "img/dinos/paleoart/Triceratops_paris.webp"
+   "paris": "img/dinos/paleoart/Triceratops_paris.webp",
+   "rival": "img/dinos/paleoart/Triceratops_rival.webp"
   }
  },
  "Troodon": {
@@ -1100,6 +1107,7 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Tyrannosaurus.webp",
    "coloriage": "img/dinos/paleoart/Tyrannosaurus_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Tyrannosaurus_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Tyrannosaurus_ennemi.webp",
    "funfact": "img/dinos/paleoart/Tyrannosaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Tyrannosaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Tyrannosaurus_manger.webp",

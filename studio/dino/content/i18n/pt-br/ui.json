@@ -122,5 +122,9 @@
   "journey_ep_sortie-eau_label": "Os peixes saem da água",
   "journey_ep_sortie-eau_date": "há 375 milhões de anos",
   "journey_ep_reptiles-permien_label": "Os primeiros répteis de verdade",
-  "journey_ep_reptiles-permien_date": "há 300 milhões de anos"
+  "journey_ep_reptiles-permien_date": "há 300 milhões de anos",
+  "extra_label_combat_ennemi": "Seu inimigo:",
+  "extra_label_combat_proie": "Sua presa:",
+  "extra_label_combat_rival": "Seu rival:",
+  "extra_label_combat_duel": "O duelo!"
 }

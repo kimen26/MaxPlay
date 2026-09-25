@@ -40,7 +40,10 @@ const CDP = 'http://127.0.0.1:' + (process.env.CDP_PORT || '9222');
 // Empreinte de la reference : l image jointe apparait sous le meme selecteur que
 // les images generees, il faut pouvoir la reconnaitre pour ne pas la re-telecharger.
 const REF_SUM = REF ? createHash('md5').update(readFileSync(REF)).digest('hex') : null;
-const ESTUARY = 'img[src*="backend-api/estuary/content"]';
+// L'UI 2026-09 sert aussi les images en blob: (L-D-85). On ne garde que la pleine
+// résolution : les vignettes et la référence jointe restent sous 700 px de large.
+const ESTUARY = 'img[src*="backend-api/estuary/content"], img[src^="blob:https://chatgpt.com"]';
+const srcsHD = () => page.locator(ESTUARY).evaluateAll(els => els.filter(e => e.naturalWidth >= 700).map(e => e.getAttribute('src')));
 const BLOCK_RE = /enfreindre nos règles|illustrations acceptables|violate our|content policy|n'avons pas pu générer|impossible de générer cette image/i;
 const LIMIT_RE = /limite de génération|limite de créations d'images|plus de crédit|réessayez plus tard|try again later|usage cap|rate limit|vous avez atteint|image generation limit|reached your limit|hit the Plus plan limit|limit resets in|passez à une offre supérieure|passer à chatgpt pro/i;
 
@@ -93,7 +96,7 @@ async function checkModalRateLimit(page, browser) {
 }
 
 // URLs d'images déjà présentes AVANT envoi -> pour détecter une src vraiment neuve
-const beforeUrls = await page.locator(ESTUARY).evaluateAll(els => els.map(e => e.getAttribute('src')));
+const beforeUrls = await page.locator(ESTUARY).evaluateAll(els => els.map(e => e.getAttribute('src')));  // toutes tailles : une vignette peut grandir
 
 // Vérifier rate limit modal AVANT d'envoyer le prompt (évite timeout de 220s)
 await checkModalRateLimit(page, browser);
@@ -140,11 +143,11 @@ while (Date.now() - start < 220000) {
     await browser.close(); process.exit(4);
   }
   // 2) nouvelle image (src absente du set initial) ?
-  const cur = await page.locator(ESTUARY).evaluateAll(els => els.map(e => e.getAttribute('src')));
+  const cur = await srcsHD();
   const fresh = cur.find(u => u && !beforeUrls.includes(u));
   if (fresh) {
-    await page.waitForTimeout(3000); // laisser finir le rendu HD
-    const cur2 = await page.locator(ESTUARY).evaluateAll(els => els.map(e => e.getAttribute('src')));
+    await page.waitForTimeout(8000); // laisser finir le rendu HD (les aperçus progressifs sont aussi des blob:)
+    const cur2 = await srcsHD();
     const cand = cur2.filter(u => u && !beforeUrls.includes(u));
     // Ecarter la reference : meme selecteur, absente de beforeUrls, donc prise a tort
     // pour l image generee (elle revenait telle quelle, checksum identique).

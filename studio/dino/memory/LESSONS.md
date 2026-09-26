@@ -102,3 +102,8 @@ avec l'apostrophe droite : aucun match, chaque image partait en timeout (4 min) 
 
 **Règle** : dans toute regex sur du texte d'interface, accepter `['’]` pour l'apostrophe. Un timeout qui
 se répète sur plusieurs images d'affilée = regarder la capture `-timeout.png` avant de relancer.
+
+**Rechute le même jour** : la regex était juste mais lisait la mauvaise zone. `querySelector('main, .flex-col.items-center')`
+renvoie le 1er élément du DOCUMENT qui matche un des sélecteurs (ici un bloc de la barre latérale), pas le 1er
+sélecteur de la liste. Lire `main` seul. Un correctif de détection se teste sur la page réelle qui affiche le
+message (script sonde), pas sur une chaîne recopiée.

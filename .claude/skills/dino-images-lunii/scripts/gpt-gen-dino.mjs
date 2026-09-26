@@ -132,7 +132,9 @@ let url = null;
 while (Date.now() - start < 220000) {
 // 1) blocage modération / limite ? (cibler la zone de contenu, pas la sidebar historique)
   const mainTxt = await page.evaluate(() => {
-    const main = document.querySelector('main, [data-testid="conversation-turn-3"], .flex-col.items-center');
+    // `main` seul : une liste de sélecteurs renvoie le 1er élément du document, qui était
+    // un bloc de la barre latérale — le message de limite n'était jamais lu (L-D-86).
+    const main = document.querySelector('main');
     return main ? main.innerText : document.body.innerText;
   }).catch(() => '');
   if (LIMIT_RE.test(mainTxt)) {

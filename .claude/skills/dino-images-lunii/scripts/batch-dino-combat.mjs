@@ -77,7 +77,7 @@ RÔLE : illustrateur de paléoart documentaire réaliste, rigoureux sur l'anatom
   `CAMÉRA (règle n° 1, prioritaire sur tout le reste) : très grand plan d'ensemble, photographié depuis 150 à 300 mètres de distance, format paysage. Les animaux paraissent PETITS dans l'immensité du paysage : CHACUN occupe au plus un tiers de la largeur de l'image (et au plus un tiers de sa hauteur s'il est plus haut que long), entièrement visible, avec une large marge de décor tout autour. Le décor (ciel, relief, végétation, eau) remplit la majeure partie de l'image.`,
   `ANIMAL 1 — ${sujet.d.name.toUpperCase()} :\n${blocSujet}`,
   `ANIMAL 2 — ${(memeEspece ? sujet.d.name : scene.adversaire).toUpperCase()} :\n${blocAdv}`,
-  `PROPORTIONS ENTRE LES DEUX (capital, à respecter exactement) : ${scene.rapport_taille} Les deux animaux sont à la même distance de l'objectif, pour que ce rapport de taille se lise juste.`,
+  `PROPORTIONS ENTRE LES DEUX (capital, à respecter exactement) : ${scene.rapport_taille} Les deux animaux se tiennent sur la même ligne de sol, à la même distance de l'objectif, pour que ce rapport de taille se lise juste : chacun est dessiné à sa taille réelle, le petit reste petit et le grand reste grand.`,
   `COULEURS : chaque animal porte la livrée indiquée, une vraie personnalité colorée et naturelle, crédible pour un animal sauvage, et les deux se distinguent au premier coup d'œil.`,
   `DÉCOR (son vrai milieu de vie, très soigné) : ${entree.habitat} Uniquement des animaux préhistoriques de ce lieu et de cette époque, dans une nature sauvage intacte.`,
   `STYLE : paléoart documentaire réaliste, lumière naturelle, image spectaculaire et lisible. Pas de texte ni de chiffre dans l'image.`,

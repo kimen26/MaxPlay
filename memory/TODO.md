@@ -66,3 +66,7 @@ Questions Papa Yann (hors DoD) : 8 langues sans fiche audio sélectionnables au 
 - [ ] Papa Yann : compte `console.typesafe.ai`, clé `TYPESAFE_API_KEY` dans settings.json env (jamais dans le repo), dire si liste d'attente.
 - [ ] Banc de mesure 50 textes connus × 4 portes de contenu (interdits, échelle, violence, âge) — mesurer le français AVANT d'adopter.
 - [ ] Porte 1 : grep interdits audio → Jev noul + repli regex. Puis bot Telegram (pôle/nature/figée/doublon), Edge Function `jev-proxy`, suggestion « La suite ».
+
+## Chantier « process militaire » (demande Papa Yann 2026-09-26)
+
+- [ ] Cible : « je propose un jeu ou un dino, tout s'enchaîne » — handoffs avec DoR/DoD, tests fonctionnels + techniques par défaut, délégation économe, mémoire rationalisée en portes/rules/hooks/skills. Scope JEU + DINO. Workflow d'audit lancé le 2026-09-26 (cartographie 6 angles, 3 architectures jugées, réfutation) → dossier `docs/research/2026-09-26-archi-process-militaire.md`, puis vagues de migration en briefs HO.

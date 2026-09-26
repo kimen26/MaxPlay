@@ -2,7 +2,8 @@
 
 > HO-013, i18n desde `fr/V3/minmi.md` (canon) + `i18n/es-es/strings.json`.
 > Minmi paravertebra · Cretácico · hace 120 millones de años · Queensland, Australia. Datos : 3 m largo · 0,9 m alto · 0,3 t.
-> Comparaciones = `strings.json` : "como tres niños de 4 años tumbados uno tras otro" / "tan grande como un niño de 4 años" / "tan pesado como 2 burros". Contenido estomacal confirmado (masticaba, sin gastrolitos, a diferencia de los saurópodos), igual que el FR.
+> Comparaciones = `strings.json` : "como tres niños de 4 años tumbados uno tras otro" / "tan grande como un niño de 4 años" / "tan pesado como 2 burros".
+> Fact-check 2026-09-26 (Grokipedia Kunbarrasaurus + Wikipedia EN + Leahey et al. 2015): el contenido estomacal pertenece al espécimen QM F18101 = Kunbarrasaurus ieversi (reclasificado en 2015), NO a Minmi paravertebra (holotipo sin cráneo conocido). Dato sustituido: el cráneo nunca se encontró; la comida se atribuye a "un primo muy cercano". La velocidad (patas largas) sigue siendo una HIPÓTESIS indirecta, formulada con prudencia.
 
 ## Minmi — Minmi paravertebra
 
@@ -28,6 +29,6 @@
 
 ### BLOC D — Lo más loco
 
-**NARRATEUR H** [excited] : Se encontró su última comida dentro de su barriga — semillas, [pauses] trozos de fruta, helechos masticados.
-**WEX** [amazed] : ¿Su última comida, de verdad?
-**NARRATEUR H** [softly] : De verdad. [proud] Es muy raro saber EXACTAMENTE qué comió un dinosaurio justo antes de morir.
+**NARRATEUR H** [excited] : Tenemos sus placas, sus costillas, sus patas… [pauses] pero nunca se ha encontrado su cabeza.
+**WEX** [curious] : ¿Entonces no se sabe cómo era?
+**NARRATEUR H** [softly] : No del todo. [warmly] Los científicos lo imaginan a partir de sus primos blindados. [amazed] Y un primo muy cercano, encontrado cerca de él, todavía tenía su última comida en la barriga: helechos masticados.

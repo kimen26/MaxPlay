@@ -3,7 +3,7 @@
 > Thyréophore à armure (famille `arme`), Crétacé · 120 millions d'années · Queensland, Australie.
 > Chiffres data (`studio/dino/content/dinos/minmi.json`) : 3 m long · 0.9 m haut · 0.3 t. Comparaisons = sortie EXACTE de _compLong(3) / _compHaut(0.9) / _compPoids(0.3), régénérées 2026-09-12 : `comme trois enfants de 4 ans allongés !` / `aussi grand qu'un enfant de 4 ans !` / `aussi lourd que 2 ânes !`.
 > Étymologie (`_ETYMO-RACINES-50.md`) : « Minmi » n'est ni grec ni latin — nom d'un lieu, Minmi Crossing (Queensland, Australie), où on a trouvé ses os. *para-* (à côté de) + *-vertebra* (latin, vertèbre) → « aux petits os à côté du dos ». Nom lu tel quel.
-> Fact-check Grokipedia (agent dino-conseiller, 2026-09-05) : contenu stomacal CONFIRMÉ (fragments végétaux fibreux, graines, spores de fougères, coupes nettes de mastication) — **PAS de gastrolithes** (Minmi mâchait, contrairement au Brachiosaure/aux sauropodes qui avalaient des pierres). Vitesse (pattes longues) = HYPOTHÈSE indirecte, formulée prudemment.
+> Fact-check 2026-09-26 (Grokipedia Kunbarrasaurus + Wikipedia EN + Leahey et al. 2015) : le contenu stomacal appartient au spécimen QM F18101 = Kunbarrasaurus ieversi (reclassé 2015), PAS à Minmi paravertebra (holotype sans crâne). Fait remplacé : crâne jamais retrouvé ; le repas est attribué à « un cousin très proche ». Vitesse (pattes longues) = HYPOTHÈSE indirecte, formulée prudemment.
 > Vignette registre `_SCENES-VIGNETTES.md` : « retourner sur le dos pour contourner l'armure » — PROPRIÉTAIRE Minmi, conservée telle quelle (interdite de réemploi ailleurs, ex. Edmontonia/Ankylosaure).
 > Grep-interdits OK. Wex FR standard, aucun tic écrit, jamais de `!` final.
 
@@ -31,9 +31,9 @@
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [excited] : On a retrouvé son tout dernier repas dans son ventre — des graines, [pauses] des fruits, des fougères mâchées.
-**WEX** [amazed] : Son dernier repas, vraiment ?
-**NARRATEUR H** [softly] : Vraiment. [proud] C'est très rare de savoir EXACTEMENT ce qu'un dinosaure a mangé juste avant de mourir.
+**NARRATEUR H** [excited] : On a ses plaques, ses côtes, ses pattes… [pauses] mais on n'a jamais retrouvé sa tête.
+**WEX** [curious] : Alors on ne sait pas à quoi il ressemblait ?
+**NARRATEUR H** [softly] : Pas tout à fait. [warmly] Les savants l'imaginent d'après ses cousins blindés. [amazed] Et un cousin très proche, trouvé pas loin de lui, avait encore son dernier repas dans le ventre : des fougères mâchées.
 
 ---
 
@@ -41,6 +41,6 @@
 
 - [x] 4 blocs A/B/C/D, ~1 550 caractères.
 - [x] Bloc B = sortie exacte des 3 fonctions.
-- [x] CORRECTION fact-check : pas de gastrolithes mentionnés (Minmi mâchait, ne pas confondre avec les sauropodes).
+- [x] CORRECTION fact-check (2026-09-26) : crâne de Minmi jamais retrouvé (pas de contenu stomacal pour l'holotype) ; le dernier repas fossilisé appartient au spécimen reclassé Kunbarrasaurus ieversi, attribué ici à « un cousin très proche » — pas de gastrolithes mentionnés (mastication, ne pas confondre avec les sauropodes).
 - [x] Vignette « retourner sur le dos » NON réemployée ici (remplacée par vitesse/fuite pour éviter le doublon avec sa propre fiche historique — cf note registre) ; fuite = image distincte de C.
 - [x] Grep interdits : 0 match.

@@ -2,7 +2,7 @@
 
 > HO-013, i18n nativa a partir de `fr/V3/minmi.md` (canon) + `i18n/pt-br/strings.json` (comparações já validadas).
 > Minmi paravertebra · Cretáceo · há 120 milhões de anos · Queensland, Austrália. Dados (`dinos-data.js`) : 3 m comprimento · 0,9 m altura · 0,3 t.
-> ⚠️ **Fato corrigido (fact-check FR)** : sem gastrólitos confirmados — o Minmi mastigava, diferente dos saurópodes que engoliam pedras. Este script não menciona pedras engolidas (a fuga pelas patas compridas é o ângulo do bloco C).
+> ⚠️ **Fact-check 2026-09-26** (Grokipedia Kunbarrasaurus + Wikipedia EN + Leahey et al. 2015): o conteúdo estomacal pertence ao espécime QM F18101 = Kunbarrasaurus ieversi (reclassificado em 2015), NÃO ao Minmi paravertebra (holótipo sem crânio conhecido). Fato substituído: o crânio nunca foi encontrado; a refeição é atribuída a "um primo bem próximo". Velocidade (patas compridas) continua sendo HIPÓTESE indireta, formulada com cautela.
 > Comparações = `strings.json` palavra por palavra: "que nem três crianças de 4 anos deitadas" / "do tamanho de uma criança de 4 anos" / "tão pesado quanto 2 jumentos".
 > Nome falado : forma plana do léxico (Minmi — nome australiano de lugar, sem respelling grego/latino), sílabas separadas só no bloco A.
 
@@ -30,6 +30,6 @@
 
 ### BLOC D — O detalhe mais louco
 
-**NARRATEUR H** [excited] : Encontraram a última refeição dele na barriga — sementes, [pauses] frutinhas, samambaias mastigadas.
-**WEX** [amazed] : A última refeição mesmo?
-**NARRATEUR H** [softly] : Mesmo. [proud] É muito raro saber EXATAMENTE o que um dinossauro comeu bem antes de morrer.
+**NARRATEUR H** [excited] : A gente tem as placas dele, as costelas, as patas… [pauses] mas o crânio dele nunca foi encontrado.
+**WEX** [curious] : Então ninguém sabe como era a cara dele?
+**NARRATEUR H** [softly] : Não bem. [warmly] Os cientistas imaginam a partir dos primos blindados dele. [amazed] E um primo bem próximo, encontrado pertinho dele, ainda tinha a última refeição na barriga: samambaias mastigadas.

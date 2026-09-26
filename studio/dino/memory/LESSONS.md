@@ -107,3 +107,25 @@ se répète sur plusieurs images d'affilée = regarder la capture `-timeout.png`
 renvoie le 1er élément du DOCUMENT qui matche un des sélecteurs (ici un bloc de la barre latérale), pas le 1er
 sélecteur de la liste. Lire `main` seul. Un correctif de détection se teste sur la page réelle qui affiche le
 message (script sonde), pas sur une chaîne recopiée.
+
+## L-D-85 — 2026-09-26 — Un fact-check qui « CONFIRME » sans page source ni numéro de spécimen ne confirme rien (Minmi / Kunbarrasaurus)
+
+**Constat** : la fiche Minmi disait « on a retrouvé son dernier repas fossilisé dans son ventre », en 4 langues,
+avec une image du ventre ouvert, et l'en-tête du script portait « Fact-check Grokipedia (dino-conseiller,
+2026-09-05) : contenu stomacal CONFIRMÉ ». Or Grokipedia n'a pas de page Minmi (404). Le contenu stomacal est
+documenté sur le spécimen QM F18101, reclassé *Kunbarrasaurus ieversi* en 2015 ; l'holotype de *Minmi
+paravertebra* (QM F10329) est un squelette partiel sans crâne. Trois sources convergentes (Grokipedia
+Kunbarrasaurus, Wikipedia EN, Leahey et al. 2015 sur PMC). L-D-64 avait déjà interdit d'attribuer à Minmi le
+crâne de Kunbarrasaurus ; la même confusion est revenue par un autre fait, six semaines plus tard, avec un
+tampon « CONFIRMÉ ».
+**Cause racine** : le « fact-check » a pris pour Minmi ce qu'il lisait sur son sosie, parce que rien n'exige de
+citer l'URL lue, le numéro de spécimen et la phrase exacte. Un « CONFIRMÉ » sans preuve citée passe toutes les
+portes : elles vérifient le format du script, jamais la provenance d'un fait.
+**Règle** : un fait « truc fou » ou tout fait de bloc D ne se grave qu'avec sa source (URL + phrase citée) et,
+pour toute espèce ayant un synonyme ou un spécimen reclassé, le numéro de spécimen. « Grokipedia 404 » se note
+comme tel, jamais comme une confirmation. Quand la source est un article de reclassification, on vérifie que
+le fait suit le bon nom. Sonde : `grep -n "CONFIRM" studio/dino/content/scripts-audio/fr/V3/*.md` et exiger
+l'URL à côté.
+**Correction du jour** : fait remplacé (« on n'a jamais retrouvé sa tête », le repas attribué à « un cousin très
+proche ») dans `minmi.json` + 4 scripts + 4 segments funfact. Restent à régénérer : 8 MP3 (funfact + recap × 4
+langues) et `Minmi_funfact.webp` qui montre encore le ventre ouvert.

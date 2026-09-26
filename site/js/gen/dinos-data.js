@@ -950,7 +950,7 @@ const DINOS = [
     chasseurs: 'De grands chasseurs d\'Australie essayaient de le retourner sur le dos, là où il n\'avait pas d\'armure. Avec ses pattes rapides, il partait souvent avant.',
     proies: 'Mange des plantes',
     amis: 'Plutôt solitaire',
-    fait: 'On a retrouvé son tout dernier repas fossilisé dans son ventre : des graines, des morceaux de fruits et des fougères ! C\'est très rare de savoir EXACTEMENT ce qu\'un dinosaure avait mangé avant de mourir.',
+    fait: 'On n\'a jamais retrouvé sa tête ! Les savants ont ses plaques, ses côtes et ses pattes, mais pas son crâne : ils l\'imaginent d\'après ses cousins blindés.',
     desc: 'Le Minmi était un petit dino blindé d\'Australie. Il avait une armure sur le dos ET sous le ventre, ce qui est rare. Et pour un dino à armure, il avait de longues pattes : il pouvait filer se mettre à l\'abri.',
     png: 'Minmi.webp',
     color: '#7f8c8d',

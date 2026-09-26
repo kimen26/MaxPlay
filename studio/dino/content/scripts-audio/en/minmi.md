@@ -3,7 +3,7 @@
 > Localized from FR canon `scripts-audio/fr/V3/minmi.md` (HO-013) — native rewrite, not a translation.
 > Data (`site/js/dinos-data.js` id `minmi`): 3 m long · 0.9 m tall · 0.3 t. No `vitesse_kmh` field.
 > Scale from `i18n/en/strings.json` (validated HO-006, still current): `like three 4-year-olds lying end to end!` / `as tall as a 4-year-old!` / `as heavy as 2 donkeys!`.
-> FR canon fact-check: stomach contents confirmed (fibrous plant fragments, seeds, fern spores with clean chewing cuts) — NO gastroliths (unlike sauropods, Minmi chewed its food). Kept that distinction. FR canon also avoided reusing its own registry vignette ("flip it onto its back") a second time inside the same fiche — replaced with the long-legs escape image in bloc C, matched here.
+> Fact-check 2026-09-26 (Grokipedia Kunbarrasaurus + Wikipedia EN + Leahey et al. 2015): the stomach contents belong to specimen QM F18101 = Kunbarrasaurus ieversi (reclassified 2015), NOT Minmi paravertebra (holotype, no known skull). Fact replaced: skull never found; the meal is attributed to "a very close cousin." Speed (long legs) stays an indirect HYPOTHESIS, phrased cautiously. FR canon also avoided reusing its own registry vignette ("flip it onto its back") a second time inside the same fiche — replaced with the long-legs escape image in bloc C, matched here.
 > Name in speech: not Greek/Latin (a place name, Minmi Crossing, Australia) — read plainly, "Minmi." Bloc A spells it out with ellipses: "MIN… mee."
 > "Papa" → "Dad." No Tritri touch.
 > Grep-forbidden OK.
@@ -32,6 +32,6 @@
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [excited] : Scientists found its very last meal in its belly — seeds, [pauses] bits of fruit, chewed-up ferns.
-**WEX** [amazed] : Its last meal, really?
-**NARRATEUR H** [softly] : Really. [proud] It's super rare to know EXACTLY what a dinosaur ate right before it died.
+**NARRATEUR H** [excited] : We have its plates, its ribs, its legs… [pauses] but its head was never found.
+**WEX** [curious] : So nobody knows what it looked like?
+**NARRATEUR H** [softly] : Not quite. [warmly] Scientists picture it from its armored cousins. [amazed] And a very close cousin, found nearby, still had its last meal in its belly: chewed-up ferns.

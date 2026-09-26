@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] On a retrouvé son tout dernier repas dans son ventre — des graines, [pauses] des fruits, des fougères mâchées."
+      "text": "[excited] On a ses plaques, ses côtes, ses pattes… [pauses] mais on n'a jamais retrouvé sa tête."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[amazed] Son dernier repas, vraiment ?"
+      "text": "[curious] Alors on ne sait pas à quoi il ressemblait ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[softly] Vraiment. [proud] C'est très rare de savoir EXACTEMENT ce qu'un dinosaure a mangé juste avant de mourir."
+      "text": "[softly] Pas tout à fait. [warmly] Les savants l'imaginent d'après ses cousins blindés. [amazed] Et un cousin très proche, trouvé pas loin de lui, avait encore son dernier repas dans le ventre : des fougères mâchées."
     }
   ],
   "model_id": "eleven_v3",

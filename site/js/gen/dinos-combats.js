@@ -8,6 +8,13 @@ window.DINO_COMBATS = {
    "meme_espece": true,
    "adversaire": "T-Rex",
    "adversaire_latin": "Tyrannosaurus rex"
+  },
+  {
+   "file": "Tyrannosaurus_proie.webp",
+   "type": "proie",
+   "meme_espece": false,
+   "adversaire": "Tricératops",
+   "adversaire_latin": "Triceratops horridus"
   }
  ],
  "spinosaurus": [
@@ -42,6 +49,13 @@ window.DINO_COMBATS = {
    "meme_espece": false,
    "adversaire": "Spinosaure",
    "adversaire_latin": "Spinosaurus aegyptiacus"
+  },
+  {
+   "file": "Carcharodontosaurus_proie.webp",
+   "type": "proie",
+   "meme_espece": false,
+   "adversaire": "Rebbachisaure",
+   "adversaire_latin": "Rebbachisaurus garasbae"
   }
  ],
  "allosaurus": [
@@ -229,6 +243,13 @@ window.DINO_COMBATS = {
    "meme_espece": false,
    "adversaire": "Liliensternus",
    "adversaire_latin": "Liliensternus liliensterni"
+  },
+  {
+   "file": "Plateosaurus_rival.webp",
+   "type": "rival",
+   "meme_espece": false,
+   "adversaire": "Teratosaurus",
+   "adversaire_latin": "Teratosaurus suevicus"
   }
  ],
  "ankylosaurus": [
@@ -293,6 +314,22 @@ window.DINO_COMBATS = {
    "meme_espece": false,
    "adversaire": "un petit théropode rapide",
    "adversaire_latin": "espèce non déterminée"
+  }
+ ],
+ "scutellosaurus": [
+  {
+   "file": "Scutellosaurus_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": false,
+   "adversaire": "Dilophosaure",
+   "adversaire_latin": "Dilophosaurus wetherilli"
+  },
+  {
+   "file": "Scutellosaurus_rival.webp",
+   "type": "rival",
+   "meme_espece": false,
+   "adversaire": "Megapnosaurus",
+   "adversaire_latin": "Megapnosaurus kayentakatae"
   }
  ],
  "scelidosaurus": [
@@ -395,6 +432,22 @@ window.DINO_COMBATS = {
    "adversaire_latin": "Daspletosaurus torosum"
   }
  ],
+ "corythosaurus": [
+  {
+   "file": "Corythosaurus_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": false,
+   "adversaire": "Daspletosaure",
+   "adversaire_latin": "Daspletosaurus torosum"
+  },
+  {
+   "file": "Corythosaurus_rival.webp",
+   "type": "rival",
+   "meme_espece": false,
+   "adversaire": "Gorgosaure",
+   "adversaire_latin": "Gorgosaurus libratus"
+  }
+ ],
  "maiasaura": [
   {
    "file": "Maiasaura_ennemi.webp",
@@ -420,6 +473,13 @@ window.DINO_COMBATS = {
    "meme_espece": false,
    "adversaire": "Baryonyx",
    "adversaire_latin": "Baryonyx walkeri"
+  },
+  {
+   "file": "Iguanodon_rival.webp",
+   "type": "rival",
+   "meme_espece": false,
+   "adversaire": "Neovenator",
+   "adversaire_latin": "Neovenator salerii"
   }
  ],
  "pachycephalosaurus": [
@@ -429,6 +489,13 @@ window.DINO_COMBATS = {
    "meme_espece": false,
    "adversaire": "T-Rex",
    "adversaire_latin": "Tyrannosaurus rex"
+  },
+  {
+   "file": "Pachycephalosaurus_rival.webp",
+   "type": "rival",
+   "meme_espece": true,
+   "adversaire": "Pachycéphalosaure",
+   "adversaire_latin": "Pachycephalosaurus wyomingensis"
   }
  ],
  "velociraptor": [
@@ -454,6 +521,13 @@ window.DINO_COMBATS = {
    "meme_espece": false,
    "adversaire": "Acrocanthosaurus",
    "adversaire_latin": "Acrocanthosaurus atokensis"
+  },
+  {
+   "file": "Deinonychus_proie.webp",
+   "type": "proie",
+   "meme_espece": false,
+   "adversaire": "Tenontosaure",
+   "adversaire_latin": "Tenontosaurus tilletti"
   }
  ],
  "utahraptor": [
@@ -552,6 +626,13 @@ window.DINO_COMBATS = {
    "meme_espece": true,
    "adversaire": "Hatzegopteryx",
    "adversaire_latin": "Hatzegopteryx thambema"
+  },
+  {
+   "file": "Hatzegopteryx_proie.webp",
+   "type": "proie",
+   "meme_espece": false,
+   "adversaire": "Zalmoxes",
+   "adversaire_latin": "Zalmoxes robustus"
   }
  ],
  "archaeopteryx": [
@@ -561,6 +642,13 @@ window.DINO_COMBATS = {
    "meme_espece": false,
    "adversaire": "Compsognathus",
    "adversaire_latin": "Compsognathus longipes"
+  },
+  {
+   "file": "Archaeopteryx_proie.webp",
+   "type": "proie",
+   "meme_espece": false,
+   "adversaire": "un petit lézard de Solnhofen",
+   "adversaire_latin": "Bavarisaurus macrodactylus"
   }
  ],
  "mosasaurus": [
@@ -627,6 +715,13 @@ window.DINO_COMBATS = {
    "meme_espece": false,
    "adversaire": "Dimétrodon",
    "adversaire_latin": "Dimetrodon sp."
+  },
+  {
+   "file": "Edaphosaurus_rival.webp",
+   "type": "rival",
+   "meme_espece": false,
+   "adversaire": "Eryops",
+   "adversaire_latin": "Eryops megacephalus"
   }
  ],
  "gorgonops": [
@@ -636,6 +731,22 @@ window.DINO_COMBATS = {
    "meme_espece": true,
    "adversaire": "Gorgonops",
    "adversaire_latin": "Gorgonops sp."
+  }
+ ],
+ "lystrosaurus": [
+  {
+   "file": "Lystrosaurus_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": false,
+   "adversaire": "Proterosuchus",
+   "adversaire_latin": "Proterosuchus fergusi"
+  },
+  {
+   "file": "Lystrosaurus_rival.webp",
+   "type": "rival",
+   "meme_espece": true,
+   "adversaire": "Lystrosaure",
+   "adversaire_latin": "Lystrosaurus sp."
   }
  ],
  "moschops": [
@@ -661,6 +772,13 @@ window.DINO_COMBATS = {
    "meme_espece": false,
    "adversaire": "Liopleurodon",
    "adversaire_latin": "Liopleurodon ferox"
+  },
+  {
+   "file": "Ophthalmosaurus_proie.webp",
+   "type": "proie",
+   "meme_espece": false,
+   "adversaire": "Belemnotheutis",
+   "adversaire_latin": "Belemnotheutis antiquus"
   }
  ],
  "liopleurodon": [
@@ -688,7 +806,23 @@ window.DINO_COMBATS = {
    "adversaire_latin": "Placenticeras meeki"
   }
  ],
+ "shonisaurus": [
+  {
+   "file": "Shonisaurus_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": true,
+   "adversaire": "Shonisaure",
+   "adversaire_latin": "Shonisaurus popularis"
+  }
+ ],
  "patagotitan": [
+  {
+   "file": "Patagotitan_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": false,
+   "adversaire": "Mapusaurus",
+   "adversaire_latin": "Mapusaurus roseae"
+  },
   {
    "file": "Patagotitan_rival.webp",
    "type": "rival",
@@ -713,7 +847,23 @@ window.DINO_COMBATS = {
    "adversaire_latin": "Centrosaurus apertus"
   }
  ],
+ "ichthyosaurus": [
+  {
+   "file": "Ichthyosaurus_proie.webp",
+   "type": "proie",
+   "meme_espece": false,
+   "adversaire": "Dapedium",
+   "adversaire_latin": "Dapedium politum"
+  }
+ ],
  "mammuthus": [
+  {
+   "file": "Mammuthus_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": false,
+   "adversaire": "Loup terrible",
+   "adversaire_latin": "Aenocyon dirus"
+  },
   {
    "file": "Mammuthus_rival.webp",
    "type": "rival",
@@ -754,6 +904,13 @@ window.DINO_COMBATS = {
    "meme_espece": false,
    "adversaire": "Hyaenodon gigas",
    "adversaire_latin": "Hyaenodon gigas"
+  },
+  {
+   "file": "Paraceratherium_rival.webp",
+   "type": "rival",
+   "meme_espece": true,
+   "adversaire": "Paracérathérium",
+   "adversaire_latin": "Paraceratherium sp."
   }
  ],
  "glyptodon": [
@@ -763,6 +920,13 @@ window.DINO_COMBATS = {
    "meme_espece": false,
    "adversaire": "Smilodon populator",
    "adversaire_latin": "Smilodon populator"
+  },
+  {
+   "file": "Glyptodon_rival.webp",
+   "type": "rival",
+   "meme_espece": false,
+   "adversaire": "Arctotherium",
+   "adversaire_latin": "Arctotherium angustidens"
   }
  ],
  "aenocyon": [

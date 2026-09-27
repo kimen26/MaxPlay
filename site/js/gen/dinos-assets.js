@@ -124,7 +124,8 @@ window.DINO_ASSETS = {
    "funfact": "img/dinos/paleoart/Archaeopteryx_funfact.webp",
    "headshot": "img/dinos/paleoart/Archaeopteryx_headshot.webp",
    "manger": "img/dinos/paleoart/Archaeopteryx_manger.webp",
-   "paris": "img/dinos/paleoart/Archaeopteryx_paris.webp"
+   "paris": "img/dinos/paleoart/Archaeopteryx_paris.webp",
+   "proie": "img/dinos/paleoart/Archaeopteryx_proie.webp"
   }
  },
  "Archelon": {
@@ -211,7 +212,8 @@ window.DINO_ASSETS = {
    "funfact": "img/dinos/paleoart/Carcharodontosaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Carcharodontosaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Carcharodontosaurus_manger.webp",
-   "paris": "img/dinos/paleoart/Carcharodontosaurus_paris.webp"
+   "paris": "img/dinos/paleoart/Carcharodontosaurus_paris.webp",
+   "proie": "img/dinos/paleoart/Carcharodontosaurus_proie.webp"
   }
  },
  "Carnotaurus": {
@@ -296,10 +298,12 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Corythosaurus.webp",
    "coloriage": "img/dinos/paleoart/Corythosaurus_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Corythosaurus_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Corythosaurus_ennemi.webp",
    "funfact": "img/dinos/paleoart/Corythosaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Corythosaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Corythosaurus_manger.webp",
-   "paris": "img/dinos/paleoart/Corythosaurus_paris.webp"
+   "paris": "img/dinos/paleoart/Corythosaurus_paris.webp",
+   "rival": "img/dinos/paleoart/Corythosaurus_rival.webp"
   }
  },
  "Cryolophosaurus": {
@@ -334,7 +338,8 @@ window.DINO_ASSETS = {
    "funfact": "img/dinos/paleoart/Deinonychus_funfact.webp",
    "headshot": "img/dinos/paleoart/Deinonychus_headshot.webp",
    "manger": "img/dinos/paleoart/Deinonychus_manger.webp",
-   "paris": "img/dinos/paleoart/Deinonychus_paris.webp"
+   "paris": "img/dinos/paleoart/Deinonychus_paris.webp",
+   "proie": "img/dinos/paleoart/Deinonychus_proie.webp"
   }
  },
  "Dilophosaurus": {
@@ -404,7 +409,8 @@ window.DINO_ASSETS = {
    "funfact": "img/dinos/paleoart/Edaphosaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Edaphosaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Edaphosaurus_manger.webp",
-   "paris": "img/dinos/paleoart/Edaphosaurus_paris.webp"
+   "paris": "img/dinos/paleoart/Edaphosaurus_paris.webp",
+   "rival": "img/dinos/paleoart/Edaphosaurus_rival.webp"
   }
  },
  "Edmontonia": {
@@ -526,7 +532,8 @@ window.DINO_ASSETS = {
    "funfact": "img/dinos/paleoart/Glyptodon_funfact.webp",
    "headshot": "img/dinos/paleoart/Glyptodon_headshot.webp",
    "manger": "img/dinos/paleoart/Glyptodon_manger.webp",
-   "paris": "img/dinos/paleoart/Glyptodon_paris.webp"
+   "paris": "img/dinos/paleoart/Glyptodon_paris.webp",
+   "rival": "img/dinos/paleoart/Glyptodon_rival.webp"
   }
  },
  "Gorgonops": {
@@ -560,7 +567,8 @@ window.DINO_ASSETS = {
    "funfact": "img/dinos/paleoart/Hatzegopteryx_funfact.webp",
    "headshot": "img/dinos/paleoart/Hatzegopteryx_headshot.webp",
    "manger": "img/dinos/paleoart/Hatzegopteryx_manger.webp",
-   "paris": "img/dinos/paleoart/Hatzegopteryx_paris.webp"
+   "paris": "img/dinos/paleoart/Hatzegopteryx_paris.webp",
+   "proie": "img/dinos/paleoart/Hatzegopteryx_proie.webp"
   }
  },
  "Ichthyosaurus": {
@@ -576,7 +584,8 @@ window.DINO_ASSETS = {
    "funfact": "img/dinos/paleoart/Ichthyosaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Ichthyosaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Ichthyosaurus_manger.webp",
-   "paris": "img/dinos/paleoart/Ichthyosaurus_paris.webp"
+   "paris": "img/dinos/paleoart/Ichthyosaurus_paris.webp",
+   "proie": "img/dinos/paleoart/Ichthyosaurus_proie.webp"
   }
  },
  "Iguanodon": {
@@ -593,7 +602,8 @@ window.DINO_ASSETS = {
    "funfact": "img/dinos/paleoart/Iguanodon_funfact.webp",
    "headshot": "img/dinos/paleoart/Iguanodon_headshot.webp",
    "manger": "img/dinos/paleoart/Iguanodon_manger.webp",
-   "paris": "img/dinos/paleoart/Iguanodon_paris.webp"
+   "paris": "img/dinos/paleoart/Iguanodon_paris.webp",
+   "rival": "img/dinos/paleoart/Iguanodon_rival.webp"
   }
  },
  "Kentrosaurus": {
@@ -642,10 +652,12 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Lystrosaurus.webp",
    "coloriage": "img/dinos/paleoart/Lystrosaurus_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Lystrosaurus_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Lystrosaurus_ennemi.webp",
    "funfact": "img/dinos/paleoart/Lystrosaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Lystrosaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Lystrosaurus_manger.webp",
-   "paris": "img/dinos/paleoart/Lystrosaurus_paris.webp"
+   "paris": "img/dinos/paleoart/Lystrosaurus_paris.webp",
+   "rival": "img/dinos/paleoart/Lystrosaurus_rival.webp"
   }
  },
  "Maiasaura": {
@@ -675,6 +687,7 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Mammuthus.webp",
    "coloriage": "img/dinos/paleoart/Mammuthus_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Mammuthus_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Mammuthus_ennemi.webp",
    "funfact": "img/dinos/paleoart/Mammuthus_funfact.webp",
    "headshot": "img/dinos/paleoart/Mammuthus_headshot.webp",
    "manger": "img/dinos/paleoart/Mammuthus_manger.webp",
@@ -784,7 +797,8 @@ window.DINO_ASSETS = {
    "funfact": "img/dinos/paleoart/Ophthalmosaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Ophthalmosaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Ophthalmosaurus_manger.webp",
-   "paris": "img/dinos/paleoart/Ophthalmosaurus_paris.webp"
+   "paris": "img/dinos/paleoart/Ophthalmosaurus_paris.webp",
+   "proie": "img/dinos/paleoart/Ophthalmosaurus_proie.webp"
   }
  },
  "Oviraptor": {
@@ -819,7 +833,8 @@ window.DINO_ASSETS = {
    "funfact": "img/dinos/paleoart/Pachycephalosaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Pachycephalosaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Pachycephalosaurus_manger.webp",
-   "paris": "img/dinos/paleoart/Pachycephalosaurus_paris.webp"
+   "paris": "img/dinos/paleoart/Pachycephalosaurus_paris.webp",
+   "rival": "img/dinos/paleoart/Pachycephalosaurus_rival.webp"
   }
  },
  "Paraceratherium": {
@@ -836,7 +851,8 @@ window.DINO_ASSETS = {
    "funfact": "img/dinos/paleoart/Paraceratherium_funfact.webp",
    "headshot": "img/dinos/paleoart/Paraceratherium_headshot.webp",
    "manger": "img/dinos/paleoart/Paraceratherium_manger.webp",
-   "paris": "img/dinos/paleoart/Paraceratherium_paris.webp"
+   "paris": "img/dinos/paleoart/Paraceratherium_paris.webp",
+   "rival": "img/dinos/paleoart/Paraceratherium_rival.webp"
   }
  },
  "Parasaurolophus": {
@@ -867,6 +883,7 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Patagotitan.webp",
    "coloriage": "img/dinos/paleoart/Patagotitan_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Patagotitan_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Patagotitan_ennemi.webp",
    "funfact": "img/dinos/paleoart/Patagotitan_funfact.webp",
    "headshot": "img/dinos/paleoart/Patagotitan_headshot.webp",
    "manger": "img/dinos/paleoart/Patagotitan_manger.webp",
@@ -905,7 +922,8 @@ window.DINO_ASSETS = {
    "funfact": "img/dinos/paleoart/Plateosaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Plateosaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Plateosaurus_manger.webp",
-   "paris": "img/dinos/paleoart/Plateosaurus_paris.webp"
+   "paris": "img/dinos/paleoart/Plateosaurus_paris.webp",
+   "rival": "img/dinos/paleoart/Plateosaurus_rival.webp"
   }
  },
  "Protoceratops": {
@@ -1004,10 +1022,12 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Scutellosaurus.webp",
    "coloriage": "img/dinos/paleoart/Scutellosaurus_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Scutellosaurus_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Scutellosaurus_ennemi.webp",
    "funfact": "img/dinos/paleoart/Scutellosaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Scutellosaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Scutellosaurus_manger.webp",
-   "paris": "img/dinos/paleoart/Scutellosaurus_paris.webp"
+   "paris": "img/dinos/paleoart/Scutellosaurus_paris.webp",
+   "rival": "img/dinos/paleoart/Scutellosaurus_rival.webp"
   }
  },
  "Shonisaurus": {
@@ -1020,6 +1040,7 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Shonisaurus.webp",
    "coloriage": "img/dinos/paleoart/Shonisaurus_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Shonisaurus_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Shonisaurus_ennemi.webp",
    "funfact": "img/dinos/paleoart/Shonisaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Shonisaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Shonisaurus_manger.webp",
@@ -1197,7 +1218,8 @@ window.DINO_ASSETS = {
    "funfact": "img/dinos/paleoart/Tyrannosaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Tyrannosaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Tyrannosaurus_manger.webp",
-   "paris": "img/dinos/paleoart/Tyrannosaurus_paris.webp"
+   "paris": "img/dinos/paleoart/Tyrannosaurus_paris.webp",
+   "proie": "img/dinos/paleoart/Tyrannosaurus_proie.webp"
   }
  },
  "Utahraptor": {

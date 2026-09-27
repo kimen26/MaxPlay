@@ -356,7 +356,8 @@ window.DINO_ASSETS = {
    "funfact": "img/dinos/paleoart/Dilophosaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Dilophosaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Dilophosaurus_manger.webp",
-   "paris": "img/dinos/paleoart/Dilophosaurus_paris.webp"
+   "paris": "img/dinos/paleoart/Dilophosaurus_paris.webp",
+   "proie": "img/dinos/paleoart/Dilophosaurus_proie.webp"
   }
  },
  "Dimetrodon": {
@@ -1054,7 +1055,8 @@ window.DINO_ASSETS = {
    "funfact": "img/dinos/paleoart/Shonisaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Shonisaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Shonisaurus_manger.webp",
-   "paris": "img/dinos/paleoart/Shonisaurus_paris.webp"
+   "paris": "img/dinos/paleoart/Shonisaurus_paris.webp",
+   "proie": "img/dinos/paleoart/Shonisaurus_proie.webp"
   }
  },
  "Smilodon": {
@@ -1215,7 +1217,8 @@ window.DINO_ASSETS = {
    "funfact": "img/dinos/paleoart/Troodon_funfact.webp",
    "headshot": "img/dinos/paleoart/Troodon_headshot.webp",
    "manger": "img/dinos/paleoart/Troodon_manger.webp",
-   "paris": "img/dinos/paleoart/Troodon_paris.webp"
+   "paris": "img/dinos/paleoart/Troodon_paris.webp",
+   "proie": "img/dinos/paleoart/Troodon_proie.webp"
   }
  },
  "Tyrannosaurus": {

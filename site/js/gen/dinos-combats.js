@@ -136,6 +136,13 @@ window.DINO_COMBATS = {
    "meme_espece": true,
    "adversaire": "Dilophosaure",
    "adversaire_latin": "Dilophosaurus wetherilli"
+  },
+  {
+   "file": "Dilophosaurus_proie.webp",
+   "type": "proie",
+   "meme_espece": false,
+   "adversaire": "Scutellosaure",
+   "adversaire_latin": "Scutellosaurus lawleri"
   }
  ],
  "carnotaurus": [
@@ -634,6 +641,13 @@ window.DINO_COMBATS = {
    "meme_espece": false,
    "adversaire": "Daspletosaure",
    "adversaire_latin": "Daspletosaurus torosum"
+  },
+  {
+   "file": "Troodon_proie.webp",
+   "type": "proie",
+   "meme_espece": false,
+   "adversaire": "un petit mammifère multituberculé",
+   "adversaire_latin": "Cimolomys sp."
   }
  ],
  "gallimimus": [
@@ -910,6 +924,13 @@ window.DINO_COMBATS = {
    "meme_espece": true,
    "adversaire": "Shonisaure",
    "adversaire_latin": "Shonisaurus popularis"
+  },
+  {
+   "file": "Shonisaurus_proie.webp",
+   "type": "proie",
+   "meme_espece": false,
+   "adversaire": "nautiloïde du Trias",
+   "adversaire_latin": "Cenoceras sp."
   }
  ],
  "patagotitan": [

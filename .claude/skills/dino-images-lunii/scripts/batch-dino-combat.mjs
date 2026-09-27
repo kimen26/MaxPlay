@@ -11,14 +11,16 @@
 // Sortie brute : site/img/dinos/_new-combats/<Nom>_<type>.png (staging gitignoré). Chaque
 // image est vérifiée avant d'être rangée dans paleoart/ (voir range-combat.py).
 //
-// Usage : node batch-dino-combat.mjs <id> <ennemi|proie|rival> [--fix "<correction>"] [--try <n>] [--preview]
+// Usage : node batch-dino-combat.mjs <id> <ennemi|proie|rival> [--fix "<correction>"] [--try <n>] [--preview] [--grok]
 // Codes de sortie : ceux de gpt-gen-dino.mjs (3 timeout · 4 modération · 5 limite = ARRÊT).
 import { readFileSync, mkdirSync, appendFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { MORPHO, getFields, ficheSignature, cleanPuce, descPhysique, mesuresGlobales, terme } from './dino-morpho.mjs';
 
 const ROOT = 'c:/ProjetsPerso/Claude_Projects/MaxPlay';
-const GEN = ROOT + '/.claude/skills/dino-images-lunii/scripts/gpt-gen-dino.mjs';
+// --grok : plan B (projet Grok « Dinosaures ») pour les scènes où ChatGPT refuse obstinément le cadrage.
+const USE_GROK = process.argv.includes('--grok');
+const GEN = ROOT + '/.claude/skills/dino-images-lunii/scripts/' + (USE_GROK ? 'grok-gen-dino.mjs' : 'gpt-gen-dino.mjs');
 const PROJET = 'https://chatgpt.com/g/g-p-6a2c67ebc22c8191971eecf695ec5fec-dinosaure/project';
 const COMBATS = ROOT + '/studio/dino/content/sources/combats/combats.json';
 const OUTD = ROOT + '/site/img/dinos/_new-combats';
@@ -94,7 +96,7 @@ const out = `${OUTD}/${baseName}_${type}${ESSAI === '1' ? '' : '_v' + ESSAI}.png
 const log = s => appendFileSync(PROGRESS, `${new Date().toISOString()}\t${id}\t${type}\t${ESSAI}\t${s}\n`);
 log('start');
 try {
-  process.stdout.write(execFileSync('node', [GEN, prompt, out, '--url', PROJET],
+  process.stdout.write(execFileSync('node', [GEN, prompt, out, ...(USE_GROK ? ['--new'] : ['--url', PROJET])],
     { encoding: 'utf8', stdio: ['ignore', 'pipe', 'inherit'] }));
   log('ok\t' + out);
 } catch (e) {

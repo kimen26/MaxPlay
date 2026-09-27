@@ -346,6 +346,13 @@ window.DINO_COMBATS = {
    "meme_espece": false,
    "adversaire": "Sarcosaurus",
    "adversaire_latin": "Sarcosaurus woodi"
+  },
+  {
+   "file": "Scelidosaurus_rival.webp",
+   "type": "rival",
+   "meme_espece": false,
+   "adversaire": "Dimorphodon",
+   "adversaire_latin": "Dimorphodon macronyx"
   }
  ],
  "stegosaurus": [
@@ -398,6 +405,13 @@ window.DINO_COMBATS = {
  ],
  "torosaurus": [
   {
+   "file": "Torosaurus_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": false,
+   "adversaire": "T-Rex",
+   "adversaire_latin": "Tyrannosaurus rex"
+  },
+  {
    "file": "Torosaurus_rival.webp",
    "type": "rival",
    "meme_espece": true,
@@ -422,6 +436,13 @@ window.DINO_COMBATS = {
   }
  ],
  "pentaceratops": [
+  {
+   "file": "Pentaceratops_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": false,
+   "adversaire": "Bistahieversor",
+   "adversaire_latin": "Bistahieversor sealeyi"
+  },
   {
    "file": "Pentaceratops_rival.webp",
    "type": "rival",
@@ -480,6 +501,13 @@ window.DINO_COMBATS = {
  ],
  "saurolophus": [
   {
+   "file": "Saurolophus_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": false,
+   "adversaire": "Tarbosaure",
+   "adversaire_latin": "Tarbosaurus bataar"
+  },
+  {
    "file": "Saurolophus_rival.webp",
    "type": "rival",
    "meme_espece": false,
@@ -488,6 +516,13 @@ window.DINO_COMBATS = {
   }
  ],
  "edmontosaurus": [
+  {
+   "file": "Edmontosaurus_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": false,
+   "adversaire": "T-Rex",
+   "adversaire_latin": "Tyrannosaurus rex"
+  },
   {
    "file": "Edmontosaurus_rival.webp",
    "type": "rival",
@@ -590,6 +625,15 @@ window.DINO_COMBATS = {
    "meme_espece": false,
    "adversaire": "un poisson du lac de Jehol",
    "adversaire_latin": "Lycoptera sp."
+  }
+ ],
+ "troodon": [
+  {
+   "file": "Troodon_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": false,
+   "adversaire": "Daspletosaure",
+   "adversaire_latin": "Daspletosaurus torosum"
   }
  ],
  "gallimimus": [
@@ -761,6 +805,13 @@ window.DINO_COMBATS = {
    "meme_espece": true,
    "adversaire": "Gorgonops",
    "adversaire_latin": "Gorgonops sp."
+  },
+  {
+   "file": "Gorgonops_proie.webp",
+   "type": "proie",
+   "meme_espece": false,
+   "adversaire": "Pareiasaure",
+   "adversaire_latin": "Pareiasaurus serridens"
   }
  ],
  "lystrosaurus": [

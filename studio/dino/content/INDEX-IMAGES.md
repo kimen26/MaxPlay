@@ -52,6 +52,12 @@
 - **Régénérer** : `node .claude/skills/dino-images-lunii/scripts/batch-dino-bebe.mjs <ids>` (chat ChatGPT libre, table `BEBE` des signatures ; `--preview` pour voir le prompt) → brut dans `_new-bebes/`, livrable détouré par `studio/dino/content/scripts/images-grok/bebe_detoure.py` (rembg : le color-key trouait la coquille grise). Puis `npm run build`.
 - **Hors table** : mammifères et reptiles marins vivipares (pas d'œuf) — arbitrage PY en attente (TODO `BEBES-VIVIPARES`).
 
+### paleoart/ — scènes de combat (2026-09-26)
+- **Contenu** : `<Nom>_ennemi.webp` (son pire ennemi) + `<Nom>_proie.webp` (sa meilleure proie) ou `<Nom>_rival.webp` (herbivore : rival de son espèce ou 2e prédateur). Plan très large, habitat et proportions vrais, livrées originales, zéro sang. 1448 px de large.
+- **Vérité** : `content/sources/combats/combats.json` (qui affronte qui, même lieu/époque, mesures, livrées — préparé par dino-conseiller). Scènes manquantes = abandonnées après 4 essais refusés : voir `memory/TODO.md` § PALEO-COMBATS.
+- **Consommé par** : galerie de la fiche (`dev-dinos.html`) via le manifeste généré `site/js/gen/dinos-combats.js` (`gen-dinos-combats.mjs`, dans `npm run build`) — seules les scènes rangées y entrent.
+- **Régénérer** : `node .claude/skills/dino-images-lunii/scripts/batch-dino-combat.mjs <id> <ennemi|proie|rival> [--fix "…"] [--try n]` (projet ChatGPT Dinosaure) → brut dans `_new-combats/` → vérification visuelle 8 critères (espèces, rapport de taille mesuré, décor d'époque, chaque animal ≤ 40 % du cadre, livrées, zéro sang/texte, zéro artefact) → `python .claude/skills/dino-images-lunii/scripts/range-combat.py <png> <Nom> <type>` → `npm run build`.
+
 ### grok/ + wiki/ — galeries fiche
 - **Contenu** : grok/ = images IA filtrées (revue agents) · wiki/ = Wikimedia CC (crédits conservés).
 - **Consommé par** : `dinos-images-grok.js` / `dinos-images-local.js` (**générés** par `content/scripts/export/`, ne jamais éditer à la main).

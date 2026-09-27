@@ -129,3 +129,11 @@ l'URL à côté.
 **Correction du jour** : fait remplacé (« on n'a jamais retrouvé sa tête », le repas attribué à « un cousin très
 proche ») dans `minmi.json` + 4 scripts + 4 segments funfact. Restent à régénérer : 8 MP3 (funfact + recap × 4
 langues) et `Minmi_funfact.webp` qui montre encore le ventre ouvert.
+
+## L-D-87 — Des agents parallèles qui écrivent le même fichier : append seulement, et l'état se reconstruit sans lui (2026-09-27)
+
+**Contexte** : scènes de combat, 10 vérificateurs Sonnet en parallèle ajoutent chacun leurs verdicts à `verdicts.jsonl`. L'un a réécrit le fichier en entier avec ses seules lignes : tout l'historique a disparu. Dégât limité parce que l'état utile (image rangée ou non) vivait AUSSI dans `paleoart/`.
+
+**Règle** : un fichier partagé entre agents se dit « APPEND OBLIGATOIRE, jamais réécrit » en toutes lettres dans le brief, avec la commande (`>>`, `appendFileSync`). Et le pilotage ne doit pas dépendre de ce seul fichier : la liste d'attente se déduit de l'état réel (dernière image générée par scène + ce qui est déjà rangé), avec une copie de sauvegarde à chaque passage.
+
+**Et côté prompts** : sous l'eau, « photographié depuis 150 m » ne veut rien dire — le modèle cadre serré. Une consigne caméra propre aux scènes marines (grand volume d'eau, surface et fond visibles). Les proportions entre deux animaux restent le défaut n° 1 de ChatGPT : le petit est presque toujours dessiné trop gros ; la vérification doit MESURER le rapport en pixels, pas l'estimer à l'œil.

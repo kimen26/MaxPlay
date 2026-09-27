@@ -441,6 +441,7 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Edmontosaurus.webp",
    "coloriage": "img/dinos/paleoart/Edmontosaurus_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Edmontosaurus_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Edmontosaurus_ennemi.webp",
    "funfact": "img/dinos/paleoart/Edmontosaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Edmontosaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Edmontosaurus_manger.webp",
@@ -552,7 +553,8 @@ window.DINO_ASSETS = {
    "funfact": "img/dinos/paleoart/Gorgonops_funfact.webp",
    "headshot": "img/dinos/paleoart/Gorgonops_headshot.webp",
    "manger": "img/dinos/paleoart/Gorgonops_manger.webp",
-   "paris": "img/dinos/paleoart/Gorgonops_paris.webp"
+   "paris": "img/dinos/paleoart/Gorgonops_paris.webp",
+   "proie": "img/dinos/paleoart/Gorgonops_proie.webp"
   }
  },
  "Hatzegopteryx": {
@@ -905,6 +907,7 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Pentaceratops.webp",
    "coloriage": "img/dinos/paleoart/Pentaceratops_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Pentaceratops_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Pentaceratops_ennemi.webp",
    "funfact": "img/dinos/paleoart/Pentaceratops_funfact.webp",
    "headshot": "img/dinos/paleoart/Pentaceratops_headshot.webp",
    "manger": "img/dinos/paleoart/Pentaceratops_manger.webp",
@@ -993,6 +996,7 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Saurolophus.webp",
    "coloriage": "img/dinos/paleoart/Saurolophus_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Saurolophus_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Saurolophus_ennemi.webp",
    "funfact": "img/dinos/paleoart/Saurolophus_funfact.webp",
    "headshot": "img/dinos/paleoart/Saurolophus_headshot.webp",
    "manger": "img/dinos/paleoart/Saurolophus_manger.webp",
@@ -1014,7 +1018,8 @@ window.DINO_ASSETS = {
    "funfact": "img/dinos/paleoart/Scelidosaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Scelidosaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Scelidosaurus_manger.webp",
-   "paris": "img/dinos/paleoart/Scelidosaurus_paris.webp"
+   "paris": "img/dinos/paleoart/Scelidosaurus_paris.webp",
+   "rival": "img/dinos/paleoart/Scelidosaurus_rival.webp"
   }
  },
  "Scutellosaurus": {
@@ -1170,6 +1175,7 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Torosaurus.webp",
    "coloriage": "img/dinos/paleoart/Torosaurus_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Torosaurus_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Torosaurus_ennemi.webp",
    "funfact": "img/dinos/paleoart/Torosaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Torosaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Torosaurus_manger.webp",
@@ -1205,6 +1211,7 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Troodon.webp",
    "coloriage": "img/dinos/paleoart/Troodon_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Troodon_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Troodon_ennemi.webp",
    "funfact": "img/dinos/paleoart/Troodon_funfact.webp",
    "headshot": "img/dinos/paleoart/Troodon_headshot.webp",
    "manger": "img/dinos/paleoart/Troodon_manger.webp",

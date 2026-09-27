@@ -69,4 +69,5 @@ Questions Papa Yann (hors DoD) : 8 langues sans fiche audio sélectionnables au 
 
 ## Chantier « process militaire » (demande Papa Yann 2026-09-26)
 
-- [ ] Cible : « je propose un jeu ou un dino, tout s'enchaîne » — handoffs avec DoR/DoD, tests fonctionnels + techniques par défaut, délégation économe, mémoire rationalisée en portes/rules/hooks/skills. Scope JEU + DINO. Workflow d'audit lancé le 2026-09-26 (cartographie 6 angles, 3 architectures jugées, réfutation) → dossier `docs/research/2026-09-26-archi-process-militaire.md`, puis vagues de migration en briefs HO.
+- [ ] **Proposition livrée 2026-09-27** : `docs/research/2026-09-26-archi-process-militaire.md` (diagnostic, principe « portes d'abord », 7 vagues) + `docs/research/2026-09-26-archi-recommandations.md` (23 recos R01-R23 avec statut de vérification, gabarit de brief DoR/DoD). Attend : les 10 arbitrages de la vague 0 (§ 8 du dossier) et le GO vague 1 (½ journée, ne dépend des arbitrages que pour le zoom).
+- [ ] Après GO : un brief HO par vague, exécuté par sous-agents Sonnet, le main vérifie (portes rejouées, `git diff`, captures ouvertes).

@@ -53,3 +53,9 @@ Comment appliquer : avant de changer un format de fichier, grep les regex d'exte
 ## L-011 — Un fichier stocké en CRLF dans git ressort réécrit en entier au `git add` (2026-09-25)
 Quoi : `site/css/mur.css` est stocké en CRLF dans le dépôt, alors que `core.autocrlf` normalise en LF à l'indexation. Ajouter une seule ligne affichait 679 lignes modifiées : un `git add` normal aurait committé une réécriture complète du fichier, illisible en revue et source de conflits avec les sessions parallèles.
 Comment appliquer : si `git diff --stat` annonce bien plus de lignes que l'édition, comparer avec `git diff -w --ignore-cr-at-eol --stat`. Si l'écart vient des fins de ligne, indexer le fichier octet pour octet : `git update-index --cacheinfo 100644,$(git hash-object -w --no-filters <f>),<f>`.
+
+## L-012 — Un workflow de 51 agents a percuté le plafond de dépense dans sa phase la plus nombreuse (2026-09-26)
+Quoi : l'audit « process militaire » (6 lecteurs, 3 architectes, 3 juges, 1 synthèse, puis 2 réfuteurs par recommandation) a consommé 2,9 M tokens de sous-agents. Les 38 réfuteurs, lancés en dernier et tous à la fois, ont échoué sur le plafond mensuel : la synthèse était sauvée, la réfutation perdue. Le main l'a remplacée par une vérification sur disque (quelques greps par recommandation), moins chère et plus sûre pour des faits vérifiables.
+Comment appliquer : compter les agents par phase avant de lancer un workflow, pas seulement le total ; plafonner la phase la plus nombreuse (1 vérificateur par item, ou vérification sur disque par le main) ; un fait qui se vérifie par script ne se vérifie pas par un panel de LLM.
+Rule : règle de délégation, `docs/research/2026-09-26-archi-process-militaire.md` § 6.
+

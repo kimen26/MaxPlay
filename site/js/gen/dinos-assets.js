@@ -458,10 +458,12 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Elasmosaurus.webp",
    "coloriage": "img/dinos/paleoart/Elasmosaurus_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Elasmosaurus_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Elasmosaurus_ennemi.webp",
    "funfact": "img/dinos/paleoart/Elasmosaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Elasmosaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Elasmosaurus_manger.webp",
-   "paris": "img/dinos/paleoart/Elasmosaurus_paris.webp"
+   "paris": "img/dinos/paleoart/Elasmosaurus_paris.webp",
+   "proie": "img/dinos/paleoart/Elasmosaurus_proie.webp"
   }
  },
  "Euoplocephalus": {
@@ -674,7 +676,8 @@ window.DINO_ASSETS = {
    "funfact": "img/dinos/paleoart/Maiasaura_funfact.webp",
    "headshot": "img/dinos/paleoart/Maiasaura_headshot.webp",
    "manger": "img/dinos/paleoart/Maiasaura_manger.webp",
-   "paris": "img/dinos/paleoart/Maiasaura_paris.webp"
+   "paris": "img/dinos/paleoart/Maiasaura_paris.webp",
+   "rival": "img/dinos/paleoart/Maiasaura_rival.webp"
   }
  },
  "Mammuthus": {
@@ -705,6 +708,7 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Megatherium.webp",
    "coloriage": "img/dinos/paleoart/Megatherium_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Megatherium_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Megatherium_ennemi.webp",
    "funfact": "img/dinos/paleoart/Megatherium_funfact.webp",
    "headshot": "img/dinos/paleoart/Megatherium_headshot.webp",
    "manger": "img/dinos/paleoart/Megatherium_manger.webp",
@@ -992,7 +996,8 @@ window.DINO_ASSETS = {
    "funfact": "img/dinos/paleoart/Saurolophus_funfact.webp",
    "headshot": "img/dinos/paleoart/Saurolophus_headshot.webp",
    "manger": "img/dinos/paleoart/Saurolophus_manger.webp",
-   "paris": "img/dinos/paleoart/Saurolophus_paris.webp"
+   "paris": "img/dinos/paleoart/Saurolophus_paris.webp",
+   "rival": "img/dinos/paleoart/Saurolophus_rival.webp"
   }
  },
  "Scelidosaurus": {
@@ -1075,6 +1080,7 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Spinosaurus.webp",
    "coloriage": "img/dinos/paleoart/Spinosaurus_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Spinosaurus_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Spinosaurus_ennemi.webp",
    "funfact": "img/dinos/paleoart/Spinosaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Spinosaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Spinosaurus_manger.webp",
@@ -1096,7 +1102,8 @@ window.DINO_ASSETS = {
    "funfact": "img/dinos/paleoart/Stegosaurus_funfact.webp",
    "headshot": "img/dinos/paleoart/Stegosaurus_headshot.webp",
    "manger": "img/dinos/paleoart/Stegosaurus_manger.webp",
-   "paris": "img/dinos/paleoart/Stegosaurus_paris.webp"
+   "paris": "img/dinos/paleoart/Stegosaurus_paris.webp",
+   "rival": "img/dinos/paleoart/Stegosaurus_rival.webp"
   }
  },
  "Tarbosaurus": {

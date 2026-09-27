@@ -19,6 +19,13 @@ window.DINO_COMBATS = {
  ],
  "spinosaurus": [
   {
+   "file": "Spinosaurus_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": false,
+   "adversaire": "Carcharodontosaure",
+   "adversaire_latin": "Carcharodontosaurus saharicus"
+  },
+  {
    "file": "Spinosaurus_proie.webp",
    "type": "proie",
    "meme_espece": false,
@@ -348,6 +355,13 @@ window.DINO_COMBATS = {
    "meme_espece": false,
    "adversaire": "Allosaure",
    "adversaire_latin": "Allosaurus fragilis"
+  },
+  {
+   "file": "Stegosaurus_rival.webp",
+   "type": "rival",
+   "meme_espece": false,
+   "adversaire": "Torvosaure",
+   "adversaire_latin": "Torvosaurus tanneri"
   }
  ],
  "kentrosaurus": [
@@ -455,6 +469,22 @@ window.DINO_COMBATS = {
    "meme_espece": false,
    "adversaire": "Daspletosaure",
    "adversaire_latin": "Daspletosaurus torosum"
+  },
+  {
+   "file": "Maiasaura_rival.webp",
+   "type": "rival",
+   "meme_espece": false,
+   "adversaire": "Troodon",
+   "adversaire_latin": "Troodon formosus"
+  }
+ ],
+ "saurolophus": [
+  {
+   "file": "Saurolophus_rival.webp",
+   "type": "rival",
+   "meme_espece": false,
+   "adversaire": "Alioramus",
+   "adversaire_latin": "Alioramus remotus"
   }
  ],
  "edmontosaurus": [
@@ -765,6 +795,22 @@ window.DINO_COMBATS = {
    "adversaire_latin": "Moschops capensis"
   }
  ],
+ "elasmosaurus": [
+  {
+   "file": "Elasmosaurus_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": false,
+   "adversaire": "Mosasaure",
+   "adversaire_latin": "Mosasaurus sp."
+  },
+  {
+   "file": "Elasmosaurus_proie.webp",
+   "type": "proie",
+   "meme_espece": false,
+   "adversaire": "banc d'Enchodus",
+   "adversaire_latin": "Enchodus petrosus"
+  }
+ ],
  "ophthalmosaurus": [
   {
    "file": "Ophthalmosaurus_ennemi.webp",
@@ -889,6 +935,13 @@ window.DINO_COMBATS = {
   }
  ],
  "megatherium": [
+  {
+   "file": "Megatherium_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": false,
+   "adversaire": "Smilodon populator",
+   "adversaire_latin": "Smilodon populator"
+  },
   {
    "file": "Megatherium_rival.webp",
    "type": "rival",

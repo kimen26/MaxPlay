@@ -53,6 +53,8 @@ function portraitEncyclo(adId) {
 const sujet = portraitEncyclo(id);
 const adv = scene.adversaire_id && scene.adversaire_id !== id ? portraitEncyclo(scene.adversaire_id) : null;
 const memeEspece = scene.adversaire_id === id;
+// Scène sous-marine : « 150 m de distance » n'a pas de sens sous l'eau, le modèle y cadrait serré.
+const marin = sujet.d.famille === 'enaliosaures' || /pleine mer|sous l'eau|océan|mer épicontinentale/i.test(entree.habitat + ' ' + scene.action);
 
 const blocSujet = [...sujet.lignes, `LIVRÉE de cet individu : ${entree.livree.replace(/[.\s]+$/, "")}.`].map(x => '- ' + x).join('\n');
 const blocAdv = memeEspece
@@ -74,7 +76,7 @@ const prompt = [
   `CONTEXTE : illustration pour une encyclopédie de dinosaures et d'animaux préhistoriques destinée à un enfant de 4 ans. Tout doit être scientifiquement juste.
 RÔLE : illustrateur de paléoart documentaire réaliste, rigoureux sur l'anatomie et les proportions.`,
   `OBJECTIF : ${objectif} On montre l'instant de tension du combat, plein d'énergie : les deux animaux sont intacts, leur peau, leurs plumes ou leur fourrure restent propres.`,
-  `CAMÉRA (règle n° 1, prioritaire sur tout le reste) : très grand plan d'ensemble, photographié depuis 150 à 300 mètres de distance, format paysage. Les animaux paraissent PETITS dans l'immensité du paysage : CHACUN occupe au plus un tiers de la largeur de l'image (et au plus un tiers de sa hauteur s'il est plus haut que long), entièrement visible, avec une large marge de décor tout autour. Le décor (ciel, relief, végétation, eau) remplit la majeure partie de l'image.`,
+  (marin ? `CAMÉRA (règle n° 1, prioritaire sur tout le reste) : vue documentaire très large dans une eau claire et lumineuse, format paysage, comme filmée de loin par un plongeur. Les animaux paraissent PETITS au milieu d'un immense volume d'eau bleue : CHACUN occupe au plus un tiers de la largeur de l'image, entièrement visible du museau au bout de la queue, avec beaucoup d'eau libre tout autour ; la surface ondulée et le fond marin (sable, rochers, algues) sont visibles et donnent l'échelle.` : `CAMÉRA (règle n° 1, prioritaire sur tout le reste) : très grand plan d'ensemble, photographié depuis 150 à 300 mètres de distance, format paysage. Les animaux paraissent PETITS dans l'immensité du paysage : CHACUN occupe au plus un tiers de la largeur de l'image (et au plus un tiers de sa hauteur s'il est plus haut que long), entièrement visible, avec une large marge de décor tout autour. Le décor (ciel, relief, végétation, eau) remplit la majeure partie de l'image.`),
   `ANIMAL 1 — ${sujet.d.name.toUpperCase()} :\n${blocSujet}`,
   `ANIMAL 2 — ${(memeEspece ? sujet.d.name : scene.adversaire).toUpperCase()} :\n${blocAdv}`,
   `PROPORTIONS ENTRE LES DEUX (capital, à respecter exactement) : ${scene.rapport_taille} Les deux animaux se tiennent sur la même ligne de sol, à la même distance de l'objectif, pour que ce rapport de taille se lise juste : chacun est dessiné à sa taille réelle, le petit reste petit et le grand reste grand.`,

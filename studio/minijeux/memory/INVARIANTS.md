@@ -32,8 +32,8 @@
 
 | Métrique | Valeur | Source |
 |----------|--------|--------|
-| Résolution | 1024×768 landscape | `docs/STANDARD-MJ.md` |
-| Zone tap minimum | 80×80 px | `docs/STANDARD-MJ.md` |
+| Largeur de conception | **360 px** (P30 Pro) · ne casse pas à 320 px · format large au-dessus de 640 px | D-014 (Papa Yann, 2026-09-28), remplace « 1024×768 landscape » |
+| Zone tap minimum | 80×80 px pour une cible de jeu de l’enfant · 48×48 px pour tout autre bouton | `docs/STANDARD-MJ.md`, D-015 |
 | Feedback maximum | < 200 ms | `docs/STANDARD-MJ.md` |
 | Durée session cible | 3-8 min | `docs/STANDARD-MJ.md` |
 | Pénalité | **Zéro** (jamais) | `docs/STANDARD-MJ.md` |

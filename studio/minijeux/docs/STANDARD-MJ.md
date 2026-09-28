@@ -89,7 +89,7 @@ La bille de la question courante est neutre (grise) tant qu'elle n'est pas répo
 - **ZÉRO score chiffré visible** (règle < 6 ans — `.scorebar` masquée par `style.css`).
 - **PAS d'étoile ni d'overlay par bonne réponse** — son discret (`sndDing`) + bille colorée, c'est tout.
 - **Zéro pénalité** : `QcmRetry` laisse réessayer, révèle la bonne réponse après 3 erreurs sans punir.
-- **Zones tap ≥ 80px** (`var(--min-tap-size)`).
+- **Zones tap ≥ 80px** (`var(--min-tap-size)`) pour les cibles de jeu ; **48 px minimum** pour tout autre bouton (D-015).
 - **100 % local** : aucun CDN de librairie JS (offline-ready pour la PWA). Seule la font Google est tolérée (dégrade gracieusement).
 - **Font Nunito + `css/style.css`** partagé.
 - **Bus** : toujours `busSVG(color,textColor,num,width)` — JAMAIS d'emoji 🚌 ni de div CSS.

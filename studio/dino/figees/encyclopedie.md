@@ -28,7 +28,7 @@ Fichiers concernés : [`site/dev-dinos.html`](../../../site/dev-dinos.html) · [
 
 ## 🔒 ZÉRO BUS dans les RÉCITS narrés (FIGÉ)
 
-- ❌ 🔒 **Aucune comparaison-bus dans les 8 récits d'époque** ni dans une `desc`/`fait` de dino racontée.
+- ❌ 🔒 **Aucune comparaison-bus dans les récits d'époque** ni dans une `desc`/`fait` de dino racontée.
 - ✅ **Exception légitime** : les comparaisons d'ÉCHELLE de taille des fiches (`_compLong`/`_compHaut` : « aussi long qu'un bus RATP », « ailes larges comme un bus ») — VALIDÉES par Papa Yann, c'est l'échelle honnête. Le bus est interdit en NARRATION, autorisé en ÉCHELLE.
 
 > Régression 2026-06-03 : `desc` Mosasaure « énorme comme un bus géant » → corrigée en « aussi long que deux voitures ».

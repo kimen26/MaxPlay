@@ -59,3 +59,7 @@ Quoi : l'audit « process militaire » (6 lecteurs, 3 architectes, 3 juges, 1 sy
 Comment appliquer : compter les agents par phase avant de lancer un workflow, pas seulement le total ; plafonner la phase la plus nombreuse (1 vérificateur par item, ou vérification sur disque par le main) ; un fait qui se vérifie par script ne se vérifie pas par un panel de LLM.
 Rule : règle de délégation, `docs/research/2026-09-26-archi-process-militaire.md` § 6.
 
+## L-013 — Dix questions techniques d'un coup : Papa Yann ne peut pas trancher, et le travail s'arrête (2026-09-28)
+Quoi : le dossier « process militaire » finissait sur dix arbitrages numérotés (zoom, cibles tactiles, silence de tête, langues, défigeages…). Réponse : « j'ai du mal avec toutes tes questions, je ne comprends pas ou j'en ai aucune idée ». Une seule relevait vraiment de lui, la largeur d'écran ; les neuf autres découlaient de règles déjà posées. La mémoire « 1 proposition concrète + question fermée » existait déjà et n'a pas suffi.
+Comment appliquer : avant d'envoyer une question, vérifier qu'il peut y répondre sans ouvrir un fichier ni connaître le jargon. Sinon, trancher avec un défaut écrit, réversible, gravé dans DECISIONS, et l'annoncer en une phrase. Une ou deux questions au plus, sur ce qu'il voit, entend ou veut.
+Rule : `~/.claude/rules/interaction-style.md` § Questions de produit.

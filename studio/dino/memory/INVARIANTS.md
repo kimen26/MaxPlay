@@ -30,7 +30,7 @@
 | Audio Fiches dino i18n (4 blocs + recap) | **13 × 3** | `site/audio/dinos/{en,es-es,pt-br}/<id>-*.mp3` — les 13 théropodes (✅ 2026-09-05, HO-014, pipeline STS DEC-AUDIO-I18N-002). Les 58 autres = TTS navigateur en attendant (manifest gate le bouton). |
 | Scripts audio par langue | **71 × 4** | `content/scripts-audio/{fr/V3,en,es-es,pt-br}/<id>.md` (✅ 2026-09-05, portés 0 KO) |
 | Noms vocaux dino (assets bonus) | **60** | `site/audio/dinos/noms/{id}.mp3` (✅ 2026-07-06 : 60 MP3 narrateur_h [excited] jeu, lancés dans mj-24/28/31/33) |
-| Langues i18n cibles (audio dino) | **9** | ✅ 2026-07-10 : FR (canon) · EN · PT-BR · ES · IT · AR · RU · ZH · JA **FIGÉE**. Archi déployée (pack préfixe langue, overlay strings, manifest anti-404, studio i18n/ centralisé). Tests ✅ 12 specs Playwright (mj-15/24/25/26/27/28/29/30/32/33/41, mj-31 TOUS). Invariant DEC-I18N-INVARIANT-001 : toute langue = lexique AVANT audio, jamais régresser. |
+| Langues servies (audio dino) | **2** | français et anglais servis, D-013 (2026-09-13). Espagnol et portugais produits (13 fiches, interface) mais non servis ; 8 autres langues n'ont que les noms courts. Remplace la cible « 9 langues FIGÉE » du 2026-07-10. Rien n'est supprimé du disque. |
 
 ## 11 familles (nom scientifique = titre)
 

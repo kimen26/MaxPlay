@@ -102,3 +102,23 @@ Rouvrir une langue = remettre son code à trois endroits (`site/js/lang.js`, `si
 Pourquoi : une langue à moitié vide se lit comme un bug, pas comme un chantier en cours. Un enfant qui choisissait l'allemand entendait les noms de dinosaures et plus rien d'autre.
 
 _Réaffirmé 2026-09-20 (audit « inutile ») : les 111 Mo d'audio/bundles des langues retirées restent dans le repo, Papa Yann prévoit de les rouvrir plus tard. Ne pas les proposer au nettoyage._
+
+### D-014 — On dessine pour 360 px, l'écran du P30 Pro (2026-09-28)
+
+Papa Yann : « la taille minimale d'écran avant de passer à un autre format de responsive design, c'est 360, pour le P30 Pro ». Toute page se conçoit et se recette à 360 px de large, ne casse pas à 320 px, et passe au format large au-dessus de 640 px. Abroge « Résolution 1024×768 landscape » des INVARIANTS jeu, héritée de l'époque Phaser.
+
+Pourquoi : c'est l'écran réel sur lequel l'application est utilisée. La règle globale `~/.claude/rules/mobile-parents.md` le disait déjà ; le pôle JEU ne l'avait jamais repris, et ses tests tournent encore à 480×900 (R06 du dossier process militaire les passera à 360 puis 320).
+
+### D-015 — Les arbitrages techniques du dossier process militaire, tranchés par Claude (2026-09-28)
+
+Le dossier `docs/research/2026-09-26-archi-process-militaire.md` posait dix questions. Papa Yann : « je ne comprends pas ou j'en ai aucune idée ». Ce ne sont pas des choix de produit : ils découlent de règles déjà posées. Claude les tranche, et chacun se défait en un commit.
+
+- **Zoom** : les pages de l'enfant (jeux, encyclopédie, armoire, lecture) gardent le zoom bloqué, parce qu'un pincement involontaire à 4 ans casse la partie et que leurs textes sont déjà grands. C'est l'assouplissement écrit que `mobile-parents.md` exige. Les pages d'adulte (compte parent, vie privée, espace auteur) redeviennent zoomables, comme l'accueil et le suivi.
+- **Cibles tactiles** : 80 px pour une cible de jeu de l'enfant (norme STANDARD-MJ), 48 px minimum pour tout autre bouton. Le « 60 px » de la rule mini-jeux disparaît.
+- **Silence de tête** : 250 ms partout, fiches comprises, comme demandé le 2026-09-05 (commit `3ee9f353`). La décision dino « ~80 ms voulu » du 2026-09-04 est marquée abrogée.
+- **Récits du Voyage** : la figée et la rule dino ne recopient plus de nombre (doctrine GED, zéro chiffre en dur) ; le disque fait foi.
+- **Langues** : les INVARIANTS dino suivent D-013 (français et anglais servis).
+- **Jeu neuf avant le test de Papa Yann** : sa figée est marquée 🟡 PROVISOIRE et ne porte aucune ligne 🔒 qu'il n'a pas vue.
+- **Reportés à leur vague, sans question** : la zone du Mur pour un jeu sans dino (quand un tel jeu sera demandé), le pointeur des chiffres dino vers l'état généré (vague 5), la source unique des silhouettes (vague 5).
+
+Règle qui en découle : ne poser à Papa Yann que des questions de produit, en mots simples, une ou deux à la fois ; le technique se tranche avec un défaut écrit et réversible (L-013).

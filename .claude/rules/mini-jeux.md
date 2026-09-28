@@ -45,7 +45,7 @@ Vert → push autorisé. Rouge → corriger d'abord. Règle 2-strikes : 2e fix s
 
 ## Anti-patterns
 
-❌ Emoji bus/hex en dur · ❌ `fetch()` local · ❌ chrono stressant/"perdu" · ❌ tap < 60px · ❌ session > 10 min · ❌ texte silencieux sans son.
+❌ Emoji bus/hex en dur · ❌ `fetch()` local · ❌ chrono stressant/"perdu" · ❌ cible de jeu < 80 px · ❌ bouton < 48 px · ❌ session > 10 min · ❌ texte silencieux sans son.
 
 ## Cross-références
 

@@ -1,7 +1,7 @@
 # Process militaire JEU + DINO — diagnostic et plan
 
 > **Demande de Papa Yann (2026-09-26)** : « quand je propose un jeu ou un dinosaure, tout doit être clair et automatique : images, textes, scripts, audio, tests… plus de faute, plus de pas vu pas pensé ». Périmètre : les mini-jeux, l'encyclopédie dino et tout ce qui les nourrit (visuel, audio, pédagogie, gameplay, narration, interaction).
-> **Statut** : proposition, en attente des arbitrages de la vague 0. Rien de structurel n'a été changé. Trois défauts de contenu visibles par Max ont été corrigés en route (T-Rex, Minmi, Scélidosaure).
+> **Statut** : proposition. **Vague 0 tranchée le 2026-09-28** : D-014 (360 px, réponse de Papa Yann) et D-015 (le reste, tranché par Claude, réversible) dans `memory/DECISIONS.md`. La liste de questions du § 8 est gardée pour l'historique ; elle était trop technique (L-013). Rien de structurel n'a été changé. Trois défauts de contenu visibles par Max ont été corrigés en route (T-Rex, Minmi, Scélidosaure).
 > **Détail** des 23 recommandations (fichiers, preuves, ce qu'elles suppriment, statut de vérification) et gabarit de brief DoR/DoD : [`2026-09-26-archi-recommandations.md`](2026-09-26-archi-recommandations.md).
 
 ## En bref

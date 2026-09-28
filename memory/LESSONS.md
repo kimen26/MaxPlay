@@ -63,3 +63,8 @@ Rule : règle de délégation, `docs/research/2026-09-26-archi-process-militaire
 Quoi : le dossier « process militaire » finissait sur dix arbitrages numérotés (zoom, cibles tactiles, silence de tête, langues, défigeages…). Réponse : « j'ai du mal avec toutes tes questions, je ne comprends pas ou j'en ai aucune idée ». Une seule relevait vraiment de lui, la largeur d'écran ; les neuf autres découlaient de règles déjà posées. La mémoire « 1 proposition concrète + question fermée » existait déjà et n'a pas suffi.
 Comment appliquer : avant d'envoyer une question, vérifier qu'il peut y répondre sans ouvrir un fichier ni connaître le jargon. Sinon, trancher avec un défaut écrit, réversible, gravé dans DECISIONS, et l'annoncer en une phrase. Une ou deux questions au plus, sur ce qu'il voit, entend ou veut.
 Rule : `~/.claude/rules/interaction-style.md` § Questions de produit.
+
+## L-014 — Une garde PreToolUse juge la commande avant qu'elle tourne (2026-09-28)
+Quoi : premier push après la vague 1, `git commit … && git push` dans une seule commande. La garde `git push` a comparé GREEN.json au HEAD d'avant le commit (vert) et a laissé partir un commit jamais contrôlé. Sans dégât (commit de notes seules), mais le trou était réel.
+Comment appliquer : une garde qui dépend de l'état que la commande va modifier ne peut pas juger une commande chaînée. Refuser le chaînage (commit, puis `npm run gate`, puis push seul).
+Hook : `.claude/hooks/pre-tool.ps1` (push + commit/merge/rebase dans la même commande = exit 2), test « commit et push enchaines » dans `hooks/tests/run.ps1`.

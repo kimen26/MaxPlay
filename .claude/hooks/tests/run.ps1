@@ -216,6 +216,10 @@ $results += Test-Case -Name 'pre-tool: push site/ modifie sans GREEN -> bloque' 
 $p14 = '{"tool_name":"Bash","tool_input":{"command":"git push origin master"}}'
 $results += Test-Case -Name 'pre-tool: push docs seulement -> passe' -Script (Join-Path $hooksDir 'pre-tool.ps1') -PayloadJson $p14 -ExpectedExit 0 -EnvVars @{ MAXPLAY_HOOK_ROOT = $scratchRepo }
 
+# --- Payload 14b : commit et push dans la meme commande -> BLOQUE (le hook voit le HEAD d'avant le commit) ---
+$p14b = '{"tool_name":"Bash","tool_input":{"command":"git commit -m x && git push"}}'
+$results += Test-Case -Name 'pre-tool: commit et push enchaines -> bloque' -Script (Join-Path $hooksDir 'pre-tool.ps1') -PayloadJson $p14b -ExpectedExit 2 -ExpectPattern 'gate' -EnvVars @{ MAXPLAY_HOOK_ROOT = $scratchRepo }
+
 # --- Payload 15 (R08) : push, site/ modifie, GREEN.json present avec le bon sha HEAD -> passe ---
 $greenPath = Join-Path $scratchRepoSite 'studio\minijeux\tests\.artifacts\GREEN.json'
 Push-Location $scratchRepoSite

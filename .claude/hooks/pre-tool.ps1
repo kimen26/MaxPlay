@@ -303,6 +303,12 @@ c'est l'orchestrateur qui commite.
         }
     }
 
+    # Le hook juge la commande AVANT qu'elle tourne : dans `git commit ... && git push`, il verrait
+    # le HEAD d'avant le commit (vert) et laisserait partir un commit jamais controle (2026-09-28).
+    if ($cmd -match 'git\s+push\b' -and $cmd -match 'git\s+(commit|merge|rebase|cherry-pick|am)\b') {
+        [Console]::Error.WriteLine('Push refusé : commit et push dans la même commande. Commite, lance `npm run gate`, puis pousse seul.')
+        exit 2
+    }
     if ($cmd -match 'git\s+push\b') {
         if (Test-SitePushNeedsGate -root $ROOT) {
             [Console]::Error.WriteLine('Mise en ligne bloquée : des fichiers de site/ partent sans contrôle vert. Lance `npm run gate`, puis repousse.')

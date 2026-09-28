@@ -12,6 +12,24 @@
   if (!('serviceWorker' in navigator)) return;
   if (location.protocol === 'file:') return;
 
+  // Mise à jour du site : la coquille est servie cache-first, donc la visite qui
+  // découvre une nouvelle version affiche encore l'ancienne (incident 2026-09-28 :
+  // l'armoire v6 réapparue chez Papa Yann après la bascule en v8). Quand le
+  // nouveau service worker prend la main (skipWaiting + clients.claim), on
+  // recharge UNE fois pour montrer la nouvelle coquille entière, jamais un
+  // mélange ancien/nouveau. Pas de rechargement à la toute première
+  // installation (aucun contrôleur avant : la page est déjà à jour). Jamais
+  // dans un mini-jeu : recharger couperait une partie en cours ; le jeu sera
+  // à jour à la prochaine ouverture.
+  const isGame = /\/mj-[^/]*\.html$/.test(location.pathname);
+  const hadController = !!navigator.serviceWorker.controller && !isGame;
+  let reloaded = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!hadController || reloaded) return;
+    reloaded = true;
+    location.reload();
+  });
+
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js').catch((err) => {
       console.warn('MaxPlay : service worker non enregistré —', err);

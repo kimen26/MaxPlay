@@ -127,6 +127,10 @@ const PRECACHE_LIST = [
   'img/armoire/v8/porte-bas.webp',
   'img/armoire/v8/porte-ouverte-haut.webp',
   'img/armoire/v8/porte-ouverte-bas.webp',
+  // Patch de plafond (retour PY passe 3, HO-MJ-23) : recouvre les 2 douilles
+  // peintes dans shell.webp, decoupe dans shell.webp lui-meme (L-145),
+  // toujours dans le DOM des le premier rendu comme le reste du kit.
+  'img/armoire/patch-plafond.webp',
   // Globe animé (HO-MJ-16) : 11 frames 256 px, un seul tour au tap sur la
   // case « Monde ». Précachées pour que le tour soit fluide dès le 1er tap,
   // hors ligne comprise.

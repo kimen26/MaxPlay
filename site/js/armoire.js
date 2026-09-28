@@ -50,7 +50,32 @@
     });
   }
 
-  var SPOTS = [{ x: 31.0, y: 10.5 }, { x: 63.5, y: 10.5 }];
+  // ── Teinte de fond par case, selon l'objet (retour PY 2026-09-28) : UNE
+  // seule constante, en "r g b" (jamais un hex éparpillé dans le CSS), lue
+  // par --tinte-rgb dans armoire.css. Couleur dominante de chaque sprite —
+  // la météorite (Surprise) n'en a pas : son fond est un ciel nocturne
+  // complet, géré par le sélecteur [data-obj="obj-meteorite"] en CSS.
+  var OBJ_TINTE = {
+    'obj-bus':            '242 194 48',  // jaune bus
+    'obj-lettres':        '224 72 60',   // rouge (cube A)
+    'obj-chiffres':       '63 143 209',  // bleu (le "3")
+    'obj-drapeaux':       '58 110 165',  // bleu drapeaux
+    'obj-volcan':         '226 98 43',   // orange/rouge lave
+    'obj-peluche-tri':    '79 158 79',   // vert Tritri
+    'obj-peluche-stego':  '217 122 60',  // orange plaques stégo
+    'obj-reveil':         '124 194 74',  // vert réveil
+    'obj-radio':          '226 112 74',  // corail radio
+    'obj-puzzle':         '63 127 199',  // bleu plateau puzzle
+    'obj-livre-ouvert':   '201 145 90',  // brun livre
+    'obj-livres-dinos':   '74 143 74',   // vert couverture
+    'obj-globe':          '47 127 199',  // bleu monde
+    'obj-oeuf':           '169 161 90'   // crème/vert œuf
+  };
+  function applyObjMeta(btn, objName) {
+    btn.dataset.obj = objName;
+    var t = OBJ_TINTE[objName];
+    if (t) btn.style.setProperty('--tinte-rgb', t);
+  }
 
   // ── Le globe tourne au tap : 11 frames (256 px, ~150 Ko), UN SEUL tour,
   // jamais en boucle. Servies par le service worker (précache, HO-MJ-16) :
@@ -191,6 +216,55 @@
     return b;
   }
 
+  // ── Cloisons entre les cases d'une même rangée (retour PY 2026-09-28,
+  // réf. image « Dino & Bus ») : la niche centrale a déjà deux montants du
+  // kit entre Dinos/Monde/Œufs (montant-1/2, toujours visibles). On rejoue
+  // EXACTEMENT le même bois — jamais une cloison CSS inventée (L-145) — sur
+  // les 4 autres rangées, aligné sur les mêmes centres x pour que les
+  // cloisons courent d'un seul tenant du haut en bas du meuble. Cachées
+  // avec leur zone comme les cases (setCasesVisible), jamais un montant du
+  // meuble lui-même : ce sont des <img> posées par armoire.js, pas par
+  // ArmoireMeuble.
+  function buildCloisons(root, kit, ROWS) {
+    var m1 = kit.pieces['montant-1'].box, m2 = kit.pieces['montant-2'].box;
+    var cx1 = m1.x + m1.w / 2, cx2 = m2.x + m2.w / 2;
+    var v = kit.version;
+    var overlap = 1.0; // recouvre la planche voisine, comme montant-1/2 (kit)
+    [0, 1, 3, 4].forEach(function (i) {
+      var row = ROWS[i];
+      [[cx1, 'montant-1'], [cx2, 'montant-2']].forEach(function (pair) {
+        var im = document.createElement('img');
+        im.className = 'cloison';
+        im.src = IMG + 'v8/' + pair[1] + '.webp?v=' + v;
+        im.alt = ''; im.draggable = false;
+        im.dataset.zone = row.zone;
+        place(im, pair[0], row.cy, m1.w, row.ch + overlap * 2);
+        root.appendChild(im);
+      });
+    });
+  }
+
+  // ── Recouvre les 2 douilles peintes dans shell.webp (retour PY passe 3,
+  // 2026-09-28) : positions mesurées (32.38 %/66.99 %, y 11.19 %), taille =
+  // exactement la boîte source du patch (12 % × 8 %, pas d'étirement) pour
+  // que le grain colle. Pas de bordure nette : un masque radial fait
+  // disparaître le raccord dans le bois environnant.
+  var PATCH_PLAFOND = [
+    { x: 32.38, y: 11.19 }, { x: 66.99, y: 11.19 }
+  ];
+  var PATCH_W = 12, PATCH_H = 8;
+  function buildPatchesPlafond(root) {
+    PATCH_PLAFOND.forEach(function (p) {
+      var im = document.createElement('img');
+      im.className = 'patch-plafond';
+      im.src = IMG + 'patch-plafond.webp';
+      im.alt = ''; im.draggable = false;
+      im.setAttribute('aria-hidden', 'true');
+      place(im, p.x, p.y, PATCH_W, PATCH_H);
+      root.appendChild(im);
+    });
+  }
+
   // ── Décor : le MEUBLE vient du kit (ArmoireMeuble), les CASES de jeu
   // sont posées par-dessus, calées sur ses planches. ─────────────────────
   function buildDecor(root, slots) {
@@ -204,15 +278,26 @@
     //    posés fermés (ArmoireMeuble.build ferme les deux zones lui-même).
     global.ArmoireMeuble.build(root);
 
-    // 2. le halo des deux spots (dégradé CSS, pas d'image)
-    SPOTS.forEach(function (s) {
-      var sp = document.createElement('span');
-      sp.className = 'spot';
-      sp.setAttribute('aria-hidden', 'true');
-      sp.style.left = s.x + '%';
-      sp.style.top = s.y + '%';
-      root.appendChild(sp);
-    });
+    // 2. plus de 2 spots isolés (retour PY passe 2, 2026-09-28) : le 2e
+    //    (x=63.5) tombait quasi pile sur la nouvelle cloison de droite
+    //    (montant-2 centré à 63.45 %), et aucun des deux n'était centré sur
+    //    une case du plateau de jeu (COLS = 28.58/49.75/70.92). Remplacés
+    //    par l'ampoule + halo posés sur CHAQUE case (.casier::before /
+    //    .objet::before, armoire.css) : les 15 cases sont éclairées, plus
+    //    seulement 2 sur 15, et plus de doublon avec la nouvelle cloison.
+    //
+    //    Supprimer les .spot ne suffisait pas (retour PY passe 3) : les 2
+    //    douilles + ampoule sont PEINTES dans shell.webp lui-même, à
+    //    32,38 % et 66,99 % (mesuré par analyse de pixels, luminance > 235
+    //    dans le bandeau du haut). On ne touche ni au kit ni à shell.webp :
+    //    on les recouvre par un petit calque DÉCOUPÉ dans shell.webp
+    //    lui-même (le plafond plain entre les 2 douilles, x 44-56 %,
+    //    y 7,5-15,5 % — vérifié sans halo — généré une fois par
+    //    tools/armoire-patch-plafond.mjs vers img/armoire/patch-plafond.webp,
+    //    même bois, même grain, L-145) posé PAR-DESSUS le plafond peint et
+    //    SOUS notre propre ampoule (z-index 16 : au-dessus de la carcasse
+    //    z10, sous cloisons/cases z39-40).
+    buildPatchesPlafond(root);
 
     // 3. les cases. Niche (toujours visible) : Dinos · Monde · Œufs. Les
     //    deux niveaux du haut et les deux du bas : les 12 premiers tirages.
@@ -232,12 +317,14 @@
             objHtml(f.obj) +
             (f.badge ? '<span class="hdr-badge" id="' + f.badge + '" style="display:none"></span>' : '') +
             '<span class="etiquette">' + esc(f.label) + '</span>';
+          applyObjMeta(btn, f.obj);
         } else {
           slot = slots[iTirage];
           if (!slot) return;
           btn = makeSlot('casier', null, slot.label);
           btn.dataset.idx = iTirage;
           btn.innerHTML = slotHtml(slot);
+          applyObjMeta(btn, slot.obj);
           iTirage++;
         }
         btn.dataset.zone = row.zone;
@@ -245,6 +332,7 @@
         root.appendChild(btn);
       });
     });
+    buildCloisons(root, kit, ROWS);
 
     // 4. les deux tiroirs du kit sont RÉUTILISÉS (poignée + façade déjà
     //    posées par ArmoireMeuble.build) : on leur donne un id et un
@@ -269,7 +357,7 @@
 
   function setCasesVisible(root, zone, open, immediat) {
     var cases = root.querySelectorAll(
-      '.casier[data-zone="' + zone + '"], .objet[data-zone="' + zone + '"]');
+      '.casier[data-zone="' + zone + '"], .objet[data-zone="' + zone + '"], .cloison[data-zone="' + zone + '"]');
     clearTimeout(_closeT[zone]);
     if (open) {
       cases.forEach(function (c) { c.classList.remove('zone-cachee'); });
@@ -341,6 +429,7 @@
       btn.dataset.idx = i;
       btn.setAttribute('aria-label', slot.label);
       btn.innerHTML = slotHtml(slot);
+      applyObjMeta(btn, slot.obj);
       i++;
     });
   }

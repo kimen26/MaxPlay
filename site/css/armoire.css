@@ -15,7 +15,7 @@
    Le MEUBLE (carcasse, planches, montants, tiroirs, vantaux) vit dans
    css/armoire-meuble.css + js/armoire-meuble.js (kit v8, HO-MJ-20/22) : ce
    fichier-ci ne pose plus que ce qui vient PAR-DESSUS — cases de jeu,
-   étiquettes, halo des spots, prénom, avatar.
+   étiquettes, ampoule + halo + teinte par case, prénom, avatar.
    ════════════════════════════════════════════════════════════════════ */
 
 html, body { height:100%; overflow:hidden; }
@@ -59,17 +59,38 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, 
      dans le repère 911 × 1480, ils ne sortent donc jamais de la scène. */
 }
 
-/* ── Halo des spots : CSS, jamais une image ──────────────────────────
-   Les deux luminaires sont peints dans la carcasse ; ici on ajoute la
-   lumière qui tombe sur le fond, que le PNG rendait à bords durs. */
-.spot { position:absolute; z-index:31; pointer-events:none; width:0; height:0; }
-.spot::after {
-  content:''; position:absolute; left:0; top:0;
-  width:calc(var(--cab-w) * 0.34); height:calc(var(--cab-w) * 0.40);
-  transform:translate(-50%, -6%);
-  background:radial-gradient(ellipse at top,
-    rgb(255 202 95 / .30), rgb(255 190 70 / .12) 38%, transparent 72%);
-  filter:blur(4px);
+/* ── Patch de plafond (retour PY passe 3, 2026-09-28) : recouvre les 2
+   douilles + ampoule PEINTES dans shell.webp (à cheval avec notre propre
+   ampoule CSS de case, --g-ampoule) par un calque découpé dans shell.webp
+   lui-même (img/armoire/patch-plafond.webp, tools/armoire-patch-plafond.mjs
+   — jamais un autre bois, L-145). z-index 16 : au-dessus de la carcasse
+   (10), sous planches/montants/cloisons/cases (20-40) — cette zone du
+   fronton est de toute façon au-dessus de la planche-1 (y 23,6 %), aucun
+   chevauchement possible. Un masque radial éteint le bord du calque dans
+   le bois environnant : pas de bordure nette, pas de raccord visible. */
+.patch-plafond {
+  position:absolute; z-index:16; pointer-events:none;
+  left:var(--cx); top:var(--cy);
+  width:var(--cw); height:var(--ch);
+  transform:translate(-50%, -50%);
+  object-fit:fill;
+  -webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%, #000 68%, transparent 100%);
+  mask-image:radial-gradient(ellipse 50% 50% at 50% 50%, #000 68%, transparent 100%);
+}
+
+/* ── Cloisons entre les cases d'une même rangée (retour PY 2026-09-28) ──
+   Même bois que les montants de la niche (montant-1/2 du kit, jamais un
+   bois CSS inventé — L-145), posées par armoire.js sur les 4 rangées qui
+   n'en avaient pas, alignées sur les mêmes centres x pour courir d'un seul
+   tenant du haut en bas. z-index sous les cases (40), donc jamais devant un
+   objet ou une étiquette. */
+.cloison {
+  position:absolute; z-index:39; pointer-events:none;
+  left:var(--cx); top:var(--cy);
+  width:var(--cw); height:var(--ch);
+  transform:translate(-50%, -50%);
+  object-fit:fill;
+  filter:drop-shadow(0 0 calc(var(--cab-w) * .003) rgba(0, 0, 0, .3));
 }
 
 /* ── Les cases : boutons posés en % du repère ────────────────────────
@@ -94,6 +115,49 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, 
   padding:0 0 calc(var(--cab-w) * .004);
   font-family:inherit; color:inherit; cursor:pointer;
   -webkit-tap-highlight-color:transparent;
+}
+/* ── Diorama de la case (retour PY 2026-09-28, réf. image « Dino & Bus »,
+   passe 2 après relecture des captures) : une AMPOULE visible (petite
+   pastille chaude, --g-ampoule) au plafond de chaque case, le CÔNE de
+   lumière qu'elle jette sur le fond (--g-halo), une teinte de fond dans la
+   couleur dominante de l'objet (--tinte-rgb, posée par armoire.js — UNE
+   seule table, jamais un hex éparpillé) et un vignettage qui assombrit les
+   coins (--g-vignette). Les 3 dégradés communs vivent en custom properties
+   pour que la météorite les RÉUTILISE telles quelles (même ampoule, même
+   halo, même vignette) et ne remplace que la couche du milieu. z-index:-1
+   dans la pile locale du bouton : derrière .obj et .etiquette, jamais
+   devant. */
+.casier, .objet {
+  --g-ampoule: radial-gradient(circle calc(var(--cab-w) * .022) at 50% 4%,
+    #fff8e2 0%, #ffe6a0 55%, rgb(255 224 150 / 0) 100%);
+  --g-halo: radial-gradient(ellipse 62% 72% at 50% 5%,
+    rgb(255 202 95 / .55), rgb(255 190 70 / .22) 42%, transparent 78%);
+  --g-vignette: radial-gradient(ellipse 88% 92% at 50% 50%,
+    transparent 56%, rgb(20 12 4 / .34) 100%);
+}
+.casier::before, .objet::before {
+  content:''; position:absolute; inset:0; z-index:-1;
+  border-radius:calc(var(--cab-w) * .018);
+  background:
+    var(--g-ampoule), var(--g-halo),
+    radial-gradient(ellipse 68% 62% at 50% 58%, rgb(var(--tinte-rgb, 0 0 0) / .25), transparent 76%),
+    var(--g-vignette);
+}
+/* la météorite (Surprise) : pas une teinte, un ciel nocturne — mais STRICT
+   à l'intérieur de la case (le cadre en bois reste visible tout autour,
+   comme une case peinte en nuit, jamais un rectangle collé par-dessus) :
+   le dégradé s'arrête et devient transparent avant le bord de la case, et
+   la même --g-vignette qu'ailleurs referme les coins pour la profondeur. */
+.casier[data-obj="obj-meteorite"]::before {
+  background:
+    var(--g-ampoule), var(--g-halo),
+    radial-gradient(ellipse 68% 66% at 50% 56%, #1c2a52 0%, #101a3a 55%, rgb(16 26 58 / 0) 100%),
+    radial-gradient(calc(var(--cab-w) * .0035) calc(var(--cab-w) * .0035) at 24% 28%, #fff, transparent 100%),
+    radial-gradient(calc(var(--cab-w) * .003)  calc(var(--cab-w) * .003)  at 68% 22%, #fff, transparent 100%),
+    radial-gradient(calc(var(--cab-w) * .004)  calc(var(--cab-w) * .004)  at 44% 46%, #ffe9a8, transparent 100%),
+    radial-gradient(calc(var(--cab-w) * .003)  calc(var(--cab-w) * .003)  at 76% 60%, #fff, transparent 100%),
+    radial-gradient(calc(var(--cab-w) * .003)  calc(var(--cab-w) * .003)  at 32% 68%, #fff, transparent 100%),
+    var(--g-vignette);
 }
 /* zone tactile : un calque invisible, enfant du bouton, donc un appui dessus
    déclenche bien le bouton. Sa hauteur (19,5 % de --cab-w ≈ 70 px à 360)

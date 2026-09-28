@@ -17,19 +17,32 @@
 // Clé de stockage = gameId() de regle-info.js = nom de fichier sans extension (mj-14, mj-48, ...) :
 // robuste, indépendant de cfg.id (absent dans 23/36 jeux).
 //
-// Usage : node studio/minijeux/scripts/_extract-mj-regles.mjs [mj-14 mj-48 ...]
-// Playwright n'est installé que dans studio/minijeux/tests/ (paquet de test) : ce
-// script n'a pas son propre node_modules, on importe donc depuis ce chemin plutôt
+// Usage : node studio/minijeux/scripts/_extract-mj-regles.mjs [mj-14 mj-48 ...] [--out <fichier>]
+// Playwright est une dépendance du package.json RACINE (node_modules/ à la racine du repo) :
+// ce script n'a pas son propre node_modules, on importe donc depuis la racine plutôt
 // que d'ajouter une seconde install (même paquet, même version, zéro duplication).
-import { readdirSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+//
+// FUSION, jamais un remplacement total (correctif R20, 2026-09-28) : le fichier cible sert
+// de référence FR pour les 36 jeux. Filtré sur un ou plusieurs id, ce script ne doit modifier
+// QUE les clés des jeux traités — jamais effacer le FR des jeux non filtrés, ni celui d'un
+// jeu filtré dont l'extraction échoue (page qui n'appelle jamais RegleInfo.init, ou capture
+// vide). Une sauvegarde datée du fichier cible est écrite avant toute réécriture, dans un
+// sous-dossier `_scratch/` déjà ignoré par git (patron `**/_scratch/` du .gitignore racine).
+import { readdirSync, readFileSync, writeFileSync, mkdirSync, existsSync, copyFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import path from 'node:path';
 
 const ROOT = path.resolve(import.meta.dirname, '../../..');
-const { chromium } = await import(pathToFileURL(path.join(ROOT, 'studio/minijeux/tests/node_modules/playwright/index.mjs')).href);
+const { chromium } = await import(pathToFileURL(path.join(ROOT, 'node_modules/playwright/index.mjs')).href);
 const SITE = path.join(ROOT, 'site');
 const OUT_DIR = path.join(ROOT, 'studio/minijeux/i18n/fr');
-const OUT = path.join(OUT_DIR, 'strings.json');
+const DEFAULT_OUT = path.join(OUT_DIR, 'strings.json');
+
+// --out <fichier> : cible d'écriture alternative (le test l'utilise pour travailler sur
+// une copie temporaire, jamais sur le vrai strings.json).
+const argv = process.argv.slice(2);
+const outIdx = argv.indexOf('--out');
+const OUT = outIdx > -1 ? path.resolve(argv[outIdx + 1]) : DEFAULT_OUT;
 
 // Titres canoniques : catalog.js (source de vérité du menu), pas le <title> HTML
 // (ponctuation incohérente entre jeux — tiret court/long, "MJ-XX –" en préfixe).
@@ -44,7 +57,8 @@ function loadCatalog() {
 }
 const TITRES = loadCatalog();
 
-const filtres = process.argv.slice(2);
+// filtres = ids de jeux demandés en CLI, hors --out et sa valeur (pas un id de jeu).
+const filtres = argv.filter((a, i) => a !== '--out' && (outIdx === -1 || i !== outIdx + 1));
 let fichiers = readdirSync(SITE).filter(f => /^mj-[a-z0-9]+\.html$/.test(f));
 if (filtres.length) fichiers = fichiers.filter(f => filtres.includes(f.replace(/\.html$/, '')));
 fichiers.sort();
@@ -73,7 +87,9 @@ const PATCH = `
 `;
 
 const browser = await chromium.launch({ headless: true });
-const resultat = {};
+// FUSION : on part du fichier cible existant (36 jeux + _commun) et on ne touche qu'aux
+// clés des jeux effectivement extraits ci-dessous — jamais une réécriture à partir de zéro.
+const resultat = existsSync(OUT) ? JSON.parse(readFileSync(OUT, 'utf8')) : {};
 let manquants = [];
 
 for (const fichier of fichiers) {
@@ -102,9 +118,13 @@ for (const fichier of fichiers) {
     titre = m ? m[1].trim() : docTitle.trim();
   }
 
-  if (!capture) {
+  // "vide" = capture jamais reçue OU reçue sans aucune matière (texte ET étapes absents) :
+  // dans les deux cas on NE TOUCHE PAS à la valeur existante de ce jeu dans `resultat`
+  // (déjà fusionné depuis le fichier cible) plutôt que de l'écraser par du vide.
+  const vide = !capture || (!capture.texte && (!capture.etapes || capture.etapes.length === 0));
+  if (vide) {
     manquants.push(id);
-    console.log(`[MANQUANT] ${id} — RegleInfo.init jamais appelé (erreurs: ${erreurs.slice(0, 2).join(' | ') || 'aucune'})`);
+    console.log(`[MANQUANT] ${id} — RegleInfo.init jamais appelé ou capture vide (erreurs: ${erreurs.slice(0, 2).join(' | ') || 'aucune'})`);
   } else {
     resultat[id] = {
       titre: titre,
@@ -121,7 +141,19 @@ for (const fichier of fichiers) {
 
 await browser.close();
 
-mkdirSync(OUT_DIR, { recursive: true });
+// Sauvegarde datée du fichier cible AVANT toute réécriture, dans un sous-dossier `_scratch/`
+// déjà ignoré par git (patron `**/_scratch/`, .gitignore racine) — jamais commitée.
+if (existsSync(OUT)) {
+  const outDir = path.dirname(OUT);
+  const scratchDir = path.join(outDir, '_scratch');
+  mkdirSync(scratchDir, { recursive: true });
+  const horodatage = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+  const backup = path.join(scratchDir, `${path.basename(OUT)}.bak-${horodatage}`);
+  copyFileSync(OUT, backup);
+  console.log(`[backup] ${backup}`);
+}
+
+mkdirSync(path.dirname(OUT), { recursive: true });
 writeFileSync(OUT, JSON.stringify(resultat, null, 2) + '\n', 'utf8');
 
 console.log(`\n${Object.keys(resultat).length}/${fichiers.length} jeux extraits -> ${OUT}`);

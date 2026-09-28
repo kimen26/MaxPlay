@@ -26,7 +26,6 @@ const GPTS = 'https://chatgpt.com/g/g-p-6a2c67ebc22c8191971eecf695ec5fec-dinosau
 
 const OUTD = ROOT + '/site/img/dinos/_new-xxl';
 const PROGRESS = OUTD + '/_PROGRESS.tsv';
-mkdirSync(OUTD, { recursive: true });
 
 const MARIN_FLAG = process.argv.includes('--marin');
 // --only <liste> : ne régénère QUE certaines scènes (hero,manger,ecosysteme,paris,funfact).
@@ -49,6 +48,12 @@ const PREVIEW = process.argv.includes('--preview'); // imprime les prompts sans 
 // --ref <image> : référence visuelle jointe à chaque scène générée (ChatGPT seulement).
 const refIdxB = process.argv.indexOf('--ref');
 const REF = refIdxB > -1 ? process.argv[refIdxB + 1] : null;
+
+// Correctif R23 (2026-09-28) : --preview ne doit RIEN écrire sur disque (ni le dossier de
+// sortie, ni _PROGRESS.tsv). Ce mkdirSync tournait AVANT la lecture de --preview (donc même
+// en preview) ; il est maintenant après, et sauté en preview.
+if (!PREVIEW) mkdirSync(OUTD, { recursive: true });
+
 // mappe un outName (baseName[_suffixe].png) vers le nom de scène canonique pour le filtre --only.
 function sceneOf(outName, baseName) {
   const rest = outName.replace(baseName, '').replace(/^_/, '').replace(/\.(png|jpg)$/i, '');
@@ -81,6 +86,9 @@ function gen(prompt, outName, firstOfDino, baseName) {
 }
 
 function logProgress(id, scene, status) {
+  // --preview : rien n'est écrit, y compris l'avancement (appelé inconditionnellement par
+  // la boucle principale, avant/après chaque scène — correctif R23).
+  if (PREVIEW) return;
   appendFileSync(PROGRESS, `${new Date().toISOString()}\t${id}\t${scene}\t${status}\n`);
 }
 

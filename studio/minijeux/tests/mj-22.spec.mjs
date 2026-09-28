@@ -3,6 +3,38 @@
 // (2) Clic pays → highlight orange + bouton confirm → victoire overlay 2.5s
 // (3) Progress dots maj après chaque pays trouvé
 
+// CAUSE RACINE (CI, 2026-09-28) : Playwright .click() cible par défaut le
+// CENTRE de la bounding box de l'élément. Pour un pays représenté par un
+// <g> multi-îles (ex: es = Espagne continentale + îles éparses) ou une
+// forme très concave (ex: no = Norvège, fjords), ce centre géométrique
+// tombe HORS de la zone peinte (l'océan entre les îles) : le hit-test
+// navigateur (elementFromPoint) ne trouve pas l'élément cible à ce point
+// précis, Playwright réessaie 30s puis lève une exception. Vérifié en local
+// (Windows) avec un script de diagnostic : es échoue 100% du temps, gb/it
+// réussissent par chance (leur bbox center tombe sur le mainland). Pas un
+// bug CI, pas un bug de casse de chemin — un vrai joueur tape toujours sur
+// la zone colorée visible, jamais sur le centre géométrique de la bbox,
+// donc ce n'est pas non plus un bug de jeu réel, seulement un angle mort du
+// harnais. Correctif : chercher un point réellement peint (hit-test) dans
+// la bbox avant de cliquer, au lieu de faire confiance au centre.
+async function clickPeintPoint(page, locator) {
+  const point = await locator.evaluate(el => {
+    const box = el.getBoundingClientRect();
+    const STEPS = 14;
+    for (let iy = 0; iy <= STEPS; iy++) {
+      for (let ix = 0; ix <= STEPS; ix++) {
+        const x = box.x + (box.width * ix) / STEPS;
+        const y = box.y + (box.height * iy) / STEPS;
+        const hit = document.elementFromPoint(x, y);
+        if (hit === el || (hit && el.contains(hit))) return { x, y };
+      }
+    }
+    return null;
+  });
+  if (!point) throw new Error('clickPeintPoint: aucun point peint trouvé dans la bbox de l\'élément');
+  await page.mouse.click(point.x, point.y);
+}
+
 export async function run({ page, ok }) {
   // Migration gabarit mj-shell.js : panneau règle 🧑‍🔬 s'ouvre tout seul à la 1ʳᵉ partie
   await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
@@ -43,7 +75,7 @@ export async function run({ page, ok }) {
   if (!exists) return;
 
   // Clic sur le pays → highlight orange
-  await paysEl.click();
+  await clickPeintPoint(page, paysEl);
   const hasHighlight = await paysEl.evaluate(el =>
     el.classList.contains('highlight')
   );
@@ -78,8 +110,14 @@ export async function run({ page, ok }) {
        `fontSize=${victFontSize}`);
   }
 
-  // Attendre 2.7s pour vérifier que l'overlay disparaît et on passe au pays suivant
-  await page.waitForTimeout(2700);
+  // CAUSE RACINE (trouvée en stress CPU x4, 2026-09-28) : l'overlay se ferme
+  // via son propre setTimeout(2500) côté jeu (site/mj-22.html, fonction
+  // victoire()). Un `waitForTimeout(2700)` fixe suppose que ce timer
+  // navigateur s'exécute dans les 200ms suivant l'échéance — vrai sur une
+  // machine détendue, faux sous charge CPU (CI, throttling) où le tick
+  // event-loop peut être retardé au-delà. On attend l'ÉTAT réel (overlay
+  // détaché du DOM) au lieu d'un délai fixe.
+  await page.waitForSelector('.victoire-overlay', { state: 'detached', timeout: 6000 });
 
   // Après victoire 2.5s, l'overlay doit être fermé et progress dots mise à jour
   const overlayGone = await page.locator('.victoire-overlay').count() === 0;

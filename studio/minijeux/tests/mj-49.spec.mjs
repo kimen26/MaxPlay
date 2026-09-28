@@ -30,6 +30,19 @@ export async function run({ page, ok }) {
   ok('Erreur : la question reste ouverte (retry)', afterWrong.roundLock === false);
   const qBefore = afterWrong.qCount;
   await page.evaluate(() => window.__mjTest.answer(true));
+  // CAUSE RACINE (CI, 2026-09-28) : onCorrect() avance la manche via
+  // `setTimeout(nextQuestion, testMode ? 0 : 2700)` (site/mj-49.html) — même
+  // en mode test, qCount++ n'arrive qu'au tick suivant, pas dans le même
+  // tour d'évaluation. Lire window.__mjTest.state juste après answer(true)
+  // était une course : ça passait quand le round-trip Playwright→navigateur
+  // laissait le temps au timer(0) de se vider, et ratait quand ce n'était
+  // pas le cas (plus probable sur machine CI chargée). On attend l'ÉTAT
+  // réel (qCount incrémenté) au lieu de supposer un timing.
+  await page.waitForFunction(
+    (expected) => window.__mjTest.state.qCount === expected,
+    qBefore + 1,
+    { timeout: 4000 }
+  );
   const afterRight = await page.evaluate(() => window.__mjTest.state);
   ok('Bonne réponse : la manche avance', afterRight.qCount === qBefore + 1);
 

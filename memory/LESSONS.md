@@ -68,3 +68,7 @@ Rule : `~/.claude/rules/interaction-style.md` § Questions de produit.
 Quoi : premier push après la vague 1, `git commit … && git push` dans une seule commande. La garde `git push` a comparé GREEN.json au HEAD d'avant le commit (vert) et a laissé partir un commit jamais contrôlé. Sans dégât (commit de notes seules), mais le trou était réel.
 Comment appliquer : une garde qui dépend de l'état que la commande va modifier ne peut pas juger une commande chaînée. Refuser le chaînage (commit, puis `npm run gate`, puis push seul).
 Hook : `.claude/hooks/pre-tool.ps1` (push + commit/merge/rebase dans la même commande = exit 2), test « commit et push enchaines » dans `hooks/tests/run.ps1`.
+
+## L-015 — L'orchestrateur Opus décide, il ne fait pas le travail (2026-09-28)
+Quoi : Papa Yann : « c'est hyper long, j'ai l'impression que t'avances pas, tu n'as rien délégué à des Sonnet ou Haiku ». Le code partait bien en Sonnet (game-dev), mais l'orchestrateur Opus relisait chaque capture, relançait lui-même 3 passes, ajoutait des traductions, écrivait des scripts de test et commitait ; les audits en lecture seule tournaient en Sonnet au lieu de Haiku.
+Comment appliquer : Opus = décider + relire le résultat final. Audit, vérif de TODO, recherche en lecture seule → Haiku. Code, tests, captures, itérations, traductions → Sonnet, qui boucle seul jusqu'à un critère de fin écrit AVANT le lancement (ex. liste des écarts visuels à zéro). Annoncer au lancement quel modèle fait quoi.

@@ -4,7 +4,10 @@
 #   - payload Kimi : tool_input.path (Edit/Write Kimi) ou tool_input.file_path (compat Claude)
 #   - sortie : texte brut sur stdout (exit 0 = contexte ajouté, non bloquant)
 #     au lieu du JSON hookSpecificOutput propre a Claude Code.
-# Logique métier IDENTIQUE a la version Claude.
+# Logique métier alignée sur la version Claude (vague 1 lot C — R11) : injection DINO
+# ciblée (plus tout /studio/dino/), filtrée aux lignes 🔒/❌, au plus 1x par tour
+# (marqueur relu dans le wire.jsonl de la session, borné, depuis le dernier turn.prompt —
+# même mécanique que pmo-check.kimi.ps1). MJ et les rappels de rules path-scoped inchangés.
 
 $ErrorActionPreference = 'SilentlyContinue'
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
@@ -22,12 +25,95 @@ if (-not $path) { exit 0 }
 
 # Normalise les separateurs
 $norm = $path -replace '\\', '/'
-
-# Cible : .../site/mj-<slug>.html  (mini-jeux → studio/minijeux/docs/jeux/figees/<slug>.md)
-# OU     : pôle DINO (code site/dino + dossier studio/dino/) → studio/dino/figees/encyclopedie.md
-# OU     : scope d'une rule path-scoped sans figees (rappel de lecture, equivalent Kimi des
-#          rules auto-injectees de Claude Code — Kimi n'a pas d'injection native par path)
 $root = 'c:\ProjetsPerso\Claude_Projects\MaxPlay'
+
+# --- Dedup "1x par tour" pour l'injection DINO : localise le wire.jsonl de la session,
+# comme pmo-check.kimi.ps1 (mêmes commentaires sur le format), puis cherche le marqueur
+# après le dernier evenement turn.prompt. Fail-open si session introuvable (payload Kimi
+# sans session_id, ou wire.jsonl absent) : on injecte quand même plutôt que de bloquer.
+function Test-DinoFigeeDejaInjecteeCeTour {
+    param($data, $root)
+
+    $sessionId = [string]$data.session_id
+    if (-not $sessionId) { return $false }
+
+    $kimiHome = if ($env:KIMI_CODE_HOME) { $env:KIMI_CODE_HOME } else { Join-Path $HOME '.kimi-code' }
+    $wirePath = ''
+
+    $indexFile = Join-Path $kimiHome 'session_index.jsonl'
+    if (Test-Path $indexFile) {
+        foreach ($line in Get-Content -LiteralPath $indexFile -Encoding UTF8) {
+            if (-not $line.Trim()) { continue }
+            try { $rec = $line | ConvertFrom-Json } catch { continue }
+            if ($rec.sessionId -eq $sessionId -and $rec.sessionDir) {
+                $candidate = Join-Path ([string]$rec.sessionDir) 'agents\main\wire.jsonl'
+                if (Test-Path $candidate) { $wirePath = $candidate; break }
+            }
+        }
+    }
+    if (-not $wirePath) {
+        $hit = Get-ChildItem -Path (Join-Path $kimiHome 'sessions') -Directory -ErrorAction SilentlyContinue |
+            ForEach-Object { Join-Path $_.FullName "$sessionId\agents\main\wire.jsonl" } |
+            Where-Object { Test-Path $_ } | Select-Object -First 1
+        if ($hit) { $wirePath = $hit }
+    }
+    if (-not $wirePath) { return $false }
+
+    $lines = Get-Content -LiteralPath $wirePath -Encoding UTF8
+    $lastPrompt = -1
+    for ($i = 0; $i -lt $lines.Count; $i++) {
+        if ($lines[$i] -match '"type"\s*:\s*"turn\.prompt"') { $lastPrompt = $i }
+    }
+    for ($i = $lastPrompt + 1; $i -lt $lines.Count; $i++) {
+        if ($lines[$i] -match 'MARQUEUR-FIGEE-DINO-CE-TOUR') { return $true }
+    }
+    return $false
+}
+
+# Cible DINO resserree (R11) : uniquement le contenu/asset dino, jamais memory/docs/figees.
+if (($norm -match 'studio/dino/content/(dinos|scripts-audio|sources)/' -or
+     $norm -match 'site/dev-dinos\.html$' -or
+     $norm -match 'site/audio/dinos/' -or
+     $norm -match 'site/img/dinos/' -or
+     $norm -match 'site/js/gen/dinos-data\.js$') -and
+    ($norm -notmatch 'studio/dino/(memory|docs|figees)/')) {
+
+    if (Test-DinoFigeeDejaInjecteeCeTour -data $data -root $root) { exit 0 }
+
+    $figPath = Join-Path $root 'studio\dino\figees\encyclopedie.md'
+    if (Test-Path $figPath) {
+        $allLines = Get-Content -LiteralPath $figPath -Encoding UTF8
+        $locked = @($allLines | Where-Object { $_ -match '🔒' -or $_ -match '❌' })
+        $contenu = ($locked -join "`n")
+        Write-Output @"
+==================================================================
+STOP -- studio/dino/figees/encyclopedie.md : DECISIONS FIGEES dino (extrait lignes 🔒/❌).
+Tu DOIS confirmer que ton edit respecte CHAQUE ligne 🔒 ci-dessous AVANT de continuer.
+Une ligne ❌ 🔒 est une regression deja commise : INTERDITE.
+Si ton changement contredit une ligne 🔒, n'edite pas -- demande a Papa Yann de defiger explicitement.
+Fichier complet (contexte) : studio/dino/figees/encyclopedie.md
+
+------- extrait 🔒/❌ studio/dino/figees/encyclopedie.md -------
+$contenu
+------- fin extrait -------
+==================================================================
+MARQUEUR-FIGEE-DINO-CE-TOUR
+"@
+    } else {
+        Write-Output @"
+==================================================================
+NOTE -- studio/dino/figees/encyclopedie.md n'existe pas.
+Si tu codes ici un comportement deja valide par Papa Yann, tu DOIS
+creer ce fichier (procedure dino-pmo) pour le figer.
+==================================================================
+MARQUEUR-FIGEE-DINO-CE-TOUR
+"@
+    }
+    Write-Output "[RULE path-scoped] .claude/rules/dino.md s'applique a ce fichier -- lis-le si pas encore fait ce tour."
+    exit 0
+}
+
+# --- MJ + rappels de rules path-scoped : logique inchangée ---
 $slug = ''
 $figPath = ''
 $ruleReminder = ''
@@ -35,14 +121,6 @@ if ($norm -match 'site/(mj-[\w-]+)\.html$') {
     $slug = $Matches[1]   # ex: mj-21
     $figPath = Join-Path $root ("studio\minijeux\docs\jeux\figees\{0}.md" -f $slug)
     $ruleReminder = '.claude/rules/mini-jeux.md'
-}
-elseif ($norm -match 'site/dev-dinos\.html$' -or
-        $norm -match 'site/js/dinos-data\.js$' -or
-        $norm -match 'site/audio/dinos/(recit|menu)-[\w-]+\.mp3$' -or
-        $norm -match '/studio/dino/') {
-    $slug = 'encyclopedie'   # pôle DINO
-    $figPath = Join-Path $root 'studio\dino\figees\encyclopedie.md'
-    $ruleReminder = '.claude/rules/dino.md'
 }
 # --- SONS : equivalent Kimi de la rule .claude/rules/sons.md ---
 # (ajoute 2026-08-10 : _BANQUE-SONS.md existait depuis un mois sans que rien ne le rende

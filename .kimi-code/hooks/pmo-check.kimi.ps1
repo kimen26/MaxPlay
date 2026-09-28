@@ -1,6 +1,11 @@
 ﻿# pmo-check.kimi.ps1 — Hook Stop — VERSION KIMI CODE (portage 2026-07-19, remplace la sonde stop-probe)
 # Portage de .claude/hooks/pmo-check.ps1 (generalise 3 poles : JEU / DINO / NARRATION).
-# Si le tour a modifie des fichiers d'un pole SANS trace de gouvernance, bloque la fin de tour.
+# Durci vague 1 lot C (R10a), parite avec la version Claude :
+#   - retrait de la reference a studio/dino/pmo/ (dossier inexistant)
+#   - la trace memoire ne compte que pour un evenement Bash qui ECRIT (indicateur explicite),
+#     un `cat`/`grep` seul ne compte plus
+#   - les ecritures Bash vers site/ ou studio/ comptent aussi comme "touche"
+#   - 2 portes de contenu : mj edite -> test rejoue ; contenu dino edite -> check rejoue
 #
 # Differences avec la version Claude (adapte au payload/format Kimi) :
 #   - Pas de transcript_path dans le payload Stop Kimi : on localise le wire.jsonl de la session
@@ -11,11 +16,9 @@
 #     plus strict que Claude, aligne doctrine "capture immediate DANS LE TOUR" (2026-07-19).
 #   - Pas d'agents custom chez Kimi : la voie (b) "agent <pole>-pmo invoque" devient
 #     "playbook .claude/agents/<pole>-pmo.md lu et applique par le main agent" — seule la trace
-#     pmo/ (voie a) satisfait mecaniquement le check.
+#     ECRITE dans memory/ (voie a) satisfait mecaniquement le check.
 #
-# Satisfaire le check, par pole : un fichier de gouvernance du pole edite ce tour
-# (Edit/Write, ou ecriture via commande Bash — python, sed, cat >>).
-# JEU/NARRATION : studio/<pole>/memory/** ; DINO (transition, pmo/ pas encore migre) : studio/dino/{pmo,memory,figees}/**
+# Satisfaire le check, par pole : un fichier memory/ du pole edite/ecrit ce tour.
 
 $ErrorActionPreference = 'SilentlyContinue'
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
@@ -53,19 +56,36 @@ if (-not $wirePath) {
 }
 if (-not $wirePath) { exit 0 }   # session introuvable -> fail-open (philosophie hooks Kimi)
 
-# --- Par pole : patterns contenu touche / trace gouvernance (identiques a la version Claude) ---
+# Indicateur d'ecriture (memes limites documentees que la version Claude : reste simple,
+# ne distingue pas un python/node en lecture seule qui citerait par hasard le chemin).
+function Test-IsWriteCommand {
+    param([string]$cmd)
+    if ([string]::IsNullOrEmpty($cmd)) { return $false }
+    if ($cmd -match '>>') { return $true }
+    if ($cmd -match '(?<!\d)>(?!=)') { return $true }
+    if ($cmd -match 'Set-Content|Add-Content|Out-File') { return $true }
+    if ($cmd -match 'sed\s+-i') { return $true }
+    if ($cmd -match '\b(python3?|node)\b') { return $true }
+    return $false
+}
+
+# --- Par pole : patterns contenu touche / trace gouvernance (memory/ uniquement, pmo/ retire) ---
 $poles = @(
     @{ name = 'NARRATION'; agent = 'narration-pmo';
        touch = @('studio[\\/]narration[\\/]', '\.claude[\\/]agents[\\/]narration-');
        trace = @('studio[\\/]narration[\\/]memory[\\/]') },
     @{ name = 'DINO'; agent = 'dino-pmo';
        touch = @('studio[\\/]dino[\\/]', 'dev-dinos', 'dinos-data', 'audio[\\/]dinos', 'img[\\/]dinos', '\.claude[\\/]agents[\\/]dino-');
-       trace = @('studio[\\/]dino[\\/]pmo[\\/]', 'studio[\\/]dino[\\/]memory[\\/]', 'studio[\\/]dino[\\/]figees[\\/]') },
+       trace = @('studio[\\/]dino[\\/]memory[\\/]', 'studio[\\/]dino[\\/]figees[\\/]') },
     @{ name = 'JEU'; agent = 'game-pmo';
        touch = @('studio[\\/]minijeux[\\/]', 'site[\\/]mj-', '\.claude[\\/]agents[\\/]game-');
        trace = @('studio[\\/]minijeux[\\/]memory[\\/]', 'studio[\\/]minijeux[\\/]docs[\\/]jeux[\\/]figees[\\/]') }
 )
 foreach ($p in $poles) { $p.touched = $false; $p.traced = $false }
+
+$editedMjIds = New-Object System.Collections.Generic.HashSet[string]
+$dinoContentEdited = $false
+$turnCommands = New-Object System.Collections.Generic.List[string]
 
 # --- Scanner le wire : uniquement les evenements APRES le dernier turn.prompt (= ce tour) ---
 $lines = Get-Content -LiteralPath $wirePath -Encoding UTF8
@@ -86,14 +106,17 @@ for ($i = $lastPrompt + 1; $i -lt $lines.Count; $i++) {
         $path = [string]($ev.args.path)
         if (-not $path) { $path = [string]($ev.args.file_path) }   # compat
         if (-not $path) { continue }
+
+        if ($path -match 'site[\\/]mj-[\w-]+\.html$' -and $path -match 'mj-[\w-]+') { [void]$editedMjIds.Add($Matches[0]) }
+        if ($path -match 'studio[\\/]dino[\\/]content[\\/]dinos[\\/].*\.json$' -or
+            $path -match 'studio[\\/]dino[\\/]content[\\/]scripts-audio[\\/]') { $dinoContentEdited = $true }
+
         foreach ($p in $poles) {
-            # La trace pmo/ est prioritaire : un edit dans pmo/ ne compte pas comme "contenu touche"
             $isTrace = $false
             foreach ($t in $p.trace) { if ($path -match $t) { $p.traced = $true; $isTrace = $true } }
             if (-not $isTrace) {
                 foreach ($t in $p.touch) {
                     if ($path -match $t) {
-                        # exclusion : les fichiers dino de site/ ne declenchent pas le pole JEU
                         if ($p.name -eq 'JEU' -and $path -match 'dino') { continue }
                         $p.touched = $true
                     }
@@ -102,34 +125,75 @@ for ($i = $lastPrompt + 1; $i -lt $lines.Count; $i++) {
         }
     }
 
-    # Une ecriture pmo/ via Bash (python, sed, cat >>) compte aussi comme trace
     if ($ev.name -eq 'Bash') {
         $cmd = [string]($ev.args.command)
         if ($cmd) {
+            $turnCommands.Add($cmd)
+            $isWrite = Test-IsWriteCommand -cmd $cmd
+            if ($isWrite -and $cmd -match 'site[\\/](mj-[\w-]+)\.html') { [void]$editedMjIds.Add($Matches[1]) }
+            if ($isWrite -and ($cmd -match 'studio[\\/]dino[\\/]content[\\/]dinos[\\/]' -or $cmd -match 'studio[\\/]dino[\\/]content[\\/]scripts-audio[\\/]')) { $dinoContentEdited = $true }
+
             foreach ($p in $poles) {
-                foreach ($t in $p.trace) { if ($cmd -match $t) { $p.traced = $true } }
+                if ($isWrite) {
+                    foreach ($t in $p.trace) { if ($cmd -match $t) { $p.traced = $true } }
+                    foreach ($t in $p.touch) {
+                        if ($cmd -match $t) {
+                            if ($p.name -eq 'JEU' -and $cmd -match 'dino') { continue }
+                            $p.touched = $true
+                        }
+                    }
+                }
             }
         }
     }
 }
 
+# --- Porte 1 : gouvernance ---
 $missing = @($poles | Where-Object { $_.touched -and -not $_.traced })
-if ($missing.Count -eq 0) { exit 0 }
-
-$names = ($missing | ForEach-Object { $_.name }) -join ' + '
-$details = ($missing | ForEach-Object {
-    if ($_.name -eq 'DINO') { "  - DINO : graver TOI-MEME une entree dans studio/dino/pmo/ (sprint-log a minima ; decisions/backlog selon le cas — playbook .claude/agents/$($_.agent).md a lire et appliquer, pas de subagent custom sous Kimi)." }
-    else { $dir = if ($_.name -eq 'JEU') { 'minijeux' } else { 'narration' }; "  - $($_.name) : graver TOI-MEME dans studio/$dir/memory/ : TODO.md / DECISIONS.md / LESSONS.md / MEMORY.md § Journal (a minima — playbook .claude/agents/$($_.agent).md a lire et appliquer, pas de subagent custom sous Kimi)." }
-}) -join "`n"
-
-$msg = @"
+if ($missing.Count -gt 0) {
+    $names = ($missing | ForEach-Object { $_.name }) -join ' + '
+    $details = ($missing | ForEach-Object {
+        $dir = if ($_.name -eq 'JEU') { 'minijeux' } elseif ($_.name -eq 'DINO') { 'dino' } else { 'narration' }
+        "  - $($_.name) : graver TOI-MEME dans studio/$dir/memory/ (ECRITURE reelle, pas une lecture) — playbook .claude/agents/$($_.agent).md a lire et appliquer, pas de subagent custom sous Kimi."
+    }) -join "`n"
+    $msg = @"
 [hook pmo-check] Fichiers $names modifies ce tour SANS trace de gouvernance.
 
-Regle 2026-07-19 (capture immediate) : toute session qui touche un pole laisse une trace dans sa gouvernance AVANT de rendre la main (memory/ pour JEU/NARRATION, pmo/ pour DINO en transition).
+Regle 2026-07-19 (capture immediate) : toute session qui touche un pole laisse une trace ECRITE
+dans sa gouvernance (studio/<pole>/memory/) AVANT de rendre la main.
 $details
 
 Idees/decisions de Papa Yann evoquees ce tour et non gravees = a capturer maintenant (1 ligne backlog suffit).
 Une fois la trace ecrite, la fin de tour sera autorisee.
 "@
-[Console]::Error.WriteLine($msg)
-exit 2
+    [Console]::Error.WriteLine($msg)
+    exit 2
+}
+
+# --- Porte 2 : mj edite -> test rejoue ---
+if ($editedMjIds.Count -gt 0) {
+    $allCmds = ($turnCommands -join "`n")
+    foreach ($id in $editedMjIds) {
+        $tested = ($allCmds -match [regex]::Escape('npm run gate')) -or
+                  (($allCmds -match 'mj:test|test:mj') -and ($allCmds -match [regex]::Escape($id))) -or
+                  (($allCmds -match 'run\.mjs') -and ($allCmds -match [regex]::Escape($id)))
+        if (-not $tested) {
+            [Console]::Error.WriteLine("[hook pmo-check] site/$id.html a ete edite ce tour sans que son test ait ete rejoue.`nLance : npm run test:mj -- $id  (ou : node studio/minijeux/tests/run.mjs $id)  -- ou npm run gate.")
+            exit 2
+        }
+    }
+}
+
+# --- Porte 3 : contenu dino edite -> check rejoue ---
+if ($dinoContentEdited) {
+    $allCmds = ($turnCommands -join "`n")
+    $checked = ($allCmds -match [regex]::Escape('npm run check')) -or
+               ($allCmds -match [regex]::Escape('npm run gate')) -or
+               ($allCmds -match '_verif-scripts-audio')
+    if (-not $checked) {
+        [Console]::Error.WriteLine("[hook pmo-check] Du contenu dino (content/dinos/*.json ou content/scripts-audio/**) a ete edite ce tour sans porte rejouee.`nLance : node studio/dino/content/scripts/export/_verif-scripts-audio.cjs fr  -- ou npm run check  -- ou npm run gate.")
+        exit 2
+    }
+}
+
+exit 0

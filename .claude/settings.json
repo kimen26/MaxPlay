@@ -99,7 +99,7 @@
     ],
     "PreToolUse": [
       {
-        "matcher": "Edit|Write|Bash|PowerShell",
+        "matcher": "Edit|Write|Bash|PowerShell|AskUserQuestion",
         "hooks": [
           {
             "type": "command",

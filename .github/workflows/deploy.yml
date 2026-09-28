@@ -4,6 +4,11 @@ on:
   push:
     branches: [master]
   workflow_dispatch:
+    inputs:
+      skip_tests:
+        description: 'Sauter le harnais Playwright (hotfix uniquement)'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -15,7 +20,39 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Harnais Playwright COMPLET (36 mini-jeux + specs autonomes, gameplay réel,
+  # Chromium). Bloquant AVANT Pages depuis R08 (vague 1, 2026-09-28) : un jeu
+  # vert au check statique mais cassé en jeu ne doit plus passer en prod
+  # (L-147). Sautable en hotfix via workflow_dispatch → skip_tests.
+  test:
+    if: ${{ github.event.inputs.skip_tests != 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install (playwright à la racine, HO-R08)
+        run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Harnais gameplay complet (36 mini-jeux + specs autonomes)
+        run: npm test
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: mj-screenshots
+          path: studio/minijeux/tests/.artifacts/
+          retention-days: 7
+
   build-and-deploy:
+    needs: [test]
+    if: always() && (needs.test.result == 'success' || needs.test.result == 'skipped')
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -36,6 +73,7 @@ jobs:
       # i18n ×4, référentiel), référentiel, liens md. Un mini-jeu du menu au
       # cadre cassé (cloud.js manquant, thème absent, emoji bus, charset), un
       # jeu incomplet (D-012) ou un générateur désynchronisé arrête le déploiement.
+      # Le gameplay réel (Playwright) est couvert par le job `test` ci-dessus.
       - name: Portail check (bloquant)
         run: npm run check
 

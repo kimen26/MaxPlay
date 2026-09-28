@@ -23,13 +23,12 @@
  * rester un vrai trou de fact-check OU une limite du parseur : à vérifier à
  * la main avant d'agir (liste complète dans le rapport HO-R12).
  *
- * Sortie : "dino · bloc · attendu · trouvé" pour chaque écart. Toujours en
- * AVERTISSEMENT dans `npm run check` — jamais bloquant (l'orchestrateur décide
- * du basculement en bloquant sur la liste produite).
+ * Sortie : "dino · bloc · attendu · trouvé" pour chaque écart.
+ * BLOQUANT dans `npm run check` depuis R01 (vague 1, 2026-09-28) : 0 écart
+ * mesuré sur 71 fiches à cette date, l'orchestrateur a basculé le contrôle.
  *
  * Usage : node studio/dino/content/scripts/export/check-coherence-data-narre.cjs
- * Exit code : toujours 0 (avertissement) — la liste est le contrat, pas le code
- * de sortie. Si un futur handoff bascule ce contrôle en bloquant, changer ici.
+ * Exit code : 1 s'il existe au moins un écart, 0 sinon.
  */
 
 const fs = require('fs');
@@ -192,9 +191,7 @@ function main() {
       console.log(e.dino + ' · ' + e.bloc + ' · attendu ' + e.attendu + ' · trouvé ' + e.trouve);
     }
   }
-  // Toujours exit 0 : avertissement seulement (npm run check ne doit jamais
-  // échouer sur ce contrôle tant que l'orchestrateur n'a pas tranché — brief HO-R12).
-  process.exit(0);
+  process.exit(ecarts.length ? 1 : 0);
 }
 
 main();

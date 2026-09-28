@@ -10,8 +10,9 @@
 //    node audit-gabarit.mjs --all         → audite TOUS les site/mj-*.html (menu + retirés)
 //    node audit-gabarit.mjs mj-46 mj-48   → audite seulement ces jeux
 //    node audit-gabarit.mjs --json        → sortie JSON (pour CI / agents)
-//    node audit-gabarit.mjs --strict      → les checks C1 (EP-038 2026-07-28) sortent en BLOQUANT
-//                                            au lieu de dette (voir plan de bascule ci-dessous)
+//    node audit-gabarit.mjs --strict      → (compat, sans effet : --strict est le défaut depuis R05)
+//    node audit-gabarit.mjs --legacy      → repasse les checks C1 en dette (ancien comportement
+//                                            par défaut avant la bascule R05, 2026-09-28)
 //
 //  Portée par défaut = catalog.js (source de vérité menu). Depuis la purge
 //  2026-08-10 (décision PY), un jeu retiré est SUPPRIMÉ de site/ — seuls les
@@ -21,23 +22,12 @@
 //  Sort code 1 si au moins un jeu a une violation BLOQUANTE (voir plus bas),
 //  0 sinon. Les AVERTISSEMENTS (migration shell non faite, etc.) ne bloquent pas.
 //
-//  ── PLAN DE BASCULE --strict (C1, EP-038, 2026-07-28) ──────────────────────
-//  Constat : 33/45 jeux ont un écran de fin maison (pas G.showEnd), 29/45 sans
-//  golden alors que le catalogue promet des étoiles → ces checks casseraient la
-//  CI d'un coup s'ils étaient BLOQUANT par défaut aujourd'hui. Donc :
-//    - AUJOURD'HUI : les 5 nouveaux checks (showEnd / golden / titre / .hdr /
-//      Cursif) sortent en `dette` par défaut → CI VERTE, mais visibles et tracés.
-//    - Semaine par semaine, lot A (19 jeux 2-boutons) puis lot B (9 jeux
-//      1-bouton) puis lot C (entêtes maison) migrent vers G.showEnd/golden
-//      (voir studio/minijeux/docs/2026-07-28-plan-remise-au-propre.md § C1).
-//    - Quand un jeu migré passe --strict sans BLOQUANT, il reste vert pour
-//      toujours (aucune régression possible en arrière : le check bloque si
-//      quelqu'un réintroduit un overlay maison).
-//    - Quand TOUS les jeux du catalogue passent --strict → on bascule le
-//      défaut : `--strict` devient le comportement normal (retirer le flag,
-//      ou l'inverser en `--legacy` pour l'ancien comportement temporaire).
-//    - Le débogage : `node audit-gabarit.mjs --strict` à tout moment donne
-//      l'état réel migration (compte de bloquants restants par jeu).
+//  ── BASCULE --strict PAR DÉFAUT (C1, EP-038, 2026-07-28 → R05 2026-09-28) ──
+//  Les 5 checks C1 (showEnd / golden / titre / .hdr / Cursif) sont BLOQUANTS
+//  par défaut depuis R05 (vague 1, 2026-09-28) : les 36/36 jeux du catalogue
+//  passaient déjà --strict à cette date. `--legacy` repasse ces 5 checks en
+//  `dette` (warn) pour un usage exceptionnel (ex. diagnostiquer un jeu neuf
+//  avant migration) — jamais le défaut d'un push ni de la CI.
 //
 //  Ce qu'il vérifie, par fichier :
 //   [BLOQUANT] cloud.js présent SI comments.js présent, ET cloud.js avant comments.js
@@ -61,18 +51,19 @@ import { fileURLToPath } from 'node:url';
 import { dirname, resolve, basename } from 'node:path';
 
 const __dir = dirname(fileURLToPath(import.meta.url));
-const SITE = resolve(__dir, '..', '..', '..', 'site');
+const ROOT = resolve(__dir, '..', '..', '..');
+const SITE = resolve(ROOT, 'site');
 const TESTS = __dir;
 
 const args = process.argv.slice(2);
 const asJson = args.includes('--json');
 const auditAll = args.includes('--all');
-const strict = args.includes('--strict');
+const legacy = args.includes('--legacy');
+const strict = !legacy; // --strict reste accepté (compat) mais n'a plus d'effet : c'est le défaut
 const wanted = args.filter(a => !a.startsWith('--'));
 
-// Niveau des 5 nouveaux checks C1 (EP-038 2026-07-28) : 'dette' par défaut
-// (CI verte pendant la migration), 'block' avec --strict. Voir plan de
-// bascule en tête de fichier.
+// Niveau des 5 checks C1 (EP-038 2026-07-28) : BLOQUANT par défaut depuis R05
+// (2026-09-28, 36/36 jeux déjà conformes), 'dette' avec --legacy. Voir tête de fichier.
 const C1 = strict ? 'block' : 'warn';
 
 const GREEN = '\x1b[32m', RED = '\x1b[31m', YEL = '\x1b[33m', DIM = '\x1b[2m', RST = '\x1b[0m';
@@ -88,6 +79,16 @@ const GREEN = '\x1b[32m', RED = '\x1b[31m', YEL = '\x1b[33m', DIM = '\x1b[2m', R
 // sans objet, fin standard à statuer PY.
 const LEGACY_FIN_MAISON = new Set([
   'mj-32',
+]);
+
+// LEGACY window.__mjTest (R05, 2026-09-28) : liste NOMINATIVE des jeux qui
+// n'exposent pas encore le hook de test `window.__mjTest`, au tour de la
+// bascule --strict par défaut. Comme LEGACY_FIN_MAISON : ne peut que
+// RÉTRÉCIR (un jeu qui l'ajoute en sort et devient bloquant à jamais), on
+// n'en AJOUTE JAMAIS — un jeu neuf naît avec __mjTest exposé.
+const LEGACY_NO_MJTEST = new Set([
+  'mj-06', 'mj-13c', 'mj-14', 'mj-15', 'mj-19', 'mj-20', 'mj-21', 'mj-22',
+  'mj-24', 'mj-28', 'mj-30', 'mj-31', 'mj-38', 'mj-46',
 ]);
 
 // Source de vérité du menu : tout id mj-* présent dans js/catalog.js, SAUF
@@ -134,7 +135,15 @@ function catalogEntry(id) {
 
 let skipped = [];
 function mjFiles() {
-  if (wanted.length) return wanted.map(w => resolve(SITE, `${w.replace(/\.html$/, '')}.html`));
+  if (wanted.length) return wanted.map(w => {
+    // chemin explicite (ex: site/_template/mj-template.html, hors site/ direct) :
+    // résolu depuis la racine du repo. Sinon (id nu, ex: mj-46) : sous site/.
+    if (/[\\/]/.test(w)) {
+      const p = resolve(ROOT, w);
+      if (existsSync(p)) return p;
+    }
+    return resolve(SITE, `${w.replace(/\.html$/, '')}.html`);
+  });
   const menu = auditAll ? null : catalogIds();
   const all = readdirSync(SITE)
     .filter(f => /^mj-.*\.html$/.test(f));
@@ -161,6 +170,7 @@ function auditOne(file) {
   const hasTracker = /js\/tracker\.js/.test(html);
 
   const idxOf = (needle) => html.indexOf(needle);
+  const scriptBlocks = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]).join('\n');
 
   // ── BLOQUANT ──────────────────────────────────────────────────────────────
   // 1. cloud.js requis dès qu'il y a des commentaires 💬 (sauf si le shell s'en charge)
@@ -201,6 +211,30 @@ function auditOne(file) {
     /js\/sw-register\.js/.test(html),
     'HO-R11 : <script src="js/sw-register.js"> obligatoire (enregistrement du service worker)');
 
+  // 5. jamais nommer l'enfant (R05, 2026-09-28) : « Max » interdit dans le texte
+  //    VISIBLE — on retire <script>/<style> (code + commentaires) avant de
+  //    chercher \bMax\b, pour ne pas faire flancher le check sur un commentaire
+  //    dev ("// Max doit trouver…") qui n'est jamais lu par l'enfant.
+  {
+    const visibleHtml = html
+      .replace(/<script[\s\S]*?<\/script>/gi, '')
+      .replace(/<style[\s\S]*?<\/style>/gi, '')
+      .replace(/<!--[\s\S]*?-->/g, '');
+    const maxHit = /\bMax\b/.test(visibleHtml);
+    add('block', 'jamais « Max » dans le texte visible (on ne nomme pas l\'enfant)', !maxHit,
+      maxHit ? `« Max » trouvé hors <script>/<style>/commentaires (${basename(file)})` : '');
+  }
+
+  // 6. window.__mjTest exposé (R05, 2026-09-28) : hook de test attendu par le
+  //    harnais run.mjs. LEGACY nominatif = jeux qui ne l'exposent pas encore ;
+  //    liste qui ne peut que rétrécir, un jeu neuf naît conforme.
+  {
+    const hasMjTest = /window\.__mjTest\b/.test(scriptBlocks) || /\b__mjTest\b\s*[:=]/.test(scriptBlocks);
+    const lvl = LEGACY_NO_MJTEST.has(id) ? 'warn' : 'block';
+    add(lvl, 'window.__mjTest exposé (hook de test)' + (lvl === 'warn' ? ' [legacy assumé]' : ''), hasMjTest,
+      hasMjTest ? '' : 'manque window.__mjTest — le harnais run.mjs ne peut pas piloter le chemin gagnant');
+  }
+
   // ── AVERTISSEMENTS (n'empêchent pas le push, signalent une dette) ───────────
   add('warn', 'utilise le gabarit js/mj-shell.js', usesShell,
     'migration recommandée 2026-07-14 — charge tout le cadre dans le bon ordre');
@@ -219,7 +253,6 @@ function auditOne(file) {
     'HTML file:// ne peut pas fetch — utiliser <script src="data.js">');
 
   // hex en dur : uniquement dans le <script> inline (le CSS a le droit, c'est le gameplay qui ne doit pas hardcoder les couleurs de ligne)
-  const scriptBlocks = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]).join('\n');
   const hexHits = (scriptBlocks.match(/#[0-9a-fA-F]{6}\b/g) || []).length;
   add('warn', 'peu/pas de hex couleur en dur dans le JS inline', hexHits <= 3,
     hexHits ? `${hexHits} hex #RRGGBB dans le <script> — vérifier que ce ne sont pas des couleurs de ligne (→ LIGNES de data.js)` : '');
@@ -414,10 +447,32 @@ function auditOne(file) {
   return { id, missing: false, checks };
 }
 
+// ── contrôle global « jamais Max » — catalog.js (chaînes) + i18n/*/strings.json
+// (R05, 2026-09-28). Global (pas par jeu) : ces deux fichiers sont partagés.
+function findMaxHitsGlobal() {
+  const hits = [];
+  const catPath = resolve(SITE, 'js', 'catalog.js');
+  if (existsSync(catPath)) {
+    for (const m of readFileSync(catPath, 'utf8').matchAll(/'((?:\\'|[^'])*)'/g)) {
+      if (/\bMax\b/.test(m[1])) hits.push(`js/catalog.js : "${m[1]}"`);
+    }
+  }
+  const i18nRoot = resolve(__dir, '..', 'i18n');
+  if (existsSync(i18nRoot)) {
+    for (const lang of readdirSync(i18nRoot)) {
+      const f = resolve(i18nRoot, lang, 'strings.json');
+      if (existsSync(f) && /\bMax\b/.test(readFileSync(f, 'utf8')))
+        hits.push(`i18n/${lang}/strings.json`);
+    }
+  }
+  return hits;
+}
+const maxHitsGlobal = findMaxHitsGlobal();
+
 // ── run ─────────────────────────────────────────────────────────────────────
 const results = mjFiles().map(auditOne);
 
-let hadBlock = false;
+let hadBlock = maxHitsGlobal.length > 0;
 const summary = [];
 
 for (const r of results) {
@@ -439,8 +494,12 @@ for (const r of results) {
 }
 
 if (asJson) {
-  console.log(JSON.stringify({ hadBlock, skipped, results: summary }, null, 2));
+  console.log(JSON.stringify({ hadBlock, skipped, maxHitsGlobal, results: summary }, null, 2));
 } else {
+  if (maxHitsGlobal.length) {
+    console.log(`\n── global ── ${RED}BLOQUANT${RST}`);
+    for (const h of maxHitsGlobal) console.log(`  ${RED}✗ BLOQUANT${RST}  jamais « Max » (catalog.js/i18n)\n        → ${h}`);
+  }
   const nBlock = summary.filter(s => s.block).length;
   const nWarn = summary.filter(s => !s.block && s.warn).length;
   const nOk = summary.filter(s => !s.block && !s.warn).length;

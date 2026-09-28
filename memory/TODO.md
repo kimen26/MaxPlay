@@ -70,4 +70,11 @@ Questions Papa Yann (hors DoD) : 8 langues sans fiche audio sélectionnables au 
 ## Chantier « process militaire » (demande Papa Yann 2026-09-26)
 
 - [ ] **Proposition livrée 2026-09-27** : `docs/research/2026-09-26-archi-process-militaire.md` (diagnostic, principe « portes d'abord », 7 vagues) + `docs/research/2026-09-26-archi-recommandations.md` (23 recos R01-R23 avec statut de vérification, gabarit de brief DoR/DoD). Attend : les 10 arbitrages de la vague 0 (§ 8 du dossier) et le GO vague 1 (½ journée, ne dépend des arbitrages que pour le zoom).
-- [ ] Après GO : un brief HO par vague, exécuté par sous-agents Sonnet, le main vérifie (portes rejouées, `git diff`, captures ouvertes).
+- [x] Après GO : un brief HO par vague, exécuté par sous-agents Sonnet, le main vérifie (portes rejouées, `git diff`, captures ouvertes).
+- [x] **Vague 0** tranchée le 2026-09-28 (D-014, D-015, commit `77a19b27`).
+- [x] **Vague 1** livrée le 2026-09-28 (GO Papa Yann : « autant de script que possible, sous-agents Sonnet ou Haiku, économe »), 3 agents Sonnet en parallèle, relus et rejoués par le main :
+  - `34bce1f1` R20 extracteur FR qui fusionne au lieu d'écraser (+ test), R23 `--preview` du batch images qui n'écrit plus rien.
+  - `e3757693` R08 garde `git push` (site/ sans GREEN.json à jour = bloqué), R10 lessons-gate, AskUserQuestion bloqué, `git rm/mv` glob bloqué, pmo-check (trace = écriture, mj édité exige son test), R11 figée dino ciblée (lignes 🔒/❌, 1×/tour), signal-detector 1 ligne/pôle. Hooks 18/18.
+  - `17cbf76f` R01 portes de contenu dans `check` (verif audio, récits, traductions fr/en, cohérence chiffres bloquante), R05 audit strict par défaut + « jamais Max » + `__mjTest` pour jeu neuf, R21 gabarit conforme, R08 job `test` Playwright bloquant avant Pages (36/36 vert en local, ~10 min), `npm run gate`.
+  - Mode d'emploi : commit, puis `npm run gate`, puis `git push`.
+- [ ] Vague 2 : R02 (porte étymologie = EP-D23), R07, R12, R22. Attend un GO de Papa Yann.

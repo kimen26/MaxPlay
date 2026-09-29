@@ -10,11 +10,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Ty… ran… no… saurus rex. [curious] Do you know what "tyranno" means? [pauses] A ruler who answers to no one — nobody gets to say no to him.
-**WEX** [gasps] : Nobody? [nervous] Not even his mom?
-**NARRATEUR H** [chuckles] : His mom, yes, back when he was little. [warmly] But once he was grown, he was the king. He lived in North America, [amazed] sixty-six million years ago.
-**WEX** [curious] : And who did this king rule over?
-**NARRATEUR H** [happily] : His whole kingdom! [confident] All around him lived Triceratops, Edmontosaurus, and Ankylosaurus, [pauses] and every one of them kept a careful eye on him.
+**NARRATEUR H** [excited] : Ty… ran… no… saurus rex. [curious] Three pieces in that name. [pauses] "Tyranno" is Greek — it means a ruler who answers to no one.
+**WEX** [gasps] : No one? [nervous] Not even his mom?
+**NARRATEUR H** [chuckles] : His mom, yes, back when he was little. [warmly] But once he was grown, he was the king. [curious] Then "saurus" — also Greek — means lizard. And "rex", in Latin, [proud] means king.
+**WEX** [amazed] : The lizard-king who answers to no one.
+**NARRATEUR H** [happily] : That's him, put together. He lived in North America, [amazed] sixty-six million years ago, [pauses] and around him lived Triceratops, Edmontosaurus, and Ankylosaurus.
 
 ### BLOC B — Taille
 

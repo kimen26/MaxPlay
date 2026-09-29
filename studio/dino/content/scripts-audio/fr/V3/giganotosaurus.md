@@ -12,11 +12,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Gi-ga-no-to-saure. [curious] « Giga », ça veut dire géant — comme dans « gigantesque ». « Noto », ça veut dire du sud. Et « saure », le lézard.
-**WEX** [amazed] : Géant du sud, comme « gigantesque » mais en lézard.
-**NARRATEUR H** [happily] : Exactement. Il vivait en Argentine, en Amérique du Sud, [amazed] il y a 98 millions d'années.
-**WEX** [curious] : Il chassait qui, un géant pareil ?
-**NARRATEUR H** [playful] : L'Andésaure. [confident] Un cousin à long cou, aussi grand qu'un immeuble, qui vivait dans le même coin que lui.
+**NARRATEUR H** [excited] : Gi-ga-no-to-saure. [curious] Trois morceaux, tous en grec. [pauses] « Giga », ça veut dire géant — comme dans « gigantesque ». « Noto », ça veut dire du sud.
+**WEX** [curious] : Et « saure », je sais celui-là.
+**NARRATEUR H** [chuckles] : Le lézard. [amazed] Alors, en entier ?
+**WEX** [proud] : Le lézard géant du sud.
+**NARRATEUR H** [warmly] : Voilà. Il vivait en Argentine, [amazed] il y a 98 millions d'années, [pauses] avec l'Andésaure pour voisin — un géant à long cou.
 
 ### BLOC B — Taille
 

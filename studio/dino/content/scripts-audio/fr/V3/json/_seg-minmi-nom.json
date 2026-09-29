@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Min-mi. [curious] Ce nom-là, il ne vient ni du grec ni du latin — c'est le nom d'un endroit en Australie."
+      "text": "[excited] Min-mi. [curious] Ce nom-là, il ne vient ni du grec ni du latin — c'est le nom d'un endroit en Australie, Minmi Crossing, [pauses] là où on a trouvé ses os."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Un endroit ?"
+      "text": "[curious] Et son nom en entier, alors ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Minmi Crossing, [pauses] là où on a trouvé ses os. [calm] Il vivait au Queensland, il y a 120 millions d'années."
+      "text": "[playful] « Paravertebra ». [confident] « Para », en latin, ça veut dire à côté de. Et « vertebra », c'est la vertèbre — les petits os du dos."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[amazed] Il était petit, ce dino ?"
+      "text": "[amazed] Des os à côté du dos ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Tout petit — et pendant longtemps, [pauses] il a même eu le nom de dinosaure le plus court du monde."
+      "text": "[warmly] Voilà, tout petits, jamais vus ailleurs. Il vivait au Queensland, [amazed] il y a 120 millions d'années, [pauses] et pendant longtemps, ce fut le nom de dinosaure le plus court du monde."
     }
   ],
   "model_id": "eleven_v3",

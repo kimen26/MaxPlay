@@ -11,11 +11,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [curious] : Cho-ni-saure. Son nom vient d'un endroit : les monts Shoshone, [serious] dans le désert du Nevada, aux États-Unis — c'est là qu'on a trouvé ses os.
-**WEX** [confident] : Le lézard des monts Shoshone ?
-**NARRATEUR H** [happily] : Exactement. Il vivait il y a 230 millions d'années — [amazed] bien avant la plupart des dinosaures que tu connais.
-**WEX** [curious] : Un désert, mais il vivait dans l'eau ?
-**NARRATEUR H** [confident] : À cette époque, ce désert était une mer. [amazed] Toute la région était sous l'eau.
+**NARRATEUR H** [curious] : Cho-ni-saure. [pauses] Deux morceaux dans ce nom. « Shoni », c'est un endroit : les monts Shoshone, dans le désert du Nevada, aux États-Unis.
+**WEX** [curious] : Et « saure » ?
+**NARRATEUR H** [happily] : Ça, c'est du grec. « Sauros », le lézard.
+**WEX** [confident] : Le lézard des monts Shoshone.
+**NARRATEUR H** [warmly] : En entier, oui. Il vivait il y a 230 millions d'années, [amazed] bien avant la plupart des dinosaures — [pauses] et ce désert, à l'époque, était une mer tout entière.
 
 ### BLOC B — Taille
 

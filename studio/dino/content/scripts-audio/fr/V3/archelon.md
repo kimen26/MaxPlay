@@ -12,11 +12,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [curious] : Ar-ké-lon. « Arché », ça veut dire chef, premier — [serious] comme dans « archéologie ». Et « chélon », c'est la tortue.
+**NARRATEUR H** [curious] : Ar-ké-lon. [pauses] Deux morceaux, tous les deux en grec. « Arché », ça veut dire chef, premier — comme dans « archéologie ».
+**WEX** [curious] : Et « lon » ?
+**NARRATEUR H** [happily] : « Chélon », en grec, c'est la tortue.
 **WEX** [confident] : La tortue-chef ?
-**NARRATEUR H** [happily] : Voilà — la plus grande tortue de tous les temps. Elle vivait il y a 75 millions d'années, [amazed] dans une mer qui coupait [serious] l'Amérique du Nord en deux.
-**WEX** [curious] : Une tortue, mais pas un dinosaure alors ?
-**NARRATEUR H** [confident] : Non, une vraie tortue de mer géante — [warmly] la cousine des tortues d'aujourd'hui, en beaucoup, beaucoup plus grand.
+**NARRATEUR H** [warmly] : En entier, oui — la plus grande tortue de tous les temps. Elle vivait dans une mer qui coupait l'Amérique du Nord en deux, [amazed] il y a 75 millions d'années, [pauses] avec le Tylosaure et de vieux requins pour voisins dangereux.
 
 ### BLOC B — Taille
 

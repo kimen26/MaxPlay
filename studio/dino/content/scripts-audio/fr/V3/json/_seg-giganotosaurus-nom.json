@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Gi-ga-no-to-saure. [curious] « Giga », ça veut dire géant — comme dans « gigantesque ». « Noto », ça veut dire du sud. Et « saure », le lézard."
+      "text": "[excited] Gi-ga-no-to-saure. [curious] Trois morceaux, tous en grec. [pauses] « Giga », ça veut dire géant — comme dans « gigantesque ». « Noto », ça veut dire du sud."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[amazed] Géant du sud, comme « gigantesque » mais en lézard."
+      "text": "[curious] Et « saure », je sais celui-là."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactement. Il vivait en Argentine, en Amérique du Sud, [amazed] il y a 98 millions d'années."
+      "text": "[chuckles] Le lézard. [amazed] Alors, en entier ?"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il chassait qui, un géant pareil ?"
+      "text": "[proud] Le lézard géant du sud."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] L'Andésaure. [confident] Un cousin à long cou, aussi grand qu'un immeuble, qui vivait dans le même coin que lui."
+      "text": "[warmly] Voilà. Il vivait en Argentine, [amazed] il y a 98 millions d'années, [pauses] avec l'Andésaure pour voisin — un géant à long cou."
     }
   ],
   "model_id": "eleven_v3",

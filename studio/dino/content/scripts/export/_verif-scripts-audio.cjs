@@ -70,15 +70,10 @@ const URL_RE = /https?:\/\/\S+/i;
 
 // KO déjà présents le jour du branchement de ces deux règles (avertissement, jamais erreur — à vider par
 // EP-D22, n'ajoute jamais un id neuf ici : un id neuf en KO est une vraie erreur, pas un legacy).
-const LEGACY_ETYMO = new Set([
-  // id absent de racines.json (3, mesuré 2026-09-29)
-  'centrosaurus', 'pentaceratops', 'torosaurus',
-  // bloc A sans « grec »/« latin » nommé (9, mesuré 2026-09-29 — chiffre L-D-84)
-  'albertosaurus', 'amargasaurus', 'archelon', 'giganotosaurus', 'mammuthus',
-  'mosasaurus', 'ophthalmosaurus', 'quetzalcoatlus', 'shonisaurus',
-  // bloc A sans le sens d'au moins une racine (5, mesuré 2026-09-29)
-  'elasmosaurus', 'gorgonops', 'minmi', 'paraceratherium', 'patagotitan',
-]);
+// Vidé EP-D22 (2026-09-29) : les 17 ids historiques (racines.json complété pour centrosaurus/
+// pentaceratops/torosaurus + 14 blocs A réécrits nommant grec/latin explicitement) passent tous
+// --etymo-report sans avertissement. Set gardé vide, prêt à recevoir un futur id neuf en régression.
+const LEGACY_ETYMO = new Set([]);
 const LEGACY_FACTCHECK = new Set([
   // ligne « > Fact-check » qui dit CONFIRMÉ/confirmé sans URL (27, mesuré 2026-09-29)
   'allosaurus', 'amargasaurus', 'ankylosaurus', 'baryonyx', 'carcharodontosaurus', 'carnotaurus',

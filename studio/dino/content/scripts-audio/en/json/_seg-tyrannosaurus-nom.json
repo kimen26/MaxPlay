@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Ty… ran… no… saurus rex. [curious] Do you know what \"tyranno\" means? [pauses] A ruler who answers to no one — nobody gets to say no to him."
+      "text": "[excited] Ty… ran… no… saurus rex. [curious] Three pieces in that name. [pauses] \"Tyranno\" is Greek — it means a ruler who answers to no one."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Nobody? [nervous] Not even his mom?"
+      "text": "[gasps] No one? [nervous] Not even his mom?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[chuckles] His mom, yes, back when he was little. [warmly] But once he was grown, he was the king. He lived in North America, [amazed] sixty-six million years ago."
+      "text": "[chuckles] His mom, yes, back when he was little. [warmly] But once he was grown, he was the king. [curious] Then \"saurus\" — also Greek — means lizard. And \"rex\", in Latin, [proud] means king."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] And who did this king rule over?"
+      "text": "[amazed] The lizard-king who answers to no one."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] His whole kingdom! [confident] All around him lived Triceratops, Edmontosaurus, and Ankylosaurus, [pauses] and every one of them kept a careful eye on him."
+      "text": "[happily] That's him, put together. He lived in North America, [amazed] sixty-six million years ago, [pauses] and around him lived Triceratops, Edmontosaurus, and Ankylosaurus."
     }
   ],
   "model_id": "eleven_v3",

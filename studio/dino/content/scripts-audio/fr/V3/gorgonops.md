@@ -11,11 +11,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [serious] : Gorgonops. « Gorgone », c'est un monstre des très vieilles histoires grecques — [scared] si terrifiant qu'on avait peur rien qu'à le voir. [confident] Et « ops », le visage.
+**NARRATEUR H** [serious] : Gorgonops. [pauses] Deux morceaux, [curious] tous les deux en grec. « Gorgon », c'est la Gorgone, un monstre des vieilles histoires grecques au visage terrifiant.
+**WEX** [scared] : Terrifiant comment ?
+**NARRATEUR H** [gently] : Si effrayant qu'on avait peur rien qu'à l'entendre approcher. [confident] Et « ops », en grec, c'est le visage.
 **WEX** [nervous] : Le visage qui fait peur ?
-**NARRATEUR H** [warmly] : Oui — les savants ont trouvé que son crâne était vraiment impressionnant. [confident] Il vivait en Afrique du Sud, il y a 260 millions d'années.
-**WEX** [curious] : C'est un dinosaure ?
-**NARRATEUR H** [confident] : Non, pas du tout — il vivait bien avant eux. [warmly] C'est un cousin encore plus proche de nous que le Dimétrodon.
+**NARRATEUR H** [warmly] : En entier, oui — les savants ont trouvé son crâne vraiment impressionnant. Il vivait en Afrique du Sud, [amazed] il y a 260 millions d'années, [pauses] bien avant les premiers dinosaures.
 
 ### BLOC B — Taille
 

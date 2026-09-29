@@ -14,11 +14,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Pa-ra-cé-ra-té-rioum. En grec, « céra » veut dire corne, et le petit bout devant veut dire « sans ». [playful] Proche de la bête... sans corne.
-**WEX** [curious] : Un rhinocéros sans corne ?
-**NARRATEUR H** [happily] : Presque — un cousin du rhinocéros, mais oui, sans une seule corne. [serious] Pas un dinosaure : il est arrivé bien après, [pauses] il y a 30 millions d'années.
-**WEX** [curious] : Il vivait où ?
-**NARRATEUR H** [confident] : En Asie — au Pakistan, en Chine, et en Mongolie.
+**NARRATEUR H** [excited] : Pa-ra-cé-ra-té-rioum. [curious] Quatre petits morceaux, tous en grec. [pauses] « Para », ça veut dire à côté de, proche de. Et le tout petit bout après, ça veut dire « sans ».
+**WEX** [curious] : Proche de... sans quoi ?
+**NARRATEUR H** [playful] : « Céras », c'est la corne. Et « thérium », la bête.
+**WEX** [amazed] : Proche de la bête sans corne.
+**NARRATEUR H** [warmly] : En entier, oui — un cousin du rhinocéros, mais sans une seule corne. Il vivait en Asie, [amazed] au Pakistan, en Chine et en Mongolie, [pauses] il y a 30 millions d'années — bien après les dinosaures.
 
 ### BLOC B — Taille
 

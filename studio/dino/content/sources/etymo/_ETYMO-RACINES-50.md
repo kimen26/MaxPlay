@@ -189,6 +189,25 @@
 → **« lézard à piques »** (la collerette à pointes)
 [nom_etym OK]
 
+## centrosaurus — Centrosaure (Centrosaurus apertus)
+- **centro- / kentron** (grec) = pointe, piquant
+- **-saurus / -saure** (grec *sauros*) = lézard
+→ **« lézard à pointes »** (les crochets pointus sur le bord de sa collerette)
+[nom_etym OK — fact-check Grokipedia 2026-09-29 (https://grokipedia.com/page/Centrosaurus) : kentron = pointe/piquant, sauros = lézard/reptile, sens retenu « pointed/prickly lizard ». Espèce type C. apertus, Formation Dinosaur Park, Alberta (Canada), Campanien ~76,5-75,3 Ma, découvert 1901 par Lawrence M. Lambe]
+
+## pentaceratops — Pentacératops (Pentaceratops sternbergii)
+- **penta-** (grec) = cinq
+- **cérat- / kéras** (grec) = corne
+- **-ops** (grec) = face, visage
+→ **« face à cinq cornes »** (Osborn comptait 5 pointes : 1 corne nasale, 2 postorbitales, 2 sur le fronton)
+[nom_etym OK — fact-check Grokipedia 2026-09-29 (https://grokipedia.com/page/Pentaceratops) : penta = cinq, keras = corne, ops = visage. Espèce type P. sternbergii, Formation Fruitland, bassin de San Juan (Nouveau-Mexique), Campanien supérieur, découvert 1922 par Charles H. Sternberg, décrit 1923 par Henry F. Osborn]
+
+## torosaurus — Torosaure (Torosaurus latus)
+- **toro- / toros** (grec) = percé, troué (PAS « taureau », faux-ami trompeur en français)
+- **-saurus / -saure** (grec *sauros*) = lézard
+→ **« lézard percé »** (les deux grandes fenêtres dans sa collerette)
+[nom_etym OK — fact-check Grokipedia 2026-09-29 (https://grokipedia.com/page/Torosaurus) : toros = percé/troué (confirmé, PAS taureau), sauros = lézard, en référence aux grandes fenêtres perforant l'os pariétal. Espèce type T. latus, Formation Lance, comté de Converse (Wyoming), Maastrichtien supérieur, découvert été 1891 par John Bell Hatcher, décrit 1891 par O. C. Marsh]
+
 ## protoceratops — Protocératops (Protoceratops andrewsi)
 - **proto-** (grec *protos*) = premier
 - **cérat- / kéras** (grec) = corne

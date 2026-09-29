@@ -15,11 +15,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Al-ber-to-saure. [curious] « Alberto », ça vient de l'Alberta, une GRANDE région du Canada où on a trouvé ses os. [playful] Et « saure », tu sais ce que ça veut dire ?
-**WEX** [confident] : Lézard. Alors... le lézard de l'Alberta.
-**NARRATEUR H** [happily] : Exactement. [amazed] Il vivait là-bas, il y a 70 millions d'années. [warmly] Un cousin du T-Rex.
-**WEX** [curious] : Et il avait des ennemis ? [nervous] Des chasseurs encore plus forts que lui ?
-**NARRATEUR H** [confident] : Non. [warmly] Dans son pays, c'était lui le plus grand chasseur. [proud] Aucun autre carnivore n'était assez costaud pour l'embêter.
+**NARRATEUR H** [excited] : Al-ber-to-saure. [curious] Il y a deux morceaux dans ce nom. [pauses] « Alberto », ça vient de l'Alberta, une GRANDE région du Canada — c'est là qu'on a trouvé ses os.
+**WEX** [curious] : Et le reste, « saure » ?
+**NARRATEUR H** [happily] : Ça, c'est du grec. [proud] « Sauros », ça veut dire lézard.
+**WEX** [confident] : Le lézard de l'Alberta.
+**NARRATEUR H** [warmly] : En entier, oui. Il vivait au Canada, [amazed] il y a 70 millions d'années, [pauses] et autour de lui vivaient l'Edmontosaure et le Saurolophe.
 
 ### BLOC B — Taille
 

@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Al-ber-to-saure. [curious] « Alberto », ça vient de l'Alberta, une GRANDE région du Canada où on a trouvé ses os. [playful] Et « saure », tu sais ce que ça veut dire ?"
+      "text": "[excited] Al-ber-to-saure. [curious] Il y a deux morceaux dans ce nom. [pauses] « Alberto », ça vient de l'Alberta, une GRANDE région du Canada — c'est là qu'on a trouvé ses os."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[confident] Lézard. Alors... le lézard de l'Alberta."
+      "text": "[curious] Et le reste, « saure » ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactement. [amazed] Il vivait là-bas, il y a 70 millions d'années. [warmly] Un cousin du T-Rex."
+      "text": "[happily] Ça, c'est du grec. [proud] « Sauros », ça veut dire lézard."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Et il avait des ennemis ? [nervous] Des chasseurs encore plus forts que lui ?"
+      "text": "[confident] Le lézard de l'Alberta."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Non. [warmly] Dans son pays, c'était lui le plus grand chasseur. [proud] Aucun autre carnivore n'était assez costaud pour l'embêter."
+      "text": "[warmly] En entier, oui. Il vivait au Canada, [amazed] il y a 70 millions d'années, [pauses] et autour de lui vivaient l'Edmontosaure et le Saurolophe."
     }
   ],
   "model_id": "eleven_v3",

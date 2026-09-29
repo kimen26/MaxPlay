@@ -10,11 +10,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : A-mar-ga-saure. [curious] Ce nom vient d'un endroit ! « La Amarga », en Argentine, là où on a trouvé ses os.
-**WEX** [curious] : Le lézard de La Amarga.
-**NARRATEUR H** [happily] : Voilà. Il vivait en Argentine, il y a 125 millions d'années.
-**WEX** [curious] : Il avait quelque chose de spécial ?
-**NARRATEUR H** [serious] : Deux rangées de très grandes épines, [amazed] sur le cou et sur le dos.
+**NARRATEUR H** [excited] : A-mar-ga-saure. [curious] Deux morceaux dans ce nom. [pauses] « Amarga », c'est un endroit : La Amarga, en Argentine, là où on a trouvé ses os.
+**WEX** [curious] : Et « saure » ?
+**NARRATEUR H** [happily] : Ça, c'est du grec. « Sauros », le lézard.
+**WEX** [confident] : Le lézard de La Amarga.
+**NARRATEUR H** [warmly] : En entier, oui. Il vivait en Argentine, [amazed] il y a 125 millions d'années, [pauses] avec deux rangées de très grandes épines sur le cou et le dos.
 
 ### BLOC B — Taille
 

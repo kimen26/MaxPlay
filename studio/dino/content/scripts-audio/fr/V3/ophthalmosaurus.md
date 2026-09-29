@@ -11,11 +11,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [curious] : Of-tal-mo-saure. « Ophtalmo », c'est l'œil — comme l'ophtalmologue, [serious] le docteur qui vérifie tes yeux. Et « saure », le lézard.
+**NARRATEUR H** [curious] : Of-tal-mo-saure. [pauses] Deux morceaux, tous les deux en grec. « Ophtalmo », c'est l'œil — comme l'ophtalmologue, [serious] le docteur qui vérifie tes yeux.
+**WEX** [curious] : Et « saure » ?
+**NARRATEUR H** [happily] : Le lézard.
 **WEX** [confident] : Le lézard aux yeux ?
-**NARRATEUR H** [happily] : Voilà. Il vivait il y a 150 millions d'années, [amazed] dans les mers peu profondes d'Europe et d'Amérique du Nord.
-**WEX** [curious] : Pourquoi des si grands yeux, pour un lézard de mer ?
-**NARRATEUR H** [serious] : Justement — c'est son truc à lui. On va y venir.
+**NARRATEUR H** [warmly] : En entier, oui. Il vivait dans les mers peu profondes d'Europe et d'Amérique du Nord, [amazed] il y a 150 millions d'années, [pauses] avec le Liopleurodon qui rôdait tout près.
 
 ### BLOC B — Taille
 

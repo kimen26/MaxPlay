@@ -11,11 +11,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Mo-sa-saure. Son nom parle d'une rivière : la Meuse, [curious] en Europe, où on a trouvé ses premiers os. Et « saure », tu commences à le savoir.
-**WEX** [confident] : Le lézard. Le lézard de la Meuse.
-**NARRATEUR H** [happily] : Exactement. Sauf que lui, il ne vivait pas dans une rivière — [amazed] il nageait dans TOUTES les mers du monde, il y a 70 millions d'années.
-**WEX** [curious] : Toutes les mers ? Même celle de Tritri ?
-**NARRATEUR H** [confident] : Celle-là même. Le Mosasaure et le Tricératops ont vécu à la même époque, [serious] juste à la fin du temps des dinosaures — lui dans l'eau, [warmly] le Tricératops sur la terre.
+**NARRATEUR H** [excited] : Mo-sa-saure. [curious] Deux morceaux dans ce nom. [pauses] « Mosa », c'est la Meuse, une rivière d'Europe, où on a trouvé ses premiers os.
+**WEX** [curious] : Et « saure » ?
+**NARRATEUR H** [happily] : Ça, c'est du grec. « Sauros », le lézard.
+**WEX** [confident] : Le lézard de la Meuse.
+**NARRATEUR H** [warmly] : En entier, oui — sauf que lui, il ne vivait pas dans une rivière : [amazed] il nageait dans TOUTES les mers du monde, il y a 70 millions d'années, [pauses] à la même époque que Tritri, sur la terre.
 
 ### BLOC B — Taille
 

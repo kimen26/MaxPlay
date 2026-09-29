@@ -10,11 +10,9 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Ti-ta-no-saure. [curious] En grec, « Titan », c'était le géant, le plus grand de tous.
+**NARRATEUR H** [excited] : Ti-ta-no-saure. [curious] « Titan », en grec, ce sont les Titans — des géants des vieilles histoires grecques, plus grands que tout.
 **WEX** [curious] : Le lézard géant ?
-**NARRATEUR H** [amazed] : Voilà. Et pas n'importe quel géant : [proud] le plus grand animal qui ait jamais marché sur la Terre. [calm] Il vivait en Argentine, il y a 100 millions d'années.
-**WEX** [curious] : Personne n'osait l'attaquer, alors ?
-**NARRATEUR H** [confident] : On n'a jamais retrouvé une seule marque de morsure sur ses os d'adulte. [serious] Sa taille, à elle seule, le protégeait.
+**NARRATEUR H** [amazed] : Voilà. Et pas n'importe quel géant : [proud] le plus grand animal qui ait jamais marché sur la Terre. Il vivait en Argentine, [amazed] en Patagonie, il y a 100 millions d'années, [pauses] et on n'a jamais retrouvé une seule marque de morsure sur ses os d'adulte.
 
 ### BLOC B — Taille
 

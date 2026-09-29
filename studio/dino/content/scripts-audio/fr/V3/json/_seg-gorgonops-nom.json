@@ -2,7 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Gorgonops. « Gorgone », c'est un monstre des très vieilles histoires grecques — [scared] si terrifiant qu'on avait peur rien qu'à le voir. [confident] Et « ops », le visage."
+      "text": "[serious] Gorgonops. [pauses] Deux morceaux, [curious] tous les deux en grec. « Gorgon », c'est la Gorgone, un monstre des vieilles histoires grecques au visage terrifiant."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[scared] Terrifiant comment ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[gently] Si effrayant qu'on avait peur rien qu'à l'entendre approcher. [confident] Et « ops », en grec, c'est le visage."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -10,15 +18,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[warmly] Oui — les savants ont trouvé que son crâne était vraiment impressionnant. [confident] Il vivait en Afrique du Sud, il y a 260 millions d'années."
-    },
-    {
-      "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] C'est un dinosaure ?"
-    },
-    {
-      "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Non, pas du tout — il vivait bien avant eux. [warmly] C'est un cousin encore plus proche de nous que le Dimétrodon."
+      "text": "[warmly] En entier, oui — les savants ont trouvé son crâne vraiment impressionnant. Il vivait en Afrique du Sud, [amazed] il y a 260 millions d'années, [pauses] bien avant les premiers dinosaures."
     }
   ],
   "model_id": "eleven_v3",

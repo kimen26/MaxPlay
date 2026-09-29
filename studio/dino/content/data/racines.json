@@ -3,8 +3,8 @@
     "source": "studio/dino/content/sources/etymo/_ETYMO-RACINES-50.md",
     "genere_par": "scripts/export/_etymo2racines.cjs",
     "note": "STRUCTURE seulement — la source de vérité reste le .md (fact-checké). Curation pédagogique du dico = dino-conseiller.",
-    "nb_racines": 101,
-    "nb_dinos": 75
+    "nb_racines": 104,
+    "nb_dinos": 78
   },
   "racines": [
     {
@@ -13,7 +13,7 @@
       "translitteration": "sauros",
       "sens": "lézard",
       "type": "racine",
-      "n": 38,
+      "n": 40,
       "variantes": [
         "-saura",
         "-saure",
@@ -33,6 +33,7 @@
         "brachiosaurus",
         "camarasaurus",
         "carcharodontosaurus",
+        "centrosaurus",
         "ceratosaurus",
         "corythosaurus",
         "cryolophosaurus",
@@ -61,6 +62,7 @@
         "styracosaurus",
         "tarbosaurus",
         "therizinosaurus",
+        "torosaurus",
         "tyrannosaurus"
       ]
     },
@@ -88,6 +90,25 @@
       ]
     },
     {
+      "cle": "-ops",
+      "langue": "grec",
+      "translitteration": "ôps",
+      "sens": "face, visage",
+      "type": "racine",
+      "n": 5,
+      "variantes": [
+        "-ops",
+        "ôps"
+      ],
+      "dinos": [
+        "gorgonops",
+        "moschops",
+        "pentaceratops",
+        "protoceratops",
+        "triceratops"
+      ]
+    },
+    {
       "cle": "-lophe",
       "langue": "grec",
       "translitteration": "lophos",
@@ -104,24 +125,6 @@
         "dilophosaurus",
         "parasaurolophus",
         "saurolophus"
-      ]
-    },
-    {
-      "cle": "-ops",
-      "langue": "grec",
-      "translitteration": "ôps",
-      "sens": "face, visage",
-      "type": "racine",
-      "n": 4,
-      "variantes": [
-        "-ops",
-        "ôps"
-      ],
-      "dinos": [
-        "gorgonops",
-        "moschops",
-        "protoceratops",
-        "triceratops"
       ]
     },
     {
@@ -147,13 +150,14 @@
       "translitteration": "kéras",
       "sens": "corne",
       "type": "racine",
-      "n": 3,
+      "n": 4,
       "variantes": [
         "cérat-",
         "kéras"
       ],
       "dinos": [
         "ceratosaurus",
+        "pentaceratops",
         "protoceratops",
         "triceratops"
       ]
@@ -764,6 +768,21 @@
       ]
     },
     {
+      "cle": "centro- / kentron",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "pointe, piquant",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "centro-",
+        "kentron"
+      ],
+      "dinos": [
+        "centrosaurus"
+      ]
+    },
+    {
       "cle": "compso- / kompsos",
       "langue": "grec",
       "translitteration": null,
@@ -1251,6 +1270,20 @@
       ]
     },
     {
+      "cle": "penta-",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "cinq",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "penta-"
+      ],
+      "dinos": [
+        "pentaceratops"
+      ]
+    },
+    {
       "cle": "plateo-",
       "langue": "grec",
       "translitteration": "platus",
@@ -1499,6 +1532,21 @@
       ],
       "dinos": [
         "titanis"
+      ]
+    },
+    {
+      "cle": "toro- / toros",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "percé, troué",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "toro-",
+        "toros"
+      ],
+      "dinos": [
+        "torosaurus"
       ]
     },
     {
@@ -2200,6 +2248,72 @@
           "cle": "styraco- / sturax",
           "langue": "grec",
           "sens": "pointe (de lance), pique"
+        },
+        {
+          "racine": "-saurus / -saure",
+          "cle": "-saure",
+          "langue": "grec",
+          "sens": "lézard"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "centrosaurus": {
+      "nom": "Centrosaure",
+      "full": "Centrosaurus apertus",
+      "sens": "lézard à pointes",
+      "racines": [
+        {
+          "racine": "centro- / kentron",
+          "cle": "centro- / kentron",
+          "langue": "grec",
+          "sens": "pointe, piquant"
+        },
+        {
+          "racine": "-saurus / -saure",
+          "cle": "-saure",
+          "langue": "grec",
+          "sens": "lézard"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "pentaceratops": {
+      "nom": "Pentacératops",
+      "full": "Pentaceratops sternbergii",
+      "sens": "face à cinq cornes",
+      "racines": [
+        {
+          "racine": "penta-",
+          "cle": "penta-",
+          "langue": "grec",
+          "sens": "cinq"
+        },
+        {
+          "racine": "cérat- / kéras",
+          "cle": "cérat-",
+          "langue": "grec",
+          "sens": "corne"
+        },
+        {
+          "racine": "-ops",
+          "cle": "-ops",
+          "langue": "grec",
+          "sens": "face, visage"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "torosaurus": {
+      "nom": "Torosaure",
+      "full": "Torosaurus latus",
+      "sens": "lézard percé",
+      "racines": [
+        {
+          "racine": "toro- / toros",
+          "cle": "toro- / toros",
+          "langue": "grec",
+          "sens": "percé, troué"
         },
         {
           "racine": "-saurus / -saure",

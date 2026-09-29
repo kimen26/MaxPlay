@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] A-mar-ga-saure. [curious] Ce nom vient d'un endroit ! « La Amarga », en Argentine, là où on a trouvé ses os."
+      "text": "[excited] A-mar-ga-saure. [curious] Deux morceaux dans ce nom. [pauses] « Amarga », c'est un endroit : La Amarga, en Argentine, là où on a trouvé ses os."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Le lézard de La Amarga."
+      "text": "[curious] Et « saure » ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Voilà. Il vivait en Argentine, il y a 125 millions d'années."
+      "text": "[happily] Ça, c'est du grec. « Sauros », le lézard."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il avait quelque chose de spécial ?"
+      "text": "[confident] Le lézard de La Amarga."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Deux rangées de très grandes épines, [amazed] sur le cou et sur le dos."
+      "text": "[warmly] En entier, oui. Il vivait en Argentine, [amazed] il y a 125 millions d'années, [pauses] avec deux rangées de très grandes épines sur le cou et le dos."
     }
   ],
   "model_id": "eleven_v3",

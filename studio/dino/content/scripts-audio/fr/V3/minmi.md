@@ -11,11 +11,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Min-mi. [curious] Ce nom-là, il ne vient ni du grec ni du latin — c'est le nom d'un endroit en Australie.
-**WEX** [curious] : Un endroit ?
-**NARRATEUR H** [happily] : Minmi Crossing, [pauses] là où on a trouvé ses os. [calm] Il vivait au Queensland, il y a 120 millions d'années.
-**WEX** [amazed] : Il était petit, ce dino ?
-**NARRATEUR H** [confident] : Tout petit — et pendant longtemps, [pauses] il a même eu le nom de dinosaure le plus court du monde.
+**NARRATEUR H** [excited] : Min-mi. [curious] Ce nom-là, il ne vient ni du grec ni du latin — c'est le nom d'un endroit en Australie, Minmi Crossing, [pauses] là où on a trouvé ses os.
+**WEX** [curious] : Et son nom en entier, alors ?
+**NARRATEUR H** [playful] : « Paravertebra ». [confident] « Para », en latin, ça veut dire à côté de. Et « vertebra », c'est la vertèbre — les petits os du dos.
+**WEX** [amazed] : Des os à côté du dos ?
+**NARRATEUR H** [warmly] : Voilà, tout petits, jamais vus ailleurs. Il vivait au Queensland, [amazed] il y a 120 millions d'années, [pauses] et pendant longtemps, ce fut le nom de dinosaure le plus court du monde.
 
 ### BLOC B — Taille
 

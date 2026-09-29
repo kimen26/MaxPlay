@@ -52,3 +52,5 @@ Conseiller (pitch/brainstorm) · `narration` Directeur (briefs/sélection/rewrit
 - **2026-07-27** — Méga audit cartographique (6 zones) + phase 1 (~60 réparations mécaniques) : décisions canon gravées (DEC-SENSIBILITES-T6-T8, DEC-UNIVERS-NOM = WEX WORLD), signalétique réparée (panel 12 calls, compteurs réels), rotation semestrielle des logs PMO (D6).
 
 > **Session 2026-09-03 (HO-NAR-01)** : convergence mémoire du pôle — `pmo/` → `memory/` (quintette), INBOX.md distillé et vidé, `equipe/lecons-vivantes.md` confirmé craft (pas touché), CLAUDE.md/README.md/INDEX.md/AGENTS.md à jour des nouveaux chemins. Voir rapport HO-NAR-01 pour le détail des pointeurs extérieurs restés cassés (hors mandat, → HO-G07).
+
+> **2026-09-29 (process militaire, vague 2, transverse)** : agents narration-audio-writer, narration, narration-pmo, narration-localisation corrigés par la porte `check-liens-md` (chemins morts) et `check-figees` (narration-audio-writer disait « doudou Tricératops », aligné sur la figée dino : Tritri = surnom, jamais doudou). Aucun contenu narratif touché. Commit `ee0a7527`.

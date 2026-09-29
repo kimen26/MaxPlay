@@ -77,4 +77,10 @@ Questions Papa Yann (hors DoD) : 8 langues sans fiche audio sélectionnables au 
   - `17cbf76f` R01 portes de contenu dans `check` (verif audio, récits, traductions fr/en, cohérence chiffres bloquante), R05 audit strict par défaut + « jamais Max » + `__mjTest` pour jeu neuf, R21 gabarit conforme, R08 job `test` Playwright bloquant avant Pages (36/36 vert en local, ~10 min), `npm run gate`.
   - Mode d'emploi : commit, puis `npm run gate`, puis `git push`. Jamais les deux dans la même commande (L-014, le hook refuse).
   - Premier passage CI rouge (mj-22 et mj-49 : specs sensibles à la lenteur de la machine GitHub, pas les jeux). Corrigé `afa5503c`, + porte `check-casse-chemins.mjs`. CI verte et site déployé le 2026-09-29.
-- [ ] Vague 2 : R02 (porte étymologie = EP-D23), R07, R12, R22. Attend un GO de Papa Yann.
+- [x] **Vague 2** livrée le 2026-09-29 (GO Papa Yann, 1 Haiku + 3 Sonnet) :
+  - `be6e1435` D-016 : à chaque push seuls les jeux touchés sont rejoués ; harnais complet le lundi 3 h UTC et à la demande (`full_suite`).
+  - `3886d859` R02 porte étymologie + interdits de fond, R22 provenance des Fact-check (27 fiches LEGACY_FACTCHECK à sourcer).
+  - `ee0a7527` R07 i18n fr/en bloquante + `--next-id`, R12 chemins morts des agents (15), `check-figees`, lint frontmatter.
+  - `7c379202` EP-D22 : 11 blocs A FR + T-Rex EN réécrits, LEGACY_ETYMO vide. Audio : +5 811 caractères au reset du 11/10.
+- [ ] Vague 3 : R03, R04, R06, R09, R13 (R09 à revérifier en DoR). Attend un GO de Papa Yann.
+- [ ] Sourcer les 27 fiches LEGACY_FACTCHECK (URL + phrase lue), puis vider le set.

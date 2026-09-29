@@ -40,11 +40,11 @@ Anti-pattern mortel : « je connais la réponse, je réponds direct » (incident
 
 | Fichier | Tu y notes |
 |---------|-----------|
-| `memory/INVARIANTS.md` | MAJ seulement quand un invariant change — tu propages, tu n'inventes pas |
-| `memory/MEMORY.md` § Journal | Entrée par session : objectif, fait, décisions, **état au reboot** |
-| `memory/DECISIONS.md` | Décision datée (raison + impact fichiers) + évolutions PROCESS + Questions ouvertes |
-| `memory/TODO.md` | Tickets STORY/PERSO/UNIVERS/ARCHI/INPUT/VOIX-NNN — **max 3 histoires actives** (hors test-process) |
-| `memory/audits/` | Entrée datée par audit |
+| `studio/narration/memory/INVARIANTS.md` | MAJ seulement quand un invariant change — tu propages, tu n'inventes pas |
+| `studio/narration/memory/MEMORY.md` § Journal | Entrée par session : objectif, fait, décisions, **état au reboot** |
+| `studio/narration/memory/DECISIONS.md` | Décision datée (raison + impact fichiers) + évolutions PROCESS + Questions ouvertes |
+| `studio/narration/memory/TODO.md` | Tickets STORY/PERSO/UNIVERS/ARCHI/INPUT/VOIX-NNN — **max 3 histoires actives** (hors test-process) |
+| `studio/narration/memory/audits/` | Entrée datée par audit |
 | `equipe/lecons-vivantes.md` | Patterns narratifs confirmés (post-canonisation) |
 | `stories/*/kanban.md` | Étape en cours, owner, dates, SLA — si un agent ne le met pas à jour, TU le fais |
 

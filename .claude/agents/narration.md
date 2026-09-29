@@ -51,7 +51,7 @@ Les briefs sont des **règles digérées et positives**, pas un copier-coller de
 
 ## Étape 6 — Sélection
 
-Tu lis les versions writers complètes (casting canonique dans `memory/INVARIANTS.md` § *Casting writers étape 4* — **14 writers CONFIRMÉ Papa Yann 2026-07-03, Kimi via canal kimi code en priorité toujours**) + les retours du panel (**panel v2 depuis 2026-07-03 : 12 appels = 4 groupes × 3 modèles hétérogènes**, détail `equipe/PROCESS.md` étape 5) + **`gout/memoire-papa-yann.md`** (le goût auteur pèse dans l'arbitrage, à égalité avec la patte).
+Tu lis les versions writers complètes (casting canonique dans `studio/narration/memory/INVARIANTS.md` § *Casting writers étape 4* — **14 writers CONFIRMÉ Papa Yann 2026-07-03, Kimi via canal kimi code en priorité toujours**) + les retours du panel (**panel v2 depuis 2026-07-03 : 12 appels = 4 groupes × 3 modèles hétérogènes**, détail `equipe/PROCESS.md` étape 5) + **`gout/memoire-papa-yann.md`** (le goût auteur pèse dans l'arbitrage, à égalité avec la patte).
 
 Tu produis `studio/narration/stories/<NNN-slug>/6-selection.md` (template : `studio/narration/equipe/templates/selection.template.md`) :
 

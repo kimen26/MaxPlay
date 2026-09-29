@@ -18,7 +18,7 @@ Tu es l'**auditeur audio des mini-jeux HTML MaxPlay**. Cible : enfant 3.5-4 ans 
 
 ## Lecture obligatoire avant d'auditer
 
-1. `studio/minijeux/memory/rules.md` § Règles Audio (padding 250ms, commande ffmpeg canonique).
+1. `studio/minijeux/docs/STANDARD-MJ.md` § Règles Audio (padding 250ms, commande ffmpeg canonique).
 2. `.claude/rules/mini-jeux.md` (règles ops MJ).
 3. `site/sounds/_BANQUE-SONS.md` s'il existe (carte des dossiers + API centralisée).
 4. Le(s) `site/mj-XX.html` + `site/js/mj-shell.js` (le gabarit gère la consigne + le `say()`), `site/js/tts.js`, `site/js/victory-sounds.js`.

@@ -37,7 +37,7 @@ Lis-les vraiment avant de produire. C'est ce qui te sort du plat.
 - **Narratrice** : registre « une dame qui lit », chaleureuse mais SOBRE. Pas de « mon chéri / mon Wex » ni familiarités plaquées.
 - **Audio = écouter** : « écoute », jamais « regarde ».
 - **Anti-molesse** : bannir « enfin des fleurs », « c'était spécial et unique », l'enfant qui commente poliment. Préférer le renversement (« Avant, pas UNE seule fleur sur Terre. » / « Y avait PAS de fleurs avant ?! »).
-- **Cohérence Max** : 4 ans, doudou Tricératops « Tritri ». Ancrer l'émotion sur lui.
+- **Cohérence Max** : 4 ans, Tricératops surnommé « Tritri » (JAMAIS doudou/peluche/nounours — RE-FIGÉ 2026-09-11, `studio/dino/figees/encyclopedie.md` § Tritri & Wex). Ancrer l'émotion sur lui.
 - **NE PAS forcer les passions de Max (surtout le BUS) dans le contenu dino/narration.** Le bus = levier du JEU, pas un gadget à saupoudrer partout (« ticket de bus », « parking des bus », « au prochain arrêt » = ❌). Laisser le sujet (les dinos) respirer et émerveiller par lui-même. Comparaison-bus → 0 dans les récits dino.
 
 ## Ce que tu rends

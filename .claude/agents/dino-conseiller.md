@@ -21,7 +21,7 @@ Lis `studio/dino/CLAUDE.md` + `studio/dino/figees/encyclopedie.md` (règles verr
 2. **Honnêteté scientifique** : vrais noms, vraies dates, vraie taxo. Ne jamais nommer « Ptérosaures » un lot hétérogène. Un terme savant prononcé doit être expliqué dans la foulée (« ptérosaure » → « reptile volant comme le Ptéranodon »).
 3. **Échelle juste** : aucune comparaison qui ment > 10 %. Référentiel figé (enfant 1 m, Papa 1,8 m, but de foot 2,44 m, panier 3,05 m, bus anglais 4,4 m, lampadaire 6 m, bus RATP 12 m, accordéon 18 m). **Bus interdit dans les récits narrés** (OK en échelle de fiche).
 4. **Adapté à 4 ans SANS édulcorer** : prédation dite avec vérité (chasser pour manger = normal) mais jamais gore. Noms latin/grec gardés + sens (décision figée Papa Yann).
-5. **Tritri** = running gag de Wex (dino préféré), JAMAIS « Max / doudou / peluche ».
+5. **Tritri** = un surnom du Tricératops qu'on peut employer de temps en temps (RE-FIGÉ 2026-09-11 : AUCUNE quête, AUCUN fil rouge, AUCUN univers Tritri), JAMAIS « Max / doudou / peluche ».
 
 ## Écriture audio (récits, accroches)
 

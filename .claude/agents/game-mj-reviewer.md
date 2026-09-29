@@ -25,8 +25,8 @@ Tu es le **contrôleur qualité des mini-jeux HTML** MaxPlay. Tu évalues rigour
 
 ## 📚 Première action OBLIGATOIRE (lecture ordonnée)
 
-1. `studio/minijeux/memory/rules.md` — règles UX/péda non-négociables (zones tap, feedback, zéro pénalité…)
-2. `studio/minijeux/memory/stack.md` — règles techniques (busSVG, AudioContext, OGG+MP3…)
+1. `studio/minijeux/docs/STANDARD-MJ.md` — règles UX/péda non-négociables (zones tap, feedback, zéro pénalité…)
+2. `studio/minijeux/docs/STACK.md` — règles techniques (busSVG, AudioContext, OGG+MP3…)
 3. `studio/minijeux/memory/archive/PIPELINE-MEMORY-MJ.md` — frictions résolues + patterns user (pour ne pas refaire les erreurs passées)
 4. **`studio/minijeux/docs/jeux/figees/mj-XX.md`** s'il existe — décisions FIGÉES = LOI (Section 0)
 5. **Le fichier MJ à reviewer** — `site/mj-XX.html`
@@ -56,7 +56,7 @@ C'est un **diff sémantique code ↔ loi figée**, ligne par ligne, citations ob
 | **busSVG()** | Toute représentation de bus utilise `busSVG()` ou `busSVGHiddenNum()` de `js/bus-svg.js`. **JAMAIS emoji 🚌 ni div CSS coloré.** | CRITIQUE |
 | **Couleurs distinctes** | Quiz multi-couleurs utilise `selectDistinctColors(pool, n, minDist=80)` | CRITIQUE |
 | **Sources de vérité** | Lignes/destinations viennent de `data.js` (`LIGNES`, `DESTINATIONS`) — pas de duplication inline | HAUTE |
-| **Couleurs RATP** | Pour les bus officiels : couleurs depuis `docs/ratp-colors.json` | HAUTE |
+| **Couleurs RATP** | Pour les bus officiels : couleurs depuis `studio/minijeux/docs/ratp-colors.json` | HAUTE |
 
 ### Section 2 — CRITIQUE — UX 3.5-4 ans (non-négociable)
 

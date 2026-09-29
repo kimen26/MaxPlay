@@ -54,6 +54,7 @@ function main() {
 
   const rows = [];
   const warnings = [];
+  const frontmatterErrors = []; // R12 : `:` `—` `×` non quotés dans description = BLOQUANT
 
   for (const file of files) {
     const path = join(AGENTS_DIR, file);
@@ -93,7 +94,7 @@ function main() {
         ]
           .filter(Boolean)
           .join(", ");
-        warnings.push(`${file} — description non quotée contient ${why} (risque de rejet silencieux — voir § règle frontmatter)`);
+        frontmatterErrors.push(`${file} — description non quotée contient ${why} (rejet silencieux de l'agent par le parseur YAML strict — voir § règle frontmatter)`);
       }
     } else {
       warnings.push(`${file} — champ "description" manquant`);
@@ -170,6 +171,15 @@ function main() {
   }
   lines.push("");
 
+  if (frontmatterErrors.length) {
+    lines.push("---");
+    lines.push("");
+    lines.push("## ⛔ Erreurs bloquantes de la dernière génération (npm run check)");
+    lines.push("");
+    for (const e of frontmatterErrors) lines.push(`- ${e}`);
+    lines.push("");
+  }
+
   if (warnings.length) {
     lines.push("---");
     lines.push("");
@@ -192,11 +202,23 @@ function main() {
 
   writeFileSync(README_PATH, lines.join("\n"), "utf-8");
 
-  console.log(`README généré : ${rows.length} agents, ${warnings.length} avertissement(s).`);
+  console.log(`README généré : ${rows.length} agents, ${warnings.length} avertissement(s), ${frontmatterErrors.length} erreur(s) bloquante(s).`);
   if (warnings.length) {
     console.log("Avertissements :");
     for (const w of warnings) console.log(`  - ${w}`);
   }
+  if (frontmatterErrors.length) {
+    console.log("Erreurs bloquantes (frontmatter, risque de rejet silencieux de l'agent) :");
+    for (const e of frontmatterErrors) console.log(`  - ${e}`);
+  }
+
+  return frontmatterErrors.length;
 }
 
-main();
+const errorCount = main();
+// R12 : le lint frontmatter (`:` `—` `×` non quotés dans description) est
+// BLOQUANT dans `npm run check` — c'est ce piège précis qui a fait disparaître
+// silencieusement 5 agents le 2026-05-02 (voir § règle frontmatter ci-dessus).
+// Le reste (name manquant, model manquant, description manquante) reste un
+// avertissement : gênant mais ne casse pas le chargement de l'agent.
+process.exit(errorCount > 0 ? 1 : 0);

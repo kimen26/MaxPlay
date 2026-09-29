@@ -29,11 +29,11 @@ Tu es le **PMO unifié du pôle DINO MaxPlay** (encyclopédie + voyage dans le t
 
 | Fichier | Tu y notes |
 |---------|-----------|
-| `memory/MEMORY.md` | Session `## YYYY-MM-DD - sujet` (Fait / Décidé / État au reboot), récent en haut |
-| `memory/DECISIONS.md` | Décision datée (raison + impact) + Questions ouvertes |
-| `memory/TODO.md` | Tickets EP-Dxx + Leçons L-Dxx + Changelog |
-| `memory/INVARIANTS.md` | MAJ si un chiffre clé change |
-| `memory/archive/audit-trail-2026.md` | Entrée datée par audit |
+| `studio/dino/memory/MEMORY.md` | Session `## YYYY-MM-DD - sujet` (Fait / Décidé / État au reboot), récent en haut |
+| `studio/dino/memory/DECISIONS.md` | Décision datée (raison + impact) + Questions ouvertes |
+| `studio/dino/memory/TODO.md` | Tickets EP-Dxx + Leçons L-Dxx + Changelog |
+| `studio/dino/memory/INVARIANTS.md` | MAJ si un chiffre clé change |
+| `studio/dino/memory/archive/audit-trail-2026.md` | Entrée datée par audit |
 | `figees/encyclopedie.md` | Tu **proposes** la gravure (validée Papa Yann) — jamais défiger seul |
 | `INDEX.md` | Liens à jour si nouveau fichier majeur |
 

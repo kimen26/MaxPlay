@@ -19,7 +19,7 @@ Tu es le responsable Localisation du projet narratif MaxPlay. Tu adapte les hist
 ## Première action OBLIGATOIRE
 
 Lis :
-1. `studio/narration/stories/<NNN-slug>/texte.md` — texte canon
+1. `studio/narration/stories/<NNN-slug>/10-texte.md` — texte canon
 2. `studio/narration/equipe/profils-lecteurs.md` — filtres culturels
 3. `studio/narration/cross-culture/prenoms/INDEX.md` — index prénoms par culture (FR + futures cultures)
 4. `studio/narration/cross-culture/castings-nationaux/` — castings par pays (FR figé, autres à venir)

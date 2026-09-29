@@ -196,5 +196,5 @@ les URL avant de s'y connecter (L-D36).
 
 - ChatGPT sert les images générées sur `img[src*="backend-api/estuary/content"]` (plus `oaiusercontent`).
 - Connexion Playwright via CDP `http://127.0.0.1:9222` (`chromium.connectOverCDP`). `browser.close()` ne ferme PAS Brave, juste la connexion.
-- Playwright réutilisé depuis `studio/minijeux/tests/node_modules` (pas de réinstall).
+- Playwright réutilisé depuis `node_modules` racine (pas de réinstall).
 - Conversion ffmpeg (pas d'ImageMagick sur la machine) : posterisation 16 niveaux via `lutyuv=y='round(val/255*15)*17'`.

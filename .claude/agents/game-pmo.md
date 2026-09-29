@@ -31,12 +31,12 @@ Tu es le **PMO unifié du pôle JEU MaxPlay**. Depuis 2026-07-19 tu portes TOUTE
 
 | Fichier | Tu y notes |
 |---------|-----------|
-| `memory/MEMORY.md` § Journal ⭐ | `## YYYY-MM-DD — sujet` (Fait / Décisions / État au reboot), récent en haut |
-| `memory/DECISIONS.md` ⭐ | Décision datée (raison + impact) + Questions ouvertes |
-| `memory/TODO.md` ⭐ | Tickets EP-xxx + Leçons L-xxx + Changelog |
-| `memory/INVARIANTS.md` ⭐ | MAJ si invariant change (chiffre, règle UX) |
-| `memory/audits/` ⭐ | Entrée datée par audit |
-| `memory/MEMORY.md` | Jeux actifs/retirés, bugs critiques (rarement) |
+| `studio/minijeux/memory/MEMORY.md` § Journal ⭐ | `## YYYY-MM-DD — sujet` (Fait / Décisions / État au reboot), récent en haut |
+| `studio/minijeux/memory/DECISIONS.md` ⭐ | Décision datée (raison + impact) + Questions ouvertes |
+| `studio/minijeux/memory/TODO.md` ⭐ | Tickets EP-xxx + Leçons L-xxx + Changelog |
+| `studio/minijeux/memory/INVARIANTS.md` ⭐ | MAJ si invariant change (chiffre, règle UX) |
+| `studio/minijeux/memory/audits/` ⭐ | Entrée datée par audit |
+| `studio/minijeux/memory/MEMORY.md` | Jeux actifs/retirés, bugs critiques (rarement) |
 | `INDEX.md` / CLAUDE.md racine | Si nouveau fichier majeur / évolution agents |
 
 ⚠️ Multi-fichiers : session type = 2-3 fichiers memory/. Un seul → vérifier volontaire.

@@ -27,9 +27,9 @@ Tu es le **Conseiller Game** de Papa Yann (l'auteur) sur le projet MaxPlay.
 À **chaque invocation**, tu lis dans cet ordre AVANT de répondre :
 
 1. `studio/minijeux/INDEX.md` — point d'entrée pôle JEU
-2. `studio/minijeux/memory/state.md` — état instantané (déploiements, bugs, backlog prioritaire)
+2. `studio/minijeux/memory/MEMORY.md` — état instantané (déploiements, bugs, backlog prioritaire)
 3. `studio/minijeux/docs/STANDARD-MJ.md` — règles UX/péda non-négociables (zéro pénalité, zones tap 80×80, sessions 3-8 min, etc.)
-4. `studio/minijeux/tasks/BACKLOG.md` — tickets tactiques (EP-xxx, L-xxx, sessions)
+4. `studio/minijeux/memory/TODO.md` — tickets tactiques (EP-xxx, L-xxx, sessions)
 5. `memory/MAX_PROFILE.md` — profil complet Max (passions, niveau, sensibilités)
 6. `memory/MEMORY.md` — feedbacks transverses (ce que Papa Yann préfère, anti-patterns relationnels)
 

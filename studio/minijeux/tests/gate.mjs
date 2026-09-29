@@ -13,6 +13,11 @@
 //      (jamais laisser un push croire à un vert obsolète).
 //
 // Usage : npm run gate   (ou node studio/minijeux/tests/gate.mjs)
+// Options:
+//   --base <ref>    Détecte les jeux à partir de git diff --name-only <ref>...HEAD
+//                   (défaut: origin/master...HEAD)
+//   --no-check      Saute npm run check
+//   --no-green      N'écrit pas GREEN.json
 
 import { execSync, spawnSync } from 'node:child_process';
 import { writeFileSync, existsSync, mkdirSync, rmSync } from 'node:fs';
@@ -25,6 +30,21 @@ const ARTIFACTS_DIR = resolve(__dir, '.artifacts');
 const GREEN_PATH = resolve(ARTIFACTS_DIR, 'GREEN.json');
 
 const GREEN = '\x1b[32m', RED = '\x1b[31m', DIM = '\x1b[2m', RST = '\x1b[0m';
+
+// ── Parse args ────────────────────────────────────────────────────────────
+const args = process.argv.slice(2);
+let baseRef = 'origin/master...HEAD';
+let skipCheck = false;
+let skipGreen = false;
+for (let i = 0; i < args.length; i++) {
+  if (args[i] === '--base' && i + 1 < args.length) {
+    baseRef = args[++i];
+  } else if (args[i] === '--no-check') {
+    skipCheck = true;
+  } else if (args[i] === '--no-green') {
+    skipGreen = true;
+  }
+}
 
 function clearGreen() {
   if (existsSync(GREEN_PATH)) rmSync(GREEN_PATH);
@@ -56,16 +76,30 @@ function extractMjIds(text) {
 }
 
 // ── 1. npm run check ─────────────────────────────────────────────────────
-console.log(`\n${DIM}── gate : npm run check ──${RST}`);
-const checkExit = runInherit('npm', ['run', 'check']);
-if (checkExit !== 0) {
-  console.error(`\n${RED}✗ gate : npm run check a échoué${RST}`);
-  clearGreen();
-  process.exit(1);
+if (!skipCheck) {
+  console.log(`\n${DIM}── gate : npm run check ──${RST}`);
+  const checkExit = runInherit('npm', ['run', 'check']);
+  if (checkExit !== 0) {
+    console.error(`\n${RED}✗ gate : npm run check a échoué${RST}`);
+    clearGreen();
+    process.exit(1);
+  }
+} else {
+  console.log(`\n${DIM}── gate : npm run check skippé (--no-check) ──${RST}`);
 }
 
 // ── 2. jeux touchés ───────────────────────────────────────────────────────
-const diffOut = sh('git diff --name-only origin/master...HEAD -- site/mj-*.html');
+let diffOut = '';
+// Vérifie que baseRef est valide avant de l'utiliser dans git diff
+try {
+  execSync(`git cat-file -e "${baseRef}"`, { cwd: ROOT, stdio: 'pipe' });
+  diffOut = sh(`git diff --name-only "${baseRef}" -- site/mj-*.html`);
+} catch (e) {
+  // Ref invalide (ex: 0000000…) → pas de diff
+  const refShort = baseRef.split(/\s/)[0].slice(0, 8);
+  console.log(`${DIM}── gate : baseRef invalide (${refShort}), considère aucun jeu touché ──${RST}`);
+  diffOut = '';
+}
 const statusOut = sh('git status --porcelain -- site/mj-*.html');
 const touched = [...new Set([...extractMjIds(diffOut), ...extractMjIds(statusOut)])].sort();
 
@@ -92,7 +126,11 @@ if (!allGreen) {
 
 // ── 3. GREEN.json ────────────────────────────────────────────────────────
 const sha = sh('git rev-parse HEAD').trim();
-mkdirSync(ARTIFACTS_DIR, { recursive: true });
-writeFileSync(GREEN_PATH, JSON.stringify({ sha, date: new Date().toISOString(), jeux: jeuxVerts }, null, 2) + '\n');
-console.log(`\n${GREEN}✓ gate : vert (sha ${sha.slice(0, 8)}, ${jeuxVerts.length} jeu(x) rejoué(s)) — GREEN.json écrit${RST}\n`);
+if (!skipGreen) {
+  mkdirSync(ARTIFACTS_DIR, { recursive: true });
+  writeFileSync(GREEN_PATH, JSON.stringify({ sha, date: new Date().toISOString(), jeux: jeuxVerts }, null, 2) + '\n');
+  console.log(`\n${GREEN}✓ gate : vert (sha ${sha.slice(0, 8)}, ${jeuxVerts.length} jeu(x) rejoué(s)) — GREEN.json écrit${RST}\n`);
+} else {
+  console.log(`\n${GREEN}✓ gate : vert (sha ${sha.slice(0, 8)}, ${jeuxVerts.length} jeu(x) rejoué(s)) — GREEN.json skippé (--no-green)${RST}\n`);
+}
 process.exit(0);

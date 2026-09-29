@@ -3,8 +3,14 @@ name: Deploy MaxPlay to GitHub Pages
 on:
   push:
     branches: [master]
+  schedule:
+    - cron: '0 3 * * 1'
   workflow_dispatch:
     inputs:
+      full_suite:
+        description: 'Lancer le harnais complet (36 jeux) avant déploiement'
+        type: boolean
+        default: false
       skip_tests:
         description: 'Sauter le harnais Playwright (hotfix uniquement)'
         type: boolean
@@ -20,12 +26,48 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Harnais Playwright COMPLET (36 mini-jeux + specs autonomes, gameplay réel,
-  # Chromium). Bloquant AVANT Pages depuis R08 (vague 1, 2026-09-28) : un jeu
-  # vert au check statique mais cassé en jeu ne doit plus passer en prod
-  # (L-147). Sautable en hotfix via workflow_dispatch → skip_tests.
+  # Test des jeux touchés en push/dispatch (quick gate), ou complet en schedule.
+  # Économie : détecte jeux modifiés et rejoue seulement ceux-là via gate.mjs
+  # (+ npm run check). Hebdo (lundi 3h UTC) ou workflow_dispatch + full_suite :
+  # npm test complet (36 jeux). Bloquant pour deploy sur push/dispatch sauf
+  # hotfix (skip_tests) — ne tourne pas sur schedule (rien à déployer après).
   test:
-    if: ${{ github.event.inputs.skip_tests != 'true' }}
+    if: ${{ github.event.inputs.skip_tests != 'true' && github.event_name != 'schedule' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install (playwright à la racine, HO-R08)
+        run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Gate jeux touchés (quick, push/dispatch)
+        run: |
+          BASE_REF=${{ github.event.before }}
+          if [ -z "$BASE_REF" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            BASE_REF="HEAD~1"
+          fi
+          node studio/minijeux/tests/gate.mjs --base "$BASE_REF" --no-check --no-green
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: mj-screenshots
+          path: studio/minijeux/tests/.artifacts/
+          retention-days: 7
+
+  # Harnais complet (36 mini-jeux) : schedule hebdo ou workflow_dispatch +
+  # full_suite. Indépendant du déploiement (no-op sur schedule : repos vide).
+  full:
+    if: ${{ github.event_name == 'schedule' || github.event.inputs.full_suite == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -46,13 +88,13 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: mj-screenshots
+          name: mj-screenshots-full
           path: studio/minijeux/tests/.artifacts/
           retention-days: 7
 
   build-and-deploy:
     needs: [test]
-    if: always() && (needs.test.result == 'success' || needs.test.result == 'skipped')
+    if: ${{ github.event_name != 'schedule' && (always() && (needs.test.result == 'success' || needs.test.result == 'skipped')) }}
     runs-on: ubuntu-latest
     environment:
       name: github-pages

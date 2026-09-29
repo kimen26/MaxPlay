@@ -122,3 +122,11 @@ Le dossier `docs/research/2026-09-26-archi-process-militaire.md` posait dix ques
 - **Reportés à leur vague, sans question** : la zone du Mur pour un jeu sans dino (quand un tel jeu sera demandé), le pointeur des chiffres dino vers l'état généré (vague 5), la source unique des silhouettes (vague 5).
 
 Règle qui en découle : ne poser à Papa Yann que des questions de produit, en mots simples, une ou deux à la fois ; le technique se tranche avec un défaut écrit et réversible (L-013).
+
+### D-016 — Les 36 jeux rejoués une fois par semaine, pas à chaque livraison (2026-09-29)
+
+Papa Yann : « les tests des 36 jeux c'est sur des livraisons majeures ou toutes les semaines, tu peux pas faire à chaque petite livraison, et c'est bien hyper optimiser niveau coût : les bons modèles, les plus petits possible selon la demande, et des scripts ou des automatisations autant que possible ».
+
+À chaque push, la CI rejoue seulement les jeux dont le fichier a changé (`gate.mjs --base`), puis publie. Le harnais complet tourne le lundi à 3 h UTC et à la demande (`workflow_dispatch`, `full_suite`) avant une livraison majeure ; il ne bloque pas la publication. Remplace le « harnais complet bloquant avant Pages » de la vague 1 (R08), qui ajoutait ~10 min à chaque livraison.
+
+Risque accepté : une modification d'un fichier partagé (`site/js`, `site/css`) qui casse un jeu non modifié n'est vue que par `npm run check` ou le passage hebdomadaire.

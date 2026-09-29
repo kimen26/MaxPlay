@@ -76,5 +76,6 @@ Questions Papa Yann (hors DoD) : 8 langues sans fiche audio sélectionnables au 
   - `34bce1f1` R20 extracteur FR qui fusionne au lieu d'écraser (+ test), R23 `--preview` du batch images qui n'écrit plus rien.
   - `e3757693` R08 garde `git push` (site/ sans GREEN.json à jour = bloqué), R10 lessons-gate, AskUserQuestion bloqué, `git rm/mv` glob bloqué, pmo-check (trace = écriture, mj édité exige son test), R11 figée dino ciblée (lignes 🔒/❌, 1×/tour), signal-detector 1 ligne/pôle. Hooks 18/18.
   - `17cbf76f` R01 portes de contenu dans `check` (verif audio, récits, traductions fr/en, cohérence chiffres bloquante), R05 audit strict par défaut + « jamais Max » + `__mjTest` pour jeu neuf, R21 gabarit conforme, R08 job `test` Playwright bloquant avant Pages (36/36 vert en local, ~10 min), `npm run gate`.
-  - Mode d'emploi : commit, puis `npm run gate`, puis `git push`.
+  - Mode d'emploi : commit, puis `npm run gate`, puis `git push`. Jamais les deux dans la même commande (L-014, le hook refuse).
+  - Premier passage CI rouge (mj-22 et mj-49 : specs sensibles à la lenteur de la machine GitHub, pas les jeux). Corrigé `afa5503c`, + porte `check-casse-chemins.mjs`. CI verte et site déployé le 2026-09-29.
 - [ ] Vague 2 : R02 (porte étymologie = EP-D23), R07, R12, R22. Attend un GO de Papa Yann.

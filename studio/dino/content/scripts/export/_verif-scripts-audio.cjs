@@ -10,16 +10,83 @@
 //   - tags : uniquement ceux de la liste autorisée ; ≤ 2 tags collés en début de réplique ; jamais 2 tags adjacents au milieu ; jamais un tag en toute fin
 //   - Wex : aucun « ! »
 //   - budget caractères : ≤ 1900 par fiche (tags inclus) — pour tenir en un appel dialogue Lunii
+//   - [R02, EP-D23, ferme L-D-84] bloc A dit CHAQUE racine de `racines.json` (son sens, normalisation NFD sans
+//     accents/tirets/casse, table SENS_ALT pour les synonymes admis) ET nomme sa langue (grec|latin) ; id absent
+//     de racines.json = ERREUR. Interdit dans une réplique : sang/tortur/agoni, et « Wex » prononcé (le
+//     libellé machine « **WEX** » en tête de ligne ne compte pas).
+//   - [R22, ferme L-D-85] la ligne « > Fact-check » d'un en-tête V3 ne peut pas dire CONFIRMÉ/confirmé sans
+//     URL (« 404 » n'est jamais une confirmation) ; pour une espèce listée dans `_ESPECES-A-SOSIE.md`, elle
+//     doit en plus citer un numéro de spécimen.
+//   Les KO déjà présents le jour où ces deux règles sont branchées vivent dans LEGACY_ETYMO / LEGACY_FACTCHECK
+//   (avertissement, jamais erreur) — à vider par EP-D22, n'y ajoute jamais un id neuf.
 // Avertissements (n'arrêtent pas) : CAPS sur mot < 4 lettres · réplique Narrateur sans tag · « -sau-rus » syllabé latin · bloc > 700 car.
 const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '../../../../..');
-const [langArg, ...idsArg] = process.argv.slice(2);
+const argv = process.argv.slice(2);
+const ETYMO_REPORT = argv.includes('--etymo-report');
+const dirIdx = argv.indexOf('--dir');
+const DIR_OVERRIDE = dirIdx !== -1 ? argv[dirIdx + 1] : null;
+const rest = argv.filter((a, i) => a !== '--etymo-report' && (dirIdx === -1 || (i !== dirIdx && i !== dirIdx + 1)));
+const [langArg, ...idsArg] = rest;
 const LANG = langArg || 'fr';
-const DIR = LANG === 'fr'
-  ? path.join(ROOT, 'studio/dino/content/scripts-audio/fr/V3')
-  : path.join(ROOT, 'studio/dino/content/scripts-audio', LANG);
+const DIR = DIR_OVERRIDE
+  ? path.resolve(DIR_OVERRIDE)
+  : LANG === 'fr'
+    ? path.join(ROOT, 'studio/dino/content/scripts-audio/fr/V3')
+    : path.join(ROOT, 'studio/dino/content/scripts-audio', LANG);
+
+// --- R02 : racines.json (généré par _etymo2racines.cjs — LECTURE seule) -----------------------
+// Format réel : { racines: [{ cle, langue: 'grec'|'latin'|null, sens, type: 'racine'|'nom_propre', dinos: [id...] }] }
+// On l'inverse en dino -> racines[] une fois au chargement.
+let RACINES_BY_DINO = {};
+try {
+  const racinesJson = JSON.parse(fs.readFileSync(path.join(ROOT, 'studio/dino/content/data/racines.json'), 'utf8'));
+  for (const rac of racinesJson.racines || []) {
+    for (const id of rac.dinos || []) (RACINES_BY_DINO[id] = RACINES_BY_DINO[id] || []).push(rac);
+  }
+} catch (e) { /* racines.json absent : R02 désactivé silencieusement, les autres checks tournent */ }
+
+// Synonymes admis pour le « sens » d'une racine — le bloc A peut employer n'importe lequel de la liste
+// au lieu du mot exact de racines.json (ex. « lézard » peut sortir en « reptile » ou « saure »).
+// Clé = sens exact tel qu'il apparaît dans racines.json (comparé après normalisation NFD).
+const SENS_ALT = {
+  'lézard': ['lézard', 'reptile', 'saure'],
+  'plaque de métal fine, tôle': ['plaque de métal fine', 'plaque de métal', 'tôle', 'plaque'],
+};
+
+const norm2 = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[-\s]+/g, ' ').trim();
+const LANG_RE = /\b(grec\w*|latin\w*)\b/i;
+
+// --- R22 : espèces à sosie (numéro de spécimen exigé dans la ligne Fact-check) ------------------
+let ESPECES_A_SOSIE = new Set();
+try {
+  const txt = fs.readFileSync(path.join(ROOT, 'studio/dino/content/sources/_ESPECES-A-SOSIE.md'), 'utf8');
+  for (const m of txt.matchAll(/^-\s+\*\*([a-z0-9_]+)\*\*/gm)) ESPECES_A_SOSIE.add(m[1]);
+} catch (e) { /* fichier absent : cette portion de R22 est simplement vide */ }
+const SPECIMEN_RE = /\b[A-Z]{1,5}\s?F?\d{3,}\b/;
+const URL_RE = /https?:\/\/\S+/i;
+
+// KO déjà présents le jour du branchement de ces deux règles (avertissement, jamais erreur — à vider par
+// EP-D22, n'ajoute jamais un id neuf ici : un id neuf en KO est une vraie erreur, pas un legacy).
+const LEGACY_ETYMO = new Set([
+  // id absent de racines.json (3, mesuré 2026-09-29)
+  'centrosaurus', 'pentaceratops', 'torosaurus',
+  // bloc A sans « grec »/« latin » nommé (9, mesuré 2026-09-29 — chiffre L-D-84)
+  'albertosaurus', 'amargasaurus', 'archelon', 'giganotosaurus', 'mammuthus',
+  'mosasaurus', 'ophthalmosaurus', 'quetzalcoatlus', 'shonisaurus',
+  // bloc A sans le sens d'au moins une racine (5, mesuré 2026-09-29)
+  'elasmosaurus', 'gorgonops', 'minmi', 'paraceratherium', 'patagotitan',
+]);
+const LEGACY_FACTCHECK = new Set([
+  // ligne « > Fact-check » qui dit CONFIRMÉ/confirmé sans URL (27, mesuré 2026-09-29)
+  'allosaurus', 'amargasaurus', 'ankylosaurus', 'baryonyx', 'carcharodontosaurus', 'carnotaurus',
+  'centrosaurus', 'ceratosaurus', 'dilophosaurus', 'edmontonia', 'edmontosaurus', 'euoplocephalus',
+  'glyptodon', 'kentrosaurus', 'maiasaura', 'pachycephalosaurus', 'paraceratherium', 'parasaurolophus',
+  'pentaceratops', 'scelidosaurus', 'scutellosaurus', 'spinosaurus', 'stegosaurus', 'tarbosaurus',
+  'therizinosaurus', 'triceratops', 'tyrannosaurus',
+]);
 
 // Catalogue AUTORISÉ (✅ testés MaxPlay + tags officiels EL + tags déjà en prod dans la banque de sons).
 // Un tag hors liste = ERREUR : « si tu as un doute, ne va pas plus loin » (Papa Yann 2026-09-05).
@@ -79,6 +146,8 @@ function checkFile(file) {
       // Densité minimale (Papa Yann 2026-09-05 : « pas 2-3, PLEIN, au milieu des phrases ») — le tag de tête ne suffit pas.
       const texteSeul = lm[3].replace(/\[[^\]]+\]/g, '').trim();
       const tagsMilieu = (lm[3].match(/\[[^\]]+\]/g) || []).length; // tags posés APRÈS le début (dans le texte)
+      if (/\bsang\w*|\btortur\w*|\bagoni\w*/i.test(texteSeul)) errs.push(`bloc ${L} ${who} : mot interdit (sang/tortur/agoni)`);
+      if (/\bWex\b/.test(texteSeul)) errs.push(`bloc ${L} ${who} : « Wex » prononcé dans une réplique (le prénom ne se dit pas à voix haute — rules/dino.md § Tritri & Wex)`);
       if (who === 'NARRATEUR H') {
         if (tags.length === 0) errs.push(`bloc ${L} : réplique Narrateur sans tag`);
         else if (texteSeul.length > 70 && tags.length < 2) errs.push(`bloc ${L} Narrateur : ${texteSeul.length} car. et 1 seul tag (min 2, dont 1 au milieu)`);
@@ -132,20 +201,82 @@ function checkFile(file) {
     if (parle && !tout.includes(normComp(_compVitesse(d.vitesse_kmh)))) errs.push(`vitesse : le script parle de km/h mais la comparaison exacte « ${_compVitesse(d.vitesse_kmh)} » est absente`);
     if (parle && !tout.includes(String(d.vitesse_kmh))) errs.push(`vitesse : chiffre data ${d.vitesse_kmh} km/h introuvable`);
   }
-  return { id, errs, warns, total };
+
+  // --- R02 : étymologie dans le bloc A (LANG fr seulement — racines.json n'a que du FR) --------
+  const etymoErrs = [], etymoManques = [];
+  if (LANG === 'fr' && blocs.A) {
+    const blocAPlain = blocs.A.replace(/\[[^\]]+\]/g, '');
+    const normA = norm2(blocAPlain);
+    const racines = RACINES_BY_DINO[id];
+    if (!racines) {
+      etymoErrs.push(`racines.json : id « ${id} » absent`);
+    } else {
+      let langueVue = false;
+      for (const rac of racines) {
+        if (rac.type === 'nom_propre') continue; // pas une racine grec/latin, pas de sens à retrouver
+        const sensNorm = norm2(rac.sens);
+        const candidats = (SENS_ALT[rac.sens] || rac.sens.split(/[,;]/).map(s => s.trim())).map(norm2);
+        const trouve = candidats.some(c => c && normA.includes(c));
+        if (!trouve) { etymoErrs.push(`bloc A : sens de « ${rac.cle} » absent (« ${rac.sens} »)`); etymoManques.push({ racine: rac.cle, sens: rac.sens, langue: rac.langue }); }
+        if (rac.langue) langueVue = true;
+      }
+      if (langueVue && !LANG_RE.test(blocAPlain)) { etymoErrs.push('bloc A : aucune langue nommée (grec|latin)'); etymoManques.push({ racine: null, sens: null, langue: 'aucune langue nommée' }); }
+    }
+  }
+
+  // --- R22 : provenance du fait de fiche (ligne « > Fact-check » de l'en-tête V3) ----------------
+  const factcheckErrs = [];
+  if (LANG === 'fr') {
+    const headTxt = fs.readFileSync(file, 'utf8');
+    const fcLine = (headTxt.match(/^> Fact-check.*$/m) || [null])[0];
+    if (fcLine) {
+      if (/confirm/i.test(fcLine) && !URL_RE.test(fcLine)) factcheckErrs.push(`ligne Fact-check : CONFIRMÉ sans URL (« ${fcLine.slice(0, 90)}… »)`);
+      if (/404/.test(fcLine) && /confirm/i.test(fcLine)) factcheckErrs.push('ligne Fact-check : « 404 » ne vaut jamais confirmation');
+      if (ESPECES_A_SOSIE.has(id) && !SPECIMEN_RE.test(fcLine)) factcheckErrs.push(`ligne Fact-check : espèce à sosie (_ESPECES-A-SOSIE.md) sans numéro de spécimen`);
+    }
+  }
+
+  return { id, errs, warns, total, etymoErrs, etymoManques, factcheckErrs };
 }
 
 const files = (idsArg.length ? idsArg.map(i => path.join(DIR, i + '.md')) : fs.readdirSync(DIR).filter(f => /^[a-z0-9_]+\.md$/.test(f)).map(f => path.join(DIR, f)))
   .filter(f => fs.existsSync(f));
 if (!files.length) { console.error(`aucun script trouvé dans ${DIR}`); process.exit(2); }
 let ko = 0;
+const etymoReport = [];
 for (const f of files) {
   const r = checkFile(f);
-  const st = r.errs.length ? 'KO' : 'OK';
-  if (r.errs.length) ko++;
+  const isLegacyEtymo = LEGACY_ETYMO.has(r.id);
+  const isLegacyFactcheck = LEGACY_FACTCHECK.has(r.id);
+
+  // Les erreurs R02/R22 comptent comme KO SAUF pour un id du set LEGACY correspondant (avertissement).
+  const realEtymoErrs = isLegacyEtymo ? [] : r.etymoErrs;
+  const legacyEtymoWarns = isLegacyEtymo ? r.etymoErrs : [];
+  const realFactcheckErrs = isLegacyFactcheck ? [] : r.factcheckErrs;
+  const legacyFactcheckWarns = isLegacyFactcheck ? r.factcheckErrs : [];
+
+  const allErrs = [...r.errs, ...realEtymoErrs, ...realFactcheckErrs];
+  const allWarns = [...r.warns, ...legacyEtymoWarns.map(e => `[LEGACY_ETYMO] ${e}`), ...legacyFactcheckWarns.map(e => `[LEGACY_FACTCHECK] ${e}`)];
+
+  const st = allErrs.length ? 'KO' : 'OK';
+  if (allErrs.length) ko++;
   console.log(`${st}  ${r.id}${r.total ? ` (${r.total} car.)` : ''}`);
-  r.errs.forEach(e => console.log(`     ✖ ${e}`));
-  r.warns.forEach(w => console.log(`     ⚠ ${w}`));
+  allErrs.forEach(e => console.log(`     ✖ ${e}`));
+  allWarns.forEach(w => console.log(`     ⚠ ${w}`));
+
+  if (ETYMO_REPORT && r.etymoManques && r.etymoManques.length) etymoReport.push({ id: r.id, manques: r.etymoManques, legacy: isLegacyEtymo });
 }
 console.log(`\n${files.length - ko} OK · ${ko} KO · ${files.length} scripts (${LANG})`);
+
+if (ETYMO_REPORT) {
+  console.log(`\n--- --etymo-report : ${etymoReport.length} fiche(s) avec un manque étymologique ---`);
+  for (const { id, manques, legacy } of etymoReport) {
+    console.log(`${id}${legacy ? ' [LEGACY_ETYMO]' : ' [NEUF — à corriger avant push]'}`);
+    for (const man of manques) {
+      if (man.racine === null) console.log(`   - langue : ${man.langue}`);
+      else console.log(`   - racine « ${man.racine} » → sens attendu « ${man.sens} »${man.langue ? ` (${man.langue})` : ''}`);
+    }
+  }
+}
+
 process.exit(ko ? 1 : 0);

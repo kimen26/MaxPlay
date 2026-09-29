@@ -231,6 +231,57 @@ MARQUEUR-FIGEE-DINO-CE-TOUR
 }
 
 # ==========================================================================
+# garde site/js/gen/ (HO-A03) — fichiers generes, jamais edites a la main.
+# Ecriture Edit/Write refusee (exit 2), Bash/node (les generateurs eux-memes) reste autorise.
+# ==========================================================================
+function Get-GenGuardMessage {
+    param($norm)
+
+    $readmePath = Join-Path $ROOT 'site\js\gen\README.md'
+    $stem = [System.IO.Path]::GetFileName($norm)
+    $generateur = $null
+
+    if (Test-Path -LiteralPath $readmePath) {
+        try {
+            $lines = Get-Content -LiteralPath $readmePath -Encoding UTF8
+            foreach ($l in $lines) {
+                if ($l -match '^\|\s*`([^`]+)`\s*\|\s*`([^`]+)`') {
+                    $filePattern = $Matches[1]
+                    $gen = $Matches[2]
+                    # Le README utilise des <lang>/<id> comme placeholders : on compare le nom
+                    # de fichier en ignorant ces segments variables.
+                    $regexPattern = [regex]::Escape($filePattern) -replace '<[^>]+>', '[^/]+'
+                    if ($stem -match ('^' + $regexPattern + '$') -or $norm -match $regexPattern) {
+                        $generateur = $gen
+                        break
+                    }
+                }
+            }
+        } catch {}
+    }
+
+    if ($generateur) {
+        return "[hook garde-gen] Ecriture refusee : $norm est GENERE, une modif manuelle sera ecrasee sans avertissement a la prochaine regeneration.`nLance a la place : $generateur`nDetail complet (table fichier -> generateur) : site/js/gen/README.md"
+    }
+    return "[hook garde-gen] Ecriture refusee : $norm est sous site/js/gen/ (fichiers GENERES, jamais edites a la main).`nTrouve le generateur correspondant dans site/js/gen/README.md et relance-le."
+}
+
+function Invoke-GardeGenerated {
+    param($data)
+
+    $path = ''
+    if ($data.tool_input.file_path) { $path = [string]$data.tool_input.file_path }
+    elseif ($data.tool_input.path) { $path = [string]$data.tool_input.path }
+    if (-not $path) { return }
+
+    $norm = $path -replace '\\', '/'
+    if ($norm -notmatch '(?:^|/)site/js/gen/') { return }
+
+    [Console]::Error.WriteLine((Get-GenGuardMessage -norm $norm))
+    exit 2
+}
+
+# ==========================================================================
 # AskUserQuestion (R10c) — jamais de formulaire, questions en texte (rules/interaction-style.md).
 # ==========================================================================
 function Invoke-BlockAskUserQuestion {
@@ -321,6 +372,7 @@ c'est l'orchestrateur qui commite.
 
 switch -Regex ($toolName) {
     '^(Edit|Write)$' {
+        Invoke-GardeGenerated -data $data
         Invoke-LessonsGate -data $data
         Invoke-FigeesInjector -data $data -raw $raw
     }

@@ -166,4 +166,43 @@ if ($path) {
     }
 }
 
+# --- 5 (HO-A03) : fichier precache du service worker touche -> regenerer sw-version.js.
+#     Source unique de la liste precachee = site/sw.js (meme regex que gen-sw-version.mjs) ;
+#     le hook ne maintient pas sa propre copie. Jamais bloquant (exit 0 dans tous les cas).
+if ($path) {
+    $normSlash = ($path -replace '\\', '/')
+    $swPath = Join-Path $root 'site\sw.js'
+
+    $isPrecacheHit = $false
+    if ($normSlash -match '(?:^|/)site/sw\.js$') {
+        $isPrecacheHit = $true
+    } elseif ((Test-Path -LiteralPath $swPath) -and ($normSlash -match '(?:^|/)site/(.+)$')) {
+        $relToSite = $Matches[1]
+        $swSource = Get-Content -LiteralPath $swPath -Raw -Encoding UTF8
+        $m = [regex]::Match($swSource, 'const PRECACHE_LIST = \[([\s\S]*?)\];')
+        if ($m.Success) {
+            $entries = [regex]::Matches($m.Groups[1].Value, "'([^']+)'") | ForEach-Object { $_.Groups[1].Value }
+            foreach ($e in $entries) {
+                $eNorm = $e -replace '^\./', ''
+                if ($eNorm -and $eNorm -eq $relToSite) { $isPrecacheHit = $true; break }
+            }
+        }
+    }
+
+    if ($isPrecacheHit) {
+        Push-Location $root
+        try {
+            $genOut = & node studio/minijeux/scripts/gen-sw-version.mjs 2>&1
+            $genExit = $LASTEXITCODE
+            if ($genExit -ne 0) {
+                $ctx = "==================================================================`nPORTE KO -- gen-sw-version.mjs (post-tool.ps1, HO-A03)`n$($genOut -join "`n")`n=================================================================="
+                Send-GateContext -Texte $ctx
+                exit 0
+            }
+        } finally {
+            Pop-Location
+        }
+    }
+}
+
 exit 0

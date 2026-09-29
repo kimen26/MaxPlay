@@ -184,6 +184,18 @@ $results += Test-Case -Name 'pre-tool: AskUserQuestion bloque' -Script (Join-Pat
 $p7 = '{"tool_name":"Bash","tool_input":{"command":"git rm site/*.png"}}'
 $results += Test-Case -Name 'pre-tool: git rm glob bloque' -Script (Join-Path $hooksDir 'pre-tool.ps1') -PayloadJson $p7 -ExpectedExit 2 -ExpectPattern 'BLOQUEE'
 
+# --- Payload HO-A03-1 : PreToolUse Edit sur site/js/gen/avatars.js -> BLOQUE, generateur nomme ---
+$pGen1 = '{"tool_name":"Edit","tool_input":{"file_path":"c:/ProjetsPerso/Claude_Projects/MaxPlay/site/js/gen/avatars.js"}}'
+$results += Test-Case -Name 'pre-tool: garde-gen bloque site/js/gen/avatars.js' -Script (Join-Path $hooksDir 'pre-tool.ps1') -PayloadJson $pGen1 -ExpectedExit 2 -ExpectPattern 'gen-avatars-manifest\.mjs'
+
+# --- Payload HO-A03-2 : PreToolUse Edit sur site/js/gen/i18n/dinos-strings.fr.js -> BLOQUE, generateur nomme ---
+$pGen2 = '{"tool_name":"Edit","tool_input":{"file_path":"c:/ProjetsPerso/Claude_Projects/MaxPlay/site/js/gen/i18n/dinos-strings.fr.js"}}'
+$results += Test-Case -Name 'pre-tool: garde-gen bloque site/js/gen/i18n/dinos-strings.fr.js' -Script (Join-Path $hooksDir 'pre-tool.ps1') -PayloadJson $pGen2 -ExpectedExit 2 -ExpectPattern '_gen-strings-bundle\.cjs'
+
+# --- Payload HO-A03-3 : PreToolUse Edit hors site/js/gen/ -> passe (non-regression) ---
+$pGen3 = '{"tool_name":"Edit","tool_input":{"file_path":"c:/ProjetsPerso/Claude_Projects/MaxPlay/site/js/dinos-i18n.js"}}'
+$results += Test-Case -Name 'pre-tool: garde-gen laisse passer fichier hors site/js/gen/' -Script (Join-Path $hooksDir 'pre-tool.ps1') -PayloadJson $pGen3 -ExpectedExit 0
+
 # --- Payload 8 (R10b) : LESSONS.md, leçon L- ajoutee SANS marqueur de porte -> BLOQUE ---
 $p8 = '{"tool_name":"Edit","tool_input":{"file_path":"c:/ProjetsPerso/Claude_Projects/MaxPlay/studio/dino/memory/LESSONS.md","old_string":"## L-098 existing\ntext","new_string":"## L-098 existing\ntext\n\n## L-099 - Nouvelle lecon sans porte\nConstat : bla.\nRegle : faire attention."}}'
 $results += Test-Case -Name 'pre-tool: lessons-gate bloque sans marqueur' -Script (Join-Path $hooksDir 'pre-tool.ps1') -PayloadJson $p8 -ExpectedExit 2 -ExpectPattern 'porte'
@@ -267,6 +279,18 @@ $pR09hp = '{"tool_input":{"file_path":"c:/ProjetsPerso/Claude_Projects/MaxPlay/d
 $rR09hp = Test-Case -Name 'post-tool R09-hp: fichier hors perimetre -> 0 octet' -Script (Join-Path $hooksDir 'post-tool.ps1') -PayloadJson $pR09hp -ExpectedExit 0
 if ($rR09hp.Pass -and $rR09hp.Stdout.Trim().Length -ne 0) { $rR09hp.Pass = $false }
 $results += $rR09hp
+
+# --- Payload HO-A03-4 : PostToolUse Edit sur un fichier precache (css/mp-theme.css) ->
+#     gen-sw-version.mjs s'execute sur le vrai site/sw.js (lecture seule pour le hook,
+#     n'ecrit que site/js/gen/sw-version.js qui est deja un fichier genere versionne) ---
+$pSwHit = '{"tool_input":{"file_path":"c:/ProjetsPerso/Claude_Projects/MaxPlay/site/css/mp-theme.css"}}'
+$results += Test-Case -Name 'post-tool HO-A03: fichier precache -> gen-sw-version.mjs execute' -Script (Join-Path $hooksDir 'post-tool.ps1') -PayloadJson $pSwHit -ExpectedExit 0
+
+# --- Payload HO-A03-5 : PostToolUse Edit sur un fichier HORS PRECACHE_LIST -> script non appele, 0 octet ---
+$pSwMiss = '{"tool_input":{"file_path":"c:/ProjetsPerso/Claude_Projects/MaxPlay/site/img/dinos/paleoart/minmi.webp"}}'
+$rSwMiss = Test-Case -Name 'post-tool HO-A03: fichier hors precache -> 0 octet' -Script (Join-Path $hooksDir 'post-tool.ps1') -PayloadJson $pSwMiss -ExpectedExit 0
+if ($rSwMiss.Pass -and $rSwMiss.Stdout.Trim().Length -ne 0) { $rSwMiss.Pass = $false }
+$results += $rSwMiss
 
 # --- Mesure de duree (DoR R09 : < 2 s par route statique, 0 navigateur) ---
 $r09Durees = @()

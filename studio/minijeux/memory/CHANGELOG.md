@@ -12,6 +12,12 @@
 - L'ouverture d'un œuf dans le nid montre enfin le bon dino, à la bonne place ; le bouton « Aller dans le nid » ramène directement à la case gagnée depuis l'écran de victoire.
 - Espace parents : 4 tuiles (Statistiques / Paramètres / Compte / Retours) et un sélecteur de langue.
 - Plus aucun mini-jeu ne peut tomber sur une carte d'ombre vide (71 dinos, 70 ombres, 1 exclusion documentée).
+- Deux jeux qui plantaient à la 8ᵉ manche se jouent normalement jusqu'au bout ; l'écran de victoire et les jeux de dino ne parlent plus anglais aux enfants qui ont choisi l'anglais.
+- L'accueil est une armoire en bois : 15 cases de jeux et 2 tiroirs posés dessus, chacune avec sa cloison, sa lumière et sa couleur d'objet ; un globe qui tourne au tap ouvre l'encyclopédie des dinos.
+- Le bouton retour est maintenant le même partout, dans les 23 jeux qui avaient chacun le leur.
+- Dans l'atelier de coloriage : des autocollants de plantes à poser d'un tap, avec un bouton Annuler.
+- Un jeu resté ouvert pendant qu'une nouvelle version sort se recharge tout seul une fois, sans qu'on ait besoin de fermer et rouvrir l'appli.
+- Les mini-jeux marchent maintenant hors connexion (mj-22 ne dépendait plus d'internet en cachette).
 
 ## 2026-08
 

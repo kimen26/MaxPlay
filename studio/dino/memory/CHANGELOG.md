@@ -11,6 +11,8 @@
 - 10 musiques (jungle, douce, suspense, génériques, victoires) et 41 bruitages de dinos (rugissements, pas lourds, œufs qui éclosent, pluie, tonnerre…) sont prêts à être branchés dans les jeux.
 - L'encyclopédie parle anglais, espagnol et portugais brésilien : fiches ET menu (onglets, boutons, libellés) traduits nativement, avec les bonnes unités (pieds/livres en anglais).
 - Les 100 racines du dico et les 8 épisodes du Voyage restent en français pour l'instant (prochaine étape si besoin).
+- L'Oviraptor ne dit plus une phrase fausse en anglais (ses rivaux étaient mal nommés) ; les 71 fiches sont vérifiées chiffre par chiffre entre ce qui est dit et ce qui est écrit, 0 écart restant.
+- Le Scélidosaure a retrouvé son bouton audio et sa galerie d'images, disparus depuis son arrivée.
 
 ## 2026-08
 

@@ -31,7 +31,7 @@ type: project
 
 ## Bugs critiques en cours
 
-Recette complète 2026-09-19 (`memory/audits/2026-09-19-recette-complete.md`, lane REC-* de la TODO) : **mj-13a et mj-13c plantent à la 8ᵉ manche** (pas de `#app`, REC-C1) ; **mj-24/28/31 ne traduisent jamais leur contenu dino en EN** (ordre de scripts, REC-C7) ; **mj-22 dépend d'un fetch Wikimedia** (REC-C3) ; écran de victoire, menu et pages annexes 100 % FR en anglais (REC-C4/C5). mj-40 : blocage figure 2 vu par un testeur, non reproduit par l'autre (REC-C2, à confirmer à la main).
+Recette complète 2026-09-19 (`memory/audits/2026-09-19-recette-complete.md`, lane REC-* de la TODO) : REC-C1 (crash mj-13a/13c 8ᵉ manche), REC-C3 (mj-22 fetch Wikimedia), REC-C4/C5 (écran de victoire/menu/pages en anglais), REC-C7 (mj-24/28/31 EN) soldés le 2026-09-25 (commit `970ec8b8` + suite). Reste ouvert : **REC-C2** — mj-40 tangram, figure 2 non chargée vue par un testeur, non reproduite avec un vrai drag Playwright, à rejouer sur le P30 Pro. Détail : `memory/TODO.md` § Lane recette.
 
 Faux bugs vérifiés : EP-022 MJ-04 "boucle infinie" (code conforme) · L-068 11 dinos sans image (résolu commit 941faa30).
 
@@ -56,6 +56,7 @@ Faux bugs vérifiés : EP-022 MJ-04 "boucle infinie" (code conforme) · L-068 11
 - **2026-09-15 — L'Armoire (HO-MJ-12 + HO-MJ-13, D-025)** : la Vallée animée est remplacée par une armoire en bois immobile (`site/js/armoire.js`, `css/armoire.css`, `img/armoire/` 27 pièces webp découpées par `tools/armoire-decoupe.py`). `mur-scene.js` supprimé, `mur.js`/`mur.css` élagués. Portes vertes : armoire.spec 7 viewports sans ascenseur, index, mur-nid, `npm run check`. Reste : recette PY sur GitHub Pages, globe/volcan animés déposés dans l'inbox (HO-MJ-14 à ouvrir), `nid-e2e.spec.mjs` à réécrire (bâti sur `.v-copain`).
 - **2026-09-12 — HO-R02** : rotation mémoire du pôle (campagne refonte GED). `LESSONS.md` 70 Ko → 20 Ko (74 leçons datées/dupliquées/superseded déplacées verbatim dans `archive/lessons-2026-H1.md`, 18 gardées) ; `TODO.md` 39 Ko → 9 Ko (fait/obsolète retiré — 28 mj fantômes purgés le 2026-08-10 identifiés, lanes fermées condensées dans `CHANGELOG.md`).
 - **2026-09-08/10 — Coloriage mj-32 (HO-MJ-08 à HO-MJ-12)** : décors, zoom, nom coloriable, damier/halo corrigés, harnais CI stabilisé (cause réelle : image d'ombre manquante, pas de l'instabilité). Détail `memory/TODO.md` § Coloriage mj-32.
+- **2026-09-25/28 — Recette complète + armoire v8 posée (vagues 1-3)** : crashs mj-13a/13c à la 8ᵉ manche, écran de victoire et pages en anglais, mj-22 hors ligne, mobile 320 px, mj-18/mj-39 corrigés (REC-C1/C3/C4/C5/C7, REC-H1/H2/H3, REC-M1 soldés). Armoire v8 : 15 cases + 2 tiroirs posés sur le kit (HO-MJ-22), globe animé qui ouvre l'encyclo (HO-MJ-16), bouton retour unifié sur les 23 jeux qui l'avaient chacun à sa façon. HO-MJ-23 lot 1 : cloisons entre cases, une lampe par case, teinte par objet (recette PY sur P30 Pro restant à faire). Coloriage mj-32 : stickers de plantes posables + bouton Annuler. `nid-e2e.spec` réécrit, bundles i18n descendus dans `site/js/gen/i18n/`. Service worker : rechargement auto sur nouvelle version (L-148). CI vague 1 process militaire verte le 2026-09-29 après correctif des specs mj-22/mj-49 (sensibles à la lenteur de la machine GitHub, pas les jeux).
 
 ## Équipe agents (référence rapide)
 

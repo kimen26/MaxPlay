@@ -2,7 +2,7 @@
 
 > **FICHIER GÉNÉRÉ — ne jamais éditer à la main.**
 > Régénérer : `node studio/referentiel/build.mjs`
-> Plan d'ensemble : [`memory/ARCHI-REFERENTIEL-CONTENU.md`](../../memory/ARCHI-REFERENTIEL-CONTENU.md) · généré le 2026-09-26
+> Plan d'ensemble : [`memory/ARCHI-REFERENTIEL-CONTENU.md`](../../memory/ARCHI-REFERENTIEL-CONTENU.md) · généré le 2026-09-28
 
 ---
 
@@ -46,7 +46,7 @@ Base de référence : [`empreintes.json`](empreintes.json) (versionnée).
 - **dino.edmontonia.taille** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
 - **dino.edmontonia.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
 - **dino.minmi.funfact** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
-- **dino.minmi.funfact** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.minmi.funfact** · canal `mp3` — script modifié le 2026-09-26, audio produit le 2026-09-05
 - **dino.minmi.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
 - **dino.scelidosaurus.regime** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
 - **dino.scelidosaurus.regime** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
@@ -69,7 +69,7 @@ _… et 60 autres — détail complet dans `registre.json`._
 | 🔴 Dettes ouvertes | **100** |
 | Clés vérifiables automatiquement | 71 |
 | 🔴 Dérives de fait confirmées | **1** |
-| 🟠 Audio en retard sur son script | **3** |
+| 🟠 Audio en retard sur son script | **4** |
 | 🟡 Canaux manquants au contrat | 0 |
 | 🟡 Consignes lues sans voix réelle | 4 |
 | ⚪ Voix dont le texte verbatim n'est pas tracé | 157 |
@@ -90,6 +90,7 @@ réécrit les secondes sans changer le contenu — s'y fier produirait des centa
 
 - **dino.tyrannosaurus.nom** — script 2026-09-26 · audio 2026-09-05
 - **dino.tyrannosaurus.regime** — script 2026-09-26 · audio 2026-09-05
+- **dino.minmi.funfact** — script 2026-09-26 · audio 2026-09-05
 - **dino.triceratops.regime** — script 2026-09-26 · audio 2026-09-05
 
 ## 🟡 Canaux manquants au contrat

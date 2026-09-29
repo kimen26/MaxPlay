@@ -51,8 +51,7 @@ Questions Papa Yann (hors DoD) : 8 langues sans fiche audio sélectionnables au 
 ## Backlog post-refonte (à ouvrir après la vague 6)
 
 - [ ] GIT : second tour `git filter-repo` si le pack (2,65 Go) doit descendre sous 1,2 Go — purger les anciennes versions d'assets `site/audio/dinos`, `site/img/dinos/paleoart` (décision Papa Yann : on perd l'historique des régénérations).
-- [ ] DINO : 4 écarts data ↔ narré — suivi unique dans `studio/dino/memory/TODO.md` (REC-2026-09-19) ; une fois soldés, passer `check-coherence-data-narre` en bloquant.
-- [ ] JEU : `site/js/i18n/*.js` (9 bundles générés) à descendre dans `site/js/gen/`.
+- [ ] DINO : 4 écarts data ↔ narré soldés (2026-09-25, `studio/dino/memory/TODO.md` REC-2026-09-19) ; reste à passer `check-coherence-data-narre` en bloquant (aujourd'hui avertissement dans `npm run check`).
 
 - [ ] DINO : `i18n.config.json` + brancher `~/.claude/skills/i18n-contenu/scripts/check-i18n.mjs`.
 - [ ] DINO : migrer `dino-images-lunii/scripts/{gpt-gen,gpt-gen-dino,grok-gen-dino}.mjs` sur `browser-pilot` (bug qualité Grok, bouton Télécharger). Revue 2026-09-25 : toujours vrai, les 3 scripts (`.claude/skills/dino-images-lunii/scripts/`) font encore leur propre `connectOverCDP` sans bouton Télécharger.

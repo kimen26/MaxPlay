@@ -39,3 +39,13 @@ done
 echo "=== BLOCS OK=$OK KO=$KO ==="
 # recaps = concat des 4 blocs (0 coût API), chemins relatifs pour ffmpeg Windows
 bash studio/dino/content/scripts/audio/_gen-recaps.sh "$1"
+# Porte R13b (vague 3) : verif-mp3 <id> pour chaque dino de la liste -- KO si un MP3
+# manque au lieu d'un "OK" silencieux sur fichier absent. N'ENVOIE aucune requête API
+# (0 crédit ElevenLabs), lit uniquement le disque (ffprobe/ffmpeg).
+VERIF_KO=0
+for d in $1; do
+  node studio/dino/content/scripts/audio/verif-mp3.mjs "$d" || VERIF_KO=$((VERIF_KO+1))
+done
+if [ "$VERIF_KO" -gt 0 ]; then
+  echo "=== verif-mp3 : $VERIF_KO dino(s) avec au moins un bloc hors bornes ==="
+fi

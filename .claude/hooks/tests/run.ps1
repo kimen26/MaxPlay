@@ -229,6 +229,83 @@ $p15 = '{"tool_name":"Bash","tool_input":{"command":"git push origin master"}}'
 $results += Test-Case -Name 'pre-tool: push site/ modifie, GREEN.json a jour -> passe' -Script (Join-Path $hooksDir 'pre-tool.ps1') -PayloadJson $p15 -ExpectedExit 0 -EnvVars @{ MAXPLAY_HOOK_ROOT = $scratchRepoSite }
 
 # ==========================================================================
+# Payloads post-tool.ps1 (PostToolUse, routage portes statiques R09 vague 3)
+# ==========================================================================
+
+# --- Payload R09-a : site/mj-01.html -> audit-gabarit.mjs mj-01 --json, mj-01 est
+#     reellement BLOQUANT (legacy) -> additionalContext non vide, exit reste 0 (hook jamais bloquant) ---
+$pR09a = '{"tool_input":{"file_path":"c:/ProjetsPerso/Claude_Projects/MaxPlay/site/mj-01.html"}}'
+$results += Test-Case -Name 'post-tool R09a: mj-01.html -> audit-gabarit KO -> additionalContext' -Script (Join-Path $hooksDir 'post-tool.ps1') -PayloadJson $pR09a -ExpectedExit 0 -ExpectPattern 'audit-gabarit\.mjs mj-01'
+
+# --- Payload R09-b : scripts-audio/fr/V3/scelidosaurus.md -> _verif-scripts-audio.cjs fr scelidosaurus, OK -> 0 octet ---
+$pR09b = '{"tool_input":{"file_path":"c:/ProjetsPerso/Claude_Projects/MaxPlay/studio/dino/content/scripts-audio/fr/V3/scelidosaurus.md"}}'
+$rR09b = Test-Case -Name 'post-tool R09b: scripts-audio scelidosaurus OK -> 0 octet' -Script (Join-Path $hooksDir 'post-tool.ps1') -PayloadJson $pR09b -ExpectedExit 0
+if ($rR09b.Pass -and $rR09b.Stdout.Trim().Length -ne 0) { $rR09b.Pass = $false }
+$results += $rR09b
+
+# --- Payload R09-c : content/dinos/scelidosaurus.json -> _gen-dinos-data --with-header puis
+#     check-dino-coherence.cjs scelidosaurus, dino complet -> 0 octet ---
+$pR09c = '{"tool_input":{"file_path":"c:/ProjetsPerso/Claude_Projects/MaxPlay/studio/dino/content/dinos/scelidosaurus.json"}}'
+$rR09c = Test-Case -Name 'post-tool R09c: dinos/scelidosaurus.json OK -> 0 octet' -Script (Join-Path $hooksDir 'post-tool.ps1') -PayloadJson $pR09c -ExpectedExit 0
+if ($rR09c.Pass -and $rR09c.Stdout.Trim().Length -ne 0) { $rR09c.Pass = $false }
+$results += $rR09c
+
+# --- Payload R09-c-KO : content/dinos/<id-inexistant>.json -> check-dino-coherence.cjs KO -> additionalContext ---
+$pR09cko = '{"tool_input":{"file_path":"c:/ProjetsPerso/Claude_Projects/MaxPlay/studio/dino/content/dinos/dinozzzinexistant.json"}}'
+$results += Test-Case -Name 'post-tool R09c-KO: dino inexistant -> check-dino-coherence KO -> additionalContext' -Script (Join-Path $hooksDir 'post-tool.ps1') -PayloadJson $pR09cko -ExpectedExit 0 -ExpectPattern 'check-dino-coherence\.cjs dinozzzinexistant'
+
+# --- Payload R09-d : docs/jeux/figees/mj-31.md -> check-figees.mjs (cas KO connu, cf. tete de fichier check-figees.mjs) ---
+$pR09d = '{"tool_input":{"file_path":"c:/ProjetsPerso/Claude_Projects/MaxPlay/studio/minijeux/docs/jeux/figees/mj-31.md"}}'
+$results += Test-Case -Name 'post-tool R09d: figees/mj-31.md -> check-figees.mjs execute' -Script (Join-Path $hooksDir 'post-tool.ps1') -PayloadJson $pR09d -ExpectedExit 0
+
+# --- Payload R09-e : site/js/catalog.js -> check-mj-coherence.mjs --json execute ---
+$pR09e = '{"tool_input":{"file_path":"c:/ProjetsPerso/Claude_Projects/MaxPlay/site/js/catalog.js"}}'
+$results += Test-Case -Name 'post-tool R09e: catalog.js -> check-mj-coherence.mjs execute' -Script (Join-Path $hooksDir 'post-tool.ps1') -PayloadJson $pR09e -ExpectedExit 0
+
+# --- Payload R09-hors-perimetre : fichier hors toutes les routes -> 0 octet, quasi instantane ---
+$pR09hp = '{"tool_input":{"file_path":"c:/ProjetsPerso/Claude_Projects/MaxPlay/docs/handoffs/README.md"}}'
+$rR09hp = Test-Case -Name 'post-tool R09-hp: fichier hors perimetre -> 0 octet' -Script (Join-Path $hooksDir 'post-tool.ps1') -PayloadJson $pR09hp -ExpectedExit 0
+if ($rR09hp.Pass -and $rR09hp.Stdout.Trim().Length -ne 0) { $rR09hp.Pass = $false }
+$results += $rR09hp
+
+# --- Mesure de duree (DoR R09 : < 2 s par route statique, 0 navigateur) ---
+$r09Durees = @()
+foreach ($case in @(
+    @{ Name = 'mj-01.html'; Payload = $pR09a },
+    @{ Name = 'scripts-audio scelidosaurus.md'; Payload = $pR09b },
+    @{ Name = 'dinos/scelidosaurus.json'; Payload = $pR09c },
+    @{ Name = 'figees/mj-31.md'; Payload = $pR09d },
+    @{ Name = 'catalog.js'; Payload = $pR09e }
+)) {
+    $psi = New-Object System.Diagnostics.ProcessStartInfo
+    $psi.FileName = 'powershell'
+    $psi.Arguments = "-NoProfile -ExecutionPolicy Bypass -File `"$(Join-Path $hooksDir 'post-tool.ps1')`""
+    $psi.RedirectStandardInput = $true
+    $psi.RedirectStandardOutput = $true
+    $psi.RedirectStandardError = $true
+    $psi.UseShellExecute = $false
+    $ms = (Measure-Command {
+        $proc = New-Object System.Diagnostics.Process
+        $proc.StartInfo = $psi
+        [void]$proc.Start()
+        $proc.StandardInput.Write($case.Payload)
+        $proc.StandardInput.Close()
+        [void]$proc.StandardOutput.ReadToEnd()
+        [void]$proc.StandardError.ReadToEnd()
+        $proc.WaitForExit()
+    }).TotalMilliseconds
+    $r09Durees += [PSCustomObject]@{ Name = $case.Name; Ms = [Math]::Round($ms, 0) }
+    $pass = $ms -lt 2000
+    $results += [PSCustomObject]@{
+        Name = "post-tool R09-perf: $($case.Name) < 2000 ms"
+        Expected = '<2000ms'; Actual = "$([Math]::Round($ms,0))ms"; Pass = $pass
+        Stdout = ''; Stderr = ''
+    }
+}
+Write-Output "--- R09 durees mesurees (Measure-Command) ---"
+$r09Durees | ForEach-Object { Write-Output ("  {0} : {1} ms" -f $_.Name, $_.Ms) }
+
+# ==========================================================================
 # Payloads pmo-check.ps1 (Stop hook, R10a)
 # ==========================================================================
 

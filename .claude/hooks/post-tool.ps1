@@ -1,4 +1,4 @@
-﻿# post-tool.ps1 — Dispatcher unique PostToolUse (HO-R04)
+﻿# post-tool.ps1 — Dispatcher unique PostToolUse (HO-R04, routage portes statiques R09 vague 3)
 # Remplace les 2 entrees PostToolUse de settings.json (sync-agents-md.py + hook bash
 # INBOX narration) par UN SEUL processus PowerShell. sync-agents-md est reporte de
 # Python vers PowerShell (coherence : plus de sous-processus python a demarrer).
@@ -9,6 +9,10 @@
 # 3. Si le contenu edite touche narration/INBOX -> commit auto (async d'origine ;
 #    ici synchrone dans le meme process, le hook PostToolUse Claude ne bloque pas
 #    la main sur du travail deja fait).
+# 4. R09 : routage par chemin vers la porte STATIQUE rapide correspondante (0 navigateur,
+#    < 2 s). Rejoue la porte dans le tour, sans attendre un /compact ou un rappel humain.
+#    Sortie hookSpecificOutput.additionalContext SEULEMENT si la porte est KO (0 octet si OK).
+#    Portes lentes (Playwright, MP3, gate) restent dans gate/Stop -- volontairement absentes ici.
 
 $ErrorActionPreference = 'SilentlyContinue'
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
@@ -83,6 +87,83 @@ if ($raw -match 'narration.*INBOX') {
         git commit -m ("inbox: dump {0}" -f (Get-Date -Format 'yyyy-MM-dd')) -- studio/narration/INBOX.md 2>$null | Out-Null
     } catch {}
     Pop-Location
+}
+
+# --- 4 (R09) : routage par chemin vers la porte statique correspondante ---
+function Send-GateContext {
+    param([string]$Texte)
+    $out = @{
+        hookSpecificOutput = @{
+            hookEventName     = 'PostToolUse'
+            additionalContext = $Texte
+        }
+    }
+    $out | ConvertTo-Json -Depth 5 -Compress
+}
+
+if ($path) {
+    $normSlash = ($path -replace '\\', '/')
+    Push-Location $root
+    try {
+        # a) site/mj-XX.html -> audit-gabarit.mjs mj-XX --json
+        if ($normSlash -match '(?:^|/)site/(mj-[0-9]+[a-z]?)\.html$') {
+            $mjId = $Matches[1]
+            $gate = & node studio/minijeux/tests/audit-gabarit.mjs $mjId --json 2>&1
+            $exit = $LASTEXITCODE
+            if ($exit -ne 0) {
+                $ctx = "==================================================================`nPORTE KO -- audit-gabarit.mjs $mjId (post-tool.ps1, R09)`n$($gate -join "`n")`n=================================================================="
+                Send-GateContext -Texte $ctx
+                exit 0
+            }
+        }
+        # b) scripts-audio/fr/V3/<id>.md -> _verif-scripts-audio.cjs fr <id>
+        elseif ($normSlash -match '(?:^|/)studio/dino/content/scripts-audio/fr/V3/([a-z0-9_]+)\.md$') {
+            $dinoId = $Matches[1]
+            $gate = & node studio/dino/content/scripts/export/_verif-scripts-audio.cjs fr $dinoId 2>&1
+            $exit = $LASTEXITCODE
+            if ($exit -ne 0) {
+                $ctx = "==================================================================`nPORTE KO -- _verif-scripts-audio.cjs fr $dinoId (post-tool.ps1, R09)`n$($gate -join "`n")`n=================================================================="
+                Send-GateContext -Texte $ctx
+                exit 0
+            }
+        }
+        # c) content/dinos/<id>.json -> _gen-dinos-data.cjs --with-header puis check-dino-coherence.cjs <id>
+        elseif ($normSlash -match '(?:^|/)studio/dino/content/dinos/([a-z0-9_]+)\.json$') {
+            $dinoId = $Matches[1]
+            & node studio/dino/content/scripts/export/_gen-dinos-data.cjs --with-header 2>&1 | Out-Null
+            $gate = & node studio/dino/content/scripts/export/check-dino-coherence.cjs $dinoId 2>&1
+            $exit = $LASTEXITCODE
+            if ($exit -ne 0) {
+                $ctx = "==================================================================`nPORTE KO -- check-dino-coherence.cjs $dinoId (post-tool.ps1, R09)`n$($gate -join "`n")`n=================================================================="
+                Send-GateContext -Texte $ctx
+                exit 0
+            }
+        }
+        # d) docs/jeux/figees/mj-XX.md ou figees/encyclopedie.md -> check-figees.mjs
+        elseif ($normSlash -match '(?:^|/)studio/minijeux/docs/jeux/figees/mj-[0-9]+[a-z]?\.md$' -or
+                $normSlash -match '(?:^|/)studio/dino/figees/encyclopedie\.md$') {
+            $gate = & node studio/minijeux/tests/check-figees.mjs 2>&1
+            $exit = $LASTEXITCODE
+            if ($exit -ne 0) {
+                $ctx = "==================================================================`nPORTE KO -- check-figees.mjs (post-tool.ps1, R09)`n$($gate -join "`n")`n=================================================================="
+                Send-GateContext -Texte $ctx
+                exit 0
+            }
+        }
+        # e) site/js/catalog.js ou strings.json -> check-mj-coherence.mjs --json
+        elseif ($normSlash -match '(?:^|/)site/js/catalog\.js$' -or
+                $normSlash -match '(?:^|/)strings\.json$') {
+            $gate = & node studio/minijeux/tests/check-mj-coherence.mjs --json 2>&1
+            $exit = $LASTEXITCODE
+            if ($exit -ne 0) {
+                $ctx = "==================================================================`nPORTE KO -- check-mj-coherence.mjs (post-tool.ps1, R09)`n$($gate -join "`n")`n=================================================================="
+                Send-GateContext -Texte $ctx
+                exit 0
+            }
+        }
+    } finally {
+        Pop-Location
+    }
 }
 
 exit 0

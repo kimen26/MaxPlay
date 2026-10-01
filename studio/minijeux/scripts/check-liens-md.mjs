@@ -234,16 +234,16 @@ function extractYamlPaths(text) {
 //     pointer vers `_PROGRESS.tsv` ? autre convention perdue ?) — deviner
 //     serait un pansement, pas une correction.
 const LEGACY = new Set([
-  '.claude\\rules\\dino.md -> `memory/INVARIANTS.md`',
-  '.claude\\rules\\dino.md -> `memory/_ETAT-DINOS.md`',
-  '.claude\\rules\\dino.md -> `site/js/dinos-images-grok.js`',
-  '.claude\\rules\\dino.md -> `site/js/dinos-racines.js`',
-  '.claude\\rules\\mini-jeux.md -> `memory/INVARIANTS.md`',
-  '.claude\\rules\\mini-jeux.md -> `docs/jeux/INDEX.md`',
-  '.claude\\rules\\personnages.md -> `memory/INVARIANTS.md`',
-  '.claude\\rules\\sons.md -> `site/js/dinos-audio-manifest.js`',
-  '.claude\\rules\\stories-process.md -> `memory/INVARIANTS.md`',
-  '.claude\\skills\\dino-paleoart\\SKILL.md -> `site/img/dinos/_new-xxl/_REPRISE.md`',
+  '.claude/rules/dino.md -> `memory/INVARIANTS.md`',
+  '.claude/rules/dino.md -> `memory/_ETAT-DINOS.md`',
+  '.claude/rules/dino.md -> `site/js/dinos-images-grok.js`',
+  '.claude/rules/dino.md -> `site/js/dinos-racines.js`',
+  '.claude/rules/mini-jeux.md -> `memory/INVARIANTS.md`',
+  '.claude/rules/mini-jeux.md -> `docs/jeux/INDEX.md`',
+  '.claude/rules/personnages.md -> `memory/INVARIANTS.md`',
+  '.claude/rules/sons.md -> `site/js/dinos-audio-manifest.js`',
+  '.claude/rules/stories-process.md -> `memory/INVARIANTS.md`',
+  '.claude/skills/dino-paleoart/SKILL.md -> `site/img/dinos/_new-xxl/_REPRISE.md`',
 ]);
 
 let deadLegacy = 0;
@@ -252,7 +252,7 @@ for (const file of configFiles) {
   const candidates = new Set([...extractCandidatePaths(txt), ...extractYamlPaths(txt)]);
   for (const p of candidates) {
     if (!pathExistsOrMatchesGlob(p)) {
-      const rel = relative(REPO_ROOT, file);
+      const rel = relative(REPO_ROOT, file).split('\\').join('/');
       const key = `${rel} -> \`${p}\``;
       if (LEGACY.has(key)) {
         console.log(`${YEL}⚠ LEGACY${RST} ${file} -> \`${p}\` (chemin config, non bloquant)`);

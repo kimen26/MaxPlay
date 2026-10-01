@@ -18,6 +18,17 @@ mais encore hors `archives/` : la dernière transition du cycle (le déplacement
 oubli que la routine détecte pour ce fichier — elle ne remplace pas la relecture humaine des
 statuts intermédiaires. Détail de la routine complète : `memory/DOCTRINE.md § Rotation`.
 
+## Campagne en cours — Reliquats chantier « process militaire » (ouverte 2026-10-01, clos à la demande de Papa Yann)
+
+État complet : `memory/TODO.md` § Chantier « process militaire ». Vagues 0-3 livrées, le reste attend un GO explicite.
+
+| ID | Titre | Statut |
+|----|-------|--------|
+| HO-T01 | Pop de fin qui chevauche la narration (`mj-golden.js`, `LEGACY_VOIX_CHEVAUCHEMENT`) | pret |
+| HO-T02 | Fin de partie et cibles tactiles (`LEGACY_FIN_MAISON`, `LEGACY_CIBLES_48`) | pret |
+| HO-T03 | Sourcer les Fact-check restants (`LEGACY_FACTCHECK`, 12 ids) | pret |
+| HO-T04 | Vagues 4 à 6 (archi transverse, R14-R19) | brouillon — en attente du GO de Papa Yann (coût) |
+
 ## Campagne en cours — Audio anglais du pôle dino (ouverte 2026-09-12)
 
 Audit : `memory/audits/2026-09-12-etat-audio-en-dino.md`. État : `studio/dino/memory/TODO.md`

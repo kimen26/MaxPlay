@@ -69,6 +69,8 @@ Questions Papa Yann (hors DoD) : 8 langues sans fiche audio sélectionnables au 
 
 ## Chantier « process militaire » (demande Papa Yann 2026-09-26)
 
+Chantier clos le 2026-10-01 à la demande de Papa Yann (coût) ; la suite = les HO ci-dessous, seulement sur GO.
+
 - [ ] **Proposition livrée 2026-09-27** : `docs/research/2026-09-26-archi-process-militaire.md` (diagnostic, principe « portes d'abord », 7 vagues) + `docs/research/2026-09-26-archi-recommandations.md` (23 recos R01-R23 avec statut de vérification, gabarit de brief DoR/DoD). Attend : les 10 arbitrages de la vague 0 (§ 8 du dossier) et le GO vague 1 (½ journée, ne dépend des arbitrages que pour le zoom).
 - [x] Après GO : un brief HO par vague, exécuté par sous-agents Sonnet, le main vérifie (portes rejouées, `git diff`, captures ouvertes).
 - [x] **Vague 0** tranchée le 2026-09-28 (D-014, D-015, commit `77a19b27`).
@@ -83,5 +85,8 @@ Questions Papa Yann (hors DoD) : 8 langues sans fiche audio sélectionnables au 
   - `3886d859` R02 porte étymologie + interdits de fond, R22 provenance des Fact-check (27 fiches LEGACY_FACTCHECK à sourcer).
   - `ee0a7527` R07 i18n fr/en bloquante + `--next-id`, R12 chemins morts des agents (15), `check-figees`, lint frontmatter.
   - `7c379202` EP-D22 : 11 blocs A FR + T-Rex EN réécrits, LEGACY_ETYMO vide. Audio : +5 811 caractères au reset du 11/10.
-- [ ] Vague 3 : R03, R04, R06, R09, R13 (R09 à revérifier en DoR). Attend un GO de Papa Yann.
-- [ ] Sourcer les 27 fiches LEGACY_FACTCHECK (URL + phrase lue), puis vider le set.
+- [x] **Vague 3** livrée (commits `ee9c4043` R03+R04, `c619b35a` R06, `8da47af2` R09+R13) : 10 gros plans retrouvés ; harnais Playwright à 360 px, non-régression 320 px.
+- [ ] HO-T01 — pop de fin qui chevauche la narration (`docs/handoffs/HO-T01-pop-fin-narration.md`).
+- [ ] HO-T02 — fin de partie et cibles tactiles (`docs/handoffs/HO-T02-fin-partie-cibles-tactiles.md`).
+- [ ] HO-T03 — sourcer les 12 Fact-check restants (`docs/handoffs/HO-T03-factcheck-restants.md`).
+- [ ] HO-T04 — vagues 4 à 6, architecture transverse (`docs/handoffs/HO-T04-vagues-4-6.md`), en attente du GO de Papa Yann.

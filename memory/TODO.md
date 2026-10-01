@@ -41,7 +41,6 @@ Questions Papa Yann (hors DoD) : 8 langues sans fiche audio sélectionnables au 
 
 ## Décisions attendues de Papa Yann (hors refonte)
 
-- [ ] CLI GitHub : vérifier `gh --version` (installée par winget le 2026-09-30, HO-A03) puis lancer `gh auth login` soi-même (interactif). Permettra de surveiller le déploiement Pages après chaque push.
 - [ ] MCP `supabase-maxvoyage` : vit dans `~/.claude.json` (utilisateur), donc visible depuis MaxPlay. À déplacer dans le `.mcp.json` du projet MaxVoyage.
 - [ ] `memory/audio/PLAN-AUDIO-I18N.md` (2026-07-08) : plan **proposé**, jamais revalidé point par point (convention `<lang>/`, casting `Native <lang>`, gouvernance registre, Supabase Storage hors FR).
 - [ ] `memory/GLOSSAIRE.md` : valider les termes ❓, puis passer le vocabulaire partout (handoff par pôle une fois tranché).

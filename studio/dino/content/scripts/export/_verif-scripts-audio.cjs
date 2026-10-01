@@ -76,9 +76,11 @@ const URL_RE = /https?:\/\/\S+/i;
 const LEGACY_ETYMO = new Set([]);
 const LEGACY_FACTCHECK = new Set([
   // ligne « > Fact-check » qui dit CONFIRMÉ/confirmé sans URL (27, mesuré 2026-09-29)
-  'allosaurus', 'amargasaurus', 'ankylosaurus', 'baryonyx', 'carcharodontosaurus', 'carnotaurus',
-  'centrosaurus', 'ceratosaurus', 'dilophosaurus', 'edmontonia', 'edmontosaurus', 'euoplocephalus',
-  'glyptodon', 'kentrosaurus', 'maiasaura', 'pachycephalosaurus', 'paraceratherium', 'parasaurolophus',
+  // 15 sourcées le 2026-10-01 (URL Grokipedia/Wikipédia citée) et retirées du set : allosaurus,
+  // amargasaurus, ankylosaurus, baryonyx, carcharodontosaurus, carnotaurus, centrosaurus,
+  // ceratosaurus, dilophosaurus, edmontonia, edmontosaurus, euoplocephalus, glyptodon,
+  // kentrosaurus, maiasaura. Reste 12 — voir handoff HO fact-check restants.
+  'pachycephalosaurus', 'paraceratherium', 'parasaurolophus',
   'pentaceratops', 'scelidosaurus', 'scutellosaurus', 'spinosaurus', 'stegosaurus', 'tarbosaurus',
   'therizinosaurus', 'triceratops', 'tyrannosaurus',
 ]);

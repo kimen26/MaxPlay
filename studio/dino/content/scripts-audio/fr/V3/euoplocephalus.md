@@ -3,7 +3,7 @@
 > Thyréophore à armure (famille `arme`), Crétacé · 75 millions d'années · Alberta, Canada.
 > Chiffres data (`studio/dino/content/dinos/euoplocephalus.json`) : 6 m long · 1.5 m haut · 2.2 t · vitesse 7 km/h. Comparaisons = sortie EXACTE de _compLong(6) / _compHaut(1.5) / _compPoids(2.2) / _compVitesse(7), régénérées 2026-09-12 : `aussi long qu'une rue à deux voies est large — il barrait la route !` / `aussi haut qu'une voiture — il fallait lever la tête !` / `aussi lourd qu'un rhinocéros !` / `comme Papa qui marche vite !`.
 > Étymologie (`_ETYMO-RACINES-50.md`) : *eu-* (grec) = bien + *-oplo-* (grec *hoplon*) = arme, armure (comme les hoplites grecs) + *-céphale* (grec *kephale*) = tête → « la tête bien armée ». Respelling lexique : « Eu-o-plo-cé-fale ».
-> Fact-check Grokipedia (agent dino-conseiller, 2026-09-05) : Formation Dinosaur Park (Alberta), ~76-75 Ma — **CONFIRMÉ contemporain de Gorgosaurus libratus**, même formation.
+> Fact-check (sourcé 2026-09-29) : Grokipedia https://grokipedia.com/page/Euoplocephalus — « osteoderms primarily from the Dinosaur Park Formation in Alberta » (formation confirmée) ; « Predatory pressures came from large theropods like Gorgosaurus libratus and Daspletosaurus horneri, which patrolled the same coastal plain habitats » (contemporanéité avec Gorgosaurus libratus confirmée, même formation).
 > Grep-interdits OK. Wex FR standard, aucun tic écrit, jamais de `!` final.
 
 ## Euoplocéphale — Euoplocephalus tutus

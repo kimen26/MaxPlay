@@ -49,6 +49,7 @@ Questions Papa Yann (hors DoD) : 8 langues sans fiche audio sélectionnables au 
 - [ ] Nom de domaine (~10 €/an). Resend SMTP + template `{{ .Token }}` bloqué par la config SMTP custom.
 
 ## Backlog post-refonte (à ouvrir après la vague 6)
+- [ ] **HOOK-PORTE-PIPE** (2026-10-08, L-D-88) — `.claude/hooks/pre-tool.ps1` : refuser aussi une commande où `npm run gate` est suivie d'un pipe puis d'un envoi git (le pipe masque l'échec de la porte).
 
 - [ ] GIT : second tour `git filter-repo` si le pack (2,65 Go) doit descendre sous 1,2 Go — purger les anciennes versions d'assets `site/audio/dinos`, `site/img/dinos/paleoart` (décision Papa Yann : on perd l'historique des régénérations).
 - [ ] DINO : 4 écarts data ↔ narré soldés (2026-09-25, `studio/dino/memory/TODO.md` REC-2026-09-19) ; reste à passer `check-coherence-data-narre` en bloquant (aujourd'hui avertissement dans `npm run check`).

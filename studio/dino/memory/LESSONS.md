@@ -137,3 +137,17 @@ langues) et `Minmi_funfact.webp` qui montre encore le ventre ouvert.
 **Règle** : un fichier partagé entre agents se dit « APPEND OBLIGATOIRE, jamais réécrit » en toutes lettres dans le brief, avec la commande (`>>`, `appendFileSync`). Et le pilotage ne doit pas dépendre de ce seul fichier : la liste d'attente se déduit de l'état réel (dernière image générée par scène + ce qui est déjà rangé), avec une copie de sauvegarde à chaque passage.
 
 **Et côté prompts** : sous l'eau, « photographié depuis 150 m » ne veut rien dire — le modèle cadre serré. Une consigne caméra propre aux scènes marines (grand volume d'eau, surface et fond visibles). Les proportions entre deux animaux restent le défaut n° 1 de ChatGPT : le petit est presque toujours dessiné trop gros ; la vérification doit MESURER le rapport en pixels, pas l'estimer à l'œil.
+
+## L-D-88 — Une porte suivie d'un pipe ne bloque rien (2026-10-08)
+
+**Contexte** : clôture des scènes de combat. `npm run gate 2>&1 | tail -2 && <envoi git>` : le code de sortie
+d'un pipe est celui de `tail`, toujours 0, donc l'envoi est parti malgré « gate : npm run check a échoué ».
+La porte était rouge à cause du travail non commité d'une autre session (scripts audio FR), pas du commit
+envoyé (TODO seul), et le déploiement est resté vert : de la chance, pas une garantie.
+
+**Règle** : jamais de pipe entre la porte et l'envoi. Lancer `npm run gate` seul, lire son verdict, envoyer
+dans une commande séparée. Porte rouge : regarder si la cause est dans le commit ou dans le dossier de
+travail d'une autre session (`git status`) avant de décider.
+
+**Porte :** `.claude/hooks/pre-tool.ps1` refuse déjà commit et envoi dans une même commande ; il ne voit pas
+encore « gate | tail » suivi d'un envoi (ajout noté au TODO transverse).

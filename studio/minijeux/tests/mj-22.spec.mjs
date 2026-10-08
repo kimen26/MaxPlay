@@ -35,6 +35,7 @@ async function clickPeintPoint(page, locator) {
   await page.mouse.click(point.x, point.y);
 }
 
+import { verifierFinMaison } from './fin-maison.mjs';
 export async function run({ page, ok }) {
   // Migration gabarit mj-shell.js : panneau règle 🧑‍🔬 s'ouvre tout seul à la 1ʳᵉ partie
   await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
@@ -137,4 +138,6 @@ export async function run({ page, ok }) {
   });
   ok('Aucune erreur console détectée', errors.length === 0,
      `errors=[${errors.join('; ')}]`);
+
+  await verifierFinMaison({ page, ok, mj: 'mj-22' });
 }

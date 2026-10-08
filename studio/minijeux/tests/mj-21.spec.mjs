@@ -25,6 +25,7 @@ const RECIPES = {
 };
 const POT = { r:'.pot-rouge', j:'.pot-jaune', b:'.pot-bleu', w:'.pot-blanc' };
 
+import { verifierFinMaison } from './fin-maison.mjs';
 export async function run({ page, ok }) {
   // Migration gabarit mj-shell.js : panneau règle 🧑‍🔬 s'ouvre tout seul à la 1ʳᵉ partie
   await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
@@ -82,4 +83,6 @@ export async function run({ page, ok }) {
        diag.uniques, `ids=[${diag.ids.join(',')}]`);
     ok('Clone tube REMPLI de couleur (pas vide à la victoire)', !!diag.fillRect);
   }
+
+  await verifierFinMaison({ page, ok, mj: 'mj-21' });
 }

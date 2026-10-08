@@ -46,11 +46,10 @@ const TAP_MIN = 48;
 // Jeux en défaut aujourd'hui sur le contrôle "fin de partie visible" (.end-wrap
 // runtime). Liste NOMINATIVE, n'en ajoute jamais : seul un jeu déjà corrigé en sort.
 const LEGACY_FIN_MAISON = [
-  'mj-15', 'mj-21', 'mj-22', 'mj-24', 'mj-32',
-  'mj-38', 'mj-39', 'mj-42', 'mj-46', 'mj-47',
-  // mj-34 : la spec elle-même termine par un page.reload() (test de reprise 🔒
-  // figée 2026-07-20), qui efface .end-wrap avant que ce contrôle runtime tourne.
-  'mj-34',
+  // HO-T02 (2026-10-08) : les 10 autres sont sortis (specs finissent sur l'écran standard).
+  // mj-32 : atelier sandbox sans fin de partie par design (« Fini ! » = sauvegarde),
+  // fin standard à statuer par Papa Yann (cf. audit-gabarit.mjs LEGACY_FIN_MAISON).
+  'mj-32',
 ];
 
 // Jeux en défaut aujourd'hui sur le contrôle "une seule voix à la fois". Liste
@@ -90,7 +89,7 @@ const LEGACY_VOIX_CHEVAUCHEMENT = [
 // tactiles ≥ 48×48". Liste NOMINATIVE, n'en ajoute jamais : bouton existant
 // sous le plancher (D-015 : ← 44×44 sur index, ↶ Recommencer 143×44 sur
 // mj-38, 💡 Indice 94×33 sur mj-21…), hors périmètre de ce chantier.
-const LEGACY_CIBLES_48 = ['mj-21', 'mj-32', 'mj-38', 'index'];
+const LEGACY_CIBLES_48 = [];
 
 // --allow-file-access-from-files + --disable-web-security : en prod (GitHub Pages https),
 // HTML + assets sont same-origin donc jamais de canvas taint. En file:// local, Chromium

@@ -1,6 +1,7 @@
 // MJ-42 — Shisima ! (jeu de duel traditionnel du Kenya)
 // Smoke console + chemin gagnant Max scripté + vérif "IA gagne = pas d'état punitif".
 
+import { verifierFinMaison } from './fin-maison.mjs';
 export async function run({ page, ok }) {
   // ── Gabarit mj-shell.js : le panneau règle s'ouvre TOUT SEUL à la 1ʳᵉ partie ──
   await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
@@ -83,4 +84,6 @@ export async function run({ page, ok }) {
   // ── Zones tap ≥ 80px (les points de plateau, cercles r>=22 -> diamètre >=44 visuel SVG scalé) ──
   const boardBox = await page.locator('#board-svg').boundingBox();
   ok('Plateau SVG rendu avec une taille exploitable (>200px)', !!boardBox && boardBox.width > 200);
+
+  await verifierFinMaison({ page, ok, mj: 'mj-42' });
 }

@@ -6,6 +6,7 @@
 // Vérifie : victoire niveau 1 détectée, bouton Recommencer toujours visible,
 // aucun texte "perdu/game over/raté" nulle part dans le DOM.
 
+import { verifierFinMaison } from './fin-maison.mjs';
 export async function run({ page, ok }) {
   // ─── Règles v3 : panneau s'ouvre TOUT SEUL à la 1ʳᵉ partie (regle-info.js) ───
   await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
@@ -74,4 +75,6 @@ export async function run({ page, ok }) {
   const bodyText1 = (await page.locator('body').innerText()).toLowerCase();
   const hasNegative1 = /perdu|game over|raté|rate\b/.test(bodyText1);
   ok('Aucun texte punitif après la partie', !hasNegative1, bodyText1.slice(0, 200));
+
+  await verifierFinMaison({ page, ok, mj: 'mj-38' });
 }

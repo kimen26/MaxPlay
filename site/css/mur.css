@@ -178,7 +178,7 @@
   padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px); }
 #chambre-ov .chambre { display:flex; flex-direction:column; width:100%; max-width:680px; margin:0 auto; padding:10px 12px; }
 .ch-hdr { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
-.ch-back { width:44px; height:44px; border-radius:50%; border:none; background:rgba(255,255,255,.12); color:var(--ink,#fff); font-size:22px; cursor:pointer; }
+.ch-back { width:48px; height:48px; border-radius:50%; border:none; background:rgba(255,255,255,.12); color:var(--ink,#fff); font-size:22px; cursor:pointer; }
 .ch-titre { font-family:'Fredoka One'; font-size:18px; color:var(--ink,#fff); }
 .ch-oeufs { flex:1; display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap; padding:10px 96px 90px 6px; }
 .ch-oeuf { display:flex; flex-direction:column; align-items:center; gap:10px; min-width:96px; cursor:pointer; }

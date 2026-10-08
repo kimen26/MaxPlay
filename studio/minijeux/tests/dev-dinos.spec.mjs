@@ -77,7 +77,10 @@ async function runGlobal(browser) {
   // sur un id qui n'existe plus dans dinos-data.js — la classe de bug inverse du Scélidosaure).
   if (compte.audio > compte.dinos) problemes.push(`DINO_AUDIO (${compte.audio}) > DINOS (${compte.dinos})`);
   if (compte.extras > compte.dinos) problemes.push(`DINO_EXTRAS (${compte.extras}) > DINOS (${compte.dinos})`);
-  if (compte.manifestFr !== compte.audio) problemes.push(`manifest fr (${compte.manifestFr}) != DINO_AUDIO (${compte.audio})`);
+  // LEGACY_NOM_AUDIO : dinos câblés dont l'audio « nom seul » FR n'est pas encore produit (manifest fr).
+  // scelidosaurus : prévu au reset ElevenLabs du 2026-10-11 (studio/dino/memory/TODO.md). N'en ajoute jamais.
+  const LEGACY_NOM_AUDIO = ['scelidosaurus'];
+  if (compte.manifestFr + LEGACY_NOM_AUDIO.length !== compte.audio) problemes.push(`manifest fr (${compte.manifestFr}) + LEGACY_NOM_AUDIO (${LEGACY_NOM_AUDIO.length}) != DINO_AUDIO (${compte.audio})`);
   if (erreurs.length) problemes.push(`${erreurs.length} pageerror/console error`);
   if (notFoundBloquant.length) problemes.push(`${notFoundBloquant.length} 404 bloquant(s)`);
 

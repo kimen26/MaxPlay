@@ -1,5 +1,6 @@
 // Pilote MJ-34 — Le dépôt bloqué (Rush Hour bus). Smoke + chemin gagnant scripté
 // via l'API window.__mjTest exposée par le jeu (state() + move(idx, deltaCells)).
+import { verifierFinMaison } from './fin-maison.mjs';
 export async function run({ page, ok }) {
   await page.evaluate(() => localStorage.clear());
   await page.reload({ waitUntil: 'networkidle' });
@@ -100,4 +101,6 @@ export async function run({ page, ok }) {
   const sReload = await page.evaluate(() => window.__mjTest.state());
   ok('🔒 Reprise au palier ★★ après rechargement (fini le reset à zéro)', sReload.tier === 2,
      `tier=${sReload.tier} lvl=${sReload.levelIdx}`);
+
+  await verifierFinMaison({ page, ok, mj: 'mj-34' });
 }

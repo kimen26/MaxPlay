@@ -1,5 +1,6 @@
 // Pilote MJ-15 — L'intrus : paliers par critère (N1 = couleur évidente) + retry.
 // Migré gabarit js/mj-shell.js (2026-07-14).
+import { verifierFinMaison } from './fin-maison.mjs';
 export async function run({ page, ok }) {
   await page.evaluate(() => localStorage.clear());
   await page.reload({ waitUntil: 'networkidle' });
@@ -88,4 +89,6 @@ export async function run({ page, ok }) {
   const hImgs = await page.locator('.bus-btn img').count();
   const hLabels = await page.locator('.bus-btn .bus-label').count();
   ok('niveau H rendu : 5 ombres + 5 noms affichés', hImgs === 5 && hLabels === 5, `imgs=${hImgs} labels=${hLabels}`);
+
+  await verifierFinMaison({ page, ok, mj: 'mj-15' });
 }

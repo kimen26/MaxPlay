@@ -6,6 +6,7 @@
 //  (2) chevauchement effectif entre œufs (pas juste un jitter cosmétique)
 //  (3) chaque œuf garde au moins ~1/3 de sa surface libre (pas totalement caché)
 //  (4) chemin gagnant : QCM correct → éclosion → bille verte
+import { verifierFinMaison } from './fin-maison.mjs';
 export async function run({ page, ok }) {
   await page.evaluate(() => localStorage.clear());
   await page.reload({ waitUntil: 'networkidle' });
@@ -98,4 +99,6 @@ export async function run({ page, ok }) {
     if (!turnedGreen) allPipsTurnedGreen = false;
   }
   ok(`${totalQ} bonnes réponses → ${totalQ} billes vertes (une par une, sans délai fixe)`, allPipsTurnedGreen);
+
+  await verifierFinMaison({ page, ok, mj: 'mj-46' });
 }

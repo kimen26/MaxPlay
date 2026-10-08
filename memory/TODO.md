@@ -86,7 +86,9 @@ Chantier clos le 2026-10-01 à la demande de Papa Yann (coût) ; la suite = les 
   - `ee0a7527` R07 i18n fr/en bloquante + `--next-id`, R12 chemins morts des agents (15), `check-figees`, lint frontmatter.
   - `7c379202` EP-D22 : 11 blocs A FR + T-Rex EN réécrits, LEGACY_ETYMO vide. Audio : +5 811 caractères au reset du 11/10.
 - [x] **Vague 3** livrée (commits `ee9c4043` R03+R04, `c619b35a` R06, `8da47af2` R09+R13) : 10 gros plans retrouvés ; harnais Playwright à 360 px, non-régression 320 px.
-- [ ] HO-T01 — pop de fin qui chevauche la narration (`docs/handoffs/HO-T01-pop-fin-narration.md`).
-- [ ] HO-T02 — fin de partie et cibles tactiles (`docs/handoffs/HO-T02-fin-partie-cibles-tactiles.md`).
-- [ ] HO-T03 — sourcer les 12 Fact-check restants (`docs/handoffs/HO-T03-factcheck-restants.md`).
+- [x] HO-T01 — pop de fin qui chevauche la narration : fait 2026-10-08 (`fa64d2cc`), 15 jeux sortis du LEGACY, 15 restent (sons propres au jeu, cause écrite dans `run.mjs`).
+- [x] HO-T02 — fin de partie et cibles tactiles : fait 2026-10-08 (`5e6d1da0`), boutons à 48 px, LEGACY_CIBLES_48 vide ; reste mj-32 (atelier libre, sans fin standard).
+- [x] HO-T03 — 27/27 Fact-check sourcés (`91cdc046`) ; les faits faux trouvés corrigés vers les sources, 16 fiches FR + 13 EN + 7 fiches canon (`61a70809`, `cab00c3c`). Décision griffe vivante 1 m (Papa Yann, `studio/dino/memory/DECISIONS.md`).
+- [ ] Reset ElevenLabs du 2026-10-11 : ≈ 30 000 caractères au total (FR 11 151 + EN 9 528 des corrections, 5 811 des blocs A EP-D22, ≈ 3 400 T-Rex/Minmi, + nom seul du Scélidosaure). GO de Papa Yann à demander : tout, ou le FR seul (≈ 20 000).
+- [ ] Poids du Pentacératops : fiche 5 t, Wikipédia EN ≈ 2,5 t, Grokipedia « several tonnes » ; non tranché (estimations divergentes), l'échelle « éléphant » en dépend.
 - [ ] HO-T04 — vagues 4 à 6, architecture transverse (`docs/handoffs/HO-T04-vagues-4-6.md`), en attente du GO de Papa Yann.

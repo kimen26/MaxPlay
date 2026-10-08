@@ -24,9 +24,9 @@ statuts intermédiaires. Détail de la routine complète : `memory/DOCTRINE.md �
 
 | ID | Titre | Statut |
 |----|-------|--------|
-| HO-T01 | Pop de fin qui chevauche la narration (`mj-golden.js`, `LEGACY_VOIX_CHEVAUCHEMENT`) | pret |
-| HO-T02 | Fin de partie et cibles tactiles (`LEGACY_FIN_MAISON`, `LEGACY_CIBLES_48`) | pret |
-| HO-T03 | Sourcer les Fact-check restants (`LEGACY_FACTCHECK`, 12 ids) | pret |
+| HO-T01 | Pop de fin qui chevauche la narration (`mj-golden.js`, `LEGACY_VOIX_CHEVAUCHEMENT`) | fait 2026-10-08 (`fa64d2cc`) |
+| HO-T02 | Fin de partie et cibles tactiles (`LEGACY_FIN_MAISON`, `LEGACY_CIBLES_48`) | fait 2026-10-08 (`5e6d1da0`) |
+| HO-T03 | Sourcer les Fact-check restants (`LEGACY_FACTCHECK`, 12 ids) | fait 2026-10-08 (`91cdc046`) |
 | HO-T04 | Vagues 4 à 6 (archi transverse, R14-R19) | brouillon — en attente du GO de Papa Yann (coût) |
 
 ## Campagne en cours — Audio anglais du pôle dino (ouverte 2026-09-12)

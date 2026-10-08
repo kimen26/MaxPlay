@@ -76,3 +76,8 @@ Comment appliquer : Opus = décider + relire le résultat final. Audit, vérif d
 ## L-016 — Un push n'est livré que quand le déploiement est vert (2026-10-01)
 Quoi : la CI Pages a échoué en silence du 2026-09-29 au 2026-10-01 (site en ligne figé), découvert seulement une fois `gh` installé. Trois causes empilées, toutes invisibles en local : checkout superficiel (les figées semblaient toutes neuves), Node 20 sans `fs.globSync`, clés de chemin en backslash Windows contre chemins Linux + fichier non suivi par git.
 Comment appliquer : après chaque push, `gh run watch <id> --exit-status` (délégable à Haiku) ; rouge = on n'annonce rien comme « en ligne ». Un contrôle qui dépend de git, de l'OS ou de fichiers locaux se reproduit dans un `git worktree` propre avant d'accuser la CI.
+
+## L-017 — Une option ajoutée a cassé le chemin par défaut, et la relecture du diff ne l'a pas vu (2026-10-08)
+Quoi : en ajoutant `--base` à `gate.mjs` (D-016), le défaut est devenu `'origin/master...HEAD'` passé à `git cat-file -e`, qui refuse une plage : la ref était jugée invalide et `npm run gate` sautait tous les jeux commités non poussés pendant 9 jours. L'agent avait testé `--base HEAD~3` et la ref nulle, jamais l'appel sans option ; le main a relu le diff YAML, pas ce chemin.
+Comment appliquer : quand on ajoute une option, rejouer aussi l'appel sans option sur un cas qui doit détecter quelque chose (un jeu commité non poussé), pas seulement les cas où « rien » est la bonne réponse.
+Porte : `npm run gate` affiche les jeux touchés ; le cas « commité non poussé » est vérifié à la main dans le commit `a2f6e902`.

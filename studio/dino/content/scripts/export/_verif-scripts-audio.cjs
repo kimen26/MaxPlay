@@ -75,14 +75,8 @@ const URL_RE = /https?:\/\/\S+/i;
 // --etymo-report sans avertissement. Set gardé vide, prêt à recevoir un futur id neuf en régression.
 const LEGACY_ETYMO = new Set([]);
 const LEGACY_FACTCHECK = new Set([
-  // ligne « > Fact-check » qui dit CONFIRMÉ/confirmé sans URL (27, mesuré 2026-09-29)
-  // 15 sourcées le 2026-10-01 (URL Grokipedia/Wikipédia citée) et retirées du set : allosaurus,
-  // amargasaurus, ankylosaurus, baryonyx, carcharodontosaurus, carnotaurus, centrosaurus,
-  // ceratosaurus, dilophosaurus, edmontonia, edmontosaurus, euoplocephalus, glyptodon,
-  // kentrosaurus, maiasaura. Reste 12 — voir handoff HO fact-check restants.
-  'pachycephalosaurus', 'paraceratherium', 'parasaurolophus',
-  'pentaceratops', 'scelidosaurus', 'scutellosaurus', 'spinosaurus', 'stegosaurus', 'tarbosaurus',
-  'therizinosaurus', 'triceratops', 'tyrannosaurus',
+  // Vidé 2026-10-08 (HO-T03) : les 27 lignes « CONFIRMÉ sans URL » sont toutes sourcées (15 le 2026-10-01,
+  // 12 le 2026-10-08). Set gardé vide, prêt à recevoir un futur id neuf en régression (n'y ajoute jamais un id neuf).
 ]);
 
 // Catalogue AUTORISÉ (✅ testés MaxPlay + tags officiels EL + tags déjà en prod dans la banque de sons).

@@ -20,18 +20,18 @@
 
 ### BLOC B — Taille
 
-**NARRATEUR H** [excited] : It was 24 feet long — like two cars, one behind the other! Standing up, it was 16 feet tall — [amazed] almost as tall as three Dads standing on each other's shoulders! And it weighed 17,000 kilos — [proud] as heavy as 6 hippos!
+**NARRATEUR H** [excited] : It was 24 feet long — like two cars, one behind the other! Standing up, it was 16 feet tall at the shoulder — [amazed] almost as tall as three Dads standing on each other's shoulders! And it weighed 17,000 kilos — [proud] as heavy as 6 hippos!
 **WEX** [gasps] : Six hippos?
-**NARRATEUR H** [amazed] : Yes. It's the biggest furry animal [proud] that ever walked on Earth.
+**NARRATEUR H** [amazed] : Yes. It's one of the biggest mammals [proud] that ever walked on Earth.
 
 ### BLOC C — Comment il vivait
 
-**NARRATEUR H** [serious] : It was a herbivore. [amazed] With its long neck, it reached the leaves way up in the trees, [gently] where nobody else could eat. It lived calmly, in small groups.
+**NARRATEUR H** [serious] : It was a herbivore. [amazed] With its long neck, it reached the leaves way up in the trees, [gently] where nobody else could eat. It probably lived calmly, mostly alone.
 **WEX** [curious] : What hunter did it worry about?
 **NARRATEUR H** [confident] : No hunter of its time was tough enough to go after it — [warmly] its size alone was enough.
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [slowly] : Its head, way up on that long neck, [pauses] reached 16 feet high.
+**NARRATEUR H** [slowly] : Its head, way up on that long neck, [pauses] rose even higher than its shoulders.
 **WEX** [gasps] : Taller than a giraffe?
-**NARRATEUR H** [amazed] : Taller than a giraffe, yes. [proud] A rhino with no horn, but big as a building.
+**NARRATEUR H** [amazed] : Probably, yes. [proud] A rhino with no horn, but a giant.

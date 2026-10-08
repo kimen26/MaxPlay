@@ -32,6 +32,6 @@
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [excited] : His horns were OVER a meter long. [whispers] And scientists found T. rex bones... with Triceratops horn marks on them.
-**WEX** [gasps] : They really fought.
-**NARRATEUR H** [softly] : For real. Real battle scars, carved right into the bone.
+**NARRATEUR H** [excited] : His two big brow horns were OVER a meter long. [whispers] And on one skeleton, scientists found the mark of an old T. rex bite... healed over.
+**WEX** [gasps] : He got away.
+**NARRATEUR H** [softly] : Yes. A real battle scar, carved right into the bone.

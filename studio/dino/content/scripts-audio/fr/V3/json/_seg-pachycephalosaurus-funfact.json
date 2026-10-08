@@ -2,7 +2,7 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Son crâne mesurait 25 centimètres d'épaisseur. [whispers] Presque aussi épais que ta tête entière."
+      "text": "[excited] Le dessus de son crâne était un gros dôme d'os plein. [whispers] Un vrai casque, qui lui couvrait toute la tête."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -10,7 +10,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[softly] Presque. Un casque naturel, pour se cogner sans se faire mal."
+      "text": "[softly] Presque. [curious] Un casque naturel, peut-être pour se cogner sans se faire mal."
     }
   ],
   "model_id": "eleven_v3",

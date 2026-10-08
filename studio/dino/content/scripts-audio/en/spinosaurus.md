@@ -14,7 +14,7 @@
 **WEX** [hesitant] : Wait, I know this one: the spined lizard.
 **NARRATEUR H** [happily] : Exactly, you got it before I finished! It lived in North Africa, [amazed] ninety-five million years ago.
 **WEX** [curious] : What did it eat, with all those spikes?
-**NARRATEUR H** [playful] : Fish! [confident] Huge fish, as long as you and Dad put together.
+**NARRATEUR H** [playful] : Fish! [confident] Really big fish.
 
 ### BLOC B — Taille
 
@@ -26,10 +26,10 @@
 
 **NARRATEUR H** [serious] : It was a piscivore: it ate fish. [calm] It lived near rivers and swam to catch huge fish, [confident] like a giant crocodile.
 **WEX** [curious] : A dinosaur that actually swims?
-**NARRATEUR H** [amazed] : Really swims. [proud] The only big carnivorous dinosaur that swam that well.
+**NARRATEUR H** [amazed] : Really swims. [proud] But not like a dolphin: more slowly, at the surface, waiting for fish.
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [excited] : On its back, a giant sail full of spikes. It stood almost 7 feet tall — [pauses] as tall as a front door, standing straight up on its back.
+**NARRATEUR H** [excited] : On its back, a giant sail full of spikes. It rose up to almost 6 feet tall — [pauses] not far from a front door, standing straight up on its back.
 **WEX** [gasps] : A door on its back.
 **NARRATEUR H** [softly] : A door on its back. The king of the African rivers.

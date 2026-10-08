@@ -22,7 +22,7 @@
 
 **NARRATEUR H** [excited] : Thirty-three feet long — [amazed] as long as a truck. Standing up, eight feet tall — [curious] as tall as a soccer goal. And three thousand kilos — [proud] as heavy as a hippo.
 **WEX** [curious] : And how big were the spikes?
-**NARRATEUR H** [confident] : Up to two feet tall — [amazed] right in the MIDDLE of its neck. The tallest of any known sauropod.
+**NARRATEUR H** [confident] : Up to 26 inches tall — [amazed] right in the MIDDLE of its neck. The tallest of any known sauropod.
 
 ### BLOC C — Comment il vivait
 

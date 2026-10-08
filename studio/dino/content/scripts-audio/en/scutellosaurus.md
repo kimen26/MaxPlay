@@ -26,8 +26,8 @@
 
 ### BLOC C — Comment il vivait
 
-**NARRATEUR H** [serious] : Herbivore, alone or in a small group. [calm] It grazed on low plants.
-**WEX** [curious] : Did it run fast, to escape Dilophosaurus?
+**NARRATEUR H** [serious] : Herbivore. [calm] It grazed on low plants.
+**WEX** [curious] : How did it get away from Dilophosaurus?
 **NARRATEUR H** [playful] : Its long tail helped it balance while running, [pauses] like a tightrope pole. The only armored dino that ran on two legs.
 
 ### BLOC D — Le truc fou

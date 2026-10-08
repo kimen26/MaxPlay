@@ -32,6 +32,6 @@
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [excited] : His head, with the frill, measured OVER 3 meters. [whispers] One of the biggest heads of any animal that ever walked the Earth.
+**NARRATEUR H** [excited] : His head, with the frill, measured OVER 2 meters. [whispers] One of the biggest heads of any animal that ever walked the Earth.
 **WEX** [gasps] : Bigger than Dad standing up.
-**NARRATEUR H** [softly] : Much bigger. Pentaceratops, the champion of the giant head.
+**NARRATEUR H** [softly] : Yes, bigger than Dad, from the head alone. Pentaceratops, the champion of the giant head.

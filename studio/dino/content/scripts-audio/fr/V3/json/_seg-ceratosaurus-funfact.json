@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] En plus de sa grande corne, [playful] il avait de petites cornes au-dessus des yeux, comme un dragon. [amazed] Et ses dents fines étaient parfaites pour attraper des poissons glissants."
+      "text": "[excited] En plus de sa grande corne, [playful] il avait de petites crêtes au-dessus des yeux, comme un dragon. [amazed] Et ses dents étaient fines et tranchantes, comme des lames."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Un dragon pêcheur."
+      "text": "[gasps] Un dragon avec des dents-couteaux."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Une licorne carnivore et pêcheuse. [proud] Il n'y en avait qu'un comme lui."
+      "text": "[playful] Une licorne carnivore. [proud] Il n'y en avait pas beaucoup comme lui."
     }
   ],
   "model_id": "eleven_v3",

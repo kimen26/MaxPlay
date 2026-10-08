@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Besides its big horn, [playful] it had small horns above its eyes too, like a dragon. [amazed] And its thin teeth were perfect for catching slippery fish."
+      "text": "[excited] Besides its big horn, [playful] it had small crests above its eyes too, like a dragon. [amazed] And its teeth were thin and sharp, like blades."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] A fishing dragon."
+      "text": "[gasps] A dragon with knife teeth."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] A carnivorous, fishing unicorn. [proud] There was nothing else quite like it."
+      "text": "[playful] A carnivorous unicorn. [proud] There weren't many like it."
     }
   ],
   "model_id": "eleven_v3",

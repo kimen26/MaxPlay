@@ -17,22 +17,22 @@
 **WEX** [amazed] : A real horn, on its nose, like a rhino?
 **NARRATEUR H** [happily] : Exactly right, the horned lizard. It lived in North America, [confident] and maybe Europe too, in Portugal, [amazed] one hundred fifty million years ago.
 **WEX** [curious] : A horn, like a unicorn?
-**NARRATEUR H** [playful] : Almost! [proud] The only big carnivore of its time with a horn on its nose.
+**NARRATEUR H** [playful] : Almost! [proud] A horn on the nose is rare among big hunters.
 
 ### BLOC B — Taille
 
 **NARRATEUR H** [excited] : It was 6 meters long — as long as a road is wide, it takes up the whole street! [quickly] Standing up, it was 2 meters tall — as tall as a front door! And it weighed 900 kilos — [amazed] as heavy as a small car! [serious] And it could run about 16 miles an hour — as fast as a bike going fast.
 **WEX** [amazed] : Smaller than the big carnivore kings?
-**NARRATEUR H** [confident] : Yes, but fast and nimble. [proud] Its horn made it one of a kind.
+**NARRATEUR H** [confident] : Yes, but fast and nimble. [proud] Its horn made it rare among the big hunters.
 
 ### BLOC C — Comment il vivait
 
-**NARRATEUR H** [serious] : It was a carnivore. It ate small dinosaurs and fish. [calm] It mostly lived alone. [nervous] Allosaurus, much bigger, could attack it.
+**NARRATEUR H** [serious] : It was a carnivore. It hunted other dinosaurs. [calm] It mostly lived alone. [nervous] Allosaurus, much bigger, could attack it.
 **WEX** [curious] : Was it scared of Allosaurus?
 **NARRATEUR H** [gently] : Probably, a little. [confident] But it was fast, [playful] and its horn could scare off a hesitant attacker.
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [excited] : Besides its big horn, [playful] it had small horns above its eyes too, like a dragon. [amazed] And its thin teeth were perfect for catching slippery fish.
-**WEX** [gasps] : A fishing dragon.
-**NARRATEUR H** [playful] : A carnivorous, fishing unicorn. [proud] There was nothing else quite like it.
+**NARRATEUR H** [excited] : Besides its big horn, [playful] it had small crests above its eyes too, like a dragon. [amazed] And its teeth were thin and sharp, like blades.
+**WEX** [gasps] : A dragon with knife teeth.
+**NARRATEUR H** [playful] : A carnivorous unicorn. [proud] There weren't many like it.

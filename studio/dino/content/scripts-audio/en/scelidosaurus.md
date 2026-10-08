@@ -18,13 +18,13 @@
 **WEX** [curious] : A strong-legged lizard.
 **NARRATEUR H** [happily] : Yes. But here's the thing: [amazed] the scientist who named it got the Greek word wrong — the one he actually wrote means "rib of beef." [playful] Without meaning to, he named it the beef-rib lizard.
 **WEX** [curious] : And where did the beef-rib lizard live?
-**NARRATEUR H** [serious] : In England, by the sea, a hundred ninety-three million years ago. [curious] And already, [pauses] small two-legged hunters were prowling the area.
+**NARRATEUR H** [serious] : In England, by the sea, a hundred ninety-three million years ago. [curious] And already, [pauses] maybe small two-legged hunters were prowling the area.
 
 ### BLOC B — Taille
 
 **NARRATEUR H** [excited] : Thirteen feet long — [amazed] like a small car. Standing up, four feet tall — [curious] as tall as a 4-year-old. And two hundred seventy kilos — [proud] as heavy as a tiger. [calm] It moved without rushing: about 9 miles an hour, [pauses] like a bike riding chill.
 **WEX** [curious] : As heavy as a tiger, for a plant-eater?
-**NARRATEUR H** [confident] : Yep. [whispers] Most of that weight was its bony armor — and those strong legs carried it just fine.
+**NARRATEUR H** [confident] : Yep. [whispers] A good part of that weight was probably its bony armor — and those strong legs carried it just fine.
 
 ### BLOC C — Comment il vivait
 

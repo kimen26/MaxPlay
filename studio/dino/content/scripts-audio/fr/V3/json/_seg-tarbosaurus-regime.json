@@ -2,7 +2,7 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] C'était un carnivore. Il chassait les grands herbivores de Mongolie, [confident] comme le Thérizinosaure. [calm] Plutôt solitaire."
+      "text": "[serious] C'était un carnivore. Il chassait les grands herbivores de Mongolie, [confident] peut-être même le Thérizinosaure. [calm] Plutôt solitaire."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -10,7 +10,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Avec ses griffes ÉNORMES d'un mètre, [serious] dressées comme une barrière de couteaux. [confident] Devant ça, le Tarbosaure allait chercher une proie moins piquante."
+      "text": "[playful] Peut-être avec ses griffes ÉNORMES, près d'un mètre chacune, [serious] dressées comme une barrière de couteaux. [confident] Devant ça, le Tarbosaure allait sans doute chercher une proie moins piquante."
     }
   ],
   "model_id": "eleven_v3",

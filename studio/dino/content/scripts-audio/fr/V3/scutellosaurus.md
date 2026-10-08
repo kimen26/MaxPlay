@@ -3,7 +3,7 @@
 > Thyréophore basal (famille `arme`), Jurassique · 196 millions d'années · Arizona, États-Unis (Formation Kayenta).
 > Chiffres data (`studio/dino/content/dinos/scutellosaurus.json`) : 1.2 m long · 0.4 m haut · 0.004 t. Comparaisons = sortie EXACTE de _compLong(1.2) / _compHaut(0.4) / _compPoids(0.004), régénérées 2026-09-12 : `comme un grand chien — un labrador !` / `il t'arrivait aux genoux !` / `aussi lourd qu'un gros chat !`.
 > Étymologie (`_ETYMO-RACINES-50.md`) : *scutello-/scutellum* (latin) = petit bouclier + *-saurus/-saure* (grec) = lézard → « le lézard au petit bouclier ». Nom lu tel quel.
-> Fact-check (sourcé 2026-10-08) : Grokipedia https://grokipedia.com/page/Scutellosaurus — « the only definitively bipedal armored dinosaur » (seul thyréophore bipède confirmé) ; « Known from over 70 specimens » ; « The holotype specimen includes 304 osteoderms » (« plus de 300 plaques » confirmé) ; « from Latin scutellum, small shield » ; « about 1.2 meters in total length [...] body mass around 3 to 5 kilograms » (data confirmées) ; « a long tail comprising around 60 vertebrae [...] contributed to balance » (queue-balancier confirmée) ; « Associated fauna from the Kayenta Formation includes [...] Dilophosaurus wetherilli » + https://grokipedia.com/page/Dilophosaurus : « preying primarily on sympatric herbivores including Scutellosaurus » (Dilophosaure contemporain et chasseur confirmés). **DOUTEUX (x2)** : (1) l'âge : la page se contredit (« approximately 205–202 million years ago » en intro, « approximately 184 million years ago » plus bas) et le script dit 196 Ma — non tranché ; (2) « seul ou en petit groupe » et « il courait vite » : aucun comportement social ni vitesse dans la source (seule la posture bipède/le balancier est sourcée).
+> Fact-check (sourcé 2026-10-08) : Grokipedia https://grokipedia.com/page/Scutellosaurus — « the only definitively bipedal armored dinosaur » (seul thyréophore bipède confirmé) ; « Known from over 70 specimens » ; « The holotype specimen includes 304 osteoderms » (« plus de 300 plaques » confirmé) ; « from Latin scutellum, small shield » ; « about 1.2 meters in total length [...] body mass around 3 to 5 kilograms » (data confirmées) ; « a long tail comprising around 60 vertebrae [...] contributed to balance » (queue-balancier confirmée) ; « Associated fauna from the Kayenta Formation includes [...] Dilophosaurus wetherilli » + https://grokipedia.com/page/Dilophosaurus : « preying primarily on sympatric herbivores including Scutellosaurus » (Dilophosaure contemporain et chasseur confirmés). **Ex-DOUTEUX, corrigé le 2026-10-08** : (1) l'âge : la page se contredit (« approximately 205–202 million years ago » en intro, « approximately 184 million years ago » plus bas) et le script dit 196 Ma — non tranché ; (2) « seul ou en petit groupe » et « il courait vite » : aucun comportement social ni vitesse dans la source (seule la posture bipède/le balancier est sourcée). Correction : « seul ou en petit groupe » retiré ; question de Wex sans présupposé de vitesse.
 > Grep-interdits OK. Wex FR standard, aucun tic écrit, jamais de `!` final.
 
 ## Scutellosaure — Scutellosaurus lawleri
@@ -24,8 +24,8 @@
 
 ### BLOC C — Comment il vivait
 
-**NARRATEUR H** [serious] : Herbivore, seul ou en petit groupe. [calm] Il broutait les plantes basses.
-**WEX** [curious] : Il courait vite, pour échapper au Dilophosaure ?
+**NARRATEUR H** [serious] : Herbivore. [calm] Il broutait les plantes basses.
+**WEX** [curious] : Il se sauvait comment, du Dilophosaure ?
 **NARRATEUR H** [playful] : Sa longue queue l'aidait à garder l'équilibre en courant, [pauses] comme un balancier. Le seul dino à armure qui courait sur deux pattes.
 
 ### BLOC D — Le truc fou

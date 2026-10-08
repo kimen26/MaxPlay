@@ -4,7 +4,7 @@
 > Crétacé · 70 millions d'années · Amérique du Nord.
 > Chiffres data (`studio/dino/content/dinos/pachycephalosaurus.json`) : 4.5 m long · 1.5 m haut · 0.45 t. Comparaisons = sortie EXACTE de _compLong(4.5) / _compHaut(1.5) / _compPoids(0.45), régénérées 2026-09-12 : `aussi long qu'un grand 4×4 !` / `aussi haut qu'une voiture — il fallait lever la tête !` / `aussi lourd qu'un cheval !`.
 > Étymologie conforme `_ETYMO-COMPLET-60.md` : grec *pachy* = épais + *cephalo* = tête + *saurus* = lézard → « le lézard à tête épaisse ».
-> Fact-check (sourcé 2026-10-08) : Grokipedia https://grokipedia.com/page/Pachycephalosaurus — « lived approximately 70 to 66 million years ago in what is now western North America » (Maastrichtien, Amérique du Nord confirmés) ; « coexisted with [...] the apex predator Tyrannosaurus rex, the ceratopsian Triceratops » (contemporain du Tricératops confirmé) ; « primarily herbivorous » + dents-crocs de juvéniles « suggests possible omnivorous » (herbivore confirmé, « peut-être quelques insectes » = hypothèse) ; « direct evidence for head-butting remains inconclusive » (coups de tête = hypothèse, tenue comme telle) ; « about 4.5 meters in length », 370–450 kg (data 4,5 m / 0,45 t confirmées). **DOUTEUX (x2)** : (1) le script dit 25 cm d'épaisseur de crâne (deux fois) et « presque aussi épais que ta tête entière » alors que la source donne « up to 22 centimeters » (holotype 18 cm) — écart ~14 %, à ramener à « plus de 20 centimètres » ; (2) « il vivait en groupe » non confirmé : « Fossil assemblages provide limited direct evidence for Pachycephalosaurus behavior ».
+> Fact-check (sourcé 2026-10-08) : Grokipedia https://grokipedia.com/page/Pachycephalosaurus — « lived approximately 70 to 66 million years ago in what is now western North America » (Maastrichtien, Amérique du Nord confirmés) ; « coexisted with [...] the apex predator Tyrannosaurus rex, the ceratopsian Triceratops » (contemporain du Tricératops confirmé) ; « primarily herbivorous » + dents-crocs de juvéniles « suggests possible omnivorous » (herbivore confirmé, « peut-être quelques insectes » = hypothèse) ; « direct evidence for head-butting remains inconclusive » (coups de tête = hypothèse, tenue comme telle) ; « about 4.5 meters in length », 370–450 kg (data 4,5 m / 0,45 t confirmées). **Ex-DOUTEUX, corrigé le 2026-10-08** : (1) le script dit 25 cm d'épaisseur de crâne (deux fois) et « presque aussi épais que ta tête entière » alors que la source donne « up to 22 centimeters » (holotype 18 cm) — écart ~14 %, à ramener à « plus de 20 centimètres » ; (2) « il vivait en groupe » non confirmé : « Fossil assemblages provide limited direct evidence for Pachycephalosaurus behavior ». Correction : épaisseur « plus de 20 cm » (source : jusqu'à 22 cm) en B ; « presque aussi épais que ta tête » retiré ; vie en groupe → « peut-être ».
 > **Hypothèse tenue comme hypothèse** (consigne HO-011) : les coups de tête « comme les béliers » ne sont PAS un fait validé — débat scientifique réel (dômes crâniens pourraient aussi servir à l'identification visuelle plutôt qu'au combat frontal). Formulé « les scientifiques pensent que » / « on n'est pas sûr », jamais assené.
 > 🔒 Tritri : touche LÉGÈRE autorisée (contemporain confirmé Crétacé final Amérique du Nord) — une mention en bloc A, sans forcer.
 > Vignette registre : « casque en os / cogner sans se faire mal » — image propre, pas de doublon (Ankylosaure a la massue, pas la tête).
@@ -26,19 +26,19 @@
 
 **NARRATEUR H** [excited] : 4 mètres 50 de long — aussi long qu'un grand 4×4 ! 1 mètre 50 de haut — [quickly] aussi haut qu'une voiture — il fallait lever la tête ! Et 450 kilos — [amazed] aussi lourd qu'un cheval !
 **WEX** [gasps] : Pas très grand, alors.
-**NARRATEUR H** [confident] : Pas très grand, non. [serious] Mais son crâne faisait 25 centimètres d'épaisseur. Un vrai casque-boulet.
+**NARRATEUR H** [confident] : Pas très grand, non. [serious] Mais son crâne faisait plus de 20 centimètres d'épaisseur. Un vrai casque-boulet.
 
 ### BLOC C — Comment il vivait
 
-**NARRATEUR H** [serious] : C'était un herbivore, [calm] et peut-être quelques insectes. Il vivait en groupe. [hesitant] Les grands carnivores le chassaient, mais sa tête dure pouvait impressionner.
+**NARRATEUR H** [serious] : C'était un herbivore, [calm] et peut-être quelques insectes. Il vivait peut-être en groupe. [hesitant] Les grands carnivores le chassaient, mais sa tête dure pouvait impressionner.
 **WEX** [curious] : Il se battait avec sa tête ?
 **NARRATEUR H** [playful] : C'est ce que les scientifiques pensent. [curious] Les mâles se seraient chargés la tête, comme les béliers d'aujourd'hui. [hesitant] Mais on n'en est pas totalement sûr.
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [excited] : Son crâne mesurait 25 centimètres d'épaisseur. [whispers] Presque aussi épais que ta tête entière.
+**NARRATEUR H** [excited] : Le dessus de son crâne était un gros dôme d'os plein. [whispers] Un vrai casque, qui lui couvrait toute la tête.
 **WEX** [gasps] : Un casque de moto, en os.
-**NARRATEUR H** [softly] : Presque. Un casque naturel, pour se cogner sans se faire mal.
+**NARRATEUR H** [softly] : Presque. [curious] Un casque naturel, peut-être pour se cogner sans se faire mal.
 
 ---
 

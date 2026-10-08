@@ -16,7 +16,7 @@
 **WEX** [playful] : Almost the crested lizard.
 **NARRATEUR H** [happily] : Exactly. [warmly] A long hollow crest, curving backward. He lived in North America, seventy-six million years ago.
 **WEX** [nervous] : And were there scary dinosaurs around there?
-**NARRATEUR H** [serious] : Yes. T. rex hunted in that area. [confident] So his herd stayed very alert.
+**NARRATEUR H** [serious] : Yes. Gorgosaurus, a big hunter and a cousin of T. rex, prowled that area. [confident] So his herd stayed very alert.
 
 ### BLOC B — Taille
 
@@ -26,12 +26,12 @@
 
 ### BLOC C — Comment il vivait
 
-**NARRATEUR H** [serious] : He was a herbivore. He grazed on plants in a big herd. [confident] When a T. rex got close, [quickly] he'd let out a deep call through his crest, to warn his friends.
+**NARRATEUR H** [serious] : He was a herbivore. He grazed on plants in a big herd. [confident] When a big hunter got close, [quickly] he may have let out a deep call through his crest, to warn his friends.
 **WEX** [curious] : He called out through his crest?
-**NARRATEUR H** [playful] : Yes. His hollow crest worked like a big natural horn. [warmly] The whole herd would hear it and run to safety together.
+**NARRATEUR H** [playful] : Yes. His hollow crest worked like a big natural horn. [warmly] The whole herd could hear it from far away, and run to safety together.
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [excited] : Scientists rebuilt his call on a computer. [whispers] Blowing air through the crest made a deep sound, like a trombone.
-**WEX** [gasps] : A trombone-playing dinosaur.
+**NARRATEUR H** [excited] : Scientists rebuilt his call on a computer. [whispers] Blowing air through the crest made a very deep sound, a bit like a big trumpet.
+**WEX** [gasps] : A trumpet-playing dinosaur.
 **NARRATEUR H** [softly] : Almost. A prehistoric musician, playing for his friends.

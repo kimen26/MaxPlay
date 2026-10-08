@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 9 mètres de long — [amazed] aussi long qu'un camion. Debout, 2 virgule 8 mètres de haut — [curious] aussi haut qu'un panier de basket. Et 4 mille kilos — [proud] aussi lourd que 2 rhinocéros. [calm] Il marchait tranquille : 7 kilomètres à l'heure, [pauses] comme Papa qui marche vite."
+      "text": "[excited] 9 mètres de long — [amazed] aussi long qu'un camion. Debout, 2 virgule 8 mètres de haut — [curious] aussi haut qu'un panier de basket. Et 4 mille kilos — [proud] aussi lourd que 2 rhinocéros."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Il n'était pas très rapide, alors."
+      "text": "[gasps] Deux rhinocéros dans un seul dino."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Non — [serious] il n'en avait pas besoin. Sa queue faisait le travail."
+      "text": "[confident] Oui. [proud] Et bien plus long qu'eux."
     }
   ],
   "model_id": "eleven_v3",

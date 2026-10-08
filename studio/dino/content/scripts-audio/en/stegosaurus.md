@@ -21,13 +21,13 @@
 
 ### BLOC B — Taille
 
-**NARRATEUR H** [excited] : Thirty feet long — [amazed] as long as a truck. Standing up, nine feet tall — [curious] as tall as a basketball hoop. And four thousand kilos — [proud] as heavy as 2 rhinos. [calm] It walked calmly: 4 miles an hour, [pauses] like Dad walking fast.
-**WEX** [gasps] : Not very fast, then.
-**NARRATEUR H** [confident] : Nope — [serious] it didn't need to be. Its tail did the work.
+**NARRATEUR H** [excited] : Thirty feet long — [amazed] as long as a truck. Standing up, nine feet tall — [curious] as tall as a basketball hoop. And four thousand kilos — [proud] as heavy as 2 rhinos.
+**WEX** [gasps] : Two rhinos in one dino.
+**NARRATEUR H** [confident] : Yes. [proud] And much longer than them.
 
 ### BLOC C — Comment il vivait
 
-**NARRATEUR H** [serious] : Herbivore, maybe in a small group. [calm] Its big colorful plates probably worked like a radiator, [pauses] to warm up or cool down.
+**NARRATEUR H** [serious] : Herbivore, maybe in a small group. [calm] Its big plates maybe worked like a radiator, [pauses] or just to stand out. Scientists aren't sure.
 **WEX** [curious] : And for defense?
 **NARRATEUR H** [confident] : Its tail had 4 long spikes at the end. [serious] Allosaurus had to be very careful getting close.
 

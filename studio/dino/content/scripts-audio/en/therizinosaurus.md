@@ -20,16 +20,16 @@
 
 **NARRATEUR H** [excited] : It was 10 meters long — as long as a truck! [quickly] Standing up, it was 5 meters tall — almost as tall as three Dads standing on each other's shoulders! And it weighed 5,000 kilos — [amazed] as heavy as an elephant! [serious] And it walked pretty slowly, about 4 miles an hour — like Dad walking fast.
 **WEX** [gasps] : What about its claws? How big were they?
-**NARRATEUR H** [playful] : TWENTY INCHES each. [amazed] The longest claws of any animal ever known.
+**NARRATEUR H** [playful] : Almost a METER each. [amazed] The longest claws of any animal ever known.
 
 ### BLOC C — Comment il vivait
 
-**NARRATEUR H** [serious] : It was a herbivore: it only ate plants. [calm] It grabbed high branches with its long claws and pulled them toward its beak. [confident] It mostly lived alone.
+**NARRATEUR H** [serious] : It was a herbivore: it only ate plants. [calm] It grabbed high branches with its long claws and pulled them toward its beak.
 **WEX** [curious] : Did Tarbosaurus attack it?
-**NARRATEUR H** [confident] : Rarely. [serious] Therizinosaurus raised its arms like two giant knives, [playful] and Tarbosaurus usually went looking for an easier meal.
+**NARRATEUR H** [confident] : Nobody knows for sure. [serious] Its claws were maybe for defense, [playful] or just for show. Faced with claws like that, Tarbosaurus had reason to hesitate.
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [excited] : Imagine that: claws like a warrior's… [playful] just to eat leaves peacefully. [amazed] Therizinosaurus was a peaceful giant with the biggest weapons in the whole animal kingdom.
+**NARRATEUR H** [excited] : Imagine that: claws like a warrior's… [playful] maybe just for show. [amazed] Therizinosaurus was a peaceful giant with the longest claws in the whole animal kingdom.
 **WEX** [gasps] : It just wanted to eat in peace.
 **NARRATEUR H** [softly] : Just eat in peace. [gently] Looks can be deceiving.

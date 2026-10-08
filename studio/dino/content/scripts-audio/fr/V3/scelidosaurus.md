@@ -7,7 +7,7 @@
 > Grep-interdits OK. Wex FR standard, aucun tic écrit, jamais de `!` final.
 > Vie en groupe : volontairement dite inconnue (« Mystère — personne ne le sait encore ») — aucune preuve grégaire dans les sources, honnêteté fact-check.
 > Tritri : PAS de touche — Scélidosaure (Jurassique, 193 Ma) et Tricératops (Crétacé, 66 Ma) très éloignés. Portée Tritri strictement limitée : on ne force pas.
-> Fact-check (sourcé 2026-10-08) : Grokipedia https://grokipedia.com/page/Scelidosaurus — « Late Sinemurian stage (about 191–190 million years ago) » (script 193 Ma, écart ~2 % ; Wikipédia EN https://en.wikipedia.org/wiki/Scelidosaurus donne ~193 Ma) ; « first discovered in 1858 [...] between Charmouth and Lyme Regis in Dorset, England » + « local quarryman James Harrison » (ouvrier anglais, falaise, harrisonii confirmés ; ~168 ans) ; « approximately 4 meters in length and weighing around 270–300 kg » ; « diet of low-lying plants » ; « over 300 osteoderms » ; « one of the first near-complete dinosaur skeletons ever found » (Natural History Museum, Londres) ; étymologie : Wikipédia EN « intended meaning of 'limb lizard', from Greek skelis [...] meaning 'rib of beef' » (erreur d'Owen confirmée) ; Dracoraptor : https://grokipedia.com/page/Dracoraptor — « approximately 201 million years ago » (pas de cohabitation avec Scelidosaurus, ~190 Ma). **DOUTEUX (x2, mineurs)** : (1) « de petits chasseurs à deux pattes rôdaient déjà dans la région » : formulation prudente mais aucune source lue ne place un théropode dans la région vers 190 Ma ; (2) « ce poids, c'était surtout son armure d'os » : non sourcé.
+> Fact-check (sourcé 2026-10-08) : Grokipedia https://grokipedia.com/page/Scelidosaurus — « Late Sinemurian stage (about 191–190 million years ago) » (script 193 Ma, écart ~2 % ; Wikipédia EN https://en.wikipedia.org/wiki/Scelidosaurus donne ~193 Ma) ; « first discovered in 1858 [...] between Charmouth and Lyme Regis in Dorset, England » + « local quarryman James Harrison » (ouvrier anglais, falaise, harrisonii confirmés ; ~168 ans) ; « approximately 4 meters in length and weighing around 270–300 kg » ; « diet of low-lying plants » ; « over 300 osteoderms » ; « one of the first near-complete dinosaur skeletons ever found » (Natural History Museum, Londres) ; étymologie : Wikipédia EN « intended meaning of 'limb lizard', from Greek skelis [...] meaning 'rib of beef' » (erreur d'Owen confirmée) ; Dracoraptor : https://grokipedia.com/page/Dracoraptor — « approximately 201 million years ago » (pas de cohabitation avec Scelidosaurus, ~190 Ma). **Ex-DOUTEUX, corrigé le 2026-10-08** : (1) « de petits chasseurs à deux pattes rôdaient déjà dans la région » : formulation prudente mais aucune source lue ne place un théropode dans la région vers 190 Ma ; (2) « ce poids, c'était surtout son armure d'os » : non sourcé. Correction : les deux phrases non sourcées passent en version prudente (« peut-être », « sans doute »).
 
 ## Scélidosaure — Scelidosaurus harrisonii
 
@@ -16,12 +16,12 @@
 **WEX** [curious] : Un lézard à grosses pattes.
 **NARRATEUR H** [happily] : Oui. Mais écoute ça : [amazed] le savant qui l'a nommé s'est trompé de mot grec — celui qu'il a écrit veut dire « côte de bœuf ». [playful] Sans le vouloir, il l'a appelé le lézard-côte-de-bœuf.
 **WEX** [curious] : Et il vivait où, le lézard-côte-de-bœuf ?
-**NARRATEUR H** [serious] : En Angleterre, au bord de la mer, il y a 193 millions d'années. [curious] Et déjà, [pauses] de petits chasseurs à deux pattes rôdaient dans la région.
+**NARRATEUR H** [serious] : En Angleterre, au bord de la mer, il y a 193 millions d'années. [curious] Et déjà, [pauses] de petits chasseurs à deux pattes rôdaient peut-être dans la région.
 
 ### BLOC B — Taille
 **NARRATEUR H** [excited] : 4 mètres de long — [amazed] comme une petite voiture. Debout, 1 virgule 2 mètre de haut — [curious] aussi grand qu'un enfant de 4 ans. Et 270 kilos — [proud] aussi lourd qu'un tigre. [calm] Il marchait sans se presser : environ 15 kilomètres à l'heure, [pauses] comme un vélo qui roule tranquille.
 **WEX** [curious] : Aussi lourd qu'un tigre, pour un mangeur de plantes ?
-**NARRATEUR H** [confident] : Oui. [whispers] Ce poids, c'était surtout son armure d'os — et ses grosses pattes la portaient sans problème.
+**NARRATEUR H** [confident] : Oui. [whispers] Ce poids, c'était sans doute son armure d'os — et ses grosses pattes la portaient sans problème.
 
 ### BLOC C — Comment il vivait
 **NARRATEUR H** [serious] : Herbivore. Il broutait des plantes basses, des fougères, à quatre pattes. [amazed] Sa peau était pleine de petits os, [curious] rangés en lignes du cou à la queue — comme des boutons.

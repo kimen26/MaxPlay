@@ -23,16 +23,16 @@
 
 **NARRATEUR H** [excited] : He was 4 meters 50 long — as long as a big SUV! 1 meter 50 tall — [quickly] as tall as a car — you'd have to look up! And 450 kilos — [amazed] as heavy as a horse!
 **WEX** [gasps] : Not very big, then.
-**NARRATEUR H** [confident] : Not very big, no. [serious] But his skull was 10 inches thick. A real bone-solid helmet.
+**NARRATEUR H** [confident] : Not very big, no. [serious] But his skull was over 8 inches thick. A real bone-solid helmet.
 
 ### BLOC C — Comment il vivait
 
-**NARRATEUR H** [serious] : He was a herbivore, [calm] and maybe a few insects. He lived in groups. [hesitant] Big carnivores hunted him, but his hard head could put up a fight.
+**NARRATEUR H** [serious] : He was a herbivore, [calm] and maybe a few insects. He may have lived in groups. [hesitant] Big carnivores hunted him, but his hard head could put up a fight.
 **WEX** [curious] : Did he fight with his head?
 **NARRATEUR H** [playful] : That's what scientists think. [curious] The males may have charged head-first at each other, like rams do today. [hesitant] But we're not totally sure.
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [excited] : His skull was 10 inches thick. [whispers] Almost as thick as your whole head.
+**NARRATEUR H** [excited] : The top of his skull was one big dome of solid bone. [whispers] A real helmet, covering his whole head.
 **WEX** [gasps] : A motorcycle helmet, made of bone.
-**NARRATEUR H** [softly] : Almost. A natural helmet, for head-butting without getting hurt.
+**NARRATEUR H** [softly] : Almost. A natural helmet, maybe for head-butting without getting hurt.

@@ -24,12 +24,12 @@
 
 ### BLOC C — Comment il vivait
 
-**NARRATEUR H** [serious] : It was a carnivore. It hunted the big herbivores of Mongolia, [confident] like Therizinosaurus. [calm] Mostly a loner.
+**NARRATEUR H** [serious] : It was a carnivore. It hunted the big herbivores of Mongolia, [confident] maybe even Therizinosaurus. [calm] Mostly a loner.
 **WEX** [curious] : How did Therizinosaurus defend itself?
-**NARRATEUR H** [playful] : With its ENORMOUS claws, three feet long, [serious] lined up like a fence of knives. [confident] Faced with that, Tarbosaurus usually went looking for an easier meal.
+**NARRATEUR H** [playful] : Maybe with its ENORMOUS claws, almost a meter each, [serious] lined up like a fence of knives. [confident] Faced with that, Tarbosaurus probably went looking for an easier meal.
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [excited] : It had 60 sharp teeth, [serious] and it shook its prey hard before swallowing it.
-**WEX** [gasps] : Like a dog with a rope toy?
-**NARRATEUR H** [softly] : Exactly like that. [amazed] Except the rope toy was a whole dinosaur.
+**NARRATEUR H** [excited] : It had 60 sharp teeth, [serious] and a bite that could crush bones.
+**WEX** [gasps] : Even the bones of big dinosaurs?
+**NARRATEUR H** [softly] : Scientists think so, yes. [amazed] That jaw was a giant nutcracker.

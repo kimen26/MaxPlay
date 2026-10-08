@@ -684,6 +684,13 @@ window.DINO_COMBATS = {
  ],
  "pteranodon": [
   {
+   "file": "Pteranodon_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": false,
+   "adversaire": "Tylosaure",
+   "adversaire_latin": "Tylosaurus proriger"
+  },
+  {
    "file": "Pteranodon_proie.webp",
    "type": "proie",
    "meme_espece": false,
@@ -740,6 +747,13 @@ window.DINO_COMBATS = {
   }
  ],
  "mosasaurus": [
+  {
+   "file": "Mosasaurus_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": true,
+   "adversaire": "Mosasaure",
+   "adversaire_latin": "Mosasaurus sp."
+  },
   {
    "file": "Mosasaurus_proie.webp",
    "type": "proie",

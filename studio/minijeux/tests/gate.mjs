@@ -33,7 +33,7 @@ const GREEN = '\x1b[32m', RED = '\x1b[31m', DIM = '\x1b[2m', RST = '\x1b[0m';
 
 // ── Parse args ────────────────────────────────────────────────────────────
 const args = process.argv.slice(2);
-let baseRef = 'origin/master...HEAD';
+let baseRef = 'origin/master';
 let skipCheck = false;
 let skipGreen = false;
 for (let i = 0; i < args.length; i++) {
@@ -92,8 +92,10 @@ if (!skipCheck) {
 let diffOut = '';
 // Vérifie que baseRef est valide avant de l'utiliser dans git diff
 try {
-  execSync(`git cat-file -e "${baseRef}"`, { cwd: ROOT, stdio: 'pipe' });
-  diffOut = sh(`git diff --name-only "${baseRef}" -- site/mj-*.html`);
+  // baseRef est un commit (pas une plage) : cat-file -e refuse une plage « a...b »,
+  // ce qui faisait croire à une ref invalide et sautait tous les jeux (bug 2026-10-08).
+  execSync(`git cat-file -e "${baseRef}^{commit}"`, { cwd: ROOT, stdio: 'pipe' });
+  diffOut = sh(`git diff --name-only "${baseRef}...HEAD" -- site/mj-*.html`);
 } catch (e) {
   // Ref invalide (ex: 0000000…) → pas de diff
   const refShort = baseRef.split(/\s/)[0].slice(0, 8);

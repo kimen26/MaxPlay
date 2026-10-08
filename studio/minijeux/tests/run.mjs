@@ -62,13 +62,28 @@ const LEGACY_FIN_MAISON = [
 // mj-22 : chevauchement intermittent (course TTS "Bravo…" / pop-apparition.mp3 sur
 // setTimeout fixe) — vert ou rouge selon la vitesse d'exécution Playwright ce jour-là.
 const LEGACY_VOIX_CHEVAUCHEMENT = [
-  'mj-06', 'mj-09', 'mj-13a', 'mj-13c', 'mj-14', 'mj-15', 'mj-18', 'mj-19',
-  'mj-20', 'mj-22', 'mj-24', 'mj-28', 'mj-31', 'mj-32', 'mj-37', 'mj-38', 'mj-42',
-  'mj-46', 'mj-47', 'mj-48', 'mj-49', 'mj-50', 'mj-51', 'mj-54', 'mj-55', 'mj-56',
-  'mj-57', 'mj-59',
-  // specs orphelines pilotées par run.mjs (run-autonomes.mjs), même symptôme
-  // sur le jeu qu'elles pilotent (mj-49 / mj-24) :
-  'mj-49-nid', 'mj-golden-nid', 'mj-golden-savefail',
+  // HO-T01 (2026-10-08) : le code partagé (SoundPool.quandLibre / voix qui coupe la
+  // voix / TTS.isSpeaking) a réglé les chevauchements des sons décoratifs et des
+  // voix. Restent UNIQUEMENT des chevauchements propres au jeu (son/Audio lancé
+  // par le jeu lui-même, hors registre SoundPool) :
+  'mj-09',  // tada.mp3 puis pop lancés par le jeu pendant le TTS « Métro … »
+  'mj-13a', // applaudissements.mp3 du jeu par-dessus la phrase de consigne MP3
+  'mj-13c', // tada/applaudissements du jeu par-dessus le TTS « Combien de bus… »
+  'mj-15',  // trombone-oups + oups-doux : deux sons d'erreur empilés par le jeu
+  'mj-19',  // nom dino via playDinoNom (js/gen/dinos-audio-manifest.js, généré par
+            // studio/dino/.../_gen-audio-manifest.cjs, hors registre SoundPool)
+  'mj-24',  // idem playDinoNom + klaxon/trombone du jeu sur le TTS de consigne
+  'mj-28',  // idem playDinoNom + TTS « Bravo ! » du jeu
+  'mj-38',  // intermittent : boing.mp3 (retour de tap du jeu) puis fanfare de fin, SFX sur SFX
+  'mj-20',  // mj-20.html:744 : confirmation « N ! » en priority:false à +350 ms du mot du quiz, intermittent (course 350 ms vs durée du mot)
+  'mj-32',  // deux fanfares victoire-v2/v3 : double fin de partie dans le jeu
+  'mj-42',  // sifflet-glissant du jeu pendant la fanfare de victoire
+  'mj-46',  // nombres/N-oeufs.mp3 du jeu pendant la consigne MP3
+  'mj-51',  // phonème du jeu pendant le klaxon/oups d'erreur
+  // specs orphelines pilotées par run.mjs (run-autonomes.mjs) :
+  'mj-49-nid',          // nombres/il-en-manque-N.mp3 du jeu pendant la consigne
+  'mj-golden-nid',      // mj-24 : klaxon du jeu + playDinoNom (cf. mj-24)
+  'mj-golden-savefail', // mj-24 : pop pendant playDinoNom (cf. mj-19)
 ];
 
 // Jeux (et coque "index") en défaut aujourd'hui sur le contrôle "cibles
@@ -112,10 +127,19 @@ await page.addInitScript(() => {
     const src = this.currentSrc || this.src || 'media';
     const entry = noter(`audio:${src}`);
     const finir = () => { entry.finie = true; };
+    this.__voixEntry = entry;
     this.addEventListener('ended', finir, { once: true });
     this.addEventListener('pause', finir, { once: true });
     this.addEventListener('error', finir, { once: true });
     return origPlay.apply(this, args);
+  };
+  // pause() émet son évènement 'pause' en différé (tâche suivante) : un
+  // couper-puis-lancer synchrone (nouvelle voix qui coupe l'ancienne) ressortirait
+  // à tort comme chevauchement. Même logique que synth.cancel ci-dessous.
+  const origPause = HTMLMediaElement.prototype.pause;
+  HTMLMediaElement.prototype.pause = function (...args) {
+    if (this.__voixEntry) this.__voixEntry.finie = true;
+    return origPause.apply(this, args);
   };
   if (window.speechSynthesis) {
     const synth = window.speechSynthesis;
@@ -127,6 +151,12 @@ await page.addInitScript(() => {
       const finir = () => { entry.finie = true; };
       utterance.addEventListener('end', finir, { once: true });
       utterance.addEventListener('error', finir, { once: true });
+      // Headless : aucun moteur vocal, 'end' ne vient jamais. On émule la fin
+      // de parole (mots ÷ 140 mots/min ÷ rate, ×0.9 = un peu plus court que
+      // l'estimation de tts.js, donc le code reste jugé sur une marge réelle).
+      const nbMotsTts = String(utterance && utterance.text || '').trim().split(/\s+/).filter(Boolean).length || 1;
+      const rateTts = (utterance && utterance.rate) || 1;
+      setTimeout(finir, (nbMotsTts / 140 / rateTts) * 60000 * 0.9);
       return origSpeak(utterance);
     };
     // cancel() coupe la lecture en cours (contrat TTS.speak priority:true, tts.js:66) :

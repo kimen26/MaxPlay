@@ -55,6 +55,19 @@
     return text.replace(respellRe, m => respellMap[m.toLowerCase()] || m);
   }
 
+  // ── État "une voix parle" exposé aux modules partagés (mj-golden.js…) ───────
+  // `speechSynthesis.speaking` n'est PAS fiable ici : en environnement headless
+  // (harnais Playwright, EP-038) aucun moteur vocal ne tourne réellement, donc
+  // `onend`/`onerror` ne se déclenchent jamais et `speaking` reste bloqué à
+  // `true` pour toujours après le tout premier `speak()` (constaté empiriquement
+  // 2026-09-29 en corrigeant le chevauchement SFX/voix L-111 de mj-golden.js).
+  // On calcule donc nous-mêmes une échéance déterministe (longueur du texte ÷
+  // débit de parole approximatif, ajusté par `rate`) et on l'expose via
+  // `finieAvant` : fiable identiquement en test headless et en navigateur réel,
+  // jamais dépendante d'un event du moteur vocal.
+  const MOTS_PAR_MINUTE_BASE = 140; // débit oral FR moyen, rate=1
+  let finieAvant = 0;
+
   function speak(text, opts) {
     if (!synth || !text) return;
     opts = opts || {};
@@ -63,7 +76,11 @@
     const pitch    = opts.pitch    != null ? opts.pitch    : 1.0;
     const volume   = opts.volume   != null ? opts.volume   : 1.0;
     const priority = opts.priority !== false; // default true (cancel-then-speak)
-    if (priority) synth.cancel();
+    if (priority) {
+      synth.cancel();
+      // une voix MP3 SoundPool en cours est coupée aussi : une seule voix à la fois
+      try { if (window.SoundPool && SoundPool.couperVoix) SoundPool.couperVoix(); } catch (e) {}
+    }
     const spoken = (lang || '').toLowerCase().startsWith('fr') ? respellFr(text) : text;
     const u = new SpeechSynthesisUtterance(spoken);
     u.lang = lang; u.rate = rate; u.pitch = pitch; u.volume = volume;
@@ -73,11 +90,22 @@
       u.onend = opts.onEnd;
       u.onerror = opts.onEnd;
     }
+    const nbMots = spoken.trim().split(/\s+/).filter(Boolean).length || 1;
+    const dureeMs = (nbMots / MOTS_PAR_MINUTE_BASE / rate) * 60000;
+    finieAvant = Date.now() + dureeMs;
     synth.speak(u);
   }
 
   function cancel() {
     if (synth) synth.cancel();
+    finieAvant = 0;
+  }
+
+  // true tant que la phrase la plus récente n'a pas fini son temps de parole
+  // estimé. Utilisé par les modules partagés pour ne jamais superposer un SFX
+  // à une voix en cours (L-111), sans jamais dépendre d'un event moteur absent.
+  function isSpeaking() {
+    return Date.now() < finieAvant;
   }
 
   // Une voix navigateur existe-t-elle pour cette langue ? (exacte ou préfixe :
@@ -92,5 +120,5 @@
     return !!synth;
   }
 
-  window.TTS = { speak, cancel, supported, hasVoiceFor, respellFr };
+  window.TTS = { speak, cancel, supported, hasVoiceFor, respellFr, isSpeaking };
 })();

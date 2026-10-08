@@ -318,7 +318,7 @@
       else if (r < 0.6) this._miniStar();
     },
     _miniStar() {
-      try { if (typeof SoundPool !== 'undefined') SoundPool.play('apparition', 0.5); } catch (e) {}
+      try { if (typeof SoundPool !== 'undefined') SoundPool.decor('apparition', 0.5); } catch (e) {}
       const s = document.createElement('div');
       s.className = 'fly-star mini';
       s.textContent = '★';
@@ -609,7 +609,7 @@
       const W = innerWidth, H = innerHeight;
       const slot = document.getElementById('slot' + slotIndex);
       const r = slot ? slot.getBoundingClientRect() : { left: W / 2 - 20, top: 60, width: 40, height: 40 };
-      try { if (typeof SoundPool !== 'undefined') SoundPool.play('apparition', 0.6); } catch (e) {}
+      try { if (typeof SoundPool !== 'undefined') SoundPool.decor('apparition', 0.6); } catch (e) {}
       const anim = star.animate([
         { transform: 'translate(' + (W / 2) + 'px,' + (H * 0.55) + 'px) scale(1.6)', opacity: 0 },
         { transform: 'translate(' + (W / 2) + 'px,' + (H * 0.5) + 'px) scale(2)', opacity: 1, offset: 0.35 },
@@ -651,8 +651,17 @@
       const anim = star.animate(kf, { duration: 2700, easing: 'ease-in-out', fill: 'forwards' });
 
       // pop sonore au pic du bizou (l'etoile plein ecran)
+      // (HO-T01) au pic du vol, MAIS seulement quand plus aucune voix/son ne joue :
+      // attente de la fin réelle (ended des MP3 SoundPool, fin estimée du TTS).
       setTimeout(() => {
-        try { const k = new Audio('sounds/fx/pop-apparition.mp3'); k.volume = 0.8; k.play().catch(() => {}); } catch (e) {}
+        const jouerPop = () => {
+          try {
+            if (window.SoundPool && SoundPool.file) SoundPool.file('sounds/fx/pop-apparition.mp3', 0.8);
+            else { const k = new Audio('sounds/fx/pop-apparition.mp3'); k.volume = 0.8; k.play().catch(() => {}); }
+          } catch (e) {}
+        };
+        if (window.SoundPool && SoundPool.quandLibre) SoundPool.quandLibre(jouerPop, 4000);
+        else jouerPop();
       }, 2000);
 
       anim.onfinish = () => {

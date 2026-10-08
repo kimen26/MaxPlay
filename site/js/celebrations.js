@@ -1283,7 +1283,7 @@
       /* 2. craque : flash + éclats de coquille qui s'écartent */
       el.style.opacity = '0';
       if (SON_OUVERTURE[opts.naissance]) {
-        try { var poc = new Audio(SON_OUVERTURE[opts.naissance]); poc.volume = 0.8; poc.play().catch(function () {}); } catch (e) {}
+        try { if (window.SoundPool && SoundPool.decorFile) SoundPool.decorFile(SON_OUVERTURE[opts.naissance], 0.8); else { var poc = new Audio(SON_OUVERTURE[opts.naissance]); poc.volume = 0.8; poc.play().catch(function () {}); } } catch (e) {}
       }
       var flash = mk(ov, 'inset:0;background:radial-gradient(circle at ' + p.x + 'px ' + p.y + 'px, rgba(255,246,220,.9), transparent 55%);');
       anim(flash, [{ opacity: 0.7 }, { opacity: 0 }], { duration: 450, easing: 'ease-out', fill: 'forwards' });
@@ -1358,8 +1358,8 @@
 
     // son court (banque existante, jamais de nouveau réseau)
     try {
-      var snd = new Audio('sounds/fx/pop-apparition.mp3');
-      snd.volume = 0.7; snd.play().catch(function () {});
+      if (window.SoundPool && SoundPool.decorFile) SoundPool.decorFile('sounds/fx/pop-apparition.mp3', 0.7);
+      else { var snd = new Audio('sounds/fx/pop-apparition.mp3'); snd.volume = 0.7; snd.play().catch(function () {}); }
     } catch (e) {}
 
     // flash doux derrière le gros œuf

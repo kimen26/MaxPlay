@@ -201,14 +201,20 @@ function _doublonInvite(dir, volume) {
   const voix = dir.split('/').pop();
   const src = `sounds/voix/${langue.code}/${voix}/${mot}.mp3`;
   // Décalé pour laisser finir le français, jamais superposé.
+  // (HO-T01) attend la fin RÉELLE du français (registre SoundPool), au lieu d'un
+  // délai fixe qui recouvrait les voix plus longues que 1,15 s.
   setTimeout(() => {
-    try {
-      const a = new Audio(src);
-      a.volume = volume;
-      // Le drapeau ne s'affiche QUE si le son part vraiment : pas de drapeau muet.
-      a.play().then(() => _afficherDrapeau(langue.drapeau)).catch(() => {});
-    } catch (e) {}
-  }, 1150);
+    SoundPool.quandLibre(() => {
+      try {
+        const a = new Audio(src);
+        a.volume = volume;
+        _commencerVoix(a);
+        const fin = _suivre(a);
+        // Le drapeau ne s'affiche QUE si le son part vraiment : pas de drapeau muet.
+        a.play().then(() => _afficherDrapeau(langue.drapeau)).catch(fin);
+      } catch (e) {}
+    }, 4000);
+  }, 300);
 }
 
 // ── Moteur de pioche (anti-répétition immédiate par pool) ────────────────────
@@ -265,10 +271,41 @@ function _repliCanonique(slug, fallbackText) {
   return t.tts;
 }
 
-function _playFile(src, volume) {
+// Registre des sons de SoundPool en cours de lecture : source de vérité unique
+// pour « une voix/un son à la fois » (HO-T01). Un son sort du registre à
+// ended / pause / error, ou si play() est refusé.
+const _enCours = new Set();
+function _suivre(a) {
+  _enCours.add(a);
+  const fin = () => _enCours.delete(a);
+  a.addEventListener('ended', fin, { once: true });
+  a.addEventListener('pause', fin, { once: true });
+  a.addEventListener('error', fin, { once: true });
+  return fin;
+}
+
+// Voix MP3 en cours (phrase / voiceLine / voice) : une NOUVELLE voix coupe
+// l'ancienne, comme TTS.speak(priority) coupe le TTS (contrat « une seule voix
+// à la fois », HO-T01). Sans ça, consigne rejouée / enchaînement de manche =
+// deux fois la même phrase l'une sur l'autre.
+const _voixMp3 = new Set();
+function _couperVoix() {
+  for (const a of _voixMp3) { try { a.pause(); } catch (e) {} }
+  _voixMp3.clear();
+  try { if (window.TTS && TTS.cancel) TTS.cancel(); } catch (e) {}
+}
+function _commencerVoix(a) {
+  _couperVoix();
+  _voixMp3.add(a);
+  a.addEventListener('ended', () => _voixMp3.delete(a), { once: true });
+}
+
+function _playFile(src, volume, estVoix) {
   const a = new Audio(src);
   a.volume = volume;
-  a.play().catch(() => {});
+  if (estVoix) _commencerVoix(a);
+  const fin = _suivre(a);
+  a.play().catch(fin);
   return a;
 }
 
@@ -293,7 +330,7 @@ const SoundPool = {
     const lines = VOICE_LINES[ton] || VOICE_LINES.positif;
     const dir = _pickRandom(VOICE_DIRS, 'voice-dir');
     const line = _pickRandom(lines, 'voice-' + ton);
-    const audio = _playFile(`${dir}/${line}.mp3`, volume);
+    const audio = _playFile(`${dir}/${line}.mp3`, volume, true);
     if (ton === 'positif') _doublonInvite(dir, volume);
     return audio;
   },
@@ -319,7 +356,10 @@ const SoundPool = {
         : `sounds/voix/${lang}/${dir.split('/').pop()}/${slug}.mp3`;
       const a = new Audio(src);
       a.volume = volume;
+      _commencerVoix(a);
+      const fin = _suivre(a);
       a.play().catch(() => {
+        fin();
         if (fallbackText && window.TTS) TTS.speak(fallbackText, { pitch: 1.05, priority: true });
       });
       return a;
@@ -336,7 +376,10 @@ const SoundPool = {
         : `sounds/voix/${lang}/phrases/${slug}.mp3`;
       const a = new Audio(src);
       a.volume = volume;
+      _commencerVoix(a);
+      const fin = _suivre(a);
       a.play().catch(() => {
+        fin();
         if (fallbackText && window.TTS) TTS.speak(fallbackText, { pitch: 1.05, priority: true });
       });
       return a;
@@ -349,6 +392,33 @@ const SoundPool = {
    *  log console si divergence). Exposé pour les chemins TTS directs
    *  (mj-shell say, regle-info speak) qui ne passent pas par phrase(). */
   repliCanonique: _repliCanonique,
+  /** Coupe la voix MP3 en cours (appelé par TTS.speak priority). */
+  couperVoix: () => { for (const a of _voixMp3) { try { a.pause(); } catch (e) {} } _voixMp3.clear(); },
+  /** true tant qu'un MP3 de SoundPool joue OU que le TTS parle encore.
+   *  Les sons décoratifs (pop d'étoile…) attendent que ça passe à false. */
+  file: (src, volume) => _playFile(src, volume),
+  /** Son DÉCORATIF d'un thème : attend que plus rien ne joue (voix, fanfare,
+   *  TTS), et saute si ça dure plus de maxMs — jamais superposé à une voix. */
+  decorFile(src, volume = 0.8, maxMs = 2500) {
+    SoundPool.quandLibre(() => _playFile(src, volume), maxMs);
+  },
+  decor(theme, volume = 0.8, maxMs = 1500) {
+    SoundPool.quandLibre(() => SoundPool.play(theme, volume), maxMs);
+  },
+  occupe() {
+    if (_enCours.size > 0) return true;
+    return !!(window.TTS && TTS.isSpeaking && TTS.isSpeaking());
+  },
+  /** Appelle cb() dès que plus rien ne joue ; abandonne (sans appeler cb)
+   *  après maxMs : un son décoratif tardif vaut moins qu'un chevauchement. */
+  quandLibre(cb, maxMs = 8000) {
+    const t0 = Date.now();
+    const tick = () => {
+      if (!SoundPool.occupe()) { cb(); return; }
+      if (Date.now() - t0 < maxMs) setTimeout(tick, 100);
+    };
+    tick();
+  },
 };
 
 // Un `const` top-level ne se publie PAS sur window (environnement lexical
@@ -396,7 +466,11 @@ function playEndSound(score, maxScore, opts) {
   // explicitement opts.voice:false.
   clearTimeout(_voiceTimer);
   if (withVoice) {
-    _voiceTimer = setTimeout(() => SoundPool.voice(win ? 'positif' : 'doux'), win ? 1400 : 900);
+    // (HO-T01) la voix attend la fin RÉELLE de la fanfare (registre SoundPool) :
+    // le délai sert de plancher, plus de recouvrement des fanfares de 2 à 5 s.
+    _voiceTimer = setTimeout(
+      () => SoundPool.quandLibre(() => SoundPool.voice(win ? 'positif' : 'doux'), 8000),
+      win ? 1400 : 900);
   }
 
   if (typeof opts.onFanfareEnd === 'function') {

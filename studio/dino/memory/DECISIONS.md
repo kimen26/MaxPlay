@@ -4,6 +4,7 @@
 
 ## Décisions structurantes toujours en vigueur
 
+- **Mesure de l'animal vivant, sourcée, et faits vérifiés avant d'être dits** (Papa Yann, 2026-10-08) — quand une source estime la taille d'un organe vivant (griffe avec sa gaine de corne, crête, bec), on dit cette mesure (« sa griffe pouvait mesurer près d'un mètre », Thérizinosaure), pas celle de l'os fossile. Validée en même temps, la logique : chaque fait d'une fiche cite sa source (URL + phrase lue, porte `_verif-scripts-audio`) ; un fait faux ou gonflé est corrigé vers la source, un fait non sourcé passe au « peut-être » ou disparaît. Papa Yann : « Met 1 m la griffe, pas l'os, go ! Et note qu'on a validé la logique ».
 - **DEC-GED-001** (2026-07-03) — Doctrine d'architecture GED du pôle : canon sans numéro · zéro chiffre en dur (gouvernance seule, jamais le contenu narré) · frontière autoring/produit · checklist « dino complet » 8 axes — voir `archive/decisions-2026-H1.md` § DEC-GED-001.
 - **Tritri = running gag sans méta** (2026-06-03, confirmé Q-DINO-7 2026-06-15) — dino préféré de Wex, jamais nommé « Max/doudou/peluche » — voir `figees/encyclopedie.md`.
 - **Échelle honnête = référentiel figé** (itéré 2026-08-03, cf. `INVARIANTS.md` § échelle) — aucune comparaison de taille/poids qui ment > 10 %, sortie exacte de `_compLong`/`_compHaut`/`_compPoids`.

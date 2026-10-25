@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dino-Mix, jambes en pièces</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f4efe6;color:#1f1d1a;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.45}
+header,main{max-width:720px;margin:0 auto;padding:0 16px}
+header{padding-top:18px}
+h1{font-size:1.4rem;margin:0 0 6px}
+h2{font-size:1.15rem;margin:22px 0 6px}
+p{margin:6px 0}
+canvas{display:block;width:100%;border-radius:16px;background:#fbf6ea}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}
+button{min-height:48px;font:inherit;font-weight:600;border:2px solid #3b3a36;background:#fff;color:#1f1d1a;border-radius:12px;padding:6px 8px;overflow-wrap:anywhere}
+button:focus-visible{outline:3px solid #2a6df4;outline-offset:2px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Dino-Mix : jambes en pièces</h1>
+  <p>Essai de la méthode conseillée par ChatGPT : un corps au ventre fermé, sans pattes, et des jambes dessinées à part qui entrent sous le ventre et tournent depuis la hanche.</p>
+</header>
+<main>
+  <canvas id="live" aria-label="Le dino choisi qui avance"></canvas>
+  <div class="grid">
+    <button type="button" id="b-head"></button>
+    <button type="button" id="b-feet"></button>
+  </div>
+  <h2>Toutes les poses</h2>
+  <p>Chaque allure, 6 images sur un cycle complet.</p>
+  <canvas id="poses" aria-label="Chaque allure image par image"></canvas>
+</main>
+<script>
+(function () {
+'use strict';
+var KIT = /*KIT*/null;
+var FEET = ['nus', 'baskets', 'rollers', 'ressorts', 'skate', 'fusees', 'helice', 'oeuf',
+  'meteorite', 'nuage', 'cendre'];
+var FEET_NAME = { nus: 'pieds nus', baskets: 'baskets', rollers: 'rollers', ressorts: 'ressorts', skate: 'skate', fusees: 'bottes-fusées', helice: 'parapluie-hélice', oeuf: 'coquille d\u2019\u0153uf', meteorite: 'météorite', nuage: 'nuage magique', cendre: 'nuage de cendre' };
+var LEG_H = 0.40;      // hauteur d'une jambe, en hauteurs de corps
+var TUCK = 0.28;       // part de la jambe sous la ligne du ventre (sert au calage au sol)
+var TUCK_BACK = 0.36, TUCK_FRONT = 0.34;
+var state = { head: 0, feet: 'nus' };
+
+function load(o) { return new Promise(function (ok) { var im = new Image(); im.onload = function () { o.img = im; ok(); }; im.src = o.src; }); }
+
+// Pose de la jambe selon la phase (0..1) : appui = jambe droite qui recule, retour = jambe pliée levée.
+function legPose(feet, ph) {
+  ph = ((ph % 1) + 1) % 1;
+  if (feet === 'skate') return { leg: 1, ang: 0, lift: 0 };
+  if (feet === 'ressorts') return { leg: 1, ang: 0, lift: 0 };
+  if (feet === 'fusees') return { leg: 1, ang: -8 + 4 * Math.sin(ph * Math.PI * 2), lift: 0, fold: 1 };
+  if (feet === 'helice') return { leg: 1, ang: 14 * Math.sin(ph * Math.PI * 2), lift: 0, fold: 1 };
+  if (feet === 'rollers') {
+    // Patinage : longue glisse (jambe presque droite, roues au sol), poussée vers l'arrière roues au sol,
+    // retour en l'air à peine levé. L'autre jambe est décalée d'un demi-cycle : il y a toujours un pied qui glisse.
+    var e = function (x) { return 0.5 - 0.5 * Math.cos(x * Math.PI); };
+    if (ph < 0.5) return { leg: 1, ang: -6 + 4 * (ph / 0.5), lift: 0, fold: 1 };
+    if (ph < 0.8) return { leg: 1, ang: -2 + 32 * e((ph - 0.5) / 0.3), lift: 0, fold: 1 };
+    var r = (ph - 0.8) / 0.2;
+    return { leg: 1, ang: 30 - 36 * e(r), lift: 0.035 * Math.sin(r * Math.PI), fold: 1 - 0.08 * Math.sin(r * Math.PI) };
+  }
+  // Dino tourné vers la droite : angle négatif = pied devant. Appui : le pied posé part de l'avant et
+  // glisse vers l'arrière (le corps avance au-dessus) ; retour : jambe pliée, levée, ramenée devant.
+  // Cycle continu (aucun saut d'angle, y compris de 1 vers 0) :
+  //  appui      0.00-0.55 jambe tendue, pied posé, de -28° (devant) à +24° (derrière), à vitesse constante ;
+  //  lever      0.55-0.75 jambe pliée, ramenée de +24° à 0°, elle monte ;
+  //  tendre     0.75-0.92 jambe tendue, passe le corps et va plus loin devant (-36°), encore en l'air ;
+  //  poser      0.92-1.00 elle redescend se poser à -28°.
+  // Le changement de dessin (pliée <-> tendue) a lieu à 0°, jambe sous le corps : il ne se voit pas.
+  var LIFT = 0.07, ease = function (x) { return 0.5 - 0.5 * Math.cos(x * Math.PI); };
+  // UN SEUL dessin de jambe sur tout le cycle (retour PY : deux dessins = taches et cuisse qui changent).
+  // Le « pli » du lever est un raccourcissement vertical (fold) de la même jambe.
+  var FOLD = 0.8;
+  if (ph < 0.55) return { leg: 1, ang: -28 + 52 * (ph / 0.55), lift: 0, fold: 1 };
+  if (ph < 0.75) { var a = (ph - 0.55) / 0.2; return { leg: 1, ang: 24 - 24 * ease(a), lift: LIFT * ease(a), fold: 1 - (1 - FOLD) * Math.sin(a * Math.PI / 2) }; }
+  if (ph < 0.92) { var b = (ph - 0.75) / 0.17; return { leg: 1, ang: -36 * ease(b), lift: LIFT, fold: FOLD + (1 - FOLD) * ease(b) }; }
+  var c2 = (ph - 0.92) / 0.08;
+  return { leg: 1, ang: -36 + 8 * ease(c2), lift: LIFT * (1 - ease(c2)), fold: 1 };
+}
+function bodyBob(feet, ph) {
+  if (feet === 'ressorts') { var c = ((ph % 1) + 1) % 1; return c < 0.25 ? { y: 0, sq: Math.sin(c / 0.25 * Math.PI) * 0.08 } : { y: -Math.sin((c - 0.25) / 0.75 * Math.PI) * 0.35, sq: 0 }; }
+  if (feet === 'skate') return { y: 0, sq: 0 };
+  if (feet === 'rollers') return { y: -0.006 * Math.sin(ph * Math.PI * 4), sq: 0 };
+  return { y: -Math.abs(Math.cos(ph * Math.PI * 2)) * 0.025, sq: 0 };
+}
+
+// Une jambe, pivot à la hanche (hx, hy) dans le repère du corps ; échelle s = pixels jambe -> pixels corps.
+// Une jambe, pivot à la hanche. Avec une jambe chaussée dessinée d'une pièce (KIT.shod), l'accessoire EST la
+// jambe : rien n'est posé par-dessus (retour PY 2026-10-17). Le ressort se comprime seul, sous sa bague.
+function legPiece(feet) { if (feet === 'fusees' && !(KIT.shod && KIT.shod.fusees)) feet = 'baskets'; return (KIT.shod && (KIT.shod[feet] || KIT.shod.nus)) || KIT.legs[1]; }
+function drawLeg(c, hx, hy, s, p, feet, far, spring) {
+  var L = legPiece(feet === 'skate' ? 'nus' : feet), img = SOOT ? sooty(L) : L.img;
+  c.save();
+  c.translate(hx, hy - p.lift * L.h * s);
+  c.rotate(p.ang * Math.PI / 180);
+  c.scale(1, p.fold || 1);
+  if (far && feet !== 'skate') c.filter = 'brightness(0.85)';   // skate : pieds côte à côte, pas d'ombre (retour PY)
+  var dx = -L.pivot[0] * s, dy = -L.pivot[1] * s;
+  if (window.__trace) {     // outil pelure d'oignon : position du bout du pied, dans le repère du canvas
+    var M = c.getTransform(), fx = (L.w * 0.55 - L.pivot[0]) * s, fy = (L.h - L.pivot[1]) * s * (L.springTop ? spring : 1);
+    window.__trace.push({ far: far, x: M.a * fx + M.c * fy + M.e, y: M.b * fx + M.d * fy + M.f });
+  }
+  if (feet === 'fusees' && p.flame > 0.02) {
+    var sx = dx + L.w * s * 0.5, sy = dy + L.h * s * 0.97;
+    drawFlame(c, sx, sy, L.w * s * 0.32 * p.flame, 2.6);
+    if (SOLES) recordJet(c, sx, sy + L.w * s * 0.5 * p.flame, p.flame);
+  }
+  if (L.springTop) {
+    var top = L.springTop;
+    c.drawImage(img, 0, 0, L.w, top, dx, dy, L.w * s, top * s);
+    c.drawImage(img, 0, top, L.w, L.h - top, dx, dy + top * s - 1, L.w * s, (L.h - top) * s * spring);
+  } else {
+    c.drawImage(img, dx, dy, L.w * s, L.h * s);
+  }
+  c.restore();
+}
+function legFoot(feet, s, spring) {     // distance pivot -> bas de la jambe, en pixels
+  var L = legPiece(feet === 'skate' ? 'nus' : feet);
+  if (L.springTop) return (L.springTop - L.pivot[1] + (L.h - L.springTop) * spring) * s;
+  return (L.h - L.pivot[1]) * s;
+}
+
+// Vie du corps (repris des v5-v8) : le dessin est découpé en secteurs autour de la base de la queue et du
+// cou ; queue et tête tournent chacune à son rythme, la tête cligne des yeux. La pièce tournée est élargie de
+// quelques degrés pour couvrir la jointure.
+var TAIL_A = [125, 245], HEAD_A = [212, 382], R = 2000;
+function sector(c, cx, cy, a0, a1) { c.moveTo(cx, cy); c.arc(cx, cy, R, a0 * Math.PI / 180, a1 * Math.PI / 180); c.closePath(); }
+function bodyMotion(feet, ph) {
+  var t = performance.now() / 1000, w = Math.PI * 2 * ph, step = Math.sin(w * 2);
+  var walk = feet === 'nus' || feet === 'baskets';
+  return {
+    rot: walk ? 2.2 * Math.sin(w) : (feet === 'rollers' ? 1.5 * Math.sin(w) - 3 : 0),
+    tail: walk ? 6 * Math.sin(w - 0.8) : 6 * Math.sin(w * (feet === 'ressorts' ? 1 : 1) - 0.6),
+    head: walk ? 2.5 * step : 1.5 * Math.sin(w * 2),
+    blink: (t % 3.4) < 0.14
+  };
+}
+function drawBody(c, B, k, cx, mo) {
+  var x0 = -cx * k, y0 = -B.bottom * k, w = B.w * k, h = B.h * k;
+  var hipB = (B.hips[1][0] - cx) * k, hipF = (B.hips[0][0] - cx) * k;
+  var eyeY = B.eye ? (B.eye[1] - B.bottom) * k : -h * 0.6;
+  var J = { tail: [hipB - w * 0.08, -h * 0.2], head: [hipF + w * 0.04, eyeY + (0 - eyeY) * 0.48] };
+  function img() { c.drawImage(B.img, x0, y0, w, h); }
+  function notIn(j, A) { c.beginPath(); c.rect(-R, -R, 2 * R, 2 * R); sector(c, j[0], j[1], A[0], A[1]); c.clip('evenodd'); }
+  function turn(j, a) { c.translate(j[0], j[1]); c.rotate(a * Math.PI / 180); c.translate(-j[0], -j[1]); }
+  // Ordre (retour PY 2026-10-25 : trait clair sur le dos, queue qui passait par-dessus) :
+  // 1) sous-couche immobile près de la racine de la queue : bouche la fente quand la queue tourne ;
+  // 2) la queue tournée ; 3) le corps PAR-DESSUS, son contour du dos reste net et continu.
+  var rootR = Math.hypot(w, h) * 0.36;
+  // sous-couche limitée à deux coins autour des BORDS de la découpe : jamais sur la queue elle-même (sinon contour doublé)
+  c.save(); notIn(J.head, HEAD_A); c.beginPath(); sector(c, J.tail[0], J.tail[1], TAIL_A[1] - 22, TAIL_A[1] + 22); sector(c, J.tail[0], J.tail[1], TAIL_A[0] - 22, TAIL_A[0] + 22); c.clip();
+  c.beginPath(); c.arc(J.tail[0], J.tail[1], rootR, 0, Math.PI * 2); c.clip(); img(); c.restore();
+  c.save(); turn(J.tail, mo.tail); notIn(J.head, HEAD_A); c.beginPath(); sector(c, J.tail[0], J.tail[1], TAIL_A[0] - 6, TAIL_A[1] + 6); c.clip(); img(); c.restore();
+  c.save(); notIn(J.head, HEAD_A); notIn(J.tail, TAIL_A); img(); c.restore();
+  c.save(); turn(J.head, mo.head); c.beginPath(); sector(c, J.head[0], J.head[1], HEAD_A[0] - 8, HEAD_A[1] + 8); c.clip(); img();
+  if (mo.blink && B.eye) {
+    var ex = B.eye[0] * k + x0, ey = B.eye[1] * k + y0, r = B.eye[2] * k;
+    c.fillStyle = 'rgb(' + (B.skin || [185, 213, 145]).join(',') + ')';
+    c.beginPath(); c.arc(ex, ey, r * 1.1, 0, Math.PI * 2); c.fill();
+    c.strokeStyle = '#5e3b28'; c.lineWidth = Math.max(1.5, r * 0.25); c.lineCap = 'round';
+    c.beginPath(); c.arc(ex, ey - r * 0.25, r * 0.75, 0.2 * Math.PI, 0.8 * Math.PI); c.stroke();
+  }
+  c.restore();
+}
+
+var NOW = function () { return performance.now() / 1000; };
+// Flamme de chaussure-fusée : deux gouttes qui vacillent.
+function drawFlame(c, x, y, w, len) {
+  var t = NOW(), L = w * (len || 1.3) * (1 + 0.18 * Math.sin(t * 38 + x));
+  [['#ff9a3c', 1, 0.5], ['#ffe066', 0.6, 0.3]].forEach(function (f) {
+    var l = L * f[1], hw = w * f[2];
+    c.beginPath(); c.moveTo(x - hw, y); c.quadraticCurveTo(x - hw * 0.9, y + l * 0.55, x, y + l);
+    c.quadraticCurveTo(x + hw * 0.9, y + l * 0.55, x + hw, y); c.closePath(); c.fillStyle = f[0]; c.fill();
+  });
+}
+// Hélice : mât derrière la tête, pales qui tournent au-dessus.
+function drawRotor(c, B, k, cx, front, go) {
+  go = go === undefined ? 1 : go;
+  var hx = ((B.eye ? B.eye[0] : B.w * 0.6) - cx) * k - B.w * k * 0.12, top = -B.bottom * k, hy = top - B.h * k * 0.12, lw = B.w * k * 0.05;
+  if (!front) { c.beginPath(); c.moveTo(hx, top + B.h * k * 0.35); c.lineTo(hx, hy); c.lineWidth = lw * 0.5; c.strokeStyle = '#5e3b28'; c.lineCap = 'round'; c.stroke(); return; }
+  c.save(); c.translate(hx, hy); c.scale(Math.cos(NOW() * 26 * go) * go, go);
+  [-1, 1].forEach(function (sg) { c.beginPath(); c.ellipse(sg * lw * 2.6, 0, lw * 2.5, lw * 0.55, 0, 0, Math.PI * 2); c.fillStyle = '#f6c445'; c.fill(); c.lineWidth = 2.5; c.strokeStyle = '#5e3b28'; c.stroke(); });
+  c.restore();
+  c.beginPath(); c.arc(hx, hy, lw * 0.6, 0, Math.PI * 2); c.fillStyle = '#e8574d'; c.fill(); c.lineWidth = 2.5; c.strokeStyle = '#5e3b28'; c.stroke();
+}
+// Montures et coquille : pas de jambes, le dino est assis dedans ; la monture passe devant le bas du corps.
+var RIDES = { oeuf: 1 };
+function drawRide(c, x, y, H, ph, feet, B, k) {
+  var cx = (B.hips[0][0] + B.hips[1][0]) / 2, mo = bodyMotion(feet, ph), t = NOW(), w2 = Math.PI * 2 * ph;
+  function body(bx, by, clipFn) {
+    c.save(); c.translate(bx, by); if (clipFn) clipFn(); c.rotate(mo.rot * Math.PI / 180); drawBody(c, B, k, cx, mo); c.restore();
+  }
+  var A = KIT.acc;
+  if (feet === 'oeuf') {
+    var cw = B.w * k * 0.95, ch = cw * A.oeuf.h / A.oeuf.w, wd = cw * 0.24, top = y - ch - wd * 0.55;
+    var roll = 3 * Math.sin(w2);
+    c.save(); c.translate(x, y); c.rotate(roll * Math.PI / 180); c.translate(-x, -y);
+    c.drawImage(A.oeuf.img, x - cw / 2, top, cw, ch);
+    body(x, top + ch * 0.55, function () {
+      var rimY = -ch * 0.55 + ch * 0.2;
+      c.beginPath(); c.rect(-4000, -4000, 8000, 4000 + rimY); c.rect(-cw * 0.43, rimY, cw * 0.86, 4000); c.clip();
+    });
+    c.drawImage(A['oeuf-avant'].img, x - cw / 2, top, cw, ch);
+    c.restore();
+    [0.27, 0.73].forEach(function (fx) {
+      c.save(); c.translate(x - cw / 2 + cw * fx, y - wd / 2); c.rotate(w2 * 2);
+      c.drawImage(A.roue.img, -wd / 2, -wd / 2, wd, wd); c.restore();
+    });
+    return;
+  }
+  var fly = H * (0.1 + 0.07 * (0.5 + 0.5 * Math.sin(w2)));
+  if (feet === 'meteorite') {
+    var mw = Math.min(B.w * k * 0.7, H * 0.8), mh = mw * A.meteorite.h / A.meteorite.w, my = y - fly - mh / 2, r = mw / 2;
+    for (var j = 0; j < 3; j++) {           // traînée de feu
+      var L = r * (1.3 + 0.25 * Math.sin(t * 17 + j)) * (1 - j * 0.25), hw = r * 0.45 * (1 - j * 0.28);
+      c.beginPath(); c.moveTo(x - r * 0.5, my - hw); c.quadraticCurveTo(x - r * 0.5 - L * 0.5, my - hw * 0.8, x - r * 0.5 - L, my);
+      c.quadraticCurveTo(x - r * 0.5 - L * 0.5, my + hw * 0.8, x - r * 0.5, my + hw); c.closePath();
+      c.fillStyle = ['#ff7a2f', '#ffb53c', '#ffe27a'][j]; c.fill();
+    }
+    body(x, my - mh * 0.2);
+    c.save(); c.translate(x, my); c.rotate(8 * Math.sin(t * 2.2) * Math.PI / 180);
+    c.drawImage(A.meteorite.img, -mw / 2, -mh / 2, mw, mh); c.restore();
+    return;
+  }
+  var cw2 = B.w * k * 0.95, chh = cw2 * A[feet].h / A[feet].w, cy = y - fly - chh;
+  for (var q = 3; q >= 0; q--) {            // bouffées qui s'éloignent
+    var pq = (t * 0.9 + q / 4) % 1, sc = 0.42 * (1 - pq * 0.6);
+    c.globalAlpha = 0.85 * (1 - pq);
+    c.drawImage(A[feet].img, x - cw2 * (0.55 + pq * 0.9) - cw2 * sc / 2, cy + chh * (0.35 + 0.1 * Math.sin(t * 5 + q)), cw2 * sc, chh * sc);
+  }
+  c.globalAlpha = 1;
+  body(x, cy + Math.min(chh * 0.3, B.bottom * k * 0.3));
+  c.drawImage(A[feet].img, x - cw2 / 2, cy, cw2, chh);
+}
+
+function drawMount(c, ride, mW, mH, go, B, k, trail, cyAt) {
+  trail = trail === undefined ? go : trail;
+  var A = KIT.acc, t = NOW(), cy = cyAt === undefined ? mH * 0.28 : cyAt;       // centre de la monture sous le bas du ventre (repère du corps)
+  c.save(); c.globalAlpha = (ride === 'nuage' || ride === 'cendre') ? go * go : Math.min(1, go * 1.6);
+  if (ride === 'meteorite') {
+    var r = mW / 2;
+    for (var j = 0; j < 3; j++) {
+      var L = r * (1.2 + 0.25 * Math.sin(t * 17 + j)) * (1 - j * 0.25) * trail, hw = r * 0.42 * (1 - j * 0.28);
+      c.beginPath(); c.moveTo(-r * 0.5, cy - hw); c.quadraticCurveTo(-r * 0.5 - L * 0.5, cy - hw * 0.8, -r * 0.5 - L, cy);
+      c.quadraticCurveTo(-r * 0.5 - L * 0.5, cy + hw * 0.8, -r * 0.5, cy + hw); c.closePath();
+      c.fillStyle = ['#ff7a2f', '#ffb53c', '#ffe27a'][j]; c.fill();
+    }
+  } else {
+    for (var q = 3; q >= 0; q--) {
+      var pq = (t * 0.9 + q / 4) % 1, sc = 0.4 * (1 - pq * 0.6);
+      c.globalAlpha = 0.8 * (1 - pq) * go;
+      c.drawImage(A[ride].img, -mW * (0.55 + pq * 0.8) - mW * sc / 2, cy - mH * sc / 2 + mH * 0.1, mW * sc, mH * sc);
+    }
+    c.globalAlpha = Math.min(1, go * 1.6);
+  }
+  c.translate(0, cy); var sc = (ride === 'nuage' || ride === 'cendre') ? 0.45 + 0.55 * go : go; c.scale(sc, sc);
+  if (ride === 'meteorite') c.rotate(8 * trail * Math.sin(t * 2.2) * Math.PI / 180);
+  c.drawImage(A[ride].img, -mW / 2, -mH / 2, mW, mH);
+  c.restore();
+}
+
+// Fusées : nuage de fumée projeté contre le sol, qui s'étale des deux côtés (jetpack). front = la moitié
+// basse passe devant les pieds, pour que la fumée « enveloppe » le décollage.
+// Propulseur : position et direction de poussée (axe de la jambe), ramenées dans le repère de l'appelant.
+function recordJet(c, x, y, power) {
+  var M = BASE.inverse().multiply(c.getTransform());
+  SOLES.push({ x: M.a * x + M.c * y + M.e, y: M.b * x + M.d * y + M.f, dx: M.c, dy: M.d, n: Math.hypot(M.c, M.d), p: power });
+}
+// Fumée : chaque bouffée part de la tuyère, file dans l'axe de la poussée, puis s'écrase au sol et s'étale.
+function drawJetSmoke(c, groundY, H, go) {
+  var t = NOW();
+  SOLES.forEach(function (j, jj) {
+    var ux = j.dx / j.n, uy = j.dy / j.n;
+    for (var i = 0; i < 9; i++) {
+      var ph = (t * 0.7 + i / 9 + jj * 0.37) % 1, d = H * 0.8 * ph;
+      var px = j.x + ux * d, py = j.y + uy * d;
+      if (py > groundY - H * 0.03) {                     // contact : la fumée roule au ras du sol
+        var over = py - (groundY - H * 0.03);
+        py = groundY - H * 0.03 - over * 0.12;
+        px += (i % 2 ? 1 : -1) * over * 1.2 + ux * over * 0.6;
+      }
+      var r = H * (0.06 + 0.17 * ph) * (0.5 + 0.5 * j.p), a = Math.sin(Math.min(1, ph * 1.2) * Math.PI) * 0.85 * j.p;
+      var g = c.createRadialGradient(px, py, 0, px, py, r);
+      g.addColorStop(0, 'rgba(255,255,255,' + a + ')'); g.addColorStop(0.65, 'rgba(232,229,224,' + a * 0.75 + ')'); g.addColorStop(1, 'rgba(232,229,224,0)');
+      c.fillStyle = g; c.beginPath(); c.arc(px, py, r, 0, Math.PI * 2); c.fill();
+    }
+  });
+}
+function lerp(a, b, u) { return a + (b - a) * u; }
+
+
+
+// Nuage : petits nuages qui tournent autour de ses pieds nus ; au départ ils se rassemblent sous lui et
+// deviennent le grand nuage. footY = niveau des pieds dans le repère du corps.
+function drawFootClouds(c, B, k, go, front, mH, footY, A) {
+  var t = NOW(); A = A || KIT.acc.nuage; var n = 4, rx = B.w * k * 0.36, ry = rx * 0.22;
+  for (var i = 0; i < n; i++) {
+    var ang = t * 1.4 + i * Math.PI * 2 / n, sn = Math.sin(ang);
+    if ((sn > 0) !== front) continue;
+    var u = go * go, px = lerp(Math.cos(ang) * rx, Math.cos(ang) * B.w * k * 0.08, u), py = lerp(footY - B.h * k * 0.03 + sn * ry, mH * 0.28, u);
+    var w = B.w * k * 0.2 * (1 + 0.15 * sn) * (1 - 0.6 * u), h = w * A.h / A.w;
+    c.globalAlpha = 0.85 + 0.15 * go * (1 - u);
+    if (w > 1) c.drawImage(A.img, px - w / 2, py - h / 2, w, h);
+    c.globalAlpha = 1;
+  }
+}
+// Graviers : petits cailloux qui sautillent autour de ses pieds ; au départ ils se rassemblent en météorite.
+function drawPebbles(c, B, k, go, footY, targetY) {
+  var t = NOW(), A = KIT.acc.meteorite, n = 6, u = go * go;
+  for (var i = 0; i < n; i++) {
+    var ph = (t * (0.9 + 0.13 * i) + i * 0.29) % 1, gx = B.w * k * (-0.55 + 1.1 * (i + 0.5) / n);
+    var hop = Math.sin(ph * Math.PI) * B.h * k * (0.06 + 0.03 * (i % 3));
+    var x = lerp(gx, 0, u), y = lerp(footY + B.h * k * 0.02 - hop, targetY, u), sz = B.w * k * (0.045 + 0.012 * (i % 3)) * (1 - 0.5 * u);
+    c.save(); c.globalAlpha = 1 - Math.max(0, go - 0.7) / 0.3; c.translate(x, y); c.rotate(ph * 6 + i);
+    c.drawImage(A.img, -sz / 2, -sz / 2, sz, sz); c.restore();
+  }
+}
+
+// Hélice A : posée sous ses pieds, au départ elle grimpe le long de lui jusqu'au-dessus de sa tête ; il la
+// saisit à deux mains (corps bras levés) et s'envole.
+function drawPropClimb(c, B, k, cx, go, footY, groundY) {
+  var P = KIT.prop, u = Math.min(1, go * 2), e = u * u * (3 - 2 * u);
+  var topY = B.stick ? (B.stick[1] - B.bottom) * k : -B.bottom * k * 1.15, topX = B.stick ? (B.stick[0] - cx) * k : 0;
+  var w = B.w * k * lerp(0.7, 0.8, e), h = w * P.h / P.w, x = lerp(0, topX, e) + Math.sin(e * Math.PI) * B.w * k * 0.4, y = lerp(footY + h * 0.2, topY, e);
+  c.save(); c.translate(x, y); c.scale(go > 0.05 ? Math.cos(NOW() * (10 + 20 * go)) : 1, 1);
+  c.drawImage(P.img, -w / 2, -h / 2, w, h); c.restore();
+}
+
+// Pieds noirs de suie : copie de la jambe dont le bas est noirci (dégradé), calculée une fois.
+function sooty(L) {
+  if (SOOT_CACHE[L.src]) return SOOT_CACHE[L.src];
+  var cv = document.createElement('canvas'); cv.width = L.w; cv.height = L.h;
+  var c = cv.getContext('2d'); c.drawImage(L.img, 0, 0);
+  c.globalCompositeOperation = 'source-atop';
+  var g = c.createLinearGradient(0, L.h * 0.6, 0, L.h);
+  g.addColorStop(0, 'rgba(30,26,24,0)'); g.addColorStop(0.45, 'rgba(30,26,24,.75)'); g.addColorStop(1, 'rgba(20,18,16,.92)');
+  c.fillStyle = g; c.fillRect(0, 0, L.w, L.h);
+  return (SOOT_CACHE[L.src] = cv);
+}
+// Sol de gravier volcanique sous lui (météorite) : tache sombre, petits cailloux, quelques braises.
+function drawGravel(c, x, y, H, a) {
+  if (a < 0.02) return;
+  var t = NOW(), rx = H * 0.75, ry = H * 0.09;
+  c.save(); c.globalAlpha = a;
+  var g = c.createRadialGradient(x, y, 0, x, y, rx);
+  g.addColorStop(0, 'rgba(58,52,50,.95)'); g.addColorStop(0.75, 'rgba(70,62,58,.85)'); g.addColorStop(1, 'rgba(70,62,58,0)');
+  c.fillStyle = g; c.beginPath(); c.ellipse(x, y, rx, ry, 0, 0, Math.PI * 2); c.fill();
+  for (var i = 0; i < 26; i++) {
+    var u = Math.sin(i * 12.9898) * 43758.5453 % 1, v = Math.sin(i * 78.233) * 12345.678 % 1;
+    u = Math.abs(u); v = Math.abs(v);
+    var px = x + (u * 2 - 1) * rx * 0.85, py = y + (v * 2 - 1) * ry * 0.7, r = H * (0.008 + 0.014 * ((i * 7) % 5) / 5);
+    var ember = i % 9 === 0;
+    c.fillStyle = ember ? 'rgba(255,' + (120 + 60 * Math.sin(t * 4 + i)) + ',40,.9)' : (i % 2 ? '#2b2624' : '#6b625c');
+    c.beginPath(); c.ellipse(px, py, r * 1.3, r, 0, 0, Math.PI * 2); c.fill();
+  }
+  c.restore();
+}
+// Parapluie : fermé, tenu comme une canne à l'arrêt ; au départ il monte au-dessus de sa tête, il le prend à
+// deux mains et il s'ouvre en hélice.
+function drawUmbrella(c, B, k, cx, go, footY) {
+  var U = KIT.acc.parapluie, P = KIT.prop; if (!U) return false;
+  var u = Math.min(1, go * 2), e = u * u * (3 - 2 * u);
+  var hand = [(B.hips[0][0] - cx) * k + B.w * k * 0.22, -B.bottom * k * 0.42];
+  var uh = (footY - hand[1]) * 1.25, uw = uh * U.w / U.h;
+  var topY = B.stick ? (B.stick[1] - B.bottom) * k : -B.bottom * k * 1.15, topX = B.stick ? (B.stick[0] - cx) * k : 0;
+  var x = lerp(hand[0], topX, e) + Math.sin(e * Math.PI) * B.w * k * 0.3, y = lerp(footY - uh / 2 + uh * 0.05, topY - uh * 0.1, e);
+  var flip = lerp(0, Math.PI, e);                         // il le retourne : la crosse en bas, dans les mains
+  if (go < 0.55) {
+    c.save(); c.translate(x, y); c.rotate(flip); c.drawImage(U.img, -uw / 2, -uh / 2, uw, uh); c.restore();
+  }
+  if (go > 0.45) {                                        // ouverture en hélice
+    var o = Math.min(1, (go - 0.45) / 0.3), w = B.w * k * 0.8 * o, h = w * P.h / P.w;
+    c.save(); c.translate(topX, topY); c.scale(Math.cos(NOW() * (10 + 20 * go)), 1);
+    c.drawImage(P.img, -w / 2, -h / 2, w, h); c.restore();
+  }
+  return true;
+}
+
+// Dino complet. (x, y) = point au sol ; H = hauteur du corps en pixels ; ph = phase du cycle.
+var MOUNTS = { meteorite: 1, nuage: 1, cendre: 1 }, FLY = { fusees: 1, helice: 1 };
+function baseOf(f) { return f.replace(/[23]$/, ''); }
+var SOLES = null, BASE = null, SOOT = false, SOOT_CACHE = {};   // propulseurs du dessin en cours (repère de l'appelant)
+function goEase(g) { return 0.5 - 0.5 * Math.cos(Math.max(0, Math.min(1, g)) * Math.PI); }
+function drawDino(c, x, y, H, ph, feet, go) {
+  go = go === undefined ? 1 : goEase(go);
+  var style = feet, ride = baseOf(feet);
+  SOOT = ride === 'meteorite';
+  // (style, ride définis en tête de fonction)
+  if (MOUNTS[ride]) feet = 'nus'; else if (ride === 'fusees') feet = 'fusees';
+  BASE = c.getTransform(); SOLES = ride === 'fusees' ? [] : null;
+  var flying = (ride === 'fusees' || MOUNTS[ride]) && go > 0.4;
+  var B = (feet === 'skate' && KIT.surf) ? KIT.surf : (style === 'helice' && go > 0.5 && KIT.up) ? KIT.up : (flying && KIT.vol) ? KIT.vol : KIT.bodies[state.head], k = H / B.h, legPx = H * LEG_H, s = legPx / legPiece('nus').h;
+  var visible = legPx * (1 - TUCK);
+  var bob = bodyBob(feet, ph), spring = feet === 'ressorts' ? 1 - bob.sq * 4 + Math.max(0, -bob.y) * 0.8 : 1;
+  var skate = feet === 'skate' ? KIT.acc.skate : null, skH = skate ? B.w * k * 0.62 * skate.h / skate.w : 0;
+  c.save();
+  c.fillStyle = 'rgba(40,60,20,.18)';
+  c.beginPath(); c.ellipse(x, y, B.w * k * 0.32, H * 0.05, 0, 0, Math.PI * 2); c.fill();
+  if (RIDES[feet]) { drawRide(c, x, y, H, ph, feet, B, k); c.restore(); return; }
+  if (ride === 'meteorite') drawGravel(c, x, y, H, 1 - go * 0.6);
+  if (skate) c.drawImage(skate.img, x - B.w * k * 0.31, y - skH, B.w * k * 0.62, skH);
+  // Contact au sol (vu à la pelure d'oignon 2026-10-24 : en appui, le pied s'enfonçait sous le sol puis
+  // flottait). À chaque image on calcule où tombe le bout de chaque pied, et le corps se pose sur le plus
+  // bas : le corps descend quand les jambes s'écartent, le pied d'appui reste collé au sol.
+  var cx = (B.hips[0][0] + B.hips[1][0]) / 2, foot = legFoot(feet, s, spring), Lh = legPiece(feet === 'skate' ? 'nus' : feet).h;
+  var legs = [[1, false], [0, true]].map(function (q) {
+    var i = q[0], front = q[1], hp = B.hips[i], p = legPose(feet, ph + (front ? 0 : 0.5));
+    if (ride === 'helice') p = { leg: 1, ang: style === 'helice' ? go * 10 * Math.sin(NOW() * 3 + (front ? 0 : 1.5)) : 0, lift: 0, fold: 1 };
+    if (style === 'fusees') p = { leg: 1, ang: go * 3 * Math.sin(NOW() * 2 + (front ? 0 : 1.4)), lift: 0, fold: 1, flame: go };
+    if (MOUNTS[ride]) p = { leg: 1, ang: 0, lift: 0, fold: ride === 'meteorite' ? 1 : 1 - 0.7 * go };
+    if (feet === 'skate') p.ang = front ? 8 : -6;
+    var hx = (hp[0] - cx) * k, hy = -legPx * (front ? TUCK_FRONT : TUCK_BACK) + (hp[1] - B.bottom) * k;
+    var footY = hy - p.lift * Lh * s + foot * Math.cos(p.ang * Math.PI / 180) * (p.fold || 1);
+    return { i: i, front: front, p: p, hx: hx, hy: hy, footY: footY };
+  });
+  var stand = legs.map(function (q) { return q.hy + foot; });
+  var lowest = (MOUNTS[ride] || FLY[ride]) ? Math.max(stand[0], stand[1]) : Math.max(legs[0].footY, legs[1].footY);
+  var A = KIT.acc, mW = B.w * k * (ride === 'meteorite' ? 0.62 : 0.92), mH = MOUNTS[ride] ? mW * A[ride].h / A[ride].w : 0;
+  var mountLift = MOUNTS[ride] ? Math.max(H * 0.06, mH * 0.72 - lowest + H * 0.03) : 0;
+  var walk = feet === 'nus' || feet === 'baskets';
+  var hover = 0.015 * H * Math.sin(NOW() * 3);
+  var fly = FLY[ride] ? go * (H * (style === 'helice' ? Math.max(0, go * 2 - 1) * 0.22 : ride === 'helice' ? 0.16 : style === 'fusees' ? 0.2 : 0.12) + hover) : MOUNTS[ride] ? (ride === 'meteorite' ? go * (mH * 0.86 + hover) : go * (mountLift + hover)) : 0;
+  var groundUp = lowest + skH * 0.55 - (walk || MOUNTS[ride] || FLY[ride] ? 0 : bob.y * H) + fly;
+  c.translate(x, y - groundUp);
+  c.scale(1 + bob.sq * 0.6, 1 - bob.sq);
+  function leg(i, front) {
+    var L = legs.filter(function (q) { return q.front === front; })[0];
+    drawLeg(c, L.hx, L.hy, s, L.p, feet, !front, spring);
+  }
+  leg(1, false);
+  if (ride === 'nuage' || ride === 'cendre') drawFootClouds(c, B, k, go, false, mH, groundUp - fly, KIT.acc[ride]);
+  var mo = bodyMotion(feet, ph);
+  if (feet === 'skate') mo.rot = 4 * Math.sin(ph * Math.PI * 2);   // surfeur : il se balance sur la planche
+  c.save(); c.rotate(mo.rot * Math.PI / 180); drawBody(c, B, k, cx, mo); c.restore();
+  leg(0, true);
+  if (style === 'helice' && !drawUmbrella(c, B, k, cx, go, groundUp - fly)) drawPropClimb(c, B, k, cx, go, groundUp - fly, groundUp);
+  var footY = groundUp - fly, meteorCy = footY + mH * 0.4;   // météorite : ses pieds posés sur le dessus
+  if (MOUNTS[ride] && go > 0.01) drawMount(c, ride, mW, mH, go, B, k, go, ride === 'meteorite' ? meteorCy : undefined);
+  if (ride === 'meteorite') drawPebbles(c, B, k, go, footY, meteorCy);
+  if (ride === 'nuage' || ride === 'cendre') drawFootClouds(c, B, k, go, true, mH, groundUp - fly, KIT.acc[ride]);
+  c.restore();
+  c.save(); if (SOLES && SOLES.length) drawJetSmoke(c, y, H, go);
+  c.restore();
+}
+
+function fit(cv, aspect) {
+  var dpr = window.devicePixelRatio || 1, w = cv.clientWidth;
+  cv.width = Math.round(w * dpr); cv.height = Math.round(w / aspect * dpr); cv.style.height = (w / aspect) + 'px';
+  var c = cv.getContext('2d'); c.setTransform(dpr, 0, 0, dpr, 0, 0); return { c: c, w: w, h: w / aspect };
+}
+function drawPoses() {
+  var N = 6, rowH = 110, cv = document.getElementById('poses'), f = fit(cv, cv.clientWidth / (rowH * FEET.length));
+  var cw = f.w / N;
+  f.c.clearRect(0, 0, f.w, f.h);
+  FEET.forEach(function (ft, r) {
+    f.c.fillStyle = r % 2 ? '#f3ecdc' : '#fbf6ea'; f.c.fillRect(0, r * rowH, f.w, rowH);
+    for (var i = 0; i < N; i++) drawDino(f.c, cw * (i + 0.5), r * rowH + rowH - 10, rowH * 0.5, i / N, ft, (MOUNTS[baseOf(ft)] || FLY[baseOf(ft)]) ? [0, 0.3, 0.55, 0.8, 1, 1][i] : 1);
+    f.c.font = '600 12px system-ui, sans-serif';
+    var t = FEET_NAME[ft], tw = f.c.measureText(t).width + 10;
+    f.c.fillStyle = 'rgba(255,255,255,.85)'; f.c.fillRect(2, r * rowH + 2, tw, 17);
+    f.c.fillStyle = '#5e3b28'; f.c.fillText(t, 7, r * rowH + 15);
+  });
+}
+function labels() {
+  document.getElementById('b-head').textContent = 'Tête : ' + KIT.bodies[state.head].name;
+  document.getElementById('b-feet').textContent = 'Pieds : ' + FEET_NAME[state.feet];
+}
+document.getElementById('b-head').onclick = function () { state.head = (state.head + 1) % KIT.bodies.length; labels(); drawPoses(); };
+document.getElementById('b-feet').onclick = function () { state.feet = FEET[(FEET.indexOf(state.feet) + 1) % FEET.length]; labels(); };
+
+var live;
+Promise.all(KIT.bodies.concat(KIT.surf ? [KIT.surf] : [], KIT.up ? [KIT.up] : [], KIT.vol ? [KIT.vol] : [], KIT.prop ? [KIT.prop] : [], KIT.legs, Object.keys(KIT.shod || {}).map(function (k) { return KIT.shod[k]; }), Object.keys(KIT.acc).map(function (k) { return KIT.acc[k]; })).map(load)).then(function () {
+  labels(); drawPoses(); live = fit(document.getElementById('live'), 16 / 9);
+  window.addEventListener('resize', function () { drawPoses(); live = fit(document.getElementById('live'), 16 / 9); });
+  var dist = 0, lastT = 0;
+  (function loop(ms) {
+    var t = ms / 1000, c = live.c;
+    c.fillStyle = '#d9eef6'; c.fillRect(0, 0, live.w, live.h);
+    c.fillStyle = '#b9dc8f'; c.fillRect(0, live.h * 0.8, live.w, live.h * 0.2);
+    // Sol qui défile vers l'arrière, à la vitesse du pied posé : le dino avance pour de vrai.
+    // Rollers : cycle plus lent (longues glisses) mais sol plus rapide : il file.
+    var rate = state.feet === 'rollers' ? 0.75 : 1.4, speed = state.feet === 'rollers' ? 2.2 : 1.4;
+    var cyc = t % 5, go = (MOUNTS[baseOf(state.feet)] || FLY[baseOf(state.feet)]) ? (cyc < 1.4 ? 0 : cyc < 2 ? (cyc - 1.4) / 0.6 : cyc < 4.4 ? 1 : 1 - (cyc - 4.4) / 0.6) : 1;
+    dist += (t - lastT) * speed * goEase(go); lastT = t;
+    var H = live.h * 0.45, step = H * 0.62, x0 = -((dist * step) % (live.w / 5));
+    c.fillStyle = '#9cc873';
+    for (var gx = x0; gx < live.w + 20; gx += live.w / 5) { c.beginPath(); c.ellipse(gx, live.h * 0.9, live.w * 0.03, live.h * 0.015, 0, 0, Math.PI * 2); c.fill(); }
+    drawDino(c, live.w / 2, live.h * 0.86, H, t * rate, state.feet, go);
+    requestAnimationFrame(loop);
+  })(0);
+  window.__jambes = { state: state, drawPoses: drawPoses, draw: drawDino, ready: true };
+});
+})();
+</script>
+</body>
+</html>

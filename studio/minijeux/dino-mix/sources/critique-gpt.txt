@@ -1,0 +1,248 @@
+ChatGPT a dit :
+1. Ce qui ne fonctionne pas visuellement
+
+Le problème principal : les jambes ressemblent à des éléments collés sous le dinosaure, plutôt qu'à des membres qui sortent naturellement de son corps.
+
+Raccord aux hanches : les cuisses commencent trop bas et leur contour reste visible. On a l'impression qu'elles sont cousues sur le ventre.
+
+Articulations : les jambes semblent pivoter autour du pied ou se déplacer horizontalement, plutôt que tourner depuis la hanche.
+
+Proportions : les jambes changent parfois de longueur apparente sans logique anatomique. Certaines poses donnent l'impression de petites pattes déconnectées.
+
+Pieds : ils ne suivent pas toujours l'orientation des jambes. Dans les baskets et les rollers, les chaussures semblent parfois indépendantes des membres.
+
+Contact avec les objets : sur le skate, les pieds semblent simplement posés sur la planche ; sur les ressorts, la liaison pied-ressort est trop fine ; avec les fusées, les chaussures flottent.
+
+Animation : les dix images modifient légèrement les positions, mais ne créent pas toujours un véritable cycle de marche avec transfert du poids.
+
+2. Ma recommandation : un rig 2D à pièces superposées
+
+Ne redessine pas dix dinosaures complets. Garde le corps existant et anime des jambes indépendantes, articulées et partiellement cachées.
+
+Pièce
+
+	
+
+Dessin recommandé
+
+	
+
+Point de pivot
+
+
+
+
+Corps
+
+	
+
+Corps actuel, avec ventre fermé et sans jambes intégrées
+
+	
+
+Centre du bassin
+
+
+
+
+Cuisse arrière
+
+	
+
+Forme courte, ronde, légèrement conique
+
+	
+
+Hanche arrière
+
+
+
+
+Cuisse avant
+
+	
+
+Même forme, éventuellement un peu plus grande
+
+	
+
+Hanche avant
+
+
+
+
+Pied arrière
+
+	
+
+Petit pied arrondi à trois orteils
+
+	
+
+Cheville arrière
+
+
+
+
+Pied avant
+
+	
+
+Même pied, orientable indépendamment
+
+	
+
+Cheville avant
+
+
+
+
+Chaussure / roller
+
+	
+
+Objet séparé dans lequel le pied disparaît
+
+	
+
+Cheville ou semelle
+
+Pour ce style kawaii, je recommande une jambe souple en une seule pièce, sans genou visuellement marqué, avec un pied indépendant. C'est plus mignon et plus cohérent avec les proportions du personnage.
+
+3. Ordre des superpositions : essentiel
+
+De l'arrière vers l'avant :
+
+Jambe éloignée, derrière le corps.
+
+Pied éloigné, éventuellement dans sa chaussure.
+
+Corps complet, qui masque le haut des deux cuisses.
+
+Jambe proche, devant le corps, mais avec sa partie supérieure masquée par une petite zone de ventre au premier plan.
+
+Pied proche et chaussure.
+
+Le secret : faire entrer les cuisses de 20 à 30 % de leur longueur sous le ventre. Le raccord disparaît naturellement, sans avoir besoin de dessiner une couture ou une articulation.
+
+4. Animation selon les déplacements
+
+Mode
+
+	
+
+Animation des jambes
+
+
+
+
+Pieds nus
+
+	
+
+Alternance avant/arrière, pied au sol pendant l'appui, pied levé pendant le retour
+
+
+
+
+Baskets
+
+	
+
+Même cycle, chaussures solidaires des chevilles
+
+
+
+
+Rollers
+
+	
+
+Jambes légèrement fléchies, petits mouvements alternés de poussée
+
+
+
+
+Ressorts
+
+	
+
+Jambes synchronisées, compression verticale, puis extension au saut
+
+
+
+
+Skate
+
+	
+
+Deux pieds fixés sur la planche, genoux souples, corps qui oscille
+
+
+
+
+Œuf
+
+	
+
+Jambes entièrement cachées dans la coquille
+
+
+
+
+Fusées
+
+	
+
+Jambes presque immobiles, pieds solidaires des chaussures-fusées
+
+
+
+
+Hélice
+
+	
+
+Jambes pendantes, légers balancements décalés
+
+
+
+
+Météorite
+
+	
+
+Jambes cachées derrière la météorite
+
+
+
+
+Nuages / cendre
+
+	
+
+Jambes cachées dans les nuages, sans pieds visibles
+
+5. Pour obtenir une animation vraiment fluide
+
+Je recommande :
+
+2 pivots par jambe : hanche et cheville. Ajouter un genou virtuel uniquement pour contrôler la courbure.
+
+10 images par cycle : conserver ce format, mais interpoler les rotations et les positions plutôt que déplacer des images de jambes entières.
+
+Léger squash & stretch : comprimer le corps de 3 à 5 % à l'impact, puis l'étirer au décollage.
+
+Décalage des deux jambes : 5 images sur un cycle de 10 pour une marche alternée.
+
+Ancrage au sol : pendant la phase d'appui, le pied doit rester fixe par rapport au sol, sans glisser.
+
+Le changement le plus important
+
+Je ferais dessiner une seule planche de pièces détachées parfaitement compatibles avec le corps actuel : deux jambes arrondies sans pieds, deux petits pieds indépendants, et éventuellement une petite pièce de ventre servant de cache.
+
+Ensuite, le code gère les pivots, les rotations, les superpositions et les déformations.
+
+Cela résoudra l'essentiel de l'effet « recousu » sans toucher au dinosaure, à ses expressions ni aux accessoires qui fonctionnent déjà.
+
+ChatGPT peut faire des erreurs. Vérifiez les informations importantes.

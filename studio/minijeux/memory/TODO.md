@@ -164,3 +164,13 @@
 - [ ] EP-151 — Ce que les 3 portes ne voient pas : une animation d'intro jouée derrière le panneau règle (ouvert à retardement) reste invisible ; trouvé seulement en ouvrant une capture chronométrée. Porte visuelle = captures 360/320 + lecture par un agent vision, à rendre obligatoire dans la DoD.
 - [ ] EP-152 — `npm run check` racine rouge sur une porte DINO bloque un chantier JEU : découper `check` par pôle (`check:mj`, `check:dino`) + global en CI.
 - [ ] Prototype mj-60 laissé dans le worktree `.claude/worktrees/agent-a57ceb7f1ee5ddf08` (branche `worktree-agent-a57ceb7f1ee5ddf08`) : jeu + spec 13/13 + figée PROVISOIRE + i18n 4 langues, idée E4 NON validée par Papa Yann. Ne pas merger sans cadrage ; sert de pièce à conviction pour EP-145..152.
+
+## Lane — Dino-Mix : troupeau de bébés dinos à composer, façon Zoombinis (idée PY 2026-10-09)
+
+**DoD** : un dino jouable par tête, avec ses 11 transports, dans un mini-jeu `mj-shell` (troupeau devant le pont, règle cachée sur le look).
+Référence : spec `docs/specs/2026-10-09-dino-mix.md` · atelier `studio/minijeux/dino-mix/README.md` · D-031, D-032, D-033.
+
+- [?] EP-153 — PY valide en mouvement les 11 transports du Tricératops (`studio/minijeux/dino-mix/dino-mix-demo.html`). À trancher : le Diplodocus reste-t-il ?
+- [ ] EP-154 — Faire dessiner dans le projet ChatGPT « Dinosaure » les corps sans pattes manquants : 6 têtes × 5 dos (lisse, plaques, voile, armure, plumes), puis surfeur / bras levés / vol pour chaque tête ; découper avec `decoupe.py`.
+- [ ] EP-155 — Rebrancher la recoloration (5 couleurs) et le troupeau devant le pont (règle cachée) dans la nouvelle page, puis en faire un mini-jeu (`mj-shell`, QCM-tap + `QcmRetry` au niveau 2).
+

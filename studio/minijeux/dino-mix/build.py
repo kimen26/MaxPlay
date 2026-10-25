@@ -138,6 +138,13 @@ def leg_meta(im):
     return {"w": w, "h": h, "pivot": [round((min(band) + max(band)) / 2, 1), round(top + (max(band) - min(band)) * 0.42, 1)], "ankle": toes}
 
 
+def variant(kind, head):
+    """Corps surfeur / bras levés / vol de la tête : <kind>-r1c<tête> (montage variantes.py ou dessin),
+    sinon celui du Tricératops."""
+    name = f"{kind}-r1c{head + 1}"
+    return name if (PIECES / f"{name}.webp").exists() else f"{kind}-r1c1"
+
+
 def piece(name):
     im = load(name)
     return {"w": im.width, "h": im.height, "src": data_uri(im)}
@@ -151,9 +158,9 @@ def main():
         "legs": [dict(leg_meta(load(f"jambe-r1c{i + 1}")), name=n, src=data_uri(load(f"jambe-r1c{i + 1}"))) for i, n in enumerate(LEG_POSES)],
         "shod": {},
         "acc": {n: piece(f"acc-{n}") for n in ACC},
-        "surf": body("surf-r1c1", "surfeur"),      # bras écartés (skate)
-        "up": body("up-r1c1", "up"),               # bras levés tenant le manche (parapluie-hélice)
-        "vol": body("vol-r1c1", "vol"),            # pose de super-héros (tout ce qui vole)
+        "surf": body(variant("surf", head), "surfeur"),  # bras écartés (skate)
+        "up": body(variant("up", head), "up"),           # bras levés tenant le manche (parapluie-hélice)
+        "vol": body(variant("vol", head), "vol"),        # pose de super-héros (tout ce qui vole)
         "prop": piece("prop-r1c1"),
     }
     kit["acc"]["parapluie"] = piece("parapluie-r1c1")
@@ -166,7 +173,7 @@ def main():
                       if px[x, y][3] > 128 and px[x, y][2] > 150 and px[x, y][0] > 120 and px[x, y][1] < 120]
             m["springTop"] = min(purple) if purple else None
         kit["shod"][name] = m
-    up = load("up-r1c1")                           # haut du manche rouge tenu dans les mains
+    up = load(variant("up", head))                 # haut du manche rouge tenu dans les mains
     px = up.load()
     reds = [(x, y) for y in range(up.height) for x in range(0, up.width, 2)
             if px[x, y][3] > 128 and px[x, y][0] > 170 and px[x, y][1] < 110 and px[x, y][2] < 110]

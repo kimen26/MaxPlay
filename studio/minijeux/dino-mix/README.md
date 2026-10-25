@@ -10,6 +10,7 @@ design, règle de jeu, choix validés) est dans [`../docs/specs/2026-10-09-dino-
 | `sources/` | Les dessins ChatGPT d'origine (projet « Dinosaure »), compressés. On ne les modifie pas : on les redécoupe. |
 | `pieces/` | Les pièces découpées, prêtes à animer (voir la table ci-dessous). C'est la matière du jeu. |
 | `decoupe.py` | Découpe une planche à fond crème en pièces WebP transparentes. |
+| `variantes.py` | Monte les corps surfeur / bras levés / vol des 5 autres têtes (tête d'origine + bras du Tricératops). |
 | `build.py` | Construit la page de démonstration depuis `pieces/` et le gabarit `page.html`. |
 | `page.html` | Gabarit : moteur d'animation (canvas) + vue « Toutes les poses ». |
 | `dino-mix-demo.html` | Dernière page construite (autonome, s'ouvre sur téléphone). |
@@ -21,23 +22,31 @@ design, règle de jeu, choix validés) est dans [`../docs/specs/2026-10-09-dino-
 | Pièce | Fichier | Source | Rôle |
 |---|---|---|---|
 | Corps sans pattes, 6 têtes | `corps-r1c1..6` | `sans-pattes.webp` | Tricératops, Parasaurolophus, Spinosaure, Diplodocus, Ankylosaure, Raptor à plumes. Ventre rond FERMÉ. |
-| Corps surfeur | `surf-r1c1` | `corps-surfeur.webp` | Bras écartés, pour le skate. |
-| Corps bras levés | `up-r1c1` | `corps-bras-leves.webp` | Tient le manche du parapluie-hélice. |
-| Corps de vol | `vol-r1c1` | `corps-vol.webp` | Pose de super-héros (bottes-fusées, météorite, nuages). |
+| Corps surfeur | `surf-r1c1..6` | `corps-surfeur.webp` (1) + montage (2..6) | Bras écartés, pour le skate. |
+| Corps bras levés | `up-r1c1..6` | `corps-bras-leves.webp` (1) + montage (2..6) | Tient le manche du parapluie-hélice. |
+| Corps de vol | `vol-r1c1..6` | `corps-vol.webp` (1) + montage (2..6) | Pose de super-héros (bottes-fusées, météorite, nuages). |
 | Jambe nue, 5 poses | `jambe-r1c1..5` | `jambes-pieces.webp` | Seule la pose 2 (droite) sert : UN dessin pour tout le cycle. |
 | Jambes chaussées | `chaus-r1c1..4` | `jambes-chaussees.webp` | Nus, baskets, rollers, ressort : jambe + accessoire d'une seule pièce. |
 | Botte-fusée | `fusee-r1c1` | `jambe-botte-fusee.webp` | Jambe chaussée d'une botte futuriste à tuyère. |
 | Hélice, parapluie | `prop-r1c1`, `parapluie-r1c1` | `helice-pales.webp`, `parapluie-ferme.webp` | Parapluie-canne qui devient hélice. |
 | Objets | `acc-*` | `accessoires-seuls`, `oeuf-pieces`, `montures` | Skate, coquille (+ bord avant, roue), météorite, nuage, cendre. |
 
-Pour l'instant seul le Tricératops a ses corps surfeur, bras levés et vol : pour une autre tête, il faut
-les faire dessiner (même prompt, même projet ChatGPT).
+Le numéro de colonne d'un corps surfeur / bras levés / vol est celui de sa tête (`surf-r1c3` = Spinosaure).
+Seuls ceux du Tricératops (`r1c1`) sont dessinés. Ceux des 5 autres têtes sont MONTÉS par `variantes.py`
+(2026-10-25) : on part du corps sans pattes de la tête (sa vraie tête, son cou, ses taches), on coupe le
+petit bras du fond le long de la courbe du ventre, on recouvre le petit bras proche par le ventre de la
+variante du Tricératops recalée par le bas du ventre et la queue, puis on pose ses bras détourés le long
+du trait. Ça marche parce que les 6 corps et les 3 variantes partagent le même gabarit. Limite connue :
+les bras levés passent devant la joue, et chez les têtes à l'œil plus en arrière (Parasaurolophus, Raptor)
+ils le frôlent. Un vrai dessin (une planche de 6 têtes, même prompt, même projet ChatGPT) découpé par
+`decoupe.py` sous le même nom remplace le montage sans toucher à `build.py`.
 
 ## Refaire la page
 
 ```
 python -I studio/minijeux/dino-mix/build.py            # Tricératops
-python -I studio/minijeux/dino-mix/build.py 4          # Ankylosaure (index 0-5)
+python -I studio/minijeux/dino-mix/build.py 4          # Ankylosaure (index 0-5), avec ses variantes
+python -I studio/minijeux/dino-mix/variantes.py <planche.png>   # remonte les 15 variantes (~2 min) + planche de contrôle
 node studio/minijeux/dino-mix/marche16.mjs <sortie.png> file:///<chemin>/dino-mix-demo.html
 node studio/minijeux/dino-mix/oignon.mjs   <sortie.png> file:///<chemin>/dino-mix-demo.html
 ```

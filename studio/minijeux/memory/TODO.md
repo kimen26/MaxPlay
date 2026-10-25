@@ -172,5 +172,6 @@ Référence : spec `docs/specs/2026-10-09-dino-mix.md` · atelier `studio/minije
 
 - [?] EP-153 — PY valide en mouvement les 11 transports du Tricératops (`studio/minijeux/dino-mix/dino-mix-demo.html`). À trancher : le Diplodocus reste-t-il ?
 - [ ] EP-154 — Faire dessiner dans le projet ChatGPT « Dinosaure » les corps sans pattes manquants : 6 têtes × 5 dos (lisse, plaques, voile, armure, plumes), puis surfeur / bras levés / vol pour chaque tête ; découper avec `decoupe.py`.
+  - 2026-10-25 : surfeur / bras levés / vol des 5 autres têtes MONTÉS (pas dessinés) par `dino-mix/variantes.py` → `pieces/{surf,up,vol}-r1c2..6`, pris par `build.py <tête>`. À valider par PY ; une planche ChatGPT de 6 têtes découpée sous le même nom les remplace. Reste : les 6 × 5 dos.
 - [ ] EP-155 — Rebrancher la recoloration (5 couleurs) et le troupeau devant le pont (règle cachée) dans la nouvelle page, puis en faire un mini-jeu (`mj-shell`, QCM-tap + `QcmRetry` au niveau 2).
 

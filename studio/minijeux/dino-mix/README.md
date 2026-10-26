@@ -53,6 +53,19 @@ node studio/minijeux/dino-mix/oignon.mjs   <sortie.png> file:///<chemin>/dino-mi
 
 Une nouvelle planche se découpe avec : `python -I studio/minijeux/dino-mix/decoupe.py <planche.png> <dossier> <rangées> <colonnes> <préfixe>`.
 
+## Ajouter une tête
+
+Un seul dessin : le corps sans pattes, sur le gabarit de `sans-pattes.webp` (même corps, mêmes petits bras,
+même taille). Exemple pour les théropodes à tête massive (EP-156), une planche T-Rex + Carnotaure :
+
+```
+node .claude/skills/dino-images-lunii/scripts/gpt-gen.mjs "Planche de 2 personnages côte à côte, fond crème uni, EXACTEMENT le même style et EXACTEMENT le même corps que les bébés dinos de la première image (corps sans pattes, ventre rond fermé, queue, deux petits bras, même taille, de profil tourné vers la droite). Seule différence : la tête. À gauche un bébé Tyrannosaure : grosse tête carrée et massive, mâchoire puissante, petites crêtes au-dessus des yeux, grand sourire avec de petites dents arrondies, pas effrayant. À droite un bébé Carnotaure : tête massive et courte, deux cornes épaisses au-dessus des yeux comme un petit taureau, peau à petites bosses. Même vert, mêmes joues roses, mêmes grands yeux noirs. Pas de pattes, pas d'ombre, pas de texte." studio/minijeux/inbox/dino-mix-theropodes.png --new --ref studio/minijeux/dino-mix/sources/sans-pattes.webp,site/img/dinos/sprites/Tyrannosaurus_tete.webp,site/img/dinos/sprites/Carnotaurus_tete.webp
+```
+
+Puis : découper avec `decoupe.py`, mettre le corps à l'échelle des autres (même largeur de ventre), le nommer
+`corps-r1c7` (8…), l'ajouter à `HEADS` de `build.py` et à `FAR_ARM` de `variantes.py` (rangées de son petit
+bras du fond), relancer `variantes.py` et regarder la planche.
+
 ## Comment on anime (les règles qui ont marché, et pourquoi)
 
 1. **Un corps sans pattes + des jambes en pièces.** Jamais de jambes découpées dans un dessin figé :

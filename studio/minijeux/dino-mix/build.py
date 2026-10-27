@@ -3,8 +3,8 @@
 Usage (depuis la racine du dépôt) :
     python -I studio/minijeux/dino-mix/build.py [index_tête] [sortie.html]
 
-    index_tête : 0 Tricératops (défaut), 1 Parasaurolophus, 2 Spinosaure, 3 Diplodocus, 4 Ankylosaure,
-                 5 Raptor à plumes.
+    index_tête : tête affichée à l'ouverture (ordre de BODIES), 0 Tricératops par défaut. Toutes les têtes et
+                 toutes les pièces de dos sont dans la page.
     sortie     : défaut studio/minijeux/dino-mix/dino-mix-demo.html (page autonome, images en data:).
 
 Lit : pieces/*.webp (voir README.md) et le gabarit page.html (« /*KIT*/null » remplacé par les données).
@@ -22,7 +22,18 @@ from PIL import Image
 
 HERE = Path(__file__).resolve().parent
 PIECES = HERE / "pieces"
-HEADS = ["Tricératops", "Parasaurolophus", "Spinosaure", "Diplodocus", "Ankylosaure", "Raptor à plumes"]
+# Un dessin = une tête sur le corps-gabarit au dos lisse (même ventre, même échelle). Ce qui distingue les corps
+# est une pièce de dos posée DERRIÈRE le dos (D-034) : elle se combine avec n'importe quelle tête.
+BODIES = [("corps-r1c1", "Tricératops"), ("corps-r1c2", "Parasaurolophus"), ("corps-r1c3", "Spinosaure"),
+          ("corps-r1c4", "Diplodocus"), ("corps-r1c5", "Ankylosaure"), ("corps-r1c6", "Raptor à plumes"),
+          ("corps-carno", "Carnotaure"), ("corps-stego", "Stégosaure")]
+# pièce de dos -> (fichier, largeur en part de la largeur du corps, part de sa hauteur cachée derrière le dos,
+# bout de queue assorti ou None)
+BACKS = {"voile": ("voile", 0.62, 0.22, None), "plaques": ("plaques", 0.50, 0.30, "pointes"),
+         "plumes": ("plumes", 0.58, 0.35, None), "armure": ("armure", 0.66, 0.30, "massue"),
+         "bosses": ("bosses", 0.62, 0.45, None)}
+# bout de queue -> largeur en part de la largeur du corps
+TIPS = {"massue": 0.21, "pointes": 0.23}
 LEG_POSES = ["avant", "droite", "arriere", "pliee", "pendante"]
 SHOD = [("nus", "chaus-r1c1"), ("baskets", "chaus-r1c2"), ("rollers", "chaus-r1c3"), ("ressorts", "chaus-r1c4"), ("fusees", "fusee-r1c1")]
 ACC = ["skate", "oeuf", "oeuf-avant", "roue", "meteorite", "nuage", "cendre"]
@@ -106,22 +117,67 @@ def find_eye(im):
     return [round(sum(xs) / len(xs), 1), round(sum(ys) / len(ys), 1), round(max(max(xs) - min(xs), max(ys) - min(ys)) / 2 + 3, 1)]
 
 
-def body_meta(im):
-    """Bas du ventre et deux hanches (là où les jambes se glissent sous le corps)."""
+def belly_span(im, band):
+    """Étendue du bas du ventre : colonnes dont le bas de silhouette est à moins de band pixels du plus bas."""
     w, h = im.size
     a = im.getchannel("A").load()
     bottom = [max((y for y in range(h) if a[x, y] > 128), default=-1) for x in range(w)]
     lo = int(w * 0.3)
     ref = max(bottom[lo:])
-    belly = [x for x in range(lo, w) if bottom[x] >= ref - h * 0.07]
-    x0, x1 = min(belly), max(belly)
+    belly = [x for x in range(lo, w) if bottom[x] >= ref - band]
+    return min(belly), max(belly), bottom, ref
+
+
+def back_line(im):
+    """Haut du dos, colonne par colonne : en remontant depuis le bas du ventre, premier pixel vide (une crête
+    séparée du dos par un vide ne compte pas). Rend [[x, y], ...] tous les 4 % de la largeur."""
+    w, h = im.size
+    a = im.getchannel("A").load()
+    out = []
+    for i in range(26):
+        x = min(w - 1, round(i * w / 25))
+        ys = [y for y in range(h) if a[x, y] > 128]
+        if not ys:
+            continue
+        y = max(ys)
+        while y > 0 and a[x, y - 1] > 128:
+            y -= 1
+        out.append([x, y])
+    return out
+
+
+def body_meta(im, band=None):
+    """Bas du ventre, deux hanches (là où les jambes se glissent sous le corps) et ligne du dos."""
+    w, h = im.size
+    x0, x1, bottom, ref = belly_span(im, band if band else h * 0.07)
     hips = [x0 + (x1 - x0) * 0.32, x0 + (x1 - x0) * 0.68]
-    return {"w": w, "h": h, "hips": [[round(x, 1), bottom[int(x)]] for x in hips], "bottom": ref, "eye": find_eye(im)}
+    a = im.getchannel("A").load()
+    tx = min(x for x in range(w) if any(a[x, y] > 128 for y in range(h)))
+    ty = [y for y in range(h) if a[tx, y] > 128]
+    return {"w": w, "h": h, "hips": [[round(x, 1), bottom[int(x)]] for x in hips], "bottom": ref, "eye": find_eye(im),
+            "back": back_line(im), "tip": [tx, sum(ty) / len(ty)]}
 
 
 def body(name, label):
     im = clean_body(load(name))
     return dict(body_meta(im), name=label, src=data_uri(im))
+
+
+def same_scale_bodies():
+    """Tous les dessins ramenés à l'échelle du Tricératops, puis une seule hauteur de référence pour tous, sinon
+    un long cou rapetisserait le dino (L-152). L'échelle se prend sur l'œil, identique sur toutes les têtes
+    (D-034) : la largeur du ventre varie d'un dessin ChatGPT à l'autre (Stégosaure plus long)."""
+    ref = clean_body(load(BODIES[0][0]))
+    band = ref.height * 0.07
+    eye = find_eye(ref)[2] - 3                    # find_eye ajoute 3 px de marge au rayon
+    out = []
+    for name, label in BODIES:
+        im = clean_body(load(name))
+        f = eye / (find_eye(im)[2] - 3)
+        if abs(f - 1) > 0.02:
+            im = im.resize((round(im.width * f), round(im.height * f)), Image.LANCZOS)
+        out.append(dict(body_meta(im, band), name=label, refH=ref.height, src=data_uri(im)))
+    return out
 
 
 def leg_meta(im):
@@ -147,7 +203,12 @@ def main():
     head = int(sys.argv[1]) if len(sys.argv) > 1 else 0
     out = Path(sys.argv[2]) if len(sys.argv) > 2 else HERE / "dino-mix-demo.html"
     kit = {
-        "bodies": [body(f"corps-r1c{head + 1}", HEADS[head])],
+        "bodies": same_scale_bodies(),
+        "start": head,
+        # ligne du dos commune : celle du Stégosaure, seul dessin sans collerette ni crête qui touche le dos
+        "tpl": [n for n, _ in BODIES].index("corps-stego"),
+        "backs": {k: dict(piece(f"dos-{f}"), span=sp, sink=sk, tip=t) for k, (f, sp, sk, t) in BACKS.items()},
+        "tips": {k: dict(piece(f"queue-{k}"), span=sp) for k, sp in TIPS.items()},
         "legs": [dict(leg_meta(load(f"jambe-r1c{i + 1}")), name=n, src=data_uri(load(f"jambe-r1c{i + 1}"))) for i, n in enumerate(LEG_POSES)],
         "shod": {},
         "acc": {n: piece(f"acc-{n}") for n in ACC},

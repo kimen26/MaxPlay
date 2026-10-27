@@ -166,12 +166,12 @@
 - [ ] EP-152 — `npm run check` racine rouge sur une porte DINO bloque un chantier JEU : découper `check` par pôle (`check:mj`, `check:dino`) + global en CI.
 - [ ] Prototype mj-60 laissé dans le worktree `.claude/worktrees/agent-a57ceb7f1ee5ddf08` (branche `worktree-agent-a57ceb7f1ee5ddf08`) : jeu + spec 13/13 + figée PROVISOIRE + i18n 4 langues, idée E4 NON validée par Papa Yann. Ne pas merger sans cadrage ; sert de pièce à conviction pour EP-145..152.
 
-## Lane — Dino-Mix : troupeau de bébés dinos à composer, façon Zoombinis (idée PY 2026-10-09)
+## Lane — Dinomino (ex-Dino-Mix) : troupeau de bébés dinos à composer, façon Zoombinis (idée PY 2026-10-09)
 
 **DoD** : un dino jouable par tête, avec ses 11 transports, dans un mini-jeu `mj-shell` (troupeau devant le pont, règle cachée sur le look).
-Référence : spec `docs/specs/2026-10-09-dino-mix.md` · atelier `studio/minijeux/dino-mix/README.md` · D-031, D-032, D-033.
+Référence : spec `docs/specs/2026-10-09-dino-mix.md` · atelier `studio/minijeux/dino-mix/README.md` · D-031 à D-034.
 
 - [?] EP-153 — PY valide en mouvement les 11 transports du Tricératops (`studio/minijeux/dino-mix/dino-mix-demo.html`). À trancher : le Diplodocus reste-t-il ?
-- [ ] EP-154 — Faire dessiner dans le projet ChatGPT « Dinosaure » les corps sans pattes manquants : 6 têtes × 5 dos (lisse, plaques, voile, armure, plumes), puis surfeur / bras levés / vol pour chaque tête ; découper avec `decoupe.py`.
+- [ ] EP-154 — Têtes et dos en pièces (D-034) : 8 têtes (dont Carnotaure, Stégosaure) et 5 dos + 2 bouts de queue posés le 2026-10-27, contrôle `combos.mjs`. Reste : un dos propre au Tricératops, au Parasaurolophus et au Diplodocus ; bras en pièces (surfeur, bras levés, vol) pour ne plus garder ceux du Tricératops ; PY valide les mélanges sur téléphone.
 - [ ] EP-155 — Rebrancher la recoloration (5 couleurs) et le troupeau devant le pont (règle cachée) dans la nouvelle page, puis en faire un mini-jeu (`mj-shell`, QCM-tap + `QcmRetry` au niveau 2).
 

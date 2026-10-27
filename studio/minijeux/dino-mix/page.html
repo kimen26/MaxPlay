@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dino-Mix, jambes en pièces</title>
+<title>Dinomino, têtes et dos</title>
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#f4efe6;color:#1f1d1a;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.45}
@@ -20,13 +20,14 @@ button:focus-visible{outline:3px solid #2a6df4;outline-offset:2px}
 </head>
 <body>
 <header>
-  <h1>Dino-Mix : jambes en pièces</h1>
-  <p>Essai de la méthode conseillée par ChatGPT : un corps au ventre fermé, sans pattes, et des jambes dessinées à part qui entrent sous le ventre et tournent depuis la hanche.</p>
+  <h1>Dinomino : têtes, dos et transports</h1>
+  <p>Choisis une tête, un dos, puis un transport : toutes les pièces vont ensemble.</p>
 </header>
 <main>
   <canvas id="live" aria-label="Le dino choisi qui avance"></canvas>
   <div class="grid">
     <button type="button" id="b-head"></button>
+    <button type="button" id="b-back"></button>
     <button type="button" id="b-feet"></button>
   </div>
   <h2>Toutes les poses</h2>
@@ -43,7 +44,8 @@ var FEET_NAME = { nus: 'pieds nus', baskets: 'baskets', rollers: 'rollers', ress
 var LEG_H = 0.40;      // hauteur d'une jambe, en hauteurs de corps
 var TUCK = 0.28;       // part de la jambe sous la ligne du ventre (sert au calage au sol)
 var TUCK_BACK = 0.36, TUCK_FRONT = 0.34;
-var state = { head: 0, feet: 'nus' };
+var BACKS = [null].concat(Object.keys(KIT.backs || {}));
+var state = { head: KIT.start || 0, back: null, feet: 'nus' };
 
 function load(o) { return new Promise(function (ok) { var im = new Image(); im.onload = function () { o.img = im; ok(); }; im.src = o.src; }); }
 
@@ -139,10 +141,41 @@ function bodyMotion(feet, ph) {
     blink: (t % 3.4) < 0.14
   };
 }
-function drawBody(c, B, k, cx, mo) {
+// Hd : le dessin qui donne la TÊTE (un autre dino que B pour échanger, D-034). Tous les dessins ont le même
+// gabarit de ventre à la même échelle : en calant Hd sur ses propres hanches et son bas de ventre, son cou
+// tombe sur celui de B ; on ne garde de Hd que le secteur de la tête.
+// Pièce de dos (voile, plaques…) : posée DERRIÈRE le corps, sa base cachée par le contour du dos ; centrée un peu
+// en arrière des hanches, elle bouge avec le corps, jamais avec la queue.
+function backY(B, x) {
+  var L = B.back, i = 1;
+  while (i < L.length - 1 && L[i][0] < x) i++;
+  var a = L[i - 1], b = L[i], u = b[0] === a[0] ? 0 : (x - a[0]) / (b[0] - a[0]);
+  return a[1] + (b[1] - a[1]) * Math.max(0, Math.min(1, u));
+}
+// La hauteur du dos se lit sur un gabarit sans collerette (KIT.tpl) : sur le Tricératops, la collerette touche le
+// dos et la pièce se posait dessus. Tous les corps ont le même ventre : on cale le gabarit sur les hanches.
+function drawBack(c, B, k, cx) {
+  var P = state.back && KIT.backs[state.back], T = KIT.bodies[KIT.tpl] || B;
+  if (!P || !T.back) return;
+  var bw = B.w * k * P.span, bh = bw * P.h / P.w;
+  var tcx = (T.hips[0][0] + T.hips[1][0]) / 2, mx = tcx - T.w * 0.10;   // milieu du dos, pixels du gabarit
+  var y = (backY(T, mx) - T.bottom) * k;
+  c.drawImage(P.img, (mx - tcx) * k - bw / 2, y - bh * (1 - P.sink), bw, bh);
+}
+// Bout de queue (massue, pointes) : accroché au bout de la queue de B, il tourne avec elle.
+function drawTip(c, B, k, cx) {
+  var b = state.back && KIT.backs[state.back], P = b && b.tip && KIT.tips[b.tip];
+  if (!P || !B.tip) return;
+  var tw = B.w * k * P.span, th = tw * P.h / P.w, x = (B.tip[0] - cx) * k, y = (B.tip[1] - B.bottom) * k;
+  if (b.tip === 'pointes') c.drawImage(P.img, x - tw * 0.15, y - th * 0.85, tw, th);   // dressées sur le bout
+  else c.drawImage(P.img, x - tw * 0.55, y - th * 0.5, tw, th);                        // massue centrée sur le bout
+}
+function drawBody(c, B, k, cx, mo, Hd) {
+  Hd = Hd || B;
   var x0 = -cx * k, y0 = -B.bottom * k, w = B.w * k, h = B.h * k;
+  var hcx = (Hd.hips[0][0] + Hd.hips[1][0]) / 2, hx0 = -hcx * k, hy0 = -Hd.bottom * k;
   var hipB = (B.hips[1][0] - cx) * k, hipF = (B.hips[0][0] - cx) * k;
-  var eyeY = B.eye ? (B.eye[1] - B.bottom) * k : -h * 0.6;
+  var eyeY = Hd.eye ? (Hd.eye[1] - Hd.bottom) * k : -h * 0.6;
   var J = { tail: [hipB - w * 0.08, -h * 0.2], head: [hipF + w * 0.04, eyeY + (0 - eyeY) * 0.48] };
   function img() { c.drawImage(B.img, x0, y0, w, h); }
   function notIn(j, A) { c.beginPath(); c.rect(-R, -R, 2 * R, 2 * R); sector(c, j[0], j[1], A[0], A[1]); c.clip('evenodd'); }
@@ -151,15 +184,18 @@ function drawBody(c, B, k, cx, mo) {
   // 1) sous-couche immobile près de la racine de la queue : bouche la fente quand la queue tourne ;
   // 2) la queue tournée ; 3) le corps PAR-DESSUS, son contour du dos reste net et continu.
   var rootR = Math.hypot(w, h) * 0.36;
+  drawBack(c, B, k, cx);                          // tout au fond : la queue et le corps passent devant sa base
   // sous-couche limitée à deux coins autour des BORDS de la découpe : jamais sur la queue elle-même (sinon contour doublé)
   c.save(); notIn(J.head, HEAD_A); c.beginPath(); sector(c, J.tail[0], J.tail[1], TAIL_A[1] - 22, TAIL_A[1] + 22); sector(c, J.tail[0], J.tail[1], TAIL_A[0] - 22, TAIL_A[0] + 22); c.clip();
   c.beginPath(); c.arc(J.tail[0], J.tail[1], rootR, 0, Math.PI * 2); c.clip(); img(); c.restore();
   c.save(); turn(J.tail, mo.tail); notIn(J.head, HEAD_A); c.beginPath(); sector(c, J.tail[0], J.tail[1], TAIL_A[0] - 6, TAIL_A[1] + 6); c.clip(); img(); c.restore();
+  c.save(); turn(J.tail, mo.tail); drawTip(c, B, k, cx); c.restore();
   c.save(); notIn(J.head, HEAD_A); notIn(J.tail, TAIL_A); img(); c.restore();
-  c.save(); turn(J.head, mo.head); c.beginPath(); sector(c, J.head[0], J.head[1], HEAD_A[0] - 8, HEAD_A[1] + 8); c.clip(); img();
-  if (mo.blink && B.eye) {
-    var ex = B.eye[0] * k + x0, ey = B.eye[1] * k + y0, r = B.eye[2] * k;
-    c.fillStyle = 'rgb(' + (B.skin || [185, 213, 145]).join(',') + ')';
+  c.save(); turn(J.head, mo.head); c.beginPath(); sector(c, J.head[0], J.head[1], HEAD_A[0] - 8, HEAD_A[1] + 8); c.clip();
+  c.drawImage(Hd.img, hx0, hy0, Hd.w * k, Hd.h * k);
+  if (mo.blink && Hd.eye) {
+    var ex = Hd.eye[0] * k + hx0, ey = Hd.eye[1] * k + hy0, r = Hd.eye[2] * k;
+    c.fillStyle = 'rgb(' + (Hd.skin || [185, 213, 145]).join(',') + ')';
     c.beginPath(); c.arc(ex, ey, r * 1.1, 0, Math.PI * 2); c.fill();
     c.strokeStyle = '#5e3b28'; c.lineWidth = Math.max(1.5, r * 0.25); c.lineCap = 'round';
     c.beginPath(); c.arc(ex, ey - r * 0.25, r * 0.75, 0.2 * Math.PI, 0.8 * Math.PI); c.stroke();
@@ -393,7 +429,7 @@ function drawDino(c, x, y, H, ph, feet, go) {
   if (MOUNTS[ride]) feet = 'nus'; else if (ride === 'fusees') feet = 'fusees';
   BASE = c.getTransform(); SOLES = ride === 'fusees' ? [] : null;
   var flying = (ride === 'fusees' || MOUNTS[ride]) && go > 0.4;
-  var B = (feet === 'skate' && KIT.surf) ? KIT.surf : (style === 'helice' && go > 0.5 && KIT.up) ? KIT.up : (flying && KIT.vol) ? KIT.vol : KIT.bodies[state.head], k = H / B.h, legPx = H * LEG_H, s = legPx / legPiece('nus').h;
+  var B = (feet === 'skate' && KIT.surf) ? KIT.surf : (style === 'helice' && go > 0.5 && KIT.up) ? KIT.up : (flying && KIT.vol) ? KIT.vol : KIT.bodies[state.head], k = H / (B.refH || B.h), legPx = H * LEG_H, s = legPx / legPiece('nus').h;
   var visible = legPx * (1 - TUCK);
   var bob = bodyBob(feet, ph), spring = feet === 'ressorts' ? 1 - bob.sq * 4 + Math.max(0, -bob.y) * 0.8 : 1;
   var skate = feet === 'skate' ? KIT.acc.skate : null, skH = skate ? B.w * k * 0.62 * skate.h / skate.w : 0;
@@ -435,7 +471,9 @@ function drawDino(c, x, y, H, ph, feet, go) {
   if (ride === 'nuage' || ride === 'cendre') drawFootClouds(c, B, k, go, false, mH, groundUp - fly, KIT.acc[ride]);
   var mo = bodyMotion(feet, ph);
   if (feet === 'skate') mo.rot = 4 * Math.sin(ph * Math.PI * 2);   // surfeur : il se balance sur la planche
-  c.save(); c.rotate(mo.rot * Math.PI / 180); drawBody(c, B, k, cx, mo); c.restore();
+  // poses surfeur, bras levés, vol : dessinées pour le Tricératops seulement ; une autre tête s'y pose par-dessus
+  var Hd = KIT.bodies.indexOf(B) >= 0 || state.head ? KIT.bodies[state.head] : B;
+  c.save(); c.rotate(mo.rot * Math.PI / 180); drawBody(c, B, k, cx, mo, Hd); c.restore();
   leg(0, true);
   if (style === 'helice' && !drawUmbrella(c, B, k, cx, go, groundUp - fly)) drawPropClimb(c, B, k, cx, go, groundUp - fly, groundUp);
   var footY = groundUp - fly, meteorCy = footY + mH * 0.4;   // météorite : ses pieds posés sur le dessus
@@ -467,13 +505,15 @@ function drawPoses() {
 }
 function labels() {
   document.getElementById('b-head').textContent = 'Tête : ' + KIT.bodies[state.head].name;
+  document.getElementById('b-back').textContent = 'Dos : ' + (state.back || 'lisse');
   document.getElementById('b-feet').textContent = 'Pieds : ' + FEET_NAME[state.feet];
 }
 document.getElementById('b-head').onclick = function () { state.head = (state.head + 1) % KIT.bodies.length; labels(); drawPoses(); };
+document.getElementById('b-back').onclick = function () { state.back = BACKS[(BACKS.indexOf(state.back) + 1) % BACKS.length]; labels(); drawPoses(); };
 document.getElementById('b-feet').onclick = function () { state.feet = FEET[(FEET.indexOf(state.feet) + 1) % FEET.length]; labels(); };
 
 var live;
-Promise.all(KIT.bodies.concat(KIT.surf ? [KIT.surf] : [], KIT.up ? [KIT.up] : [], KIT.vol ? [KIT.vol] : [], KIT.prop ? [KIT.prop] : [], KIT.legs, Object.keys(KIT.shod || {}).map(function (k) { return KIT.shod[k]; }), Object.keys(KIT.acc).map(function (k) { return KIT.acc[k]; })).map(load)).then(function () {
+Promise.all(KIT.bodies.concat(KIT.surf ? [KIT.surf] : [], KIT.up ? [KIT.up] : [], KIT.vol ? [KIT.vol] : [], KIT.prop ? [KIT.prop] : [], KIT.legs, Object.keys(KIT.shod || {}).map(function (k) { return KIT.shod[k]; }), Object.keys(KIT.acc).map(function (k) { return KIT.acc[k]; }), Object.keys(KIT.backs || {}).map(function (k) { return KIT.backs[k]; }), Object.keys(KIT.tips || {}).map(function (k) { return KIT.tips[k]; })).map(load)).then(function () {
   labels(); drawPoses(); live = fit(document.getElementById('live'), 16 / 9);
   window.addEventListener('resize', function () { drawPoses(); live = fit(document.getElementById('live'), 16 / 9); });
   var dist = 0, lastT = 0;

@@ -1,4 +1,4 @@
-# Dino-Mix — l'atelier des personnages
+# Dinomino (ex-Dino-Mix) — l'atelier des personnages
 
 Tout ce qu'il faut pour refaire, modifier et animer les bébés dinos de Dino-Mix. Le pourquoi (game
 design, règle de jeu, choix validés) est dans [`../docs/specs/2026-10-09-dino-mix.md`](../docs/specs/2026-10-09-dino-mix.md).
@@ -15,12 +15,16 @@ design, règle de jeu, choix validés) est dans [`../docs/specs/2026-10-09-dino-
 | `dino-mix-demo.html` | Dernière page construite (autonome, s'ouvre sur téléphone). |
 | `marche16.mjs` | Contrôle : 16 images du cycle de marche, la 16e doit rejoindre la 1re. |
 | `oignon.mjs` | Contrôle : pelure d'oignon (32 images superposées + trajectoire de chaque pied). |
+| `combos.mjs` | Contrôle : planche tête × dos × pieds, 6 images d'un cycle par combinaison. |
 
 ## Les pièces
 
 | Pièce | Fichier | Source | Rôle |
 |---|---|---|---|
-| Corps sans pattes, 6 têtes | `corps-r1c1..6` | `sans-pattes.webp` | Tricératops, Parasaurolophus, Spinosaure, Diplodocus, Ankylosaure, Raptor à plumes. Ventre rond FERMÉ. |
+| Corps sans pattes, 6 têtes | `corps-r1c1..6` | `sans-pattes.webp` | Tricératops, Parasaurolophus, Spinosaure, Diplodocus, Ankylosaure, Raptor à plumes. Ventre rond FERMÉ, dos lisse. |
+| Carnotaure, Stégosaure | `corps-carno`, `corps-stego` | `carnotaure.webp`, `stegosaure.webp` | Même gabarit, dos lisse. Mis à l'échelle sur l'œil au build. |
+| Pièces de dos | `dos-voile`, `dos-plaques`, `dos-armure`, `dos-plumes`, `dos-bosses` | `ornements-dos.webp`, `ornement-armure/plumes/bosses.webp` (référence d'échelle : `corps-voile-plaques.webp`) | Posées DERRIÈRE le dos de n'importe quelle tête (D-034). Réglages (largeur, part cachée) : `BACKS` dans `build.py`. |
+| Bouts de queue | `queue-massue`, `queue-pointes` | `bouts-de-queue.webp` | Vont avec l'armure et les plaques, tournent avec la queue. |
 | Corps surfeur | `surf-r1c1` | `corps-surfeur.webp` | Bras écartés, pour le skate. |
 | Corps bras levés | `up-r1c1` | `corps-bras-leves.webp` | Tient le manche du parapluie-hélice. |
 | Corps de vol | `vol-r1c1` | `corps-vol.webp` | Pose de super-héros (bottes-fusées, météorite, nuages). |
@@ -30,14 +34,14 @@ design, règle de jeu, choix validés) est dans [`../docs/specs/2026-10-09-dino-
 | Hélice, parapluie | `prop-r1c1`, `parapluie-r1c1` | `helice-pales.webp`, `parapluie-ferme.webp` | Parapluie-canne qui devient hélice. |
 | Objets | `acc-*` | `accessoires-seuls`, `oeuf-pieces`, `montures` | Skate, coquille (+ bord avant, roue), météorite, nuage, cendre. |
 
-Pour l'instant seul le Tricératops a ses corps surfeur, bras levés et vol : pour une autre tête, il faut
-les faire dessiner (même prompt, même projet ChatGPT).
+Les corps surfeur, bras levés et vol sont ceux du Tricératops : une autre tête se pose par-dessus (secteur de la
+tête), la pièce de dos aussi. Ils gardent donc les bras du Tricératops.
 
 ## Refaire la page
 
 ```
 python -I studio/minijeux/dino-mix/build.py            # Tricératops
-python -I studio/minijeux/dino-mix/build.py 4          # Ankylosaure (index 0-5)
+python -I studio/minijeux/dino-mix/build.py 4          # ouvre sur l'Ankylosaure (ordre de BODIES dans build.py)
 node studio/minijeux/dino-mix/marche16.mjs <sortie.png> file:///<chemin>/dino-mix-demo.html
 node studio/minijeux/dino-mix/oignon.mjs   <sortie.png> file:///<chemin>/dino-mix-demo.html
 ```
@@ -62,7 +66,11 @@ Une nouvelle planche se découpe avec : `python -I studio/minijeux/dino-mix/deco
    pouvoir se lit au sol : nuages qui tournent autour des pieds, sol de gravier volcanique et pieds
    noircis, parapluie tenu comme une canne. Au départ, l'objet naît de ce signe (les nuages se
    réunissent, le parapluie monte et s'ouvre en hélice), en MOUVEMENT, jamais en simple fondu.
-7. **Vérifier toutes les images**, pas trois : vue « Toutes les poses » de la page, `marche16`,
+7. **Une tête, un dos, des pieds : trois pièces indépendantes.** Toutes les têtes partagent le même gabarit de
+   ventre et le même visage ; la pièce de dos se cale sur la ligne du dos du Stégosaure (sans collerette qui la
+   soulève) et passe derrière la queue et le corps. Un ornement dessiné sur un corps complet se coupe entre
+   tête et corps quand on échange : il doit être une pièce à part.
+8. **Vérifier toutes les images**, pas trois : vue « Toutes les poses » de la page, `marche16`,
    `oignon`, et une capture en gros plan du dos.
 
 ## ChatGPT

@@ -222,3 +222,7 @@ mesure pas — il faut les deux, solidaires. Parent : la regle projet « ouvrir 
 ### L-156 – Un prototype n'existe que s'il se reconstruit depuis le dépôt
 **Constat** : 2026-10-25, au moment de clore la session Dino-Mix, l'inventaire montre que les pièces découpées dont dépendait le prototype ne vivaient que dans le dossier temporaire de session (scratchpad), et que 86 Mo d'essais (183 fichiers non suivis) traînaient dans `site/` et l'inbox. Fermer le chat aurait perdu le seul chemin pour refaire la page.
 **Règle** : tout ce qu'un outil lit vit dans le dépôt, à côté de lui (ici `studio/minijeux/dino-mix/` : sources, pieces, build, gabarit, contrôles), et on le prouve en reconstruisant la page à partir du dépôt seul. Les essais intermédiaires ne s'entassent pas dans `site/` (dossier déployé) : une page de test vit dans l'atelier et part à la fin du chantier. Un outil ne réécrit jamais ses entrées (le nettoyage se fait en mémoire).
+
+### L-157 – Donner du caractère à une tête de dino : par la forme, jamais par les yeux
+**Constat** : 2026-10-27, PY trouve le Carnotaure « trop mignon et rond » et demande du charisme. Le prompt « confiant, petit dur » rend un sourcil lourd et une paupière mi-close : PY répond « il ne peut pas avoir un air démoniaque, il garde la même tête, yeux et compagnie, que les autres ».
+**Règle** : dans Dinomino le visage (œil, reflet, joue, sourire) est commun à tous ; le prompt le demande explicitement (« EXACTLY the same face as sheet 1 ») et ne fait varier que la forme du crâne, de la mâchoire et des ornements (D-034).

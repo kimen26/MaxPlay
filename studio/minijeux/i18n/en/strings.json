@@ -1053,46 +1053,6 @@
    "regle-mj-39": "Place the blocks to fill whole lines!. I look at the 3 blocks at the bottom . Each block has its own shape: small square, long bar, L-shape…. I drag a block onto the grid with my finger . A green square shows I can place it there, a red square means it won't fit.. I let go to place the block . If I fill a WHOLE row or column, it bursts into sparkles and I get more room!. The more lines I clear, the more stars I earn . New blocks show up every time. 5 lines equals one star, 12 equals two stars, 25 equals three stars!. Answer right on the first try for every question to win the champion star!"
   }
  },
- "mj-40": {
-  "titre": "Dino Tangram",
-  "regle": {
-   "texte": "Place the 7 pieces onto the dino's silhouette!",
-   "etapes": [
-    {
-     "t": "I look at the silhouette 👀",
-     "d": "A mystery shape waits up top: an egg, a scale, a long dino neck…"
-    },
-    {
-     "t": "I drag a piece onto it 👆",
-     "d": "I pick a colored piece at the bottom and drag it onto the right spot on the silhouette."
-    },
-    {
-     "t": "I tap a piece to turn it 🔄",
-     "d": "If it doesn't fit right, a little tap spins it until it clicks into place!"
-    },
-    {
-     "t": "The more stars I earn, the tougher it gets 💪",
-     "d": "The ★★ and ★★★ levels have harder shapes to rebuild."
-    }
-   ],
-   "etoiles": ""
-  },
-  "ui": {
-   "instruction": "Drag the pieces onto the silhouette. Tap a piece to rotate it.",
-   "figOeufDeDino": "Dino Egg",
-   "figEcailleTriceratops": "Triceratops Scale",
-   "figCouSauropode": "Sauropod Neck",
-   "figOeufMystere": "Mystery Egg",
-   "figEcailleBrillante": "Shiny Scale",
-   "figLongCouCache": "Hidden Long Neck",
-   "figEcailleTournee": "Turned Scale",
-   "figCouTourne": "Turned Neck",
-   "figOeufTourne": "Turned Egg"
-  },
-  "voix": {
-   "regle-mj-40": "Place the 7 pieces onto the dino's silhouette!. I look at the silhouette . A mystery shape waits up top: an egg, a scale, a long dino neck…. I drag a piece onto it . I pick a colored piece at the bottom and drag it onto the right spot on the silhouette.. I tap a piece to turn it . If it doesn't fit right, a little tap spins it until it clicks into place!. The more stars I earn, the tougher it gets . The ★★ and ★★★ levels have harder shapes to rebuild.. Answer right on the first try for every question to win the champion star!"
-  }
- },
  "mj-42": {
   "titre": "Shisima!",
   "regle": {

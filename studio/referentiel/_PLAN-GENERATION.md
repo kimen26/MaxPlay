@@ -7,16 +7,16 @@
 | | |
 |---|---|
 | Appels prévus | **460** |
-| — fichiers à créer | 25 |
-| — fichiers à remplacer | 435 |
-| Coût estimé | **32 996 caractères** |
+| — fichiers à créer | 26 |
+| — fichiers à remplacer | 434 |
+| Coût estimé | **32 418 caractères** |
 | Textes déjà vérifiés | 157 / 460 |
 
 ## Par langue
 
 | Langue | Appels | Caractères |
 |---|---|---|
-| fr | 370 | 31 319 |
+| fr | 370 | 30 741 |
 | 🇧🇷 brésilien | 15 | 291 |
 | 🇬🇧 anglais | 15 | 312 |
 | 🇯🇵 japonais | 15 | 228 |
@@ -36,7 +36,7 @@ _Les voice_id sont résolus depuis `voice-map.json` au moment du plan et ne sont
 
 ## ⚠️ À trancher avant de lancer
 
-- **278 fichiers seraient REMPLACÉS par un texte non vérifié.** Ces textes sont
+- **277 fichiers seraient REMPLACÉS par un texte non vérifié.** Ces textes sont
   reconstruits depuis un slug ou un texte de repli : ils sont plausibles, pas prouvés. Les
   remplacer changerait ce que l'enfant entend, peut-être en mieux, peut-être pas. Décider
   explicitement, ou écouter les fichiers actuels avant.
@@ -112,8 +112,8 @@ _… et 400 autres — détail complet dans `plan-generation.json`._
 
 ## Hors de ce plan
 
-- aucune production déclarée — 122
-- bruitage — moteur text_to_sound_effects, plan séparé — 77
+- aucune production déclarée — 127
+- bruitage — moteur text_to_sound_effects, plan séparé — 91
 
 ---
 

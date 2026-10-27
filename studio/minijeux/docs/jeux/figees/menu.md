@@ -41,7 +41,7 @@ Les **IDs mj-XX ne changent JAMAIS**. Seul le champ `category` de regroupement c
 > 🧹 **Purge refs jeux morts 2026-09-12** : ids retirés des listes ci-dessous car absents de `site/js/catalog.js` (source de vérité). Les 5 tiroirs et leur ordre restent figés.
 
 ### 🦕 Les dinos
-- mj-24, mj-31, mj-40
+- mj-24, mj-31
 - Encyclopédie dino (dev-dinos.html)
 - Status : live uniquement
 

@@ -1053,46 +1053,6 @@
    "regle-mj-39": "¡Coloca los bloques para llenar líneas enteras!. Miro los 3 bloques de abajo . Cada bloque tiene su forma: cuadrado pequeño, barra larga, forma en L…. Deslizo un bloque con el dedo sobre la cuadrícula . Una casilla verde muestra que puedo colocarlo ahí, una casilla roja significa que no cabe.. Suelto el bloque para colocarlo . Si lleno una línea o una columna ENTERA, ¡explota en chispas y tengo más espacio!. Cuantas más líneas borro, más estrellas gano . Llegan nuevos bloques cada vez. ¡5 líneas = ★, 12 = ★★, 25 = ★★★!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
   }
  },
- "mj-40": {
-  "titre": "Tangram de dinosaurios",
-  "regle": {
-   "texte": "¡Coloca las 7 piezas sobre la silueta del dinosaurio!",
-   "etapes": [
-    {
-     "t": "Miro la silueta 👀",
-     "d": "Una forma misteriosa espera arriba: un huevo, una escama, un cuello largo de dinosaurio…"
-    },
-    {
-     "t": "Deslizo una pieza sobre ella 👆",
-     "d": "Cojo una pieza de color de abajo y la deslizo hasta la casilla correcta de la silueta."
-    },
-    {
-     "t": "Toco una pieza para girarla 🔄",
-     "d": "Si no encaja bien, un pequeño toque la hace girar hasta que encaja."
-    },
-    {
-     "t": "Cuantas más estrellas gano, más complicado es 💪",
-     "d": "Los niveles ★★ y ★★★ tienen figuras más difíciles de reconstruir."
-    }
-   ],
-   "etoiles": ""
-  },
-  "ui": {
-   "instruction": "Desliza las piezas sobre la silueta. Toca una pieza para girarla.",
-   "figOeufDeDino": "Huevo de dinosaurio",
-   "figEcailleTriceratops": "Escama de Triceratops",
-   "figCouSauropode": "Cuello de saurópodo",
-   "figOeufMystere": "Huevo misterioso",
-   "figEcailleBrillante": "Escama brillante",
-   "figLongCouCache": "Cuello largo escondido",
-   "figEcailleTournee": "Escama girada",
-   "figCouTourne": "Cuello girado",
-   "figOeufTourne": "Huevo girado"
-  },
-  "voix": {
-   "regle-mj-40": "¡Coloca las 7 piezas sobre la silueta del dinosaurio!. Miro la silueta . Una forma misteriosa espera arriba: un huevo, una escama, un cuello largo de dinosaurio…. Deslizo una pieza sobre ella . Cojo una pieza de color de abajo y la deslizo hasta la casilla correcta de la silueta.. Toco una pieza para girarla . Si no encaja bien, un pequeño toque la hace girar hasta que encaja.. Cuantas más estrellas gano, más complicado es . Los niveles ★★ y ★★★ tienen figuras más difíciles de reconstruir.. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
-  }
- },
  "mj-42": {
   "titre": "¡Shisima!",
   "regle": {

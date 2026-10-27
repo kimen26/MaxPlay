@@ -9,7 +9,7 @@
 
 **DoD** : les 3 crashs corrigés + specs étendues jusqu'à la fin de partie ; l'EN ne montre plus de français à l'écran (victoire, menu, pages, 7 titres).
 
-- [?] **REC-C2** — mj-40 tangram : figure 2 non chargée en recette transverse ; NON reproduit le 2026-09-25 avec un vrai drag Playwright (figures 1 et 2 jouées). À rejouer sur le P30 Pro si Papa Yann le revoit.
+- [x] **REC-C2** — caduc : mj-40 tangram supprimé le 2026-10-27 (PY « ne marche pas »).
 - [!] **REC-H4** — mj-31 : titre corrigé (retour à la ligne, `mp-theme.css`) ; reste `audio/dinos/en/periodes/` inexistant (13 × 404) — bloqué crédits ElevenLabs.
 - [!] **REC-M2** — reste mj-55 MP3 consigne FR manquant — bloqué crédits ElevenLabs (mj-18, mj-39 et `mur-nid.spec` corrigés le 2026-09-25).
 
@@ -28,6 +28,7 @@
 - [ ] Recette Papa Yann sur P30 Pro de l'accueil en v8 (HO-MJ-22 livré 2026-09-25 : 15 cases + 2 tiroirs posés sur les planches du kit, globe qui fait un tour au tap puis ouvre l'encyclo).
 - [ ] CI : `npm test` lance maintenant `run-full.mjs` (36 jeux + 12 specs autonomes, 2026-09-25) mais `.github/workflows/deploy.yml` ne lance que `npm run check`. Ajouter `npm test` à la CI si le temps d'exécution le permet.
 - [ ] Après recette : brancher la chaîne 2★ (`repaireState`) sur les casiers ou l'abandonner explicitement ; décider si les objets tournent au hasard à chaque chargement (v1) ou restent fixes
+- [?] **EP-156** (demande PY 2026-10-27 : « on peut pas avoir du random total », « le dessin doit avoir une place directe et unique ») — armoire par catégories : une case = un thème fixe, 10 catégories pour les 36 jeux + Histoires + Surprise (seul hasard), Dessin ouvre le coloriage direct, 5 objets GPT à créer. Proposition étape 1 : `docs/specs/2026-10-27-armoire-categories.md`, en attente de validation PY (classement + geste au toucher). 2026-10-27 : tangram supprimé ; pions (mj-37/38/42) à supprimer si PY confirme ; idée PY d'une case **Musique** qui joue les musiques créées sur ElevenLabs (l'API ne rend pas les musiques déjà faites : export manuel ou navigateur connecté).
 - [ ] Objet non placé : `obj-dino.webp` (mascotte) — à réserver pour l'écran dino (étagère encyclo, voir `studio/dino/memory/TODO.md`). `obj-livres-jeux.webp` est posé depuis HO-MJ-19 (tiroir droit).
 - [x] Portes et lumière : réglés par HO-MJ-19 (portes en rotation 3D CSS à tous les écrans, halo en `radial-gradient`).
 - [x] HO-MJ-14 — Armoire v2 « trois zones » (livrée 2026-09-15, recette PY à faire sur le P30 Pro) sur le modèle de `inbox/decoupe/…00_25_01.png` (décision PY 2026-09-15 après la v1) : vitrine haute à 2 étagères (Dinos, Monde, Œufs, Album) avec portes ouvertes, casiers de jeux au milieu, compartiment bas à portes avec 2 tiroirs décoratifs. Marges de pièce 3-5 % (mur + tapis CSS), safe-area, avatar derrière le fronton mordu à 15 %, juste le prénom en haut. « L'important c'est le visuel de l'armoire : propre, modulable, modulaire, léger. »

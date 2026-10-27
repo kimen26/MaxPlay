@@ -160,7 +160,7 @@
       { obj: 'obj-peluche-stego', label: 'Copain', pick: fromPick(byCategory('couleurs')) },
       { obj: 'obj-reveil', label: 'Vite !', pick: fromPick(byCategory('casse')) },
       { obj: 'obj-radio', label: 'Radio', url: 'lecture.html' },
-      { obj: 'obj-puzzle', label: 'Puzzle', url: 'mj-40.html' },
+      { obj: 'obj-puzzle', label: 'Puzzle', url: 'mj-39.html' },
       { obj: 'obj-livre-ouvert', label: 'Lis', url: 'mj-53.html' }
     ].map(function (slot) {
       if (slot.url) return slot;

@@ -1053,46 +1053,6 @@
    "regle-mj-39": "Coloca os blocos para encher linhas inteiras!. Eu olho os 3 blocos embaixo . Cada bloco tem sua forma: quadradinho, barra comprida, forma em L…. Eu arrasto um bloco com o dedo na grade . Uma casa verde mostra que eu posso colocar ali, uma casa vermelha diz que não cabe.. Eu solto o bloco para colocar . Se eu encher uma linha ou coluna INTEIRA, ela explode em faíscas e eu ganho mais espaço!. Quanto mais linhas eu apago, mais estrelas eu ganho . Blocos novos chegam sempre. 5 linhas = ★, 12 = ★★, 25 = ★★★!. Responda certo na primeira tentativa em todas as perguntas para ganhar a estrela de campeão!"
   }
  },
- "mj-40": {
-  "titre": "Tangram dos dinos",
-  "regle": {
-   "texte": "Coloca as 7 peças na silhueta do dino!",
-   "etapes": [
-    {
-     "t": "Eu olho a silhueta 👀",
-     "d": "Uma forma mistério espera em cima: um ovo, uma escama, um pescoço comprido de dino…"
-    },
-    {
-     "t": "Eu arrasto uma peça em cima 👆",
-     "d": "Eu pego uma peça colorida embaixo e arrasto até a casa certa da silhueta."
-    },
-    {
-     "t": "Eu toco numa peça para girar 🔄",
-     "d": "Se ela não encaixar direito, um toquinho faz ela girar até encaixar!"
-    },
-    {
-     "t": "Quanto mais estrelas eu tenho, mais difícil fica 💪",
-     "d": "Os níveis ★★ e ★★★ têm figuras mais difíceis de montar."
-    }
-   ],
-   "etoiles": ""
-  },
-  "ui": {
-   "instruction": "Arrasta as peças na silhueta. Toca numa peça para girar.",
-   "figOeufDeDino": "Ovo de dino",
-   "figEcailleTriceratops": "Escama de Tricerátops",
-   "figCouSauropode": "Pescoço de saurópode",
-   "figOeufMystere": "Ovo mistério",
-   "figEcailleBrillante": "Escama brilhante",
-   "figLongCouCache": "Pescoço comprido escondido",
-   "figEcailleTournee": "Escama girada",
-   "figCouTourne": "Pescoço girado",
-   "figOeufTourne": "Ovo girado"
-  },
-  "voix": {
-   "regle-mj-40": "Coloca as 7 peças na silhueta do dino!. Eu olho a silhueta . Uma forma mistério espera em cima: um ovo, uma escama, um pescoço comprido de dino…. Eu arrasto uma peça em cima . Eu pego uma peça colorida embaixo e arrasto até a casa certa da silhueta.. Eu toco numa peça para girar . Se ela não encaixar direito, um toquinho faz ela girar até encaixar!. Quanto mais estrelas eu tenho, mais difícil fica . Os níveis ★★ e ★★★ têm figuras mais difíceis de montar.. Responda certo na primeira tentativa em todas as perguntas para ganhar a estrela de campeão!"
-  }
- },
  "mj-42": {
   "titre": "Shisima!",
   "regle": {

@@ -49,7 +49,8 @@
 //  + date de chaque retrait) vit dans studio/minijeux/pmo/backlog.md, pas ici.
 //  Jeux supprimés ce jour : mj-01, mj-04, mj-05, mj-08, mj-11, mj-12, mj-13b,
 //  mj-16, mj-17, mj-23, mj-25, mj-26, mj-27, mj-29, mj-33, mj-36, mj-41, mj-43,
-//  mj-44, mj-45, mj-58, mj-gold-a, mj-gold-b. Leçon 2026-07-19 maintenue : la
+//  mj-44, mj-45, mj-58, mj-gold-a, mj-gold-b. Supprimé le 2026-10-27 (PY,
+//  « ne marche pas ») : mj-40 tangram. Leçon 2026-07-19 maintenue : la
 //  conformité technique n'est PAS un argument de republication — ne jamais
 //  ressusciter un jeu sans décision PY explicite et datée.
 //
@@ -85,7 +86,6 @@ window.MAXPLAY_CATALOG = [
   { id:'mj-28', category:'dinos', titre:'La lampe du dino', emoji:'🔦', desc:'Fouille le noir, devine le dino caché !', url:'mj-28.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:'tts', status:'live', murOrder:2, zone:'dino', libelleMur:'La lampe magique', vignette:'<div class="vig vig-lampe"><img class="vl-dino" src="img/dinos/ombres/Gallimimus_ombre.png" alt=""></div>' },
   { id:'mj-30', category:'dinos', titre:'Range-les par taille', emoji:'📏', desc:'Du plus petit au plus grand, en vrais mètres !', url:'mj-30.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:'tts', status:'live', murOrder:4, zone:'dino', libelleMur:'Du plus petit au plus grand', vignette:'<div class="vig vig-tailles"><img src="img/dinos/ombres/Velociraptor_ombre.png" alt=""><img src="img/dinos/ombres/Triceratops_ombre.png" alt=""><img src="img/dinos/ombres/Diplodocus_ombre.png" alt=""></div>' },
   { id:'mj-31', category:'dinos', titre:'Le voyage du temps', emoji:'🌋', desc:'Trias, Jurassique, Crétacé… et la météorite !', url:'mj-31.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:'tts', status:'live', murOrder:3, zone:'dino', libelleMur:'La machine à voyager dans le temps', vignette:'<div class="vig vig-temps"><span class="v-aiguille"></span><span class="v-aiguille a2"></span></div>' },
-  { id:'mj-40', category:'dinos', titre:'Tangram des dinos', emoji:'🔺', desc:'7 pièces pour former la silhouette !',     url:'mj-40.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:null,  status:'live', refonte:true, murOrder:6, zone:'dino', vignette:'<div class="vig vig-tangram"><i class="t1"></i><i class="t2"></i><i class="t3"></i></div>' },
   { id:'mj-32', category:'dinos', titre:'L\'atelier coloriage', emoji:'🖍️', desc:'Colorie les 60 dinos, garde tes œuvres !', url:'mj-32.html', type:'html', orientation:'any', access:'free', maxStars:0, unlock:null, tag:'tts', status:'live', murOrder:5, zone:'dino', libre:true, libelleMur:'L\'atelier coloriage', vignette:'<div class="vig"><img class="v-img" src="img/dinos/paleoart/Triceratops_coloriage.webp" alt=""></div>' },
 
   // ─── 🎨 Les couleurs ───

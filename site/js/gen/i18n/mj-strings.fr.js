@@ -1055,46 +1055,6 @@ window.MJ_STRINGS = {
    "regle-mj-39": "Pose les blocs pour remplir des lignes entières !. Je regarde les 3 blocs en bas . Chaque bloc a sa forme : petit carré, longue barre, forme en L…. Je glisse un bloc avec mon doigt sur la grille . Une case verte montre que je peux le poser là, une case rouge veut dire que ça ne rentre pas.. Je lâche le bloc pour le poser . Si je remplis une ligne ou une colonne ENTIÈRE, elle explose en étincelles et j’ai plus de place !. Plus j’efface de lignes, plus j’ai d’étoiles . De nouveaux blocs arrivent à chaque fois. 5 lignes = ★, 12 = ★★, 25 = ★★★ !. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
   }
  },
- "mj-40": {
-  "titre": "Tangram des dinos",
-  "regle": {
-   "texte": "Place les 7 pièces sur la silhouette du dino !",
-   "etapes": [
-    {
-     "t": "Je regarde la silhouette 👀",
-     "d": "Une forme mystère attend en haut : un œuf, une écaille, un long cou de dino…"
-    },
-    {
-     "t": "Je glisse une pièce dessus 👆",
-     "d": "Je prends une pièce colorée en bas et je la fais glisser sur la bonne case de la silhouette."
-    },
-    {
-     "t": "Je tape une pièce pour la tourner 🔄",
-     "d": "Si elle ne rentre pas bien, un petit tap la fait pivoter jusqu’à ce qu’elle s’accroche !"
-    },
-    {
-     "t": "Plus j’ai d’étoiles, plus c’est costaud 💪",
-     "d": "Les paliers ★★ et ★★★ ont des figures plus difficiles à reconstituer."
-    }
-   ],
-   "etoiles": ""
-  },
-  "ui": {
-   "instruction": "Glisse les pièces sur la silhouette. Tape une pièce pour la tourner.",
-   "figOeufDeDino": "Œuf de dino",
-   "figEcailleTriceratops": "Écaille de Tricératops",
-   "figCouSauropode": "Cou de sauropode",
-   "figOeufMystere": "Œuf mystère",
-   "figEcailleBrillante": "Écaille brillante",
-   "figLongCouCache": "Long cou caché",
-   "figEcailleTournee": "Écaille tournée",
-   "figCouTourne": "Cou tourné",
-   "figOeufTourne": "Œuf tourné"
-  },
-  "voix": {
-   "regle-mj-40": "Place les 7 pièces sur la silhouette du dino !. Je regarde la silhouette . Une forme mystère attend en haut : un œuf, une écaille, un long cou de dino…. Je glisse une pièce dessus . Je prends une pièce colorée en bas et je la fais glisser sur la bonne case de la silhouette.. Je tape une pièce pour la tourner . Si elle ne rentre pas bien, un petit tap la fait pivoter jusqu’à ce qu’elle s’accroche !. Plus j’ai d’étoiles, plus c’est costaud . Les paliers ★★ et ★★★ ont des figures plus difficiles à reconstituer.. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion !"
-  }
- },
  "mj-42": {
   "titre": "Shisima !",
   "regle": {

@@ -103,9 +103,14 @@ try {
   diffOut = '';
 }
 const statusOut = sh('git status --porcelain -- site/mj-*.html');
-const touched = [...new Set([...extractMjIds(diffOut), ...extractMjIds(statusOut)])].sort();
+const candidats = [...new Set([...extractMjIds(diffOut), ...extractMjIds(statusOut)])].sort();
+// Un jeu SUPPRIMÉ apparaît aussi dans le diff : il n'y a plus rien à rejouer.
+// Son absence du catalogue est déjà garantie par check-mj-coherence (étape 1).
+const supprimes = candidats.filter((id) => !existsSync(resolve(ROOT, 'site', `${id}.html`)));
+const touched = candidats.filter((id) => !supprimes.includes(id));
 
 console.log(`${DIM}── gate : jeux touchés = ${touched.length ? touched.join(', ') : '(aucun)'} ──${RST}`);
+if (supprimes.length) console.log(`${DIM}── gate : jeux supprimés (non rejoués) = ${supprimes.join(', ')} ──${RST}`);
 
 let allGreen = true;
 const jeuxVerts = [];

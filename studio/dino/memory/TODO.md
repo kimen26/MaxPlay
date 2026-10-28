@@ -55,6 +55,7 @@
 - **EP-D12** [ ] — Nouvelle section Voyage après la météorite (Cénozoïque/mégafaune).
 
 ## Questions Papa Yann non tranchées (2026-09-03)
+- [?] **Accès à l'encyclopédie depuis l'armoire** (2026-10-28, EP-156 pôle JEU) : la nouvelle case « Dino » fait tourner les 4 mini-jeux dino ; l'encyclopédie reste sur le livre « Dinos » de la niche centrale. PY a écrit « dino encyclopédie » : à confirmer si la case Dino doit plutôt ouvrir l'encyclopédie.
 
 - **Mésozoïque en macro-info** — proposition 3 Ères en en-têtes de l'onglet Époques ; touche une ligne FIGÉE, tranché par PY.
 - **Challenge taxo** — Pachycéphalosaure chez Cératopsiens (vrai groupe Marginocéphales) ; Gallimimus/Oviraptor chez Dromæosaures (faux, Ornithomimidé/Oviraptoridé). Décision PY requise.

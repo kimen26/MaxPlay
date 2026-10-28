@@ -40,10 +40,10 @@ est dans une seule catégorie.
 | 6 | **Puzzle** | placer ou faire glisser des pièces | mj-34 dépôt bloqué · mj-39 blocs magiques (mj-40 tangram supprimé le 2026-10-27, PY) | `obj-puzzle` (existe) |
 | 7 | **Grilles** | remplir une grille par une règle | mj-14 cases mystères · mj-54 sudoku · mj-55 équilibre · mj-56 enclos · mj-59 territoires | **à créer** (petite grille en bois avec pions dino) |
 | 8 | **Cherche** | observer, repérer | mj-13a premier bus · mj-15 l'intrus · mj-19 trouve le bus | **à créer** (loupe) |
-| 9 | ~~**Pions**~~ | jeux de plateau | mj-37 croque-échecs · mj-38 saute-mouton · mj-42 shisima | PY 2026-10-27 : « aucun ne marche je crois, supprime ». Tests rejoués le même jour : mj-38 et mj-42 verts, mj-37 rouge (fanfare par-dessus un son). Suppression en attente de confirmation. La case est remplacée par **Musique**. |
+| 9 | ~~**Pions**~~ | jeux de plateau | mj-37 croque-échecs · mj-38 saute-mouton · mj-42 shisima | Supprimés le 2026-10-28 (PY : « les pions tu supprimes », confirmé après que les tests ont montré mj-38 et mj-42 verts). La case devient **Musique**. |
 | 10 | **Pays** | carte, drapeaux, langues | mj-20 compte en 8 langues · mj-22 trouve le pays | `obj-drapeaux` (existe) |
 
-Total au 2026-10-27 : 1 + 4 + 6 + 5 + 4 + 2 + 5 + 3 + 3 + 2 = **35** (tangram supprimé) ; **32** si les 3 jeux de pions partent.
+Total au 2026-10-28 : 1 + 4 + 6 + 5 + 4 + 2 + 5 + 3 + 2 = **32** (tangram et pions supprimés).
 
 Les 2 dernières cases :
 

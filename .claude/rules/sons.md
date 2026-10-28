@@ -27,7 +27,7 @@ paths:
 
 Il contient, et c'est le seul endroit où ils vivent ensemble :
 
-- la **carte des dossiers** (`ui/`, `fx/`, `voix/{f,h,wex,lieux,phrases}/`, `nombres/`, `phonemes/`, `pieces/`, `audio/dinos/…`) avec le rôle, la voix et la méthode de génération de chacun ;
+- la **carte des dossiers** (`ui/`, `fx/`, `voix/{f,h,wex,lieux,phrases}/`, `nombres/`, `phonemes/`, `audio/dinos/…`) avec le rôle, la voix et la méthode de génération de chacun ;
 - l'**API** à utiliser — `SoundPool.play / voice / phrase / voiceLine`, `playEndSound`, `SayNombres`, `MJKit.sayPhoneme`, `playDinoNom` — et **jamais** un `new Audio()` à la main pour un son qui a déjà son API ;
 - le **process de génération en 8 étapes** (budget, prompt EN pour les SFX / texte FR pour les voix, tags v3, résolution de la voix par rôle, **padding 250 ms obligatoire**, nommage par slug stable, branchement avec repli, test) ;
 - ce qui est **déjà branché** et ce qui ne l'est pas.

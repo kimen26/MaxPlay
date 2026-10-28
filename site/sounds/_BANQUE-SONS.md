@@ -57,7 +57,6 @@
 | Périodes | 5/5 | `playPeriodeVoice` / `PERIODE_MP3` | mj-31, dev-dinos.html | aucun |
 | Familles de dinos (nom parlé) | 0 | — | — | à générer quand un jeu en a besoin |
 | Régime alimentaire | 0 | — | — | à générer quand un jeu en a besoin |
-| Pièces d'échecs (intro) | 6/6 | appel direct fichier (mj-37, pas d'API partagée) | mj-37 | aucun |
 | Réactions positives voix H/F/Wex | 16×3=48/48 | `SoundPool.voice('positif')` | tous mj-XX | aucun |
 | Réactions douces voix H/F/Wex | 6×3=18/18 | `SoundPool.voice('doux')` | tous mj-XX | aucun |
 | Réactions i18n invitées (6 langues×5 mots×3 voix) | 90/90 | `_doublonInvite` (interne à victory-sounds.js) | tous mj-XX (~1 fois sur 2 après une réaction FR) | aucun |
@@ -86,7 +85,6 @@ d'un drapeau ~1,15 s après la réaction FR, une fois sur deux (`CHANCE_DOUBLON`
 | `site/sounds/voix/{en,es,it,ja,pt-br,zh}/{f,h,wex}/` (90) | réactions i18n invitées, § 1.b | 3 voix × 6 langues | `text_to_speech` |
 | `site/sounds/nombres/` (75) | **Banque C6 V1 (2026-07-29)** : gabarits complets nombres/fête/manque/faut/oeufs — JAMAIS d'assemblage mot-à-mot | narrateur_h | script API (gen-banque.mjs) |
 | `site/sounds/phonemes/` (21) | LE SON de chaque lettre (jamais le nom) | narrateur_h | script API |
-| `site/sounds/pieces/` (6) | voicelines intro pièces échecs mj-37 | narrateur_h | `text_to_speech` |
 | `site/audio/dinos/fr/periodes/` (5) | trias, jurassique, cretace, cenozoique, pangee | narrateur_h | `text_to_speech` |
 | `site/audio/dinos/fr/noms/` (70) + `<id>-nom.mp3` (60) | vocal NOM SEUL des dinos — hors périmètre de ce nettoyage (audité par un autre HO) | narrateur_h | `text_to_speech` |
 

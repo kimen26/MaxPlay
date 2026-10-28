@@ -55,7 +55,6 @@ const FAMILLES = [
   { nom: 'Noms de lieux', motif: /^sounds\/voix\/lieux\//, verbatim: null, pole: 'JEU' },
   { nom: 'Nombres', motif: /^sounds\/nombres\//, verbatim: null, pole: 'JEU' },
   { nom: 'Phonèmes', motif: /^sounds\/phonemes\//, verbatim: null, pole: 'JEU' },
-  { nom: 'Pièces d’échecs (mj-37)', motif: /^sounds\/pieces\//, verbatim: null, pole: 'JEU' },
   { nom: 'Identité sonore du hub', motif: /^sounds\/ui\//, verbatim: 'prompt EN', pole: 'JEU' },
   { nom: 'Bruitages', motif: /^sounds\/fx\//, verbatim: 'prompt EN', pole: 'JEU' },
 ];

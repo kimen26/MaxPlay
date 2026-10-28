@@ -940,89 +940,6 @@ window.MJ_STRINGS = {
    "regle-mj-35": "Find the hole that fills the nest EXACTLY RIGHT!. I look at the eggs in the holes . Each hole has dino eggs in it. I can count on my fingers if I want!. I look for THE right hole . Only one hole has JUST enough eggs to land exactly in the nest, not before, not after.. I tap the hole, the eggs hop . They hop one by one toward the nest. If the last one lands exactly inside: \"EXACT!\" . I get it wrong? No big deal, I recount . Nothing is lost, the board resets and I try again. 3 exact hits equals the round is won!. Answer right on the first try for every question to win the champion star!"
   }
  },
- "mj-37": {
-  "titre": "Chess Snack Attack!",
-  "regle": {
-   "texte": "Move your piece to snack up all the treats!",
-   "etapes": [
-    {
-     "t": "I discover a chess piece 🧑‍🎓",
-     "d": "The Bishop slides diagonally, the Rook goes straight, the Knight jumps in an L… each one moves its own way!"
-    },
-    {
-     "t": "I tap my piece, the squares light up ✨",
-     "d": "Every square that lights up is a spot my piece can move to."
-    },
-    {
-     "t": "I tap a lit square to snack 🍎",
-     "d": "If there's a treat on it, my piece snacks it up when it lands. Wrong pick? I try again, nothing is lost."
-    },
-    {
-     "t": "The further I go, the trickier the pieces 💪",
-     "d": "After the Bishop and Rook come the Knight, Queen, King, Pawn… then 2 pieces together!"
-    }
-   ],
-   "etoiles": ""
-  },
-  "ui": {
-   "tierFouTour": "Bishop & Rook",
-   "tierCavalierDame": "Knight & Queen",
-   "tierRoiPionMix": "King, Pawn & Mix",
-   "pieceFou": "The Bishop",
-   "pieceTour": "The Rook",
-   "pieceCavalier": "The Knight",
-   "pieceDame": "The Queen",
-   "pieceRoi": "The King",
-   "piecePion": "The Pawn",
-   "voxFou": "I glide diagonally, zoop!",
-   "voxTour": "I go straight ahead, vroom!",
-   "voxCavalier": "And hop, I jump in an L shape!",
-   "voxDame": "I can go absolutely anywhere!",
-   "voxRoi": "Slowly, one little step at a time.",
-   "voxPion": "I am small but I munch just fine!",
-   "toutCroque": "All munched up!",
-   "gouterRestant": "snack left",
-   "gouterRestants": "snacks left",
-   "bravoToutCroque": "Well done, all munched up!"
-  },
-  "voix": {
-   "regle-mj-37": "Move your piece to snack up all the treats!. I discover a chess piece . The Bishop slides diagonally, the Rook goes straight, the Knight jumps in an L… each one moves its own way!. I tap my piece, the squares light up . Every square that lights up is a spot my piece can move to.. I tap a lit square to snack . If there's a treat on it, my piece snacks it up when it lands. Wrong pick? I try again, nothing is lost.. The further I go, the trickier the pieces . After the Bishop and Rook come the Knight, Queen, King, Pawn… then 2 pieces together!. Answer right on the first try for every question to win the champion star!"
-  }
- },
- "mj-38": {
-  "titre": "Leapfrog!",
-  "regle": {
-   "texte": "Jump over the sleepy pieces to make them disappear!",
-   "etapes": [
-    {
-     "t": "I tap my sheep 😊",
-     "d": "It starts to glow: that's the one I'm about to jump."
-    },
-    {
-     "t": "I look at the squares glowing gold ✨",
-     "d": "They show where my sheep can land by jumping over a sleepy neighbor 💤."
-    },
-    {
-     "t": "I tap the golden square: hop, it jumps! 🐑↷",
-     "d": "The sleepy sheep it jumped over disappears in a poof. I can chain several jumps in a row: combo ✨!"
-    },
-    {
-     "t": "Stuck? I calmly start over 🔄",
-     "d": "The “Restart” button resets the level, without losing anything. All sheep gone = level won!"
-    }
-   ],
-   "etoiles": ""
-  },
-  "ui": {
-   "recommencer": "Restart",
-   "niveauSurTotal": "Level {n} / {total}",
-   "combo": "Combo!",
-   "essaieEncoreRecommencer": "Try again! Tap Restart 🙂"
-  },
-  "voix": {
-   "regle-mj-38": "Jump over the sleepy pieces to make them disappear!. I tap my sheep . It starts to glow: that's the one I'm about to jump.. I look at the squares glowing gold . They show where my sheep can land by jumping over a sleepy neighbor.. I tap the golden square: hop, it jumps! . The sleepy sheep it jumped over disappears in a poof. I can chain several jumps in a row: combo!. Stuck? I calmly start over . The \"Restart\" button resets the level, without losing anything. All sheep gone equals level won!. Answer right on the first try for every question to win the champion star!"
-  }
- },
  "mj-39": {
   "titre": "Magic Blocks",
   "regle": {
@@ -1053,43 +970,6 @@ window.MJ_STRINGS = {
   },
   "voix": {
    "regle-mj-39": "Place the blocks to fill whole lines!. I look at the 3 blocks at the bottom . Each block has its own shape: small square, long bar, L-shape…. I drag a block onto the grid with my finger . A green square shows I can place it there, a red square means it won't fit.. I let go to place the block . If I fill a WHOLE row or column, it bursts into sparkles and I get more room!. The more lines I clear, the more stars I earn . New blocks show up every time. 5 lines equals one star, 12 equals two stars, 25 equals three stars!. Answer right on the first try for every question to win the champion star!"
-  }
- },
- "mj-42": {
-  "titre": "Shisima!",
-  "regle": {
-   "texte": "Line up your 3 pieces by passing through the water point!",
-   "etapes": [
-    {
-     "t": "I look at the board 👀",
-     "d": "There are 8 points all around and 1 water point in the middle. My 3 red pieces are already placed."
-    },
-    {
-     "t": "I tap my piece, then an empty point next to it 👆",
-     "d": "My piece can only move to a free neighboring point, or pass through the water point in the middle."
-    },
-    {
-     "t": "I line up my 3 pieces with the center 🎯",
-     "d": "If my 3 pieces and the water point are in a straight line, I win!"
-    },
-    {
-     "t": "The chameleon plays too, without ever punishing me 🦎",
-     "d": "The more stars I earn, the more the chameleon thinks ahead and blocks my moves. If it wins, we play again right away!"
-    }
-   ],
-   "etoiles": ""
-  },
-  "ui": {
-   "jeuDuKenya": "A game from Kenya 🇰🇪",
-   "aToiDeJouer": "Your turn!",
-   "cameleonReflechit": "The chameleon is thinking...",
-   "bravo": "Well done!",
-   "alignePionsShisima": "You lined up your 3 pieces on the shisima!",
-   "danseCameleon": "Chameleon dance!",
-   "presqueEncoreUne": "So close! One more?"
-  },
-  "voix": {
-   "regle-mj-42": "Line up your 3 pieces by passing through the water point!. I look at the board . There are 8 points all around and 1 water point in the middle. My 3 red pieces are already placed.. I tap my piece, then an empty point next to it . My piece can only move to a free neighboring point, or pass through the water point in the middle.. I line up my 3 pieces with the center . If my 3 pieces and the water point are in a straight line, I win!. The chameleon plays too, without ever punishing me . The more stars I earn, the more the chameleon thinks ahead and blocks my moves. If it wins, we play again right away!. Answer right on the first try for every question to win the champion star!"
   }
  },
  "mj-46": {

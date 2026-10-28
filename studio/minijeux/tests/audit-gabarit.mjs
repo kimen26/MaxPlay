@@ -88,7 +88,7 @@ const LEGACY_FIN_MAISON = new Set([
 // n'en AJOUTE JAMAIS — un jeu neuf naît avec __mjTest exposé.
 const LEGACY_NO_MJTEST = new Set([
   'mj-06', 'mj-13c', 'mj-14', 'mj-15', 'mj-19', 'mj-20', 'mj-21', 'mj-22',
-  'mj-24', 'mj-28', 'mj-30', 'mj-31', 'mj-38', 'mj-46',
+  'mj-24', 'mj-28', 'mj-30', 'mj-31', 'mj-46',
 ]);
 
 // Source de vérité du menu : tout id mj-* présent dans js/catalog.js, SAUF
@@ -348,8 +348,6 @@ function auditOne(file) {
         { re: /class\s*=\s*["'][^"']*\bvictory-overlay\b/, label: '.victory-overlay' },
         { re: /id\s*=\s*["']victoryOverlay["']/, label: '#victoryOverlay' },
         { re: /id\s*=\s*["']victory-overlay["']/, label: '#victory-overlay' },
-        // #victory-zone (mj-37) EXCLU : bannière INTERMÉDIAIRE de fin de
-        // niveau, protégée par figée mj-37.md 🔒 (≠ écran de fin de partie).
         { re: /class\s*=\s*["'][^"']*\bfin-overlay\b/, label: '.fin-overlay' },
         { re: /id\s*=\s*["']finOverlay["']/, label: '#finOverlay' },
         { re: /id\s*=\s*["']win-overlay["']/, label: '#win-overlay' },

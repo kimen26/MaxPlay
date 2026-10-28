@@ -938,89 +938,6 @@
    "regle-mj-35": "Acha o buraco que enche o ninho CERTINHO!. Eu olho os ovos nos buracos . Cada buraco tem ovos de dino dentro. Eu posso contar com os dedos se eu quiser!. Eu procuro O buraco certo . Só um buraco tem ovos JUSTOS para chegar CERTINHO no ninho, nem antes, nem depois.. Eu toco no buraco, os ovos pulam . Eles pulam um por um até o ninho. Se o último cair certinho dentro: « CERTINHO! » . Eu erro? Não tem problema, eu conto de novo . Nada se perde, o tabuleiro se reorganiza e eu tento de novo. 3 CERTINHOS = a partida está ganha!. Responda certo na primeira tentativa em todas as perguntas para ganhar a estrela de campeão!"
   }
  },
- "mj-37": {
-  "titre": "Xadrez-lanchinho!",
-  "regle": {
-   "texte": "Mexe sua peça para comer todos os lanchinhos!",
-   "etapes": [
-    {
-     "t": "Eu descubro uma peça de xadrez 🧑‍🎓",
-     "d": "O Bispo desliza na diagonal, a Torre vai reto, o Cavalo pula em L… cada uma se mexe do seu jeito!"
-    },
-    {
-     "t": "Eu toco na minha peça, as casas acendem ✨",
-     "d": "Todas as casas que acendem são os lugares onde minha peça pode ir."
-    },
-    {
-     "t": "Eu toco numa casa acesa para comer 🍎",
-     "d": "Se tiver um lanchinho ali, minha peça come ele ao chegar. Mais opções: eu tento de novo, nada se perde."
-    },
-    {
-     "t": "Quanto mais eu avanço, mais espertas ficam as peças 💪",
-     "d": "Depois do Bispo e da Torre vêm o Cavalo, a Dama, o Rei, o Peão… depois 2 peças juntas!"
-    }
-   ],
-   "etoiles": ""
-  },
-  "ui": {
-   "tierFouTour": "Bispo & Torre",
-   "tierCavalierDame": "Cavalo & Dama",
-   "tierRoiPionMix": "Rei, Peão & Mix",
-   "pieceFou": "O Bispo",
-   "pieceTour": "A Torre",
-   "pieceCavalier": "O Cavalo",
-   "pieceDame": "A Dama",
-   "pieceRoi": "O Rei",
-   "piecePion": "O Peão",
-   "voxFou": "Eu deslizo na diagonal, zioupe!",
-   "voxTour": "Eu avanço reto pra frente, vrum!",
-   "voxCavalier": "E pulo em L!",
-   "voxDame": "Eu posso ir para qualquer lugar!",
-   "voxRoi": "Devagar, um passinho de cada vez.",
-   "voxPion": "Eu sou pequeno mas como bem!",
-   "toutCroque": "Tudo comido!",
-   "gouterRestant": "lanchinho restante",
-   "gouterRestants": "lanchinhos restantes",
-   "bravoToutCroque": "Parabéns, tudo comido!"
-  },
-  "voix": {
-   "regle-mj-37": "Mexe sua peça para comer todos os lanchinhos!. Eu descubro uma peça de xadrez . O Bispo desliza na diagonal, a Torre vai reto, o Cavalo pula em L… cada uma se mexe do seu jeito!. Eu toco na minha peça, as casas acendem . Todas as casas que acendem são os lugares onde minha peça pode ir.. Eu toco numa casa acesa para comer . Se tiver um lanchinho ali, minha peça come ele ao chegar. Mais opções: eu tento de novo, nada se perde.. Quanto mais eu avanço, mais espertas ficam as peças . Depois do Bispo e da Torre vêm o Cavalo, a Dama, o Rei, o Peão… depois 2 peças juntas!. Responda certo na primeira tentativa em todas as perguntas para ganhar a estrela de campeão!"
-  }
- },
- "mj-38": {
-  "titre": "Pula-carneiro!",
-  "regle": {
-   "texte": "Pula por cima das ovelhinhas sonolentas para elas sumirem!",
-   "etapes": [
-    {
-     "t": "Eu toco na minha ovelha 😊",
-     "d": "Ela começa a brilhar: é ela que eu vou fazer pular."
-    },
-    {
-     "t": "Eu olho as casas que brilham dourado ✨",
-     "d": "Elas mostram onde minha ovelha pode cair pulando por cima de uma vizinha sonolenta 💤."
-    },
-    {
-     "t": "Eu toco na casa dourada: opa, ela pula! 🐑↷",
-     "d": "A ovelha dorminhoca que ela pulou some num piscar. Eu posso encadear vários pulos seguidos: combo ✨!"
-    },
-    {
-     "t": "Travou? Eu recomeço tranquilo 🔄",
-     "d": "O botão « Recomeçar » zera o nível, sem perder nada. Todas as ovelhas dorminhocas sumiram = nível ganho!"
-    }
-   ],
-   "etoiles": ""
-  },
-  "ui": {
-   "recommencer": "Recomeçar",
-   "niveauSurTotal": "Nível {n} / {total}",
-   "combo": "Combo!",
-   "essaieEncoreRecommencer": "Tenta de novo! Aperta em Recomeçar 🙂"
-  },
-  "voix": {
-   "regle-mj-38": "Pula por cima das ovelhinhas sonolentas para elas sumirem!. Eu toco na minha ovelha . Ela começa a brilhar: é ela que eu vou fazer pular.. Eu olho as casas que brilham dourado . Elas mostram onde minha ovelha pode cair pulando por cima de uma vizinha sonolenta .. Eu toco na casa dourada: opa, ela pula! ↷. A ovelha dorminhoca que ela pulou some num piscar. Eu posso encadear vários pulos seguidos: combo !. Travou? Eu recomeço tranquilo . O botão « Recomeçar » zera o nível, sem perder nada. Todas as ovelhas dorminhocas sumiram = nível ganho!. Responda certo na primeira tentativa em todas as perguntas para ganhar a estrela de campeão!"
-  }
- },
  "mj-39": {
   "titre": "Blocos mágicos",
   "regle": {
@@ -1051,43 +968,6 @@
   },
   "voix": {
    "regle-mj-39": "Coloca os blocos para encher linhas inteiras!. Eu olho os 3 blocos embaixo . Cada bloco tem sua forma: quadradinho, barra comprida, forma em L…. Eu arrasto um bloco com o dedo na grade . Uma casa verde mostra que eu posso colocar ali, uma casa vermelha diz que não cabe.. Eu solto o bloco para colocar . Se eu encher uma linha ou coluna INTEIRA, ela explode em faíscas e eu ganho mais espaço!. Quanto mais linhas eu apago, mais estrelas eu ganho . Blocos novos chegam sempre. 5 linhas = ★, 12 = ★★, 25 = ★★★!. Responda certo na primeira tentativa em todas as perguntas para ganhar a estrela de campeão!"
-  }
- },
- "mj-42": {
-  "titre": "Shisima!",
-  "regle": {
-   "texte": "Alinha suas 3 peças passando pelo ponto de água!",
-   "etapes": [
-    {
-     "t": "Eu olho o tabuleiro 👀",
-     "d": "Tem 8 pontos ao redor e 1 ponto de água no meio. Minhas 3 peças vermelhas já estão colocadas."
-    },
-    {
-     "t": "Eu toco na minha peça, depois num ponto vazio do lado 👆",
-     "d": "Minha peça só pode avançar para um ponto vizinho livre, ou passar pelo ponto de água no meio."
-    },
-    {
-     "t": "Eu alinho minhas 3 peças com o centro 🎯",
-     "d": "Se minhas 3 peças e o ponto de água estiverem na mesma linha reta, eu ganhei!"
-    },
-    {
-     "t": "O camaleão também joga, sem nunca me punir 🦎",
-     "d": "Quanto mais estrelas eu tenho, mais o camaleão pensa e bloqueia minhas jogadas. Se ele ganhar, a gente joga de novo na hora!"
-    }
-   ],
-   "etoiles": ""
-  },
-  "ui": {
-   "jeuDuKenya": "Um jogo do Quênia 🇰🇪",
-   "aToiDeJouer": "Agora é sua vez!",
-   "cameleonReflechit": "O camaleão está pensando...",
-   "bravo": "Parabéns!",
-   "alignePionsShisima": "Você alinhou suas 3 peças no shisima!",
-   "danseCameleon": "Dança do camaleão!",
-   "presqueEncoreUne": "Quase! Mais uma?"
-  },
-  "voix": {
-   "regle-mj-42": "Alinha suas 3 peças passando pelo ponto de água!. Eu olho o tabuleiro . Tem 8 pontos ao redor e 1 ponto de água no meio. Minhas 3 peças vermelhas já estão colocadas.. Eu toco na minha peça, depois num ponto vazio do lado . Minha peça só pode avançar para um ponto vizinho livre, ou passar pelo ponto de água no meio.. Eu alinho minhas 3 peças com o centro . Se minhas 3 peças e o ponto de água estiverem na mesma linha reta, eu ganhei!. O camaleão também joga, sem nunca me punir . Quanto mais estrelas eu tenho, mais o camaleão pensa e bloqueia minhas jogadas. Se ele ganhar, a gente joga de novo na hora!. Responda certo na primeira tentativa em todas as perguntas para ganhar a estrela de campeão!"
   }
  },
  "mj-46": {

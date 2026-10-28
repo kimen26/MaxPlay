@@ -29,7 +29,6 @@ const PREFIXES = [
   'site/sounds/nombres/',
   'site/sounds/epoques/',
   'site/sounds/atomes/',
-  'site/sounds/pieces/',
 ];
 const SEUIL_MS = new Date('2026-08-10T23:40:00').getTime();
 const TAILLE_MIN = 10 * 1024;

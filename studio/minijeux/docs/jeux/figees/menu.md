@@ -58,7 +58,7 @@ Les **IDs mj-XX ne changent JAMAIS**. Seul le champ `category` de regroupement c
 - Status : live uniquement
 
 ### 🧩 Casse-têtes
-- **Logique** : mj-13a, mj-15, mj-34, mj-37, mj-38, mj-39
+- **Logique** : mj-13a, mj-15, mj-34, mj-39
 - **Observer** : mj-19
 - **Terminologie figée** : « Casse-têtes » retenu.
   - ❌ 🔒 NE JAMAIS utiliser « Stratégie » (trop abstrait pour 4 ans).
@@ -67,7 +67,7 @@ Les **IDs mj-XX ne changent JAMAIS**. Seul le champ `category` de regroupement c
 - Status : live uniquement
 
 ### 🌍 Le monde & libre
-- **Monde** : mj-22 (Animaux), mj-20 (Villes), mj-42 (Routes)
+- **Monde** : mj-22 (Animaux), mj-20 (Villes)
 - Status : live uniquement
 
 ## 🔒 Comportement accordéon FIGÉ

@@ -73,10 +73,8 @@ const LEGACY_VOIX_CHEVAUCHEMENT = [
             // studio/dino/.../_gen-audio-manifest.cjs, hors registre SoundPool)
   'mj-24',  // idem playDinoNom + klaxon/trombone du jeu sur le TTS de consigne
   'mj-28',  // idem playDinoNom + TTS « Bravo ! » du jeu
-  'mj-38',  // intermittent : boing.mp3 (retour de tap du jeu) puis fanfare de fin, SFX sur SFX
   'mj-20',  // mj-20.html:744 : confirmation « N ! » en priority:false à +350 ms du mot du quiz, intermittent (course 350 ms vs durée du mot)
   'mj-32',  // deux fanfares victoire-v2/v3 : double fin de partie dans le jeu
-  'mj-42',  // sifflet-glissant du jeu pendant la fanfare de victoire
   'mj-46',  // nombres/N-oeufs.mp3 du jeu pendant la consigne MP3
   'mj-51',  // phonème du jeu pendant le klaxon/oups d'erreur
   // specs orphelines pilotées par run.mjs (run-autonomes.mjs) :

@@ -940,89 +940,6 @@ window.MJ_STRINGS = {
    "regle-mj-35": "¡Encuentra el agujero que llena el nido JUSTITO!. Miro los huevos en los agujeros . Cada agujero tiene huevos de dinosaurio dentro. ¡Puedo contar con los dedos si quiero!. Busco EL agujero correcto . Solo un agujero tiene JUSTO los huevos suficientes para llegar EXACTO al nido, ni antes ni después.. Toco el agujero, los huevos saltan . Saltan uno a uno hacia el nido. Si el último cae justo dentro: «¡JUSTO!» . ¿Me equivoco? No pasa nada, vuelvo a contar . Nada se pierde, el tablero se reorganiza y lo intento otra vez. ¡3 aciertos JUSTOS = partida ganada!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
   }
  },
- "mj-37": {
-  "titre": "¡Ajedrez goloso!",
-  "regle": {
-   "texte": "¡Mueve tu pieza para comerte todas las meriendas!",
-   "etapes": [
-    {
-     "t": "Descubro una pieza de ajedrez 🧑‍🎓",
-     "d": "El Alfil se desliza en diagonal, la Torre va todo recto, el Caballo salta en L… ¡cada una se mueve a su manera!"
-    },
-    {
-     "t": "Toco mi pieza, las casillas se iluminan ✨",
-     "d": "Todas las casillas que se iluminan son los sitios donde mi pieza puede ir."
-    },
-    {
-     "t": "Toco una casilla iluminada para comer 🍎",
-     "d": "Si hay una merienda encima, mi pieza se la come al llegar. ¿Más opciones? Lo intento otra vez, nada se pierde."
-    },
-    {
-     "t": "Cuanto más avanzo, más listas son las piezas 💪",
-     "d": "Después del Alfil y la Torre vienen el Caballo, la Dama, el Rey, el Peón… ¡y luego 2 piezas juntas!"
-    }
-   ],
-   "etoiles": ""
-  },
-  "ui": {
-   "tierFouTour": "Alfil y Torre",
-   "tierCavalierDame": "Caballo y Dama",
-   "tierRoiPionMix": "Rey, Peón y Mix",
-   "pieceFou": "El Alfil",
-   "pieceTour": "La Torre",
-   "pieceCavalier": "El Caballo",
-   "pieceDame": "La Dama",
-   "pieceRoi": "El Rey",
-   "piecePion": "El Peón",
-   "voxFou": "¡Yo me deslizo en diagonal, zas!",
-   "voxTour": "¡Yo avanzo recto hacia delante, vroom!",
-   "voxCavalier": "¡Y hala, salto en L!",
-   "voxDame": "¡Puedo ir absolutamente a todas partes!",
-   "voxRoi": "Despacito, un pasito cada vez.",
-   "voxPion": "¡Soy pequeño pero como bien!",
-   "toutCroque": "¡Todo comido!",
-   "gouterRestant": "merienda restante",
-   "gouterRestants": "meriendas restantes",
-   "bravoToutCroque": "¡Bien hecho, todo comido!"
-  },
-  "voix": {
-   "regle-mj-37": "¡Mueve tu pieza para comerte todas las meriendas!. Descubro una pieza de ajedrez . El Alfil se desliza en diagonal, la Torre va todo recto, el Caballo salta en L… ¡cada una se mueve a su manera!. Toco mi pieza, las casillas se iluminan . Todas las casillas que se iluminan son los sitios donde mi pieza puede ir.. Toco una casilla iluminada para comer . Si hay una merienda encima, mi pieza se la come al llegar. ¿Más opciones? Lo intento otra vez, nada se pierde.. Cuanto más avanzo, más listas son las piezas . Después del Alfil y la Torre vienen el Caballo, la Dama, el Rey, el Peón… ¡y luego 2 piezas juntas!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
-  }
- },
- "mj-38": {
-  "titre": "¡Salta y captura!",
-  "regle": {
-   "texte": "¡Salta por encima de las fichas dormidas para hacerlas desaparecer!",
-   "etapes": [
-    {
-     "t": "Toco mi oveja 😊",
-     "d": "Empieza a brillar: es ella la que voy a hacer saltar."
-    },
-    {
-     "t": "Miro las casillas que brillan en dorado ✨",
-     "d": "Muestran dónde puede aterrizar mi oveja saltando por encima de un dormilón vecino 💤."
-    },
-    {
-     "t": "Toco la casilla dorada: ¡hala, salta! 🐑↷",
-     "d": "La oveja dormida que ha saltado desaparece en un pum. ¡Puedo encadenar varios saltos seguidos: combo ✨!"
-    },
-    {
-     "t": "¿Atascado? Empiezo tranquilo de nuevo 🔄",
-     "d": "El botón «Reiniciar» pone el nivel a cero, sin perder nada. ¡Todos los dormilones fuera = nivel ganado!"
-    }
-   ],
-   "etoiles": ""
-  },
-  "ui": {
-   "recommencer": "Reiniciar",
-   "niveauSurTotal": "Nivel {n} / {total}",
-   "combo": "¡Combo!",
-   "essaieEncoreRecommencer": "¡Inténtalo otra vez! Toca Reiniciar 🙂"
-  },
-  "voix": {
-   "regle-mj-38": "¡Salta por encima de las fichas dormidas para hacerlas desaparecer!. Toco mi oveja . Empieza a brillar: es ella la que voy a hacer saltar.. Miro las casillas que brillan en dorado . Muestran dónde puede aterrizar mi oveja saltando por encima de un dormilón vecino .. Toco la casilla dorada: ¡hala, salta! ↷. La oveja dormida que ha saltado desaparece en un pum. ¡Puedo encadenar varios saltos seguidos: combo !. ¿Atascado? Empiezo tranquilo de nuevo . El botón «Reiniciar» pone el nivel a cero, sin perder nada. ¡Todos los dormilones fuera = nivel ganado!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
-  }
- },
  "mj-39": {
   "titre": "Bloques mágicos",
   "regle": {
@@ -1053,43 +970,6 @@ window.MJ_STRINGS = {
   },
   "voix": {
    "regle-mj-39": "¡Coloca los bloques para llenar líneas enteras!. Miro los 3 bloques de abajo . Cada bloque tiene su forma: cuadrado pequeño, barra larga, forma en L…. Deslizo un bloque con el dedo sobre la cuadrícula . Una casilla verde muestra que puedo colocarlo ahí, una casilla roja significa que no cabe.. Suelto el bloque para colocarlo . Si lleno una línea o una columna ENTERA, ¡explota en chispas y tengo más espacio!. Cuantas más líneas borro, más estrellas gano . Llegan nuevos bloques cada vez. ¡5 líneas = ★, 12 = ★★, 25 = ★★★!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
-  }
- },
- "mj-42": {
-  "titre": "¡Shisima!",
-  "regle": {
-   "texte": "¡Alinea tus 3 fichas pasando por el punto de agua!",
-   "etapes": [
-    {
-     "t": "Miro el tablero 👀",
-     "d": "Hay 8 puntos alrededor y 1 punto de agua en el medio. Mis 3 fichas rojas ya están colocadas."
-    },
-    {
-     "t": "Toco mi ficha, luego un punto vacío al lado 👆",
-     "d": "Mi ficha solo puede avanzar a un punto vecino libre, o pasar por el punto de agua del medio."
-    },
-    {
-     "t": "Alineo mis 3 fichas con el centro 🎯",
-     "d": "Si mis 3 fichas y el punto de agua están en la misma línea recta, ¡he ganado!"
-    },
-    {
-     "t": "El camaleón también juega, sin castigarme nunca 🦎",
-     "d": "Cuantas más estrellas gano, más piensa el camaleón y bloquea mis jugadas. Si gana él, ¡jugamos otra vez enseguida!"
-    }
-   ],
-   "etoiles": ""
-  },
-  "ui": {
-   "jeuDuKenya": "Un juego de Kenia 🇰🇪",
-   "aToiDeJouer": "¡Te toca jugar!",
-   "cameleonReflechit": "El camaleón está pensando...",
-   "bravo": "¡Bien hecho!",
-   "alignePionsShisima": "¡Has alineado tus 3 fichas en el shisima!",
-   "danseCameleon": "¡Baile del camaleón!",
-   "presqueEncoreUne": "¡Casi! ¿Otra vez?"
-  },
-  "voix": {
-   "regle-mj-42": "¡Alinea tus 3 fichas pasando por el punto de agua!. Miro el tablero . Hay 8 puntos alrededor y 1 punto de agua en el medio. Mis 3 fichas rojas ya están colocadas.. Toco mi ficha, luego un punto vacío al lado . Mi ficha solo puede avanzar a un punto vecino libre, o pasar por el punto de agua del medio.. Alineo mis 3 fichas con el centro . Si mis 3 fichas y el punto de agua están en la misma línea recta, ¡he ganado!. El camaleón también juega, sin castigarme nunca . Cuantas más estrellas gano, más piensa el camaleón y bloquea mis jugadas. Si gana él, ¡jugamos otra vez enseguida!. ¡Responde bien a la primera en todas las preguntas para ganar la estrella de campeón!"
   }
  },
  "mj-46": {

@@ -69,7 +69,12 @@
     'obj-livre-ouvert':   '201 145 90',  // brun livre
     'obj-livres-dinos':   '74 143 74',   // vert couverture
     'obj-globe':          '47 127 199',  // bleu monde
-    'obj-oeuf':           '169 161 90'   // crème/vert œuf
+    'obj-oeuf':           '169 161 90',  // crème/vert œuf
+    'obj-dessin':         '242 194 48',  // jaune crayon
+    'obj-couleurs':       '226 98 43',   // orange peinture
+    'obj-grilles':        '201 145 90',  // bois du plateau
+    'obj-cherche':        '124 194 74',  // vert herbe sous la loupe
+    'obj-dino':           '79 158 79'    // vert bébé dino
   };
   function applyObjMeta(btn, objName) {
     btn.dataset.obj = objName;
@@ -112,61 +117,76 @@
   // ── Pool de tirage : TOUJOURS catalogVisible(), jamais le brut ──────
   function pool() { return (global.catalogVisible ? global.catalogVisible() : []) || []; }
 
-  function byCategory(cat, opts) {
-    opts = opts || {};
-    return pool().filter(function (e) {
-      if (e.category !== cat) return false;
-      if (e.id === 'dinos') return false; // l'encyclo n'est jamais un tirage
-      if (opts.tag && e.tag !== opts.tag) return false;
-      if (opts.noTag && e.tag) return false;
-      return true;
-    });
+  // ── Tour par tour dans une case (EP-156, PY 2026-10-28 : « si y'en a 3
+  // dans ce thème un s'ouvre aléatoirement, et ça tourne ») : un sac mélangé
+  // par case, rangé dans localStorage. Chaque toucher sort le jeu suivant du
+  // sac ; sac vide → on remélange, sans rejouer tout de suite le dernier.
+  // Tous les jeux d'une case passent donc avant qu'un revienne.
+  var TOUR_KEY = 'maxplay_armoire_tour';
+
+  function lireTour() {
+    try { return JSON.parse(localStorage.getItem(TOUR_KEY)) || {}; } catch (e) { return {}; }
+  }
+  function ecrireTour(tour) {
+    try { localStorage.setItem(TOUR_KEY, JSON.stringify(tour)); }
+    catch (e) { /* stockage bloqué : chaque toucher reste un tirage au hasard */ }
+  }
+  function melanger(liste) {
+    var a = liste.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var k = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[k]; a[k] = t;
+    }
+    return a;
   }
 
-  function byBusMot() {
-    return pool().filter(function (e) {
-      if (e.id === 'dinos') return false;
-      var t = (e.titre || '').toLowerCase(), d = (e.desc || '').toLowerCase();
-      return t.indexOf('bus') !== -1 || d.indexOf('bus') !== -1;
-    });
+  function prochainJeu(caseId) {
+    var jeux = pool().filter(function (e) { return e.armoire === caseId; });
+    if (!jeux.length) return null;
+    var ids = jeux.map(function (e) { return e.id; });
+    var tour = lireTour();
+    var etat = tour[caseId] || {};
+    var sac = (etat.sac || []).filter(function (id) { return ids.indexOf(id) !== -1; });
+    if (!sac.length) {
+      sac = melanger(ids);
+      if (sac.length > 1 && sac[0] === etat.dernier) sac.push(sac.shift());
+    }
+    var id = sac.shift();
+    tour[caseId] = { sac: sac, dernier: id };
+    ecrireTour(tour);
+    return jeux[ids.indexOf(id)];
   }
 
-  // EXACTEMENT 12 jeux : 2 niveaux × 3 colonnes derrière les portes hautes,
-  // autant derrière les basses. Pas un de plus — au-delà, l'armoire vire au
+  function jeuSurprise() {
+    var jeux = pool().filter(function (e) { return e.id !== 'dinos'; });
+    return jeux.length ? jeux[Math.floor(Math.random() * jeux.length)] : null;
+  }
+
+  // EXACTEMENT 12 cases : 2 niveaux × 3 colonnes derrière les portes hautes,
+  // autant derrière les basses. Pas une de plus — au-delà, l'armoire vire au
   // launcher d'icônes et cesse d'être un meuble. Dinos, Monde et Œufs ne sont
-  // pas des jeux tirés : ce sont les trois fonctions permanentes du meuble,
+  // pas des cases à thème : ce sont les trois fonctions permanentes du meuble,
   // posées dans la niche centrale toujours ouverte.
-  // Étiquettes d'un mot, déchiffrables par un lecteur phonétique de 4 ans.
+  // Les 9 cases à thème viennent de MAXPLAY_ARMOIRE (catalog.js), puis
+  // Musique, Histoires et Surprise, le seul hasard pur du meuble. Chaque objet
+  // n'apparaît qu'une fois. Étiquettes d'un mot, déchiffrables à 4 ans.
   function buildSlots() {
-    var used = {};
-    function pick(list) {
-      var avail = list.filter(function (e) { return !used[e.id]; });
-      if (!avail.length) return null;
-      var e = avail[Math.floor(Math.random() * avail.length)];
-      used[e.id] = 1;
-      return e;
-    }
-    function fromPick(list) {
-      return function () { var e = pick(list); return e ? { url: e.url } : null; };
-    }
-    return [
-      { obj: 'obj-bus', label: 'Bus', pick: fromPick(byBusMot()) },
-      { obj: 'obj-lettres', label: 'Lettres', pick: fromPick(byCategory('compter', { tag: 'tts' })) },
-      { obj: 'obj-chiffres', label: 'Chiffres', pick: fromPick(byCategory('compter', { noTag: true })) },
-      { obj: 'obj-drapeaux', label: 'Drapeaux', pick: fromPick(byCategory('monde')) },
-      { obj: 'obj-volcan', label: 'Volcan', pick: fromPick(byCategory('dinos')) },
-      { obj: 'obj-meteorite', label: 'Surprise', pick: fromPick(pool().filter(function (e) { return e.id !== 'dinos'; })) },
-      { obj: 'obj-peluche-tri', label: 'Tritri', pick: fromPick(byCategory('casse')) },
-      { obj: 'obj-peluche-stego', label: 'Copain', pick: fromPick(byCategory('couleurs')) },
-      { obj: 'obj-reveil', label: 'Vite !', pick: fromPick(byCategory('casse')) },
-      { obj: 'obj-radio', label: 'Radio', url: 'lecture.html' },
-      { obj: 'obj-puzzle', label: 'Puzzle', url: 'mj-39.html' },
-      { obj: 'obj-livre-ouvert', label: 'Lis', url: 'mj-53.html' }
-    ].map(function (slot) {
-      if (slot.url) return slot;
-      var picked = slot.pick();
-      return picked ? { obj: slot.obj, label: slot.label, url: picked.url } : null;
-    }).filter(Boolean);
+    var themes = (global.MAXPLAY_ARMOIRE || []).map(function (c) {
+      return { obj: c.obj, label: c.label, choisir: function () { return prochainJeu(c.id); } };
+    });
+    return themes.concat([
+      { obj: 'obj-radio', label: 'Musique', url: 'musique.html' },
+      { obj: 'obj-livre-ouvert', label: 'Histoires', url: 'lecture.html' },
+      { obj: 'obj-meteorite', label: 'Surprise', choisir: jeuSurprise }
+    ]);
+  }
+
+  // Le jeu est choisi AU TOUCHER, pas à l'affichage : deux touchers de suite
+  // sur la même case ouvrent deux jeux différents du thème.
+  function urlDuSlot(slot) {
+    if (slot.url) return slot.url;
+    var e = slot.choisir();
+    return e ? e.url : null;
   }
 
   function isEncycloUnlocked() {
@@ -340,7 +360,6 @@
     var tiroirG = root.querySelector('.am-tiroir.tiroir-g');
     var tiroirD = root.querySelector('.am-tiroir.tiroir-d');
     if (tiroirG) { tiroirG.id = 'hdr-padidi'; tiroirG.setAttribute('aria-label', 'Mon album de photos'); }
-    if (tiroirD) { tiroirD.id = 'tiroir-encore'; tiroirD.setAttribute('aria-label', 'Encore d\'autres jeux'); }
 
     // 5. le prénom, gravé sur l'arche
     var nom = document.createElement('div');
@@ -404,6 +423,9 @@
     if (oeufs) oeufs.addEventListener('click', function () { if (global.NidUI && NidUI.openChambre) NidUI.openChambre(); });
   }
 
+  // Le tiroir de droite tirait 12 nouveaux jeux au sort (« encore ») : avec
+  // une case par thème (EP-156), il n'a plus rien à tirer et redevient un
+  // simple tiroir du meuble, qui s'ouvre et se ferme.
   // Les 2 tiroirs du kit : leur poignée gère déjà l'effet visuel « tiré »
   // (listener délégué posé par ArmoireMeuble PENDANT build(), donc plus tôt
   // que celui-ci). Ce listener-ci s'exécute ensuite et ajoute juste la
@@ -413,24 +435,6 @@
       var t = ev.target.closest('.am-tiroir');
       if (!t) return;
       if (t.id === 'hdr-padidi') { if (global.NidUI && NidUI.openPadidi) NidUI.openPadidi(); }
-      else if (t.id === 'tiroir-encore') { retirerLesJeux(root); }
-    });
-  }
-
-  // Tiroir de droite : « encore ». On retire au sort douze nouveaux jeux et
-  // on les repose dans les cases, sans quitter l'armoire. C'est le geste
-  // naturel du tiroir — on l'ouvre, il y a autre chose dedans.
-  function retirerLesJeux(root) {
-    _slots = buildSlots();
-    var i = 0;
-    root.querySelectorAll('.casier').forEach(function (btn) {
-      var slot = _slots[i];
-      if (!slot) return;
-      btn.dataset.idx = i;
-      btn.setAttribute('aria-label', slot.label);
-      btn.innerHTML = slotHtml(slot);
-      applyObjMeta(btn, slot.obj);
-      i++;
     });
   }
 
@@ -441,7 +445,8 @@
       var btn = ev.target.closest('.casier');
       if (!btn) return;
       var slot = _slots[+btn.dataset.idx];
-      if (slot && slot.url) location.href = slot.url;
+      var url = slot && urlDuSlot(slot);
+      if (url) location.href = url;
     });
   }
 

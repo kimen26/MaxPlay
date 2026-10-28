@@ -17,6 +17,7 @@
 //     (sauf golden:false explicite en CLI --sans-golden, aucun jeu n'y échappe
 //     aujourd'hui : tout jeu a au moins une consigne ou un texte de règle)
 //   [BLOQUANT] si zone définie (Mur), murOrder défini et unique dans sa zone
+//   [BLOQUANT] champ armoire = une case de MAXPLAY_ARMOIRE (EP-156)
 //
 // Et, dans l'autre sens, pour chaque site/mj-*.html sur disque :
 //   [BLOQUANT] une entrée catalog.js existe (aucun fichier orphelin)
@@ -64,10 +65,12 @@ function loadCatalog() {
   // catalog.js est écrit en ES5 attaché à window — vm.runInContext l'exécute tel quel
   vm.createContext(sandbox);
   vm.runInContext(src, sandbox);
-  return sandbox.window.MAXPLAY_CATALOG || [];
+  return sandbox.window;
 }
 
-const catalog = loadCatalog();
+const catalogWindow = loadCatalog();
+const catalog = catalogWindow.MAXPLAY_CATALOG || [];
+const armoireIds = new Set((catalogWindow.MAXPLAY_ARMOIRE || []).map((c) => c.id));
 const catalogGames = catalog.filter((e) => e.id && e.id.startsWith('mj-') && !e.retire);
 const catalogIds = new Set(catalogGames.map((e) => e.id));
 
@@ -204,6 +207,10 @@ function auditGame(id) {
     referentielGames.has(id) ? '' : `aucune ligne "jeu":"${id}" — lancer studio/referentiel/generer/_extraire-textes-jeux.mjs`);
 
   const entry = catalog.find((e) => e.id === id);
+  if (entry) {
+    add('case d\'armoire valide (champ armoire, EP-156)', armoireIds.has(entry.armoire),
+      armoireIds.has(entry.armoire) ? '' : `armoire:'${entry.armoire}' absent de MAXPLAY_ARMOIRE`);
+  }
   if (entry && entry.zone) {
     add('murOrder défini (jeu avec zone Mur)', entry.murOrder !== undefined && entry.murOrder !== null);
   }

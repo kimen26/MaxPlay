@@ -20,7 +20,7 @@ Thumbs.db
 
 # Génériques (D-007 / D-008, refonte GED 2026-09-12) : transit, brut, staging, artefacts de run
 **/_new-*/
-**/inbox/*.mp3
+**/inbox/**/*.mp3
 **/.build-*/
 **/*.log
 **/.artifacts/

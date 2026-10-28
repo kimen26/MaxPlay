@@ -1633,5 +1633,16 @@ window.MJ_STRINGS = {
     "etoile2": "a star"
    }
   }
+ },
+ "musique": {
+  "regle": {
+   "texte": "",
+   "etapes": []
+  },
+  "ui": {
+   "pageTitle": "MaxPlay — Music",
+   "title": "Music",
+   "btnBack": "Back to menu"
+  }
  }
 };

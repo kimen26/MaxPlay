@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>MaxPlay — Musique</title>
+  <link rel="manifest" href="manifest.json">
+  <script src="js/lang.js"></script>
+  <script src="js/mj-i18n.js"></script>
+  <script>
+    if (window.Lang && Lang.current() !== 'fr') {
+      document.write('<scr' + 'ipt src="js/gen/i18n/mj-strings.' + Lang.current() + '.js"></scr' + 'ipt>');
+    }
+  </script>
+  <style>
+    /* La case Musique de l'armoire (EP-156, PY 2026-10-28) : les chansons
+       créées sur ElevenLabs. Un toucher lance, un second met en pause, la
+       chanson suivante s'enchaîne toute seule. Rien d'autre : pas d'étoile,
+       pas de score, c'est un coin d'écoute. */
+    :root {
+      --fond: #1b1030;
+      --fond-2: #2a1748;
+      --carte: #33205a;
+      --carte-active: #ffd166;
+      --texte: #fff8ec;
+      --texte-doux: #e6dcf5;
+      --texte-sur-actif: #2a1748;
+      --accent: #ff8fab;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html, body { min-height: 100%; }
+    body {
+      font-family: 'Nunito', system-ui, sans-serif;
+      background: radial-gradient(ellipse 120% 70% at 50% -10%, var(--fond-2), var(--fond) 70%) fixed;
+      background-color: var(--fond);
+      color: var(--texte);
+      padding: 16px 16px calc(24px + env(safe-area-inset-bottom));
+    }
+    header {
+      display: flex; align-items: center; gap: 12px;
+      max-width: 560px; margin: 0 auto 16px;
+    }
+    .retour {
+      flex: none; width: 56px; height: 56px; border-radius: 50%;
+      border: none; background: rgba(255,255,255,.12); color: var(--texte);
+      font-size: 1.6rem; font-weight: 800; cursor: pointer;
+    }
+    .retour:focus-visible, .chanson:focus-visible { outline: 3px solid var(--carte-active); outline-offset: 3px; }
+    h1 { font-size: clamp(1.5rem, 7vw, 2rem); font-weight: 900; letter-spacing: .5px; }
+    h1 .note { display: inline-block; margin-left: 6px; }
+    ol { list-style: none; display: flex; flex-direction: column; gap: 12px; max-width: 560px; margin: 0 auto; }
+    .chanson {
+      width: 100%; min-height: 88px; padding: 14px 16px;
+      display: flex; align-items: center; gap: 14px;
+      border: none; border-radius: 22px; cursor: pointer; text-align: left;
+      background: var(--carte); color: var(--texte); font-family: inherit;
+      transition: transform .12s, background .2s;
+    }
+    .chanson:active { transform: scale(.98); }
+    .rond {
+      flex: none; width: 60px; height: 60px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--accent); color: var(--texte-sur-actif);
+    }
+    .rond svg { width: 28px; height: 28px; fill: currentColor; }
+    .rond .pause { display: none; }
+    .texte { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .titre { font-size: 1.15rem; font-weight: 800; line-height: 1.25; overflow-wrap: anywhere; }
+    .duree { font-size: .95rem; font-weight: 700; color: var(--texte-doux); }
+    .chanson.joue { background: var(--carte-active); color: var(--texte-sur-actif); }
+    .chanson.joue .duree { color: var(--texte-sur-actif); }
+    .chanson.joue .rond { background: var(--texte-sur-actif); color: var(--carte-active); }
+    .chanson.joue:not(.pause) .rond .lecture { display: none; }
+    .chanson.joue:not(.pause) .rond .pause { display: block; }
+    .barres { display: none; margin-left: auto; flex: none; gap: 4px; align-items: flex-end; height: 28px; }
+    .chanson.joue .barres { display: flex; }
+    .barres i { width: 6px; height: 40%; border-radius: 3px; background: currentColor; }
+    .chanson.joue:not(.pause) .barres i { animation: danse 0.9s ease-in-out infinite alternate; }
+    .barres i:nth-child(2) { animation-delay: .3s; }
+    .barres i:nth-child(3) { animation-delay: .6s; }
+    @keyframes danse { from { height: 25%; } to { height: 100%; } }
+    @media (prefers-reduced-motion: reduce) {
+      .chanson.joue:not(.pause) .barres i { animation: none; height: 80%; }
+    }
+  </style>
+  <script src="js/sw-register.js"></script>
+</head>
+<body>
+  <header>
+    <button type="button" class="retour" id="retour" aria-label="Retour au menu">←</button>
+    <h1><span id="t-title">Musique</span><span class="note" aria-hidden="true">🎵</span></h1>
+  </header>
+  <ol id="liste"></ol>
+  <audio id="lecteur" preload="none"></audio>
+
+  <script>
+  (function () {
+    'use strict';
+
+    // Chansons composées sur ElevenLabs (Music v1 et v2.5), réencodées en
+    // MP3 128 kbps. Source : studio/minijeux/inbox/musique-elevenlabs/.
+    // Ordre : les plus récentes d'abord, comme dans l'historique ElevenLabs.
+    var CHANSONS = [
+      { titre: 'Les dinos dansent le funk', fichier: 'les-dinos-dansent-le-funk.mp3', duree: '4:00' },
+      { titre: 'Les dinos dansent la samba', fichier: 'les-dinos-dansent-la-samba.mp3', duree: '4:00' },
+      { titre: 'Cératopsiens contre théropodes', fichier: 'ceratopsiens-contre-theropodes.mp3', duree: '2:00' },
+      { titre: 'La grande bataille des dinosaures', fichier: 'la-grande-bataille-des-dinosaures.mp3', duree: '3:15' },
+      { titre: 'Dino-Dinosaures !', fichier: 'dino-dinosaures.mp3', duree: '2:30' }
+    ];
+    var DOSSIER = 'sounds/music/chansons/';
+
+    function T(key, fr) { return (window.MJi18n) ? MJi18n.t('musique', key, fr) : fr; }
+    document.title = T('pageTitle', document.title);
+    document.getElementById('t-title').textContent = T('title', 'Musique');
+    var retour = document.getElementById('retour');
+    retour.setAttribute('aria-label', T('btnBack', 'Retour au menu'));
+    retour.addEventListener('click', function () { location.href = './index.html'; });
+
+    var lecteur = document.getElementById('lecteur');
+    var liste = document.getElementById('liste');
+    var enCours = -1;
+
+    var SVG_LECTURE = '<svg class="lecture" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+    var SVG_PAUSE = '<svg class="pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>';
+
+    var boutons = CHANSONS.map(function (c, i) {
+      var li = document.createElement('li');
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chanson';
+      b.setAttribute('aria-label', c.titre);
+      b.innerHTML = '<span class="rond">' + SVG_LECTURE + SVG_PAUSE + '</span>' +
+        '<span class="texte"><span class="titre"></span><span class="duree"></span></span>' +
+        '<span class="barres" aria-hidden="true"><i></i><i></i><i></i></span>';
+      b.querySelector('.titre').textContent = c.titre;
+      b.querySelector('.duree').textContent = c.duree;
+      b.addEventListener('click', function () { toucher(i); });
+      li.appendChild(b);
+      liste.appendChild(li);
+      return b;
+    });
+
+    function peindre() {
+      boutons.forEach(function (b, i) {
+        b.classList.toggle('joue', i === enCours);
+        b.classList.toggle('pause', i === enCours && lecteur.paused);
+        b.setAttribute('aria-pressed', i === enCours && !lecteur.paused ? 'true' : 'false');
+      });
+    }
+
+    function jouer(i) {
+      enCours = i;
+      lecteur.src = DOSSIER + CHANSONS[i].fichier;
+      lecteur.play().catch(function (e) { console.warn('musique : lecture refusée', e); peindre(); });
+      peindre();
+    }
+
+    function toucher(i) {
+      if (i !== enCours) { jouer(i); return; }
+      if (lecteur.paused) lecteur.play().catch(function (e) { console.warn('musique : lecture refusée', e); });
+      else lecteur.pause();
+    }
+
+    lecteur.addEventListener('play', peindre);
+    lecteur.addEventListener('pause', peindre);
+    lecteur.addEventListener('ended', function () { jouer((enCours + 1) % CHANSONS.length); });
+    lecteur.addEventListener('error', function () {
+      console.warn('musique : fichier illisible', lecteur.src);
+      enCours = -1;
+      peindre();
+    });
+
+    window.__musique = { chansons: CHANSONS, lecteur: lecteur };
+  })();
+  </script>
+</body>
+</html>

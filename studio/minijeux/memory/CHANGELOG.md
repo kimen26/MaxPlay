@@ -2,6 +2,12 @@
 
 > Point de vue utilisateur (Papa Yann / Max), pas technique. Alimenté à la clôture d'un ticket TODO.md.
 
+## 2026-10
+
+- L'armoire a une case par thème : chaque objet ouvre toujours un jeu de son thème, et les jeux d'une même case passent tour à tour. Le dessin a sa propre case, la météorite « Surprise » reste le seul tirage au hasard.
+- Nouvelle case Musique : les chansons de dinos composées sur ElevenLabs, à écouter à la suite.
+- Le tangram et les trois jeux de pions (croque-échecs, saute-mouton, shisima) sont retirés.
+
 ## 2026-09
 
 - Les mini-jeux se jouent maintenant en français, anglais, espagnol et portugais — menus, règles et la plupart des consignes parlées (36 jeux passés en revue, 33 traduits, les jeux de lecture phonétique restent en français par choix pédagogique).

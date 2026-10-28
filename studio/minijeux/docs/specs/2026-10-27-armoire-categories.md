@@ -1,7 +1,7 @@
 # L'armoire par catégories — une case = un thème, plus de tirage au sort
 
-> Statut : **proposition, étape 1** (2026-10-27), en attente de validation Papa Yann.
-> Amendera D-025 point (3) (« tirés au hasard par objet à chaque ouverture ») une fois validée.
+> Statut : **validée et livrée le 2026-10-28** (D-035, figée `docs/jeux/figees/armoire.md`).
+> Amende D-025 point (3) (« tirés au hasard par objet à chaque ouverture »).
 
 ## Le problème constaté
 
@@ -71,7 +71,7 @@ retomberait dans le problème. 10 catégories remplissent exactement le meuble, 
 - Plus utilisés sur l'armoire : bus, volcan, peluche-tri, peluche-stego, réveil, livre-ouvert
   (restent sur le disque).
 
-## Le geste au toucher (à trancher)
+## Le geste au toucher (tranché par PY le 2026-10-28 : ouverture directe, le jeu tourne dans la case)
 
 - **Dessin** : le coloriage s'ouvre **directement**, un seul jeu, aucun écran intermédiaire.
 - **Les autres** : recommandation, une petite étagère s'ouvre avec les vignettes de la

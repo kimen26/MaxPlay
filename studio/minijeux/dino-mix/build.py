@@ -3,8 +3,8 @@
 Usage (depuis la racine du dépôt) :
     python -I studio/minijeux/dino-mix/build.py [index_tête] [sortie.html]
 
-    index_tête : tête affichée à l'ouverture (ordre de BODIES), 0 Tricératops par défaut. Toutes les têtes et
-                 toutes les pièces de dos sont dans la page.
+    index_tête : dino affiché à l'ouverture (ordre de BODIES), 0 Tricératops par défaut. Toutes les têtes et
+                 tous les corps sont dans la page.
     sortie     : défaut studio/minijeux/dino-mix/dino-mix-demo.html (page autonome, images en data:).
 
 Lit : pieces/*.webp (voir README.md) et le gabarit page.html (« /*KIT*/null » remplacé par les données).
@@ -22,18 +22,15 @@ from PIL import Image
 
 HERE = Path(__file__).resolve().parent
 PIECES = HERE / "pieces"
-# Un dessin = une tête sur le corps-gabarit au dos lisse (même ventre, même échelle). Ce qui distingue les corps
-# est une pièce de dos posée DERRIÈRE le dos (D-034) : elle se combine avec n'importe quelle tête.
-BODIES = [("corps-r1c1", "Tricératops"), ("corps-r1c2", "Parasaurolophus"), ("corps-r1c3", "Spinosaure"),
-          ("corps-r1c4", "Diplodocus"), ("corps-r1c5", "Ankylosaure"), ("corps-r1c6", "Raptor à plumes"),
-          ("corps-carno", "Carnotaure"), ("corps-stego", "Stégosaure")]
-# pièce de dos -> (fichier, largeur en part de la largeur du corps, part de sa hauteur cachée derrière le dos,
-# bout de queue assorti ou None)
-BACKS = {"voile": ("voile", 0.62, 0.22, None), "plaques": ("plaques", 0.50, 0.30, "pointes"),
-         "plumes": ("plumes", 0.58, 0.35, None), "armure": ("armure", 0.66, 0.30, "massue"),
-         "bosses": ("bosses", 0.62, 0.45, None)}
-# bout de queue -> largeur en part de la largeur du corps
-TIPS = {"massue": 0.21, "pointes": 0.23}
+# Un dessin = un dino entier sans pattes, avec SON corps (dos et queue dessinés bas le long de la colonne, retour
+# PY 2026-10-28). Le même dessin sert de tête et de corps : la page prend la tête de l'un et le corps de l'autre.
+BODIES = [("dino-triceratops", "Tricératops"), ("dino-parasaurolophus", "Parasaurolophus"),
+          ("dino-spinosaure", "Spinosaure"), ("dino-diplodocus", "Diplodocus"), ("dino-ankylosaure", "Ankylosaure"),
+          ("dino-raptor", "Raptor à plumes"), ("dino-carnotaure", "Carnotaure"), ("dino-stegosaure", "Stégosaure")]
+# Têtes posées sur un AUTRE corps : prises sur les dessins au corps lisse commun (même ordre que BODIES). Sur les
+# dessins distinctifs, le secteur de la tête emporte un bout du dos (plaques, carapace, éventail de plumes).
+HEADS = ["corps-r1c1", "corps-r1c2", "corps-r1c3", "corps-r1c4", "corps-r1c5", "corps-r1c6", "corps-carno", "corps-stego"]
+BELLY_MAX = 11           # ventre le plus long, en rayons d'œil (8 à 11 sur les dessins de 2026-10-28)
 LEG_POSES = ["avant", "droite", "arriere", "pliee", "pendante"]
 SHOD = [("nus", "chaus-r1c1"), ("baskets", "chaus-r1c2"), ("rollers", "chaus-r1c3"), ("ressorts", "chaus-r1c4"), ("fusees", "fusee-r1c1")]
 ACC = ["skate", "oeuf", "oeuf-avant", "roue", "meteorite", "nuage", "cendre"]
@@ -118,44 +115,36 @@ def find_eye(im):
 
 
 def belly_span(im, band):
-    """Étendue du bas du ventre : colonnes dont le bas de silhouette est à moins de band pixels du plus bas."""
+    """Étendue du bas du ventre : colonnes d'un seul tenant, sous la tête, dont le bas de silhouette est à moins de
+    band pixels du plus bas. Une longue queue posée bas (Diplodocus, Spinosaure) n'en fait pas partie."""
     w, h = im.size
     a = im.getchannel("A").load()
     bottom = [max((y for y in range(h) if a[x, y] > 128), default=-1) for x in range(w)]
-    lo = int(w * 0.3)
-    ref = max(bottom[lo:])
-    belly = [x for x in range(lo, w) if bottom[x] >= ref - band]
-    return min(belly), max(belly), bottom, ref
-
-
-def back_line(im):
-    """Haut du dos, colonne par colonne : en remontant depuis le bas du ventre, premier pixel vide (une crête
-    séparée du dos par un vide ne compte pas). Rend [[x, y], ...] tous les 4 % de la largeur."""
-    w, h = im.size
-    a = im.getchannel("A").load()
-    out = []
-    for i in range(26):
-        x = min(w - 1, round(i * w / 25))
-        ys = [y for y in range(h) if a[x, y] > 128]
-        if not ys:
-            continue
-        y = max(ys)
-        while y > 0 and a[x, y - 1] > 128:
-            y -= 1
-        out.append([x, y])
-    return out
+    eye = find_eye(im)
+    ex = min(w - 1, int(eye[0])) if eye else int(w * 0.6)
+    ref = max(bottom[max(0, ex - h):ex + 1])
+    x = ex
+    while x > 0 and bottom[x] < ref - band:
+        x -= 1
+    x0 = x1 = x
+    while x0 > 0 and bottom[x0 - 1] >= ref - band:
+        x0 -= 1
+    while x1 < w - 1 and bottom[x1 + 1] >= ref - band:
+        x1 += 1
+    if eye:                                   # queue du Diplodocus posée au ras du sol : le ventre s'arrête avant
+        x0 = max(x0, round(x1 - BELLY_MAX * (eye[2] - 3)))
+    return x0, x1, bottom, ref
 
 
 def body_meta(im, band=None):
-    """Bas du ventre, deux hanches (là où les jambes se glissent sous le corps) et ligne du dos."""
+    """Bas du ventre, deux hanches (là où les jambes se glissent sous le corps) et avant du ventre (« neck » : le
+    point où l'on cale la tête d'un autre dessin). u = unité de taille (largeur du Tricératops) pour les
+    accessoires, la même pour tous : une longue queue ne doit pas agrandir le skate ou la coquille."""
     w, h = im.size
     x0, x1, bottom, ref = belly_span(im, band if band else h * 0.07)
     hips = [x0 + (x1 - x0) * 0.32, x0 + (x1 - x0) * 0.68]
-    a = im.getchannel("A").load()
-    tx = min(x for x in range(w) if any(a[x, y] > 128 for y in range(h)))
-    ty = [y for y in range(h) if a[tx, y] > 128]
-    return {"w": w, "h": h, "hips": [[round(x, 1), bottom[int(x)]] for x in hips], "bottom": ref, "eye": find_eye(im),
-            "back": back_line(im), "tip": [tx, sum(ty) / len(ty)]}
+    return {"w": w, "h": h, "u": w, "hips": [[round(x, 1), bottom[int(x)]] for x in hips], "bottom": ref,
+            "eye": find_eye(im), "neck": [x1, ref]}
 
 
 def body(name, label):
@@ -163,7 +152,7 @@ def body(name, label):
     return dict(body_meta(im), name=label, src=data_uri(im))
 
 
-def same_scale_bodies():
+def same_scale_bodies(names):
     """Tous les dessins ramenés à l'échelle du Tricératops, puis une seule hauteur de référence pour tous, sinon
     un long cou rapetisserait le dino (L-152). L'échelle se prend sur l'œil, identique sur toutes les têtes
     (D-034) : la largeur du ventre varie d'un dessin ChatGPT à l'autre (Stégosaure plus long)."""
@@ -171,12 +160,18 @@ def same_scale_bodies():
     band = ref.height * 0.07
     eye = find_eye(ref)[2] - 3                    # find_eye ajoute 3 px de marge au rayon
     out = []
-    for name, label in BODIES:
+    for name, label in names:
         im = clean_body(load(name))
         f = eye / (find_eye(im)[2] - 3)
         if abs(f - 1) > 0.02:
             im = im.resize((round(im.width * f), round(im.height * f)), Image.LANCZOS)
         out.append(dict(body_meta(im, band), name=label, refH=ref.height, src=data_uri(im)))
+    # unité de taille et balancement de queue : ceux du Tricératops. Une queue plus longue balance moins, sinon
+    # son bout fouette (queue du Diplodocus trois fois plus longue).
+    tail0 = out[0]["hips"][0][0]          # hanche arrière = longueur de queue depuis le bord gauche
+    for b in out:
+        b["u"] = out[0]["w"]
+        b["tailK"] = round(min(1.0, tail0 / b["hips"][0][0]), 3)
     return out
 
 
@@ -203,12 +198,9 @@ def main():
     head = int(sys.argv[1]) if len(sys.argv) > 1 else 0
     out = Path(sys.argv[2]) if len(sys.argv) > 2 else HERE / "dino-mix-demo.html"
     kit = {
-        "bodies": same_scale_bodies(),
+        "bodies": same_scale_bodies(BODIES),
+        "heads": same_scale_bodies(list(zip(HEADS, (n for _, n in BODIES)))),
         "start": head,
-        # ligne du dos commune : celle du Stégosaure, seul dessin sans collerette ni crête qui touche le dos
-        "tpl": [n for n, _ in BODIES].index("corps-stego"),
-        "backs": {k: dict(piece(f"dos-{f}"), span=sp, sink=sk, tip=t) for k, (f, sp, sk, t) in BACKS.items()},
-        "tips": {k: dict(piece(f"queue-{k}"), span=sp) for k, sp in TIPS.items()},
         "legs": [dict(leg_meta(load(f"jambe-r1c{i + 1}")), name=n, src=data_uri(load(f"jambe-r1c{i + 1}"))) for i, n in enumerate(LEG_POSES)],
         "shod": {},
         "acc": {n: piece(f"acc-{n}") for n in ACC},

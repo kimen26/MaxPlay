@@ -226,3 +226,8 @@ mesure pas — il faut les deux, solidaires. Parent : la regle projet « ouvrir 
 ### L-157 – Donner du caractère à une tête de dino : par la forme, jamais par les yeux
 **Constat** : 2026-10-27, PY trouve le Carnotaure « trop mignon et rond » et demande du charisme. Le prompt « confiant, petit dur » rend un sourcil lourd et une paupière mi-close : PY répond « il ne peut pas avoir un air démoniaque, il garde la même tête, yeux et compagnie, que les autres ».
 **Règle** : dans Dinomino le visage (œil, reflet, joue, sourire) est commun à tous ; le prompt le demande explicitement (« EXACTLY the same face as sheet 1 ») et ne fait varier que la forme du crâne, de la mâchoire et des ornements (D-034).
+
+### L-158 – Un corps se distingue par sa silhouette entière, pas par un ornement collé
+**Constat** : 2026-10-28, cinq pièces de dos (voile, plaques, armure, plumes, bosses) posées sur le même corps en haricot pour les 8 dinos. PY : « rien ne va, tout est trop haut et pas distinctif ». Les ornements s'empilaient sur l'épaule, au-dessus d'un corps identique, et ressemblaient à des ailes ou à des cheveux.
+**Cause** : on a choisi la découpe qui arrangeait le moteur (une pièce de plus, comme les jambes) au lieu de ce qui se voit : à 4 ans, on reconnaît une espèce à sa silhouette (longueur de queue, dos bombé, carapace), pas à un accessoire posé dessus.
+**Règle** : faire dessiner le corps entier de chaque espèce, dos et queue intégrés et bas le long de la colonne, puis adapter le moteur (ventre repéré sous l'œil, taille des objets sur une unité commune, balancement réduit pour les longues queues). Montrer la planche de silhouettes à PY AVANT de brancher quoi que ce soit.

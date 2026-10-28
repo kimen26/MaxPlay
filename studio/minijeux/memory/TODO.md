@@ -172,6 +172,6 @@
 Référence : spec `docs/specs/2026-10-09-dino-mix.md` · atelier `studio/minijeux/dino-mix/README.md` · D-031 à D-034.
 
 - [?] EP-153 — PY valide en mouvement les 11 transports du Tricératops (`studio/minijeux/dino-mix/dino-mix-demo.html`). À trancher : le Diplodocus reste-t-il ?
-- [ ] EP-154 — Têtes et dos en pièces (D-034) : 8 têtes (dont Carnotaure, Stégosaure) et 5 dos + 2 bouts de queue posés le 2026-10-27, contrôle `combos.mjs`. Reste : un dos propre au Tricératops, au Parasaurolophus et au Diplodocus ; bras en pièces (surfeur, bras levés, vol) pour ne plus garder ceux du Tricératops ; PY valide les mélanges sur téléphone.
+- [ ] EP-154 — Têtes et corps à échanger (D-034, amendement 2026-10-28) : 8 corps distinctifs dessinés entiers (dos et queue intégrés, bas), têtes prises sur les dessins au corps lisse, contrôle `combos.mjs`. Reste : bras en pièces (surfeur, bras levés, vol) pour que les 7 autres corps aient aussi ces poses ; PY valide les mélanges sur téléphone ; supprimer les anciennes pièces de dos (`dos-*`, `queue-*`) après accord de PY.
 - [ ] EP-155 — Rebrancher la recoloration (5 couleurs) et le troupeau devant le pont (règle cachée) dans la nouvelle page, puis en faire un mini-jeu (`mj-shell`, QCM-tap + `QcmRetry` au niveau 2).
 

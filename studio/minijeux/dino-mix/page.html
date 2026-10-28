@@ -20,14 +20,14 @@ button:focus-visible{outline:3px solid #2a6df4;outline-offset:2px}
 </head>
 <body>
 <header>
-  <h1>Dinomino : têtes, dos et transports</h1>
-  <p>Choisis une tête, un dos, puis un transport : toutes les pièces vont ensemble.</p>
+  <h1>Dinomino : têtes, corps et transports</h1>
+  <p>Choisis une tête, un corps, puis un transport : toutes les pièces vont ensemble.</p>
 </header>
 <main>
   <canvas id="live" aria-label="Le dino choisi qui avance"></canvas>
   <div class="grid">
     <button type="button" id="b-head"></button>
-    <button type="button" id="b-back"></button>
+    <button type="button" id="b-body"></button>
     <button type="button" id="b-feet"></button>
   </div>
   <h2>Toutes les poses</h2>
@@ -44,8 +44,9 @@ var FEET_NAME = { nus: 'pieds nus', baskets: 'baskets', rollers: 'rollers', ress
 var LEG_H = 0.40;      // hauteur d'une jambe, en hauteurs de corps
 var TUCK = 0.28;       // part de la jambe sous la ligne du ventre (sert au calage au sol)
 var TUCK_BACK = 0.36, TUCK_FRONT = 0.34;
-var BACKS = [null].concat(Object.keys(KIT.backs || {}));
-var state = { head: KIT.start || 0, back: null, feet: 'nus' };
+var state = { head: KIT.start || 0, body: KIT.start || 0, feet: 'nus' };
+var POSED = 0;         // seul corps dessiné en poses surfeur / bras levés / vol (Tricératops) ; les autres gardent
+                       // leur corps distinctif dans ces transports, bras au repos, en attendant les bras en pièces
 
 function load(o) { return new Promise(function (ok) { var im = new Image(); im.onload = function () { o.img = im; ok(); }; im.src = o.src; }); }
 
@@ -141,55 +142,27 @@ function bodyMotion(feet, ph) {
     blink: (t % 3.4) < 0.14
   };
 }
-// Hd : le dessin qui donne la TÊTE (un autre dino que B pour échanger, D-034). Tous les dessins ont le même
-// gabarit de ventre à la même échelle : en calant Hd sur ses propres hanches et son bas de ventre, son cou
-// tombe sur celui de B ; on ne garde de Hd que le secteur de la tête.
-// Pièce de dos (voile, plaques…) : posée DERRIÈRE le corps, sa base cachée par le contour du dos ; centrée un peu
-// en arrière des hanches, elle bouge avec le corps, jamais avec la queue.
-function backY(B, x) {
-  var L = B.back, i = 1;
-  while (i < L.length - 1 && L[i][0] < x) i++;
-  var a = L[i - 1], b = L[i], u = b[0] === a[0] ? 0 : (x - a[0]) / (b[0] - a[0]);
-  return a[1] + (b[1] - a[1]) * Math.max(0, Math.min(1, u));
-}
-// La hauteur du dos se lit sur un gabarit sans collerette (KIT.tpl) : sur le Tricératops, la collerette touche le
-// dos et la pièce se posait dessus. Tous les corps ont le même ventre : on cale le gabarit sur les hanches.
-function drawBack(c, B, k, cx) {
-  var P = state.back && KIT.backs[state.back], T = KIT.bodies[KIT.tpl] || B;
-  if (!P || !T.back) return;
-  var bw = B.w * k * P.span, bh = bw * P.h / P.w;
-  var tcx = (T.hips[0][0] + T.hips[1][0]) / 2, mx = tcx - T.w * 0.10;   // milieu du dos, pixels du gabarit
-  var y = (backY(T, mx) - T.bottom) * k;
-  c.drawImage(P.img, (mx - tcx) * k - bw / 2, y - bh * (1 - P.sink), bw, bh);
-}
-// Bout de queue (massue, pointes) : accroché au bout de la queue de B, il tourne avec elle.
-function drawTip(c, B, k, cx) {
-  var b = state.back && KIT.backs[state.back], P = b && b.tip && KIT.tips[b.tip];
-  if (!P || !B.tip) return;
-  var tw = B.w * k * P.span, th = tw * P.h / P.w, x = (B.tip[0] - cx) * k, y = (B.tip[1] - B.bottom) * k;
-  if (b.tip === 'pointes') c.drawImage(P.img, x - tw * 0.15, y - th * 0.85, tw, th);   // dressées sur le bout
-  else c.drawImage(P.img, x - tw * 0.55, y - th * 0.5, tw, th);                        // massue centrée sur le bout
-}
+// Hd : le dessin qui donne la TÊTE (un autre dino que B pour échanger, D-034). Hd est calé par l'avant de son
+// ventre (neck) sur celui de B, bas du ventre sur bas du ventre : son cou tombe sur celui de B. On ne garde de Hd
+// que le secteur de la tête, de B tout le reste (dos et queue distinctifs).
 function drawBody(c, B, k, cx, mo, Hd) {
   Hd = Hd || B;
   var x0 = -cx * k, y0 = -B.bottom * k, w = B.w * k, h = B.h * k;
-  var hcx = (Hd.hips[0][0] + Hd.hips[1][0]) / 2, hx0 = -hcx * k, hy0 = -Hd.bottom * k;
+  var hx0 = (B.neck[0] - cx - Hd.neck[0]) * k, hy0 = (B.neck[1] - B.bottom - Hd.neck[1]) * k, u = B.u * k;
   var hipB = (B.hips[1][0] - cx) * k, hipF = (B.hips[0][0] - cx) * k;
-  var eyeY = Hd.eye ? (Hd.eye[1] - Hd.bottom) * k : -h * 0.6;
-  var J = { tail: [hipB - w * 0.08, -h * 0.2], head: [hipF + w * 0.04, eyeY + (0 - eyeY) * 0.48] };
+  var eyeY = Hd.eye ? Hd.eye[1] * k + hy0 : -h * 0.6;
+  var J = { tail: [hipB - u * 0.08, -h * 0.2], head: [hipF + u * 0.04, eyeY + (0 - eyeY) * 0.48] };
   function img() { c.drawImage(B.img, x0, y0, w, h); }
   function notIn(j, A) { c.beginPath(); c.rect(-R, -R, 2 * R, 2 * R); sector(c, j[0], j[1], A[0], A[1]); c.clip('evenodd'); }
   function turn(j, a) { c.translate(j[0], j[1]); c.rotate(a * Math.PI / 180); c.translate(-j[0], -j[1]); }
   // Ordre (retour PY 2026-10-25 : trait clair sur le dos, queue qui passait par-dessus) :
   // 1) sous-couche immobile près de la racine de la queue : bouche la fente quand la queue tourne ;
   // 2) la queue tournée ; 3) le corps PAR-DESSUS, son contour du dos reste net et continu.
-  var rootR = Math.hypot(w, h) * 0.36;
-  drawBack(c, B, k, cx);                          // tout au fond : la queue et le corps passent devant sa base
+  var rootR = Math.hypot(u, h) * 0.36, tail = mo.tail * (B.tailK || 1);
   // sous-couche limitée à deux coins autour des BORDS de la découpe : jamais sur la queue elle-même (sinon contour doublé)
   c.save(); notIn(J.head, HEAD_A); c.beginPath(); sector(c, J.tail[0], J.tail[1], TAIL_A[1] - 22, TAIL_A[1] + 22); sector(c, J.tail[0], J.tail[1], TAIL_A[0] - 22, TAIL_A[0] + 22); c.clip();
   c.beginPath(); c.arc(J.tail[0], J.tail[1], rootR, 0, Math.PI * 2); c.clip(); img(); c.restore();
-  c.save(); turn(J.tail, mo.tail); notIn(J.head, HEAD_A); c.beginPath(); sector(c, J.tail[0], J.tail[1], TAIL_A[0] - 6, TAIL_A[1] + 6); c.clip(); img(); c.restore();
-  c.save(); turn(J.tail, mo.tail); drawTip(c, B, k, cx); c.restore();
+  c.save(); turn(J.tail, tail); notIn(J.head, HEAD_A); c.beginPath(); sector(c, J.tail[0], J.tail[1], TAIL_A[0] - 6, TAIL_A[1] + 6); c.clip(); img(); c.restore();
   c.save(); notIn(J.head, HEAD_A); notIn(J.tail, TAIL_A); img(); c.restore();
   c.save(); turn(J.head, mo.head); c.beginPath(); sector(c, J.head[0], J.head[1], HEAD_A[0] - 8, HEAD_A[1] + 8); c.clip();
   c.drawImage(Hd.img, hx0, hy0, Hd.w * k, Hd.h * k);
@@ -216,7 +189,7 @@ function drawFlame(c, x, y, w, len) {
 // Hélice : mât derrière la tête, pales qui tournent au-dessus.
 function drawRotor(c, B, k, cx, front, go) {
   go = go === undefined ? 1 : go;
-  var hx = ((B.eye ? B.eye[0] : B.w * 0.6) - cx) * k - B.w * k * 0.12, top = -B.bottom * k, hy = top - B.h * k * 0.12, lw = B.w * k * 0.05;
+  var hx = ((B.eye ? B.eye[0] : B.w * 0.6) - cx) * k - B.u * k * 0.12, top = -B.bottom * k, hy = top - B.h * k * 0.12, lw = B.u * k * 0.05;
   if (!front) { c.beginPath(); c.moveTo(hx, top + B.h * k * 0.35); c.lineTo(hx, hy); c.lineWidth = lw * 0.5; c.strokeStyle = '#5e3b28'; c.lineCap = 'round'; c.stroke(); return; }
   c.save(); c.translate(hx, hy); c.scale(Math.cos(NOW() * 26 * go) * go, go);
   [-1, 1].forEach(function (sg) { c.beginPath(); c.ellipse(sg * lw * 2.6, 0, lw * 2.5, lw * 0.55, 0, 0, Math.PI * 2); c.fillStyle = '#f6c445'; c.fill(); c.lineWidth = 2.5; c.strokeStyle = '#5e3b28'; c.stroke(); });
@@ -232,13 +205,14 @@ function drawRide(c, x, y, H, ph, feet, B, k) {
   }
   var A = KIT.acc;
   if (feet === 'oeuf') {
-    var cw = B.w * k * 0.95, ch = cw * A.oeuf.h / A.oeuf.w, wd = cw * 0.24, top = y - ch - wd * 0.55;
+    var cw = B.u * k * 0.95, ch = cw * A.oeuf.h / A.oeuf.w, wd = cw * 0.24, top = y - ch - wd * 0.55;
     var roll = 3 * Math.sin(w2);
     c.save(); c.translate(x, y); c.rotate(roll * Math.PI / 180); c.translate(-x, -y);
     c.drawImage(A.oeuf.img, x - cw / 2, top, cw, ch);
     body(x, top + ch * 0.55, function () {
       var rimY = -ch * 0.55 + ch * 0.2;
-      c.beginPath(); c.rect(-4000, -4000, 8000, 4000 + rimY); c.rect(-cw * 0.43, rimY, cw * 0.86, 4000); c.clip();
+      // au-dessus du bord, seulement au droit de la coquille : une longue queue ne dépasse pas en l'air derrière
+      c.beginPath(); c.rect(-cw * 0.5, -4000, 4000, 4000 + rimY); c.rect(-cw * 0.43, rimY, cw * 0.86, 4000); c.clip();
     });
     c.drawImage(A['oeuf-avant'].img, x - cw / 2, top, cw, ch);
     c.restore();
@@ -250,7 +224,7 @@ function drawRide(c, x, y, H, ph, feet, B, k) {
   }
   var fly = H * (0.1 + 0.07 * (0.5 + 0.5 * Math.sin(w2)));
   if (feet === 'meteorite') {
-    var mw = Math.min(B.w * k * 0.7, H * 0.8), mh = mw * A.meteorite.h / A.meteorite.w, my = y - fly - mh / 2, r = mw / 2;
+    var mw = Math.min(B.u * k * 0.7, H * 0.8), mh = mw * A.meteorite.h / A.meteorite.w, my = y - fly - mh / 2, r = mw / 2;
     for (var j = 0; j < 3; j++) {           // traînée de feu
       var L = r * (1.3 + 0.25 * Math.sin(t * 17 + j)) * (1 - j * 0.25), hw = r * 0.45 * (1 - j * 0.28);
       c.beginPath(); c.moveTo(x - r * 0.5, my - hw); c.quadraticCurveTo(x - r * 0.5 - L * 0.5, my - hw * 0.8, x - r * 0.5 - L, my);
@@ -262,7 +236,7 @@ function drawRide(c, x, y, H, ph, feet, B, k) {
     c.drawImage(A.meteorite.img, -mw / 2, -mh / 2, mw, mh); c.restore();
     return;
   }
-  var cw2 = B.w * k * 0.95, chh = cw2 * A[feet].h / A[feet].w, cy = y - fly - chh;
+  var cw2 = B.u * k * 0.95, chh = cw2 * A[feet].h / A[feet].w, cy = y - fly - chh;
   for (var q = 3; q >= 0; q--) {            // bouffées qui s'éloignent
     var pq = (t * 0.9 + q / 4) % 1, sc = 0.42 * (1 - pq * 0.6);
     c.globalAlpha = 0.85 * (1 - pq);
@@ -333,12 +307,12 @@ function lerp(a, b, u) { return a + (b - a) * u; }
 // Nuage : petits nuages qui tournent autour de ses pieds nus ; au départ ils se rassemblent sous lui et
 // deviennent le grand nuage. footY = niveau des pieds dans le repère du corps.
 function drawFootClouds(c, B, k, go, front, mH, footY, A) {
-  var t = NOW(); A = A || KIT.acc.nuage; var n = 4, rx = B.w * k * 0.36, ry = rx * 0.22;
+  var t = NOW(); A = A || KIT.acc.nuage; var n = 4, rx = B.u * k * 0.36, ry = rx * 0.22;
   for (var i = 0; i < n; i++) {
     var ang = t * 1.4 + i * Math.PI * 2 / n, sn = Math.sin(ang);
     if ((sn > 0) !== front) continue;
-    var u = go * go, px = lerp(Math.cos(ang) * rx, Math.cos(ang) * B.w * k * 0.08, u), py = lerp(footY - B.h * k * 0.03 + sn * ry, mH * 0.28, u);
-    var w = B.w * k * 0.2 * (1 + 0.15 * sn) * (1 - 0.6 * u), h = w * A.h / A.w;
+    var u = go * go, px = lerp(Math.cos(ang) * rx, Math.cos(ang) * B.u * k * 0.08, u), py = lerp(footY - B.h * k * 0.03 + sn * ry, mH * 0.28, u);
+    var w = B.u * k * 0.2 * (1 + 0.15 * sn) * (1 - 0.6 * u), h = w * A.h / A.w;
     c.globalAlpha = 0.85 + 0.15 * go * (1 - u);
     if (w > 1) c.drawImage(A.img, px - w / 2, py - h / 2, w, h);
     c.globalAlpha = 1;
@@ -348,9 +322,9 @@ function drawFootClouds(c, B, k, go, front, mH, footY, A) {
 function drawPebbles(c, B, k, go, footY, targetY) {
   var t = NOW(), A = KIT.acc.meteorite, n = 6, u = go * go;
   for (var i = 0; i < n; i++) {
-    var ph = (t * (0.9 + 0.13 * i) + i * 0.29) % 1, gx = B.w * k * (-0.55 + 1.1 * (i + 0.5) / n);
+    var ph = (t * (0.9 + 0.13 * i) + i * 0.29) % 1, gx = B.u * k * (-0.55 + 1.1 * (i + 0.5) / n);
     var hop = Math.sin(ph * Math.PI) * B.h * k * (0.06 + 0.03 * (i % 3));
-    var x = lerp(gx, 0, u), y = lerp(footY + B.h * k * 0.02 - hop, targetY, u), sz = B.w * k * (0.045 + 0.012 * (i % 3)) * (1 - 0.5 * u);
+    var x = lerp(gx, 0, u), y = lerp(footY + B.h * k * 0.02 - hop, targetY, u), sz = B.u * k * (0.045 + 0.012 * (i % 3)) * (1 - 0.5 * u);
     c.save(); c.globalAlpha = 1 - Math.max(0, go - 0.7) / 0.3; c.translate(x, y); c.rotate(ph * 6 + i);
     c.drawImage(A.img, -sz / 2, -sz / 2, sz, sz); c.restore();
   }
@@ -361,7 +335,7 @@ function drawPebbles(c, B, k, go, footY, targetY) {
 function drawPropClimb(c, B, k, cx, go, footY, groundY) {
   var P = KIT.prop, u = Math.min(1, go * 2), e = u * u * (3 - 2 * u);
   var topY = B.stick ? (B.stick[1] - B.bottom) * k : -B.bottom * k * 1.15, topX = B.stick ? (B.stick[0] - cx) * k : 0;
-  var w = B.w * k * lerp(0.7, 0.8, e), h = w * P.h / P.w, x = lerp(0, topX, e) + Math.sin(e * Math.PI) * B.w * k * 0.4, y = lerp(footY + h * 0.2, topY, e);
+  var w = B.u * k * lerp(0.7, 0.8, e), h = w * P.h / P.w, x = lerp(0, topX, e) + Math.sin(e * Math.PI) * B.u * k * 0.4, y = lerp(footY + h * 0.2, topY, e);
   c.save(); c.translate(x, y); c.scale(go > 0.05 ? Math.cos(NOW() * (10 + 20 * go)) : 1, 1);
   c.drawImage(P.img, -w / 2, -h / 2, w, h); c.restore();
 }
@@ -400,16 +374,16 @@ function drawGravel(c, x, y, H, a) {
 function drawUmbrella(c, B, k, cx, go, footY) {
   var U = KIT.acc.parapluie, P = KIT.prop; if (!U) return false;
   var u = Math.min(1, go * 2), e = u * u * (3 - 2 * u);
-  var hand = [(B.hips[0][0] - cx) * k + B.w * k * 0.22, -B.bottom * k * 0.42];
+  var hand = [(B.hips[0][0] - cx) * k + B.u * k * 0.22, -B.bottom * k * 0.42];
   var uh = (footY - hand[1]) * 1.25, uw = uh * U.w / U.h;
   var topY = B.stick ? (B.stick[1] - B.bottom) * k : -B.bottom * k * 1.15, topX = B.stick ? (B.stick[0] - cx) * k : 0;
-  var x = lerp(hand[0], topX, e) + Math.sin(e * Math.PI) * B.w * k * 0.3, y = lerp(footY - uh / 2 + uh * 0.05, topY - uh * 0.1, e);
+  var x = lerp(hand[0], topX, e) + Math.sin(e * Math.PI) * B.u * k * 0.3, y = lerp(footY - uh / 2 + uh * 0.05, topY - uh * 0.1, e);
   var flip = lerp(0, Math.PI, e);                         // il le retourne : la crosse en bas, dans les mains
   if (go < 0.55) {
     c.save(); c.translate(x, y); c.rotate(flip); c.drawImage(U.img, -uw / 2, -uh / 2, uw, uh); c.restore();
   }
   if (go > 0.45) {                                        // ouverture en hélice
-    var o = Math.min(1, (go - 0.45) / 0.3), w = B.w * k * 0.8 * o, h = w * P.h / P.w;
+    var o = Math.min(1, (go - 0.45) / 0.3), w = B.u * k * 0.8 * o, h = w * P.h / P.w;
     c.save(); c.translate(topX, topY); c.scale(Math.cos(NOW() * (10 + 20 * go)), 1);
     c.drawImage(P.img, -w / 2, -h / 2, w, h); c.restore();
   }
@@ -429,16 +403,17 @@ function drawDino(c, x, y, H, ph, feet, go) {
   if (MOUNTS[ride]) feet = 'nus'; else if (ride === 'fusees') feet = 'fusees';
   BASE = c.getTransform(); SOLES = ride === 'fusees' ? [] : null;
   var flying = (ride === 'fusees' || MOUNTS[ride]) && go > 0.4;
-  var B = (feet === 'skate' && KIT.surf) ? KIT.surf : (style === 'helice' && go > 0.5 && KIT.up) ? KIT.up : (flying && KIT.vol) ? KIT.vol : KIT.bodies[state.head], k = H / (B.refH || B.h), legPx = H * LEG_H, s = legPx / legPiece('nus').h;
+  var posed = state.body === POSED;
+  var B = (posed && feet === 'skate' && KIT.surf) ? KIT.surf : (posed && style === 'helice' && go > 0.5 && KIT.up) ? KIT.up : (posed && flying && KIT.vol) ? KIT.vol : KIT.bodies[state.body], k = H / (B.refH || B.h), legPx = H * LEG_H, s = legPx / legPiece('nus').h;
   var visible = legPx * (1 - TUCK);
   var bob = bodyBob(feet, ph), spring = feet === 'ressorts' ? 1 - bob.sq * 4 + Math.max(0, -bob.y) * 0.8 : 1;
-  var skate = feet === 'skate' ? KIT.acc.skate : null, skH = skate ? B.w * k * 0.62 * skate.h / skate.w : 0;
+  var skate = feet === 'skate' ? KIT.acc.skate : null, skH = skate ? B.u * k * 0.62 * skate.h / skate.w : 0;
   c.save();
   c.fillStyle = 'rgba(40,60,20,.18)';
-  c.beginPath(); c.ellipse(x, y, B.w * k * 0.32, H * 0.05, 0, 0, Math.PI * 2); c.fill();
+  c.beginPath(); c.ellipse(x, y, B.u * k * 0.32, H * 0.05, 0, 0, Math.PI * 2); c.fill();
   if (RIDES[feet]) { drawRide(c, x, y, H, ph, feet, B, k); c.restore(); return; }
   if (ride === 'meteorite') drawGravel(c, x, y, H, 1 - go * 0.6);
-  if (skate) c.drawImage(skate.img, x - B.w * k * 0.31, y - skH, B.w * k * 0.62, skH);
+  if (skate) c.drawImage(skate.img, x - B.u * k * 0.31, y - skH, B.u * k * 0.62, skH);
   // Contact au sol (vu à la pelure d'oignon 2026-10-24 : en appui, le pied s'enfonçait sous le sol puis
   // flottait). À chaque image on calcule où tombe le bout de chaque pied, et le corps se pose sur le plus
   // bas : le corps descend quand les jambes s'écartent, le pied d'appui reste collé au sol.
@@ -455,7 +430,7 @@ function drawDino(c, x, y, H, ph, feet, go) {
   });
   var stand = legs.map(function (q) { return q.hy + foot; });
   var lowest = (MOUNTS[ride] || FLY[ride]) ? Math.max(stand[0], stand[1]) : Math.max(legs[0].footY, legs[1].footY);
-  var A = KIT.acc, mW = B.w * k * (ride === 'meteorite' ? 0.62 : 0.92), mH = MOUNTS[ride] ? mW * A[ride].h / A[ride].w : 0;
+  var A = KIT.acc, mW = B.u * k * (ride === 'meteorite' ? 0.62 : 0.92), mH = MOUNTS[ride] ? mW * A[ride].h / A[ride].w : 0;
   var mountLift = MOUNTS[ride] ? Math.max(H * 0.06, mH * 0.72 - lowest + H * 0.03) : 0;
   var walk = feet === 'nus' || feet === 'baskets';
   var hover = 0.015 * H * Math.sin(NOW() * 3);
@@ -471,8 +446,9 @@ function drawDino(c, x, y, H, ph, feet, go) {
   if (ride === 'nuage' || ride === 'cendre') drawFootClouds(c, B, k, go, false, mH, groundUp - fly, KIT.acc[ride]);
   var mo = bodyMotion(feet, ph);
   if (feet === 'skate') mo.rot = 4 * Math.sin(ph * Math.PI * 2);   // surfeur : il se balance sur la planche
-  // poses surfeur, bras levés, vol : dessinées pour le Tricératops seulement ; une autre tête s'y pose par-dessus
-  var Hd = KIT.bodies.indexOf(B) >= 0 || state.head ? KIT.bodies[state.head] : B;
+  // Tête d'un autre dino : prise sur son dessin au corps lisse (KIT.heads), sinon elle emporte un bout de son dos.
+  // Poses surfeur, bras levés, vol : corps du Tricératops seulement (bras à faire en pièces) ; la tête s'y pose.
+  var Hd = B === KIT.bodies[state.head] ? B : KIT.heads[state.head];
   c.save(); c.rotate(mo.rot * Math.PI / 180); drawBody(c, B, k, cx, mo, Hd); c.restore();
   leg(0, true);
   if (style === 'helice' && !drawUmbrella(c, B, k, cx, go, groundUp - fly)) drawPropClimb(c, B, k, cx, go, groundUp - fly, groundUp);
@@ -505,15 +481,15 @@ function drawPoses() {
 }
 function labels() {
   document.getElementById('b-head').textContent = 'Tête : ' + KIT.bodies[state.head].name;
-  document.getElementById('b-back').textContent = 'Dos : ' + (state.back || 'lisse');
+  document.getElementById('b-body').textContent = 'Corps : ' + KIT.bodies[state.body].name;
   document.getElementById('b-feet').textContent = 'Pieds : ' + FEET_NAME[state.feet];
 }
 document.getElementById('b-head').onclick = function () { state.head = (state.head + 1) % KIT.bodies.length; labels(); drawPoses(); };
-document.getElementById('b-back').onclick = function () { state.back = BACKS[(BACKS.indexOf(state.back) + 1) % BACKS.length]; labels(); drawPoses(); };
+document.getElementById('b-body').onclick = function () { state.body = (state.body + 1) % KIT.bodies.length; labels(); drawPoses(); };
 document.getElementById('b-feet').onclick = function () { state.feet = FEET[(FEET.indexOf(state.feet) + 1) % FEET.length]; labels(); };
 
 var live;
-Promise.all(KIT.bodies.concat(KIT.surf ? [KIT.surf] : [], KIT.up ? [KIT.up] : [], KIT.vol ? [KIT.vol] : [], KIT.prop ? [KIT.prop] : [], KIT.legs, Object.keys(KIT.shod || {}).map(function (k) { return KIT.shod[k]; }), Object.keys(KIT.acc).map(function (k) { return KIT.acc[k]; }), Object.keys(KIT.backs || {}).map(function (k) { return KIT.backs[k]; }), Object.keys(KIT.tips || {}).map(function (k) { return KIT.tips[k]; })).map(load)).then(function () {
+Promise.all(KIT.bodies.concat(KIT.heads, KIT.surf ? [KIT.surf] : [], KIT.up ? [KIT.up] : [], KIT.vol ? [KIT.vol] : [], KIT.prop ? [KIT.prop] : [], KIT.legs, Object.keys(KIT.shod || {}).map(function (k) { return KIT.shod[k]; }), Object.keys(KIT.acc).map(function (k) { return KIT.acc[k]; })).map(load)).then(function () {
   labels(); drawPoses(); live = fit(document.getElementById('live'), 16 / 9);
   window.addEventListener('resize', function () { drawPoses(); live = fit(document.getElementById('live'), 16 / 9); });
   var dist = 0, lastT = 0;

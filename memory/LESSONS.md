@@ -81,3 +81,8 @@ Comment appliquer : après chaque push, `gh run watch <id> --exit-status` (dél�
 Quoi : en ajoutant `--base` à `gate.mjs` (D-016), le défaut est devenu `'origin/master...HEAD'` passé à `git cat-file -e`, qui refuse une plage : la ref était jugée invalide et `npm run gate` sautait tous les jeux commités non poussés pendant 9 jours. L'agent avait testé `--base HEAD~3` et la ref nulle, jamais l'appel sans option ; le main a relu le diff YAML, pas ce chemin.
 Comment appliquer : quand on ajoute une option, rejouer aussi l'appel sans option sur un cas qui doit détecter quelque chose (un jeu commité non poussé), pas seulement les cas où « rien » est la bonne réponse.
 Porte : `npm run gate` affiche les jeux touchés ; le cas « commité non poussé » est vérifié à la main dans le commit `a2f6e902`.
+
+## L-018 — Piloter une boîte « Enregistrer sous » : l'identifiant « 1 » désigne aussi un fichier de la liste (2026-10-28)
+Quoi : pour récupérer les musiques ElevenLabs, la boîte Windows « Enregistrer sous » a été pilotée par UI Automation. Une recherche de l'élément d'identifiant `1` (le bouton Enregistrer) a trouvé d'abord un FICHIER de la liste, l'a activé, et Windows a proposé d'écraser un MP3 déjà téléchargé. Réponse « Non » donnée à temps, rien de perdu.
+Comment appliquer : ne jamais chercher un bouton de boîte de dialogue par identifiant numérique dans tout l'arbre. Passer par le clavier : Alt+N (champ Nom), Ctrl+A, chemin complet, Entrée, après avoir vérifié que la boîte a bien le focus ; refuser d'écrire si le fichier cible existe déjà.
+Porte : le script de session `save-dialog.ps1` (scratchpad) applique ces trois garde-fous ; 5 fichiers récupérés ensuite sans incident.

@@ -30,23 +30,36 @@
     });
   }
 
-  // ── Grille des cases : 3 colonnes (mise en page du plateau de jeu — sans
-  // rapport avec les montants du meuble, qui ne courent pas sur toute la
-  // hauteur) × 5 rangées calées sur les 5 planches du kit. ────────────────
-  var COLS = [28.58, 49.75, 70.92];   // centres des 3 colonnes
-  var COL_W = 21.17;                  // largeur d'une colonne
+  // ── Grille des cases, MESURÉE sur le kit (retour PY 2026-10-30 : objets
+  // décentrés, lampes à cheval sur les étagères, bois superposé). Chaque
+  // case EST un compartiment du meuble : de la planche du dessus (ou du
+  // plafond) au dessus de sa planche, d'une cloison à l'autre. Plus aucune
+  // hauteur ni aucun centre recopiés à la main (L-138) : les anciennes
+  // valeurs (COLS 28,58/49,75/70,92, ROWS_H 13,6/12,6/…) ne tombaient ni
+  // entre les cloisons ni entre les planches.
   var ROWS_ZONE = ['haut', 'haut', 'niche', 'bas', 'bas'];
-  var ROWS_H = [13.6, 12.6, 9.8, 10.3, 13.0]; // hauteur de case par rangée (tunée à la main)
+  // Dessous de la corniche, mesuré dans shell.webp (bande sombre du
+  // sous-plafond de 10,5 à 12,9 % : c'est là que vivent les spots).
+  var PLAFOND_Y = 10.3;
 
-  // Le BAS de chaque case tombe sur le DESSUS de sa planche — planche-N.box.y
-  // du kit, JAMAIS un y recopié à la main : sinon case et étagère divergent
-  // au moindre ajustement du kit (L-138).
   function buildRows(kit) {
     var P = kit.pieces;
     return ROWS_ZONE.map(function (zone, i) {
-      var planche = P['planche-' + (i + 1)];
-      var ch = ROWS_H[i];
-      return { zone: zone, cy: planche.box.y - ch / 2, ch: ch };
+      var dessus = i === 0 ? PLAFOND_Y : P['planche-' + i].box.y + P['planche-' + i].box.h;
+      var planche = P['planche-' + (i + 1)].box;
+      return { zone: zone, top: dessus, bottom: planche.y, cy: (dessus + planche.y) / 2,
+               ch: planche.y - dessus, chant: planche.h };
+    });
+  }
+
+  // 3 colonnes = les 3 compartiments entre les côtés intérieurs (planche-1)
+  // et les 2 cloisons (montant-1/2 du kit, les mêmes que la niche).
+  function buildCols(kit) {
+    var P = kit.pieces;
+    var g = P['planche-1'].box.x, d = g + P['planche-1'].box.w;
+    var m1 = P['montant-1'].box, m2 = P['montant-2'].box;
+    return [[g, m1.x], [m1.x + m1.w, m2.x], [m2.x + m2.w, d]].map(function (b) {
+      return { cx: (b[0] + b[1]) / 2, cw: b[1] - b[0] };
     });
   }
 
@@ -249,7 +262,10 @@
     var m1 = kit.pieces['montant-1'].box, m2 = kit.pieces['montant-2'].box;
     var cx1 = m1.x + m1.w / 2, cx2 = m2.x + m2.w / 2;
     var v = kit.version;
-    var overlap = 1.0; // recouvre la planche voisine, comme montant-1/2 (kit)
+    // Glisse un peu SOUS les planches voisines (z-index 19 < planche 20,
+    // armoire.css) : l'étagère passe devant la cloison, comme sur
+    // docs/refs/armoire/ref-casiers-12.png, jamais un bois posé par-dessus.
+    var engage = 0.4;
     [0, 1, 3, 4].forEach(function (i) {
       var row = ROWS[i];
       [[cx1, 'montant-1'], [cx2, 'montant-2']].forEach(function (pair) {
@@ -258,7 +274,7 @@
         im.src = IMG + 'v8/' + pair[1] + '.webp?v=' + v;
         im.alt = ''; im.draggable = false;
         im.dataset.zone = row.zone;
-        place(im, pair[0], row.cy, m1.w, row.ch + overlap * 2);
+        place(im, pair[0], row.cy, m1.w, row.ch + engage * 2);
         root.appendChild(im);
       });
     });
@@ -293,6 +309,7 @@
       throw new Error('armoire.js : ArmoireMeuble / ARMOIRE_KIT non chargés (vérifier l\'ordre des <script> dans index.html)');
     }
     var ROWS = buildRows(kit);
+    var COLS = buildCols(kit);
 
     // 1. le meuble : carcasse, planches, montants, 2 tiroirs, 4 vantaux —
     //    posés fermés (ArmoireMeuble.build ferme les deux zones lui-même).
@@ -328,7 +345,7 @@
     ];
     var iTirage = 0;
     ROWS.forEach(function (row) {
-      COLS.forEach(function (cx, col) {
+      COLS.forEach(function (colonne, col) {
         var btn, slot;
         if (row.zone === 'niche') {
           var f = fixes[col];
@@ -348,7 +365,8 @@
           iTirage++;
         }
         btn.dataset.zone = row.zone;
-        place(btn, cx, row.cy, COL_W, row.ch);
+        btn.style.setProperty('--chant', row.chant);
+        place(btn, colonne.cx, row.cy, colonne.cw, row.ch);
         root.appendChild(btn);
       });
     });

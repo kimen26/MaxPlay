@@ -82,10 +82,12 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, 
    Même bois que les montants de la niche (montant-1/2 du kit, jamais un
    bois CSS inventé — L-145), posées par armoire.js sur les 4 rangées qui
    n'en avaient pas, alignées sur les mêmes centres x pour courir d'un seul
-   tenant du haut en bas. z-index sous les cases (40), donc jamais devant un
-   objet ou une étiquette. */
+   tenant du haut en bas. z-index 19 : SOUS les planches (20), comme sur
+   docs/refs/armoire/ref-casiers-12.png — l'étagère passe devant la
+   cloison. À 39 (passe 2026-09-28), la cloison était posée par-dessus les
+   planches : bois superposé, relevé par PY le 2026-10-30. */
 .cloison {
-  position:absolute; z-index:39; pointer-events:none;
+  position:absolute; z-index:19; pointer-events:none;
   left:var(--cx); top:var(--cy);
   width:var(--cw); height:var(--ch);
   transform:translate(-50%, -50%);
@@ -105,14 +107,14 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, 
   left:var(--cx); top:var(--cy);
   width:var(--cw); height:var(--ch);
   transform:translate(-50%, -50%);
-  /* flex-end et pas center : l'objet est POSÉ sur la planche, il ne flotte
-     pas au milieu de la case. Le bas de chaque case est calé sur le dessus
-     de sa planche (voir ROWS dans armoire.js), donc le libellé tombe sur le
-     chant de l'étagère, comme une petite plaque. */
+  /* flex-end : l'objet est POSÉ sur la planche, il ne flotte pas au milieu
+     de la case. La case EST le compartiment (buildRows/buildCols dans
+     armoire.js) : son bas est le dessus de la planche, son haut le dessous
+     du plafond ou de l'étagère d'au-dessus. */
   display:flex; flex-direction:column; align-items:center; justify-content:flex-end;
   gap:0;
   background:none; border:0; margin:0;
-  padding:0 0 calc(var(--cab-w) * .004);
+  padding:0 0 calc(var(--cab-w) * .006);
   font-family:inherit; color:inherit; cursor:pointer;
   -webkit-tap-highlight-color:transparent;
 }
@@ -127,17 +129,20 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, 
    halo, même vignette) et ne remplace que la couche du milieu. z-index:-1
    dans la pile locale du bouton : derrière .obj et .etiquette, jamais
    devant. */
+/* Spot ENCASTRÉ (retour PY 2026-10-30 : « discrète dans le sous-plafond de
+   chaque case », réf. docs/refs/armoire/ref-ouverte.png) : une demi-ellipse
+   plate coupée par le haut de la case, donc par le plafond — pas une boule
+   suspendue au milieu du fond. */
 .casier, .objet {
-  --g-ampoule: radial-gradient(circle calc(var(--cab-w) * .022) at 50% 4%,
-    #fff8e2 0%, #ffe6a0 55%, rgb(255 224 150 / 0) 100%);
-  --g-halo: radial-gradient(ellipse 62% 72% at 50% 5%,
-    rgb(255 202 95 / .55), rgb(255 190 70 / .22) 42%, transparent 78%);
+  --g-ampoule: radial-gradient(ellipse calc(var(--cab-w) * .026) calc(var(--cab-w) * .008) at 50% 0%,
+    #fffbea 0%, #ffe7a6 50%, rgb(255 225 150 / 0) 100%);
+  --g-halo: radial-gradient(ellipse 72% 88% at 50% 0%,
+    rgb(255 205 110 / .42), rgb(255 190 80 / .15) 45%, transparent 80%);
   --g-vignette: radial-gradient(ellipse 88% 92% at 50% 50%,
     transparent 56%, rgb(20 12 4 / .34) 100%);
 }
 .casier::before, .objet::before {
   content:''; position:absolute; inset:0; z-index:-1;
-  border-radius:calc(var(--cab-w) * .018);
   background:
     var(--g-ampoule), var(--g-halo),
     radial-gradient(ellipse 68% 62% at 50% 58%, rgb(var(--tinte-rgb, 0 0 0) / .25), transparent 76%),
@@ -173,10 +178,15 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, 
    volcan). Le facteur --obj-scale corrige ce qui reste — un objet ajouré
    peint moins de surface dans ce carré qu'un objet trapu. Il est MESURÉ, pas
    choisi : voir tools/armoire-objets.py et js/gen/armoire-objets.js. */
+/* .125 : le plus grand objet (×1,205, drapeaux) tient encore dans le
+   compartiment le plus bas (rangée 4, 9,6 % de haut ≈ 56 px à 360).
+   transform-origin en bas : le facteur fait grandir l'objet vers le haut,
+   jamais dans la planche. */
 .casier .obj, .objet .obj {
   display:block;
-  width:calc(var(--cab-w) * .118); height:calc(var(--cab-w) * .118);
-  object-fit:contain;
+  width:calc(var(--cab-w) * .125); height:calc(var(--cab-w) * .125);
+  object-fit:contain; object-position:50% 100%;
+  transform-origin:50% 100%;
   transform:scale(var(--obj-scale, 1));
   filter:drop-shadow(0 calc(var(--cab-w) * .007) calc(var(--cab-w) * .011) rgba(0,0,0,.4));
   transition:transform 180ms ease;
@@ -188,13 +198,18 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, 
    un liseré clair en haut comme une petite plaque vissée sur l'étagère. La
    capsule noire de la passe 1 faisait « launcher Android » sur un meuble
    chaud. */
+/* Plaque vissée sur le CHANT de l'étagère, sous l'objet (retour PY
+   2026-10-30 : objets « flottants » au-dessus du libellé). --chant =
+   épaisseur de la planche en % de la hauteur du repère (posé par
+   armoire.js) ; 1480/911 = 1,6246 convertit en largeur de scène. */
 .etiquette {
+  position:absolute; left:50%;
+  top:calc(100% + var(--cab-w) * .016246 * var(--chant, 2.7) / 2);
+  transform:translate(-50%, -50%);
+  white-space:nowrap;
   font-family:'Fredoka One', 'Nunito', sans-serif; font-weight:400;
   font-size:calc(var(--cab-w) * .031); line-height:1.12;
-  /* le libellé chevauche le bas de l'objet, comme une étiquette posée
-     dessus : sans ce recouvrement la pile objet + libellé dépasse la case
-     la plus basse (la niche centrale) et vient mordre la planche. */
-  margin-top:calc(var(--cab-w) * -.022); z-index:1;
+  z-index:1;
   color:#4a2a0a; text-align:center;
   padding:calc(var(--cab-w) * .002) calc(var(--cab-w) * .015);
   border-radius:calc(var(--cab-w) * .012);
@@ -202,7 +217,6 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, 
   border:1px solid rgba(92, 50, 15, .35);
   box-shadow:0 1px 0 rgba(255, 255, 255, .35) inset,
              0 2px 4px rgba(55, 25, 5, .3);
-  max-width:100%; pointer-events:none;
 }
 /* un jeu encore verrouillé : grisé + cadenas, jamais la couleur seule */
 .objet.locked .obj { filter:grayscale(1) brightness(.72); }

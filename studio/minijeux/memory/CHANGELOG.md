@@ -8,6 +8,7 @@
 - Nouvelle case Musique : les chansons de dinos composées sur ElevenLabs, à écouter à la suite.
 - Le tangram et les trois jeux de pions (croque-échecs, saute-mouton, shisima) sont retirés.
 - Dans l'armoire, chaque objet est centré dans sa case et posé sur son étagère, son nom en plaque sur le bord de la planche ; les lampes sont de petits spots au plafond de chaque case, et les cloisons passent derrière les étagères.
+- Armoire, 2e passe sur le téléphone : les cloisons touchent enfin les étagères en haut et en bas, plus de taches sombres au plafond, les deux tiroirs sont entiers et symétriques et le tiroir tiré passe devant la porte ouverte.
 
 ## 2026-09
 

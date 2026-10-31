@@ -9,6 +9,7 @@
 //     second le rentre ;
 //   · FIDÉLITÉ : chaque pièce est rendue dans la boîte que le kit lui donne
 //     (js/gen/armoire-kit.js, mesurée sur la référence), à 0,3 % du repère ;
+//     tiroirs et montant central : symétriques autour de l'axe des planches ;
 //   · arrive fermé (ouverts à opacité 0, fermés à 1) ; ?etat=ouvert inverse ;
 //   · tap sur un vantail fermé ouvre, tap sur le vantail ouvert referme ;
 //   · zone tactile ≥ 48 × 48 sur chaque bouton ;
@@ -66,9 +67,16 @@ for (const vp of VIEWPORTS) {
         const d = Math.max(Math.abs(p.x - b.x), Math.abs(p.y - b.y), Math.abs(p.w - b.w), Math.abs(p.h - b.h));
         ecarts.push([label, d]);
       };
-      cab.querySelectorAll('img.am-shell, img.am-planche, img.am-montant').forEach(el => cmp(el, kit[el.dataset.piece].box, el.dataset.piece));
-      cmp(cab.querySelector('.am-tiroir.tiroir-g'), kit.tiroir.box, 'tiroir-g');
-      cmp(cab.querySelector('.am-tiroir.tiroir-d'), kit.tiroir.box_droite, 'tiroir-d');
+      // tiroirs et montant central : recalés symétriques autour de l'axe des
+      // planches (ArmoireMeuble.boitesTiroirs, retour PY 2026-11-01)
+      const T = window.ArmoireMeuble.boitesTiroirs(kit, window.ARMOIRE_RETOUCHES.tiroir);
+      cab.querySelectorAll('img.am-shell, img.am-planche, img.am-montant').forEach(el =>
+        cmp(el, el.dataset.piece === 'montant-3' ? T.montant : kit[el.dataset.piece].box, el.dataset.piece));
+      cmp(cab.querySelector('.am-tiroir.tiroir-g'), T.g, 'tiroir-g');
+      cmp(cab.querySelector('.am-tiroir.tiroir-d'), T.d, 'tiroir-d');
+      const axe = kit['planche-5'].box.x + kit['planche-5'].box.w / 2;
+      const sym = Math.abs((T.g.x + T.d.x + T.d.w) / 2 - axe) + Math.abs(T.montant.x + T.montant.w / 2 - axe);
+      ecarts.push(['symetrie-tiroirs', sym]);
       for (const z of ['haut', 'bas']) {
         cmp(cab.querySelector(`.am-ouverte.am-g[data-zone="${z}"]`), kit['porte-ouverte-' + z].box, 'ouverte-g-' + z);
         cmp(cab.querySelector(`.am-ouverte.am-d[data-zone="${z}"]`), kit['porte-ouverte-' + z].box_droite, 'ouverte-d-' + z);

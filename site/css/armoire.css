@@ -74,20 +74,27 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, 
   width:var(--cw); height:var(--ch);
   transform:translate(-50%, -50%);
   object-fit:fill;
-  -webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%, #000 68%, transparent 100%);
-  mask-image:radial-gradient(ellipse 50% 50% at 50% 50%, #000 68%, transparent 100%);
+  /* bord extérieur fondu sur le coin fond/paroi ; le bord intérieur est
+     caché sous la cloison (2026-11-01 : le masque radial de la passe 3
+     dessinait un rond plus sombre dans un fond éclairé). */
+  -webkit-mask-image:linear-gradient(to right, transparent 0, #000 5%);
+  mask-image:linear-gradient(to right, transparent 0, #000 5%);
 }
+.patch-plafond.miroir { transform:translate(-50%, -50%) scaleX(-1); }
 
 /* ── Cloisons entre les cases d'une même rangée (retour PY 2026-09-28) ──
    Même bois que les montants de la niche (montant-1/2 du kit, jamais un
    bois CSS inventé — L-145), posées par armoire.js sur les 4 rangées qui
    n'en avaient pas, alignées sur les mêmes centres x pour courir d'un seul
-   tenant du haut en bas. z-index 19 : SOUS les planches (20), comme sur
-   docs/refs/armoire/ref-casiers-12.png — l'étagère passe devant la
-   cloison. À 39 (passe 2026-09-28), la cloison était posée par-dessus les
-   planches : bois superposé, relevé par PY le 2026-10-30. */
+   tenant du haut en bas. z-index 26 : au-dessus des planches (20) et des
+   montants du kit (25), mais armoire.js l'arrête pile au bord des CHANTS,
+   qui restent donc devant elle, comme sur docs/refs/armoire/ref-casiers-12.png.
+   Elle recouvre seulement les bandes sombres des sprites de planche (dessus
+   de l'étagère, ombre). Passée dessous (z 19, 2026-10-30), elle perdait son
+   contact haut et bas dans ces bandes (relevé par PY le 2026-11-01) ;
+   posée sur toute la planche (z 39, 2026-09-28), elle masquait les chants. */
 .cloison {
-  position:absolute; z-index:19; pointer-events:none;
+  position:absolute; z-index:26; pointer-events:none;
   left:var(--cx); top:var(--cy);
   width:var(--cw); height:var(--ch);
   transform:translate(-50%, -50%);
@@ -199,12 +206,12 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, 
    capsule noire de la passe 1 faisait « launcher Android » sur un meuble
    chaud. */
 /* Plaque vissée sur le CHANT de l'étagère, sous l'objet (retour PY
-   2026-10-30 : objets « flottants » au-dessus du libellé). --chant =
-   épaisseur de la planche en % de la hauteur du repère (posé par
-   armoire.js) ; 1480/911 = 1,6246 convertit en largeur de scène. */
+   2026-10-30 : objets « flottants » au-dessus du libellé). --plaque =
+   distance du bas de la case au milieu du chant, en % de la hauteur du
+   repère (posé par armoire.js) ; 1480/911 = 1,6246 convertit en largeur. */
 .etiquette {
   position:absolute; left:50%;
-  top:calc(100% + var(--cab-w) * .016246 * var(--chant, 2.7) / 2);
+  top:calc(100% + var(--cab-w) * .016246 * var(--plaque));
   transform:translate(-50%, -50%);
   white-space:nowrap;
   font-family:'Fredoka One', 'Nunito', sans-serif; font-weight:400;

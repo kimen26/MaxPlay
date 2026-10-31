@@ -85,7 +85,7 @@ document.write('<link rel="stylesheet" href="css/armoire-meuble.css?t=' + Date.n
 // l'accueil reel, c'est le service worker qui versionne.
 (function () {
   var t = Date.now();
-  ['js/gen/armoire-kit.js', 'js/armoire-meuble.js'].forEach(function (src) {
+  ['js/gen/armoire-kit.js', 'js/gen/armoire-retouches.js', 'js/armoire-meuble.js'].forEach(function (src) {
     document.write('<script src="' + src + '?t=' + t + '"><\/script>');
   });
 })();

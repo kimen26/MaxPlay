@@ -8,8 +8,8 @@
    plancher de la zone tactile (.am-tap), qui ne touche pas au visuel.
 
    Ordre z : carcasse 10 < planches 20 < montants 25 < tiroirs 30 <
-   [cases et objets de l'accueil : 40] < vantaux ouverts 55 < vantaux
-   fermés 60.
+   [cases et objets de l'accueil : 40] < vantaux ouverts 55 < tiroir
+   tiré 56 < vantaux fermés 60.
    ════════════════════════════════════════════════════════════════════ */
 
 .am {
@@ -53,8 +53,11 @@ img.am { object-fit:fill; pointer-events:none; }
 }
 /* origine en bas : la façade grandit vers le haut de 8 % et descend de 22 %,
    son bord haut descend donc de 14 % — c'est l'espace du caisson. */
+/* z 56 : tiré, il vient vers l'œil, donc DEVANT les vantaux ouverts (55) —
+   dessous, son bord extérieur était coupé net par le vantail (retour PY
+   2026-11-01, « pas propre »). */
 .am-tiroir.am-tire {
-  z-index:36;
+  z-index:56;
   transform:translateY(22%) scale(1.08);
 }
 .am-tiroir.am-tire .am-feuille {

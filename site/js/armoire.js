@@ -42,13 +42,23 @@
   // sous-plafond de 10,5 à 12,9 % : c'est là que vivent les spots).
   var PLAFOND_Y = 10.3;
 
-  function buildRows(kit) {
+  // Chaque sprite de planche porte, autour de son CHANT clair, des bandes
+  // sombres (dessus de l'étagère, ombre sur le fond). Le compartiment
+  // commence sous le chant du dessus — le spot vit dans cette ombre, le
+  // sous-plafond — et la plaque du nom se visse sur le chant du dessous.
+  // Chants mesurés par tools/armoire-retouches.py (js/gen/armoire-retouches.js).
+  function buildRows(kit, chants) {
     var P = kit.pieces;
+    function chant(i) {
+      var b = P['planche-' + i].box, c = chants['planche-' + i];
+      return { haut: b.y + b.h * c[0], bas: b.y + b.h * c[1] };
+    }
     return ROWS_ZONE.map(function (zone, i) {
-      var dessus = i === 0 ? PLAFOND_Y : P['planche-' + i].box.y + P['planche-' + i].box.h;
-      var planche = P['planche-' + (i + 1)].box;
+      var dessus = i === 0 ? PLAFOND_Y : chant(i).bas;
+      var planche = P['planche-' + (i + 1)].box, sous = chant(i + 1);
       return { zone: zone, top: dessus, bottom: planche.y, cy: (dessus + planche.y) / 2,
-               ch: planche.y - dessus, chant: planche.h };
+               ch: planche.y - dessus, chantHaut: sous.haut,
+               plaque: (sous.haut + sous.bas) / 2 - planche.y };
     });
   }
 
@@ -258,45 +268,51 @@
   // avec leur zone comme les cases (setCasesVisible), jamais un montant du
   // meuble lui-même : ce sont des <img> posées par armoire.js, pas par
   // ArmoireMeuble.
+  // Chaque cloison court du chant du dessus (ou du plafond) au chant du
+  // dessous, PAR-DESSUS les bandes sombres des planches (retour PY
+  // 2026-11-01 : contacts haut et bas ratés quand la cloison passait sous
+  // toute la planche, ombre comprise). Les chants restent devant : la
+  // cloison s'arrête pile à leur bord. Aussi dans la niche, par-dessus les
+  // montants du kit, qui s'arrêtaient avant le chant de la planche-3.
   function buildCloisons(root, kit, ROWS) {
     var m1 = kit.pieces['montant-1'].box, m2 = kit.pieces['montant-2'].box;
     var cx1 = m1.x + m1.w / 2, cx2 = m2.x + m2.w / 2;
     var v = kit.version;
-    // Glisse un peu SOUS les planches voisines (z-index 19 < planche 20,
-    // armoire.css) : l'étagère passe devant la cloison, comme sur
-    // docs/refs/armoire/ref-casiers-12.png, jamais un bois posé par-dessus.
-    var engage = 0.4;
-    [0, 1, 3, 4].forEach(function (i) {
-      var row = ROWS[i];
+    // sous la corniche, la cloison remonte un peu derrière son rebord
+    var sousCorniche = 0.4;
+    ROWS.forEach(function (row, i) {
+      var haut = i === 0 ? row.top - sousCorniche : row.top;
       [[cx1, 'montant-1'], [cx2, 'montant-2']].forEach(function (pair) {
         var im = document.createElement('img');
         im.className = 'cloison';
         im.src = IMG + 'v8/' + pair[1] + '.webp?v=' + v;
         im.alt = ''; im.draggable = false;
         im.dataset.zone = row.zone;
-        place(im, pair[0], row.cy, m1.w, row.ch + engage * 2);
+        place(im, pair[0], (haut + row.chantHaut) / 2, m1.w, row.chantHaut - haut);
         root.appendChild(im);
       });
     });
   }
 
-  // ── Recouvre les 2 douilles peintes dans shell.webp (retour PY passe 3,
-  // 2026-09-28) : positions mesurées (32.38 %/66.99 %, y 11.19 %), taille =
-  // exactement la boîte source du patch (12 % × 8 %, pas d'étirement) pour
-  // que le grain colle. Pas de bordure nette : un masque radial fait
-  // disparaître le raccord dans le bois environnant.
-  var PATCH_PLAFOND = [
-    { x: 32.38, y: 11.19 }, { x: 66.99, y: 11.19 }
-  ];
-  var PATCH_W = 12, PATCH_H = 8;
+  // ── Recouvre les 2 douilles peintes dans shell.webp (x 32,38 et 66,99 %)
+  // ET le cône de lumière qu'elles jettent sur le fond. Le petit patch rond
+  // de la passe 3 laissait une tache plus sombre au milieu d'un fond éclairé
+  // (retour PY 2026-11-01, « ronds de zone plus sombre ») : on recouvre
+  // désormais tout le fond des cases Dessin et Chiffres, du plafond à
+  // l'étagère, avec le fond de la case du milieu (sans douille), découpé à
+  // la même hauteur dans shell.webp (tools/armoire-patch-plafond.mjs, même
+  // largeur que la cible : pas d'étirement). Bord intérieur caché sous la
+  // cloison, bord extérieur fondu sur le coin fond/paroi mesuré dans
+  // shell.webp (19,55 % et 79,85 %). Chiffres prend le miroir.
+  var PATCH = { y: 9.6, h: 14.4, w: 16.94, coinG: 19.55, coinD: 79.85 };
   function buildPatchesPlafond(root) {
-    PATCH_PLAFOND.forEach(function (p) {
+    [[PATCH.coinG + PATCH.w / 2, false], [PATCH.coinD - PATCH.w / 2, true]].forEach(function (p) {
       var im = document.createElement('img');
-      im.className = 'patch-plafond';
+      im.className = 'patch-plafond' + (p[1] ? ' miroir' : '');
       im.src = IMG + 'patch-plafond.webp';
       im.alt = ''; im.draggable = false;
       im.setAttribute('aria-hidden', 'true');
-      place(im, p.x, p.y, PATCH_W, PATCH_H);
+      place(im, p[0], PATCH.y + PATCH.h / 2, PATCH.w, PATCH.h);
       root.appendChild(im);
     });
   }
@@ -308,7 +324,8 @@
     if (!global.ArmoireMeuble || !kit) {
       throw new Error('armoire.js : ArmoireMeuble / ARMOIRE_KIT non chargés (vérifier l\'ordre des <script> dans index.html)');
     }
-    var ROWS = buildRows(kit);
+    if (!global.ARMOIRE_RETOUCHES) throw new Error('armoire.js : js/gen/armoire-retouches.js non chargé');
+    var ROWS = buildRows(kit, global.ARMOIRE_RETOUCHES.chants);
     var COLS = buildCols(kit);
 
     // 1. le meuble : carcasse, planches, montants, 2 tiroirs, 4 vantaux —
@@ -365,7 +382,7 @@
           iTirage++;
         }
         btn.dataset.zone = row.zone;
-        btn.style.setProperty('--chant', row.chant);
+        btn.style.setProperty('--plaque', row.plaque);
         place(btn, colonne.cx, row.cy, colonne.cw, row.ch);
         root.appendChild(btn);
       });

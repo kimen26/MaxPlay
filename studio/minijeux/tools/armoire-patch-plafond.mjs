@@ -1,15 +1,18 @@
-// armoire-patch-plafond.mjs — découpe UN petit calque de plafond bois PLAIN
-// dans img/armoire/v8/shell.webp lui-même (jamais une autre image, L-145),
-// pour recouvrir les 2 douilles + ampoule PEINTES dans la carcasse (retour
-// Papa Yann passe 3, HO-MJ-23, 2026-09-28) : notre propre ampoule CSS
-// (.casier::before) faisait double emploi avec elles à la rangée du haut.
+// armoire-patch-plafond.mjs — découpe dans img/armoire/v8/shell.webp lui-même
+// (jamais une autre image, L-145) le FOND de la case du milieu de la rangée
+// du haut : plafond, sous-plafond et fond, sans douille ni cône de lumière.
+// armoire.js le pose sur le fond des cases Dessin et Chiffres (Chiffres en
+// miroir) pour couvrir les 2 douilles PEINTES dans la carcasse (x 32,38 % et
+// 66,99 %) et leur cône : notre spot CSS par case (.casier::before) faisait
+// double emploi avec elles (retour Papa Yann passe 3, HO-MJ-23, 2026-09-28).
 //
-// Les 2 douilles sont à x=32.38 % / 66.99 %, y=11.19 % du repère 911×1480
-// (mesuré par analyse de pixels : luminance > 235 dans le bandeau du haut
-// de shell.webp, clustering des points brillants). La zone x 44-56 %,
-// y 7,5-15,5 % est plate — même bandeau, même hauteur, aucun halo — donc
-// posée à l'identique sur une douille, la ligne de jonction du plafond
-// s'aligne automatiquement (feature horizontale, indépendante du x source).
+// 2026-11-01 (retour PY sur P30, « ronds de zone plus sombre ») : l'ancien
+// patch (12 × 8 %, masque radial) ne couvrait que la douille ; le cône
+// éclairé restait autour et le patch y faisait une tache ronde plus sombre.
+// La boîte source est maintenant centrée sur l'axe du meuble (49,84 %), de
+// la même largeur que la cible (PATCH.w d'armoire.js, pas d'étirement) et à
+// la même hauteur (y 9,6 → 24 %) : posé à côté, le raccord horizontal du
+// plafond s'aligne tout seul.
 //
 // Lancer depuis la racine du repo : node studio/minijeux/tools/armoire-patch-plafond.mjs
 import { chromium } from 'playwright';
@@ -27,7 +30,7 @@ const OUT = path.join(SITE, 'img', 'armoire', 'patch-plafond.webp');
 // lequel dessiner sur un <canvas> (pas de fetch : chargement <img> direct).
 const ANY_PAGE = path.join(SITE, 'index.html');
 
-const SRC_BOX = { x: 0.44, y: 0.075, w: 0.12, h: 0.08 }; // fraction du repère 911x1480
+const SRC_BOX = { x: 0.41366, y: 0.096, w: 0.1694, h: 0.144 }; // fraction du repère 911x1480
 
 const browser = await chromium.launch({ args: ['--allow-file-access-from-files', '--disable-web-security'] });
 const page = await browser.newPage();

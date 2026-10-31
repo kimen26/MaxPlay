@@ -71,10 +71,34 @@
     return b;
   }
 
+  // Tiroirs et montant central SYMÉTRIQUES (retour PY 2026-11-01, sur P30 :
+  // tiroirs « tronqués » côté droit). Dans la référence, le montant central
+  // n'est pas sur l'axe du meuble et rogne le bord droit du tiroir découpé :
+  // posé deux fois tel quel, le tiroir de droite s'arrêtait avant la paroi.
+  // On pose donc la façade complétée (v8/tiroir-facade.webp, générée par
+  // tools/armoire-retouches.py) en miroir autour de l'axe des planches, et le
+  // montant sur cet axe. La façade n'a plus ni cadre ni sillons sombres :
+  // derrière elle, le fond sombre du meuble fait l'ombre du jour, et le
+  // tiroir tiré n'a plus de contour noir. Sa boîte (fraction de celle du
+  // tiroir d'origine) vient du générateur, le reste du kit.
+  function boitesTiroirs(P, f) {
+    var axe = P['planche-5'].box.x + P['planche-5'].box.w / 2;
+    var t = P.tiroir.box, m = P['montant-3'].box;
+    var x = t.x + t.w * f.x, y = t.y + t.h * f.y, w = t.w * f.w, h = t.h * f.h;
+    return {
+      montant: { x: axe - m.w / 2, y: m.y, w: m.w, h: m.h },
+      g: { x: x, y: y, w: w, h: h },
+      d: { x: 2 * axe - x - w, y: y, w: w, h: h }
+    };
+  }
+
   function build(root, kit) {
     kit = kit || KIT;
     if (!kit) throw new Error('ArmoireMeuble : js/gen/armoire-kit.js non chargé');
+    var R = global.ARMOIRE_RETOUCHES;
+    if (!R) throw new Error('ArmoireMeuble : js/gen/armoire-retouches.js non chargé');
     var P = kit.pieces;
+    var T = boitesTiroirs(P, R.tiroir);
     root.classList.add('am-root');
 
     // 1. carcasse
@@ -86,16 +110,18 @@
     });
     Object.keys(P).forEach(function (name) {
       if (!/^montant-/.test(name)) return;
-      // montant-3 : entre les tiroirs, DEVANT eux (le cadre est en facade)
-      root.appendChild(img(name, 'am-montant' + (name === 'montant-3' ? ' am-montant-tiroirs' : ''), P[name].box));
+      // montant-3 : entre les tiroirs, DEVANT eux (le cadre est en facade),
+      // posé sur l'axe du meuble
+      if (name === 'montant-3') root.appendChild(img(name, 'am-montant am-montant-tiroirs', T.montant));
+      else root.appendChild(img(name, 'am-montant', P[name].box));
     });
 
-    // 3. deux tiroirs : le même sprite, chacun est un bouton
-    [['tiroir-g', P.tiroir.box, 'Tiroir de gauche'], ['tiroir-d', P.tiroir.box_droite, 'Tiroir de droite']]
+    // 3. deux tiroirs : la même façade, chacun est un bouton
+    [['tiroir-g', T.g, 'Tiroir de gauche'], ['tiroir-d', T.d, 'Tiroir de droite']]
       .forEach(function (t) {
         var b = button('am-tiroir ' + t[0], t[2]);
         b.dataset.zone = 'bas';
-        b.appendChild(feuille('tiroir'));
+        b.appendChild(feuille('tiroir-facade'));
         box(b, t[1]);
         root.appendChild(b);
       });
@@ -169,5 +195,5 @@
     setZone(root, zone, !root.classList.contains('am-ouvert-' + zone));
   }
 
-  global.ArmoireMeuble = { build: build, setZone: setZone, toggle: toggle, setTiroir: setTiroir, KIT: KIT };
+  global.ArmoireMeuble = { build: build, setZone: setZone, toggle: toggle, setTiroir: setTiroir, boitesTiroirs: boitesTiroirs, KIT: KIT };
 })(window);

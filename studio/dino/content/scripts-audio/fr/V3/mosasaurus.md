@@ -19,7 +19,7 @@
 
 ### BLOC B — Taille
 
-**NARRATEUR H** [excited] : Il mesurait 17 mètres de long — aussi long qu'un bus accordéon ! [amazed] Son corps était large comme la voiture de Papa — 2 mètres ! Et il pesait 10 mille kilos — [serious] aussi lourd que 2 éléphants !
+**NARRATEUR H** [excited] : Il mesurait 17 mètres de long — aussi long qu'un bus accordéon ! [amazed] Il faisait 2 mètres de haut — son corps était large comme la voiture de Papa ! Et il pesait 10 mille kilos — [serious] aussi lourd que 2 éléphants !
 **WEX** [gasps] : Deux éléphants qui nagent ?
 **NARRATEUR H** [chuckles] : Deux éléphants qui nagent, oui — et beaucoup plus vite qu'eux.
 

@@ -86,3 +86,8 @@ Porte : `npm run gate` affiche les jeux touchés ; le cas « commité non pouss�
 Quoi : pour récupérer les musiques ElevenLabs, la boîte Windows « Enregistrer sous » a été pilotée par UI Automation. Une recherche de l'élément d'identifiant `1` (le bouton Enregistrer) a trouvé d'abord un FICHIER de la liste, l'a activé, et Windows a proposé d'écraser un MP3 déjà téléchargé. Réponse « Non » donnée à temps, rien de perdu.
 Comment appliquer : ne jamais chercher un bouton de boîte de dialogue par identifiant numérique dans tout l'arbre. Passer par le clavier : Alt+N (champ Nom), Ctrl+A, chemin complet, Entrée, après avoir vérifié que la boîte a bien le focus ; refuser d'écrire si le fichier cible existe déjà.
 Porte : le script de session `save-dialog.ps1` (scratchpad) applique ces trois garde-fous ; 5 fichiers récupérés ensuite sans incident.
+
+## L-019 — Un `| tail` a caché l'échec de la porte et le commit est parti rouge (2026-11-03)
+Quoi : `npm run check 2>&1 | tail -3 && git commit` : le code de sortie lu par `&&` était celui de `tail` (0), pas celui de `npm run check` (1, Mosasaure). Le commit `0fb4d5db` est parti avec un écart, corrigé par `24f2f45d`.
+Comment appliquer : jamais de tube entre une porte et `&&` ; rediriger la sortie dans un fichier, lire `$?`, puis seulement commiter.
+Porte : `npm run check > fichier 2>&1; echo EXIT=$?` avant tout commit.

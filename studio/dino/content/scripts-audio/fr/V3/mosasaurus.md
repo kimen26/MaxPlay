@@ -1,7 +1,7 @@
 # Mosasaure — Script audio (Narrateur H + Wex)
 
 > Énaliosaure (reptile marin, famille `enaliosaures`), Crétacé · 70 millions d'années · toutes les mers du monde.
-> Chiffres data (`studio/dino/content/dinos/mosasaurus.json`) : 17 m long · 2 m haut · 10 t. Comparaisons = sortie EXACTE de _compLong(17) / _compHaut(2) / _compPoids(10), régénérées 2026-09-12 : `aussi long qu'un bus accordéon !` / `aussi haut qu'une porte !` / `aussi lourd que 2 éléphants !`.
+> Chiffres data (`studio/dino/content/dinos/mosasaurus.json`) : 17 m long · 2 m haut · 10 t. Comparaisons = sortie EXACTE de _compLong(17) / _compHaut(2) / _compPoids(10), régénérées 2026-09-12 : `aussi long qu'un bus accordéon !` / `son corps était large comme la voiture de Papa !` (la fiche canon porte un `comp_hauteur` littéral, pas la sortie de _compHaut : un animal qui nage n'est pas « debout », les 2 m sont la largeur du corps) / `aussi lourd que 2 éléphants !`.
 > Étymologie conforme à `nom_etym` + `_ETYMO-RACINES-50.md` : *Mosa* = la Meuse (rivière d'Europe où on a trouvé ses os) + grec *sauros* = lézard → « le lézard de la Meuse ».
 > Fact-check (Grokipedia, 2026-09-05) : Mosasaurus hoffmannii = super-prédateur marin de la fin du Crétacé (Maastrichtien, ~70 Ma), présent dans toutes les mers du monde (pas de région unique). Reptile marin (squamate), PAS un dinosaure. Proies attestées : requins, grands poissons, ammonites, et d'autres reptiles marins ; capture de ptérosaures en vol au-dessus de l'eau plausible et souvent citée (comportement documenté chez ce type de super-prédateur, formulé prudemment). Contemporain du Tricératops (fin Crétacé) → touche légère Tritri en bloc A (seul dino du lot dans ce cas).
 > Prononciation : « Mo-sa-saure » (lexique §2, -us avalé).
@@ -19,7 +19,7 @@
 
 ### BLOC B — Taille
 
-**NARRATEUR H** [excited] : Il mesurait 17 mètres de long — aussi long qu'un bus accordéon ! [amazed] Debout, il faisait 2 mètres de haut — aussi haut qu'une porte ! Et il pesait 10 mille kilos — [serious] aussi lourd que 2 éléphants !
+**NARRATEUR H** [excited] : Il mesurait 17 mètres de long — aussi long qu'un bus accordéon ! [amazed] Son corps était large comme la voiture de Papa — 2 mètres ! Et il pesait 10 mille kilos — [serious] aussi lourd que 2 éléphants !
 **WEX** [gasps] : Deux éléphants qui nagent ?
 **NARRATEUR H** [chuckles] : Deux éléphants qui nagent, oui — et beaucoup plus vite qu'eux.
 

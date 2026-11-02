@@ -101,6 +101,7 @@ Le portugais brésilien a déjà des formes vernaculaires pour la plupart des di
 | pteranodon | Pteranodon | **Pte-ra-no-DON** | Pt- initial articulé, on nasalisé |
 | quetzalcoatlus | Quetzalcoatlus | **Quét-zal-co-Á-tlus** | aztèque ; -us gardé « -tlus » ; tonique paroxytone sur co-Á tranchée HO-013 |
 | saurolophus | Saurolophus | **Sau-RÓ-lo-fus** | ph→f, -us gardé « -fus » ; ⚠️ piège oral : PAS de préfixe « para- » (≠ Parasaurolophus) — ajouté 2026-08-10, relu natif HO-013 |
+| scelidosaurus | Scelidosaurus | **Es-ce-li-do-SSAU-ro** | Sc- initial→« es- » (BR ajoute e), ce→« se », ss — nom d'usage « Escelidossauro » — ajouté 2026-11-03, à relire natif |
 | scutellosaurus | Scutellosaurus | **Es-cu-te-lo-SSAU-ro** | Sc- initial→« es- » (BR ajoute e), ll→l, ss — ajouté 2026-08-10, relu natif HO-013 |
 | shonisaurus | Shonisaurus | **Cho-ni-SSAU-ro** | sh→ch (« ch » français), ss |
 | smilodon | Smilodon | **Smi-lo-DON** | S- initial gardé net (cohérence avec spino-/estego-/escutelo- en « es- », pas de voisement z) tranché HO-013 ; on nasalisé |

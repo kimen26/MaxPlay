@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] MIN… mee. [curious] This name isn't Greek or Latin like the others — it's the name of a place in Australia."
+      "text": "[excited] MIN… mee. [curious] This name isn't Greek or Latin — it's a place in Australia, Minmi Crossing, [pauses] where its bones were found."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] A place?"
+      "text": "[curious] And its whole name, then?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Minmi Crossing, [pauses] where its bones were found. [calm] It lived in Queensland, a hundred twenty million years ago."
+      "text": "[playful] \"Paravertebra.\" [confident] \"Para,\" in Latin, means next to. And \"vertebra\" is the vertebra — the little bones of the back."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[amazed] Was this dino small?"
+      "text": "[amazed] Bones next to the spine?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Tiny — and for a long time, [pauses] it even held the record for the shortest dinosaur name in the world."
+      "text": "[warmly] That's it — tiny ones, never seen anywhere else. It lived in Queensland, [amazed] a hundred twenty million years ago, [pauses] and for a long time, it was the shortest dinosaur name in the world."
     }
   ],
   "model_id": "eleven_v3",

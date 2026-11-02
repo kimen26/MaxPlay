@@ -12,11 +12,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Pa… rah… seh… RA… theer… ee… um. [curious] In Greek, "cerat" means horn, and the little piece in front means "without." [playful] Close to the beast... without a horn.
-**WEX** [curious] : A rhino with no horn?
-**NARRATEUR H** [happily] : Almost — a cousin of the rhinoceros, yes, but without a single horn. [serious] Not a dinosaur: it showed up way later, [pauses] thirty million years ago.
-**WEX** [curious] : Where did it live?
-**NARRATEUR H** [confident] : In Asia — Pakistan, China, and Mongolia.
+**NARRATEUR H** [excited] : Pa… rah… seh… RA… theer… ee… um. [curious] Four little pieces, all Greek. [pauses] "Para" means beside, close to. And the tiny bit after it means "without."
+**WEX** [curious] : Close to… without what?
+**NARRATEUR H** [playful] : "Ceras" is horn. And "therium" is beast.
+**WEX** [amazed] : Close to the beast without a horn.
+**NARRATEUR H** [warmly] : The whole name, yes — a cousin of the rhinoceros, but without a single horn. It lived in Asia, [amazed] in Pakistan, China, and Mongolia, [pauses] thirty million years ago — long after the dinosaurs.
 
 ### BLOC B — Taille
 

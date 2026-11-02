@@ -6,7 +6,7 @@
 > ⚠️ FACT-CHECK CORRECTION carried from FR canon: `dinos-data.js`'s old `chasseurs` text named "Dracoraptor" as a contemporary hunter — FR canon flags this as unconfirmed (Dracoraptor, ~201 Ma, is separated from Scelidosaurus, ~193-196 Ma, by 5-7 million years). FR canon replaced the named species with a cautious "small two-legged hunters already prowled the area" — matched exactly here, no species named.
 > Etymology note kept: the scientist who named it meant to write "strong legs" in Greek but instead wrote the word for "rib of beef" (documented naming error, Steyskal 1970).
 > Group life stated as genuinely unknown ("A mystery — nobody knows yet"), per FR canon's honesty about the lack of fossil evidence either way.
-> Name in speech: scientific form "Scelidosaurus." Bloc A spells it out with ellipses: "skeh… LY… doh… SOR… us."
+> Name in speech: scientific form "Scelidosaurus." Bloc A spells it out with ellipses: "SEL… ih… doh… SOR… us."
 > "Papa" → "Dad." No Tritri touch — FR canon explicitly rules it out (Jurassic 193 Ma is too far from Triceratops's Cretaceous 66 Ma; the Tritri device is scoped tight, not forced here).
 > Grep-forbidden OK.
 
@@ -14,7 +14,7 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : skeh… LY… doh… SOR… us. In Greek, "saurus" is lizard. [curious] And "scelido" was supposed to mean "strong legs," [amazed] because it had really powerful thighs.
+**NARRATEUR H** [excited] : SEL… ih… doh… SOR… us. In Greek, "saurus" is lizard. [curious] And "scelido" was supposed to mean "strong legs," [amazed] because it had really powerful thighs.
 **WEX** [curious] : A strong-legged lizard.
 **NARRATEUR H** [happily] : Yes. But here's the thing: [amazed] the scientist who named it got the Greek word wrong — the one he actually wrote means "rib of beef." [playful] Without meaning to, he named it the beef-rib lizard.
 **WEX** [curious] : And where did the beef-rib lizard live?

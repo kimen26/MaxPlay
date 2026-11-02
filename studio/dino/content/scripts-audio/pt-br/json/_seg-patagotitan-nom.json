@@ -10,7 +10,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[amazed] Isso. E não é um gigante qualquer: [proud] o maior animal que já andou na Terra. [calm] Ele vivia na Argentina, há 100 milhões de anos."
+      "text": "[amazed] Isso. E não é um gigante qualquer: [proud] um dos maiores animais que já andaram na Terra. [calm] Ele vivia na Argentina, há 100 milhões de anos."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -18,7 +18,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Nunca encontraram uma única marca de mordida nos ossos dele adulto. [serious] O próprio tamanho já protegia ele."
+      "text": "[confident] Depois de adulto, [serious] o próprio tamanho já protegia ele de caçadores como o Tyrannotitan."
     }
   ],
   "model_id": "eleven_v3",

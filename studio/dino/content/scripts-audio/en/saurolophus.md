@@ -21,18 +21,18 @@
 
 ### BLOC B — Taille
 
-**NARRATEUR H** [excited] : He was 9 meters long — as long as a truck. 3 meters tall — [quickly] as tall as a basketball hoop. And 3,500 kilos — [amazed] as heavy as a hippo and a horse put together!
+**NARRATEUR H** [excited] : He was 9 meters long — as long as a truck. Maybe 3 meters tall — [quickly] as tall as a basketball hoop. And 3,000 kilos — [amazed] as heavy as a hippo!
 **WEX** [gasps] : As tall as a basketball hoop, plus the crest?
 **NARRATEUR H** [confident] : Yes. A big duck-billed herbivore, [proud] with his bone spike standing tall on his skull.
 
 ### BLOC C — Comment il vivait
 
-**NARRATEUR H** [serious] : A herbivore. He grazed on plants in a big herd, [calm] young and old together. [confident] In America, Albertosaurus hunted him. In Asia, it was Tarbosaurus.
+**NARRATEUR H** [serious] : A herbivore. He grazed on plants in a herd, [calm] young and old together. [confident] In America, Albertosaurus hunted him. In Asia, it was Tarbosaurus.
 **WEX** [curious] : And what was his crest for?
 **NARRATEUR H** [confident] : Unlike Parasaurolophus, [curious] it didn't echo like a trumpet. [hesitant] Scientists think it was just for being seen and recognized by the rest of the herd.
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [excited] : In Mongolia, scientists found [amazed] over a hundred Saurolophus in one spot — [whispers] babies and adults together, all caught at once by a sudden flood.
+**NARRATEUR H** [excited] : In Mongolia, scientists found [amazed] over twenty Saurolophus in one spot — [whispers] babies and adults together, all dead at the same time.
 **WEX** [gasps] : A hundred, in one place?
-**NARRATEUR H** [softly] : Yes. It shows us [proud] they really did live in huge herds, all together.
+**NARRATEUR H** [softly] : Yes. It shows us [proud] they lived in groups, all together.

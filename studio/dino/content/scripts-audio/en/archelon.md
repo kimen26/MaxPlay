@@ -12,11 +12,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [curious] : AR… keh… lon. "Arche" means chief, first — [serious] like in "archaeology." And "chelon" is turtle.
+**NARRATEUR H** [curious] : AR… keh… lon. [pauses] Two pieces, both Greek. "Arche" means chief, first — [serious] like in "archaeology."
+**WEX** [curious] : And "lon"?
+**NARRATEUR H** [happily] : "Chelon," in Greek, is turtle.
 **WEX** [confident] : The chief turtle?
-**NARRATEUR H** [happily] : Right — the biggest turtle of all time. She lived seventy-five million years ago, [amazed] in a sea that cut [serious] North America right in half.
-**WEX** [curious] : A turtle, but not a dinosaur?
-**NARRATEUR H** [confident] : No, a real giant sea turtle — [warmly] a cousin of today's turtles, just a whole lot bigger.
+**NARRATEUR H** [warmly] : The whole name, yes — the biggest turtle of all time. She lived in a sea that cut North America in half, [amazed] seventy-five million years ago, [pauses] with Tylosaurus and old sharks for dangerous neighbors.
 
 ### BLOC B — Taille
 

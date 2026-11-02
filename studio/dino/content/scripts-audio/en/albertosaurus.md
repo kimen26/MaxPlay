@@ -11,11 +11,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Al… bur… toh… saurus. [curious] "Alberto" comes from Alberta, a BIG region of Canada where its bones were found. [playful] And "saurus," you know what that means?
-**WEX** [confident] : Lizard. So… the Alberta lizard.
-**NARRATEUR H** [happily] : Exactly. [amazed] It lived there, seventy million years ago. [warmly] A cousin of T. rex.
-**WEX** [curious] : Did it have enemies? [nervous] Hunters even tougher than it?
-**NARRATEUR H** [confident] : No. [warmly] In its own country, it was the biggest hunter around. [proud] No other carnivore was big enough to mess with it.
+**NARRATEUR H** [excited] : Al… bur… toh… saurus. [curious] Two pieces in this name. [pauses] "Alberto" comes from Alberta, a BIG region of Canada, where its bones were found.
+**WEX** [curious] : And the rest, "saurus"?
+**NARRATEUR H** [happily] : That one's Greek. "Sauros" means lizard.
+**WEX** [confident] : The Alberta lizard.
+**NARRATEUR H** [warmly] : The whole name, yes. It lived in Canada, [amazed] seventy million years ago, [pauses] and nearby lived Edmontosaurus and Saurolophus.
 
 ### BLOC B — Taille
 

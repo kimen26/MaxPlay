@@ -95,6 +95,7 @@ Stress = CAPS. Hyphens split syllables for the TTS.
 | pteranodon | Pteranodon | **teh-RAN-oh-don** | Pt→silent p |
 | quetzalcoatlus | Quetzalcoatlus | **ket-sal-koh-AT-lus** | Nahuatl root; qu→"k", tz→"ts" |
 | saurolophus | Saurolophus | **sor-OL-oh-fus** | ph→f; ⚠️ oral trap: NO "para-" prefix (≠ Parasaurolophus) — confirmed 2026-09-05 |
+| scelidosaurus | Scelidosaurus | **SEL-ih-doh-SOR-us** | sc before e→"s" (not "sk"), -saurus→SOR-us — IPA ˌsɛlᵻdoʊˈsɔːrəs (Wikipedia EN) — added 2026-11-03 |
 | scutellosaurus | Scutellosaurus | **skoo-TEL-oh-SOR-us** | scu→"skoo", ll→l — confirmed 2026-09-05, only one plausible English reading |
 | shonisaurus | Shonisaurus | **SHOH-nih-SOR-us** | sh kept |
 | smilodon | Smilodon | **SMY-loh-don** | i→"eye" (sabre-tooth cat) |

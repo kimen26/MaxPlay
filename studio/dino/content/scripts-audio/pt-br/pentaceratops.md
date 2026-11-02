@@ -2,8 +2,8 @@
 
 > HO-013, i18n nativa a partir de `fr/V3/pentaceratops.md` (canon) + `i18n/pt-br/strings.json` (comparações traduzidas, RECALCULADO o fato do crânio aqui).
 > Pentaceratops sternbergii · Cretáceo · há 75 milhões de anos · Estados Unidos (Novo México). Dados (`dinos-data.js`) : 6 m comprimento · 2 m altura · 5 t · velocidade 25 km/h.
-> ⚠️ **Fato recalculado (HO-010)** : `strings.json` (`fait`) ainda diz "a cabeça dele media mais de 2 metros" — o FR canon corrigiu para "mais de 3 metros" (chiffre HO-009/010). Este script usa 3 metros.
-> Comparações de tamanho/peso = `strings.json` palavra por palavra: "com a largura de uma rua de duas faixas — ele fechava a rua toda" / "da altura de uma porta" / "tão pesado quanto um elefante".
+> ⚠️ **Fato corrigido 2026-11-03** : o crânio mede "mais de 2 metros" (Wikipédia EN 2,16-2,3 m ; o "3 metros" de HO-010 não se sustenta) e o peso passa de 5 t a 2,5 t (Wikipédia EN, Paul 2016) : "tão pesado quanto 5 cavalos". Este script usa 2 metros e 5 cavalos.
+> Comparações de tamanho/peso = `strings.json` palavra por palavra: "com a largura de uma rua de duas faixas — ele fechava a rua toda" / "da altura de uma porta" / "tão pesado quanto 5 cavalos" (era "um elefante" até 2026-11-03).
 > Velocidade (nova, HO-011/013) localizada com o mesmo repère do FR (`_compVitesse(25)` = "aussi vite qu'un vélo qui roule bien") : "que nem andar de bicicleta rápido".
 > Motivo "campeão da cabeça grande" MANTIDO aqui (retirado de Torossauro, ver `torosaurus.md`). "Refletia duas vezes" = ÚLTIMO uso autorizado do motivo, consumido aqui.
 > Nome falado : forma plana do léxico (Pentacerátops), sílabas separadas só no bloco A.
@@ -20,8 +20,8 @@
 
 ### BLOC B — Tamanho
 
-**NARRATEUR H** [excited] : 6 metros de comprimento — com a largura de uma rua de duas faixas — ele fechava a rua toda! 2 metros de altura — [quickly] da altura de uma porta! E 5 mil quilos — [amazed] tão pesado quanto um elefante! Os cientistas acham que ele conseguia correr a 25 quilômetros por hora — que nem andar de bicicleta rápido.
-**WEX** [gasps] : Tão pesado quanto um elefante.
+**NARRATEUR H** [excited] : 6 metros de comprimento — com a largura de uma rua de duas faixas — ele fechava a rua toda! 2 metros de altura — [quickly] da altura de uma porta! E 2500 quilos — [amazed] tão pesado quanto 5 cavalos! Os cientistas acham que ele conseguia correr a 25 quilômetros por hora — que nem andar de bicicleta rápido.
+**WEX** [gasps] : Tão pesado quanto 5 cavalos.
 **NARRATEUR H** [confident] : Isso. Um bicho forte, [proud] com uma cabeça ainda mais impressionante que o corpo.
 
 ### BLOC C — Como ele vivia
@@ -32,6 +32,6 @@
 
 ### BLOC D — O detalhe mais louco
 
-**NARRATEUR H** [excited] : A cabeça dele, com a gola, media MAIS de 3 metros. [whispers] Uma das maiores cabeças de todos os animais que já andaram na Terra.
+**NARRATEUR H** [excited] : A cabeça dele, com a gola, media MAIS de 2 metros. [whispers] Uma das maiores cabeças de todos os animais que já andaram na Terra.
 **WEX** [gasps] : Maior que o papai em pé.
 **NARRATEUR H** [softly] : Bem maior. O Pentacerátops, o campeão da cabeça grande.

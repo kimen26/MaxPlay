@@ -15,7 +15,7 @@
 **WEX** [curious] : A helmet on his head.
 **NARRATEUR H** [happily] : Exactly. A big rounded crest, hollow on the inside. [warmly] He lived in North America, seventy-six million years ago.
 **WEX** [nervous] : And were there dangers around there?
-**NARRATEUR H** [serious] : Yes. Gorgosaurus and Daspletosaurus, two cousins of T. rex, hunted in that area. [confident] So Corythosaurus never stayed alone.
+**NARRATEUR H** [serious] : Yes. Gorgosaurus and Daspletosaurus, two cousins of T. rex, hunted in that area. [confident] So it was safer not to stay alone.
 
 ### BLOC B — Taille
 
@@ -25,12 +25,12 @@
 
 ### BLOC C — Comment il vivait
 
-**NARRATEUR H** [serious] : A herbivore. He grazed on plants in herds, never alone. [confident] Gorgosaurus and Daspletosaurus prowled around, [nervous] so the herd stayed tightly grouped.
+**NARRATEUR H** [serious] : A herbivore. He grazed on plants, probably in herds. [confident] Gorgosaurus and Daspletosaurus prowled around, [nervous] so it was best to stay tightly grouped.
 **WEX** [curious] : How did they warn each other of danger?
-**NARRATEUR H** [confident] : With loud calls that carried far. [warmly] The whole herd would run to safety together, right at the first signal.
+**NARRATEUR H** [confident] : Scientists think it was with loud calls that carried far. [warmly] The whole herd could run to safety together, right at the first signal.
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [excited] : His crest was hollow, [curious] with tiny bony tubes inside, like a trumpet. [whispers] Blowing through it made his voice echo far, to call his herd even without seeing them.
+**NARRATEUR H** [excited] : His crest was hollow, [curious] with tiny bony tubes inside, like a trumpet. [whispers] Blowing through it, his voice probably echoed far, to call his herd even without seeing them.
 **WEX** [gasps] : A trumpet on his head.
-**NARRATEUR H** [softly] : Yes. And every crest shape made a slightly different sound — [amazed] like each one had his own voice.
+**NARRATEUR H** [softly] : Yes. And every crest shape probably made a slightly different sound — [amazed] like each one had his own voice.

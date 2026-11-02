@@ -12,11 +12,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : MIN… mee. [curious] This name isn't Greek or Latin like the others — it's the name of a place in Australia.
-**WEX** [curious] : A place?
-**NARRATEUR H** [happily] : Minmi Crossing, [pauses] where its bones were found. [calm] It lived in Queensland, a hundred twenty million years ago.
-**WEX** [amazed] : Was this dino small?
-**NARRATEUR H** [confident] : Tiny — and for a long time, [pauses] it even held the record for the shortest dinosaur name in the world.
+**NARRATEUR H** [excited] : MIN… mee. [curious] This name isn't Greek or Latin — it's a place in Australia, Minmi Crossing, [pauses] where its bones were found.
+**WEX** [curious] : And its whole name, then?
+**NARRATEUR H** [playful] : "Paravertebra." [confident] "Para," in Latin, means next to. And "vertebra" is the vertebra — the little bones of the back.
+**WEX** [amazed] : Bones next to the spine?
+**NARRATEUR H** [warmly] : That's it — tiny ones, never seen anywhere else. It lived in Queensland, [amazed] a hundred twenty million years ago, [pauses] and for a long time, it was the shortest dinosaur name in the world.
 
 ### BLOC B — Taille
 

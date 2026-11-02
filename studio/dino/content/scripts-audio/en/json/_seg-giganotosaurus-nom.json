@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Jig… ah… no… toh… saurus. [curious] \"Giga\" means giant — like in \"gigantic.\" \"Noto\" means from the south. And \"saurus\" means lizard."
+      "text": "[excited] Jig… ah… no… toh… saurus. [curious] Three pieces, all Greek. [pauses] \"Giga\" means giant — like in \"gigantic.\" \"Noto\" means south."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[amazed] Giant from the south, like \"gigantic\" but a lizard."
+      "text": "[curious] And \"saurus,\" I know that one."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactly. It lived in Argentina, in South America, [amazed] ninety-eight million years ago."
+      "text": "[chuckles] The lizard. [amazed] So, all together?"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] What did a giant like that even hunt?"
+      "text": "[proud] The giant lizard of the south."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Andesaurus. [confident] A long-necked cousin, as tall as a building, that lived in the very same area."
+      "text": "[warmly] There you go. It lived in Argentina, [amazed] ninety-eight million years ago, [pauses] with Andesaurus for a neighbor — a giant with a long neck."
     }
   ],
   "model_id": "eleven_v3",

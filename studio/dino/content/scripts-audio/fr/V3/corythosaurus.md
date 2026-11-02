@@ -3,6 +3,7 @@
 > Ornithopode à crête-casque (famille `bec`, clé technique dinos-data.js), Crétacé · 76 millions d'années · Amérique du Nord. Format 4 blocs A/B/C/D (5e MP3 `-recap` = concat automatique ffmpeg des 4 blocs, pas de texte à écrire).
 > Chiffres data (`studio/dino/content/dinos/corythosaurus.json`) : 9 m long · 2 m haut · 4 t. Comparaisons = sortie EXACTE de _compLong(9) / _compHaut(2) / _compPoids(4), régénérées 2026-09-12 : `aussi long qu'un camion !` / `aussi haut qu'une porte !` / `aussi lourd que 2 rhinocéros !`.
 > Étymologie conforme à `_ETYMO-COMPLET-60.md` (corytho = casque, saurus = lézard) + `nom_etym` data (casuarius = casoar, détail non repris ici pour rester simple).
+> Fact-check (sourcé 2026-11-03) : Grokipedia https://grokipedia.com/page/Corythosaurus — « about 76–74 million years ago » (76 Ma confirmé) ; « measured approximately 9–10 meters in length and weighed around 3–4 metric tons » et « hip heights reaching up to 2 meters » (9 m, 2 m, 4 t dans la fourchette ; 4 t = HAUT de fourchette, Wikipédia EN https://en.wikipedia.org/wiki/Corythosaurus : Colbert 1962 « 3.82 [tonnes] », AMNH 5240 « 3.1 », Paul 2016 « 2.8 » — tenu, non gonflé au-delà de la source) ; « derives its name from Greek words meaning "helmet lizard," referring to the curved, hollow crest » (étymologie confirmée) ; « Tyrannosaurids like Gorgosaurus and Daspletosaurus served as apex predators » (chasseurs confirmés) ; « Corythosaurus probably lived in herds » (troupeau = probable) ; « likely functioned as a resonance chamber for producing low-frequency vocalizations » et Wikipédia EN « Scientists speculate that Corythosaurus could make loud sounds » / « The individual crests would produce different sounds » (voix de la crête = hypothèse). **Corrigé le 2026-11-03** : « ne restait jamais seul » / « jamais tout seul » / « se sauvait ensemble » / « sa voix résonnait » (affirmés sans réserve) → formulations d'hypothèse (« sans doute », « devait », « d'après les savants »).
 > Prononciation « Co-ri-to-saure » déjà gravée dans `i18n/lexiques-prononciation/fr.md`.
 > Grep-interdits OK. Wex FR standard, aucun tic écrit, jamais de `!` final.
 > Tritri : PAS de touche — Corythosaure (76 Ma) et Tricératops (66 Ma) ne sont pas contemporains (écart ~10 Ma). Portée Tritri strictement limitée : on ne force pas le rapprochement.
@@ -15,7 +16,7 @@
 **WEX** [curious] : Un casque sur la tête.
 **NARRATEUR H** [happily] : Exactement. Une grande crête arrondie, creuse à l'intérieur. [warmly] Il vivait en Amérique du Nord, il y a 76 millions d'années.
 **WEX** [nervous] : Et il y avait des dangers, par là ?
-**NARRATEUR H** [serious] : Oui. Le Gorgosaure et le Daspletosaure, deux cousins du T-Rex, chassaient dans le coin. [confident] Alors le Corythosaure ne restait jamais seul.
+**NARRATEUR H** [serious] : Oui. Le Gorgosaure et le Daspletosaure, deux cousins du T-Rex, chassaient dans le coin. [confident] Alors mieux valait ne pas rester seul.
 
 ### BLOC B — Taille
 **NARRATEUR H** [excited] : 9 mètres de long — aussi long qu'un camion. 2 mètres de haut — aussi haut qu'une porte. Et 4 mille kilos — [amazed] aussi lourd que 2 rhinocéros.
@@ -23,14 +24,14 @@
 **NARRATEUR H** [confident] : Oui. Un grand herbivore à bec de canard, [proud] avec sa crête tout en haut du crâne.
 
 ### BLOC C — Comment il vivait
-**NARRATEUR H** [serious] : Herbivore. Il broutait des plantes en troupeau, jamais tout seul. [confident] Le Gorgosaure et le Daspletosaure rôdaient par là, [nervous] alors la troupe restait bien groupée.
+**NARRATEUR H** [serious] : Herbivore. Il broutait des plantes, sans doute en troupeau. [confident] Le Gorgosaure et le Daspletosaure rôdaient par là, [nervous] alors mieux valait rester bien groupés.
 **WEX** [curious] : Ils se prévenaient comment, d'un danger ?
-**NARRATEUR H** [confident] : Avec des cris puissants, qui portaient loin. [warmly] Tout le troupeau se sauvait ensemble, dès le premier signal.
+**NARRATEUR H** [confident] : D'après les savants, avec des cris puissants, qui portaient loin. [warmly] Tout le troupeau pouvait se sauver ensemble, dès le premier signal.
 
 ### BLOC D — Le truc fou
-**NARRATEUR H** [excited] : Sa crête était creuse, [curious] avec de petits tuyaux d'os à l'intérieur, comme une trompette. [whispers] En soufflant dedans, sa voix résonnait très loin, pour appeler son troupeau même sans le voir.
+**NARRATEUR H** [excited] : Sa crête était creuse, [curious] avec de petits tuyaux d'os à l'intérieur, comme une trompette. [whispers] En soufflant dedans, sa voix devait résonner très loin, pour appeler son troupeau même sans le voir.
 **WEX** [gasps] : Une trompette sur la tête.
-**NARRATEUR H** [softly] : Oui. Et chaque forme de crête donnait un son un peu différent — [amazed] comme si chacun avait sa propre voix.
+**NARRATEUR H** [softly] : Oui. Et chaque forme de crête donnait sans doute un son un peu différent — [amazed] comme si chacun avait sa propre voix.
 
 ---
 

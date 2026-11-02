@@ -2,7 +2,7 @@
 
 > HO-013, i18n nativa a partir de `fr/V3/mosasaurus.md` (canon) + `i18n/pt-br/strings.json` (comparações já validadas).
 > Mosasaurus hoffmannii — RÉPTIL MARINHO, não é um dinossauro. Cretáceo · há 70 milhões de anos · todos os mares do mundo. Dados (`dinos-data.js`) : 17 m comprimento · 2 m altura · 10 t.
-> Comparações = `strings.json` palavra por palavra: "do tamanho de um ônibus articulado" / "da altura de uma porta" / "tão pesado quanto 2 elefantes".
+> Comparações = `strings.json` palavra por palavra: "do tamanho de um ônibus articulado" / "o corpo dele era tão largo quanto o carro do Papai" (corrigido : `strings.json` já dizia isso, o script dizia « da altura de uma porta ») / "tão pesado quanto 2 elefantes".
 > Tritri : toque leve (contemporâneo do Tricerátops, fim do Cretáceo) — único deste lote nesse caso.
 > Nome falado : forma plana do léxico (Mosassauro), sílabas separadas só no bloco A.
 
@@ -18,7 +18,7 @@
 
 ### BLOC B — Tamanho
 
-**NARRATEUR H** [excited] : Ele media 17 metros de comprimento — do tamanho de um ônibus articulado! [amazed] De pé, ele tinha 2 metros de altura — da altura de uma porta! E pesava 10 mil quilos — [serious] tão pesado quanto 2 elefantes!
+**NARRATEUR H** [excited] : Ele media 17 metros de comprimento — do tamanho de um ônibus articulado! [amazed] O corpo dele era tão largo quanto o carro do Papai — 2 metros! E pesava 10 mil quilos — [serious] tão pesado quanto 2 elefantes!
 **WEX** [gasps] : Dois elefantes que nadam?
 **NARRATEUR H** [chuckles] : Dois elefantes que nadam, sim — e bem mais rápido do que eles.
 

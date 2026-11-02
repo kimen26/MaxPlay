@@ -12,11 +12,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [curious] : SHOH… nih… SOR… us. His name comes from a place: the Shoshone Mountains, [serious] in the Nevada desert — that's where his bones were found.
-**WEX** [confident] : The Shoshone Mountains lizard?
-**NARRATEUR H** [happily] : Exactly. He lived two hundred thirty million years ago — [amazed] way before most of the dinosaurs you know.
-**WEX** [curious] : A desert, but he lived in water?
-**NARRATEUR H** [confident] : Back then, that desert was a sea. [amazed] The whole region was underwater.
+**NARRATEUR H** [curious] : SHOH… nih… SOR… us. [pauses] Two pieces in this name. "Shoni" is a place: the Shoshone Mountains, [serious] in the Nevada desert, in the United States.
+**WEX** [curious] : And "saurus"?
+**NARRATEUR H** [happily] : That one's Greek. "Sauros," the lizard.
+**WEX** [confident] : The Shoshone Mountains lizard.
+**NARRATEUR H** [warmly] : The whole name, yes. He lived two hundred thirty million years ago, [amazed] long before most dinosaurs — [pauses] and that desert, back then, was a whole sea.
 
 ### BLOC B — Taille
 

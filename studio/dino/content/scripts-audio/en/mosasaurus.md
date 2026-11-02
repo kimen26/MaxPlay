@@ -11,11 +11,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : MOH… sah… SOR… us. His name comes from a river — [curious] the Meuse, in Europe, where his first bones were found. And "saurus," [confident] you're starting to know that one.
-**WEX** [confident] : Lizard. The Meuse River lizard.
-**NARRATEUR H** [happily] : Exactly. Except he didn't live in a river — [amazed] he swam in every ocean on Earth, [serious] seventy million years ago.
-**WEX** [curious] : Every ocean? Even Tritri's?
-**NARRATEUR H** [confident] : That very one. Mosasaurus and Triceratops lived at the same time, [serious] right at the end of the age of dinosaurs — him in the water, [warmly] Triceratops on land.
+**NARRATEUR H** [excited] : MOH… sah… SOR… us. [curious] Two pieces in this name. [pauses] "Mosa" is the Meuse, a river in Europe, where his first bones were found.
+**WEX** [curious] : And "saurus"?
+**NARRATEUR H** [happily] : That one's Greek. "Sauros," the lizard.
+**WEX** [confident] : The Meuse River lizard.
+**NARRATEUR H** [warmly] : The whole name, yes — except he didn't live in a river: [amazed] he swam in EVERY ocean in the world, seventy million years ago, [pauses] at the same time as Tritri, on land.
 
 ### BLOC B — Taille
 

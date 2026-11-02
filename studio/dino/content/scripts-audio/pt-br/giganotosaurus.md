@@ -19,13 +19,13 @@
 
 ### BLOC B — Tamanho
 
-**NARRATEUR H** [excited] : Ele media 13 metros de comprimento — do tamanho de um ônibus articulado! [quickly] De pé, ele tinha 3 vírgula 3 metros de altura — que nem dois Papais um em cima do outro! E pesava 7 mil quilos — [amazed] tão pesado quanto um elefante e um rinoceronte juntos! [serious] E os cientistas acham que ele conseguia correr a 50 quilômetros por hora — que nem um carro na cidade.
+**NARRATEUR H** [excited] : Ele media 13 metros de comprimento — do tamanho de um ônibus articulado! [quickly] De pé, ele tinha 3 vírgula 3 metros de altura — que nem dois Papais um em cima do outro! E pesava 7 mil quilos — [amazed] tão pesado quanto um elefante e um rinoceronte juntos! [serious] Os cientistas acham que ele conseguia chegar a 50 quilômetros por hora, mas só em distâncias curtas — que nem um carro na cidade.
 **WEX** [gasps] : Que nem um carro?
-**NARRATEUR H** [confident] : Isso mesmo. [warmly] Um dos carnívoros mais rápidos da época dele.
+**NARRATEUR H** [confident] : Isso mesmo. [warmly] Mas só em arrancadas curtas, [serious] ele não aguentava correr por muito tempo.
 
 ### BLOC C — Como ele vivia
 
-**NARRATEUR H** [serious] : Era carnívoro. Caçava o Andessauro, [amazed] um gigante de pescoço comprido bem maior do que ele.
+**NARRATEUR H** [serious] : Era carnívoro. Provavelmente caçava o Andessauro, [amazed] um gigante de pescoço comprido bem maior do que ele.
 **WEX** [nervous] : Sozinho, contra um gigante?
 **NARRATEUR H** [hesitant] : Os cientistas acham que não, [confident] talvez vários Giganotossauros juntos. Eles ainda estão tentando ter certeza.
 

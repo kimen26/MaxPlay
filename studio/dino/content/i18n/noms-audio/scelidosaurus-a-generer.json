@@ -1,0 +1,48 @@
+[
+  {
+    "id": "scelidosaurus",
+    "langue": "fr",
+    "texte_envoye": "[excited] Scé-li-do-saure",
+    "pipeline": "tts",
+    "voix_finale": "narrateur_h",
+    "voice_id": "cbRcktt2xvoeFpdvW2wg",
+    "modele_tts": "eleven_v3",
+    "language_code": "fr",
+    "fichier_cible": "site/audio/dinos/fr/noms/scelidosaurus.mp3",
+    "source_texte": "lexiques-prononciation/fr.md §2 (ajouté 2026-11-03)",
+    "statut": "a_generer",
+    "date": null
+  },
+  {
+    "id": "scelidosaurus",
+    "langue": "en",
+    "texte_envoye": "[excited] Scelidosaurus",
+    "pipeline": "sts-v2",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "modele_tts": "eleven_v3",
+    "language_code": "en",
+    "modele_sts": "eleven_multilingual_sts_v2",
+    "voix_finale": "narrateur_h",
+    "fichier_cible": "site/audio/dinos/en/noms/scelidosaurus.mp3",
+    "source_texte": "forme plate = nom scientifique (arbitrage PY 2026-08-11) ; respelling lexique SEL-ih-doh-SOR-us à écouter avant validation",
+    "statut": "a_generer",
+    "date": null
+  },
+  {
+    "id": "scelidosaurus",
+    "langue": "pt-br",
+    "texte_envoye": "[excited] Escelidossauro",
+    "pipeline": "sts-v2",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "modele_tts": "eleven_v3",
+    "language_code": "pt",
+    "modele_sts": "eleven_multilingual_sts_v2",
+    "voix_finale": "narrateur_h",
+    "fichier_cible": "site/audio/dinos/pt-br/noms/scelidosaurus.mp3",
+    "source_texte": "lexique pt-br.md §2 « Es-ce-li-do-SSAU-ro » dé-tireté (à relire natif)",
+    "statut": "a_generer",
+    "date": null
+  }
+]

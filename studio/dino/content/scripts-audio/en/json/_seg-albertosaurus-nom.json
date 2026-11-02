@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Al… bur… toh… saurus. [curious] \"Alberto\" comes from Alberta, a BIG region of Canada where its bones were found. [playful] And \"saurus,\" you know what that means?"
+      "text": "[excited] Al… bur… toh… saurus. [curious] Two pieces in this name. [pauses] \"Alberto\" comes from Alberta, a BIG region of Canada, where its bones were found."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[confident] Lizard. So… the Alberta lizard."
+      "text": "[curious] And the rest, \"saurus\"?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactly. [amazed] It lived there, seventy million years ago. [warmly] A cousin of T. rex."
+      "text": "[happily] That one's Greek. \"Sauros\" means lizard."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Did it have enemies? [nervous] Hunters even tougher than it?"
+      "text": "[confident] The Alberta lizard."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] No. [warmly] In its own country, it was the biggest hunter around. [proud] No other carnivore was big enough to mess with it."
+      "text": "[warmly] The whole name, yes. It lived in Canada, [amazed] seventy million years ago, [pauses] and nearby lived Edmontosaurus and Saurolophus."
     }
   ],
   "model_id": "eleven_v3",

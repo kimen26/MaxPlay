@@ -1,8 +1,9 @@
 # Saurolophe — dialogue audio V3 (Narrateur H + Wex)
 
 > Ornithopode à crête pleine (famille `bec`, clé technique dinos-data.js), Crétacé · 70 millions d'années · Amérique du Nord (Canada) et Asie (Mongolie).
-> Chiffres data (`studio/dino/content/dinos/saurolophus.json`) : 9 m long · 3 m haut · 3.5 t. Comparaisons = sortie EXACTE de _compLong(9) / _compHaut(3) / _compPoids(3.5), régénérées 2026-09-12 : `aussi long qu'un camion !` / `aussi haut qu'un panier de basket !` / `aussi lourd qu'un hippopotame et un cheval ensemble !`.
+> Chiffres data (`studio/dino/content/dinos/saurolophus.json`) : 9 m long · 3 m haut · 3 t. Comparaisons = sortie EXACTE de _compLong(9) / _compHaut(3) / _compPoids(3), régénérées 2026-11-03 : `aussi long qu'un camion !` / `aussi haut qu'un panier de basket !` / `aussi lourd qu'un hippopotame !`.
 > Étymologie conforme à `_ETYMO-RACINES-50.md` (sauro- = lézard, -lophus = crête) → « lézard à crête ».
+> Fact-check (sourcé 2026-11-03) : Grokipedia https://grokipedia.com/page/Saurolophus — « Late Cretaceous period, approximately 74 to 70 million years ago » (70 Ma) ; « Saurolophus osborni was notably shorter, estimated at around 9–10 meters in length » (9 m) ; « potential biogeographic connections across Beringia » (pont de terre) ; « Herding in Saurolophus likely served as a key strategy for predation avoidance in the predator-rich Nemegt Formation, where theropods such as Tarbosaurus bataar coexisted » (Tarbosaure confirmé, troupeau = « probable ») ; Wikipédia EN https://en.wikipedia.org/wiki/Saurolophus : « S. osborni [...] has been estimated to have weighed around 3 tonnes », « at least 21 Saurolophus individuals can be currently found » (Dragon's Tomb) et « the exact conditions and cause surrounding the group death can not be determined » ; Albertosaure : Wikipédia EN https://en.wikipedia.org/wiki/Albertosaurus — faune de la Horseshoe Canyon Formation, « hadrosaurs [...] Edmontosaurus, Saurolophus, and Hypacrosaurus » (cohabitation confirmée). **Corrigé le 2026-11-03** : poids 3,5 t → **3 t** (Wikipédia EN) → « aussi lourd qu'un hippopotame » ; « plus de cent Saurolophes » → **« plus de vingt »** (Grokipedia dit « over 100 carcasses », Wikipédia EN dit « at least 21 » : seul « plus de vingt » est vrai dans les deux) ; « surpris par une crue » → **cause retirée** (Wikipédia EN : cause indéterminée) ; « très grand troupeau » → « troupeau » / « groupe ». **Non sourcé → « peut-être »** : la hauteur de 3 m (ni Grokipedia ni Wikipédia EN ne la donnent). Crête pleine, éperon vers l'arrière, signal visuel : déjà dit comme hypothèse.
 > ⚠️ Vérité critique tenue : la crête est un ÉPERON D'OS PLEIN, droit, pointant vers l'arrière-haut — jamais décrite comme creuse ni comme faisant de la musique (ça, c'est le Parasaurolophus, cité en contraste). Hypothèse du signal visuel formulée comme hypothèse (« on pense que »), jamais comme un fait. Aucune couleur mentionnée. 2 espèces seulement citées en creux (Amérique + Mongolie), jamais « 3 espèces ». Découverte des 100+ Saurolophes en Mongolie dite vraie (crue, groupe surpris) sans aucun détail de souffrance.
 > Prononciation « So-ro-lo-fuss » à graver dans `i18n/lexiques-prononciation/fr.md` (phase 4).
 > Grep-interdits OK. Wex FR standard, aucun tic écrit, jamais de `!` final.
@@ -21,21 +22,21 @@
 
 ### BLOC B — Taille
 
-**NARRATEUR H** [excited] : 9 mètres de long — aussi long qu'un camion. 3 mètres de haut — [quickly] aussi haut qu'un panier de basket. Et 3 500 kilos — [amazed] aussi lourd qu'un hippopotame et un cheval ensemble !
+**NARRATEUR H** [excited] : 9 mètres de long — aussi long qu'un camion. Peut-être 3 mètres de haut — [quickly] aussi haut qu'un panier de basket. Et 3 mille kilos — [amazed] aussi lourd qu'un hippopotame !
 **WEX** [gasps] : Aussi haut qu'un panier de basket, avec la crête en plus ?
 **NARRATEUR H** [confident] : Oui. Un grand herbivore à bec de canard, [proud] avec son éperon d'os dressé tout en haut du crâne.
 
 ### BLOC C — Comment il vivait
 
-**NARRATEUR H** [serious] : Herbivore. Il broutait des plantes en grand troupeau, [calm] petits et grands ensemble. [confident] En Amérique, l'Albertosaure le chassait. En Asie, c'était le Tarbosaure.
+**NARRATEUR H** [serious] : Herbivore. Il broutait des plantes en troupeau, [calm] petits et grands ensemble. [confident] En Amérique, l'Albertosaure le chassait. En Asie, c'était le Tarbosaure.
 **WEX** [curious] : Et sa crête, elle servait à quoi ?
 **NARRATEUR H** [confident] : Contrairement au Parasaurolophus, [curious] elle ne résonnait pas comme une trompette. [hesitant] On pense qu'elle servait juste à être vue et reconnue par les autres du troupeau.
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [excited] : En Mongolie, on a retrouvé [amazed] plus de cent Saurolophes au même endroit — [whispers] des bébés et des adultes ensemble, surpris tous d'un coup par une crue soudaine.
+**NARRATEUR H** [excited] : En Mongolie, on a retrouvé [amazed] plus de vingt Saurolophes au même endroit — [whispers] des bébés et des adultes ensemble, morts tous en même temps.
 **WEX** [gasps] : Cent, au même endroit ?
-**NARRATEUR H** [softly] : Oui. Ça nous montre [proud] qu'ils vivaient vraiment en très grand troupeau, tous ensemble.
+**NARRATEUR H** [softly] : Oui. Ça nous montre [proud] qu'ils vivaient en groupe, tous ensemble.
 
 ---
 
@@ -43,7 +44,7 @@
 
 - [x] 1 dino couvert, 4 blocs A/B/C/D.
 - [x] Étymologie conforme (sauro- = lézard, -lophus = crête).
-- [x] Chiffres taille/poids = sortie exacte `_compLong(9)` / `_compHaut(3)` / `_compPoids(3.5)` (vérifié par exécution node du fichier réel).
+- [x] Chiffres taille/poids = sortie exacte `_compLong(9)` / `_compHaut(3)` / `_compPoids(3)` (corrigé le 2026-11-03, vérifié par exécution node du fichier réel).
 - [x] Crête décrite comme éperon d'os PLEIN, jamais creuse, jamais musicale — contraste explicite avec Parasaurolophus.
 - [x] Hypothèse du signal visuel formulée comme hypothèse (« on pense que »), pas un fait assené.
 - [x] Aucune couleur mentionnée (inconnue).

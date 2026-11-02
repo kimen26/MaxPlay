@@ -18,18 +18,18 @@
 
 ### BLOC B — Tamanho
 
-**NARRATEUR H** [excited] : 9 metros de comprimento — do tamanho de um caminhão. 3 metros de altura — [quickly] da altura de uma cesta de basquete. E 3500 quilos — [amazed] tão pesado quanto um hipopótamo e um cavalo juntos!
+**NARRATEUR H** [excited] : 9 metros de comprimento — do tamanho de um caminhão. talvez uns 3 metros de altura — [quickly] da altura de uma cesta de basquete. E 3000 quilos — [amazed] tão pesado quanto um hipopótamo!
 **WEX** [gasps] : Da altura de uma cesta de basquete, e ainda com a crista?
 **NARRATEUR H** [confident] : Isso. Um grande herbívoro de bico de pato, [proud] com o espinho de osso dele em pé lá no topo do crânio.
 
 ### BLOC C — Como ele vivia
 
-**NARRATEUR H** [serious] : Herbívoro. Comia plantas em manada grande, [calm] filhotes e adultos juntos. [confident] Na América, o Albertossauro caçava ele. Na Ásia, era o Tarbossauro.
+**NARRATEUR H** [serious] : Herbívoro. Comia plantas em manada, [calm] filhotes e adultos juntos. [confident] Na América, o Albertossauro caçava ele. Na Ásia, era o Tarbossauro.
 **WEX** [curious] : E a crista dele, servia pra quê?
 **NARRATEUR H** [confident] : Diferente do Parassaurolofo, [curious] ela não ressoava que nem uma trombeta. [hesitant] Acham que ela servia só pra ser vista e reconhecida pelos outros da manada.
 
 ### BLOC D — O detalhe mais louco
 
-**NARRATEUR H** [excited] : Na Mongólia, encontraram [amazed] mais de cem Saurolofos no mesmo lugar — [whispers] filhotes e adultos juntos, surpreendidos de uma vez por uma enchente repentina.
+**NARRATEUR H** [excited] : Na Mongólia, encontraram [amazed] mais de vinte Saurolofos no mesmo lugar — [whispers] filhotes e adultos juntos, todos mortos ao mesmo tempo.
 **WEX** [gasps] : Cem, no mesmo lugar?
-**NARRATEUR H** [softly] : Isso. Isso mostra [proud] que eles viviam mesmo em manadas bem grandes, todos juntos.
+**NARRATEUR H** [softly] : Isso. Isso mostra [proud] que eles viviam em grupo, todos juntos.

@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Uh… MAR… guh… SOR… us. [curious] This name comes from a place! \"La Amarga,\" in Argentina, where its bones were found."
+      "text": "[excited] Uh… MAR… guh… SOR… us. [curious] Two pieces in this name. [pauses] \"Amarga\" is a place: La Amarga, in Argentina, where its bones were found."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] The lizard from La Amarga."
+      "text": "[curious] And \"saurus\"?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Right. It lived in Argentina, a hundred twenty-five million years ago."
+      "text": "[happily] That one's Greek. \"Sauros,\" the lizard."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Did it have anything special about it?"
+      "text": "[confident] The lizard from La Amarga."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Two rows of really big spikes, [amazed] running down its neck and its back."
+      "text": "[warmly] The whole name, yes. It lived in Argentina, [amazed] a hundred twenty-five million years ago, [pauses] with two rows of really big spikes on its neck and back."
     }
   ],
   "model_id": "eleven_v3",

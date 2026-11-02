@@ -2,23 +2,23 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Gorgonops. \"Gorgon\" is a monster from really old Greek stories — [scared] so terrifying that just looking at it was scary. [confident] And \"ops,\" face."
+      "text": "[serious] Gorgonops. [pauses] Two pieces, [curious] both Greek. \"Gorgon\" is the Gorgon, a monster from old Greek stories with a terrifying face."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[nervous] The scary face?"
+      "text": "[scared] Terrifying how?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[warmly] Yes — scientists found its skull genuinely fearsome. [confident] It lived in South Africa, two hundred sixty million years ago."
+      "text": "[gently] So frightening that you were scared just hearing it come closer. [confident] And \"ops,\" in Greek, is face."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Is it a dinosaur?"
+      "text": "[nervous] The face that scares?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] No, not at all — it lived way before them. [warmly] It's an even closer cousin of ours than Dimetrodon."
+      "text": "[warmly] The whole name, yes — scientists found its skull truly impressive. It lived in South Africa, [amazed] two hundred sixty million years ago, [pauses] way before the first dinosaurs."
     }
   ],
   "model_id": "eleven_v3",

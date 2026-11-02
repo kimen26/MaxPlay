@@ -2,7 +2,7 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] A herbivore. He grazed on plants in herds, never alone. [confident] Gorgosaurus and Daspletosaurus prowled around, [nervous] so the herd stayed tightly grouped."
+      "text": "[serious] A herbivore. He grazed on plants, probably in herds. [confident] Gorgosaurus and Daspletosaurus prowled around, [nervous] so it was best to stay tightly grouped."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -10,7 +10,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] With loud calls that carried far. [warmly] The whole herd would run to safety together, right at the first signal."
+      "text": "[confident] Scientists think it was with loud calls that carried far. [warmly] The whole herd could run to safety together, right at the first signal."
     }
   ],
   "model_id": "eleven_v3",

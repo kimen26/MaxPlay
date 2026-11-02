@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] 31 mètres de long — [amazed] comme un bus accordéon et un bus, l'un derrière l'autre. Debout, 12 mètres de haut — [curious] aussi haut qu'un immeuble de quatre étages. Et 70 mille kilos — [proud] aussi lourd que QUATORZE éléphants."
+      "text": "[excited] 31 mètres de long — [amazed] comme un bus accordéon et un bus, l'un derrière l'autre. Aux épaules, 6 mètres et demi de haut — [curious] aussi haut qu'un lampadaire. Et 57 mille kilos — [proud] aussi lourd que 19 hippopotames."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Quatorze éléphants."
+      "text": "[gasps] Dix-neuf hippopotames."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui. [whispers] Son cœur, à lui tout seul, était gros comme une petite voiture."
+      "text": "[confident] Oui. [whispers] Et les squelettes trouvés sont ceux de jeunes adultes : il pouvait encore grandir."
     }
   ],
   "model_id": "eleven_v3",

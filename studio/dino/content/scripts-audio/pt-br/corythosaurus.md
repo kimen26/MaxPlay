@@ -13,7 +13,7 @@
 **WEX** [curious] : Um capacete na cabeça.
 **NARRATEUR H** [happily] : Exatamente. Uma crista grande e arredondada, oca por dentro. [warmly] Ele vivia na América do Norte, há 76 milhões de anos.
 **WEX** [nervous] : E tinha perigos, por lá?
-**NARRATEUR H** [serious] : Tinha. O Gorgossauro e o Daspletossauro, dois primos do T-Rex, caçavam por perto. [confident] Então o Coritossauro nunca ficava sozinho.
+**NARRATEUR H** [serious] : Tinha. O Gorgossauro e o Daspletossauro, dois primos do T-Rex, caçavam por perto. [confident] Então era melhor não ficar sozinho.
 
 ### BLOC B — Tamanho
 
@@ -23,12 +23,12 @@
 
 ### BLOC C — Como ele vivia
 
-**NARRATEUR H** [serious] : Herbívoro. Comia plantas em manada, nunca sozinho. [confident] O Gorgossauro e o Daspletossauro rondavam por lá, [nervous] então o grupo ficava bem unido.
+**NARRATEUR H** [serious] : Herbívoro. Comia plantas, provavelmente em manada. [confident] O Gorgossauro e o Daspletossauro rondavam por lá, [nervous] então era melhor ficar bem unido.
 **WEX** [curious] : Como eles se avisavam de um perigo?
-**NARRATEUR H** [confident] : Com gritos poderosos, que chegavam bem longe. [warmly] A manada inteira fugia junto, ao primeiro sinal.
+**NARRATEUR H** [confident] : Os cientistas acham que era com gritos poderosos, que chegavam bem longe. [warmly] A manada inteira podia fugir junto, ao primeiro sinal.
 
 ### BLOC D — O detalhe mais louco
 
-**NARRATEUR H** [excited] : A crista dele era oca, [curious] com tubinhos de osso por dentro, que nem uma trombeta. [whispers] Soprando dentro dela, a voz ressoava bem longe, pra chamar a manada mesmo sem enxergar.
+**NARRATEUR H** [excited] : A crista dele era oca, [curious] com tubinhos de osso por dentro, que nem uma trombeta. [whispers] Soprando dentro dela, a voz devia ressoar bem longe, pra chamar a manada mesmo sem enxergar.
 **WEX** [gasps] : Uma trombeta na cabeça.
-**NARRATEUR H** [softly] : Isso. E cada formato de crista dava um som diferente — [amazed] como se cada um tivesse a própria voz.
+**NARRATEUR H** [softly] : Isso. E cada formato de crista provavelmente dava um som diferente — [amazed] como se cada um tivesse a própria voz.

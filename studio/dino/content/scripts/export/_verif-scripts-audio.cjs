@@ -174,7 +174,8 @@ function checkFile(file) {
   if (LANG === 'fr' && blocs.B) {
     const B = norm(blocs.B.replace(/\[[^\]]+\]/g, ''));
     const attendu = [['long', _compLong(d.taille_m)], ['poids', _compPoids(d.poids_t)]];
-    if (d.hauteur_m) attendu.push(['haut', _compHaut(d.hauteur_m)]);
+    // La fiche peut porter un comp_hauteur littéral (mosasaurus : animal qui nage) : c'est lui que l'écran affiche, donc lui qui fait foi.
+    if (d.hauteur_m) attendu.push(['haut', d.comp_hauteur || _compHaut(d.hauteur_m)]);
     const Bc = normComp(blocs.B.replace(/\[[^\]]+\]/g, ''));
     for (const [k, s] of attendu) if (!Bc.includes(normComp(s))) errs.push(`bloc B : comparaison ${k} attendue « ${s} » absente`);
     const nums = [['taille', d.taille_m], ['hauteur', d.hauteur_m], ['poids', d.poids_t >= 1 ? d.poids_t : Math.round(d.poids_t * 1000)]];

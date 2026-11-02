@@ -2,7 +2,7 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Ele media 13 metros de comprimento — do tamanho de um ônibus articulado! [quickly] De pé, ele tinha 3 vírgula 3 metros de altura — que nem dois Papais um em cima do outro! E pesava 7 mil quilos — [amazed] tão pesado quanto um elefante e um rinoceronte juntos! [serious] E os cientistas acham que ele conseguia correr a 50 quilômetros por hora — que nem um carro na cidade."
+      "text": "[excited] Ele media 13 metros de comprimento — do tamanho de um ônibus articulado! [quickly] De pé, ele tinha 3 vírgula 3 metros de altura — que nem dois Papais um em cima do outro! E pesava 7 mil quilos — [amazed] tão pesado quanto um elefante e um rinoceronte juntos! [serious] Os cientistas acham que ele conseguia chegar a 50 quilômetros por hora, mas só em distâncias curtas — que nem um carro na cidade."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -10,7 +10,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Isso mesmo. [warmly] Um dos carnívoros mais rápidos da época dele."
+      "text": "[confident] Isso mesmo. [warmly] Mas só em arrancadas curtas, [serious] ele não aguentava correr por muito tempo."
     }
   ],
   "model_id": "eleven_v3",

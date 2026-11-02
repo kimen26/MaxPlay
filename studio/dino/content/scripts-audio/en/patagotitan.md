@@ -12,26 +12,24 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : TIE… tan… oh… SOR. [curious] In Greek, "Titan" was the giant, the biggest one of all.
+**NARRATEUR H** [excited] : TIE… tan… oh… SOR. [curious] "Titan," in Greek, means the Titans — giants from old Greek stories, bigger than anything.
 **WEX** [curious] : The giant lizard?
-**NARRATEUR H** [amazed] : That's the one. And not just any giant: [proud] the biggest animal that ever walked on Earth. [calm] It lived in Argentina, a hundred million years ago.
-**WEX** [curious] : So nobody dared attack it?
-**NARRATEUR H** [confident] : Scientists have never found a single bite mark on its adult bones. [serious] Its size alone kept it safe.
+**NARRATEUR H** [amazed] : That's it. And not just any giant: [proud] one of the biggest animals that ever walked on Earth. It lived in Argentina, [amazed] in Patagonia, a hundred million years ago, [pauses] and once grown, its size protected it from hunters like Tyrannotitan.
 
 ### BLOC B — Taille
 
-**NARRATEUR H** [excited] : A hundred two feet long — [amazed] like two and a half school buses, one behind the other. Standing up, thirty-nine feet tall — [curious] as tall as a 4-story building. And seventy thousand kilos — [proud] as heavy as FOURTEEN elephants.
-**WEX** [gasps] : Fourteen elephants.
-**NARRATEUR H** [confident] : Yep. [whispers] Its heart alone was the size of a small car.
+**NARRATEUR H** [excited] : A hundred two feet long — [amazed] like two and a half school buses, one behind the other. Up at the shoulder, about twenty-one feet tall — [curious] as tall as a street lamp. And fifty-seven thousand kilos — [proud] as heavy as NINETEEN hippos.
+**WEX** [gasps] : Nineteen hippos.
+**NARRATEUR H** [confident] : Yep. [whispers] And those skeletons belong to young adults: it could still grow.
 
 ### BLOC C — Comment il vivait
 
 **NARRATEUR H** [serious] : Herbivore, in a herd. [calm] It ate leaves way up in the treetops, with its enormous neck.
 **WEX** [curious] : Did it live with lots of other Titanosaurs?
-**NARRATEUR H** [amazed] : Scientists found seven skeletons together, [proud] in Patagonia, in southern Argentina.
+**NARRATEUR H** [amazed] : Scientists found at least six skeletons together, [proud] in Patagonia, in southern Argentina.
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [excited] : Its bones were so huge it took special trucks [pauses] and giant cranes to move them to the museum.
+**NARRATEUR H** [excited] : Its bones were so huge that scientists dug up more than a hundred fifty [pauses] from a single quarry in Patagonia.
 **WEX** [amazed] : Even the bones were giant.
 **NARRATEUR H** [softly] : Its full name is Patagotitan mayorum — [proud] the titan of Patagonia. [curious] Scientists still argue about it: was this one bigger, or its cousin Argentinosaurus?

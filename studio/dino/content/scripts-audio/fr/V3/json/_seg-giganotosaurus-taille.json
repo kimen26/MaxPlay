@@ -2,7 +2,7 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Il mesurait 13 mètres de long — aussi long qu'un bus RATP ! [quickly] Debout, il faisait 3 virgule 3 mètres de haut — comme deux Papas l'un sur l'autre ! Et il pesait 7 mille kilos — [amazed] aussi lourd qu'un éléphant et un rhinocéros ensemble ! [serious] Et les savants pensent qu'il pouvait courir à 50 kilomètres à l'heure — aussi vite qu'une voiture en ville."
+      "text": "[excited] Il mesurait 13 mètres de long — aussi long qu'un bus RATP ! [quickly] Debout, il faisait 3 virgule 3 mètres de haut — comme deux Papas l'un sur l'autre ! Et il pesait 7 mille kilos — [amazed] aussi lourd qu'un éléphant et un rhinocéros ensemble ! [serious] Les savants pensent qu'il pouvait atteindre 50 kilomètres à l'heure, mais seulement sur de courtes distances — aussi vite qu'une voiture en ville."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -10,7 +10,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[confident] Oui. [warmly] Un des carnivores les plus rapides de son époque."
+      "text": "[confident] Oui. [warmly] Mais seulement par petits élans, [serious] il ne tenait pas la course longtemps."
     }
   ],
   "model_id": "eleven_v3",

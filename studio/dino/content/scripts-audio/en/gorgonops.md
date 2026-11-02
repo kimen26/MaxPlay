@@ -11,11 +11,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [serious] : Gorgonops. "Gorgon" is a monster from really old Greek stories — [scared] so terrifying that just looking at it was scary. [confident] And "ops," face.
-**WEX** [nervous] : The scary face?
-**NARRATEUR H** [warmly] : Yes — scientists found its skull genuinely fearsome. [confident] It lived in South Africa, two hundred sixty million years ago.
-**WEX** [curious] : Is it a dinosaur?
-**NARRATEUR H** [confident] : No, not at all — it lived way before them. [warmly] It's an even closer cousin of ours than Dimetrodon.
+**NARRATEUR H** [serious] : Gorgonops. [pauses] Two pieces, [curious] both Greek. "Gorgon" is the Gorgon, a monster from old Greek stories with a terrifying face.
+**WEX** [scared] : Terrifying how?
+**NARRATEUR H** [gently] : So frightening that you were scared just hearing it come closer. [confident] And "ops," in Greek, is face.
+**WEX** [nervous] : The face that scares?
+**NARRATEUR H** [warmly] : The whole name, yes — scientists found its skull truly impressive. It lived in South Africa, [amazed] two hundred sixty million years ago, [pauses] way before the first dinosaurs.
 
 ### BLOC B — Taille
 

@@ -11,11 +11,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [curious] : off… THAL… moh… SOR… us. "Ophthalmo" means eye — like an ophthalmologist, [serious] the doctor who checks your eyes. And "saurus," lizard.
+**NARRATEUR H** [curious] : off… THAL… moh… SOR… us. [pauses] Two pieces, both Greek. "Ophthalmo" means eye — like an ophthalmologist, [serious] the doctor who checks your eyes.
+**WEX** [curious] : And "saurus"?
+**NARRATEUR H** [happily] : The lizard.
 **WEX** [confident] : The eye lizard?
-**NARRATEUR H** [happily] : That's the one. He lived one hundred fifty million years ago, [amazed] in the shallow seas of Europe and North America.
-**WEX** [curious] : Why such big eyes, for a sea lizard?
-**NARRATEUR H** [serious] : That's exactly his thing. We're getting there.
+**NARRATEUR H** [warmly] : The whole name, yes. He lived in the shallow seas of Europe and North America, [amazed] a hundred fifty million years ago, [pauses] with Liopleurodon prowling close by.
 
 ### BLOC B — Taille
 

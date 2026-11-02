@@ -11,21 +11,21 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Jig… ah… no… toh… saurus. [curious] "Giga" means giant — like in "gigantic." "Noto" means from the south. And "saurus" means lizard.
-**WEX** [amazed] : Giant from the south, like "gigantic" but a lizard.
-**NARRATEUR H** [happily] : Exactly. It lived in Argentina, in South America, [amazed] ninety-eight million years ago.
-**WEX** [curious] : What did a giant like that even hunt?
-**NARRATEUR H** [playful] : Andesaurus. [confident] A long-necked cousin, as tall as a building, that lived in the very same area.
+**NARRATEUR H** [excited] : Jig… ah… no… toh… saurus. [curious] Three pieces, all Greek. [pauses] "Giga" means giant — like in "gigantic." "Noto" means south.
+**WEX** [curious] : And "saurus," I know that one.
+**NARRATEUR H** [chuckles] : The lizard. [amazed] So, all together?
+**WEX** [proud] : The giant lizard of the south.
+**NARRATEUR H** [warmly] : There you go. It lived in Argentina, [amazed] ninety-eight million years ago, [pauses] with Andesaurus for a neighbor — a giant with a long neck.
 
 ### BLOC B — Taille
 
-**NARRATEUR H** [excited] : It was 13 meters long — as long as a school bus! [quickly] Standing up, it was 3.3 meters tall — as tall as two Dads standing on each other's shoulders! And it weighed 7,000 kilos — [amazed] as heavy as an elephant and a rhino put together! [serious] And scientists think it could run about 31 miles an hour — as fast as a car in the city.
+**NARRATEUR H** [excited] : It was 13 meters long — as long as a school bus! [quickly] Standing up, it was 3.3 meters tall — as tall as two Dads standing on each other's shoulders! And it weighed 7,000 kilos — [amazed] as heavy as an elephant and a rhino put together! [serious] Scientists think it could reach about 31 miles an hour, but only over short distances — as fast as a car in the city.
 **WEX** [gasps] : As fast as a car?
-**NARRATEUR H** [confident] : Yes. [warmly] One of the fastest big carnivores of its time.
+**NARRATEUR H** [confident] : Yes. [warmly] But only in short bursts, [serious] it couldn't keep running for long.
 
 ### BLOC C — Comment il vivait
 
-**NARRATEUR H** [serious] : It was a carnivore. It hunted Andesaurus, [amazed] a long-necked giant much bigger than itself.
+**NARRATEUR H** [serious] : It was a carnivore. It probably hunted Andesaurus, [amazed] a long-necked giant much bigger than itself.
 **WEX** [nervous] : All alone, against a giant?
 **NARRATEUR H** [hesitant] : Scientists think maybe not, [confident] maybe several Giganotosaurus together. They're still trying to be sure.
 

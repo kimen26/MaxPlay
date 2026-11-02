@@ -19,12 +19,12 @@
 **NARRATEUR H** [calm] : Yes, cut off from the rest of the world. [pauses] And out there, almost nothing was like anywhere else.
 
 ### BLOC B — Taille
-**NARRATEUR H** [excited] : Its open wings spanned 10 meters wingtip to wingtip — as wide as six Dads lying head to toe. [quickly] Laid end to end, as long as a truck. Standing up, 3 meters tall — [proud] as tall as a basketball hoop. And 220 kilos — as heavy as a lion.
+**NARRATEUR H** [excited] : Its open wings spanned 10 meters wingtip to wingtip — as wide as six Dads lying head to toe. [quickly] Laid end to end, as long as a truck. Standing up, maybe 3 meters tall — [proud] as tall as a basketball hoop. And 220 kilos — as heavy as a lion.
 **WEX** [gasps] : As tall as a basketball hoop?
 **NARRATEUR H** [confident] : Yes. [slowly] But its real difference is its neck: unlike Quetzalcoatlus, its long, thin-necked cousin, [amazed] this one had a short, thick neck, almost like a bull, with a huge head on top.
 
 ### BLOC C — Comment il vivait
-**NARRATEUR H** [serious] : Carnivore. [confident] And it led a double life: it hunted just as well on foot as it did up in the sky.
+**NARRATEUR H** [serious] : Carnivore. [confident] And it led a double life: it flew, but it hunted mostly on foot.
 **WEX** [curious] : On foot? [gasps] A flying animal that walks?
 **NARRATEUR H** [confident] : Yes, on all four legs. [slowly] And scientists think that on the ground, it moved at about 7 miles an hour — [amazed] as fast as a kid running.
 **WEX** [curious] : What did it eat, on its island?

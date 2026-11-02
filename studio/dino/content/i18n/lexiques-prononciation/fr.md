@@ -75,6 +75,7 @@
 | Titanis | **Ti-ta-niss** | -is final, S à garantir entendu — **✅ VALIDÉ Papa Yann à l'oreille 2026-07-28** (preview groupé), régénéré en production (`titanis-nom.mp3` + `titanis-funfact.mp3`) |
 | Tylosaurus (dit dans le bloc C de la fiche Archélon, prédateur cité) | **Ti-lo-saure** | y→i, forme FR en -saure — ajouté 2026-09-05 (HO-011 W5, archelon.md) |
 | Rhomaleosaurus (dit dans le bloc C de la fiche Ichtyosaure, prédateur cité) | **Ro-ma-lé-o-saure** | forme FR en -saure, aucun autre piège — ajouté 2026-09-05 (HO-011 W5, ichthyosaurus.md) |
+| Scélidosaure | **Scé-li-do-saure** | sc+é → « s » (pas « sk »), -us → -saure ; aucun autre piège (th/ph/ch/y absents) — ajouté 2026-11-03 (fiche scelidosaurus.md, qui annonçait « à ajouter ») |
 
 ---
 
@@ -101,7 +102,7 @@
 
 ## 3. Noms qui se lisent BIEN tels quels (pas de respelling)
 
-Spinosaure · Giganotosaure · Allosaure · Tarbosaure · Albertosaure · Gorgosaure · Cératosaure · Carnotaure · Acrocanthosaure · Apatosaure · Camarasaure · Amargasaure · Plateosaure · Ankylosaure · Stégosaure · Kéntrosaure · Tricératops · Torosaure · Protocératops · Pentacératops · Edmontosaure · Vélociraptor · Utahraptor · Microraptor · Oviraptor · Dimétrodon · Élasmosaure · Liopleurodon · Minmi · Scutellosaure · Scélidosaure · Maiasaura · Gorgonops · Centrosaure · Ichtyosaure · Mammouth · Smilodon.
+Spinosaure · Giganotosaure · Allosaure · Tarbosaure · Albertosaure · Gorgosaure · Cératosaure · Carnotaure · Acrocanthosaure · Apatosaure · Camarasaure · Amargasaure · Plateosaure · Ankylosaure · Stégosaure · Kéntrosaure · Tricératops · Torosaure · Protocératops · Pentacératops · Edmontosaure · Vélociraptor · Utahraptor · Microraptor · Oviraptor · Dimétrodon · Élasmosaure · Liopleurodon · Minmi · Scutellosaure · Maiasaura · Gorgonops · Centrosaure · Ichtyosaure · Mammouth · Smilodon.
 
 > En cas de doute → respeller, ça ne coûte rien. Le **preview groupé** (§4) tranche.
 > ✅ **5 cas ex-DOUTEUX TRANCHÉS Papa Yann 2026-07-28** via preview groupé (« oui c'est très bien les sons pour les questions ») : Titanis (Ti-ta-niss), Aenocyon (É-no-si-on), Coelodonta (Sé-lo-don-ta), Glyptodon (Gli-pto-don), Ichthyosaurus/Ichtyosaure latin (Ik-ti-o-saure). **Ce sont désormais la référence de production**, plus des extrapolations — voir §5 pour le détail régénération. Mégathérium/Paracérathérium restaient hors preview (jugés OK sans risque réel, non régénérés).

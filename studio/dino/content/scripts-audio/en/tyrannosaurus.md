@@ -26,7 +26,7 @@
 
 **NARRATEUR H** [serious] : He was a carnivore. He hunted Triceratops, Edmontosaurus, and Ankylosaurus. [calm] Mostly a loner.
 **WEX** [nervous] : So Tritri had to be super careful?
-**NARRATEUR H** [encouraging] : Yes, [confident] but with his three horns, he knew how to defend himself. T. rex never got him without a fight.
+**NARRATEUR H** [confident] : Very careful. [serious] When the king picked his prey, [calm] he often won — but not always.
 
 ### BLOC D — Le truc fou
 

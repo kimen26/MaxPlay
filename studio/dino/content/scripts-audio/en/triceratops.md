@@ -28,7 +28,7 @@
 
 **NARRATEUR H** [serious] : He was a herbivore. He grazed on low plants and ferns, [confident] maybe in herds, to better protect the young.
 **WEX** [nervous] : And T. rex, did he attack him?
-**NARRATEUR H** [confident] : He tried. [warmly] But Tritri fought back with his three horns. Triceratops never backed down from anyone.
+**NARRATEUR H** [confident] : He tried. [calm] But facing a herd, [serious] three horns pointed at him, [warmly] the king thought twice about it.
 
 ### BLOC D — Le truc fou
 

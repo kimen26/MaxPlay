@@ -12,11 +12,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Uh… MAR… guh… SOR… us. [curious] This name comes from a place! "La Amarga," in Argentina, where its bones were found.
-**WEX** [curious] : The lizard from La Amarga.
-**NARRATEUR H** [happily] : Right. It lived in Argentina, a hundred twenty-five million years ago.
-**WEX** [curious] : Did it have anything special about it?
-**NARRATEUR H** [serious] : Two rows of really big spikes, [amazed] running down its neck and its back.
+**NARRATEUR H** [excited] : Uh… MAR… guh… SOR… us. [curious] Two pieces in this name. [pauses] "Amarga" is a place: La Amarga, in Argentina, where its bones were found.
+**WEX** [curious] : And "saurus"?
+**NARRATEUR H** [happily] : That one's Greek. "Sauros," the lizard.
+**WEX** [confident] : The lizard from La Amarga.
+**NARRATEUR H** [warmly] : The whole name, yes. It lived in Argentina, [amazed] a hundred twenty-five million years ago, [pauses] with two rows of really big spikes on its neck and back.
 
 ### BLOC B — Taille
 

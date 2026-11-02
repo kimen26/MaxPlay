@@ -19,13 +19,13 @@
 
 ### BLOC B — Tamanho
 
-**NARRATEUR H** [excited] : As asas dele abertas faziam 10 metros de uma ponta à outra — tão largas quanto seis Papais deitados um atrás do outro. [quickly] Juntando tudo, do tamanho de um caminhão. De pé, 3 metros de altura — [proud] da altura de uma cesta de basquete. E 220 quilos — tão pesado quanto um leão.
+**NARRATEUR H** [excited] : As asas dele abertas faziam 10 metros de uma ponta à outra — tão largas quanto seis Papais deitados um atrás do outro. [quickly] Juntando tudo, do tamanho de um caminhão. De pé, talvez uns 3 metros de altura — [proud] da altura de uma cesta de basquete. E 220 quilos — tão pesado quanto um leão.
 **WEX** [gasps] : Da altura de uma cesta de basquete?
 **NARRATEUR H** [confident] : Isso. [slowly] Mas a diferença de verdade dele é o pescoço: diferente do Quetzalcoatlus, o primo dele de pescoço fino e comprido, [amazed] ele tinha um pescoço curto e grosso, quase que nem um touro, com uma cabeça enorme na ponta.
 
 ### BLOC C — Como ele vivia
 
-**NARRATEUR H** [serious] : Carnívoro. [confident] E ele levava uma dupla vida: caçava tanto a pé quanto lá no alto, voando.
+**NARRATEUR H** [serious] : Carnívoro. [confident] E ele levava uma dupla vida: voava, mas caçava principalmente a pé.
 **WEX** [curious] : A pé? [gasps] Um bicho voador que anda?
 **NARRATEUR H** [confident] : Isso, nas quatro patas. [slowly] E os cientistas acham que no chão ele ia a uns 12 quilômetros por hora — [amazed] que nem uma criança correndo.
 **WEX** [curious] : E ele comia o quê, na ilha dele?

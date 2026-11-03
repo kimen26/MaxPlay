@@ -1,0 +1,158 @@
+{
+ "size": [
+  571,
+  384
+ ],
+ "species": [
+  {
+   "key": "triceratops",
+   "pivot": [
+    338.5,
+    220.5
+   ],
+   "eye": [
+    412.9,
+    181.3,
+    17.0
+   ]
+  },
+  {
+   "key": "parasaurolophus",
+   "pivot": [
+    386.0,
+    225.0
+   ],
+   "eye": [
+    421.5,
+    138.2,
+    13.5
+   ]
+  },
+  {
+   "key": "spinosaure",
+   "pivot": [
+    373.0,
+    223.5
+   ],
+   "eye": [
+    423.0,
+    153.7,
+    13.5
+   ]
+  },
+  {
+   "key": "diplodocus",
+   "pivot": [
+    391.5,
+    227.5
+   ],
+   "eye": [
+    434.2,
+    71.5,
+    12.0
+   ]
+  },
+  {
+   "key": "ankylosaure",
+   "pivot": [
+    372.0,
+    231.5
+   ],
+   "eye": [
+    417.6,
+    188.8,
+    15.5
+   ]
+  },
+  {
+   "key": "raptor",
+   "pivot": [
+    363.5,
+    206.5
+   ],
+   "eye": [
+    402.9,
+    145.2,
+    15.0
+   ]
+  },
+  {
+   "key": "carnotaure",
+   "pivot": [
+    364.5,
+    212.5
+   ],
+   "eye": [
+    424.7,
+    141.4,
+    15.0
+   ]
+  },
+  {
+   "key": "stegosaure",
+   "pivot": [
+    389.5,
+    239.0
+   ],
+   "eye": [
+    431.8,
+    193.3,
+    13.0
+   ]
+  }
+ ],
+ "recalage": {
+  "triceratops": {
+   "corps": 0,
+   "full": 146.0,
+   "tete": 0.05
+  },
+  "parasaurolophus": {
+   "corps": 249.0,
+   "full": 256.0,
+   "tete": 0.06
+  },
+  "spinosaure": {
+   "corps": 498.0,
+   "full": 223.0,
+   "tete": 0.07
+  },
+  "diplodocus": {
+   "corps": 301.0,
+   "full": 204.0,
+   "tete": 0.07
+  },
+  "ankylosaure": {
+   "corps": 464.0,
+   "full": 361.0,
+   "tete": 0.05
+  },
+  "raptor": {
+   "corps": 293.0,
+   "full": 258.0,
+   "tete": 0.03
+  },
+  "carnotaure": {
+   "corps": 225.0,
+   "full": 126.0,
+   "tete": 0.05
+  },
+  "stegosaure": {
+   "corps": 286.0,
+   "full": 313.0,
+   "tete": 0.04
+  }
+ },
+ "base": [
+  88,
+  177,
+  451,
+  375
+ ],
+ "tri": [
+  83,
+  13,
+  526,
+  375
+ ]
+}

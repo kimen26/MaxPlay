@@ -2,6 +2,10 @@
 
 > Point de vue utilisateur (Papa Yann / Max), pas technique. Alimenté à la clôture d'un ticket TODO.md.
 
+## 2026-11
+
+- Dinomino : les 8 bébés dinos sont redessinés par ChatGPT sur un même corps, comme des pièces de lego : chaque tête va sur chaque corps à sa vraie place, les plaques, la voile, les bosses, les plumes et les queues sont dessinées (plus fabriquées), et la queue ondule sans se casser.
+
 ## 2026-10
 
 - L'armoire a une case par thème : chaque objet ouvre toujours un jeu de son thème, et les jeux d'une même case passent tour à tour. Le dessin a sa propre case, la météorite « Surprise » reste le seul tirage au hasard.

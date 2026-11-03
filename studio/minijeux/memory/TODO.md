@@ -64,6 +64,7 @@
 
 - [!] **VOIX-MJ-EN-AUDIO** — Générer les 81 MP3 anglais des consignes (voix maison STS) dans `site/sounds/voix/en/…`, ≈ 23k crédits EL (3/81 présents au 2026-09-25, bloqué crédits). Outillage prêt : `node studio/dino/content/scripts/audio/_md2json-hors-fiche.cjs en studio/minijeux/i18n/en/scripts-voix.md --out=studio/minijeux/i18n/en/json`
 - [~] **LANG-MINI-JEUX** — `lang.js` est désormais injecté par `mj-shell.js` (plus aucun `mj-*.html` ne le charge en dur, cf. REC-C7 pour l'ordre de chargement) ; reste es-es/pt-br des chaînes de jeu (hors panneau règle, déjà livré) et audio es/pt (repli TTS navigateur pour l'instant)
+- [ ] **REGLES-SIMPLIFIER** — Les règles ❓ durent ≈ 40 s par jeu (500 à 700 car., FR et EN). Papa Yann 2026-11-03 : « on fera plus simple quand on aura défini qui et quoi » (qui écoute la règle, quoi dire). Le texte EN actuel est fidèle au FR (`strings.json` = `scripts-voix.md`, 0 écart) ; ne générer les MP3 des règles qu'après cette simplification, FR et EN ensemble.
 - [ ] Contenu FR conservé par décision PY 2026-09-05 : mj-50/51/52/53 (lecture/phonétique, refonte péda par langue trop lourde pour l'instant)
 
 ## Lane — Montée de niveau par compétence (EP-112)
@@ -172,6 +173,7 @@
 Référence : spec `docs/specs/2026-10-09-dino-mix.md` · atelier `studio/minijeux/dino-mix/README.md` · D-031 à D-034.
 
 - [?] EP-153 — PY valide en mouvement les 11 transports du Tricératops (`studio/minijeux/dino-mix/dino-mix-demo.html`). À trancher : le Diplodocus reste-t-il ?
-- [ ] EP-154 — Têtes et corps à échanger (D-034, amendement 2026-10-28) : 8 corps distinctifs dessinés entiers (dos et queue intégrés, bas), têtes prises sur les dessins au corps lisse, contrôle `combos.mjs`. Reste : bras en pièces (surfeur, bras levés, vol) pour que les 7 autres corps aient aussi ces poses ; PY valide les mélanges sur téléphone ; supprimer les anciennes pièces de dos (`dos-*`, `queue-*`) après accord de PY.
+- [ ] EP-155 — Dinomino en lego ChatGPT (D-037, L-165, L-166) : 8 espèces, tête et corps dessinés par ChatGPT sur un corps de base, recalés par `assemble.py`, 64 mélanges vérifiés. Reste : PY valide sur téléphone ; bras en pièces pour rendre les poses surfeur, bras levés et vol à tous ; supprimer après accord PY `corps.py`, `cou.py` et les anciennes pièces (`dino-*`, `corps-r1c*`, `dos-*`, `queue-*`).
+- [ ] EP-154 — Têtes et corps à échanger (D-034, amendements 2026-10-28 et 2026-10-29) : 8 corps distinctifs dessinés entiers (dos et queue intégrés, bas), têtes coupées au cou sur ces mêmes dessins (`NECKS`, contrôle `cou.py` puis `combos.mjs`), les 64 mélanges vérifiés. Reste : bras en pièces (surfeur, bras levés, vol) pour que les 7 autres corps aient aussi ces poses ; PY valide les mélanges sur téléphone ; supprimer les anciennes pièces de dos (`dos-*`, `queue-*`) et les têtes au corps lisse (`corps-r1c1..6`, `corps-carno`, `corps-stego`, plus lues) après accord de PY.
 - [ ] EP-155 — Rebrancher la recoloration (5 couleurs) et le troupeau devant le pont (règle cachée) dans la nouvelle page, puis en faire un mini-jeu (`mj-shell`, QCM-tap + `QcmRetry` au niveau 2).
 

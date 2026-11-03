@@ -206,10 +206,12 @@
 
   // Le jeu est choisi AU TOUCHER, pas à l'affichage : deux touchers de suite
   // sur la même case ouvrent deux jeux différents du thème.
-  function urlDuSlot(slot) {
-    if (slot.url) return slot.url;
+  // Cible d'un toucher : { url, entree } — `entree` (jeu du catalogue) est
+  // absente pour Musique/Histoires, pages fixes sans titre de jeu à dire.
+  function cibleDuSlot(slot) {
+    if (slot.url) return { url: slot.url, entree: null };
     var e = slot.choisir();
-    return e ? e.url : null;
+    return e ? { url: e.url, entree: e } : null;
   }
 
   function isEncycloUnlocked() {
@@ -479,9 +481,14 @@
     root.addEventListener('click', function (ev) {
       var btn = ev.target.closest('.casier');
       if (!btn) return;
+      // un titre est déjà en train d'être dit : on ne tire pas un 2e jeu du sac
+      if (global.TitreJeu && TitreJeu.occupe()) return;
       var slot = _slots[+btn.dataset.idx];
-      var url = slot && urlDuSlot(slot);
-      if (url) location.href = url;
+      var cible = slot && cibleDuSlot(slot);
+      if (!cible) return;
+      // Le titre du jeu est dit AVANT l'ouverture (titre-jeu.js, PY 2026-11-03).
+      if (cible.entree && global.TitreJeu) TitreJeu.ouvrir(cible.entree, cible.url, btn);
+      else location.href = cible.url;
     });
   }
 

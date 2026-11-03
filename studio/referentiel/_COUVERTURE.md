@@ -5,11 +5,11 @@
 
 | | |
 |---|---|
-| MP3 sur le disque | **1989** |
-| — enrôlés (catalogue, ou registre pour les blocs dino) | **991** |
-| — pas encore enrôlés | **998** |
+| MP3 sur le disque | **2330** |
+| — enrôlés (catalogue, ou registre pour les blocs dino) | **981** |
+| — pas encore enrôlés | **1349** |
 | — dont orphelins assumés (hors catalogue par nature) | 0 |
-| Entrées du catalogue sans fichier (à générer) | 27 |
+| Entrées du catalogue sans fichier (à générer) | 97 |
 
 **Enrôlé** = son texte verbatim, sa voix, son modèle et ses réglages sont au catalogue
 (ou, pour les blocs de fiche dino, au registre tenu par `scan-dino.mjs` — type « bloc »
@@ -19,7 +19,7 @@ catalogué par référence), donc il est régénérable à l’identique, tradui
 
 | Famille | Pôle | Sur disque | Enrôlés | Reste | Le verbatim est… |
 |---|---|---|---|---|---|
-| Consignes de jeu | JEU | 88 | 81 | **7** | — introuvable |
+| Consignes de jeu | JEU | 84 | 77 | **7** | — introuvable |
 | Récits d’époque | DINO | 13 | 12 | **1** | — introuvable |
 | Blocs de fiche dino *(via registre)* | DINO | 284 | 284 | ✅ | `studio/dino/content/scripts-audio/fr/V3/json/` |
 | Récaps dino (concaténés) *(via registre)* | DINO | 71 | 71 | ✅ | `dérivé des 4 blocs (aucun texte propre)` |
@@ -34,7 +34,6 @@ catalogué par référence), donc il est régénérable à l’identique, tradui
 | Encouragements langues invitées | JEU | 75 | 75 | ✅ | `studio/referentiel/catalogue/fr/humeur.mjs § HUMEUR_INVITEE` |
 | Nombres | JEU | 75 | 75 | ✅ | — introuvable |
 | Phonèmes | JEU | 21 | 21 | ✅ | — introuvable |
-| Pièces d’échecs (mj-37) | JEU | 6 | 6 | ✅ | — introuvable |
 | Identité sonore du hub | JEU | 10 | 10 | ✅ | `prompt EN` |
 | Bruitages | JEU | 80 | 80 | ✅ | `prompt EN` |
 
@@ -48,11 +47,16 @@ catalogué par référence), donc il est régénérable à l’identique, tradui
   contrats, lignée script → MP3), pas par des entrées de catalogue : le type « bloc » est
   catalogué par référence.
 
-## Non classés (990)
+## Non classés (1341)
 
 Fichiers qu’aucune famille ne décrit — famille à ajouter ci-dessus, ou fichiers orphelins.
 
 - `sounds/music/calme-doux-loop.mp3`
+- `sounds/music/chansons/ceratopsiens-contre-theropodes.mp3`
+- `sounds/music/chansons/dino-dinosaures.mp3`
+- `sounds/music/chansons/la-grande-bataille-des-dinosaures.mp3`
+- `sounds/music/chansons/les-dinos-dansent-la-samba.mp3`
+- `sounds/music/chansons/les-dinos-dansent-le-funk.mp3`
 - `sounds/music/victoire-v1.mp3`
 - `sounds/music/victoire-v2.mp3`
 - `sounds/music/victoire-v3.mp3`
@@ -77,13 +81,8 @@ Fichiers qu’aucune famille ne décrit — famille à ajouter ci-dessus, ou fic
 - `audio/dinos/ar/noms/allosaurus.mp3`
 - `audio/dinos/ar/noms/amargasaurus.mp3`
 - `audio/dinos/ar/noms/ankylosaurus.mp3`
-- `audio/dinos/ar/noms/apatosaurus.mp3`
-- `audio/dinos/ar/noms/archaeopteryx.mp3`
-- `audio/dinos/ar/noms/archelon.mp3`
-- `audio/dinos/ar/noms/baryonyx.mp3`
-- `audio/dinos/ar/noms/brachiosaurus.mp3`
 
-_… et 960 autres._
+_… et 1311 autres._
 
 ---
 

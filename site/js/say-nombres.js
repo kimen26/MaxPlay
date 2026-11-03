@@ -22,9 +22,23 @@
     if (global.TTS && TTS.speak) TTS.speak(text, { rate: 0.9, priority: true });
   }
 
+  // Langue non-FR : la banque sounds/nombres/ est 100 % française (audit 2026-11 : ?lang=en
+  // jouait « sept » FR). On ne la demande JAMAIS hors FR : TTS navigateur de la langue,
+  // texte du pack (_commun.nombre*) ou chiffre (le TTS EN lit « 7 » = « seven »).
+  function langue() { return (global.Lang && global.Lang.current) ? global.Lang.current() : 'fr'; }
+  function hors() { return langue() !== 'fr'; }
+  function pack(cle, n, frTexte) {
+    return (global.MJi18n && global.MJi18n.t)
+      ? global.MJi18n.t('_commun', cle, frTexte, { n: n }) : frTexte;
+  }
+  function stopCourant() {
+    try { if (current) { current.pause(); current.currentTime = 0; } } catch (e) { /* noop */ }
+  }
+
   // Joue BASE+slug.mp3 (exclusif : coupe le nombre en cours), repli TTS sur fallbackText.
   function play(slug, fallbackText, vol) {
-    try { if (current) { current.pause(); current.currentTime = 0; } } catch (e) { /* noop */ }
+    stopCourant();
+    if (hors()) { ttsFallback(fallbackText); return null; }
     try {
       var a = new Audio(BASE + slug + '.mp3');
       a.volume = vol || 0.95;
@@ -42,19 +56,23 @@
     // Le nombre seul. opts.fete = variante réussite (1-10 seulement, sinon neutre).
     say: function (n, opts) {
       var fete = opts && opts.fete && n >= 1 && n <= 10;
+      if (hors()) { stopCourant(); ttsFallback(String(n)); return null; }
       if (!known(n)) { ttsFallback(mot(n)); return null; }
       return play('n-' + n + (fete ? '-fete' : ''), mot(n));
     },
     // Phrases-gabarits complètes (1-10) — repli TTS phrase entière au-delà.
     manque: function (n) {
+      if (hors()) return play('', pack('nombreManque', n, 'Il en manque ' + n + ' !'));
       if (n >= 1 && n <= 10) return play('il-en-manque-' + n, 'Il en manque ' + mot(n) + ' !');
       ttsFallback('Il en manque ' + mot(n) + ' !'); return null;
     },
     faut: function (n) {
+      if (hors()) return play('', pack('nombreFaut', n, 'Il en faut ' + n + ' en tout !'));
       if (n >= 1 && n <= 10) return play('il-en-faut-' + n, 'Il en faut ' + mot(n) + ' en tout !');
       ttsFallback('Il en faut ' + mot(n) + ' en tout !'); return null;
     },
     oeufs: function (n) {
+      if (hors()) return play('', pack(n === 1 ? 'nombreOeuf' : 'nombreOeufs', n, n + (n === 1 ? ' œuf !' : ' œufs !')));
       if (n >= 1 && n <= 10) return play(n + '-oeufs', mot(n) + (n === 1 ? ' œuf !' : ' œufs !'));
       ttsFallback(mot(n) + ' œufs !'); return null;
     },

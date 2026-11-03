@@ -6,19 +6,19 @@
 
 | | |
 |---|---|
-| Appels prévus | **460** |
-| — fichiers à créer | 26 |
-| — fichiers à remplacer | 434 |
-| Coût estimé | **32 418 caractères** |
-| Textes déjà vérifiés | 157 / 460 |
+| Appels prévus | **521** |
+| — fichiers à créer | 96 |
+| — fichiers à remplacer | 425 |
+| Coût estimé | **32 010 caractères** |
+| Textes déjà vérifiés | 154 / 521 |
 
 ## Par langue
 
 | Langue | Appels | Caractères |
 |---|---|---|
-| fr | 370 | 30 741 |
+| fr | 399 | 29 586 |
+| 🇬🇧 anglais | 47 | 1 059 |
 | 🇧🇷 brésilien | 15 | 291 |
-| 🇬🇧 anglais | 15 | 312 |
 | 🇯🇵 japonais | 15 | 228 |
 | 🇨🇳 chinois | 15 | 201 |
 | 🇮🇹 italien | 15 | 324 |
@@ -28,7 +28,7 @@
 
 | Rôle | Appels |
 |---|---|
-| narrateur_h | 353 |
+| narrateur_h | 414 |
 | narrateur_f | 54 |
 | wex | 53 |
 
@@ -36,11 +36,11 @@ _Les voice_id sont résolus depuis `voice-map.json` au moment du plan et ne sont
 
 ## ⚠️ À trancher avant de lancer
 
-- **277 fichiers seraient REMPLACÉS par un texte non vérifié.** Ces textes sont
+- **271 fichiers seraient REMPLACÉS par un texte non vérifié.** Ces textes sont
   reconstruits depuis un slug ou un texte de repli : ils sont plausibles, pas prouvés. Les
   remplacer changerait ce que l'enfant entend, peut-être en mieux, peut-être pas. Décider
   explicitement, ou écouter les fichiers actuels avant.
-- **90 fichiers en langue invitée, aucun relu par un locuteur natif.** C'est du
+- **122 fichiers en langue invitée, aucun relu par un locuteur natif.** C'est du
   contenu destiné à un enfant : faire relire chaque langue avant de générer.
 
 ## Détail
@@ -108,7 +108,7 @@ _Les voice_id sont résolus depuis `voice-map.json` au moment du plan et ne sont
 | `humeur.doux.fr.pas-tout-a-fait.narrateur_h` | narrateur_h | [gently] Pas tout à fait ! | remplacer |
 | `humeur.doux.fr.pas-tout-a-fait.wex` | wex | [gently] Pas tout à fait ! | remplacer |
 
-_… et 400 autres — détail complet dans `plan-generation.json`._
+_… et 461 autres — détail complet dans `plan-generation.json`._
 
 ## Hors de ce plan
 

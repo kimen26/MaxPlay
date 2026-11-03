@@ -2,11 +2,11 @@
 
 > **FICHIER GÉNÉRÉ — ne jamais éditer à la main.**
 > Régénérer : `node studio/referentiel/build.mjs`
-> Plan d'ensemble : [`memory/ARCHI-REFERENTIEL-CONTENU.md`](../../memory/ARCHI-REFERENTIEL-CONTENU.md) · généré le 2026-09-28
+> Plan d'ensemble : [`memory/ARCHI-REFERENTIEL-CONTENU.md`](../../memory/ARCHI-REFERENTIEL-CONTENU.md) · généré le 2026-11-03
 
 ---
 
-## 🔴 Dettes ouvertes — 100
+## 🔴 Dettes ouvertes — 168
 
 Une dette ne se résout **jamais toute seule** : un humain tranche entre
 `node studio/referentiel/acquitter.mjs <clé> <canal> --propage` (canal régénéré)
@@ -14,20 +14,32 @@ et `… --sans-impact "raison"` (le changement de source ne remet pas le canal e
 Base de référence : [`empreintes.json`](empreintes.json) (versionnée).
 
 - **dino.tyrannosaurus.nom** · canal `mp3` — script modifié le 2026-09-24, audio produit le 2026-09-05
-- **dino.tyrannosaurus.regime** · canal `mp3` — script modifié le 2026-09-12, audio produit le 2026-09-05
+- **dino.tyrannosaurus.regime** · canal `mp3` — script modifié le 2026-10-08, audio produit le 2026-09-05
+- **dino.spinosaurus.nom** · canal `mp3` — script modifié le 2026-10-08, audio produit le 2026-09-05
+- **dino.spinosaurus.regime** · canal `mp3` — script modifié le 2026-10-08, audio produit le 2026-09-05
 - **dino.spinosaurus.funfact** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
-- **dino.spinosaurus.funfact** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.spinosaurus.funfact** · canal `mp3` — script modifié le 2026-10-08, audio produit le 2026-09-05
 - **dino.spinosaurus.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.giganotosaurus.nom** · canal `mp3` — script modifié le 2026-09-29, audio produit le 2026-09-05
 - **dino.giganotosaurus.taille** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
-- **dino.giganotosaurus.taille** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.giganotosaurus.taille** · canal `mp3` — script modifié le 2026-11-03, audio produit le 2026-09-05
 - **dino.giganotosaurus.regime** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
-- **dino.giganotosaurus.regime** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.giganotosaurus.regime** · canal `mp3` — script modifié le 2026-11-03, audio produit le 2026-09-05
+- **dino.giganotosaurus.funfact** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.giganotosaurus.funfact** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
 - **dino.giganotosaurus.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
 - **dino.allosaurus.taille** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
 - **dino.allosaurus.taille** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
 - **dino.allosaurus.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.tarbosaurus.regime** · canal `mp3` — script modifié le 2026-10-08, audio produit le 2026-09-05
+- **dino.tarbosaurus.funfact** · canal `mp3` — script modifié le 2026-10-08, audio produit le 2026-09-05
+- **dino.albertosaurus.nom** · canal `mp3` — script modifié le 2026-09-29, audio produit le 2026-09-05
+- **dino.ceratosaurus.nom** · canal `mp3` — script modifié le 2026-10-08, audio produit le 2026-09-05
 - **dino.ceratosaurus.taille** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
-- **dino.ceratosaurus.taille** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.ceratosaurus.taille** · canal `mp3` — script modifié le 2026-10-08, audio produit le 2026-09-05
+- **dino.ceratosaurus.regime** · canal `mp3` — script modifié le 2026-10-08, audio produit le 2026-09-05
+- **dino.ceratosaurus.funfact** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.ceratosaurus.funfact** · canal `mp3` — script modifié le 2026-10-08, audio produit le 2026-09-05
 - **dino.ceratosaurus.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
 - **dino.carnotaurus.funfact** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
 - **dino.carnotaurus.funfact** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
@@ -36,25 +48,13 @@ Base de référence : [`empreintes.json`](empreintes.json) (versionnée).
 - **dino.diplodocus.funfact** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
 - **dino.diplodocus.funfact** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
 - **dino.diplodocus.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
+- **dino.amargasaurus.nom** · canal `mp3` — script modifié le 2026-09-29, audio produit le 2026-09-05
+- **dino.amargasaurus.taille** · canal `mp3` — script modifié le 2026-10-08, audio produit le 2026-09-05
 - **dino.amargasaurus.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
 - **dino.plateosaurus.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
 - **dino.ankylosaurus.taille** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
-- **dino.ankylosaurus.taille** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
-- **dino.ankylosaurus.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
-- **dino.euoplocephalus.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
-- **dino.edmontonia.taille** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
-- **dino.edmontonia.taille** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
-- **dino.edmontonia.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
-- **dino.minmi.funfact** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
-- **dino.minmi.funfact** · canal `mp3` — script modifié le 2026-09-26, audio produit le 2026-09-05
-- **dino.minmi.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
-- **dino.scelidosaurus.regime** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
-- **dino.scelidosaurus.regime** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
-- **dino.kentrosaurus.taille** · canal `el` — champs sources modifiés depuis la dernière empreinte de référence
-- **dino.kentrosaurus.taille** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
-- **dino.kentrosaurus.recap** · canal `mp3` — champs sources modifiés depuis la dernière empreinte de référence
 
-_… et 60 autres — détail complet dans `registre.json`._
+_… et 128 autres — détail complet dans `registre.json`._
 
 ---
 
@@ -62,25 +62,24 @@ _… et 60 autres — détail complet dans `registre.json`._
 
 | Indicateur | Nombre |
 |---|---|
-| Clés recensées | **914** |
+| Clés recensées | **866** |
 | — domaine DINO | 355 |
-| — domaine JEU | 559 |
+| — domaine JEU | 511 |
 | Lignes suivies par le moteur de dette (clé × canal) | 639 |
-| 🔴 Dettes ouvertes | **100** |
+| 🔴 Dettes ouvertes | **168** |
 | Clés vérifiables automatiquement | 71 |
-| 🔴 Dérives de fait confirmées | **1** |
-| 🟠 Audio en retard sur son script | **4** |
+| 🔴 Dérives de fait confirmées | **0** |
+| 🟠 Audio en retard sur son script | **59** |
 | 🟡 Canaux manquants au contrat | 0 |
 | 🟡 Consignes lues sans voix réelle | 4 |
-| ⚪ Voix dont le texte verbatim n'est pas tracé | 157 |
+| ⚪ Voix dont le texte verbatim n'est pas tracé | 153 |
 
 ## 🔴 Dérives de fait
 
 Le texte parlé n'énonce plus ce que `dinos-data.js` calcule aujourd'hui.
 Détection exacte et rétroactive : le bloc « taille » a un générateur déterministe (`_statsPhrase`).
 
-- **dino.mosasaurus.taille** — repère de hauteur : dit « porte », la donnée dit « voiture »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-mosasaurus-taille.json`
+_Aucune dérive de fait détectée._
 
 ## 🟠 Audio en retard sur son script
 
@@ -88,10 +87,48 @@ Le MP3 a été produit avant la dernière modification réelle de son script.
 Comparaison sur les **dates de commit**, pas les dates de fichiers (un déplacement de dossier
 réécrit les secondes sans changer le contenu — s'y fier produirait des centaines de faux retards).
 
-- **dino.tyrannosaurus.nom** — script 2026-09-26 · audio 2026-09-05
-- **dino.tyrannosaurus.regime** — script 2026-09-26 · audio 2026-09-05
-- **dino.minmi.funfact** — script 2026-09-26 · audio 2026-09-05
-- **dino.triceratops.regime** — script 2026-09-26 · audio 2026-09-05
+- **dino.tyrannosaurus.nom** — script 2026-11-02 · audio 2026-09-05
+- **dino.tyrannosaurus.regime** — script 2026-11-02 · audio 2026-09-05
+- **dino.spinosaurus.nom** — script 2026-11-02 · audio 2026-09-05
+- **dino.spinosaurus.regime** — script 2026-11-02 · audio 2026-09-05
+- **dino.spinosaurus.funfact** — script 2026-11-02 · audio 2026-09-05
+- **dino.giganotosaurus.nom** — script 2026-11-02 · audio 2026-09-05
+- **dino.giganotosaurus.taille** — script 2026-11-02 · audio 2026-09-05
+- **dino.giganotosaurus.regime** — script 2026-11-02 · audio 2026-09-05
+- **dino.tarbosaurus.regime** — script 2026-11-02 · audio 2026-09-05
+- **dino.tarbosaurus.funfact** — script 2026-11-02 · audio 2026-09-05
+- **dino.albertosaurus.nom** — script 2026-11-02 · audio 2026-09-05
+- **dino.ceratosaurus.nom** — script 2026-11-02 · audio 2026-09-05
+- **dino.ceratosaurus.taille** — script 2026-11-02 · audio 2026-09-05
+- **dino.ceratosaurus.regime** — script 2026-11-02 · audio 2026-09-05
+- **dino.ceratosaurus.funfact** — script 2026-11-02 · audio 2026-09-05
+- **dino.amargasaurus.nom** — script 2026-11-02 · audio 2026-09-05
+- **dino.amargasaurus.taille** — script 2026-11-02 · audio 2026-09-05
+- **dino.minmi.nom** — script 2026-11-02 · audio 2026-09-05
+- **dino.minmi.funfact** — script 2026-11-02 · audio 2026-09-05
+- **dino.scutellosaurus.regime** — script 2026-11-02 · audio 2026-09-05
+- **dino.scelidosaurus.nom** — script 2026-11-02 · audio 2026-09-05
+- **dino.scelidosaurus.taille** — script 2026-11-02 · audio 2026-09-05
+- **dino.stegosaurus.taille** — script 2026-11-02 · audio 2026-09-05
+- **dino.stegosaurus.regime** — script 2026-11-02 · audio 2026-09-05
+- **dino.triceratops.regime** — script 2026-11-02 · audio 2026-09-05
+- **dino.triceratops.funfact** — script 2026-11-02 · audio 2026-09-05
+- **dino.pentaceratops.taille** — script 2026-11-02 · audio 2026-09-05
+- **dino.pentaceratops.funfact** — script 2026-11-02 · audio 2026-09-05
+- **dino.parasaurolophus.nom** — script 2026-11-02 · audio 2026-09-05
+- **dino.parasaurolophus.regime** — script 2026-11-02 · audio 2026-09-05
+- **dino.parasaurolophus.funfact** — script 2026-11-02 · audio 2026-09-05
+- **dino.corythosaurus.nom** — script 2026-11-02 · audio 2026-09-05
+- **dino.corythosaurus.regime** — script 2026-11-02 · audio 2026-09-05
+- **dino.corythosaurus.funfact** — script 2026-11-02 · audio 2026-09-05
+- **dino.saurolophus.taille** — script 2026-11-02 · audio 2026-09-05
+- **dino.saurolophus.regime** — script 2026-11-02 · audio 2026-09-05
+- **dino.saurolophus.funfact** — script 2026-11-02 · audio 2026-09-05
+- **dino.pachycephalosaurus.taille** — script 2026-11-02 · audio 2026-09-05
+- **dino.pachycephalosaurus.regime** — script 2026-11-02 · audio 2026-09-05
+- **dino.pachycephalosaurus.funfact** — script 2026-11-02 · audio 2026-09-05
+
+_… et 19 autres — détail complet dans `registre.json`._
 
 ## 🟡 Canaux manquants au contrat
 
@@ -104,11 +141,11 @@ Le Lot 0 les recense là où ils sont ; le Lot 3 leur en donnera un.
 
 | Famille | Clés |
 |---|---|
-| entrepot-vise | 402 |
-| voix-produite | 157 |
+| entrepot-vise | 358 |
+| voix-produite | 153 |
 
 **4 consignes** sont lues à l'enfant par le moteur du navigateur, sans voix réelle enregistrée.
-**157 fichiers de voix** sont documentés dans [`site/sounds/_BANQUE-SONS.md`](../../site/sounds/_BANQUE-SONS.md)
+**153 fichiers de voix** sont documentés dans [`site/sounds/_BANQUE-SONS.md`](../../site/sounds/_BANQUE-SONS.md)
 (rôle, voix, méthode de génération), mais le **texte verbatim** envoyé à ElevenLabs — avec ses tags v3 —
 n'est stocké nulle part. On ne peut donc ni les régénérer à l'identique, ni les traduire, ni vérifier
 ce que l'enfant entend sans les écouter un par un.
@@ -117,7 +154,7 @@ Répartition :
 
 | Dossier | Fichiers |
 |---|---|
-| `site/sounds/voix/phrases/` | 88 |
+| `site/sounds/voix/phrases/` | 84 |
 | `site/sounds/voix/f/` | 23 |
 | `site/sounds/voix/h/` | 23 |
 | `site/sounds/voix/wex/` | 23 |

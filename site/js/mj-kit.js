@@ -187,16 +187,29 @@
   };
   let phonemeAudio = null;
 
+  // Langue non-FR (EN). La banque sounds/phonemes/ est FRANÇAISE (« èm », « eu » = sons du
+  // français) : on ne la joue JAMAIS hors FR. Le jeu enseigne « le SON de la lettre, jamais
+  // son nom » : en EN on dit le son phonique anglais au TTS (continues « mmm », occlusives
+  // « buh »). Graphies PROVISOIRES, à faire relire par un natif, remplacées par des MP3
+  // sounds/phonemes/en/ à la génération (liste dans le compte rendu HO).
+  const PHONEMES_EN = {
+    a: 'ah', e: 'eh', i: 'ih', o: 'aw', u: 'uh',
+    m: 'mmm', s: 'sss', f: 'fff', l: 'lll', r: 'rrr', v: 'vvv', j: 'juh', z: 'zzz', n: 'nnn',
+    b: 'buh', d: 'duh', p: 'puh', t: 'tuh', c: 'kuh', g: 'guh', h: 'huh', k: 'kuh', q: 'kuh',
+  };
+  function langue() { return (global.Lang && global.Lang.current) ? global.Lang.current() : 'fr'; }
+
   function ttsPhoneme(letter, opts) {
     try {
       if (global.TTS && TTS.speak) {
-        TTS.speak(PHONEMES[letter] || letter, Object.assign({ rate: 0.6, priority: true }, opts));
+        const table = langue() === 'fr' ? PHONEMES : PHONEMES_EN;
+        TTS.speak(table[letter] || letter, Object.assign({ rate: 0.6, priority: true }, opts));
       }
     } catch (e) {}
   }
 
   function sayPhoneme(letter, opts) {
-    const slug = PHONEME_MP3[letter];
+    const slug = langue() === 'fr' ? PHONEME_MP3[letter] : null;
     if (slug) {
       try {
         if (phonemeAudio) { phonemeAudio.pause(); phonemeAudio.currentTime = 0; }

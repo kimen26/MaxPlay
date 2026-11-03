@@ -287,7 +287,7 @@
    "hintDinoD": "Cada fila y cada columna tienen los 3 dinosaurios una sola vez. ¿Cuál falta?",
    "consigneBus": "¿Qué autobús falta en la cuadrícula?",
    "consigneDino": "¿Qué dinosaurio falta en la cuadrícula?",
-   "consigneFormes": "¿Qué falta?",
+   "consigneFormes": "¿Qué falta en la cuadrícula?",
    "ligneBus": "Fila {n}",
    "formeRond": "Círculo",
    "formeCarre": "Cuadrado",

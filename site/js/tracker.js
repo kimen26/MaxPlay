@@ -106,17 +106,8 @@ const Tracker = (() => {
       correct: 0,
       firstTry: 0,   // réponses justes DU PREMIER COUP (EP-112 montée de niveau)
     };
-    // TTS du titre désactivé : laggue le démarrage (D-024 2026-05-03)
-  }
-
-  function _announceTitle(id) {
-    const meta = GAME_META[id];
-    if (!meta || !window.TTS || !TTS.speak) return;
-    try {
-      // Délégué au TTS partagé (choix de voix + respell lexique FR gérés là-bas)
-      const speakNow = () => TTS.speak(meta.name, { rate: 0.95, pitch: 1.05 });
-      setTimeout(speakNow, 250);
-    } catch (e) {}
+    // Pas de TTS du titre ici (laggait le démarrage, D-024). Le titre parlé vit
+    // dans le menu : js/titre-jeu.js, dit au toucher AVANT l'ouverture (D-036).
   }
 
   // firstTry (optionnel) : la réponse était juste DU PREMIER COUP. Les jeux qui

@@ -35,6 +35,11 @@ export const REPLIQUES = [
   consigne('qu-est-ce-qui-vient-ensuite', "Qu'est-ce qui vient ensuite ?", 'repli', ['mj-16']),
   consigne('lequel-ne-va-pas', 'Lequel ne va pas avec les autres ?', 'repli', ['mj-15']),
   consigne('quel-bus-manque', 'Quel bus manque dans la grille ?', 'repli', ['mj-14']),
+  // Audit 2026-11 : l'ÉCRAN de mj-14 disait « Qu'est-ce qui manque ? » (clé consigneFormes)
+  // alors que ce MP3 dit « …dans la grille ? » — écran aligné sur le son (4 packs). Preuve
+  // du texte du MP3, sans STT payant : texte du point d'appel à la création du MP3
+  // (commit 2b370ca9) + durée 1,93 s, cohérente avec 37 car. (« Qu'est-ce qui vient ensuite ? »,
+  // 29 car. = 1,45 s) et non avec 22 car. Reste texte_verifie:false (pas d'écoute/STT).
   consigne('qu-est-ce-qui-manque', "Qu'est-ce qui manque dans la grille ?", 'repli', ['mj-14']),
   // Généré HO-N01 (2026-09-12) DEPUIS ce texte exact (bug réel corrigé, cf. banque
   // § « Sons générés » — le MP3 sort de ce texte, vérifié à l'oreille + STT).
@@ -77,18 +82,35 @@ export const REPLIQUES = [
 // ⚠️ Toute modification ici oblige à régénérer le MP3, sinon l'écran et l'oreille
 // divergent. C'est exactement la dette que ce référentiel existe pour attraper.
 // ─────────────────────────────────────────────────────────────────────────────
+const slugifier = (texte) => texte.toLowerCase()
+  .replace(/œ/g, 'oe').replace(/æ/g, 'ae')
+  .normalize('NFD').replace(/[̀-ͯ]/g, '')
+  .replace(/[’']/g, ' ')
+  .replace(/[^a-z0-9]+/g, '-')
+  .replace(/^-+|-+$/g, '');
+
 const genere = (texte, consommee_par) => ({
-  ...consigne(
-    texte.toLowerCase()
-      .replace(/œ/g, 'oe').replace(/æ/g, 'ae')
-      .normalize('NFD').replace(/[̀-ͯ]/g, '')
-      .replace(/[’']/g, ' ')
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, ''),
-    texte, 'genere', consommee_par, ['warmly'],
-  ),
+  ...consigne(slugifier(texte), texte, 'genere', consommee_par, ['warmly']),
   texte_verifie: true,
 });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Consignes jouées par le jeu SANS MP3 (repli TTS seul) — audit 2026-11. Même slug
+// que `slugConsigne()` de mj-shell.js : dès que le MP3 sera généré DEPUIS ce texte
+// (puis `texte_verifie: true`), le jeu le jouera sans toucher au code.
+//   · mj-55 : consigneSimple (39 car.) et consigneAvecEquilibre (67 car.)
+//   · mj-48 : toucheLeOrdinal — un gabarit COMPLET par rang (2e à 5e : rand(2, q≤5)),
+//     jamais « Touche le » + ordinal assemblés (décision 2026-07-28).
+// ─────────────────────────────────────────────────────────────────────────────
+const aGenerer = (texte, consommee_par) =>
+  consigne(slugifier(texte), texte, 'repli', consommee_par, ['warmly']);
+
+export const CONSIGNES_A_GENERER = [
+  aGenerer('Complète la grille : jamais 3 pareils !', ['mj-55']),
+  aGenerer('Complète la grille : jamais 3 pareils, autant de dinos que d’œufs !', ['mj-55']),
+  ...['deuxième', 'troisième', 'quatrième', 'cinquième']
+    .map((ord) => aGenerer(`Touche le ${ord} de la file !`, ['mj-48'])),
+];
 
 export const CONSIGNES_GENEREES = [
   genere('Quel mot manque dans la phrase ?', ['mj-06']),

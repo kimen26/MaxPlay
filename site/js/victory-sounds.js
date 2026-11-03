@@ -271,6 +271,42 @@ function _repliCanonique(slug, fallbackText) {
   return t.tts;
 }
 
+// Réactions vocales en langue non-FR (audit 2026-11 : ?lang=en jouait « Bravo ! » FR).
+// Aucun fichier voix/{f,h,wex}/<slug>.mp3 FR n'est demandé. Positif : on pioche dans les
+// MP3 de la langue (mêmes mots que LANGUES_INVITEES, dossier sounds/voix/<lang>/<voix>/) ;
+// texte de repli TTS = le mot du MP3 (slug « well-done » -> « Well done! », identique au
+// catalogue humeur.mjs pour l'EN). Doux : aucun MP3 dans la langue -> TTS du texte du pack
+// (_commun.oupsReessaie), emoji retirés. Pas de doublon multilingue ni de drapeau ici.
+function _texteDuSlug(slug) {
+  const t = slug.replace(/-/g, ' ');
+  return t.charAt(0).toUpperCase() + t.slice(1) + '!';
+}
+function _ttsReaction(texte) {
+  if (texte && window.TTS && TTS.speak) TTS.speak(texte, { pitch: 1.05, priority: true });
+}
+function _voixHorsFr(ton, volume) {
+  const lang = _langActive();
+  let slug = null, texte = null;
+  if (ton === 'positif') {
+    const l = LANGUES_INVITEES.find(x => x.code === lang);
+    if (l) { slug = _pickRandom(l.mots, 'mot-' + lang); texte = _texteDuSlug(slug); }
+  } else {
+    const pack = (window.MJi18n && window.MJi18n.t)
+      ? window.MJi18n.t('_commun', 'oupsReessaie', '') : '';
+    texte = String(pack || '').replace(/[^\p{L}\p{N}\s,.!?'’-]/gu, '').trim();
+  }
+  if (!slug) { _couperVoix(); _ttsReaction(texte); return null; }
+  try {
+    const voix = _pickRandom(VOICE_DIRS, 'voice-dir').split('/').pop();
+    const a = new Audio(`sounds/voix/${lang}/${voix}/${slug}.mp3`);
+    a.volume = volume;
+    _commencerVoix(a);
+    const fin = _suivre(a);
+    a.play().catch(() => { fin(); _ttsReaction(texte); });
+    return a;
+  } catch (e) { _ttsReaction(texte); return null; }
+}
+
 // Registre des sons de SoundPool en cours de lecture : source de vérité unique
 // pour « une voix/un son à la fois » (HO-T01). Un son sort du registre à
 // ended / pause / error, ou si play() est refusé.
@@ -327,6 +363,8 @@ const SoundPool = {
    *  deuxième langue, pas un inconnu. Jamais sur un « doux » : on n'allonge pas
    *  un moment de frustration (décision Papa Yann 2026-08-10). */
   voice(ton = 'positif', volume = 0.9) {
+    // Langue non-FR : les MP3 de réaction FR ne jouent JAMAIS (cf. _voixHorsFr).
+    if (_langActive() !== 'fr') return _voixHorsFr(ton, volume);
     const lines = VOICE_LINES[ton] || VOICE_LINES.positif;
     const dir = _pickRandom(VOICE_DIRS, 'voice-dir');
     const line = _pickRandom(lines, 'voice-' + ton);

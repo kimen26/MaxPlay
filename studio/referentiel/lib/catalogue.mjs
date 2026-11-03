@@ -8,7 +8,7 @@
 import path from 'node:path';
 import { STUDIO, lireJson } from './socle.mjs';
 import { HUMEUR, HUMEUR_INVITEE } from '../catalogue/fr/humeur.mjs';
-import { REPLIQUES, LIGNES_NOMMEES, CONSIGNES_GENEREES } from '../catalogue/fr/repliques.mjs';
+import { REPLIQUES, LIGNES_NOMMEES, CONSIGNES_GENEREES, CONSIGNES_A_GENERER } from '../catalogue/fr/repliques.mjs';
 import { ATOMES, GABARITS } from '../catalogue/fr/atomes.mjs';
 import { NOMBRES } from '../catalogue/fr/nombres.mjs';
 import { NOMS_DINO } from '../catalogue/fr/noms-dino.mjs';
@@ -18,6 +18,7 @@ import {
 } from '../catalogue/fr/dino-menu.mjs';
 import { PHONEMES_SONS } from '../catalogue/fr/phonemes.mjs';
 import { REGLES } from '../catalogue/fr/regles.mjs';
+import { TITRES_JEUX } from '../catalogue/fr/titres.mjs';
 import { BRUITAGES } from '../catalogue/_bruitages.mjs';
 import { ROLES, REGLAGES, TRAITEMENT, LANGUES_INVITEES } from '../catalogue/voix.mjs';
 
@@ -133,7 +134,9 @@ export function chargerCatalogue() {
 
   entrees.push(...REPLIQUES.map((r) => ({ ...r, langue: 'fr' })));
   entrees.push(...CONSIGNES_GENEREES.map((r) => ({ ...r, langue: 'fr' })));
+  entrees.push(...CONSIGNES_A_GENERER.map((r) => ({ ...r, langue: 'fr' })));
   entrees.push(...REGLES.map((r) => ({ ...r, langue: 'fr' })));
+  entrees.push(...TITRES_JEUX); // langue portée par l'entrée (fr + en)
   entrees.push(...LIGNES_NOMMEES.map((r) => ({ ...r, langue: 'fr' })));
   // Familles à `fichier` explicite (contrairement aux ATOMES, dont le fichier
   // est dérivé de la clé) : on les pousse telles quelles.

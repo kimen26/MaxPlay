@@ -621,6 +621,36 @@
     "sounds/voix/wex/yes.mp3": {
       "transcription": "Yes!",
       "verdict": "conforme"
+    },
+    "sounds/voix/phrases/complete-la-grille-jamais-3-pareils-autant-de-dinos-que-d-oeufs.mp3": {
+      "transcription": "Complète la grille. Jamais trois pareils. Autant de dinos que de",
+      "verdict": "conforme",
+      "note": "généré 2026-11-03 depuis le catalogue, transcrit"
+    },
+    "sounds/voix/phrases/complete-la-grille-jamais-3-pareils.mp3": {
+      "transcription": "Complète la grille. Jamais trois pareils",
+      "verdict": "conforme",
+      "note": "généré 2026-11-03 depuis le catalogue, transcrit"
+    },
+    "sounds/voix/phrases/touche-le-cinquieme-de-la-file.mp3": {
+      "transcription": "Touche le cinquième de la file",
+      "verdict": "conforme",
+      "note": "généré 2026-11-03 depuis le catalogue, transcrit"
+    },
+    "sounds/voix/phrases/touche-le-deuxieme-de-la-file.mp3": {
+      "transcription": "Touche le deuxième de la file",
+      "verdict": "conforme",
+      "note": "généré 2026-11-03 depuis le catalogue, transcrit"
+    },
+    "sounds/voix/phrases/touche-le-quatrieme-de-la-file.mp3": {
+      "transcription": "Touche le quatrième de la file",
+      "verdict": "conforme",
+      "note": "généré 2026-11-03 depuis le catalogue, transcrit"
+    },
+    "sounds/voix/phrases/touche-le-troisieme-de-la-file.mp3": {
+      "transcription": "Touche le troisième de la file",
+      "verdict": "conforme",
+      "note": "généré 2026-11-03 depuis le catalogue, transcrit"
     }
   }
 }

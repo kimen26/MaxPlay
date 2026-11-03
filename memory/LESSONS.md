@@ -91,3 +91,8 @@ Porte : le script de session `save-dialog.ps1` (scratchpad) applique ces trois g
 Quoi : `npm run check 2>&1 | tail -3 && git commit` : le code de sortie lu par `&&` était celui de `tail` (0), pas celui de `npm run check` (1, Mosasaure). Le commit `0fb4d5db` est parti avec un écart, corrigé par `24f2f45d`.
 Comment appliquer : jamais de tube entre une porte et `&&` ; rediriger la sortie dans un fichier, lire `$?`, puis seulement commiter.
 Porte : `npm run check > fichier 2>&1; echo EXIT=$?` avant tout commit.
+
+## L-020 — Un chiffre corrigé dans la phrase du narrateur, resté faux dans la réplique qui le répète (2026-11-03)
+Quoi : Saurolophe, « plus de cent » corrigé en « plus de vingt » dans la ligne du narrateur, mais la réplique suivante disait encore « Cent, au même endroit ? » (FR, EN, PT-BR). Les portes texte n'ont rien vu ; le MP3 FR a été généré avec l'erreur. C'est la transcription du MP3 anglais qui l'a montrée.
+Comment appliquer : quand un chiffre change dans une fiche, chercher le même chiffre dans tout le bloc (les échos de Wex), pas seulement dans la phrase corrigée ; après génération, transcrire chaque bloc et relire les KO.
+Porte : transcription STT de chaque bloc généré (script de vérif, seuil 90 % des mots), lancée avant le commit des MP3.

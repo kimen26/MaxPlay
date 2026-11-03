@@ -24,6 +24,7 @@ import path from 'node:path';
 import {
   SITE, empreinte, existe, dateFichier, lireTexte, litterauxDe, proprieteTexte, relatif,
 } from './lib/socle.mjs';
+import { chargerTranscriptions } from './lib/catalogue.mjs';
 
 const DOSSIERS_VOIX = ['f', 'h', 'lieux', 'phrases', 'wex'];
 
@@ -118,12 +119,38 @@ export function scannerJeu() {
   }
 
   // ── 3. voix produites dont le texte source est introuvable ───────────────
+  // Depuis le 2026-11-03, la transcription (catalogue/fr/transcriptions.json)
+  // dit ce que le MP3 contient : le texte n'est plus « non tracé ».
+  const transcrits = chargerTranscriptions();
+  const ETAT_STT = {
+    conforme: 'texte-transcrit', 'son-a-refaire': 'son-a-refaire', 'regle-ancienne': 'son-a-refaire',
+  };
   for (const dossier of DOSSIERS_VOIX) {
     const base = path.join(SITE, 'sounds', 'voix', dossier);
     if (!existe(base)) continue;
     for (const fichier of fs.readdirSync(base).filter((f) => f.endsWith('.mp3')).sort()) {
       const chemin = path.join(base, fichier);
       const nom = fichier.replace(/\.mp3$/, '');
+      const stt = transcrits[`sounds/voix/${dossier}/${fichier}`];
+      if (stt) {
+        entrees.push({
+          cle: `jeu.voix.${dossier}.${nom}`,
+          domaine: 'jeu',
+          role: 'voix-produite',
+          source: 'studio/referentiel/catalogue/fr/transcriptions.json',
+          depend_de: [],
+          empreinte_source: null,
+          texte: stt.transcription,
+          contrat: { ecran: 'na', tts: 'na', el: 'requis', mp3: 'requis', lunii: 'na', langues: ['fr'] },
+          lignee: { mp3: { fichier: relatif(chemin), produit: dateFichier(chemin) } },
+          verifiable: true,
+          etat: ETAT_STT[stt.verdict] || 'texte-transcrit',
+          ecarts: stt.note ? [stt.note] : [],
+          manquants: [],
+          audio_en_retard: stt.verdict !== 'conforme',
+        });
+        continue;
+      }
       entrees.push({
         cle: `jeu.voix.${dossier}.${nom}`,
         domaine: 'jeu',

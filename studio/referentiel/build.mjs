@@ -57,6 +57,8 @@ function construireRapport(entrees, dettes, base) {
   const manquants = entrees.filter((e) => e.etat === 'manquant');
   const sansSource = entrees.filter((e) => e.etat === 'texte-verbatim-non-trace');
   const sansVoix = entrees.filter((e) => e.etat === 'sans-voix-reelle');
+  const transcrites = entrees.filter((e) => e.etat === 'texte-transcrit');
+  const sonARefaire = entrees.filter((e) => e.etat === 'son-a-refaire');
   const verifiables = entrees.filter((e) => e.verifiable);
 
   const jour = new Date().toISOString().slice(0, 10);
@@ -111,6 +113,7 @@ function construireRapport(entrees, dettes, base) {
   L.push(`| 🟡 Canaux manquants au contrat | ${manquants.length} |`);
   L.push(`| 🟡 Consignes lues sans voix réelle | ${sansVoix.length} |`);
   L.push(`| ⚪ Voix dont le texte verbatim n'est pas tracé | ${sansSource.length} |`);
+  L.push(`| 🔴 Voix à refaire (la transcription ne dit pas le bon texte) | ${sonARefaire.length} |`);
   L.push('');
 
   // ── dérives ───────────────────────────────────────────────────────────────
@@ -179,6 +182,12 @@ function construireRapport(entrees, dettes, base) {
   L.push('(rôle, voix, méthode de génération), mais le **texte verbatim** envoyé à ElevenLabs — avec ses tags v3 —');
   L.push("n'est stocké nulle part. On ne peut donc ni les régénérer à l'identique, ni les traduire, ni vérifier");
   L.push("ce que l'enfant entend sans les écouter un par un.");
+  L.push('');
+  L.push(`**${transcrites.length + sonARefaire.length} fichiers de voix** ont été transcrits (ElevenLabs speech-to-text, `
+    + '[`catalogue/fr/transcriptions.json`](catalogue/fr/transcriptions.json)) : on sait ce que l\'enfant entend.');
+  L.push(`${transcrites.length} disent le texte du catalogue ; ${sonARefaire.length} sont à refaire :`);
+  L.push('');
+  for (const e of sonARefaire) L.push(`- \`${e.lignee.mp3.fichier}\` — ${e.ecarts.join(' ; ')}`);
   L.push('');
   if (sansSource.length) {
     L.push('Répartition :');

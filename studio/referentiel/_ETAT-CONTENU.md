@@ -67,12 +67,13 @@ _… et 128 autres — détail complet dans `registre.json`._
 | — domaine JEU | 511 |
 | Lignes suivies par le moteur de dette (clé × canal) | 639 |
 | 🔴 Dettes ouvertes | **168** |
-| Clés vérifiables automatiquement | 71 |
+| Clés vérifiables automatiquement | 224 |
 | 🔴 Dérives de fait confirmées | **0** |
 | 🟠 Audio en retard sur son script | **59** |
 | 🟡 Canaux manquants au contrat | 0 |
 | 🟡 Consignes lues sans voix réelle | 4 |
-| ⚪ Voix dont le texte verbatim n'est pas tracé | 153 |
+| ⚪ Voix dont le texte verbatim n'est pas tracé | 0 |
+| 🔴 Voix à refaire (la transcription ne dit pas le bon texte) | 7 |
 
 ## 🔴 Dérives de fait
 
@@ -145,19 +146,21 @@ Le Lot 0 les recense là où ils sont ; le Lot 3 leur en donnera un.
 | voix-produite | 153 |
 
 **4 consignes** sont lues à l'enfant par le moteur du navigateur, sans voix réelle enregistrée.
-**153 fichiers de voix** sont documentés dans [`site/sounds/_BANQUE-SONS.md`](../../site/sounds/_BANQUE-SONS.md)
+**0 fichiers de voix** sont documentés dans [`site/sounds/_BANQUE-SONS.md`](../../site/sounds/_BANQUE-SONS.md)
 (rôle, voix, méthode de génération), mais le **texte verbatim** envoyé à ElevenLabs — avec ses tags v3 —
 n'est stocké nulle part. On ne peut donc ni les régénérer à l'identique, ni les traduire, ni vérifier
 ce que l'enfant entend sans les écouter un par un.
 
-Répartition :
+**153 fichiers de voix** ont été transcrits (ElevenLabs speech-to-text, [`catalogue/fr/transcriptions.json`](catalogue/fr/transcriptions.json)) : on sait ce que l'enfant entend.
+146 disent le texte du catalogue ; 7 sont à refaire :
 
-| Dossier | Fichiers |
-|---|---|
-| `site/sounds/voix/phrases/` | 84 |
-| `site/sounds/voix/f/` | 23 |
-| `site/sounds/voix/h/` | 23 |
-| `site/sounds/voix/wex/` | 23 |
+- `site/sounds/voix/phrases/combien-d-oeufs.mp3` — « œufs » n'est pas articulé (STT : « Combien de », 2 modèles)
+- `site/sounds/voix/phrases/combien-de-dinos-compte-les.mp3` — la voix bafouille « Compte-les » (STT : « Conclait », 2 modèles)
+- `site/sounds/voix/phrases/compte-les-un-par-un.mp3` — « bus » mal articulé (« biens ») et « avant le bus demandé » absent
+- `site/sounds/voix/phrases/regle-mj-13c.mp3` — le son dit l'ancienne règle ; à refaire avec REGLES-SIMPLIFIER
+- `site/sounds/voix/phrases/regle-mj-19.mp3` — le son dit l'ancienne règle ; à refaire avec REGLES-SIMPLIFIER
+- `site/sounds/voix/phrases/regle-mj-34.mp3` — le son dit l'ancienne règle ; à refaire avec REGLES-SIMPLIFIER
+- `site/sounds/voix/phrases/regle-mj-39.mp3` — le son dit l'ancienne règle ; à refaire avec REGLES-SIMPLIFIER
 
 ---
 

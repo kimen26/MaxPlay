@@ -1,0 +1,626 @@
+{
+  "_lire": "Ce que chaque MP3 de voix DIT réellement, transcrit par ElevenLabs speech-to-text (scribe_v1, fr). verdict : conforme (le texte du catalogue est ce que dit le son, aux écarts de transcription près : chiffres, interjections, homophones) | son-a-refaire (voix mal articulée) | regle-ancienne (le son dit l'ancienne règle). Lu par lib/catalogue.mjs (texte_verifie) et scan-jeu.mjs (voix produites).",
+  "transcrit_le": "2026-11-03",
+  "modele": "scribe_v1",
+  "fichiers": {
+    "sounds/voix/f/bien-joue.mp3": {
+      "transcription": "Bien joué",
+      "verdict": "conforme"
+    },
+    "sounds/voix/f/bravo.mp3": {
+      "transcription": "Bravo!",
+      "verdict": "conforme"
+    },
+    "sounds/voix/f/champion.mp3": {
+      "transcription": "Champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/f/encore.mp3": {
+      "transcription": "Encore ?",
+      "verdict": "conforme"
+    },
+    "sounds/voix/f/essaie-encore.mp3": {
+      "transcription": "Et c'est encore",
+      "verdict": "conforme"
+    },
+    "sounds/voix/f/etoile-gagnee.mp3": {
+      "transcription": "Tu as gagné une étoile",
+      "verdict": "conforme"
+    },
+    "sounds/voix/f/genial.mp3": {
+      "transcription": "Génial",
+      "verdict": "conforme"
+    },
+    "sounds/voix/f/hmm-non.mp3": {
+      "transcription": "Mmm non",
+      "verdict": "conforme"
+    },
+    "sounds/voix/f/hourra.mp3": {
+      "transcription": "Hourra!",
+      "verdict": "conforme"
+    },
+    "sounds/voix/f/incroyable.mp3": {
+      "transcription": "Incroyable !",
+      "verdict": "conforme"
+    },
+    "sounds/voix/f/joli.mp3": {
+      "transcription": "Joli",
+      "verdict": "conforme"
+    },
+    "sounds/voix/f/oh-la-la.mp3": {
+      "transcription": "Oh là là!",
+      "verdict": "conforme"
+    },
+    "sounds/voix/f/ouiii.mp3": {
+      "transcription": "Oui",
+      "verdict": "conforme"
+    },
+    "sounds/voix/f/oups.mp3": {
+      "transcription": "Oops!",
+      "verdict": "conforme"
+    },
+    "sounds/voix/f/parfait.mp3": {
+      "transcription": "Parfait",
+      "verdict": "conforme"
+    },
+    "sounds/voix/f/pas-tout-a-fait.mp3": {
+      "transcription": "Pas tout à fait",
+      "verdict": "conforme"
+    },
+    "sounds/voix/f/presque.mp3": {
+      "transcription": "Presque",
+      "verdict": "conforme"
+    },
+    "sounds/voix/f/quel-talent.mp3": {
+      "transcription": "Quel talent !",
+      "verdict": "conforme"
+    },
+    "sounds/voix/f/super.mp3": {
+      "transcription": "Super!",
+      "verdict": "conforme"
+    },
+    "sounds/voix/f/trop-fort.mp3": {
+      "transcription": "Trop fort",
+      "verdict": "conforme"
+    },
+    "sounds/voix/f/tu-y-es-presque.mp3": {
+      "transcription": "Tu y es presque",
+      "verdict": "conforme"
+    },
+    "sounds/voix/f/waouh.mp3": {
+      "transcription": "Wow!",
+      "verdict": "conforme"
+    },
+    "sounds/voix/f/yes.mp3": {
+      "transcription": "Yes!",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/bien-joue.mp3": {
+      "transcription": "Bien joué",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/bravo.mp3": {
+      "transcription": "Bravo!",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/champion.mp3": {
+      "transcription": "Champion !",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/encore.mp3": {
+      "transcription": "Encore",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/essaie-encore.mp3": {
+      "transcription": "Et c'est encore",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/etoile-gagnee.mp3": {
+      "transcription": "Tu as gagné une étoile",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/genial.mp3": {
+      "transcription": "Génial!",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/hmm-non.mp3": {
+      "transcription": "Hmm, non",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/hourra.mp3": {
+      "transcription": "Hurrah!",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/incroyable.mp3": {
+      "transcription": "Incroyable!",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/joli.mp3": {
+      "transcription": "Joli",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/oh-la-la.mp3": {
+      "transcription": "Oh là là!",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/ouiii.mp3": {
+      "transcription": "Oui",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/oups.mp3": {
+      "transcription": "Oops!",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/parfait.mp3": {
+      "transcription": "Parfait",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/pas-tout-a-fait.mp3": {
+      "transcription": "Pas tout à fait",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/presque.mp3": {
+      "transcription": "Presque",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/quel-talent.mp3": {
+      "transcription": "Quel talent!",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/super.mp3": {
+      "transcription": "Super",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/trop-fort.mp3": {
+      "transcription": "Trop fort",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/tu-y-es-presque.mp3": {
+      "transcription": "Tu y es presque",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/waouh.mp3": {
+      "transcription": "Wow!",
+      "verdict": "conforme"
+    },
+    "sounds/voix/h/yes.mp3": {
+      "transcription": "Yes!",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/a-toi-de-jouer.mp3": {
+      "transcription": "À toi de jouer",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/cest-parti.mp3": {
+      "transcription": "C'est parti",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/cherche-bien.mp3": {
+      "transcription": "Cherche bien",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/combien-d-oeufs-en-tout.mp3": {
+      "transcription": "Combien d'œufs en tout?",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/combien-d-oeufs.mp3": {
+      "transcription": "Combien de?",
+      "verdict": "son-a-refaire",
+      "note": "« œufs » n'est pas articulé (STT : « Combien de », 2 modèles)"
+    },
+    "sounds/voix/phrases/combien-de-dinos-compte-les.mp3": {
+      "transcription": "Combien de dinos? Conclait",
+      "verdict": "son-a-refaire",
+      "note": "la voix bafouille « Compte-les » (STT : « Conclait », 2 modèles)"
+    },
+    "sounds/voix/phrases/combien-de-dinos.mp3": {
+      "transcription": "Combien de dinos ? Compte-les",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/combien-en-tout.mp3": {
+      "transcription": "Combien en tout?",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/complete-la-grille-les-4-symboles-partout.mp3": {
+      "transcription": "Complète la grille, les quatre symboles partout",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/compte-encore.mp3": {
+      "transcription": "Compte encore",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/compte-les-un-par-un.mp3": {
+      "transcription": "Compte les biens un par un",
+      "verdict": "son-a-refaire",
+      "note": "« bus » mal articulé (« biens ») et « avant le bus demandé » absent"
+    },
+    "sounds/voix/phrases/construis-le-mot.mp3": {
+      "transcription": "Construit le mot",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/continue-a-faire-eclore-les-oeufs.mp3": {
+      "transcription": "Continue à faire éclore les œufs",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/deux-boites-pleines-combien-en-tout.mp3": {
+      "transcription": "Deux boîtes pleines. Combien en tout?",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/ecoute-le-premier-son.mp3": {
+      "transcription": "Écoute bien le premier son du mot",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/encore-une-fois.mp3": {
+      "transcription": "Encore une fois",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/fais-monter-les-passagers.mp3": {
+      "transcription": "Fais monter les passagers dans le bus",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/fais-un-territoire-pour-chaque-pierre.mp3": {
+      "transcription": "Fais un territoire pour chaque pierre",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/gros-niveau-regroupe.mp3": {
+      "transcription": "Gros niveau regroupe trois dés ou deux dominants",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/il-en-faut-beaucoup.mp3": {
+      "transcription": "Il en faut beaucoup. Regroupe bien",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/il-en-faut-combien-pour-faire-10.mp3": {
+      "transcription": "Il en faut combien pour faire dix?",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/il-en-manque-combien-pour-remplir-la-boite.mp3": {
+      "transcription": "Il en manque combien pour remplir la boîte",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/il-vivait-quand.mp3": {
+      "transcription": "Il vivait quand?",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/la-boite-est-pleine-il-faut-encore-combien-d-oeufs.mp3": {
+      "transcription": "La boîte est pleine. Il faut encore combien d'œufs",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/le-son-quon-entend.mp3": {
+      "transcription": "Le son qu'on entend : ou ou bien a",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/lequel-ne-va-pas.mp3": {
+      "transcription": "Lequel ne va pas avec les autres ?",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/mode-libre-encore-une-caisse.mp3": {
+      "transcription": "Mode libre. Encore une caisse",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/ouvre-bien-les-yeux.mp3": {
+      "transcription": "Ouvre bien les yeux",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/premier-son-l-ou-r.mp3": {
+      "transcription": "Premier son, le ou bien re",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/qu-est-ce-qui-manque.mp3": {
+      "transcription": "Qu'est-ce qui manque dans la grille ?",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/qu-est-ce-qui-vient-ensuite.mp3": {
+      "transcription": "Qu'est-ce qui vient ensuite ?",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/quel-bus-arrive-en-premier.mp3": {
+      "transcription": "Quel bus arrive en premier",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/quel-bus-manque.mp3": {
+      "transcription": "Quel bus manque dans la grille ?",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/quel-dino-manque.mp3": {
+      "transcription": "Quel dino manque dans la grille ?",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/quel-dino-se-cache-dans-le-noir.mp3": {
+      "transcription": "Quel dino se cache dans le noir ?",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/quel-mot-manque-dans-la-phrase.mp3": {
+      "transcription": "Quel mot manque dans la phrase ?",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/range-dans-la-bonne-boite.mp3": {
+      "transcription": "Range chaque mot dans la bonne boîte",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/range-les-des.mp3": {
+      "transcription": "Range les dés dans la bonne caisse",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/range-les-du-plus-leger-au-plus-lourd.mp3": {
+      "transcription": "Range-les du plus léger au plus lourd",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/range-les-du-plus-petit-au-plus-grand.mp3": {
+      "transcription": "Range-les du plus petit au plus grand",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regardons-ensemble.mp3": {
+      "transcription": "Regardons ensemble",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-06.mp3": {
+      "transcription": "Trouve le mot qui manque dans la phrase. J'écoute la phrase. Une voix lit la phrase avec un petit trou. Je tape la consigne pour réécouter. Je regarde le dessin. Un emoji donne un indice sur le mot qui manque. Je tape le bon mot. Si je me trompe, la voix dit la bonne réponse et la phrase complète. Je continue avec cinq phrases. Bus, dino, voyage. À chaque fois, une nouvelle phrase à compléter. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-09.mp3": {
+      "transcription": "Range chaque bus dans la bonne boîte de couleur. Je regarde la couleur du bus. Chaque bus a une couleur : bleu, vert, orange, violet, rouge ou brun. Je glisse le bus vers sa boîte. La boîte s'allume en vert quand je suis au bon endroit. J'entends le nom de la ligne. Si je me trompe, le bus revient tout seul. Pas de souci, je peux réessayer autant de fois que je veux. Plus j'ai d'étoiles, plus il y a de bus et de couleurs. Niveau un : deux couleurs, six bus. Niveau trois : les six couleurs, vingt-six bus avec le défilé final. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-13a.mp3": {
+      "transcription": "Regarde les fiches et trouve le bus qui arrive en premier. Je regarde les compteurs. Chaque fiche montre le nombre de minutes avant l'arrivée du bus. Le compteur descend tout seul. Je cherche le plus petit nombre. Le bus qui arrive en premier, c'est celui qui a le moins de minutes à attendre. Je tape sa fiche. Si je me trompe, je peux réessayer. Après trois essais, la bonne fiche s'allume. Plus j'ai d'étoiles, plus il y a de bus. Au début, il y a deux bus avec un grand écart, puis de plus en plus de bus avec des écarts serrés. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-13c.mp3": {
+      "transcription": "Compte les bus qui passent avant le bus demandé. J'écoute quel bus chercher. La voix demande : « Combien de bus avant le cent soixante-deux ? » Le numéro est aussi affiché en couleur. Je compte les fiches avant lui. Les fiches sont rangées par ordre d'arrivée. Je compte celles qui arrivent avant le bus demandé, une par une. Je tape le bon chiffre. Des boutons zéro, un, deux apparaissent. Si je me trompe, j'ai un indice pour recompter, puis je réessaie. Plus j'ai d'étoiles, plus il y a de bus. Au début, il y a trois bus à compter, puis de plus en plus, jusqu'à dix. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion.",
+      "verdict": "regle-ancienne",
+      "note": "le son dit l'ancienne règle ; à refaire avec REGLES-SIMPLIFIER"
+    },
+    "sounds/voix/phrases/regle-mj-14.mp3": {
+      "transcription": "Une case manque dans la grille magique. Trouve le motif caché en regardant les lignes et les colonnes. Je regarde la grille. Il y a une case avec un point d'interrogation. C'est la case mystère. Je cherche la règle. Regarde bien la ligne et la colonne de la case vide. Un motif se répète. Je choisis en bas. Tape le motif qui complète la grille parmi les trois propositions. Plus je gagne d'étoiles, plus c'est malin. D'abord, une seule règle facile, puis deux règles à la fois jusqu'au niveau expert. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-15.mp3": {
+      "transcription": "Regarde les cinq bus, trouve celui qui ne va pas avec les autres. J'écoute la question. Lequel ne va pas avec les autres ? Un indice s'affiche pour m'aider à savoir quoi regarder. Je compare les cinq bus. Quatre bus se ressemblent. Même couleur, même famille. Un seul est différent, c'est l'intrus. Je tape l'intrus. Si je me trompe, le bus tremble et je peux réessayer avec un indice. L'intrus n'est jamais révélé tout seul. Plus j'ai d'étoiles, plus c'est subtil. Au début, c'est la couleur, puis les roues, puis la famille de ligne et même deux indices en même temps. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion.",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-16.mp3": {
+      "transcription": "Regarde les bus qui se suivent et devine le prochain. Je regarde la suite de bus. Il y a une logique. La couleur qui alterne, la taille qui grandit, le numéro qui monte. Je réfléchis à ce qui manque. La dernière case a un un. C'est à moi de trouver quel bus va là. Je tape le bon bus parmi les trois choix. Si je me trompe, je peux réessayer. La bonne réponse n'est jamais révélée tout de suite. Plus j'ai d'étoiles, plus les suites sont malines. D'abord, des couleurs qui alternent, puis des tailles, puis des chiffres qui montent ou descendent. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-18.mp3": {
+      "transcription": "Verse les couleurs pour que chaque tube n'ait qu'une seule couleur. Je tape un tube pour le choisir. Le tube se soulève un peu, c'est celui que je vais verser. Je tape un deuxième tube pour verser dedans. La couleur du dessus coule dans l'autre tube seulement si c'est la même couleur ou si le tube est vide. Je range toutes les couleurs. Chaque tube doit finir avec une seule couleur du haut en bas. Les tubes vides aident à trier. Plus j'ai d'étoiles, plus j'ai de couleurs à trier. On commence avec deux couleurs, puis quatre, jusqu'à six pour les champions. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-19.mp3": {
+      "transcription": "Écoute le numéro et tape le bon bus parmi tous ceux qui bougent. J'écoute le numéro demandé. Une voix dit : Trouve le bus cent soixante-deux et le numéro est écrit en haut, en jaune. Je regarde tous les bus qui bougent. Plein de bus se baladent dans l'écran, chacun avec son numéro. Je tape le bon bus. Si je me trompe, ce n'est pas grave. Je réessaie. Il n'y a pas de pénalité. Plus, j'ai d'étoiles, plus il y a de bus et ils vont plus vite. Au début, peu de bus lents, puis de plus en plus nombreux et rapides. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "regle-ancienne",
+      "note": "le son dit l'ancienne règle ; à refaire avec REGLES-SIMPLIFIER"
+    },
+    "sounds/voix/phrases/regle-mj-20.mp3": {
+      "transcription": "Apprends à compter jusqu'à vingt dans plein de langues différentes. Je choisis Apprendre pour écouter. Je choisis une langue, drapeau, et je tape un chiffre. Une voix le dit dans cette langue. Je choisis Quiz pour jouer. Une voix dit un chiffre dans une langue débloquée. Je tape le bon chiffre parmi les choix. Je gagne trois bonnes réponses de suite pour débloquer la suite. Chaque langue commence petit, un à trois, puis j'avance jusqu'à un vingt si je continue bien. Je regarde Progression pour voir où j'en suis. Chaque langue a ses pastilles. Plus j'en remplis, plus je maîtrise de chiffres et de langues. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion.",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-21.mp3": {
+      "transcription": "Mélange les couleurs pour peindre le bon bus. Je regarde la couleur à trouver. À côté du bus tout blanc, il y a un rond de couleur. C'est la couleur que je dois fabriquer. Je verse les pots dans le tube. Rouge, jaune, bleu, blanc. Je tape sur les pots pour les verser dans le tube. Une seule couleur ? C'est gagné tout de suite. Je tape mixer pour mélanger. Si j'ai versé plusieurs couleurs, je tape mixer pour les mélanger. Si ça devient marron, pas grave, je lave le tube et je recommence. Le tube verse la couleur sur le bus. Si c'est la bonne couleur, le tube se renverse et peint le bus. Un indice m'aide si je cherche. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-22.mp3": {
+      "transcription": "Écoute le nom du pays, trouve-le sur la carte. J'écoute le drapeau et le nom. Une voix dit : trouve la France et le drapeau s'affiche en haut. Je peux réessayer si j'ai pas compris. Je regarde la carte et je tape un pays. Le pays que je touche s'allume en orange. Si c'est pas le bon, je peux en toucher un autre. Je tape c'est ça pour valider. Bonne réponse, le drapeau fait la fête. Pas encore. Une voix dit : cherche bien et je réessaie sans jamais perdre. Plus j'ai d'étoiles, plus il y a de pays. Facile, cinq pays, puis quinze, puis vingt-cinq. Les tout petits pays ne sont pas dans le jeu, trop difficile à toucher. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-24.mp3": {
+      "transcription": "Écoute le nom, trouve le bon dino. J'écoute le nom du dino. Une voix dit le nom. Trouve le tricératops. Je tape la consigne pour réécouter. Je regarde les ombres. Chaque carte montre l'ombre d'un dino. Une seule est le bon. Je tape la bonne ombre. Si je me trompe, j'écoute un indice et je peux réessayer. Plus j'ai d'étoiles, plus c'est malin. Plus d'ombres à comparer et parfois deux cousins de la même famille. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-28.mp3": {
+      "transcription": "Cherche le dino caché dans le noir avec ta lente. Je bouge mon doigt dans le noir. Une lumière suit mon doigt et éclaire une ombre cachée. Je regarde bien la forme de l'ombre. Chaque dino a une silhouette différente : corne, dos épineux, long cou. Je tape le bon nom savant. Si je me trompe, le bon nom s'allume en vert et le dino apparaît en couleur avec un fait rigolo. Plus j'ai d'étoiles, plus les noms se ressemblent. Au début, les dinos sont très différents. Avec les étoiles, des cousins de la même famille. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-30.mp3": {
+      "transcription": "Range les dinos mystères du plus petit au plus grand. Je regarde les ombres. Des dinos mystères. Il y a un petit, un moyen et un géant. Je glisse chaque ombre dans une case, le plus petit à gauche, le plus grand à droite. Je peux échanger deux cases si je change d'avis. Je tape : c'est bon. Les dinos sortent de l'ombre. On découvre leur vraie taille en mètres à côté d'un enfant comme toi. Plus j'ai d'étoiles, plus c'est costaud, plus de dinos à ranger et parfois, il faut les ranger par poids. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-31.mp3": {
+      "transcription": "Range le dino dans la bonne époque. J'écoute le nom du dino. Une voix annonce un dino mystère avec son ombre. Je tape la consigne pour réécouter. Je regarde les bandes de couleurs. Chaque bande est une époque : trias, jurassique, crétacé. Il y en a une bonne pour le dino. Je tape la bonne bande. Le dino se pose dedans. Si je me trompe, une voix m'aide et je peux réessayer. Plus j'ai d'étoiles, plus c'est costaud. De nouvelles bandes apparaissent et parfois, deux cousins vivaient à des époques très différentes. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion.",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-32.mp3": {
+      "transcription": "Colorie ton dino comme tu veux, il n'y a pas d'erreur. Je choisis un dino à colorier. Je tape sur le dino que je préfère dans la liste. Je choisis une couleur et je tape dans le dessin. La couleur remplit toute la zone que je touche. Je peux changer de couleur autant de fois que je veux. Je regarde le modèle si j'ai besoin. Le bouton Modèle montre le dino en couleur deux secondes pour m'aider si je veux. Je tape Fini pour garder mon dessin. Mon œuvre part dans ma galerie. Je peux la regarder, la reprendre pour continuer ou la supprimer. Pas d'étoile, pas d'erreur. Je fais comme je veux. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-34.mp3": {
+      "transcription": "Fais glisser les bus pour libérer le bus jaune. Je repère le bus jaune. Il clignote au début du niveau. Il doit sortir par la porte sortie à droite. Je fais glisser les autres bus. Chaque bus ne bouge que dans un sens, à plat ou debout. Je les pousse pour dégager le chemin. Si un bus ne peut pas bouger, il rebondit doucement. Pas de souci. Je réessaie dans l'autre sens. Il n'y a jamais d'erreur qui compte contre moi. Le bus jaune sort, puis tous les autres suivent. Plus de niveaux. La grille grandit quatre fois quatre, puis cinq fois cinq et il y a plus de bus à déplacer. Trois niveaux gagnés égal une étoile. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "regle-ancienne",
+      "note": "le son dit l'ancienne règle ; à refaire avec REGLES-SIMPLIFIER"
+    },
+    "sounds/voix/phrases/regle-mj-35.mp3": {
+      "transcription": "Trouve le trou qui remplit le nid pile-poil. Je regarde les œufs dans les trous. Chaque trou a des œufs de dino dedans. Je compte avec mes doigts si je veux. Je cherche le bon trou. Un seul trou a juste assez d'œufs pour arriver pile dans le nid, pas avant, pas après. Je tape le trou, les œufs sautent. Ils sautent un par un vers le nid. Si le dernier tombe pile dedans, pile. Je me trompe ? Pas grave, je recompte. Rien n'est perdu. Le plateau se réarrange et je réessaie. Trois piles réussies, la partie est gagnée. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-39.mp3": {
+      "transcription": "Pose les blocs pour remplir des lignes entières. Je regarde les trois blocs en bas. Chaque bloc a sa forme. Petit carré, longue barre, forme en L. Je glisse un bloc avec mon doigt sur la grille. Une case verte montre que je peux le poser là. Une case rouge veut dire que ça ne rentre pas. Je lâche le bloc pour le poser. Si je remplis une ligne ou une colonne entière, elle explose en étincelle et j'ai plus de place. Plus j'efface de lignes, plus j'ai d'étoiles. De nouveaux blocs arrivent à chaque fois. Cinq lignes égale douze. Douze égale vingt-cinq égale réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "regle-ancienne",
+      "note": "le son dit l'ancienne règle ; à refaire avec REGLES-SIMPLIFIER"
+    },
+    "sounds/voix/phrases/regle-mj-46.mp3": {
+      "transcription": "Compte les œufs du nid, puis touche le bon chiffre. Je réponds direct si je sais. Je compte les œufs dans ma tête et je touche le bon chiffre. Ou je tapote les œufs pour compter. Une pastille jaune se pose dessus. Un, deux, trois et l'œuf se fissure. Le dernier chiffre dit le total. Le chiffre du dernier œuf, c'est combien il y a d'œufs en tout. Quand c'est juste, les œufs dansent, ils frétillent et se fissurent. Et à la fin, je gagne un œuf pour mon nid. Il éclora sur l'accueil. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-47.mp3": {
+      "transcription": "Deux constellations de dinos brillent dans la nuit. Combien de dinos en tout ? Regarde d'un coup d'œil. Je regarde le domino du ciel. Deux cases brillantes. Dans chacune, des dinos rangés comme les points d'un dé. Je tape le total. Les dinos des deux cases ensemble, ça fait combien ? Si je me trompe, je réessaie. Ce n'est pas grave. Je regarde le calcul. Après chaque réponse, les deux cases s'illuminent. Trois et quatre, ça fait sept. Plus j'ai d'étoiles, plus c'est grand. D'abord des petits groupes, puis des constellations jusqu'à douze. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-48.mp3": {
+      "transcription": "Des passagers montent et descendent du bus. À toi de bien compter. Je regarde les sièges du bus. Le bus a deux rangées de cinq places comme un domino. Une rangée pleine, c'est cinq d'un coup. Des passagers montent ou descendent. À l'arrêt, des dinos attendent dans la file. Certains montent, d'autres descendent. Je tape le bon nombre. Combien dans le bus ? Combien de places libres ? Si je me trompe, on recompte ensemble. La file a un ordre. Le premier de la file est juste à côté de l'arrêt. On me demande parfois de toucher le deuxième ou le troisième. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion.",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-49.mp3": {
+      "transcription": "Une barquette pleine, c'est dix. Avec elle, les grands nombres deviennent faciles. Je regarde la barquette. La boîte a deux rangées de cinq. Pleine, ça fait dix œufs. Pas besoin de recompter. Je réponds direct si je sais. Sinon, je tapote les œufs ou les trous pour compter. Une pastille se pose dessus. Le calcul s'affiche. Dix et quatre, ça fait quatorze. La barquette brille et je vois la dizaine. Plus j'ai d'étoiles, plus c'est grand. D'abord une barquette, puis dix et encore, puis deux barquettes jusqu'à plus de vingt. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-50.mp3": {
+      "transcription": "Écoute le son et touche la lettre qui le fait. J'écoute le son. La voix fait le son de la lettre. Mmm. Sss. Jamais son nom d'école. Je touche la bonne lettre. Les lettres sont écrites en attaché. Le haut-parleur répète le son si je le touche. Les lettres changent de costume. Plus j'ai d'étoiles, plus les lettres s'habillent. Attachées, détachées, majuscules. Et même le son des mots. Au dernier niveau, quel son au début de maman ? Et des lettres qui se ressemblent. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion.",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-51.mp3": {
+      "transcription": "La même lettre a plusieurs costumes. Range-les toutes dans leur boîte. Je regarde bien la lettre. Un a attaché, un a détaché, un A majuscule. C'est toujours la lettre A. Je la glisse dans sa boîte. La boîte s'allume en vert quand je suis au bon endroit. J'entends son son. Si je me trompe, elle revient. Pas grave, je réessaie autant de fois que je veux. Plus j'ai d'étoiles, plus c'est costaud. À la fin, les lettres qui se ressemblent très fort, comme B, D, H et K. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-52.mp3": {
+      "transcription": "Écoute le mot et construis-le avec les lettres mobiles. J'écoute le mot. La voix dit un mot que je connais. Papa, maman, moto. Je regarde la boîte. Le mot est découpé en morceaux. Pa, pa. Chaque case attend sa lettre. Je pose les lettres dans l'ordre. Je touche la lettre qu'il faut. Elle saute dans sa case et fait son son. Le mot est construit. La voix relit mon mot. Plus j'ai d'étoiles, plus il y a de lettres pièges. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-53.mp3": {
+      "transcription": "Ici, on ne sait quoi faire que si on lit. Je lis le mot. Le mot est écrit en attaché. Si c'est dur, je touche le mot. La voix m'aide. Au début seulement. Je touche la bonne image. Puis les noms de dino arrivent, découpés en morceaux. Tri-cé-ra-tops. Je lis et je fais. Au dernier niveau, la consigne me dit quoi faire. Touche trois œufs rouges. Sans lire, impossible. C'est ça le secret. Lire, ça sert à découvrir ce qu'il faut faire. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-54.mp3": {
+      "transcription": "Chaque ligne, chaque colonne et chaque petit carré doit avoir les quatre symboles. Jamais deux fois le même. Je tapote une case vide. Elle devient jaune. C'est elle que je remplis. Je choisis un symbole en bas. Il se pose dans la case jaune. Si deux pareils se touchent, ça tremble. Les deux cases tremblent en orange. Je peux changer. Ce n'est jamais grave. Je peux effacer une case que j'ai posée. Retape dessus pour la vider et recommencer. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-55.mp3": {
+      "transcription": "Jamais trois pareils qui se suivent. Tapote pour changer. Je tapote une case vide. Elle devient un dino. Je retapote. Un œuf. Encore. Elle se vide. Jamais trois pareils à la suite. En ligne ou en colonne, pas trois dinos ni trois œufs collés. Sinon, ça s'allume orange. Je corrige tranquillement. L'orange n'est pas grave. Je retapote pour changer et ça repart. La grille pleine et juste égale gagner. Plus tard, il faudra aussi autant de dinos que d'œufs sur chaque ligne et colonne. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-56.mp3": {
+      "transcription": "Un dino par ligne, par colonne, par enclos et jamais collé, même en coin. Je pose un dino. Je tape une case pour poser un dino dedans. Attention aux voisins. Les cases qui deviennent rouges, c'est là où je ne peux plus en poser. Ils sont grognons. Deux dinos jamais collés, même en diagonale, sinon ils tremblent, je les sépare. Un par enclos. Chaque couleur d'enclos n'a droit qu'à un seul dino. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-57.mp3": {
+      "transcription": "Tapote un groupe d'œufs de la même couleur, ils éclosent. Je regarde la grille. Des œufs colorés, ronds ou mouchetés remplissent la boîte. Je touche un œuf. Le groupe entier de la même couleur s'illumine autour de mon doigt. Je tapote. Le groupe éclot. Des bébés dinos s'envolent. La grille se réorganise. Les œufs tombent, les colonnes vides se resserrent. Je continue jusqu'à ce que tout ait éclos. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regle-mj-59.mp3": {
+      "transcription": "Découpe la vallée. Chaque pierre doit avoir son terrain juste à sa taille. Je regarde le chiffre. Chaque pierre porte un nombre. C'est la taille de son terrain. Je glisse mon doigt. Je pars d'une case et je glisse jusqu'à une autre. Un rectangle apparaît. Je vise le bon compte. Le nombre de cases s'affiche en grand pendant que je glisse. Je relâche. Si c'est juste, un petit dino s'installe. Sinon, ça s'efface tout doux. Réponds juste du premier coup à toutes les questions pour gagner l'étoile de champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/regroupe-les-points.mp3": {
+      "transcription": "Regroupe les points pour remplir la caisse",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/remplis-chaque-caisse.mp3": {
+      "transcription": "Remplis chaque caisse jusqu'au bon compte",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/tape-pour-sauter-par-dessus-les-cactus.mp3": {
+      "transcription": "Tape pour sauter par-dessus les cactus",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/terminus-fais-les-descendre.mp3": {
+      "transcription": "Terminus pour certains, fais-les descendre",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/touche-la-lettre-qui-fait-ce-son.mp3": {
+      "transcription": "Touche la lettre qui fait ce son",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/tous-les-oeufs-ont-eclos.mp3": {
+      "transcription": "Tous les œufs ont éclos",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/trouve-2-tuiles-avec-le-meme-dino.mp3": {
+      "transcription": "Trouve deux tuiles avec le même dino",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/trouve-l-ombre-et-son-dino.mp3": {
+      "transcription": "Trouve l'ombre et son dino",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/trouve-le-meme-dino.mp3": {
+      "transcription": "Trouve le même dino",
+      "verdict": "conforme"
+    },
+    "sounds/voix/phrases/un-dino-par-ligne-colonne-et-enclos-jamais-colles.mp3": {
+      "transcription": "Un dit nos par ligne, colonne et enclos, jamais collé",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/bien-joue.mp3": {
+      "transcription": "Bien joué",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/bravo.mp3": {
+      "transcription": "Bravo!",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/champion.mp3": {
+      "transcription": "Champion",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/encore.mp3": {
+      "transcription": "Encore !",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/essaie-encore.mp3": {
+      "transcription": "Et c'est encore",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/etoile-gagnee.mp3": {
+      "transcription": "Tu as gagné une étoile",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/genial.mp3": {
+      "transcription": "Génial",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/hmm-non.mp3": {
+      "transcription": "Hmm, non",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/hourra.mp3": {
+      "transcription": "Hurrah!",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/incroyable.mp3": {
+      "transcription": "Incroyable",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/joli.mp3": {
+      "transcription": "Joli",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/oh-la-la.mp3": {
+      "transcription": "Oh là là!",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/ouiii.mp3": {
+      "transcription": "Oui !",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/oups.mp3": {
+      "transcription": "Oops",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/parfait.mp3": {
+      "transcription": "Parfait",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/pas-tout-a-fait.mp3": {
+      "transcription": "Pas tout à fait",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/presque.mp3": {
+      "transcription": "Presque",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/quel-talent.mp3": {
+      "transcription": "Quel talent !",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/super.mp3": {
+      "transcription": "Super",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/trop-fort.mp3": {
+      "transcription": "Trop fort",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/tu-y-es-presque.mp3": {
+      "transcription": "Tu y es presque",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/waouh.mp3": {
+      "transcription": "Oh waouh !",
+      "verdict": "conforme"
+    },
+    "sounds/voix/wex/yes.mp3": {
+      "transcription": "Yes!",
+      "verdict": "conforme"
+    }
+  }
+}

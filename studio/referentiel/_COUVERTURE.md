@@ -6,8 +6,8 @@
 | | |
 |---|---|
 | MP3 sur le disque | **2330** |
-| — enrôlés (catalogue, ou registre pour les blocs dino) | **981** |
-| — pas encore enrôlés | **1349** |
+| — enrôlés (catalogue, ou registre pour les blocs dino) | **987** |
+| — pas encore enrôlés | **1343** |
 | — dont orphelins assumés (hors catalogue par nature) | 0 |
 | Entrées du catalogue sans fichier (à générer) | 97 |
 
@@ -19,8 +19,8 @@ catalogué par référence), donc il est régénérable à l’identique, tradui
 
 | Famille | Pôle | Sur disque | Enrôlés | Reste | Le verbatim est… |
 |---|---|---|---|---|---|
-| Consignes de jeu | JEU | 84 | 77 | **7** | — introuvable |
 | Récits d’époque | DINO | 13 | 12 | **1** | — introuvable |
+| Consignes de jeu | JEU | 84 | 83 | **1** | — introuvable |
 | Blocs de fiche dino *(via registre)* | DINO | 284 | 284 | ✅ | `studio/dino/content/scripts-audio/fr/V3/json/` |
 | Récaps dino (concaténés) *(via registre)* | DINO | 71 | 71 | ✅ | `dérivé des 4 blocs (aucun texte propre)` |
 | Dico des racines | DINO | 100 | 100 | ✅ | `studio/dino/content/sources/etymo/_DICO-RACINES-AUDIO.md` |

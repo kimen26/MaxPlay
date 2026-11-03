@@ -155,5 +155,26 @@ export function chargerCatalogue() {
   for (const g of GABARITS) rendus.push(...rendreGabarit(g, ATOMES));
   entrees.push(...rendus);
 
-  return { entrees, gabarits: GABARITS, pools: HUMEUR, poolsInvites: HUMEUR_INVITEE };
+  return {
+    entrees: appliquerTranscriptions(entrees),
+    gabarits: GABARITS, pools: HUMEUR, poolsInvites: HUMEUR_INVITEE,
+  };
+}
+
+/**
+ * Ce que chaque MP3 dit réellement (STT, catalogue/fr/transcriptions.json) : une
+ * entrée dont le son est « conforme » passe texte_verifie à true. Rend des copies.
+ */
+export function chargerTranscriptions() {
+  const t = lireJson(path.join(STUDIO, 'referentiel', 'catalogue', 'fr', 'transcriptions.json'));
+  return (t && t.fichiers) || {};
+}
+
+function appliquerTranscriptions(entrees) {
+  const t = chargerTranscriptions();
+  return entrees.map((e) => {
+    const s = e.fichier && t[e.fichier];
+    return s && s.verdict === 'conforme' && !e.texte_verifie
+      ? { ...e, texte_verifie: true, preuve_texte: 'stt' } : e;
+  });
 }

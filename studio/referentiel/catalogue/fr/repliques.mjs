@@ -10,6 +10,10 @@
 //     développeur, pas ce que le MP3 contient. Incident du 2026-08-10 : un même
 //     slug appelé avec deux replis différents, dont un qui ne correspond pas.
 //   · `slug` — reconstruit depuis le nom de fichier. Plausible, non prouvé.
+//   · `stt` — relevé par transcription du MP3 (aucune autre source).
+// Depuis le 2026-11-03, `transcriptions.json` dit ce que chaque MP3 dit RÉELLEMENT :
+// lib/catalogue.mjs y passe texte_verifie à true quand le verdict est « conforme ».
+// Les textes `slug` et `repli` ci-dessous ont été réalignés sur le son ce jour-là.
 // Ces textes deviendront vrais à la première régénération faite DEPUIS ce fichier.
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -31,7 +35,7 @@ export const REPLIQUES = [
   // ── textes relevés au point d'appel (origine 'repli') ─────────────────────
   consigne('quel-bus-arrive-en-premier', 'Quel bus arrive en premier ?', 'repli', ['mj-13a']),
   consigne('compte-les-un-par-un', 'Compte les bus AVANT le bus demandé, un par un.', 'repli', ['mj-13c']),
-  consigne('cherche-bien', "Non ce n'est pas ça. Cherche bien.", 'repli', ['mj-22']),
+  consigne('cherche-bien', 'Cherche bien.', 'repli', ['mj-22']),
   consigne('qu-est-ce-qui-vient-ensuite', "Qu'est-ce qui vient ensuite ?", 'repli', ['mj-16']),
   consigne('lequel-ne-va-pas', 'Lequel ne va pas avec les autres ?', 'repli', ['mj-15']),
   consigne('quel-bus-manque', 'Quel bus manque dans la grille ?', 'repli', ['mj-14']),
@@ -51,23 +55,31 @@ export const REPLIQUES = [
   // ── textes reconstruits depuis le slug (origine 'slug') ───────────────────
   consigne('a-toi-de-jouer', 'À toi de jouer !', 'slug'),
   consigne('cest-parti', "C'est parti !", 'slug'),
-  consigne('combien-de-dinos', 'Combien de dinos ?', 'slug', ['mj-26']),
-  consigne('ecoute-le-premier-son', 'Écoute le premier son.', 'slug'),
+  consigne('combien-de-dinos', 'Combien de dinos ? Compte-les !', 'slug', ['mj-26']),
+  consigne('ecoute-le-premier-son', 'Écoute bien le premier son du mot.', 'slug'),
   consigne('encore-une-fois', 'Encore une fois !', 'slug'),
-  consigne('fais-monter-les-passagers', 'Fais monter les passagers.', 'slug'),
-  consigne('gros-niveau-regroupe', 'Gros niveau : regroupe !', 'slug'),
-  consigne('il-en-faut-beaucoup', 'Il en faut beaucoup !', 'slug'),
+  consigne('fais-monter-les-passagers', 'Fais monter les passagers dans le bus.', 'slug'),
+  consigne('gros-niveau-regroupe', 'Gros niveau : regroupe 3 dés ou 2 dominos !', 'slug'),
+  consigne('il-en-faut-beaucoup', 'Il en faut beaucoup. Regroupe bien !', 'slug'),
   consigne('il-vivait-quand', 'Il vivait quand ?', 'slug', ['mj-31']),
-  consigne('le-son-quon-entend', "Le son qu'on entend.", 'slug'),
+  consigne('le-son-quon-entend', "Le son qu'on entend : « ou » ou bien « a » ?", 'slug'),
   consigne('mode-libre-encore-une-caisse', 'Mode libre : encore une caisse !', 'slug'),
   consigne('ouvre-bien-les-yeux', 'Ouvre bien les yeux !', 'slug'),
-  consigne('premier-son-l-ou-r', "Premier son : L ou R ?", 'slug'),
-  consigne('range-dans-la-bonne-boite', 'Range dans la bonne boîte.', 'slug'),
-  consigne('range-les-des', 'Range les dés.', 'slug'),
-  consigne('regroupe-les-points', 'Regroupe les points.', 'slug'),
-  consigne('remplis-chaque-caisse', 'Remplis chaque caisse.', 'slug'),
-  consigne('terminus-fais-les-descendre', 'Terminus ! Fais-les descendre.', 'slug'),
+  consigne('premier-son-l-ou-r', 'Premier son : « le » ou bien « re » ?', 'slug'),
+  consigne('range-dans-la-bonne-boite', 'Range chaque mot dans la bonne boîte.', 'slug'),
+  consigne('range-les-des', 'Range les dés dans la bonne caisse.', 'slug'),
+  consigne('regroupe-les-points', 'Regroupe les points pour remplir la caisse.', 'slug'),
+  consigne('remplis-chaque-caisse', "Remplis chaque caisse jusqu'au bon compte.", 'slug'),
+  consigne('terminus-fais-les-descendre', 'Terminus pour certains, fais-les descendre !', 'slug'),
   consigne('trouve-le-meme-dino', 'Trouve le même dino !', 'slug', ['mj-25']),
+
+  // ── MP3 présents sans entrée : texte relevé par transcription (STT 2026-11-03) ──
+  consigne('fais-un-territoire-pour-chaque-pierre', 'Fais un territoire pour chaque pierre.', 'stt'),
+  consigne('il-en-faut-combien-pour-faire-10', 'Il en faut combien pour faire 10 ?', 'stt'),
+  consigne('il-en-manque-combien-pour-remplir-la-boite', 'Il en manque combien pour remplir la boîte ?', 'stt'),
+  consigne('range-les-du-plus-leger-au-plus-lourd', 'Range-les du plus léger au plus lourd.', 'stt'),
+  consigne('range-les-du-plus-petit-au-plus-grand', 'Range-les du plus petit au plus grand.', 'stt'),
+  consigne('tous-les-oeufs-ont-eclos', 'Tous les œufs ont éclos !', 'stt'),
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────

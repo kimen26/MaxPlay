@@ -62,9 +62,9 @@ _… et 128 autres — détail complet dans `registre.json`._
 
 | Indicateur | Nombre |
 |---|---|
-| Clés recensées | **866** |
+| Clés recensées | **872** |
 | — domaine DINO | 355 |
-| — domaine JEU | 511 |
+| — domaine JEU | 517 |
 | Lignes suivies par le moteur de dette (clé × canal) | 639 |
 | 🔴 Dettes ouvertes | **168** |
 | Clés vérifiables automatiquement | 224 |
@@ -72,8 +72,8 @@ _… et 128 autres — détail complet dans `registre.json`._
 | 🟠 Audio en retard sur son script | **59** |
 | 🟡 Canaux manquants au contrat | 0 |
 | 🟡 Consignes lues sans voix réelle | 4 |
-| ⚪ Voix dont le texte verbatim n'est pas tracé | 0 |
-| 🔴 Voix à refaire (la transcription ne dit pas le bon texte) | 7 |
+| ⚪ Voix dont le texte verbatim n'est pas tracé | 6 |
+| 🔴 Voix à refaire (la transcription ne dit pas le bon texte) | 4 |
 
 ## 🔴 Dérives de fait
 
@@ -88,46 +88,46 @@ Le MP3 a été produit avant la dernière modification réelle de son script.
 Comparaison sur les **dates de commit**, pas les dates de fichiers (un déplacement de dossier
 réécrit les secondes sans changer le contenu — s'y fier produirait des centaines de faux retards).
 
-- **dino.tyrannosaurus.nom** — script 2026-11-02 · audio 2026-09-05
-- **dino.tyrannosaurus.regime** — script 2026-11-02 · audio 2026-09-05
-- **dino.spinosaurus.nom** — script 2026-11-02 · audio 2026-09-05
-- **dino.spinosaurus.regime** — script 2026-11-02 · audio 2026-09-05
-- **dino.spinosaurus.funfact** — script 2026-11-02 · audio 2026-09-05
-- **dino.giganotosaurus.nom** — script 2026-11-02 · audio 2026-09-05
-- **dino.giganotosaurus.taille** — script 2026-11-02 · audio 2026-09-05
-- **dino.giganotosaurus.regime** — script 2026-11-02 · audio 2026-09-05
-- **dino.tarbosaurus.regime** — script 2026-11-02 · audio 2026-09-05
-- **dino.tarbosaurus.funfact** — script 2026-11-02 · audio 2026-09-05
-- **dino.albertosaurus.nom** — script 2026-11-02 · audio 2026-09-05
-- **dino.ceratosaurus.nom** — script 2026-11-02 · audio 2026-09-05
-- **dino.ceratosaurus.taille** — script 2026-11-02 · audio 2026-09-05
-- **dino.ceratosaurus.regime** — script 2026-11-02 · audio 2026-09-05
-- **dino.ceratosaurus.funfact** — script 2026-11-02 · audio 2026-09-05
-- **dino.amargasaurus.nom** — script 2026-11-02 · audio 2026-09-05
-- **dino.amargasaurus.taille** — script 2026-11-02 · audio 2026-09-05
-- **dino.minmi.nom** — script 2026-11-02 · audio 2026-09-05
-- **dino.minmi.funfact** — script 2026-11-02 · audio 2026-09-05
-- **dino.scutellosaurus.regime** — script 2026-11-02 · audio 2026-09-05
-- **dino.scelidosaurus.nom** — script 2026-11-02 · audio 2026-09-05
-- **dino.scelidosaurus.taille** — script 2026-11-02 · audio 2026-09-05
-- **dino.stegosaurus.taille** — script 2026-11-02 · audio 2026-09-05
-- **dino.stegosaurus.regime** — script 2026-11-02 · audio 2026-09-05
-- **dino.triceratops.regime** — script 2026-11-02 · audio 2026-09-05
-- **dino.triceratops.funfact** — script 2026-11-02 · audio 2026-09-05
-- **dino.pentaceratops.taille** — script 2026-11-02 · audio 2026-09-05
-- **dino.pentaceratops.funfact** — script 2026-11-02 · audio 2026-09-05
-- **dino.parasaurolophus.nom** — script 2026-11-02 · audio 2026-09-05
-- **dino.parasaurolophus.regime** — script 2026-11-02 · audio 2026-09-05
-- **dino.parasaurolophus.funfact** — script 2026-11-02 · audio 2026-09-05
-- **dino.corythosaurus.nom** — script 2026-11-02 · audio 2026-09-05
-- **dino.corythosaurus.regime** — script 2026-11-02 · audio 2026-09-05
-- **dino.corythosaurus.funfact** — script 2026-11-02 · audio 2026-09-05
-- **dino.saurolophus.taille** — script 2026-11-02 · audio 2026-09-05
-- **dino.saurolophus.regime** — script 2026-11-02 · audio 2026-09-05
-- **dino.saurolophus.funfact** — script 2026-11-02 · audio 2026-09-05
-- **dino.pachycephalosaurus.taille** — script 2026-11-02 · audio 2026-09-05
-- **dino.pachycephalosaurus.regime** — script 2026-11-02 · audio 2026-09-05
-- **dino.pachycephalosaurus.funfact** — script 2026-11-02 · audio 2026-09-05
+- **dino.tyrannosaurus.nom** — script 2026-11-02 · audio 2026-11-03
+- **dino.tyrannosaurus.regime** — script 2026-11-02 · audio 2026-11-03
+- **dino.spinosaurus.nom** — script 2026-11-02 · audio 2026-11-03
+- **dino.spinosaurus.regime** — script 2026-11-02 · audio 2026-11-03
+- **dino.spinosaurus.funfact** — script 2026-11-02 · audio 2026-11-03
+- **dino.giganotosaurus.nom** — script 2026-11-02 · audio 2026-11-03
+- **dino.giganotosaurus.taille** — script 2026-11-02 · audio 2026-11-03
+- **dino.giganotosaurus.regime** — script 2026-11-02 · audio 2026-11-03
+- **dino.tarbosaurus.regime** — script 2026-11-02 · audio 2026-11-03
+- **dino.tarbosaurus.funfact** — script 2026-11-02 · audio 2026-11-03
+- **dino.albertosaurus.nom** — script 2026-11-02 · audio 2026-11-03
+- **dino.ceratosaurus.nom** — script 2026-11-02 · audio 2026-11-03
+- **dino.ceratosaurus.taille** — script 2026-11-02 · audio 2026-11-03
+- **dino.ceratosaurus.regime** — script 2026-11-02 · audio 2026-11-03
+- **dino.ceratosaurus.funfact** — script 2026-11-02 · audio 2026-11-03
+- **dino.amargasaurus.nom** — script 2026-11-02 · audio 2026-11-03
+- **dino.amargasaurus.taille** — script 2026-11-02 · audio 2026-11-03
+- **dino.minmi.nom** — script 2026-11-02 · audio 2026-11-03
+- **dino.minmi.funfact** — script 2026-11-02 · audio 2026-11-03
+- **dino.scutellosaurus.regime** — script 2026-11-02 · audio 2026-11-03
+- **dino.scelidosaurus.nom** — script 2026-11-02 · audio 2026-11-03
+- **dino.scelidosaurus.taille** — script 2026-11-02 · audio 2026-11-03
+- **dino.stegosaurus.taille** — script 2026-11-02 · audio 2026-11-03
+- **dino.stegosaurus.regime** — script 2026-11-02 · audio 2026-11-03
+- **dino.triceratops.regime** — script 2026-11-02 · audio 2026-11-03
+- **dino.triceratops.funfact** — script 2026-11-02 · audio 2026-11-03
+- **dino.pentaceratops.taille** — script 2026-11-02 · audio 2026-11-03
+- **dino.pentaceratops.funfact** — script 2026-11-02 · audio 2026-11-03
+- **dino.parasaurolophus.nom** — script 2026-11-02 · audio 2026-11-03
+- **dino.parasaurolophus.regime** — script 2026-11-02 · audio 2026-11-03
+- **dino.parasaurolophus.funfact** — script 2026-11-02 · audio 2026-11-03
+- **dino.corythosaurus.nom** — script 2026-11-02 · audio 2026-11-03
+- **dino.corythosaurus.regime** — script 2026-11-02 · audio 2026-11-03
+- **dino.corythosaurus.funfact** — script 2026-11-02 · audio 2026-11-03
+- **dino.saurolophus.taille** — script 2026-11-02 · audio 2026-11-03
+- **dino.saurolophus.regime** — script 2026-11-02 · audio 2026-11-03
+- **dino.saurolophus.funfact** — script 2026-11-03 · audio 2026-11-03
+- **dino.pachycephalosaurus.taille** — script 2026-11-02 · audio 2026-11-03
+- **dino.pachycephalosaurus.regime** — script 2026-11-02 · audio 2026-11-03
+- **dino.pachycephalosaurus.funfact** — script 2026-11-02 · audio 2026-11-03
 
 _… et 19 autres — détail complet dans `registre.json`._
 
@@ -143,24 +143,27 @@ Le Lot 0 les recense là où ils sont ; le Lot 3 leur en donnera un.
 | Famille | Clés |
 |---|---|
 | entrepot-vise | 358 |
-| voix-produite | 153 |
+| voix-produite | 159 |
 
 **4 consignes** sont lues à l'enfant par le moteur du navigateur, sans voix réelle enregistrée.
-**0 fichiers de voix** sont documentés dans [`site/sounds/_BANQUE-SONS.md`](../../site/sounds/_BANQUE-SONS.md)
+**6 fichiers de voix** sont documentés dans [`site/sounds/_BANQUE-SONS.md`](../../site/sounds/_BANQUE-SONS.md)
 (rôle, voix, méthode de génération), mais le **texte verbatim** envoyé à ElevenLabs — avec ses tags v3 —
 n'est stocké nulle part. On ne peut donc ni les régénérer à l'identique, ni les traduire, ni vérifier
 ce que l'enfant entend sans les écouter un par un.
 
 **153 fichiers de voix** ont été transcrits (ElevenLabs speech-to-text, [`catalogue/fr/transcriptions.json`](catalogue/fr/transcriptions.json)) : on sait ce que l'enfant entend.
-146 disent le texte du catalogue ; 7 sont à refaire :
+149 disent le texte du catalogue ; 4 sont à refaire :
 
-- `site/sounds/voix/phrases/combien-d-oeufs.mp3` — « œufs » n'est pas articulé (STT : « Combien de », 2 modèles)
-- `site/sounds/voix/phrases/combien-de-dinos-compte-les.mp3` — la voix bafouille « Compte-les » (STT : « Conclait », 2 modèles)
-- `site/sounds/voix/phrases/compte-les-un-par-un.mp3` — « bus » mal articulé (« biens ») et « avant le bus demandé » absent
 - `site/sounds/voix/phrases/regle-mj-13c.mp3` — le son dit l'ancienne règle ; à refaire avec REGLES-SIMPLIFIER
 - `site/sounds/voix/phrases/regle-mj-19.mp3` — le son dit l'ancienne règle ; à refaire avec REGLES-SIMPLIFIER
 - `site/sounds/voix/phrases/regle-mj-34.mp3` — le son dit l'ancienne règle ; à refaire avec REGLES-SIMPLIFIER
 - `site/sounds/voix/phrases/regle-mj-39.mp3` — le son dit l'ancienne règle ; à refaire avec REGLES-SIMPLIFIER
+
+Répartition :
+
+| Dossier | Fichiers |
+|---|---|
+| `site/sounds/voix/phrases/` | 6 |
 
 ---
 

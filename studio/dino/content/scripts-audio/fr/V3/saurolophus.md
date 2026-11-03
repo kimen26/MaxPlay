@@ -35,7 +35,7 @@
 ### BLOC D — Le truc fou
 
 **NARRATEUR H** [excited] : En Mongolie, on a retrouvé [amazed] plus de vingt Saurolophes au même endroit — [whispers] des bébés et des adultes ensemble, morts tous en même temps.
-**WEX** [gasps] : Cent, au même endroit ?
+**WEX** [gasps] : Vingt, au même endroit ?
 **NARRATEUR H** [softly] : Oui. Ça nous montre [proud] qu'ils vivaient en groupe, tous ensemble.
 
 ---

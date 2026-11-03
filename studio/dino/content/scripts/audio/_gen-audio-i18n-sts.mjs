@@ -191,7 +191,9 @@ for (const t of travaux) {
       const brut = await avecReprise(() => appelTTS(inp.text, apiKey));
       await dormir(PAUSE_MS);
       const converti = await avecReprise(() => appelSTS(brut, inp.voice_id, apiKey));
-      const p = path.join(TMP, `${t.cle}-${i}.mp3`);
+      // Clé hors fiche « periodes/permien » : un « / » ferait un sous-dossier absent de TMP
+      // (bug 2026-11-03, crédits dépensés pour rien) -> nom de fichier à plat.
+      const p = path.join(TMP, `${t.cle.replace(/\//g, '__')}-${i}.mp3`);
       fs.writeFileSync(p, converti);
       parties.push(p);
       await dormir(PAUSE_MS);

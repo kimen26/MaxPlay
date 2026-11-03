@@ -204,14 +204,14 @@
       "verdict": "conforme"
     },
     "sounds/voix/phrases/combien-d-oeufs.mp3": {
-      "transcription": "Combien de?",
-      "verdict": "son-a-refaire",
-      "note": "« œufs » n'est pas articulé (STT : « Combien de », 2 modèles)"
+      "transcription": "Combien d'œufs?",
+      "verdict": "conforme",
+      "note": "régénéré 2026-11-03 depuis le catalogue, re-transcrit"
     },
     "sounds/voix/phrases/combien-de-dinos-compte-les.mp3": {
-      "transcription": "Combien de dinos? Conclait",
-      "verdict": "son-a-refaire",
-      "note": "la voix bafouille « Compte-les » (STT : « Conclait », 2 modèles)"
+      "transcription": "Combien de dinos ? Compte-les",
+      "verdict": "conforme",
+      "note": "régénéré 2026-11-03 depuis le catalogue, re-transcrit"
     },
     "sounds/voix/phrases/combien-de-dinos.mp3": {
       "transcription": "Combien de dinos ? Compte-les",
@@ -230,9 +230,9 @@
       "verdict": "conforme"
     },
     "sounds/voix/phrases/compte-les-un-par-un.mp3": {
-      "transcription": "Compte les biens un par un",
-      "verdict": "son-a-refaire",
-      "note": "« bus » mal articulé (« biens ») et « avant le bus demandé » absent"
+      "transcription": "Compte les bus avant le bus demandé un par un",
+      "verdict": "conforme",
+      "note": "régénéré 2026-11-03 depuis le catalogue, re-transcrit"
     },
     "sounds/voix/phrases/construis-le-mot.mp3": {
       "transcription": "Construit le mot",

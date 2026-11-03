@@ -1,13 +1,13 @@
 {
   "tyrannosaurus-nom": {
-    "empreinte": "dd6d1d8a49ec",
+    "empreinte": "954dd004c2a0",
     "repliques": 5,
-    "duree_s": 43.4,
+    "duree_s": 45.4,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-05T17:01:55.619Z"
+    "date": "2026-11-03T22:12:43.903Z"
   },
   "tyrannosaurus-taille": {
     "empreinte": "ac20bcd10cc8",
@@ -20,14 +20,14 @@
     "date": "2026-09-05T00:37:43.775Z"
   },
   "tyrannosaurus-regime": {
-    "empreinte": "8a7765c2e89c",
+    "empreinte": "28f236252d92",
     "repliques": 3,
-    "duree_s": 19.1,
+    "duree_s": 21,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-05T17:02:16.893Z"
+    "date": "2026-11-03T22:13:02.975Z"
   },
   "tyrannosaurus-funfact": {
     "empreinte": "9be4a28da6c2",
@@ -40,14 +40,14 @@
     "date": "2026-09-05T00:38:29.699Z"
   },
   "spinosaurus-nom": {
-    "empreinte": "c7bb5e3b045e",
+    "empreinte": "41b78c7116df",
     "repliques": 5,
-    "duree_s": 30.6,
+    "duree_s": 29.2,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-05T00:43:23.412Z"
+    "date": "2026-11-03T22:08:40.701Z"
   },
   "spinosaurus-taille": {
     "empreinte": "b3896026afae",
@@ -60,54 +60,54 @@
     "date": "2026-09-05T00:43:46.272Z"
   },
   "spinosaurus-regime": {
-    "empreinte": "e5f09c6a6e19",
+    "empreinte": "ce348d6903db",
     "repliques": 3,
-    "duree_s": 18.9,
+    "duree_s": 19.8,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-05T00:44:05.692Z"
+    "date": "2026-11-03T22:08:59.243Z"
   },
   "spinosaurus-funfact": {
-    "empreinte": "378bed2e3efb",
+    "empreinte": "5a3485ce9089",
     "repliques": 3,
-    "duree_s": 19.3,
+    "duree_s": 19.8,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-05T00:44:25.233Z"
+    "date": "2026-11-03T22:08:12.525Z"
   },
   "giganotosaurus-nom": {
-    "empreinte": "785121cb6686",
+    "empreinte": "355ff84f9a99",
     "repliques": 5,
-    "duree_s": 38.1,
+    "duree_s": 32.3,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-05T00:45:01.031Z"
+    "date": "2026-11-03T21:54:05.891Z"
   },
   "giganotosaurus-taille": {
-    "empreinte": "17b8132ebfc9",
+    "empreinte": "ed6bbb3edfb3",
     "repliques": 3,
-    "duree_s": 32.4,
+    "duree_s": 33.5,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-05T00:45:30.862Z"
+    "date": "2026-11-03T21:54:48.755Z"
   },
   "giganotosaurus-regime": {
-    "empreinte": "640bbb2c5717",
+    "empreinte": "36b3763aad84",
     "repliques": 3,
-    "duree_s": 17.8,
+    "duree_s": 17.5,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-05T00:45:49.409Z"
+    "date": "2026-11-03T21:54:23.462Z"
   },
   "giganotosaurus-funfact": {
     "empreinte": "c474bdfe7649",
@@ -220,34 +220,34 @@
     "date": "2026-09-05T00:50:12.637Z"
   },
   "tarbosaurus-regime": {
-    "empreinte": "f0d97a180844",
+    "empreinte": "c8a9c916a4fc",
     "repliques": 3,
-    "duree_s": 23.5,
+    "duree_s": 23.8,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-05T00:50:34.622Z"
+    "date": "2026-11-03T22:10:19.316Z"
   },
   "tarbosaurus-funfact": {
-    "empreinte": "cf33544a5cdf",
+    "empreinte": "579a6321686e",
     "repliques": 3,
-    "duree_s": 15.1,
+    "duree_s": 14.5,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-05T00:50:52.163Z"
+    "date": "2026-11-03T22:09:58.187Z"
   },
   "albertosaurus-nom": {
-    "empreinte": "5bb3f5484e61",
+    "empreinte": "ae07c6abbd19",
     "repliques": 5,
-    "duree_s": 34.3,
+    "duree_s": 33.7,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-05T00:51:25.832Z"
+    "date": "2026-11-03T21:49:56.374Z"
   },
   "albertosaurus-taille": {
     "empreinte": "7697e4e8f466",
@@ -280,44 +280,44 @@
     "date": "2026-09-05T00:52:44.359Z"
   },
   "ceratosaurus-nom": {
-    "empreinte": "4ac4068b84bb",
+    "empreinte": "72ccb13c3ea8",
     "repliques": 5,
-    "duree_s": 34.9,
+    "duree_s": 35.5,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-05T00:53:16.306Z"
+    "date": "2026-11-03T21:52:08.008Z"
   },
   "ceratosaurus-taille": {
-    "empreinte": "3e4908c2f88f",
+    "empreinte": "4a4b30a7264e",
     "repliques": 3,
-    "duree_s": 31.4,
+    "duree_s": 30.8,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-05T00:53:40.229Z"
+    "date": "2026-11-03T21:52:51.245Z"
   },
   "ceratosaurus-regime": {
-    "empreinte": "2a7e0192556f",
+    "empreinte": "66b37e6e9f20",
     "repliques": 3,
-    "duree_s": 18.5,
+    "duree_s": 20.1,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-05T00:53:59.603Z"
+    "date": "2026-11-03T21:52:26.857Z"
   },
   "ceratosaurus-funfact": {
-    "empreinte": "7e32fedee1ff",
+    "empreinte": "fa5eeee2e8ac",
     "repliques": 3,
-    "duree_s": 19.2,
+    "duree_s": 15.9,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-05T00:54:19.175Z"
+    "date": "2026-11-03T21:51:37.894Z"
   },
   "dilophosaurus-nom": {
     "empreinte": "7b6097bc5c74",
@@ -490,34 +490,34 @@
     "date": "2026-09-05T01:01:45.404Z"
   },
   "therizinosaurus-taille": {
-    "empreinte": "18574a5b1251",
+    "empreinte": "f37bf3c165bb",
     "repliques": 3,
-    "duree_s": 30.3,
+    "duree_s": 31.3,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-05T01:02:10.510Z"
+    "date": "2026-11-03T22:11:24.541Z"
   },
   "therizinosaurus-regime": {
-    "empreinte": "893ada3966bf",
+    "empreinte": "c3709c39ffce",
     "repliques": 3,
-    "duree_s": 21.4,
+    "duree_s": 21.6,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-05T01:02:31.772Z"
+    "date": "2026-11-03T22:11:00.793Z"
   },
   "therizinosaurus-funfact": {
-    "empreinte": "fa449c75c47e",
+    "empreinte": "6800c09eeacb",
     "repliques": 3,
-    "duree_s": 19.7,
+    "duree_s": 18.2,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-05T01:02:50.953Z"
+    "date": "2026-11-03T22:10:40.750Z"
   },
   "aenocyon-nom": {
     "empreinte": "b3afcce258ad",
@@ -560,24 +560,24 @@
     "date": "2026-09-12T13:41:02.058Z"
   },
   "amargasaurus-nom": {
-    "empreinte": "86f30a388c35",
+    "empreinte": "7472abf521ed",
     "repliques": 5,
-    "duree_s": 27.8,
+    "duree_s": 30.7,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T13:41:33.060Z"
+    "date": "2026-11-03T21:50:27.317Z"
   },
   "amargasaurus-taille": {
-    "empreinte": "b2bbba71e015",
+    "empreinte": "0ab346c9c3de",
     "repliques": 3,
-    "duree_s": 24.2,
+    "duree_s": 24.4,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T13:41:54.811Z"
+    "date": "2026-11-03T21:50:48.041Z"
   },
   "amargasaurus-regime": {
     "empreinte": "5a499a8f1aca",
@@ -720,14 +720,14 @@
     "date": "2026-09-12T13:47:42.831Z"
   },
   "archelon-nom": {
-    "empreinte": "a6c014c8595c",
+    "empreinte": "2c2d5313541b",
     "repliques": 5,
-    "duree_s": 33.1,
+    "duree_s": 33.7,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T13:48:15.819Z"
+    "date": "2026-11-03T21:51:19.664Z"
   },
   "archelon-taille": {
     "empreinte": "5d9851aead8d",
@@ -920,14 +920,14 @@
     "date": "2026-09-12T13:55:41.807Z"
   },
   "corythosaurus-nom": {
-    "empreinte": "ff832aecd3d2",
+    "empreinte": "709ab400aa14",
     "repliques": 5,
-    "duree_s": 35.7,
+    "duree_s": 41.6,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T13:56:17.004Z"
+    "date": "2026-11-03T21:21:27.004Z"
   },
   "corythosaurus-taille": {
     "empreinte": "c5899a3fdf4b",
@@ -940,24 +940,24 @@
     "date": "2026-09-12T13:56:38.094Z"
   },
   "corythosaurus-regime": {
-    "empreinte": "aa9665c3c715",
+    "empreinte": "661e6409a789",
     "repliques": 3,
-    "duree_s": 20.7,
+    "duree_s": 20.4,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T13:56:59.596Z"
+    "date": "2026-11-03T21:53:32.586Z"
   },
   "corythosaurus-funfact": {
-    "empreinte": "5c3b6a14c41e",
+    "empreinte": "053d7903b106",
     "repliques": 3,
-    "duree_s": 21.7,
+    "duree_s": 23.2,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T13:57:21.313Z"
+    "date": "2026-11-03T21:53:13.005Z"
   },
   "deinonychus-nom": {
     "empreinte": "1bd07370d374",
@@ -1360,14 +1360,14 @@
     "date": "2026-09-12T14:13:45.158Z"
   },
   "gorgonops-nom": {
-    "empreinte": "a688ec71b6fb",
+    "empreinte": "44046df5cca4",
     "repliques": 5,
-    "duree_s": 30.5,
+    "duree_s": 34.9,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:14:18.845Z"
+    "date": "2026-11-03T21:55:24.324Z"
   },
   "gorgonops-taille": {
     "empreinte": "cbda45b63774",
@@ -1410,24 +1410,24 @@
     "date": "2026-09-12T14:16:09.841Z"
   },
   "hatzegopteryx-taille": {
-    "empreinte": "560a6011d255",
+    "empreinte": "c37512a5210e",
     "repliques": 3,
-    "duree_s": 36.9,
+    "duree_s": 38.1,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:16:41.925Z"
+    "date": "2026-11-03T21:56:24.563Z"
   },
   "hatzegopteryx-regime": {
-    "empreinte": "0411c6d18ee9",
+    "empreinte": "504c60e6c1ce",
     "repliques": 5,
-    "duree_s": 33,
+    "duree_s": 30.6,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:17:15.976Z"
+    "date": "2026-11-03T21:55:57.984Z"
   },
   "hatzegopteryx-funfact": {
     "empreinte": "e796e00c2b9e",
@@ -1800,14 +1800,14 @@
     "date": "2026-09-12T14:34:20.134Z"
   },
   "minmi-nom": {
-    "empreinte": "5083e395d1a4",
+    "empreinte": "4eac8b454047",
     "repliques": 5,
-    "duree_s": 29.4,
+    "duree_s": 39.1,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:34:51.992Z"
+    "date": "2026-11-03T21:57:20.813Z"
   },
   "minmi-taille": {
     "empreinte": "22c2139af784",
@@ -1830,24 +1830,24 @@
     "date": "2026-09-12T14:35:38.294Z"
   },
   "minmi-funfact": {
-    "empreinte": "a86b06e44f45",
+    "empreinte": "0b00d5671a3e",
     "repliques": 3,
-    "duree_s": 16.4,
+    "duree_s": 21.7,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:35:57.797Z"
+    "date": "2026-11-03T21:56:47.330Z"
   },
   "mosasaurus-nom": {
-    "empreinte": "2473970d40aa",
+    "empreinte": "48d0152f1d28",
     "repliques": 5,
-    "duree_s": 37.3,
+    "duree_s": 33.3,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:36:36.788Z"
+    "date": "2026-11-03T21:57:56.653Z"
   },
   "mosasaurus-taille": {
     "empreinte": "33abba67a9c8",
@@ -1920,14 +1920,14 @@
     "date": "2026-09-12T14:39:10.616Z"
   },
   "ophthalmosaurus-nom": {
-    "empreinte": "88222d64833f",
+    "empreinte": "dcf4d56e8931",
     "repliques": 5,
-    "duree_s": 28.6,
+    "duree_s": 32.5,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:39:41.592Z"
+    "date": "2026-11-03T21:58:32.331Z"
   },
   "ophthalmosaurus-taille": {
     "empreinte": "2c263b04eeab",
@@ -2010,84 +2010,84 @@
     "date": "2026-09-12T14:43:18.984Z"
   },
   "pachycephalosaurus-taille": {
-    "empreinte": "8de061bad004",
+    "empreinte": "c5fdc8c6d4a9",
     "repliques": 3,
-    "duree_s": 25.1,
+    "duree_s": 21.7,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:43:42.146Z"
+    "date": "2026-11-03T21:59:34.284Z"
   },
   "pachycephalosaurus-regime": {
-    "empreinte": "be0704d5e463",
+    "empreinte": "55d4e0198fe7",
     "repliques": 3,
-    "duree_s": 20.9,
+    "duree_s": 19.5,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:44:05.031Z"
+    "date": "2026-11-03T21:59:13.879Z"
   },
   "pachycephalosaurus-funfact": {
-    "empreinte": "feb8a88c91b3",
+    "empreinte": "05c9a0325b3d",
     "repliques": 3,
-    "duree_s": 13.4,
+    "duree_s": 18.3,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:44:21.997Z"
+    "date": "2026-11-03T21:58:54.551Z"
   },
   "paraceratherium-nom": {
-    "empreinte": "cbaef8b03620",
+    "empreinte": "bfbb4fec2ef8",
     "repliques": 5,
-    "duree_s": 36.4,
+    "duree_s": 43.3,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:44:57.876Z"
+    "date": "2026-11-03T22:00:33.078Z"
   },
   "paraceratherium-taille": {
-    "empreinte": "78e377d95511",
+    "empreinte": "0415b35b72a3",
     "repliques": 3,
-    "duree_s": 31.6,
+    "duree_s": 28.7,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:45:25.622Z"
+    "date": "2026-11-03T22:01:25.190Z"
   },
   "paraceratherium-regime": {
-    "empreinte": "5475523f7f5c",
+    "empreinte": "6134b199f63b",
     "repliques": 3,
-    "duree_s": 18.5,
+    "duree_s": 20,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:45:48.666Z"
+    "date": "2026-11-03T22:01:02.518Z"
   },
   "paraceratherium-funfact": {
-    "empreinte": "6ede1512dd85",
+    "empreinte": "64870b18a376",
     "repliques": 3,
-    "duree_s": 17.4,
+    "duree_s": 15.3,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:46:08.171Z"
+    "date": "2026-11-03T21:59:57.022Z"
   },
   "parasaurolophus-nom": {
-    "empreinte": "44aa7fee3a65",
+    "empreinte": "60a917c3cfe0",
     "repliques": 5,
-    "duree_s": 35.6,
+    "duree_s": 39.4,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:46:45.675Z"
+    "date": "2026-11-03T22:02:19.024Z"
   },
   "parasaurolophus-taille": {
     "empreinte": "da8b1dc5dbce",
@@ -2100,64 +2100,64 @@
     "date": "2026-09-12T14:47:14.275Z"
   },
   "parasaurolophus-regime": {
-    "empreinte": "8c43a664551a",
+    "empreinte": "d584c8a0a0a2",
     "repliques": 3,
-    "duree_s": 19.9,
+    "duree_s": 22.7,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:47:34.871Z"
+    "date": "2026-11-03T22:02:38.769Z"
   },
   "parasaurolophus-funfact": {
-    "empreinte": "3be904bd6dca",
+    "empreinte": "e49a98c95e88",
     "repliques": 3,
-    "duree_s": 15.7,
+    "duree_s": 16.8,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:47:53.007Z"
+    "date": "2026-11-03T22:01:46.057Z"
   },
   "patagotitan-nom": {
-    "empreinte": "cbfe9641b7aa",
-    "repliques": 5,
-    "duree_s": 30.2,
+    "empreinte": "7242c60acc76",
+    "repliques": 3,
+    "duree_s": 31.1,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:48:26.082Z"
+    "date": "2026-11-03T22:03:25.386Z"
   },
   "patagotitan-taille": {
-    "empreinte": "0352a90405c2",
+    "empreinte": "5b4b953a0253",
     "repliques": 3,
-    "duree_s": 28.2,
+    "duree_s": 28.7,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:48:51.662Z"
+    "date": "2026-11-03T22:04:04.756Z"
   },
   "patagotitan-regime": {
-    "empreinte": "eda92e8eb570",
+    "empreinte": "00a7e64526a6",
     "repliques": 3,
-    "duree_s": 16.2,
+    "duree_s": 17.8,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:49:11.359Z"
+    "date": "2026-11-03T22:03:42.875Z"
   },
   "patagotitan-funfact": {
-    "empreinte": "b562b2fdcd5b",
+    "empreinte": "5f9b73b7de98",
     "repliques": 3,
-    "duree_s": 22.4,
+    "duree_s": 22.8,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:49:35.055Z"
+    "date": "2026-11-03T22:03:02.167Z"
   },
   "pentaceratops-nom": {
     "empreinte": "cd0dbfac7602",
@@ -2170,14 +2170,14 @@
     "date": "2026-09-12T14:50:11.093Z"
   },
   "pentaceratops-taille": {
-    "empreinte": "936c2435f301",
+    "empreinte": "83baf251003e",
     "repliques": 3,
-    "duree_s": 30.9,
+    "duree_s": 29,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:50:36.493Z"
+    "date": "2026-11-03T22:04:51.036Z"
   },
   "pentaceratops-regime": {
     "empreinte": "aaadb41a35ef",
@@ -2190,14 +2190,14 @@
     "date": "2026-09-12T14:50:57.026Z"
   },
   "pentaceratops-funfact": {
-    "empreinte": "28cbf2e2fee2",
+    "empreinte": "17c536d4cf7f",
     "repliques": 3,
-    "duree_s": 19.6,
+    "duree_s": 20.9,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:51:16.281Z"
+    "date": "2026-11-03T22:04:27.637Z"
   },
   "plateosaurus-nom": {
     "empreinte": "678260b093df",
@@ -2370,54 +2370,54 @@
     "date": "2026-09-12T14:58:29.001Z"
   },
   "saurolophus-taille": {
-    "empreinte": "4924a960d376",
+    "empreinte": "37f6d643a145",
     "repliques": 3,
-    "duree_s": 26.3,
+    "duree_s": 23.5,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:58:51.792Z"
+    "date": "2026-11-03T22:05:53.836Z"
   },
   "saurolophus-regime": {
-    "empreinte": "e06c13e2e815",
+    "empreinte": "a545174e3b63",
     "repliques": 3,
-    "duree_s": 23.1,
+    "duree_s": 22.6,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:59:13.820Z"
+    "date": "2026-11-03T22:05:32.956Z"
   },
   "saurolophus-funfact": {
-    "empreinte": "4a99b3e42594",
+    "empreinte": "0cf24b913382",
     "repliques": 3,
-    "duree_s": 19.6,
+    "duree_s": 17.5,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T14:59:33.183Z"
+    "date": "2026-11-03T22:15:13.273Z"
   },
   "scelidosaurus-nom": {
-    "empreinte": "294a3f9a53bb",
+    "empreinte": "1d946b00cdda",
     "repliques": 5,
-    "duree_s": 42.2,
+    "duree_s": 43.9,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T15:00:11.559Z"
+    "date": "2026-11-03T22:06:31.562Z"
   },
   "scelidosaurus-taille": {
-    "empreinte": "8e658fd3e934",
+    "empreinte": "72f2e03e05d2",
     "repliques": 3,
-    "duree_s": 27.8,
+    "duree_s": 30.5,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T15:00:36.005Z"
+    "date": "2026-11-03T22:06:55.218Z"
   },
   "scelidosaurus-regime": {
     "empreinte": "02429dd66cfc",
@@ -2460,14 +2460,14 @@
     "date": "2026-09-12T15:02:11.021Z"
   },
   "scutellosaurus-regime": {
-    "empreinte": "82ac149c5b1a",
+    "empreinte": "9dea1fda56f8",
     "repliques": 3,
-    "duree_s": 18,
+    "duree_s": 15.9,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T15:02:30.452Z"
+    "date": "2026-11-03T22:07:16.202Z"
   },
   "scutellosaurus-funfact": {
     "empreinte": "58e321086694",
@@ -2480,14 +2480,14 @@
     "date": "2026-09-12T15:02:51.139Z"
   },
   "shonisaurus-nom": {
-    "empreinte": "00b42e52b641",
+    "empreinte": "82c345362b2b",
     "repliques": 5,
-    "duree_s": 30.7,
+    "duree_s": 35.8,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T15:03:27.826Z"
+    "date": "2026-11-03T22:07:50.216Z"
   },
   "shonisaurus-taille": {
     "empreinte": "78e73487b73f",
@@ -2570,24 +2570,24 @@
     "date": "2026-09-12T15:06:48.760Z"
   },
   "stegosaurus-taille": {
-    "empreinte": "e3a09c18fd0c",
+    "empreinte": "57cb916a29a9",
     "repliques": 3,
-    "duree_s": 26.3,
+    "duree_s": 18.9,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T15:07:16.197Z"
+    "date": "2026-11-03T22:09:39.134Z"
   },
   "stegosaurus-regime": {
-    "empreinte": "4558c6c26bc4",
+    "empreinte": "1e2659e7da9b",
     "repliques": 3,
-    "duree_s": 16.8,
+    "duree_s": 18,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T15:07:36.556Z"
+    "date": "2026-11-03T22:09:20.755Z"
   },
   "stegosaurus-funfact": {
     "empreinte": "1eebe019e7b5",
@@ -2700,24 +2700,24 @@
     "date": "2026-09-12T15:11:53.506Z"
   },
   "triceratops-regime": {
-    "empreinte": "4f44b3de2006",
+    "empreinte": "950a32f6c0fb",
     "repliques": 3,
     "duree_s": 18.9,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T15:12:12.805Z"
+    "date": "2026-11-03T22:12:05.439Z"
   },
   "triceratops-funfact": {
-    "empreinte": "f9a0eeeec13e",
+    "empreinte": "596ffef69317",
     "repliques": 3,
-    "duree_s": 15.8,
+    "duree_s": 19.6,
     "pipeline": "sts-v2-dialogue",
     "voix_source": "Liam",
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
-    "date": "2026-09-12T15:12:30.847Z"
+    "date": "2026-11-03T22:11:46.239Z"
   },
   "troodon-nom": {
     "empreinte": "99cd2d62bdc2",

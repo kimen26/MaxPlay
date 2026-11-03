@@ -7,8 +7,8 @@
 | | |
 |---|---|
 | Appels prévus | **527** |
-| — fichiers à créer | 96 |
-| — fichiers à remplacer | 431 |
+| — fichiers à créer | 25 |
+| — fichiers à remplacer | 502 |
 | Coût estimé | **32 405 caractères** |
 | Textes déjà vérifiés | 256 / 527 |
 
@@ -36,7 +36,7 @@ _Les voice_id sont résolus depuis `voice-map.json` au moment du plan et ne sont
 
 ## ⚠️ À trancher avant de lancer
 
-- **175 fichiers seraient REMPLACÉS par un texte non vérifié.** Ces textes sont
+- **246 fichiers seraient REMPLACÉS par un texte non vérifié.** Ces textes sont
   reconstruits depuis un slug ou un texte de repli : ils sont plausibles, pas prouvés. Les
   remplacer changerait ce que l'enfant entend, peut-être en mieux, peut-être pas. Décider
   explicitement, ou écouter les fichiers actuels avant.

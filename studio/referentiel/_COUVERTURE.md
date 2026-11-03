@@ -5,11 +5,11 @@
 
 | | |
 |---|---|
-| MP3 sur le disque | **2330** |
-| — enrôlés (catalogue, ou registre pour les blocs dino) | **987** |
-| — pas encore enrôlés | **1343** |
+| MP3 sur le disque | **2409** |
+| — enrôlés (catalogue, ou registre pour les blocs dino) | **1026** |
+| — pas encore enrôlés | **1383** |
 | — dont orphelins assumés (hors catalogue par nature) | 0 |
-| Entrées du catalogue sans fichier (à générer) | 97 |
+| Entrées du catalogue sans fichier (à générer) | 26 |
 
 **Enrôlé** = son texte verbatim, sa voix, son modèle et ses réglages sont au catalogue
 (ou, pour les blocs de fiche dino, au registre tenu par `scan-dino.mjs` — type « bloc »
@@ -20,18 +20,18 @@ catalogué par référence), donc il est régénérable à l’identique, tradui
 | Famille | Pôle | Sur disque | Enrôlés | Reste | Le verbatim est… |
 |---|---|---|---|---|---|
 | Récits d’époque | DINO | 13 | 12 | **1** | — introuvable |
-| Consignes de jeu | JEU | 84 | 83 | **1** | — introuvable |
+| Périodes | DINO | 6 | 5 | **1** | — introuvable |
+| Consignes de jeu | JEU | 90 | 89 | **1** | — introuvable |
 | Blocs de fiche dino *(via registre)* | DINO | 284 | 284 | ✅ | `studio/dino/content/scripts-audio/fr/V3/json/` |
 | Récaps dino (concaténés) *(via registre)* | DINO | 71 | 71 | ✅ | `dérivé des 4 blocs (aucun texte propre)` |
 | Dico des racines | DINO | 100 | 100 | ✅ | `studio/dino/content/sources/etymo/_DICO-RACINES-AUDIO.md` |
-| Noms de dinos seuls | DINO | 70 | 70 | ✅ | `lexique i18n/lexiques-prononciation/fr.md (respellings)` |
+| Noms de dinos seuls | DINO | 71 | 71 | ✅ | `lexique i18n/lexiques-prononciation/fr.md (respellings)` |
 | Accroches familles / régimes | DINO | 15 | 15 | ✅ | `studio/dino/content/scripts-audio/_ACCROCHES-MENU-FAMILLES-REGIMES.md` |
 | Menus principaux dino | DINO | 3 | 3 | ✅ | `textes de repli relevés dans dev-dinos.html (MENU_VOICE)` |
 | Accroches époques | DINO | 8 | 8 | ✅ | — introuvable |
 | Extinction (mj-31) | DINO | 6 | 6 | ✅ | — introuvable |
-| Périodes | DINO | 5 | 5 | ✅ | — introuvable |
 | Réactions (f/h/wex) | JEU | 69 | 69 | ✅ | — introuvable |
-| Encouragements langues invitées | JEU | 75 | 75 | ✅ | `studio/referentiel/catalogue/fr/humeur.mjs § HUMEUR_INVITEE` |
+| Encouragements langues invitées | JEU | 107 | 107 | ✅ | `studio/referentiel/catalogue/fr/humeur.mjs § HUMEUR_INVITEE` |
 | Nombres | JEU | 75 | 75 | ✅ | — introuvable |
 | Phonèmes | JEU | 21 | 21 | ✅ | — introuvable |
 | Identité sonore du hub | JEU | 10 | 10 | ✅ | `prompt EN` |
@@ -47,7 +47,7 @@ catalogué par référence), donc il est régénérable à l’identique, tradui
   contrats, lignée script → MP3), pas par des entrées de catalogue : le type « bloc » est
   catalogué par référence.
 
-## Non classés (1341)
+## Non classés (1380)
 
 Fichiers qu’aucune famille ne décrit — famille à ajouter ci-dessus, ou fichiers orphelins.
 
@@ -61,28 +61,28 @@ Fichiers qu’aucune famille ne décrit — famille à ajouter ci-dessus, ou fic
 - `sounds/music/victoire-v2.mp3`
 - `sounds/music/victoire-v3.mp3`
 - `sounds/music/victoire-v4.mp3`
-- `sounds/voix/pt-br/f/arrasou.mp3`
-- `sounds/voix/pt-br/f/boa.mp3`
-- `sounds/voix/pt-br/f/isso-ai.mp3`
-- `sounds/voix/pt-br/f/muito-bem.mp3`
-- `sounds/voix/pt-br/f/que-legal.mp3`
-- `sounds/voix/pt-br/h/arrasou.mp3`
-- `sounds/voix/pt-br/h/boa.mp3`
-- `sounds/voix/pt-br/h/isso-ai.mp3`
-- `sounds/voix/pt-br/h/muito-bem.mp3`
-- `sounds/voix/pt-br/h/que-legal.mp3`
-- `sounds/voix/pt-br/wex/arrasou.mp3`
-- `sounds/voix/pt-br/wex/boa.mp3`
-- `sounds/voix/pt-br/wex/isso-ai.mp3`
-- `sounds/voix/pt-br/wex/muito-bem.mp3`
-- `sounds/voix/pt-br/wex/que-legal.mp3`
-- `audio/dinos/ar/noms/aenocyon.mp3`
-- `audio/dinos/ar/noms/albertosaurus.mp3`
-- `audio/dinos/ar/noms/allosaurus.mp3`
-- `audio/dinos/ar/noms/amargasaurus.mp3`
-- `audio/dinos/ar/noms/ankylosaurus.mp3`
+- `sounds/voix/fr/titres/mj-06.mp3`
+- `sounds/voix/fr/titres/mj-09.mp3`
+- `sounds/voix/fr/titres/mj-13a.mp3`
+- `sounds/voix/fr/titres/mj-13c.mp3`
+- `sounds/voix/fr/titres/mj-14.mp3`
+- `sounds/voix/fr/titres/mj-15.mp3`
+- `sounds/voix/fr/titres/mj-18.mp3`
+- `sounds/voix/fr/titres/mj-19.mp3`
+- `sounds/voix/fr/titres/mj-20.mp3`
+- `sounds/voix/fr/titres/mj-21.mp3`
+- `sounds/voix/fr/titres/mj-22.mp3`
+- `sounds/voix/fr/titres/mj-24.mp3`
+- `sounds/voix/fr/titres/mj-28.mp3`
+- `sounds/voix/fr/titres/mj-30.mp3`
+- `sounds/voix/fr/titres/mj-31.mp3`
+- `sounds/voix/fr/titres/mj-32.mp3`
+- `sounds/voix/fr/titres/mj-34.mp3`
+- `sounds/voix/fr/titres/mj-35.mp3`
+- `sounds/voix/fr/titres/mj-39.mp3`
+- `sounds/voix/fr/titres/mj-46.mp3`
 
-_… et 1311 autres._
+_… et 1350 autres._
 
 ---
 

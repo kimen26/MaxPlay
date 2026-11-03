@@ -34,5 +34,5 @@
 ### BLOC D — Le truc fou
 
 **NARRATEUR H** [excited] : In Mongolia, scientists found [amazed] over twenty Saurolophus in one spot — [whispers] babies and adults together, all dead at the same time.
-**WEX** [gasps] : A hundred, in one place?
+**WEX** [gasps] : Twenty, in one place?
 **NARRATEUR H** [softly] : Yes. It shows us [proud] they lived in groups, all together.

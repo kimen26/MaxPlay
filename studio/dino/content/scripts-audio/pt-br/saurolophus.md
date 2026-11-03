@@ -31,5 +31,5 @@
 ### BLOC D — O detalhe mais louco
 
 **NARRATEUR H** [excited] : Na Mongólia, encontraram [amazed] mais de vinte Saurolofos no mesmo lugar — [whispers] filhotes e adultos juntos, todos mortos ao mesmo tempo.
-**WEX** [gasps] : Cem, no mesmo lugar?
+**WEX** [gasps] : Vinte, no mesmo lugar?
 **NARRATEUR H** [softly] : Isso. Isso mostra [proud] que eles viviam em grupo, todos juntos.

@@ -558,5 +558,55 @@
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
     "date": "2026-09-12T15:40:34.496Z"
+  },
+  "periodes/cenozoique": {
+    "empreinte": "bcfa5d7d0903",
+    "repliques": 1,
+    "duree_s": 5.1,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-11-03T21:57:17.943Z"
+  },
+  "periodes/cretace": {
+    "empreinte": "f91f5542169f",
+    "repliques": 1,
+    "duree_s": 6.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-11-03T21:57:25.126Z"
+  },
+  "periodes/jurassique": {
+    "empreinte": "acf6ae25da40",
+    "repliques": 1,
+    "duree_s": 7.8,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-11-03T21:57:32.341Z"
+  },
+  "periodes/permien": {
+    "empreinte": "5ce37488a946",
+    "repliques": 1,
+    "duree_s": 6.6,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-11-03T21:57:38.900Z"
+  },
+  "periodes/trias": {
+    "empreinte": "d828a500edbb",
+    "repliques": 1,
+    "duree_s": 8.7,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-11-03T21:57:45.814Z"
   }
 }

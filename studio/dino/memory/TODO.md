@@ -27,6 +27,8 @@
 - **REFERENTIEL-96-DETTES** [ ] — 96 dettes « script modifié après le dernier MP3 » dans `studio/referentiel/_ETAT-CONTENU.md` : à acquitter ou régénérer par lot.
 - **EP-D13 (flore)** [ ] — Audio ElevenLabs des fiches plantes non fait (solde bloqué) — ticket à ouvrir formellement.
 
+- [ ] **FAITS-FR-FAUX (2026-11-04)** — trouvés en relisant l'anglais, corrigés en EN, pas en FR (audio FR déjà en ligne) : `special-pangee` bloc D « en cent ans, la longueur d'une main » (plaques ≈ 2,5 cm/an, donc ≈ 2,5 m : « du sol au plafond ») ; `special-extinction` bloc B « les Brachiosaures » meurent à la fin du Crétacé (jurassique : mettre Edmontosaure) ; `RECITS-EPOQUES.md` Diplodocus « presque une piscine olympique » (26 m contre 50), Liopleurodon 9 m « un court de tennis » (fiche : 7 m), Plateosaure « presque dix mètres » (fiche : 8 m). Corriger le texte FR puis régénérer les MP3 FR touchés (GO crédits).
+
 ## Data / branchage / dette GED
 
 - [x] **REC-2026-09-19** — Soldé 2026-09-25 : `oviraptor.chasseurs` EN corrigé (« Velociraptor, other carnivores », `studio/dino/content/i18n/en/strings.json` + régénéré). Les 4 écarts `check-coherence-data-narre` étaient tous une limite du parseur (edmontonia : nombres en toutes lettres non reconnus ; hatzegopteryx/titanis : vitesse dite en BLOC C, hors de la zone scannée) — script corrigé (cardinaux FR 0-20 + vitesse cherchée sur tout le document), 0 vrai écart de fond. `npm run check`/coherence-data-narre : 71 fiches, 0 écart.

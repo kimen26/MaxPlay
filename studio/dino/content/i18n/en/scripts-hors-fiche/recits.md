@@ -1,417 +1,423 @@
-# Scripts audio EN — Récits du Voyage (8 recit-<id>.mp3)
+# Scripts audio EN — Récits du Voyage (13 recit-<id>.mp3)
 
-> Source FR canon : `studio/dino/content/sources/recits/RECITS-EPOQUES.md` (DIALOGUE V5). Native rewrite, not translation.
-> Libellés machine : `**NARRATEUR H**` / `**WEX**` (jamais traduits, L-D-72) même si la voix FR source est `narrateur_f` — le format machine du brief HO-018 fixe H/WEX pour tout le lot A.
-> Registre US 4 ans, unités impériales arrondies, zéro bus, zéro Max/doudou/peluche, Wex sans « ! », questions Wex finies par « ? ».
+> Source FR canon : `studio/dino/content/sources/recits/RECITS-EPOQUES.md` (DIALOGUE V5). Native US rewrite, not translation (skill i18n-contenu). `recit-intro` exists in EN only.
+> Libellés machine : `**NARRATEUR H**` / `**NARRATRICE**` / `**WEX**` (jamais traduits, L-D-72) ; chaque section garde le libellé de narrateur qu'elle utilisait (la voix FR source des récits d'époque est `narrateur_f` = NARRATRICE).
+> Registre US 4 ans, unités impériales arrondies, mots interdits du pôle bannis (cf. rules/dino.md), Wex sans « ! », questions Wex finies par « ? ». Le prénom de l'enfant n'est jamais dit à voix haute, aucune relance sur le surnom du Tricératops (le Tricératops est nommé par son espèce).
+> Échelle (comparaisons recalculées en unités US, écart < 10 %) : Diplodocus 26 m = 85 ft ≈ terrain de basket (94 ft) ; Liopleurodon 9 m = 30 ft ≈ largeur d'un court de tennis (27 à 36 ft) ; météorite 10 km = 6 mi ≈ 100 terrains de foot US bout à bout ; cratère 180 km = 110 mi ; 1 000 km = 600+ mi ; Titanoboa 13 m = 43 ft ; libellule du Carbonifère : envergure ~70 cm > plateau-repas (~45 cm), formulé « wider than ».
 > Noms scientifiques : forme plate du lexique `i18n/lexiques-prononciation/en.md` (pas de tirets syllabiques hors génération TTS dédiée).
 
 ---
 
 ### recit-intro
-**NARRATEUR H** [happily] : Ready to travel back in time, Wex? [pauses] Let's start [excited] at the very beginning...
+**NARRATEUR H** [happily] : Ready to travel back in time? [pauses] Let's start [excited] at the very beginning...
 **WEX** [curious] : Before the dinosaurs?
 
-**NARRATEUR H** [chuckles] : Oh yes! [happily] Way, way before! [serious] Right at the start, almost four billion years ago. [pauses] The Earth is hot and empty. [serious] No animals. No plants. Nothing at all.
-**WEX** [curious] : Wow. Incredible.
+**NARRATEUR H** [chuckles] : Oh yes. [happily] Way, way before. [serious] Almost four billion years ago. [pauses] The Earth is hot and empty. [serious] No animals. No plants. Nothing at all.
+**WEX** [hesitant] : Not even one little bug?
 
-**NARRATEUR H** [curious][pauses] : Then, in the water, [softly] a tiny, [happily] a teeny-tiny bacteria appears.
+**NARRATEUR H** [softly] : Not even a bug. [pauses] Then, in the water, [happily] something teeny-tiny appears. [curious] A bacterium, [softly] so small you can't even see it.
 **WEX** [playful][excited] : And then what?
 
-**NARRATEUR H** [playful] : Then? [quickly] Algae, [gasps] little fish, [excited] then worms, coral, jellyfish, tiny shelled creatures.
-**WEX** [curious] : And all that only lives in the water?
+**NARRATEUR H** [playful] : Then? [quickly] Algae, soft little worms, jellyfish, coral, [excited] tiny animals with shells, [happily] and the very first fish.
+**WEX** [curious] : And all of that lives only in the water?
 
-**NARRATEUR H** [happily] : Yes! [serious] There's still no life on dry land at all. [excited] Then one animal crawls out of the water: a big lizard with four legs.
-**WEX** [curious] : What about plants? Do they come out of the water too?
+**NARRATEUR H** [happily] : Yes. [serious] There's still no life on dry land at all. [excited] Then one day, an animal crawls out of the water, [softly] a bit like a big salamander, with four legs.
+**WEX** [curious] : What about plants? Did they come out of the water too?
 
-**NARRATEUR H** [happily] : Yes, around the same time! [softly] Simple little mosses, then ferns. They grow on dry land, [happily] and it turns green. [gasps] So the four-legged animals have something to eat, [excited] and they move in!
-**WEX** [curious][excited] : But were there carnivores?
+**NARRATEUR H** [happily] : They did, even a little earlier. [softly] Simple mosses first, then ferns. [happily] They grow on dry land, and it turns green. [gasps] So the four-legged animals have something to eat, [excited] and they move right in.
+**WEX** [curious][excited] : Were there meat-eaters already?
 
-**NARRATEUR H** [playful] : Of course! [pauses] In the water, big fish ate little fish. [excited] And on land, big lizards ate little insects. [serious] There have always been carnivores and herbivores.
+**NARRATEUR H** [playful] : Of course. [pauses] In the water, big fish ate little fish. [excited] And on land, big four-legged animals ate little insects. [serious] There have always been meat-eaters and plant-eaters.
 **WEX** [curious] : What comes next?
 
-**NARRATEUR H** [happily] : Next, we jump forward in time. [excited] Millions of years go by. [gasps] And then… [chuckles] want to hear what happens next?
-**WEX** [excited][playful] : Yes.
+**NARRATEUR H** [happily] : Next, we jump forward in time. [excited] Millions of years go by. [gasps] And then… [chuckles] want to hear what happens?
+**WEX** [excited][playful] : Yes, tell me.
 
 ---
 
 ### recit-trias
 
-**NARRATRICE** [happily] : Here comes the Triassic. [serious] Two hundred fifty million years ago, [pauses] give or take. [playful] "Triassic" means "three": scientists found three layers of rock from this time, stacked like a cake.
+**NARRATRICE** [happily] : Here comes the Triassic. [serious] About two hundred fifty million years ago. [playful] "Triassic" means "three": scientists found three layers of rock from this time, stacked up like a cake.
 
 **WEX** [curious] : Were there dinosaurs already?
 
-**NARRATRICE** [excited] : The very first ones! [calm] Small, on two legs, really fast. [softly] Back then, nobody guesses they'll one day rule the whole Earth.
+**NARRATRICE** [excited] : The very first ones! [calm] Small, running on two legs, super fast. [softly] Back then, nobody could guess they'd one day rule the whole Earth.
 
-**WEX** [curious] : And what did the continents look like?
+**WEX** [curious] : And what were the continents like?
 
-**NARRATRICE** [amazed] : [pauses] Just one, huge, all stuck together: Pangea. [calm] You could walk from America all the way to Africa without ever seeing the ocean.
+**NARRATRICE** [amazed] : [pauses] Just one. One huge piece, all stuck together: Pangea. [calm] You could walk from America all the way to Africa without ever seeing the ocean.
 
 **WEX** [gasps] : Without a boat?
 
-**NARRATRICE** [chuckles] : Without a boat. [serious] It's hot everywhere, [softly] and very dry in the middle, far from the coasts.
+**NARRATRICE** [chuckles] : Without a boat. [serious] It's hot everywhere, [softly] and really dry in the middle, far from the coast.
 
 **WEX** [curious] : Were there plants?
 
-**NARRATRICE** [happily] : Conifers, [calm] like prickly pine trees, [softly] and cycads, [playful] which look like spiky palm trees. [serious] But not one single flower yet.
+**NARRATRICE** [happily] : Conifers, [calm] like prickly pine trees, [softly] and cycads, [playful] which look like palm trees with spikes. [serious] But not one single flower yet.
 
 **WEX** [curious] : What did the dinos eat?
 
-**NARRATRICE** [warmly] : Plateosaurus munched on those plants all day long. [calm] A long neck, [softly] a small head, [excited] and already almost thirty feet long!
+**NARRATRICE** [warmly] : Plateosaurus munched on those plants all day long. [calm] A long neck, [softly] a small head, [excited] and about twenty-five feet long!
 
-**WEX** [gasps] : Was it scared of anything?
+**WEX** [gasps] : Was it afraid of anything?
 
-**NARRATRICE** [serious] : On land, almost nothing worried it. [pauses] But in the ocean, [calm] a giant was swimming: Shonisaurus. [amazed] A marine reptile as long as a building lying on its side, [softly] hunting fish and squid in deep water.
+**NARRATRICE** [serious] : On land, almost nothing worried it. [pauses] But in the sea, [calm] a giant swam: Shonisaurus. [amazed] A sea reptile as long as a building lying on its side. [softly] It hunted fish and squid in deep water.
 
 **WEX** [curious] : Is that one a dinosaur too?
 
-**NARRATRICE** [chuckles] : No! [calm] Shonisaurus swims in the sea, [softly] dinosaurs stay on dry land.
+**NARRATRICE** [chuckles] : No! [calm] Shonisaurus swam in the sea. [softly] Dinosaurs stayed on dry land.
 
-**WEX** [hesitant] : Hey, [pauses] was Tritri there?
+**WEX** [hesitant] : Hey, [pauses] were there dinosaurs with horns yet?
 
-**NARRATRICE** [gently] : Not yet. [softly] Triceratops doesn't exist yet, [calm] we'll have to wait a very, very long time.
+**NARRATRICE** [gently] : Not yet. [softly] Triceratops doesn't exist yet. [calm] We'll have to wait a very, very long time.
 
 **WEX** [curious] : What comes after the Triassic?
 
-**NARRATRICE** [excited] : After this, [pauses] the Earth warms up even more, [softly] rain finally falls on the deserts, [happily] and dinosaurs start to grow…
+**NARRATRICE** [excited] : After this, [pauses] the Earth gets even warmer, [softly] rain finally falls on the deserts, [happily] and the dinosaurs start to grow…
+
+---
 
 ### recit-jurassique
 
-**NARRATRICE** [excited] : Here comes the Jurassic! [happily] One hundred eighty million years ago. [chuckles] Its name comes from the Jura mountains, [playful] between France and Switzerland.
+**NARRATRICE** [excited] : Here comes the Jurassic! [happily] A hundred and eighty million years ago. [chuckles] Its name comes from the Jura mountains, [playful] between France and Switzerland.
 
 **WEX** [curious] : Had the continents moved?
 
-**NARRATRICE** [amazed] : [pauses] Pangea starts to crack. [calm] A long rift opens in the middle, [softly] and a sea slowly settles in.
+**NARRATRICE** [amazed] : [pauses] Pangea is starting to crack. [calm] A long split opens in the middle, [softly] and a sea slowly moves in.
 
 **WEX** [curious] : Is it hot?
 
-**NARRATRICE** [happily] : Hot and humid! [playful] Huge fern forests grow everywhere, [calm] along with conifers and ginkgos.
+**NARRATRICE** [happily] : Hot and humid! [playful] Big forests of ferns grow everywhere, [calm] with conifers and ginkgos.
 
 **WEX** [gasps] : What's a ginkgo?
 
-**NARRATRICE** [chuckles] : A tree with fan-shaped leaves. [amazed] And the wildest part: it still exists today, [softly] almost the same!
+**NARRATRICE** [chuckles] : A tree with leaves shaped like little fans. [amazed] And here's the wild part: it's still around today, [softly] almost exactly the same!
 
-**WEX** [excited] : Did the dinos eat all that?
+**WEX** [excited] : And the dinos ate all of that?
 
-**NARRATRICE** [happily] : So much of it! [excited] So much food that the plant-eaters grew huge. [shouts] Diplodocus, almost as long as an Olympic pool!
+**NARRATRICE** [happily] : Tons of it! [excited] So much food that the plant-eaters grew gigantic. [shouts] Diplodocus was eighty-five feet long, almost as long as a basketball court!
 
-**WEX** [amazed] : Wow…
+**WEX** [amazed] : Whoa…
 
-**NARRATRICE** [warmly] : Brachiosaurus raised its long neck straight up, [calm] like a crane, [softly] to reach the tops of the trees.
+**NARRATRICE** [warmly] : Brachiosaurus held its long neck straight up, [calm] like a crane, [softly] to nibble the tops of the trees.
 
 **WEX** [curious] : Why were they so big?
 
-**NARRATRICE** [serious] : Their long necks let them eat without moving their legs. [calm] And inside their bones, [softly] tiny air pockets, [playful] light like a bird's.
+**NARRATRICE** [serious] : That long neck let them eat without moving their feet. [calm] And inside, their bones, [softly] were full of tiny air pockets, [playful] light like a bird's.
 
-**WEX** [curious] : What about the carnivores?
+**WEX** [curious] : What about the meat-eaters?
 
-**NARRATRICE** [excited] : Allosaurus hunted them. [serious] Sharp teeth, [softly] powerful claws. [calm] And Stegosaurus defended itself with its spiked tail.
+**NARRATRICE** [excited] : Allosaurus hunted the plant-eaters. [serious] Sharp teeth, [softly] strong claws. [calm] And Stegosaurus defended itself with its spiky tail.
 
 **WEX** [curious] : Were there animals in the sky?
 
-**NARRATRICE** [playful] : Archaeopteryx! [gently] Almost a bird, almost a dinosaur, [softly] with feathers and small wings.
+**NARRATRICE** [playful] : Archaeopteryx! [gently] Almost a bird, almost a dinosaur, [softly] with feathers and little wings.
 
-**WEX** [curious] : And in the ocean?
+**WEX** [curious] : And in the sea?
 
-**NARRATRICE** [serious] : Ophthalmosaurus hunted squid [calm] with its huge eyes. [pauses] And Liopleurodon, [amazed] a powerful thirty-foot hunter, [softly] snapped its jaws shut on anything nearby.
+**NARRATRICE** [serious] : Ophthalmosaurus hunted squid [calm] with its enormous eyes. [pauses] And Liopleurodon, [amazed] a powerful hunter twenty-three feet long, [softly] snapped its jaws shut on anything that swam by.
 
-**WEX** [hesitant] : Thirty feet, [pauses] is that huge?
+**WEX** [hesitant] : Twenty-three feet, [pauses] is that really big?
 
-**NARRATRICE** [chuckles] : As long as a tennis court. [calm] Huge, yes, but not more.
+**NARRATRICE** [chuckles] : About as long as a big moving truck. [calm] Big, yes. But no bigger.
 
 **WEX** [curious] : What comes after the Jurassic?
 
 **NARRATRICE** [excited] : The continents keep drifting apart, [pauses] slowly, [happily] and something brand new is about to appear on Earth…
 
+---
+
 ### recit-cretace
 
-**NARRATRICE** [excited] : Here comes the Cretaceous! [happily] One hundred million years ago. [chuckles] Its name comes from "chalk," [playful] that white rock you can still find on cliffs today.
+**NARRATRICE** [excited] : Here comes the Cretaceous! [happily] A hundred million years ago. [chuckles] Its name comes from "chalk," [playful] that soft white rock you can still see in cliffs today.
 
-**WEX** [curious] : Did the continents look like today's?
+**WEX** [curious] : Did the continents look like they do today?
 
-**NARRATRICE** [amazed] : [pauses] Almost! [calm] The Atlantic Ocean is already wide, [softly] and a long sea cuts North America in two, [happily] from one end to the other.
+**NARRATRICE** [amazed] : [pauses] Almost! [calm] The Atlantic Ocean is already wide, [softly] and a long sea splits North America in two, [happily] from one end to the other.
 
 **WEX** [gasps] : A sea in the middle of a continent?
 
-**NARRATRICE** [chuckles] : A whole sea! [calm] The climate is mild, [softly] pleasant almost everywhere.
+**NARRATRICE** [chuckles] : A whole sea! [calm] The weather is mild, [softly] nice almost everywhere.
 
 **WEX** [curious] : Were there flowers?
 
-**NARRATRICE** [happily] : For the first time in all of history, [gasps] yes! [excited] Flowers everywhere, [playful] and little bees flying from one to another!
+**NARRATRICE** [happily] : For the first time ever, [gasps] yes! [excited] Flowers everywhere, [playful] and little bees flying from one to the next!
 
-**WEX** [amazed] : Bees with the dinosaurs?
+**WEX** [amazed] : Bees, with the dinosaurs?
 
-**NARRATRICE** [chuckles] : With the dinosaurs! [happily] The world turns colorful and fragrant.
+**NARRATRICE** [chuckles] : With the dinosaurs! [happily] The world turns colorful, and it smells good.
 
 **WEX** [curious] : Were there dinos everywhere?
 
-**NARRATRICE** [excited] : Everywhere! [shouts] In North America, Tyrannosaurus and Triceratops! [softly] One hunted, [calm] the other defended itself with its three horns.
+**NARRATRICE** [excited] : Everywhere! [shouts] In North America, Tyrannosaurus and Triceratops! [softly] One hunted, [calm] and the other defended itself with three horns.
 
 **WEX** [curious] : What about Spinosaurus?
 
-**NARRATRICE** [serious] : It lived by the water. [calm] A sail on its back, [softly] it fished in the rivers, [playful] almost like a bear catching salmon.
+**NARRATRICE** [serious] : It lived by the water. [calm] With a sail on its back, [softly] it fished in the rivers, [playful] kind of like a bear catching salmon.
 
 **WEX** [curious] : Was Velociraptor huge?
 
-**NARRATRICE** [chuckles] : Not at all! [calm] Barely bigger than a large dog, [softly] covered in feathers, [playful] like a fast, clever turkey.
+**NARRATRICE** [chuckles] : Not at all! [calm] Barely bigger than a big dog, [softly] covered in feathers, [playful] like a fast, clever turkey.
 
 **WEX** [hesitant] : Really? [pauses] I thought it was giant.
 
-**NARRATRICE** [gently] : That's a movie myth. [calm] The real one was small, [softly] but very smart, [happily] and it hunted in packs.
+**NARRATRICE** [gently] : That's a movie myth. [calm] The real one was small, [softly] but very smart, [happily] and it hunted in a group.
 
-**WEX** [curious] : What about the sky, and the sea?
+**WEX** [curious] : What about the sky and the sea?
 
-**NARRATRICE** [excited] : Pteranodon soared high, [calm] a flying reptile without a single feather, [softly] with a toothless beak. [pauses] And in the ocean, [amazed] Mosasaurus ruled, [softly] a marine reptile as long as a building lying on its side.
+**NARRATRICE** [excited] : Pteranodon soared way up high, [calm] a flying reptile with no feathers at all, [softly] and a beak with no teeth. [pauses] And in the ocean, [amazed] Mosasaurus ruled, [softly] a sea reptile as long as a building lying on its side.
 
-**WEX** [gasps] : Was Tritri there?
+**WEX** [gasps] : And the one with the horns?
 
-**NARRATRICE** [happily] : [pauses] Yes! [excited] At last, Tritri is here: Triceratops, [gently] with its three horns and its big frill. [warmly] Wex found him.
+**NARRATRICE** [happily] : [pauses] Oh yes! [excited] There he is: Triceratops, [gently] with three horns and a big frill around his neck.
 
-**WEX** [excited] : Is he really here?
+**WEX** [excited] : Is he really there?
 
-**NARRATRICE** [happily] : Really here. [calm] But one day, [pauses] everything is about to change all at once…
+**NARRATRICE** [happily] : Really there. [calm] But one day, [pauses] everything is about to change, all at once…
+
+---
 
 ### recit-extinction
-
-**NARRATRICE** [serious] [softly] : Sixty-six million years ago, [pauses] at the end of the Cretaceous. [calm] For a long time already, the Earth has been rumbling.
+**NARRATRICE** [serious] : Sixty-six million years ago, [pauses] at the end of the Cretaceous. For a long time now, the Earth has been rumbling.
 **WEX** [curious] : Rumbling how?
-**NARRATRICE** [serious] : In India, huge volcanoes spit lava, [pauses] smoke, and ash. [gasps] The ground splits open for miles, and lava pours out of the cracks. [calm] Earthquakes shake the land again and again, [softly] lifting dust, scaring the animals. [pauses] The sky is already gray.
-**WEX** [nervous] : And the dinosaurs, do they still live?
-**NARRATRICE** [warmly] : They live. [softly] The sun still gets through. Sometimes there are dramas, [calm] but that's their life: Tritri grazes, T. rex hunts, [happily] life goes on.
+**NARRATRICE** [serious] : In India, giant volcanoes spit out lava, [pauses] smoke, and ash. [gasps] The ground splits open for miles, and lava shoots out of the cracks. [calm] Earthquakes shake the land [softly] and scare the animals. [pauses] The sky is already gray.
+**WEX** [nervous] : Are the dinosaurs still alive?
+**NARRATRICE** [warmly] : They are. [softly] The sun still shines through. [calm] Triceratops munches, T. rex hunts, life goes on.
 **WEX** [curious] : And then?
-**NARRATRICE** [softly] : But one day, [pauses] far away in the sky, a tiny dot is shining. [serious] It gets closer. [gasps] It gets bigger and bigger. [shouts] It's a giant meteorite! [amazed] Six miles wide, as wide as a whole big city.
+**NARRATRICE** [whispers] : But one day... [pauses] far away in the sky, a tiny dot shines. [serious] The dot gets closer... [nervous] it gets bigger... [gasps] bigger still... [excited] it's huge, it's burning, it's whistling, it's racing toward the Earth... [shouts] AND SUDDENLY: a GIANT meteorite falls from the sky! [amazed] Six miles wide: as wide as a whole city, [pauses] or a hundred football fields in a row.
 **WEX** [gasps] : Where does it land?
-**NARRATRICE** [serious] : In North America, in Mexico, [pauses] on the Yucatán peninsula, in a shallow sea. [gasps] It digs a hole a hundred and ten miles wide: [calm] the Chicxulub crater. [softly] Even today, half of it is under the land, half under the sea.
-**WEX** [curious] : It just makes a big hole, is that so bad?
-**NARRATRICE** [serious] : At the moment of impact, [pauses] a terrible heat. [gasps] More than six hundred miles away, everything is swept away or burns in seconds. [serious] The Earth shakes like never before: [pauses] in the mountains, whole cliffs collapse, [softly] entire forests fall.
+**NARRATRICE** [serious] : In Mexico, [pauses] on the Yucatán peninsula, in a shallow sea. [gasps] It digs a hole a hundred and ten miles wide: the Chicxulub crater. [softly] Even today, it sits half on land and half under the sea.
+**WEX** [curious] : It just makes a big hole. Is that really so bad?
+**NARRATRICE** [serious] : At the moment of impact... [pauses] a terrible heat. [nervous] It spreads... [serious] it flattens the trees... [gasps] it burns the forests... [shouts] more than SIX HUNDRED MILES away, everything is swept away or burned in seconds! [serious] The Earth shakes like never before: [pauses] in the mountains, chunks of rock crumble away, [softly] and whole forests fall.
 **WEX** [nervous] : And in the sea?
-**NARRATRICE** [serious] : Giant waves. [gasps] Near the crater, taller than a thirty-story building. [pauses] Far away, on every ocean in the world, still three stories tall, [serious] they wreck every land along the water. [softly] And tons of dirt and dust rise higher still into the sky.
+**NARRATRICE** [serious] : Giant waves. [nervous] They rise... [gasps] and rise again... [shouts] near the crater, taller than a THIRTY-story building! [pauses] Far away, on oceans all over the world, they're still three stories tall, [serious] and they crash over every shore. [softly] And tons of dirt and dust keep rising into the sky.
 **WEX** [curious] : Why do you keep talking about the sky?
-**NARRATRICE** [softly] : Because on land and in the seas, it's terrible: [sad] thousands of animals hurt, lost from their herds, [pauses] many dying. [serious] But that's not the worst. [pauses] The real disaster is in the sky.
+**NARRATRICE** [softly] : Because on land and in the sea, it's terrible: [sad] thousands of hurt animals, [pauses] many who die. [serious] But that's not the worst. [pauses] The real disaster is up in the sky.
 **WEX** [nervous] : Does it turn black?
-**NARRATRICE** [serious] [softly] : All black. [pauses] For days, for months, [gasps] surely for years. [calm] The sun can't get through. No more light, no more warmth. [softly] It gets cold, colder and colder.
+**NARRATRICE** [whispers] : All black. [pauses] For days... [softly] for months... [gasps] probably for YEARS. [calm] No sun, no light, no warmth. [softly] It gets cold, colder and colder.
 **WEX** [curious] : Who dies first?
-**NARRATRICE** [sad] : The plants. [serious] Without sun, the plants die, [pauses] and the food chain is broken. [softly] The big plant-eaters have nothing left to eat, they starve. [serious] Then the meat-eaters, with no plant-eaters left, [pauses] die in their turn.
-**WEX** [sad] : Tritri too?
-**NARRATRICE** [softly] : Tritri too. [serious] On land, everything bigger than a big dog disappears. [pauses] All the dinosaurs die.
+**NARRATRICE** [sad] : The plants. Without sunlight, plants die, [pauses] and the food chain breaks. [softly] The big plant-eaters have nothing left to eat, and they starve. [serious] Then the meat-eaters, [pauses] one after another, die too.
+**WEX** [sad] : Triceratops too?
+**NARRATRICE** [softly] : Triceratops too. [serious] On land, everything bigger than a big dog is gone. [pauses] All the dinosaurs die.
 **WEX** [curious] : Is anyone left?
-**NARRATRICE** [warmly] : The small ones, [pauses] quick and tough: little mammals, little birds, [happily] which are true dinosaurs. [calm] In the sea too: sharks, turtles, crocodiles.
-**WEX** [curious] : And is that the end?
-**NARRATRICE** [serious] : It's the end of the Cretaceous, [pauses] but it's also the end of the Mesozoic, the age of dinosaurs. [calm] Scientists call this moment the Cretaceous-Paleogene boundary. [warmly] Because with this great extinction, a new era opens: [pauses] the Cenozoic, with its first period, the Paleogene. [happily] And when the sky clears again, [pauses] it's the small ones' turn.
+**NARRATRICE** [warmly] : The small ones, [pauses] quick and tough: little mammals, little birds, [happily] and birds are real dinosaurs. [calm] In the sea too: sharks, turtles, crocodiles.
+**WEX** [curious] : Is that the end?
+**NARRATRICE** [serious] : It's the end of the Cretaceous, [pauses] and the end of the Mesozoic, the age of the dinosaurs. [calm] Scientists call this moment the Cretaceous-Paleogene boundary. [warmly] Because with this great extinction, a new era begins: [pauses] the Cenozoic, with its first period, the Paleogene. [happily] And when the sky clears, [pauses] it's the little ones' turn.
 
 ### recit-mammiferes
 **NARRATEUR H** [excited][playful] : Here we are in the [serious] age of mammals! [happily] The sky clears up. The weather turns mild again. The forests grow back.
 **WEX** [curious] : Is it warm?
 
-**NARRATEUR H** [playful] : Warm and humid, [happily] like a giant greenhouse. [softly] Mammals, once hiding under the dinosaurs' feet, can finally grow.
+**NARRATEUR H** [playful][happily] : Warm and humid, like a big greenhouse. [softly] The mammals were hiding under the dinosaurs' feet. Now they can finally grow.
 **WEX** [curious] : What do they become?
 
-**NARRATEUR H** [excited][quickly] : Huge! [amazed] Smilodon, the saber-tooth cat! [happily] A giant sloth, big as an elephant. [gasps] Titanoboa, a snake forty feet long!
-**WEX** [gasps] : Forty feet?
+**NARRATEUR H** [excited][quickly] : Huge! [shouts] Smilodon, the saber-toothed cat! [happily] A giant sloth, big as an elephant. [gasps] And a giant snake, Titanoboa, over forty feet long!
+**WEX** [gasps] : Over forty feet?
 
-**NARRATEUR H** [gasps][excited] : As long as a house! [playful] And some mammals go back to living in the water: whales and dolphins. [softly] Their babies drink milk… [pauses] underwater.
+**NARRATEUR H** [gasps][excited] : As long as a house! [playful] And some mammals go back to live in the water: whales and dolphins. [softly] Their babies drink milk… [pauses] underwater.
 **WEX** [gasps] : Milk underwater?
 
+**NARRATEUR H** [chuckles][warmly] : Milk underwater. [softly] Mama whale feeds her baby while she swims, [pauses] just like every mammal mom.
 **WEX** [excited][curious] : What else?
 
-**NARRATEUR H** [excited] : Time goes on. [playful] Then, [pauses] the cold comes back. [serious] Really cold…
+**NARRATEUR H** [excited] : Time goes by. [playful] Then, [pauses] the cold comes back. [serious] Really cold, colder and colder.
 
 ---
 
 ### recit-glace-mammouth
-**NARRATEUR H** [excited][playful] : Here we are in the [serious] Ice Age! [happily] Later on, the cold comes back. [serious] Really cold. [gasps] The continents get covered in ice for millions of years.
+**NARRATEUR H** [excited][playful] : Here we are in the [serious] Ice Age! [happily] Later on, the cold comes back. [serious] Really cold. [gasps] Ice covers the continents for millions of years.
 **WEX** [curious] : Does it snow everywhere?
 
-**NARRATEUR H** [playful][happily] : A lot! [excited] Ice spreads across Europe and North America. [softly] Animals adapt: thick fur, fat under the skin.
+**NARRATEUR H** [playful][happily] : A lot! [excited] Ice spreads over Europe and North America. [softly] The animals adapt: thick fur, fat under the skin.
 **WEX** [curious] : Which animals?
 
-**NARRATEUR H** [excited] : The woolly mammoth, [quickly] a cousin of the elephant with fur down to its feet! [happily] The saber-tooth cat. Wolves. Cave bears.
+**NARRATEUR H** [excited][quickly] : The woolly mammoth, a cousin of the elephant, with fur all the way down to its feet! [happily] The saber-toothed cat. Wolves. Cave bears.
 **WEX** [curious] : Are there humans?
 
-**NARRATEUR H** [happily][excited] : Yes! [gasps] About two and a half million years ago, in Africa, the first humans appear. [playful] They walk upright, and they eat everything: plants, fruit, seeds, meat. [softly] They're hunter-gatherers.
+**NARRATEUR H** [happily][excited] : Yes! [gasps] About two and a half million years ago, in Africa, the first humans appear. [playful] They walk upright, and they eat a bit of everything: plants, fruit, seeds, meat. [softly] They're hunter-gatherers.
 **WEX** [curious] : Like us?
 
-**NARRATEUR H** [playful][happily] : Not quite! [excited] About three hundred thousand years ago, Homo sapiens arrives. [gasps] That's our direct ancestor: humans just like us today.
-**WEX** [curious] : What happens next?
+**NARRATEUR H** [playful][happily] : Not quite! [excited] About three hundred thousand years ago, Homo sapiens shows up. [gasps] That's our direct ancestor: humans just like us.
+**WEX** [curious] : And then what?
 
-**NARRATEUR H** [excited][quickly] : Humans get really clever. [happily] They light fires, they talk, they make sharp tools. [softly] They hunt big animals and shelter from the cold.
+**NARRATEUR H** [excited][quickly] : Humans get really clever. [happily] They make fire, they talk, they make sharp tools. [softly] They hunt big animals and protect themselves from the cold.
 **WEX** [curious] : Are they the kings?
 
-**NARRATEUR H** [happily][excited] : The kings of the planet! [gasps] The ultimate hunters. [quickly] They raise animals, grow crops, build villages, towns, roads, bridges, boats.
-**WEX** [curious] : More?
+**NARRATEUR H** [happily][excited] : The kings of the planet! [gasps] The ultimate hunters. [quickly] They raise animals, grow plants, build villages, cities, roads, bridges, boats.
+**WEX** [curious] : There's more?
 
-**NARRATEUR H** [excited][quickly] : Even more! [gasps] They invent electricity, the steam engine, the motor. [happily] The car, the train, the telephone.
-**WEX** [gasps] : Whoa.
+**NARRATEUR H** [excited][quickly] : Even more! [gasps] They invent electricity, the steam engine, the motor. [happily] The car, the train, the bicycle, the telephone.
+**WEX** [gasps] : Whoa, all that?
 
 **NARRATEUR H** [excited][quickly] : And they fly! [happily] In hot-air balloons, in planes, in rockets. [softly] Humans learn to master animals, nature, and the forces of physics.
 **WEX** [excited][curious] : What else?
 
-**NARRATEUR H** [softly] : We're almost caught up to today. [happily] Ready to find out [pauses] how we know all this?
+**NARRATEUR H** [softly][happily] : We're almost at today. [pauses] Ready to find out [curious] how we know all this?
 
 ---
 
 ### recit-paleo
-**NARRATEUR H** [excited][playful] : And here we are at [serious] paleontology! [happily] How do we know all this? [curious] Thanks to scientists who dig in the ground.
-**WEX** [curious] : What's that?
+**NARRATEUR H** [excited][playful] : And now we're at [serious] paleontology! [happily] How do we know all this? [curious] Thanks to scientists who dig in the ground.
+**WEX** [curious] : Who are they?
 
 **NARRATEUR H** [curious][playful] : Paleontologists. [excited] They find bones, teeth, footprints, eggs. [softly] They clean them with a toothbrush, very, very gently.
 **WEX** [curious] : Then what?
 
-**NARRATEUR H** [excited] : They put hundreds of bones back together, [quickly] like a giant puzzle! [happily] They figure out how it walked and what it ate.
+**NARRATEUR H** [excited][quickly] : They fit hundreds of bones back together, like a giant puzzle! [happily] They figure out how the animal walked and what it ate.
 **WEX** [curious] : Do they know everything?
 
-**NARRATEUR H** [playful][chuckles] : Almost everything! [softly] But not the colors. [serious] Nobody knows. [happily] So artists make them up.
+**NARRATEUR H** [playful][chuckles] : Almost! [softly] But not the colors. [serious] Nobody knows. [happily] So artists imagine them.
 **WEX** [curious] : Was T. rex green?
 
-**NARRATEUR H** [excited][playful] : Maybe! [gasps] Or covered in feathers: one giant carnivorous chicken! [happily] Was Triceratops blue? Pink? [playful] Spotted yellow? [amazed] You get to imagine it!
+**NARRATEUR H** [excited][playful] : Maybe! [gasps] Or covered in feathers: a giant meat-eating chicken! [happily] Was Triceratops blue? Pink? [playful] Yellow with spots? [shouts] You get to imagine it!
 **WEX** [happily] : I say orange.
 
-**NARRATEUR H** [chuckles] : Orange. Perfect. [softly] We don't know everything. [happily] But we know that life has been one huge adventure, [amazed] from the very first bacteria all the way to today's birds.
+**NARRATEUR H** [chuckles][happily] : Orange. Perfect. [softly] We don't know everything. [happily] But we know life is one huge adventure, [pauses] from the very first bacterium to the birds of today.
 **WEX** [curious] : Can we listen again?
 
-**NARRATEUR H** [happily][excited] : Anytime you want. [playful] The journey's always here, ready and waiting.
-**WEX** [excited][playful] : Yes.
+**NARRATEUR H** [happily][excited] : Anytime you want. [playful] The journey is right here, [pauses] always ready.
+**WEX** [excited][playful] : Yes, again.
 
 ### recit-grande-mort
 
-**NARRATRICE** [serious] [softly] : Before the dinosaurs, [pauses] two hundred fifty-two million years ago, [gasps] the Earth nearly died.
+**NARRATRICE** [serious][softly] : Before the dinosaurs, [pauses] two hundred fifty-two million years ago, [gasps] the Earth almost died.
 **WEX** [curious] : A meteorite, like the dinosaurs?
-**NARRATRICE** [softly] : No, [serious] not this time. [calm] This time, [pauses] it was volcanoes. [gasps] Huge volcanoes, in Siberia, [shouts] spitting fire for thousands of years.
+**NARRATRICE** [softly] : No, [serious] not this time. [calm] This time, [pauses] it was volcanoes. [gasps] Giant volcanoes, in Siberia, [shouts] spitting fire for thousands of years.
 **WEX** [gasps] : Thousands of years?
-**NARRATRICE** [calm] [softly] : Yes. [serious] Thick smoke covers the sky. [softly] The air turns burning hot, [pauses] and poisoned.
+**NARRATRICE** [calm][softly] : Yes. [serious] Thick smoke covers the sky. [softly] The air turns burning hot, [pauses] and poisoned.
 **WEX** [curious] : What about the animals?
-**NARRATRICE** [sad] [softly] : Almost all of them die. [serious] In the sea, almost every animal disappears. [pauses] On land too, most of them. [softly] Scientists call it [serious] "the Great Dying." [pauses] It's the biggest extinction the Earth has ever known.
+**NARRATRICE** [sad][softly] : Almost all of them die. [serious] In the sea, almost every animal disappears. [pauses] On land too, most of them. [softly] Scientists call it [serious] "the Great Dying." [pauses] It's the biggest extinction the Earth has ever known.
 **WEX** [curious] : Bigger than the dinosaurs' extinction?
 **NARRATRICE** [serious] : Bigger. [calm] Much bigger.
 **WEX** [curious] : Were there other big extinctions?
-**NARRATRICE** [calm] : Five, in all. [softly] Three very old ones, mostly in the seas, [pauses] this one, the biggest, [serious] and the dinosaurs' one, with the meteorite, much later. [softly] But every time, a few animals survive, hidden, tough.
-**WEX** [gasps] : Was Tritri there?
-**NARRATRICE** [chuckles] [softly] : Not yet! [playful] Triceratops don't exist yet. [happily] We'll have to wait a very, very long time. [pauses] But these survivors will give birth to something new…
-**WEX** [excited] [curious] : What?
-**NARRATRICE** [happily] [excited] : The very first dinosaurs!
+**NARRATRICE** [calm] : Five in all. [softly] Three very old ones, mostly in the seas, [pauses] this one, the biggest, [serious] and the dinosaurs' one, with the meteorite, much later. [softly] But every time, a few animals survive, hidden and tough.
+**WEX** [gasps] : What about the dinosaurs?
+**NARRATRICE** [chuckles][softly] : Not yet! [playful] They don't exist yet. [happily] We'll have to wait a very, very long time. [pauses] But these survivors will give rise to something new…
+**WEX** [excited][curious] : What?
+**NARRATRICE** [happily][excited] : The very first dinosaurs!
 
 ### recit-naissance-terre
 
 ```
-**NARRATRICE** [happily] : Listen, Wex! Today [excited] we go all the way back to the very beginning. Before Earth even existed.
+**NARRATRICE** [happily] : Listen! Today [excited] we're going all the way back to the very beginning. Before there was even an Earth.
 
-**WEX** [curious] : Before Earth? So what was there instead?
+**WEX** [curious] : Before the Earth? Then what was there?
 
-**NARRATRICE** [playful][calm] : A cloud. A huge cloud of dust and gas, spinning around the Sun, [softly] which was brand new too.
+**NARRATRICE** [playful][calm] : A cloud. A giant cloud of dust and gas, spinning around the Sun, [softly] which was brand new too.
 
-**WEX** [amazed] : A cloud… can that turn into a planet?
+**WEX** [amazed] : A cloud… can a cloud turn into a planet?
 
-**NARRATRICE** [warmly] : It sure can. Little by little, all those grains of dust stuck together. [serious] Gravity did that: an invisible force [calm] that pulls everything toward the center.
+**NARRATRICE** [warmly] : It sure can. Little by little, all those grains of dust stuck together. [serious] That was gravity: an invisible force [calm] that pulls everything toward the middle.
 
-**NARRATRICE** [excited] : The ball grew, and grew, and grew. [pauses] And deep inside, the heaviest metals sank all the way down: they formed the core, [amazed] Earth's burning-hot heart.
+**NARRATRICE** [excited] : The ball grew, and grew, and grew. [pauses] And deep down, the heaviest metals sank to the bottom. They made the core, [amazed] the Earth's burning-hot heart.
 
 **WEX** [curious] : Does that time have a name?
 
-**NARRATRICE** [serious][calm] : We call it the Hadean. [softly] It comes from Hades, the Greek god of the underworld, [calm] because Earth looked like a lava-filled underworld.
+**NARRATRICE** [serious][calm] : It's called the Hadean. [softly] The name comes from Hades, the Greek god of the underworld, [calm] because the Earth looked like an underworld made of lava.
 
-**WEX** [gasps] : Was there already water, at least?
+**WEX** [gasps] : Was there any water yet, at least?
 
-**NARRATRICE** [sad] : Not yet. It was much too hot for that: [softly] volcanoes everywhere, and lava as far as you could see.
+**NARRATRICE** [sad] : Not yet. It was much too hot for that. [softly] Volcanoes everywhere, and lava as far as you could see.
 
-**NARRATRICE** [calm] : But Earth finally cooled down. [pauses] Slowly, over millions of years.
+**NARRATRICE** [calm] : But little by little, the Earth cooled down. [pauses] Slowly, over millions of years.
 
 **WEX** [amazed] : And then?
 
-**NARRATRICE** [happily][excited] : Then it started to rain! [gasps] A huge rain, falling for a very very long time, filled up Earth's low places.
+**NARRATRICE** [happily][excited] : And then it started to rain! [gasps] A giant rain, falling for a very, very long time, filled up the low places on the Earth.
 
-**NARRATRICE** [warmly] : That is how the very first oceans were born. [pauses] And it's in that water, Wex, [amazed] that the greatest adventure was about to begin.
+**NARRATRICE** [warmly] : That's how the very first oceans were born. [pauses] And in that water, [amazed] the greatest adventure was about to begin.
 ```
 
 ### recit-vie-dans-eau
 
 ```
-**NARRATRICE** [happily] : Listen to what's next, Wex: the very first oceans have just been born. [curious] And guess what shows up inside them...
+**NARRATRICE** [happily] : Listen to what comes next: the very first oceans have just been born. [curious] And guess what shows up in them...
 
 **WEX** [curious] : Fish?
 
-**NARRATRICE** [chuckles][playful] : Not yet! Long before fish, [softly] tiny beings, invisible to the eye: bacteria. [calm] The very first living things on Earth.
+**NARRATRICE** [chuckles][playful] : Not yet! Long before fish, [softly] tiny living things, too small to see: bacteria. [calm] The very first living things on Earth.
 
 **WEX** [amazed] : How tiny?
 
-**NARRATRICE** [softly] : So tiny that thousands could fit on the tip of a pencil. [pauses] And among them, some are special: cyanobacteria.
+**NARRATRICE** [softly] : So tiny that thousands could fit on the tip of a pencil. [pauses] And some of them are special: the cyanobacteria.
 
 **WEX** [curious] : What makes them special?
 
-**NARRATRICE** [excited][calm] : They breathe in sunlight! [gasps] They turn it into food, and while making their food, they release something precious: oxygen, the air we breathe.
+**NARRATRICE** [excited][calm] : They breathe in sunlight! [gasps] They turn it into food, and while they make their food, they let out something precious: oxygen, the air we breathe.
 
-**NARRATRICE** [amazed] : Over hundreds of millions of years, they make so much of it that Earth's air changes completely. [serious] Scientists call this the Great Oxidation.
+**NARRATRICE** [amazed] : For hundreds of millions of years, they make so much of it that the air on Earth changes completely. [serious] Scientists call this the Great Oxidation.
 
-**WEX** [gasps] : The air we breathe today, does it come from those tiny bacteria?
+**WEX** [gasps] : The air we breathe today… does it come from those tiny bacteria?
 
-**NARRATRICE** [happily] : A good part of it, yes! [chuckles] And meanwhile, in the ocean, life keeps inventing new things.
+**NARRATRICE** [happily] : A good part of it, yes! [chuckles] And meanwhile, in the ocean, life keeps coming up with new things.
 
-**NARRATRICE** [excited][quickly] : Algae, [gasps] soft little animals, [calm] then the very first shelled animals appear.
+**NARRATRICE** [excited][quickly] : Algae, [gasps] soft little animals, [calm] and then the very first animals with shells.
 
 **WEX** [amazed] : Does all that take a long time?
 
-**NARRATRICE** [calm][softly] : Hundreds of millions of years, Wex. [pauses] Life is never in a hurry. [warmly] But it never stops inventing.
+**NARRATRICE** [calm][softly] : Hundreds of millions of years. [pauses] Life is never in a hurry. [warmly] But it never stops inventing.
 ```
 
 ### recit-sortie-eau
 
 ```
-**NARRATRICE** [happily] : Listen close, Wex: we're moving forward in time again. [excited] Dry land, though, is still completely bare.
+**NARRATRICE** [happily] : Listen up: we're moving forward in time again. [excited] But dry land is still completely bare.
 
-**WEX** [curious] : Completely bare? No plants at all?
+**WEX** [curious] : Totally bare? No plants at all?
 
-**NARRATRICE** [calm] : Not yet, but it's coming: mosses, then the very first green plants appear on the continents. [softly] And soon, [happily] the very first trees.
+**NARRATRICE** [calm] : Not yet, but they're coming: mosses first, then the very first green plants spread over the continents. [softly] And soon, [happily] the very first trees.
 
-**WEX** [amazed] : And in the sea, what's happening?
+**WEX** [amazed] : And what's going on in the sea?
 
-**NARRATRICE** [excited] : In the sea, this time is called the Devonian. [serious] It comes from Devon, a region in England where scientists found its rocks. [happily] People call it "the age of fishes."
+**NARRATRICE** [excited] : In the sea, this time is called the Devonian. [serious] The name comes from Devon, a region of England where scientists found its rocks. [happily] It's nicknamed "the age of fishes."
 
 **WEX** [gasps] : Why?
 
-**NARRATRICE** [playful][calm] : Because there are fish of every shape! [amazed] And some of them have thick, fleshy fins, [gasps] almost like legs.
+**NARRATRICE** [playful][calm] : Because there are fish of every shape! [amazed] And some have thick, fleshy fins, [gasps] almost like legs.
 
-**WEX** [curious] : Almost like legs? Like this one, Tiktaalik?
+**WEX** [curious] : Almost like legs? Like Tiktaalik?
 
-**NARRATRICE** [happily][excited] : Exactly! Tiktaalik can even lift its head out of the water, [pauses] to look around.
+**NARRATRICE** [happily][excited] : Exactly! Tiktaalik can even lift its head out of the water, [pauses] and breathe a little air before diving back in.
 
-**NARRATRICE** [serious][softly] : And one day, some of these fish dare to come out completely. [pauses] The very first amphibians are born: animals that live in water AND on land, [calm] like frogs today.
+**NARRATRICE** [serious][softly] : And one day, some of these fish dare to climb all the way out. [pauses] The very first amphibians are born: animals that live in the water AND on land, [calm] like frogs today.
 
-**WEX** [amazed] : And after that, does it become a giant forest?
+**WEX** [amazed] : And after that, it turns into a giant forest?
 
-**NARRATRICE** [chuckles][happily] : Almost! A bit later comes the Carboniferous, [serious] named that way because it formed the coal we still use today. [excited] Huge forests, air rich in oxygen...
+**NARRATRICE** [chuckles][happily] : Almost! A bit later comes the Carboniferous, [serious] named that way because it formed the coal we still use today. [excited] Huge forests, and air full of oxygen...
 
 **NARRATRICE** [amazed] : And giant insects flying between the trees!
 
 **WEX** [gasps] : How giant?
 
-**NARRATRICE** [playful][calm] : A dragonfly as big as a dinner tray, Wex. [pauses] Life on land is only just beginning.
+**NARRATRICE** [playful][calm] : A dragonfly with wings wider than a dinner tray. [pauses] Life on land is only just beginning.
 ```
 
 ### recit-reptiles-permien
 
 ```
-**NARRATRICE** [happily] : Listen, Wex: amphibians now live on land. [curious] But they're still missing something.
+**NARRATRICE** [happily] : Listen: amphibians now live on land. [curious] But they're still missing something.
 
-**WEX** [curious] : What's that?
+**WEX** [curious] : What?
 
-**NARRATRICE** [calm] : They always have to go back near water to lay their eggs, [softly] or else the eggs dry out. [serious] So life invents a solution.
+**NARRATRICE** [calm] : They always have to go back near the water to lay their eggs, [softly] or the eggs dry out. [serious] So life comes up with a fix.
 
-**NARRATRICE** [excited][amazed] : An egg with a hard shell, [gasps] that keeps the water sealed inside! [happily] And there you have the very first true reptiles.
+**NARRATRICE** [excited][amazed] : An egg with a hard shell, [gasps] that keeps the water inside! [happily] And that's how the very first true reptiles appear.
 
-**WEX** [amazed] : So they can lay eggs anywhere they want?
+**WEX** [amazed] : So they can lay their eggs anywhere?
 
-**NARRATRICE** [playful] : Exactly! Even far from water, right in a desert. [calm] This time is called the Permian.
+**NARRATRICE** [playful] : Exactly! Even far from water, right in the desert. [calm] This time is called the Permian.
 
 **WEX** [curious] : And are the continents like today?
 
-**NARRATRICE** [serious][calm] : Not at all! All the continents are stuck together into one giant block: Pangea. [softly] That means "all the Earth," in Greek.
+**NARRATRICE** [serious][calm] : Not at all! All the continents are stuck together in one giant block: Pangea. [softly] The name means "all the Earth," in Greek.
 
-**NARRATRICE** [amazed] : Around it, one single huge ocean. [pauses] And at the center of the block, so far from the sea that the climate turns very, very dry: a giant desert.
+**NARRATRICE** [amazed] : All around it, one single enormous ocean. [pauses] And in the middle of the block, so far from the sea that the climate gets very, very dry: a giant desert.
 
-**WEX** [gasps] : Were there dinosaurs, in that desert?
+**WEX** [gasps] : Were there dinosaurs in that desert?
 
-**NARRATRICE** [chuckles][softly] : Not yet! [playful] There is an animal with a big sail on its back, Dimetrodon, [serious] but it's not a dinosaur: it's a distant cousin of mammals. [calm] Dinosaurs will arrive forty million years later.
+**NARRATRICE** [chuckles][softly] : Not yet! [playful] There is an animal with a big sail on its back, Dimetrodon, [serious] but it's not a dinosaur: it's a distant cousin of the mammals. [calm] Dinosaurs show up forty million years later.
 
-**WEX** [nervous] : What happens next, in that desert?
+**WEX** [nervous] : What happens next in that desert?
 
 **NARRATRICE** [serious][softly] : The climate keeps getting drier, and harder. [pauses] And far beneath our feet, something is brewing...
 ```
-

@@ -4,15 +4,15 @@
   "inputs": [
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[excited] Here comes the Cretaceous! [happily] One hundred million years ago. [chuckles] Its name comes from \"chalk,\" [playful] that white rock you can still find on cliffs today."
+      "text": "[excited] Here comes the Cretaceous! [happily] A hundred million years ago. [chuckles] Its name comes from \"chalk,\" [playful] that soft white rock you can still see in cliffs today."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Did the continents look like today's?"
+      "text": "[curious] Did the continents look like they do today?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[amazed] [pauses] Almost! [calm] The Atlantic Ocean is already wide, [softly] and a long sea cuts North America in two, [happily] from one end to the other."
+      "text": "[amazed] [pauses] Almost! [calm] The Atlantic Ocean is already wide, [softly] and a long sea splits North America in two, [happily] from one end to the other."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -20,7 +20,7 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[chuckles] A whole sea! [calm] The climate is mild, [softly] pleasant almost everywhere."
+      "text": "[chuckles] A whole sea! [calm] The weather is mild, [softly] nice almost everywhere."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -28,15 +28,15 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily] For the first time in all of history, [gasps] yes! [excited] Flowers everywhere, [playful] and little bees flying from one to another!"
+      "text": "[happily] For the first time ever, [gasps] yes! [excited] Flowers everywhere, [playful] and little bees flying from one to the next!"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[amazed] Bees with the dinosaurs?"
+      "text": "[amazed] Bees, with the dinosaurs?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[chuckles] With the dinosaurs! [happily] The world turns colorful and fragrant."
+      "text": "[chuckles] With the dinosaurs! [happily] The world turns colorful, and it smells good."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -44,7 +44,7 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[excited] Everywhere! [shouts] In North America, Tyrannosaurus and Triceratops! [softly] One hunted, [calm] the other defended itself with its three horns."
+      "text": "[excited] Everywhere! [shouts] In North America, Tyrannosaurus and Triceratops! [softly] One hunted, [calm] and the other defended itself with three horns."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -52,7 +52,7 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[serious] It lived by the water. [calm] A sail on its back, [softly] it fished in the rivers, [playful] almost like a bear catching salmon."
+      "text": "[serious] It lived by the water. [calm] With a sail on its back, [softly] it fished in the rivers, [playful] kind of like a bear catching salmon."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -60,7 +60,7 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[chuckles] Not at all! [calm] Barely bigger than a large dog, [softly] covered in feathers, [playful] like a fast, clever turkey."
+      "text": "[chuckles] Not at all! [calm] Barely bigger than a big dog, [softly] covered in feathers, [playful] like a fast, clever turkey."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -68,31 +68,31 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[gently] That's a movie myth. [calm] The real one was small, [softly] but very smart, [happily] and it hunted in packs."
+      "text": "[gently] That's a movie myth. [calm] The real one was small, [softly] but very smart, [happily] and it hunted in a group."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] What about the sky, and the sea?"
+      "text": "[curious] What about the sky and the sea?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[excited] Pteranodon soared high, [calm] a flying reptile without a single feather, [softly] with a toothless beak. [pauses] And in the ocean, [amazed] Mosasaurus ruled, [softly] a marine reptile as long as a building lying on its side."
+      "text": "[excited] Pteranodon soared way up high, [calm] a flying reptile with no feathers at all, [softly] and a beak with no teeth. [pauses] And in the ocean, [amazed] Mosasaurus ruled, [softly] a sea reptile as long as a building lying on its side."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Was Tritri there?"
+      "text": "[gasps] And the one with the horns?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily] [pauses] Yes! [excited] At last, Tritri is here: Triceratops, [gently] with its three horns and its big frill. [warmly] Wex found him."
+      "text": "[happily] [pauses] Oh yes! [excited] There he is: Triceratops, [gently] with three horns and a big frill around his neck."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[excited] Is he really here?"
+      "text": "[excited] Is he really there?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily] Really here. [calm] But one day, [pauses] everything is about to change all at once…"
+      "text": "[happily] Really there. [calm] But one day, [pauses] everything is about to change, all at once…"
     }
   ]
 }

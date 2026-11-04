@@ -4,7 +4,7 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited][playful] Here we are in the [serious] Ice Age! [happily] Later on, the cold comes back. [serious] Really cold. [gasps] The continents get covered in ice for millions of years."
+      "text": "[excited][playful] Here we are in the [serious] Ice Age! [happily] Later on, the cold comes back. [serious] Really cold. [gasps] Ice covers the continents for millions of years."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -12,7 +12,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful][happily] A lot! [excited] Ice spreads across Europe and North America. [softly] Animals adapt: thick fur, fat under the skin."
+      "text": "[playful][happily] A lot! [excited] Ice spreads over Europe and North America. [softly] The animals adapt: thick fur, fat under the skin."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -20,7 +20,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] The woolly mammoth, [quickly] a cousin of the elephant with fur down to its feet! [happily] The saber-tooth cat. Wolves. Cave bears."
+      "text": "[excited][quickly] The woolly mammoth, a cousin of the elephant, with fur all the way down to its feet! [happily] The saber-toothed cat. Wolves. Cave bears."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -28,7 +28,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily][excited] Yes! [gasps] About two and a half million years ago, in Africa, the first humans appear. [playful] They walk upright, and they eat everything: plants, fruit, seeds, meat. [softly] They're hunter-gatherers."
+      "text": "[happily][excited] Yes! [gasps] About two and a half million years ago, in Africa, the first humans appear. [playful] They walk upright, and they eat a bit of everything: plants, fruit, seeds, meat. [softly] They're hunter-gatherers."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -36,15 +36,15 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful][happily] Not quite! [excited] About three hundred thousand years ago, Homo sapiens arrives. [gasps] That's our direct ancestor: humans just like us today."
+      "text": "[playful][happily] Not quite! [excited] About three hundred thousand years ago, Homo sapiens shows up. [gasps] That's our direct ancestor: humans just like us."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] What happens next?"
+      "text": "[curious] And then what?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited][quickly] Humans get really clever. [happily] They light fires, they talk, they make sharp tools. [softly] They hunt big animals and shelter from the cold."
+      "text": "[excited][quickly] Humans get really clever. [happily] They make fire, they talk, they make sharp tools. [softly] They hunt big animals and protect themselves from the cold."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -52,19 +52,19 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily][excited] The kings of the planet! [gasps] The ultimate hunters. [quickly] They raise animals, grow crops, build villages, towns, roads, bridges, boats."
+      "text": "[happily][excited] The kings of the planet! [gasps] The ultimate hunters. [quickly] They raise animals, grow plants, build villages, cities, roads, bridges, boats."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] More?"
+      "text": "[curious] There's more?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited][quickly] Even more! [gasps] They invent electricity, the steam engine, the motor. [happily] The car, the train, the telephone."
+      "text": "[excited][quickly] Even more! [gasps] They invent electricity, the steam engine, the motor. [happily] The car, the train, the bicycle, the telephone."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Whoa."
+      "text": "[gasps] Whoa, all that?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
@@ -76,7 +76,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[softly] We're almost caught up to today. [happily] Ready to find out [pauses] how we know all this?"
+      "text": "[softly][happily] We're almost at today. [pauses] Ready to find out [curious] how we know all this?"
     }
   ]
 }

@@ -4,7 +4,7 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Ready to travel back in time, Wex? [pauses] Let's start [excited] at the very beginning..."
+      "text": "[happily] Ready to travel back in time? [pauses] Let's start [excited] at the very beginning..."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -12,15 +12,15 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[chuckles] Oh yes! [happily] Way, way before! [serious] Right at the start, almost four billion years ago. [pauses] The Earth is hot and empty. [serious] No animals. No plants. Nothing at all."
+      "text": "[chuckles] Oh yes. [happily] Way, way before. [serious] Almost four billion years ago. [pauses] The Earth is hot and empty. [serious] No animals. No plants. Nothing at all."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Wow. Incredible."
+      "text": "[hesitant] Not even one little bug?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[curious][pauses] Then, in the water, [softly] a tiny, [happily] a teeny-tiny bacteria appears."
+      "text": "[softly] Not even a bug. [pauses] Then, in the water, [happily] something teeny-tiny appears. [curious] A bacterium, [softly] so small you can't even see it."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -28,31 +28,31 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Then? [quickly] Algae, [gasps] little fish, [excited] then worms, coral, jellyfish, tiny shelled creatures."
+      "text": "[playful] Then? [quickly] Algae, soft little worms, jellyfish, coral, [excited] tiny animals with shells, [happily] and the very first fish."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] And all that only lives in the water?"
+      "text": "[curious] And all of that lives only in the water?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Yes! [serious] There's still no life on dry land at all. [excited] Then one animal crawls out of the water: a big lizard with four legs."
+      "text": "[happily] Yes. [serious] There's still no life on dry land at all. [excited] Then one day, an animal crawls out of the water, [softly] a bit like a big salamander, with four legs."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] What about plants? Do they come out of the water too?"
+      "text": "[curious] What about plants? Did they come out of the water too?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Yes, around the same time! [softly] Simple little mosses, then ferns. They grow on dry land, [happily] and it turns green. [gasps] So the four-legged animals have something to eat, [excited] and they move in!"
+      "text": "[happily] They did, even a little earlier. [softly] Simple mosses first, then ferns. [happily] They grow on dry land, and it turns green. [gasps] So the four-legged animals have something to eat, [excited] and they move right in."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious][excited] But were there carnivores?"
+      "text": "[curious][excited] Were there meat-eaters already?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Of course! [pauses] In the water, big fish ate little fish. [excited] And on land, big lizards ate little insects. [serious] There have always been carnivores and herbivores."
+      "text": "[playful] Of course. [pauses] In the water, big fish ate little fish. [excited] And on land, big four-legged animals ate little insects. [serious] There have always been meat-eaters and plant-eaters."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -60,11 +60,11 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Next, we jump forward in time. [excited] Millions of years go by. [gasps] And then… [chuckles] want to hear what happens next?"
+      "text": "[happily] Next, we jump forward in time. [excited] Millions of years go by. [gasps] And then… [chuckles] want to hear what happens?"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[excited][playful] Yes."
+      "text": "[excited][playful] Yes, tell me."
     }
   ]
 }

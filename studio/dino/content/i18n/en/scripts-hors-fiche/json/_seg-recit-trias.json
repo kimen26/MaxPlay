@@ -4,7 +4,7 @@
   "inputs": [
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily] Here comes the Triassic. [serious] Two hundred fifty million years ago, [pauses] give or take. [playful] \"Triassic\" means \"three\": scientists found three layers of rock from this time, stacked like a cake."
+      "text": "[happily] Here comes the Triassic. [serious] About two hundred fifty million years ago. [playful] \"Triassic\" means \"three\": scientists found three layers of rock from this time, stacked up like a cake."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -12,15 +12,15 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[excited] The very first ones! [calm] Small, on two legs, really fast. [softly] Back then, nobody guesses they'll one day rule the whole Earth."
+      "text": "[excited] The very first ones! [calm] Small, running on two legs, super fast. [softly] Back then, nobody could guess they'd one day rule the whole Earth."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] And what did the continents look like?"
+      "text": "[curious] And what were the continents like?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[amazed] [pauses] Just one, huge, all stuck together: Pangea. [calm] You could walk from America all the way to Africa without ever seeing the ocean."
+      "text": "[amazed] [pauses] Just one. One huge piece, all stuck together: Pangea. [calm] You could walk from America all the way to Africa without ever seeing the ocean."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -28,7 +28,7 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[chuckles] Without a boat. [serious] It's hot everywhere, [softly] and very dry in the middle, far from the coasts."
+      "text": "[chuckles] Without a boat. [serious] It's hot everywhere, [softly] and really dry in the middle, far from the coast."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -36,7 +36,7 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily] Conifers, [calm] like prickly pine trees, [softly] and cycads, [playful] which look like spiky palm trees. [serious] But not one single flower yet."
+      "text": "[happily] Conifers, [calm] like prickly pine trees, [softly] and cycads, [playful] which look like palm trees with spikes. [serious] But not one single flower yet."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -44,15 +44,15 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[warmly] Plateosaurus munched on those plants all day long. [calm] A long neck, [softly] a small head, [excited] and already almost thirty feet long!"
+      "text": "[warmly] Plateosaurus munched on those plants all day long. [calm] A long neck, [softly] a small head, [excited] and about twenty-five feet long!"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Was it scared of anything?"
+      "text": "[gasps] Was it afraid of anything?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[serious] On land, almost nothing worried it. [pauses] But in the ocean, [calm] a giant was swimming: Shonisaurus. [amazed] A marine reptile as long as a building lying on its side, [softly] hunting fish and squid in deep water."
+      "text": "[serious] On land, almost nothing worried it. [pauses] But in the sea, [calm] a giant swam: Shonisaurus. [amazed] A sea reptile as long as a building lying on its side. [softly] It hunted fish and squid in deep water."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -60,15 +60,15 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[chuckles] No! [calm] Shonisaurus swims in the sea, [softly] dinosaurs stay on dry land."
+      "text": "[chuckles] No! [calm] Shonisaurus swam in the sea. [softly] Dinosaurs stayed on dry land."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[hesitant] Hey, [pauses] was Tritri there?"
+      "text": "[hesitant] Hey, [pauses] were there dinosaurs with horns yet?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[gently] Not yet. [softly] Triceratops doesn't exist yet, [calm] we'll have to wait a very, very long time."
+      "text": "[gently] Not yet. [softly] Triceratops doesn't exist yet. [calm] We'll have to wait a very, very long time."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -76,7 +76,7 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[excited] After this, [pauses] the Earth warms up even more, [softly] rain finally falls on the deserts, [happily] and dinosaurs start to grow…"
+      "text": "[excited] After this, [pauses] the Earth gets even warmer, [softly] rain finally falls on the deserts, [happily] and the dinosaurs start to grow…"
     }
   ]
 }

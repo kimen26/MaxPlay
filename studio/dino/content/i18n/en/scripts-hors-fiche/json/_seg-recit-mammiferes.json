@@ -12,7 +12,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Warm and humid, [happily] like a giant greenhouse. [softly] Mammals, once hiding under the dinosaurs' feet, can finally grow."
+      "text": "[playful][happily] Warm and humid, like a big greenhouse. [softly] The mammals were hiding under the dinosaurs' feet. Now they can finally grow."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -20,19 +20,23 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited][quickly] Huge! [amazed] Smilodon, the saber-tooth cat! [happily] A giant sloth, big as an elephant. [gasps] Titanoboa, a snake forty feet long!"
+      "text": "[excited][quickly] Huge! [shouts] Smilodon, the saber-toothed cat! [happily] A giant sloth, big as an elephant. [gasps] And a giant snake, Titanoboa, over forty feet long!"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[gasps] Forty feet?"
+      "text": "[gasps] Over forty feet?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[gasps][excited] As long as a house! [playful] And some mammals go back to living in the water: whales and dolphins. [softly] Their babies drink milk… [pauses] underwater."
+      "text": "[gasps][excited] As long as a house! [playful] And some mammals go back to live in the water: whales and dolphins. [softly] Their babies drink milk… [pauses] underwater."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
       "text": "[gasps] Milk underwater?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[chuckles][warmly] Milk underwater. [softly] Mama whale feeds her baby while she swims, [pauses] just like every mammal mom."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -40,7 +44,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Time goes on. [playful] Then, [pauses] the cold comes back. [serious] Really cold…"
+      "text": "[excited] Time goes by. [playful] Then, [pauses] the cold comes back. [serious] Really cold, colder and colder."
     }
   ]
 }

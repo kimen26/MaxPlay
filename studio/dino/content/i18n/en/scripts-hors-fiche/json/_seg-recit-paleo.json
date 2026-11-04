@@ -4,11 +4,11 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited][playful] And here we are at [serious] paleontology! [happily] How do we know all this? [curious] Thanks to scientists who dig in the ground."
+      "text": "[excited][playful] And now we're at [serious] paleontology! [happily] How do we know all this? [curious] Thanks to scientists who dig in the ground."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] What's that?"
+      "text": "[curious] Who are they?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
@@ -20,7 +20,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] They put hundreds of bones back together, [quickly] like a giant puzzle! [happily] They figure out how it walked and what it ate."
+      "text": "[excited][quickly] They fit hundreds of bones back together, like a giant puzzle! [happily] They figure out how the animal walked and what it ate."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -28,7 +28,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful][chuckles] Almost everything! [softly] But not the colors. [serious] Nobody knows. [happily] So artists make them up."
+      "text": "[playful][chuckles] Almost! [softly] But not the colors. [serious] Nobody knows. [happily] So artists imagine them."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -36,7 +36,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited][playful] Maybe! [gasps] Or covered in feathers: one giant carnivorous chicken! [happily] Was Triceratops blue? Pink? [playful] Spotted yellow? [amazed] You get to imagine it!"
+      "text": "[excited][playful] Maybe! [gasps] Or covered in feathers: a giant meat-eating chicken! [happily] Was Triceratops blue? Pink? [playful] Yellow with spots? [shouts] You get to imagine it!"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -44,7 +44,7 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[chuckles] Orange. Perfect. [softly] We don't know everything. [happily] But we know that life has been one huge adventure, [amazed] from the very first bacteria all the way to today's birds."
+      "text": "[chuckles][happily] Orange. Perfect. [softly] We don't know everything. [happily] But we know life is one huge adventure, [pauses] from the very first bacterium to the birds of today."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -52,11 +52,11 @@
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily][excited] Anytime you want. [playful] The journey's always here, ready and waiting."
+      "text": "[happily][excited] Anytime you want. [playful] The journey is right here, [pauses] always ready."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[excited][playful] Yes."
+      "text": "[excited][playful] Yes, again."
     }
   ]
 }

@@ -4,23 +4,23 @@
   "inputs": [
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily] Listen close, Wex: we're moving forward in time again. [excited] Dry land, though, is still completely bare."
+      "text": "[happily] Listen up: we're moving forward in time again. [excited] But dry land is still completely bare."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Completely bare? No plants at all?"
+      "text": "[curious] Totally bare? No plants at all?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[calm] Not yet, but it's coming: mosses, then the very first green plants appear on the continents. [softly] And soon, [happily] the very first trees."
+      "text": "[calm] Not yet, but they're coming: mosses first, then the very first green plants spread over the continents. [softly] And soon, [happily] the very first trees."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[amazed] And in the sea, what's happening?"
+      "text": "[amazed] And what's going on in the sea?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[excited] In the sea, this time is called the Devonian. [serious] It comes from Devon, a region in England where scientists found its rocks. [happily] People call it \"the age of fishes.\""
+      "text": "[excited] In the sea, this time is called the Devonian. [serious] The name comes from Devon, a region of England where scientists found its rocks. [happily] It's nicknamed \"the age of fishes.\""
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -28,27 +28,27 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[playful][calm] Because there are fish of every shape! [amazed] And some of them have thick, fleshy fins, [gasps] almost like legs."
+      "text": "[playful][calm] Because there are fish of every shape! [amazed] And some have thick, fleshy fins, [gasps] almost like legs."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Almost like legs? Like this one, Tiktaalik?"
+      "text": "[curious] Almost like legs? Like Tiktaalik?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily][excited] Exactly! Tiktaalik can even lift its head out of the water, [pauses] to look around."
+      "text": "[happily][excited] Exactly! Tiktaalik can even lift its head out of the water, [pauses] and breathe a little air before diving back in."
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[serious][softly] And one day, some of these fish dare to come out completely. [pauses] The very first amphibians are born: animals that live in water AND on land, [calm] like frogs today."
+      "text": "[serious][softly] And one day, some of these fish dare to climb all the way out. [pauses] The very first amphibians are born: animals that live in the water AND on land, [calm] like frogs today."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[amazed] And after that, does it become a giant forest?"
+      "text": "[amazed] And after that, it turns into a giant forest?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[chuckles][happily] Almost! A bit later comes the Carboniferous, [serious] named that way because it formed the coal we still use today. [excited] Huge forests, air rich in oxygen..."
+      "text": "[chuckles][happily] Almost! A bit later comes the Carboniferous, [serious] named that way because it formed the coal we still use today. [excited] Huge forests, and air full of oxygen..."
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
@@ -60,7 +60,7 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[playful][calm] A dragonfly as big as a dinner tray, Wex. [pauses] Life on land is only just beginning."
+      "text": "[playful][calm] A dragonfly with wings wider than a dinner tray. [pauses] Life on land is only just beginning."
     }
   ]
 }

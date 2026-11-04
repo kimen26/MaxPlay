@@ -11,8 +11,8 @@
 
 ### dico-saure
 
-**NARRATEUR H** [warmly] : *-saure* or *-saurus*, [pauses] in Greek that means lizard — it's the same word!
-**WEX** [excited] : Like Brachiosaurus and Tyrannosaurus? Same word, two ways to spell it.
+**NARRATEUR H** [warmly] : *-saurus*, [pauses] in Greek that means lizard. [happily] You hear it at the end of so many dino names!
+**WEX** [excited] : Like Brachiosaurus and Tyrannosaurus? Two big lizards.
 
 ---
 
@@ -110,7 +110,7 @@
 ### dico-oplo
 
 **NARRATEUR H** [confident] : *-oplo-*, in Greek that means weapon, armor.
-**WEX** [happily] : Euoplocephalus. Well armed, well protected everywhere, nothing could stop it.
+**WEX** [happily] : Euoplocephalus. Armor everywhere, even on its eyelids.
 
 ---
 
@@ -236,7 +236,7 @@
 ### dico-cryo
 
 **NARRATEUR H** [confident] : *cryo-*, in Greek that means ice, cold.
-**WEX** [happily] : Cryolophosaurus. Found in Antarctica, deep in the ice, way down south.
+**WEX** [happily] : Cryolophosaurus. Found in Antarctica, high on a frozen mountain, way down south.
 
 ---
 
@@ -257,14 +257,14 @@
 ### dico-eu
 
 **NARRATEUR H** [confident] : *eu-*, in Greek that means good, well.
-**WEX** [excited] : Euoplocephalus. Well armed, well protected, well built all over.
+**WEX** [excited] : Euoplocephalus. Good armor on its head, and all over its body.
 
 ---
 
 ### dico-galli
 
 **NARRATEUR H** [warmly] [pauses] : *galli-*, in Latin that means rooster, chicken. And *-mimus* in Greek means one who mimics — [amazed] two languages in one single name!
-**WEX** [happily] : Gallimimus. It ran like a chicken and copied other animals. Such a funny dino.
+**WEX** [happily] : Gallimimus. The chicken mimic. It looked like a giant chicken on long legs.
 
 ---
 
@@ -292,7 +292,7 @@
 ### dico-maia
 
 **NARRATEUR H** [warmly] : *maia-*, in Greek that means good mother, nurse.
-**WEX** [happily] : Maiasaura. A dino mom who cared for her babies in the nest. Scientists noticed right away.
+**WEX** [happily] : Maiasaura. A dino mom who cared for her babies in the nest.
 
 ---
 
@@ -313,21 +313,21 @@
 ### dico-ovi
 
 **NARRATEUR H** [confident] : *ovi-*, in Latin that means egg.
-**WEX** [excited] : Oviraptor. An egg thief, straight from Latin. It was caught right by a nest.
+**WEX** [excited] : Oviraptor. Egg thief. But it wasn't stealing: it was sitting on its own eggs.
 
 ---
 
 ### dico-pachy
 
 **NARRATEUR H** [confident] : *pachy-*, in Greek that means thick.
-**WEX** [happily] : Pachycephalosaurus. A skull as thick as concrete, built for headbutting its rivals.
+**WEX** [happily] : Pachycephalosaurus. A skull almost ten inches thick, built for headbutting its rivals.
 
 ---
 
 ### dico-para
 
 **NARRATEUR H** [confident] : *para-*, in Greek that means beside, close to.
-**WEX** [excited] : Parasaurolophus. Close to the crested lizard, but not quite the same — a cousin.
+**WEX** [excited] : Parasaurolophus. Close to Saurolophus, its cousin, but with a much longer crest.
 
 ---
 
@@ -341,7 +341,7 @@
 ### dico-proto
 
 **NARRATEUR H** [confident] : *proto-*, in Greek that means first.
-**WEX** [excited] : Protoceratops. The first with horns, the ancestor of Triceratops.
+**WEX** [excited] : Protoceratops. The first horned face, an early cousin of Triceratops, with little bumps instead of horns.
 
 ---
 
@@ -404,7 +404,7 @@
 ### dico-therizino
 
 **NARRATEUR H** [warmly] : *therizino-*, in Greek that means to reap, to cut.
-**WEX** [happily] : Therizinosaurus. Its huge claws reaped the plants like a scythe. Impressive.
+**WEX** [happily] : Therizinosaurus. Its huge claws, like scythes, pulled down the plants it ate.
 
 ---
 
@@ -432,7 +432,7 @@
 ### dico-veloci
 
 **NARRATEUR H** [confident] : *veloci-*, in Latin that means fast.
-**WEX** [happily] : Velociraptor. The fast thief. So fast it caught everything it hunted.
+**WEX** [happily] : Velociraptor. The fast thief. Small, quick, and covered in feathers.
 
 ---
 
@@ -474,7 +474,7 @@
 ### dico-quetzalcoatl
 
 **NARRATEUR H** [warmly] : *Quetzalcoatl-*, that's Quetzalcoatl, [amazed] the feathered serpent god of the Aztecs, a people from the Americas.
-**WEX** [excited] : Quetzalcoatlus. A flying reptile as big as an airplane. Named after an Aztec god.
+**WEX** [excited] : Quetzalcoatlus. A flying reptile with wings as wide as a small airplane's. Named after an Aztec god.
 
 ---
 
@@ -593,7 +593,7 @@
 ### dico-pleuro
 
 **NARRATEUR H** [confident] : *-pleuro-*, in Greek that means side, flank.
-**WEX** [happily] : Liopleurodon. Smooth teeth on its sides. A huge sea monster.
+**WEX** [happily] : Liopleurodon. Smooth-sided teeth. A huge hunter of the sea.
 
 ---
 
@@ -607,7 +607,7 @@
 ### dico-aeno
 
 **NARRATEUR H** [confident] : *aeno-*, in Greek that means terrible, fearsome.
-**WEX** [excited] : Aenocyon. The terrible dog. A giant wolf, the leader of its pack.
+**WEX** [excited] : Aenocyon. The terrible dog. A big, strong wolf from the ice age.
 
 ---
 
@@ -628,14 +628,14 @@
 ### dico-elasmo
 
 **NARRATEUR H** [confident] : *elasmo-*, in Greek that means thin metal plate, sheet metal.
-**WEX** [excited] : Elasmosaurus. Its bones were thin like sheet metal. A sea serpent with a huge long neck.
+**WEX** [excited] : Elasmosaurus. Some of its bones were flat, like thin plates. A sea reptile with a super long neck.
 
 ---
 
 ### dico-glypto
 
 **NARRATEUR H** [confident] : *glypto-*, in Greek that means carved, engraved.
-**WEX** [happily] : Glyptodon. The carved tooth. A giant armadillo with an engraved shell, big as a car.
+**WEX** [happily] : Glyptodon. The carved tooth. A giant armadillo with a patterned shell, as big as a small car.
 
 ---
 
@@ -656,7 +656,7 @@
 ### dico-lio
 
 **NARRATEUR H** [confident] : *lio-*, in Greek that means smooth.
-**WEX** [excited] : Liopleurodon. Its teeth were smooth, without a single ridge. A sea monster with smooth teeth.
+**WEX** [excited] : Liopleurodon. Smooth-sided tooth. A huge hunter with a giant jaw.
 
 ---
 
@@ -677,7 +677,7 @@
 ### dico-ophthalmo
 
 **NARRATEUR H** [confident] : *ophthalmo-*, in Greek that means eye.
-**WEX** [happily] : Ophthalmosaurus. Huge eyes, as big as dinner plates, built to see in the dark of the sea.
+**WEX** [happily] : Ophthalmosaurus. Huge eyes, almost as big as dinner plates, built to see in the dark of the sea.
 
 ---
 
@@ -705,7 +705,7 @@
 ### dico-titanis
 
 **NARRATEUR H** [warmly] : *Titanis*, in Greek that comes from the Titans — [amazed] giants from old Greek myths, just like *-titan*.
-**WEX** [excited] : Titanis. The terror bird. A giant bird that ran faster than a horse, and never once flew.
+**WEX** [excited] : Titanis. The terror bird. A giant bird that ran very fast, and never once flew.
 
 ---
 

@@ -38,6 +38,9 @@ $narrationKeywords = '\bpersonnage|\bhistoire\b|\bvoix\b|elevenlabs|\bbrief\b|ka
 # === Signaux DINO ===
 $dinoKeywords = '\bdino\b|\bdinos\b|dinosaure|encyclopédie|dev-dinos|\btritri\b|ptérosaure|cératopsien|théropode|sauropode|récit.*époque|époque.*dino|le voyage dans le temps|tricératops|tyrannosaure|\bt-rex\b|mosasaure|paléonto'
 
+# === Signaux CHANSONS (pôle léger, 2026-11-04 D-017) — « musique » seul exclu : il vise aussi les fonds et victoires ===
+$chansonKeywords = 'chanson|comptine|\bparoles\b|compose_music|\brefrain\b|\bcouplet'
+
 # === Signaux structure (transverses) ===
 $structureKeywords = 'créer.*(fichier|dossier|nouveau)|nouveau dossier|nouveau fichier|supprimer.*(fichier|dossier)|gabarit|refs cassées|orphelin|index\.md|refonte|déplacer|renommer'
 
@@ -72,10 +75,12 @@ $narrationMatch = $lowerPrompt -match $narrationKeywords
 $dinoMatch = $lowerPrompt -match $dinoKeywords
 if (-not $dinoMatch -and $dinoIdPattern) { $dinoMatch = $lowerPrompt -match $dinoIdPattern }
 $structMatch = $lowerPrompt -match $structureKeywords
+$chansonMatch = $lowerPrompt -match $chansonKeywords
 
 $pathGame = $lowerPrompt -match 'studio/minijeux/'
 $pathNarration = $lowerPrompt -match 'studio/narration/'
 $pathDino = $lowerPrompt -match 'studio/dino/|dev-dinos|dinos-data|audio/dinos'
+$pathChansons = $lowerPrompt -match 'studio/chansons/|music/chansons'
 
 $reminders = @()
 
@@ -91,7 +96,11 @@ if ($narrationMatch -or $pathNarration) {
     $reminders += "[pôle NARRATION] -> .claude/rules/narration-craft.md"
 }
 
-if ($structMatch -and -not ($gameMatch -or $narrationMatch -or $dinoMatch -or $pathGame -or $pathNarration -or $pathDino)) {
+if ($chansonMatch -or $pathChansons) {
+    $reminders += "[pôle CHANSONS] -> studio/chansons/CLAUDE.md"
+}
+
+if ($structMatch -and -not ($chansonMatch -or $pathChansons -or $gameMatch -or $narrationMatch -or $dinoMatch -or $pathGame -or $pathNarration -or $pathDino)) {
     $reminders += "[structure, pôle pas clair] -> déduire du chemin ou demander en texte, puis charger la rule du pôle"
 }
 

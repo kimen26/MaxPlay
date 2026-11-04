@@ -130,3 +130,13 @@ Papa Yann : « les tests des 36 jeux c'est sur des livraisons majeures ou toutes
 À chaque push, la CI rejoue seulement les jeux dont le fichier a changé (`gate.mjs --base`), puis publie. Le harnais complet tourne le lundi à 3 h UTC et à la demande (`workflow_dispatch`, `full_suite`) avant une livraison majeure ; il ne bloque pas la publication. Remplace le « harnais complet bloquant avant Pages » de la vague 1 (R08), qui ajoutait ~10 min à chaque livraison.
 
 Risque accepté : une modification d'un fichier partagé (`site/js`, `site/css`) qui casse un jeu non modifié n'est vue que par `npm run check` ou le passage hebdomadaire.
+
+### D-017 — Les chansons ont leur pôle léger, `studio/chansons/` (2026-11-04)
+
+Papa Yann veut écrire des chansons et les produire avec ElevenLabs Music. Une chanson croise dino, bus,
+animaux et personnages : elle n'appartient à aucun pôle, et la ranger sous la narration l'enfermerait
+dans ses règles d'histoire. Avis concordants de l'architecte et du PMO narration : pôle léger façon
+Lunii, sans PMO ni agents, source versionnée (paroles + prompt) dans `studio/chansons/paroles/`, MP3
+servi dans `site/sounds/music/chansons/` (dossier déjà lu par `site/musique.html`). Promotion en pôle
+complet au-delà d'environ 10 chansons avec un process propre. Les 5 chansons déjà en ligne n'ont ni
+paroles ni prompt versionnés.

@@ -10,6 +10,7 @@
 | dino · dinosaure · encyclopédie · voyage (époque) · récit dino · famille dino · Tritri · dev-dinos | **DINO** | [`studio/dino/CLAUDE.md`](studio/dino/CLAUDE.md) → [`studio/dino/INDEX.md`](studio/dino/INDEX.md) |
 | narration · histoire · personnage · univers · ennéagramme · cross-culture · saison · arc · Wex/Melki/Mimi/Dadou/Madie/Lulu/Pierrot/Raph/Juju/Nono | **NARRATION** | [`studio/narration/CLAUDE.md`](studio/narration/CLAUDE.md) → [`studio/narration/INDEX.md`](studio/narration/INDEX.md) |
 | lunii · boîte à histoires · pack · STUdio · transfert appareil · conteuse | **LUNII** | [`studio/lunii/CLAUDE.md`](studio/lunii/CLAUDE.md) (canal de distribution, léger) |
+| chanson · comptine · paroles · refrain · compose_music | **CHANSONS** | [`studio/chansons/CLAUDE.md`](studio/chansons/CLAUDE.md) (léger, sans PMO) |
 | référentiel de contenu · dette de contenu · dérive texte/audio · quel texte est lu où · contrat TTS/EL/Lunii · tableau de bord contenu | **TRANSVERSE** | [`studio/referentiel/README.md`](studio/referentiel/README.md) → plan [`studio/referentiel/docs/ARCHI-REFERENTIEL-CONTENU.md`](studio/referentiel/docs/ARCHI-REFERENTIEL-CONTENU.md) |
 | idée brute · dump · brainstorm sans contexte clair | **?** | Demander : "C'est pour le jeu, les dinos ou les histoires ?" |
 
@@ -36,6 +37,7 @@ MaxPlay/
 │   ├── dino/             ← PÔLE DINO → studio/dino/CLAUDE.md (code déployé dans site/, lié par rules/dino.md)
 │   ├── narration/        ← PÔLE NARRATION → studio/narration/CLAUDE.md
 │   ├── lunii/            ← distribution Lunii (STUdio) → studio/lunii/CLAUDE.md (léger, sans PMO)
+│   ├── chansons/         ← chansons à paroles (ElevenLabs Music) → studio/chansons/CLAUDE.md (léger, sans PMO)
 │   └── referentiel/      ← TRANSVERSE : registre des textes/sons + détection de dérive (lecture seule)
 ├── infra/                ← bot Telegram + serveur MCP llm-copains
 ├── memory/               ← transverse : MEMORY, MAX_PROFILE, VISION

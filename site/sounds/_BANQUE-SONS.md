@@ -80,6 +80,7 @@ d'un drapeau ~1,15 s après la réaction FR, une fois sur deux (`CHANCE_DOUBLON`
 | `site/sounds/fx/` (33) | catalogue restant après nettoyage HO-N01 : pools victoire/erreur/succès/apparition/collecte/déblocage, rigolo, petit-bruit, bus, indice, dino générique, **cris de bébés par famille `cri-bebe-*` (§ 4 bis)** | SFX | `text_to_sound_effects` |
 | `site/sounds/fx/dino/` (29) | bruitages cinématiques dino (pas, grognements, Parasaurolophus, météo/nature) — HO-016 + branchement HO-N01, § 7 | SFX | `text_to_sound_effects` |
 | `site/sounds/music/` (5) | 4 `victoire-v*` (pool `victory`) + `calme-doux-loop` (fond encyclopédie) — HO-015 + branchement HO-N01, § 6 | — | `compose_music` (+ `text_to_sound_effects` pour victoire-v1) |
+| `site/sounds/music/chansons/` | chansons à paroles, lues par `musique.html` — source, paroles et coûts : `studio/chansons/README.md` (D-017) | — | `compose_music` |
 | `site/sounds/voix/f/`, `/h/`, `/wex/` (23 chacun) | réactions — 16 positives + 6 douces + `etoile-gagnee` | narrateur_f / narrateur_h / wex | `text_to_speech` |
 | `site/sounds/voix/phrases/` (88) | instructions fixes des jeux + `regle-mj-XX` (voir § 1.b) | narrateur_h | `text_to_speech` |
 | `site/sounds/voix/{en,es,it,ja,pt-br,zh}/{f,h,wex}/` (90) | réactions i18n invitées, § 1.b | 3 voix × 6 langues | `text_to_speech` |

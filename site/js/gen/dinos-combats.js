@@ -1115,5 +1115,85 @@ window.DINO_COMBATS = {
    "adversaire": "Nannippus",
    "adversaire_latin": "Nannippus peninsulatus"
   }
+ ],
+ "jobaria": [
+  {
+   "file": "Jobaria_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": false,
+   "adversaire": "Afrovénator",
+   "adversaire_latin": "Afrovenator abakensis"
+  },
+  {
+   "file": "Jobaria_rival.webp",
+   "type": "rival",
+   "meme_espece": true,
+   "adversaire": "Jobaria",
+   "adversaire_latin": "Jobaria tiguidensis"
+  }
+ ],
+ "afrovenator": [
+  {
+   "file": "Afrovenator_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": true,
+   "adversaire": "Afrovénator",
+   "adversaire_latin": "Afrovenator abakensis"
+  },
+  {
+   "file": "Afrovenator_proie.webp",
+   "type": "proie",
+   "meme_espece": false,
+   "adversaire": "Jobaria",
+   "adversaire_latin": "Jobaria tiguidensis"
+  }
+ ],
+ "arcovenator": [
+  {
+   "file": "Arcovenator_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": true,
+   "adversaire": "Arcovénator",
+   "adversaire_latin": "Arcovenator escotae"
+  },
+  {
+   "file": "Arcovenator_proie.webp",
+   "type": "proie",
+   "meme_espece": false,
+   "adversaire": "Rhabdodon",
+   "adversaire_latin": "Rhabdodon priscus"
+  }
+ ],
+ "caletodraco": [
+  {
+   "file": "Caletodraco_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": true,
+   "adversaire": "Calétodraco",
+   "adversaire_latin": "Caletodraco cottardi"
+  },
+  {
+   "file": "Caletodraco_proie.webp",
+   "type": "proie",
+   "meme_espece": false,
+   "adversaire": "un herbivore de son île",
+   "adversaire_latin": "espèce non déterminée"
+  }
+ ],
+ "invictibellatrix": [
+  {
+   "file": "Invictibellatrix_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": false,
+   "adversaire": "Néovénator",
+   "adversaire_latin": "Neovenator salerii"
+  },
+  {
+   "file": "Invictibellatrix_proie.webp",
+   "type": "proie",
+   "meme_espece": false,
+   "adversaire": "Hypsilophodon",
+   "adversaire_latin": "Hypsilophodon foxii"
+  }
  ]
 };

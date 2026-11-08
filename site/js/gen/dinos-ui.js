@@ -20,6 +20,13 @@ const DINO_EXTRAS = {
     {folder:'paleoart',file:'Aenocyon_ecosysteme.webp',label:'Son monde'},
     {folder:'paleoart',file:'Aenocyon_funfact.webp',label:'Le savais-tu ?'},
   ],
+  afrovenator:[
+    {folder:'paleoart',file:'Afrovenator_headshot.webp',label:'Gros plan'},
+    {folder:'paleoart',file:'Afrovenator_manger.webp',label:'Ce qu\'il mange'},
+    {folder:'paleoart',file:'Afrovenator_paris.webp',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Afrovenator_ecosysteme.webp',label:'Son monde'},
+    {folder:'paleoart',file:'Afrovenator_funfact.webp',label:'Le savais-tu ?'},
+  ],
   albertosaurus:[
     {folder:'paleoart',file:'Albertosaurus_headshot.webp',label:'Gros plan'},
     {folder:'paleoart',file:'Albertosaurus_manger.webp',label:'Ce qu\'il mange'},
@@ -71,6 +78,13 @@ const DINO_EXTRAS = {
     {folder:'paleoart',file:'Archelon_ecosysteme.webp',label:'Son monde'},
     {folder:'paleoart',file:'Archelon_funfact.webp',label:'Le savais-tu ?'},
   ],
+  arcovenator:[
+    {folder:'paleoart',file:'Arcovenator_headshot.webp',label:'Gros plan'},
+    {folder:'paleoart',file:'Arcovenator_manger.webp',label:'Ce qu\'il mange'},
+    {folder:'paleoart',file:'Arcovenator_paris.webp',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Arcovenator_ecosysteme.webp',label:'Son monde'},
+    {folder:'paleoart',file:'Arcovenator_funfact.webp',label:'Le savais-tu ?'},
+  ],
   baryonyx:[
     {folder:'paleoart',file:'Baryonyx_headshot.webp',label:'Gros plan'},
     {folder:'paleoart',file:'Baryonyx_manger.webp',label:'Ce qu\'il mange'},
@@ -84,6 +98,13 @@ const DINO_EXTRAS = {
     {folder:'paleoart',file:'Brachiosaurus_paris.webp',label:'Dans Paris !'},
     {folder:'paleoart',file:'Brachiosaurus_ecosysteme.webp',label:'Son monde'},
     {folder:'paleoart',file:'Brachiosaurus_funfact.webp',label:'Le savais-tu ?'},
+  ],
+  caletodraco:[
+    {folder:'paleoart',file:'Caletodraco_headshot.webp',label:'Gros plan'},
+    {folder:'paleoart',file:'Caletodraco_manger.webp',label:'Ce qu\'il mange'},
+    {folder:'paleoart',file:'Caletodraco_paris.webp',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Caletodraco_ecosysteme.webp',label:'Son monde'},
+    {folder:'paleoart',file:'Caletodraco_funfact.webp',label:'Le savais-tu ?'},
   ],
   camarasaurus:[
     {folder:'paleoart',file:'Camarasaurus_headshot.webp',label:'Gros plan'},
@@ -252,6 +273,20 @@ const DINO_EXTRAS = {
     {folder:'paleoart',file:'Iguanodon_paris.webp',label:'Dans Paris !'},
     {folder:'paleoart',file:'Iguanodon_ecosysteme.webp',label:'Son monde'},
     {folder:'paleoart',file:'Iguanodon_funfact.webp',label:'Le savais-tu ?'},
+  ],
+  invictibellatrix:[
+    {folder:'paleoart',file:'Invictibellatrix_headshot.webp',label:'Gros plan'},
+    {folder:'paleoart',file:'Invictibellatrix_manger.webp',label:'Ce qu\'il mange'},
+    {folder:'paleoart',file:'Invictibellatrix_paris.webp',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Invictibellatrix_ecosysteme.webp',label:'Son monde'},
+    {folder:'paleoart',file:'Invictibellatrix_funfact.webp',label:'Le savais-tu ?'},
+  ],
+  jobaria:[
+    {folder:'paleoart',file:'Jobaria_headshot.webp',label:'Gros plan'},
+    {folder:'paleoart',file:'Jobaria_manger.webp',label:'Ce qu\'il mange'},
+    {folder:'paleoart',file:'Jobaria_paris.webp',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Jobaria_ecosysteme.webp',label:'Son monde'},
+    {folder:'paleoart',file:'Jobaria_funfact.webp',label:'Le savais-tu ?'},
   ],
   kentrosaurus:[
     {folder:'paleoart',file:'Kentrosaurus_headshot.webp',label:'Gros plan'},
@@ -515,6 +550,7 @@ const DINO_EXTRAS = {
 };
 const DINO_AUDIO = {
   aenocyon: _audioSet('aenocyon'),
+  afrovenator: _audioSet('afrovenator'),
   albertosaurus: _audioSet('albertosaurus'),
   allosaurus: _audioSet('allosaurus'),
   amargasaurus: _audioSet('amargasaurus'),
@@ -522,8 +558,10 @@ const DINO_AUDIO = {
   apatosaurus: _audioSet('apatosaurus'),
   archaeopteryx: _audioSet('archaeopteryx'),
   archelon: _audioSet('archelon'),
+  arcovenator: _audioSet('arcovenator'),
   baryonyx: _audioSet('baryonyx'),
   brachiosaurus: _audioSet('brachiosaurus'),
+  caletodraco: _audioSet('caletodraco'),
   camarasaurus: _audioSet('camarasaurus'),
   carcharodontosaurus: _audioSet('carcharodontosaurus'),
   carnotaurus: _audioSet('carnotaurus'),
@@ -548,6 +586,8 @@ const DINO_AUDIO = {
   hatzegopteryx: _audioSet('hatzegopteryx'),
   ichthyosaurus: _audioSet('ichthyosaurus'),
   iguanodon: _audioSet('iguanodon'),
+  invictibellatrix: _audioSet('invictibellatrix'),
+  jobaria: _audioSet('jobaria'),
   kentrosaurus: _audioSet('kentrosaurus'),
   liopleurodon: _audioSet('liopleurodon'),
   lystrosaurus: _audioSet('lystrosaurus'),
@@ -588,6 +628,7 @@ const DINO_AUDIO = {
 };
 const DINO_AUDIO_VERSION = {
   aenocyon: 'V3',
+  afrovenator: 'V3',
   albertosaurus: 'V4',
   allosaurus: 'V3',
   amargasaurus: 'V3',
@@ -595,8 +636,10 @@ const DINO_AUDIO_VERSION = {
   apatosaurus: 'V3',
   archaeopteryx: 'V3',
   archelon: 'V3',
+  arcovenator: 'V3',
   baryonyx: 'V3',
   brachiosaurus: 'V3',
+  caletodraco: 'V3',
   camarasaurus: 'V3',
   carcharodontosaurus: 'V3',
   carnotaurus: 'V3',
@@ -621,6 +664,8 @@ const DINO_AUDIO_VERSION = {
   hatzegopteryx: 'V3',
   ichthyosaurus: 'V3',
   iguanodon: 'V3',
+  invictibellatrix: 'V3',
+  jobaria: 'V3',
   kentrosaurus: 'V3',
   liopleurodon: 'V3',
   lystrosaurus: 'V3',

@@ -10,7 +10,7 @@
 //        node batch-dino-series.mjs --marin <id>   (variante eau : enfant sur ponton, "port moderne" au lieu de Paris)
 import { readFileSync, existsSync, appendFileSync, mkdirSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
-import { MORPHO, getFields, ficheBlock, ficheSignature, cleanPuce, descPhysique, ficheMange, ficheVitAvec, mesuresGlobales, TERME } from './dino-morpho.mjs';
+import { MORPHO, VOISINS, getFields, ficheBlock, ficheSignature, cleanPuce, descPhysique, ficheMange, ficheVitAvec, mesuresGlobales, TERME } from './dino-morpho.mjs';
 
 const ROOT = 'c:/ProjetsPerso/Claude_Projects/MaxPlay';
 const SKILL = '.claude/skills/dino-images-lunii/scripts';
@@ -201,7 +201,7 @@ RÔLE : illustrateur de paléoart documentaire réaliste, rigoureux sur l'anatom
 
 for (const id of ids) {
   const d = getFields(id);
-  const baseName = d.png.replace(/^grok\//, '').replace(/\.(jpg|png)$/i, ''); // ex: Tyrannosaurus
+  const baseName = d.png.replace(/^grok\//, '').replace(/\.(jpg|jpeg|png|webp)$/i, ''); // ex: Tyrannosaurus (png = .webp depuis HO-R13)
   const marin = MARIN_FLAG;
   const epoqueMot = d.epoque ? d.epoque.split('·')[0].trim() : 'son époque';
   console.log(`\n========== ${id} (${d.name}) ${marin ? '[MARIN]' : ''} ==========`);
@@ -239,13 +239,13 @@ for (const id of ids) {
   logProgress(id, '2-manger', 'start');
   gen(buildPrompt(d, id,
     `montrer l'animal en train de se nourrir, tranquillement.`,
-    `SCÈNE : un ou quelques individus se nourrissent paisiblement (un herbivore broute la végétation à sa hauteur ; un chasseur cherche sa nourriture ou pêche, le repas seulement suggéré). Postures naturelles.\n\n${SCENE_ANIMAUX_SEULS}\n\n${sectionDecor(d, epoqueMot, habitat)}\n\n${camLarge(d)}`),
+    `SCÈNE : un ou quelques individus se nourrissent paisiblement (un herbivore broute la végétation à sa hauteur ; un chasseur cherche sa nourriture ou pêche, le repas seulement suggéré). Postures naturelles.${/carniv|piscivor/i.test(d.cat || '') ? `\nCHASSEUR (crucial) : il est montré EN QUÊTE de nourriture, tête basse, il renifle une piste ou guette une proie vivante au loin. Image propre et paisible pour un enfant de 4 ans : aucune carcasse au sol, aucune chair, aucune trace rouge.` : ''}\n\n${SCENE_ANIMAUX_SEULS}\n\n${sectionDecor(d, epoqueMot, habitat)}\n\n${camLarge(d)}`),
     `${baseName}_manger.png`, false, baseName);
   logProgress(id, '2-manger', 'done');
 
   // #3 INTERACTION ÉCOLOGIQUE
   logProgress(id, '3-ecosysteme', 'start');
-  const voisins = ficheVitAvec(d);
+  const voisins = VOISINS[id] || ficheVitAvec(d);
   gen(buildPrompt(d, id,
     `montrer l'animal dans son écosystème, au milieu des autres animaux de son temps.`,
     `SCÈNE : l'animal (en groupe si c'est plausible) cohabite paisiblement avec d'autres animaux de la même époque et région${voisins ? ` (par exemple : ${voisins})` : ''}, autour d'un point d'eau. Vie quotidienne sereine.\n\n${SCENE_ANIMAUX_SEULS}\n\n${sectionDecor(d, epoqueMot, `dans ${d.region || 'sa région'}`)}\n\nCAMÉRA : grande scène d'ambiance, caméra très reculée, vue large et profonde ; l'animal principal bien visible mais le paysage et les autres animaux remplissent la scène.`),

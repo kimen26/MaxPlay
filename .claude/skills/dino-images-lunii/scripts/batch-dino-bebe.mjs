@@ -83,6 +83,12 @@ const BEBE = {
   patagotitan: "cou long, corps massif, pattes piliers, petite tête, longue queue enroulée autour de l'œuf",
   centrosaurus: "une petite corne naissante sur le nez, collerette bordée de petits crochets, bec de perroquet",
   titanis: "oiseau terreur : grand bec crochu énorme, plumes, longues pattes, petites ailes",
+  // Vague 2026-11-08 (fact-check content/sources/fiches/_FACTCHECK-vague-2026-11.md).
+  jobaria: "bébé à long cou épais et assez court, tête cubique au museau court, quatre pattes en piliers, peau à petites écailles",
+  afrovenator: "bébé chasseur mince à deux pattes, longs bras à trois doigts griffus, tête longue et lisse, longue queue",
+  arcovenator: "bébé chasseur trapu à deux pattes, museau court et arrondi, petit bourrelet au-dessus des yeux, bras minuscules",
+  caletodraco: "bébé chasseur trapu à deux pattes, museau court et arrondi, tête lisse, bras minuscules, hanches larges",
+  invictibellatrix: "bébé chasseur fin à deux pattes couvert de duvet, longs bras aux grandes griffes recourbées, museau étroit",
 };
 
 // Vivipares (GO PY 2026-09-25) : pas d'œuf. Les marins naissent dans l'eau (aquarium du

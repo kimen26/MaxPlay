@@ -5,6 +5,8 @@
 //        node batch-dino-headshot.mjs --grok <id1> [id2] ...
 import { readFileSync, existsSync, appendFileSync, mkdirSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
+// Signatures partagées (dino-morpho.mjs) : sans elles, un dino ajouté là-bas reste générique ici (crêtes inventées, vague 2026-11-08). Les signatures locales ci-dessous gardent la priorité.
+import { MORPHO as MORPHO_COMMUN } from './dino-morpho.mjs';
 
 const ROOT = 'c:/ProjetsPerso/Claude_Projects/MaxPlay';
 const SKILL = '.claude/skills/dino-images-lunii/scripts';
@@ -36,7 +38,7 @@ const fichesTxt = existsSync(FICHES) ? readFileSync(FICHES, 'utf8') : '';
 
 // Signatures morphologiques MANUELLES pour les dinos sans fiche Grokipedia (marins + ajouts récents).
 // Silhouette/proportions RECONNAISSABLES — c'est ce qui doit absolument apparaître.
-const MORPHO = {
+const MORPHO = { ...MORPHO_COMMUN,
   // Formulé en POSITIF uniquement (jamais "pas / sans"). Chiffres quand connus.
   elasmosaurus: "cou immense d'environ 7 m (plus de la moitié des 12 m du corps, ~70 vertèbres), petite tête, corps en tonneau, 4 grandes nageoires en pagaie, longue queue effilée",
   ophthalmosaurus: "corps fuselé de dauphin d'environ 6 m, yeux énormes d'environ 23 cm (les plus grands proportionnellement du règne animal), museau court et fin, grande nageoire dorsale triangulaire, queue verticale en croissant",
@@ -243,7 +245,7 @@ function buildHeadshotPrompt(d, id) {
 
 for (const id of ids) {
   const d = getFields(id);
-  const baseName = d.png.replace(/^grok\//, '').replace(/\.(jpg|png)$/i, '');
+  const baseName = d.png.replace(/^grok\//, '').replace(/\.(jpg|jpeg|png|webp)$/i, '');
   console.log(`\n========== ${id} (${d.name}) — HEADSHOT ==========`);
   
   logProgress(id, 'headshot', 'start');

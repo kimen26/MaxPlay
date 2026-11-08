@@ -52,7 +52,7 @@ export function createBatchState(outDir, dailyLimit = 20) {
   function sanitizeFileName(name) {
     return name
       .replace(/^grok\//, '')
-      .replace(/\.(jpg|png)$/i, '')
+      .replace(/\.(jpg|jpeg|png|webp)$/i, '')
       .replace(/[^a-zA-Z0-9_-]/g, '_')
       .replace(/_+/g, '_')
       .replace(/^_+|_+$/g, '');

@@ -20,6 +20,24 @@ window.DINO_ASSETS = {
    "proie": "img/dinos/paleoart/Aenocyon_proie.webp"
   }
  },
+ "Afrovenator": {
+  "ombre": "img/dinos/ombres/Afrovenator_ombre.png",
+  "sprite": "img/dinos/sprites/Afrovenator_sprite.webp",
+  "tete": "img/dinos/sprites/Afrovenator_tete.webp",
+  "bebe": "img/dinos/bebes/Afrovenator_bebe.webp",
+  "avatar": null,
+  "paleoart": {
+   "hero": "img/dinos/paleoart/Afrovenator.webp",
+   "coloriage": "img/dinos/paleoart/Afrovenator_coloriage.webp",
+   "ecosysteme": "img/dinos/paleoart/Afrovenator_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Afrovenator_ennemi.webp",
+   "funfact": "img/dinos/paleoart/Afrovenator_funfact.webp",
+   "headshot": "img/dinos/paleoart/Afrovenator_headshot.webp",
+   "manger": "img/dinos/paleoart/Afrovenator_manger.webp",
+   "paris": "img/dinos/paleoart/Afrovenator_paris.webp",
+   "proie": "img/dinos/paleoart/Afrovenator_proie.webp"
+  }
+ },
  "Albertosaurus": {
   "ombre": "img/dinos/ombres/Albertosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Albertosaurus_sprite.webp",
@@ -145,6 +163,24 @@ window.DINO_ASSETS = {
    "proie": "img/dinos/paleoart/Archelon_proie.webp"
   }
  },
+ "Arcovenator": {
+  "ombre": "img/dinos/ombres/Arcovenator_ombre.png",
+  "sprite": "img/dinos/sprites/Arcovenator_sprite.webp",
+  "tete": "img/dinos/sprites/Arcovenator_tete.webp",
+  "bebe": "img/dinos/bebes/Arcovenator_bebe.webp",
+  "avatar": null,
+  "paleoart": {
+   "hero": "img/dinos/paleoart/Arcovenator.webp",
+   "coloriage": "img/dinos/paleoart/Arcovenator_coloriage.webp",
+   "ecosysteme": "img/dinos/paleoart/Arcovenator_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Arcovenator_ennemi.webp",
+   "funfact": "img/dinos/paleoart/Arcovenator_funfact.webp",
+   "headshot": "img/dinos/paleoart/Arcovenator_headshot.webp",
+   "manger": "img/dinos/paleoart/Arcovenator_manger.webp",
+   "paris": "img/dinos/paleoart/Arcovenator_paris.webp",
+   "proie": "img/dinos/paleoart/Arcovenator_proie.webp"
+  }
+ },
  "Baryonyx": {
   "ombre": "img/dinos/ombres/Baryonyx_ombre.png",
   "sprite": "img/dinos/sprites/Baryonyx_sprite.webp",
@@ -179,6 +215,24 @@ window.DINO_ASSETS = {
    "manger": "img/dinos/paleoart/Brachiosaurus_manger.webp",
    "paris": "img/dinos/paleoart/Brachiosaurus_paris.webp",
    "rival": "img/dinos/paleoart/Brachiosaurus_rival.webp"
+  }
+ },
+ "Caletodraco": {
+  "ombre": "img/dinos/ombres/Caletodraco_ombre.png",
+  "sprite": "img/dinos/sprites/Caletodraco_sprite.webp",
+  "tete": "img/dinos/sprites/Caletodraco_tete.webp",
+  "bebe": "img/dinos/bebes/Caletodraco_bebe.webp",
+  "avatar": null,
+  "paleoart": {
+   "hero": "img/dinos/paleoart/Caletodraco.webp",
+   "coloriage": "img/dinos/paleoart/Caletodraco_coloriage.webp",
+   "ecosysteme": "img/dinos/paleoart/Caletodraco_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Caletodraco_ennemi.webp",
+   "funfact": "img/dinos/paleoart/Caletodraco_funfact.webp",
+   "headshot": "img/dinos/paleoart/Caletodraco_headshot.webp",
+   "manger": "img/dinos/paleoart/Caletodraco_manger.webp",
+   "paris": "img/dinos/paleoart/Caletodraco_paris.webp",
+   "proie": "img/dinos/paleoart/Caletodraco_proie.webp"
   }
  },
  "Camarasaurus": {
@@ -609,6 +663,42 @@ window.DINO_ASSETS = {
    "manger": "img/dinos/paleoart/Iguanodon_manger.webp",
    "paris": "img/dinos/paleoart/Iguanodon_paris.webp",
    "rival": "img/dinos/paleoart/Iguanodon_rival.webp"
+  }
+ },
+ "Invictibellatrix": {
+  "ombre": "img/dinos/ombres/Invictibellatrix_ombre.png",
+  "sprite": "img/dinos/sprites/Invictibellatrix_sprite.webp",
+  "tete": "img/dinos/sprites/Invictibellatrix_tete.webp",
+  "bebe": "img/dinos/bebes/Invictibellatrix_bebe.webp",
+  "avatar": null,
+  "paleoart": {
+   "hero": "img/dinos/paleoart/Invictibellatrix.webp",
+   "coloriage": "img/dinos/paleoart/Invictibellatrix_coloriage.webp",
+   "ecosysteme": "img/dinos/paleoart/Invictibellatrix_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Invictibellatrix_ennemi.webp",
+   "funfact": "img/dinos/paleoart/Invictibellatrix_funfact.webp",
+   "headshot": "img/dinos/paleoart/Invictibellatrix_headshot.webp",
+   "manger": "img/dinos/paleoart/Invictibellatrix_manger.webp",
+   "paris": "img/dinos/paleoart/Invictibellatrix_paris.webp",
+   "proie": "img/dinos/paleoart/Invictibellatrix_proie.webp"
+  }
+ },
+ "Jobaria": {
+  "ombre": "img/dinos/ombres/Jobaria_ombre.png",
+  "sprite": "img/dinos/sprites/Jobaria_sprite.webp",
+  "tete": "img/dinos/sprites/Jobaria_tete.webp",
+  "bebe": "img/dinos/bebes/Jobaria_bebe.webp",
+  "avatar": null,
+  "paleoart": {
+   "hero": "img/dinos/paleoart/Jobaria.webp",
+   "coloriage": "img/dinos/paleoart/Jobaria_coloriage.webp",
+   "ecosysteme": "img/dinos/paleoart/Jobaria_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Jobaria_ennemi.webp",
+   "funfact": "img/dinos/paleoart/Jobaria_funfact.webp",
+   "headshot": "img/dinos/paleoart/Jobaria_headshot.webp",
+   "manger": "img/dinos/paleoart/Jobaria_manger.webp",
+   "paris": "img/dinos/paleoart/Jobaria_paris.webp",
+   "rival": "img/dinos/paleoart/Jobaria_rival.webp"
   }
  },
  "Kentrosaurus": {

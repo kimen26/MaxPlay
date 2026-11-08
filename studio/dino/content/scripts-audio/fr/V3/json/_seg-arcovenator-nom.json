@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ar-co-vé-na-tor. [curious] Le deuxième morceau, « venator », c'est du latin : ça veut dire le chasseur."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et « arc » ? Comme un arc pour tirer des flèches ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Presque ! [proud] Mais c'est l'Arc, une rivière de Provence, tout près de l'endroit où on a trouvé ses os."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] Le chasseur de l'Arc."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] C'est ça, le nom en entier. [amazed] Il vivait dans le sud de la France, il y a 74 millions d'années."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

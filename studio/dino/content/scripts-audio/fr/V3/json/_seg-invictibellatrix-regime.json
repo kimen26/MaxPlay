@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] C'est le premier mégaraptor connu en Europe, [proud] et le plus petit de tous. [confident] Il chassait peut-être de petits animaux. [nervous] Au même endroit vivait un chasseur plus grand, le Néovénator : mieux valait sans doute l'éviter."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et ses mains, elles ressemblaient à quoi ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Là, on ne sait pas : on n'a pas ses mains. [confident] Mais ses cousins avaient de très longues griffes aux mains, [softly] alors peut-être que lui aussi."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

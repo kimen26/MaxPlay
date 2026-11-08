@@ -98,11 +98,17 @@
 | Loup terrible (Aenocyon dirus) | **É-no-si-on** si le latin est dit (nom d'usage courant = « Loup terrible ») | ae→é, y→i — **✅ TRANCHÉ Papa Yann 2026-07-28** (preview groupé, plus douteux), régénéré `aenocyon-nom.mp3` |
 | Rhino laineux (Coelodonta antiquitatis) | **Sé-lo-don-ta** si le latin est dit (nom d'usage courant = « Rhino laineux ») | oe→é — **✅ TRANCHÉ Papa Yann 2026-07-28** (preview groupé, plus douteux), régénéré `coelodonta-nom.mp3` |
 
+## 2ter. Noms AJOUTÉS 2026-11-08 (vague Jobaria, Afrovenator, Arcovenator, Caletodraco, Invictibellatrix)
+
+| Nom (fiche) | Écrire dans l'audio | Note |
+|-------------|---------------------|------|
+| Invictibellatrix | **In-vic-ti-bel-la-triks** | `x` final latin (règle §1, comme Archéoptéryx), S à garantir entendu. Les 4 autres noms de la vague sont sans piège : §3. |
+
 ---
 
 ## 3. Noms qui se lisent BIEN tels quels (pas de respelling)
 
-Spinosaure · Giganotosaure · Allosaure · Tarbosaure · Albertosaure · Gorgosaure · Cératosaure · Carnotaure · Acrocanthosaure · Apatosaure · Camarasaure · Amargasaure · Plateosaure · Ankylosaure · Stégosaure · Kéntrosaure · Tricératops · Torosaure · Protocératops · Pentacératops · Edmontosaure · Vélociraptor · Utahraptor · Microraptor · Oviraptor · Dimétrodon · Élasmosaure · Liopleurodon · Minmi · Scutellosaure · Maiasaura · Gorgonops · Centrosaure · Ichtyosaure · Mammouth · Smilodon.
+Spinosaure · Giganotosaure · Allosaure · Tarbosaure · Albertosaure · Gorgosaure · Cératosaure · Carnotaure · Acrocanthosaure · Apatosaure · Camarasaure · Amargasaure · Plateosaure · Ankylosaure · Stégosaure · Kéntrosaure · Tricératops · Torosaure · Protocératops · Pentacératops · Edmontosaure · Vélociraptor · Utahraptor · Microraptor · Oviraptor · Dimétrodon · Élasmosaure · Liopleurodon · Minmi · Scutellosaure · Maiasaura · Gorgonops · Centrosaure · Ichtyosaure · Mammouth · Smilodon · Jobaria (Jo-ba-ri-a) · Afrovénator (A-fro-vé-na-tor) · Arcovénator (Ar-co-vé-na-tor) · Calétodraco (Ca-lé-to-dra-co).
 
 > En cas de doute → respeller, ça ne coûte rien. Le **preview groupé** (§4) tranche.
 > ✅ **5 cas ex-DOUTEUX TRANCHÉS Papa Yann 2026-07-28** via preview groupé (« oui c'est très bien les sons pour les questions ») : Titanis (Ti-ta-niss), Aenocyon (É-no-si-on), Coelodonta (Sé-lo-don-ta), Glyptodon (Gli-pto-don), Ichthyosaurus/Ichtyosaure latin (Ik-ti-o-saure). **Ce sont désormais la référence de production**, plus des extrapolations — voir §5 pour le détail régénération. Mégathérium/Paracérathérium restaient hors preview (jugés OK sans risque réel, non régénérés).

@@ -490,6 +490,37 @@
 → **« l'oiseau Titan »** (un oiseau qui ne volait pas, grand et carnivore)
 [nom_etym OK — vérifié : nommé d'après les Titans de la mythologie grecque, allusion à sa taille. Pas un dinosaure mais un « oiseau-terreur », lointain cousin des dinos]
 
+## jobaria — Jobaria (Jobaria tiguidensis)
+- **Jobar** = le géant des vieilles histoires des Touaregs, un peuple du désert du Sahara
+- **tiguidensis** (latin) = des falaises de Tiguidi, au Niger
+→ **« le géant Jobar des falaises de Tiguidi »**
+[nom_etym OK — vérifié Grokipedia + Wikipedia (Sereno et al. 1999). Pas de racine grecque ni latine dans le nom de genre : c'est un nom touareg. Fact-check : `sources/fiches/_FACTCHECK-vague-2026-11.md`]
+
+## afrovenator — Afrovénator (Afrovenator abakensis)
+- **afro-** (latin *Afer*) = d'Afrique
+- **-venator** (latin) = chasseur
+→ **« le chasseur d'Afrique »** (et *abakensis* = d'Abaka, son coin de désert au Niger)
+[nom_etym OK — vérifié Grokipedia + Wikipedia (Sereno et al. 1994). Latin, pas grec]
+
+## arcovenator — Arcovénator (Arcovenator escotae)
+- **Arc** = l'Arc, une rivière de Provence, près du gisement
+- **-venator** (latin) = chasseur
+→ **« le chasseur de l'Arc »** (et *escotae* = pour Escota, la société d'autoroutes qui a financé les fouilles)
+[nom_etym OK — vérifié Wikipedia EN/FR (Tortosa et al. 2014)]
+
+## caletodraco — Calétodraco (Caletodraco cottardi)
+- **Caleti** (latin) = les Calètes, un peuple gaulois du pays de Caux, en Normandie
+- **-draco** (latin) = dragon
+→ **« le dragon des Calètes »** (et *cottardi* = pour Nicolas Cottard, qui a trouvé les os)
+[nom_etym OK — vérifié Wikipedia EN/FR (Buffetaut et al. 2024)]
+
+## invictibellatrix — Invictibellatrix (Invictibellatrix amberina)
+- **invicti- / invictus** (latin) = invaincu, jamais battu
+- **-bellatrix** (latin) = guerrière
+- **amberina** (latin moderne) = d'ambre
+→ **« la guerrière invaincue »** (et *amberina* pour l'ambre trouvé dans la roche du gisement)
+[nom_etym OK — vérifié presse scientifique (Phys.org, The Conversation, octobre 2026 ; article Royal Society Open Science non lu, 403). Papa Yann avait dit « indomptable » : la traduction juste est « invaincue »]
+
 ---
 
 _Fichier généré 2026-05-17. 67 dinos, ordre `DINOS` de `dinos-data.js`. Racines vérifiées (grec/latin). Cas recherchés en ligne : Euoplocephalus, Therizinosaurus, Carcharodontosaurus, Diplodocus. 2026-08-03 : +17 entrées (Edmontonia, Hatzegopteryx, 6 marins, Patagotitan, 8 Cénozoïque) — vérifiées Wikipedia / etymonline / American Heritage. Prépare EP-D-GED-03._

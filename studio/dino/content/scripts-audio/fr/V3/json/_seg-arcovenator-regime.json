@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] C'était un chasseur, un mangeur de viande. [confident] Il chassait sans doute les mangeurs de plantes de son île, [curious] comme le Rhabdodon."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Mais s'il manque presque tout, comment on sait qu'il mangeait de la viande ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Grâce à ses dents ! [confident] Elles étaient dentelées, comme un couteau à pain. [softly] Et on a retrouvé les os de trois Arcovénator au même endroit."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Voici comment on l'a trouvé : [curious] pendant la construction d'une autoroute ! Les savants ont fouillé la terre du chantier, en Provence."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[chuckles] Il dormait sous l'autoroute."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Juste à côté, oui. [amazed] Et à son époque, la France n'existait pas comme aujourd'hui : [softly] c'était un groupe d'îles chaudes, au milieu de la mer."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

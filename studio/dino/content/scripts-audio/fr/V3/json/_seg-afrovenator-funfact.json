@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] On a retrouvé son squelette dans le sable du désert, mais [curious] le dessus de sa tête manque. [whispers] Personne ne sait s'il avait une crête."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Alors comment on sait à quoi il ressemblait ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Les savants comparent avec ses cousins, les chasseurs de sa famille. [softly] Et tant qu'on n'a pas la preuve, ils ne lui dessinent aucune crête."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

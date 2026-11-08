@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Carnivore. Les Jobaria adultes, ses voisins, étaient sans doute trop gros pour lui. [confident] Mais les jeunes étaient peut-être au menu, [curious] avec d'autres herbivores."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il attrapait avec quoi ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Avec ses bras. [confident] Longs et forts, avec TROIS doigts griffus, [playful] parfaits pour attraper."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

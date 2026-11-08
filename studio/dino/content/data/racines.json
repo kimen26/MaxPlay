@@ -3,8 +3,8 @@
     "source": "studio/dino/content/sources/etymo/_ETYMO-RACINES-50.md",
     "genere_par": "scripts/export/_etymo2racines.cjs",
     "note": "STRUCTURE seulement — la source de vérité reste le .md (fact-checké). Curation pédagogique du dico = dino-conseiller.",
-    "nb_racines": 104,
-    "nb_dinos": 78
+    "nb_racines": 114,
+    "nb_dinos": 83
   },
   "racines": [
     {
@@ -263,6 +263,21 @@
       ]
     },
     {
+      "cle": "-venator",
+      "langue": "latin",
+      "translitteration": null,
+      "sens": "chasseur",
+      "type": "racine",
+      "n": 2,
+      "variantes": [
+        "-venator"
+      ],
+      "dinos": [
+        "afrovenator",
+        "arcovenator"
+      ]
+    },
+    {
       "cle": "coelo- / koilos",
       "langue": "grec",
       "translitteration": null,
@@ -305,6 +320,20 @@
       ],
       "dinos": [
         "paraceratherium"
+      ]
+    },
+    {
+      "cle": "-bellatrix",
+      "langue": "latin",
+      "translitteration": null,
+      "sens": "guerrière",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "-bellatrix"
+      ],
+      "dinos": [
+        "invictibellatrix"
       ]
     },
     {
@@ -365,6 +394,20 @@
       ],
       "dinos": [
         "diplodocus"
+      ]
+    },
+    {
+      "cle": "-draco",
+      "langue": "latin",
+      "translitteration": null,
+      "sens": "dragon",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "-draco"
+      ],
+      "dinos": [
+        "caletodraco"
       ]
     },
     {
@@ -574,6 +617,21 @@
       ]
     },
     {
+      "cle": "afro-",
+      "langue": "latin",
+      "translitteration": "Afer",
+      "sens": "d'Afrique",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "Afer",
+        "afro-"
+      ],
+      "dinos": [
+        "afrovenator"
+      ]
+    },
+    {
       "cle": "Alberto-",
       "langue": null,
       "translitteration": null,
@@ -614,6 +672,20 @@
       ],
       "dinos": [
         "amargasaurus"
+      ]
+    },
+    {
+      "cle": "amberina",
+      "langue": "latin",
+      "translitteration": null,
+      "sens": "d'ambre",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "amberina"
+      ],
+      "dinos": [
+        "invictibellatrix"
       ]
     },
     {
@@ -660,6 +732,20 @@
       ],
       "dinos": [
         "apatosaurus"
+      ]
+    },
+    {
+      "cle": "Arc",
+      "langue": null,
+      "translitteration": null,
+      "sens": "l'Arc, une rivière de Provence, près du gisement",
+      "type": "nom_propre",
+      "n": 1,
+      "variantes": [
+        "Arc"
+      ],
+      "dinos": [
+        "arcovenator"
       ]
     },
     {
@@ -720,6 +806,20 @@
       ],
       "dinos": [
         "brachiosaurus"
+      ]
+    },
+    {
+      "cle": "Caleti",
+      "langue": "latin",
+      "translitteration": null,
+      "sens": "les Calètes, un peuple gaulois du pays de Caux, en Normandie",
+      "type": "nom_propre",
+      "n": 1,
+      "variantes": [
+        "Caleti"
+      ],
+      "dinos": [
+        "caletodraco"
       ]
     },
     {
@@ -1045,6 +1145,35 @@
       ],
       "dinos": [
         "iguanodon"
+      ]
+    },
+    {
+      "cle": "invicti- / invictus",
+      "langue": "latin",
+      "translitteration": null,
+      "sens": "invaincu, jamais battu",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "invicti-",
+        "invictus"
+      ],
+      "dinos": [
+        "invictibellatrix"
+      ]
+    },
+    {
+      "cle": "Jobar",
+      "langue": null,
+      "translitteration": null,
+      "sens": "le géant des vieilles histoires des Touaregs, un peuple du désert du Sahara",
+      "type": "nom_propre",
+      "n": 1,
+      "variantes": [
+        "Jobar"
+      ],
+      "dinos": [
+        "jobaria"
       ]
     },
     {
@@ -1518,6 +1647,20 @@
       ],
       "dinos": [
         "therizinosaurus"
+      ]
+    },
+    {
+      "cle": "tiguidensis",
+      "langue": "latin",
+      "translitteration": null,
+      "sens": "des falaises de Tiguidi, au Niger",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "tiguidensis"
+      ],
+      "dinos": [
+        "jobaria"
       ]
     },
     {
@@ -3276,6 +3419,112 @@
           "cle": "Titanis",
           "langue": null,
           "sens": "les Titans, géants des vieilles histoires grecques"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "jobaria": {
+      "nom": "Jobaria",
+      "full": "Jobaria tiguidensis",
+      "sens": "le géant Jobar des falaises de Tiguidi",
+      "racines": [
+        {
+          "racine": "Jobar",
+          "cle": "Jobar",
+          "langue": null,
+          "sens": "le géant des vieilles histoires des Touaregs, un peuple du désert du Sahara"
+        },
+        {
+          "racine": "tiguidensis",
+          "cle": "tiguidensis",
+          "langue": "latin",
+          "sens": "des falaises de Tiguidi, au Niger"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "afrovenator": {
+      "nom": "Afrovénator",
+      "full": "Afrovenator abakensis",
+      "sens": "le chasseur d'Afrique",
+      "racines": [
+        {
+          "racine": "afro-",
+          "cle": "afro-",
+          "langue": "latin",
+          "sens": "d'Afrique"
+        },
+        {
+          "racine": "-venator",
+          "cle": "-venator",
+          "langue": "latin",
+          "sens": "chasseur"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "arcovenator": {
+      "nom": "Arcovénator",
+      "full": "Arcovenator escotae",
+      "sens": "le chasseur de l'Arc",
+      "racines": [
+        {
+          "racine": "Arc",
+          "cle": "Arc",
+          "langue": null,
+          "sens": "l'Arc, une rivière de Provence, près du gisement"
+        },
+        {
+          "racine": "-venator",
+          "cle": "-venator",
+          "langue": "latin",
+          "sens": "chasseur"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "caletodraco": {
+      "nom": "Calétodraco",
+      "full": "Caletodraco cottardi",
+      "sens": "le dragon des Calètes",
+      "racines": [
+        {
+          "racine": "Caleti",
+          "cle": "Caleti",
+          "langue": "latin",
+          "sens": "les Calètes, un peuple gaulois du pays de Caux, en Normandie"
+        },
+        {
+          "racine": "-draco",
+          "cle": "-draco",
+          "langue": "latin",
+          "sens": "dragon"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "invictibellatrix": {
+      "nom": "Invictibellatrix",
+      "full": "Invictibellatrix amberina",
+      "sens": "la guerrière invaincue",
+      "racines": [
+        {
+          "racine": "invicti- / invictus",
+          "cle": "invicti- / invictus",
+          "langue": "latin",
+          "sens": "invaincu, jamais battu"
+        },
+        {
+          "racine": "-bellatrix",
+          "cle": "-bellatrix",
+          "langue": "latin",
+          "sens": "guerrière"
+        },
+        {
+          "racine": "amberina",
+          "cle": "amberina",
+          "langue": "latin",
+          "sens": "d'ambre"
         }
       ],
       "nom_etym": "ok"

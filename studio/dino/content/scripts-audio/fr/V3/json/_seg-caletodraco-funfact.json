@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ses os étaient au pied des falaises de Normandie, dans la craie, [curious] cette roche blanche. [mischievously] Mais à son époque, cet endroit était sous la mer !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Un dinosaure qui vivait dans l'eau ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly] Non, il vivait sur la terre, plus loin. [confident] Sans doute que son corps a flotté sur la mer après sa mort, [softly] avant de couler au fond."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

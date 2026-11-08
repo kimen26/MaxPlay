@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Passons à sa taille. Environ 6 mètres de long — aussi long qu'une rue à deux voies est large — il barrait la route ! [quickly] Environ 1 virgule 9 mètre de haut — aussi haut qu'une porte ! Et environ 700 kilos — [amazed] aussi lourd qu'une vache !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Il bloquait toute la rue ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Presque, oui. Mais ce sont des estimations : [confident] on n'a retrouvé que les os de ses hanches, le bassin, et un os de sa queue. [curious] Le reste, on le devine d'après son cousin, le Carnotaure."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

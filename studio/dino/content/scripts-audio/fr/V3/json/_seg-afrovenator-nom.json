@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] A-fro-vé-na-tor. [curious] Ce nom a deux morceaux, tous les deux en latin. « Afro », ça veut dire d'Afrique. [pauses] Et « venator », c'est le chasseur."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[playful] Le chasseur d'Afrique, donc."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] En entier, oui. [confident] Il vivait au Niger, il y a 165 millions d'années, [pauses] au Jurassique."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

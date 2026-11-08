@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] In-vic-ti-bel-la-triks. [curious] Deux mots latins. « Bellatrix », c'est la guerrière."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et « invicti » ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[warmly] Invaincue : celle qui n'a jamais perdu."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] La guerrière jamais battue."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactement. [proud] Et « amberina », ça veut dire « d'ambre », cette résine d'arbre devenue dure et dorée. [amazed] Il vivait en Angleterre, sur l'île de Wight, il y a 120 millions d'années."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

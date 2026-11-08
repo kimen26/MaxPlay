@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Jo-ba-ri-a. [curious] Ce nom-là est un peu spécial."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il vient du grec, comme les autres ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Pas cette fois. [warmly] Il vient d'Afrique : les Touaregs, un peuple du désert, racontaient l'histoire du Jobar, un animal géant."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[confident] Et en trouvant ses énormes os, on a pensé à ce géant."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactement. [confident] Il vivait au Niger, il y a 165 millions d'années, [pauses] au Jurassique."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

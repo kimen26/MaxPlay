@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Il appartenait à une famille de chasseurs, [confident] alors c'était sans doute un mangeur de viande. [curious] Ce qu'il chassait ? Personne ne le sait : aucun animal n'a été retrouvé avec lui."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et comment on sait de quelle famille il est, avec si peu d'os ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Les os de ses hanches ressemblent à ceux du Carnotaure et de ses cousins. [amazed] Eux vivaient tous en Amérique du Sud. [proud] Lui est le premier de la famille trouvé ailleurs."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

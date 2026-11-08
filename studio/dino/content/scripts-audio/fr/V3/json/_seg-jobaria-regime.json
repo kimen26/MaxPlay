@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Herbivore. Il coupait feuilles et branches avec ses dents en forme de cuillère. [confident] On a trouvé des grands et des petits Jobaria ensemble, [curious] alors il vivait peut-être en troupeau."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il avait un cou aussi long que le Diplodocus ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Un peu plus court. [softly] Mais assez long pour brouter bien au-dessus du sol. [nervous] Et un chasseur rôdait par là, l'Afrovénator : [serious] les adultes étaient sans doute trop gros pour lui, mais les petits devaient se méfier."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

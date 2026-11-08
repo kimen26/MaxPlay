@@ -2128,5 +2128,155 @@
     "preuve": "Nannippus, petit cheval à trois doigts, est un fossile commun des mêmes gisements pliocènes de Floride où Titanis a été trouvé — proie plausible pour ce grand coureur."
    }
   ]
+ },
+ "jobaria": {
+  "livree": "gris-brun sable, ventre crème, flancs rayés de larges bandes ocre pâle",
+  "habitat": "La plaine inondable du Niger au milieu du Jurassique, près des falaises de Tiguidi : de larges rivières, des lacs et des plantes, mais un climat chaud et plutôt sec, où le Sahara d'aujourd'hui était encore verdoyant par endroits.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Afrovénator, le grand chasseur de son coin",
+    "adversaire_latin": "Afrovenator abakensis",
+    "adversaire_id": "afrovenator",
+    "adversaire_morpho": "un chasseur bipède mince, aux pattes longues, aux bras longs et forts terminés par trois doigts griffus, aux dents en lame dentelée",
+    "adversaire_mesures": "7m/1.9m/0.7t",
+    "adversaire_livree": "brun roux, flancs rayés de sombre, ventre clair",
+    "rapport_taille": "l'Afrovénator (7 m, 0,7 t) est deux fois et demie moins long que le Jobaria adulte (17 m, 16 t) et plus de vingt fois plus léger : il ne peut viser qu'un jeune isolé du troupeau.",
+    "action": "L'Afrovénator s'approche à pas lents d'un jeune Jobaria resté en bordure du groupe ; un adulte pivote, lève la tête haute et balance sa queue de côté, et le chasseur renonce et s'éloigne.",
+    "preuve": "Aucune trace de combat n'a été retrouvée entre eux. Ce qui est sûr : l'Afrovénator et le Jobaria viennent de la même formation géologique du Niger (Tiourarén), à la même époque. La scène repose sur cette cohabitation : l'Afrovénator est le grand chasseur connu de ce lieu, et ses proies présumées sont de jeunes Jobaria, sans preuve directe."
+   },
+   {
+    "type": "rival",
+    "adversaire": "un autre Jobaria",
+    "adversaire_latin": "Jobaria tiguidensis",
+    "adversaire_id": "jobaria",
+    "adversaire_morpho": "même grand herbivore à cou relativement court pour un dinosaure à long cou, tête haute en forme de boîte, dents en cuillère, pattes avant longues, queue simple, sans plaque ni crête",
+    "adversaire_mesures": "17m/4.5m/16t",
+    "adversaire_livree": "gris-brun plus foncé, bandes ocre moins marquées",
+    "rapport_taille": "deux Jobaria adultes de taille presque égale : ce n'est pas une question de force mais de place devant les meilleures feuilles.",
+    "action": "Deux Jobaria dressent leur cou vers la même branche haute et se poussent doucement de l'épaule, jusqu'à ce que l'un cède la place et aille brouter plus loin.",
+    "preuve": "Aucune trace de combat entre Jobaria. On sait seulement que plusieurs individus, des jeunes aux adultes, ont été retrouvés au même endroit : ils vivaient donc près les uns des autres. La poussée pour une branche est une scène imaginée."
+   }
+  ]
+ },
+ "afrovenator": {
+  "livree": "brun roux, flancs rayés de sombre, ventre clair, griffes des mains sombres",
+  "habitat": "La plaine inondable du Niger au milieu du Jurassique, près d'Abaka, dans le Ténéré actuel : des rivières, des lacs et des plantes, mais un climat chaud et plutôt sec, où le Sahara d'aujourd'hui était encore verdoyant par endroits.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "un autre Afrovénator (rival)",
+    "adversaire_latin": "Afrovenator abakensis",
+    "adversaire_id": "afrovenator",
+    "adversaire_morpho": "même silhouette mince de chasseur bipède aux pattes longues, aux bras longs et forts à trois doigts griffus, aux dents en lame dentelée ; le dessus de la tête n'est pas connu, donc aucune crête dessinée",
+    "adversaire_mesures": "7m/1.9m/0.7t",
+    "adversaire_livree": "brun plus clair, rayures fines sur les flancs, ventre crème",
+    "rapport_taille": "deux adultes de taille presque égale (7 m chacun) : la dispute se joue au territoire, pas à la force.",
+    "action": "Deux Afrovénators se font face au bord d'un lac, cous tendus, bras levés, gueules entrouvertes ; l'un fait un pas en avant et l'autre recule d'un pas, puis s'en va.",
+    "preuve": "Aucune trace de combat, et aucun groupe d'Afrovénators n'a été retrouvé ensemble : un seul squelette principal est connu. La scène est une hypothèse, fondée sur ce que font les grands chasseurs à deux pattes quand ils se croisent sur un même territoire."
+   },
+   {
+    "type": "proie",
+    "adversaire": "un jeune Jobaria",
+    "adversaire_latin": "Jobaria tiguidensis",
+    "adversaire_id": "jobaria",
+    "adversaire_morpho": "un jeune dinosaure à cou relativement court pour un dinosaure à long cou, tête haute en forme de boîte, dents en cuillère, bien plus petit que les adultes du troupeau, sans plaque ni crête",
+    "adversaire_mesures": "jeune Jobaria, taille exacte inconnue, bien plus petit que l'adulte (17m/4.5m/16t)",
+    "adversaire_livree": "gris-brun clair, bandes ocre pâle",
+    "rapport_taille": "un jeune Jobaria est bien plus petit que l'adulte (17 m, 16 t) : il reste un animal assez grand pour que l'Afrovénator (7 m, 0,7 t) doive choisir son moment, loin des adultes.",
+    "action": "Caché derrière un rocher, l'Afrovénator guette un jeune Jobaria qui s'est écarté du troupeau ; dès qu'un adulte relève la tête vers lui, le chasseur se fige puis recule.",
+    "preuve": "Aucune trace directe de cette chasse. Les deux animaux viennent de la même formation géologique du Niger (Tiourarén), à la même époque, et on a retrouvé des Jobaria jeunes et adultes. Que l'Afrovénator mange de jeunes Jobaria est une proie présumée, pas une preuve."
+   }
+  ]
+ },
+ "arcovenator": {
+  "livree": "brun-rouge terne, flancs plus clairs, dessous crème, petite coupole sur le crâne et bourrelet au-dessus des yeux (sans grande corne)",
+  "habitat": "Une grande île chaude de l'Europe d'il y a 74 millions d'années, dans ce qui est aujourd'hui la Provence : une plaine d'inondation au climat chaud et marqué par les saisons, entourée de mer.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "un autre Arcovénator (rival)",
+    "adversaire_latin": "Arcovenator escotae",
+    "adversaire_id": "arcovenator",
+    "adversaire_morpho": "même chasseur à deux pattes de la famille du Carnotaure, avec une petite coupole sur le dessus du crâne, un bourrelet d'os au-dessus des yeux et des dents dentelées ; le reste du corps est imaginé d'après ses cousins, sans grande corne",
+    "adversaire_mesures": "5m/1.6m/0.4t (hauteur et poids déduits)",
+    "adversaire_livree": "brun-rouge plus clair, flancs tachetés de sombre",
+    "rapport_taille": "deux adultes de taille presque égale (5 m chacun) : la dispute se joue au territoire, pas à la force.",
+    "action": "Deux Arcovénators se croisent au bord d'une rivière de l'île, têtes basses, bourrelets au-dessus des yeux bien visibles ; l'un grogne et fait un pas en avant, l'autre recule et prend un autre chemin.",
+    "preuve": "Aucune trace de combat. On a trouvé les os d'au moins trois Arcovénators au même endroit (Jas Neuf Sud, Pourrières) : ils vivaient donc près les uns des autres. Le face-à-face est une hypothèse ; la taille de 5 m est publiée, mais la hauteur et le poids sont déduits des cousins."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Rhabdodon, un herbivore de son île",
+    "adversaire_latin": "Rhabdodon priscus",
+    "adversaire_id": null,
+    "adversaire_morpho": "un herbivore à deux pattes, au corps trapu, à la tête courte terminée par un bec, à la queue épaisse",
+    "adversaire_mesures": "environ 5m de long, 200 à 500 kg (hauteur non précisée)",
+    "adversaire_livree": "vert olive, ventre jaune pâle",
+    "rapport_taille": "le Rhabdodon (environ 5 m) est à peu près aussi long que l'Arcovénator (5 m) et de poids proche : un chasseur qui doit choisir un jeune ou un isolé.",
+    "action": "L'Arcovénator suit à distance un Rhabdodon qui broute dans la plaine ; le Rhabdodon lève la tête, repère le chasseur et part au trot rejoindre les autres.",
+    "preuve": "Aucune trace de cette chasse. Le Rhabdodon vit à la même époque et dans le même coin de France que l'Arcovénator. Qu'il soit sa proie est présumé d'après les chasseurs de sa famille, sans preuve directe."
+   }
+  ]
+ },
+ "caletodraco": {
+  "livree": "gris ardoise bleuté, ventre clair, silhouette générique d'un chasseur de la famille du Carnotaure (le corps n'est pas connu)",
+  "habitat": "La terre ferme du massif armoricain, il y a 100 millions d'années, à environ 100 km de l'actuelle Normandie : à cette époque, la Normandie était sous la mer. Le décor exact de la terre est mal connu.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "un autre Calétodraco (rival, hypothèse)",
+    "adversaire_latin": "Caletodraco cottardi",
+    "adversaire_id": "caletodraco",
+    "adversaire_morpho": "silhouette générique de chasseur de la famille du Carnotaure, à deux pattes ; seuls le bassin et un os de la queue sont connus, tout le reste est imaginé d'après les cousins",
+    "adversaire_mesures": "6m/1.9m/0.7t (tout est estimé d'après des cousins)",
+    "adversaire_livree": "gris-bleu plus clair, ventre crème",
+    "rapport_taille": "deux animaux supposés de taille presque égale (6 m, estimation) : la dispute se joue au territoire, pas à la force.",
+    "action": "Deux chasseurs de la même espèce se font face sur un sol de roche et de buissons, têtes basses ; l'un avance d'un pas, l'autre recule et s'éloigne.",
+    "preuve": "HYPOTHÈSE : aucun combat n'est connu, et rien n'indique qu'un autre Calétodraco vivait près de lui. On n'a que le bassin et un os de la queue d'un animal. La scène est imaginée d'après le comportement des grands chasseurs cousins du Carnotaure, qui défendaient un territoire."
+   },
+   {
+    "type": "proie",
+    "adversaire": "un herbivore de son île, encore inconnu",
+    "adversaire_latin": "espèce non déterminée",
+    "adversaire_id": null,
+    "adversaire_morpho": "silhouette d'un herbivore de taille moyenne, aucun détail connu",
+    "adversaire_mesures": "?m/?m/?t",
+    "adversaire_livree": "brun terne, détails inconnus",
+    "rapport_taille": "taille inconnue : aucun herbivore de son île n'a été retrouvé avec lui.",
+    "action": "Le Calétodraco s'approche à pas lents d'un herbivore qui broute dans un buisson ; l'herbivore relève la tête, le voit et détale.",
+    "preuve": "HYPOTHÈSE TOTALE : aucun animal terrestre de son époque n'a été retrouvé au même endroit, car ce coin était sous la mer. Les herbivores sont une supposition, d'après ce que mangeaient les chasseurs cousins du Carnotaure. L'animal et la scène sont imaginés."
+   }
+  ]
+ },
+ "invictibellatrix": {
+  "livree": "ocre doré, dos plus sombre, ventre clair, silhouette de chasseur à longues griffes aux mains imaginée d'après ses cousins (corps inconnu)",
+  "habitat": "La plaine chaude et plutôt sèche de l'île de Wight il y a 120 millions d'années, avec des conifères, des fougères et des feux de temps en temps ; la roche qui l'a gardée contient de l'ambre.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Néovénator, un chasseur plus grand",
+    "adversaire_latin": "Neovenator salerii",
+    "adversaire_id": null,
+    "adversaire_morpho": "un grand chasseur svelte à deux pattes, au crâne orné de petites crêtes au-dessus des yeux, aux dents en lame dentelée, aux bras robustes à trois doigts griffus",
+    "adversaire_mesures": "environ 7,5m / 1,8m / 1 à 2 t",
+    "adversaire_livree": "brun sable tacheté de vert olive",
+    "rapport_taille": "le Néovénator (environ 7,5 m, 1 à 2 t) est plus de deux fois plus long que l'Invictibellatrix (3,5 m, 0,25 t) et au moins quatre fois plus lourd : le petit chasseur doit l'éviter.",
+    "action": "Dans les fougères, l'Invictibellatrix aperçoit un Néovénator qui passe ; elle se fige, s'aplatit au sol puis s'éloigne sans bruit vers les arbres.",
+    "preuve": "Aucune trace de rencontre. Le Néovénator vivait à la même époque et au même endroit que l'Invictibellatrix, dans la Formation de Wessex (île de Wight). La scène est imaginée d'après cette cohabitation. Seul un morceau arrière du crâne de l'Invictibellatrix est connu : taille et allure viennent de ses cousins."
+   },
+   {
+    "type": "proie",
+    "adversaire": "Hypsilophodon, un petit herbivore",
+    "adversaire_latin": "Hypsilophodon foxii",
+    "adversaire_id": null,
+    "adversaire_morpho": "un tout petit herbivore à deux pattes, au corps léger, aux longues pattes arrière, à la tête courte terminée par un bec",
+    "adversaire_mesures": "environ 2m de long, 20 kg (hauteur non précisée)",
+    "adversaire_livree": "vert mousse, ventre crème",
+    "rapport_taille": "l'Hypsilophodon (environ 2 m, 20 kg) est bien plus petit que l'Invictibellatrix (3,5 m, 0,25 t), mais très rapide.",
+    "action": "L'Invictibellatrix bondit d'un fourré sur un Hypsilophodon, qui zigzague entre les fougères et lui échappe.",
+    "preuve": "Aucune trace de cette chasse. L'Hypsilophodon vivait à la même époque et sur la même île de Wight. Qu'il soit sa proie est une supposition, d'après ses cousins chasseurs ; seul un morceau du crâne de l'Invictibellatrix est connu."
+   }
+  ]
  }
 }

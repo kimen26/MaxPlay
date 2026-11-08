@@ -159,3 +159,11 @@ encore « gate | tail » suivi d'un envoi (ajout noté au TODO transverse).
 **Cause** : depuis HO-R13, le champ `png` des fiches vaut `<Nom>.webp`. Les scripts d'images retiraient seulement `.jpg|.png` pour fabriquer le nom de base. Aucune porte ne relit le nom produit.
 
 **Règle** : quand une convention de donnée change (extension, casse, préfixe), chercher tous les `replace(` qui la dérivent et les tester sur un id réel. Avant tout batch d'images, lire les noms `--- [X] ---` du `--preview`, pas seulement les prompts. Corrigé dans les 4 scripts (`jpg|jpeg|png|webp`).
+
+## L-D-90 — Un nouveau dino reste invisible sur la tablette si la version du service worker n'est pas recalculée (2026-11-08)
+
+**Symptôme** : 5 dinos poussés et déployés, `dinos-data.js` servi à jour par GitHub Pages, mais Papa Yann ne les voit pas dans l'application.
+
+**Cause** : `site/js/gen/dinos-data.js` fait partie de la coquille précachée de `site/sw.js` (cache-first). Le service worker ne se renouvelle que si `SW_VERSION` (`site/js/gen/sw-version.js`) change. Les générateurs avaient été lancés un par un, jamais `npm run build` ni `gen-sw-version.mjs` : le hash est resté celui d'avant la vague. Aucune porte (`check`, `gate`) ne compare ce hash au contenu réel. Vérifier le déploiement par `curl` ne prouve rien : curl ne passe pas par le service worker.
+
+**Règle** : après toute modification d'un fichier de `PRECACHE_LIST`, lancer `node studio/minijeux/scripts/gen-sw-version.mjs` (ou `npm run build`) et commiter `sw-version.js` avec le reste. Le skill `nouveau-dino` phase 7 le dit désormais.

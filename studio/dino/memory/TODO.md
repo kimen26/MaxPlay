@@ -156,6 +156,8 @@ sommaire visuel, et sa forme dit sa fonction sans un mot. Maquettes des 3 declin
 
 ## Vague 2026-11-08 — Jobaria, Afrovenator, Arcovenator, Caletodraco, Invictibellatrix (demande PY, taxo validée « OUI »)
 
+- [x] **Dinos invisibles sur la tablette (retour PY)** : `SW_VERSION` pas recalculé, service worker gardait l'ancien `dinos-data.js` (L-D-90). Corrigé 001d5ed5, déployé.
+- [ ] **Porte `sw-version` à jour** : faire échouer `npm run check` quand `site/js/gen/sw-version.js` ne correspond pas au hash recalculé de `PRECACHE_LIST` (L-D-90, rien ne l'attrape aujourd'hui).
 - [x] **5 dinos ajoutés** : fiches canon, scripts FR V3 + EN, 25 MP3 FR + 5 noms courts, étymologie, prononciation, 45 images paléoart (dont 10 combats), ombres, sprites, têtes, bébés. `check-dino-coherence` 76 OK, `dev-dinos.spec` GLOBAL PASS + 5 fiches PASS à 360/320. Fact-check : `content/sources/fiches/_FACTCHECK-vague-2026-11.md`.
 - [ ] **Audio EN des 5 nouveaux** (4 blocs + recap + nom court) : scripts EN prêts, respellings EN à valider (aucune entrée dans `i18n/lexiques-prononciation/en.md`). Racines EN du Dico absentes pour ces 5.
 - [ ] **Images de la vague à faire valider par PY** : reconstitutions d'Arcovenator, Caletodraco, Invictibellatrix (fossiles très partiels) ; la scène « proie » de Caletodraco montre un herbivore inconnu (hypothèse totale, dite dans `combats.json`).

@@ -155,6 +155,8 @@ Playwright sur `site/dev-dinos.html` : `DINOS.length`, `DINO_EXTRAS`, `DINO_AUDI
 
 ⚠️ Un fichier touché hors pôle DINO (ex. un agent narration) → tracer **aussi** dans `studio/narration/memory/` (JEU/NARRATION ont migré `pmo/` → `memory/`, DINO reste `pmo/`), sinon le hook Stop bloque.
 
+⚠️ **Avant le commit : `node studio/minijeux/scripts/gen-sw-version.mjs`** (ou `npm run build`). `dinos-data.js` est précaché par le service worker : sans nouveau `SW_VERSION`, la tablette garde l'ancienne liste (L-D-90).
+
 Commit par palier (data+audio, puis images, puis PMO) et **push** — Papa Yann teste via GitHub Pages. Chemins explicites, jamais `git add -A` (sessions concurrentes).
 
 ⚠️ Écrire les entrées PMO avec **Write/Edit**, pas un heredoc bash : les backticks se font manger par le shell et le fichier sort corrompu.

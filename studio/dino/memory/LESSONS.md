@@ -151,3 +151,11 @@ travail d'une autre session (`git status`) avant de décider.
 
 **Porte :** `.claude/hooks/pre-tool.ps1` refuse déjà commit et envoi dans une même commande ; il ne voit pas
 encore « gate | tail » suivi d'un envoi (ajout noté au TODO transverse).
+
+## L-D-89 — Une convention de données qui change casse en silence les scripts qui en dérivent des noms (2026-11-08)
+
+**Symptôme** : `batch-dino-series.mjs <id> --preview` annonçait `Invictibellatrix.webp.png`, `Invictibellatrix.webp_manger.png`. Les images auraient été écrites sous un nom que ni le déploiement ni `gen-dinos-ui.cjs` ne reconnaissent. Même défaut dans `batch-dino-headshot`, `batch-dino-coloriage` et `batch-helpers` (ombres : `Invictibellatrix_webp_ombre.png`).
+
+**Cause** : depuis HO-R13, le champ `png` des fiches vaut `<Nom>.webp`. Les scripts d'images retiraient seulement `.jpg|.png` pour fabriquer le nom de base. Aucune porte ne relit le nom produit.
+
+**Règle** : quand une convention de donnée change (extension, casse, préfixe), chercher tous les `replace(` qui la dérivent et les tester sur un id réel. Avant tout batch d'images, lire les noms `--- [X] ---` du `--preview`, pas seulement les prompts. Corrigé dans les 4 scripts (`jpg|jpeg|png|webp`).

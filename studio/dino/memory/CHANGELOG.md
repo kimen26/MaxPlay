@@ -2,6 +2,10 @@
 
 > Point de vue utilisateur (Papa Yann / Max), pas technique. Alimenté à la clôture d'un ticket TODO.md.
 
+## 2026-11
+
+- 5 nouveaux dinosaures dans l'encyclopédie : Jobaria et Afrovénator (Niger, Jurassique), Arcovénator (Provence) et Calétodraco (Normandie), deux cousins français du Carnotaure, et Invictibellatrix, « la guerrière invaincue », premier mégaraptor connu d'Europe. Chacun a sa fiche parlée en français, son nom dit dans les jeux, ses images (dont Paris et deux scènes de combat), son coloriage, son ombre et son bébé dans l'œuf. Les fiches disent honnêtement quand on n'a retrouvé qu'un bout du squelette.
+
 ## 2026-09
 
 - Les 71 fiches disent des chiffres vérifiés : 28 dinos ont été corrigés (taille, poids, lieux de vie, qui mangeait qui), plus aucune comparaison qui triche de plus de 10 %.

@@ -1,6 +1,7 @@
 # INVARIANTS — Pôle DINO
 
 > Source de vérité des **chiffres clés**. MAJ uniquement si un invariant change (par `dino-pmo`).
+> **Dernière vérif : 2026-11-08 (vague +5).** Count DINOS **71 → 76** : Jobaria (Sauropodes 7 → 8), Afrovenator, Arcovenator, Caletodraco, Invictibellatrix (Théropodes 13 → 17). Les 5 ont fiche, 5 MP3 FR, nom court FR, script EN, étymologie, 9 images paléoart, ombre, sprite, tête, bébé, 2 combats. `dev-dinos.spec.mjs` GLOBAL : 76/76/76/76. Audio EN non généré. Fact-check : `content/sources/fiches/_FACTCHECK-vague-2026-11.md`.
 > **Dernière vérif : 2026-09-05 (audit HO-009 : mesures, lieux, textes des 71 fiches fact-checkés Grokipedia/Wikipedia, 4 lots ; corrections appliquées HO-010 ; nouveau champ optionnel `vitesse_kmh` + `_compVitesse`, 25 dinos avec vitesse sourcée).**
 > Session 2026-09-05 : count DINOS réconcilié **71** (le 71ᵉ = Scelidosaurus, ajouté 2026-08 sans trace INVARIANTS). Détail des corrections : `docs/handoffs/rapports/HO-009-lot-*.md` + `HO-010-champs-modifies.json`.
 > **Dernière vérif précédente : 2026-07-27 (ajout Saurolophe).**
@@ -18,7 +19,7 @@
 
 | Quoi | Valeur | Source |
 |------|--------|--------|
-| Dinos (entrées `DINOS`) | **71** | `site/js/dinos-data.js` (✅ 2026-07-19 : +Corythosaurus, Ornithopodes 3→4 · ✅ 2026-07-20 : +Hatzegopteryx, Ptérosaures 2→3 · ✅ **2026-07-25 : +7** — Minmi + Scutellosaure (Thyréophores 5→7), Maiasaura (Ornithopodes 4→5), Édaphosaure + Gorgonops + Lystrosaure + Moschops (**« Avant les dinosaures » 1→5**). Data + audio faits ; paléoart livré ces 7 · ✅ **2026-07-27 : +1 Saurolophe**, Ornithopodes 5→6. Data + audio + étymo faits ; **paléoart à produire**) |
+| Dinos (entrées `DINOS`) | **76** (2026-11-08 : +Jobaria, Afrovenator, Arcovenator, Caletodraco, Invictibellatrix) | `site/js/dinos-data.js` (✅ 2026-07-19 : +Corythosaurus, Ornithopodes 3→4 · ✅ 2026-07-20 : +Hatzegopteryx, Ptérosaures 2→3 · ✅ **2026-07-25 : +7** — Minmi + Scutellosaure (Thyréophores 5→7), Maiasaura (Ornithopodes 4→5), Édaphosaure + Gorgonops + Lystrosaure + Moschops (**« Avant les dinosaures » 1→5**). Data + audio faits ; paléoart livré ces 7 · ✅ **2026-07-27 : +1 Saurolophe**, Ornithopodes 5→6. Data + audio + étymo faits ; **paléoart à produire**) |
 | Familles (`DINO_FAMILLES`) | **11** | idem (✅ 2026-07-03 : +2 familles `mammiferes` + `oiseaux` ; famille `arme` passe 4→5 dinos, puis 5→7 le 2026-07-25) |
 | Régimes alimentaires (`DINO_CATEGORIES`) | **4** | idem (inchangé) |
 | Périodes (`DINO_PERIODES`) | **5** | ✅ 2026-07-03 : ajout `cenozoique` (66 Ma → aujourd'hui), rejoins les 4 antérieures (Triassic, Jurassic, Crétacé, Autres) |
@@ -26,7 +27,7 @@
 | Ères (macro-info, `DINO_ERES`) | **3** | `dinos-data.js` (Paléozoïque · Mésozoïque · Cénozoïque, 2026-09-05) + `audio/dinos/fr/ere-*.mp3` (3, Narratrice) |
 | Accroches menu (voix réelle) | **19** | `audio/dinos/fr/menu-*.mp3` (6 onglets dont `menu-epoques` + `menu-dico` ajoutés 2026-09-05 · 9 familles `menu-fam-*` · 4 régimes `menu-regime-*` — dont 2 Cénozoïque ajoutés 2026-08-02) |
 | Spéciaux (Pangée, Extinction) | **6** | `audio/dinos/special-*.mp3` (✅ 2026-08-02 : 6 fichiers sur disque — special-extinction-a/b/c/d, special-extinction-recap, special-pangee-recap ; le count historique « 2 » était obsolète) |
-| Dinos avec audio complet (recap+4 blocs) | **71** | `DINO_AUDIO` (✅ 2026-09-05 : **36 dinos FR RÉGÉNÉRÉS** depuis les nouveaux scripts (13 théropodes + 23 cératopsiens/ornithopodes/raptors/ptérosaures — tags denses, échelle corrigée, vitesse) ; les 35 autres MP3 FR datent du 2026-08-10 et ne disent PLUS le texte des scripts réécrits → régénération à planifier au reset ElevenLabs. ✅ 2026-07-13 : 9 Cénozoïque complétés. ✅ 2026-07-25 : les 7 nouveaux — 28 blocs text-to-dialogue + 7 recaps concat ffmpeg loudnorm, eleven_v3, grep-interdits passé. ✅ **2026-07-27 : +Saurolophe** — 4 blocs + recap, durées vérifiées ffprobe (32s/21,6s/21,4s/15,7s/90,6s). Manifeste régénéré via `_gen-audio-manifest.cjs` : 70 ids. Plus aucun dino en attente d'audio.) |
+| Dinos avec audio complet (recap+4 blocs) | **76** (2026-11-08 : +5 de la vague, 25 MP3 vérifiés ffprobe) | `DINO_AUDIO` (✅ 2026-09-05 : **36 dinos FR RÉGÉNÉRÉS** depuis les nouveaux scripts (13 théropodes + 23 cératopsiens/ornithopodes/raptors/ptérosaures — tags denses, échelle corrigée, vitesse) ; les 35 autres MP3 FR datent du 2026-08-10 et ne disent PLUS le texte des scripts réécrits → régénération à planifier au reset ElevenLabs. ✅ 2026-07-13 : 9 Cénozoïque complétés. ✅ 2026-07-25 : les 7 nouveaux — 28 blocs text-to-dialogue + 7 recaps concat ffmpeg loudnorm, eleven_v3, grep-interdits passé. ✅ **2026-07-27 : +Saurolophe** — 4 blocs + recap, durées vérifiées ffprobe (32s/21,6s/21,4s/15,7s/90,6s). Manifeste régénéré via `_gen-audio-manifest.cjs` : 70 ids. Plus aucun dino en attente d'audio.) |
 | Audio Fiches dino i18n (4 blocs + recap) | **13 × 3** | `site/audio/dinos/{en,es-es,pt-br}/<id>-*.mp3` — les 13 théropodes (✅ 2026-09-05, HO-014, pipeline STS DEC-AUDIO-I18N-002). Les 58 autres = TTS navigateur en attendant (manifest gate le bouton). |
 | Scripts audio par langue | **71 × 4** | `content/scripts-audio/{fr/V3,en,es-es,pt-br}/<id>.md` (✅ 2026-09-05, portés 0 KO) |
 | Noms vocaux dino (assets bonus) | **60** | `site/audio/dinos/noms/{id}.mp3` (✅ 2026-07-06 : 60 MP3 narrateur_h [excited] jeu, lancés dans mj-24/28/31/33) |
@@ -34,7 +35,7 @@
 
 ## 11 familles (nom scientifique = titre)
 
-**Dinosaures (9 familles, ~55 dinos)** : Théropodes (13) · Sauropodes (7) · Thyréophores (7) · Cératopsiens (6) · Ornithopodes (6, +Saurolophe 2026-07-27) · Dromæosaures (8) · Ptérosaures (3) · Énaliosaures (7) · Avant les dinosaures (5).
+**Dinosaures (9 familles, ~55 dinos)** : Théropodes (17) · Sauropodes (8) · Thyréophores (7) · Cératopsiens (6) · Ornithopodes (6, +Saurolophe 2026-07-27) · Dromæosaures (8) · Ptérosaures (3) · Énaliosaures (7) · Avant les dinosaures (5).
 
 **Mégafaune Cénozoïque (2 familles, 8 dinos, 2026-07-03)** — clés techniques `mammiferes` + `oiseaux` :
 - **Mammifères** `mammiferes` (7) : Mammouth (`mammuthus`, *Mammuthus primigenius*) · Smilodon (`smilodon`, *S. fatalis*) · Mégathère (`megatherium`, *Megatherium americanum*) · Paracérathérium (`paraceratherium`) · Glyptodon (`glyptodon`) · Loup terrible (`aenocyon`, *Aenocyon dirus*) · Rhino laineux (`coelodonta`, *Coelodonta antiquitatis*)
@@ -106,8 +107,8 @@ Résolus via `narration/personnages/voix-meta/voice-map.json`. Modèle **eleven_
 
 | Clé technique | Libellé scientifique | ~count |
 |---------------|----------------------|--------|
-| `trex` | Théropodes | 13 |
-| `cou_long` | Sauropodes | 7 |
+| `trex` | Théropodes | 17 |
+| `cou_long` | Sauropodes | 8 |
 | `arme` | Thyréophores | 8 |
 | `cornu` | Cératopsiens | 6 |
 | `bec` | Ornithopodes | 6 |

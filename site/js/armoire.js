@@ -24,11 +24,6 @@
   var IMG = 'img/armoire/';
 
   function $(id) { return document.getElementById(id); }
-  function esc(s) {
-    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
-      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-    });
-  }
 
   // ── Grille des cases, MESURÉE sur le kit (retour PY 2026-10-30 : objets
   // décentrés, lampes à cheval sur les étagères, bois superposé). Chaque
@@ -45,8 +40,8 @@
   // Chaque sprite de planche porte, autour de son CHANT clair, des bandes
   // sombres (dessus de l'étagère, ombre sur le fond). Le compartiment
   // commence sous le chant du dessus — le spot vit dans cette ombre, le
-  // sous-plafond — et la plaque du nom se visse sur le chant du dessous.
-  // Chants mesurés par tools/armoire-retouches.py (js/gen/armoire-retouches.js).
+  // sous-plafond. Chants mesurés par tools/armoire-retouches.py
+  // (js/gen/armoire-retouches.js).
   function buildRows(kit, chants) {
     var P = kit.pieces;
     function chant(i) {
@@ -57,8 +52,7 @@
       var dessus = i === 0 ? PLAFOND_Y : chant(i).bas;
       var planche = P['planche-' + (i + 1)].box, sous = chant(i + 1);
       return { zone: zone, top: dessus, bottom: planche.y, cy: (dessus + planche.y) / 2,
-               ch: planche.y - dessus, chantHaut: sous.haut,
-               plaque: (sous.haut + sous.bas) / 2 - planche.y };
+               ch: planche.y - dessus, chantHaut: sous.haut };
     });
   }
 
@@ -248,8 +242,7 @@
 
   function slotHtml(slot) {
     return '<span class="tap" aria-hidden="true"></span>' +
-           objHtml(slot.obj) +
-           '<span class="etiquette">' + esc(slot.label) + '</span>';
+           objHtml(slot.obj);
   }
 
   function makeSlot(cls, id, label) {
@@ -371,8 +364,7 @@
           btn = makeSlot('objet', f.id, f.label);
           btn.innerHTML = '<span class="tap" aria-hidden="true"></span>' +
             objHtml(f.obj) +
-            (f.badge ? '<span class="hdr-badge" id="' + f.badge + '" style="display:none"></span>' : '') +
-            '<span class="etiquette">' + esc(f.label) + '</span>';
+            (f.badge ? '<span class="hdr-badge" id="' + f.badge + '" style="display:none"></span>' : '');
           applyObjMeta(btn, f.obj);
         } else {
           slot = slots[iTirage];
@@ -384,7 +376,6 @@
           iTirage++;
         }
         btn.dataset.zone = row.zone;
-        btn.style.setProperty('--plaque', row.plaque);
         place(btn, colonne.cx, row.cy, colonne.cw, row.ch);
         root.appendChild(btn);
       });

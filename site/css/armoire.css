@@ -19,8 +19,8 @@
    ════════════════════════════════════════════════════════════════════ */
 
 html, body { height:100%; overflow:hidden; }
-/* la pièce : mur dégradé chaud (226/184/126 haut → 136/94/56 bas) */
-body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, #886038 100%); }
+/* la pièce : mur chaud, éclairé en haut ; le parquet est posé par .armoire::before */
+body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 55%, #b98551 100%); }
 
 /* ── La pièce : centre la scène, et rien d'autre ────────────────────── */
 .piece {
@@ -43,12 +43,25 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, 
 @supports not (height: 100svh) {
   .piece { --cab-w: min(calc(100vw - var(--safe-x)), calc((100vh - var(--safe-y) - 18px) * 0.61554)); }
 }
-/* tapis : ellipse sombre floue sous les pieds */
-.piece::before {
-  content:''; position:absolute; left:50%; bottom:1%;
-  width:calc(var(--cab-w) * 0.78); aspect-ratio:6/1;
-  background:radial-gradient(ellipse at center, rgba(0,0,0,.4), rgba(0,0,0,0) 72%);
-  filter:blur(3px); transform:translateX(-50%); z-index:0; pointer-events:none;
+/* Le SOL (retour PY 2026-11-08 : « où est le sol ? »). Il est accroché au
+   meuble, pas à l'écran : la jonction mur/parquet passe derrière le bas du
+   socle (95,6 % du repère, mesuré dans shell.webp) et l'ombre de contact
+   sous les pieds (99,1 %). L'ancien tapis, posé à 1 % du bas de l'écran,
+   flottait loin sous les pieds dès que l'écran était haut. Le parquet
+   déborde de toute la largeur ; .piece (overflow:hidden) le coupe. */
+.armoire::before {
+  content:''; position:absolute; z-index:0; pointer-events:none;
+  left:-100vw; right:-100vw; top:95.6%; height:100vh;
+  background:
+    linear-gradient(rgba(40, 20, 5, .45), rgba(40, 20, 5, 0) 3%),
+    repeating-linear-gradient(180deg, transparent 0 calc(var(--cab-w) * .06),
+      rgba(60, 32, 10, .22) calc(var(--cab-w) * .06) calc(var(--cab-w) * .063)),
+    linear-gradient(#9a6537, #6e4524);
+}
+.armoire::after {
+  content:''; position:absolute; z-index:1; pointer-events:none;
+  left:8%; right:8%; top:97.5%; height:3%;
+  background:radial-gradient(ellipse at center, rgba(25, 10, 0, .55), rgba(25, 10, 0, 0) 70%);
 }
 
 /* ── Le meuble : une scène à ratio fixe, mise à l'échelle d'un bloc ──── */
@@ -134,7 +147,7 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, 
    coins (--g-vignette). Les 3 dégradés communs vivent en custom properties
    pour que la météorite les RÉUTILISE telles quelles (même ampoule, même
    halo, même vignette) et ne remplace que la couche du milieu. z-index:-1
-   dans la pile locale du bouton : derrière .obj et .etiquette, jamais
+   dans la pile locale du bouton : derrière .obj, jamais
    devant. */
 /* Spot ENCASTRÉ (retour PY 2026-10-30 : « discrète dans le sous-plafond de
    chaque case », réf. docs/refs/armoire/ref-ouverte.png) : une demi-ellipse
@@ -201,33 +214,14 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 40%, #8c6238 78%, 
 }
 .casier:active .obj, .objet:active .obj { transform:scale(calc(var(--obj-scale, 1) * .9)); }
 
-/* Le libellé est du bois, pas un badge d'appli : dégradé chaud, encre brune,
-   un liseré clair en haut comme une petite plaque vissée sur l'étagère. La
-   capsule noire de la passe 1 faisait « launcher Android » sur un meuble
-   chaud. */
-/* Plaque vissée sur le CHANT de l'étagère, sous l'objet (retour PY
-   2026-10-30 : objets « flottants » au-dessus du libellé). --plaque =
-   distance du bas de la case au milieu du chant, en % de la hauteur du
-   repère (posé par armoire.js) ; 1480/911 = 1,6246 convertit en largeur. */
-.etiquette {
-  position:absolute; left:50%;
-  top:calc(100% + var(--cab-w) * .016246 * var(--plaque));
-  transform:translate(-50%, -50%);
-  white-space:nowrap;
-  font-family:'Fredoka One', 'Nunito', sans-serif; font-weight:400;
-  font-size:calc(var(--cab-w) * .031); line-height:1.12;
-  z-index:1;
-  color:#4a2a0a; text-align:center;
-  padding:calc(var(--cab-w) * .002) calc(var(--cab-w) * .015);
-  border-radius:calc(var(--cab-w) * .012);
-  background:linear-gradient(#efc684, #ce8c45);
-  border:1px solid rgba(92, 50, 15, .35);
-  box-shadow:0 1px 0 rgba(255, 255, 255, .35) inset,
-             0 2px 4px rgba(55, 25, 5, .3);
-}
+/* Pas de nom écrit sous les objets (retour PY 2026-11-08 : « rien ») :
+   l'objet dit le thème, le nom reste dans l'aria-label du bouton. */
 /* un jeu encore verrouillé : grisé + cadenas, jamais la couleur seule */
 .objet.locked .obj { filter:grayscale(1) brightness(.72); }
-.objet.locked .etiquette::after { content:' 🔒'; }
+.objet.locked::after {
+  content:'🔒'; position:absolute; right:8%; bottom:6%; z-index:1;
+  font-size:calc(var(--cab-w) * .045); line-height:1; pointer-events:none;
+}
 
 /* Le globe (case « Monde ») : léger flottement en idle, jamais un tour
    automatique (HO-MJ-16 — le dépôt de Papa Yann le dit lui-même : « évite

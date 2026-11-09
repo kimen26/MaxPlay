@@ -35,7 +35,7 @@
 
 // Tampon recopié de SW_VERSION par gen-sw-version.mjs : fait changer sw.js à chaque
 // version, pour les navigateurs qui ignorent un changement d'importScripts (L-D-90).
-// SW_STAMP: 2a14190f9b82
+// SW_STAMP: 1f4b4eea9b87
 importScripts('./js/gen/sw-version.js');
 
 const VERSION = self.SW_VERSION || 'dev';

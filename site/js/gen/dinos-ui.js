@@ -162,6 +162,13 @@ const DINO_EXTRAS = {
     {folder:'paleoart',file:'Cryolophosaurus_ecosysteme.webp',label:'Son monde'},
     {folder:'paleoart',file:'Cryolophosaurus_funfact.webp',label:'Le savais-tu ?'},
   ],
+  deinocheirus:[
+    {folder:'paleoart',file:'Deinocheirus_headshot.webp',label:'Gros plan'},
+    {folder:'paleoart',file:'Deinocheirus_manger.webp',label:'Ce qu\'il mange'},
+    {folder:'paleoart',file:'Deinocheirus_paris.webp',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Deinocheirus_ecosysteme.webp',label:'Son monde'},
+    {folder:'paleoart',file:'Deinocheirus_funfact.webp',label:'Le savais-tu ?'},
+  ],
   deinonychus:[
     {folder:'paleoart',file:'Deinonychus_headshot.webp',label:'Gros plan'},
     {folder:'paleoart',file:'Deinonychus_manger.webp',label:'Ce qu\'il mange'},
@@ -525,6 +532,13 @@ const DINO_EXTRAS = {
     {folder:'paleoart',file:'Troodon_paris.webp',label:'Dans Paris !'},
     {folder:'paleoart',file:'Troodon_ecosysteme.webp',label:'Son monde'},
     {folder:'paleoart',file:'Troodon_funfact.webp',label:'Le savais-tu ?'},
+  ],
+  tsintaosaurus:[
+    {folder:'paleoart',file:'Tsintaosaurus_headshot.webp',label:'Gros plan'},
+    {folder:'paleoart',file:'Tsintaosaurus_manger.webp',label:'Ce qu\'il mange'},
+    {folder:'paleoart',file:'Tsintaosaurus_paris.webp',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Tsintaosaurus_ecosysteme.webp',label:'Son monde'},
+    {folder:'paleoart',file:'Tsintaosaurus_funfact.webp',label:'Le savais-tu ?'},
   ],
   tyrannosaurus:[
     {folder:'paleoart',file:'Tyrannosaurus_headshot.webp',label:'Gros plan'},

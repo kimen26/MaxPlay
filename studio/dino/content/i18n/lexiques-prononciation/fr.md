@@ -88,7 +88,6 @@
 | Glyptodon | **Gli-pto-don** | y→i, aucun autre piège |
 | Edmontonia | **Ed-mon-to-ni-a** | pas de forme FR « -saure » établie, `-ia` final se dit tel quel |
 | Titanis | **Ti-ta-niss** | -is final latin, S à garantir entendu — **✅ TRANCHÉ Papa Yann 2026-07-28** (preview groupé, plus douteux) |
-| Patagotitan | **Pa-ta-go-ti-tan** | se lit bien tel quel en français (pas de piège ch/y/ph/x/-us) — le nom AFFICHÉ en fiche est « Titanosaure » (déjà francisé), mais le nom latin peut apparaître dans l'étymologie parlée → respelling de sécurité fourni |
 | Centrosaure | *(déjà en -saure, aucun piège)* | se lit bien tel quel — ajouté en §3 |
 | Ichtyosaure | *(nom FR déjà francisé : ich-t-yo, pas de th anglais)* | se lit bien tel quel — le `id`/`full` technique garde le `th` latin (Ichthyosaurus) mais la fiche affiche déjà « Ichtyosaure » sans piège — ajouté en §3 |
 | Mammouth | *(mot français courant)* | se lit bien tel quel — ajouté en §3 |

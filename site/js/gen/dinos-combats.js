@@ -1195,5 +1195,37 @@ window.DINO_COMBATS = {
    "adversaire": "Hypsilophodon",
    "adversaire_latin": "Hypsilophodon foxii"
   }
+ ],
+ "deinocheirus": [
+  {
+   "file": "Deinocheirus_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": false,
+   "adversaire": "Tarbosaure",
+   "adversaire_latin": "Tarbosaurus bataar"
+  },
+  {
+   "file": "Deinocheirus_proie.webp",
+   "type": "proie",
+   "meme_espece": false,
+   "adversaire": "des poissons de rivière",
+   "adversaire_latin": "espèces non déterminées"
+  }
+ ],
+ "tsintaosaurus": [
+  {
+   "file": "Tsintaosaurus_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": false,
+   "adversaire": "le Zhuchengtyrannus",
+   "adversaire_latin": "Zhuchengtyrannus magnus"
+  },
+  {
+   "file": "Tsintaosaurus_rival.webp",
+   "type": "rival",
+   "meme_espece": true,
+   "adversaire": "Tsintaosaure",
+   "adversaire_latin": "Tsintaosaurus spinorhinus"
+  }
  ]
 };

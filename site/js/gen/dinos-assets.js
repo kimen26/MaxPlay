@@ -378,6 +378,24 @@ window.DINO_ASSETS = {
    "proie": "img/dinos/paleoart/Cryolophosaurus_proie.webp"
   }
  },
+ "Deinocheirus": {
+  "ombre": "img/dinos/ombres/Deinocheirus_ombre.png",
+  "sprite": "img/dinos/sprites/Deinocheirus_sprite.webp",
+  "tete": "img/dinos/sprites/Deinocheirus_tete.webp",
+  "bebe": "img/dinos/bebes/Deinocheirus_bebe.webp",
+  "avatar": null,
+  "paleoart": {
+   "hero": "img/dinos/paleoart/Deinocheirus.webp",
+   "coloriage": "img/dinos/paleoart/Deinocheirus_coloriage.webp",
+   "ecosysteme": "img/dinos/paleoart/Deinocheirus_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Deinocheirus_ennemi.webp",
+   "funfact": "img/dinos/paleoart/Deinocheirus_funfact.webp",
+   "headshot": "img/dinos/paleoart/Deinocheirus_headshot.webp",
+   "manger": "img/dinos/paleoart/Deinocheirus_manger.webp",
+   "paris": "img/dinos/paleoart/Deinocheirus_paris.webp",
+   "proie": "img/dinos/paleoart/Deinocheirus_proie.webp"
+  }
+ },
  "Deinonychus": {
   "ombre": "img/dinos/ombres/Deinonychus_ombre.png",
   "sprite": "img/dinos/sprites/Deinonychus_sprite.webp",
@@ -1311,6 +1329,24 @@ window.DINO_ASSETS = {
    "manger": "img/dinos/paleoart/Troodon_manger.webp",
    "paris": "img/dinos/paleoart/Troodon_paris.webp",
    "proie": "img/dinos/paleoart/Troodon_proie.webp"
+  }
+ },
+ "Tsintaosaurus": {
+  "ombre": "img/dinos/ombres/Tsintaosaurus_ombre.png",
+  "sprite": "img/dinos/sprites/Tsintaosaurus_sprite.webp",
+  "tete": "img/dinos/sprites/Tsintaosaurus_tete.webp",
+  "bebe": "img/dinos/bebes/Tsintaosaurus_bebe.webp",
+  "avatar": null,
+  "paleoart": {
+   "hero": "img/dinos/paleoart/Tsintaosaurus.webp",
+   "coloriage": "img/dinos/paleoart/Tsintaosaurus_coloriage.webp",
+   "ecosysteme": "img/dinos/paleoart/Tsintaosaurus_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Tsintaosaurus_ennemi.webp",
+   "funfact": "img/dinos/paleoart/Tsintaosaurus_funfact.webp",
+   "headshot": "img/dinos/paleoart/Tsintaosaurus_headshot.webp",
+   "manger": "img/dinos/paleoart/Tsintaosaurus_manger.webp",
+   "paris": "img/dinos/paleoart/Tsintaosaurus_paris.webp",
+   "rival": "img/dinos/paleoart/Tsintaosaurus_rival.webp"
   }
  },
  "Tyrannosaurus": {

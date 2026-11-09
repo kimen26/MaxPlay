@@ -5,6 +5,12 @@
 > Vagues de correction 2026-09-25 (commits `970ec8b8` + suivant) : soldés REC-C1/C3/C4/C5/C7, REC-H1/H2/H3, REC-M1, HO-MJ-22 (cases dans l'armoire v8), HO-MJ-16 (globe animé), bouton retour unifié (23 jeux), EP-134 (`nid-e2e.spec` réécrit), EP-074, noms de lignes/accessoires traduits.
 > Statuts : `[ ]` à faire · `[~]` en cours · `[!]` bloqué · `[?]` question ouverte pour Papa Yann.
 
+## Lane — Service worker (2026-11-09, retour PY : nouveaux dinos invisibles sur la tablette)
+
+- [x] `sw.js` porte désormais la version (ligne `// SW_STAMP:` recopiée par `gen-sw-version.mjs`) et précache en `cache: 'reload'` : les navigateurs qui ignorent un changement d'`importScripts` voient enfin la mise à jour (commit ad992be2, leçon DINO L-D-90).
+- [ ] Porte : faire échouer `npm run check` si `sw-version.js` ne correspond pas au hash recalculé (suivi côté DINO, TODO § Vague 2026-11-08).
+- [ ] `site/mj-30.html` garde une copie figée et périmée des données dino (Patagotitan « Titanosaure », 37 m, 70 t) : la lire depuis `dinos-data.js` (suivi DINO § Patagotitan reliquats).
+
 ## Lane — Recette complète FR/EN 2026-09-19 (rapport `memory/audits/2026-09-19-recette-complete.md`)
 
 **DoD** : les 3 crashs corrigés + specs étendues jusqu'à la fin de partie ; l'EN ne montre plus de français à l'écran (victoire, menu, pages, 7 titres).

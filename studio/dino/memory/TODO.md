@@ -168,7 +168,8 @@ sommaire visuel, et sa forme dit sa fonction sans un mot. Maquettes des 3 declin
 
 - [x] **Taxo** : Deinocheirus = théropode ornithomimosaure (PY : « semble être un théropode », confirmé) → famille `raptor` comme le Gallimimus. Tsintaosaure = hadrosaure lambéosauriné → `bec`. Demandé par PY sous le nom « Sintosaure, comme la bière » (Tsingtao).
 - [ ] **Prononciation de « spinorhinus »** dans le bloc A du Tsintaosaure : la transcription automatique entend « Spinosaurus » puis « Spinaurus », même découpé en syllabes. À faire écouter à PY.
-- [ ] **Crête du Tsintaosaure** : reconstitution 2013 (haute, arrondie), haut de crête inconnu. Image à faire valider par PY.
+- [ ] **Crête du Tsintaosaure** : reconstitution 2013 (haute, arrondie), haut de crête inconnu. Images générées le 2026-11-09 conformes (crête lobée, pas de corne), à faire valider par PY.
+- [x] **Images des 2 nouveaux** (2026-11-09) : 9 paléoart + ombre + sprite + tête + bébé chacun, regardées une à une. 2 scènes du Deinocheirus refaites après collision ChatGPT avec une session concurrente.
 - [ ] **Hauteur du Deinocheirus (3,5 m à la hanche)** : estimation de 2010 faite sur les bras seuls, avant le squelette de 2014. À recouper sur Lee et al. 2014.
 - [ ] **Trou de palier `_compPoids` entre la vache (0,65 t) et la petite voiture (1 t)** : un dino de 0,75 à 0,85 t ment de 13 à 19 %. Vu sur Afrovenator (estimation 2016 : 0,79 t, retenu 0,7 t dans la fourchette de Holtz). Repère à proposer à PY (L-D-52 : auditer les paliers).
 - [ ] **Palier `_compLong` à 16 m** : « bus accordéon » (18 m) dès 16 m, soit 12,5 % d'écart à la borne. Vu sur Jobaria (retenu 17 m, dans la fourchette 16-18,2). Vérifier les dinos existants entre 16 et 16,3 m.

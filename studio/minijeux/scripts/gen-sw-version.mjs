@@ -26,8 +26,17 @@ if (!match) {
 }
 const files = [...match[1].matchAll(/'([^']+)'/g)].map(m => m[1]);
 
+// Tampon de version écrit DANS sw.js (L-D-90) : certains navigateurs (Chromium < 78,
+// navigateur Huawei) ne détectent un nouveau service worker que si sw.js lui-même
+// change d'octet, pas son importScripts. Exclu du hash, sinon il ne convergerait jamais.
+const STAMP_RE = /^\/\/ SW_STAMP: .*$/m;
+if (!STAMP_RE.test(swSource)) {
+  console.error('gen-sw-version : ligne « // SW_STAMP: » introuvable dans site/sw.js — abandon.');
+  process.exit(1);
+}
+
 const hash = createHash('sha256');
-hash.update(swSource); // la stratégie de cache elle-même fait partie de la version
+hash.update(swSource.replace(STAMP_RE, '')); // la stratégie de cache elle-même fait partie de la version
 for (const rel of files) {
   if (rel === './' || rel.endsWith('/')) continue; // entrées de dossier (ex. './'), pas de contenu à hasher
   if (rel === 'js/gen/sw-version.js') continue; // s'auto-référencerait sinon (le hash ne convergerait jamais)
@@ -49,4 +58,6 @@ const out = `// GÉNÉRÉ par studio/minijeux/scripts/gen-sw-version.mjs — ne 
 self.SW_VERSION = '${version}';
 `;
 writeFileSync(OUT, out);
+const swStamped = swSource.replace(STAMP_RE, `// SW_STAMP: ${version}`);
+if (swStamped !== swSource) writeFileSync(SW_JS, swStamped);
 console.log(`gen-sw-version : SW_VERSION = ${version} (${files.length} fichiers précachés) → ${path.relative(ROOT, OUT)}`);

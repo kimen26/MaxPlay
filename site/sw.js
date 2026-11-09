@@ -33,6 +33,9 @@
 // Un chemin absolu ('/sw.js', '/img/...') casserait le scope et le cache dès
 // que le repo est servi ailleurs qu'à la racine.
 
+// Tampon recopié de SW_VERSION par gen-sw-version.mjs : fait changer sw.js à chaque
+// version, pour les navigateurs qui ignorent un changement d'importScripts (L-D-90).
+// SW_STAMP: 2a14190f9b82
 importScripts('./js/gen/sw-version.js');
 
 const VERSION = self.SW_VERSION || 'dev';
@@ -154,7 +157,11 @@ const PRECACHE_LIST = [
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(SHELL_CACHE).then((cache) => cache.addAll(PRECACHE_LIST)).then(() => self.skipWaiting())
+    // cache: 'reload' : jamais la copie du cache HTTP du navigateur (max-age GitHub Pages),
+    // sinon la nouvelle coquille peut embarquer l'ancien dinos-data.js (L-D-90).
+    caches.open(SHELL_CACHE)
+      .then((cache) => cache.addAll(PRECACHE_LIST.map((url) => new Request(url, { cache: 'reload' }))))
+      .then(() => self.skipWaiting())
   );
 });
 

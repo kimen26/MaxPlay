@@ -89,6 +89,8 @@ const BEBE = {
   arcovenator: "bébé chasseur trapu à deux pattes, museau court et arrondi, petit bourrelet au-dessus des yeux, bras minuscules",
   caletodraco: "bébé chasseur trapu à deux pattes, museau court et arrondi, tête lisse, bras minuscules, hanches larges",
   invictibellatrix: "bébé chasseur fin à deux pattes couvert de duvet, longs bras aux grandes griffes recourbées, museau étroit",
+  deinocheirus: "bébé à bec plat de canard, longs bras aux griffes émoussées, petite bosse sur le dos, duvet de plumes",
+  tsintaosaurus: "bébé à bec de canard, petite bosse arrondie au bout du museau qui deviendra une grande crête",
 };
 
 // Vivipares (GO PY 2026-09-25) : pas d'œuf. Les marins naissent dans l'eau (aquarium du

@@ -2278,5 +2278,65 @@
     "preuve": "Aucune trace de cette chasse. L'Hypsilophodon vivait à la même époque et sur la même île de Wight. Qu'il soit sa proie est une supposition, d'après ses cousins chasseurs ; seul un morceau du crâne de l'Invictibellatrix est connu."
    }
   ]
+ },
+ "deinocheirus": {
+  "livree": "brun roux chaud, ventre crème, plumage court ; voile ou bosse du dos plus sombre, brun chocolat",
+  "habitat": "Les plaines de rivières de la Formation de Nemegt, en Mongolie, il y a 70 millions d'années : de larges cours d'eau, des berges boisées et des marécages, là où s'étend aujourd'hui le désert de Gobi.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "le Tarbosaure",
+    "adversaire_latin": "Tarbosaurus bataar",
+    "adversaire_id": "tarbosaurus",
+    "adversaire_morpho": "grand tyrannosauridé bipède, cousin asiatique du T-Rex, grosse tête aux dents en couteau, tout petits bras à deux doigts",
+    "adversaire_mesures": "12m/4.5m/5t",
+    "adversaire_livree": "brun olive, ventre clair",
+    "rapport_taille": "le Tarbosaure est un peu plus long (12 m contre 11 m), mais le Deinocheirus est plus lourd (6,4 tonnes contre 5) ; ses bras immenses le font paraître encore plus grand.",
+    "action": "Au bord d'une rivière, le Deinocheirus se redresse face au Tarbosaure, ses grands bras griffus levés ; le Tarbosaure s'arrête, hésite, puis fait demi-tour.",
+    "preuve": "On a trouvé des traces de dents de Tarbosaure sur des os du ventre du Deinocheirus. On ne sait pas s'il l'a chassé ou mangé déjà mort. La scène de face-à-face, et l'usage des bras pour se défendre, sont une hypothèse."
+   },
+   {
+    "type": "proie",
+    "adversaire": "des poissons de rivière",
+    "adversaire_latin": "espèces non déterminées",
+    "adversaire_id": null,
+    "adversaire_morpho": "poissons de rivière de taille moyenne, sans détail connu",
+    "adversaire_mesures": "?m/?m/?t",
+    "adversaire_livree": "argentés, dos sombre",
+    "rapport_taille": "des poissons minuscules à côté du géant de 11 m.",
+    "action": "Le Deinocheirus avance dans l'eau peu profonde et plonge son large bec plat pour attraper des poissons, comme un énorme canard qui fouille la rivière.",
+    "preuve": "On a trouvé des vertèbres et des écailles de poissons dans son estomac, avec plus de mille petits cailloux. La façon exacte dont il les attrapait est imaginée."
+   }
+  ]
+ },
+ "tsintaosaurus": {
+  "livree": "vert olive, ventre crème, crête rouge brique bordée de jaune",
+  "habitat": "Une plaine de rivières et de lacs du Shandong, en Chine, il y a 75 millions d'années : des sols rouges, des conifères, et des troupeaux de becs de canard.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "le Zhuchengtyrannus",
+    "adversaire_latin": "Zhuchengtyrannus magnus",
+    "adversaire_id": null,
+    "adversaire_morpho": "grand tyrannosauridé bipède d'environ 10 m, cousin du T-Rex, grosse tête aux dents en couteau, petits bras",
+    "adversaire_mesures": "10m/3m/5t",
+    "adversaire_livree": "brun gris, ventre clair",
+    "rapport_taille": "le Zhuchengtyrannus est plus long et deux fois plus lourd que le Tsintaosaure.",
+    "action": "Le Tsintaosaure se dresse sur ses pattes arrière et voit approcher le Zhuchengtyrannus ; il lance l'alerte au troupeau, qui s'enfuit vers la rivière.",
+    "preuve": "HYPOTHÈSE : le Zhuchengtyrannus a été trouvé dans la même région et le même groupe de roches, mais dans une autre couche, peut-être un peu plus jeune. Aucune trace de morsure n'est connue sur les os du Tsintaosaure."
+   },
+   {
+    "type": "rival",
+    "adversaire": "un autre Tsintaosaure",
+    "adversaire_latin": "Tsintaosaurus spinorhinus",
+    "adversaire_id": "tsintaosaurus",
+    "adversaire_morpho": "même espèce : bec de canard, grande crête haute et arrondie partant du bout du museau",
+    "adversaire_mesures": "8.5m/3m/2.5t",
+    "adversaire_livree": "vert olive plus pâle, crête orange",
+    "rapport_taille": "deux adultes de même taille : la dispute se joue à la crête, pas à la force.",
+    "action": "Deux Tsintaosaures se font face, têtes hautes, et montrent leur grande crête ; l'un baisse la tête et s'écarte.",
+    "preuve": "HYPOTHÈSE : aucun combat n'est connu. Chez les becs de canard à crête, les savants pensent que la crête servait à se reconnaître et à se montrer. La forme complète de sa crête est en partie reconstituée."
+   }
+  ]
  }
 }

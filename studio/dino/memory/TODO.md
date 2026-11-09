@@ -161,7 +161,15 @@ sommaire visuel, et sa forme dit sa fonction sans un mot. Maquettes des 3 declin
 - [x] **5 dinos ajoutés** : fiches canon, scripts FR V3 + EN, 25 MP3 FR + 5 noms courts, étymologie, prononciation, 45 images paléoart (dont 10 combats), ombres, sprites, têtes, bébés. `check-dino-coherence` 76 OK, `dev-dinos.spec` GLOBAL PASS + 5 fiches PASS à 360/320. Fact-check : `content/sources/fiches/_FACTCHECK-vague-2026-11.md`.
 - [ ] **Audio EN des 5 nouveaux** (4 blocs + recap + nom court) : scripts EN prêts, respellings EN à valider (aucune entrée dans `i18n/lexiques-prononciation/en.md`). Racines EN du Dico absentes pour ces 5.
 - [ ] **Images de la vague à faire valider par PY** : reconstitutions d'Arcovenator, Caletodraco, Invictibellatrix (fossiles très partiels) ; la scène « proie » de Caletodraco montre un herbivore inconnu (hypothèse totale, dite dans `combats.json`).
-- [ ] **Patagotitan demandé une seconde fois par PY** : il existe déjà, affiché « Titanosaure ». Son `nom_etym` explique « Titanosaurus », pas « Patagotitan » (Patagonie + titan) : à réécrire, avec le bloc A audio s'il dit la même chose.
+- [x] **Patagotitan demandé une seconde fois par PY** : il existait, affiché « Titanosaure ». Renommé « Patagotitan » le 2026-11-09 (vague suivante) : nom affiché, `nom_etym`, `desc`, script FR (A, C, D) et 5 MP3 FR + nom court refaits.
+- [ ] **Patagotitan, reliquats du renommage** : audio EN (script et MP3 disent encore « Titanosaur »), noms courts dans 10 autres langues, `name` es-es/pt-br (« Titanosaurio », « Titanossauro »), copie figée des données dans `site/mj-30.html` (« Titanosaure », 37 m, 70 t, chiffres périmés), signature MORPHO à 37 m dans `dino-morpho.mjs`.
+
+## Vague 2026-11-09 — Deinocheirus, Tsintaosaure + Patagotitan renommé (demande PY)
+
+- [x] **Taxo** : Deinocheirus = théropode ornithomimosaure (PY : « semble être un théropode », confirmé) → famille `raptor` comme le Gallimimus. Tsintaosaure = hadrosaure lambéosauriné → `bec`. Demandé par PY sous le nom « Sintosaure, comme la bière » (Tsingtao).
+- [ ] **Prononciation de « spinorhinus »** dans le bloc A du Tsintaosaure : la transcription automatique entend « Spinosaurus » puis « Spinaurus », même découpé en syllabes. À faire écouter à PY.
+- [ ] **Crête du Tsintaosaure** : reconstitution 2013 (haute, arrondie), haut de crête inconnu. Image à faire valider par PY.
+- [ ] **Hauteur du Deinocheirus (3,5 m à la hanche)** : estimation de 2010 faite sur les bras seuls, avant le squelette de 2014. À recouper sur Lee et al. 2014.
 - [ ] **Trou de palier `_compPoids` entre la vache (0,65 t) et la petite voiture (1 t)** : un dino de 0,75 à 0,85 t ment de 13 à 19 %. Vu sur Afrovenator (estimation 2016 : 0,79 t, retenu 0,7 t dans la fourchette de Holtz). Repère à proposer à PY (L-D-52 : auditer les paliers).
 - [ ] **Palier `_compLong` à 16 m** : « bus accordéon » (18 m) dès 16 m, soit 12,5 % d'écart à la borne. Vu sur Jobaria (retenu 17 m, dans la fourchette 16-18,2). Vérifier les dinos existants entre 16 et 16,3 m.
 - [ ] **Hauteur Jobaria 4,5 m** : une seule source (Grokipedia), non recoupée.

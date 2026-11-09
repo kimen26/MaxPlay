@@ -1,6 +1,6 @@
 {
   "id": "patagotitan",
-  "name": "Titanosaure",
+  "name": "Patagotitan",
   "full": "Patagotitan mayorum",
   "famille": "cou_long",
   "cat": "herbivores",
@@ -9,18 +9,18 @@
   "taille_m": 31,
   "hauteur_m": 6.5,
   "poids_t": 57,
-  "nom_etym": "« Titanosaurus », deux morceaux ! Titano, ça vient de Titan, en grec — le géant, le plus grand de tous ! Et saurus (ou saure), le lézard. En entier : le lézard géant — l'un des plus grands animaux qui aient jamais marché sur Terre !",
+  "nom_etym": "« Patagotitan », deux morceaux ! Patago, c'est la Patagonie, tout au sud de l'Argentine, là où on a trouvé ses os. Et titan, en grec, ce sont les Titans, les géants des vieilles histoires grecques. En entier : le titan de Patagonie, l'un des plus grands animaux qui aient jamais marché sur Terre !",
   "regime": "🌿 Herbivore",
   "superpower": "Un des PLUS grands animaux qui aient jamais marché sur Terre ! Avec 57 tonnes, il pesait autant que 19 hippopotames !",
   "chasseurs": "Adulte, presque personne : sa taille le protégeait des chasseurs comme le Tyrannotitan. Les jeunes, eux, devaient se méfier des grands carnivores de Patagonie.",
   "proies": "Mange des feuilles tout en haut des arbres",
   "amis": "En troupeau",
   "fait": "On a trouvé au moins 6 squelettes ensemble en Patagonie, au sud de l'Argentine ! Plus de 150 os sont sortis d'une seule carrière, tous énormes. Les savants se disputent encore pour savoir qui était le plus grand : lui, ou son cousin l'Argentinosaure !",
-  "desc": "Le Titanosaure Patagotitan était l'un des plus grands animaux qui aient jamais marché sur Terre. Même le Brachiosaure était petit à côté de lui ! Il vivait en troupeau en Argentine, et sa taille énorme le protégeait des grands carnivores.",
+  "desc": "Le Patagotitan était l'un des plus grands animaux qui aient jamais marché sur Terre. Même le Brachiosaure était petit à côté de lui ! Il vivait en troupeau en Argentine, et sa taille énorme le protégeait des grands carnivores.",
   "png": "Patagotitan.webp",
   "color": "#1e8449",
   "continent": "Amérique du Sud",
   "periode": "cretace",
   "_filler": "\r\n  ",
-  "_raw": "{\r\n    id: 'patagotitan',\r\n    famille: 'cou_long',\r\n    name: 'Titanosaure',\r\n    full: 'Patagotitan mayorum',\r\n    cat: 'herbivores',\r\n    epoque: 'Crétacé · il y a 100 millions d\\'ans',\r\n    region: 'Amérique du Sud (Argentine)',\r\n    taille_m: 31,\r\n    hauteur_m: 6.5,\r\n    poids_t: 57,\r\n    comp_taille: _compLong(31),\r\n    comp_hauteur: _compHaut(6.5),\r\n    comp_poids: _compPoids(57),\r\n    nom_etym: '« Titanosaurus », deux morceaux ! Titano, ça vient de Titan, en grec — le géant, le plus grand de tous ! Et saurus (ou saure), le lézard. En entier : le lézard géant — l\\'un des plus grands animaux qui aient jamais marché sur Terre !',\r\n    regime: '🌿 Herbivore',\r\n    superpower: 'Un des PLUS grands animaux qui aient jamais marché sur Terre ! Avec 57 tonnes, il pesait autant que 19 hippopotames !',\r\n    chasseurs: 'Adulte, presque personne : sa taille le protégeait des chasseurs comme le Tyrannotitan. Les jeunes, eux, devaient se méfier des grands carnivores de Patagonie.',\r\n    proies: 'Mange des feuilles tout en haut des arbres',\r\n    amis: 'En troupeau',\r\n    fait: 'On a trouvé au moins 6 squelettes ensemble en Patagonie, au sud de l\\'Argentine ! Plus de 150 os sont sortis d\\'une seule carrière, tous énormes. Les savants se disputent encore pour savoir qui était le plus grand : lui, ou son cousin l\\'Argentinosaure !',\r\n    desc: 'Le Titanosaure Patagotitan était l\\'un des plus grands animaux qui aient jamais marché sur Terre. Même le Brachiosaure était petit à côté de lui ! Il vivait en troupeau en Argentine, et sa taille énorme le protégeait des grands carnivores.',\r\n    png: 'Patagotitan.webp',\r\n    color: '#1e8449',\r\n    continent: 'Amérique du Sud',\r\n    periode: 'cretace',\r\n  }"
+  "_raw": "{\r\n    id: 'patagotitan',\r\n    famille: 'cou_long',\r\n    name: 'Patagotitan',\r\n    full: 'Patagotitan mayorum',\r\n    cat: 'herbivores',\r\n    epoque: 'Crétacé · il y a 100 millions d\\'ans',\r\n    region: 'Amérique du Sud (Argentine)',\r\n    taille_m: 31,\r\n    hauteur_m: 6.5,\r\n    poids_t: 57,\r\n    comp_taille: _compLong(31),\r\n    comp_hauteur: _compHaut(6.5),\r\n    comp_poids: _compPoids(57),\r\n    nom_etym: '« Patagotitan », deux morceaux ! Patago, c\\'est la Patagonie, tout au sud de l\\'Argentine, là où on a trouvé ses os. Et titan, en grec, ce sont les Titans, les géants des vieilles histoires grecques. En entier : le titan de Patagonie, l\\'un des plus grands animaux qui aient jamais marché sur Terre !',\r\n    regime: '🌿 Herbivore',\r\n    superpower: 'Un des PLUS grands animaux qui aient jamais marché sur Terre ! Avec 57 tonnes, il pesait autant que 19 hippopotames !',\r\n    chasseurs: 'Adulte, presque personne : sa taille le protégeait des chasseurs comme le Tyrannotitan. Les jeunes, eux, devaient se méfier des grands carnivores de Patagonie.',\r\n    proies: 'Mange des feuilles tout en haut des arbres',\r\n    amis: 'En troupeau',\r\n    fait: 'On a trouvé au moins 6 squelettes ensemble en Patagonie, au sud de l\\'Argentine ! Plus de 150 os sont sortis d\\'une seule carrière, tous énormes. Les savants se disputent encore pour savoir qui était le plus grand : lui, ou son cousin l\\'Argentinosaure !',\r\n    desc: 'Le Patagotitan était l\\'un des plus grands animaux qui aient jamais marché sur Terre. Même le Brachiosaure était petit à côté de lui ! Il vivait en troupeau en Argentine, et sa taille énorme le protégeait des grands carnivores.',\r\n    png: 'Patagotitan.webp',\r\n    color: '#1e8449',\r\n    continent: 'Amérique du Sud',\r\n    periode: 'cretace',\r\n  }"
 }

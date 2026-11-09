@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 11 mètres de long — aussi long qu'un bus RATP ! [quickly] À la hanche, 3 mètres et demi de haut — comme deux Papas l'un sur l'autre ! Et 6 400 kilos — [amazed] aussi lourd qu'un éléphant et un rhinocéros ensemble !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Et ses bras, ils étaient grands comment ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[proud] 2 mètres et 40 : [amazed] les plus grands bras de tous les dinosaures à deux pattes, avec de grosses griffes au bout."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

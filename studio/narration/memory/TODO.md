@@ -18,6 +18,8 @@
 
 ## À faire
 
+> 2026-11-09 : session DINO (scripts audio de fiches dino Deinocheirus, Tsintaosaure, Patagotitan dans `studio/dino/content/scripts-audio/`). Aucun contenu narratif modifié ; rien à faire côté narration.
+
 | Statut | ID | Titre | Priorité | Assigné | Prochaine action |
 |--------|-----|-------|----------|---------|------------------|
 | ⚪ | **TEST-PANEL-CALIBRATION** | *(déjà clos, voir archive — doublon corrigé lors de cette convergence : la ligne "À faire" historique restait après clôture réelle)* | — | — | Voir `archive/backlog-fermes-2026.md` § Terminés — ticket réellement clos 2026-07-04. |

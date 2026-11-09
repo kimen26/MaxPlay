@@ -430,7 +430,7 @@
 → **« lézard des monts Shoshone »** (aux États-Unis)
 [nom_etym OK — nom de lieu, PAS du grec pour la première partie : vérifié Wikipedia. Pas un dinosaure : ichtyosaure géant]
 
-## patagotitan — Titanosaure (Patagotitan mayorum)
+## patagotitan — Patagotitan (Patagotitan mayorum)
 - **Patago-** = la Patagonie, région d'Argentine où ses os ont été trouvés
 - **-titan / Titan** (grec) = les Titans, géants des vieilles histoires grecques
 → **« le Titan de Patagonie »** (en Argentine)
@@ -520,6 +520,20 @@
 - **amberina** (latin moderne) = d'ambre
 → **« la guerrière invaincue »** (et *amberina* pour l'ambre trouvé dans la roche du gisement)
 [nom_etym OK — vérifié presse scientifique (Phys.org, The Conversation, octobre 2026 ; article Royal Society Open Science non lu, 403). Papa Yann avait dit « indomptable » : la traduction juste est « invaincue »]
+
+## deinocheirus — Deinocheirus (Deinocheirus mirificus)
+- **deino-** (grec *deinos*) = terrible
+- **-cheirus** (grec *cheir*) = main
+- **mirificus** (latin) = extraordinaire, merveilleux
+→ **« la terrible main »** (et *mirificus*, l'extraordinaire)
+[nom_etym OK — vérifié Grokipedia + Wikipédia EN/FR, 2026-11-09. *mirificus* : « merveilleux » (Grokipedia, Wikipédia FR) ou « inhabituel » (Wikipédia EN), rendu « extraordinaire »]
+
+## tsintaosaurus — Tsintaosaure (Tsintaosaurus spinorhinus)
+- **Tsintao-** = Tsintao, ancienne transcription de Qingdao, grande ville du Shandong (Chine)
+- **-saurus / -saure** (grec *sauros*) = lézard
+- **spino-** (latin *spina*) = épine ; **-rhinus** (grec *rhis, rhinos*) = nez
+→ **« le lézard de Tsintao »** (et *spinorhinus*, « nez à épine »)
+[nom_etym OK — vérifié Grokipedia + Wikipédia EN, 2026-11-09. Qingdao n'est pas le lieu exact de la découverte (Laiyang), mais une grande ville voisine]
 
 ---
 

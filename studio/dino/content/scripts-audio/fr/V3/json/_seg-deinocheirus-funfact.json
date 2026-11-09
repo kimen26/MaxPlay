@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] En 1965, dans le désert de Gobi, on a trouvé deux bras géants. [whispers] Juste les bras ! [curious] Pendant presque 50 ans, personne ne savait à quoi ressemblait le reste."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[amazed] Un dinosaure qu'on ne connaissait que par ses bras."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[amazed] Et en 2014, surprise : [excited] de hautes épines dans le dos, un bec de canard, [playful] et plus de mille petits cailloux dans le ventre pour écraser sa nourriture."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

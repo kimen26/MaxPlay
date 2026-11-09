@@ -3,8 +3,8 @@
     "source": "studio/dino/content/sources/etymo/_ETYMO-RACINES-50.md",
     "genere_par": "scripts/export/_etymo2racines.cjs",
     "note": "STRUCTURE seulement — la source de vérité reste le .md (fact-checké). Curation pédagogique du dico = dino-conseiller.",
-    "nb_racines": 114,
-    "nb_dinos": 83
+    "nb_racines": 117,
+    "nb_dinos": 85
   },
   "racines": [
     {
@@ -13,7 +13,7 @@
       "translitteration": "sauros",
       "sens": "lézard",
       "type": "racine",
-      "n": 40,
+      "n": 41,
       "variantes": [
         "-saura",
         "-saure",
@@ -63,6 +63,7 @@
         "tarbosaurus",
         "therizinosaurus",
         "torosaurus",
+        "tsintaosaurus",
         "tyrannosaurus"
       ]
     },
@@ -294,6 +295,22 @@
       ]
     },
     {
+      "cle": "deino- / deinos",
+      "langue": "grec",
+      "translitteration": "deinos",
+      "sens": "terrible, effrayant",
+      "type": "racine",
+      "n": 2,
+      "variantes": [
+        "deino-",
+        "deinos"
+      ],
+      "dinos": [
+        "deinocheirus",
+        "deinonychus"
+      ]
+    },
+    {
       "cle": "di-",
       "langue": "grec",
       "translitteration": null,
@@ -306,6 +323,22 @@
       "dinos": [
         "dilophosaurus",
         "dimetrodon"
+      ]
+    },
+    {
+      "cle": "spino-",
+      "langue": "latin",
+      "translitteration": "spina",
+      "sens": "épine",
+      "type": "racine",
+      "n": 2,
+      "variantes": [
+        "spina",
+        "spino-"
+      ],
+      "dinos": [
+        "spinosaurus",
+        "tsintaosaurus"
       ]
     },
     {
@@ -364,6 +397,21 @@
       ],
       "dinos": [
         "paraceratherium"
+      ]
+    },
+    {
+      "cle": "-cheirus",
+      "langue": "grec",
+      "translitteration": "cheir",
+      "sens": "main",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "-cheirus",
+        "cheir"
+      ],
+      "dinos": [
+        "deinocheirus"
       ]
     },
     {
@@ -928,21 +976,6 @@
       ]
     },
     {
-      "cle": "deino- / deinos",
-      "langue": "grec",
-      "translitteration": null,
-      "sens": "terrible, effrayant",
-      "type": "racine",
-      "n": 1,
-      "variantes": [
-        "deino-",
-        "deinos"
-      ],
-      "dinos": [
-        "deinonychus"
-      ]
-    },
-    {
       "cle": "diplo-",
       "langue": "grec",
       "translitteration": "diploos",
@@ -1295,6 +1328,20 @@
       ]
     },
     {
+      "cle": "mirificus",
+      "langue": "latin",
+      "translitteration": null,
+      "sens": "extraordinaire, merveilleux",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "mirificus"
+      ],
+      "dinos": [
+        "deinocheirus"
+      ]
+    },
+    {
       "cle": "Mosa-",
       "langue": "latin",
       "translitteration": "Mosa",
@@ -1560,21 +1607,6 @@
       ]
     },
     {
-      "cle": "spino-",
-      "langue": "latin",
-      "translitteration": "spina",
-      "sens": "épine",
-      "type": "racine",
-      "n": 1,
-      "variantes": [
-        "spina",
-        "spino-"
-      ],
-      "dinos": [
-        "spinosaurus"
-      ]
-    },
-    {
       "cle": "stégo- / stegos",
       "langue": "grec",
       "translitteration": null,
@@ -1720,6 +1752,20 @@
       ],
       "dinos": [
         "troodon"
+      ]
+    },
+    {
+      "cle": "Tsintao-",
+      "langue": null,
+      "translitteration": null,
+      "sens": "Tsintao, ancienne transcription de Qingdao, grande ville du Shandong",
+      "type": "nom_propre",
+      "n": 1,
+      "variantes": [
+        "Tsintao-"
+      ],
+      "dinos": [
+        "tsintaosaurus"
       ]
     },
     {
@@ -3224,7 +3270,7 @@
       "nom_etym": "ok"
     },
     "patagotitan": {
-      "nom": "Titanosaure",
+      "nom": "Patagotitan",
       "full": "Patagotitan mayorum",
       "sens": "le Titan de Patagonie",
       "racines": [
@@ -3525,6 +3571,58 @@
           "cle": "amberina",
           "langue": "latin",
           "sens": "d'ambre"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "deinocheirus": {
+      "nom": "Deinocheirus",
+      "full": "Deinocheirus mirificus",
+      "sens": "la terrible main",
+      "racines": [
+        {
+          "racine": "deino-",
+          "cle": "deino-",
+          "langue": "grec",
+          "sens": "terrible"
+        },
+        {
+          "racine": "-cheirus",
+          "cle": "-cheirus",
+          "langue": "grec",
+          "sens": "main"
+        },
+        {
+          "racine": "mirificus",
+          "cle": "mirificus",
+          "langue": "latin",
+          "sens": "extraordinaire, merveilleux"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "tsintaosaurus": {
+      "nom": "Tsintaosaure",
+      "full": "Tsintaosaurus spinorhinus",
+      "sens": "le lézard de Tsintao",
+      "racines": [
+        {
+          "racine": "Tsintao-",
+          "cle": "Tsintao-",
+          "langue": null,
+          "sens": "Tsintao, ancienne transcription de Qingdao, grande ville du Shandong"
+        },
+        {
+          "racine": "-saurus / -saure",
+          "cle": "-saure",
+          "langue": "grec",
+          "sens": "lézard"
+        },
+        {
+          "racine": "spino-",
+          "cle": "spino-",
+          "langue": "latin",
+          "sens": "épine ; **-rhinus** (grec *rhis, rhinos*) = nez"
         }
       ],
       "nom_etym": "ok"

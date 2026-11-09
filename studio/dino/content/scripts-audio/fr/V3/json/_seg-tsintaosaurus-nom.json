@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Tsin-ta-o-saure. [curious] « Tsintao », c'est l'ancien nom d'une grande ville de Chine, Qingdao. [proud] Et « saure », en grec, c'est le lézard."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Le lézard de Tsintao ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactement. [amazed] Son deuxième nom, « spi-no-ri-nus », veut dire « nez à épine ». [confident] Il vivait en Chine, il y a 75 millions d'années."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[calm] Il marchait lentement au bord des rivières, [curious] et broutait des plantes avec un large bec plat, comme celui d'un canard. [confident] Il mangeait aussi des poissons."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et ses grandes griffes, elles servaient à quoi ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[hesitant] Les savants hésitent encore : [curious] creuser, attraper des branches, ou se défendre. [serious] Car le Tarbosaure, le grand cousin du T-Rex, vivait au même endroit."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

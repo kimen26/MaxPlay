@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[calm] Herbivore, avec un bec de canard. [curious] Derrière son bec, des centaines de petites dents écrasaient les plantes, [proud] comme une râpe."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il vivait tout seul ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly] Sans doute en troupeau, comme ses cousins à bec de canard. [serious] Dans la même région vivait un grand cousin du T-Rex, le Zhuchengtyrannus."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

@@ -959,7 +959,7 @@ window.DINO_COMBATS = {
    "file": "Patagotitan_rival.webp",
    "type": "rival",
    "meme_espece": true,
-   "adversaire": "Titanosaure",
+   "adversaire": "Patagotitan",
    "adversaire_latin": "Patagotitan mayorum"
   }
  ],

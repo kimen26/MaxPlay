@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Pendant 55 ans, on l'a dessiné avec une corne fine sur la tête, [playful] comme une licorne !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Un dinosaure licorne ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[amazed] C'est ce qu'on croyait. [confident] Mais en 2013, des savants ont compris que cette corne n'était que le bas d'une grande crête arrondie. [softly] Le haut manque encore : on le dessine d'après ses cousins."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

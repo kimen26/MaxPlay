@@ -263,9 +263,9 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 55%, #b98551 100%)
    lecteur d'écran — la porte est devant, on ne triche pas. */
 .zone-cachee { visibility:hidden; }
 
-/* Titre du jeu dit au toucher (titre-jeu.js) : la carte « parle » le temps
-   que la voix finisse, puis le jeu s'ouvre. Le facteur --obj-scale de l'objet
-   est conservé, seul un petit rebond s'y ajoute. */
+/* Case touchée (titre-jeu.js) : la carte rebondit le temps que la page du
+   jeu arrive (le titre est dit dans le jeu). Le facteur --obj-scale de
+   l'objet est conservé, seul un petit rebond s'y ajoute. */
 .casier.titre-dit .obj { animation:casier-parle 520ms ease-in-out infinite; }
 @keyframes casier-parle {
   0%, 100% { transform:scale(var(--obj-scale, 1)); }

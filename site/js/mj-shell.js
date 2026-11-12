@@ -55,6 +55,9 @@
   var LANG = langActive();
 
   var SCRIPTS = [
+    // EN PREMIER : le titre du jeu, noté par l'accueil, est dit dès l'arrivée
+    // et retient les autres sons du jeu jusqu'à sa fin (PY 2026-11-12).
+    'js/titre-jeu.js',
     // Langue active + surcouche i18n panneau règle (HO-MJ-02) : chargés en tête, avant
     // tout écran, pour que RegleInfo.init (plus bas) trouve MJi18n déjà posé.
     // hasScript() déduplique : les 8 jeux qui chargeaient déjà js/lang.js à la main

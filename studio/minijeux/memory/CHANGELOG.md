@@ -6,6 +6,7 @@
 
 - L'armoire est posée sur un parquet, avec son ombre sous les pieds, et les noms sous les objets sont retirés : l'objet dit le thème, le cadenas reste sur la case verrouillée.
 - L'armoire est 20 % plus grande : son corps remplit la largeur du téléphone, les portes ouvertes sortent par les côtés, le petit dino est debout sur la corniche. L'accueil ne reste plus blanc quand le serveur des polices est lent, et un jeu déjà ouvert ne fait plus attendre un réseau mobile qui traîne.
+- Toucher une case ouvre le jeu tout de suite : son titre est dit à l'arrivée, puis la consigne (avant, 2 s d'attente sur l'accueil).
 - Dinomino : les 8 bébés dinos sont redessinés par ChatGPT sur un même corps, comme des pièces de lego : chaque tête va sur chaque corps à sa vraie place, les plaques, la voile, les bosses, les plumes et les queues sont dessinées (plus fabriquées), et la queue ondule sans se casser.
 
 ## 2026-10

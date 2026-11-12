@@ -472,12 +472,12 @@
     root.addEventListener('click', function (ev) {
       var btn = ev.target.closest('.casier');
       if (!btn) return;
-      // un titre est déjà en train d'être dit : on ne tire pas un 2e jeu du sac
+      // un jeu est déjà en train de s'ouvrir : on ne tire pas un 2e jeu du sac
       if (global.TitreJeu && TitreJeu.occupe()) return;
       var slot = _slots[+btn.dataset.idx];
       var cible = slot && cibleDuSlot(slot);
       if (!cible) return;
-      // Le titre du jeu est dit AVANT l'ouverture (titre-jeu.js, PY 2026-11-03).
+      // Le jeu s'ouvre tout de suite, son titre est dit à l'arrivée (titre-jeu.js, PY 2026-11-12).
       if (cible.entree && global.TitreJeu) TitreJeu.ouvrir(cible.entree, cible.url, btn);
       else location.href = cible.url;
     });

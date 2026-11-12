@@ -35,7 +35,7 @@
 
 // Tampon recopié de SW_VERSION par gen-sw-version.mjs : fait changer sw.js à chaque
 // version, pour les navigateurs qui ignorent un changement d'importScripts (L-D-90).
-// SW_STAMP: 1f4b4eea9b87
+// SW_STAMP: 285d5dafafda
 importScripts('./js/gen/sw-version.js');
 
 const VERSION = self.SW_VERSION || 'dev';
@@ -45,13 +45,23 @@ const RUNTIME_CACHES = {
   img: `${RUNTIME_PREFIX}img`,
   audio: `${RUNTIME_PREFIX}audio`,
   sounds: `${RUNTIME_PREFIX}sounds`,
+  fonts: `${RUNTIME_PREFIX}fonts`,
 };
 // Plafond d'entrées par cache runtime (LRU approximatif, éviction FIFO).
 const CACHE_LIMITS = {
   [RUNTIME_CACHES.img]: 500,
   [RUNTIME_CACHES.audio]: 300,
   [RUNTIME_CACHES.sounds]: 100,
+  [RUNTIME_CACHES.fonts]: 30,
 };
+// Polices Google (2026-11-12) : leur feuille CSS BLOQUE le premier affichage
+// de chaque page ; laissée au navigateur, elle repartait sur le réseau dès que
+// son cache HTTP (24 h) expirait : mesuré, 2 s de retard du serveur = 2,1 s
+// d'écran blanc. Servies depuis le cache, revalidées en tâche de fond.
+const FONT_ORIGINS = ['https://fonts.googleapis.com', 'https://fonts.gstatic.com'];
+// Au-delà de ce délai sans réponse du réseau, on sert la copie en cache si
+// elle existe (réseau mobile lent) ; le réseau met quand même le cache à jour.
+const NETWORK_TIMEOUT_MS = 1500;
 
 // Coquille précachée à l'install — édité seulement si le menu charge un
 // nouveau fichier partagé. gen-sw-version.mjs relit ce bloc pour calculer le
@@ -190,7 +200,8 @@ function staleWhileRevalidate(request, cacheName, maxEntries) {
     const cached = await cache.match(request);
     const networkFetch = fetch(request)
       .then((response) => {
-        if (response && response.ok) {
+        // opaque : feuille CSS des polices Google (balise <link> sans CORS)
+        if (response && (response.ok || response.type === 'opaque')) {
           cache.put(request, response.clone());
           trimCache(cacheName, maxEntries);
         }
@@ -201,21 +212,32 @@ function staleWhileRevalidate(request, cacheName, maxEntries) {
   });
 }
 
-/** network-first : réseau si possible, repli cache sinon, puis repli offline.html pour les pages. */
+/** network-first : réseau si possible, repli cache sinon (ou si le réseau tarde
+ *  plus de NETWORK_TIMEOUT_MS), puis repli offline.html pour les pages. */
 function networkFirst(request, isNavigation) {
-  return fetch(request)
-    .then((response) => {
-      if (response && response.ok && request.method === 'GET') {
-        caches.open(SHELL_CACHE).then((cache) => cache.put(request, response.clone()));
-      }
-      return response;
-    })
-    .catch(async () => {
-      const cached = await caches.match(request);
-      if (cached) return cached;
-      if (isNavigation) return caches.match('offline.html');
-      return Response.error();
-    });
+  return new Promise((resolve) => {
+    let servi = false;
+    const servir = (response) => { if (!servi) { servi = true; resolve(response); } };
+    const timer = setTimeout(() => {
+      caches.match(request).then((cached) => { if (cached) servir(cached); });
+    }, NETWORK_TIMEOUT_MS);
+    fetch(request)
+      .then((response) => {
+        clearTimeout(timer);
+        if (response && response.ok && request.method === 'GET') {
+          const copie = response.clone();
+          caches.open(SHELL_CACHE).then((cache) => cache.put(request, copie));
+        }
+        servir(response);
+      })
+      .catch(async () => {
+        clearTimeout(timer);
+        const cached = await caches.match(request);
+        if (cached) return servir(cached);
+        if (isNavigation) return servir(await caches.match('offline.html'));
+        servir(Response.error());
+      });
+  });
 }
 
 self.addEventListener('fetch', (event) => {
@@ -223,7 +245,11 @@ self.addEventListener('fetch', (event) => {
   if (request.method !== 'GET') return; // écritures Supabase/cloud.js jamais interceptées
 
   const url = new URL(request.url);
-  if (url.origin !== self.location.origin) return; // CDN fonts, etc. : laissés au navigateur
+  if (FONT_ORIGINS.includes(url.origin)) {
+    event.respondWith(staleWhileRevalidate(request, RUNTIME_CACHES.fonts, CACHE_LIMITS[RUNTIME_CACHES.fonts]));
+    return;
+  }
+  if (url.origin !== self.location.origin) return; // autres origines : laissées au navigateur
 
   const isNavigation = request.mode === 'navigate';
 

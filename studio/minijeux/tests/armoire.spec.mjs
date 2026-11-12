@@ -97,8 +97,11 @@ for (const vp of VIEWPORTS) {
       // en pixels écraserait la géométrie du meuble.
       const taps = cases.map(c => c.querySelector('.tap').getBoundingClientRect());
 
-      // tout le contenu de l'armoire, vantaux ouverts compris
-      const all = [...cab.querySelectorAll('*')].map(e => e.getBoundingClientRect());
+      // tout le contenu de l'armoire SAUF les vantaux ouverts, qui sortent
+      // par les côtés (armoire x1.2, retour PY 2026-11-12 : « peu importe si
+      // quand les portes sont ouvertes on est dehors »), et la carcasse, dont
+      // l'image garde la marge transparente des vantaux ouverts.
+      const all = [...cab.querySelectorAll('*:not(.am-ouverte):not(.am-shell)')].map(e => e.getBoundingClientRect());
       const bornes = {
         l: Math.min(...all.map(r => r.left)), r: Math.max(...all.map(r => r.right)),
         t: Math.min(...all.map(r => r.top)), b: Math.max(...all.map(r => r.bottom))

@@ -35,13 +35,18 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 55%, #b98551 100%)
   /* -18px : l'avatar mord le haut de l'arche et depasse donc legerement du
      cadre ; sans cette reserve il est rogne des que la HAUTEUR pilote la
      taille (constate en 800x600 et 1280x720). */
+  /* x1.2 en largeur (retour PY 2026-11-12 : « l'armoire est étroite ») :
+     le repère réserve 21 % de sa largeur aux vantaux ouverts ; on agrandit
+     la scène pour que le CORPS remplisse l'écran, et les vantaux ouverts
+     sortent par les côtés (.piece les coupe). -40px en hauteur : garde une
+     bande de parquet sous les pieds quand la hauteur pilote. */
   --cab-w: min(
-    calc(100vw - var(--safe-x)),
-    calc((100svh - var(--safe-y) - 18px) * 0.61554)
+    calc((100vw - var(--safe-x)) * 1.2),
+    calc((100svh - var(--safe-y) - 40px) * 0.61554)
   );
 }
 @supports not (height: 100svh) {
-  .piece { --cab-w: min(calc(100vw - var(--safe-x)), calc((100vh - var(--safe-y) - 18px) * 0.61554)); }
+  .piece { --cab-w: min(calc((100vw - var(--safe-x)) * 1.2), calc((100vh - var(--safe-y) - 40px) * 0.61554)); }
 }
 /* Le SOL (retour PY 2026-11-08 : « où est le sol ? »). Il est accroché au
    meuble, pas à l'écran : la jonction mur/parquet passe derrière le bas du
@@ -68,8 +73,10 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 55%, #b98551 100%)
 .armoire {
   position:relative; flex:none; overflow:visible;
   width:var(--cab-w); aspect-ratio:911 / 1480;
-  /* les vantaux ouverts débordent du corps : la marge est déjà comprise
-     dans le repère 911 × 1480, ils ne sortent donc jamais de la scène. */
+  /* Plus large que l'écran (x1.2) : une grille aligne alors l'élément à
+     gauche ; ces marges (négatives) le recentrent, les vantaux ouverts
+     sortent à parts égales des deux côtés. */
+  margin-inline:calc((100% - var(--cab-w)) / 2);
 }
 
 /* ── Patch de plafond (retour PY passe 3, 2026-09-28) : recouvre les 2
@@ -297,10 +304,13 @@ body { background:linear-gradient(180deg, #e2b87e 0%, #d3a166 55%, #b98551 100%)
    (constaté HO-MJ-22, en intégrant le meuble v8 : le kit v6 n'avait pas ce
    problème, ses vantaux ouverts étaient une simple rotation 3D du vantail
    fermé, réduite à un fil sur cette zone). */
+/* Debout sur la corniche gauche (armoire x1.2, 2026-11-12) : le coin du
+   repère où il vivait (x 0,5 %) sort désormais de l'écran ; le corps du
+   meuble commence à 10,5 %, et le repère est rogné de 8,3 % par côté. */
 .ar-avatar-wrap {
   position:absolute; z-index:56;
-  left:0.5%; top:3%;
-  width:18%; aspect-ratio:1;
+  left:11%; top:-2.6%;
+  width:15%; aspect-ratio:1;
   cursor:pointer;
 }
 .avatar {

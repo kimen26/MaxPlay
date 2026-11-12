@@ -10,6 +10,9 @@
 - [x] `sw.js` porte désormais la version (ligne `// SW_STAMP:` recopiée par `gen-sw-version.mjs`) et précache en `cache: 'reload'` : les navigateurs qui ignorent un changement d'`importScripts` voient enfin la mise à jour (commit ad992be2, leçon DINO L-D-90).
 - [ ] Porte : faire échouer `npm run check` si `sw-version.js` ne correspond pas au hash recalculé (suivi côté DINO, TODO § Vague 2026-11-08).
 - [ ] `site/mj-30.html` garde une copie figée et périmée des données dino (Patagotitan « Titanosaure », 37 m, 70 t) : la lire depuis `dinos-data.js` (suivi DINO § Patagotitan reliquats).
+- [x] Polices Google gardées par le service worker (leur feuille CSS bloquait le premier affichage : 2 s de serveur lent = 2,1 s d'écran blanc) ; réseau network-first plafonné à 1,5 s puis repli cache (2026-11-12).
+- [?] Titre du jeu dit AVANT l'ouverture (D-036) : 2,3 s mesurées entre le toucher et le départ du jeu. Papa Yann tranche : garder, supprimer, ou le dire au début du jeu.
+- [ ] Parking : une page `mj-XX.html` est servie cache-first dans le cache coquille ; si SEULE elle change (aucun fichier précaché modifié), `SW_VERSION` ne bouge pas et la tablette garde l'ancienne page.
 
 ## Lane — Recette complète FR/EN 2026-09-19 (rapport `memory/audits/2026-09-19-recette-complete.md`)
 

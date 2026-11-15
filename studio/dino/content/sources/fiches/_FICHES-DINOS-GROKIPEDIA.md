@@ -933,7 +933,7 @@ Ornithopode herbivore du **Crétacé supérieur (~76–74 Ma)**, Amérique du No
 Ornithopode herbivore du **Crétacé supérieur** — *E. regalis* ~73–71 Ma (Alberta) · *E. annectens* ~70–66 Ma (Grande plaines, Alaska) — Amérique du Nord, **plaines côtières et vallées fluviales** à végétation basse.
 - **Taille** : jusqu'à **12–13 m** de long · **~3–4 m** aux hanches · **~4–4,5 tonnes**. *(face à un enfant d'1 m : l'enfant lui arrive à mi-tibia environ.)*
 - **Silhouette** : **bipède ou quadrupède** — corps très long, museau plat et large, longue queue rigide.
-- **Tête** : **crâne SANS crête osseuse** (ni casque ni tube) — museau long et plat formant un large **bec de canard** ; certains spécimens "momifiés" montrent la trace possible d'une **crête charnue** molle sur le dessus du crâne (non osseuse, hypothèse débattue).
+- **Tête** : **crâne SANS crête osseuse** (ni casque ni tube) — museau long et plat formant un large **bec de canard** ; une « momie » d'*E. regalis* (Bell et al. 2014) montre une **petite crête charnue molle**, comme celle d'un coq, sur le dessus du crâne (sans os, un seul spécimen connu).
 - **Peau** : **spécimens "momifiés" connus** (peau préservée) montrant des **écailles polygonales fines** tout autour du corps ; peau très bien documentée.
 - **Dents** : **batterie de centaines de dents** en remplacement constant — l'une des batteries dentaires les plus efficaces des dinosaures herbivores.
 - **Pieds** : sabots larges ; ongles en sabots à l'avant également pour l'appui quadrupède.
@@ -942,7 +942,7 @@ Ornithopode herbivore du **Crétacé supérieur** — *E. regalis* ~73–71 Ma (
 - **Chassé par** : **Tyrannosaurus rex** (coexiste dans les mêmes formations Hell Creek et Lance pour E. annectens) — des fossiles portent des traces de blessures cicatrisées infligées par des prédateurs.
 - **Vit avec** : **grands troupeaux** (possibles migrations saisonnières) ; côtoie **Tricératops** et **Ankylosaure** pour E. annectens.
 - **Bébés/œufs** : `⚠️ probable` (nids de hadrosaures connus, pas attribués avec certitude à Edmontosaurus).
-- ⭐ **Signature** : **tête plate SANS crête · très grand · peau connue par fossiles de "momies"**.
+- ⭐ **Signature** : **tête plate SANS crête osseuse, petite crête molle de chair comme un coq · très grand · peau connue par fossiles de "momies"**.
 
 ### ❓ QUESTIONS / SCÈNES (à demander séparément à l'IA d'image)
 1. **Environnement** — « Dessine un Edmontosaurus en posture quadrupède dans une plaine fluviale du Crétacé, fougères et conifères, ciel ouvert, plein jour, style BD enfant, anatomie juste, vue de profil pour bien montrer le long museau plat sans crête. »

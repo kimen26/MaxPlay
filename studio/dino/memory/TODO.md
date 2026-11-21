@@ -179,3 +179,4 @@ sommaire visuel, et sa forme dit sa fonction sans un mot. Maquettes des 3 declin
 - [ ] **Trou de palier `_compPoids` entre la vache (0,65 t) et la petite voiture (1 t)** : un dino de 0,75 à 0,85 t ment de 13 à 19 %. Vu sur Afrovenator (estimation 2016 : 0,79 t, retenu 0,7 t dans la fourchette de Holtz). Repère à proposer à PY (L-D-52 : auditer les paliers).
 - [ ] **Palier `_compLong` à 16 m** : « bus accordéon » (18 m) dès 16 m, soit 12,5 % d'écart à la borne. Vu sur Jobaria (retenu 17 m, dans la fourchette 16-18,2). Vérifier les dinos existants entre 16 et 16,3 m.
 - [ ] **Hauteur Jobaria 4,5 m** : une seule source (Grokipedia), non recoupée.
+- [ ] **DEINOCHEIRUS-CH** (PY 2026-11-21) — prononciation tranchée « Dé-i-no-ché-i-rus » (son « ch ») : lexique + script V3 + JSON mis à jour, `site/js/gen/lexique-fr.js` régénéré. Reste : régénérer `deinocheirus-nom.mp3` (et les blocs qui disent le nom) au prochain passage ElevenLabs.

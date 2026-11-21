@@ -55,6 +55,7 @@
 - **EP-D10** [ ] — Quiz multi-choix par famille.
 - **EP-D11** [ ] — Refonte récit Crétacé/extinction du Voyage.
 - **EP-D12** [ ] — Nouvelle section Voyage après la météorite (Cénozoïque/mégafaune).
+- [ ] Pont pôle CHANSONS (2026-11-21) : la chanson « Le voyage des dinos » (`studio/chansons/paroles/le-voyage-des-dinos.md`) s'appuie sur les fiches. À faire valider par `dino-conseiller` : des mosasaures dans la mer autour des îles de l'Arcovénator (74 Ma) ; le Vélociraptor chante « seul ou à deux », comme dit sa fiche, alors que Papa Yann voulait une meute.
 
 ## Questions Papa Yann non tranchées (2026-09-03)
 - [?] **Accès à l'encyclopédie depuis l'armoire** (2026-10-28, EP-156 pôle JEU) : la nouvelle case « Dino » fait tourner les 4 mini-jeux dino ; l'encyclopédie reste sur le livre « Dinos » de la niche centrale. PY a écrit « dino encyclopédie » : à confirmer si la case Dino doit plutôt ouvrir l'encyclopédie.
@@ -179,3 +180,4 @@ sommaire visuel, et sa forme dit sa fonction sans un mot. Maquettes des 3 declin
 - [ ] **Trou de palier `_compPoids` entre la vache (0,65 t) et la petite voiture (1 t)** : un dino de 0,75 à 0,85 t ment de 13 à 19 %. Vu sur Afrovenator (estimation 2016 : 0,79 t, retenu 0,7 t dans la fourchette de Holtz). Repère à proposer à PY (L-D-52 : auditer les paliers).
 - [ ] **Palier `_compLong` à 16 m** : « bus accordéon » (18 m) dès 16 m, soit 12,5 % d'écart à la borne. Vu sur Jobaria (retenu 17 m, dans la fourchette 16-18,2). Vérifier les dinos existants entre 16 et 16,3 m.
 - [ ] **Hauteur Jobaria 4,5 m** : une seule source (Grokipedia), non recoupée.
+- [ ] **Audit des prononciations des noms de dinos dans toutes les langues** (demande PY 2026-11-21) : réécouter les MP3 de chaque langue contre son lexique `i18n/lexiques-prononciation/<lang>.md`, en transcription automatique plus écoute. Cas signalé par PY : Deinocheirus. PY a entendu dire que le `ch` se dit « ch » ; notre règle et l'usage savant disent « k » (grec *kheir*, la main ; EN « dye-no-KYE-rus »). Vérifier ce que disent réellement les MP3 FR et EN, et trancher avec PY si une langue le dit autrement.

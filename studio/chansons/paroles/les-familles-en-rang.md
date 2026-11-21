@@ -3,7 +3,7 @@
 - **Slug** : `les-familles-en-rang` (= nom du MP3 dans `site/sounds/music/chansons/`)
 - **Sujet** : dinos — séries de noms par famille, rangés (cornes, taille, époque)
 - **Langue** : fr
-- **Durée visée** : 4:30
+- **Durée visée** : 4:45 (avec le solo)
 - **Statut** : paroles
 
 > Couplets rappés/scandés (vers de 7 à 11 syllabes, paires équilibrées, rimes en fin de vers), refrain chanté (7/7/8/8/8/8).
@@ -121,7 +121,11 @@ Et toi, ton préféré, c'est lequel ?
 
 ## Prompt de style (ElevenLabs Music)
 
-Upbeat kids hip-hop / funk, 98 BPM, bright major key. Punchy drums, handclaps, slap bass, short brass stabs. Verses rapped by a clear, friendly female voice with very clear French diction, a children's choir echoing the last name of each line. Short spoken announcement before each verse. Chorus sung, catchy pop melody, full children's choir. Final chorus twice, the second bigger. No dark or scary mood, no English lyrics.
+V2 (2026-11-21, demande PY : rap français mélodique + guitare manouche, chanson de rue). Aucun nom d'artiste dans le prompt (règle d'or).
+
+French chanson meets gypsy jazz and melodic French rap. Acoustic gypsy-jazz guitars: rhythm guitar playing the swing "pompe" strum, lead guitar with fast virtuoso runs between lines; upright double bass, light brushed snare, violin and accordion accents. Swing feel, around 120 BPM, warm major key, street-café atmosphere, playful and joyful. Lead: warm, slightly husky female voice with very clear French diction. Verses: fast, rhythmic but melodic rap flow riding the swing, each verse introduced by a short spoken line. Chorus: sung, catchy sing-along melody with a children's choir and hand claps. Short scat fills ("pa-pa-la-pa") between sections. Instrumental gypsy-guitar solo after the third chorus. Final chorus twice, the second bigger with the whole choir. No electronic drums, no dark mood, no English lyrics.
+
+Ancien prompt (V1, hip-hop/funk) : Upbeat kids hip-hop / funk, 98 BPM, punchy drums, handclaps, slap bass, brass stabs, rapped verses, sung pop chorus with children's choir.
 
 ## Plan de composition
 

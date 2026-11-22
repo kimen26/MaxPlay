@@ -193,3 +193,11 @@ encore « gate | tail » suivi d'un envoi (ajout noté au TODO transverse).
 **Cause** : dans `.claude/skills/dino-images-lunii/scripts/batch-dino-series.mjs`, la tranche 1,5-3 m de haut recevait seulement « l'enfant minuscule à côté donne l'échelle », sans aucun chiffre : le mot « minuscule » pousse le modèle à grossir l'animal. La scène Paris ne donnait aucun rapport au bus. Les tranches au-dessus (ratio chiffré) et en dessous (« ne pas exagérer ») étaient déjà corrigées.
 
 **Règle** : toute scène d'échelle donne le rapport chiffré (fois la hauteur de l'enfant, fois ou pourcentage du bus de 12 m × 3 m), « même distance de la caméra », « ne pas exagérer ». Corrigé dans le générateur ; héros et Paris du Kosmocératops refaits et mesurés à l'image. Les dinos de 1,5 à 3 m déjà en ligne n'ont pas été remesurés (TODO).
+
+## L-D-94 — Le nettoyeur de consignes d'image coupait « crâne » et « 2,3 m » (2026-11-22)
+
+**Symptôme** : revue des proportions demandée par PY. La consigne de l'image principale du Pentacératops (6 m) disait « 3 m de longueur », et l'image le montre environ 20 % trop haut. 29 dinos sur 79 recevaient une consigne abîmée : Torosaure « 6 m » à la place du crâne de 2,6 m, Parasaurolophus « 8 m chez P. tubicen » à la place de la crête de 1,8 m, Vélociraptor et Gallimimus « 23 cm » et « 33 cm » sans le mot crâne, « QE ~5, 8 », « ~3, 5 m ».
+
+**Cause** : dans `cleanPuce` (`dino-morpho.mjs`), le filtre des négations utilisait `\b`, qui en JavaScript ne connaît que l'ASCII : « â » compte comme une coupure de mot, donc « ne » était trouvé dans « crâne » et tout le segment sautait. La virgule décimale servait en plus de séparateur de segment, ce qui laissait « 3 m de longueur » orphelin.
+
+**Règle** : bornes de mot Unicode (`(?<!\p{L})`, drapeau `u`) et virgule entre deux chiffres jamais traitée comme séparateur. Les segments marqués ⚠️ sont retirés (ils s'adressent à l'humain). Après toute retouche du nettoyeur, comparer la description de chaque dino avant et après (script de comparaison sur les 79), pas seulement le cas qui a révélé le bug.

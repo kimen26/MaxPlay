@@ -39,6 +39,9 @@ const fichesTxt = existsSync(FICHES) ? readFileSync(FICHES, 'utf8') : '';
 // Signatures morphologiques MANUELLES pour les dinos sans fiche Grokipedia (marins + ajouts récents).
 // Silhouette/proportions RECONNAISSABLES — c'est ce qui doit absolument apparaître.
 const MORPHO = { ...MORPHO_COMMUN,
+  // Revue PY 2026-11-22 : le 1er gros plan dessinait une collerette haute en deux lobes percés de
+  // grandes fenêtres (dessin de Pentacératops). Le crâne réel (UMNH VP 17000) a une collerette COURTE.
+  kosmoceratops: "cératopsien (dinosaure à cornes), tête trapue à bec triangulaire de perroquet. LA COLLERETTE EST COURTE ET BASSE : elle dépasse à peine derrière les cornes des yeux, sa hauteur au-dessus du front vaut environ la longueur d'une corne de l'œil, elle est deux fois plus large que haute, son bord supérieur est presque DROIT (une seule ligne continue), sa surface est PLEINE avec deux toutes petites ouvertures grandes comme l'œil. SUR CE BORD DROIT, DIX CROCHETS : HUIT longs crochets fins recourbés VERS L'AVANT qui retombent au-dessus du front comme une frange, et un crochet à chaque coin pointé vers le côté. DEUX CORNES AU-DESSUS DES YEUX, longues et fines, qui partent vers les côtés puis se courbent VERS LE BAS comme des cornes de bison. UNE corne nasale courte et plate en lame, assez en arrière sur le museau. DEUX cornes de joue sous les yeux. Petite bosse sur le front entre les yeux",
   // Formulé en POSITIF uniquement (jamais "pas / sans"). Chiffres quand connus.
   elasmosaurus: "cou immense d'environ 7 m (plus de la moitié des 12 m du corps, ~70 vertèbres), petite tête, corps en tonneau, 4 grandes nageoires en pagaie, longue queue effilée",
   ophthalmosaurus: "corps fuselé de dauphin d'environ 6 m, yeux énormes d'environ 23 cm (les plus grands proportionnellement du règne animal), museau court et fin, grande nageoire dorsale triangulaire, queue verticale en croissant",

@@ -123,9 +123,12 @@ function cleanPuce(line) {
     .replace(/\([^)]*(?:pas|probable|hypoth|⚠)[^)]*\)/gi, '') // parenthèses négatives/probables
     .replace(/\*\*/g, '')
     .replace(/\s*—.*$/, '')                              // coupe à partir du 1er tiret cadratin (étymo/négation/aparté)
-    .replace(/[^.;,]*\b(?:pas|uniquement|plutôt|probables?|possibles?|ne\s)\b[^.;,]*/gi, '') // segments Streisand/incertitude
+    .replace(/[^.;,]*⚠[^.;,]*/gu, '')                     // segment d'avertissement (« ⚠️ aucun crâne connu ») : pour l'humain, pas pour l'image
+    // segments Streisand/incertitude. Bornes Unicode (L-D-94) : \b ASCII voyait « ne » dans « crâne »,
+    // et la virgule décimale (« 2,3 m ») ne doit pas couper un segment.
+    .replace(/(?:[^.;,]|(?<=\d)[.,](?=\d))*(?<!\p{L})(?:(?:pas|uniquement|plutôt|probables?|possibles?)(?!\p{L})|ne\s)(?:[^.;,]|(?<=\d)[.,](?=\d))*/giu, '')
     .replace(/\.\s+[a-zàâ][^.]*\.$/i, '.')              // enlève un fragment de phrase orphelin en fin (ex ". pour les épines.")
-    .replace(/\s*[;,]\s*/g, ', ')
+    .replace(/\s*(?:;|,(?!\d))\s*/g, ', ')
     .replace(/[,.]\s*[,.]/g, ',')                        // fusionne ponctuations doublées
     .replace(/,\s*,/g, ',')
     .replace(/\s+/g, ' ').trim()

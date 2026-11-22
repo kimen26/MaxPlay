@@ -3,11 +3,10 @@
 - **Slug** : `les-familles-en-rang` (= nom du MP3 dans `site/sounds/music/chansons/`)
 - **Sujet** : dinos — séries de noms par famille, rangés (cornes, taille, époque)
 - **Langue** : fr
-- **Durée visée** : 4:45 (avec le solo)
+- **Durée visée** : 3:45 (avec le solo)
 - **Statut** : paroles
 
-> Couplets rappés/scandés (vers de 7 à 11 syllabes, paires équilibrées, rimes en fin de vers), refrain chanté (7/7/8/8/8/8).
-> Relu par le conseiller dino le 2026-10-23 (ordres, Maiasaura, théropodes). V2 du 2026-11-21 : ajout des dinos de l'app Invictibellatrix, Arcovénator, Calétodraco, Afrovénator, Deinocheirus, Tsintaosaure.
+> V3 du 2026-11-22 (règle PY) : seulement des dinos de l'app (~80 % de chaque famille, le plus petit et le plus grand gardés), une seule exception (Kosmocératops, record des cornes, 1 nom sur 44). Couplets rappés (vers de 7 à 11 syllabes, paires équilibrées), refrain chanté 7/7/8/8/8/8.
 
 ## Paroles
 
@@ -23,52 +22,41 @@ Dino, dino, on compte encore,
 Dino, dino, plus fort, plus fort !
 
 [Couplet 1 — Cératopsiens] (parlé : « Les cératopsiens… on compte les cornes ! »)
-Juste un bec : Yinlong, Archaeocératops,
-Leptocératops et Protocératops !
-Des bosses : Pachyrhinosaure,
-Achélousaure en a encore !
+Tête dure : Pachycéphalosaure,
+Le cousin des cornus, d'abord !
+Juste un bec : Protocératops,
 Une corne au nez : Centrosaure,
-Corne en crochet : Einiosaure !
-Deux au front : Zunicératops,
-Et puis Albertacératops !
-Trois cornes : Chasmosaure, Torosaure,
-Titanocératops… et encore :
-Le plus connu : Tricératops !
-Cinq pointes : Pentacératops !
-Plein de piques : Styracosaure,
+Trois cornes : voici Tricératops,
+Trois aussi pour le Torosaure !
+Cinq pointes : Pentacératops,
 Et le record, qui l'a, alors ?
 Quinze cornes : Kosmocératops,
-Le grand champion des cératops !
+Le grand champion, médaille d'or !
 
 [Refrain]
 
-[Couplet 2 — Raptors] (parlé : « Les raptors… du plus petit au plus grand ! »)
-Moins d'un mètre : Mahakala,
-Et Microraptor, le voilà !
-Un mètre : Sinornithosaure,
-Hespéronychus, Bambiraptor !
-Plus d'un mètre : Buitreraptor,
-Et puis Linhéraptor,
-Deux mètres : le Dromaeosaure,
-Et le fameux Vélociraptor !
+[Couplet 2 — Raptors et cousins à plumes] (parlé : « Les raptors et leurs cousins à plumes… du plus petit au plus grand ! »)
+Archaeoptéryx, dents et plumes,
+Il plane au-dessus de la brume !
+Quatre ailes : Microraptor,
+Deux mètres : Vélociraptor,
+Troodon, le malin, encore !
 Plus de trois mètres : Deinonychus,
 Son nom : « griffe terrible », en plus !
-Cinq mètres : Austroraptor,
-Dakotaraptor, Achillobator !
-Six mètres ! Le plus grand, le record :
-C'est l'Utahraptor !
+Six mètres : Gallimimus,
+Six mètres aussi : Utahraptor,
+Et le géant de tous, alors ?
+Onze mètres : DEINOCHEIRUS !
 
 [Refrain]
 
 [Couplet 3 — Thyréophores] (parlé : « Les thyréophores, porteurs de boucliers… du plus ancien au plus récent ! »)
 Scutellosaure, Scélidosaure,
-Huayangosaure, Gigantspinosaure !
+Les premiers boucliers, d'abord !
 En Afrique : Kentrosaure,
 Et des plaques : le Stégosaure !
-Dacentrurus, Miragaia,
-Au Crétacé, voici Gastonia !
-Minmi, puis Sauropelta,
-Et Borealopelta !
+Au Crétacé, petit Minmi,
+Bien protégé, même endormi !
 Euoplocéphale, à massue,
 Edmontonia, piquante et bossue !
 Et le dernier : Ankylosaure,
@@ -79,37 +67,27 @@ Blindé comme un char, il est fort !
 [Couplet 4 — Ornithopodes] (parlé : « Les ornithopodes… du plus petit au plus grand ! »)
 Ornithopodes : pieds d'oiseau,
 Et un bec au bout du museau !
-Hypsilophodon, tout petit,
-Dryosaure : c'est parti !
-Thescélosaure, Camptosaure,
-Tenontosaure, Ouranosaure !
-Muttaburrasaure, Tsintaosaure,
-Grande crête ronde, quel décor !
+Tsintaosaure, Corythosaure,
+Des crêtes ! Quel joli décor !
 Bonne mère-lézard : Maiasaura,
 Ses bébés crient : hip, hip, hip, hourra !
-Saurolophe et Corythosaure,
-Lambéosaure, crête encore !
 Iguanodon, et son pouce pointu,
 Parasaurolophus, turlututu !
-Douze mètres : Edmontosaure,
-Quinze mètres : Shantungosaure !
+Douze mètres, le plus grand, encore :
+C'est le géant, l'Edmontosaure !
 
 [Refrain]
 
 [Couplet 5 — Théropodes] (parlé : « Et pour finir… les théropodes ! Du plus petit… au plus géant ! »)
 Théropodes, presque tous féroces,
-Du tout petit jusqu'au colosse !
-Compsognathus, petit, petit,
-Cœlophysis, quel appétit !
+Du plus petit jusqu'au colosse !
 Invictibellatrix, la guerrière,
 Arcovénator, de notre terre !
 Calétodraco, Cératosaure,
 Cryolophosaure, Afrovénator !
 Dilophosaure, Carnotaure,
-Baryonyx et Albertosaure !
-Allosaure, Therizinosaure,
-Deinocheirus et Tarbosaure !
-Treize mètres : Carcharodontosaure,
+Baryonyx et l'Allosaure !
+Therizinosaure, Tarbosaure,
 Giganotosaure, et T-Rex encore !
 Le plus long chasseur, c'est qui, alors ?
 Quinze mètres : SPINOSAURE !
@@ -127,9 +105,7 @@ French chanson meets gypsy jazz and melodic French rap. Acoustic gypsy-jazz guit
 
 Ancien prompt (V1, hip-hop/funk) : Upbeat kids hip-hop / funk, 98 BPM, punchy drums, handclaps, slap bass, brass stabs, rapped verses, sung pop chorus with children's choir.
 
-## Texte envoyé à ElevenLabs (noms respellés, lexique dino)
-
-> Deinocheirus chanté « Déïnochéïrus » avec le son « ch » à la demande de PY (2026-11-21) — le lexique dino et l'audio de la fiche disent « Dé-i-no-ké-i-rus » (k) : à aligner si PY le confirme.
+## Texte envoyé à ElevenLabs (noms respellés, lexique dino `studio/dino/content/i18n/lexiques-prononciation/fr.md`)
 
 ```
 [Intro - spoken]
@@ -147,22 +123,16 @@ Dino, dino, plus fort, plus fort !
 Les cératopsiens… on compte les cornes !
 
 [Verse 1 - rap]
-Juste un bec : Yinlong, Arkéocératops,
-Leptocératops et Protocératops !
-Des bosses : Pakirinosaure,
-Akélousaure en a encore !
+Tête dure : Pakicéfalosaure,
+Le cousin des cornus, d'abord !
+Juste un bec : Protocératops,
 Une corne au nez : Centrosaure,
-Corne en crochet : Aïniosaure !
-Deux au front : Zounicératops,
-Et puis Albertacératops !
-Trois cornes : Kasmosaure, Torosaure,
-Titanocératops… et encore :
-Le plus connu : Tricératops !
-Cinq pointes : Pentacératops !
-Plein de piques : Stiracosaure,
+Trois cornes : voici Tricératops,
+Trois aussi pour le Torosaure !
+Cinq pointes : Pentacératops,
 Et le record, qui l'a, alors ?
 Quinze cornes : Kosmocératops,
-Le grand champion des cératops !
+Le grand champion, médaille d'or !
 
 [Chorus]
 Un, deux, trois, compte avec moi,
@@ -173,23 +143,20 @@ Dino, dino, on compte encore,
 Dino, dino, plus fort, plus fort !
 
 [Verse 2 - spoken intro]
-Les raptors… du plus petit au plus grand !
+Les raptors et leurs cousins à plumes… du plus petit au plus grand !
 
 [Verse 2 - rap]
-Moins d'un mètre : Mahakala,
-Et Microraptor, le voilà !
-Un mètre : Sinornitosaure,
-Espéronikuss, Bambiraptor !
-Plus d'un mètre : Bouitréraptor,
-Et puis Linéraptor,
-Deux mètres : le Droméosaure,
-Et le fameux Vélociraptor !
+Arkéoptérix, dents et plumes,
+Il plane au-dessus de la brume !
+Quatre ailes : Microraptor,
+Deux mètres : Vélociraptor,
+Troodon, le malin, encore !
 Plus de trois mètres : Daïnonikuss,
 Son nom : « griffe terrible », en plus !
-Cinq mètres : Austroraptor,
-Dakotaraptor, Achillobator !
-Six mètres ! Le plus grand, le record :
-C'est l'Utahraptor !
+Six mètres : Galimimuss,
+Six mètres aussi : Utahraptor,
+Et le géant de tous, alors ?
+Onze mètres : DÉÏNOKÉÏRUS !
 
 [Chorus]
 Un, deux, trois, compte avec moi,
@@ -204,13 +171,11 @@ Les thyréophores, porteurs de boucliers… du plus ancien au plus récent !
 
 [Verse 3 - rap]
 Scutellosaure, Scélidosaure,
-Houayangosaure, Gigantspinosaure !
+Les premiers boucliers, d'abord !
 En Afrique : Kentrosaure,
 Et des plaques : le Stégosaure !
-Dacentrurus, Miragaïa,
-Au Crétacé, voici Gastonia !
-Minmi, puis Soropelta,
-Et Boréalopelta !
+Au Crétacé, petit Minmi,
+Bien protégé, même endormi !
 Euoplocéfale, à massue,
 Edmontonia, piquante et bossue !
 Et le dernier : Ankylosaure,
@@ -232,20 +197,14 @@ Les ornithopodes… du plus petit au plus grand !
 [Verse 4 - rap]
 Ornithopodes : pieds d'oiseau,
 Et un bec au bout du museau !
-Ipsilofodon, tout petit,
-Driosaure : c'est parti !
-Tescélosaure, Camptosaure,
-Tenontosaure, Ouranosaure !
-Moutabourrasaure, Tsintaosaure,
-Grande crête ronde, quel décor !
+Tsintaosaure, Coritosaure,
+Des crêtes ! Quel joli décor !
 Bonne mère-lézard : Maïasaura,
 Ses bébés crient : hip, hip, hip, hourra !
-Sorolofuss et Coritosaure,
-Lambéosaure, crête encore !
 Igouanodon, et son pouce pointu,
 Parasaurolofe, turlututu !
-Douze mètres : Edmontosaure,
-Quinze mètres : Chantoungosaure !
+Douze mètres, le plus grand, encore :
+C'est le géant, l'Edmontosaure !
 
 [Chorus]
 Un, deux, trois, compte avec moi,
@@ -260,18 +219,14 @@ Et pour finir… les théropodes ! Du plus petit… au plus géant !
 
 [Verse 5 - rap]
 Théropodes, presque tous féroces,
-Du tout petit jusqu'au colosse !
-Kompsognatuss, petit, petit,
-Sélofizis, quel appétit !
+Du plus petit jusqu'au colosse !
 Invictibellatriks, la guerrière,
 Arcovénator, de notre terre !
 Calétodraco, Cératosaure,
 Criolofosaure, Afrovénator !
 Dilofosaure, Carnotaure,
-Barionix et Albertosaure !
-Allosaure, Térizinosaure,
-Déïnochéïrus et Tarbosaure !
-Treize mètres : Carkarodontosaure,
+Barionix et l'Allosaure !
+Térizinosaure, Tarbosaure,
 Giganotosaure, et Té-Rex encore !
 Le plus long chasseur, c'est qui, alors ?
 Quinze mètres : SPINOSAURE !
@@ -298,7 +253,7 @@ Et toi, ton préféré, c'est lequel ?
 
 ## Plan de composition
 
-À faire après validation des paroles (`create_composition_plan`).
+À faire (`create_composition_plan`) — la clé ElevenLabs est sur le PC de PY, pas dans les sessions cloud.
 
 ## Génération
 
@@ -309,30 +264,14 @@ Et toi, ton préféré, c'est lequel ?
 
 ---
 
-## Échelles (contrôle de l'ordre)
+## Échelles (fiches `studio/dino/content/dinos/<id>.json`)
 
-Tailles = fiches `studio/dino/content/dinos/<id>.json` quand le dino est dans l'app, sinon estimations publiées.
-
-- **Cératopsiens** (cornes du nez + du front ; Pentacératops = 3 cornes + 2 pointes de joues, son nom = « face à cinq cornes » ; Styracosaure et Kosmocératops comptent les piques de collerette) : bec seul (Yinlong, Archaeocératops, Leptocératops, Protocératops) → bosses (Pachyrhinosaure, Achélousaure) → 1 au nez (Centrosaure, Einiosaure) → 2 au front (Zunicératops ; Albertacératops : 2 longues cornes + une bosse sur le nez) → 3 (Chasmosaure, Torosaure, Titanocératops, Tricératops) → 5 pointes (Pentacératops) → nez + 4 à 6 grandes piques (Styracosaure) → 15 (Kosmocératops, record).
-- **Raptors** (longueur, m) : Mahakala ~0,7 · Microraptor 0,77 · Sinornithosaure ~1 · Hespéronychus ~1 · Bambiraptor ~1 · Buitreraptor ~1,5 · Linhéraptor ~1,8 · Dromaeosaure ~2 · Vélociraptor 2 · Deinonychus 3,4 · Austroraptor ~5 · Dakotaraptor ~5,5 · Achillobator ~5-6 · Utahraptor 6.
-- **Thyréophores** (âge, Ma) : Scutellosaure 196 · Scélidosaure 193 · Huayangosaure ~165 · Gigantspinosaure ~160 · Kentrosaure 155 (Tanzanie) · Stégosaure 155 · Dacentrurus ~152 · Miragaia ~150 · Gastonia ~126 · Minmi ~120 · Sauropelta ~115 · Borealopelta ~112 · Euoplocéphale 75 · Edmontonia 72 · Ankylosaure 66.
-- **Ornithopodes** (longueur, m) : Hypsilophodon ~2 · Dryosaure ~3 · Thescélosaure ~3,5 · Camptosaure ~6 · Tenontosaure ~7 · Ouranosaure ~8 · Muttaburrasaure ~8 · Tsintaosaure 8,5 · Maiasaura 9 · Saurolophe 9 · Corythosaure 9 · Lambéosaure ~9,4 · Iguanodon 10 · Parasaurolophus 10 · Edmontosaure 12 · Shantungosaure ~15.
-- **Théropodes** (longueur, m) : Compsognathus ~1 · Cœlophysis ~3 · Invictibellatrix 3,5 · Arcovénator 5 · Calétodraco 6 · Cératosaure 6 · Cryolophosaure 6,5 · Afrovénator 7 · Dilophosaure 7 · Carnotaure 8 · Baryonyx 9 · Albertosaure 9,5 · Allosaure 9,5 · Therizinosaure 10 · Deinocheirus 11 · Tarbosaure 12 · Carcharodontosaure 13 · Giganotosaure 13 · T-Rex 13 · Spinosaure 15 — le plus long des chasseurs (le Shantungosaure, herbivore, fait aussi ~15 m) ; le T-Rex reste le plus lourd.
+- **Cératopsiens** (+ leur cousin Pachycéphalosaure, même famille dans l'app) — cornes : Protocératops bec seul → Centrosaure 1 au nez → Tricératops 3, Torosaure 3 → Pentacératops 5 pointes (3 cornes + 2 pointes de joues) → *Kosmocératops 15 (hors app, record)*.
+- **Raptors et cousins à plumes** (famille « Dromæosaures » de l'app) — longueur : Archaeoptéryx 0,5 · Microraptor 0,77 · Vélociraptor 2 · Troodon 2,2 · Deinonychus 3,4 · Gallimimus 6 · Utahraptor 6 · Deinocheirus 11 (Oviraptor non chanté).
+- **Thyréophores** — âge : Scutellosaure 196 · Scélidosaure 193 · Kentrosaure 155 · Stégosaure 155 · Minmi 120 · Euoplocéphale 75 · Edmontonia 72 · Ankylosaure 66 (Ma).
+- **Ornithopodes** — longueur : Tsintaosaure 8,5 · Corythosaure 9 · Maiasaura 9 · Iguanodon 10 · Parasaurolophus 10 · Edmontosaure 12 (Saurolophe non chanté).
+- **Théropodes** — longueur : Invictibellatrix 3,5 · Arcovénator 5 · Calétodraco 6 · Cératosaure 6 · Cryolophosaure 6,5 · Afrovénator 7 · Dilophosaure 7 · Carnotaure 8 · Baryonyx 9 · Allosaure 9,5 · Therizinosaure 10 · Tarbosaure 12 · Giganotosaure 13 · T-Rex 13 · Spinosaure 15 (Albertosaure, Carcharodontosaure non chantés).
 
 ## Faits glissés dans les vers
 
-- Invictibellatrix = « la guerrière invaincue » (fiche) · Arcovénator trouvé en Provence (« de notre terre ») · Calétodraco, Normandie.
-- Tsintaosaure : grande crête arrondie qui part du bout du museau (fiche).
-- Deinonychus = « griffe terrible » · Maiasaura = « bonne mère-lézard » · crête du Parasaurolophus = résonateur comme une trompette (« turlututu », clin d'œil à « Turlututu chapeau pointu »).
-- « cératops » (fin couplet 1) = raccourci familier de « cératopsiens », pour la rime.
-
-## Noms à écouter de près à la génération
-
-Voir « Texte envoyé à ElevenLabs » : noms respellés d'après le lexique dino `studio/dino/content/i18n/lexiques-prononciation/fr.md`. Saurornitholestes et Tuojiangosaure retirés le 2026-11-21 (inconnus de PY, difficiles à chanter).
-
-## Sources (hors fiches)
-
-- Austroraptor ~5 m, Dakotaraptor ~5-5,5 m : a-dinosaur-a-day.com, fossil.fandom.com
-- Mahakala parmi les plus petits dromaeosaures : dinopedia.fandom.com
-- Zunicératops (cornes au front, pas au nez), Albertacératops (cornes au front + bosse au nez), Einiosaure (corne du nez courbée vers l'avant) : smithsonianmag.com, nixillustration.com
-- Shantungosaure 14,7-16,6 m ; Acrocanthosaure ~11,5 m ; Torvosaure 10 m : en.wikipedia.org, nhm.ac.uk
+Pachycéphalosaure = tête en dôme, proche cousin des cératopsiens · Archaeoptéryx : dents et plumes · Microraptor : quatre ailes · Troodon : gros cerveau pour sa taille · Deinonychus = « griffe terrible » · Deinocheirus = « la terrible main », 11 m · Scutellosaure et Scélidosaure parmi les premiers thyréophores (« porteurs de boucliers ») · Kentrosaure en Tanzanie · Maiasaura = « bonne mère-lézard » · crête du Parasaurolophus = résonateur (« turlututu ») · Invictibellatrix = « la guerrière invaincue » · Arcovénator trouvé en Provence · Deinocheirus prononcé avec un « k » (confirmé PY 2026-11-22).

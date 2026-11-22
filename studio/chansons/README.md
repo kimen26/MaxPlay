@@ -10,7 +10,7 @@ Règles et pipeline : [`CLAUDE.md`](CLAUDE.md).
 | `ceratopsiens-contre-theropodes` | dinos (2:00) | fr | non versionnés | ? | publiée |
 | `la-grande-bataille-des-dinosaures` | dinos (3:15) | fr | non versionnés | ? | publiée |
 | `dino-dinosaures` | dinos (2:30) | fr | non versionnés | ? | publiée |
-| `les-familles-en-rang` | dinos par famille, rap/funk (4:30) | fr | [paroles](paroles/les-familles-en-rang.md) | — | paroles |
+| `les-familles-en-rang` | dinos de l'app par famille, rap + guitare manouche (3:45) | fr | [paroles](paroles/les-familles-en-rang.md) | — | paroles |
 
 Les 5 premières ont été faites avant ce pôle : leurs paroles et leurs prompts ne sont pas dans le dépôt.
 On peut les retrouver par transcription (`audio-verif`) si on veut les refaire.

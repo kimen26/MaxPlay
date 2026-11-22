@@ -202,18 +202,5 @@
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude",
       "C:\\Users\\kimen\\.claude\\skills\\challenge-roborock"
     ]
-  },
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Edit|Write",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cd \"c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\game\" && npx tsc --noEmit 2>&1 | head -20"
-          }
-        ]
-      }
-    ]
   }
 }

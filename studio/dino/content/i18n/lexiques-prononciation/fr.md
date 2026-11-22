@@ -107,7 +107,7 @@
 
 | Nom (fiche) | Écrire dans l'audio | Note |
 |-------------|---------------------|------|
-| Deinocheirus | **Dé-i-no-ché-i-rus** | ✅ **TRANCHÉ Papa Yann 2026-11-21** : « ch » dit comme dans « chat » (« Chéïrus, comme nous on fait »), exception à la règle §1 (`ch` grec → k). `ei` dit en deux syllabes, `-us` final entendu. Ancienne graphie : Dé-i-no-ké-i-rus |
+| Deinocheirus | **Dé-i-no-ké-i-rus** | `ch` grec → k (règle §1, comme Brachiosaure), `ei` dit en deux syllabes, `-us` final latin entendu |
 | Tsintaosaure | **Tsin-ta-o-saure** | `ts` initial à garantir entendu ; `ao` en deux syllabes |
 | Patagotitan | **Pa-ta-go-ti-tan** | depuis le 2026-11-09, c'est aussi le nom AFFICHÉ (plus « Titanosaure ») |
 

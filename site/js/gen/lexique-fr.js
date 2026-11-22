@@ -20,7 +20,7 @@ window.LEXIQUE_FR = {
   "Compsognathus": "Komp-so-gna-tuss",
   "Corythosaure": "Co-ri-to-saure",
   "Cryolophosaure": "Cri-o-lo-fo-saure",
-  "Deinocheirus": "Dé-i-no-ché-i-rus",
+  "Deinocheirus": "Dé-i-no-ké-i-rus",
   "Deinonychus": "Daï-no-ni-kuss",
   "Dilophosaure": "Di-lo-fo-saure",
   "Diplodocus": "Di-plo-do-kuss",

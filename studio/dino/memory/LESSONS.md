@@ -169,3 +169,27 @@ encore « gate | tail » suivi d'un envoi (ajout noté au TODO transverse).
 **Règle** : après toute modification d'un fichier de `PRECACHE_LIST`, lancer `node studio/minijeux/scripts/gen-sw-version.mjs` (ou `npm run build`) et commiter `sw-version.js` avec le reste. Le skill `nouveau-dino` phase 7 le dit désormais.
 
 **Suite (2026-11-09, retour PY « toujours rien »)** : le recalcul de `SW_VERSION` ne suffisait pas. `sw.js` lui-même restait identique octet pour octet ; seul son `importScripts` changeait. Les navigateurs qui ne comparent que le script principal (Chromium < 78, navigateur Huawei, cause déduite, non mesurée sur la tablette) ne voient jamais la nouvelle version. En plus, `cache.addAll` pouvait reprendre l'ancien fichier dans le cache HTTP (max-age 600 de GitHub Pages). Correctif : `gen-sw-version.mjs` recopie la version dans une ligne `// SW_STAMP:` de `sw.js` (exclue du hash), et l'installation précache en `cache: 'reload'`. **Règle** : une mise à jour de service worker doit changer `sw.js` lui-même ; on ne compte jamais sur un fichier importé.
+
+## L-D-91 — Une bonne graphie ne garantit pas une bonne prise : il faut transcrire chaque MP3 de nom (2026-11-22)
+
+**Symptôme** : demande PY « retravaille bien les prononciations dans chaque langue ». Transcription automatique des noms courts existants du Pentacératops : FR entendu « Tantacératops », IT « Pinta c'era topo », JA voisé, AR coupé en deux mots. En anglais, l'ouverture syllabée « KOZ… moh… SEH… rah… tops » du nouveau script a été épelée lettre à lettre, « K-O-Z ».
+
+**Cause** : (1) eleven_v3 varie d'une prise à l'autre : le même texte (« Pentaceratopo », « ペンタケラトプス ») a donné une prise juste puis une prise fausse ; personne n'avait transcrit les 840 noms livrés le 2026-08-11. (2) Une syllabe courte en MAJUSCULES (KOZ) est lue comme un sigle. (3) En arabe, sans voyelles courtes écrites, la voix coupe le nom.
+
+**Règle** : chaque nom court et chaque bloc A est transcrit (ElevenLabs scribe, langue imposée) avant livraison ; on garde la prise dont la transcription sonne juste, pas seulement le texte. Syllabes en capitales seulement si elles font 4 lettres ou plus ; arabe avec voyelles courtes ; russe avec l'accent écrit. Les textes envoyés et la transcription de contrôle vivent dans `content/i18n/noms-audio/vague-2026-11-22-ceratopsiens.json`. Limite connue : la transcription d'un mot isolé est bruitée (le chinois 角/蛟 est homophone), elle détecte une syllabe fausse, pas un accent tonique.
+
+## L-D-92 — Trou d'échelle entre la petite voiture (1 t) et voiture + vache (1,65 t) (2026-11-22)
+
+**Symptôme** : le Kosmocératops (1,2 t) sortait « aussi lourd qu'une petite voiture », 20 % d'écart ; `_verif-comppoids.cjs` KO.
+
+**Cause** : même famille que L-D-52 : le palier « petite voiture » couvrait 0,85 à 1,45 t ; aucun dino existant ne tombait entre 1,1 et 1,45 t, le trou était invisible.
+
+**Règle** : palier ajouté « une vache et un cheval ensemble » (1,15 t, dès 1,12 t), sur le modèle des 3 additions validées PY ; seul le Kosmocératops change (vérifié : Kentrosaurus 1,1 t reste à la petite voiture). Lancer `_verif-comppoids.cjs` à chaque nouveau dino, avant d'écrire le bloc B.
+
+## L-D-93 — Le générateur d'images grossissait les animaux moyens (2026-11-22)
+
+**Symptôme** : Kosmocératops (4,5 m × 1,5 m) dessiné à environ 6 m × 1,9 m à côté de l'enfant, et à environ 10 m × 3,6 m à côté du bus RATP (le bus en fait 12 × 3).
+
+**Cause** : dans `.claude/skills/dino-images-lunii/scripts/batch-dino-series.mjs`, la tranche 1,5-3 m de haut recevait seulement « l'enfant minuscule à côté donne l'échelle », sans aucun chiffre : le mot « minuscule » pousse le modèle à grossir l'animal. La scène Paris ne donnait aucun rapport au bus. Les tranches au-dessus (ratio chiffré) et en dessous (« ne pas exagérer ») étaient déjà corrigées.
+
+**Règle** : toute scène d'échelle donne le rapport chiffré (fois la hauteur de l'enfant, fois ou pourcentage du bus de 12 m × 3 m), « même distance de la caméra », « ne pas exagérer ». Corrigé dans le générateur ; héros et Paris du Kosmocératops refaits et mesurés à l'image. Les dinos de 1,5 à 3 m déjà en ligne n'ont pas été remesurés (TODO).

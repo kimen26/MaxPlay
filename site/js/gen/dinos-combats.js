@@ -458,6 +458,22 @@ window.DINO_COMBATS = {
    "adversaire_latin": "Pentaceratops sternbergii"
   }
  ],
+ "kosmoceratops": [
+  {
+   "file": "Kosmoceratops_ennemi.webp",
+   "type": "ennemi",
+   "meme_espece": false,
+   "adversaire": "Teratophoneus",
+   "adversaire_latin": "Teratophoneus curriei"
+  },
+  {
+   "file": "Kosmoceratops_rival.webp",
+   "type": "rival",
+   "meme_espece": true,
+   "adversaire": "Kosmocératops",
+   "adversaire_latin": "Kosmoceratops richardsoni"
+  }
+ ],
  "parasaurolophus": [
   {
    "file": "Parasaurolophus_ennemi.webp",

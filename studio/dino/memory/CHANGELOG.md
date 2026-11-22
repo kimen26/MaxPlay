@@ -4,6 +4,8 @@
 
 ## 2026-11
 
+- Nouveau dinosaure : le Kosmocératops de l'Utah, « la face à cornes décorée », la tête la plus ornée de tous les dinosaures connus avec 15 cornes et pointes. Fiche parlée en français et en anglais, son nom dit dans 12 langues. Le nom du Pentacératops a été réentendu dans toutes les langues : en français, italien, japonais et arabe il est maintenant dit correctement.
+
 - 2 nouveaux dinosaures : le Deinocheirus, « la terrible main », aux bras de 2,40 m et au bec de canard, et le Tsintaosaure de Chine, longtemps dessiné avec une corne de licorne alors qu'il portait une grande crête arrondie. Fiche parlée, nom dit dans les jeux, images, coloriage, ombre, bébé et combats pour chacun. Le Titanosaure s'appelle désormais Patagotitan, son vrai nom, « le titan de Patagonie ».
 - 5 nouveaux dinosaures dans l'encyclopédie : Jobaria et Afrovénator (Niger, Jurassique), Arcovénator (Provence) et Calétodraco (Normandie), deux cousins français du Carnotaure, et Invictibellatrix, « la guerrière invaincue », premier mégaraptor connu d'Europe. Chacun a sa fiche parlée en français, son nom dit dans les jeux, ses images (dont Paris et deux scènes de combat), son coloriage, son ombre et son bébé dans l'œuf. Les fiches disent honnêtement quand on n'a retrouvé qu'un bout du squelette.
 

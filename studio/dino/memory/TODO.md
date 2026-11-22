@@ -181,3 +181,16 @@ sommaire visuel, et sa forme dit sa fonction sans un mot. Maquettes des 3 declin
 - [ ] **Palier `_compLong` à 16 m** : « bus accordéon » (18 m) dès 16 m, soit 12,5 % d'écart à la borne. Vu sur Jobaria (retenu 17 m, dans la fourchette 16-18,2). Vérifier les dinos existants entre 16 et 16,3 m.
 - [ ] **Hauteur Jobaria 4,5 m** : une seule source (Grokipedia), non recoupée.
 - [ ] **Audit des prononciations des noms de dinos dans toutes les langues** (demande PY 2026-11-21) : réécouter les MP3 de chaque langue contre son lexique `i18n/lexiques-prononciation/<lang>.md`, en transcription automatique plus écoute. Cas signalé par PY : Deinocheirus. PY a entendu dire que le `ch` se dit « ch » ; notre règle et l'usage savant disent « k » (grec *kheir*, la main ; EN « dye-no-KYE-rus »). Vérifier ce que disent réellement les MP3 FR et EN, et trancher avec PY si une langue le dit autrement.
+
+## Vague 2026-11-22 — Kosmocératops + prononciations (demande PY « ajoute le Pentacératops et le Kosmocératops, retravaille bien les prononciations dans chaque langue »)
+
+- [x] **Pentacératops déjà présent** (fiche, audio FR + EN, 9 images) : rien à créer. Prononciation réécoutée par transcription dans 12 langues : noms courts FR, IT, JA, AR refaits (prises fausses), les 8 autres justes. `superpower` corrigé (« plus grande qu'un Papa », comme le `fait`) en FR, EN, ES, PT.
+- [x] **Kosmocératops ajouté** : taxo = cératopsien chasmosauriné, famille `cornu` (vrai dinosaure, pas d'arrêt). Écarté le 2026-07-03 (« pas sans décision explicite PY ») : la demande PY du 2026-11-22 vaut cette décision. Fiche, scripts FR V3 + EN, 5 MP3 FR + 5 EN vérifiés par transcription, noms courts dans les 12 langues (texte EL dédié par langue dans les lexiques), étymologie, combats.json, signature MORPHO.
+- [ ] **À trancher PY** : hauteur du Kosmocératops 1,5 m = estimation (aucune source) ; vitesse omise (non mesurée).
+- [ ] **À valider PY** : nouveau repère de poids « une vache et un cheval ensemble » (1,15 t, L-D-92). Réversible : une ligne dans `_preamble.json`.
+- [ ] **Strings es-es / pt-br du Kosmocératops** (et des 8 dinos des vagues 2026-11-08/09) : absents, l'interface retombe sur le texte FR dans ces langues.
+- [ ] **Pentacératops « en troupeau »** (`amis` + bloc C audio) : comportement grégaire non démontré pour lui non plus (fact-check 2026-11-22). Reformuler, coûte une régénération du bloc C.
+- [ ] **Étendre la transcription de contrôle aux 840 noms livrés le 2026-08-11** (L-D-91) : rejoint l'audit des prononciations demandé le 2026-11-21 (Deinocheirus). Coût : STT seul, quelques centimes.
+- [ ] **Remesurer les héros et scènes Paris des dinos de 1,5 à 3 m de haut** (L-D-93) : produits avec la consigne « enfant minuscule », probablement grossis. Mesure à l'image (hauteur de l'enfant = 1 m, bus = 12 m), refaire ceux à plus de 10 % d'écart.
+- [ ] **Kosmocératops, gros plan** : collerette dessinée haute à grandes fenêtres (vraie : courte, fenêtres minuscules). Les crochets, cornes et la tête sont justes. La reprise avec le héros en référence a recopié le héros, enfant compris : à refaire sans référence si PY le remarque.
+- [ ] **Kosmocératops, scène Paris** : hauteur juste face au bus, longueur un peu forte (environ +15 %, perspective comprise), après 2 essais. Le premier essai faisait le double.

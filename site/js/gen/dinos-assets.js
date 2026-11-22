@@ -737,6 +737,24 @@ window.DINO_ASSETS = {
    "rival": "img/dinos/paleoart/Kentrosaurus_rival.webp"
   }
  },
+ "Kosmoceratops": {
+  "ombre": "img/dinos/ombres/Kosmoceratops_ombre.png",
+  "sprite": "img/dinos/sprites/Kosmoceratops_sprite.webp",
+  "tete": "img/dinos/sprites/Kosmoceratops_tete.webp",
+  "bebe": "img/dinos/bebes/Kosmoceratops_bebe.webp",
+  "avatar": null,
+  "paleoart": {
+   "hero": "img/dinos/paleoart/Kosmoceratops.webp",
+   "coloriage": "img/dinos/paleoart/Kosmoceratops_coloriage.webp",
+   "ecosysteme": "img/dinos/paleoart/Kosmoceratops_ecosysteme.webp",
+   "ennemi": "img/dinos/paleoart/Kosmoceratops_ennemi.webp",
+   "funfact": "img/dinos/paleoart/Kosmoceratops_funfact.webp",
+   "headshot": "img/dinos/paleoart/Kosmoceratops_headshot.webp",
+   "manger": "img/dinos/paleoart/Kosmoceratops_manger.webp",
+   "paris": "img/dinos/paleoart/Kosmoceratops_paris.webp",
+   "rival": "img/dinos/paleoart/Kosmoceratops_rival.webp"
+  }
+ },
  "Liopleurodon": {
   "ombre": "img/dinos/ombres/Liopleurodon_ombre.png",
   "sprite": "img/dinos/sprites/Liopleurodon_sprite.webp",

@@ -869,6 +869,36 @@
    }
   ]
  },
+ "kosmoceratops": {
+  "livree": "Corps brun-roux avec des bandes sombres sur le dos, ventre crème, collerette courte orange brûlé bordée de crochets clairs, cornes ivoire.",
+  "habitat": "Plaine côtière humide du sud de l'Utah à la fin du Crétacé (formation de Kaiparowits) : marais à cyprès chauves, rivières lentes, fougères et conifères, climat chaud et humide.",
+  "scenes": [
+   {
+    "type": "ennemi",
+    "adversaire": "Teratophoneus",
+    "adversaire_latin": "Teratophoneus curriei",
+    "adversaire_id": null,
+    "adversaire_morpho": "Tyrannosauridé de taille moyenne au crâne COURT et très HAUT, museau court et large, orbite haute, deux petits bras à deux doigts, silhouette compacte.",
+    "adversaire_mesures": "environ 6 m / 2 m / 0,7 t (spécimen subadulte connu ; adulte estimé 7-8 m, très incertain)",
+    "adversaire_livree": "Peau gris-vert sombre, dos plus foncé, flancs marbrés de brun, gorge pâle.",
+    "rapport_taille": "Teratophoneus fait environ 6 m contre 4,5 m pour le Kosmocératops, mais il est plus léger (0,7 t contre 1,2 t) : le Kosmocératops reste massif face à lui.",
+    "action": "Le Kosmocératops fait face, tête basse, cornes et crochets de collerette tournés vers le Teratophoneus qui tourne autour de lui en cherchant une ouverture. Aucune blessure, aucun sang.",
+    "preuve": "Formation de Kaiparowits (Utah), Campanien ~76 Ma ; Teratophoneus est le seul tyrannosauridé connu de cette formation, contemporain du Kosmocératops (Carr et al. 2011 ; Sampson et al. 2010). Aucune trace de morsure publiée sur Kosmoceratops : scène plausible, pas documentée."
+   },
+   {
+    "type": "rival",
+    "adversaire": "Un autre Kosmocératops",
+    "adversaire_latin": "Kosmoceratops richardsoni",
+    "adversaire_id": "kosmoceratops",
+    "adversaire_morpho": "Même espèce, collerette aux crochets un peu plus longs.",
+    "adversaire_mesures": "4,5 m / 1,5 m / 1,2 t",
+    "adversaire_livree": "Même fond brun-roux, collerette plus rouge.",
+    "rapport_taille": "Deux individus égaux, 4,5 m chacun.",
+    "action": "Parade face à face : les deux Kosmocératops baissent et tournent la tête pour montrer leur collerette décorée et leurs quinze cornes et pointes, sans se blesser.",
+    "preuve": "Les ornements servaient sans doute surtout à se montrer et à se reconnaître entre membres de l'espèce (Sampson et al. 2010) ; aucun combat documenté, d'où une parade plutôt qu'un affrontement."
+   }
+  ]
+ },
  "parasaurolophus": {
   "livree": "Corps violet-prune sur le dos s'éclaircissant en lilas pâle sur les flancs, crête tubulaire striée de bandes sombres, ventre crème.",
   "habitat": "Plaine fluviale boisée de l'Alberta au Crétacé (formation de Dinosaur Park), conifères et angiospermes à fleurs en sous-bois, climat tempéré humide, lumière de fin de matinée près d'un cours d'eau.",

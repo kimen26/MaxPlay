@@ -224,7 +224,9 @@ for (const id of ids) {
     : hAnimal >= 3
     ? `ÉCHELLE : cet animal fait ${String(d.hauteur_m).replace('.', ',')} m de haut, soit environ ${ratio} fois la hauteur de l'enfant d'1 m — il le domine nettement, l'enfant lui arrive au niveau des pattes. Rendre ce rapport de taille clairement.`
     : hAnimal >= 1.5
-    ? `L'enfant minuscule à côté, dans le décor, donne l'échelle réelle.`
+    // 2026-11-22 (Kosmocératops 4,5 m × 1,5 m rendu ~6 m × 1,9 m) : « l'enfant minuscule » poussait le
+    // modèle à grossir les animaux moyens. On donne les deux rapports chiffrés et on interdit l'exagération.
+    ? `ÉCHELLE STRICTE : cet animal fait ${String(d.hauteur_m).replace('.', ',')} m de haut, soit ${String(Math.round(hAnimal * 10) / 10).replace('.', ',')} fois la hauteur de l'enfant d'1 m, et ${String(d.taille_m).replace('.', ',')} m de long, soit environ ${Math.round(parseFloat(d.taille_m) || 0)} enfants allongés bout à bout. L'enfant et l'animal sont à la MÊME distance de la caméra. Respecter EXACTEMENT ce rapport : ne pas exagérer la taille de l'animal.`
     : hAnimal >= 0.9
     ? `L'animal est à peu près à la même hauteur que l'enfant, ou légèrement plus grand — respecter STRICTEMENT ce rapport de taille proche, ne pas exagérer.`
     : `L'animal est PLUS PETIT que l'enfant en hauteur (comme un grand chien ou plus petit) — respecter STRICTEMENT cette taille réduite, l'enfant ne doit pas paraître minuscule à côté.`;
@@ -257,7 +259,15 @@ for (const id of ids) {
   const sceneUrbain = marin
     ? `SCÈNE : l'animal dans un grand bassin d'un aquarium public moderne, des visiteurs adultes l'observant, ce qui donne son échelle réelle.\n\nDÉCOR : aquarium public moderne, grandes vitres, éclairage bleuté, plantes aquatiques, public adulte autour.\n\n${camLarge(d, true)}`
     : `SCÈNE : l'animal, paisible, dans une grande avenue de Paris aujourd'hui, à côté d'un bus de ville parisien, de voitures et de passants adultes, ce qui donne son échelle réelle ; la ville est calme.\n\nLE BUS (important, à respecter) : un bus urbain moderne aux couleurs de la RATP, c'est-à-dire une carrosserie BLANCHE avec un large bandeau VERT JADE qui court le long des vitres, et le toit blanc. C'est un bus BLANC ET VERT, la livrée des bus de Paris.\n\nDÉCOR OBLIGATOIRE — LA SCÈNE SE PASSE EN PLEINE VILLE : grande avenue parisienne moderne, immeubles haussmanniens en pierre claire avec balcons en fer forgé, chaussée goudronnée et passage piéton, trottoirs, ce bus blanc et vert, voitures, passants adultes, mobilier urbain, lumière de jour. L'animal est AU MILIEU DE LA RUE, entouré de bâtiments : c'est une scène urbaine, pas une scène de nature.\n\n${camLarge(d, true)}`;
-  gen(buildPrompt(d, id, `montrer la taille de l'animal dans une ville moderne familière.`, sceneUrbain),
+  // 2026-11-22 (Kosmocératops 4,5 m rendu ~10 m face au bus) : sans rapport chiffré, le modèle grossit
+  // les animaux moyens à côté du bus. On donne le rapport au bus (12 m × 3 m), même distance caméra.
+  const fmt = (x) => String(Math.round(x * 10) / 10).replace('.', ',');
+  const lAnimal = parseFloat(d.taille_m) || 0;
+  const hAnim = parseFloat(d.hauteur_m) || 0;
+  const echelleParis = (!marin && lAnimal && hAnim)
+    ? `\n\nÉCHELLE STRICTE : le bus mesure 12 m de long et 3 m de haut. L'animal fait ${fmt(lAnimal)} m de long (${lAnimal >= 12 ? `${fmt(lAnimal / 12)} fois la longueur du bus` : `environ ${Math.round(lAnimal / 12 * 100)} % de la longueur du bus`}) et ${fmt(hAnim)} m de haut (${hAnim >= 3 ? `${fmt(hAnim / 3)} fois la hauteur du bus` : `environ ${Math.round(hAnim / 3 * 100)} % de la hauteur du bus`}). L'animal et le bus sont à la MÊME distance de la caméra. Respecter EXACTEMENT ce rapport : ne pas exagérer la taille de l'animal.`
+    : '';
+  gen(buildPrompt(d, id, `montrer la taille de l'animal dans une ville moderne familière.`, sceneUrbain + echelleParis),
     `${baseName}_paris.png`, false, baseName);
   logProgress(id, '4-paris', 'done');
 

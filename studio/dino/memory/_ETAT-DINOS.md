@@ -5,15 +5,15 @@
 
 ## Synthèse
 
-- **78 dinos** · **78 complets** · **0 avec un manque bloquant**
+- **79 dinos** · **79 complets** · **0 avec un manque bloquant**
 
 ## Incomplets d'abord
 
 _Aucun — tous les dinos passent la porte bloquante._ 🎉
 
-## Complets (78)
+## Complets (79)
 
-tyrannosaurus · spinosaurus · giganotosaurus · carcharodontosaurus · allosaurus · tarbosaurus · albertosaurus · ceratosaurus · dilophosaurus · carnotaurus · cryolophosaurus · afrovenator · arcovenator · caletodraco · invictibellatrix · brachiosaurus · diplodocus · apatosaurus · camarasaurus · amargasaurus · plateosaurus · jobaria · ankylosaurus · euoplocephalus · edmontonia · minmi · scutellosaurus · scelidosaurus · stegosaurus · kentrosaurus · triceratops · torosaurus · protoceratops · pentaceratops · parasaurolophus · corythosaurus · maiasaura · saurolophus · tsintaosaurus · edmontosaurus · iguanodon · pachycephalosaurus · velociraptor · deinonychus · utahraptor · microraptor · troodon · gallimimus · deinocheirus · oviraptor · pteranodon · quetzalcoatlus · hatzegopteryx · archaeopteryx · mosasaurus · baryonyx · therizinosaurus · dimetrodon · edaphosaurus · gorgonops · lystrosaurus · moschops · elasmosaurus · ophthalmosaurus · liopleurodon · archelon · shonisaurus · patagotitan · centrosaurus · ichthyosaurus · mammuthus · smilodon · megatherium · paraceratherium · glyptodon · aenocyon · coelodonta · titanis
+tyrannosaurus · spinosaurus · giganotosaurus · carcharodontosaurus · allosaurus · tarbosaurus · albertosaurus · ceratosaurus · dilophosaurus · carnotaurus · cryolophosaurus · afrovenator · arcovenator · caletodraco · invictibellatrix · brachiosaurus · diplodocus · apatosaurus · camarasaurus · amargasaurus · plateosaurus · jobaria · ankylosaurus · euoplocephalus · edmontonia · minmi · scutellosaurus · scelidosaurus · stegosaurus · kentrosaurus · triceratops · torosaurus · protoceratops · pentaceratops · kosmoceratops · parasaurolophus · corythosaurus · maiasaura · saurolophus · tsintaosaurus · edmontosaurus · iguanodon · pachycephalosaurus · velociraptor · deinonychus · utahraptor · microraptor · troodon · gallimimus · deinocheirus · oviraptor · pteranodon · quetzalcoatlus · hatzegopteryx · archaeopteryx · mosasaurus · baryonyx · therizinosaurus · dimetrodon · edaphosaurus · gorgonops · lystrosaurus · moschops · elasmosaurus · ophthalmosaurus · liopleurodon · archelon · shonisaurus · patagotitan · centrosaurus · ichthyosaurus · mammuthus · smilodon · megatherium · paraceratherium · glyptodon · aenocyon · coelodonta · titanis
 
 ---
 _Généré le run — relancer le script pour rafraîchir._

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[calm] C'était un herbivore. [warmly] Il broutait des fougères, des cycas et des conifères, près des rivières et des grands marais. [curious] Avec lui vivaient d'autres dinosaures à cornes, comme l'Youta-cératops."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[nervous] Il y avait un chasseur, là-bas ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Oui, le Té-ra-to-fo-né-us, un tyrannosaure. [confident] Ses cornes au-dessus des yeux pouvaient l'aider à se défendre."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

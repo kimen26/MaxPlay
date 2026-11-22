@@ -94,6 +94,7 @@ Colonne **カタカナ (à lire par le TTS)** = forme native. **Romaji** = contr
 | parasaurolophus | Parasaurolophus | パラサウロロフス | Parasaurorofusu | ph→フ (f) ; -us→フス (pas -サウルス !) |
 | patagotitan | Patagotitan | パタゴティタン | Patagotitan | ti→ティ ; -titan→ティタン |
 | pentaceratops | Pentaceratops | ペンタケラトプス | Pentakeratopusu | c→ケ (k) ; -tops→トプス |
+| kosmoceratops | Kosmoceratops | コスモケラトプス | Kosumokeratopusu | c→ケ (k) ; -tops→トプス ; vérifié STT 2026-11-22 |
 | plateosaurus | Plateosaurus | プラテオサウルス | Purateosaurusu | — |
 | protoceratops | Protoceratops | プロトケラトプス | Purotokeratopusu | c→ケ (k) ; -tops→トプス |
 | pteranodon | Pteranodon | プテラノドン | Puteranodon | Pt→プt ; -don→ドン |

@@ -838,5 +838,17 @@
     "modele_sts": "eleven_multilingual_sts_v2",
     "voix_finale": "narrateur_h",
     "date": "2026-08-11T22:13:26.009Z"
+  },
+  {
+    "id": "kosmoceratops",
+    "texte_envoye": "[excited] Cosmocerátops",
+    "pipeline": "sts-v2",
+    "voix_source": "Kallil Paiva",
+    "voice_id_source": "H6h0eIkmytMwHWAqLwWR",
+    "modele_tts": "eleven_v3",
+    "language_code": "pt",
+    "modele_sts": "eleven_multilingual_sts_v2",
+    "voix_finale": "narrateur_h",
+    "date": "2026-11-22T19:43:33.046Z"
   }
 ]

@@ -99,7 +99,8 @@ L'arabe n'a pas de tradition de « traduction sémantique » des dinos comme le 
 | paraceratherium | Paraceratherium | باراسيراثيريوم | — à relire natif : rhinocéros géant, usage jeunesse rare |
 | parasaurolophus | Parasaurolophus | باراصورولوفوس | ph→ف |
 | patagotitan | Patagotitan | باتاغوتيتان | g→غ (Patagonie ≈ باتاغونيا) |
-| pentaceratops | Pentaceratops | بنتاسيراتوبس | |
+| pentaceratops | Pentaceratops | بِنْتاسِيراتوبْس | voyelles courtes écrites : la forme nue était entendue « بنت سيراتوبس » (coupée) ; vérifié STT 2026-11-22 |
+| kosmoceratops | Kosmoceratops | كوزْموسِيراتوبْس | voyelles courtes écrites : sans elles la voix coupe le mot en deux ; vérifié STT 2026-11-22 |
 | plateosaurus | Plateosaurus | بلاتيوصور | |
 | protoceratops | Protoceratops | بروتوسيراتوبس | |
 | pteranodon | Pteranodon | بتيرانودون | ptérosaure, non-dino |

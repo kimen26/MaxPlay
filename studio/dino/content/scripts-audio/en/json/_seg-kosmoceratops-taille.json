@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 15 feet long — as long as a big SUV! [quickly] About 5 feet tall — as tall as a car — you'd have to look up! And about 2,600 pounds — [amazed] as heavy as a cow and a horse put together!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] And his frill, was it big?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Pretty short, for a horned dinosaur. [proud] But lined all around with spikes, like a crown."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

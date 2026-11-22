@@ -103,6 +103,7 @@ Le russe possède une tradition fixe de translittération des noms paléontologi
 | parasaurolophus | Parasaurolophus | **паразауролоф** | s → з, ph → ф, -us tombe |
 | patagotitan | Patagotitan | **патаготитан** | genre récent (2017), translittération directe |
 | pentaceratops | Pentaceratops | **пентацератопс** | c devant e → ц |
+| kosmoceratops | Kosmoceratops | **Космоцера́топс** | c devant e → ц ; accent écrit sur ра (sans lui la voix hésite) ; vérifié STT 2026-11-22 |
 | plateosaurus | Plateosaurus | **платеозавр** | direct |
 | protoceratops | Protoceratops | **протоцератопс** | c devant e → ц |
 | pteranodon | Pteranodon | **птеранодон** | пт- initial SE PRONONCE (contrairement à l'anglais) ; ptérosaure |

@@ -86,6 +86,7 @@ La règle maîtresse est différente du français ou de l'espagnol : **l'alleman
 | parasaurolophus | Parasaurolophus | **Parasaurolophus** | inchangé |
 | patagotitan | Patagotitan | **Patagotitan** | inchangé (Patagonie + Titan) |
 | pentaceratops | Pentaceratops | **Pentaceratops** | inchangé |
+| kosmoceratops | Kosmoceratops | **Kosmoceratops** | inchangé (ce = ts, forme allemande) ; vérifié STT 2026-11-22 |
 | plateosaurus | Plateosaurus | **Plateosaurus** | inchangé ; dinosaure « national » allemand (fossiles abondants en Allemagne) |
 | protoceratops | Protoceratops | **Protoceratops** | inchangé |
 | pteranodon | Pteranodon | **Pteranodon** | inchangé ; P initial muet à l'oral |

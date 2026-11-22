@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Kos-mo-sé-ra-tops. [curious] Trois mots grecs : « kosmos », décoré, comme une belle parure. « Cérat », la corne. [whispers] Et « ops », la face."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Alors c'est la face à cornes décorée ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactement. [warmly] Il vivait dans l'Utah, en Amérique du Nord, il y a 76 millions d'années. [curious] Son deuxième nom, « richardsoni », c'est en l'honneur de Scott Richardson, un bénévole qui a trouvé son crâne dans le désert."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

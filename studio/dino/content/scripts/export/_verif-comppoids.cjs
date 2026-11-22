@@ -12,7 +12,7 @@ const { DINOS, _compPoids } = m.exports;
 // Repères (t) — mot-clé de la phrase générée → poids implicite
 const REPERES = [
   // Exceptions-additions (avant les motifs simples qui y sont contenus)
-  [/petite voiture et une vache/, 1.65], [/hippopotame et un cheval/, 3.5], [/éléphant et un rhinocéros/, 7],
+  [/petite voiture et une vache/, 1.65], [/vache et un cheval/, 1.15], [/hippopotame et un cheval/, 3.5], [/éléphant et un rhinocéros/, 7],
   [/(\d+) éléphants/, 5, true], [/un éléphant/, 5],
   [/(\d+) hippopotames/, 3, true], [/un hippopotame/, 3],
   [/(\d+) rhinocéros/, 2, true], [/un rhinocéros/, 2],

@@ -90,6 +90,7 @@ Stress = CAPS. Hyphens split syllables for the TTS.
 | parasaurolophus | Parasaurolophus | **PA-rah-SOR-OL-oh-fus** (par-ah-saw-ROL-) | ph→f; stress on ROL — see ⚠️ |
 | patagotitan | Patagotitan | **PA-tah-goh-TYE-tan** | -titan = "TYE-tan" |
 | pentaceratops | Pentaceratops | **PEN-tah-SEH-rah-tops** | ce→"se" |
+| kosmoceratops | Kosmoceratops | **KOZ-moh-SEH-rah-tops** | ce→"se" ; prod sends the plain scientific name (vérifié STT 2026-11-22) |
 | plateosaurus | Plateosaurus | **PLAT-ee-oh-SOR-us** (PLAY-tee-) | ate→"at"/"ate" |
 | protoceratops | Protoceratops | **proh-toh-SEH-rah-tops** | ce→"se" |
 | pteranodon | Pteranodon | **teh-RAN-oh-don** | Pt→silent p |

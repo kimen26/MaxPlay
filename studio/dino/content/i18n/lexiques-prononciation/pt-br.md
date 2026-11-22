@@ -96,6 +96,7 @@ Le portugais brésilien a déjà des formes vernaculaires pour la plupart des di
 | parasaurolophus | Parasaurolophus | **Pa-ra-sau-RÓ-lo-fus** | ph→f, -us gardé « -fus » |
 | patagotitan | Patagotitan | **Pa-ta-go-ti-TÃ** | -tan final nasalisé fort « -tã » (BR) |
 | pentaceratops | Pentaceratops | **Pen-ta-se-RÁ-tops** | ce→se, tonique RÁ ; -tops gardé |
+| kosmoceratops | Kosmoceratops | **Cos-mo-ce-RÁ-tops** | K→C (forme BR « Cosmocerátops ») ; tonique RÁ ; vérifié STT 2026-11-22 |
 | plateosaurus | Plateosaurus | **Pla-te-o-SSAU-ro** | ss |
 | protoceratops | Protoceratops | **Pro-to-se-RÁ-tops** | ce→se, tonique RÁ ; -tops gardé |
 | pteranodon | Pteranodon | **Pte-ra-no-DON** | Pt- initial articulé, on nasalisé |

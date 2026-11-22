@@ -113,6 +113,17 @@
 
 ---
 
+## 2quinquies. Noms AJOUTÉS 2026-11-22 (Kosmocératops ; Pentacératops réentendu)
+
+| Nom | Respelling | Pourquoi |
+|---|---|---|
+| Kosmocératops | **Kosmocératops** (nom court) · **Kos-mo-sé-ra-tops** (bloc A de la fiche) | K initial, `s` de *kosmos* dit « s » (pas « z »), finale « -sé-ra-tops » comme Tricératops ; vérifié STT 2026-11-22 |
+| Pentacératops | **Pentacératops** (nom court, inchangé) | Texte juste, mais l'ancien MP3 était entendu « Tantacératops » : prise refaite et vérifiée le 2026-11-22. La graphie ne suffit pas, il faut transcrire chaque prise. |
+| Teratophoneus (voisin cité) | **Té-ra-to-fo-né-us** | `eu` ne doit pas sonner comme « peu » ; `ph` → f |
+| Utahceratops (voisin cité) | **Youta-cératops** | « Utah » dit à l'anglaise, pas « u-ta » |
+
+Textes envoyés à ElevenLabs pour les noms courts, langue par langue, avec la transcription de contrôle : `../noms-audio/vague-2026-11-22-ceratopsiens.json`.
+
 ## 3. Noms qui se lisent BIEN tels quels (pas de respelling)
 
 Spinosaure · Giganotosaure · Allosaure · Tarbosaure · Albertosaure · Gorgosaure · Cératosaure · Carnotaure · Acrocanthosaure · Apatosaure · Camarasaure · Amargasaure · Plateosaure · Ankylosaure · Stégosaure · Kéntrosaure · Tricératops · Torosaure · Protocératops · Pentacératops · Edmontosaure · Vélociraptor · Utahraptor · Microraptor · Oviraptor · Dimétrodon · Élasmosaure · Liopleurodon · Minmi · Scutellosaure · Maiasaura · Gorgonops · Centrosaure · Ichtyosaure · Mammouth · Smilodon · Jobaria (Jo-ba-ri-a) · Afrovénator (A-fro-vé-na-tor) · Arcovénator (Ar-co-vé-na-tor) · Calétodraco (Ca-lé-to-dra-co).

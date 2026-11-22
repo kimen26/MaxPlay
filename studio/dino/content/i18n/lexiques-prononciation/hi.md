@@ -97,6 +97,7 @@ L'hindi n'a pas de tradition de traduction sémantique des noms de dinosaures : 
 | parasaurolophus | *Parasaurolophus* | पैरासॉरोलोफस | ⚠ ph→फ ; à distinguer de saurolophus à l'oral — à relire natif |
 | patagotitan | *Patagotitan* | पैटागोटाइटन | genre récent (2017), translit. Patagonia + titan |
 | pentaceratops | *Pentaceratops* | पेंटासेराटॉप्स | « cinq cornes » |
+| kosmoceratops | *Kosmoceratops* | कॉस्मोसेराटॉप्स | ऑ ouvert ; la variante कोस्मो… est entendue « cosmos are atoms », rejetée ; vérifié STT 2026-11-22 |
 | plateosaurus | *Plateosaurus* | प्लेटियोसॉरस | ⚠ -teo- rendu टियो (plateyo-) — à relire natif |
 | protoceratops | *Protoceratops* | प्रोटोसेराटॉप्स | direct |
 | pteranodon | *Pteranodon* | टेरानोडोन | ptérosaure (reptile volant), non-dino ; Pt→ट (p muet, usage anglais) |

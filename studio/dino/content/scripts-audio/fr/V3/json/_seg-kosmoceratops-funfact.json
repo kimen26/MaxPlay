@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[whispers] On compte ses cornes ? [softly] Une sur le nez... [serious] deux au-dessus des yeux... [nervous] deux sur les joues... [excited] et dix CROCHETS tout autour de sa collerette !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Ça fait quinze."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[amazed] Quinze cornes et pointes : [proud] la tête la plus décorée de tous les dinosaures qu'on connaît. [curious] Les savants pensent qu'elles servaient surtout à se montrer."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

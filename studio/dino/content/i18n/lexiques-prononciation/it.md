@@ -98,6 +98,7 @@ Colonne: `id` · nome scientifico · **FORMA DA SCRIVERE PER IL TTS** (forma ita
 | parasaurolophus | *Parasaurolophus* | **Parasaurolofo** — Pa-ra-sau-RO-lo-fo | ph→f; -us→-o |
 | patagotitan | *Patagotitan* | **Patagotitano** — Pa-ta-go-TI-ta-no | g dura (`go`); forma it. «Patagotitano» |
 | pentaceratops | *Pentaceratops* | **Pentaceratopo** — Pen-ta-ce-RA-to-po | `ce`=«tche»; -ops→-opo (forma it. come Triceratopo) |
+| kosmoceratops | *Kosmoceratops* | **Kosmoceratopo** — Kos-mo-ce-RA-to-po | `ce`=«tche»; -ops→-opo (come Triceratopo) ; vérifié STT 2026-11-22 |
 | plateosaurus | *Plateosaurus* | **Plateosauro** — Pla-te-o-SAU-ro | — |
 | protoceratops | *Protoceratops* | **Protoceratopo** — Pro-to-ce-RA-to-po | `ce`=«tche»; -ops→-opo |
 | pteranodon | *Pteranodon* | **Pteranodonte** — Pte-ra-no-DON-te | Pt- iniziale pronunciato; forma it. «Pteranodonte» |

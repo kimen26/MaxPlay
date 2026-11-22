@@ -519,7 +519,7 @@ window.DINO_STRINGS = {
    "comp_poids": "¡tan pesado como 5 caballos!",
    "nom_etym": "«Pentaceratops», tres palabras griegas. Penta quiere decir cinco, ¡como un pentágono de cinco lados! Cerat, el cuerno. Y ops, el rostro. Todo junto: ¡el rostro de cinco cuernos!",
    "regime": "🌿 Herbívoro",
-   "superpower": "Una de las cabezas más GRANDES de todos los animales que han caminado sobre la Tierra: ¡casi tan grande como un papá!",
+   "superpower": "Una de las cabezas más GRANDES de todos los animales que han caminado sobre la Tierra: ¡más grande que un papá!",
    "chasseurs": "Bistahieversor, un gran cazador feroz",
    "proies": "Come plantas",
    "amis": "En manada",

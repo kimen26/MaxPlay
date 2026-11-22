@@ -2838,5 +2838,45 @@
     "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
     "language_code": "en",
     "date": "2026-09-12T15:17:51.176Z"
+  },
+  "kosmoceratops-nom": {
+    "empreinte": "908e94dd9e59",
+    "repliques": 3,
+    "duree_s": 32.7,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-11-22T19:48:43.579Z"
+  },
+  "kosmoceratops-taille": {
+    "empreinte": "fd86426d012c",
+    "repliques": 3,
+    "duree_s": 22.2,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-11-22T19:46:44.648Z"
+  },
+  "kosmoceratops-regime": {
+    "empreinte": "83e5891b9ad1",
+    "repliques": 3,
+    "duree_s": 21,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-11-22T19:47:04.807Z"
+  },
+  "kosmoceratops-funfact": {
+    "empreinte": "132d7adcfc4b",
+    "repliques": 3,
+    "duree_s": 24.4,
+    "pipeline": "sts-v2-dialogue",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "language_code": "en",
+    "date": "2026-11-22T19:47:25.017Z"
   }
 }

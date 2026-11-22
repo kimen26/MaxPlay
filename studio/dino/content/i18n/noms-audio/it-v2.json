@@ -609,7 +609,7 @@
     "language_code": "it",
     "modele_sts": "eleven_multilingual_sts_v2",
     "voix_finale": "narrateur_h",
-    "date": "2026-08-11T22:06:22.468Z"
+    "date": "2026-11-22T19:43:33.046Z"
   },
   {
     "id": "plateosaurus",
@@ -838,5 +838,17 @@
     "modele_sts": "eleven_multilingual_sts_v2",
     "voix_finale": "narrateur_h",
     "date": "2026-08-11T22:07:51.950Z"
+  },
+  {
+    "id": "kosmoceratops",
+    "texte_envoye": "[excited] Kosmoceratopo",
+    "pipeline": "sts-v2",
+    "voix_source": "Valentino",
+    "voice_id_source": "lJylpTXX0sNdqq5EUv4M",
+    "modele_tts": "eleven_v3",
+    "language_code": "it",
+    "modele_sts": "eleven_multilingual_sts_v2",
+    "voix_finale": "narrateur_h",
+    "date": "2026-11-22T19:43:33.046Z"
   }
 ]

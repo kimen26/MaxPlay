@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Kozz… moh… SERR… uh… tops. [curious] Three Greek words: \"kosmos,\" decorated, like a fancy costume. \"Cerat\" is horn. [whispers] And \"ops\" is face."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] So it's the decorated horned face?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactly. [warmly] He lived in Utah, in North America, seventy-six million years ago. [curious] His second name, \"richardsoni,\" honors Scott Richardson, a volunteer who found his skull in the desert."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

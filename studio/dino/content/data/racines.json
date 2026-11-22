@@ -3,8 +3,8 @@
     "source": "studio/dino/content/sources/etymo/_ETYMO-RACINES-50.md",
     "genere_par": "scripts/export/_etymo2racines.cjs",
     "note": "STRUCTURE seulement — la source de vérité reste le .md (fact-checké). Curation pédagogique du dico = dino-conseiller.",
-    "nb_racines": 117,
-    "nb_dinos": 85
+    "nb_racines": 119,
+    "nb_dinos": 86
   },
   "racines": [
     {
@@ -96,14 +96,34 @@
       "translitteration": "ôps",
       "sens": "face, visage",
       "type": "racine",
-      "n": 5,
+      "n": 6,
       "variantes": [
         "-ops",
         "ôps"
       ],
       "dinos": [
         "gorgonops",
+        "kosmoceratops",
         "moschops",
+        "pentaceratops",
+        "protoceratops",
+        "triceratops"
+      ]
+    },
+    {
+      "cle": "cérat-",
+      "langue": "grec",
+      "translitteration": "kéras",
+      "sens": "corne",
+      "type": "racine",
+      "n": 5,
+      "variantes": [
+        "cérat-",
+        "kéras"
+      ],
+      "dinos": [
+        "ceratosaurus",
+        "kosmoceratops",
         "pentaceratops",
         "protoceratops",
         "triceratops"
@@ -143,24 +163,6 @@
         "oviraptor",
         "utahraptor",
         "velociraptor"
-      ]
-    },
-    {
-      "cle": "cérat-",
-      "langue": "grec",
-      "translitteration": "kéras",
-      "sens": "corne",
-      "type": "racine",
-      "n": 4,
-      "variantes": [
-        "cérat-",
-        "kéras"
-      ],
-      "dinos": [
-        "ceratosaurus",
-        "pentaceratops",
-        "protoceratops",
-        "triceratops"
       ]
     },
     {
@@ -1225,6 +1227,21 @@
       ]
     },
     {
+      "cle": "kosmo- / kosmos",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "orné, décoré, parure",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "kosmo-",
+        "kosmos"
+      ],
+      "dinos": [
+        "kosmoceratops"
+      ]
+    },
+    {
       "cle": "lio- / leios",
       "langue": "grec",
       "translitteration": null,
@@ -1545,6 +1562,20 @@
       ],
       "dinos": [
         "tyrannosaurus"
+      ]
+    },
+    {
+      "cle": "richardsoni",
+      "langue": "latin",
+      "translitteration": null,
+      "sens": "en l'honneur de Scott Richardson, bénévole qui a trouvé le crâne",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "richardsoni"
+      ],
+      "dinos": [
+        "kosmoceratops"
       ]
     },
     {
@@ -3623,6 +3654,38 @@
           "cle": "spino-",
           "langue": "latin",
           "sens": "épine ; **-rhinus** (grec *rhis, rhinos*) = nez"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "kosmoceratops": {
+      "nom": "Kosmocératops",
+      "full": "Kosmoceratops richardsoni",
+      "sens": "la face à cornes décorée",
+      "racines": [
+        {
+          "racine": "kosmo- / kosmos",
+          "cle": "kosmo- / kosmos",
+          "langue": "grec",
+          "sens": "orné, décoré, parure"
+        },
+        {
+          "racine": "cérat- / kéras",
+          "cle": "cérat-",
+          "langue": "grec",
+          "sens": "corne"
+        },
+        {
+          "racine": "-ops",
+          "cle": "-ops",
+          "langue": "grec",
+          "sens": "face, visage"
+        },
+        {
+          "racine": "richardsoni",
+          "cle": "richardsoni",
+          "langue": "latin",
+          "sens": "en l'honneur de Scott Richardson, bénévole qui a trouvé le crâne"
         }
       ],
       "nom_etym": "ok"

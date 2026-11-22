@@ -89,6 +89,7 @@ Le chinois **ne transcrit pas les sons** grec/latin : il **traduit le sens** de 
 | parasaurolophus | *Parasaurolophus* | 副栉龙 | fùzhìlóng | « dragon à crête (en peigne), para- » | 栉 zhì = peigne ; aussi 副龙栉龙 fùlóngzhìlóng (plus complet) |
 | patagotitan | *Patagotitan* | 巴塔哥泰坦龙 | bātǎgētàitǎnlóng | translit. Patagonie + Titan + 龙 | ⚠ récent (2017) ; phonétique. Aussi 巴塔哥巨龙 bātǎgējùlóng |
 | pentaceratops | *Pentaceratops* | 五角龙 | wǔjiǎolóng | « dragon à cinq cornes » | 五 wǔ = cinq, 角 jiǎo = corne |
+| kosmoceratops | *Kosmoceratops* | 华丽角龙 | huálì jiǎolóng | « dragon à cornes magnifique » | nom chinois établi (pas de translittération) ; vérifié STT 2026-11-22 |
 | plateosaurus | *Plateosaurus* | 板龙 | bǎnlóng | « dragon-plaque/plat » | 板 bǎn = planche/plaque |
 | protoceratops | *Protoceratops* | 原角龙 | yuánjiǎolóng | « dragon à cornes primitif/originel » | 原 yuán = originel/primitif |
 | pteranodon | *Pteranodon* | 无齿翼龙 | wúchǐyìlóng | « ptérosaure sans dents » | ⚠ ptérosaure (reptile volant) ; 翼 yì = aile, 无齿 wúchǐ = sans dents |

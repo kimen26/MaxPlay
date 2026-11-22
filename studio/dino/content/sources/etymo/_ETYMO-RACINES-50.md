@@ -535,6 +535,14 @@
 → **« le lézard de Tsintao »** (et *spinorhinus*, « nez à épine »)
 [nom_etym OK — vérifié Grokipedia + Wikipédia EN, 2026-11-09. Qingdao n'est pas le lieu exact de la découverte (Laiyang), mais une grande ville voisine]
 
+## kosmoceratops — Kosmocératops (Kosmoceratops richardsoni)
+- **kosmo- / kosmos** (grec) = orné, décoré, parure (même mot que « cosmétique »)
+- **cérat- / kéras** (grec) = corne
+- **-ops** (grec) = face, visage
+- **richardsoni** (latin, nom propre) = en l'honneur de Scott Richardson, bénévole qui a trouvé le crâne
+→ **« la face à cornes décorée »** (15 cornes et pointes : 1 nasale, 2 au-dessus des yeux, 2 sur les joues, 10 crochets de collerette)
+[nom_etym OK — vérifié Sampson et al. 2010 PLoS ONE (« ornamented horned face », https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0012292) + Wikipédia EN + Grokipedia, 2026-11-22. Grokipedia dit aussi « James » Richardson et « paléontologue du BLM » : non retenu, le PLoS dit Scott Richardson, volunteer. Formation de Kaiparowits, Utah, ~76 Ma, nommé 2010]
+
 ---
 
 _Fichier généré 2026-05-17. 67 dinos, ordre `DINOS` de `dinos-data.js`. Racines vérifiées (grec/latin). Cas recherchés en ligne : Euoplocephalus, Therizinosaurus, Carcharodontosaurus, Diplodocus. 2026-08-03 : +17 entrées (Edmontonia, Hatzegopteryx, 6 marins, Patagotitan, 8 Cénozoïque) — vérifiées Wikipedia / etymonline / American Heritage. Prépare EP-D-GED-03._

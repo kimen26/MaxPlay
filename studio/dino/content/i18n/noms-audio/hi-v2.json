@@ -838,5 +838,17 @@
     "modele_sts": "eleven_multilingual_sts_v2",
     "voix_finale": "narrateur_h",
     "date": "2026-08-12T08:20:48.668Z"
+  },
+  {
+    "id": "kosmoceratops",
+    "texte_envoye": "[excited] कॉस्मोसेराटॉप्स",
+    "pipeline": "sts-v2",
+    "voix_source": "Ballu",
+    "voice_id_source": "ERMvs1ZN1ResVPKOv3da",
+    "modele_tts": "eleven_v3",
+    "language_code": "hi",
+    "modele_sts": "eleven_multilingual_sts_v2",
+    "voix_finale": "narrateur_h",
+    "date": "2026-11-22T19:43:33.046Z"
   }
 ]

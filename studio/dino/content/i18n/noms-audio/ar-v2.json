@@ -601,7 +601,7 @@
   },
   {
     "id": "pentaceratops",
-    "texte_envoye": "[excited] بنتاسيراتوبس",
+    "texte_envoye": "[excited] بِنْتاسِيراتوبْس",
     "pipeline": "sts-v2",
     "voix_source": "Mohammad",
     "voice_id_source": "vszNunPGBVqJg1Qd4H7Z",
@@ -609,7 +609,7 @@
     "language_code": "ar",
     "modele_sts": "eleven_multilingual_sts_v2",
     "voix_finale": "narrateur_h",
-    "date": "2026-08-12T08:25:17.327Z"
+    "date": "2026-11-22T19:43:33.046Z"
   },
   {
     "id": "plateosaurus",
@@ -838,5 +838,17 @@
     "modele_sts": "eleven_multilingual_sts_v2",
     "voix_finale": "narrateur_h",
     "date": "2026-08-12T08:26:55.234Z"
+  },
+  {
+    "id": "kosmoceratops",
+    "texte_envoye": "[excited] كوزْموسِيراتوبْس",
+    "pipeline": "sts-v2",
+    "voix_source": "Mohammad",
+    "voice_id_source": "vszNunPGBVqJg1Qd4H7Z",
+    "modele_tts": "eleven_v3",
+    "language_code": "ar",
+    "modele_sts": "eleven_multilingual_sts_v2",
+    "voix_finale": "narrateur_h",
+    "date": "2026-11-22T19:43:33.046Z"
   }
 ]

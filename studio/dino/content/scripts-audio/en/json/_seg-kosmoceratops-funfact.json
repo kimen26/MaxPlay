@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[whispers] Shall we count his horns? [softly] One on the nose... [serious] two above the eyes... [nervous] two on the cheeks... [excited] and ten HOOKS all around his frill!"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] That makes fifteen."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[amazed] Fifteen horns and spikes: [proud] the most decorated head of any dinosaur we know. [curious] Scientists think they were mostly for showing off."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "en",
+  "apply_text_normalization": "auto"
+}

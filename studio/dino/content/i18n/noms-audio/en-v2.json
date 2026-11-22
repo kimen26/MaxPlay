@@ -838,5 +838,17 @@
     "modele_sts": "eleven_multilingual_sts_v2",
     "voix_finale": "narrateur_h",
     "date": "2026-08-11T21:56:49.808Z"
+  },
+  {
+    "id": "kosmoceratops",
+    "texte_envoye": "[excited] Kosmoceratops",
+    "pipeline": "sts-v2",
+    "voix_source": "Liam",
+    "voice_id_source": "TX3LPaxmHKxFdv7VOQHJ",
+    "modele_tts": "eleven_v3",
+    "language_code": "en",
+    "modele_sts": "eleven_multilingual_sts_v2",
+    "voix_finale": "narrateur_h",
+    "date": "2026-11-22T19:43:33.046Z"
   }
 ]

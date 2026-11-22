@@ -92,6 +92,7 @@ El español ya tiene una tradición fija de castellanizar los nombres de dinosau
 | parasaurolophus | *Parasaurolophus* | **Pa-ra-sau-RÓ-lo-fo** | ph→f, -us→-fo (Parasaurolofo) |
 | patagotitan | *Patagotitan* | **Pa-ta-go-ti-TÁN** | nombre hispano (Patagonia) — natural |
 | pentaceratops | *Pentaceratops* | **Pen-ta-CE-ra-tops** | c ante e = /θ/ |
+| kosmoceratops | *Kosmoceratops* | **Kos-mo-ce-RÁ-tops** | c ante e = /θ/ ; prod « Kosmocerátops » (es-es y es-mx, vérifié STT 2026-11-22) |
 | plateosaurus | *Plateosaurus* | **Pla-te-o-SAU-rio** | forma directa |
 | protoceratops | *Protoceratops* | **Pro-to-CE-ra-tops** | c ante e = /θ/ |
 | pteranodon | *Pteranodon* | **Pte-ra-no-don** | Pt inicial se pronuncia en ES |

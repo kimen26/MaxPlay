@@ -287,6 +287,7 @@ function _compHaut(m) {
 // rhinocéros 2 t (×2/×3/×4) · hippopotame 3 t (×N) · éléphant 5 t (×N).
 // 3 exceptions-additions validées PY (« c'est rigolo, ça reste l'exception ») : 1,65 t = voiture + vache ·
 // 3,5 t = hippopotame + cheval · 7 t = éléphant + rhinocéros.
+// 4e addition (2026-11-22, Kosmocératops 1,2 t mentait de 20 % avec la petite voiture) : 1,15 t = vache + cheval.
 // Historique : paliers resserrés 2026-07-25 · refonte 2026-08-03 (animaux connus, hippo 3 t, zéro camion,
 // zèbre/poney/enfant 8 ans retirés par PY → 2 ânes / 2 lions / chien 25 kg).
 // Règle : jamais > 10 % d'écart (vérif : content/scripts/export/_verif-comppoids.cjs).
@@ -314,6 +315,7 @@ function _compPoids(t) {
   if (t >= 2.3)  return `aussi lourd que 5 chevaux !`;
   if (t >= 1.8)  return `aussi lourd qu'un rhinocéros !`;
   if (t >= 1.45) return `aussi lourd qu'une petite voiture et une vache ensemble !`;
+  if (t >= 1.12) return `aussi lourd qu'une vache et un cheval ensemble !`;
   if (t >= 0.85) return `aussi lourd qu'une petite voiture !`;
   if (t >= 0.55) return `aussi lourd qu'une vache !`;
   if (t >= 0.45) return `aussi lourd qu'un cheval !`;
@@ -1304,7 +1306,7 @@ const DINOS = [
     comp_poids: _compPoids(2.5),
     nom_etym: '« Pentaceratops », trois morceaux grecs ! Penta, ça veut dire cinq — comme un pentagone à cinq côtés ! Cérat, la corne. Et ops, la face. En entier : la face à cinq cornes !',
     regime: '🌿 Herbivore',
-    superpower: 'Une des plus GRANDES têtes de tous les animaux qui ont marché sur Terre — presque aussi grande qu\'un Papa !',
+    superpower: 'Une des plus GRANDES têtes de tous les animaux qui ont marché sur Terre — plus grande qu\'un Papa !',
     chasseurs: 'Bistahieversor — un grand chasseur féroce',
     proies: 'Mange des plantes',
     amis: 'En troupeau',
@@ -1312,6 +1314,33 @@ const DINOS = [
     desc: 'Le Pentacératops avait «cinq cornes» : trois vraies, plus deux pointes sur les joues. Et une tête énorme, parmi les plus grandes de tous les animaux terrestres !',
     png: 'Pentaceratops.webp',
     color: '#8a6d0a',
+    continent: 'Amérique du Nord',
+    periode: 'cretace',
+  },
+  {
+    id: 'kosmoceratops',
+    famille: 'cornu',
+    name: 'Kosmocératops',
+    full: 'Kosmoceratops richardsoni',
+    cat: 'herbivores',
+    epoque: 'Crétacé · il y a 76 millions d\'ans',
+    region: 'États-Unis (Utah)',
+    taille_m: 4.5,
+    hauteur_m: 1.5,
+    poids_t: 1.2,
+    comp_taille: _compLong(4.5),
+    comp_hauteur: _compHaut(1.5),
+    comp_poids: _compPoids(1.2),
+    nom_etym: '« Kosmoceratops », trois morceaux grecs ! Kosmos, ça veut dire décoré, comme une belle parure. Cérat, la corne. Et ops, la face. En entier : la face à cornes décorée ! Son deuxième nom, richardsoni, c\'est pour Scott Richardson, qui a trouvé son crâne dans le désert de l\'Utah.',
+    regime: '🌿 Herbivore',
+    superpower: 'La tête la plus décorée de tous les dinosaures connus : 15 cornes et pointes !',
+    chasseurs: 'Le Teratophoneus, un tyrannosaure qui vivait au même endroit',
+    proies: 'Mange des plantes : fougères, cycas, conifères',
+    amis: 'Il vivait près des rivières et des marais, avec l\'Utahceratops, le Nasutoceratops et le Parasaurolophus',
+    fait: '15 cornes et pointes sur la tête ! Une sur le nez, deux au-dessus des yeux, deux sur les joues, et dix crochets tout autour de sa collerette, presque tous courbés vers l\'avant.',
+    desc: 'Le Kosmocératops avait la tête la plus décorée de tous les dinosaures qu\'on connaît. Ses cornes au-dessus des yeux partaient sur les côtés puis se courbaient vers le bas, et sa collerette courte était bordée de dix crochets. On pense que ces décorations servaient surtout à se montrer.',
+    png: 'Kosmoceratops.webp',
+    color: '#a35a1f',
     continent: 'Amérique du Nord',
     periode: 'cretace',
   },

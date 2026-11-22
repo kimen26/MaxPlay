@@ -257,6 +257,14 @@ Et toi, ton préféré, c'est lequel ?
 
 ## Génération
 
+> **À faire dans une session Claude Code LOCALE sur le PC perso** (la clé `ELEVENLABS_API_KEY` et les outils ElevenLabs y sont, pas dans les sessions cloud) :
+> 1. `git pull` de la branche `claude/dinosaur-song-lyrics-flvlg0`.
+> 2. Vérifier `/mcp` (outils ElevenLabs) et la clé (`/socle:secrets inventaire`).
+> 3. Test de prononciation groupé (lexique §4) : une voix française lit les noms respellés du « Texte envoyé à ElevenLabs », PY écoute, on corrige les graphies ratées.
+> 4. `create_composition_plan` avec le prompt de style et le texte ci-dessus → relire.
+> 5. `check_subscription`, GO PY, `compose_music`, `check_subscription` → coût dans le README.
+> 6. `audio-verif`, écoute PY, puis publication (pipeline du pôle).
+
 - Date :
 - Crédits avant / après :
 - Vérif STT :

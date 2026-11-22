@@ -25,6 +25,10 @@ reste dans son pôle. Ici, seulement des chansons avec des paroles.
 - 🔒 Chanson dino = encyclopédie vraie : vrais noms, vraies époques, échelle honnête (> 10 % d'écart = faux).
   Le Tricératops peut s'appeler Tritri une fois, sans quête.
 - 🔒 Bus : interdit seulement dans une chanson dino. Une chanson de bus est bienvenue.
+- 🔒 On dit ce qui existait, jamais ce qui n'existait pas (« pas une fleur », « pas un dino » = refusé) : on formule en positif (PY 2026-10-19).
+- 🔒 Chanson dino : seulement des dinos que Max connaît, c'est-à-dire ceux de l'app (`studio/dino/content/dinos/`). Environ 80 % de chaque famille citée, en gardant le plus petit et le plus grand, et au plus 5 % d'exceptions hors app (PY 2026-11-22).
+- 🔒 Noms savants : on chante la graphie du lexique dino `studio/dino/content/i18n/lexiques-prononciation/fr.md` (ex. Deinocheirus = « Dé-i-no-ké-i-rus », son « k » confirmé PY 2026-11-22).
+- Prompt de style : préciser « français de France » (accent métropolitain).
 - Pas de refrain « leçon » ni de morale. Pas d'adulte sauveur.
 - Mots qu'un enfant de 4 ans comprend, phrases courtes, refrain qui revient et se chante après 2 écoutes.
 - Pas de nom d'artiste réel ni de titre existant dans le prompt de style (droits).

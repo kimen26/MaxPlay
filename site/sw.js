@@ -35,7 +35,7 @@
 
 // Tampon recopié de SW_VERSION par gen-sw-version.mjs : fait changer sw.js à chaque
 // version, pour les navigateurs qui ignorent un changement d'importScripts (L-D-90).
-// SW_STAMP: 8869c94bbd03
+// SW_STAMP: 2fb2474d7c0e
 importScripts('./js/gen/sw-version.js');
 
 const VERSION = self.SW_VERSION || 'dev';
@@ -78,6 +78,7 @@ const PRECACHE_LIST = [
   'manifest.json',
   'css/mp-theme.css',
   'css/mur.css',
+  'css/nid-v5.css',
   'css/armoire-meuble.css',
   'css/armoire.css',
   'js/lang.js',
@@ -105,8 +106,12 @@ const PRECACHE_LIST = [
   // silence et le nid restait vide) — il doit être précaché comme le reste
   // de la coquille, sinon un jeu ouvert hors-ligne perd le gain.
   'js/gen/dinos-data.js',
+  'js/collection-tirage.js',
   'js/collection.js',
   'js/collection-dinos.js',
+  'js/nid-v5-rendu.js',
+  'js/nid-v5.js',
+  'js/mj-cadeau.js',
   'js/avatar-picker.js',
   'js/bus-svg.js',
   'js/mp-theme.js',
@@ -163,6 +168,33 @@ const PRECACHE_LIST = [
   'img/armoire/globe-09.webp',
   'img/armoire/globe-10.webp',
   'img/armoire/globe-11.webp',
+  // NID v5 (HO-MJ-25) : décor et objets du nid, précachés (nid jouable hors ligne)
+  'img/nid/bonnet-bleu.webp',
+  'img/nid/bonnet-bus.webp',
+  'img/nid/bonnet-loup.webp',
+  'img/nid/bonnet-rouge.webp',
+  'img/nid/caillou-1.webp',
+  'img/nid/caillou-2.webp',
+  'img/nid/caillou-3.webp',
+  'img/nid/cape-ecossaise.webp',
+  'img/nid/cape-empreintes.webp',
+  'img/nid/cape-etoiles.webp',
+  'img/nid/cape-nuage.webp',
+  'img/nid/echarpe-bresil.webp',
+  'img/nid/echarpe-france.webp',
+  'img/nid/echarpe-pois.webp',
+  'img/nid/echarpe-rayee.webp',
+  'img/nid/lit-brindilles.webp',
+  'img/nid/lit-fougere.webp',
+  'img/nid/lit-mousse.webp',
+  'img/nid/lit-plume-doree.webp',
+  'img/nid/lit-plumes.webp',
+  'img/nid/peint-arcenciel.webp',
+  'img/nid/peint-coeur.webp',
+  'img/nid/peint-etoile.webp',
+  'img/nid/peint-pois.webp',
+  'img/nid/peint-raye.webp',
+  'img/nid/sol.webp',
 ];
 
 self.addEventListener('install', (event) => {

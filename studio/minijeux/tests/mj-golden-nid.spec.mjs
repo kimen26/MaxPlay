@@ -66,11 +66,13 @@ export async function run({ page, ok }) {
     const raw = localStorage.getItem('maxplay_collection_v1');
     return raw ? JSON.parse(raw) : null;
   });
-  // NID v4 (2026-07-30) : état v2 — nid vide → le gain est FORCÉMENT un œuf
-  // individuel dans eggs[] (plus de pending[] anonyme), avec une famille.
-  ok('A3/NID v4 : partie terminée sur nid vide → 1 œuf individuel avec famille',
-     !!collection && collection.version === 2 && Array.isArray(collection.eggs) &&
-     collection.eggs.length === 1 && !!collection.eggs[0].famille,
+  // NID v5 (HO-MJ-25, D-041) : état v3 — nid vide → le tout premier cadeau est FORCÉMENT
+  // un tas de 6 cailloux sur le nid 1 (nid fermé, pas d'œuf encore). Même protection
+  // qu'avant : une partie terminée écrit bel et bien un cadeau dans la collection.
+  ok('A3/NID v5 : partie terminée sur nid vide → nid 1 fermé (6 cailloux)',
+     !!collection && collection.version === 3 && Array.isArray(collection.nids) &&
+     collection.nids.length === 3 && collection.nids[0].cailloux === 6 &&
+     collection.nids[1].cailloux === 0 && collection.nids[2].cailloux === 0,
      JSON.stringify(collection));
 
   // ── A3 : resume effacé en fin de partie ────────────────────────────────

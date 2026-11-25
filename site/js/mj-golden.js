@@ -369,36 +369,29 @@
         try { localStorage.setItem('golden_stars_' + this.gameId, String(newStars)); } catch (e) {}
       }
 
-      // NID v4 (2026-07-30) : 1 gain par partie TERMINÉE, règle DÉTERMINISTE
-      // lisible — nid pas plein → ŒUF (couleur = famille, connue tout de
-      // suite) · nid plein → ACCESSOIRE de soin (paille/couverture/bonnet/
-      // écharpe, file dans le sac). Anti-farm PY 2026-07-28 étendu : un jeu
-      // à 3 étoiles ne donne plus RIEN (ni œuf ni accessoire) — la partie
-      // reste valorisée par l'écran de fin. UN seul gain, annoncé clairement
-      // (exigence PY 2026-07-28), jamais mélangé avec l'étoile.
-      // 3e étoile GAGNÉE À L'INSTANT (maîtrise) : le gain de la partie est
-      // remplacé par l'accessoire ÉTOILE permanent (décision 2026-07-30) —
-      // toujours UN seul gain annoncé.
+      // NID v5 (HO-MJ-25, D-041) : un cadeau n'est PAS donné à chaque partie (≈ une sur deux,
+      // jamais 3 de suite sans rien). Le moteur (collection.js grantReward) rend {granted, gifts,
+      // double, rien} : une ou deux cartes cadeau, ou rien — et quand il n'y a rien, on n'en
+      // parle pas (aucun message, l'écran reste celui de la partie). Plus d'anti-farm : un jeu
+      // à 3 étoiles suit la même règle. 3e étoile gagnée à l'instant = mastered (variante rare).
       const justMastered = perfect && this.stars < MAX_STARS && newStars >= MAX_STARS;
       let grant = null;
       if (global.Collection && global.Collection.grantCapsule) {
-        try { grant = global.Collection.grantCapsule({ gameId: this.gameId, mastered: justMastered }); } catch (e) {}
+        try { grant = global.Collection.grantCapsule({ gameId: this.gameId, perfect: perfect, mastered: justMastered }); } catch (e) {}
       }
       const rewardGranted = !!(grant && grant.granted !== false);
-      const eggGranted = rewardGranted && grant.type !== 'accessoire';
-      const accGranted = rewardGranted && grant.type === 'accessoire';
-      // HO-MJ-21 (2026-09-19), §3+4.3 du brief : granted:false recouvre DEUX
-      // causes distinctes — anti-farm (3 étoiles, message "déjà toutes les
-      // étoiles ici" correct) et échec d'écriture (quota localStorage saturé,
-      // saveFailed:true) — jamais le même message pour les deux, sinon on ment
-      // à l'enfant sur la raison. saveFailed ne joue AUCUN théâtre (rewardGranted
-      // reste false) et ne dit pas non plus "il n'y a plus rien à gagner ici".
-      const noMoreEggsHere = !!(grant && grant.granted === false && !grant.saveFailed);
+      const gifts = (rewardGranted && Array.isArray(grant.gifts)) ? grant.gifts : [];
+      // HO-MJ-21 : saveFailed = quota localStorage saturé → AUCUN gain annoncé, aucun message à l'enfant.
       const saveFailed = !!(grant && grant.saveFailed);
       if (saveFailed) console.warn('[mj-golden] Collection.grantReward : échec de sauvegarde, gain non annoncé (quota localStorage ou profil indisponible).');
       const readyToHatch = !!(global.Collection && global.Collection.readyToHatch && (function () {
         try { return global.Collection.readyToHatch(); } catch (e) { return false; }
       })());
+      // Quelque chose à faire au nid ? (objet au sac à poser, ou œuf prêt à éclore) → le bouton pulse.
+      const sacCount = (function () {
+        try { return global.Collection && global.Collection.sac ? global.Collection.sac().length : 0; } catch (e) { return 0; }
+      })();
+      const nidAFaire = readyToHatch || sacCount > 0;
 
       // Zone de 3 badges : pré-remplie avec les étoiles déjà acquises.
       let slots = '';
@@ -423,19 +416,12 @@
         title = (function(){try{var k=(JSON.parse(localStorage.getItem('maxplay_active_child'))||{}).nickname;if(!k)return T('finBienJoue','Bien joué&nbsp;!');var d=document.createElement('div');d.textContent=k;return T('finBienJoueNom','Bien joué {nom}&nbsp;!',{nom:d.innerHTML});}catch(e){return T('finBienJoue','Bien joué&nbsp;!');}})();
         sub = Golden._PROCESS_COMPLIMENTS[(Math.random() * Golden._PROCESS_COMPLIMENTS.length) | 0];
       }
-      // Bug 3 (lisibilité, exigence PY 2026-07-28) : jamais mélanger œuf et
-      // étoile — d'abord l'œuf (ou le message clair "déjà 3 étoiles ici" s'il
-      // n'y en a pas), PUIS l'étoile sans-faute s'il y en a une. Jamais les
-      // deux en même temps, jamais d'ambiguïté sur ce qui a été gagné.
-      if (noMoreEggsHere) {
-        sub = (sub ? sub + ' ' : '') + T('finDejaToutesEtoiles', 'Tu as déjà toutes les étoiles ici&nbsp;! Essaie un autre jeu pour gagner un œuf.');
-      }
       // Séquencement (retour playtest Papa Yann 2026-07-26) : l'œuf doit se voir
       // et se jouer AVANT titre/sous-titre/boutons — plus de délai CSS fixe qui
       // les affichait EN PARALLÈLE de l'anim d'œuf (~2s, plein écran). Le délai
       // de base part maintenant après la fin de l'œuf (eggGranted ? ~2s : 0),
       // + la fenêtre étoile (perfect) comme avant.
-      const eggDelay = rewardGranted ? 2.1 : 0;
+      const eggDelay = gifts.length ? gifts.length * 2.4 + 0.2 : 0; // cartes cadeau (mj-cadeau.js) puis l'écran
       // Fenêtre étoile : large pour la 3e (cinématique), courte pour les
       // discrètes (petit vol ~1s), nulle sans étoile.
       const starDelay = justMastered ? 3 : (perfect ? 1.2 : 0);
@@ -452,15 +438,10 @@
       })() : null;
       const replayUrl = opts.replayUrl || location.pathname.split('/').pop();
 
-      // EP-120 : bouton « Aller dans le nid » quand cette partie vient de
-      // rapporter un œuf OU un accessoire (rewardGranted couvre les deux —
-      // demande PY explicite). Le badge 🥚 décoratif sur Suite/Maison n'a de
-      // sens QUE quand rien n'annonce déjà le gain de cette partie : dès que
-      // le bouton nid existe, il porte seul le signal (sinon double message
-      // pour un enfant de 4 ans). Le badge reste utile dans le seul cas où
-      // un œuf attend d'une visite précédente SANS gain cette partie
-      // (readyToHatch vrai, rewardGranted faux) : là, rien d'autre ne le dit.
-      const nestBadge = (readyToHatch && !rewardGranted) ? '<span class="nid-badge" title="ça bouge dans le nid !">🥚</span>' : '';
+      // Bouton « Au nid » (EP-120, refondu NID v5) : présent quand il y a quelque chose à y
+      // faire — un cadeau vient d'arriver, un objet attend au sac, ou un œuf est prêt à éclore.
+      // Il PULSE dans ces cas (le seul signal : plus de badge 🥚 en double). Sans cadeau ni
+      // rien à poser, on n'en parle pas du tout.
       // Deep-link vers la Vallée : ouvre directement la chambre des œufs.
       // Même convention que dev-dinos.html?open=<id> dans nid-ui.js — seul
       // le paramètre `open` est lu (le `?v=` qu'on y voit est un reliquat de
@@ -471,13 +452,13 @@
       const nidLabel = T('nidBoutonFin', 'Au nid&nbsp;!');
 
       let btns = '<a href="' + replayUrl + '" data-act="replay" style="background:#00c47a;">🔄 ' + T('finEncoreBtn', 'Encore&nbsp;!') + '</a>';
-      if (rewardGranted) {
-        btns += '<a href="' + nidUrl + '" data-act="nid" style="background:#ff8fb8;color:#3a0f22;">🥚 ' + nidLabel + '</a>';
+      if (gifts.length || nidAFaire) {
+        btns += '<a href="' + nidUrl + '" data-act="nid" data-pulse="' + (nidAFaire || gifts.some(g => g.type !== 'cailloux' && g.type !== 'peint') ? '1' : '0') + '" style="background:#ff8fb8;color:#3a0f22;">🪺 ' + nidLabel + '</a>';
       }
       if (nextUrl) {
-        btns += '<a href="' + nextUrl + '" data-act="next" class="btn-next-big" style="background:#ffd166;color:#3a2a00;">' + T('finLaSuiteBtn', 'La suite') + ' →' + nestBadge + '</a>';
+        btns += '<a href="' + nextUrl + '" data-act="next" class="btn-next-big" style="background:#ffd166;color:#3a2a00;">' + T('finLaSuiteBtn', 'La suite') + ' →</a>';
       }
-      btns += '<a href="index.html" data-act="home" aria-label="' + T('ariaMaison', 'Maison') + '" style="background:#ffffff22;">🏠' + nestBadge + '</a>';
+      btns += '<a href="index.html" data-act="home" aria-label="' + T('ariaMaison', 'Maison') + '" style="background:#ffffff22;">🏠</a>';
 
       app.innerHTML =
         '<div class="end-wrap">'
@@ -495,45 +476,35 @@
       // de l'écran de fin), pas vers une mini-pastille invisible.
       const eggZone = document.getElementById('eggZone');
       const badgeAnchor = document.getElementById('badgeZone');
-      // Théâtre du gain (œuf teinté FAMILLE ou accessoire de soin) — même
-      // séquence MaxFX.eggEarned pour les deux (un seul visuel plein cadre,
-      // un seul label : jamais d'ambiguïté sur ce qui a été gagné).
-      const runEgg = (rewardGranted && global.MaxFX && global.MaxFX.eggEarned)
-        ? (function () {
-            const egg = (global.MJKit && global.MJKit.oeuf) ? global.MJKit.oeuf(56) : (function () {
-              const d = document.createElement('div'); d.textContent = '🥚'; d.style.fontSize = '40px'; return d;
-            })();
-            if (eggZone) eggZone.appendChild(egg); else document.body.appendChild(egg);
-            egg.style.visibility = 'hidden'; // ancre invisible : le vrai visuel vit dans l'overlay MaxFX
-            const fxOpts = { golden: !!grant.justGolden, toEl: badgeAnchor || egg };
-            if (accGranted) {
-              const acc = grant.accessoire || {};
-              fxOpts.emoji = acc.emoji || '🎁';
-              // acc.nom vient de Collection (studio hors périmètre i18n) : reste en FR
-              // tant que les noms d'accessoires n'ont pas leur propre traduction.
-              const nom = acc.nom || 'un cadeau';
-              const nomCap = nom.charAt(0).toUpperCase() + nom.slice(1);
-              fxOpts.label = grant.special
-                ? T('finEtoileChampion', 'Une super étoile de champion !')
-                : T('finAccessoirePourOeufs', '{nom} pour tes œufs&nbsp;!', { nom: nomCap });
-              if (grant.special) fxOpts.golden = true; // l'étoile de maîtrise brille or
-            } else if (grant.familleMeta && grant.familleMeta.color && !grant.justGolden) {
-              fxOpts.color = grant.familleMeta.color; // œuf teinté = famille (surprise l'espèce)
-            }
-            // aquarium (marins vivipares) / tanière (mammifères) au lieu d'un œuf
-            if (!accGranted && grant.naissance === 'aquarium') {
-              fxOpts.naissance = 'aquarium';
-              fxOpts.label = T('finAquariumPourLeNid', 'Un petit aquarium pour le nid&nbsp;!');
-            } else if (!accGranted && grant.naissance === 'taniere') {
-              fxOpts.naissance = 'taniere';
-              fxOpts.label = T('finTanierePourLeNid', 'Une petite tanière pour le nid&nbsp;!');
-            }
-            try {
-              return global.MaxFX.eggEarned(egg, fxOpts)
-                .then(function () { egg.remove(); });
-            } catch (e) { egg.remove(); return Promise.resolve(); }
-          })()
+      // Cartes cadeau (mj-cadeau.js) : l'image de chaque cadeau + une phrase courte dite.
+      // Double = 2 cartes l'une après l'autre puis la fête. Pas de cadeau = rien du tout.
+      const phraseCadeau = (g) => {
+        if (g.type === 'oeuf' && g.naissance === 'aquarium') return T('finAquariumPourLeNid', 'Un petit aquarium pour le nid&nbsp;!');
+        if (g.type === 'oeuf' && g.naissance === 'taniere') return T('finTanierePourLeNid', 'Une petite tanière pour le nid&nbsp;!');
+        const cle = { cailloux: ['finCadeauCailloux', 'Des cailloux pour ton nid&nbsp;!'], oeuf: ['finCadeauOeuf', 'Un œuf&nbsp;!'],
+          lit: ['finCadeauLit', 'Un lit pour ton œuf&nbsp;!'], peint: ['finCadeauPeint', 'Un caillou peint&nbsp;!'],
+          bonnet: ['finCadeauBonnet', 'Un bonnet&nbsp;!'], echarpe: ['finCadeauEcharpe', 'Une écharpe&nbsp;!'],
+          cape: ['finCadeauCape', 'Une cape&nbsp;!'] }[g.type === 'habit' ? g.id : g.type];
+        return cle ? T(cle[0], cle[1]) : '';
+      };
+      const cartes = gifts.map((g) => {
+        let couleur = null;
+        try { const f = g.type === 'oeuf' && global.Collection.familleInfo(g.famille); couleur = f && f.color; } catch (e) {}
+        return { type: g.type, id: g.id, variante: g.variante, rare: !!g.rare, golden: !!g.golden, couleur: couleur, naissance: g.naissance, texte: phraseCadeau(g) };
+      });
+      const chargerCadeau = () => global.GoldenCadeau ? Promise.resolve() : new Promise((res) => {
+        const sc = document.createElement('script'); sc.src = 'js/mj-cadeau.js'; sc.onload = sc.onerror = () => res(); document.head.appendChild(sc);
+      });
+      const runEgg = cartes.length
+        ? chargerCadeau().then(() => global.GoldenCadeau ? global.GoldenCadeau.jouer(cartes, { fete: () => { try { confetti(); } catch (e) {} } }) : null)
         : Promise.resolve();
+
+      // « Au nid » pulse quand il y a quelque chose à poser ou un œuf prêt — après les cartes.
+      const nidBtn = app.querySelector('[data-act="nid"][data-pulse="1"]');
+      if (nidBtn && nidBtn.animate && !(global.matchMedia && global.matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+        nidBtn.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.1)' }, { transform: 'scale(1)' }],
+          { duration: 1100, iterations: Infinity, delay: (eggDelay + starDelay + 1.1) * 1000 });
+      }
 
       // Première réception de l'étoile (spec v0.7) : les 3 étapes MONTRÉES
       // côte à côte (super star → jaune → estompée), une phrase — montré,

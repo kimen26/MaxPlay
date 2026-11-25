@@ -1,85 +1,46 @@
 // ─────────────────────────────────────────────────────────────────────────
-//  collection.js — Moteur de collection MaxPlay (NID v4) — PUR, zéro DOM, zéro fetch
-//  v2 du moteur (chantier NID v4, GO Papa Yann 2026-07-30, fusion retours
-//  Claude + copain LLM — backlog 2026-07-30). Remplace le modèle « 3 capsules
-//  anonymes → 1 éclosion » (illisible : 2 œufs « disparaissaient »).
+//  collection.js — Moteur de collection MaxPlay (NID v5, v3 du moteur) — PUR, zéro DOM
+//  HO-MJ-25, décision D-041 (2026-11-25). Remplace le modèle NID v4 (œufs +
+//  accessoires consommés, anti-farm « 3 étoiles = rien »).
 //
-//  NOUVEAU MODÈLE (règles PY live 2026-07-30) :
-//  · Chaque partie terminée donne UN gain :
-//      nid VIDE → un ŒUF obligatoire · 1-2 œufs → RANDOM complet (œuf ou
-//      accessoire) · nid plein (3) → un ACCESSOIRE obligatoire.
-//  · Un œuf est un INDIVIDU : il a une FAMILLE (couleur connue dès le gain,
-//    l'espèce reste la surprise de l'éclosion) et sa propre progression.
-//  · Le soin : on pose des accessoires (paille, couverture, bonnet, écharpe)
-//    sur un œuf pour le garder au chaud. Au seuil de chaleur → éclosion de
-//    CET œuf, les autres restent. Zéro decay : la chaleur ne fait que monter,
-//    jamais d'œuf qui a froid ou qui meurt (D-002). Accessoires CONSOMMÉS à
-//    l'éclosion (PY : « sinon on se retrouve avec 500 accessoires — l'idée
-//    c'est 3 jeux pour qu'un œuf éclose »).
-//  · La caresse est de l'AFFECTION : craquement VISUEL (3 stades, persistant),
-//    elle ne fait JAMAIS éclore seule — MAIS si l'œuf a déjà 2 accessoires,
-//    à partir de la 2e caresse l'amour PEUT finir le travail (un peu de
-//    random, PY 2026-07-30). Sinon on attend le 3e accessoire.
-//  · Anti-farm (arbitrage PY 2026-07-28, étendu 2026-07-30) : un jeu à
-//    3 étoiles ne donne plus RIEN (ni œuf ni accessoire).
-//  · Série : 3 parties enchaînées dans une fenêtre de 30 min → l'œuf suivant
-//    est DORÉ = un dino TRÈS CONNU (top items `star`, n'importe quelle
-//    famille — redéfini PY 2026-07-30, avant : famille rare). Pas de cap
-//    journalier (avenant P0 #2).
-//  · 3e étoile d'un jeu (maîtrise) : le gain de CETTE partie est remplacé par
-//    l'accessoire ÉTOILE (spec v0.7 : réutilisable 3 charges à déclassement
-//    visuel 🌟→⭐→écharpe, max 1 par œuf, une seule source = maîtriser un jeu).
-//  · Seuil 3 accessoires (= les 3 emplacements visibles sur l'œuf), le tout
-//    PREMIER œuf de l'histoire éclot à 1 accessoire (théâtre d'onboarding).
+//  MODÈLE v3 :
+//  · 3 NIDS côte à côte. Au départ rien : le 1er cadeau de l'histoire est un tas
+//    de 6 cailloux (nid 1). Ensuite les cailloux arrivent par poignée de 2 ; un
+//    nid est fermé à 6. Un ŒUF n'arrive que dans un nid fermé et libre.
+//  · Un œuf a une FAMILLE (couleur connue dès le gain, espèce = surprise).
+//    Il reçoit un LIT (reste au nid après l'éclosion) puis des HABITS (partent
+//    avec le bébé). Éclosion : lit + 2 habits (tout 1er œuf : lit + 1 habit).
+//    Jamais 3 habits du même type sur un œuf.
+//  · Sac de 3 places (lits + habits), on ne jette JAMAIS rien : sac plein →
+//    plus de lit ni d'habit tiré. Les 3 nids finis : cailloux peints (décor).
+//  · La caresse est de l'affection (cœurs) : elle ne fait plus jamais éclore.
+//  · Cadeau pas à chaque partie : voir collection-tirage.js (tirage pur, rng injecté).
 //
-//  Thème-neutre : le moteur ne connaît ni dino ni œuf. Items + familles
-//  (avec couleur) injectés via Collection.configure({items, familles}).
-//  Le skin dino est fourni par collection-dinos.js.
+//  Thème-neutre : le moteur ne connaît ni dino ni œuf. Items + familles injectés
+//  via configure({items, familles, nid, rng}) ; le skin dino est collection-dinos.js.
 //
-//  Stockage : localStorage['maxplay_collection_v1'], préfixé par profil actif
-//  (maxplay_active_child). Migration v1→v2 automatique et silencieuse : les
-//  capsules en attente deviennent des œufs (famille tirée au passage).
+//  Stockage : localStorage['maxplay_collection_v1'] (+ __profil), champ version:3.
+//  Migration v1 → v2 → v3 automatique, silencieuse, écrite une fois.
 //
-//  API v2 : configure({items, familles, accessoires})
-//    grantReward({gameId}) → {granted, type:'oeuf'|'accessoire', ...}
-//    eggs() · sac() · warmEgg(i, accId) · caress(i) · hatchEgg(i)
-//    hatchThreshold() · readyEggIndex() · familleInfo(id)
-//  Compat v1 (specs + appelants existants) : grantCapsule · pending ·
-//    readyToHatch · hatch · owned · own · state
+//  API v3 : nids() · sac() · poser(nid, itemSac) · caresser(nid) · eclore(nid)
+//    readyNidIndex() · grantReward({gameId, perfect, mastered}) · familleInfo(id)
+//  Compat v2 (nid-ui.js, armoire.js, specs) : eggs · warmEgg · caress · hatchEgg
+//    hatchThreshold · readyEggIndex · grantCapsule · pending · readyToHatch
+//    hatch · owned · own · state
 // ─────────────────────────────────────────────────────────────────────────
 (function (global) {
   var BASE_KEY = 'maxplay_collection_v1';
   var CHILD_KEY = 'maxplay_active_child';
-  var STREAK_WINDOW_MS = 30 * 60 * 1000; // 30 min (avenant P0 #3)
-  var MAX_EGGS = 3;
-  var WARMTH_COST = 3;       // accessoires pour éclore (défaut 2026-07-30, à valider avec Max)
-  var FIRST_WARMTH_COST = 1; // 1er œuf de l'histoire : éclosion rapide (théâtre)
-  var CARESS_STAGES = 3;      // stades de craquement visuel (cosmétique)
-  var LOVE_HATCH_CHANCE = 1 / 3; // à 2 accessoires + 2e caresse et plus : l'amour peut ouvrir
-  var ACC_ETOILE = 'etoile';  // accessoire de maîtrise (3e étoile d'un jeu), 3 charges
+  var STREAK_WINDOW_MS = 30 * 60 * 1000; // 30 min : 3 parties enchaînées → œuf doré
+  var NB_NIDS = 3;
+  var CARESS_STAGES = 3;
+  var T = global.CollectionTirage;
 
-  var _items = [];      // [{id, nom, famille, rare?, star?}] — star = très connu (doré)
-  var _familles = [];   // [{id, label, emoji, color}] — méta UI (teinte des œufs)
-  // Accessoires de soin par défaut (collection : on les découvre au fil des
-  // gains). Thème-neutre : surchargeables via configure({accessoires}).
-  // ÉTOILE (spec v0.7, décision PY) : source unique = 3e étoile d'un jeu,
-  // JAMAIS dans le tirage aléatoire (special). RÉUTILISABLE 3 CHARGES à
-  // déclassement VISUEL, zéro chiffre/compteur — l'enfant la VOIT déchoir :
-  //   usage 1 : `etoile`  🌟 super star → revient au sac en `etoile2`
-  //   usage 2 : `etoile2` ⭐ étoile simple → revient au sac en `echarpe`
-  //   usage 3 : écharpe normale, consommée avec son bébé comme les autres.
-  // Une seule règle pour tout le jeu : « tout accessoire finit par partir
-  // avec son bébé » — celle-là a juste 3 vies. Max 1 étoile par œuf.
-  var _accessoires = [
-    { id: 'paille',     nom: 'de la paille',     emoji: '🌾' },
-    { id: 'couverture', nom: 'une couverture',   emoji: '🧶' },
-    { id: 'bonnet',     nom: 'un bonnet',        emoji: '🧢' },
-    { id: 'echarpe',    nom: 'une écharpe',      emoji: '🧣' },
-    { id: ACC_ETOILE,   nom: 'une super étoile', emoji: '🌟', special: true },
-    { id: 'etoile2',    nom: 'une étoile',       emoji: '⭐', special: true },
-  ];
-  // déclassement à l'éclosion (usage consommé → ce qui revient au sac)
-  var ETOILE_DOWNGRADE = { etoile: 'etoile2', etoile2: 'echarpe' };
+  var _items = [];      // [{id, nom, famille, rare?, star?, naissance?}]
+  var _familles = [];   // [{id, label, emoji, color}]
+  var _cat = T ? T.catalogue() : null;
+  var _rng = function () { return Math.random(); };
+  function R() { return _rng(); }
 
   // ── Clé localStorage (préfixée par profil actif si présent) ────────────
   function storageKey() {
@@ -87,58 +48,106 @@
       var raw = localStorage.getItem(CHILD_KEY);
       if (!raw) return BASE_KEY;
       var child = JSON.parse(raw);
-      if (child && child.id) return BASE_KEY + '__' + child.id;
-      return BASE_KEY;
+      return (child && child.id) ? BASE_KEY + '__' + child.id : BASE_KEY;
     } catch (e) { return BASE_KEY; }
   }
 
+  function _nidVide() { return { cailloux: 0, lit: [], peints: [], oeuf: null }; }
   function _emptyState() {
+    var nids = [];
+    for (var i = 0; i < NB_NIDS; i++) nids.push(_nidVide());
     return {
-      version: 2,
-      owned: [],
-      eggs: [],          // [{famille, golden, at, acc:[accId], caresses}]
-      sac: [],           // [accId] — inventaire d'accessoires
-      lastGrantAt: null,
-      streakCount: 0,
-      hatchCount: 0,     // nb d'éclosions déjà vécues (seuil réduit tant que 0)
+      version: 3, owned: [], nids: nids, sac: [],
+      lastGrantAt: null, streakCount: 0, hatchCount: 0,
+      dry: 0, lastDouble: false, lastGift: null,
     };
   }
 
-  function _sanitizeEgg(e) {
+  function _san(o) { return (o && typeof o === 'object') ? o : {}; }
+  function _sanPiece(p) {
+    p = _san(p);
+    return { variante: typeof p.variante === 'string' ? p.variante : '', rare: !!p.rare };
+  }
+  function _sanHabit(h) {
+    h = _san(h);
+    return { id: typeof h.id === 'string' ? h.id : 'bonnet', variante: typeof h.variante === 'string' ? h.variante : '', rare: !!h.rare };
+  }
+  function _sanSac(s) {
+    s = _san(s);
+    var h = _sanHabit(s);
+    return { type: s.type === 'lit' ? 'lit' : 'habit', id: s.type === 'lit' ? 'lit' : h.id, variante: h.variante, rare: h.rare };
+  }
+  function _sanOeuf(e) {
     if (!e || typeof e !== 'object') return null;
     return {
       famille: typeof e.famille === 'string' ? e.famille : null,
-      golden: !!e.golden,
-      at: typeof e.at === 'number' ? e.at : 0,
-      acc: Array.isArray(e.acc) ? e.acc.slice(0, WARMTH_COST) : [],
-      caresses: typeof e.caresses === 'number' ? e.caresses : 0,
-      loveWarm: !!e.loveWarm, // l'amour a fini le travail (2 acc + caresses, random)
+      golden: !!e.golden, at: typeof e.at === 'number' ? e.at : 0,
       naissance: typeof e.naissance === 'string' ? e.naissance : null,
+      caresses: typeof e.caresses === 'number' ? e.caresses : 0,
+      habits: (Array.isArray(e.habits) ? e.habits : []).map(_sanHabit),
+    };
+  }
+  function _sanNid(n) {
+    n = _san(n);
+    return {
+      cailloux: Math.max(0, Math.min(_cat.cailloux, typeof n.cailloux === 'number' ? n.cailloux : 0)),
+      lit: (Array.isArray(n.lit) ? n.lit : []).slice(0, 1).map(_sanPiece),
+      peints: (Array.isArray(n.peints) ? n.peints : []).slice(0, 12).map(_sanPiece),
+      oeuf: _sanOeuf(n.oeuf),
     };
   }
 
-  // HO-MJ-21 (2026-09-19), §3+4.4 du brief : la collection est rangée sous
-  // BASE_KEY__<childId>, mais la progression (étoiles) reste sur une clé
-  // globale — créer ou resynchroniser un profil déplaçait donc le nid SANS
-  // le migrer, l'ancien restant orphelin en localStorage (nid vu par
-  // Papa Yann qui repasse à 0 dès qu'un profil enfant devient actif). Ici :
-  // au premier load() sous une clé profilée VIDE, si BASE_KEY contient un
-  // nid non vide, on le REPREND (déplacement — BASE_KEY est supprimée après
-  // lecture, pas une copie qui laisserait deux nids divergents).
+  // ── Migration v2 → v3 (accessoires v2 → lit / habits) ───────────────────
+  var ACC_V2 = {
+    paille:     { type: 'lit',   id: 'lit',    variante: 'fougere',   rare: false },
+    bonnet:     { type: 'habit', id: 'bonnet', variante: 'rouge',     rare: false },
+    echarpe:    { type: 'habit', id: 'echarpe', variante: 'rayee',    rare: false },
+    couverture: { type: 'habit', id: 'cape',   variante: 'ecossaise', rare: false },
+    etoile:     { type: 'habit', id: 'cape',   variante: 'etoiles',   rare: true },
+    etoile2:    { type: 'habit', id: 'cape',   variante: 'etoiles',   rare: true },
+  };
+  function _accV2(id) { return Object.assign({}, ACC_V2[id] || ACC_V2.bonnet); }
+
+  function _depuisV2(d, s) {
+    var req = T.habitsRequis(_cat, s.hatchCount);
+    var eggs = (Array.isArray(d.eggs) ? d.eggs : []).slice(0, NB_NIDS);
+    eggs.forEach(function (e, i) {
+      e = _san(e);
+      var items = (Array.isArray(e.acc) ? e.acc : []).map(_accV2);
+      var lits = items.filter(function (a) { return a.type === 'lit'; });
+      var habits = items.filter(function (a) { return a.type === 'habit'; });
+      var nid = s.nids[i];
+      nid.cailloux = _cat.cailloux;
+      nid.lit = lits.length ? [{ variante: lits[0].variante, rare: false }] : [];
+      lits.slice(1).forEach(function (l) { s.sac.push(l); });          // rien ne se perd
+      var gardes = habits.slice(0, 2);
+      habits.slice(2).forEach(function (h) { s.sac.push(h); });
+      if (e.loveWarm) { // l'amour avait fini le travail : l'œuf reste prêt à éclore
+        if (!nid.lit.length) nid.lit.push({ variante: 'fougere', rare: false });
+        while (gardes.length < req) gardes.push(_accV2('bonnet'));
+      }
+      var oeuf = _sanOeuf(e);
+      oeuf.habits = gardes.map(_sanHabit);
+      nid.oeuf = oeuf;
+    });
+    (Array.isArray(d.sac) ? d.sac : []).forEach(function (id) { s.sac.push(_accV2(id)); });
+    // Nid v2 vide mais des dinos déjà possédés : nid 1 fermé d'office (pas de retour à zéro)
+    if (!eggs.length && s.owned.length) s.nids[0].cailloux = _cat.cailloux;
+  }
+
   function _migrateFromBaseKey(profiledKey) {
-    if (profiledKey === BASE_KEY) return null; // pas de profil actif : rien à migrer
+    if (profiledKey === BASE_KEY) return null;
     try {
       var baseRaw = localStorage.getItem(BASE_KEY);
       if (!baseRaw) return null;
-      var baseData = JSON.parse(baseRaw);
-      if (!baseData || typeof baseData !== 'object') return null;
-      var hasNid = (Array.isArray(baseData.eggs) && baseData.eggs.length) ||
-        (Array.isArray(baseData.pending) && baseData.pending.length) ||
-        (Array.isArray(baseData.owned) && baseData.owned.length) ||
-        (Array.isArray(baseData.sac) && baseData.sac.length);
+      var b = JSON.parse(baseRaw);
+      if (!b || typeof b !== 'object') return null;
+      var hasNid = (Array.isArray(b.eggs) && b.eggs.length) || (Array.isArray(b.pending) && b.pending.length) ||
+        (Array.isArray(b.owned) && b.owned.length) || (Array.isArray(b.sac) && b.sac.length) ||
+        (Array.isArray(b.nids) && b.nids.some(function (n) { return n && (n.cailloux || n.oeuf); }));
       if (!hasNid) return null;
       localStorage.setItem(profiledKey, baseRaw);
-      localStorage.removeItem(BASE_KEY); // déplacement, jamais une copie
+      localStorage.removeItem(BASE_KEY); // déplacement, jamais une copie (HO-MJ-21)
       return baseRaw;
     } catch (e) { return null; }
   }
@@ -155,40 +164,34 @@
       s.owned = Array.isArray(d.owned) ? d.owned.slice() : [];
       s.lastGrantAt = typeof d.lastGrantAt === 'number' ? d.lastGrantAt : null;
       s.streakCount = typeof d.streakCount === 'number' ? d.streakCount : 0;
+      if (d.version === 3) {
+        for (var i = 0; i < NB_NIDS; i++) s.nids[i] = _sanNid((d.nids || [])[i]);
+        s.sac = (Array.isArray(d.sac) ? d.sac : []).map(_sanSac);
+        s.hatchCount = typeof d.hatchCount === 'number' ? d.hatchCount : 0;
+        s.dry = typeof d.dry === 'number' ? d.dry : 0;
+        s.lastDouble = !!d.lastDouble;
+        s.lastGift = d.lastGift && typeof d.lastGift === 'object' ? d.lastGift : null;
+        return s;
+      }
       if (d.version === 2) {
-        s.eggs = (Array.isArray(d.eggs) ? d.eggs : []).map(_sanitizeEgg).filter(Boolean).slice(0, MAX_EGGS);
-        s.sac = Array.isArray(d.sac) ? d.sac.slice() : [];
         s.hatchCount = typeof d.hatchCount === 'number' ? d.hatchCount : 0;
       } else {
-        // Migration v1 → v2 : chaque capsule anonyme devient un œuf individuel
-        // (famille tirée maintenant — les couleurs apparaissent d'un coup, OK).
-        // hatchCount ≈ owned.length : qui a déjà des dinos a déjà éclos → seuil
-        // normal ; un nid v1 vierge garde le théâtre du 1er œuf rapide.
-        var pending = Array.isArray(d.pending) ? d.pending : [];
+        // v1 : chaque capsule anonyme devient d'abord un œuf v2 (famille tirée maintenant)
         s.hatchCount = s.owned.length;
-        s.eggs = pending.slice(0, MAX_EGGS).map(function (c) {
-          return {
-            famille: _pickFamille(s.owned, !!(c && c.golden)),
-            golden: !!(c && c.golden),
-            at: (c && typeof c.at === 'number') ? c.at : 0,
-            acc: [], caresses: 0, loveWarm: false,
-          };
-        });
-        save(s); // migration écrite une fois, pas re-jouée à chaque load
+        d = { eggs: (Array.isArray(d.pending) ? d.pending : []).slice(0, NB_NIDS).map(function (c) {
+          return { famille: _pickFamille(s.owned, !!(c && c.golden)), golden: !!(c && c.golden), at: (c && typeof c.at === 'number') ? c.at : 0, acc: [], caresses: 0 };
+        }), sac: [] };
       }
+      _depuisV2(d, s);
+      save(s); // migration écrite une fois, pas re-jouée à chaque load
       return s;
     } catch (e) { return _emptyState(); }
   }
 
-  // HO-MJ-21 (2026-09-19) : save() rend maintenant un booléen. Ça ne rajoute
-  // aucun try/catch (il y en avait déjà un, jamais de crash) — ça arrête
-  // seulement d'AVALER l'échec : quand localStorage est plein ou indisponible,
-  // l'appelant (grantReward, hatchEgg via warmEgg/caress) doit pouvoir refuser
-  // d'annoncer un gain qui n'a pas été écrit, au lieu de jouer le théâtre pour
-  // rien (§3 du brief : écran de fin qui célèbre un gain que rien ne conserve).
+  // HO-MJ-21 : save() rend un booléen — l'appelant ne doit jamais annoncer un gain non écrit.
   function save(state) {
     try { localStorage.setItem(storageKey(), JSON.stringify(state)); return true; }
-    catch (e) { return false; } // plein/absent : pas de crash, mais l'appelant est prévenu
+    catch (e) { return false; }
   }
 
   // ── Config catalogue (thème-neutre) ─────────────────────────────────────
@@ -196,7 +199,8 @@
     if (!cfg) return;
     if (Array.isArray(cfg.items)) _items = cfg.items.filter(function (it) { return it && it.id; });
     if (Array.isArray(cfg.familles)) _familles = cfg.familles.filter(function (f) { return f && f.id; });
-    if (Array.isArray(cfg.accessoires) && cfg.accessoires.length) _accessoires = cfg.accessoires.slice();
+    if (cfg.nid && T) _cat = T.catalogue(cfg.nid);
+    if (typeof cfg.rng === 'function') _rng = cfg.rng;
   }
 
   function _itemById(id) {
@@ -207,53 +211,16 @@
     for (var i = 0; i < _familles.length; i++) if (_familles[i].id === id) return _familles[i];
     return null;
   }
-  // REC-C5 (recette 2026-09-19) : le nom de l'accessoire gagné restait en FR
-  // à l'écran de fin en EN (grant.accessoire.nom). Traduit ici, à la LECTURE
-  // (jamais à la définition de _accessoires) — les ids stockés en sauvegarde
-  // ne bougent pas, seule la copie renvoyée porte le nom traduit.
-  function _trAcc(item) {
-    if (!item) return item;
-    var nom = item.nom;
-    try { if (global.MJi18n) nom = global.MJi18n.t('_collection', 'acc.' + item.id, item.nom); } catch (e) {}
-    return (nom === item.nom) ? item : Object.assign({}, item, { nom: nom });
-  }
-  function accessoireInfo(id) {
-    for (var i = 0; i < _accessoires.length; i++) if (_accessoires[i].id === id) return _trAcc(_accessoires[i]);
-    return null;
-  }
 
-  // ── Tirage de FAMILLE au moment du gain d'œuf ───────────────────────────
-  // (la couleur de l'œuf = la famille, connue tout de suite ; l'espèce reste
-  // la surprise de l'éclosion — D-003 : rien n'est promis, tout est surprise).
-  // Seules les familles qui ont encore ≥1 espèce non possédée sont éligibles.
-  // Famille entamée (≥1 possédé) pèse 3× (complétion d'album, plan §2.3).
-  // Doré (PY 2026-07-30) → l'œuf vient d'un dino TRÈS CONNU (items `star`,
-  // n'importe quelle famille) : famille tirée parmi celles des stars non
-  // possédées, l'éclosion préférera une star de cette famille.
-  function _famillesOuvertes(owned) {
-    var ownedSet = {};
-    owned.forEach(function (id) { ownedSet[id] = 1; });
+  // ── Famille / espèce de l'œuf ───────────────────────────────────────────
+  function _ouvertes(owned, starSeule) {
     var open = {};
     _items.forEach(function (it) {
-      if (!ownedSet[it.id]) open[it.famille || '_sans'] = 1;
+      if (owned.indexOf(it.id) === -1 && (!starSeule || it.star === true)) open[it.famille || '_sans'] = 1;
     });
     return Object.keys(open);
   }
-  function _starFamillesOuvertes(owned) {
-    var ownedSet = {};
-    owned.forEach(function (id) { ownedSet[id] = 1; });
-    var open = {};
-    _items.forEach(function (it) {
-      if (it.star === true && !ownedSet[it.id]) open[it.famille || '_sans'] = 1;
-    });
-    return Object.keys(open);
-  }
-  // ── Mode de NAISSANCE (GO PY 2026-09-25) ────────────────────────────────
-  // Un item peut porter `naissance` (défaut 'oeuf') : le contenant montré dans
-  // le nid dépend de la façon dont l'espèce vient au monde (thème-neutre : le
-  // moteur ne connaît que des chaînes). Tiré au gain AVEC la famille, pondéré
-  // par le nombre d'espèces candidates — l'éclosion tire ensuite une espèce
-  // du même mode, jamais une autre (un œuf marin = forcément une espèce qui pond).
+  // Mode de NAISSANCE (œuf / aquarium / tanière) : tiré avec la famille, l'éclosion s'y tient.
   function _naissanceOf(it) { return (it && it.naissance) || 'oeuf'; }
   function _candidatsNaissance(famille, owned, golden) {
     var inFam = _items.filter(function (it) { return (it.famille || '_sans') === famille; });
@@ -267,262 +234,186 @@
   }
   function _pickNaissance(famille, owned, golden) {
     var pool = _candidatsNaissance(famille, owned, golden);
-    if (!pool.length) return 'oeuf';
-    return _naissanceOf(pool[Math.floor(Math.random() * pool.length)]);
+    return pool.length ? _naissanceOf(pool[Math.floor(R() * pool.length)]) : 'oeuf';
   }
-  // Œufs d'avant ce champ : mode majoritaire de leur famille (déterministe,
-  // un œuf déjà dans le nid ne change pas d'aspect d'une ouverture à l'autre).
   function _naissanceParDefaut(famille) {
-    var n = {};
+    var n = {}, best = 'oeuf', max = 0;
     _items.forEach(function (it) {
       if ((it.famille || '_sans') === famille) { var k = _naissanceOf(it); n[k] = (n[k] || 0) + 1; }
     });
-    var best = 'oeuf', max = 0;
     Object.keys(n).forEach(function (k) { if (n[k] > max) { max = n[k]; best = k; } });
     return best;
   }
   function _naissanceEgg(e) { return e.naissance || _naissanceParDefaut(e.famille); }
 
-  function _pickFamille(owned, golden) {
-    var open = _famillesOuvertes(owned);
-    if (!open.length) {
-      // collection complète : n'importe quelle famille (l'éclosion fera doublon-cadeau)
-      open = _items.length ? _items.map(function (it) { return it.famille || '_sans'; }) : ['_sans'];
-    }
+  // Famille entamée pèse 3× (complétion d'album) ; `avoid` = famille du cadeau précédent.
+  function _pickFamille(owned, golden, avoid) {
+    var open = _ouvertes(owned, false);
+    if (!open.length) open = _items.length ? _items.map(function (it) { return it.famille || '_sans'; }) : ['_sans'];
     if (golden) {
-      var stars = _starFamillesOuvertes(owned).filter(function (f) { return open.indexOf(f) !== -1; });
+      var stars = _ouvertes(owned, true).filter(function (f) { return open.indexOf(f) !== -1; });
       if (stars.length) open = stars;
     }
+    if (avoid && open.some(function (f) { return f !== avoid; })) open = open.filter(function (f) { return f !== avoid; });
     var started = {};
-    owned.forEach(function (id) {
-      var it = _itemById(id);
-      if (it && it.famille) started[it.famille] = true;
-    });
+    owned.forEach(function (id) { var it = _itemById(id); if (it && it.famille) started[it.famille] = true; });
     var pool = [];
-    open.forEach(function (f) {
-      var w = started[f] ? 3 : 1;
-      for (var i = 0; i < w; i++) pool.push(f);
-    });
-    return pool[Math.floor(Math.random() * pool.length)] || null;
+    open.forEach(function (f) { for (var i = 0; i < (started[f] ? 3 : 1); i++) pool.push(f); });
+    return pool[Math.floor(R() * pool.length)] || null;
   }
 
-  // ── Seuil de chaleur ─────────────────────────────────────────────────────
-  function hatchThreshold() {
-    return load().hatchCount === 0 ? FIRST_WARMTH_COST : WARMTH_COST;
-  }
-  function _thresholdOf(state) {
-    return state.hatchCount === 0 ? FIRST_WARMTH_COST : WARMTH_COST;
+  // ── Prêt à éclore : lit + habits requis (1 pour le tout 1er œuf, sinon 2) ─
+  function _requis(s) { return T.habitsRequis(_cat, s.hatchCount); }
+  function _pret(nid, s) { return !!(nid.oeuf && nid.lit.length && nid.oeuf.habits.length >= _requis(s)); }
+  function hatchThreshold() { return _requis(load()); }
+
+  function _nbOeufs(s) { return s.nids.filter(function (n) { return n.oeuf; }).length; }
+  function _nbDores(s) { return s.nids.filter(function (n) { return n.oeuf && n.oeuf.golden; }).length; }
+
+  // ── Cadeau de fin de partie ──────────────────────────────────────────────
+  // grantReward({gameId, perfect, mastered}) → {granted, gifts, double, type, count, …}
+  // Plus d'anti-farm : un jeu à 3 étoiles suit la même règle (D-041).
+  function _refus(s, saveFailed) {
+    var l = saveFailed ? load() : s;
+    return { granted: false, type: null, gifts: [], double: false, rien: !saveFailed, saveFailed: !!saveFailed,
+      count: _nbOeufs(l), golden: _nbDores(l), justGolden: false };
   }
 
-  // ── Gain de fin de partie — règle PY 2026-07-30 ─────────────────────────
-  //  « Nid vide → un œuf. 1-2 œufs → surprise (œuf ou accessoire). Nid plein
-  //  → un accessoire pour tes œufs. » Anti-farm : jeu déjà à 3 étoiles →
-  //  aucun gain, la partie reste valorisée par l'écran de fin.
-  //  opts.mastered (3e étoile de CE jeu, une fois dans la vie du jeu) : le
-  //  gain de la partie est REMPLACÉ par l'accessoire ÉTOILE (3 charges) —
-  //  un seul gain annoncé, jamais deux.
   function grantReward(opts) {
     opts = opts || {};
-    if (opts.gameId && global.Stars && typeof global.Stars.get === 'function') {
-      var stars = 0;
-      try { stars = global.Stars.get(opts.gameId); } catch (e) { stars = 0; }
-      if (stars >= 3) {
-        var cur = load();
-        return { granted: false, type: null, count: cur.eggs.length, golden: _goldenCount(cur), justGolden: false };
-      }
-    }
-
-    var s = load();
-    var now = Date.now();
-    var withinWindow = s.lastGrantAt !== null && (now - s.lastGrantAt) <= STREAK_WINDOW_MS;
-    s.streakCount = withinWindow ? (s.streakCount + 1) : 1;
+    if (!T) { console.warn('[collection] collection-tirage.js absent — aucun cadeau.'); return _refus(load(), false); }
+    var s = load(), now = Date.now();
+    var dansFenetre = s.lastGrantAt !== null && (now - s.lastGrantAt) <= STREAK_WINDOW_MS;
+    s.streakCount = dansFenetre ? s.streakCount + 1 : 1;
     s.lastGrantAt = now;
+    var golden = (typeof opts.golden === 'boolean') ? opts.golden : (s.streakCount % 3 === 0);
+    var r = T.tirer(s, _cat, {
+      rng: R, perfect: !!opts.perfect, mastered: !!opts.mastered, hatchCount: s.hatchCount, now: now,
+      nouvelOeuf: function (avoid) {
+        var f = _pickFamille(s.owned, golden, avoid);
+        return { famille: f, naissance: _pickNaissance(f, s.owned, golden), golden: golden };
+      },
+    });
+    s.nids = r.st.nids; s.sac = r.st.sac; s.dry = r.st.dry; s.lastDouble = r.st.lastDouble; s.lastGift = r.st.lastGift;
+    // HO-MJ-21 : jamais granted:true si l'écriture a échoué (le théâtre célébrerait du vide)
+    if (!save(s)) return _refus(s, true);
+    if (!r.gifts.length) { var vide = _refus(s, false); vide.rien = true; return vide; }
+    var g0 = r.gifts[0];
+    var res = {
+      granted: true, gifts: r.gifts, double: r.double, type: g0.type,
+      count: _nbOeufs(s), golden: _nbDores(s), justGolden: !!(g0.type === 'oeuf' && g0.golden), sacCount: s.sac.length,
+    };
+    if (g0.type === 'oeuf') { res.famille = g0.famille; res.naissance = g0.naissance; res.familleMeta = familleInfo(g0.famille); }
+    return res;
+  }
 
-    // HO-MJ-21 (2026-09-19), §3 du brief : trois scénarios mesurés où l'écran
-    // de fin célébrait un gain que rien ne conservait (clé de profil qui
-    // change, quota localStorage saturé…). save() rend maintenant un booléen ;
-    // si l'écriture échoue, on ne rend PAS granted:true — mj-golden.js ne doit
-    // jamais jouer le théâtre d'un gain qui n'a pas survécu.
-    if (opts.mastered) {
-      s.sac.push(ACC_ETOILE);
-      if (!save(s)) { var lm = load(); return { granted: false, type: null, saveFailed: true, count: lm.eggs.length, golden: _goldenCount(lm), justGolden: false }; }
-      return {
-        granted: true, type: 'accessoire', accessoire: accessoireInfo(ACC_ETOILE),
-        special: true, golden: _goldenCount(s), justGolden: false,
-        count: s.eggs.length, sacCount: s.sac.length,
-      };
-    }
-
-    // nid vide → œuf obligatoire · plein → accessoire obligatoire ·
-    // entre les deux → pile ou face (surprise complète, PY 2026-07-30)
-    var giveEgg = s.eggs.length === 0 ? true
-      : (s.eggs.length >= MAX_EGGS ? false : Math.random() < 0.5);
-
-    if (giveEgg) {
-      var autoGolden = s.streakCount > 0 && s.streakCount % 3 === 0;
-      var golden = (typeof opts.golden === 'boolean') ? opts.golden : autoGolden;
-      var famille = _pickFamille(s.owned, golden);
-      var naissance = _pickNaissance(famille, s.owned, golden);
-      s.eggs.push({ famille: famille, golden: !!golden, at: now, acc: [], caresses: 0, loveWarm: false, naissance: naissance });
-      if (!save(s)) { var lg = load(); return { granted: false, type: null, saveFailed: true, count: lg.eggs.length, golden: _goldenCount(lg), justGolden: false }; }
-      return {
-        granted: true, type: 'oeuf', famille: famille, naissance: naissance,
-        familleMeta: familleInfo(famille),
-        golden: _goldenCount(s), justGolden: !!golden,
-        count: s.eggs.length,
-      };
-    }
-
-    // accessoire (l'étoile n'est JAMAIS dans le tirage : source unique = maîtrise)
-    var pool = _accessoires.filter(function (a) { return !a.special; });
-    var acc = pool[Math.floor(Math.random() * pool.length)];
-    s.sac.push(acc.id);
-    if (!save(s)) { var la = load(); return { granted: false, type: null, saveFailed: true, count: la.eggs.length, golden: _goldenCount(la), justGolden: false }; }
+  // ── Lecture (copies, jamais l'état interne) ─────────────────────────────
+  function _oeufVue(nid, i, s) {
+    var e = nid.oeuf;
     return {
-      granted: true, type: 'accessoire', accessoire: _trAcc(acc),
-      golden: _goldenCount(s), justGolden: false,
-      count: s.eggs.length, sacCount: s.sac.length,
+      index: i, famille: e.famille, familleMeta: familleInfo(e.famille), naissance: _naissanceEgg(e),
+      golden: e.golden, habits: e.habits.map(function (h) { return Object.assign({}, h); }),
+      acc: e.habits.map(function (h) { return h.id; }), caresses: e.caresses,
+      stage: Math.min(CARESS_STAGES, e.caresses), needed: _requis(s), ready: _pret(nid, s),
     };
   }
 
-  function _goldenCount(state) {
-    return state.eggs.filter(function (e) { return e.golden; }).length;
-  }
-
-  // ── Lecture œufs / sac (copies, jamais l'état interne) ──────────────────
-  function eggs() {
+  function nids() {
     var s = load();
-    var th = _thresholdOf(s);
-    return s.eggs.map(function (e, i) {
+    return s.nids.map(function (n, i) {
       return {
-        index: i,
-        famille: e.famille,
-        familleMeta: familleInfo(e.famille),
-        naissance: _naissanceEgg(e),
-        golden: e.golden,
-        acc: e.acc.slice(),
-        caresses: e.caresses,
-        stage: Math.min(CARESS_STAGES, e.caresses), // stade de craquement visuel
-        needed: th,
-        ready: e.acc.length >= th || e.loveWarm,
+        index: i, cailloux: n.cailloux, ferme: T.nidFerme(n, _cat),
+        lit: n.lit.map(function (l) { return Object.assign({}, l); }),
+        peints: n.peints.map(function (p) { return Object.assign({}, p); }),
+        oeuf: n.oeuf ? _oeufVue(n, i, s) : null, ready: _pret(n, s),
       };
     });
   }
 
+  function _nomObjet(it) {
+    var nom = (_cat.noms && _cat.noms[it.type === 'lit' ? 'lit' : it.id]) || it.id;
+    try { if (global.MJi18n) nom = global.MJi18n.t('_collection', 'acc.' + it.id, nom); } catch (e) {}
+    return nom;
+  }
   function sac() {
-    var s = load();
-    var counts = {};
-    s.sac.forEach(function (id) { counts[id] = (counts[id] || 0) + 1; });
-    return Object.keys(counts).map(function (id) {
-      var info = accessoireInfo(id) || { id: id, nom: id, emoji: '🎁' };
-      return { id: id, nom: info.nom, emoji: info.emoji, count: counts[id] };
+    return load().sac.map(function (it, i) {
+      var k = it.type === 'lit' ? 'lit' : it.id;
+      return {
+        index: i, type: it.type, id: it.id, variante: it.variante, rare: it.rare, count: 1,
+        key: it.type + ':' + it.id + ':' + it.variante, nom: _nomObjet(it),
+        emoji: (_cat.emoji && _cat.emoji[k]) || '🎁',
+      };
     });
   }
 
-  // ── Soin : poser un accessoire du sac sur un œuf ────────────────────────
-  // La chaleur ne fait que MONTER (zéro decay, D-002). Retourne {ok, ready}.
-  function warmEgg(eggIndex, accId) {
-    var s = load();
-    var egg = s.eggs[eggIndex];
-    if (!egg) return { ok: false, ready: false };
-    var th = _thresholdOf(s);
-    if (egg.acc.length >= th || egg.loveWarm) return { ok: false, ready: true }; // déjà au chaud
-    // l'accessoire ÉTOILE (quel que soit son stade) est unique par œuf
-    if (accId.indexOf('etoile') === 0 && egg.acc.some(function (a) { return a.indexOf('etoile') === 0; })) {
-      return { ok: false, ready: false };
-    }
-    var pos = s.sac.indexOf(accId);
-    if (pos === -1) return { ok: false, ready: false };
-    s.sac.splice(pos, 1);
-    egg.acc.push(accId);
-    save(s);
-    return { ok: true, ready: egg.acc.length >= th };
+  function eggs() {
+    var s = load(), out = [];
+    s.nids.forEach(function (n, i) { if (n.oeuf) out.push(_oeufVue(n, i, s)); });
+    return out;
   }
 
-  // ── Caresse : affection — craquement visuel, et l'amour peut FINIR le
-  // travail (PY 2026-07-30) : elle ne fait JAMAIS éclore seule, mais sur un
-  // œuf qui a déjà 2 accessoires (seuil-1), à partir de la 2e caresse, une
-  // chance sur 3 que l'œuf soit assez au chaud. Sinon : 3e accessoire.
-  function caress(eggIndex) {
-    var s = load();
-    var egg = s.eggs[eggIndex];
-    if (!egg) return { stage: 0, ready: false };
-    egg.caresses = Math.min(30, egg.caresses + 1);
-    var th = _thresholdOf(s);
-    var loveJustWarmed = false;
-    if (!egg.loveWarm && egg.acc.length === th - 1 && th > 1 && egg.caresses >= 2 &&
-        Math.random() < LOVE_HATCH_CHANCE) {
-      egg.loveWarm = true;
-      loveJustWarmed = true;
+  // ── Poser un objet du sac sur un nid ─────────────────────────────────────
+  // Refus (jamais d'erreur affichée : l'objet reste au sac) : inexistant · ouvert ·
+  // lit · oeuf · type (3e habit du même type) · save.
+  function poser(nidIndex, itemIndex) {
+    var s = load(), nid = s.nids[nidIndex], it = s.sac[itemIndex];
+    var non = function (why) { return { ok: false, ready: false, refus: why }; };
+    if (!nid || !it) return non('inexistant');
+    if (it.type === 'lit') {
+      if (!T.nidFerme(nid, _cat)) return non('ouvert');
+      if (nid.lit.length) return non('lit');
+      nid.lit.push({ variante: it.variante, rare: it.rare });
+    } else {
+      if (!nid.oeuf) return non('oeuf');
+      var memeType = nid.oeuf.habits.filter(function (h) { return h.id === it.id; }).length;
+      if (memeType >= _cat.habitsParType) return non('type');
+      nid.oeuf.habits.push({ id: it.id, variante: it.variante, rare: it.rare });
     }
-    save(s);
-    return {
-      stage: Math.min(CARESS_STAGES, egg.caresses),
-      ready: egg.acc.length >= th || egg.loveWarm,
-      loveJustWarmed: loveJustWarmed,
-    };
+    s.sac.splice(itemIndex, 1);
+    if (!save(s)) return non('save');
+    return { ok: true, ready: _pret(nid, s), refus: null };
   }
 
-  function readyEggIndex() {
+  function caresser(nidIndex) {
+    var s = load(), nid = s.nids[nidIndex];
+    if (!nid || !nid.oeuf) return { stage: 0, ready: false, loveJustWarmed: false };
+    nid.oeuf.caresses = Math.min(30, nid.oeuf.caresses + 1);
+    save(s);
+    return { stage: Math.min(CARESS_STAGES, nid.oeuf.caresses), ready: _pret(nid, s), loveJustWarmed: false };
+  }
+
+  function readyNidIndex() {
     var s = load();
-    var th = _thresholdOf(s);
-    for (var i = 0; i < s.eggs.length; i++) {
-      if (s.eggs[i].acc.length >= th || s.eggs[i].loveWarm) return i;
-    }
+    for (var i = 0; i < s.nids.length; i++) if (_pret(s.nids[i], s)) return i;
     return -1;
   }
 
-  // ── Éclosion d'UN œuf (les autres restent — plus jamais de disparition) ──
-  // Accessoires CONSOMMÉS avec l'œuf (PY 2026-07-30) — l'ÉTOILE revient au
-  // sac DÉCLASSÉE (3 charges, spec v0.7). Espèce : non possédée DANS la famille
-  // de l'œuf (doré → parmi les TRÈS CONNUS de la famille d'abord) · famille
-  // épuisée → n'importe quelle non possédée · collection complète → doublon.
-  function hatchEgg(eggIndex) {
-    var s = load();
-    var egg = s.eggs[eggIndex];
-    if (!egg) return null;
-    if (egg.acc.length < _thresholdOf(s) && !egg.loveWarm) return null; // pas assez au chaud
-    // HO-MJ-21 (2026-09-19) : catalogue absent (_items vide, ex. collection-dinos.js
-    // n'a jamais pu charger DINOS) → aucun item n'existe, même pas pour un doublon.
-    // Avant ce garde-fou, le splice ci-dessous détruisait l'œuf quand même et
-    // renvoyait {type:'doublon', item:null} — l'œuf disparaissait pour rien.
-    // Ici : ne RIEN consommer, l'œuf reste intact dans le nid.
+  // ── Éclosion : le nid et son lit RESTENT, les habits partent avec le bébé ──
+  function eclore(nidIndex) {
+    var s = load(), nid = s.nids[nidIndex];
+    if (!nid || !_pret(nid, s)) return null;
+    // HO-MJ-21 : catalogue absent → ne RIEN consommer, l'œuf reste intact
     if (!_items.length) return null;
-
-    s.eggs.splice(eggIndex, 1);
+    var egg = nid.oeuf;
+    nid.oeuf = null;
     s.hatchCount += 1;
-    // l'étoile revient au sac DÉCLASSÉE (🌟→⭐→écharpe normale, spec v0.7) —
-    // la 3e vie est une écharpe comme les autres : consommée, rien ne revient.
-    egg.acc.forEach(function (id) {
-      if (ETOILE_DOWNGRADE[id]) s.sac.push(ETOILE_DOWNGRADE[id]);
-    });
-
-    var ownedSet = s.owned.slice();
-    var notOwned = _items.filter(function (it) { return ownedSet.indexOf(it.id) === -1; });
-
+    var notOwned = _items.filter(function (it) { return s.owned.indexOf(it.id) === -1; });
     if (!notOwned.length) {
-      save(s);
-      var anyItem = _items[Math.floor(Math.random() * _items.length)];
-      return { type: 'doublon', item: anyItem };
+      if (!save(s)) return null;
+      return { type: 'doublon', item: _items[Math.floor(R() * _items.length)] };
     }
-
-    // l'espèce doit naître comme le contenant l'annonce (œuf / aquarium / tanière)
     var mode = _naissanceEgg(egg);
     var memeMode = notOwned.filter(function (it) { return _naissanceOf(it) === mode; });
     var inFamille = memeMode.filter(function (it) { return (it.famille || '_sans') === egg.famille; });
-    if (egg.golden) {
-      var starsInFamille = inFamille.filter(function (it) { return it.star === true; });
-      if (starsInFamille.length) inFamille = starsInFamille;
-      else {
-        var starsAnywhere = memeMode.filter(function (it) { return it.star === true; });
-        if (starsAnywhere.length) inFamille = starsAnywhere; // doré = très connu avant tout
-      }
+    if (egg.golden) { // doré = très connu avant tout
+      var stars = inFamille.filter(function (it) { return it.star === true; });
+      if (stars.length) inFamille = stars;
+      else { var any = memeMode.filter(function (it) { return it.star === true; }); if (any.length) inFamille = any; }
     }
     var candidates = inFamille.length ? inFamille : (memeMode.length ? memeMode : notOwned);
-    var picked = candidates[Math.floor(Math.random() * candidates.length)];
+    var picked = candidates[Math.floor(R() * candidates.length)];
     s.owned.push(picked.id);
-    save(s);
-    return picked;
+    return save(s) ? picked : null;
   }
 
   // ── Possession ────────────────────────────────────────────────────────
@@ -533,50 +424,33 @@
     if (s.owned.indexOf(id) === -1) { s.owned.push(id); save(s); }
   }
 
-  // ── Compat v1 (appelants + specs existants) ───────────────────────────
-  function grantCapsule(opts) { return grantReward(opts); }
-  function pending() {
-    var s = load();
-    return { count: s.eggs.length, golden: _goldenCount(s) };
+  // ── Compat v2 (nid-ui.js, armoire.js, specs) ────────────────────────────
+  // warmEgg(nid, ref) : ref = key, id ou variante de l'objet du sac (1er qui correspond).
+  function warmEgg(nidIndex, ref) {
+    var items = sac().filter(function (a) { return a.key === ref || a.id === ref || a.variante === ref; });
+    if (!items.length) return { ok: false, ready: false };
+    return poser(nidIndex, items[0].index);
   }
-  function readyToHatch() { return readyEggIndex() !== -1; }
-  function hatch() {
-    var i = readyEggIndex();
-    return i === -1 ? null : hatchEgg(i);
-  }
-
-  // ── Snapshot pour l'UI ────────────────────────────────────────────────
+  function pending() { var s = load(); return { count: _nbOeufs(s), golden: _nbDores(s) }; }
   function state() {
     var s = load();
     return {
-      owned: s.owned.slice(),
-      eggs: eggs(),
-      sac: sac(),
-      pending: { count: s.eggs.length, golden: _goldenCount(s) },
-      streak: s.streakCount,
-      hatchCount: s.hatchCount,
+      owned: s.owned.slice(), nids: nids(), eggs: eggs(), sac: sac(),
+      pending: pending(), streak: s.streakCount, hatchCount: s.hatchCount,
     };
   }
 
   global.Collection = {
     configure: configure,
-    // v2
-    grantReward: grantReward,
-    eggs: eggs,
-    sac: sac,
-    warmEgg: warmEgg,
-    caress: caress,
-    hatchEgg: hatchEgg,
-    hatchThreshold: hatchThreshold,
-    readyEggIndex: readyEggIndex,
-    familleInfo: familleInfo,
-    // compat v1
-    grantCapsule: grantCapsule,
-    pending: pending,
-    readyToHatch: readyToHatch,
-    hatch: hatch,
-    owned: owned,
-    own: own,
-    state: state,
+    // v3
+    grantReward: grantReward, nids: nids, sac: sac, poser: poser, caresser: caresser,
+    eclore: eclore, readyNidIndex: readyNidIndex, familleInfo: familleInfo,
+    // compat v2
+    eggs: eggs, warmEgg: warmEgg, caress: caresser, hatchEgg: eclore,
+    hatchThreshold: hatchThreshold, readyEggIndex: readyNidIndex,
+    grantCapsule: grantReward, pending: pending,
+    readyToHatch: function () { return readyNidIndex() !== -1; },
+    hatch: function () { var i = readyNidIndex(); return i === -1 ? null : eclore(i); },
+    owned: owned, own: own, state: state,
   };
 })(window);

@@ -20,7 +20,8 @@
 //  Code DÉFENSIF : moteur absent → rien ne s'affiche, zéro erreur console.
 //  Dépendances chargées paresseusement (ordre figé, cf. DEPS).
 //
-//  API : window.NidUI = { init, refresh, openChambre, openPadidi }
+//  API : window.NidUI = { init, refresh, openChambre, openPadidi, hatchNid }
+//  NID v5 (HO-MJ-25) : openChambre() délègue à nid-v5.js quand le moteur est en v3.
 // ─────────────────────────────────────────────────────────────────────────
 (function (global) {
   'use strict';
@@ -72,7 +73,7 @@
   // ── chargement paresseux des dépendances ────────────────────────────
   // Ordre figé : dinos-data.js (DINOS) → dinos-assets.js → collection.js
   // (window.Collection) → collection-dinos.js (configure le catalogue).
-  var DEPS = ['js/gen/dinos-data.js', 'js/gen/dinos-assets.js', 'js/collection.js', 'js/collection-dinos.js'];
+  var DEPS = ['js/gen/dinos-data.js', 'js/gen/dinos-assets.js', 'js/collection-tirage.js', 'js/collection.js', 'js/collection-dinos.js', 'js/nid-v5-rendu.js', 'js/nid-v5.js'];
   function hasScript(src) {
     var tags = document.querySelectorAll('script[src]');
     for (var i = 0; i < tags.length; i++) {
@@ -83,7 +84,10 @@
   // Un window.Collection déjà présent (mock de harnais, cf. mur-nid.spec.mjs)
   // ne doit JAMAIS être écrasé par notre chargement paresseux.
   function alreadySatisfied(src) {
+    if (/collection-tirage\.js$/.test(src)) return !!global.CollectionTirage || !!global.Collection;
     if (/collection\.js$/.test(src)) return !!global.Collection;
+    if (/nid-v5-rendu\.js$/.test(src)) return !!global.NidV5Rendu;
+    if (/nid-v5\.js$/.test(src)) return !!global.NidV5;
     if (/collection-dinos\.js$/.test(src)) return !!global.Collection && typeof global.Collection.configure !== 'function';
     return false;
   }
@@ -155,11 +159,17 @@
   function naisClasse(mode) {
     return (global.MaxFX && global.MaxFX.contenantClasse) ? global.MaxFX.contenantClasse(mode) : '';
   }
-  var INTRO_TXT = {
-    oeuf: 'Un œuf ! Garde-le au chaud dans le nid.',
-    aquarium: 'Un petit aquarium ! Garde-le au chaud dans le nid.',
-    taniere: 'Une petite tanière ! Garde-la au chaud dans le nid.'
+  // Phrase du théâtre du 1er œuf (NID v5 : l'œuf arrive déjà dans son nid). Clés _commun, 4 langues.
+  var INTRO_CLES = {
+    oeuf: ['nidIntroOeuf', 'Un œuf ! Il a son nid.'],
+    aquarium: ['nidIntroAquarium', 'Un petit aquarium ! Il a son nid.'],
+    taniere: ['nidIntroTaniere', 'Une petite tanière ! Elle a son nid.']
   };
+  function introTxt(mode) {
+    var c = INTRO_CLES[mode] || INTRO_CLES.oeuf;
+    try { if (global.MJi18n && global.MJi18n.t) return global.MJi18n.t('_commun', c[0], c[1]); } catch (e) {}
+    return c[1];
+  }
   // Phrase vraie dite à la naissance d'un bébé qui ne sort pas d'un œuf.
   var PHRASE_NAISSANCE = {
     fr: "Lui, il ne sort pas d'un œuf : il a grandi dans le ventre de sa maman !",
@@ -363,7 +373,7 @@
 
   function renderChambre() {
     var ov = $('chambre-ov');
-    if (!ov) return;
+    if (!ov || !ov.querySelector('.ch-oeufs')) return; // overlay v5 : rendu par NidV5.rendre()
     var eggs = [];
     try { eggs = global.Collection.eggs(); } catch (e) { eggs = []; }
     var sacGarni = 0;
@@ -379,6 +389,9 @@
   }
 
   function openChambre() {
+    // NID v5 (HO-MJ-25) : l'écran des 3 nids prend la main dès que le moteur expose l'API v3.
+    // Sans elle (moteur v2 ou mock de harnais), on garde la chambre historique ci-dessous.
+    if (global.NidV5 && global.NidV5.supporte()) { global.NidV5.ouvrir(); return; }
     if (!chambreSupported()) return;
     if ($('chambre-ov')) return;
     _chambreSel = null;
@@ -518,7 +531,8 @@
 
   function hatchInChambre(eggIndex) {
     if (hatchInProgress) return;
-    var visu = document.querySelector('.ch-oeuf[data-egg="' + eggIndex + '"] .ch-oeuf-visu');
+    var visu = document.querySelector('.ch-oeuf[data-egg="' + eggIndex + '"] .ch-oeuf-visu') ||
+      document.querySelector('.n5-oeuf[data-nid="' + eggIndex + '"]'); // NID v5
     if (!visu || !global.MaxFX) return;
     var eggMeta = null;
     try {
@@ -534,16 +548,20 @@
       // fallback : fête historique sur place (doublon-cadeau, données absentes)
       runHatchSequence(visu, result, eggMeta && eggMeta.naissance).then(function () {
         hatchInProgress = false;
-        renderChambre();
-        refresh();
+        apresEclosion();
       });
       return;
     }
     hatchTheatre(visu, eggMeta, dino).then(function () {
       hatchInProgress = false;
-      renderChambre();
-      refresh();
+      apresEclosion();
     });
+  }
+
+  // Après l'éclosion : on redessine l'écran qui est resté (nid v5 ou chambre v2).
+  function apresEclosion() {
+    if (global.NidV5 && $('chambre-ov')) global.NidV5.rendre(); else renderChambre();
+    refresh();
   }
 
   function hatchTheatre(visu, eggMeta, dino) {
@@ -864,7 +882,7 @@
         '<div class="ni-oeuf' + naisClasse(egg.naissance) + '" style="--oeuf-c:' + col + ';"></div>' +
         '<div class="ni-acc">🧶</div>' +
         '<div class="ni-coeur">💛</div>' +
-        '<div class="ni-txt">' + (INTRO_TXT[egg.naissance] || INTRO_TXT.oeuf) + '</div>' +
+        '<div class="ni-txt">' + introTxt(egg.naissance) + '</div>' +
       '</div>';
     document.body.appendChild(ov);
     var done = false;
@@ -896,5 +914,5 @@
     });
   }
 
-  global.NidUI = { init: init, refresh: refresh, openChambre: openChambre, openPadidi: openPadidi };
+  global.NidUI = { init: init, refresh: refresh, openChambre: openChambre, openPadidi: openPadidi, hatchNid: hatchInChambre };
 })(window);

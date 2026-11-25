@@ -82,6 +82,7 @@
     'js/catalog.js',
     'js/stars.js',
     'js/qcm-retry.js',
+    'js/mj-cadeau.js',
     'js/mj-golden.js',
     'js/mj-kit.js',
     'js/tracker.js',
@@ -102,6 +103,7 @@
     // hasScript() déduplique déjà pour les 7 jeux qui chargent dinos-data.js à la
     // main (mj-14/24/28/etc). Défensifs : si absent (404), le shell continue sans capsule.
     'js/gen/dinos-data.js',
+    'js/collection-tirage.js',
     'js/collection.js',
     'js/collection-dinos.js',
   ]);

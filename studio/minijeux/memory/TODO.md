@@ -139,6 +139,14 @@
 - [ ] EP-131 — Nid plein à 3 œufs (`MAX_EGGS = 3`) : au-delà, tout gain devient accessoire. Pas la cause ici, mais à remonter (5-6 ?). Hors HO-MJ-21.
 - [ ] EP-132 — Message « déjà toutes les étoiles ici » (`mj-golden.js:395`) : plus en cursive, mais toujours deux phrases de texte, illisible à 4 ans. Signal visuel à la place. Hors HO-MJ-21.
 
+## Lane — Nid v5 : nid qu'on construit, œufs habillés, gains plus fréquents (retour Papa Yann 2026-11-22)
+
+Constat PY : Max revient après 3 semaines, fait des sans-faute, 3 parties sans cadeau, cadeau à la 4e seulement. Cause déduite du code : anti-farm EP-129 toujours actif (jeu à 3 étoiles = rien) + pile ou face œuf/accessoire. Concepts ChatGPT : `docs/handoffs/nid-v5/`.
+
+- [ ] EP-158 — Gains (PY 2026-11-22, 2e tour) : PAS un cadeau à chaque partie, il faut alterner, le cadeau n'est pas obligatoire. Proposé : ~1 partie sur 2, jamais 3 de suite sans rien ; sans-faute = plus de chance + plus beau ; jeu à 3 étoiles garde la même règle (EP-129) ; **rarement 2 cadeaux d'un coup**. Ordre imposé : un œuf éclot avec son lit (matériau du nid dessous) + 2 habits, le tirage donne ce qui manque (jamais que des bonnets) ; max 2 fois le même habit par œuf ; sac 3 places (PY voulait « on jette » ; contre-avis : sac plein = pas de cadeau, rien jeté, à trancher).
+- [ ] EP-159 — Nids construits, 3 emplacements côte à côte (PY 2026-11-24, remplace le nid unique) : au début rien ; 1er cadeau = tas de cailloux = nid 1 complet ; puis cailloux un par un pour les nids 2 et 3 ; un œuf n'arrive que dans un nid libre ; lit (brindilles, fougère, mousse, plumes ; pas de paille) glissé dessous ; le nid reste après l'éclosion ; 3 nids finis = cailloux peints de décoration (cadeau « pas utile »). Paysage voulu par PY ; proposé : rangée de 3 qui tient aussi téléphone droit. Concept `docs/handoffs/nid-v5/concept-3nids-01.png`.
+- [ ] EP-160 — Habits posés SUR l'œuf (idée PY 2026-11-22) : bonnet sur le haut, écharpe enroulée, cape/couverture ; couleurs et motifs différents pour un même objet (drapeau Brésil, France, pois, rayures, bus) ; empiler 2 fois le même objet (2 bonnets = tour rigolote, 2 tours d'écharpe). Plus d'emoji dans des petites boîtes.
+
 ## Lane — Retours Papa Yann 2026-09-08 (nid, œufs, MJ-28) : reste ouvert
 
 **DoD** : EP-123 tranché (bug réel ou non), EP-128 statué.

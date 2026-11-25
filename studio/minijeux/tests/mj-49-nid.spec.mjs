@@ -48,24 +48,32 @@ export async function run({ page, ok }) {
     const raw = localStorage.getItem('maxplay_collection_v1');
     return raw ? JSON.parse(raw) : null;
   });
-  ok('partie terminée sur mj-49 (sans dinos-data en dur) → 1 œuf persisté',
-     !!collection && Array.isArray(collection.eggs) && collection.eggs.length === 1,
+  // NID v5 (HO-MJ-25) : le 1er cadeau est un tas de 6 cailloux ; l'œuf (et sa famille
+  // RÉELLE, preuve L-143) arrive ensuite dans un nid fermé libre, via le moteur réel.
+  ok('partie terminée sur mj-49 (sans dinos-data en dur) → nid 1 fermé (6 cailloux) persisté',
+     !!collection && collection.version === 3 && Array.isArray(collection.nids) && collection.nids[0].cailloux === 6,
      JSON.stringify(collection));
-  const famille = collection && collection.eggs[0] && collection.eggs[0].famille;
+  const famille = await page.evaluate(() => {
+    for (let i = 0; i < 80 && !Collection.eggs().length; i++) Collection.grantReward({});
+    const e = Collection.eggs()[0];
+    return e ? e.famille : null;
+  });
   ok('l\'œuf a une famille RÉELLE, jamais "_sans" (preuve du bug L-143 corrigée)',
      !!famille && famille !== '_sans', `famille=${famille}`);
 
-  // ── soin + éclosion : doit rendre un DINO, jamais un doublon ───────────
-  // 1er œuf de l'histoire → seuil d'éclosion = 1 accessoire (théâtre rapide).
+  // ── lit + habit puis éclosion : doit rendre un DINO, jamais un doublon ──
+  // 1er œuf de l'histoire → prêt avec un lit et 1 habit (théâtre rapide).
   const acc = await page.evaluate(() => {
     const s = JSON.parse(localStorage.getItem('maxplay_collection_v1'));
-    s.sac = ['paille'];
+    const i = s.nids.findIndex(n => n.oeuf);
+    s.nids[i].lit = [{ variante: 'fougere', rare: false }];
+    s.sac = [{ type: 'habit', id: 'bonnet', variante: 'rouge', rare: false }];
     localStorage.setItem('maxplay_collection_v1', JSON.stringify(s));
-    return Collection.warmEgg(0, 'paille');
+    return Object.assign({ i: i }, Collection.poser(i, 0));
   });
-  ok('warmEgg pose l\'accessoire et l\'œuf devient prêt (seuil 1er œuf = 1)', acc.ok === true && acc.ready === true, JSON.stringify(acc));
+  ok('poser le bonnet : l\'œuf devient prêt (1er œuf = lit + 1 habit)', acc.ok === true && acc.ready === true, JSON.stringify(acc));
 
-  const hatched = await page.evaluate(() => Collection.hatchEgg(0));
+  const hatched = await page.evaluate((i) => Collection.eclore(i), acc.i);
   ok('hatchEgg rend un DINO complet {id,nom,famille} — jamais {type:"doublon"}',
      !!(hatched && hatched.id && hatched.nom && !hatched.type), JSON.stringify(hatched));
 

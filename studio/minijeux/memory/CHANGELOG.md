@@ -4,6 +4,7 @@
 
 ## 2026-11
 
+- Le nid est refait : trois nids côte à côte qu'on construit caillou par caillou, un œuf par nid, un lit de fougère, de mousse ou de plumes, puis des bonnets, écharpes et capes posés sur l'œuf (drapeau Brésil ou France, bonnet loup ou bus). Les cadeaux alternent : environ une partie sur deux, jamais trois parties de suite sans rien, plus beaux après un sans-faute, et parfois deux d'un coup. Un jeu déjà maîtrisé donne encore des cadeaux.
 - L'armoire est posée sur un parquet, avec son ombre sous les pieds, et les noms sous les objets sont retirés : l'objet dit le thème, le cadenas reste sur la case verrouillée.
 - L'armoire est 20 % plus grande : son corps remplit la largeur du téléphone, les portes ouvertes sortent par les côtés, le petit dino est debout sur la corniche. L'accueil ne reste plus blanc quand le serveur des polices est lent, et un jeu déjà ouvert ne fait plus attendre un réseau mobile qui traîne.
 - Toucher une case ouvre le jeu tout de suite : son titre est dit à l'arrivée, puis la consigne (avant, 2 s d'attente sur l'accueil).

@@ -273,31 +273,6 @@ Porte : `buildRows`/`buildCols` dans `site/js/armoire.js` ; captures zoomées 36
 **Cause** : (1) pour être « seule », ChatGPT referme le cou par un trait qui n'existe pas sur le dino entier ; (2) une pièce tournée en secteur tranche tout ce qui chevauche la jointure ; (3) avec deux images jointes, ChatGPT peut prendre le corps de la mauvaise, et le script prend une image encore floue pour finie.
 **Règle** : (1) garder de la tête seule ce que le dessin entier montre (pixels qui concordent, à 3 px près) ; (2) faire fléchir une queue ornée, jamais tourner un secteur ; (3) écrire « le corps est celui de l'image 1, PAS de l'image 2 », ouvrir chaque dessin avant de l'assembler, et attendre la fin du rendu entre deux demandes.
 
-### L-167 – ChatGPT ne garde pas un corps : ce qui doit être commun se partage par construction
-**Constat** : 2026-11-04 et 05, PY : têtes de tailles disproportionnées (Tricératops énorme, Spinosaure petit), puis « des corps pas à la même place », mains toutes différentes. Chaque prompt disait pourtant « garde EXACTEMENT le corps de l'image 1 ».
-**Cause** : à chaque espèce ChatGPT redessine tout : la tête à sa guise, l'épaule déplacée de 10 à 20 px, un bras neuf. Le recalage par le ventre aligne les ventres, pas les épaules ni les visages.
-**Règle** : ce qui doit être identique pour tous (tronc, épaule, bras, échelle du visage) est UNE pièce partagée ou une mesure imposée par le code (même rayon d'œil, épaule du tronc), jamais une consigne au dessinateur. Le dessin de l'espèce ne fournit que ce qui la distingue.
-
-### L-168 – Une épaisseur de trait se mesure à l'aire, pas aux colonnes
-**Constat** : 2026-11-04, jambes réencrées au « trait du corps » : contour deux fois trop épais (7 px au lieu de 4,8), vu au zoom.
-**Cause** : la mesure comptait les pixels sombres consécutifs par colonne ; un trait pris en biais paraît bien plus épais qu'il n'est.
-**Règle** : épaisseur = aire des pixels sombres près du bord / longueur du bord (`build.py`, `body_line`), et toujours comparer en gros plan corps et pièce réencrée côte à côte.
-
-### L-169 – Le trait de référence est celui que l'œil compare, et une petite pièce se dimensionne à son trait
-**Constat** : 2026-11-08, PY : « les traits gras ne rendent pas bien, et c'est pas mis partout… les têtes sont sans » et « les bras semblent démembrés ». Corps 4,9 px de trait, têtes 3,7 px ; jambes et bras réencrés à 4,9 ; le bras faisait 25 px de large, trait compris.
-**Cause** : la référence de trait était prise sur le corps, la pièce la plus grasse, alors que les têtes (réduites au même rayon d'œil) avaient maigri ; et le bras était taillé au bras d'origine du dessin sans regarder ce que son trait laissait de vert.
-**Règle** : un trait commun se prend sur la pièce la plus fine que l'œil voit à côté (ici la médiane des têtes) et les autres s'y ramènent (`build.py`, `thin`, `ink`). Une pièce rapportée se dimensionne pour que son trait reste une bordure : regarder en gros plan, et monter la taille (`ARM_K`) jusqu'à ce que la couleur domine.
-
-### L-170 – Un bras rapporté ne remplace pas un bras dessiné dans le corps
-**Constat** : 2026-11-08, PY : « les bras c'est toujours une catastrophe… ils étaient bien il y a 10-15 sessions, c'est quand on a voulu tout séparer en objets que ça ne va plus ». Bras en pièce qui tourne à l'épaule : refusé deux fois (tige collée, puis bras grossi 1,7x). Les bras validés (2026-10-28) étaient dessinés par ChatGPT dans le corps, une pose par allure (`surf`, `up`, `vol`).
-**Cause** : un bras posé sur le corps n'a ni l'épaule, ni l'ombre, ni le trait ouvert qui le lient au corps ; un dessinateur les met, un calque tournant ne les a pas. La séparation servait le code (un bras, toutes les poses), pas le rendu.
-**Règle** : une partie du corps qui doit paraître attachée se dessine dans le corps, une pose par geste ; on ne sépare en pièce que ce qui se détache vraiment (objets, jambes sous le ventre). Avant de remplacer un rendu validé par une mécanique plus générique, la comparer côte à côte avec la version validée.
-
-### L-171 – Une suite de prompts ChatGPT vise l'adresse du chat, jamais « l'onglet courant »
-**Constat** : 2026-11-09, génération Dinomino en trois étapes par espèce (`gpt-gen.mjs`) : l'étape 1 n'est pas partie (prompt resté dans le champ de la page projet), les étapes 2 et 3 sont parties quand même, dans le premier onglet ChatGPT de Brave, et ont rapporté des paléo-arts d'une autre conversation (une autre session travaillait sur l'encyclopédie dans le même Brave).
-**Cause** : sans `--new` ni `--url`, `gpt-gen.mjs` prend le premier onglet chatgpt.com ; le script enchaînait les étapes sans vérifier que la précédente avait produit son image. Et Entrée ne part pas toujours tant que le téléversement de la référence traîne.
-**Règle** : étape 1 avec `--new`, puis lire l'adresse de CE chat et passer `--url` aux étapes suivantes ; arrêter l'espèce dès qu'une étape n'a pas d'image. `gpt-gen.mjs` clique « Envoyer » tant que le champ n'est pas vide, et attend 8 s après `--url` (images déjà là). Regarder chaque image rapportée avant de l'installer.
-
 ### L-172 – Un déploiement raté se diagnostique dans son journal, pas dans la taille du site
 **Constat** : 2026-11-25, mise en ligne du nid v5 refusée deux fois ; j'ai conclu à la limite de taille de GitHub Pages (site à 1 048 Mo) et proposé de réencoder les sons des dinos. PY a refusé. Le journal disait autre chose : envoi réussi (« successfully uploaded »), puis la publication ne trouvait pas l'envoi (« Found 0 artifact(s) »). Une mise en ligne neuve est passée sans rien changer.
 **Cause** : j'ai lu le message d'erreur final et comparé deux tailles, sans lire l'étape d'envoi ligne à ligne ; une coïncidence de chiffres a fait office de preuve.

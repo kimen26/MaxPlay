@@ -277,3 +277,8 @@ Porte : `buildRows`/`buildCols` dans `site/js/armoire.js` ; captures zoomées 36
 **Constat** : 2026-11-25, mise en ligne du nid v5 refusée deux fois ; j'ai conclu à la limite de taille de GitHub Pages (site à 1 048 Mo) et proposé de réencoder les sons des dinos. PY a refusé. Le journal disait autre chose : envoi réussi (« successfully uploaded »), puis la publication ne trouvait pas l'envoi (« Found 0 artifact(s) »). Une mise en ligne neuve est passée sans rien changer.
 **Cause** : j'ai lu le message d'erreur final et comparé deux tailles, sans lire l'étape d'envoi ligne à ligne ; une coïncidence de chiffres a fait office de preuve.
 **Règle** : avant d'attribuer un échec de déploiement à une cause, lire le journal de chaque étape et citer la ligne qui la prouve. « Found 0 artifact(s) » ou « Multiple artifacts » après un envoi réussi = raté côté GitHub : relancer une exécution neuve (`gh workflow run deploy.yml`), pas `gh run rerun` (qui garde l'ancien envoi et donne « Multiple artifacts »).
+
+### L-173 – `git commit -- chemins` enregistre le fichier de travail, pas l'index
+**Constat** : 2026-11-26, deux lignes indexées à la main (`update-index --cacheinfo`) pour ne pas prendre le travail d'une autre session ; `git commit -m … -- TODO.md LESSONS.md` a quand même embarqué les leçons L-167 à L-171 de l'autre session. Rattrapé par un commit correctif avant tout envoi (le retour en arrière de branche est bloqué par `garde-git-add`).
+**Cause** : avec des chemins, `git commit` prend leur contenu sur le disque et ignore ce qui a été indexé.
+**Règle** : après une indexation partielle, `git commit -m …` SANS chemins, et `git show --stat HEAD` avant d'envoyer.

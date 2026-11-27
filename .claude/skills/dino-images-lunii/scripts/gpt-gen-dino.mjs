@@ -43,7 +43,13 @@ const REF_SUM = REF ? createHash('md5').update(readFileSync(REF)).digest('hex') 
 // L'UI 2026-09 sert aussi les images en blob: (L-D-85). On ne garde que la pleine
 // résolution : les vignettes et la référence jointe restent sous 700 px de large.
 const ESTUARY = 'img[src*="backend-api/estuary/content"], img[src^="blob:https://chatgpt.com"]';
-const srcsHD = () => page.locator(ESTUARY).evaluateAll(els => els.filter(e => e.naturalWidth >= 700).map(e => e.getAttribute('src')));
+// Les images du message envoyé (la référence jointe) sont écartées par leur place dans la page :
+// ChatGPT réencode la pièce jointe, donc le contrôle par checksum ne la reconnaît pas toujours
+// (2026-11-28 : référence de 1199 px récupérée à la place de l'image générée).
+const srcsHD = () => page.locator(ESTUARY).evaluateAll(els => els
+  .filter(e => e.naturalWidth >= 700
+    && !e.closest('[data-message-author-role="user"], [class*="user-message"]'))
+  .map(e => e.getAttribute('src')));
 const BLOCK_RE = /enfreindre nos règles|illustrations acceptables|violate our|content policy|n'avons pas pu générer|impossible de générer cette image/i;
 // Apostrophe droite OU typographique : l'UI écrit « limite de créations d’images » (L-D-86).
 const LIMIT_RE = /limite de génération|limite de créations d['’]images|limite d['’]images atteinte|plus de crédit|réessayez plus tard|try again later|usage cap|rate limit|vous avez atteint|image generation limit|reached your limit|hit the Plus plan limit|limit resets in|passez à une offre supérieure|passer à chatgpt pro/i;

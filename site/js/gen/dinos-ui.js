@@ -304,6 +304,8 @@ const DINO_EXTRAS = {
   ],
   kosmoceratops:[
     {folder:'paleoart',file:'Kosmoceratops_headshot.webp',label:'Gros plan'},
+    {folder:'paleoart',file:'Kosmoceratops_hypo-schema.webp',label:'Ses 15 cornes et crochets'},
+    {folder:'paleoart',file:'Kosmoceratops_hypo-dresses.webp',label:'Pour de faux : crochets dressés'},
     {folder:'paleoart',file:'Kosmoceratops_manger.webp',label:'Ce qu\'il mange'},
     {folder:'paleoart',file:'Kosmoceratops_paris.webp',label:'Dans Paris !'},
     {folder:'paleoart',file:'Kosmoceratops_ecosysteme.webp',label:'Son monde'},

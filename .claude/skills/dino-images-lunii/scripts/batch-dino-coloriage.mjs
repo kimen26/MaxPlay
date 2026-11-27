@@ -22,7 +22,10 @@ const OUTD = ROOT + '/site/img/dinos/_new-coloriage';
 const PROGRESS = OUTD + '/_PROGRESS.tsv';
 mkdirSync(OUTD, { recursive: true });
 
-const ids = process.argv.slice(2).filter(a => !a.startsWith('--'));
+// --ref <image> : gros plan validé joint au prompt (L-D-59), comme pour la série 5 scènes.
+const refI = process.argv.indexOf('--ref');
+const REF = refI > -1 ? process.argv[refI + 1] : null;
+const ids = process.argv.slice(2).filter((a, i) => !a.startsWith('--') && (refI === -1 || i + 2 !== refI + 1));
 const fichesTxt = existsSync(FICHES) ? readFileSync(FICHES, 'utf8') : '';
 
 // Signatures morphologiques manuelles pour les dinos sans fiche.
@@ -113,6 +116,7 @@ function gen(prompt, outName, firstOfDino) {
   if (PREVIEW) { console.log(`\n--- [${outName}] ---\n${prompt}`); return 0; }
   const args = [GEN, prompt, OUTD + '/' + outName];
   if (firstOfDino) args.push(...(USE_GROK ? ['--new'] : ['--url', GPTS]));
+  if (REF && !USE_GROK) args.push('--ref', REF);
   try {
     const out = execFileSync('node', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'inherit'] });
     process.stdout.write(out);
@@ -157,13 +161,15 @@ function buildColoriagePrompt(d, id) {
     `LE DINOSAURE : ${d.name}${d.full && d.full !== d.name ? ` (${d.full})` : ''}, ${regimeMot} du ${epoqueMot}.`,
   ];
   
-  // Caractéristiques anatomiques reconnaissables
+  if (REF) lignes.push(`RÉFÉRENCE VISUELLE — ANATOMIE SEULEMENT : l'image jointe est une illustration réaliste de la tête de cet animal. Garde exactement la forme de sa tête, le nombre et la direction de ses cornes et ornements, en les simplifiant en dessin au trait. Le style suit ce texte, pas la référence.`);
+  // Caractéristiques anatomiques reconnaissables. La signature MORPHO passe en premier même quand la
+  // fiche a des puces : sans elle la collerette du Kosmocératops sortait en deux lobes troués (2026-11-28),
+  // même cause que la série 5 scènes en 2026-07-05.
+  if (MORPHO[id]) lignes.push(`SILHOUETTE (RESPECTER SCRUPULEUSEMENT) : ${MORPHO[id]}.`);
   const puces = descPhysique(d);
   if (puces.length) {
     lignes.push(`CARACTÉRISTIQUES (à simplifier mais garder reconnaissables) :`);
     puces.forEach(p => lignes.push(`- ${p}.`));
-  } else if (MORPHO[id]) {
-    lignes.push(`SILHOUETTE : ${MORPHO[id]}.`);
   }
   
   const sig = ficheSignature(d);

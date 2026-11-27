@@ -201,3 +201,11 @@ encore « gate | tail » suivi d'un envoi (ajout noté au TODO transverse).
 **Cause** : dans `cleanPuce` (`dino-morpho.mjs`), le filtre des négations utilisait `\b`, qui en JavaScript ne connaît que l'ASCII : « â » compte comme une coupure de mot, donc « ne » était trouvé dans « crâne » et tout le segment sautait. La virgule décimale servait en plus de séparateur de segment, ce qui laissait « 3 m de longueur » orphelin.
 
 **Règle** : bornes de mot Unicode (`(?<!\p{L})`, drapeau `u`) et virgule entre deux chiffres jamais traitée comme séparateur. Les segments marqués ⚠️ sont retirés (ils s'adressent à l'humain). Après toute retouche du nettoyeur, comparer la description de chaque dino avant et après (script de comparaison sur les 79), pas seulement le cas qui a révélé le bug.
+
+## L-D-95 — Gros plan du Kosmocératops validé sur le texte, pas sur le fossile (2026-11-28)
+
+**Symptôme** : PY conteste le gros plan de la tête pris comme modèle pour refaire les images : crochets de collerette longs, fins et dressés en peigne, cornes de sourcil énormes recourbées comme un bison. Le vrai crâne (musée de l'Utah, dessin de Sampson et al. 2010) montre des crochets courts et épais, pliés vers l'avant et couchés sur le bord de la collerette, des cornes de sourcil moyennes qui partent sur les côtés, une corne de nez basse.
+
+**Cause** : l'image avait été comparée à la description écrite (le nombre et la direction des 15 ornements), jamais à une photo du fossile. Les mots « longs et fins », « comme des cornes de bison » de la signature MORPHO ont été poussés à l'extrême par le modèle, et l'image fausse est ensuite devenue la référence des autres scènes.
+
+**Règle** : avant de faire d'une image la référence anatomique d'une série, la poser à côté d'une photo ou d'un dessin scientifique du vrai crâne. Pour les dinos à ornements, joindre de préférence le dessin scientifique lui-même comme référence.

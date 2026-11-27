@@ -43,6 +43,13 @@ const SCENES_SUPPLEMENTAIRES = {
     { suffix: 'hypo-epines', label: 'Peut-être des piques…' },
     { suffix: 'hypo-voile', label: '…ou une voile colorée ?' },
   ],
+  // Kosmocératops (PY 2026-11-28) : schéma des 15 ornements (SVG fourni par PY, rendu en image)
+  // + une version IMAGINAIRE assumée, crochets dressés comme des armes. Un seul crâne presque
+  // complet connu (UMNH VP 17000) : le libellé dit clairement que c'est pour de faux.
+  kosmoceratops: [
+    { suffix: 'hypo-schema', label: 'Ses 15 cornes et crochets' },
+    { suffix: 'hypo-dresses', label: 'Pour de faux : crochets dressés' },
+  ],
 };
 
 const has = (p) => fs.existsSync(p);

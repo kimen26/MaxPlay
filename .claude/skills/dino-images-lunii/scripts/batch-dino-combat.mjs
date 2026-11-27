@@ -28,7 +28,10 @@ const PROGRESS = OUTD + '/_PROGRESS.tsv';
 
 const argv = process.argv.slice(2);
 const opt = name => { const i = argv.indexOf(name); return i > -1 ? argv[i + 1] : null; };
-const [id, type] = argv.filter((a, i) => !a.startsWith('--') && !['--fix', '--try'].includes(argv[i - 1]));
+const [id, type] = argv.filter((a, i) => !a.startsWith('--') && !['--fix', '--try', '--ref'].includes(argv[i - 1]));
+// --ref <image> : gros plan validé de la tête joint au prompt (L-D-59). Sans lui, la collerette du
+// Kosmocératops sortait en couronne dressée au lieu de la frange de crochets vers l'avant (2026-11-28).
+const REF = opt('--ref');
 const FIX = opt('--fix');
 const ESSAI = opt('--try') || '1';
 const PREVIEW = argv.includes('--preview');
@@ -79,6 +82,7 @@ const prompt = [
 RÔLE : illustrateur de paléoart documentaire réaliste, rigoureux sur l'anatomie et les proportions.`,
   `OBJECTIF : ${objectif} On montre l'instant de tension du combat, plein d'énergie : les deux animaux sont intacts, leur peau, leurs plumes ou leur fourrure restent propres.`,
   (marin ? `CAMÉRA (règle n° 1, prioritaire sur tout le reste) : vue documentaire très large dans une eau claire et lumineuse, format paysage, comme filmée de loin par un plongeur. Les animaux paraissent PETITS au milieu d'un immense volume d'eau bleue : CHACUN occupe au plus un tiers de la largeur de l'image, entièrement visible du museau au bout de la queue, avec beaucoup d'eau libre tout autour ; la surface ondulée et le fond marin (sable, rochers, algues) sont visibles et donnent l'échelle.` : `CAMÉRA (règle n° 1, prioritaire sur tout le reste) : très grand plan d'ensemble, photographié depuis 150 à 300 mètres de distance, format paysage. Les animaux paraissent PETITS dans l'immensité du paysage : CHACUN occupe au plus un tiers de la largeur de l'image (et au plus un tiers de sa hauteur s'il est plus haut que long), entièrement visible, avec une large marge de décor tout autour. Le décor (ciel, relief, végétation, eau) remplit la majeure partie de l'image.`),
+  ...(REF ? [`RÉFÉRENCE VISUELLE — ANATOMIE SEULEMENT : l'image jointe montre la tête exacte du ${sujet.d.name}. Reproduis fidèlement sa forme, le nombre et la direction de ses cornes et ornements, sur ${memeEspece ? 'les deux individus' : 'lui'}. Pour l'anatomie de la tête, l'IMAGE fait foi. La pose, le cadrage et le décor suivent ce texte, pas la référence.`] : []),
   `ANIMAL 1 — ${sujet.d.name.toUpperCase()} :\n${blocSujet}`,
   `ANIMAL 2 — ${(memeEspece ? sujet.d.name : scene.adversaire).toUpperCase()} :\n${blocAdv}`,
   `PROPORTIONS ENTRE LES DEUX (capital, à respecter exactement) : ${scene.rapport_taille} Les deux animaux se tiennent sur la même ligne de sol, à la même distance de l'objectif, pour que ce rapport de taille se lise juste : chacun est dessiné à sa taille réelle, le petit reste petit et le grand reste grand.`,
@@ -96,7 +100,7 @@ const out = `${OUTD}/${baseName}_${type}${ESSAI === '1' ? '' : '_v' + ESSAI}.png
 const log = s => appendFileSync(PROGRESS, `${new Date().toISOString()}\t${id}\t${type}\t${ESSAI}\t${s}\n`);
 log('start');
 try {
-  process.stdout.write(execFileSync('node', [GEN, prompt, out, ...(USE_GROK ? ['--new'] : ['--url', PROJET])],
+  process.stdout.write(execFileSync('node', [GEN, prompt, out, ...(USE_GROK ? ['--new'] : ['--url', PROJET]), ...(REF && !USE_GROK ? ['--ref', REF] : [])],
     { encoding: 'utf8', stdio: ['ignore', 'pipe', 'inherit'] }));
   log('ok\t' + out);
 } catch (e) {
